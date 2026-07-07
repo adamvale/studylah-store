@@ -13,10 +13,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app
 
-# Install all dependencies (including dev — the Prisma CLI and tsx are needed
-# to run migrations and the seed on first boot). --include=dev keeps them even
-# though NODE_ENV is production.
+# The Prisma schema must exist before `npm ci`, because the package's
+# postinstall runs `prisma generate`, which needs it. Copy the schema and
+# config alongside the manifests, then install (dev deps included — the Prisma
+# CLI and tsx run migrations and the seed on first boot).
 COPY package.json package-lock.json ./
+COPY prisma ./prisma
+COPY prisma.config.ts ./
 RUN npm ci --include=dev
 
 # Copy the rest of the app and build. Database reads during the build fall back
