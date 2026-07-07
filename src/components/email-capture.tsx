@@ -61,8 +61,8 @@ export function EmailCaptureForm({
       >
         <p className="font-medium">You&apos;re on the list — check your inbox.</p>
         <p className="mt-1 text-ink/70">
-          Your heatmap PDF arrives once email delivery goes live (Phase 2). Your
-          consent has been recorded.
+          Your free heatmap PDF is on its way. If it doesn&apos;t arrive in a
+          few minutes, check your spam folder. Your consent has been recorded.
         </p>
       </div>
     );
