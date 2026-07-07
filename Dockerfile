@@ -25,10 +25,12 @@ COPY . .
 RUN npx prisma generate && npm run build
 
 ENV NODE_ENV=production
-# The persistent volume mounts here: SQLite file + product PDFs.
+# The persistent volume is attached via the Railway dashboard
+# (Settings -> Volumes, mount path /data). The SQLite database and product
+# PDFs live there. Note: Railway rejects the Docker `VOLUME` instruction, so
+# we don't declare one here — the dashboard mount is what matters.
 ENV DATABASE_URL=file:/data/prod.db
 ENV PDF_STORAGE_DIR=/data/pdfs
-VOLUME /data
 
 EXPOSE 3000
 CMD ["bash", "scripts/start-prod.sh"]
