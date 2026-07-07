@@ -1,0 +1,174 @@
+"use client";
+
+import Link from "next/link";
+import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import {
+  LEVELS,
+  MAX_SUBJECTS,
+  SUBJECTS,
+  sgd,
+  type Level,
+} from "@/lib/catalogue";
+import { useCart } from "@/lib/cart-context";
+import { usePricing } from "@/lib/pricing-context";
+import { type CartItem } from "@/lib/pricing";
+
+type SelectionKey = `${Level}::${string}`;
+
+export function BundleBuilder() {
+  const [selected, setSelected] = useState<Set<SelectionKey>>(new Set());
+  const [limitHit, setLimitHit] = useState(false);
+  const { addItem } = useCart();
+  const router = useRouter();
+  const pricing = usePricing();
+
+  const items: CartItem[] = useMemo(
+    () =>
+      [...selected].map((key) => {
+        const [level, subjectSlug] = key.split("::") as [Level, string];
+        return { level, subjectSlug, tier: "master" as const };
+      }),
+    [selected]
+  );
+
+  const priced = useMemo(() => pricing.priceCart(items), [pricing, items]);
+
+  function toggle(key: SelectionKey) {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) {
+        next.delete(key);
+        setLimitHit(false);
+      } else if (next.size < MAX_SUBJECTS) {
+        next.add(key);
+        setLimitHit(false);
+      } else {
+        setLimitHit(true);
+      }
+      return next;
+    });
+  }
+
+  function addAllToCart() {
+    for (const item of items) addItem(item);
+    router.push("/cart");
+  }
+
+  const count = selected.size;
+  const stepMessage =
+    count === 0
+      ? "Pick your subjects — every bundle is the Master tier (all three PDFs)."
+      : count < 3
+        ? `Add ${3 - count} more subject${3 - count === 1 ? "" : "s"} to unlock Mega-Bundle pricing.`
+        : count < 5
+          ? count === 4
+            ? "Add your 5th subject to unlock All-In pricing."
+            : "Mega-Bundle pricing applied."
+          : count === 5
+            ? "All-In applied — your 6th subject is included."
+            : "All-In applied — every subject covered.";
+
+  return (
+    <div className="mt-10 grid gap-8 lg:grid-cols-3">
+      <div className="space-y-8 lg:col-span-2">
+        {(["o-level", "na-level"] as const).map((level) => (
+          <section key={level} aria-labelledby={`bundle-${level}`}>
+            <h2 id={`bundle-${level}`} className="font-display text-xl font-bold text-ink">
+              {LEVELS[level].name}
+            </h2>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {SUBJECTS.filter((s) => s.level === level).map((subject) => {
+                const key: SelectionKey = `${level}::${subject.slug}`;
+                const active = selected.has(key);
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    aria-pressed={active}
+                    onClick={() => toggle(key)}
+                    className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors ${
+                      active
+                        ? "border-trust bg-trust text-white"
+                        : "border-trust/20 bg-white text-body hover:border-trust/50"
+                    }`}
+                  >
+                    {subject.name}
+                  </button>
+                );
+              })}
+            </div>
+          </section>
+        ))}
+        {limitHit && (
+          <p className="rounded-lg bg-heat-3/25 px-4 py-2.5 text-sm text-ink" role="alert">
+            Bundles cover up to {MAX_SUBJECTS} subjects — the most anyone sits.
+            Remove one to swap.
+          </p>
+        )}
+      </div>
+
+      <aside aria-label="Bundle summary" className="lg:sticky lg:top-20 lg:self-start">
+        <div className="rounded-2xl border border-trust/10 bg-white p-5">
+          <p className="font-display text-lg font-bold text-ink">Your bundle</p>
+          <p className="mt-1 text-sm text-body">{stepMessage}</p>
+          {count > 0 && (
+            <>
+              <ul className="mt-4 space-y-1.5 border-t border-trust/10 pt-4 text-sm">
+                {items.map((item) => {
+                  const subject = SUBJECTS.find(
+                    (s) => s.level === item.level && s.slug === item.subjectSlug
+                  );
+                  return (
+                    <li key={`${item.level}-${item.subjectSlug}`} className="flex justify-between gap-2">
+                      <span className="text-body">
+                        {subject?.name}{" "}
+                        <span className="text-xs text-body/60">
+                          · {LEVELS[item.level].shortName}
+                        </span>
+                      </span>
+                      <span className="font-mono text-ink">Master</span>
+                    </li>
+                  );
+                })}
+              </ul>
+              <div className="mt-4 border-t border-trust/10 pt-4">
+                {priced.savings > 0 && (
+                  <p className="flex justify-between text-sm text-body">
+                    <span>{priced.bundles[0]?.kind === "all-in" ? "All-In" : "Mega-Bundle"} applied</span>
+                    <span className="font-mono line-through">{sgd(priced.baseline)}</span>
+                  </p>
+                )}
+                <p className="mt-1 flex justify-between font-display text-xl font-bold text-ink">
+                  <span>Total</span>
+                  <span className="font-mono">{sgd(priced.total)}</span>
+                </p>
+                {priced.savings > 0 && (
+                  <p className="mt-1 text-right text-sm font-medium text-guarantee">
+                    You save {sgd(priced.savings)}
+                  </p>
+                )}
+              </div>
+              <button
+                type="button"
+                onClick={addAllToCart}
+                className="mt-5 w-full rounded-lg bg-signal px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-signal-deep"
+              >
+                Add {count} subject{count === 1 ? "" : "s"} to cart
+              </button>
+            </>
+          )}
+          {count === 0 && (
+            <p className="mt-4 text-sm text-body">
+              Not sure what to pick?{" "}
+              <Link href="/o-level" className="font-medium text-trust underline">
+                Browse subjects
+              </Link>{" "}
+              first.
+            </p>
+          )}
+        </div>
+      </aside>
+    </div>
+  );
+}

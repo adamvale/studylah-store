@@ -1,0 +1,120 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// Catalogue --------------------------------------------------------------
+
+model Subject {
+  id       String    @id @default(cuid())
+  level    String
+  slug     String
+  name     String
+  family   String
+  products Product[]
+
+  @@unique([level, slug])
+}
+
+model Product {
+  id         String      @id @default(cuid())
+  subject    Subject     @relation(fields: [subjectId], references: [id])
+  subjectId  String
+  key        String // forecast | vault | rehearsal
+  // Path relative to PDF_STORAGE_DIR; never publicly routable.
+  filePath   String
+  active     Boolean     @default(true)
+  orderItems OrderItem[]
+
+  @@unique([subjectId, key])
+}
+
+// Commerce ---------------------------------------------------------------
+
+model Customer {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+  orders    Order[]
+}
+
+model Order {
+  id              Int         @id @default(autoincrement())
+  // Unguessable token for the customer's download page URL.
+  accessToken     String      @unique
+  // Stripe Checkout session id; "mock_" prefix for test-mode orders created
+  // without Stripe. Unique constraint is what makes order creation idempotent.
+  stripeSessionId String      @unique
+  status          String      @default("paid") // paid | refunded
+  email           String
+  customer        Customer    @relation(fields: [customerId], references: [id])
+  customerId      String
+  currency        String      @default("sgd")
+  // All money in cents, matching Stripe.
+  subtotalCents   Int
+  discountCents   Int         @default(0)
+  discountCode    String?
+  totalCents      Int
+  // Full PricedCart snapshot at purchase time, for audit and support.
+  pricingJson     String
+  createdAt       DateTime    @default(now())
+  items           OrderItem[]
+}
+
+model OrderItem {
+  id            String         @id @default(cuid())
+  order         Order          @relation(fields: [orderId], references: [id])
+  orderId       Int
+  product       Product        @relation(fields: [productId], references: [id])
+  productId     String
+  // Denormalised for receipts even if catalogue changes later.
+  subjectName   String
+  levelName     String
+  productName   String
+  tier          String
+  downloadToken DownloadToken?
+}
+
+model DownloadToken {
+  token       String    @id
+  orderItem   OrderItem @relation(fields: [orderItemId], references: [id])
+  orderItemId String    @unique
+  expiresAt   DateTime
+  maxUses     Int
+  uses        Int       @default(0)
+}
+
+model DiscountCode {
+  code           String    @id
+  kind           String // percent | fixed (fixed value in cents)
+  value          Int
+  description    String    @default("")
+  active         Boolean   @default(true)
+  expiresAt      DateTime?
+  maxRedemptions Int?
+  redemptions    Int       @default(0)
+  createdAt      DateTime  @default(now())
+}
+
+// Marketing --------------------------------------------------------------
+
+model Lead {
+  id          String   @id @default(cuid())
+  email       String
+  source      String
+  level       String?
+  subjectSlug String?
+  // PDPA requires provable opt-in.
+  consentAt   DateTime
+  createdAt   DateTime @default(now())
+}
+
+// Operations -------------------------------------------------------------
+
+model Setting {
+  key   String @id
+  value String
+}
