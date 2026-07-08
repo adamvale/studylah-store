@@ -83,14 +83,16 @@ export const SUBJECTS: Subject[] = [
   { slug: "a-math", name: "Mathematics (Additional)", level: "o-level", family: "amath" },
   // N(A) Geography and Social Studies are omitted: no source PDFs exist for
   // them. Re-add here (and to SUBJECT_SPECS) once the content is produced.
+  // Display names match the syllabus students search for. Slugs are frozen:
+  // they are in live URLs and in every ProductFile.filePath on the volume.
   { slug: "chemistry", name: "Chemistry", level: "na-level", family: "chemistry" },
   { slug: "physics", name: "Physics", level: "na-level", family: "physics" },
   { slug: "biology", name: "Biology", level: "na-level", family: "biology" },
-  { slug: "history", name: "History", level: "na-level", family: "history" },
+  { slug: "history", name: "History (Elective)", level: "na-level", family: "history" },
   { slug: "principles-of-accounts", name: "Principles of Accounts", level: "na-level", family: "poa" },
   { slug: "e-math", name: "Mathematics (Elementary)", level: "na-level", family: "emath" },
   { slug: "a-math", name: "Mathematics (Additional)", level: "na-level", family: "amath" },
-  { slug: "food-and-nutrition", name: "Food and Nutrition", level: "na-level", family: "fnn" },
+  { slug: "food-and-nutrition", name: "Nutrition & Food Science", level: "na-level", family: "fnn" },
 ];
 
 export function subjectsForLevel(level: Level): Subject[] {
