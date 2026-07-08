@@ -888,8 +888,470 @@ const HISTORY_ELECTIVE_2261: SubjectCopy = {
   },
 };
 
+const PHYSICS_SCIENCE_5086: SubjectCopy = {
+  syllabusCode: "5086 / 5087",
+  examName: "O-Level Science (Physics) 5086/5087",
+  syllabusChecker:
+    "Not sure which syllabus your child takes? Check the school's subject posting or the exam entry form — Science (Physics) as part of combined Science is 5086 / 5087 (this pack); Physics as a single pure subject is 6091.",
+  heroHook:
+    "Absent for eight straight years. Then 8–9 marks — two years running.",
+  headlineCalls: [
+    {
+      title: "Radioactivity was made a heavyweight the moment it arrived.",
+      body: "It entered the combined-science syllabus in 2024 and took 8 marks immediately (nuclide notation, decay equations, half-life), then 9 in 2025 including a Tc-99m medical-tracer Section B. Older revision material gives 5086/5087 students almost nothing on it.",
+    },
+    {
+      title: "The 10-mark data question alternates — and motion is due back.",
+      body: "A cyclist speed–time graph in 2024, a lauric-acid cooling curve in 2025. The model forecasts the 2026 closer rotating back to the motion–energy family at HIGH confidence, with a thermal backup call published alongside it.",
+    },
+    {
+      title: "Force & Pressure is the most overdue every-year core.",
+      body: "Mass, weight, density and pressure have appeared in all ten Paper 2s, yet the new era holds the topic to 4 marks a year against a decade average near 7 — a +3.4 overdue index, the largest among the every-year cores.",
+    },
+    {
+      title: "The practical's likeliest 2026 experiment was last set in 2018.",
+      body: "Density has been untested for eight years and was foreshadowed in both 2023 and 2025 — the standout Paper 5 call (tier VERY HIGH).",
+    },
+    {
+      title: "Six topics are forecast to carry roughly half of Paper 2.",
+      body: "Revision order matters more than revision volume — the Forecast ranks all 16 topics so the heaviest ground comes first.",
+    },
+  ],
+  completePack:
+    "One model, four products, one revision order — from ranked forecast to targeted practice to a full dress rehearsal, with the Paper 5 companion covering the 15 practical marks. Every product is built from the same question-level study of the 2016–2025 papers, and every practice question is original.",
+  products: {
+    forecast: {
+      blurb:
+        "An analysis of ten years of O-Level Science (Physics) papers, classified question by question and turned into a ranked, confidence-tiered forecast of the 2026 exam, backed by 12+ charts. All 16 syllabus topics get a deep dive — mark history, evidence, question angles, and what changed in the new syllabus.",
+      bullets: [
+        "Ranked prediction table for all 16 topics, tiered VERY HIGH / HIGH / MODERATE / WATCH",
+        "16 topic deep dives: ten-year mark history, evidence, question angles and the overdue index",
+        "Forecasts for the 10-mark data-based question and the Section B either/or pairing",
+        "Syllabus change briefing: the eight new-in-2026 items plus the deprecated list, so no one revises removed content",
+        "12-item niche watchlist of rarely-tested, cheap-to-prepare marks most students never spot",
+      ],
+      whoFor: "Every 2026 candidate — this is the map the other three products navigate by.",
+      crossSell:
+        "Pairs with the Sure Questions Vault: every VERY HIGH call in here has original practice questions in there.",
+    },
+    companion: {
+      blurb:
+        "Physics is Question 1 of Paper 5: 15 marks in about 45 minutes, built to a near-fixed template. This companion ranks the candidate experiment families for 2026, then drills the template through three full experiment briefs — each with model full-credit exhibits: six-reading table, best-fit graph, gradient, and the constant to 2 s.f.",
+      bullets: [
+        "All five 2026 slot candidates ranked, with last-tested years and the reasoning shown",
+        "The headline call: density — untested for eight years and foreshadowed in 2023 and 2025 (tier VERY HIGH)",
+        "Three full experiment briefs drilling the 15-mark template, with model full-credit exhibits",
+        "The modification/extension block — 3 marks in every paper since 2023 — with model responses",
+        "Dark-horse watchlist: thermal and light practicals, never set in a decade yet syllabus-listed",
+      ],
+      whoFor:
+        "Any candidate who has only met the Paper 5 template once or twice — most of them.",
+      crossSell:
+        "Built on the same ten-year model as the Exam Forecast, so the theory and practical calls cross-check each other.",
+    },
+    vault: {
+      blurb:
+        "48 original exam-style questions worth 211 marks, weighted to the Forecast's tiers so practice time lands on the likeliest 2026 marks first. Every question carries the full answer key: the complete point-by-point answer, a mark-scheme breakdown table, why the answer is correct, the answering technique, and the common mistake that loses the marks.",
+      bullets: [
+        "48 original questions (211 marks) in the authentic 2026 style — zero recycled past-paper content",
+        "Weighted to the forecast: VERY HIGH topics get the heaviest coverage, plus 11 niche-watchlist questions",
+        "Five-part answer key on every question, with a mark-scheme breakdown table showing how each mark is earned",
+        "Every numeric answer independently computed and checked before print; every allocation sums",
+        "Strictly 2026 syllabus: nothing from the deprecated 5076/5077/5078-era content list",
+      ],
+      whoFor: "Students who know the physics but leak marks on method, units and phrasing.",
+      crossSell:
+        "Miss a question? Every Vault question is tagged to its topic — the Exam Forecast's deep dive on that topic is the fix.",
+    },
+    rehearsal: {
+      blurb:
+        "A complete original mock in the exact 2026 format: Paper 1 (the physics half, 20 MCQs) plus a full 65-mark Paper 2 — Section A's 55 compulsory marks ending in the 10-mark data-based question, then the Section B either/or choice. Sold as one set of three PDFs, with a download for each.",
+      bullets: [
+        "Paper 1 (physics half): 20 MCQs matched to the decade's question-frequency distribution",
+        "Paper 2: 1 h 15 min, 65 marks, with the data-based closer and the Section B choice",
+        "Authentic instructions, answer spaces and timings for realistic self-testing",
+        "Mark Scheme — breakdown tables, technique notes and common-mistake flags for every question, plus indicative grade bands",
+      ],
+      whoFor:
+        "Every candidate, ideally twice — once as a diagnostic, once under full timing in the final weeks.",
+      crossSell:
+        "Score it, then route weak topics back to the Forecast deep dives and the Vault drills.",
+    },
+  },
+};
+
+const SOCIAL_STUDIES_2260: SubjectCopy = {
+  syllabusCode: "2260 / 2261",
+  examName: "O-Level Social Studies 2260/2261",
+  syllabusChecker:
+    "Social Studies is the compulsory half of Combined Humanities — 2260 when paired with the Geography elective, 2261 with the History elective. This pack covers the Social Studies paper for both.",
+  heroHook:
+    "The 10-mark assertion has appeared every single year since 2017. Rehearse its shape until it is automatic.",
+  headlineCalls: [
+    {
+      title: "The Section A case study is most likely Being Part of a Globalised World.",
+      body: "The overdue Issue: last seen in Section A in 2023, while Issues 1 and 2 took the two current-era papers. It is the strongest 35-mark call for 2026.",
+    },
+    {
+      title: "Q5 has appeared in every paper since 2017.",
+      body: "The 10-mark 'how far do you agree' assertion, using all the sources plus your own knowledge. Rehearse its group-then-evaluate shape until automatic — it is the single most predictable question we track.",
+    },
+    {
+      title: "The SBQ slot pattern is stable.",
+      body: "Q1 inference/message, Q2 comparison, Q3 usefulness, Q4 surprise-or-reliability, Q5 assertion. Prepare a fixed answer shape for each slot.",
+    },
+    {
+      title: "Section B is on a different Issue — most likely Living in a Diverse Society.",
+      body: "Two compulsory questions on an Issue other than Section A's: Q6 (7 marks) two developed reasons in the Singapore context; Q7 (8 marks) two factors or perspectives plus a supported judgement.",
+    },
+    {
+      title: "Expect at least one cartoon and one data source in Section A.",
+      body: "The cartoon is almost always the target of the message or purpose question.",
+    },
+    {
+      title: "Provenance wins the judgement marks.",
+      body: "Who wrote it, when, why — and do the other sources agree? Content-only answers stall at the middle level.",
+    },
+  ],
+  completePack:
+    "One model, four products, one revision order — the Exam Forecast, the SBQ Skills Prediction, the Sure Questions Vault and the Final Rehearsal paper with its Mark Scheme. Every claim traces to a question-level study of every Social Studies paper from 2016 to 2025, and every source is original.",
+  products: {
+    forecast: {
+      blurb:
+        "The complete Issue-by-Issue forecast for the 2026 Social Studies paper, built from a question-level study of every Social Studies paper from 2016 to 2025.",
+      bullets: [
+        "The three Issues ranked with confidence tiers and the evidence behind every case-study and structured-question call",
+        "The Section A and Section B Issue-rotation maps, the deprecated-content briefing and the exact 2260/2261 format in one place",
+        "A revision plan and printable checklist — analysis you can actually act on",
+      ],
+      whoFor: "Every 2026 candidate — this is the map the other products navigate by.",
+      crossSell:
+        "Pairs with the Sure Questions Vault: every VERY HIGH call in here has original practice questions in there.",
+    },
+    companion: {
+      blurb:
+        "The dedicated forecast for the Source-Based Case Study — the 35-mark Section A that carries most of the paper, and the provenance skills that win each question.",
+      bullets: [
+        "The 2026 slot forecast: predicted Q1–Q5 question types, each tiered, ending with the always-there Q5 assertion",
+        "The provenance and cross-reference engine — who wrote it, when, why, do the others agree — with original practice sources and a model Q5 answer",
+        "The message, comparison, usefulness and surprise drills, made automatic",
+      ],
+      whoFor: "Any candidate who describes sources rather than judging them.",
+      crossSell:
+        "Built on the same ten-year model as the Exam Forecast, so the Issue and source-skill calls cross-check each other.",
+    },
+    vault: {
+      blurb:
+        "Original questions across all three Issues, each with a full worked answer, a mark-scheme-style breakdown and a common-mistake note — weighted to the Forecast's tiers, so practice lands on Governance, Diversity and the overdue Globalisation first.",
+      bullets: [
+        "Every question is original and written in the 2260/2261 style — never a real past-paper item",
+        "Built to the forecast's tiers, so you practise the heaviest, most likely Issues first",
+        "The full answer-key standard: full answer, breakdown table, technique and mistake notes",
+      ],
+      whoFor:
+        "Students who know the content but leak marks on structure, provenance and judgement.",
+      crossSell:
+        "Miss a question? Every Vault question is tagged to its Issue — the Forecast's deep dive on that Issue is the fix.",
+    },
+    rehearsal: {
+      blurb:
+        "A complete original mock in the exact 2026 format: a 35-mark Source-Based Case Study, then two compulsory Section B questions on a different Issue. Sold as one set of two PDFs, with a download for each.",
+      bullets: [
+        "Sits and marks exactly like the real paper, with original invented sources clearly framed as practice material",
+        "Includes a cartoon and a data source in Section A, matching the decade's pattern",
+        "Mark Scheme — point-marked answers with breakdown tables, the Q5 evaluation shape, and grade-band guidance",
+      ],
+      whoFor:
+        "Every candidate, ideally twice — once as a diagnostic, once under full timing in the final weeks.",
+      crossSell:
+        "Score it, then route weak Issues back to the Forecast deep dives and the Vault drills.",
+    },
+  },
+};
+
+const POA_7087: SubjectCopy = {
+  syllabusCode: "7087",
+  examName: "O-Level Principles of Accounts 7087",
+  syllabusChecker:
+    "This pack covers O-Level Principles of Accounts 7087 — the current syllabus, examined as Paper 1 (40 marks) and Paper 2 (60 marks).",
+  heroHook:
+    "Ratios have carried 17–21 marks a year, across both papers, for five straight years.",
+  headlineCalls: [
+    {
+      title: "The 20-mark statement build opens Paper 2.",
+      body: "The statement-of-financial-performance and statement-of-financial-position build is the strongest single call on the paper, and the entity is forecast to swing back to a limited company this year.",
+    },
+    {
+      title: "Ratios are the spine of the exam.",
+      body: "A calculate-then-comment block appears in both papers, worth 17–21 marks a year for five straight years. If you master one skill, make it this one — and learn the sentence that scores the comment mark.",
+    },
+    {
+      title: "Adjustments are woven through everything.",
+      body: "Depreciation, accruals and prepayments, disposal and impairment allowance thread the big statement and are worth 8–14 marks in Paper 2.",
+    },
+    {
+      title: "The Paper 2 closer is a recommend-and-justify decision.",
+      body: "A 7–11 mark decision on business form or a business choice, weighing accounting and non-accounting information.",
+    },
+    {
+      title: "Bank reconciliation, control accounts and incomplete records are overdue.",
+      body: "Near-silent since 2021. A full question on one of them is the highest-value niche bet — and the line no generic guidebook offers.",
+    },
+    {
+      title: "The own-figure rule pays throughout.",
+      body: "A correct method on a wrong earlier figure still scores. Showing your workings line by line is worth real marks in every statement and ratio question.",
+    },
+  ],
+  completePack:
+    "The data tells you what to revise; the Playbook shows you how to present it; the Vault drills it; the Rehearsal times it. One pack, the whole preparation path from forecast to final paper — every claim traced to the same question-level study, weighted to the current 7087 era.",
+  products: {
+    forecast: {
+      blurb:
+        "The full data picture: every 7087 topic ranked by a decade of papers, weighted to the current era, with tier calls, per-year mark trends and the niche watchlist. Start here — it tells you what to revise first, and why.",
+      bullets: [
+        "Every topic ranked with confidence tiers and the evidence behind each call",
+        "Per-year mark trends and the overdue index, including the near-silent niches",
+        "A revision plan and printable checklist — analysis you can actually act on",
+      ],
+      whoFor: "Every 2026 candidate — this is the map the other products navigate by.",
+      crossSell:
+        "Pairs with the Sure Questions Vault: every VERY HIGH call in here has original practice questions in there.",
+    },
+    companion: {
+      blurb:
+        "Every statement, ledger and reconciliation the paper can ask for — ruled, totalled and worked with one consistent set of original figures. Copy the layout under pressure and bank the presentation marks before you compute a single figure.",
+      bullets: [
+        "The ruled skeleton for each statement, so the format marks are yours first",
+        "Every ledger and reconciliation worked with one consistent set of original figures",
+        "The own-figure rule, workings discipline, and the presentation habits that stop marks leaking",
+      ],
+      whoFor:
+        "Any candidate who can do the accounting but loses marks on layout, sub-totals and workings.",
+      crossSell:
+        "Built on the same dataset as the Exam Forecast, so you drill the formats the forecast says are likeliest.",
+    },
+    vault: {
+      blurb:
+        "Forty-five-plus original questions built on the highest-probability topics, each with a full point-by-point answer, a mark-scheme breakdown and the common mistake that loses marks. Practise on the ground the data says matters most.",
+      bullets: [
+        "Every question is original and written in the 7087 style — never a real past-paper item",
+        "Built to the forecast's tiers, so you practise the heaviest, most likely topics first",
+        "The full answer-key standard: full answer, breakdown table, technique and mistake notes",
+      ],
+      whoFor:
+        "Students who know the accounting but leak marks on adjustments, ratios and comment sentences.",
+      crossSell:
+        "Miss a question? Every Vault question is tagged to its topic — the Forecast's deep dive on that topic is the fix.",
+    },
+    rehearsal: {
+      blurb:
+        "A complete original mock in the current 7087 style, matched to the forecast so your last rehearsal targets the likeliest ground. Sold as one set of three PDFs, with a download for each.",
+      bullets: [
+        "Paper 1 — 40 marks in one hour: theory plus short workings, exam-timed",
+        "Paper 2 — 60 marks in two hours, with the Insert and the 20-mark statement question",
+        "Mark Scheme — every mark located, own-figure follow-through shown, and the technique note that turns a near-miss into a full mark",
+      ],
+      whoFor:
+        "Every candidate, ideally twice — once as a diagnostic, once under full timing in the final weeks.",
+      crossSell:
+        "Score it, then route weak topics back to the Forecast deep dives and the Playbook's formats.",
+    },
+  },
+};
+
+const E_MATH_4052: SubjectCopy = {
+  syllabusCode: "4052",
+  examName: "O-Level Elementary Mathematics 4052",
+  syllabusChecker:
+    "Not sure which syllabus your child takes? Elementary Mathematics is 4052 (this pack); Additional Mathematics is 4049, a separate exam with its own pack.",
+  heroHook:
+    "Number & Algebra is forecast to carry about 97 of the 180 marks — 54% of the whole subject.",
+  headlineCalls: [
+    {
+      title: "Number & Algebra is the backbone — about half of all 180 marks.",
+      body: "Roughly 97 of the 180 marks. Expect an algebraic-fraction simplification and a factorise/expand item, plus a quadratic-equation solve and a simultaneous-equations item, as the heaviest bankers (tier VERY HIGH).",
+    },
+    {
+      title: "A full statistics question is forecast, worth around 16 marks.",
+      body: "A cumulative-frequency curve (median, quartiles, IQR) or two box-and-whisker plots compared, plus a mean-and-standard-deviation calculation from a frequency table using the printed formula — across both papers.",
+    },
+    {
+      title: "Paper 2 ends with an extended real-world application.",
+      body: "Anchored in rate/speed or finance, integrating statistics, percentage and ratio — budget 9–13 marks, with an open 'justify with calculations' part (2023 solar, 2024 candles, 2025 electric car).",
+    },
+    {
+      title: "Trigonometry & bearings is forecast for about 16 marks.",
+      body: "A bearings problem solved with the sine/cosine rule, area = ½ab sin C, and Pythagoras. Watch the obtuse-angle sine-rule case and three-figure bearings.",
+    },
+    {
+      title: "Vectors and coordinate geometry are due for fuller treatment.",
+      body: "Vectors carry a +4.1 overdue index after light current-era showings. Rehearse expressing AB in terms of a and b, magnitude, and the equation of a line from two points.",
+    },
+    {
+      title: "Reverse percentage, map area scale and volume ratio are the trap items.",
+      body: "Map area scale (n²) and volume ratio of similar solids (k³) are the recurring traps. Drill the square-or-cube-the-scale-factor reflex.",
+    },
+    {
+      title: "Format discipline is worth several marks a paper.",
+      body: "Omitting essential working loses method marks; non-exact answers must be 3 s.f. (1 d.p. for angles); bearings must be three figures.",
+    },
+  ],
+  completePack:
+    "One model, four products, one revision order — the Exam Forecast, the Formula & Method Playbook, the Sure Questions Vault and both Final Rehearsal papers with their Mark Scheme. Elementary Mathematics is examined as two 90-mark papers, and the rehearsal mirrors both.",
+  products: {
+    forecast: {
+      blurb:
+        "The complete topic-by-topic forecast for the 2026 Elementary Mathematics papers, built from a question-level study of ten years of Paper 1 and Paper 2 (2016–2025) against the full 4052 syllabus.",
+      bullets: [
+        "Ranked topics with confidence tiers and the ten-year evidence behind each call",
+        "The exact 2026 format, the AO weightings and a niche watchlist of under-rehearsed angles",
+        "A revision plan and printable checklist — analysis you can actually act on",
+      ],
+      whoFor: "Every 2026 candidate — this is the map the other products navigate by.",
+      crossSell:
+        "Pairs with the Sure Questions Vault: every VERY HIGH call in here has original practice questions in there.",
+    },
+    companion: {
+      blurb:
+        "The formulae-and-method companion: what the 4052 formulae page gives you versus what you must memorise, then the standard-method recipe for the ten question families that decide the paper.",
+      bullets: [
+        "Two clear lists, so no revision minute is wasted on formulae that are already printed",
+        "A numbered method plus a worked example for algebraic fractions, quadratics, bearings, circles, mensuration and more",
+        "The M/A/B marking conventions, calculator discipline and the error taxonomy that stops marks leaking",
+      ],
+      whoFor:
+        "Any candidate who knows the maths but loses method marks on presentation and accuracy.",
+      crossSell:
+        "Every worked example is recomputed by a symbolic-algebra script before print — and mapped to the Forecast's tiers.",
+    },
+    vault: {
+      blurb:
+        "Forty-five-plus original questions across all the top topics, each with a full worked answer, a mark-scheme-style breakdown and a common-mistake note — weighted to the Forecast's tiers so practice lands on the heaviest ground first.",
+      bullets: [
+        "Every question is original and written in the 4052 style — never a real past-paper item",
+        "Built to the forecast's tiers, so you practise the heaviest, most likely topics first",
+        "Every number is machine-verified, so the answer key is one you can trust",
+      ],
+      whoFor: "Students who can do the maths but leak marks on working and accuracy.",
+      crossSell:
+        "Miss a question? Every Vault question is tagged to its topic — the Forecast's deep dive on that topic is the fix.",
+    },
+    rehearsal: {
+      blurb:
+        "Two complete original 4052 mocks in the exact 2026 format — Paper 1 and Paper 2, each 2 h 15 min and 90 marks, with a printed formulae page. Sold as one set of three PDFs, with a download for each.",
+      bullets: [
+        "Paper 1 — about 26 short-answer questions, sat and marked exactly like the real paper",
+        "Paper 2 — the extended real-world application closer, matched to the forecast",
+        "Mark Scheme — every mark located, method-mark conventions shown, and grade-band guidance",
+      ],
+      whoFor:
+        "Every candidate, ideally twice — once as a diagnostic, once under full timing in the final weeks.",
+      crossSell:
+        "Score it, then route weak topics back to the Forecast deep dives and the Playbook's methods.",
+    },
+  },
+};
+
+const A_MATH_4049: SubjectCopy = {
+  syllabusCode: "4049",
+  examName: "O-Level Additional Mathematics 4049",
+  syllabusChecker:
+    "Not sure which syllabus your child takes? Additional Mathematics is 4049 (this pack); Elementary Mathematics is 4052, a separate exam with its own pack.",
+  heroHook:
+    "Calculus is forecast to carry 55–65 marks across the two papers — about a third of every mark.",
+  headlineCalls: [
+    {
+      title: "Calculus is the spine of both papers.",
+      body: "Roughly 55–65 marks across the two papers. A stationary-points / second-derivative question and an area-under-a-curve integration question on each paper are the heaviest calls (tier VERY HIGH).",
+    },
+    {
+      title: "A kinematics question is forecast to land in Paper 2.",
+      body: "Displacement, velocity and acceleration of a particle in a straight line — worth around 6–9 marks.",
+    },
+    {
+      title: "Prove-an-identity then solve-in-interval is a near-annual fixture.",
+      body: "Prove a trig identity, then solve in a given interval. Rehearse it for both papers.",
+    },
+    {
+      title: "The R-formula is the Paper 2 trigonometry workhorse.",
+      body: "a cos θ + b sin θ = R cos(θ ± α), predicted for a maximum/minimum and an equation.",
+    },
+    {
+      title: "An exponential or logarithmic growth-decay model is forecast.",
+      body: "Solved with natural logs, most likely in Paper 2.",
+    },
+    {
+      title: "A full circle question is the most reliable Paper 2 geometry item.",
+      body: "Find the equation; tangent or normal at a point. It is due to return in full.",
+    },
+    {
+      title: "The discriminant / 'set of values of k' question is overdue.",
+      body: "Light in 2024–2025, and forecast to reappear.",
+    },
+    {
+      title: "The term independent of x is a compact Paper 1 banker.",
+      body: "Binomial expansion — a specific term, the term independent of x, or a coefficient — is a high-probability, compact item.",
+    },
+  ],
+  completePack:
+    "One model, four products, one revision order — the Exam Forecast, the Formula & Method Playbook, the Sure Questions Vault and both Final Rehearsal papers with their Mark Scheme. Every claim traces to the same classified-question dataset, and every practice question is original.",
+  products: {
+    forecast: {
+      blurb:
+        "The complete topic-by-topic forecast for the 2026 Additional Mathematics papers, built from a question-level study of ten years of Paper 1 and Paper 2 against the full 4049 syllabus.",
+      bullets: [
+        "Ranked topics with confidence tiers and the ten-year evidence behind each call",
+        "The exact 2026 format, the AO weightings and a niche watchlist of under-rehearsed angles",
+        "A revision plan and printable checklist — analysis you can actually act on",
+      ],
+      whoFor: "Every 2026 candidate — this is the map the other products navigate by.",
+      crossSell:
+        "Pairs with the Sure Questions Vault: every VERY HIGH call in here has original practice questions in there.",
+    },
+    companion: {
+      blurb:
+        "The formulae-and-method companion: what the 4049 formulae page gives you versus what you must memorise, then the standard-method recipe for the ten question families that decide the paper.",
+      bullets: [
+        "Two clear lists, so no revision minute is wasted on formulae that are already printed",
+        "A numbered method plus a worked example for the R-formula, stationary points, area, binomial, circles and more",
+        "The M1/A1 marking conventions, calculator discipline and the error taxonomy that stops marks leaking",
+      ],
+      whoFor:
+        "Any candidate who knows the maths but loses method marks on presentation and accuracy.",
+      crossSell:
+        "Every worked example is recomputed by a symbolic-algebra script before print — and mapped to the Forecast's tiers.",
+    },
+    vault: {
+      blurb:
+        "Forty-five-plus original questions across all ten topics, each with a full worked answer, a mark-scheme-style breakdown and a common-mistake note — weighted to the Forecast's tiers so practice lands on the heaviest ground first.",
+      bullets: [
+        "Every question is original and written in the 4049 style — never a real past-paper item",
+        "Built to the forecast's tiers, so you practise the heaviest, most likely topics first",
+        "Every number is machine-verified, so the answer key is one you can trust",
+      ],
+      whoFor: "Students who can do the maths but leak marks on working and accuracy.",
+      crossSell:
+        "Miss a question? Every Vault question is tagged to its topic — the Forecast's deep dive on that topic is the fix.",
+    },
+    rehearsal: {
+      blurb:
+        "Two complete original 4049 mocks in the exact 2026 format — Paper 1 and Paper 2, each 2 h 15 min and 90 marks, with a printed formulae page. Sold as one set of three PDFs, with a download for each.",
+      bullets: [
+        "Paper 1 — 12–14 answer-all questions, sat and marked exactly like the real paper",
+        "Paper 2 — the full syllabus range, matched to the forecast",
+        "Mark Scheme — every mark located, M1/A1 conventions shown, and grade-band guidance",
+      ],
+      whoFor:
+        "Every candidate, ideally twice — once as a diagnostic, once under full timing in the final weeks.",
+      crossSell:
+        "Score it, then route weak topics back to the Forecast deep dives and the Playbook's methods.",
+    },
+  },
+};
+
 const SUBJECT_COPY: Record<string, SubjectCopy> = {
   "o-level::physics-pure": PHYSICS_PURE_6091,
+  "o-level::physics-science": PHYSICS_SCIENCE_5086,
   "o-level::chemistry-pure": CHEMISTRY_PURE_6092,
   "o-level::chemistry-science": CHEMISTRY_SCIENCE_5086,
   "o-level::biology-pure": BIOLOGY_PURE_6093,
@@ -898,6 +1360,10 @@ const SUBJECT_COPY: Record<string, SubjectCopy> = {
   "o-level::geography-elective": GEOGRAPHY_ELECTIVE_2260,
   "o-level::history-pure": HISTORY_PURE_2174,
   "o-level::history-elective": HISTORY_ELECTIVE_2261,
+  "o-level::social-studies": SOCIAL_STUDIES_2260,
+  "o-level::principles-of-accounts": POA_7087,
+  "o-level::e-math": E_MATH_4052,
+  "o-level::a-math": A_MATH_4049,
 };
 
 export function subjectCopy(level: Level, slug: string): SubjectCopy | null {
