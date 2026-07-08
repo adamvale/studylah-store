@@ -39,7 +39,7 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
     a: "No. Every PDF is watermarked with the buyer's email and order ID on every page. Sharing breaks the terms of use — and honestly, the forecast is cheap enough that your friends can judge us on the free heatmap.",
   },
   {
-    q: "I take both O-Level and N(A)-Level subjects. Do bundles still work?",
+    q: "I take multiple subjects. Do bundles still work?",
     a: "Yes. Bundle pricing applies per subject at that subject's level pricing, and the cart always charges you the cheapest valid combination — you never need to work it out yourself.",
   },
   {
