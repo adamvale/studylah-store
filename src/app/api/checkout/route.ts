@@ -65,33 +65,49 @@ export async function POST(request: Request) {
     },
   };
 
-  try {
-    // PayNow requires activation on the Stripe account; fall back to cards
-    // only if the account rejects it.
-    let session: Stripe.Checkout.Session;
+  // Preferred payment methods, most-inclusive first. Enable whichever of
+  // these you want in the Stripe Dashboard (Settings -> Payment methods);
+  // Stripe only presents the ones eligible for SGD and the customer. If the
+  // account hasn't activated some (e.g. Alipay/WeChat Pay), session creation
+  // for that set errors and we fall back to the next set — so checkout always
+  // works with at least cards.
+  const methodSets: Stripe.Checkout.SessionCreateParams.PaymentMethodType[][] = [
+    ["paynow", "card", "alipay", "wechat_pay"],
+    ["paynow", "card"],
+    ["card"],
+  ];
+
+  let session: Stripe.Checkout.Session | null = null;
+  let lastError: unknown = null;
+  for (const methods of methodSets) {
     try {
       session = await stripe.checkout.sessions.create({
         ...params,
-        payment_method_types: ["paynow", "card"],
+        payment_method_types: methods,
+        // WeChat Pay requires the client to be declared; only send it when
+        // WeChat Pay is in this set.
+        ...(methods.includes("wechat_pay")
+          ? { payment_method_options: { wechat_pay: { client: "web" as const } } }
+          : {}),
       });
-    } catch {
-      session = await stripe.checkout.sessions.create({
-        ...params,
-        payment_method_types: ["card"],
-      });
+      break;
+    } catch (e) {
+      lastError = e;
     }
-    if (!session.url) {
-      return NextResponse.json(
-        { error: "Stripe didn't return a checkout link. Try again." },
-        { status: 502 }
-      );
-    }
-    return NextResponse.json({ url: session.url, mock: false });
-  } catch (e) {
-    console.error("Stripe session creation failed", e);
+  }
+
+  if (!session) {
+    console.error("Stripe session creation failed", lastError);
     return NextResponse.json(
       { error: "Payment couldn't be started. Try again in a moment." },
       { status: 502 }
     );
   }
+  if (!session.url) {
+    return NextResponse.json(
+      { error: "Stripe didn't return a checkout link. Try again." },
+      { status: 502 }
+    );
+  }
+  return NextResponse.json({ url: session.url, mock: false });
 }
