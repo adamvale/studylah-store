@@ -20,16 +20,33 @@ model Subject {
 }
 
 model Product {
-  id         String      @id @default(cuid())
-  subject    Subject     @relation(fields: [subjectId], references: [id])
+  id         String        @id @default(cuid())
+  subject    Subject       @relation(fields: [subjectId], references: [id])
   subjectId  String
-  key        String // forecast | vault | rehearsal
-  // Path relative to PDF_STORAGE_DIR; never publicly routable.
-  filePath   String
-  active     Boolean     @default(true)
+  key        String // forecast | paper3 | vault | rehearsal
+  active     Boolean       @default(true)
+  files      ProductFile[]
   orderItems OrderItem[]
 
   @@unique([subjectId, key])
+}
+
+// A product can ship more than one PDF — the Final Rehearsal is sold as a set
+// of three (Paper 1, Paper 2, Mark Scheme) on a single product page. Each file
+// gets its own download card, token, and per-download watermark.
+model ProductFile {
+  id         String      @id @default(cuid())
+  product    Product     @relation(fields: [productId], references: [id])
+  productId  String
+  // Stable identifier within the product, e.g. "main", "paper1", "markscheme".
+  key        String
+  label      String
+  // Path relative to PDF_STORAGE_DIR; never publicly routable.
+  filePath   String
+  sortOrder  Int         @default(0)
+  orderItems OrderItem[]
+
+  @@unique([productId, key])
 }
 
 // Commerce ---------------------------------------------------------------
@@ -64,16 +81,21 @@ model Order {
   items           OrderItem[]
 }
 
+// One line per delivered FILE. A Master-tier subject with a three-part Final
+// Rehearsal therefore has several order items sharing the same product.
 model OrderItem {
   id            String         @id @default(cuid())
   order         Order          @relation(fields: [orderId], references: [id])
   orderId       Int
   product       Product        @relation(fields: [productId], references: [id])
   productId     String
-  // Denormalised for receipts even if catalogue changes later.
+  productFile   ProductFile    @relation(fields: [productFileId], references: [id])
+  productFileId String
+  // Denormalised for receipts even if the catalogue changes later.
   subjectName   String
   levelName     String
   productName   String
+  fileLabel     String
   tier          String
   downloadToken DownloadToken?
 }

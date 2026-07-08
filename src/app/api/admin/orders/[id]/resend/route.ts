@@ -18,7 +18,9 @@ export async function POST(
 
   const order = await prisma.order.findUnique({
     where: { id: orderId },
-    include: { items: { include: { downloadToken: true, product: true } } },
+    include: {
+      items: { include: { downloadToken: true, product: true, productFile: true } },
+    },
   });
   if (!order) {
     return NextResponse.json({ error: "Order not found." }, { status: 404 });

@@ -16,9 +16,9 @@ export async function POST(
   }
   const { id } = await params;
 
-  const product = await prisma.product.findUnique({ where: { id } });
-  if (!product) {
-    return NextResponse.json({ error: "Product not found." }, { status: 404 });
+  const productFile = await prisma.productFile.findUnique({ where: { id } });
+  if (!productFile) {
+    return NextResponse.json({ error: "File not found." }, { status: 404 });
   }
 
   const form = await request.formData();
@@ -44,7 +44,7 @@ export async function POST(
 
   // Overwrite the existing private file in place; filePath stays the same, so
   // outstanding download tokens keep resolving to the new content.
-  const target = path.join(serverConfig.pdfStorageDir, product.filePath);
+  const target = path.join(serverConfig.pdfStorageDir, productFile.filePath);
   await fs.mkdir(path.dirname(target), { recursive: true });
   await fs.writeFile(target, bytes);
 

@@ -2,8 +2,10 @@ import {
   LEVELS,
   PRODUCTS,
   PRODUCT_ORDER,
+  PRODUCT_FILES,
   TIER_NAMES,
   TIER_ORDER,
+  productsForSubject,
   subjectsForLevel,
   type Level,
 } from "@/lib/catalogue";
@@ -55,7 +57,7 @@ export default async function AdminProductsPage({
   const [table, earlyBird] = await Promise.all([getPricingTable(), getEarlyBird()]);
 
   const productRows = await prisma.product.findMany({
-    include: { subject: true },
+    include: { subject: true, files: true },
   });
   const productByKey = new Map(
     productRows.map((p) => [`${p.subject.level}::${p.subject.slug}::${p.key}`, p])
@@ -198,18 +200,37 @@ export default async function AdminProductsPage({
                     <summary className="cursor-pointer px-4 py-3 font-display text-sm font-bold text-ink">
                       {subject.name}
                     </summary>
-                    <div className="space-y-2 border-t border-trust/10 px-4 py-3">
-                      {PRODUCT_ORDER.map((key) => {
+                    <div className="space-y-4 border-t border-trust/10 px-4 py-3">
+                      {productsForSubject(subject).map((key) => {
                         const product = productByKey.get(
                           `${level}::${subject.slug}::${key}`
                         );
                         if (!product) return null;
+                        // Spec-driven, so a legacy file kept alive by an old
+                        // order never shows up as an upload slot.
+                        const specs = PRODUCT_FILES[key];
                         return (
-                          <PdfUpload
-                            key={key}
-                            productId={product.id}
-                            label={PRODUCTS[key].name}
-                          />
+                          <div key={key}>
+                            <p className="mb-1 text-xs font-medium text-ink">
+                              {PRODUCTS[key].name}
+                              {specs.length > 1 && ` · ${specs.length} PDFs`}
+                            </p>
+                            <div className="space-y-1.5">
+                              {specs.map((spec) => {
+                                const file = product.files.find(
+                                  (f) => f.key === spec.key
+                                );
+                                if (!file) return null;
+                                return (
+                                  <PdfUpload
+                                    key={file.id}
+                                    fileId={file.id}
+                                    label={spec.label}
+                                  />
+                                );
+                              })}
+                            </div>
+                          </div>
                         );
                       })}
                     </div>

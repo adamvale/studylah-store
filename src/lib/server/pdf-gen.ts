@@ -49,6 +49,11 @@ const PRODUCT_BODY: Record<ProductKey, string[]> = {
     "probability analysis of your upcoming paper, with revision priorities",
     "for your final 14 days.",
   ],
+  paper3: [
+    "This placeholder stands in for the Paper 3 Practical Prediction: the",
+    "ten-year experiment rotation, the ranked 2026 slots, and original",
+    "experiment briefs with full-credit graph exhibits.",
+  ],
   vault: [
     "This placeholder stands in for the Sure Questions Vault: original",
     "exam-style questions with full worked answers, weighted toward the",
@@ -65,8 +70,10 @@ export async function generateProductPdf(options: {
   subjectName: string;
   productKey: ProductKey;
   topics: TopicForecast[];
+  /** Distinguishes the parts of a multi-file product (e.g. "Paper 2"). */
+  fileLabel?: string;
 }): Promise<Uint8Array> {
-  const { levelName, subjectName, productKey, topics } = options;
+  const { levelName, subjectName, productKey, topics, fileLabel } = options;
   const product = PRODUCTS[productKey];
   const doc = await PDFDocument.create();
   const bold = await doc.embedFont(StandardFonts.HelveticaBold);
@@ -77,8 +84,11 @@ export async function generateProductPdf(options: {
   brandHeader(cover, bold, regular);
   cover.drawText(product.name, { x: 48, y: height - 180, size: 32, font: bold, color: INK });
   cover.drawText(product.tagline, { x: 48, y: height - 208, size: 13, font: regular, color: SIGNAL });
-  cover.drawText(`${subjectName} - ${levelName}`, { x: 48, y: height - 240, size: 14, font: bold, color: TRUST });
-  cover.drawText("2026 sitting", { x: 48, y: height - 258, size: 10, font: regular, color: BODY });
+  if (fileLabel && fileLabel !== product.name) {
+    cover.drawText(fileLabel, { x: 48, y: height - 226, size: 12, font: bold, color: BODY });
+  }
+  cover.drawText(`${subjectName} - ${levelName}`, { x: 48, y: height - 248, size: 14, font: bold, color: TRUST });
+  cover.drawText("2026 sitting", { x: 48, y: height - 266, size: 10, font: regular, color: BODY });
   cover.drawRectangle({
     x: 48,
     y: height - 340,

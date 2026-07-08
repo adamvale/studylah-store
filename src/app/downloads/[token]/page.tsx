@@ -5,6 +5,46 @@ import { serverConfig } from "@/lib/server/config";
 
 export const metadata: Metadata = { title: "Your downloads" };
 
+// A product can ship several PDFs (the Final Rehearsal ships three), so the
+// per-file order items are grouped back under their product for display.
+function groupByProduct<
+  T extends {
+    productId: string;
+    subjectName: string;
+    productName: string;
+    levelName: string;
+    tier: string;
+  },
+>(items: T[]) {
+  const groups = new Map<
+    string,
+    {
+      key: string;
+      subjectName: string;
+      productName: string;
+      levelName: string;
+      tier: string;
+      items: T[];
+    }
+  >();
+  for (const item of items) {
+    const existing = groups.get(item.productId);
+    if (existing) {
+      existing.items.push(item);
+    } else {
+      groups.set(item.productId, {
+        key: item.productId,
+        subjectName: item.subjectName,
+        productName: item.productName,
+        levelName: item.levelName,
+        tier: item.tier,
+        items: [item],
+      });
+    }
+  }
+  return [...groups.values()];
+}
+
 function maskEmail(email: string): string {
   const [user, domain] = email.split("@");
   if (!domain) return email;
@@ -77,8 +117,18 @@ export default async function DownloadsPage({
         safe.
       </p>
 
-      <div className="mt-8 space-y-3">
-        {order.items.map((item) => {
+      <div className="mt-8 space-y-6">
+        {groupByProduct(order.items).map((group) => (
+          <section key={group.key}>
+            <h2 className="font-display text-lg font-bold text-ink">
+              {group.subjectName} — {group.productName}
+            </h2>
+            <p className="text-xs text-body">
+              {group.levelName} · {group.tier} tier
+              {group.items.length > 1 && ` · ${group.items.length} PDFs`}
+            </p>
+            <div className="mt-2 space-y-2">
+        {group.items.map((item) => {
           const dt = item.downloadToken;
           const expired = !dt || dt.expiresAt < now;
           const usedUp = dt != null && dt.uses >= dt.maxUses;
@@ -90,14 +140,12 @@ export default async function DownloadsPage({
             >
               <div>
                 <p className="font-display font-bold text-ink">
-                  {item.subjectName} — {item.productName}
+                  {item.fileLabel}
                 </p>
                 <p className="mt-0.5 text-xs text-body">
-                  {item.levelName} · {item.tier} tier
                   {dt && usable && (
                     <>
-                      {" "}
-                      · {dt.maxUses - dt.uses} of {dt.maxUses} downloads left ·
+                      {dt.maxUses - dt.uses} of {dt.maxUses} downloads left ·
                       expires {dt.expiresAt.toLocaleDateString("en-SG")}
                     </>
                   )}
@@ -124,6 +172,9 @@ export default async function DownloadsPage({
             </div>
           );
         })}
+            </div>
+          </section>
+        ))}
       </div>
 
       <p className="mt-8 text-xs text-body">

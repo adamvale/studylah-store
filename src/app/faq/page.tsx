@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const FAQS: { q: string; a: React.ReactNode }[] = [
   {
     q: "Are these the actual exam questions?",
-    a: "No — and anyone who tells you otherwise is selling something illegal. StudyLah forecasts which topics are likely, using 10 years of past papers, syllabus weightings, and setter patterns. Every practice question is written by us, in exam style. Nothing is leaked, and past papers are never recycled.",
+    a: "No. StudyLah forecasts which topics are likely, using ten years of past papers, syllabus weightings and setter patterns. Every practice question is written by us in exam style — zero recycled past-paper content. Real examination papers are the copyright of UCLES and MOE / SEAB, and we neither reproduce nor have access to them.",
   },
   {
     q: "How accurate are the forecasts?",

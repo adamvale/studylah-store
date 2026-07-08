@@ -6,7 +6,8 @@ import {
   PRODUCTS,
   TIER_NAMES,
   TIER_ORDER,
-  TIER_PRODUCTS,
+  getSubject,
+  tierProducts,
   sgd,
   type Level,
   type Tier,
@@ -28,6 +29,11 @@ export function TierSelector({
   const { addItem } = useCart();
   const { earlyBird, tierPrice, regularTierPrice, tierValue, tierSavings } = usePricing();
 
+  // Master's contents vary by subject — only the sciences include Paper 3.
+  const subject = getSubject(level, subjectSlug);
+  const productsFor = (t: Tier) => (subject ? tierProducts(t, subject) : []);
+  const masterValue = tierValue(level, "master", productsFor("master"));
+
   function add() {
     addItem({ level, subjectSlug, tier });
     setAdded(true);
@@ -42,10 +48,11 @@ export function TierSelector({
         <legend className="sr-only">Tier for {subjectName}</legend>
         <div className="grid gap-4 md:grid-cols-3">
           {TIER_ORDER.map((t) => {
+            const included = productsFor(t);
             const price = tierPrice(level, t);
             const regular = regularTierPrice(level, t);
-            const value = tierValue(level, t);
-            const savings = tierSavings(level, t);
+            const value = tierValue(level, t, included);
+            const savings = tierSavings(level, t, included);
             const isMaster = t === "master";
             return (
               <label key={t} className="relative cursor-pointer">
@@ -91,7 +98,7 @@ export function TierSelector({
                     </span>
                   )}
                   <span className="mt-4 space-y-1.5 text-sm text-body">
-                    {TIER_PRODUCTS[t].map((p) => (
+                    {included.map((p) => (
                       <span key={p} className="flex items-center gap-2">
                         <span
                           className="h-1.5 w-1.5 rounded-full bg-guarantee"
@@ -134,7 +141,7 @@ export function TierSelector({
       <p className="mt-4 text-xs text-body">
         Prefer a single PDF? The Essential tier is the Forecast alone. The
         Vault and Rehearsal are sold within tiers, where they cost less than
-        their {sgd(tierValue(level, "master"))} combined value.
+        their {sgd(masterValue)} combined value.
       </p>
     </section>
   );

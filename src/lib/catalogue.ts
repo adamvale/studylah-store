@@ -1,5 +1,5 @@
 export type Level = "o-level" | "na-level";
-export type ProductKey = "forecast" | "vault" | "rehearsal";
+export type ProductKey = "forecast" | "paper3" | "vault" | "rehearsal";
 export type Tier = "essential" | "strategic" | "master";
 export type TopicFamily =
   | "chemistry"
@@ -84,29 +84,79 @@ export const PRODUCTS: Record<
     blurb:
       "Topic-by-topic probability analysis for your upcoming paper, so your last two weeks go where the marks are most likely to be.",
   },
+  paper3: {
+    name: "Paper 3 Practical Prediction",
+    tagline: "Forty marks. Three questions. Know the rotation.",
+    day: "Companion",
+    blurb:
+      "Paper 3 is 20% of the grade, sat first, and the most predictable paper on the timetable. Ten years of experiment rotation mapped, the 2026 slots ranked, and the marking grammar drilled through original briefs.",
+  },
   vault: {
     name: "Sure Questions Vault",
     tagline: "Practise where the marks are.",
     day: "Day 7",
     blurb:
-      "Original exam-style questions with full worked answers, weighted toward the forecast's hottest topics.",
+      "Original exam-style questions weighted to the forecast's tiers, each with a full answer key: worked answer, mark-scheme breakdown, technique, and the common mistake that loses the marks.",
   },
   rehearsal: {
     name: "Final Rehearsal",
     tagline: "Sit the exam before the exam.",
     day: "Exam day",
     blurb:
-      "A full-length, timed Paper 1 and Paper 2 with mark scheme — walk in having already done it once.",
+      "A complete original mock in the exact 2026 format — Paper 1, Paper 2, and the full mark scheme — so you walk in having already sat it once.",
   },
 };
 
-export const PRODUCT_ORDER: ProductKey[] = ["forecast", "vault", "rehearsal"];
+// Sales order across the whole family.
+export const PRODUCT_ORDER: ProductKey[] = ["forecast", "paper3", "vault", "rehearsal"];
 
-export const TIER_PRODUCTS: Record<Tier, ProductKey[]> = {
+// The Day 14 -> Day 7 -> Exam Day story. Paper 3 is a companion to the
+// Forecast, not a stage of the revision journey.
+export const JOURNEY_ORDER: ProductKey[] = ["forecast", "vault", "rehearsal"];
+
+// The Final Rehearsal ships as a three-part set on one product page; the rest
+// are single PDFs. Drives both seeding and per-file download delivery.
+export interface ProductFileSpec {
+  key: string;
+  label: string;
+}
+
+export const PRODUCT_FILES: Record<ProductKey, ProductFileSpec[]> = {
+  forecast: [{ key: "main", label: "Exam Forecast" }],
+  paper3: [{ key: "main", label: "Paper 3 Practical Prediction" }],
+  vault: [{ key: "main", label: "Sure Questions Vault" }],
+  rehearsal: [
+    { key: "paper1", label: "Final Rehearsal — Paper 1" },
+    { key: "paper2", label: "Final Rehearsal — Paper 2" },
+    { key: "markscheme", label: "Final Rehearsal — Mark Scheme" },
+  ],
+};
+
+// Paper 3 Practical Prediction only exists for subjects sat with a practical
+// paper (the sciences). Everything else sells the three-product family.
+const PRACTICAL_FAMILIES: TopicFamily[] = ["physics", "chemistry", "biology"];
+
+export function hasPaper3(subject: Subject): boolean {
+  return PRACTICAL_FAMILIES.includes(subject.family);
+}
+
+/** Every product this subject sells, in sales order. */
+export function productsForSubject(subject: Subject): ProductKey[] {
+  return PRODUCT_ORDER.filter((key) => key !== "paper3" || hasPaper3(subject));
+}
+
+/** Products a tier unlocks for a subject with no practical paper. */
+export const BASE_TIER_PRODUCTS: Record<Tier, ProductKey[]> = {
   essential: ["forecast"],
   strategic: ["forecast", "vault"],
   master: ["forecast", "vault", "rehearsal"],
 };
+
+/** What a tier unlocks. Master is the complete pack: everything the subject has. */
+export function tierProducts(tier: Tier, subject: Subject): ProductKey[] {
+  if (tier === "master") return productsForSubject(subject);
+  return BASE_TIER_PRODUCTS[tier];
+}
 
 export const TIER_NAMES: Record<Tier, string> = {
   essential: "Essential",
@@ -124,12 +174,12 @@ export interface LevelPricing {
 
 export const PRICING: Record<Level, LevelPricing> = {
   "o-level": {
-    alacarte: { forecast: 24, vault: 34, rehearsal: 34 },
+    alacarte: { forecast: 24, paper3: 24, vault: 34, rehearsal: 34 },
     tiers: { essential: 24, strategic: 48, master: 68 },
     earlyBird: { essential: 19, master: 58 },
   },
   "na-level": {
-    alacarte: { forecast: 19, vault: 27, rehearsal: 27 },
+    alacarte: { forecast: 19, paper3: 19, vault: 27, rehearsal: 27 },
     tiers: { essential: 19, strategic: 38, master: 54 },
     earlyBird: { essential: 15, master: 46 },
   },

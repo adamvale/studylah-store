@@ -1,9 +1,9 @@
 import {
   ALLIN_FLAT,
+  BASE_TIER_PRODUCTS,
   EARLY_BIRD_ACTIVE,
   MEGA_RATIO,
   PRICING,
-  TIER_PRODUCTS,
   type Level,
   type LevelPricing,
   type ProductKey,
@@ -60,8 +60,8 @@ export interface Pricing {
   tierPrice(level: Level, tier: Tier, earlyBird?: boolean): number;
   regularTierPrice(level: Level, tier: Tier): number;
   alacartePrice(level: Level, product: ProductKey): number;
-  tierValue(level: Level, tier: Tier): number;
-  tierSavings(level: Level, tier: Tier): number;
+  tierValue(level: Level, tier: Tier, products?: ProductKey[]): number;
+  tierSavings(level: Level, tier: Tier, products?: ProductKey[]): number;
   priceCart(items: CartItem[]): PricedCart;
   cartNudges(items: CartItem[]): Nudge[];
 }
@@ -105,16 +105,26 @@ export function createPricing(
     return table[level].alacarte[product];
   }
 
-  // Sum of the à-la-carte prices of everything a tier includes.
-  function tierValue(level: Level, tier: Tier): number {
-    return TIER_PRODUCTS[tier].reduce(
+  // Sum of the à-la-carte prices of everything a tier includes. Pass the
+  // subject's real product list (from `tierProducts`) when you have it —
+  // Master's contents vary by subject, since only the sciences include Paper 3.
+  function tierValue(
+    level: Level,
+    tier: Tier,
+    products: ProductKey[] = BASE_TIER_PRODUCTS[tier]
+  ): number {
+    return products.reduce(
       (sum, product) => sum + table[level].alacarte[product],
       0
     );
   }
 
-  function tierSavings(level: Level, tier: Tier): number {
-    return tierValue(level, tier) - tierPrice(level, tier);
+  function tierSavings(
+    level: Level,
+    tier: Tier,
+    products: ProductKey[] = BASE_TIER_PRODUCTS[tier]
+  ): number {
+    return tierValue(level, tier, products) - tierPrice(level, tier);
   }
 
   // Always charges the cheapest valid composition: bundles only ever group

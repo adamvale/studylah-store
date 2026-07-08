@@ -21,7 +21,11 @@ export async function GET(
     where: { token },
     include: {
       orderItem: {
-        include: { order: true, product: { include: { subject: true } } },
+        include: {
+          order: true,
+          productFile: true,
+          product: { include: { subject: true } },
+        },
       },
     },
   });
@@ -38,7 +42,7 @@ export async function GET(
   if (claimed.count === 0) return failureRedirect("used-up");
 
   const { orderItem } = downloadToken;
-  const filePath = path.join(serverConfig.pdfStorageDir, orderItem.product.filePath);
+  const filePath = path.join(serverConfig.pdfStorageDir, orderItem.productFile.filePath);
   let bytes: Uint8Array;
   try {
     bytes = await fs.readFile(filePath);
@@ -57,7 +61,10 @@ export async function GET(
     orderRef: `No. ${orderItem.orderId}`,
   });
 
-  const filename = `${orderItem.product.subject.slug}-${orderItem.product.key}-studylah.pdf`;
+  // e.g. physics-pure-rehearsal-paper2-studylah.pdf
+  const fileKey = orderItem.productFile.key;
+  const suffix = fileKey === "main" ? "" : `-${fileKey}`;
+  const filename = `${orderItem.product.subject.slug}-${orderItem.product.key}${suffix}-studylah.pdf`;
   return new NextResponse(Buffer.from(stamped), {
     headers: {
       "Content-Type": "application/pdf",

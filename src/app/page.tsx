@@ -2,9 +2,9 @@ import Link from "next/link";
 import { averageHitRate } from "@/lib/accuracy";
 import {
   COMING_SOON,
+  JOURNEY_ORDER,
   LEVELS,
   PRODUCTS,
-  PRODUCT_ORDER,
   sgd,
   subjectsForLevel,
 } from "@/lib/catalogue";
@@ -29,7 +29,8 @@ function Hero({ pricing }: { pricing: Pricing }) {
         <p className="mt-4 max-w-lg text-lg text-body">
           AI forecasts of your O-Level and N(A)-Level papers — which topics are
           likely, which questions to practise, and a full rehearsal before the
-          real thing. 100% original questions, never leaked papers.
+          real thing. Original questions, written for StudyLah — zero recycled
+          past-paper content.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Link
@@ -73,7 +74,7 @@ function Journey({ pricing }: { pricing: Pricing }) {
           countdown.
         </p>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {PRODUCT_ORDER.map((key, i) => {
+          {JOURNEY_ORDER.map((key, i) => {
             const product = PRODUCTS[key];
             const tier = prices[i];
             return (
@@ -178,9 +179,10 @@ function TrustStrip() {
             </Link>
           </div>
           <div>
-            <p className="font-display text-4xl font-extrabold text-accent">100%</p>
+            <p className="font-display text-4xl font-extrabold text-accent">Zero</p>
             <p className="mt-1 text-sm text-white/80">
-              original questions — never leaked, never recycled past papers
+              recycled past-paper content — every question is written for
+              StudyLah
             </p>
           </div>
           <div>

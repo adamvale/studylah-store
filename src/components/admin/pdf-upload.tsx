@@ -3,10 +3,10 @@
 import { useRef, useState, type FormEvent } from "react";
 
 export function PdfUpload({
-  productId,
+  fileId,
   label,
 }: {
-  productId: string;
+  fileId: string;
   label: string;
 }) {
   const [state, setState] = useState<"idle" | "uploading" | "done" | "error">("idle");
@@ -26,7 +26,7 @@ export function PdfUpload({
     try {
       const data = new FormData();
       data.set("file", file);
-      const res = await fetch(`/api/admin/products/${productId}/upload`, {
+      const res = await fetch(`/api/admin/files/${fileId}/upload`, {
         method: "POST",
         body: data,
       });
@@ -45,7 +45,7 @@ export function PdfUpload({
 
   return (
     <form onSubmit={onSubmit} className="flex flex-wrap items-center gap-2">
-      <span className="w-32 shrink-0 text-sm text-body">{label}</span>
+      <span className="w-56 shrink-0 text-sm text-body">{label}</span>
       <input
         ref={inputRef}
         type="file"

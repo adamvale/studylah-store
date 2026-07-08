@@ -1,10 +1,17 @@
-// Seeds the full 24-subject catalogue, generates one placeholder PDF per
-// product (72 files), and creates sample discount codes and settings.
-// Run: npm run db:seed  (idempotent — safe to re-run; keeps existing PDFs)
+// Seeds the full 24-subject catalogue and one placeholder PDF per product FILE
+// (the Final Rehearsal ships three; the sciences add a Paper 3 companion), plus
+// sample discount codes and settings.
+// Run: npm run db:seed  (idempotent — safe to re-run; never overwrites an
+// existing PDF, so real uploaded content survives.)
 import { promises as fs } from "fs";
 import path from "path";
 import { prisma } from "../src/lib/db";
-import { LEVELS, PRODUCT_ORDER, SUBJECTS } from "../src/lib/catalogue";
+import {
+  LEVELS,
+  PRODUCT_FILES,
+  SUBJECTS,
+  productsForSubject,
+} from "../src/lib/catalogue";
 import { topForecast } from "../src/lib/topics";
 import { generateProductPdf } from "../src/lib/server/pdf-gen";
 
@@ -27,33 +34,70 @@ async function seedCatalogue() {
       update: { name: subject.name, family: subject.family },
     });
 
-    for (const key of PRODUCT_ORDER) {
-      const filePath = path.join(subject.level, subject.slug, `${key}.pdf`);
-      const absolute = path.join(storageDir, filePath);
-
-      let exists = true;
-      try {
-        await fs.access(absolute);
-      } catch {
-        exists = false;
-      }
-      if (!exists) {
-        const bytes = await generateProductPdf({
-          levelName: LEVELS[subject.level].name,
-          subjectName: subject.name,
-          productKey: key,
-          topics: topForecast(subject.family, `${subject.level}/${subject.slug}`),
-        });
-        await fs.mkdir(path.dirname(absolute), { recursive: true });
-        await fs.writeFile(absolute, bytes);
-        pdfsGenerated++;
-      }
-
-      await prisma.product.upsert({
+    for (const key of productsForSubject(subject)) {
+      const productRow = await prisma.product.upsert({
         where: { subjectId_key: { subjectId: subjectRow.id, key } },
-        create: { subjectId: subjectRow.id, key, filePath },
-        update: { filePath },
+        create: { subjectId: subjectRow.id, key },
+        update: {},
       });
+
+      const specs = PRODUCT_FILES[key];
+      for (const [index, spec] of specs.entries()) {
+        // "main" keeps the historical bare filename so migrated download tokens
+        // keep resolving; multi-part products get a suffix.
+        const suffix = spec.key === "main" ? "" : `-${spec.key}`;
+        const filePath = path.join(
+          subject.level,
+          subject.slug,
+          `${key}${suffix}.pdf`
+        );
+        const absolute = path.join(storageDir, filePath);
+
+        let exists = true;
+        try {
+          await fs.access(absolute);
+        } catch {
+          exists = false;
+        }
+        if (!exists) {
+          const bytes = await generateProductPdf({
+            levelName: LEVELS[subject.level].name,
+            subjectName: subject.name,
+            productKey: key,
+            fileLabel: spec.label,
+            topics: topForecast(subject.family, `${subject.level}/${subject.slug}`),
+          });
+          await fs.mkdir(path.dirname(absolute), { recursive: true });
+          await fs.writeFile(absolute, bytes);
+          pdfsGenerated++;
+        }
+
+        await prisma.productFile.upsert({
+          where: { productId_key: { productId: productRow.id, key: spec.key } },
+          create: {
+            productId: productRow.id,
+            key: spec.key,
+            label: spec.label,
+            filePath,
+            sortOrder: index,
+          },
+          update: { label: spec.label, filePath, sortOrder: index },
+        });
+      }
+
+      // Drop files no longer in the spec — e.g. the old single-file Final
+      // Rehearsal, now a three-part set. Never touch one a past order still
+      // points at, so old download links keep working.
+      const specKeys = specs.map((s) => s.key);
+      const stale = await prisma.productFile.findMany({
+        where: { productId: productRow.id, key: { notIn: specKeys } },
+        include: { _count: { select: { orderItems: true } } },
+      });
+      for (const file of stale) {
+        if (file._count.orderItems === 0) {
+          await prisma.productFile.delete({ where: { id: file.id } });
+        }
+      }
     }
   }
   return pdfsGenerated;
@@ -137,12 +181,14 @@ async function main() {
   const counts = {
     subjects: await prisma.subject.count(),
     products: await prisma.product.count(),
+    productFiles: await prisma.productFile.count(),
     discountCodes: await prisma.discountCode.count(),
     leads: await prisma.lead.count(),
   };
   console.log(
-    `Seeded: ${counts.subjects} subjects, ${counts.products} products ` +
-      `(${pdfs} PDFs generated), ${counts.discountCodes} discount codes, ` +
+    `Seeded: ${counts.subjects} subjects, ${counts.products} products, ` +
+      `${counts.productFiles} files (${pdfs} PDFs generated), ` +
+      `${counts.discountCodes} discount codes, ` +
       `${counts.leads} leads (${leads} imported from JSON stub).`
   );
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { COMING_SOON } from "@/lib/catalogue";
+import { STANDARD_DISCLAIMER } from "@/lib/compliance";
 import { HeatTiles } from "./heat";
 
 const SHOP = [
@@ -84,13 +85,9 @@ export function Footer() {
           </nav>
         </div>
         <div className="mt-10 border-t border-white/15 pt-6">
+          {/* Mandated disclaimer — verbatim, see src/lib/compliance.ts */}
           <p className="text-xs leading-relaxed text-white/60">
-            StudyLah materials are data-driven probabilistic forecasts and
-            original practice content. They are not actual examination content,
-            and no grade outcome is guaranteed. StudyLah is an independent
-            company and is not affiliated with, endorsed by, or connected to
-            the Singapore Examinations and Assessment Board (SEAB), the
-            Ministry of Education (MOE), or Cambridge (UCLES).
+            {STANDARD_DISCLAIMER}
           </p>
           <p className="mt-3 text-xs text-white/40">
             © {new Date().getFullYear()} StudyLah · studylah.education ·
