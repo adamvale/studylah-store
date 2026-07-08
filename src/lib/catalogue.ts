@@ -53,6 +53,9 @@ export const LEVELS: Record<
     shortName: "N(A)-Level",
     code: "G2",
     blurb: "Singapore-Cambridge N(A)-Level, 8 subjects covered.",
+    // Flip to true only once the 46 real N(A) PDFs are uploaded and hash-verified
+    // on the production volume. Deploy the structure first: the paper4/5/6 file
+    // rows must exist before anything can be uploaded into them.
     published: false,
   },
 };
@@ -131,8 +134,11 @@ export const PRODUCTS: Record<
     name: "Final Rehearsal",
     tagline: "Sit the exam before the exam.",
     day: "Exam day",
+    // Never name specific papers here: subjects differ (N(A) Biology sits
+    // Paper 5 and 6; O-Level Chemistry (Science) sits Paper 1 and 3).
+    // `rehearsalBlurbFor` names the real ones.
     blurb:
-      "A complete original mock in the exact 2026 format — Paper 1, Paper 2, and the full mark scheme — so you walk in having already sat it once.",
+      "A complete original mock in the exact 2026 format, with the full mark scheme — so you walk in having already sat it once.",
   },
 };
 
@@ -166,6 +172,22 @@ const REHEARSAL_SINGLE: ProductFileSpec[] = [
   { key: "markscheme", label: "Final Rehearsal — Mark Scheme" },
 ];
 
+/**
+ * N(A) sciences sit an MCQ paper and a structured paper, but the paper numbers
+ * differ by subject: Physics 1/2, Chemistry 3/4, Biology 5/6.
+ */
+const REHEARSAL_MCQ_STRUCTURED = (mcq: number, structured: number): ProductFileSpec[] => [
+  { key: `paper${mcq}`, label: `Final Rehearsal — Paper ${mcq} (MCQ)` },
+  { key: `paper${structured}`, label: `Final Rehearsal — Paper ${structured} (Structured)` },
+  { key: "markscheme", label: "Final Rehearsal — Mark Scheme" },
+];
+
+/** N(A) Nutrition & Food Science sits a single written Paper 1. */
+const REHEARSAL_P1_ONLY: ProductFileSpec[] = [
+  { key: "paper1", label: "Final Rehearsal — Paper 1" },
+  { key: "markscheme", label: "Final Rehearsal — Mark Scheme" },
+];
+
 export interface SubjectSpec {
   /** The companion product's name for this subject. */
   companionName: string;
@@ -182,6 +204,8 @@ const SBQ_SOURCE = "The source-skills forecast.";
 const SBQ_FIELDWORK = "The fieldwork forecast.";
 const METHOD_LAYER = "The method layer.";
 const FORMATS_LAYER = "The formats and workings layer.";
+const SKILLS_DATA_RESPONSE = "The data-response and skills forecast.";
+const SKILLS_EXTENDED_RESPONSE = "The extended-response and skills forecast.";
 
 // Derived from the actual 2026 product folders — see the per-subject packs.
 const SUBJECT_SPECS: Record<string, SubjectSpec> = {
@@ -199,6 +223,16 @@ const SUBJECT_SPECS: Record<string, SubjectSpec> = {
   "o-level::e-math": { companionName: "Formula & Method Playbook", companionTagline: METHOD_LAYER, rehearsalFiles: REHEARSAL_P1_P2 },
   "o-level::a-math": { companionName: "Formula & Method Playbook", companionTagline: METHOD_LAYER, rehearsalFiles: REHEARSAL_P1_P2 },
   "o-level::principles-of-accounts": { companionName: "Formats & Workings Playbook", companionTagline: FORMATS_LAYER, rehearsalFiles: REHEARSAL_P1_P2 },
+
+  // N(A) (G2). Paper numbers and companion names taken from the 2026 G2 packs.
+  "na-level::physics": { companionName: "Skills & Data-Response Prediction", companionTagline: SKILLS_DATA_RESPONSE, rehearsalFiles: REHEARSAL_MCQ_STRUCTURED(1, 2) },
+  "na-level::chemistry": { companionName: "Skills & Data-Response Prediction", companionTagline: SKILLS_DATA_RESPONSE, rehearsalFiles: REHEARSAL_MCQ_STRUCTURED(3, 4) },
+  "na-level::biology": { companionName: "Skills & Data-Response Prediction", companionTagline: SKILLS_DATA_RESPONSE, rehearsalFiles: REHEARSAL_MCQ_STRUCTURED(5, 6) },
+  "na-level::food-and-nutrition": { companionName: "Skills & Extended-Response Prediction", companionTagline: SKILLS_EXTENDED_RESPONSE, rehearsalFiles: REHEARSAL_P1_ONLY },
+  "na-level::history": { companionName: "SBQ Skills Prediction", companionTagline: SBQ_SOURCE, rehearsalFiles: REHEARSAL_SINGLE },
+  "na-level::e-math": { companionName: "Formula & Method Playbook", companionTagline: METHOD_LAYER, rehearsalFiles: REHEARSAL_P1_P2 },
+  "na-level::a-math": { companionName: "Formula & Method Playbook", companionTagline: METHOD_LAYER, rehearsalFiles: REHEARSAL_P1_P2 },
+  "na-level::principles-of-accounts": { companionName: "Formats & Workings Playbook", companionTagline: FORMATS_LAYER, rehearsalFiles: REHEARSAL_P1_P2 },
 };
 
 // N(A)-Level packs aren't wired yet; fall back to a sensible companion by
@@ -251,6 +285,26 @@ export function productTaglineFor(subject: Subject, key: ProductKey): string {
   return key === "companion"
     ? subjectSpec(subject).companionTagline
     : PRODUCTS[key].tagline;
+}
+
+/**
+ * Names the papers this subject actually sits, rather than assuming 1 and 2.
+ * "Paper 5 (MCQ), Paper 6 (Structured), and the full mark scheme".
+ */
+export function rehearsalBlurbFor(subject: Subject): string {
+  const papers = subjectSpec(subject)
+    .rehearsalFiles.filter((f) => f.key !== "markscheme")
+    .map((f) => f.label.replace(/^Final Rehearsal — /, ""));
+  const list =
+    papers.length > 1
+      ? `${papers.slice(0, -1).join(", ")} and ${papers[papers.length - 1]}`
+      : papers[0];
+  return `A complete original mock in the exact 2026 format — ${list}, plus the full mark scheme — so you walk in having already sat it once.`;
+}
+
+/** The subject-accurate blurb for a product, falling back to the generic one. */
+export function productBlurbFor(subject: Subject, key: ProductKey): string {
+  return key === "rehearsal" ? rehearsalBlurbFor(subject) : PRODUCTS[key].blurb;
 }
 
 /** Products a tier unlocks for a subject with no practical paper. */

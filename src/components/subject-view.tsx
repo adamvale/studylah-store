@@ -2,6 +2,7 @@ import Link from "next/link";
 import {
   LEVELS,
   PRODUCTS,
+  productBlurbFor,
   productFilesFor,
   productNameFor,
   productTaglineFor,
@@ -144,7 +145,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
                 </div>
 
                 <p className="mt-2 text-sm leading-relaxed text-body">
-                  {pc?.blurb ?? product.blurb}
+                  {pc?.blurb ?? productBlurbFor(subject, key)}
                 </p>
 
                 {pc && (

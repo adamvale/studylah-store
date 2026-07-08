@@ -113,7 +113,43 @@ async function seedCatalogue() {
       await prisma.product.delete({ where: { id: product.id } });
     }
   }
+
+  await retireRemovedSubjects();
   return pdfsGenerated;
+}
+
+/**
+ * Drop subjects no longer in the catalogue (e.g. N(A) Geography, which has no
+ * source PDFs). Without this they linger as orphans: invisible on the
+ * storefront, but still listed by the admin file API. Never remove a subject a
+ * past order references — a buyer must keep their download links.
+ */
+async function retireRemovedSubjects() {
+  const live = new Set(SUBJECTS.map((s) => `${s.level}::${s.slug}`));
+  const rows = await prisma.subject.findMany({
+    include: {
+      products: {
+        include: { _count: { select: { orderItems: true } } },
+      },
+    },
+  });
+
+  for (const subject of rows) {
+    if (live.has(`${subject.level}::${subject.slug}`)) continue;
+    const sold = subject.products.some((p) => p._count.orderItems > 0);
+    if (sold) {
+      console.warn(
+        `  ! keeping retired subject ${subject.level}/${subject.slug}: past orders reference it`
+      );
+      continue;
+    }
+    for (const product of subject.products) {
+      await prisma.productFile.deleteMany({ where: { productId: product.id } });
+    }
+    await prisma.product.deleteMany({ where: { subjectId: subject.id } });
+    await prisma.subject.delete({ where: { id: subject.id } });
+    console.log(`  - retired subject ${subject.level}/${subject.slug}`);
+  }
 }
 
 async function seedDiscounts() {

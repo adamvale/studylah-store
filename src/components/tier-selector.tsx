@@ -7,6 +7,7 @@ import {
   TIER_NAMES,
   TIER_ORDER,
   getSubject,
+  productNameFor,
   tierProducts,
   sgd,
   type Level,
@@ -104,7 +105,7 @@ export function TierSelector({
                           className="h-1.5 w-1.5 rounded-full bg-guarantee"
                           aria-hidden="true"
                         />
-                        {PRODUCTS[p].name}
+                        {subject ? productNameFor(subject, p) : PRODUCTS[p].name}
                       </span>
                     ))}
                   </span>
