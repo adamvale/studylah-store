@@ -8,7 +8,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import type { Level, Tier } from "./catalogue";
+import { getSubject, PUBLISHED_LEVELS, type Level, type Tier } from "./catalogue";
 import type { CartItem } from "./pricing";
 
 const STORAGE_KEY = "studylah-cart-v1";
@@ -31,8 +31,11 @@ function isCartItem(value: unknown): value is CartItem {
   if (typeof value !== "object" || value === null) return false;
   const v = value as Record<string, unknown>;
   return (
-    (v.level === "o-level" || v.level === "na-level") &&
+    // A cart saved before a level was unpublished would otherwise fail
+    // checkout with an opaque error. Drop those items on load instead.
+    PUBLISHED_LEVELS.includes(v.level as Level) &&
     typeof v.subjectSlug === "string" &&
+    getSubject(v.level as Level, v.subjectSlug as string) !== undefined &&
     (v.tier === "essential" || v.tier === "strategic" || v.tier === "master")
   );
 }

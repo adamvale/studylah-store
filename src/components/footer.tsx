@@ -1,11 +1,13 @@
 import Link from "next/link";
-import { COMING_SOON } from "@/lib/catalogue";
+import { COMING_SOON, LEVELS, PUBLISHED_LEVELS } from "@/lib/catalogue";
 import { STANDARD_DISCLAIMER } from "@/lib/compliance";
 import { HeatTiles } from "./heat";
 
 const SHOP = [
-  { href: "/o-level", label: "O-Level (G3)" },
-  { href: "/na-level", label: "N(A)-Level (G2)" },
+  ...PUBLISHED_LEVELS.map((level) => ({
+    href: `/${level}`,
+    label: LEVELS[level].name,
+  })),
   { href: "/bundles", label: "Bundle builder" },
   { href: "/free-heatmap", label: "Free heatmap" },
 ];

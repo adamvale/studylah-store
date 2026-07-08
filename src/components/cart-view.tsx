@@ -129,10 +129,10 @@ export function CartView() {
             Browse O-Level subjects
           </Link>
           <Link
-            href="/na-level"
+            href="/bundles"
             className="rounded-lg border border-trust/25 bg-white px-5 py-3 text-sm font-medium text-trust hover:border-trust/50"
           >
-            N(A)-Level subjects
+            Build a bundle
           </Link>
         </div>
       </div>

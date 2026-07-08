@@ -8,6 +8,7 @@ import {
   MAX_SUBJECTS,
   SUBJECTS,
   sgd,
+  PUBLISHED_LEVELS,
   type Level,
 } from "@/lib/catalogue";
 import { useCart } from "@/lib/cart-context";
@@ -72,7 +73,7 @@ export function BundleBuilder() {
   return (
     <div className="mt-10 grid gap-8 lg:grid-cols-3">
       <div className="space-y-8 lg:col-span-2">
-        {(["o-level", "na-level"] as const).map((level) => (
+        {PUBLISHED_LEVELS.map((level) => (
           <section key={level} aria-labelledby={`bundle-${level}`}>
             <h2 id={`bundle-${level}`} className="font-display text-xl font-bold text-ink">
               {LEVELS[level].name}

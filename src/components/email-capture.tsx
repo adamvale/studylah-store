@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { LEVELS, SUBJECTS } from "@/lib/catalogue";
+import { LEVELS, PUBLISHED_LEVELS, SUBJECTS } from "@/lib/catalogue";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -83,7 +83,7 @@ export function EmailCaptureForm({
               <option value="" disabled>
                 Choose your subject
               </option>
-              {(["o-level", "na-level"] as const).map((level) => (
+              {PUBLISHED_LEVELS.map((level) => (
                 <optgroup key={level} label={LEVELS[level].name}>
                   {SUBJECTS.filter((s) => s.level === level).map((s) => (
                     <option key={`${level}-${s.slug}`} value={`${level}::${s.slug}`}>

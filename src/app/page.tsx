@@ -6,6 +6,7 @@ import {
   LEVELS,
   PRODUCTS,
   sgd,
+  PUBLISHED_LEVELS,
   subjectsForLevel,
 } from "@/lib/catalogue";
 import type { Pricing } from "@/lib/pricing";
@@ -27,10 +28,11 @@ function Hero({ pricing }: { pricing: Pricing }) {
           Walk into the exam knowing what&apos;s coming.
         </h1>
         <p className="mt-4 max-w-lg text-lg text-body">
-          AI forecasts of your O-Level and N(A)-Level papers — which topics are
-          likely, which questions to practise, and a full rehearsal before the
-          real thing. Original questions, written for StudyLah — zero recycled
-          past-paper content.
+          AI forecasts of your{" "}
+          {PUBLISHED_LEVELS.map((l) => LEVELS[l].shortName).join(" and ")} papers
+          — which topics are likely, which questions to practise, and a full
+          rehearsal before the real thing. Original questions, written for
+          StudyLah — zero recycled past-paper content.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Link
@@ -40,10 +42,10 @@ function Hero({ pricing }: { pricing: Pricing }) {
             Browse O-Level subjects
           </Link>
           <Link
-            href="/na-level"
+            href="/bundles"
             className="rounded-lg border border-trust/25 bg-white px-5 py-3 text-sm font-medium text-trust transition-colors hover:border-trust/50"
           >
-            N(A)-Level subjects
+            Build a bundle
           </Link>
         </div>
         <p className="mt-5 text-sm text-body">
@@ -121,7 +123,7 @@ function LevelEntry({ pricing }: { pricing: Pricing }) {
         Find your papers
       </h2>
       <div className="mt-8 grid gap-6 sm:grid-cols-2">
-        {(["o-level", "na-level"] as const).map((level) => (
+        {PUBLISHED_LEVELS.map((level) => (
           <Link
             key={level}
             href={`/${level}`}

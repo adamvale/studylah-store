@@ -28,21 +28,43 @@ export interface Subject {
 
 export const LEVELS: Record<
   Level,
-  { name: string; shortName: string; code: string; blurb: string }
+  {
+    name: string;
+    shortName: string;
+    code: string;
+    blurb: string;
+    /**
+     * Unpublished levels are hidden from the storefront and rejected by
+     * checkout. N(A) stays unpublished until its real PDFs replace the seed
+     * placeholders — a buyer must never pay for a placeholder.
+     */
+    published: boolean;
+  }
 > = {
   "o-level": {
     name: "O-Level (G3)",
     shortName: "O-Level",
     code: "G3",
     blurb: "Singapore-Cambridge O-Level, 14 subjects covered.",
+    published: true,
   },
   "na-level": {
     name: "N(A)-Level (G2)",
     shortName: "N(A)-Level",
     code: "G2",
-    blurb: "Singapore-Cambridge N(A)-Level, 10 subjects covered.",
+    blurb: "Singapore-Cambridge N(A)-Level, 8 subjects covered.",
+    published: false,
   },
 };
+
+export const LEVEL_ORDER: Level[] = ["o-level", "na-level"];
+
+export function isLevelPublished(level: Level): boolean {
+  return LEVELS[level].published;
+}
+
+/** Levels a shopper may browse and buy. Admin still sees every level. */
+export const PUBLISHED_LEVELS: Level[] = LEVEL_ORDER.filter(isLevelPublished);
 
 export const SUBJECTS: Subject[] = [
   { slug: "chemistry-pure", name: "Chemistry (Pure)", level: "o-level", family: "chemistry" },
@@ -59,12 +81,12 @@ export const SUBJECTS: Subject[] = [
   { slug: "principles-of-accounts", name: "Principles of Accounts", level: "o-level", family: "poa" },
   { slug: "e-math", name: "Mathematics (Elementary)", level: "o-level", family: "emath" },
   { slug: "a-math", name: "Mathematics (Additional)", level: "o-level", family: "amath" },
+  // N(A) Geography and Social Studies are omitted: no source PDFs exist for
+  // them. Re-add here (and to SUBJECT_SPECS) once the content is produced.
   { slug: "chemistry", name: "Chemistry", level: "na-level", family: "chemistry" },
   { slug: "physics", name: "Physics", level: "na-level", family: "physics" },
   { slug: "biology", name: "Biology", level: "na-level", family: "biology" },
-  { slug: "geography", name: "Geography", level: "na-level", family: "geography" },
   { slug: "history", name: "History", level: "na-level", family: "history" },
-  { slug: "social-studies", name: "Social Studies", level: "na-level", family: "social-studies" },
   { slug: "principles-of-accounts", name: "Principles of Accounts", level: "na-level", family: "poa" },
   { slug: "e-math", name: "Mathematics (Elementary)", level: "na-level", family: "emath" },
   { slug: "a-math", name: "Mathematics (Additional)", level: "na-level", family: "amath" },

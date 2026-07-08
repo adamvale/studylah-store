@@ -3,11 +3,14 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { LEVELS, PUBLISHED_LEVELS } from "@/lib/catalogue";
 import { useCart } from "@/lib/cart-context";
 
 const NAV = [
-  { href: "/o-level", label: "O-Level" },
-  { href: "/na-level", label: "N(A)-Level" },
+  ...PUBLISHED_LEVELS.map((level) => ({
+    href: `/${level}`,
+    label: LEVELS[level].shortName,
+  })),
   { href: "/bundles", label: "Bundles" },
   { href: "/accuracy", label: "Accuracy" },
   { href: "/faq", label: "FAQ" },

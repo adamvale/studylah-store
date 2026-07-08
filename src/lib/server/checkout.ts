@@ -1,7 +1,14 @@
 // Server-side pricing for checkout. Never trusts client prices: the cart
 // items (level/subject/tier only) are re-priced here with the same pure
 // engine the storefront uses, then discounts are applied from the database.
-import { getSubject, LEVELS, TIER_NAMES, type Level, type Tier } from "../catalogue";
+import {
+  getSubject,
+  LEVELS,
+  PUBLISHED_LEVELS,
+  TIER_NAMES,
+  type Level,
+  type Tier,
+} from "../catalogue";
 import { type CartItem, type PricedCart } from "../pricing";
 import { prisma } from "../db";
 import { getEarlyBird, getPricing } from "./pricing-store";
@@ -32,7 +39,6 @@ export type QuoteResult =
   | { ok: false; error: string; status: number };
 
 const TIERS: Tier[] = ["essential", "strategic", "master"];
-const LEVELS_KEYS: Level[] = ["o-level", "na-level"];
 
 function parseItems(raw: unknown): CartItem[] | null {
   if (!Array.isArray(raw) || raw.length === 0 || raw.length > 12) return null;
@@ -43,7 +49,9 @@ function parseItems(raw: unknown): CartItem[] | null {
     const level = e.level as Level;
     const tier = e.tier as Tier;
     const subjectSlug = e.subjectSlug;
-    if (!LEVELS_KEYS.includes(level) || !TIERS.includes(tier)) return null;
+    // An unpublished level is not purchasable, however the cart was built.
+    // Hiding the links is presentation; this is the rule.
+    if (!PUBLISHED_LEVELS.includes(level) || !TIERS.includes(tier)) return null;
     if (typeof subjectSlug !== "string") return null;
     if (!getSubject(level, subjectSlug)) return null;
     // Duplicate subjects collapse to the last tier chosen, matching the cart.

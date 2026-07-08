@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { averageHitRate, scorecardFor } from "@/lib/accuracy";
-import { LEVELS, subjectsForLevel } from "@/lib/catalogue";
+import { LEVELS, PUBLISHED_LEVELS, subjectsForLevel } from "@/lib/catalogue";
 import { PlaceholderBanner } from "@/components/disclaimer";
 import { heatText } from "@/components/heat";
 
@@ -26,7 +26,7 @@ export default function AccuracyPage() {
         <PlaceholderBanner label="Placeholder data for design review — real scorecards publish after each sitting. FOR CONTENT REVIEW." />
       </div>
 
-      {(["o-level", "na-level"] as const).map((level) => (
+      {PUBLISHED_LEVELS.map((level) => (
         <section key={level} aria-labelledby={`accuracy-${level}`} className="mt-12">
           <h2 id={`accuracy-${level}`} className="font-display text-2xl font-bold text-ink">
             {LEVELS[level].name}
