@@ -53,10 +53,7 @@ export const LEVELS: Record<
     shortName: "N(A)-Level",
     code: "G2",
     blurb: "Singapore-Cambridge N(A)-Level, 8 subjects covered.",
-    // Flip to true only once the 46 real N(A) PDFs are uploaded and hash-verified
-    // on the production volume. Deploy the structure first: the paper4/5/6 file
-    // rows must exist before anything can be uploaded into them.
-    published: false,
+    published: true,
   },
 };
 
