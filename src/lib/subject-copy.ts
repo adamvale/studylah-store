@@ -524,12 +524,380 @@ const BIOLOGY_SCIENCE_5088: SubjectCopy = {
   },
 };
 
+const GEOGRAPHY_PURE_2279: SubjectCopy = {
+  syllabusCode: "2279",
+  examName: "O-Level Geography (Pure) 2279",
+  syllabusChecker:
+    "Not sure which syllabus your child takes? Geography as a full subject is 2279 (this pack); Geography as the Combined Humanities elective is 2260.",
+  heroHook:
+    "One topic is worth 40% of Paper 1 — and it has never been worth less than 20 marks in ten years.",
+  headlineCalls: [
+    {
+      title: "Fieldwork is the biggest banker on either paper.",
+      body: "Topic 1.3 is a fixed 20-mark compulsory Paper 1 Question 1 — 40% of the paper — and it has never been worth less than 20 marks in ten years. Drill the read-describe-calculate-present-evaluate ladder until it is automatic.",
+    },
+    {
+      title: "The Singapore cluster is the new must-revise.",
+      body: "Absent for eight straight years, it entered the 2279 syllabus and immediately anchored the 20-mark Paper 2 Question 3 (5 marks in 2024, 12 in 2025). The monsoon temperature-rainfall table is the reliable entry point.",
+    },
+    {
+      title: "There is no choice any more — every cluster is compulsory.",
+      body: "All six cluster slots are compulsory and fixed in marks, so you cannot drop a topic the way 2016–2023 candidates could. Every cluster must get a revision pass.",
+    },
+    {
+      title: "Expect exactly two 9-mark AO3 questions — one per paper.",
+      body: "Paper 1's has used Tourism (2024) then Climate (2025); Paper 2's has stayed in the Singapore Question 3 both years. Rehearse an L3 both-sides-plus-verdict answer for each.",
+    },
+    {
+      title: "Tourism impacts carry the highest overdue index on the board.",
+      body: "After 24–29 marks a year in the old papers they shrank to 7 in the new slot (+12 overdue index) and are due a fuller Paper 1 Question 2 outing — revise economic, social and environmental impacts properly.",
+    },
+    {
+      title: "Ignore the old coasts, food and health themes entirely.",
+      body: "They were 60–90 marks a year of the 2016–2023 papers and are completely gone from 2279. Revising them is the single biggest way to waste your time.",
+    },
+  ],
+  completePack:
+    "One model, four products, one revision order — the Exam Forecast, the SBQ & Skills Prediction, the Sure Questions Vault and both Final Rehearsal papers with their Mark Scheme. Analysis, practice and a full timed rehearsal in one place, all traced to the same question-level study of ten years of papers.",
+  products: {
+    forecast: {
+      blurb:
+        "The complete topic-by-topic forecast for the 2026 Geography (Pure) papers, built from a question-level study of every paper from 2016 to 2025 — so revision starts where the marks are likeliest.",
+      bullets: [
+        "Fifteen ranked sub-topic slots with confidence tiers and the evidence behind each call",
+        "The fixed-slot map, the new-content briefing and the deprecated-content warning in one place",
+        "A 14-week revision plan and printable checklist — analysis you can actually act on",
+      ],
+      whoFor: "Every 2026 candidate — this is the map the other products navigate by.",
+      crossSell:
+        "Pairs with the Sure Questions Vault: every VERY HIGH call in here has original practice questions in there.",
+    },
+    companion: {
+      blurb:
+        "The dedicated forecast for the fieldwork and data-response strand — Topic 1.3, the 20-mark Paper 1 Question 1, and the data skills that thread every question on both papers.",
+      bullets: [
+        "The 2026 Q1 slot forecast: predicted context, method, processing skill and evaluation angle, each tiered",
+        "Three original practice fieldwork briefs and a full model L3 evaluation answer",
+        "The read-describe-calculate-present-evaluate ladder, made automatic",
+      ],
+      whoFor:
+        "Any candidate who wants the single largest block on either paper banked before the exam.",
+      crossSell:
+        "Built on the same ten-year model as the Exam Forecast, so the topic and skills calls cross-check each other.",
+    },
+    vault: {
+      blurb:
+        "Forty-five-plus original questions across all fifteen sub-topics, each with a full worked answer, a mark-scheme-style breakdown and a common-mistake note — weighted to the Forecast's tiers so practice lands on the likeliest 2026 marks first.",
+      bullets: [
+        "Every question is original and written in the 2279 style — never a real past-paper item",
+        "Built to the forecast's tiers, so you practise the heaviest, most likely slots first",
+        "The full answer-key standard: full answer, breakdown table, technique and mistake notes",
+      ],
+      whoFor:
+        "Students who know the geography but leak marks on data description and evaluation.",
+      crossSell:
+        "Miss a question? Every Vault question is tagged to its sub-topic — the Forecast's deep dive on that slot is the fix.",
+    },
+    rehearsal: {
+      blurb:
+        "A complete original 2279 mock in the exact 2026 format — Paper 1's three compulsory structured questions with fieldwork Q1, and Paper 2's Everyday-Life, Tectonics and 20-mark Singapore cluster. Sold as one set of three PDFs, with a download for each.",
+      bullets: [
+        "Paper 1 — 1 h 45 min, 50 marks: fieldwork Q1, tourism, climate and one 9-mark AO3, with figures on an insert",
+        "Paper 2 — the three compulsory clusters in the correct marks and order, including the new Singapore and Everyday-Life content most old resources miss",
+        "Mark Scheme — point-marked answers with breakdown tables, L1/L2/L3 shapes for the AO3 questions, and grade-band guidance",
+      ],
+      whoFor:
+        "Every candidate, ideally twice — once as a diagnostic, once under full timing in the final weeks.",
+      crossSell:
+        "Score it, then route weak clusters back to the Forecast deep dives and the Vault drills.",
+    },
+  },
+};
+
+const GEOGRAPHY_ELECTIVE_2260: SubjectCopy = {
+  syllabusCode: "2260",
+  examName: "O-Level Geography (Elective) 2260",
+  syllabusChecker:
+    "Not sure which syllabus your child takes? Geography as the Combined Humanities elective is 2260 (this pack); Geography as a full subject is 2279.",
+  heroHook:
+    "One 9-mark essay decides 18% of the paper. Rehearse it until the shape is automatic.",
+  headlineCalls: [
+    {
+      title: "Tourism is the biggest banker you can build from the new syllabus.",
+      body: "Cluster 2 is a compulsory 18-mark Section A question every year and often hosts the 9-mark AO3 — yet it was barely tested under the old 2272 papers, so build it fresh from the 2260 content, not from past papers.",
+    },
+    {
+      title: "Section B is the only real choice: Climate versus Tectonics.",
+      body: "Climate (Q3) against Tectonics (Q4), 18 marks each — so you must prepare both and pick the stronger 9-marker on the day. You can no longer drop a whole physical theme.",
+    },
+    {
+      title: "Disaster Risk Management is the Tectonics essay magnet.",
+      body: "Both current-era Tectonics options closed on a DRM judgement (recovery in 2024, magma composition in 2025). The risk = hazard × vulnerability × exposure framework is where the 9 marks live if you choose Tectonics.",
+    },
+    {
+      title: "In the Climate option, the judgement marks cluster on carbon sinks.",
+      body: "Mitigation-strategy comparison (carbon sinks, flood management) and the enhanced greenhouse effect carry the AO3 — hold a carbon-sink argument bank ready.",
+    },
+    {
+      title: "Cluster 1 is dominated by brand-new syllabus content.",
+      body: "Sense of place, media, spatial patterns, ecosystem services and urban hazards cannot be revised from old papers and are a common blind spot. Cluster 1 is heavily data-anchored — maps, posters, statistics.",
+    },
+    {
+      title: "Half of every paper is data — the AO2 skills win the paper.",
+      body: "AO2 skills are 20 of 50 marks and thread through every question: a graph completion, a trend description quoting figures, a photo interpretation and a map read.",
+    },
+  ],
+  completePack:
+    "One model, four products, one revision order — the Exam Forecast, the SBQ & Skills Prediction, the Sure Questions Vault and the Final Rehearsal paper with its Mark Scheme. Analysis, practice and a full timed dry run of the one Geography paper, all from the same question-level dataset.",
+  products: {
+    forecast: {
+      blurb:
+        "The complete cluster-by-cluster forecast for the 2026 Paper 2 Geography, built from a question-level study of the current-format 2024 and 2025 papers against the full 2260 syllabus.",
+      bullets: [
+        "Ranked sub-topic slots with confidence tiers and the evidence behind each call",
+        "The fixed-slot map, the new-content briefing and the deprecated-content warning in one place",
+        "A revision plan and printable checklist — analysis you can actually act on",
+      ],
+      whoFor: "Every 2026 candidate — this is the map the other products navigate by.",
+      crossSell:
+        "Pairs with the Sure Questions Vault: every VERY HIGH call in here has original practice questions in there.",
+    },
+    companion: {
+      blurb:
+        "The dedicated forecast for the data-response and structured-question skills that thread every question on Paper 2 — the question-type rotation, the read-to-evaluate ladder and the 9-mark AO3.",
+      bullets: [
+        "The 2026 skills-demand forecast: which resource types, whether a calculation lands, where the AO3 sits — each tiered",
+        "A fully-worked original data-response case study and a full model L3 essay",
+        "The read-describe-calculate-present-explain-evaluate ladder, made automatic",
+      ],
+      whoFor:
+        "Any candidate who wants the 20 AO2 marks — and the 9-mark judgement — banked before the exam.",
+      crossSell:
+        "Built on the same dataset as the Exam Forecast, so the cluster and skills calls cross-check each other.",
+    },
+    vault: {
+      blurb:
+        "Forty-five-plus original questions across all four clusters and the data skills, each with a full worked answer, a mark-scheme-style breakdown and a common-mistake note — weighted to the Forecast's tiers.",
+      bullets: [
+        "Every question is original and written in the 2260 style — never a real past-paper item",
+        "Built to the forecast's tiers, so you practise the heaviest, most likely slots first",
+        "The full answer-key standard: full answer, breakdown table, technique and mistake notes",
+      ],
+      whoFor:
+        "Students who know the geography but leak marks on data description and evaluation.",
+      crossSell:
+        "Miss a question? Every Vault question is tagged to its cluster — the Forecast's deep dive on that slot is the fix.",
+    },
+    rehearsal: {
+      blurb:
+        "One complete original 2260 mock in the exact 2026 format: compulsory Section A (Everyday Life 14 marks, Tourism 18) plus a Section B choice of Climate or Tectonics, with one 9-mark AO3 and figures on an insert. Sold as one set of two PDFs, with a download for each.",
+      bullets: [
+        "Sits and marks exactly like the real paper — 1 h 45 min, 50 marks, answered on the paper",
+        "Original data exhibits so you practise the skills — never a real past-paper item to memorise",
+        "Mark Scheme — point-marked answers with breakdown tables, L1/L2/L3 shapes for the AO3, and grade-band guidance",
+      ],
+      whoFor:
+        "Every candidate, ideally twice — once as a diagnostic, once under full timing in the final weeks.",
+      crossSell:
+        "Score it, then route weak clusters back to the Forecast deep dives and the Vault drills.",
+    },
+  },
+};
+
+const HISTORY_PURE_2174: SubjectCopy = {
+  syllabusCode: "2174",
+  examName: "O-Level History (Pure) 2174",
+  syllabusChecker:
+    "Not sure which syllabus your child takes? History as a full subject is 2174 (this pack); History as the Combined Humanities elective is 2261.",
+  heroHook:
+    "British Malaya is compulsory in both papers — the most-examined Paper 1 essay theme in nine of ten years.",
+  headlineCalls: [
+    {
+      title: "The 2024 revision quietly retired two heavyweights.",
+      body: "Stalin and the USSR left Paper 1 Section A; the Cuban Missile Crisis left Paper 2 entirely. If your notes still lead with Cuba, you are revising the old exam — re-point that time at Korea, Vietnam and the origins of the Cold War in Europe.",
+    },
+    {
+      title: "Nazi Germany is the overdue Paper 1 source case study.",
+      body: "Of the three prescribed topics, British Malaya was the 2025 source-based case study and Outbreak-of-WWII-Europe was 2024 — leaving a Weimar / Hitler source set as the standout 2026 candidate.",
+    },
+    {
+      title: "Origins of the Cold War in Europe has never been the live case study.",
+      body: "In the old exam its Section A slots were taken by the now-deprecated Cuban Missile Crisis, so it has never yet been live. Malaya decolonisation and Korea are the reliable alternates.",
+    },
+    {
+      title: "British Malaya is the two-way banker.",
+      body: "Compulsory in both papers: the most-examined Paper 1 essay theme (nine of ten years) and the most-examined Paper 2 case study (five of ten). Master Perak, the FMS, the Malayan Union and Merdeka and you bank marks in both sittings.",
+    },
+    {
+      title: "Part (e) is always the assertion — the most predictable question.",
+      body: "'How far do these sources support this view?' — 8 marks, demanding all the sources plus your own knowledge. Rehearse the grouping-then-evaluating shape until it is automatic.",
+    },
+    {
+      title: "Section B never repeats that year's source topic.",
+      body: "Use the source-case-study prediction to read the essays: if Nazi Germany is the Paper 1 case study, a Nazi essay is off the table — expect Malaya, the League and Militarist Japan instead.",
+    },
+    {
+      title: "SBQ marks are won by provenance, not content.",
+      body: "For every usefulness, reliability, purpose, surprise and cross-reference question, judge who wrote the source, when, why, to whom, and whether other sources corroborate it. Content-only answers stall at the middle level.",
+    },
+  ],
+  completePack:
+    "One model, four products, one revision order — the Exam Forecast, the SBQ Skills Prediction, the Sure Questions Vault and both Final Rehearsal papers with their Mark Scheme. Every claim traces to a question-level study of every Paper 1 and Paper 2 from 2016 to 2025, and every source is original.",
+  products: {
+    forecast: {
+      blurb:
+        "The complete topic-by-topic forecast for the 2026 History (Pure) papers, built from a question-level study of every Paper 1 and Paper 2 from 2016 to 2025.",
+      bullets: [
+        "Fourteen ranked topics with confidence tiers and the evidence behind every source-case-study and essay call",
+        "The overdue source-case-study map, the deprecated-content briefing (Stalin, Cuba) and the exact 2174 format in one place",
+        "A revision plan and printable checklist — analysis you can actually act on",
+      ],
+      whoFor: "Every 2026 candidate — this is the map the other products navigate by.",
+      crossSell:
+        "Pairs with the Sure Questions Vault: every VERY HIGH call in here has original practice questions in there.",
+    },
+    companion: {
+      blurb:
+        "The dedicated forecast for the Source-Based Case Study — the 30-mark Section A that opens every paper, and the provenance skills that win each sub-question.",
+      bullets: [
+        "The 2026 slot forecast: predicted (a)–(e) question types, each tiered, ending with the always-there part (e)",
+        "The provenance engine — who wrote it, when, why, to whom — with original practice sources and a model part-(e) answer",
+        "The comparison, usefulness, reliability, cross-reference and surprise drills, made automatic",
+      ],
+      whoFor:
+        "Any candidate who loses marks describing sources rather than judging them.",
+      crossSell:
+        "Built on the same ten-year model as the Exam Forecast, so the source and essay calls cross-check each other.",
+    },
+    vault: {
+      blurb:
+        "Original questions across every ranked topic, each with a full worked answer, a mark-scheme-style breakdown and a common-mistake note — weighted to the Forecast's tiers, so practice lands on Malaya, Nazi Germany and the Cold War first.",
+      bullets: [
+        "Every question is original and written in the 2174 style — never a real past-paper item",
+        "Built to the forecast's tiers, so you practise the heaviest, most likely topics first",
+        "The full answer-key standard: full answer, breakdown table, technique and mistake notes",
+      ],
+      whoFor:
+        "Students who know the history but leak marks on structure, provenance and judgement.",
+      crossSell:
+        "Miss a question? Every Vault question is tagged to its topic — the Forecast's deep dive on that topic is the fix.",
+    },
+    rehearsal: {
+      blurb:
+        "A complete original 2174 mock in the exact 2026 format: each paper opens with a 30-mark Source-Based Case Study, then three essays from which you answer two. Sold as one set of three PDFs, with a download for each.",
+      bullets: [
+        "Paper 1 — 1 h 50 min, 50 marks: a source-based case study on the South-East Asia / European-control era, plus three essays",
+        "Paper 2 — a source-based case study on the post-WWII Cold War / decolonisation era, with current-syllabus content (Korea, Cold-War origins, Malaya decolonisation) — not the retired Cuba material",
+        "Mark Scheme — point-marked answers with breakdown tables, L1/L2/L3 shapes and grade-band guidance",
+      ],
+      whoFor:
+        "Every candidate, ideally twice — once as a diagnostic, once under full timing in the final weeks.",
+      crossSell:
+        "Score it, then route weak topics back to the Forecast deep dives and the Vault drills.",
+    },
+  },
+};
+
+const HISTORY_ELECTIVE_2261: SubjectCopy = {
+  syllabusCode: "2261",
+  examName: "O-Level History (Elective) 2261",
+  syllabusChecker:
+    "Not sure which syllabus your child takes? History as the Combined Humanities elective is 2261 (this pack); History as a full subject is 2174.",
+  heroHook:
+    "Origins of the Cold War in Europe is prescribed — and has never yet been the live case study.",
+  headlineCalls: [
+    {
+      title: "The 2024 revision quietly retired two heavyweights.",
+      body: "The revision narrowed the source case study to four prescribed topics and retired the Cuban Missile Crisis and the Stalin / USSR case studies. If your notes still lead with Cuba or Stalin's purges, you are revising the old exam.",
+    },
+    {
+      title: "Origins of the Cold War in Europe is the overdue source case study.",
+      body: "A prescribed topic whose old Section A slots were taken by the now-retired Cuban Missile Crisis — so it has never been the live case study in the narrowed pool. The standout 2026 Section A candidate.",
+    },
+    {
+      title: "The Korean War is the second overdue source topic.",
+      body: "Also never yet live in the current pool. Rehearse a full 30-mark Korea source set alongside Cold-War origins.",
+    },
+    {
+      title: "Nazi Germany is the anchor source topic.",
+      body: "The live source case study in 2016, 2018, 2020, 2022 and 2024, before Outbreak-of-WWII-Europe took 2025. Even overdue rivals cannot push Weimar / Hitler sources off your revision.",
+    },
+    {
+      title: "Part (e) is always the assertion — the most predictable question.",
+      body: "'How far do these sources support this view?' — 8 marks, demanding all the sources plus your own knowledge. Rehearse the group-then-evaluate shape until it is automatic.",
+    },
+    {
+      title: "Section B never repeats that year's source topic.",
+      body: "If the source case study is a Cold-War topic, expect the essays to reach into the authoritarian-regime and outbreak-of-war units — so prepare Nazi Germany, Militarist Japan and both outbreak-of-WWII essays.",
+    },
+  ],
+  completePack:
+    "One model, four products, one revision order — the Exam Forecast, the SBQ Skills Prediction, the Sure Questions Vault and the Final Rehearsal paper with its Mark Scheme. Every claim traces to a question-level study of every History paper from 2016 to 2025, and every source is original.",
+  products: {
+    forecast: {
+      blurb:
+        "The complete topic-by-topic forecast for the 2026 History (Elective) paper, built from a question-level study of every History paper from 2016 to 2025.",
+      bullets: [
+        "Ten ranked topics with confidence tiers and the evidence behind every source-case-study and essay call",
+        "The overdue source-case-study map, the deprecated-content briefing (Stalin, Cuba) and the exact 2261 format in one place",
+        "A revision plan and printable checklist — analysis you can actually act on",
+      ],
+      whoFor: "Every 2026 candidate — this is the map the other products navigate by.",
+      crossSell:
+        "Pairs with the Sure Questions Vault: every VERY HIGH call in here has original practice questions in there.",
+    },
+    companion: {
+      blurb:
+        "The dedicated forecast for the Source-Based Case Study — the 30-mark Section A that opens the paper, and the provenance skills that win each sub-question.",
+      bullets: [
+        "The 2026 slot forecast: predicted (a)–(e) question types, each tiered, ending with the always-there part (e)",
+        "The provenance engine — who wrote it, when, why, to whom — with original practice sources and a model part-(e) answer",
+        "The cross-reference, surprise, purpose, message and usefulness drills, made automatic",
+      ],
+      whoFor:
+        "Any candidate who loses marks describing sources rather than judging them.",
+      crossSell:
+        "Built on the same ten-year model as the Exam Forecast, so the source and essay calls cross-check each other.",
+    },
+    vault: {
+      blurb:
+        "Original questions across every ranked topic, each with a full worked answer, a mark-scheme-style breakdown and a common-mistake note — weighted to the Forecast's tiers, so practice lands on the Cold War, Nazi Germany and the outbreak of war first.",
+      bullets: [
+        "Every question is original and written in the 2261 style — never a real past-paper item",
+        "Built to the forecast's tiers, so you practise the heaviest, most likely topics first",
+        "The full answer-key standard: full answer, breakdown table, technique and mistake notes",
+      ],
+      whoFor:
+        "Students who know the history but leak marks on structure, provenance and judgement.",
+      crossSell:
+        "Miss a question? Every Vault question is tagged to its topic — the Forecast's deep dive on that topic is the fix.",
+    },
+    rehearsal: {
+      blurb:
+        "A complete original 2261 mock in the exact 2026 format: a 30-mark Source-Based Case Study, then three essays from which you answer two. Sold as one set of two PDFs, with a download for each.",
+      bullets: [
+        "Sits and marks exactly like the real paper, with original invented sources clearly framed as practice material",
+        "Current-syllabus content throughout — Cold-War origins, Korea, Nazi Germany — not the retired Cuba or Stalin material",
+        "Mark Scheme — point-marked answers with breakdown tables, L1/L2/L3 shapes and grade-band guidance",
+      ],
+      whoFor:
+        "Every candidate, ideally twice — once as a diagnostic, once under full timing in the final weeks.",
+      crossSell:
+        "Score it, then route weak topics back to the Forecast deep dives and the Vault drills.",
+    },
+  },
+};
+
 const SUBJECT_COPY: Record<string, SubjectCopy> = {
   "o-level::physics-pure": PHYSICS_PURE_6091,
   "o-level::chemistry-pure": CHEMISTRY_PURE_6092,
   "o-level::chemistry-science": CHEMISTRY_SCIENCE_5086,
   "o-level::biology-pure": BIOLOGY_PURE_6093,
   "o-level::biology-science": BIOLOGY_SCIENCE_5088,
+  "o-level::geography-pure": GEOGRAPHY_PURE_2279,
+  "o-level::geography-elective": GEOGRAPHY_ELECTIVE_2260,
+  "o-level::history-pure": HISTORY_PURE_2174,
+  "o-level::history-elective": HISTORY_ELECTIVE_2261,
 };
 
 export function subjectCopy(level: Level, slug: string): SubjectCopy | null {
