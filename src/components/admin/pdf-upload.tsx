@@ -2,15 +2,55 @@
 
 import { useRef, useState, type FormEvent } from "react";
 
+/** What is stored right now. `null` means the file is missing from disk. */
+export interface StoredFile {
+  sizeBytes: number;
+  updatedAt: string;
+}
+
+/** Seed placeholders are ~2–3 KB; no real product PDF is anywhere near this. */
+const PLACEHOLDER_MAX_BYTES = 10_000;
+
+function formatSize(bytes: number): string {
+  return bytes >= 1_000_000
+    ? `${(bytes / 1_000_000).toFixed(1)} MB`
+    : `${Math.round(bytes / 1024)} KB`;
+}
+
+function StoredFileNote({ stored }: { stored: StoredFile | null }) {
+  if (!stored) {
+    return (
+      <span className="text-xs text-heat-5">
+        No file on disk — buyers of this product would get nothing.
+      </span>
+    );
+  }
+  const isPlaceholder = stored.sizeBytes <= PLACEHOLDER_MAX_BYTES;
+  const when = new Date(stored.updatedAt).toLocaleDateString("en-SG", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+  return (
+    <span className={`text-xs ${isPlaceholder ? "text-signal-deep" : "text-body"}`}>
+      {isPlaceholder ? "Placeholder — " : ""}
+      {formatSize(stored.sizeBytes)} · updated {when}
+    </span>
+  );
+}
+
 export function PdfUpload({
   fileId,
   label,
+  stored,
 }: {
   fileId: string;
   label: string;
+  stored: StoredFile | null;
 }) {
   const [state, setState] = useState<"idle" | "uploading" | "done" | "error">("idle");
   const [detail, setDetail] = useState("");
+  const [current, setCurrent] = useState<StoredFile | null>(stored);
   const inputRef = useRef<HTMLInputElement>(null);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
@@ -35,7 +75,13 @@ export function PdfUpload({
         | null;
       if (!res.ok) throw new Error(body?.error ?? "Upload failed.");
       setState("done");
-      setDetail(`replaced (${Math.round((body?.bytes ?? 0) / 1024)} KB)`);
+      setDetail("replaced");
+      // Reflect the new file immediately, so the slot never keeps showing the
+      // bytes it just overwrote.
+      setCurrent({
+        sizeBytes: body?.bytes ?? 0,
+        updatedAt: new Date().toISOString(),
+      });
       if (inputRef.current) inputRef.current.value = "";
     } catch (e) {
       setState("error");
@@ -45,7 +91,10 @@ export function PdfUpload({
 
   return (
     <form onSubmit={onSubmit} className="flex flex-wrap items-center gap-2">
-      <span className="w-56 shrink-0 text-sm text-body">{label}</span>
+      <span className="w-56 shrink-0">
+        <span className="block text-sm text-body">{label}</span>
+        <StoredFileNote stored={current} />
+      </span>
       <input
         ref={inputRef}
         type="file"

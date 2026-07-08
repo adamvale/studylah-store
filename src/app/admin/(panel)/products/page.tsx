@@ -10,12 +10,29 @@ import {
   subjectsForLevel,
   type Level,
 } from "@/lib/catalogue";
+import { stat } from "node:fs/promises";
+import path from "node:path";
 import { prisma } from "@/lib/db";
+import { serverConfig } from "@/lib/server/config";
 import { getEarlyBird, getPricingTable } from "@/lib/server/pricing-store";
-import { PdfUpload } from "@/components/admin/pdf-upload";
+import { PdfUpload, type StoredFile } from "@/components/admin/pdf-upload";
 import { savePricingAction, setEarlyBirdAction } from "./actions";
 
 export const dynamic = "force-dynamic";
+
+/**
+ * The file input can only ever say "no file chosen" — that describes the
+ * picker, not storage. Read what is actually on disk, so a placeholder is
+ * never mistaken for a delivered product.
+ */
+async function storedFile(filePath: string): Promise<StoredFile | null> {
+  try {
+    const s = await stat(path.join(serverConfig.pdfStorageDir, filePath));
+    return { sizeBytes: s.size, updatedAt: s.mtime.toISOString() };
+  } catch {
+    return null;
+  }
+}
 
 const LEVEL_KEYS: Level[] = ["o-level", "na-level"];
 
@@ -62,6 +79,14 @@ export default async function AdminProductsPage({
   });
   const productByKey = new Map(
     productRows.map((p) => [`${p.subject.level}::${p.subject.slug}::${p.key}`, p])
+  );
+
+  const storedByPath = new Map(
+    await Promise.all(
+      productRows
+        .flatMap((p) => p.files)
+        .map(async (f) => [f.filePath, await storedFile(f.filePath)] as const)
+    )
   );
 
   return (
@@ -227,6 +252,7 @@ export default async function AdminProductsPage({
                                     key={file.id}
                                     fileId={file.id}
                                     label={spec.label}
+                                    stored={storedByPath.get(file.filePath) ?? null}
                                   />
                                 );
                               })}
