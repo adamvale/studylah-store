@@ -23,7 +23,7 @@ model Product {
   id         String        @id @default(cuid())
   subject    Subject       @relation(fields: [subjectId], references: [id])
   subjectId  String
-  key        String // forecast | paper3 | vault | rehearsal
+  key        String // forecast | companion | vault | rehearsal
   active     Boolean       @default(true)
   files      ProductFile[]
   orderItems OrderItem[]

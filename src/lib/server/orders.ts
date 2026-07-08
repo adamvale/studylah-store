@@ -6,11 +6,10 @@ import { prisma } from "../db";
 import {
   getSubject,
   LEVELS,
-  PRODUCTS,
-  PRODUCT_FILES,
   TIER_NAMES,
+  productFilesFor,
+  productNameFor,
   tierProducts,
-  type ProductKey,
 } from "../catalogue";
 import type { CheckoutQuote } from "./checkout";
 import { serverConfig } from "./config";
@@ -99,7 +98,7 @@ export async function createOrderFromCheckout(options: {
       }
       // Driven by the catalogue spec, not by whatever rows exist — so a legacy
       // file left behind by an older schema can never be delivered by mistake.
-      for (const spec of PRODUCT_FILES[key]) {
+      for (const spec of productFilesFor(catalogueSubject, key)) {
         const file = product.files.find((f) => f.key === spec.key);
         if (!file) {
           throw new Error(
@@ -111,7 +110,7 @@ export async function createOrderFromCheckout(options: {
           productFileId: file.id,
           subjectName: subject.name,
           levelName: LEVELS[line.item.level].shortName,
-          productName: PRODUCTS[key as ProductKey].name,
+          productName: productNameFor(catalogueSubject, key),
           fileLabel: spec.label,
           tier: TIER_NAMES[line.item.tier],
         });

@@ -1,5 +1,11 @@
 export type Level = "o-level" | "na-level";
-export type ProductKey = "forecast" | "paper3" | "vault" | "rehearsal";
+/**
+ * Every subject sells the same four products. The "companion" is the one that
+ * varies: a Practical Prediction for the sciences, an SBQ & Skills Prediction
+ * for the humanities, a Playbook for maths and POA. Its name, tagline and file
+ * live in that subject's spec.
+ */
+export type ProductKey = "forecast" | "companion" | "vault" | "rehearsal";
 export type Tier = "essential" | "strategic" | "master";
 export type TopicFamily =
   | "chemistry"
@@ -84,12 +90,13 @@ export const PRODUCTS: Record<
     blurb:
       "Topic-by-topic probability analysis for your upcoming paper, so your last two weeks go where the marks are most likely to be.",
   },
-  paper3: {
-    name: "Paper 3 Practical Prediction",
-    tagline: "Forty marks. Three questions. Know the rotation.",
+  // Generic fallback. Real name/tagline come from the subject's spec below.
+  companion: {
+    name: "Companion Prediction",
+    tagline: "The strand everyone under-rehearses.",
     day: "Companion",
     blurb:
-      "Paper 3 is 20% of the grade, sat first, and the most predictable paper on the timetable. Ten years of experiment rotation mapped, the 2026 slots ranked, and the marking grammar drilled through original briefs.",
+      "A dedicated forecast for the paper or skill strand that decides the most marks, built from the same ten-year, question-level model as the Exam Forecast.",
   },
   vault: {
     name: "Sure Questions Vault",
@@ -107,42 +114,121 @@ export const PRODUCTS: Record<
   },
 };
 
-// Sales order across the whole family.
-export const PRODUCT_ORDER: ProductKey[] = ["forecast", "paper3", "vault", "rehearsal"];
+// Sales order. Every subject sells all four.
+export const PRODUCT_ORDER: ProductKey[] = ["forecast", "companion", "vault", "rehearsal"];
 
-// The Day 14 -> Day 7 -> Exam Day story. Paper 3 is a companion to the
-// Forecast, not a stage of the revision journey.
+// The Day 14 -> Day 7 -> Exam Day story. The companion sits alongside the
+// Forecast, so it isn't a stage of the revision journey.
 export const JOURNEY_ORDER: ProductKey[] = ["forecast", "vault", "rehearsal"];
 
-// The Final Rehearsal ships as a three-part set on one product page; the rest
-// are single PDFs. Drives both seeding and per-file download delivery.
 export interface ProductFileSpec {
   key: string;
   label: string;
 }
 
-export const PRODUCT_FILES: Record<ProductKey, ProductFileSpec[]> = {
-  forecast: [{ key: "main", label: "Exam Forecast" }],
-  paper3: [{ key: "main", label: "Paper 3 Practical Prediction" }],
-  vault: [{ key: "main", label: "Sure Questions Vault" }],
-  rehearsal: [
-    { key: "paper1", label: "Final Rehearsal — Paper 1" },
-    { key: "paper2", label: "Final Rehearsal — Paper 2" },
-    { key: "markscheme", label: "Final Rehearsal — Mark Scheme" },
-  ],
-};
+/** The Final Rehearsal's shape depends on how the subject's papers are set. */
+const REHEARSAL_P1_P2: ProductFileSpec[] = [
+  { key: "paper1", label: "Final Rehearsal — Paper 1" },
+  { key: "paper2", label: "Final Rehearsal — Paper 2" },
+  { key: "markscheme", label: "Final Rehearsal — Mark Scheme" },
+];
+/** Combined-Science Chemistry sits Paper 1 and Paper 3, not Paper 2. */
+const REHEARSAL_P1_P3: ProductFileSpec[] = [
+  { key: "paper1", label: "Final Rehearsal — Paper 1" },
+  { key: "paper3", label: "Final Rehearsal — Paper 3" },
+  { key: "markscheme", label: "Final Rehearsal — Mark Scheme" },
+];
+/** Single-paper subjects (Elective Geography/History, Social Studies). */
+const REHEARSAL_SINGLE: ProductFileSpec[] = [
+  { key: "paper", label: "Final Rehearsal — Paper" },
+  { key: "markscheme", label: "Final Rehearsal — Mark Scheme" },
+];
 
-// Paper 3 Practical Prediction only exists for subjects sat with a practical
-// paper (the sciences). Everything else sells the three-product family.
-const PRACTICAL_FAMILIES: TopicFamily[] = ["physics", "chemistry", "biology"];
-
-export function hasPaper3(subject: Subject): boolean {
-  return PRACTICAL_FAMILIES.includes(subject.family);
+export interface SubjectSpec {
+  /** The companion product's name for this subject. */
+  companionName: string;
+  companionTagline: string;
+  rehearsalFiles: ProductFileSpec[];
 }
 
-/** Every product this subject sells, in sales order. */
+// Companion straplines are the subject's own, taken from its marketing pack.
+const PRACTICAL_P3 = "Forty marks. Three questions. Know the rotation.";
+const PRACTICAL_P5_EXPERIMENT = "Fifteen marks. One experiment. Know the shortlist.";
+const PRACTICAL_P5_QUESTION = "Fifteen marks. One question. Know the shortlist.";
+const PRACTICAL_PLAIN = "The dedicated forecast for the practical paper.";
+const SBQ_SOURCE = "The source-skills forecast.";
+const SBQ_FIELDWORK = "The fieldwork forecast.";
+const METHOD_LAYER = "The method layer.";
+const FORMATS_LAYER = "The formats and workings layer.";
+
+// Derived from the actual 2026 product folders — see the per-subject packs.
+const SUBJECT_SPECS: Record<string, SubjectSpec> = {
+  "o-level::physics-pure": { companionName: "Paper 3 Practical Prediction", companionTagline: PRACTICAL_P3, rehearsalFiles: REHEARSAL_P1_P2 },
+  "o-level::chemistry-pure": { companionName: "Paper 3 Practical Prediction", companionTagline: PRACTICAL_P3, rehearsalFiles: REHEARSAL_P1_P2 },
+  "o-level::biology-pure": { companionName: "Paper 3 Practical Prediction", companionTagline: PRACTICAL_P3, rehearsalFiles: REHEARSAL_P1_P2 },
+  "o-level::physics-science": { companionName: "Paper 5 Practical Prediction", companionTagline: PRACTICAL_P5_EXPERIMENT, rehearsalFiles: REHEARSAL_P1_P2 },
+  "o-level::chemistry-science": { companionName: "Paper 5 Practical Prediction", companionTagline: PRACTICAL_P5_QUESTION, rehearsalFiles: REHEARSAL_P1_P3 },
+  "o-level::biology-science": { companionName: "Practical Prediction", companionTagline: PRACTICAL_PLAIN, rehearsalFiles: REHEARSAL_P1_P2 },
+  "o-level::geography-pure": { companionName: "SBQ & Skills Prediction", companionTagline: SBQ_FIELDWORK, rehearsalFiles: REHEARSAL_P1_P2 },
+  "o-level::geography-elective": { companionName: "SBQ & Skills Prediction", companionTagline: SBQ_FIELDWORK, rehearsalFiles: REHEARSAL_SINGLE },
+  "o-level::history-pure": { companionName: "SBQ Skills Prediction", companionTagline: SBQ_SOURCE, rehearsalFiles: REHEARSAL_P1_P2 },
+  "o-level::history-elective": { companionName: "SBQ Skills Prediction", companionTagline: SBQ_SOURCE, rehearsalFiles: REHEARSAL_SINGLE },
+  "o-level::social-studies": { companionName: "SBQ Skills Prediction", companionTagline: SBQ_SOURCE, rehearsalFiles: REHEARSAL_SINGLE },
+  "o-level::e-math": { companionName: "Formula & Method Playbook", companionTagline: METHOD_LAYER, rehearsalFiles: REHEARSAL_P1_P2 },
+  "o-level::a-math": { companionName: "Formula & Method Playbook", companionTagline: METHOD_LAYER, rehearsalFiles: REHEARSAL_P1_P2 },
+  "o-level::principles-of-accounts": { companionName: "Formats & Workings Playbook", companionTagline: FORMATS_LAYER, rehearsalFiles: REHEARSAL_P1_P2 },
+};
+
+// N(A)-Level packs aren't wired yet; fall back to a sensible companion by
+// family so those pages still sell a complete four-product set.
+const COMPANION_BY_FAMILY: Record<TopicFamily, { name: string; tagline: string }> = {
+  physics: { name: "Practical Prediction", tagline: PRACTICAL_PLAIN },
+  chemistry: { name: "Practical Prediction", tagline: PRACTICAL_PLAIN },
+  biology: { name: "Practical Prediction", tagline: PRACTICAL_PLAIN },
+  fnn: { name: "Practical Prediction", tagline: PRACTICAL_PLAIN },
+  geography: { name: "SBQ & Skills Prediction", tagline: SBQ_FIELDWORK },
+  history: { name: "SBQ Skills Prediction", tagline: SBQ_SOURCE },
+  "social-studies": { name: "SBQ Skills Prediction", tagline: SBQ_SOURCE },
+  emath: { name: "Formula & Method Playbook", tagline: METHOD_LAYER },
+  amath: { name: "Formula & Method Playbook", tagline: METHOD_LAYER },
+  poa: { name: "Formats & Workings Playbook", tagline: FORMATS_LAYER },
+};
+
+export function subjectSpec(subject: Subject): SubjectSpec {
+  const declared = SUBJECT_SPECS[`${subject.level}::${subject.slug}`];
+  if (declared) return declared;
+  const fallback = COMPANION_BY_FAMILY[subject.family];
+  return {
+    companionName: fallback.name,
+    companionTagline: fallback.tagline,
+    rehearsalFiles: REHEARSAL_P1_P2,
+  };
+}
+
+/**
+ * Every product this subject sells, in sales order. Today that's all four for
+ * every subject; the parameter stays so a subject can drop one later without
+ * touching call sites.
+ */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function productsForSubject(subject: Subject): ProductKey[] {
-  return PRODUCT_ORDER.filter((key) => key !== "paper3" || hasPaper3(subject));
+  return PRODUCT_ORDER;
+}
+
+/** The PDFs a product ships for this subject. */
+export function productFilesFor(subject: Subject, key: ProductKey): ProductFileSpec[] {
+  if (key === "rehearsal") return subjectSpec(subject).rehearsalFiles;
+  return [{ key: "main", label: productNameFor(subject, key) }];
+}
+
+export function productNameFor(subject: Subject, key: ProductKey): string {
+  return key === "companion" ? subjectSpec(subject).companionName : PRODUCTS[key].name;
+}
+
+export function productTaglineFor(subject: Subject, key: ProductKey): string {
+  return key === "companion"
+    ? subjectSpec(subject).companionTagline
+    : PRODUCTS[key].tagline;
 }
 
 /** Products a tier unlocks for a subject with no practical paper. */
@@ -174,12 +260,12 @@ export interface LevelPricing {
 
 export const PRICING: Record<Level, LevelPricing> = {
   "o-level": {
-    alacarte: { forecast: 24, paper3: 24, vault: 34, rehearsal: 34 },
+    alacarte: { forecast: 24, companion: 24, vault: 34, rehearsal: 34 },
     tiers: { essential: 24, strategic: 48, master: 68 },
     earlyBird: { essential: 19, master: 58 },
   },
   "na-level": {
-    alacarte: { forecast: 19, paper3: 19, vault: 27, rehearsal: 27 },
+    alacarte: { forecast: 19, companion: 19, vault: 27, rehearsal: 27 },
     tiers: { essential: 19, strategic: 38, master: 54 },
     earlyBird: { essential: 15, master: 46 },
   },

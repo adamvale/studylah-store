@@ -2,7 +2,9 @@ import Link from "next/link";
 import {
   LEVELS,
   PRODUCTS,
-  PRODUCT_FILES,
+  productFilesFor,
+  productNameFor,
+  productTaglineFor,
   productsForSubject,
   sgd,
   type Subject,
@@ -117,7 +119,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
           {products.map((key) => {
             const product = PRODUCTS[key];
             const pc = copy?.products[key];
-            const fileCount = PRODUCT_FILES[key].length;
+            const fileCount = productFilesFor(subject, key).length;
             return (
               <div
                 key={key}
@@ -130,10 +132,10 @@ export async function SubjectView({ subject }: { subject: Subject }) {
                       {fileCount > 1 && ` · ${fileCount} PDFs`}
                     </p>
                     <h2 className="mt-0.5 font-display text-lg font-bold text-ink">
-                      {product.name}
+                      {productNameFor(subject, key)}
                     </h2>
                     <p className="text-sm font-medium text-trust">
-                      {product.tagline}
+                      {productTaglineFor(subject, key)}
                     </p>
                   </div>
                   <p className="shrink-0 font-mono text-lg font-medium text-trust">

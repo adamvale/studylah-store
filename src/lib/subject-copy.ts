@@ -87,7 +87,7 @@ const PHYSICS_PURE_6091: SubjectCopy = {
       crossSell:
         "Pairs with the Sure Questions Vault: every VERY HIGH call in here has original practice questions in there.",
     },
-    paper3: {
+    companion: {
       blurb:
         "Paper 3 is 20% of the grade in 1 h 50, sat first — and the most predictable paper on the timetable. This companion maps ten years of experiment rotation, ranks the 2026 slots, and drills the marking grammar through three original experiment briefs with model full-credit graph exhibits.",
       bullets: [

@@ -49,10 +49,10 @@ const PRODUCT_BODY: Record<ProductKey, string[]> = {
     "probability analysis of your upcoming paper, with revision priorities",
     "for your final 14 days.",
   ],
-  paper3: [
-    "This placeholder stands in for the Paper 3 Practical Prediction: the",
-    "ten-year experiment rotation, the ranked 2026 slots, and original",
-    "experiment briefs with full-credit graph exhibits.",
+  companion: [
+    "This placeholder stands in for this subject's companion prediction: a",
+    "dedicated forecast for the paper or skill strand that decides the most",
+    "marks, built from the same ten-year, question-level model.",
   ],
   vault: [
     "This placeholder stands in for the Sure Questions Vault: original",

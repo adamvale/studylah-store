@@ -2,9 +2,10 @@ import {
   LEVELS,
   PRODUCTS,
   PRODUCT_ORDER,
-  PRODUCT_FILES,
   TIER_NAMES,
   TIER_ORDER,
+  productFilesFor,
+  productNameFor,
   productsForSubject,
   subjectsForLevel,
   type Level,
@@ -208,11 +209,11 @@ export default async function AdminProductsPage({
                         if (!product) return null;
                         // Spec-driven, so a legacy file kept alive by an old
                         // order never shows up as an upload slot.
-                        const specs = PRODUCT_FILES[key];
+                        const specs = productFilesFor(subject, key);
                         return (
                           <div key={key}>
                             <p className="mb-1 text-xs font-medium text-ink">
-                              {PRODUCTS[key].name}
+                              {productNameFor(subject, key)}
                               {specs.length > 1 && ` · ${specs.length} PDFs`}
                             </p>
                             <div className="space-y-1.5">

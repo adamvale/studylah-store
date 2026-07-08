@@ -8,8 +8,8 @@ import path from "path";
 import { prisma } from "../src/lib/db";
 import {
   LEVELS,
-  PRODUCT_FILES,
   SUBJECTS,
+  productFilesFor,
   productsForSubject,
 } from "../src/lib/catalogue";
 import { topForecast } from "../src/lib/topics";
@@ -41,7 +41,7 @@ async function seedCatalogue() {
         update: {},
       });
 
-      const specs = PRODUCT_FILES[key];
+      const specs = productFilesFor(subject, key);
       for (const [index, spec] of specs.entries()) {
         // "main" keeps the historical bare filename so migrated download tokens
         // keep resolving; multi-part products get a suffix.
@@ -98,6 +98,19 @@ async function seedCatalogue() {
           await prisma.productFile.delete({ where: { id: file.id } });
         }
       }
+    }
+
+    // Drop products no longer in the catalogue (e.g. the retired `paper3` key,
+    // now the generic `companion`). Never remove one a past order references.
+    const validKeys = productsForSubject(subject);
+    const staleProducts = await prisma.product.findMany({
+      where: { subjectId: subjectRow.id, key: { notIn: validKeys } },
+      include: { _count: { select: { orderItems: true } } },
+    });
+    for (const product of staleProducts) {
+      if (product._count.orderItems > 0) continue;
+      await prisma.productFile.deleteMany({ where: { productId: product.id } });
+      await prisma.product.delete({ where: { id: product.id } });
     }
   }
   return pdfsGenerated;
