@@ -17,12 +17,32 @@ import { type CartItem } from "@/lib/pricing";
 
 type SelectionKey = `${Level}::${string}`;
 
-export function BundleBuilder() {
+export function BundleBuilder({
+  hide = [],
+  stacked = false,
+}: {
+  // Subjects to leave out, as `${level}::${slug}` (e.g. already-owned ones).
+  hide?: string[];
+  // Single-column layout for embedding in a narrow container.
+  stacked?: boolean;
+} = {}) {
   const [selected, setSelected] = useState<Set<SelectionKey>>(new Set());
   const [limitHit, setLimitHit] = useState(false);
   const { addItem } = useCart();
   const router = useRouter();
   const pricing = usePricing();
+
+  const hidden = useMemo(() => new Set(hide), [hide]);
+  const levels = useMemo(
+    () =>
+      PUBLISHED_LEVELS.map((level) => ({
+        level,
+        subjects: SUBJECTS.filter(
+          (s) => s.level === level && !hidden.has(`${level}::${s.slug}`)
+        ),
+      })).filter((g) => g.subjects.length > 0),
+    [hidden]
+  );
 
   const items: CartItem[] = useMemo(
     () =>
@@ -70,16 +90,24 @@ export function BundleBuilder() {
             ? "All-In applied — add your 6th and it's effectively free."
             : "All-In applied — every subject covered, at the lowest price per subject.";
 
+  if (levels.length === 0) {
+    return (
+      <p className="mt-4 rounded-2xl border border-hairline bg-surface p-5 text-sm text-body">
+        You already own every published subject — nice work.
+      </p>
+    );
+  }
+
   return (
-    <div className="mt-10 grid gap-8 lg:grid-cols-3">
-      <div className="space-y-8 lg:col-span-2">
-        {PUBLISHED_LEVELS.map((level) => (
+    <div className={stacked ? "mt-4 space-y-6" : "mt-10 grid gap-8 lg:grid-cols-3"}>
+      <div className={stacked ? "space-y-6" : "space-y-8 lg:col-span-2"}>
+        {levels.map(({ level, subjects }) => (
           <section key={level} aria-labelledby={`bundle-${level}`}>
-            <h2 id={`bundle-${level}`} className="font-display text-xl font-bold text-ink">
+            <h3 id={`bundle-${level}`} className="font-display text-base font-bold text-ink">
               {LEVELS[level].name}
-            </h2>
+            </h3>
             <div className="mt-3 flex flex-wrap gap-2">
-              {SUBJECTS.filter((s) => s.level === level).map((subject) => {
+              {subjects.map((subject) => {
                 const key: SelectionKey = `${level}::${subject.slug}`;
                 const active = selected.has(key);
                 return (
@@ -109,7 +137,10 @@ export function BundleBuilder() {
         )}
       </div>
 
-      <aside aria-label="Bundle summary" className="lg:sticky lg:top-20 lg:self-start">
+      <aside
+        aria-label="Bundle summary"
+        className={stacked ? "" : "lg:sticky lg:top-20 lg:self-start"}
+      >
         <div className="rounded-2xl border border-hairline bg-surface p-5">
           <p className="font-display text-lg font-bold text-ink">Your bundle</p>
           <p className="mt-1 text-sm text-body">{stepMessage}</p>

@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
-import { LEVELS, PUBLISHED_LEVELS, subjectsForLevel } from "@/lib/catalogue";
+import { PUBLISHED_LEVELS, subjectsForLevel } from "@/lib/catalogue";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { BundleBuilder } from "@/components/bundle-builder";
 
 export const metadata: Metadata = { title: "Your account" };
 
@@ -15,13 +16,34 @@ type ItemRow = {
   levelName: string;
   tier: string;
   fileLabel: string;
+  product: { subject: { level: string; slug: string } };
   downloadEvents: { at: Date }[];
 };
+
+const sgd = (cents: number) => `S$${(cents / 100).toFixed(2)}`;
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString("en-SG", { day: "numeric", month: "short", year: "numeric" });
+
+// One order groups by subject (each a dropdown for multi-subject orders), and
+// within a subject by product (a subject's Master pack ships several products).
+function groupBySubject(items: ItemRow[]) {
+  const groups = new Map<
+    string,
+    { key: string; subjectName: string; levelName: string; items: ItemRow[] }
+  >();
+  for (const item of items) {
+    const key = `${item.product.subject.level}/${item.product.subject.slug}`;
+    const existing = groups.get(key);
+    if (existing) existing.items.push(item);
+    else groups.set(key, { key, subjectName: item.subjectName, levelName: item.levelName, items: [item] });
+  }
+  return [...groups.values()];
+}
 
 function groupByProduct(items: ItemRow[]) {
   const groups = new Map<
     string,
-    { key: string; subjectName: string; productName: string; levelName: string; tier: string; items: ItemRow[] }
+    { key: string; productName: string; tier: string; items: ItemRow[] }
   >();
   for (const item of items) {
     const existing = groups.get(item.productId);
@@ -29,9 +51,7 @@ function groupByProduct(items: ItemRow[]) {
     else
       groups.set(item.productId, {
         key: item.productId,
-        subjectName: item.subjectName,
         productName: item.productName,
-        levelName: item.levelName,
         tier: item.tier,
         items: [item],
       });
@@ -39,9 +59,49 @@ function groupByProduct(items: ItemRow[]) {
   return [...groups.values()];
 }
 
-const sgd = (cents: number) => `S$${(cents / 100).toFixed(2)}`;
-const fmtDate = (d: Date) =>
-  d.toLocaleDateString("en-SG", { day: "numeric", month: "short", year: "numeric" });
+function FileRow({ item, refunded }: { item: ItemRow; refunded: boolean }) {
+  const last = item.downloadEvents[0]?.at;
+  return (
+    <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-hairline bg-night px-4 py-3">
+      <div>
+        <p className="text-sm text-body">{item.fileLabel}</p>
+        <p className="mt-0.5 text-xs text-body/70">
+          {last ? `Last downloaded ${fmtDate(last)}` : "Not downloaded yet"}
+        </p>
+      </div>
+      {refunded ? (
+        <span className="text-xs text-body">Unavailable</span>
+      ) : (
+        <a
+          href={`/api/account/download/${item.id}`}
+          className="rounded-lg bg-signal px-4 py-2 text-sm font-medium text-white hover:bg-signal-deep"
+        >
+          Download
+        </a>
+      )}
+    </div>
+  );
+}
+
+// A subject's products + file download rows — shown inline (single-subject
+// order) or inside a dropdown (multi-subject order).
+function SubjectFiles({ items, refunded }: { items: ItemRow[]; refunded: boolean }) {
+  return (
+    <div className="space-y-4">
+      {groupByProduct(items).map((group) => (
+        <div key={group.key}>
+          <p className="text-sm font-medium text-ink">{group.productName}</p>
+          <p className="text-xs text-body">{group.tier} tier</p>
+          <div className="mt-2 space-y-2">
+            {group.items.map((item) => (
+              <FileRow key={item.id} item={item} refunded={refunded} />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 const BANNER: Record<string, { tone: "ok" | "bad"; msg: string }> = {
   "sent=1": { tone: "ok", msg: "Receipt email sent." },
@@ -95,18 +155,11 @@ export default async function AccountPage({
       owned.add(`${item.product.subject.level}/${item.product.subject.slug}`);
     }
   }
-  const unownedByLevel = PUBLISHED_LEVELS.map((level) => ({
-    level,
-    subjects: subjectsForLevel(level).filter((s) => !owned.has(`${level}/${s.slug}`)),
-  })).filter((g) => g.subjects.length > 0);
-
-  const ownedCount = owned.size;
-  const bundleNudge =
-    ownedCount >= 1 && ownedCount < 3
-      ? `You own ${ownedCount} subject${ownedCount === 1 ? "" : "s"}. Add ${3 - ownedCount} more and Mega-Bundle pricing applies — every subject gets cheaper.`
-      : ownedCount >= 3 && ownedCount < 5
-        ? `You own ${ownedCount} subjects. Add ${5 - ownedCount} more for All-In — the lowest price per subject there is.`
-        : null;
+  // What to leave out of the bundle builder, in its `${level}::${slug}` format.
+  const hideKeys = [...owned].map((k) => k.replace("/", "::"));
+  const hasUnowned = PUBLISHED_LEVELS.some((level) =>
+    subjectsForLevel(level).some((s) => !owned.has(`${level}/${s.slug}`))
+  );
 
   const params = await searchParams;
   const banner =
@@ -161,6 +214,8 @@ export default async function AccountPage({
         <div className="mt-8 space-y-5">
           {customer.orders.map((order) => {
             const refunded = order.status === "refunded";
+            const subjects = groupBySubject(order.items);
+            const multi = subjects.length > 1;
             return (
               <section key={order.id} className="rounded-2xl border border-hairline bg-surface p-5">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
@@ -177,47 +232,39 @@ export default async function AccountPage({
                   </p>
                 </div>
 
-                <div className="mt-4 space-y-4 border-t border-hairline pt-4">
-                  {groupByProduct(order.items).map((group) => (
-                    <div key={group.key}>
-                      <p className="text-sm font-medium text-ink">
-                        {group.subjectName} — {group.productName}
-                      </p>
-                      <p className="text-xs text-body">
-                        {group.levelName} · {group.tier} tier
-                      </p>
-                      <div className="mt-2 space-y-2">
-                        {group.items.map((item) => {
-                          const last = item.downloadEvents[0]?.at;
-                          return (
-                            <div
-                              key={item.id}
-                              className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-hairline bg-night px-4 py-3"
+                <div className="mt-4 space-y-3 border-t border-hairline pt-4">
+                  {subjects.map((subj) =>
+                    multi ? (
+                      <details key={subj.key} className="group rounded-xl border border-hairline">
+                        <summary className="flex cursor-pointer items-center justify-between gap-3 px-4 py-3">
+                          <span>
+                            <span className="font-medium text-ink">{subj.subjectName}</span>
+                            <span className="ml-2 text-xs text-body">{subj.levelName}</span>
+                          </span>
+                          <span className="flex items-center gap-3 text-xs text-body">
+                            {subj.items.length} file{subj.items.length === 1 ? "" : "s"}
+                            <span
+                              aria-hidden="true"
+                              className="transition-transform group-open:rotate-180"
                             >
-                              <div>
-                                <p className="text-sm text-body">{item.fileLabel}</p>
-                                <p className="mt-0.5 text-xs text-body/70">
-                                  {last
-                                    ? `Last downloaded ${fmtDate(last)}`
-                                    : "Not downloaded yet"}
-                                </p>
-                              </div>
-                              {refunded ? (
-                                <span className="text-xs text-body">Unavailable</span>
-                              ) : (
-                                <a
-                                  href={`/api/account/download/${item.id}`}
-                                  className="rounded-lg bg-signal px-4 py-2 text-sm font-medium text-white hover:bg-signal-deep"
-                                >
-                                  Download
-                                </a>
-                              )}
-                            </div>
-                          );
-                        })}
+                              ▾
+                            </span>
+                          </span>
+                        </summary>
+                        <div className="border-t border-hairline px-4 py-4">
+                          <SubjectFiles items={subj.items} refunded={refunded} />
+                        </div>
+                      </details>
+                    ) : (
+                      <div key={subj.key}>
+                        <p className="mb-3 text-sm font-medium text-ink">
+                          {subj.subjectName}{" "}
+                          <span className="text-xs font-normal text-body">{subj.levelName}</span>
+                        </p>
+                        <SubjectFiles items={subj.items} refunded={refunded} />
                       </div>
-                    </div>
-                  ))}
+                    )
+                  )}
                 </div>
 
                 {!refunded && (
@@ -238,35 +285,15 @@ export default async function AccountPage({
         </div>
       )}
 
-      {/* Complete your set + bundle nudge */}
-      {unownedByLevel.length > 0 && (
+      {/* Complete your set — pick unowned subjects with live bundle pricing */}
+      {hasUnowned && (
         <section className="mt-10 rounded-2xl border border-hairline bg-surface p-5">
           <h2 className="font-display text-lg font-bold text-ink">Complete your set</h2>
-          {bundleNudge && <p className="mt-1 text-sm text-body">{bundleNudge}</p>}
-          <div className="mt-4 space-y-4">
-            {unownedByLevel.map((group) => (
-              <div key={group.level}>
-                <p className="text-xs font-medium text-body">{LEVELS[group.level].name}</p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {group.subjects.map((s) => (
-                    <Link
-                      key={s.slug}
-                      href={`/${group.level}/${s.slug}`}
-                      className="rounded-full border border-hairline bg-night px-3.5 py-1.5 text-sm font-medium text-cloud hover:border-accent"
-                    >
-                      {s.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-          <Link
-            href="/bundles"
-            className="mt-5 inline-block rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
-          >
-            Build a bundle &amp; save
-          </Link>
+          <p className="mt-1 text-sm text-body">
+            Add the subjects you don&apos;t own yet — pick 3 or more and
+            bundle pricing applies automatically.
+          </p>
+          <BundleBuilder hide={hideKeys} stacked />
         </section>
       )}
 
