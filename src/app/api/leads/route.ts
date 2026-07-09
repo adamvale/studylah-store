@@ -75,7 +75,7 @@ export async function POST(request: Request) {
           <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 16px;">
             The five topics our model rates most likely for ${subject.name}
             (${LEVELS[level].name}), 2026 sitting. Judge us on it — and when
-            you're ready for every topic with probabilities, worked questions,
+            you're ready for every topic with confidence tiers, worked questions,
             and a timed rehearsal, the full pack is at studylah.education.
           </p>
           <p style="font-size:12px;color:#3d4e63;margin:0;">

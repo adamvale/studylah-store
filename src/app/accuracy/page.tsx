@@ -1,119 +1,143 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { averageHitRate, scorecardFor } from "@/lib/accuracy";
-import { LEVELS, PUBLISHED_LEVELS, subjectsForLevel } from "@/lib/catalogue";
-import { heatText } from "@/components/heat";
+import { getSubject, LEVELS, type Level } from "@/lib/catalogue";
+import { SUBJECT_MARKS, highOrAbove } from "@/lib/accuracy-data";
+import { TierPill } from "@/components/heat";
 
 export const metadata: Metadata = {
   title: "Accuracy scorecard",
   description:
-    "What StudyLah forecast versus what actually appeared, per subject, published after every sitting — hits and misses included.",
+    "The five highest-mark topics in each real O-Level and N(A)-Level paper — and the confidence tier StudyLah forecast for each. Hits and misses, per subject.",
 };
 
 export default function AccuracyPage() {
+  const entries = Object.entries(SUBJECT_MARKS)
+    .map(([key, data]) => {
+      const [level, slug] = key.split("/") as [Level, string];
+      return { key, level, slug, subject: getSubject(level, slug), data };
+    })
+    .filter((e) => e.subject);
+
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12">
+    <div className="mx-auto max-w-5xl px-4 py-12">
       <h1 className="font-display text-4xl font-bold text-ink">
         Accuracy scorecard
       </h1>
-      <p className="mt-2 max-w-2xl text-body">
-        After every sitting, we publish what we forecast against what actually
-        appeared — per subject, hits and misses included. A forecast you
-        can&apos;t check is just marketing.
+      <p className="mt-3 max-w-2xl text-body">
+        After every sitting we line up the five biggest-mark topics on the paper
+        with the confidence tier we forecast for each. Hits and misses, in the
+        open. A forecast you can&apos;t check is just marketing.
       </p>
 
-      {PUBLISHED_LEVELS.map((level) => (
-        <section key={level} aria-labelledby={`accuracy-${level}`} className="mt-12">
-          <h2 id={`accuracy-${level}`} className="font-display text-2xl font-bold text-ink">
-            {LEVELS[level].name}
-          </h2>
-          <p className="mt-1 text-sm text-body">
-            Average hit rate across subjects, 2025: {averageHitRate(level)}%
-          </p>
-          <div className="mt-4 space-y-3">
-            {subjectsForLevel(level).map((subject) => {
-              const years = scorecardFor(subject);
-              return (
-                <details
-                  key={subject.slug}
-                  className="group rounded-2xl border border-hairline bg-surface"
-                >
-                  <summary className="flex cursor-pointer items-center justify-between gap-3 px-5 py-4">
-                    <span className="font-display font-bold text-ink">
-                      {subject.name}
-                    </span>
-                    <span className="flex items-center gap-4">
-                      {years.map((y) => (
-                        <span key={y.year} className="text-sm text-body">
-                          {y.year}:{" "}
-                          <span className={`font-mono font-medium ${heatText(y.hitRate)}`}>
-                            {y.hitRate}%
-                          </span>
-                        </span>
-                      ))}
+      <div className="mt-5 flex flex-wrap items-center gap-3 text-xs text-body">
+        <span className="font-medium text-ink">Confidence tiers:</span>
+        <TierPill tier="very-high" />
+        <TierPill tier="high" />
+        <TierPill tier="moderate" />
+        <TierPill tier="watch" />
+      </div>
+
+      <div className="mt-10 space-y-3">
+        {entries.map(({ key, level, subject, data }) => (
+          <details
+            key={key}
+            className="group rounded-2xl border border-hairline bg-surface"
+          >
+            <summary className="flex cursor-pointer items-center justify-between gap-3 px-5 py-4">
+              <span className="font-display font-bold text-ink">
+                {subject!.name}
+                <span className="ml-2 font-mono text-xs font-normal text-body">
+                  {LEVELS[level].shortName}
+                </span>
+              </span>
+              <span className="flex items-center gap-4">
+                {data.years.map((y) => {
+                  const pct = Math.round(
+                    (highOrAbove(y.topics) / y.topics.length) * 100
+                  );
+                  return (
+                    <span key={y.year} className="text-sm text-body">
+                      {y.year}:{" "}
                       <span
-                        aria-hidden="true"
-                        className="text-body transition-transform group-open:rotate-180"
+                        className={`font-mono font-medium ${
+                          pct >= 80 ? "text-accent-deep" : "text-trust"
+                        }`}
                       >
-                        ▾
+                        {pct}%
                       </span>
                     </span>
-                  </summary>
-                  <div className="grid gap-6 border-t border-hairline px-5 py-4 md:grid-cols-2">
-                    {years.map((y) => (
-                      <div key={y.year}>
-                        <p className="font-mono text-sm font-medium text-trust">
-                          {y.year} sitting · top-{y.rows.length} forecast
-                        </p>
-                        <table className="mt-2 w-full text-sm">
-                          <thead>
-                            <tr className="text-left text-xs text-body">
-                              <th scope="col" className="py-1.5 pr-2 font-medium">
-                                Forecast topic
-                              </th>
-                              <th scope="col" className="py-1.5 pr-2 font-medium">
-                                We said
-                              </th>
-                              <th scope="col" className="py-1.5 font-medium">
-                                Appeared
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {y.rows.map((row) => (
-                              <tr key={row.topic} className="border-t border-hairline">
-                                <td className="py-1.5 pr-2 text-body">{row.topic}</td>
-                                <td className={`py-1.5 pr-2 font-mono ${heatText(row.forecastProbability)}`}>
-                                  {row.forecastProbability}%
-                                </td>
-                                <td className="py-1.5">
-                                  {row.appeared ? (
-                                    <span className="font-medium text-guarantee">Yes</span>
-                                  ) : (
-                                    <span className="font-medium text-heat-5">No</span>
-                                  )}
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    ))}
-                  </div>
-                </details>
-              );
-            })}
-          </div>
-        </section>
-      ))}
+                  );
+                })}
+                <span
+                  aria-hidden="true"
+                  className="text-body transition-transform group-open:rotate-180"
+                >
+                  ▾
+                </span>
+              </span>
+            </summary>
 
-      <p className="mt-10 max-w-2xl text-sm text-body">
-        Missed forecasts are covered by the{" "}
+            <div className="grid gap-6 border-t border-hairline px-5 py-4 md:grid-cols-2">
+              {data.years.map((y) => {
+                const hp = highOrAbove(y.topics);
+                return (
+                  <div key={y.year}>
+                    <p className="font-mono text-sm font-medium text-trust">
+                      {y.year} sitting · top 5 by mark allocation
+                    </p>
+                    <table className="mt-2 w-full text-sm">
+                      <thead>
+                        <tr className="text-left text-xs text-body">
+                          <th scope="col" className="py-1.5 pr-3 font-medium">
+                            Top 5 Mark Allocation
+                          </th>
+                          <th scope="col" className="py-1.5 pr-2 font-medium">
+                            Topic
+                          </th>
+                          <th
+                            scope="col"
+                            className="py-1.5 text-right font-medium"
+                          >
+                            We forecast
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {y.topics.map((t, i) => (
+                          <tr key={t.topic} className="border-t border-hairline">
+                            <td className="whitespace-nowrap py-2 pr-3 font-mono text-sm font-medium text-ink">
+                              No. {i + 1}
+                            </td>
+                            <td className="py-2 pr-2 text-body">{t.topic}</td>
+                            <td className="py-2 text-right">
+                              <TierPill tier={t.tier} />
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                    <p className="mt-3 border-t border-hairline pt-3 text-xs text-body">
+                      We forecast{" "}
+                      <span className="font-semibold text-ink">{hp} of 5</span>{" "}
+                      High or above.
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <p className="mt-12 max-w-2xl text-sm text-body">
+        More subjects publish here as each 2025 and 2024 paper is scored.
+        Forecasts are probabilities, not certainties — where a high-mark topic
+        was tiered only Moderate or Watch, it shows above, and it&apos;s covered
+        by the{" "}
         <Link href="/faq" className="font-medium text-trust underline">
           money-back guarantee
         </Link>
-        . Forecasts are probabilities, not certainties — that&apos;s exactly why
-        this page exists.
+        .
       </p>
     </div>
   );

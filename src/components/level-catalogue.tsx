@@ -7,7 +7,7 @@ import {
 } from "@/lib/catalogue";
 import { getPricing } from "@/lib/server/pricing-store";
 import { topForecast } from "@/lib/topics";
-import { heatText } from "./heat";
+import { forecastTier, TierPill } from "./heat";
 
 export async function LevelCatalogue({ level }: { level: Level }) {
   const subjects = subjectsForLevel(level);
@@ -39,11 +39,9 @@ export async function LevelCatalogue({ level }: { level: Level }) {
               <h2 className="font-display text-lg font-bold text-trust group-hover:underline">
                 {subject.name}
               </h2>
-              <p className="mt-2 text-sm text-body">
+              <p className="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-body">
                 Hottest topic: {hottest.topic}{" "}
-                <span className={`font-mono font-medium ${heatText(hottest.probability)}`}>
-                  {hottest.probability}%
-                </span>
+                <TierPill tier={forecastTier(hottest.probability)} />
               </p>
               <p className="mt-3 font-mono text-sm text-ink">
                 Master {sgd(masterPrice)}{" "}

@@ -38,6 +38,11 @@
   --color-mint: #3ddc84;        /* "the StudyLah way" */
   --color-coral: #ff6b6b;       /* "the old way" */
   --color-rose: #ec4a6d;        /* playstation circle */
+  /* Confidence-tier pills — exact colours lifted from the Forecast PDFs. */
+  --color-tier-veryhigh: #db222a;
+  --color-tier-high: #8224e3;
+  --color-tier-moderate: #dd9933;
+  --color-tier-watch: #64748b;
   --font-display: var(--font-archivo);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-inter);

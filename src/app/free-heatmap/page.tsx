@@ -56,7 +56,7 @@ export default function FreeHeatmapPage() {
             ))}
           </div>
           <p className="mt-5 border-t border-hairline pt-3 font-mono text-xs text-body">
-            Your PDF shows all five probabilities, unmasked
+            Your PDF shows all five tiers, unmasked
           </p>
         </div>
       </div>

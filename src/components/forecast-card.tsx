@@ -1,8 +1,8 @@
 import { topForecast } from "@/lib/topics";
 import { HeatBar } from "./heat";
 
-// The hero visual: a sample of the actual product — a topic-probability
-// forecast for one subject.
+// The hero visual: a sample of the actual product — a tiered topic forecast
+// for one subject (Very High / High / Moderate / Watch, as in the PDF).
 export function ForecastCard() {
   const rows = topForecast("chemistry", "o-level/chemistry-pure/hero");
   return (

@@ -387,7 +387,7 @@ const HOW_STEPS = [
   },
   {
     title: "Model",
-    body: "Topic cycles, mark weightings, and setter patterns become a probability for every topic in your syllabus.",
+    body: "Topic cycles, mark weightings, and setter patterns become a confidence tier for every topic in your syllabus.",
   },
   {
     title: "Publish",

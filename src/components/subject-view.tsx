@@ -85,7 +85,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
               ))}
             </div>
             <p className="mt-4 border-t border-hairline pt-3 font-mono text-xs text-body">
-              Full probabilities for every topic in the Forecast PDF
+              Every topic tiered — Very High to Watch — in the Forecast PDF
             </p>
           </div>
 
