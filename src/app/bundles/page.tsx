@@ -11,17 +11,18 @@ export const metadata: Metadata = {
 export default function BundlesPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
-      <h1 className="font-display text-4xl font-bold text-ink">
-        Build your bundle
+      <h1 className="font-display text-4xl font-black text-ink">
+        The more subjects, the less each one costs.
       </h1>
       <p className="mt-2 max-w-2xl text-body">
-        Every bundle is the Master tier — Forecast, Vault, and Rehearsal — for
-        each subject you pick. Three subjects unlock the{" "}
-        <strong className="font-medium text-ink">Mega-Bundle</strong> (S$168
-        for O-Level, save S$36). Five or six unlock{" "}
-        <strong className="font-medium text-ink">All-In</strong> (
-        {sgd(ALLIN_FLAT["o-level"])}
-        {" flat for O-Level — your 6th subject is effectively free). You're always charged the cheapest combination."}
+        Every bundle is the full Master pack — Forecast, Companion, Vault and
+        Rehearsal — for each subject you pick. Add{" "}
+        <strong className="font-medium text-ink">3 subjects</strong> and the
+        Mega-Bundle kicks in (S$168 for O-Level, save S$36). Add{" "}
+        <strong className="font-medium text-ink">5 or 6</strong> and All-In caps
+        the lot at {sgd(ALLIN_FLAT["o-level"])}{" "}
+        for O-Level — your 6th subject is effectively free. Pick your subjects
+        below; you&apos;re always charged the cheapest combination.
       </p>
       <BundleBuilder />
     </div>

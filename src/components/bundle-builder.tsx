@@ -59,16 +59,16 @@ export function BundleBuilder() {
   const count = selected.size;
   const stepMessage =
     count === 0
-      ? "Pick your subjects — every bundle is the Master tier (all three PDFs)."
+      ? "Pick your subjects — each comes as the full Master pack: forecast, practice and a full rehearsal."
       : count < 3
-        ? `Add ${3 - count} more subject${3 - count === 1 ? "" : "s"} to unlock Mega-Bundle pricing.`
+        ? `Add ${3 - count} more subject${3 - count === 1 ? "" : "s"} to unlock Mega-Bundle pricing — you'll save on every one.`
         : count < 5
           ? count === 4
-            ? "Add your 5th subject to unlock All-In pricing."
-            : "Mega-Bundle pricing applied."
+            ? "One more subject unlocks All-In — the lowest price per subject there is."
+            : "Mega-Bundle applied. Add more subjects and the saving grows."
           : count === 5
-            ? "All-In applied — your 6th subject is included."
-            : "All-In applied — every subject covered.";
+            ? "All-In applied — add your 6th and it's effectively free."
+            : "All-In applied — every subject covered, at the lowest price per subject.";
 
   return (
     <div className="mt-10 grid gap-8 lg:grid-cols-3">
