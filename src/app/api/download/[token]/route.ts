@@ -67,6 +67,15 @@ export async function GET(
     orderRef: `No. ${orderItem.orderId}`,
   });
 
+  // Activity log — best-effort, never block the download on it.
+  try {
+    await prisma.downloadEvent.create({
+      data: { orderItemId: orderItem.id, via: "email" },
+    });
+  } catch (e) {
+    console.error("Download event log failed", e);
+  }
+
   // e.g. physics-pure-rehearsal-paper2-studylah.pdf
   const fileKey = orderItem.productFile.key;
   const suffix = fileKey === "main" ? "" : `-${fileKey}`;

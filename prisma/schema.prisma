@@ -96,8 +96,9 @@ model OrderItem {
   levelName     String
   productName   String
   fileLabel     String
-  tier          String
-  downloadToken DownloadToken?
+  tier           String
+  downloadToken  DownloadToken?
+  downloadEvents DownloadEvent[]
 }
 
 model DownloadToken {
@@ -107,6 +108,18 @@ model DownloadToken {
   expiresAt   DateTime
   maxUses     Int
   uses        Int       @default(0)
+}
+
+// One row per successful download, for the customer's activity history. `via`
+// records the path taken: "email" (a tokenised link) or "account" (signed-in).
+model DownloadEvent {
+  id          String    @id @default(cuid())
+  orderItem   OrderItem @relation(fields: [orderItemId], references: [id])
+  orderItemId String
+  at          DateTime  @default(now())
+  via         String
+
+  @@index([orderItemId])
 }
 
 model DiscountCode {

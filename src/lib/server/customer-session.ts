@@ -66,6 +66,51 @@ export function verifyLoginToken(token: string | undefined | null): string | nul
   return verifyToken("login", token);
 }
 
+// --- Change-email link (emailed to the NEW address to prove ownership) ---
+const CHANGE_EMAIL_TTL_MS = 30 * 60 * 1000; // 30 minutes
+
+export function signChangeEmailToken(customerId: string, newEmail: string): string {
+  const payload = `changeemail:${customerId}:${Buffer.from(newEmail).toString(
+    "base64url"
+  )}:${Date.now() + CHANGE_EMAIL_TTL_MS}`;
+  const body = Buffer.from(payload).toString("base64url");
+  const sig = createHmac("sha256", secret()).update(body).digest("base64url");
+  return `${body}.${sig}`;
+}
+
+export function verifyChangeEmailToken(
+  token: string | undefined | null
+): { customerId: string; newEmail: string } | null {
+  const key = secret();
+  if (!key || !token) return null;
+  const [body, sig] = token.split(".");
+  if (!body || !sig) return null;
+  const expected = createHmac("sha256", key).update(body).digest("base64url");
+  if (!timingEqual(sig, expected)) return null;
+  let decoded: string;
+  try {
+    decoded = Buffer.from(body, "base64url").toString();
+  } catch {
+    return null;
+  }
+  const [kind, customerId, emailB64, expStr] = decoded.split(":");
+  const exp = Number(expStr);
+  if (
+    kind !== "changeemail" ||
+    !customerId ||
+    !emailB64 ||
+    !Number.isFinite(exp) ||
+    exp < Date.now()
+  ) {
+    return null;
+  }
+  try {
+    return { customerId, newEmail: Buffer.from(emailB64, "base64url").toString() };
+  } catch {
+    return null;
+  }
+}
+
 // --- Session cookie ---
 export function signSessionToken(customerId: string): string {
   return signToken("session", customerId, SESSION_TTL_MS);

@@ -53,6 +53,15 @@ export async function GET(
     orderRef: `No. ${item.orderId}`,
   });
 
+  // Activity log — best-effort, never block the download on it.
+  try {
+    await prisma.downloadEvent.create({
+      data: { orderItemId: item.id, via: "account" },
+    });
+  } catch (e) {
+    console.error("Download event log failed", e);
+  }
+
   const fileKey = item.productFile.key;
   const suffix = fileKey === "main" ? "" : `-${fileKey}`;
   const filename = `${item.product.subject.slug}-${item.product.key}${suffix}-studylah.pdf`;
