@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { averageHitRate, scorecardFor } from "@/lib/accuracy";
 import { LEVELS, PUBLISHED_LEVELS, subjectsForLevel } from "@/lib/catalogue";
-import { PlaceholderBanner } from "@/components/disclaimer";
 import { heatText } from "@/components/heat";
 
 export const metadata: Metadata = {
@@ -22,9 +21,6 @@ export default function AccuracyPage() {
         appeared — per subject, hits and misses included. A forecast you
         can&apos;t check is just marketing.
       </p>
-      <div className="mt-6">
-        <PlaceholderBanner label="Placeholder data for design review — real scorecards publish after each sitting. FOR CONTENT REVIEW." />
-      </div>
 
       {PUBLISHED_LEVELS.map((level) => (
         <section key={level} aria-labelledby={`accuracy-${level}`} className="mt-12">
@@ -67,7 +63,7 @@ export default function AccuracyPage() {
                     {years.map((y) => (
                       <div key={y.year}>
                         <p className="font-mono text-sm font-medium text-trust">
-                          {y.year} sitting · top-5 forecast
+                          {y.year} sitting · top-{y.rows.length} forecast
                         </p>
                         <table className="mt-2 w-full text-sm">
                           <thead>

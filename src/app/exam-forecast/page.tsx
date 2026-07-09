@@ -259,8 +259,8 @@ export default async function ExamForecastPage() {
           See the full scorecard →
         </Link>
         <p className="mx-auto mt-6 max-w-md text-xs text-cloud/60">
-          *Placeholder figure for preview — the real scorecard publishes after
-          every sitting, hits and misses included.
+          *Measured against the 2025 papers after the sitting — every hit and
+          miss is in the full scorecard.
         </p>
       </section>
 

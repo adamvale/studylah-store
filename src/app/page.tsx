@@ -372,8 +372,8 @@ function TrustStrip() {
           </div>
         </div>
         <p className="mt-8 text-xs text-white/50">
-          *Placeholder figure for preview — the real scorecard publishes after
-          every sitting, hits and misses included.
+          *Measured against the 2025 papers after the sitting — every hit and
+          miss is in the full scorecard.
         </p>
       </div>
     </section>
