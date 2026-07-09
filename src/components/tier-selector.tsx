@@ -42,9 +42,14 @@ export function TierSelector({
 
   return (
     <section aria-labelledby="tier-heading">
-      <h2 id="tier-heading" className="font-display text-2xl font-bold text-ink">
+      <h2 id="tier-heading" className="font-display text-2xl font-black text-ink">
         Choose your tier
       </h2>
+      <p className="mt-1 max-w-2xl text-sm text-body">
+        Master is the full plan — the forecast, the practice and a full
+        rehearsal — at the biggest saving. Start smaller and add later if you
+        prefer.
+      </p>
       <fieldset className="mt-5">
         <legend className="sr-only">Tier for {subjectName}</legend>
         <div className="grid gap-4 md:grid-cols-3">
@@ -119,10 +124,13 @@ export function TierSelector({
         <button
           type="button"
           onClick={add}
-          className="rounded-lg bg-signal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-signal-deep"
+          className="rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
         >
-          Add {TIER_NAMES[tier]} to cart — {sgd(tierPrice(level, tier))}
+          Get {TIER_NAMES[tier]} — {sgd(tierPrice(level, tier))}
         </button>
+        <p className="text-xs text-body">
+          Instant PDF download · Money-back guarantee · Watermarked to you
+        </p>
         {added && (
           <p className="text-sm text-guarantee" role="status">
             <span className="font-medium">
