@@ -12,6 +12,7 @@ import {
 } from "@/lib/catalogue";
 import type { PricingTable } from "@/lib/pricing";
 import { isAdmin } from "@/lib/server/admin-auth";
+import { setMaintenance } from "@/lib/server/maintenance";
 import { savePricingTable, setEarlyBird } from "@/lib/server/pricing-store";
 
 const LEVELS: Level[] = ["o-level", "na-level"];
@@ -62,4 +63,11 @@ export async function setEarlyBirdAction(formData: FormData) {
   await setEarlyBird(active);
   revalidatePath("/", "layout");
   redirect("/admin/products?saved=earlybird");
+}
+
+export async function setMaintenanceAction(formData: FormData) {
+  if (!(await isAdmin())) redirect("/admin/login");
+  const active = formData.get("active") === "true";
+  setMaintenance(active);
+  redirect(`/admin/products?saved=maintenance-${active ? "on" : "off"}`);
 }

@@ -14,9 +14,14 @@ import { stat } from "node:fs/promises";
 import path from "node:path";
 import { prisma } from "@/lib/db";
 import { serverConfig } from "@/lib/server/config";
+import { isMaintenanceOn } from "@/lib/server/maintenance";
 import { getEarlyBird, getPricingTable } from "@/lib/server/pricing-store";
 import { PdfUpload, type StoredFile } from "@/components/admin/pdf-upload";
-import { savePricingAction, setEarlyBirdAction } from "./actions";
+import {
+  savePricingAction,
+  setEarlyBirdAction,
+  setMaintenanceAction,
+} from "./actions";
 
 export const dynamic = "force-dynamic";
 
@@ -73,6 +78,7 @@ export default async function AdminProductsPage({
 }) {
   const { saved, error } = await searchParams;
   const [table, earlyBird] = await Promise.all([getPricingTable(), getEarlyBird()]);
+  const maintenance = isMaintenanceOn();
 
   const productRows = await prisma.product.findMany({
     include: { subject: true, files: true },
@@ -111,7 +117,55 @@ export default async function AdminProductsPage({
             Every tier and à-la-carte price is required. Nothing was saved.
           </p>
         )}
+        {saved === "maintenance-on" && (
+          <p className="mt-3 rounded-lg bg-heat-5/10 px-4 py-2 text-sm text-heat-5">
+            Maintenance mode is ON — the public site now shows the maintenance
+            screen. You (logged in) still see the live site.
+          </p>
+        )}
+        {saved === "maintenance-off" && (
+          <p className="mt-3 rounded-lg bg-guarantee/10 px-4 py-2 text-sm text-guarantee">
+            Maintenance mode is off — the site is live again.
+          </p>
+        )}
       </div>
+
+      <section
+        className={`rounded-2xl border p-5 ${
+          maintenance ? "border-heat-5/40 bg-heat-5/5" : "border-trust/10 bg-white"
+        }`}
+      >
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h2 className="font-display text-lg font-bold text-ink">
+              Maintenance mode
+            </h2>
+            <p className="max-w-xl text-sm text-body">
+              When ON, every public page shows a &ldquo;we&apos;ll be right
+              back&rdquo; screen. Checkout is paused; existing customers&apos;
+              download links keep working; and you (while logged in) still see
+              the live site to preview changes. Currently{" "}
+              <strong className={maintenance ? "text-heat-5" : "text-ink"}>
+                {maintenance ? "ON" : "off"}
+              </strong>
+              .
+            </p>
+          </div>
+          <form action={setMaintenanceAction}>
+            <input type="hidden" name="active" value={maintenance ? "false" : "true"} />
+            <button
+              type="submit"
+              className={`rounded-lg px-4 py-2 text-sm font-medium text-white ${
+                maintenance
+                  ? "bg-guarantee hover:opacity-90"
+                  : "bg-heat-5 hover:opacity-90"
+              }`}
+            >
+              {maintenance ? "Turn OFF — go live" : "Turn ON maintenance"}
+            </button>
+          </form>
+        </div>
+      </section>
 
       <section className="rounded-2xl border border-trust/10 bg-white p-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
