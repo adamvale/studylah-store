@@ -130,7 +130,7 @@ export function CartView() {
           </Link>
           <Link
             href="/bundles"
-            className="rounded-lg border border-trust/25 bg-white px-5 py-3 text-sm font-medium text-trust hover:border-trust/50"
+            className="rounded-lg border border-hairline bg-surface px-5 py-3 text-sm font-medium text-trust hover:border-hairline"
           >
             Build a bundle
           </Link>
@@ -145,7 +145,7 @@ export function CartView() {
         {priced.lines.map(({ item, listPrice, bundle }) => (
           <div
             key={`${item.level}-${item.subjectSlug}`}
-            className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-trust/10 bg-white p-5"
+            className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-hairline bg-surface p-5"
           >
             <div className="min-w-0">
               <p className="font-display font-bold text-ink">
@@ -168,7 +168,7 @@ export function CartView() {
                   onChange={(e) =>
                     setTier(item.level, item.subjectSlug, e.target.value as Tier)
                   }
-                  className="rounded-lg border border-trust/20 bg-white px-2.5 py-1.5 text-sm"
+                  className="rounded-lg border border-hairline bg-surface px-2.5 py-1.5 text-sm"
                 >
                   {TIER_ORDER.map((t) => (
                     <option key={t} value={t}>
@@ -199,13 +199,13 @@ export function CartView() {
           return (
             <div
               key={nudge.id}
-              className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-signal/30 bg-signal/5 px-5 py-4"
+              className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-hairline bg-signal/5 px-5 py-4"
             >
               <p className="text-sm text-ink">{nudge.message}</p>
               {action?.type === "add-subject" && (
                 <Link
                   href="/bundles"
-                  className="shrink-0 rounded-lg border border-signal px-4 py-2 text-sm font-medium text-signal-deep hover:bg-signal/10"
+                  className="shrink-0 rounded-lg border border-signal px-4 py-2 text-sm font-medium text-teal hover:bg-signal/10"
                 >
                   Add a subject
                 </Link>
@@ -214,7 +214,7 @@ export function CartView() {
                 <button
                   type="button"
                   onClick={() => setTier(action.level, action.subjectSlug, action.toTier)}
-                  className="shrink-0 rounded-lg border border-signal px-4 py-2 text-sm font-medium text-signal-deep hover:bg-signal/10"
+                  className="shrink-0 rounded-lg border border-signal px-4 py-2 text-sm font-medium text-teal hover:bg-signal/10"
                 >
                   Upgrade to Master
                 </button>
@@ -233,7 +233,7 @@ export function CartView() {
       </div>
 
       <aside aria-label="Order summary" className="lg:sticky lg:top-20 lg:self-start">
-        <div className="rounded-2xl border border-trust/10 bg-white p-5">
+        <div className="rounded-2xl border border-hairline bg-surface p-5">
           <p className="font-display text-lg font-bold text-ink">Summary</p>
           <dl className="mt-4 space-y-2 text-sm">
             <div className="flex justify-between text-body">
@@ -258,7 +258,7 @@ export function CartView() {
                 <dd className="font-mono">−{sgdCents(discount.discountCents)}</dd>
               </div>
             )}
-            <div className="flex justify-between border-t border-trust/10 pt-3 font-display text-lg font-bold text-ink">
+            <div className="flex justify-between border-t border-hairline pt-3 font-display text-lg font-bold text-ink">
               <dt>Total</dt>
               <dd className="font-mono">{sgdCents(payableCents)}</dd>
             </div>
@@ -270,7 +270,7 @@ export function CartView() {
             )}
           </dl>
 
-          <div className="mt-4 border-t border-trust/10 pt-4">
+          <div className="mt-4 border-t border-hairline pt-4">
             <label className="block">
               <span className="text-xs font-medium text-body">Discount code</span>
               <span className="mt-1 flex gap-2">
@@ -279,12 +279,12 @@ export function CartView() {
                   value={codeInput}
                   onChange={(e) => setCodeInput(e.target.value)}
                   placeholder="STUDYLAH10"
-                  className="w-full min-w-0 rounded-lg border border-trust/20 bg-white px-3 py-2 text-sm uppercase placeholder:normal-case placeholder:text-body/40"
+                  className="w-full min-w-0 rounded-lg border border-hairline bg-surface px-3 py-2 text-sm uppercase placeholder:normal-case placeholder:text-body/40"
                 />
                 <button
                   type="button"
                   onClick={applyDiscount}
-                  className="shrink-0 rounded-lg border border-trust/25 px-3 py-2 text-sm font-medium text-trust hover:border-trust/50"
+                  className="shrink-0 rounded-lg border border-hairline px-3 py-2 text-sm font-medium text-trust hover:border-hairline"
                 >
                   Apply
                 </button>
@@ -307,7 +307,7 @@ export function CartView() {
               onChange={(e) => setEmail(e.target.value)}
               required
               placeholder="you@example.com"
-              className="mt-1 w-full rounded-lg border border-trust/20 bg-white px-3 py-2 text-sm placeholder:text-body/40"
+              className="mt-1 w-full rounded-lg border border-hairline bg-surface px-3 py-2 text-sm placeholder:text-body/40"
             />
           </label>
 

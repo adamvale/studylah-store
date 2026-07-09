@@ -32,7 +32,7 @@ function StoredFileNote({ stored }: { stored: StoredFile | null }) {
     year: "numeric",
   });
   return (
-    <span className={`text-xs ${isPlaceholder ? "text-signal-deep" : "text-body"}`}>
+    <span className={`text-xs ${isPlaceholder ? "text-teal" : "text-body"}`}>
       {isPlaceholder ? "Placeholder — " : ""}
       {formatSize(stored.sizeBytes)} · updated {when}
     </span>
@@ -105,7 +105,7 @@ export function PdfUpload({
       <button
         type="submit"
         disabled={state === "uploading"}
-        className="rounded-md border border-trust/25 px-2.5 py-1 text-xs font-medium text-trust hover:border-trust/50"
+        className="rounded-md border border-hairline px-2.5 py-1 text-xs font-medium text-trust hover:border-hairline"
       >
         {state === "uploading" ? "Uploading…" : "Replace"}
       </button>

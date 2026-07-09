@@ -89,7 +89,7 @@ export default function FaqPage() {
 
       <div className="mt-10 space-y-3">
         {FAQS.map((faq) => (
-          <details key={faq.q} className="group rounded-2xl border border-trust/10 bg-white">
+          <details key={faq.q} className="group rounded-2xl border border-hairline bg-surface">
             <summary className="flex cursor-pointer items-center justify-between gap-3 px-5 py-4 font-medium text-ink">
               {faq.q}
               <span
@@ -99,7 +99,7 @@ export default function FaqPage() {
                 ▾
               </span>
             </summary>
-            <div className="border-t border-trust/10 px-5 py-4 text-sm leading-relaxed text-body">
+            <div className="border-t border-hairline px-5 py-4 text-sm leading-relaxed text-body">
               {faq.a}
             </div>
           </details>

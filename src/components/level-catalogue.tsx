@@ -34,7 +34,7 @@ export async function LevelCatalogue({ level }: { level: Level }) {
             <Link
               key={subject.slug}
               href={`/${level}/${subject.slug}`}
-              className="group rounded-2xl border border-trust/10 bg-white p-5 transition-shadow hover:shadow-md"
+              className="group rounded-2xl border border-hairline bg-surface p-5 transition-shadow hover:shadow-md"
             >
               <h2 className="font-display text-lg font-bold text-trust group-hover:underline">
                 {subject.name}

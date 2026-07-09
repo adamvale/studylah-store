@@ -40,7 +40,7 @@ export function LoginForm() {
           name="password"
           required
           autoFocus
-          className="mt-1 w-full rounded-lg border border-trust/20 bg-white px-3 py-2.5 text-sm"
+          className="mt-1 w-full rounded-lg border border-hairline bg-surface px-3 py-2.5 text-sm"
         />
       </label>
       {error && (

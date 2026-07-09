@@ -40,7 +40,7 @@ export default function AccuracyPage() {
               return (
                 <details
                   key={subject.slug}
-                  className="group rounded-2xl border border-trust/10 bg-white"
+                  className="group rounded-2xl border border-hairline bg-surface"
                 >
                   <summary className="flex cursor-pointer items-center justify-between gap-3 px-5 py-4">
                     <span className="font-display font-bold text-ink">
@@ -63,7 +63,7 @@ export default function AccuracyPage() {
                       </span>
                     </span>
                   </summary>
-                  <div className="grid gap-6 border-t border-trust/10 px-5 py-4 md:grid-cols-2">
+                  <div className="grid gap-6 border-t border-hairline px-5 py-4 md:grid-cols-2">
                     {years.map((y) => (
                       <div key={y.year}>
                         <p className="font-mono text-sm font-medium text-trust">
@@ -85,7 +85,7 @@ export default function AccuracyPage() {
                           </thead>
                           <tbody>
                             {y.rows.map((row) => (
-                              <tr key={row.topic} className="border-t border-trust/5">
+                              <tr key={row.topic} className="border-t border-hairline">
                                 <td className="py-1.5 pr-2 text-body">{row.topic}</td>
                                 <td className={`py-1.5 pr-2 font-mono ${heatText(row.forecastProbability)}`}>
                                   {row.forecastProbability}%

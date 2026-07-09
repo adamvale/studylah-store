@@ -162,7 +162,7 @@ export default async function DownloadsPage({
           return (
             <div
               key={item.id}
-              className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-trust/10 bg-white p-5"
+              className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-hairline bg-surface p-5"
             >
               <div>
                 <p className="font-display font-bold text-ink">

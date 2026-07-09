@@ -6,7 +6,7 @@ import { HeatBar } from "./heat";
 export function ForecastCard() {
   const rows = topForecast("chemistry", "o-level/chemistry-pure/hero");
   return (
-    <div className="rounded-2xl border border-trust/10 bg-white p-5 shadow-sm sm:p-6">
+    <div className="rounded-2xl border border-hairline bg-surface p-5 shadow-sm sm:p-6">
       <div className="flex items-center justify-between gap-2">
         <div>
           <p className="font-display text-base font-bold text-ink">
@@ -28,7 +28,7 @@ export function ForecastCard() {
           />
         ))}
       </div>
-      <p className="mt-5 border-t border-trust/10 pt-3 font-mono text-xs text-body">
+      <p className="mt-5 border-t border-hairline pt-3 font-mono text-xs text-body">
         Sample forecast · full PDF covers every topic
       </p>
     </div>

@@ -61,7 +61,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
 
       <div className="mt-10 grid gap-8 lg:grid-cols-5">
         <div className="lg:col-span-2">
-          <div className="rounded-2xl border border-trust/10 bg-white p-5">
+          <div className="rounded-2xl border border-hairline bg-surface p-5">
             <div className="flex items-center justify-between">
               <p className="font-display text-base font-bold text-ink">
                 Forecast preview
@@ -84,13 +84,13 @@ export async function SubjectView({ subject }: { subject: Subject }) {
                 />
               ))}
             </div>
-            <p className="mt-4 border-t border-trust/10 pt-3 font-mono text-xs text-body">
+            <p className="mt-4 border-t border-hairline pt-3 font-mono text-xs text-body">
               Full probabilities for every topic in the Forecast PDF
             </p>
           </div>
 
           {copy && copy.headlineCalls.length > 0 && (
-            <div className="mt-4 rounded-2xl border border-trust/10 bg-white p-5">
+            <div className="mt-4 rounded-2xl border border-hairline bg-surface p-5">
               <h2 className="font-display text-base font-bold text-ink">
                 What the model is calling for 2026
               </h2>
@@ -124,11 +124,11 @@ export async function SubjectView({ subject }: { subject: Subject }) {
             return (
               <div
                 key={key}
-                className="rounded-2xl border border-trust/10 bg-white p-5"
+                className="rounded-2xl border border-hairline bg-surface p-5"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="font-mono text-xs font-medium text-signal-deep">
+                    <p className="font-mono text-xs font-medium text-teal">
                       {product.day}
                       {fileCount > 1 && ` · ${fileCount} PDFs`}
                     </p>

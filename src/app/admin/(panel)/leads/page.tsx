@@ -35,10 +35,10 @@ export default async function AdminLeadsPage() {
       {leads.length === 0 ? (
         <p className="mt-8 text-sm text-body">No leads captured yet.</p>
       ) : (
-        <div className="mt-5 overflow-x-auto rounded-2xl border border-trust/10 bg-white">
+        <div className="mt-5 overflow-x-auto rounded-2xl border border-hairline bg-surface">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-trust/10 text-left text-xs text-body">
+              <tr className="border-b border-hairline text-left text-xs text-body">
                 <th scope="col" className="px-4 py-3 font-medium">Email</th>
                 <th scope="col" className="px-4 py-3 font-medium">Source</th>
                 <th scope="col" className="px-4 py-3 font-medium">Subject</th>
@@ -47,7 +47,7 @@ export default async function AdminLeadsPage() {
             </thead>
             <tbody>
               {leads.map((lead) => (
-                <tr key={lead.id} className="border-b border-trust/5 last:border-0">
+                <tr key={lead.id} className="border-b border-hairline last:border-0">
                   <td className="px-4 py-3 text-ink">{lead.email}</td>
                   <td className="px-4 py-3 text-body">{lead.source}</td>
                   <td className="px-4 py-3 text-body">

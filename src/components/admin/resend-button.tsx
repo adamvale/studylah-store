@@ -29,7 +29,7 @@ export function ResendButton({ orderId }: { orderId: number }) {
         type="button"
         onClick={resend}
         disabled={state === "sending"}
-        className="rounded-md border border-trust/25 px-2.5 py-1 text-xs font-medium text-trust hover:border-trust/50"
+        className="rounded-md border border-hairline px-2.5 py-1 text-xs font-medium text-trust hover:border-hairline"
       >
         {state === "sending" ? "Sending…" : state === "done" ? "Resent" : "Resend email"}
       </button>

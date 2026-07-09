@@ -43,11 +43,11 @@ export default async function AdminOrdersPage({
             name="q"
             defaultValue={query}
             placeholder="Search email or order no."
-            className="w-56 rounded-lg border border-trust/20 bg-white px-3 py-1.5 text-sm"
+            className="w-56 rounded-lg border border-hairline bg-surface px-3 py-1.5 text-sm"
           />
           <button
             type="submit"
-            className="rounded-lg border border-trust/25 px-3 py-1.5 text-sm font-medium text-trust hover:border-trust/50"
+            className="rounded-lg border border-hairline px-3 py-1.5 text-sm font-medium text-trust hover:border-hairline"
           >
             Search
           </button>
@@ -67,10 +67,10 @@ export default async function AdminOrdersPage({
           {query ? "No orders match that search." : "No orders yet."}
         </p>
       ) : (
-        <div className="mt-5 overflow-x-auto rounded-2xl border border-trust/10 bg-white">
+        <div className="mt-5 overflow-x-auto rounded-2xl border border-hairline bg-surface">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-trust/10 text-left text-xs text-body">
+              <tr className="border-b border-hairline text-left text-xs text-body">
                 <th scope="col" className="px-4 py-3 font-medium">No.</th>
                 <th scope="col" className="px-4 py-3 font-medium">Date</th>
                 <th scope="col" className="px-4 py-3 font-medium">Email</th>
@@ -82,7 +82,7 @@ export default async function AdminOrdersPage({
             </thead>
             <tbody>
               {orders.map((order) => (
-                <tr key={order.id} className="border-b border-trust/5 last:border-0">
+                <tr key={order.id} className="border-b border-hairline last:border-0">
                   <td className="px-4 py-3 font-mono text-ink">{order.id}</td>
                   <td className="px-4 py-3 text-body">
                     {order.createdAt.toLocaleDateString("en-SG")}
@@ -117,7 +117,7 @@ export default async function AdminOrdersPage({
                     <div className="flex items-center gap-2">
                       <Link
                         href={`/downloads/${order.accessToken}`}
-                        className="rounded-md border border-trust/25 px-2.5 py-1 text-xs font-medium text-trust hover:border-trust/50"
+                        className="rounded-md border border-hairline px-2.5 py-1 text-xs font-medium text-trust hover:border-hairline"
                       >
                         Downloads
                       </Link>

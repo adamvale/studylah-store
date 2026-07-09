@@ -22,7 +22,7 @@ export default function CheckoutCancelledPage() {
         </Link>
         <Link
           href="/faq"
-          className="rounded-lg border border-trust/25 bg-white px-5 py-3 text-sm font-medium text-trust hover:border-trust/50"
+          className="rounded-lg border border-hairline bg-surface px-5 py-3 text-sm font-medium text-trust hover:border-hairline"
         >
           Need help?
         </Link>

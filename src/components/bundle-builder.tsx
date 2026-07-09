@@ -91,7 +91,7 @@ export function BundleBuilder() {
                     className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors ${
                       active
                         ? "border-trust bg-trust text-white"
-                        : "border-trust/20 bg-white text-body hover:border-trust/50"
+                        : "border-hairline bg-surface text-body hover:border-hairline"
                     }`}
                   >
                     {subject.name}
@@ -110,12 +110,12 @@ export function BundleBuilder() {
       </div>
 
       <aside aria-label="Bundle summary" className="lg:sticky lg:top-20 lg:self-start">
-        <div className="rounded-2xl border border-trust/10 bg-white p-5">
+        <div className="rounded-2xl border border-hairline bg-surface p-5">
           <p className="font-display text-lg font-bold text-ink">Your bundle</p>
           <p className="mt-1 text-sm text-body">{stepMessage}</p>
           {count > 0 && (
             <>
-              <ul className="mt-4 space-y-1.5 border-t border-trust/10 pt-4 text-sm">
+              <ul className="mt-4 space-y-1.5 border-t border-hairline pt-4 text-sm">
                 {items.map((item) => {
                   const subject = SUBJECTS.find(
                     (s) => s.level === item.level && s.slug === item.subjectSlug
@@ -133,7 +133,7 @@ export function BundleBuilder() {
                   );
                 })}
               </ul>
-              <div className="mt-4 border-t border-trust/10 pt-4">
+              <div className="mt-4 border-t border-hairline pt-4">
                 {priced.savings > 0 && (
                   <p className="flex justify-between text-sm text-body">
                     <span>{priced.bundles[0]?.kind === "all-in" ? "All-In" : "Mega-Bundle"} applied</span>

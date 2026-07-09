@@ -13,7 +13,7 @@ const LINKS = [
 export function AdminNav() {
   const pathname = usePathname();
   return (
-    <nav aria-label="Admin" className="mt-6 flex flex-wrap gap-1 border-b border-trust/10">
+    <nav aria-label="Admin" className="mt-6 flex flex-wrap gap-1 border-b border-hairline">
       {LINKS.map((link) => {
         const active =
           link.href === "/admin"

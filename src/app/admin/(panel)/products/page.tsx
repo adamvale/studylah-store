@@ -64,7 +64,7 @@ function PriceField({
           min={0}
           step={1}
           placeholder={optional ? "—" : undefined}
-          className="w-20 rounded-lg border border-trust/20 bg-white px-2 py-1.5 text-right font-mono text-sm"
+          className="w-20 rounded-lg border border-hairline bg-surface px-2 py-1.5 text-right font-mono text-sm"
         />
       </span>
     </label>
@@ -132,7 +132,7 @@ export default async function AdminProductsPage({
 
       <section
         className={`rounded-2xl border p-5 ${
-          maintenance ? "border-heat-5/40 bg-heat-5/5" : "border-trust/10 bg-white"
+          maintenance ? "border-heat-5/40 bg-heat-5/5" : "border-hairline bg-surface"
         }`}
       >
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -155,9 +155,9 @@ export default async function AdminProductsPage({
             <input type="hidden" name="active" value={maintenance ? "false" : "true"} />
             <button
               type="submit"
-              className={`rounded-lg px-4 py-2 text-sm font-medium text-white ${
+              className={`rounded-lg px-4 py-2 text-sm font-bold text-night ${
                 maintenance
-                  ? "bg-guarantee hover:opacity-90"
+                  ? "bg-mint hover:opacity-90"
                   : "bg-heat-5 hover:opacity-90"
               }`}
             >
@@ -167,14 +167,14 @@ export default async function AdminProductsPage({
         </div>
       </section>
 
-      <section className="rounded-2xl border border-trust/10 bg-white p-5">
+      <section className="rounded-2xl border border-hairline bg-surface p-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h2 className="font-display text-lg font-bold text-ink">Early-bird pricing</h2>
             <p className="text-sm text-body">
               When on, tiers with an early-bird price charge and display it
               site-wide. Currently{" "}
-              <strong className={earlyBird ? "text-signal-deep" : "text-ink"}>
+              <strong className={earlyBird ? "text-teal" : "text-ink"}>
                 {earlyBird ? "ON" : "off"}
               </strong>
               .
@@ -197,7 +197,7 @@ export default async function AdminProductsPage({
           {LEVEL_KEYS.map((level) => {
             const lp = table[level];
             return (
-              <section key={level} className="rounded-2xl border border-trust/10 bg-white p-5">
+              <section key={level} className="rounded-2xl border border-hairline bg-surface p-5">
                 <h2 className="font-display text-lg font-bold text-ink">
                   {LEVELS[level].name}
                 </h2>
@@ -275,12 +275,12 @@ export default async function AdminProductsPage({
                 {subjectsForLevel(level).map((subject) => (
                   <details
                     key={`${level}-${subject.slug}`}
-                    className="rounded-2xl border border-trust/10 bg-white"
+                    className="rounded-2xl border border-hairline bg-surface"
                   >
                     <summary className="cursor-pointer px-4 py-3 font-display text-sm font-bold text-ink">
                       {subject.name}
                     </summary>
-                    <div className="space-y-4 border-t border-trust/10 px-4 py-3">
+                    <div className="space-y-4 border-t border-hairline px-4 py-3">
                       {productsForSubject(subject).map((key) => {
                         const product = productByKey.get(
                           `${level}::${subject.slug}::${key}`

@@ -24,7 +24,7 @@ function Logo() {
         <span className="h-3 w-1.5 rounded-sm bg-heat-3" />
         <span className="h-4 w-1.5 rounded-sm bg-heat-5" />
       </span>
-      <span className="font-display text-xl font-extrabold tracking-tight text-trust">
+      <span className="font-display text-xl font-extrabold tracking-tight text-white">
         StudyLah!
       </span>
     </Link>
@@ -37,7 +37,7 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-trust/10 bg-paper/95 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-hairline bg-night/95 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4">
         <Logo />
         <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
@@ -45,8 +45,8 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors hover:bg-trust-soft ${
-                pathname.startsWith(item.href) ? "text-trust" : "text-body"
+              className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors hover:bg-surface ${
+                pathname.startsWith(item.href) ? "text-accent" : "text-cloud"
               }`}
             >
               {item.label}
@@ -56,24 +56,24 @@ export function Header() {
         <div className="flex items-center gap-2">
           <Link
             href="/free-heatmap"
-            className="hidden rounded-md px-3 py-1.5 text-sm font-medium text-signal-deep hover:bg-signal/10 sm:block"
+            className="hidden rounded-md px-3 py-1.5 text-sm font-medium text-cloud hover:bg-surface sm:block"
           >
             Free heatmap
           </Link>
           <Link
             href="/cart"
-            className="relative rounded-md bg-trust px-3.5 py-1.5 text-sm font-medium text-white hover:bg-trust-deep"
+            className="relative rounded-md bg-violet px-3.5 py-1.5 text-sm font-medium text-white hover:opacity-90"
           >
             Cart
             {count > 0 && (
-              <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-signal px-1 font-mono text-xs font-medium text-white">
+              <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-accent px-1 font-mono text-xs font-bold text-night">
                 {count}
               </span>
             )}
           </Link>
           <button
             type="button"
-            className="rounded-md p-2 text-trust md:hidden"
+            className="rounded-md p-2 text-white md:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -93,14 +93,14 @@ export function Header() {
         <nav
           id="mobile-nav"
           aria-label="Main"
-          className="border-t border-trust/10 bg-paper px-4 py-2 md:hidden"
+          className="border-t border-hairline bg-night px-4 py-2 md:hidden"
         >
           {[...NAV, { href: "/free-heatmap", label: "Free heatmap" }].map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="block rounded-md px-2 py-2.5 text-sm font-medium text-ink hover:bg-trust-soft"
+              className="block rounded-md px-2 py-2.5 text-sm font-medium text-white hover:bg-surface"
             >
               {item.label}
             </Link>

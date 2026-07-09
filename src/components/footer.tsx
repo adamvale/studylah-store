@@ -25,7 +25,7 @@ const LEGAL = [
 
 export function Footer() {
   return (
-    <footer className="mt-16 bg-indigo text-white">
+    <footer className="border-t border-hairline bg-night-2 text-white">
       <div className="mx-auto max-w-6xl px-4 py-12">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>

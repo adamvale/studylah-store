@@ -78,7 +78,7 @@ export function EmailCaptureForm({
               name="subject"
               required
               defaultValue=""
-              className="w-full rounded-lg border border-trust/20 bg-white px-3 py-2.5 text-sm text-ink"
+              className="w-full rounded-lg border border-hairline bg-surface px-3 py-2.5 text-sm text-ink"
             >
               <option value="" disabled>
                 Choose your subject
@@ -102,7 +102,7 @@ export function EmailCaptureForm({
             name="email"
             required
             placeholder="you@example.com"
-            className="w-full rounded-lg border border-trust/20 bg-white px-3 py-2.5 text-sm text-ink placeholder:text-body/50"
+            className="w-full rounded-lg border border-hairline bg-surface px-3 py-2.5 text-sm text-ink placeholder:text-body/50"
           />
         </label>
         <button

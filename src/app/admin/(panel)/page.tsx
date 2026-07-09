@@ -11,7 +11,7 @@ function money(cents: number): string {
 
 function Metric({ label, value, hint }: { label: string; value: string; hint?: string }) {
   return (
-    <div className="rounded-2xl border border-trust/10 bg-white p-5">
+    <div className="rounded-2xl border border-hairline bg-surface p-5">
       <p className="text-xs font-medium text-body">{label}</p>
       <p className="mt-1 font-display text-2xl font-bold text-ink">{value}</p>
       {hint && <p className="mt-0.5 text-xs text-body">{hint}</p>}
@@ -29,7 +29,7 @@ export default async function AdminDashboardPage() {
         <h1 className="font-display text-2xl font-bold text-ink">Dashboard</h1>
         <span
           className={`rounded-full px-3 py-1 text-xs font-medium ${
-            earlyBird ? "bg-signal/10 text-signal-deep" : "bg-trust-soft text-trust"
+            earlyBird ? "bg-signal/10 text-teal" : "bg-trust-soft text-trust"
           }`}
         >
           Early-bird pricing {earlyBird ? "ON" : "off"}
@@ -52,7 +52,7 @@ export default async function AdminDashboardPage() {
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
-        <section className="rounded-2xl border border-trust/10 bg-white p-5">
+        <section className="rounded-2xl border border-hairline bg-surface p-5">
           <h2 className="font-display text-lg font-bold text-ink">Tier mix</h2>
           <p className="text-xs text-body">Subject selections by tier, all orders.</p>
           <div className="mt-4 space-y-2">
@@ -79,7 +79,7 @@ export default async function AdminDashboardPage() {
           </div>
         </section>
 
-        <section className="rounded-2xl border border-trust/10 bg-white p-5">
+        <section className="rounded-2xl border border-hairline bg-surface p-5">
           <h2 className="font-display text-lg font-bold text-ink">Orders by subject</h2>
           <p className="text-xs text-body">Purchases per subject, all orders.</p>
           {m.topSubjects.length === 0 ? (
@@ -110,16 +110,16 @@ export default async function AdminDashboardPage() {
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <Metric label="Email leads" value={String(m.leadsAll)} hint={`${m.leadsWeek} this week`} />
-        <div className="rounded-2xl border border-trust/10 bg-white p-5">
+        <div className="rounded-2xl border border-hairline bg-surface p-5">
           <p className="text-xs font-medium text-body">Quick links</p>
           <div className="mt-2 flex flex-wrap gap-2">
-            <Link href="/admin/orders" className="rounded-lg border border-trust/25 px-3 py-1.5 text-sm font-medium text-trust hover:border-trust/50">
+            <Link href="/admin/orders" className="rounded-lg border border-hairline px-3 py-1.5 text-sm font-medium text-trust hover:border-hairline">
               View orders
             </Link>
-            <Link href="/admin/products" className="rounded-lg border border-trust/25 px-3 py-1.5 text-sm font-medium text-trust hover:border-trust/50">
+            <Link href="/admin/products" className="rounded-lg border border-hairline px-3 py-1.5 text-sm font-medium text-trust hover:border-hairline">
               Edit pricing
             </Link>
-            <Link href="/admin/leads" className="rounded-lg border border-trust/25 px-3 py-1.5 text-sm font-medium text-trust hover:border-trust/50">
+            <Link href="/admin/leads" className="rounded-lg border border-hairline px-3 py-1.5 text-sm font-medium text-trust hover:border-hairline">
               Export leads
             </Link>
           </div>

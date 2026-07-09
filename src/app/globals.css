@@ -1,15 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand palette borrowed from the live studylah.education site
-     (Inter + Archivo, vivid blue #385dff, indigo #5028ff, yellow #ffdc00). */
-  --color-ink: #1b252f;
-  --color-trust: #385dff;
-  --color-trust-deep: #1e42dd;
-  --color-trust-soft: #e7ecff;
+  /* Dark / playful theme (park.studylah.education). The semantic tokens are
+     INVERTED from the old light theme so the site-wide `text-ink` / `text-body`
+     / `bg-paper` classes render correctly on a dark background without touching
+     every component. `text-ink` on a yellow button is the one exception — those
+     few spots use `text-night` explicitly. */
+  --color-ink: #eef2f7;         /* was dark; now light — default heading text */
+  --color-trust: #6ea0ff;       /* link/accent blue, lightened for dark bg */
+  --color-trust-deep: #9dbcff;
+  --color-trust-soft: #232e40;  /* was light-blue; now a dark tint for pills */
   --color-indigo: #5028ff;
   --color-indigo-deep: #3f1fd6;
-  --color-paper: #fafbfd;
+  --color-paper: #161c26;       /* was near-white; now the page background */
   --color-accent: #ffdc00;
   --color-accent-deep: #8a6d00;
   /* Probability "heat" ramp, re-mapped to the brand: cool light-blue for
@@ -19,10 +22,22 @@
   --color-heat-3: #6f8bff;
   --color-heat-4: #385dff;
   --color-heat-5: #ffdc00;
-  --color-signal: #385dff;
-  --color-signal-deep: #1e42dd;
-  --color-guarantee: #1e9e6a;
-  --color-body: #46505f;
+  --color-signal: #6ea0ff;
+  --color-signal-deep: #9dbcff;
+  --color-guarantee: #3ddc84;
+  --color-body: #aeb8c6;        /* was gray-on-white; now light-gray on dark */
+  /* --- Dark / playful theme (park.studylah.education aesthetic) --- */
+  --color-night: #161c26;       /* page background */
+  --color-night-2: #1b2330;     /* alternating band */
+  --color-surface: #212b3a;     /* raised card */
+  --color-hairline: #2f3a4d;    /* card borders on dark */
+  --color-cloud: #aeb8c6;       /* body text on dark */
+  --color-violet: #7c3aed;      /* purple badge */
+  --color-violet-2: #6d28d9;
+  --color-teal: #45c8cf;
+  --color-mint: #3ddc84;        /* "the StudyLah way" */
+  --color-coral: #ff6b6b;       /* "the old way" */
+  --color-rose: #ec4a6d;        /* playstation circle */
   --font-display: var(--font-archivo);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-inter);

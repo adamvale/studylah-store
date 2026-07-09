@@ -69,8 +69,8 @@ export function TierSelector({
                   className="peer sr-only"
                 />
                 <span
-                  className={`flex h-full flex-col rounded-2xl border-2 bg-white p-5 transition-colors peer-checked:border-signal peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-trust ${
-                    isMaster ? "border-trust/25" : "border-trust/10"
+                  className={`flex h-full flex-col rounded-2xl border-2 bg-surface p-5 transition-colors peer-checked:border-signal peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-trust ${
+                    isMaster ? "border-hairline" : "border-hairline"
                   }`}
                 >
                   {isMaster && (

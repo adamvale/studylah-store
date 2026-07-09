@@ -34,7 +34,7 @@ export default function FreeHeatmapPage() {
             anytime. We store your consent timestamp as PDPA requires.
           </p>
         </div>
-        <div className="rounded-2xl border border-trust/10 bg-white p-5 sm:p-6">
+        <div className="rounded-2xl border border-hairline bg-surface p-5 sm:p-6">
           <div className="flex items-center justify-between">
             <p className="font-display text-base font-bold text-ink">
               What you&apos;ll get
@@ -54,7 +54,7 @@ export default function FreeHeatmapPage() {
               />
             ))}
           </div>
-          <p className="mt-5 border-t border-trust/10 pt-3 font-mono text-xs text-body">
+          <p className="mt-5 border-t border-hairline pt-3 font-mono text-xs text-body">
             Your PDF shows all five probabilities, unmasked
           </p>
         </div>

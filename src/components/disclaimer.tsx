@@ -6,7 +6,7 @@ import { STANDARD_DISCLAIMER } from "@/lib/compliance";
  */
 export function DisclaimerBox() {
   return (
-    <div className="rounded-xl border border-trust/15 bg-trust-soft/60 px-4 py-3 text-xs leading-relaxed text-trust">
+    <div className="rounded-xl border border-hairline bg-trust-soft/60 px-4 py-3 text-xs leading-relaxed text-trust">
       <p className="font-medium">Honesty first</p>
       <p className="mt-1">{STANDARD_DISCLAIMER}</p>
     </div>
