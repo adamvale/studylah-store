@@ -29,10 +29,12 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Run on storefront pages only. Exclude APIs (Stripe webhook, downloads),
-  // static assets, the admin panel (so it stays reachable to toggle off),
-  // customer download pages, and the maintenance page itself.
+  // Run on storefront PAGES only. Exclude APIs (Stripe webhook, downloads),
+  // Next internals, the admin panel (so it stays reachable to toggle off),
+  // customer download pages, the maintenance page itself, and — crucially —
+  // any static file (anything with a dot, e.g. /studylah-logo.png). Without the
+  // dot exclusion, maintenance mode rewrote the logo to HTML and it broke.
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico|admin|downloads|maintenance).*)",
+    "/((?!api|_next|admin|downloads|maintenance|.*\\.).*)",
   ],
 };
