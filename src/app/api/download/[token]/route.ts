@@ -5,7 +5,9 @@ import { prisma } from "@/lib/db";
 import { serverConfig } from "@/lib/server/config";
 import { watermarkPdf } from "@/lib/server/watermark";
 
-function failureRedirect(reason: "not-found" | "expired" | "used-up" | "missing-file") {
+function failureRedirect(
+  reason: "not-found" | "expired" | "used-up" | "missing-file" | "refunded"
+) {
   return NextResponse.redirect(
     `${serverConfig.siteUrl}/downloads/error?reason=${reason}`,
     { status: 303 }
@@ -31,6 +33,10 @@ export async function GET(
   });
 
   if (!downloadToken) return failureRedirect("not-found");
+  // A refunded order loses access even if a token's expiry was somehow extended.
+  if (downloadToken.orderItem.order.status === "refunded") {
+    return failureRedirect("refunded");
+  }
   if (downloadToken.expiresAt < new Date()) return failureRedirect("expired");
 
   // Atomic use-count: the guarded update loses the race gracefully when two

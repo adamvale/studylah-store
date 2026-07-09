@@ -10,6 +10,31 @@ set -e
 : "${PDF_STORAGE_DIR:=/data/pdfs}"
 : "${PORT:=3000}"
 
+# --- Persistence guard -------------------------------------------------------
+# A relative storage path resolves to ephemeral container disk instead of the
+# mounted /data volume. When that happened, every deploy silently wiped the
+# database, orders, download tokens and uploaded PDFs, then the seed refilled
+# with placeholders — and the app booted looking healthy. Refuse to start on a
+# relative path so this fails loudly at deploy time, not after a sale.
+case "$PDF_STORAGE_DIR" in
+  /*) : ;;
+  *)  echo "FATAL: PDF_STORAGE_DIR must be an absolute path, got '$PDF_STORAGE_DIR'." >&2
+      echo "       A relative path writes to ephemeral container disk, not the /data volume." >&2
+      echo "       Fix the Railway variable, or unset it to use the Dockerfile default (/data/pdfs)." >&2
+      exit 1 ;;
+esac
+case "$DATABASE_URL" in
+  file:/*) : ;;                 # sqlite on an absolute path — correct
+  "")      echo "FATAL: DATABASE_URL is not set; the app would fall back to a relative sqlite path on ephemeral disk." >&2
+           exit 1 ;;
+  file:*)  echo "FATAL: DATABASE_URL sqlite path must be absolute (file:/...), got '$DATABASE_URL'." >&2
+           echo "       A relative sqlite path lands on ephemeral container disk, not the /data volume." >&2
+           exit 1 ;;
+  *)       : ;;                 # non-sqlite (e.g. postgres) — not this guard's concern
+esac
+echo "→ storage OK: db=$DATABASE_URL pdfs=$PDF_STORAGE_DIR"
+# ----------------------------------------------------------------------------
+
 mkdir -p /data "$PDF_STORAGE_DIR"
 
 echo "→ applying migrations"

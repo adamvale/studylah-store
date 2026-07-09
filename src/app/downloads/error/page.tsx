@@ -20,6 +20,10 @@ const REASONS: Record<string, { title: string; body: string }> = {
     title: "We don't recognise this download link",
     body: "Check the link copied fully from your email. If it still fails, email us and we'll re-send your downloads page.",
   },
+  refunded: {
+    title: "This order was refunded",
+    body: "These downloads were deactivated when the order was refunded. If you believe this is a mistake, email us with your order number and we'll look into it.",
+  },
 };
 
 export default async function DownloadErrorPage({

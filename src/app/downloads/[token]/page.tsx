@@ -97,6 +97,32 @@ export default async function DownloadsPage({
   const isMock = order.stripeSessionId.startsWith("mock_");
   const now = new Date();
 
+  if (order.status === "refunded") {
+    return (
+      <div className="mx-auto max-w-xl px-4 py-20 text-center">
+        <p className="font-mono text-xs font-medium text-body">
+          Order No. {order.id} · {maskEmail(order.email)}
+        </p>
+        <h1 className="mt-1 font-display text-3xl font-bold text-ink">
+          This order was refunded
+        </h1>
+        <p className="mt-3 text-body">
+          These downloads were deactivated when the order was refunded. If you
+          believe this is a mistake, email us with your order number and
+          we&apos;ll look into it.
+        </p>
+        <div className="mt-8">
+          <a
+            href="mailto:hello@studylah.education"
+            className="rounded-lg bg-trust px-5 py-3 text-sm font-medium text-white hover:bg-trust-deep"
+          >
+            Email support
+          </a>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
       {isMock && (

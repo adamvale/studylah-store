@@ -222,6 +222,10 @@ async function importJsonLeads() {
 }
 
 async function main() {
+  // Snapshot before seeding, to detect the ephemeral-storage failure mode.
+  const productsBefore = await prisma.product.count();
+  const ordersBefore = await prisma.order.count();
+
   const pdfs = await seedCatalogue();
   await seedDiscounts();
   await seedSettings();
@@ -240,6 +244,22 @@ async function main() {
       `${counts.discountCodes} discount codes, ` +
       `${counts.leads} leads (${leads} imported from JSON stub).`
   );
+
+  // First boot regenerates every placeholder and that is expected. But
+  // generating placeholders when the catalogue already existed means the PDF
+  // files were missing while their DB rows survived — the signature of storage
+  // that did not persist. If there are also orders, real customer files may
+  // have just been overwritten with placeholders.
+  if (pdfs > 0 && productsBefore > 0) {
+    console.warn(
+      `\n⚠️  WARNING: generated ${pdfs} placeholder PDF(s), but the database ` +
+        `already held ${productsBefore} product(s) and ${ordersBefore} order(s).\n` +
+        `    The catalogue persisted while the PDF files did not — PDF storage is ` +
+        `probably NOT on the volume.\n` +
+        `    Any admin-uploaded PDFs were likely replaced with placeholders. ` +
+        `Check PDF_STORAGE_DIR points at the mounted volume, then re-upload.\n`
+    );
+  }
 }
 
 main()

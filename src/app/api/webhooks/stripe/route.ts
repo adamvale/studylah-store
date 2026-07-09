@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
+import { prisma } from "@/lib/db";
 import { quoteCheckout } from "@/lib/server/checkout";
 import { serverConfig, stripeConfigured } from "@/lib/server/config";
 import { createOrderFromCheckout } from "@/lib/server/orders";
@@ -45,7 +46,68 @@ export async function POST(request: Request) {
     await fulfillSession(event.data.object);
   }
 
+  if (event.type === "charge.refunded") {
+    await handleRefund(stripe, event.data.object);
+  }
+
   return NextResponse.json({ received: true });
+}
+
+/**
+ * A refunded buyer must lose access to the PDFs they downloaded. Stripe's
+ * refund event carries a payment_intent, not our checkout-session id, so the
+ * order is found via the session behind that payment intent. Only a FULL
+ * refund revokes: a partial refund (e.g. one subject of a bundle) leaves the
+ * order intact. Idempotent — repeated deliveries reapply the same state.
+ */
+async function handleRefund(stripe: Stripe, charge: Stripe.Charge) {
+  if (charge.amount_refunded < charge.amount) {
+    // Partial refund — do not revoke the whole order.
+    return;
+  }
+
+  const paymentIntent =
+    typeof charge.payment_intent === "string"
+      ? charge.payment_intent
+      : charge.payment_intent?.id;
+  if (!paymentIntent) {
+    console.error(`Refund on charge ${charge.id}: no payment_intent; cannot map to order.`);
+    return;
+  }
+
+  const sessions = await stripe.checkout.sessions.list({
+    payment_intent: paymentIntent,
+    limit: 1,
+  });
+  const session = sessions.data[0];
+  if (!session) {
+    console.error(`Refund on charge ${charge.id}: no checkout session for ${paymentIntent}.`);
+    return;
+  }
+
+  const order = await prisma.order.findFirst({
+    where: { stripeSessionId: session.id },
+    include: { items: true },
+  });
+  if (!order) {
+    console.error(`Refund on charge ${charge.id}: no order for session ${session.id}.`);
+    return;
+  }
+
+  // Mark the order and expire every download token it issued. The download
+  // route already refuses an expired token and (as of this change) a refunded
+  // order, so both gates now close.
+  await prisma.$transaction([
+    prisma.order.update({
+      where: { id: order.id },
+      data: { status: "refunded" },
+    }),
+    prisma.downloadToken.updateMany({
+      where: { orderItemId: { in: order.items.map((i) => i.id) } },
+      data: { expiresAt: new Date(0) },
+    }),
+  ]);
+  console.warn(`Refund: order No. ${order.id} marked refunded, downloads revoked.`);
 }
 
 async function fulfillSession(session: Stripe.Checkout.Session) {
