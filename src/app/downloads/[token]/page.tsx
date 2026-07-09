@@ -77,7 +77,7 @@ export default async function DownloadsPage({
           The download link may be incomplete — check it copied fully from your
           email. If it still doesn&apos;t work, reply to your order email or
           write to{" "}
-          <a href="mailto:hello@studylah.education" className="font-medium text-trust underline">
+          <a href="mailto:hello@studylah.education" className="font-medium text-accent underline">
             hello@studylah.education
           </a>{" "}
           and we&apos;ll re-send your downloads.
@@ -189,7 +189,7 @@ export default async function DownloadsPage({
                   {expired ? "Link expired" : "Download limit reached"} —{" "}
                   <a
                     href="mailto:hello@studylah.education"
-                    className="font-medium text-trust underline"
+                    className="font-medium text-accent underline"
                   >
                     contact us
                   </a>

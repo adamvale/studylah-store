@@ -36,7 +36,7 @@ export async function LevelCatalogue({ level }: { level: Level }) {
               href={`/${level}/${subject.slug}`}
               className="group rounded-2xl border border-hairline bg-surface p-5 transition-shadow hover:shadow-md"
             >
-              <h2 className="font-display text-lg font-bold text-trust group-hover:underline">
+              <h2 className="font-display text-lg font-bold text-accent group-hover:underline">
                 {subject.name}
               </h2>
               <p className="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-body">
@@ -71,7 +71,7 @@ export async function LevelCatalogue({ level }: { level: Level }) {
       </div>
       <p className="mt-8 text-sm text-body">
         Sitting the {LEVELS[other].shortName} instead?{" "}
-        <Link href={`/${other}`} className="font-medium text-trust underline">
+        <Link href={`/${other}`} className="font-medium text-accent underline">
           Browse {LEVELS[other].name} subjects
         </Link>
       </p>

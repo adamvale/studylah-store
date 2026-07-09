@@ -38,7 +38,7 @@ export default async function AdminPanelLayout({
           <form action="/api/admin/logout" method="post">
             <button
               type="submit"
-              className="rounded-lg border border-hairline px-3 py-1.5 text-sm font-medium text-trust hover:border-hairline"
+              className="rounded-lg border border-hairline px-3 py-1.5 text-sm font-medium text-accent hover:border-hairline"
             >
               Sign out
             </button>

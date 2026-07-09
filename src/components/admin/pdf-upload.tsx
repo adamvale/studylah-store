@@ -100,12 +100,12 @@ export function PdfUpload({
         type="file"
         accept="application/pdf,.pdf"
         aria-label={`Replace ${label} PDF`}
-        className="text-xs text-body file:mr-2 file:rounded-md file:border-0 file:bg-trust-soft file:px-2 file:py-1 file:text-xs file:font-medium file:text-trust"
+        className="text-xs text-body file:mr-2 file:rounded-md file:border-0 file:bg-trust-soft file:px-2 file:py-1 file:text-xs file:font-medium file:text-accent"
       />
       <button
         type="submit"
         disabled={state === "uploading"}
-        className="rounded-md border border-hairline px-2.5 py-1 text-xs font-medium text-trust hover:border-hairline"
+        className="rounded-md border border-hairline px-2.5 py-1 text-xs font-medium text-accent hover:border-hairline"
       >
         {state === "uploading" ? "Uploading…" : "Replace"}
       </button>

@@ -66,7 +66,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
               <p className="font-display text-base font-bold text-ink">
                 Forecast preview
               </p>
-              <span className="rounded-full bg-trust-soft px-2.5 py-1 font-mono text-xs font-medium text-trust">
+              <span className="rounded-full bg-trust-soft px-2.5 py-1 font-mono text-xs font-medium text-accent">
                 2026
               </span>
             </div>
@@ -135,11 +135,11 @@ export async function SubjectView({ subject }: { subject: Subject }) {
                     <h2 className="mt-0.5 font-display text-lg font-bold text-ink">
                       {productNameFor(subject, key)}
                     </h2>
-                    <p className="text-sm font-medium text-trust">
+                    <p className="text-sm font-medium text-accent">
                       {productTaglineFor(subject, key)}
                     </p>
                   </div>
-                  <p className="shrink-0 font-mono text-lg font-medium text-trust">
+                  <p className="shrink-0 font-mono text-lg font-medium text-accent">
                     {sgd(alacartePrice(subject.level, key))}
                   </p>
                 </div>

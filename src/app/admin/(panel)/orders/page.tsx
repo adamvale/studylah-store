@@ -47,7 +47,7 @@ export default async function AdminOrdersPage({
           />
           <button
             type="submit"
-            className="rounded-lg border border-hairline px-3 py-1.5 text-sm font-medium text-trust hover:border-hairline"
+            className="rounded-lg border border-hairline px-3 py-1.5 text-sm font-medium text-accent hover:border-hairline"
           >
             Search
           </button>
@@ -117,7 +117,7 @@ export default async function AdminOrdersPage({
                     <div className="flex items-center gap-2">
                       <Link
                         href={`/downloads/${order.accessToken}`}
-                        className="rounded-md border border-hairline px-2.5 py-1 text-xs font-medium text-trust hover:border-hairline"
+                        className="rounded-md border border-hairline px-2.5 py-1 text-xs font-medium text-accent hover:border-hairline"
                       >
                         Downloads
                       </Link>

@@ -12,7 +12,7 @@ export function ComingSoon({
 }) {
   return (
     <div className="mx-auto max-w-xl px-4 py-20">
-      <p className="inline-block rounded-full bg-trust-soft px-3 py-1 font-mono text-xs font-medium text-trust">
+      <p className="inline-block rounded-full bg-trust-soft px-3 py-1 font-mono text-xs font-medium text-accent">
         Coming {eta}
       </p>
       <h1 className="mt-4 font-display text-4xl font-bold text-ink">{name}</h1>
@@ -26,7 +26,7 @@ export function ComingSoon({
       </div>
       <p className="mt-8 text-sm text-body">
         Sitting the O-Level or N(A)-Level in the meantime?{" "}
-        <Link href="/o-level" className="font-medium text-trust underline">
+        <Link href="/o-level" className="font-medium text-accent underline">
           Those forecasts are live now
         </Link>
         .

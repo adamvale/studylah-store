@@ -14,7 +14,7 @@ export function ForecastCard() {
           </p>
           <p className="text-xs text-body">O-Level · Paper forecast</p>
         </div>
-        <span className="rounded-full bg-trust-soft px-2.5 py-1 font-mono text-xs font-medium text-trust">
+        <span className="rounded-full bg-trust-soft px-2.5 py-1 font-mono text-xs font-medium text-accent">
           2026 sitting
         </span>
       </div>

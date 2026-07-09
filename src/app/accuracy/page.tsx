@@ -60,7 +60,7 @@ export default function AccuracyPage() {
                       {y.year}:{" "}
                       <span
                         className={`font-mono font-medium ${
-                          pct >= 80 ? "text-accent-deep" : "text-trust"
+                          pct >= 80 ? "text-accent-deep" : "text-accent"
                         }`}
                       >
                         {pct}%
@@ -82,7 +82,7 @@ export default function AccuracyPage() {
                 const hp = highOrAbove(y.topics);
                 return (
                   <div key={y.year}>
-                    <p className="font-mono text-sm font-medium text-trust">
+                    <p className="font-mono text-sm font-medium text-accent">
                       {y.year} sitting · top 5 by mark allocation
                     </p>
                     <table className="mt-2 w-full text-sm">
@@ -134,7 +134,7 @@ export default function AccuracyPage() {
         Forecasts are probabilities, not certainties — where a high-mark topic
         was tiered only Moderate or Watch, it shows above, and it&apos;s covered
         by the{" "}
-        <Link href="/faq" className="font-medium text-trust underline">
+        <Link href="/faq" className="font-medium text-accent underline">
           money-back guarantee
         </Link>
         .

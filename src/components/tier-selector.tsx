@@ -86,7 +86,7 @@ export function TierSelector({
                   <span className="font-display text-lg font-bold text-ink">
                     {TIER_NAMES[t]}
                   </span>
-                  <span className="mt-1 font-mono text-2xl font-medium text-trust">
+                  <span className="mt-1 font-mono text-2xl font-medium text-accent">
                     {sgd(price)}
                     {earlyBird && price !== regular && (
                       <span className="ml-2 text-sm text-body line-through">

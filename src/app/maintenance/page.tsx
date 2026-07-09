@@ -36,7 +36,7 @@ export default function MaintenancePage() {
           Questions?{" "}
           <a
             href="mailto:hello@studylah.education"
-            className="font-medium text-trust underline"
+            className="font-medium text-accent underline"
           >
             hello@studylah.education
           </a>

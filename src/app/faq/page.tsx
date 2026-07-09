@@ -20,7 +20,7 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
         classified questions, mark weightings and setter patterns turned into a
         ranked probability for every topic on your syllabus. And we don&apos;t
         ask you to take our word for it — after every sitting the{" "}
-        <Link href="/accuracy" className="font-medium text-trust underline">
+        <Link href="/accuracy" className="font-medium text-accent underline">
           accuracy scorecard
         </Link>{" "}
         shows exactly what we called against what appeared. Hits and misses. In
@@ -63,7 +63,7 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
         We use it to send what you asked for, store your consent timestamp
         because PDPA requires provable opt-in, and do nothing else with it. No
         reselling, no spam. Full details in the{" "}
-        <Link href="/legal/privacy" className="font-medium text-trust underline">
+        <Link href="/legal/privacy" className="font-medium text-accent underline">
           privacy policy
         </Link>
         .
@@ -98,7 +98,7 @@ export default function FaqPage() {
         </p>
         <p className="mt-2 text-xs text-body">
           Full terms are in the{" "}
-          <Link href="/legal/refunds" className="font-medium text-trust underline">
+          <Link href="/legal/refunds" className="font-medium text-accent underline">
             refund policy
           </Link>
           .
@@ -126,7 +126,7 @@ export default function FaqPage() {
 
       <p className="mt-10 text-sm text-body">
         Something else on your mind? Email{" "}
-        <a href="mailto:hello@studylah.education" className="font-medium text-trust underline">
+        <a href="mailto:hello@studylah.education" className="font-medium text-accent underline">
           hello@studylah.education
         </a>
         .

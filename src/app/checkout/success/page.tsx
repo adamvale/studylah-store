@@ -44,7 +44,7 @@ export default async function CheckoutSuccessPage({
         <p className="mt-3 text-body">
           If you completed a payment, your download link is in your email. Lost
           it? Write to{" "}
-          <a href="mailto:hello@studylah.education" className="font-medium text-trust underline">
+          <a href="mailto:hello@studylah.education" className="font-medium text-accent underline">
             hello@studylah.education
           </a>
           .

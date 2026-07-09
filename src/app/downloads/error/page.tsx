@@ -47,7 +47,7 @@ export default async function DownloadErrorPage({
         </a>
         <Link
           href="/"
-          className="rounded-lg border border-hairline bg-surface px-5 py-3 text-sm font-medium text-trust hover:border-hairline"
+          className="rounded-lg border border-hairline bg-surface px-5 py-3 text-sm font-medium text-accent hover:border-hairline"
         >
           Back to StudyLah
         </Link>

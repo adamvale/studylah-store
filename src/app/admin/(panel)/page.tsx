@@ -29,7 +29,7 @@ export default async function AdminDashboardPage() {
         <h1 className="font-display text-2xl font-bold text-ink">Dashboard</h1>
         <span
           className={`rounded-full px-3 py-1 text-xs font-medium ${
-            earlyBird ? "bg-signal/10 text-teal" : "bg-trust-soft text-trust"
+            earlyBird ? "bg-signal/10 text-teal" : "bg-trust-soft text-accent"
           }`}
         >
           Early-bird pricing {earlyBird ? "ON" : "off"}
@@ -113,13 +113,13 @@ export default async function AdminDashboardPage() {
         <div className="rounded-2xl border border-hairline bg-surface p-5">
           <p className="text-xs font-medium text-body">Quick links</p>
           <div className="mt-2 flex flex-wrap gap-2">
-            <Link href="/admin/orders" className="rounded-lg border border-hairline px-3 py-1.5 text-sm font-medium text-trust hover:border-hairline">
+            <Link href="/admin/orders" className="rounded-lg border border-hairline px-3 py-1.5 text-sm font-medium text-accent hover:border-hairline">
               View orders
             </Link>
-            <Link href="/admin/products" className="rounded-lg border border-hairline px-3 py-1.5 text-sm font-medium text-trust hover:border-hairline">
+            <Link href="/admin/products" className="rounded-lg border border-hairline px-3 py-1.5 text-sm font-medium text-accent hover:border-hairline">
               Edit pricing
             </Link>
-            <Link href="/admin/leads" className="rounded-lg border border-hairline px-3 py-1.5 text-sm font-medium text-trust hover:border-hairline">
+            <Link href="/admin/leads" className="rounded-lg border border-hairline px-3 py-1.5 text-sm font-medium text-accent hover:border-hairline">
               Export leads
             </Link>
           </div>

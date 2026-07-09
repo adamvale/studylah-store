@@ -131,7 +131,7 @@ export function CartView() {
           </Link>
           <Link
             href="/bundles"
-            className="rounded-lg border border-hairline bg-surface px-5 py-3 text-sm font-medium text-trust hover:border-hairline"
+            className="rounded-lg border border-hairline bg-surface px-5 py-3 text-sm font-medium text-accent hover:border-hairline"
           >
             Build a bundle
           </Link>
@@ -285,7 +285,7 @@ export function CartView() {
                 <button
                   type="button"
                   onClick={applyDiscount}
-                  className="shrink-0 rounded-lg border border-hairline px-3 py-2 text-sm font-medium text-trust hover:border-hairline"
+                  className="shrink-0 rounded-lg border border-hairline px-3 py-2 text-sm font-medium text-accent hover:border-hairline"
                 >
                   Apply
                 </button>

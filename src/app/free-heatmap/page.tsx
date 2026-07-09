@@ -40,7 +40,7 @@ export default function FreeHeatmapPage() {
             <p className="font-display text-base font-bold text-ink">
               What you&apos;ll get
             </p>
-            <span className="rounded-full bg-trust-soft px-2.5 py-1 font-mono text-xs font-medium text-trust">
+            <span className="rounded-full bg-trust-soft px-2.5 py-1 font-mono text-xs font-medium text-accent">
               Sample
             </span>
           </div>

@@ -10,7 +10,7 @@ export function heatText(probability: number): string {
   // The ≥80 bars are brand yellow; yellow text is unreadable on white, so the
   // near-certain figures use the deep-amber ink from the same family instead.
   if (probability >= 80) return "text-accent-deep";
-  return "text-trust";
+  return "text-accent";
 }
 
 // The four confidence tiers used across the product — the same labels the
