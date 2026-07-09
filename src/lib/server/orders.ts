@@ -25,7 +25,7 @@ export type OrderWithItems = Prisma.OrderGetPayload<{
   };
 }>;
 
-async function loadFullOrder(id: number): Promise<OrderWithItems> {
+export async function loadFullOrder(id: number): Promise<OrderWithItems> {
   const order = await prisma.order.findUnique({
     where: { id },
     include: {

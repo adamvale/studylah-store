@@ -16,6 +16,10 @@ export const serverConfig = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   emailFrom: process.env.EMAIL_FROM ?? "StudyLah <orders@studylah.education>",
   resendApiKey: process.env.RESEND_API_KEY ?? "",
+  // Secret that signs customer magic-links and session cookies. Independent of
+  // ADMIN_PASSWORD so rotating one never affects the other. MUST be set in
+  // production; when blank, customer login is disabled (fail closed).
+  customerAuthSecret: process.env.CUSTOMER_AUTH_SECRET ?? "",
   stripeSecretKey: process.env.STRIPE_SECRET_KEY ?? "",
   stripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET ?? "",
 };

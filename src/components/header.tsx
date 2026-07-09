@@ -62,6 +62,12 @@ export function Header() {
             Free heatmap
           </Link>
           <Link
+            href="/account"
+            className="hidden rounded-md px-3 py-1.5 text-sm font-medium text-cloud hover:bg-surface sm:block"
+          >
+            Account
+          </Link>
+          <Link
             href="/cart"
             className="relative rounded-md bg-violet px-3.5 py-1.5 text-sm font-medium text-white hover:opacity-90"
           >
@@ -96,7 +102,11 @@ export function Header() {
           aria-label="Main"
           className="border-t border-hairline bg-night px-4 py-2 md:hidden"
         >
-          {[...NAV, { href: "/free-heatmap", label: "Free heatmap" }].map((item) => (
+          {[
+            ...NAV,
+            { href: "/free-heatmap", label: "Free heatmap" },
+            { href: "/account", label: "Account" },
+          ].map((item) => (
             <Link
               key={item.href}
               href={item.href}
