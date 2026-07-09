@@ -19,12 +19,13 @@ export default function FreeHeatmapPage() {
             Free · no card needed
           </p>
           <h1 className="mt-4 font-display text-4xl font-bold text-ink">
-            Your Top 5 heatmap, free
+            The 5 topics most likely on your 2026 paper — free
           </h1>
           <p className="mt-3 max-w-lg text-body">
-            Pick one subject and we&apos;ll email you the five topics our model
-            rates most likely for the 2026 sitting — the same analysis that
-            powers the full Exam Forecast. Judge us on it.
+            Pick your subject. We&apos;ll email you the five topics our model
+            rates most likely for 2026, ranked — the same ten-year analysis
+            behind the full Exam Forecast. No card, no catch. See exactly how
+            good the forecast is before you spend a cent.
           </p>
           <div className="mt-7">
             <EmailCaptureForm source="free-heatmap" showSubjectSelect />

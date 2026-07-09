@@ -118,8 +118,9 @@ export function CartView() {
           Your cart is empty
         </h2>
         <p className="mt-3 text-body">
-          Start with your hardest subject — the forecast tells you where the
-          marks are.
+          Start with the subject that worries you most. The forecast shows you
+          exactly where to aim your last few weeks — and every pack is covered
+          by the money-back guarantee.
         </p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
           <Link

@@ -66,28 +66,29 @@ function Hero({ pricing }: { pricing: Pricing }) {
           Built from 10 years of real exam data
         </p>
         <h1 className="mt-5 font-display text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl">
-          Walk into the exam knowing{" "}
-          <span className="text-accent">what&apos;s coming.</span>
+          Stop revising blind. Walk in knowing{" "}
+          <span className="text-accent">what&apos;s likely.</span>
         </h1>
         <p className="mt-4 max-w-lg text-lg text-cloud">
-          AI forecasts of your{" "}
-          {PUBLISHED_LEVELS.map((l) => LEVELS[l].shortName).join(" and ")} papers
-          — which topics are likely, which questions to practise, and a full
-          rehearsal before the real thing. Original questions, written for
-          StudyLah — zero recycled past-paper content.
+          Most students revise everything and hope. StudyLah reads ten years of
+          your{" "}
+          {PUBLISHED_LEVELS.map((l) => LEVELS[l].shortName).join(" and ")} papers,
+          ranks the topics most likely to appear in 2026, and hands you original
+          questions and a full timed rehearsal for them — so your last weeks land
+          where the marks are.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Link
             href="/o-level"
             className="rounded-lg bg-accent px-5 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
           >
-            Browse O-Level subjects
+            Find your subject&apos;s forecast
           </Link>
           <Link
-            href="/bundles"
+            href="/free-heatmap"
             className="rounded-lg border border-hairline bg-surface px-5 py-3 text-sm font-medium text-white transition-colors hover:border-accent"
           >
-            Build a bundle
+            See a free sample →
           </Link>
         </div>
         <p className="mt-5 text-sm text-cloud">
