@@ -1,4 +1,4 @@
-# StudyLah — run it on any machine
+  # StudyLah — run it on any machine
 
 The **live site runs on Railway**. This repo is the source you edit; pushing to
 `main` on GitHub makes Railway redeploy. You can clone and run it on any Mac in
