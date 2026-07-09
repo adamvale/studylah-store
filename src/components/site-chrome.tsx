@@ -3,8 +3,12 @@
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
-// Hides the storefront header and footer on /admin routes, which have their
-// own chrome. Header/footer are passed in as already-rendered server nodes.
+// Hides the storefront header and footer on routes that manage their own
+// chrome: /admin, and the ad landing pages (a distraction-free page converts
+// paid traffic better with no nav to wander off through). Header/footer are
+// passed in as already-rendered server nodes.
+const CHROMELESS = ["/admin", "/exam-forecast"];
+
 export function SiteChrome({
   header,
   footer,
@@ -14,13 +18,13 @@ export function SiteChrome({
   footer: ReactNode;
   children: ReactNode;
 }) {
-  const pathname = usePathname();
-  const isAdmin = pathname?.startsWith("/admin") ?? false;
+  const pathname = usePathname() ?? "";
+  const chromeless = CHROMELESS.some((p) => pathname.startsWith(p));
   return (
     <>
-      {!isAdmin && header}
+      {!chromeless && header}
       <main className="flex-1">{children}</main>
-      {!isAdmin && footer}
+      {!chromeless && footer}
     </>
   );
 }

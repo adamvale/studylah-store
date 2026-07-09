@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { averageHitRate } from "@/lib/accuracy";
 import { sgd } from "@/lib/catalogue";
 import { getPricing } from "@/lib/server/pricing-store";
+import { StickyCta } from "@/components/sticky-cta";
 
 export const metadata: Metadata = {
   title: "Know what's likely before you sit the paper — StudyLah",
@@ -118,7 +120,24 @@ export default async function ExamForecastPage() {
   ];
 
   return (
-    <div className="bg-night">
+    <div className="bg-night pb-24">
+      {/* Minimal chrome: brand only, no nav — nowhere to wander off. */}
+      <header className="border-b border-hairline">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
+          <Image
+            src="/studylah-logo.png"
+            alt="StudyLah"
+            width={286}
+            height={97}
+            priority
+            className="h-8 w-auto"
+          />
+          <p className="hidden text-xs font-medium text-cloud sm:block">
+            Money-back guarantee · Instant download
+          </p>
+        </div>
+      </header>
+
       {/* Hook */}
       <section className="mx-auto max-w-3xl px-4 py-20 text-center">
         <div className="flex justify-center">
@@ -342,6 +361,8 @@ export default async function ExamForecastPage() {
           <CTA />
         </div>
       </section>
+
+      <StickyCta />
     </div>
   );
 }
