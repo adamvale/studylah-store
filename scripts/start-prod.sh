@@ -38,7 +38,19 @@ echo "→ storage OK: db=$DATABASE_URL pdfs=$PDF_STORAGE_DIR"
 mkdir -p /data "$PDF_STORAGE_DIR"
 
 echo "→ applying migrations"
-npx prisma migrate deploy --schema=prisma/schema.prisma
+# Prisma prints "Loaded Prisma config" / "schema loaded" to stderr even on
+# success, which Railway paints red and reads as a crash. Capture the run: on
+# success, drop those two benign lines and show the rest on stdout; on failure,
+# dump everything to stderr (red) and stop the boot. Genuine errors stay loud.
+if migrate_out=$(npx prisma migrate deploy --schema=prisma/schema.prisma 2>&1); then
+  printf '%s\n' "$migrate_out" \
+    | grep -vE '^(Loaded Prisma config from|Prisma schema loaded from)|^[[:space:]]*$' || true
+else
+  status=$?
+  printf '%s\n' "$migrate_out" >&2
+  echo "FATAL: prisma migrate deploy failed (exit $status)." >&2
+  exit "$status"
+fi
 
 echo "→ seeding catalogue (idempotent)"
 npm run db:seed
