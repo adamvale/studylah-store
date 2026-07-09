@@ -9,50 +9,60 @@ export const metadata: Metadata = {
 
 const FAQS: { q: string; a: React.ReactNode }[] = [
   {
-    q: "Are these the actual exam questions?",
-    a: "No. StudyLah forecasts which topics are likely, using ten years of past papers, syllabus weightings and setter patterns. Every practice question is written by us in exam style — zero recycled past-paper content. Real examination papers are the copyright of UCLES and MOE / SEAB, and we neither reproduce nor have access to them.",
+    q: "Is this cheating? Are these the real exam questions?",
+    a: "No — and that's the whole point. We don't have the real papers and we'd never touch them; they belong to Cambridge and MOE / SEAB. What we do is read ten years of past papers and forecast which topics are most likely to come up, then write our own original questions in that exact style. This isn't a shortcut around studying. It's studying the right things.",
   },
   {
-    q: "How accurate are the forecasts?",
+    q: "Isn't this just guessing?",
     a: (
       <>
-        We publish the answer instead of asking you to trust us. After every
-        sitting, the{" "}
+        Guessing is revising everything and hoping. This is ten years of
+        classified questions, mark weightings and setter patterns turned into a
+        ranked probability for every topic on your syllabus. And we don&apos;t
+        ask you to take our word for it — after every sitting the{" "}
         <Link href="/accuracy" className="font-medium text-trust underline">
           accuracy scorecard
         </Link>{" "}
-        shows what we forecast against what appeared, per subject — hits and
-        misses included.
+        shows exactly what we called against what appeared. Hits and misses. In
+        public.
       </>
     ),
   },
   {
-    q: "How does the money-back guarantee work?",
-    a: "If fewer than three of our top-five forecast topics appear in your paper, you can claim a full refund within 14 days of the exam — email us your order ID and we process it, no forms and no argument. [Exact terms FOR LAWYER REVIEW.]",
+    q: "What if the forecast is wrong?",
+    a: "Then you get your money back. Forecasts are probabilities, not promises — so we carry the risk, not you. If fewer than three of our top-five topics turn up in your paper, email your order ID within 14 days of the exam and we refund you in full. No forms. No argument.",
+  },
+  {
+    q: "Why not just use the ten-year series?",
+    a: "A TYS hands you every past question with equal weight — including topics that were cut from the syllabus years ago. StudyLah tells you which topics are likely next, ranks them, and drills only what's still examinable. Same decade of papers. Sorted, not dumped in your lap.",
+  },
+  {
+    q: "Is it worth the money?",
+    a: "One subject's forecast costs less than an hour of tuition and works across your whole final stretch of revision. If it doesn't deliver, it's free — that's what the guarantee is for. The expensive option is the weeks you'd spend revising the wrong things.",
   },
   {
     q: "How do I get my PDFs?",
-    a: "Instantly. After payment you land on your download page and receive the same link by email. Links stay live for 7 days with up to 5 downloads per file — plenty to save them to your devices.",
+    a: "Instantly. Pay, and your download page opens on the spot — the same link lands in your inbox. Links stay live for 7 days, up to 5 downloads per file. Save them to your devices and go.",
   },
   {
     q: "Can I share my PDFs with friends?",
-    a: "No. Every PDF is watermarked with the buyer's email and order ID on every page. Sharing breaks the terms of use — and honestly, the forecast is cheap enough that your friends can judge us on the free heatmap.",
+    a: "Please don't — every page is watermarked with your email and order ID, so a shared copy points straight back to you. Send them the free heatmap instead and let them judge us for themselves.",
   },
   {
-    q: "I take multiple subjects. Do bundles still work?",
-    a: "Yes. Bundle pricing applies per subject at that subject's level pricing, and the cart always charges you the cheapest valid combination — you never need to work it out yourself.",
+    q: "I take multiple subjects. Do bundles work?",
+    a: "Yes. Add every subject you're sitting and the cart automatically charges you the cheapest valid bundle. You never do the maths, and you never overpay.",
   },
   {
     q: "When should I buy?",
-    a: "The Forecast is built for your last 14 days, the Vault for your last week, and the Rehearsal for the days before the paper. Early-bird pricing runs when forecasts first release — join the free heatmap list and we'll tell you when.",
+    a: "Sooner is cheaper. The Forecast is built for your last two weeks, the Vault for your last week, the Rehearsal for the final days — and early-bird pricing runs when forecasts first drop. Get on the free heatmap list and we'll tell you the moment yours goes live.",
   },
   {
     q: "What happens to my email address?",
     a: (
       <>
-        We store it with your consent timestamp (PDPA requires provable
-        opt-in), use it to deliver what you asked for, and nothing else. Full
-        details in the{" "}
+        We use it to send what you asked for, store your consent timestamp
+        because PDPA requires provable opt-in, and do nothing else with it. No
+        reselling, no spam. Full details in the{" "}
         <Link href="/legal/privacy" className="font-medium text-trust underline">
           privacy policy
         </Link>
@@ -65,25 +75,33 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
 export default function FaqPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
-      <h1 className="font-display text-4xl font-bold text-ink">
-        FAQ and guarantee
+      <h1 className="font-display text-4xl font-black text-ink">
+        Straight answers. No fine print.
       </h1>
+      <p className="mt-2 text-body">
+        The honest version of everything students and parents ask us before they
+        buy.
+      </p>
 
       <section
         aria-labelledby="guarantee-heading"
         className="mt-8 rounded-2xl border border-guarantee/30 bg-guarantee/5 p-6"
       >
-        <h2 id="guarantee-heading" className="font-display text-2xl font-bold text-guarantee">
-          The money-back guarantee
+        <h2 id="guarantee-heading" className="font-display text-2xl font-black text-guarantee">
+          If it doesn&apos;t deliver, it&apos;s free.
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-ink">
-          Forecasts are probabilities, not certainties — so the risk is ours,
-          not yours. If fewer than three of our top-five forecast topics appear
-          in your paper, claim a full refund within 14 days of the exam. Email
-          your order ID, get your money back. No forms, no argument.
+          Forecasts are probabilities, not certainties — so we carry the risk,
+          not you. If fewer than three of our top-five forecast topics appear in
+          your paper, claim a full refund within 14 days of the exam. Email your
+          order ID, get your money back. No forms. No argument.
         </p>
         <p className="mt-2 text-xs text-body">
-          Placeholder terms — exact wording FOR LAWYER REVIEW.
+          Full terms are in the{" "}
+          <Link href="/legal/refunds" className="font-medium text-trust underline">
+            refund policy
+          </Link>
+          .
         </p>
       </section>
 
