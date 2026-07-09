@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { COMING_SOON, LEVELS, PUBLISHED_LEVELS } from "@/lib/catalogue";
 import { STANDARD_DISCLAIMER } from "@/lib/compliance";
@@ -29,8 +30,14 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="font-display text-xl font-extrabold">StudyLah!</p>
-            <p className="mt-0.5 text-sm font-medium text-accent">
+            <Image
+              src="/studylah-logo.png"
+              alt="StudyLah"
+              width={286}
+              height={97}
+              className="h-9 w-auto"
+            />
+            <p className="mt-3 text-sm font-medium text-accent">
               Study Less, Score More.
             </p>
             <HeatTiles className="mt-3" />

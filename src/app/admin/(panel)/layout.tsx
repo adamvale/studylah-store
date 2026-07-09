@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { requireAdmin } from "@/lib/server/admin-auth";
 import { AdminNav } from "@/components/admin/admin-nav";
@@ -18,13 +19,15 @@ export default async function AdminPanelLayout({
     <div className="mx-auto max-w-6xl px-4 py-8">
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <span aria-hidden="true" className="flex items-end gap-0.5">
-            <span className="h-2 w-1.5 rounded-sm bg-heat-2" />
-            <span className="h-3 w-1.5 rounded-sm bg-heat-3" />
-            <span className="h-4 w-1.5 rounded-sm bg-heat-5" />
-          </span>
+          <Image
+            src="/studylah-logo.png"
+            alt="StudyLah"
+            width={286}
+            height={97}
+            className="h-8 w-auto"
+          />
           <div>
-            <p className="font-display text-lg font-bold text-trust">StudyLah admin</p>
+            <p className="font-display text-lg font-bold text-white">Admin</p>
             <p className="text-xs text-body">Operations · v1</p>
           </div>
         </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
@@ -18,15 +19,15 @@ const NAV = [
 
 function Logo() {
   return (
-    <Link href="/" className="flex items-center gap-2">
-      <span aria-hidden="true" className="flex items-end gap-0.5">
-        <span className="h-2 w-1.5 rounded-sm bg-heat-2" />
-        <span className="h-3 w-1.5 rounded-sm bg-heat-3" />
-        <span className="h-4 w-1.5 rounded-sm bg-heat-5" />
-      </span>
-      <span className="font-display text-xl font-extrabold tracking-tight text-white">
-        StudyLah!
-      </span>
+    <Link href="/" className="flex items-center" aria-label="StudyLah home">
+      <Image
+        src="/studylah-logo.png"
+        alt="StudyLah"
+        width={286}
+        height={97}
+        priority
+        className="h-9 w-auto"
+      />
     </Link>
   );
 }

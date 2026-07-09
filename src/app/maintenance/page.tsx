@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "We'll be right back — StudyLah",
@@ -12,7 +13,14 @@ export default function MaintenancePage() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-paper px-6 text-center">
       <div className="max-w-md">
-        <p className="font-display text-2xl font-black text-trust">StudyLah!</p>
+        <Image
+          src="/studylah-logo.png"
+          alt="StudyLah"
+          width={286}
+          height={97}
+          priority
+          className="mx-auto h-10 w-auto"
+        />
         <h1 className="mt-6 font-display text-4xl font-black tracking-tight text-ink">
           We&apos;re making improvements
         </h1>
