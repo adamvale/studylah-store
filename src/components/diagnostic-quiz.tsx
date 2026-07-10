@@ -9,7 +9,7 @@ interface SubmitResult {
   attemptId: string;
   score: number;
   totalMarks: number;
-  band: "storm" | "cloudy" | "clear";
+  band: "danger" | "warning" | "pass";
   gradeEstimate: string;
   topicTier: ForecastTier;
 }
@@ -18,18 +18,18 @@ const ESTIMATE_CAVEAT =
   "An estimate from this 10-question sample on the topics forecast most likely — not a promise or prediction of your actual result.";
 
 const BAND_UI: Record<SubmitResult["band"], { title: string; line: string; cls: string }> = {
-  storm: {
-    title: "Storm warning on these topics",
+  danger: {
+    title: "Danger zone on these topics",
     line: "These topics are forecast VERY HIGH for 2026 — and right now they would cost you marks. The full breakdown shows exactly which ones, and how to get them back.",
     cls: "text-coral",
   },
-  cloudy: {
-    title: "Partly cloudy — close, but marks are leaking",
+  warning: {
+    title: "Warning — close, but marks are leaking",
     line: "You know these topics — but a few marks slipped. The breakdown shows precisely where, with worked solutions.",
     cls: "text-accent",
   },
-  clear: {
-    title: "Clear skies here — keep it sharp",
+  pass: {
+    title: "Pass territory — keep it sharp",
     line: "Strong showing on the most-likely topics. See the worked solutions and how to keep the edge.",
     cls: "text-guarantee",
   },

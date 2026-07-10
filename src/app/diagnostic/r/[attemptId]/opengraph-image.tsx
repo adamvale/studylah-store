@@ -8,14 +8,14 @@ export const contentType = "image/png";
 export const alt = "My StudyLah readiness score";
 
 const BAND_TITLE: Record<Band, string> = {
-  storm: "Storm warning on these topics",
-  cloudy: "Partly cloudy — marks are leaking",
-  clear: "Clear skies — keep it sharp",
+  danger: "Danger zone on these topics",
+  warning: "Warning — marks are leaking",
+  pass: "Pass territory — keep it sharp",
 };
 const BAND_COLOR: Record<Band, string> = {
-  storm: "#ff6b6b",
-  cloudy: "#ffdc00",
-  clear: "#3ddc84",
+  danger: "#ff6b6b",
+  warning: "#ffdc00",
+  pass: "#3ddc84",
 };
 
 // The shareable result card, rendered on demand per attempt.
@@ -27,7 +27,7 @@ export default async function OgImage({
   const { attemptId } = await params;
   const attempt = await prisma.diagnosticAttempt.findUnique({ where: { id: attemptId } });
   const subject = attempt ? getSubject(attempt.level as Level, attempt.slug) : null;
-  const band = (attempt?.band ?? "cloudy") as Band;
+  const band = (attempt?.band ?? "warning") as Band;
   const score = attempt ? `${attempt.score}/${attempt.totalMarks}` : "?";
   const estimate = attempt
     ? `Indicative: ${gradeEstimateFor(attempt.level, attempt.score, attempt.totalMarks)} on the tested topics`

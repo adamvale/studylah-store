@@ -13,28 +13,28 @@ import { STANDARD_DISCLAIMER } from "../compliance";
 import { serverConfig } from "./config";
 import { emailLayout, sendEmail } from "./email";
 
-export type Band = "storm" | "cloudy" | "clear";
+export type Band = "danger" | "warning" | "pass";
 
 export const BAND_COPY: Record<Band, { title: string; line: string }> = {
-  storm: {
-    title: "Storm warning on these topics",
+  danger: {
+    title: "Danger zone on these topics",
     line: "These topics are forecast VERY HIGH for 2026 — and right now they would cost you marks. The good news: it's exactly the kind of gap two focused weeks can close.",
   },
-  cloudy: {
-    title: "Partly cloudy — close, but marks are leaking",
+  warning: {
+    title: "Warning — close, but marks are leaking",
     line: "You know these topics — but the paper pays for precision, and a few marks slipped. Tighten the working and they become bankers.",
   },
-  clear: {
-    title: "Clear skies here — keep it sharp",
+  pass: {
+    title: "Pass territory — keep it sharp",
     line: "Strong showing on the most-likely topics. Keep it warm and make sure the rest of the forecast looks like this.",
   },
 };
 
 export function bandFor(score: number, totalMarks: number): Band {
   const pct = totalMarks === 0 ? 0 : (score / totalMarks) * 100;
-  if (pct <= 40) return "storm";
-  if (pct <= 70) return "cloudy";
-  return "clear";
+  if (pct <= 50) return "danger";
+  if (pct <= 80) return "warning";
+  return "pass";
 }
 
 // Indicative grade band from this 10-question sample. ALWAYS presented as an
@@ -117,11 +117,11 @@ export function ctaFor(band: Band, weakness: DiagnosticProduct | null): {
   headline: string;
   body: string;
 } {
-  if (band === "storm") {
+  if (band === "danger") {
     return {
       product: "master",
       headline: "Close the gap with the full Master pack",
-      body: "Forecast, Companion, Vault and a timed Final Rehearsal — the complete route from 'storm warning' to walking in prepared. Covered by the conditional 14-day money-back guarantee.",
+      body: "Forecast, Companion, Vault and a timed Final Rehearsal — the complete route from 'danger zone' to walking in prepared. Covered by the conditional 14-day money-back guarantee.",
     };
   }
   if (weakness === "companion") {

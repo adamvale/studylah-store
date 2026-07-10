@@ -30,9 +30,9 @@ export const metadata: Metadata = {
 };
 
 const BAND_CLS: Record<Band, string> = {
-  storm: "text-coral",
-  cloudy: "text-accent",
-  clear: "text-guarantee",
+  danger: "text-coral",
+  warning: "text-accent",
+  pass: "text-guarantee",
 };
 
 export default async function DiagnosticResultsPage({
