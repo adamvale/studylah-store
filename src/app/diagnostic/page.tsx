@@ -66,16 +66,6 @@ export default function DiagnosticIndexPage() {
         ))}
       </div>
 
-      <p className="mt-6 rounded-xl border border-hairline bg-surface px-4 py-3 text-sm text-body">
-        More subjects are being added — each check is built on that
-        subject&apos;s own 2026 prediction table. Want yours next? Tell us:{" "}
-        <a
-          href="mailto:hello@studylah.education"
-          className="font-medium text-accent underline"
-        >
-          hello@studylah.education
-        </a>
-      </p>
     </div>
   );
 }

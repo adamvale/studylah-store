@@ -33,7 +33,7 @@ const BAND_UI: Record<SubmitResult["band"], { title: string; line: string; cls: 
 
 // The exam clock: generous ceiling for a quick check — nobody should lose to
 // the timer, but it keeps the "sit it like the real thing" pressure honest.
-const QUIZ_SECONDS = 5 * 60;
+const QUIZ_SECONDS = 3 * 60;
 
 function beacon(type: string, attemptId?: string, meta?: string) {
   void fetch("/api/diagnostic/event", {
