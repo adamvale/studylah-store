@@ -17,9 +17,10 @@ export async function POST(request: Request) {
   const form = await request.formData().catch(() => null);
   const handle = String(form?.get("handle") ?? "").trim();
   const back = (flag: string) =>
-    NextResponse.redirect(new URL(`/account?${flag}`, serverConfig.siteUrl), {
-      status: 303,
-    });
+    NextResponse.redirect(
+      new URL(`/account/referrals?${flag}`, serverConfig.siteUrl),
+      { status: 303 }
+    );
 
   // Empty clears the handle; otherwise keep it sane and short.
   if (handle.length > 120) return back("error=handle");

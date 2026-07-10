@@ -7,9 +7,10 @@ import { getCustomerId, signChangeEmailToken } from "@/lib/server/customer-sessi
 export async function POST(request: Request) {
   const customerId = await getCustomerId();
   const back = (flag: string) =>
-    NextResponse.redirect(new URL(`/account?${flag}`, serverConfig.siteUrl), {
-      status: 303,
-    });
+    NextResponse.redirect(
+      new URL(`/account/settings?${flag}`, serverConfig.siteUrl),
+      { status: 303 }
+    );
 
   if (!customerId) {
     return NextResponse.redirect(new URL("/account/login", serverConfig.siteUrl), {

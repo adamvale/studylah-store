@@ -12,9 +12,10 @@ export async function GET(request: Request) {
   const token = new URL(request.url).searchParams.get("token");
   const parsed = verifyChangeEmailToken(token);
   const back = (flag: string) =>
-    NextResponse.redirect(new URL(`/account?${flag}`, serverConfig.siteUrl), {
-      status: 303,
-    });
+    NextResponse.redirect(
+      new URL(`/account/settings?${flag}`, serverConfig.siteUrl),
+      { status: 303 }
+    );
 
   if (!parsed) return back("error=emaillink");
 
