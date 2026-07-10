@@ -73,7 +73,7 @@ In the service's **Variables** tab, add these (Railway sets `PORT`,
 | `ADMIN_PASSWORD` | a long random string (run `openssl rand -base64 24`) |
 | `CUSTOMER_AUTH_SECRET` | a long random string (run `openssl rand -hex 32`) — signs customer magic-link logins; the portal fails closed without it |
 | `CRON_SECRET` | a long random string (run `openssl rand -hex 32`) — protects the scheduled diagnostic follow-up endpoint (see 2f) |
-| `NEXT_PUBLIC_VAPID_PUBLIC_KEY` | web-push public key (run `npx web-push generate-vapid-keys` once; safe to expose) |
+| `NEXT_PUBLIC_VAPID_PUBLIC_KEY` | web-push public key (run `npx web-push generate-vapid-keys` once; safe to expose). ⚠️ `NEXT_PUBLIC_*` values are baked in at BUILD time — set this BEFORE pushing, or push any commit afterwards to trigger a fresh build |
 | `VAPID_PRIVATE_KEY` | the matching private key from the same command — keep secret |
 | `VAPID_SUBJECT` | `mailto:hello@studylah.education` |
 | `NEXT_PUBLIC_SITE_URL` | for now, your Railway URL (you'll set the domain in step 3) |
