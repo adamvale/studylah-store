@@ -7,6 +7,7 @@ import { getPricing } from "@/lib/server/pricing-store";
 import { StickyCta } from "@/components/sticky-cta";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/exam-forecast" },
   title: "Know what's likely before you sit the paper — StudyLah",
   description:
     "StudyLah reads ten years of your exact exam papers and forecasts the topics most likely to appear — with original practice and a full rehearsal. Money-back guarantee.",

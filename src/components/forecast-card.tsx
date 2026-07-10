@@ -1,10 +1,10 @@
-import { topForecast } from "@/lib/topics";
+import { realTopCalls } from "@/lib/forecast-tables";
 import { HeatBar } from "./heat";
 
-// The hero visual: a sample of the actual product — a tiered topic forecast
-// for one subject (Very High / High / Moderate / Watch, as in the PDF).
+// The hero visual: the REAL top calls from the Chemistry (Pure) Forecast's
+// 2026 prediction table — No. 1 in the open, the rest masked until purchase.
 export function ForecastCard() {
-  const rows = topForecast("chemistry", "o-level/chemistry-pure/hero");
+  const rows = realTopCalls("o-level", "chemistry-pure", 5);
   return (
     <div className="rounded-2xl border border-hairline bg-surface p-5 shadow-sm sm:p-6">
       <div className="flex items-center justify-between gap-2">
@@ -19,17 +19,18 @@ export function ForecastCard() {
         </span>
       </div>
       <div className="mt-5 space-y-3">
-        {rows.map((row, i) => (
-          <HeatBar
-            key={row.topic}
-            topic={row.topic}
-            probability={row.probability}
-            delayMs={i * 120}
-          />
-        ))}
+        {/* Only the No. 1 call ships to the browser — masked rows carry no
+            real data (a topic key/prop would leak via the RSC payload). */}
+        {rows.map((row, i) =>
+          i === 0 ? (
+            <HeatBar key={row.topic} topic={row.topic} tier={row.tier} />
+          ) : (
+            <HeatBar key={`masked-${i}`} topic="" delayMs={i * 120} masked />
+          )
+        )}
       </div>
       <p className="mt-5 border-t border-hairline pt-3 font-mono text-xs text-body">
-        Sample forecast · full PDF covers every topic
+        The real 2026 table&apos;s top call — the full PDF tiers every topic
       </p>
     </div>
   );

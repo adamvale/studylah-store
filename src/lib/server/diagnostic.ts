@@ -1,0 +1,300 @@
+// Server-side engine for the "Am I Ready?" diagnostic: grading (answers never
+// leave the server), readiness bands, weakness→product mapping, funnel events
+// and the two result emails. Compliance: topic-scoped readiness only — never
+// grade promises; STANDARD_DISCLAIMER rides every email via emailLayout.
+import { prisma } from "../db";
+import { getSubject, type Level } from "../catalogue";
+import { realTopCalls } from "../forecast-tables";
+import {
+  getDiagnosticSet,
+  type DiagnosticProduct,
+  type DiagnosticSet,
+} from "../diagnostic-questions";
+import { STANDARD_DISCLAIMER } from "../compliance";
+import { serverConfig } from "./config";
+import { emailLayout, sendEmail } from "./email";
+
+export type Band = "storm" | "cloudy" | "clear";
+
+export const BAND_COPY: Record<Band, { title: string; line: string }> = {
+  storm: {
+    title: "Storm warning on this topic",
+    line: "This topic is forecast VERY HIGH for 2026 — and right now it would cost you marks. The good news: it's exactly the kind of gap two focused weeks can close.",
+  },
+  cloudy: {
+    title: "Partly cloudy — close, but marks are leaking",
+    line: "You know this topic — but the paper pays for precision, and a few marks slipped. Tighten the working and this becomes a banker.",
+  },
+  clear: {
+    title: "Clear skies here — keep it sharp",
+    line: "Strong showing on the most-likely topic. Keep it warm and make sure the rest of the forecast looks like this.",
+  },
+};
+
+export function bandFor(score: number, totalMarks: number): Band {
+  const pct = totalMarks === 0 ? 0 : (score / totalMarks) * 100;
+  if (pct <= 40) return "storm";
+  if (pct <= 70) return "cloudy";
+  return "clear";
+}
+
+export interface GradedAnswer {
+  questionId: string;
+  given: string;
+  correct: boolean;
+  marksEarned: number;
+  marks: number;
+}
+
+function normalise(s: string): string {
+  return s.trim().toLowerCase().replace(/\s+/g, " ");
+}
+
+export function gradeAttempt(
+  set: DiagnosticSet,
+  answers: Record<string, string>
+): { graded: GradedAnswer[]; score: number; totalMarks: number; weakness: DiagnosticProduct | null } {
+  const graded: GradedAnswer[] = set.questions.map((q) => {
+    const given = String(answers[q.id] ?? "");
+    const correct = q.correctKey.some((k) => normalise(k) === normalise(given));
+    return {
+      questionId: q.id,
+      given,
+      correct,
+      marksEarned: correct ? q.marks : 0,
+      marks: q.marks,
+    };
+  });
+  const score = graded.reduce((sum, g) => sum + g.marksEarned, 0);
+  const totalMarks = graded.reduce((sum, g) => sum + g.marks, 0);
+
+  // Weakness = the product bucket where the most marks were dropped
+  // (companion = method/technique, vault = application/practice).
+  const dropped: Record<string, number> = {};
+  for (const g of graded) {
+    if (g.correct) continue;
+    const q = set.questions.find((x) => x.id === g.questionId);
+    if (!q) continue;
+    dropped[q.mapsToProduct] = (dropped[q.mapsToProduct] ?? 0) + q.marks;
+  }
+  const weakness =
+    Object.keys(dropped).length === 0
+      ? null
+      : ((Object.entries(dropped).sort((a, b) => b[1] - a[1])[0][0]) as DiagnosticProduct);
+
+  return { graded, score, totalMarks, weakness };
+}
+
+// The tailored CTA per the brief's mapping. Low overall score outranks the
+// per-question buckets; a clean sheet nudges Vault/Rehearsal to stay sharp.
+export function ctaFor(band: Band, weakness: DiagnosticProduct | null): {
+  product: "companion" | "vault" | "master" | "rehearsal";
+  headline: string;
+  body: string;
+} {
+  if (band === "storm") {
+    return {
+      product: "master",
+      headline: "Close the gap with the full Master pack",
+      body: "Forecast, Companion, Vault and a timed Final Rehearsal — the complete route from 'storm warning' to walking in prepared. Covered by the conditional 14-day money-back guarantee.",
+    };
+  }
+  if (weakness === "companion") {
+    return {
+      product: "companion",
+      headline: "Your marks slipped on method — that's the Companion's job",
+      body: "It turns the forecast into paper technique: the working structure, the conventions markers pay for, the format of every answer.",
+    };
+  }
+  if (weakness === "vault") {
+    return {
+      product: "vault",
+      headline: "Practise where the marks are — the Sure Questions Vault",
+      body: "Original exam-style questions on the highest-tier calls, each with a full answer key — so the next time this topic appears, it pays in full.",
+    };
+  }
+  return {
+    product: "rehearsal",
+    headline: "Sharp here — now prove it under time",
+    body: "The Final Rehearsal is a complete original mock in the 2026 format. Sit it under exam conditions and keep this topic (and the rest) match-fit.",
+  };
+}
+
+export function productUrl(level: string, slug: string): string {
+  return `${serverConfig.siteUrl}/${level}/${slug}`;
+}
+
+// --- Funnel events ---------------------------------------------------------
+
+export const EVENT_TYPES = [
+  "diagnostic_start",
+  "question_answered",
+  "diagnostic_complete",
+  "email_captured",
+  "results_viewed",
+  "cta_clicked",
+  "result_shared",
+] as const;
+export type DiagnosticEventType = (typeof EVENT_TYPES)[number];
+
+export async function logDiagnosticEvent(
+  type: DiagnosticEventType,
+  attemptId?: string | null,
+  meta?: string
+): Promise<void> {
+  try {
+    await prisma.diagnosticEvent.create({
+      data: { type, attemptId: attemptId ?? null, meta: meta ?? null },
+    });
+  } catch (e) {
+    console.error(`Diagnostic event ${type} failed`, e);
+  }
+}
+
+// --- Emails ------------------------------------------------------------------
+
+function referralLineHtml(referralCode: string | null): string {
+  const line = referralCode
+    ? `Refer a friend — you both get S$15. Your link: <a href="${serverConfig.siteUrl}/?ref=${referralCode}" style="color:#f4552b;">${serverConfig.siteUrl}/?ref=${referralCode}</a>`
+    : `Refer a friend — you both get S$15 once you're a customer. Your code lives in <a href="${serverConfig.siteUrl}/account/referrals" style="color:#f4552b;">your account</a>.`;
+  return `<p style="font-size:12px;color:#3d4e63;line-height:1.6;margin:12px 0 0;">${line}</p>`;
+}
+
+const UNSUB_HTML = `<p style="font-size:11px;color:#8894a3;line-height:1.6;margin:12px 0 0;">Don't want these emails? Reply "unsubscribe" and we'll remove you right away (PDPA).</p>`;
+
+// The spec requires the independence disclaimer VERBATIM in these emails
+// (emailLayout's generic footer is a paraphrase).
+const DISCLAIMER_HTML = `<p style="font-size:11px;color:#8894a3;line-height:1.6;margin:12px 0 0;">${STANDARD_DISCLAIMER}</p>`;
+
+async function referralCodeFor(email: string): Promise<string | null> {
+  const rows = await prisma.$queryRaw<Array<{ referralCode: string | null }>>`
+    SELECT "referralCode" FROM "Customer" WHERE email = ${email} COLLATE NOCASE LIMIT 1
+  `;
+  return rows[0]?.referralCode ?? null;
+}
+
+export async function sendResultsEmail(attemptId: string): Promise<boolean> {
+  const attempt = await prisma.diagnosticAttempt.findUnique({ where: { id: attemptId } });
+  if (!attempt?.email || !attempt.unlockedAt) return false;
+  const set = getDiagnosticSet(attempt.level, attempt.slug);
+  const subject = getSubject(attempt.level as Level, attempt.slug);
+  if (!set || !subject) return false;
+
+  const graded = JSON.parse(attempt.answersJson) as GradedAnswer[];
+  const band = attempt.band as Band;
+  const cta = ctaFor(band, (attempt.weakness as DiagnosticProduct | null) ?? null);
+  const resultsUrl = `${serverConfig.siteUrl}/diagnostic/results/${attempt.id}`;
+  const isParent = attempt.isParent;
+
+  const rowsHtml = set.questions
+    .map((q, i) => {
+      const g = graded.find((x) => x.questionId === q.id);
+      const ok = g?.correct ?? false;
+      return `<li style="margin:0 0 10px;font-size:13px;color:#3d4e63;">
+        <strong>Q${i + 1} (${ok ? `${q.marks}/${q.marks}` : `0/${q.marks}`} marks)</strong> — ${q.stem}<br/>
+        <span style="color:${ok ? "#1a7f4e" : "#b3261e"};">${ok ? "Correct." : "Marks dropped."}</span>
+        ${q.workedSolution}
+      </li>`;
+    })
+    .join("");
+
+  const intro = isParent
+    ? `<p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 12px;">
+        Your child took our 60-second readiness check on <strong>${set.topicLabel}</strong> —
+        the topic our data rates most likely for the 2026 ${subject.name} paper. Below is the
+        honest picture and exactly what to use, and when, to close the gap. These are
+        probabilistic forecasts from ten years of past papers — a calmer way to plan
+        revision, not a shortcut around it.</p>`
+    : `<p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 12px;">
+        You took the 60-second check on <strong>${set.topicLabel}</strong> — the topic our
+        data rates most likely for your 2026 ${subject.name} paper. Here's the full
+        breakdown and the fastest fix.</p>`;
+
+  const html = emailLayout(`
+    <h1 style="font-size:20px;margin:0 0 12px;color:#101f33;">${BAND_COPY[band].title}</h1>
+    ${intro}
+    <p style="font-size:15px;margin:0 0 16px;color:#101f33;"><strong>Score: ${attempt.score}/${attempt.totalMarks}</strong> on a VERY HIGH-tier topic.</p>
+    <ul style="margin:0 0 16px;padding-left:18px;">${rowsHtml}</ul>
+    <p style="font-size:14px;color:#101f33;margin:0 0 6px;"><strong>${cta.headline}</strong></p>
+    <p style="font-size:13px;color:#3d4e63;line-height:1.6;margin:0 0 14px;">${cta.body}</p>
+    <p style="margin:0 0 8px;">
+      <a href="${productUrl(attempt.level, attempt.slug)}" style="display:inline-block;background:#f4552b;color:#ffffff;text-decoration:none;font-size:14px;font-weight:bold;padding:12px 20px;border-radius:8px;">
+        See ${subject.name} packs
+      </a>
+    </p>
+    <p style="font-size:12px;color:#3d4e63;margin:0;">Your full results page: <a href="${resultsUrl}" style="color:#f4552b;">${resultsUrl}</a></p>
+    ${referralLineHtml(await referralCodeFor(attempt.email))}
+    ${DISCLAIMER_HTML}
+    ${UNSUB_HTML}
+  `);
+
+  const text = [
+    `${BAND_COPY[band].title}`,
+    `Score: ${attempt.score}/${attempt.totalMarks} on ${set.topicLabel} (forecast VERY HIGH for 2026).`,
+    ``,
+    `Full breakdown + worked solutions: ${resultsUrl}`,
+    `${cta.headline} — ${productUrl(attempt.level, attempt.slug)}`,
+    ``,
+    `Reply "unsubscribe" to stop these emails.`,
+  ].join("\n");
+
+  const res = await sendEmail({
+    to: attempt.email,
+    subject: `Your ${subject.name} readiness results + worked solutions`,
+    html,
+    text,
+  });
+  if (res.delivered) {
+    await prisma.diagnosticAttempt.update({
+      where: { id: attempt.id },
+      data: { resultEmailSentAt: new Date() },
+    });
+  }
+  return res.delivered;
+}
+
+export async function sendFollowUpEmail(attemptId: string): Promise<boolean> {
+  const attempt = await prisma.diagnosticAttempt.findUnique({ where: { id: attemptId } });
+  if (!attempt?.email || !attempt.unlockedAt || attempt.followUpSentAt) return false;
+  const subject = getSubject(attempt.level as Level, attempt.slug);
+  if (!subject) return false;
+  const band = attempt.band as Band;
+  const cta = ctaFor(band, (attempt.weakness as DiagnosticProduct | null) ?? null);
+  const topic = realTopCalls(attempt.level, attempt.slug, 1)[0];
+  const isParent = attempt.isParent;
+
+  const proofLine = `We publish our accuracy after every sitting — hits AND misses — at <a href="${serverConfig.siteUrl}/accuracy" style="color:#f4552b;">the public scorecard</a>. A forecast you can't check is just marketing.`;
+  const opener = isParent
+    ? `Two days ago your child scored ${attempt.score}/${attempt.totalMarks} on <strong>${topic?.topic ?? "the most-likely topic"}</strong> — the highest-confidence call for the 2026 ${subject.name} paper.`
+    : `Two days ago you scored ${attempt.score}/${attempt.totalMarks} on <strong>${topic?.topic ?? "the most-likely topic"}</strong> — the highest-confidence call for your 2026 ${subject.name} paper.`;
+
+  const html = emailLayout(`
+    <h1 style="font-size:20px;margin:0 0 12px;color:#101f33;">That topic hasn't gotten less likely</h1>
+    <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 12px;">${opener}</p>
+    <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 12px;">${proofLine}</p>
+    <p style="font-size:14px;color:#101f33;margin:0 0 6px;"><strong>${cta.headline}</strong></p>
+    <p style="font-size:13px;color:#3d4e63;line-height:1.6;margin:0 0 14px;">${cta.body} Early-bird pricing applies while it's on.</p>
+    <p style="margin:0;">
+      <a href="${productUrl(attempt.level, attempt.slug)}" style="display:inline-block;background:#f4552b;color:#ffffff;text-decoration:none;font-size:14px;font-weight:bold;padding:12px 20px;border-radius:8px;">
+        Fix it before the paper does
+      </a>
+    </p>
+    ${referralLineHtml(await referralCodeFor(attempt.email))}
+    ${DISCLAIMER_HTML}
+    ${UNSUB_HTML}
+  `);
+
+  const res = await sendEmail({
+    to: attempt.email,
+    subject: `${subject.name}: the most-likely topic is still waiting`,
+    html,
+    text: `You scored ${attempt.score}/${attempt.totalMarks} on the most-likely ${subject.name} topic. Proof of our track record: ${serverConfig.siteUrl}/accuracy\n\n${cta.headline}: ${productUrl(attempt.level, attempt.slug)}\n\nReply "unsubscribe" to stop these emails.`,
+  });
+  if (res.delivered) {
+    await prisma.diagnosticAttempt.update({
+      where: { id: attempt.id },
+      data: { followUpSentAt: new Date() },
+    });
+  }
+  return res.delivered;
+}

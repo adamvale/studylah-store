@@ -43,6 +43,33 @@ export const metadata: Metadata = {
   },
 };
 
+// Entity card for search + AI answer engines: who runs the site, what it is,
+// and the honest positioning ("independent publisher") in machine-readable form.
+const ORG_SCHEMA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.studylah.education/#org",
+      name: "StudyLah Education",
+      url: "https://www.studylah.education",
+      logo: "https://www.studylah.education/studylah-logo.png",
+      slogan: "Study Less, Score More.",
+      description:
+        "Independent Singapore publisher of data-driven exam forecasts, original practice questions and timed rehearsals for the Singapore-Cambridge O-Level and N(A)-Level. Not affiliated with SEAB, MOE, or Cambridge (UCLES).",
+      email: "hello@studylah.education",
+      areaServed: "SG",
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.studylah.education/#website",
+      url: "https://www.studylah.education",
+      name: "StudyLah!",
+      publisher: { "@id": "https://www.studylah.education/#org" },
+    },
+  ],
+};
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -55,6 +82,10 @@ export default async function RootLayout({
       className={`${inter.variable} ${archivo.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }}
+        />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-night"

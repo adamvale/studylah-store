@@ -12,7 +12,8 @@ import {
 } from "@/lib/catalogue";
 import { getPricing } from "@/lib/server/pricing-store";
 import { subjectCopy } from "@/lib/subject-copy";
-import { topForecast } from "@/lib/topics";
+import { realTopCalls } from "@/lib/forecast-tables";
+import { getDiagnosticSet } from "@/lib/diagnostic-questions";
 import { DisclaimerBox } from "./disclaimer";
 import { ExamCountdown } from "./exam-countdown";
 import { HeatBar } from "./heat";
@@ -20,7 +21,9 @@ import { SubjectStickyCta } from "./subject-sticky-cta";
 import { TierSelector } from "./tier-selector";
 
 export async function SubjectView({ subject }: { subject: Subject }) {
-  const forecast = topForecast(subject.family, `${subject.level}/${subject.slug}`);
+  // The preview shows the subject's REAL top calls from its Forecast PDF's
+  // 2026 prediction table — No. 1 in the open, the rest masked.
+  const forecast = realTopCalls(subject.level, subject.slug, 4);
   const pricing = await getPricing();
   const { alacartePrice } = pricing;
   const copy = subjectCopy(subject.level, subject.slug);
@@ -49,11 +52,40 @@ export async function SubjectView({ subject }: { subject: Subject }) {
   };
   const accuracyAnchor = `${subject.level}-${subject.slug}`;
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "StudyLah",
+        item: "https://www.studylah.education/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: LEVELS[subject.level].name,
+        item: `https://www.studylah.education/${subject.level}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: subject.name,
+        item: `https://www.studylah.education/${subject.level}/${subject.slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <nav aria-label="Breadcrumb" className="text-sm text-body">
         <Link href={`/${subject.level}`} className="hover:underline">
@@ -99,13 +131,14 @@ export async function SubjectView({ subject }: { subject: Subject }) {
             </div>
             <div className="mt-4 space-y-3">
               {forecast.slice(0, 1).map((row) => (
-                <HeatBar key={row.topic} topic={row.topic} probability={row.probability} />
+                <HeatBar key={row.topic} topic={row.topic} tier={row.tier} />
               ))}
-              {forecast.slice(1, 4).map((row, i) => (
+              {/* Masked rows carry NO real data — a topic key or prop would
+                  leak the call into the serialized RSC payload. */}
+              {forecast.slice(1, 4).map((_row, i) => (
                 <HeatBar
-                  key={row.topic}
-                  topic={row.topic}
-                  probability={row.probability}
+                  key={`masked-${i}`}
+                  topic=""
                   delayMs={(i + 1) * 120}
                   masked
                 />
@@ -121,6 +154,24 @@ export async function SubjectView({ subject }: { subject: Subject }) {
               See how we scored on {subject.name} in 2025 →
             </Link>
           </div>
+
+          {getDiagnosticSet(subject.level, subject.slug) && (
+            <div className="mt-4 rounded-2xl border border-accent/40 bg-surface p-5">
+              <p className="font-display text-base font-bold text-ink">
+                You know it&apos;s likely — but can you score it?
+              </p>
+              <p className="mt-1 text-xs text-body">
+                Five auto-marked questions on the top forecast call. Instant
+                readiness score.
+              </p>
+              <Link
+                href={`/diagnostic/${subject.level}/${subject.slug}`}
+                className="mt-3 inline-block rounded-lg bg-accent px-4 py-2 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
+              >
+                Take the 60-second check →
+              </Link>
+            </div>
+          )}
 
           {copy && copy.headlineCalls.length > 0 && (
             <div className="mt-4 rounded-2xl border border-hairline bg-surface p-5">

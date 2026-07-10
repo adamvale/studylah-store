@@ -20,6 +20,8 @@ export const serverConfig = {
   // ADMIN_PASSWORD so rotating one never affects the other. MUST be set in
   // production; when blank, customer login is disabled (fail closed).
   customerAuthSecret: process.env.CUSTOMER_AUTH_SECRET ?? "",
+  // Protects scheduled endpoints (48h diagnostic follow-up). Blank = disabled.
+  cronSecret: process.env.CRON_SECRET ?? "",
   stripeSecretKey: process.env.STRIPE_SECRET_KEY ?? "",
   stripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET ?? "",
 };

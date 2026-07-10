@@ -215,6 +215,48 @@ model Lead {
   createdAt   DateTime @default(now())
 }
 
+// Diagnostic ("Am I Ready?") ----------------------------------------------
+
+// One quiz attempt. Graded server-side; the unguessable cuid doubles as the
+// results-page access token (same pattern as Order.accessToken). Worked
+// solutions are only served once `unlockedAt` is set by the email gate.
+model DiagnosticAttempt {
+  id                String    @id @default(cuid())
+  level             String
+  slug              String
+  topic             String
+  // [{questionId, given, correct, marksEarned, marks}] — grading audit trail.
+  answersJson       String
+  score             Int
+  totalMarks        Int
+  band              String // storm | cloudy | clear
+  // Where the marks were dropped: companion | vault | null (nothing dropped).
+  weakness          String?
+  email             String?
+  leadId            String?
+  isParent          Boolean   @default(false)
+  utm               String?
+  ref               String?
+  unlockedAt        DateTime?
+  resultEmailSentAt DateTime?
+  followUpAt        DateTime?
+  followUpSentAt    DateTime?
+  createdAt         DateTime  @default(now())
+
+  @@index([followUpAt])
+}
+
+// Funnel telemetry, surfaced on the admin dashboard next to orders/leads.
+model DiagnosticEvent {
+  id        String   @id @default(cuid())
+  attemptId String?
+  type      String
+  meta      String?
+  createdAt DateTime @default(now())
+
+  @@index([type])
+}
+
 // Operations -------------------------------------------------------------
 
 model Setting {

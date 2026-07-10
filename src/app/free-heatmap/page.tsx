@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { EmailCaptureForm } from "@/components/email-capture";
 import { HeatBar } from "@/components/heat";
-import { topForecast } from "@/lib/topics";
+import { realTopCalls } from "@/lib/forecast-tables";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/free-heatmap" },
   title: "Free Top 5 heatmap",
   description:
     "The five most likely topics for your subject, free. See how StudyLah forecasts work before you buy.",
 };
 
 export default function FreeHeatmapPage() {
-  const teaser = topForecast("physics", "free-heatmap/teaser");
+  const teaser = realTopCalls("o-level", "physics-pure", 5);
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
       <div className="grid items-start gap-10 lg:grid-cols-2">
@@ -34,6 +36,22 @@ export default function FreeHeatmapPage() {
             One email with your PDF, plus occasional revision tips. Unsubscribe
             anytime. We store your consent timestamp as PDPA requires.
           </p>
+
+          <div className="mt-6 rounded-2xl border border-accent/40 bg-surface p-5">
+            <p className="font-display text-base font-bold text-ink">
+              You know it&apos;s likely — but can you score it?
+            </p>
+            <p className="mt-1 text-xs text-body">
+              The 60-second check: five auto-marked questions on your
+              subject&apos;s top forecast call, instant readiness score.
+            </p>
+            <Link
+              href="/diagnostic"
+              className="mt-3 inline-block rounded-lg bg-accent px-4 py-2 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
+            >
+              Take the 60-second check →
+            </Link>
+          </div>
         </div>
         <div className="rounded-2xl border border-hairline bg-surface p-5 sm:p-6">
           <div className="flex items-center justify-between">
@@ -45,15 +63,15 @@ export default function FreeHeatmapPage() {
             </span>
           </div>
           <div className="mt-5 space-y-3">
-            {teaser.map((row, i) => (
-              <HeatBar
-                key={row.topic}
-                topic={row.topic}
-                probability={row.probability}
-                delayMs={i * 120}
-                masked={i > 0}
-              />
-            ))}
+            {/* Only the No. 1 call ships to the browser — masked rows carry
+                no real data (a topic key/prop would leak via RSC payload). */}
+            {teaser.map((row, i) =>
+              i === 0 ? (
+                <HeatBar key={row.topic} topic={row.topic} tier={row.tier} />
+              ) : (
+                <HeatBar key={`masked-${i}`} topic="" delayMs={i * 120} masked />
+              )
+            )}
           </div>
           <p className="mt-5 border-t border-hairline pt-3 font-mono text-xs text-body">
             Your PDF shows all five tiers, unmasked

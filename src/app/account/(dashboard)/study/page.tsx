@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { LEVELS, type Level } from "@/lib/catalogue";
 import { fullForecast } from "@/lib/topics";
+import { FORECAST_TABLES } from "@/lib/forecast-tables";
 import { forecastTier } from "@/components/heat";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { StudyPlanBoard, type PlanSubject } from "@/components/study-plan-board";
@@ -54,14 +55,20 @@ export default async function StudyPage({
       const s = item.product.subject;
       const key = `${s.level}/${s.slug}`;
       if (seen.has(key)) continue;
+      // The checklist must mirror the customer's own Forecast PDF: use the
+      // real 2026 prediction table (extracted per subject), falling back to
+      // the illustrative generator only if a table is ever missing.
+      const table = FORECAST_TABLES[key];
       seen.set(key, {
         level: s.level,
         slug: s.slug,
         name: s.name,
         levelShort: LEVELS[s.level as Level].shortName,
-        topics: fullForecast(s.family as Parameters<typeof fullForecast>[0], key).map(
-          (t) => ({ topic: t.topic, tier: forecastTier(t.probability) })
-        ),
+        topics: table
+          ? table.map((t) => ({ topic: t.topic, tier: t.tier }))
+          : fullForecast(s.family as Parameters<typeof fullForecast>[0], key).map(
+              (t) => ({ topic: t.topic, tier: forecastTier(t.probability) })
+            ),
       });
     }
   }

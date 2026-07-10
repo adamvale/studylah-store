@@ -3,7 +3,8 @@ import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { serverConfig } from "@/lib/server/config";
 
-export const metadata: Metadata = { title: "Your downloads" };
+export const metadata: Metadata = {
+  robots: { index: false, follow: false }, title: "Your downloads" };
 
 // A product can ship several PDFs (the Final Rehearsal ships three), so the
 // per-file order items are grouped back under their product for display.

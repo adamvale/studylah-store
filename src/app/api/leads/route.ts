@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getSubject, LEVELS, type Level } from "@/lib/catalogue";
-import { topForecast } from "@/lib/topics";
+import { realTopCalls } from "@/lib/forecast-tables";
 import { generateHeatmapPdf } from "@/lib/server/pdf-gen";
 import { emailLayout, sendEmail } from "@/lib/server/email";
 
@@ -61,7 +61,7 @@ export async function POST(request: Request) {
   // lead is stored either way, and the stub transport never fails silently.
   if (subject && level) {
     try {
-      const topics = topForecast(subject.family, `${level}/${subject.slug}`);
+      const topics = realTopCalls(level, subject.slug, 5);
       const pdf = await generateHeatmapPdf({
         levelName: LEVELS[level].name,
         subjectName: subject.name,

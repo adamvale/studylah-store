@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { scorecardHeadline } from "@/lib/accuracy-data";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 import {
   COMING_SOON,
   JOURNEY_ORDER,

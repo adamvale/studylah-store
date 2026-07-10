@@ -18,6 +18,7 @@ export async function generateMetadata({
   return {
     title: `${subject.name} — O-Level exam forecast`,
     description: `Topic forecasts, original practice questions, and a timed rehearsal for O-Level ${subject.name}.`,
+    alternates: { canonical: `/o-level/${subject.slug}` },
   };
 }
 

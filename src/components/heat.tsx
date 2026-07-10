@@ -73,25 +73,34 @@ export function TierPill({
 export function HeatBar({
   topic,
   probability,
+  tier: tierProp,
   delayMs = 0,
   masked = false,
 }: {
   topic: string;
-  probability: number;
+  // Either pass the real tier (from a subject's prediction table) or a
+  // probability for the derived one — real data wins when both exist.
+  probability?: number;
+  tier?: ForecastTier;
   delayMs?: number;
   masked?: boolean;
 }) {
-  const tier = forecastTier(probability);
+  const tier = tierProp ?? forecastTier(probability ?? 0);
   const label = TIER_LABEL[tier];
   // On phones the topic name gets its own line — it IS the information; the
   // bar is decoration. From `sm` up, the classic label · bar · pill row.
+  // Masked rows hide BOTH the name and the tier: these are the product's real
+  // calls now, so the preview teases their existence, not their content.
   return (
     <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3">
       <span
-        className="truncate text-sm text-body sm:w-44 sm:shrink-0"
-        title={topic}
+        className={`truncate text-sm text-body sm:w-44 sm:shrink-0 ${
+          masked ? "select-none blur-[5px]" : ""
+        }`}
+        title={masked ? undefined : topic}
+        aria-hidden={masked}
       >
-        {topic}
+        {masked ? "Hidden until purchase" : topic}
       </span>
       <div className="flex flex-1 items-center gap-3">
         <div
@@ -99,13 +108,16 @@ export function HeatBar({
           role="img"
           aria-label={
             masked
-              ? `${topic}: confidence tier hidden in preview`
+              ? "Forecast call hidden in the preview"
               : `${topic}: ${label} confidence`
           }
         >
           <div
-            className={`heat-fill h-full rounded-full ${tierBg(tier)}`}
-            style={{ width: `${TIER_FILL[tier]}%`, animationDelay: `${delayMs}ms` }}
+            className={`heat-fill h-full rounded-full ${masked ? "bg-hairline" : tierBg(tier)}`}
+            style={{
+              width: masked ? "60%" : `${TIER_FILL[tier]}%`,
+              animationDelay: `${delayMs}ms`,
+            }}
           />
         </div>
         <span className="flex w-24 shrink-0 justify-end" aria-hidden={masked}>

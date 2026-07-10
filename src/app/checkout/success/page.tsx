@@ -3,7 +3,8 @@ import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { ClearCartOnMount } from "@/components/clear-cart";
 
-export const metadata: Metadata = { title: "Payment received" };
+export const metadata: Metadata = {
+  robots: { index: false, follow: false }, title: "Payment received" };
 
 export default async function CheckoutSuccessPage({
   searchParams,

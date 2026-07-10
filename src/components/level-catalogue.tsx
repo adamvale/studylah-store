@@ -6,8 +6,8 @@ import {
   type Level,
 } from "@/lib/catalogue";
 import { getPricing } from "@/lib/server/pricing-store";
-import { topForecast } from "@/lib/topics";
-import { forecastTier, TierPill } from "./heat";
+import { realTopCalls } from "@/lib/forecast-tables";
+import { TierPill } from "./heat";
 
 export async function LevelCatalogue({ level }: { level: Level }) {
   const subjects = subjectsForLevel(level);
@@ -29,7 +29,7 @@ export async function LevelCatalogue({ level }: { level: Level }) {
       </p>
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {subjects.map((subject) => {
-          const hottest = topForecast(subject.family, `${level}/${subject.slug}`)[0];
+          const hottest = realTopCalls(level, subject.slug, 1)[0];
           return (
             <Link
               key={subject.slug}
@@ -41,7 +41,7 @@ export async function LevelCatalogue({ level }: { level: Level }) {
               </h2>
               <p className="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-body">
                 Hottest topic: {hottest.topic}{" "}
-                <TierPill tier={forecastTier(hottest.probability)} />
+                <TierPill tier={hottest.tier} />
               </p>
               <p className="mt-3 font-mono text-sm text-ink">
                 Master {sgd(masterPrice)}{" "}

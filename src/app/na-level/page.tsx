@@ -4,6 +4,7 @@ import { isLevelPublished } from "@/lib/catalogue";
 import { LevelCatalogue } from "@/components/level-catalogue";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/na-level" },
   title: "N(A)-Level (G2) subjects",
   description:
     "AI exam forecasts, original practice questions, and timed rehearsals for N(A)-Level subjects.",

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/faq" },
   title: "FAQ and guarantee",
   description:
     "How StudyLah forecasts work, what the money-back guarantee covers, and answers to common questions.",
@@ -10,6 +11,12 @@ export const metadata: Metadata = {
 // `plain` mirrors ReactNode answers as text for the FAQPage JSON-LD below —
 // Google rich results need plain strings.
 const FAQS: { q: string; a: React.ReactNode; plain?: string }[] = [
+  {
+    // Entity-defining answer, written to be quotable by search/AI engines:
+    // self-contained, factual, and carries the independence disclaimer.
+    q: "What is StudyLah?",
+    a: "StudyLah is an independent Singapore publisher of exam-preparation PDFs for the Singapore-Cambridge O-Level and N(A)-Level. For each subject it sells a data-driven Exam Forecast (every syllabus topic ranked by likelihood for the 2026 sitting, built from ten years of past papers), original practice questions, and a full timed rehearsal paper. Forecasts are probabilistic — hits and misses are published after every sitting — and purchases carry a money-back guarantee. StudyLah is not affiliated with SEAB, MOE, or Cambridge (UCLES).",
+  },
   {
     q: "Is this cheating? Are these the real exam questions?",
     a: "No — and that's the whole point. We don't have the real papers and we'd never touch them; they belong to Cambridge and MOE / SEAB. What we do is read ten years of past papers and forecast which topics are most likely to come up, then write our own original questions in that exact style. This isn't a shortcut around studying. It's studying the right things.",

@@ -20,6 +20,14 @@ function heatColor(probability: number) {
   return rgb(0.894, 0.929, 0.973);
 }
 
+// Confidence-tier pill colours — identical to the Forecast PDFs and the site.
+const TIER_PDF: Record<string, { label: string; color: ReturnType<typeof rgb> }> = {
+  "very-high": { label: "VERY HIGH", color: rgb(0.859, 0.133, 0.165) },
+  high: { label: "HIGH", color: rgb(0.51, 0.141, 0.89) },
+  moderate: { label: "MODERATE", color: rgb(0.867, 0.6, 0.2) },
+  watch: { label: "WATCH", color: rgb(0.392, 0.455, 0.545) },
+};
+
 function brandHeader(page: PDFPage, bold: PDFFont, regular: PDFFont) {
   const { height } = page.getSize();
   page.drawText("StudyLah", { x: 48, y: height - 56, size: 16, font: bold, color: TRUST });
@@ -141,7 +149,8 @@ export async function generateProductPdf(options: {
 export async function generateHeatmapPdf(options: {
   levelName: string;
   subjectName: string;
-  topics: TopicForecast[];
+  // The subject's REAL top calls from its Forecast's 2026 prediction table.
+  topics: { topic: string; tier: string }[];
 }): Promise<Uint8Array> {
   const { levelName, subjectName, topics } = options;
   const doc = await PDFDocument.create();
@@ -159,30 +168,28 @@ export async function generateHeatmapPdf(options: {
     font: regular,
     color: TRUST,
   });
-  page.drawText("The five topics our model rates most likely for your paper:", {
-    x: 48,
-    y: height - 210,
-    size: 11,
-    font: regular,
-    color: BODY,
-  });
+  page.drawText(
+    "The five topics our forecast rates most likely for your paper, from the 2026 prediction table:",
+    { x: 48, y: height - 210, size: 11, font: regular, color: BODY }
+  );
 
   let y = height - 250;
   topics.forEach((row, i) => {
     page.drawText(`${i + 1}. ${row.topic}`, { x: 48, y, size: 11, font: bold, color: INK });
-    page.drawRectangle({ x: 300, y: y - 2, width: 200, height: 10, color: rgb(0.894, 0.929, 0.973) });
+    const tier = TIER_PDF[row.tier] ?? TIER_PDF.watch;
+    const labelW = bold.widthOfTextAtSize(tier.label, 9);
     page.drawRectangle({
-      x: 300,
-      y: y - 2,
-      width: Math.max(8, (row.probability / 100) * 200),
-      height: 10,
-      color: heatColor(row.probability),
+      x: 440,
+      y: y - 4,
+      width: labelW + 16,
+      height: 16,
+      color: tier.color,
     });
-    page.drawText(`${row.probability}%`, { x: 510, y, size: 11, font: bold, color: TRUST });
+    page.drawText(tier.label, { x: 448, y, size: 9, font: bold, color: rgb(1, 1, 1) });
     y -= 30;
   });
 
-  page.drawText("Want the full picture? The Exam Forecast covers every topic in your syllabus.", {
+  page.drawText("Want every topic tiered, with the evidence? The Exam Forecast covers your whole syllabus.", {
     x: 48,
     y: y - 20,
     size: 10,

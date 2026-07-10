@@ -2,15 +2,15 @@
 
 import { useState, type FormEvent } from "react";
 import { LEVELS, PUBLISHED_LEVELS, SUBJECTS, type Level } from "@/lib/catalogue";
-import { topForecast } from "@/lib/topics";
-import { forecastTier, TierPill } from "@/components/heat";
+import { realTopCalls } from "@/lib/forecast-tables";
+import { TierPill, type ForecastTier } from "@/components/heat";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 interface Reveal {
   subjectName: string;
   topic: string;
-  probability: number;
+  tier: ForecastTier;
 }
 
 export function EmailCaptureForm({
@@ -60,12 +60,12 @@ export function EmailCaptureForm({
         const subject = SUBJECTS.find(
           (s) => s.level === (level as Level) && s.slug === subjectSlug
         );
-        if (subject) {
-          const top = topForecast(subject.family, `${level}/${subjectSlug}`)[0];
+        const top = realTopCalls(level, subjectSlug, 1)[0];
+        if (subject && top) {
           setReveal({
             subjectName: subject.name,
             topic: top.topic,
-            probability: top.probability,
+            tier: top.tier,
           });
         }
       }
@@ -89,7 +89,7 @@ export function EmailCaptureForm({
               <span className="font-display text-lg font-bold text-ink">
                 {reveal.topic}
               </span>
-              <TierPill tier={forecastTier(reveal.probability)} />
+              <TierPill tier={reveal.tier} />
             </p>
             <p className="mt-1 text-xs text-body">
               Calls 2–5 are in the PDF heading to your inbox.

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { LevelCatalogue } from "@/components/level-catalogue";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/o-level" },
   title: "O-Level (G3) subjects",
   description:
     "AI exam forecasts, original practice questions, and timed rehearsals for all 14 O-Level subjects.",

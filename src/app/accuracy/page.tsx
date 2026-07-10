@@ -5,6 +5,7 @@ import { SUBJECT_MARKS, highOrAbove } from "@/lib/accuracy-data";
 import { TierPill } from "@/components/heat";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/accuracy" },
   title: "Accuracy scorecard",
   description:
     "The five highest-mark topics in each real O-Level and N(A)-Level paper — and the confidence tier StudyLah forecast for each. Hits and misses, per subject.",

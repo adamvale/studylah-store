@@ -3,6 +3,7 @@ import { sgd, ALLIN_FLAT } from "@/lib/catalogue";
 import { BundleBuilder } from "@/components/bundle-builder";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/bundles" },
   title: "Bundle builder — Mega-Bundle and All-In pricing",
   description:
     "Pick up to 6 subjects and watch Mega-Bundle and All-In pricing apply live. Master tier across every subject you take.",

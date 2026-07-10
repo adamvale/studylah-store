@@ -1,9 +1,29 @@
 import Link from "next/link";
 import { LEVELS, TIER_NAMES, TIER_ORDER } from "@/lib/catalogue";
+import { prisma } from "@/lib/db";
 import { getDashboardMetrics } from "@/lib/server/metrics";
 import { getEarlyBird } from "@/lib/server/pricing-store";
 
 export const dynamic = "force-dynamic";
+
+// "Am I Ready?" funnel, straight from DiagnosticEvent/Attempt — the same
+// own-DB analytics pattern as the rest of this dashboard.
+async function getDiagnosticFunnel() {
+  const [events, attempts, unlocked] = await Promise.all([
+    prisma.diagnosticEvent.groupBy({ by: ["type"], _count: { type: true } }),
+    prisma.diagnosticAttempt.count(),
+    prisma.diagnosticAttempt.count({ where: { unlockedAt: { not: null } } }),
+  ]);
+  const count = (type: string) =>
+    events.find((e) => e.type === type)?._count.type ?? 0;
+  return {
+    starts: count("diagnostic_start"),
+    completes: attempts,
+    emails: unlocked,
+    ctaClicks: count("cta_clicked"),
+    shares: count("result_shared"),
+  };
+}
 
 function money(cents: number): string {
   return `S$${(cents / 100).toLocaleString("en-SG", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -20,7 +40,11 @@ function Metric({ label, value, hint }: { label: string; value: string; hint?: s
 }
 
 export default async function AdminDashboardPage() {
-  const [m, earlyBird] = await Promise.all([getDashboardMetrics(), getEarlyBird()]);
+  const [m, earlyBird, funnel] = await Promise.all([
+    getDashboardMetrics(),
+    getEarlyBird(),
+    getDiagnosticFunnel(),
+  ]);
   const maxCount = Math.max(1, ...m.topSubjects.map((s) => s.count));
 
   return (
@@ -106,6 +130,26 @@ export default async function AdminDashboardPage() {
             </div>
           )}
         </section>
+      </div>
+
+      <div className="mt-6 rounded-2xl border border-hairline bg-surface p-5">
+        <p className="text-xs font-medium text-body">
+          &ldquo;Am I Ready?&rdquo; diagnostic funnel
+        </p>
+        <div className="mt-3 grid grid-cols-2 gap-3 text-center sm:grid-cols-5">
+          {[
+            ["Starts", funnel.starts],
+            ["Completed", funnel.completes],
+            ["Emails", funnel.emails],
+            ["CTA clicks", funnel.ctaClicks],
+            ["Shares", funnel.shares],
+          ].map(([label, value]) => (
+            <div key={String(label)}>
+              <p className="font-display text-xl font-bold text-ink">{String(value)}</p>
+              <p className="text-xs text-body">{String(label)}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
