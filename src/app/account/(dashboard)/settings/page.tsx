@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { NotificationToggle } from "@/components/pwa";
 import { Banner } from "../ui";
 
 export const metadata: Metadata = { title: "Account settings" };
@@ -81,6 +82,19 @@ export default async function SettingsPage({
           Send confirmation
         </button>
       </form>
+
+      {/* Streak reminders (web push) */}
+      <h2 className="mt-10 font-display text-lg font-bold text-ink">
+        Streak reminders
+      </h2>
+      <p className="mt-1 text-sm text-body">
+        One push notification, only on evenings your daily streak is about to
+        break. Works on Android from the browser; on iPhone, add Study HQ to
+        your home screen first.
+      </p>
+      <div className="mt-4 rounded-2xl border border-hairline bg-surface p-4">
+        <NotificationToggle />
+      </div>
 
       {/* Parent progress digest (opt-in) */}
       <h2 className="mt-10 font-display text-lg font-bold text-ink">

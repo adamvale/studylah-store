@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Archivo, Inter } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
@@ -8,6 +8,13 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { SiteChrome } from "@/components/site-chrome";
 import { RefCapture } from "@/components/ref-capture";
+import { SwRegister } from "@/components/pwa";
+
+// PWA chrome: the browser UI matches the night theme, and the installed app
+// gets a proper title + status bar on iOS.
+export const viewport: Viewport = {
+  themeColor: "#161c26",
+};
 
 // Type pairing borrowed from the live site: Inter for body/UI, Archivo for
 // bold display headings.
@@ -40,6 +47,14 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     images: ["/og-card.png"],
+  },
+  icons: {
+    apple: "/icons/apple-touch-icon.png",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Study HQ",
   },
 };
 
@@ -93,6 +108,7 @@ export default async function RootLayout({
           Skip to content
         </a>
         <RefCapture />
+        <SwRegister />
         <PricingProvider table={table} earlyBird={earlyBird}>
           <CartProvider>
             <SiteChrome header={<Header />} footer={<Footer />}>

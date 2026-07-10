@@ -73,6 +73,9 @@ In the service's **Variables** tab, add these (Railway sets `PORT`,
 | `ADMIN_PASSWORD` | a long random string (run `openssl rand -base64 24`) |
 | `CUSTOMER_AUTH_SECRET` | a long random string (run `openssl rand -hex 32`) — signs customer magic-link logins; the portal fails closed without it |
 | `CRON_SECRET` | a long random string (run `openssl rand -hex 32`) — protects the scheduled diagnostic follow-up endpoint (see 2f) |
+| `NEXT_PUBLIC_VAPID_PUBLIC_KEY` | web-push public key (run `npx web-push generate-vapid-keys` once; safe to expose) |
+| `VAPID_PRIVATE_KEY` | the matching private key from the same command — keep secret |
+| `VAPID_SUBJECT` | `mailto:hello@studylah.education` |
 | `NEXT_PUBLIC_SITE_URL` | for now, your Railway URL (you'll set the domain in step 3) |
 | `EMAIL_FROM` | `StudyLah <orders@studylah.education>` |
 | `DOWNLOAD_EXPIRY_DAYS` | `7` |
@@ -121,6 +124,20 @@ https://www.studylah.education/api/cron/parent-digest?key=<CRON_SECRET>
 Same `CRON_SECRET`. Each parent gets at most one email per ~week regardless of
 how often it runs (idempotent via `parentDigestSentAt`); every email carries a
 one-click unsubscribe. A correct call answers `{"candidates":N,"sent":M}`.
+
+### 2h. Schedule the streak-reminder push (PWA)
+
+Students who install Study HQ and enable reminders get one push notification
+on evenings their daily streak is about to break. Add a third cron-job.org
+job, **every 1 hour** (the endpoint only acts between 7pm and 11pm Singapore
+time, and pings each student at most once per day):
+
+```
+https://www.studylah.education/api/cron/streak-reminder?key=<CRON_SECRET>
+```
+
+Requires the three `VAPID_*` variables from 2b. Outside the evening window a
+correct call answers `{"window":"closed","sent":0}` — that's normal.
 
 ---
 
@@ -179,6 +196,9 @@ won't get the confirmation email.
 - [ ] Confirm `ADMIN_PASSWORD` is long and private.
 - [ ] Confirm `CUSTOMER_AUTH_SECRET` and `CRON_SECRET` are set, and the hourly
       cron-job.org ping for the diagnostic follow-up is running (2f).
+- [ ] Confirm the three `VAPID_*` variables are set and the hourly
+      streak-reminder ping is running (2h) — otherwise installed apps never
+      get their streak push.
 - [ ] Switch Stripe from test keys to **live** keys, and confirm the webhook is
       on the live endpoint.
 - [ ] Have a lawyer review the `/legal/*` pages (they're marked FOR LAWYER

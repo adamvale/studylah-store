@@ -4,6 +4,7 @@ import { prisma } from "@/lib/db";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { sgDay, computeStreak } from "@/lib/server/study";
 import { AccountNav } from "@/components/account-nav";
+import { InstallPrompt } from "@/components/pwa";
 
 export const metadata: Metadata = {
   title: { default: "Your account", template: "%s · StudyLah!" },
@@ -71,7 +72,10 @@ export default async function AccountDashboardLayout({
         <AccountNav />
       </div>
 
-      <div className="mt-6">{children}</div>
+      <div className="mt-6">
+        <InstallPrompt />
+        {children}
+      </div>
 
       <p className="mt-10 text-xs text-body print:hidden">
         Every PDF is watermarked to your email and order number. Trouble with

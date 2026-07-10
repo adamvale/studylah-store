@@ -18,13 +18,15 @@
   "dependencies": {
     "@prisma/adapter-better-sqlite3": "^7.8.0",
     "@prisma/client": "^7.8.0",
+    "@types/web-push": "^3.6.4",
     "better-sqlite3": "^12.11.1",
     "jszip": "^3.10.1",
     "next": "16.2.10",
     "pdf-lib": "^1.17.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "stripe": "^22.3.0"
+    "stripe": "^22.3.0",
+    "web-push": "^3.6.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

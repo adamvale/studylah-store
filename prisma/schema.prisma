@@ -68,8 +68,28 @@ model Customer {
   parentEmail           String?
   parentDigestConsentAt DateTime?
   parentDigestSentAt    DateTime?
+  // Last SG day (YYYY-MM-DD) a streak-reminder push went out — one per day
+  // across all of the customer's devices.
+  streakPingDay         String?
   orders                Order[]
   referrals             Referral[]
+  pushSubscriptions     PushSubscription[]
+}
+
+// One web-push subscription per browser/device the student enabled reminders
+// on. endpoint is the push service URL (unique per subscription); p256dh/auth
+// are the client's encryption keys. Dead endpoints (404/410 from the push
+// service) are deleted on send.
+model PushSubscription {
+  id         String   @id @default(cuid())
+  customer   Customer @relation(fields: [customerId], references: [id])
+  customerId String
+  endpoint   String   @unique
+  p256dh     String
+  auth       String
+  createdAt  DateTime @default(now())
+
+  @@index([customerId])
 }
 
 // One row per rewarded referral: `referrer` shared their code, the referee's
