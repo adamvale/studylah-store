@@ -13,8 +13,18 @@ type ItemRow = {
   tier: string;
   fileLabel: string;
   product: { subject: { level: string; slug: string } };
+  productFile: { updatedAt: Date | null };
   downloadEvents: { at: Date }[];
 };
+
+// The file was re-uploaded after this buyer's purchase AND after their last
+// download — their saved copy is stale.
+function hasUpdate(item: ItemRow, orderCreatedAt: Date): boolean {
+  const updated = item.productFile.updatedAt;
+  if (!updated || updated <= orderCreatedAt) return false;
+  const last = item.downloadEvents[0]?.at;
+  return !last || updated > last;
+}
 
 // One order groups by subject (each a dropdown for multi-subject orders), and
 // within a subject by product (a subject's Master pack ships several products).
@@ -51,12 +61,27 @@ function groupByProduct(items: ItemRow[]) {
   return [...groups.values()];
 }
 
-function FileRow({ item, refunded }: { item: ItemRow; refunded: boolean }) {
+function FileRow({
+  item,
+  refunded,
+  updated,
+}: {
+  item: ItemRow;
+  refunded: boolean;
+  updated: boolean;
+}) {
   const last = item.downloadEvents[0]?.at;
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-hairline bg-night px-4 py-3">
       <div>
-        <p className="text-sm text-body">{item.fileLabel}</p>
+        <p className="flex flex-wrap items-center gap-2 text-sm text-body">
+          {item.fileLabel}
+          {updated && !refunded && (
+            <span className="rounded-full bg-accent/15 px-2 py-0.5 text-xs font-medium text-accent">
+              Updated — re-download
+            </span>
+          )}
+        </p>
         <p className="mt-0.5 text-xs text-body/80">
           {last ? `Last downloaded ${fmtDate(last)}` : "Not downloaded yet"}
         </p>
@@ -77,7 +102,15 @@ function FileRow({ item, refunded }: { item: ItemRow; refunded: boolean }) {
 
 // A subject's products + file download rows — shown inline (single-subject
 // order) or inside a dropdown (multi-subject order).
-function SubjectFiles({ items, refunded }: { items: ItemRow[]; refunded: boolean }) {
+function SubjectFiles({
+  items,
+  refunded,
+  orderCreatedAt,
+}: {
+  items: ItemRow[];
+  refunded: boolean;
+  orderCreatedAt: Date;
+}) {
   return (
     <div className="space-y-4">
       {groupByProduct(items).map((group) => (
@@ -86,7 +119,12 @@ function SubjectFiles({ items, refunded }: { items: ItemRow[]; refunded: boolean
           <p className="text-xs text-body">{group.tier} tier</p>
           <div className="mt-2 space-y-2">
             {group.items.map((item) => (
-              <FileRow key={item.id} item={item} refunded={refunded} />
+              <FileRow
+                key={item.id}
+                item={item}
+                refunded={refunded}
+                updated={hasUpdate(item, orderCreatedAt)}
+              />
             ))}
           </div>
         </div>
@@ -100,6 +138,14 @@ const MESSAGES = {
   "error=order": {
     tone: "bad" as const,
     msg: "Couldn't resend that receipt — please try again.",
+  },
+  "claim=1": {
+    tone: "ok" as const,
+    msg: "Claim received — we'll reply to your order email within 5 business days.",
+  },
+  "error=claim": {
+    tone: "bad" as const,
+    msg: "Couldn't file that claim — pick the subject and tell us a little more.",
   },
 };
 
@@ -118,6 +164,7 @@ export default async function AccountOrdersPage({
       items: {
         include: {
           product: { include: { subject: true } },
+          productFile: { select: { updatedAt: true } },
           downloadEvents: { orderBy: { at: "desc" }, take: 1 },
         },
       },
@@ -185,7 +232,11 @@ export default async function AccountOrdersPage({
                           </span>
                         </summary>
                         <div className="border-t border-hairline px-4 py-4">
-                          <SubjectFiles items={subj.items} refunded={refunded} />
+                          <SubjectFiles
+                            items={subj.items}
+                            refunded={refunded}
+                            orderCreatedAt={order.createdAt}
+                          />
                         </div>
                       </details>
                     ) : (
@@ -194,23 +245,96 @@ export default async function AccountOrdersPage({
                           {subj.subjectName}{" "}
                           <span className="text-xs font-normal text-body">{subj.levelName}</span>
                         </p>
-                        <SubjectFiles items={subj.items} refunded={refunded} />
+                        <SubjectFiles
+                          items={subj.items}
+                          refunded={refunded}
+                          orderCreatedAt={order.createdAt}
+                        />
                       </div>
                     )
                   )}
                 </div>
 
                 {!refunded && (
-                  <form
-                    action="/api/account/resend-receipt"
-                    method="post"
-                    className="mt-4 border-t border-hairline pt-3"
-                  >
-                    <input type="hidden" name="orderId" value={order.id} />
-                    <button type="submit" className="text-xs font-medium text-accent underline">
-                      Email me this receipt again
-                    </button>
-                  </form>
+                  <div className="mt-4 border-t border-hairline pt-3">
+                    <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                      <a
+                        href={`/api/account/download-order/${order.id}`}
+                        className="text-xs font-medium text-accent underline"
+                      >
+                        Download everything (.zip)
+                      </a>
+                      <form action="/api/account/resend-receipt" method="post">
+                        <input type="hidden" name="orderId" value={order.id} />
+                        <button
+                          type="submit"
+                          className="text-xs font-medium text-accent underline"
+                        >
+                          Email me this receipt again
+                        </button>
+                      </form>
+                    </div>
+
+                    <details className="mt-3">
+                      <summary className="cursor-pointer text-xs font-medium text-body hover:text-ink">
+                        Claim the money-back guarantee
+                      </summary>
+                      <form
+                        action="/api/account/guarantee-claim"
+                        method="post"
+                        className="mt-3 space-y-3 rounded-xl border border-hairline bg-night p-4"
+                      >
+                        <input type="hidden" name="orderId" value={order.id} />
+                        <div>
+                          <label
+                            htmlFor={`claim-subject-${order.id}`}
+                            className="block text-xs font-medium text-body"
+                          >
+                            Subject
+                          </label>
+                          <select
+                            id={`claim-subject-${order.id}`}
+                            name="subject"
+                            required
+                            className="mt-1 w-full rounded-lg border border-hairline bg-surface px-3 py-2 text-sm text-ink"
+                          >
+                            {subjects.map((subj) => (
+                              <option key={subj.key} value={subj.subjectName}>
+                                {subj.subjectName}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <div>
+                          <label
+                            htmlFor={`claim-msg-${order.id}`}
+                            className="block text-xs font-medium text-body"
+                          >
+                            Which top-five topics didn&apos;t appear in your paper?
+                          </label>
+                          <textarea
+                            id={`claim-msg-${order.id}`}
+                            name="message"
+                            required
+                            minLength={10}
+                            rows={3}
+                            placeholder="Tell us the paper you sat and which forecast calls missed."
+                            className="mt-1 w-full rounded-lg border border-hairline bg-surface px-3 py-2 text-sm text-ink placeholder:text-body/40"
+                          />
+                        </div>
+                        <button
+                          type="submit"
+                          className="rounded-lg border border-hairline px-4 py-2 text-xs font-medium text-ink hover:border-accent"
+                        >
+                          Submit claim
+                        </button>
+                        <p className="text-xs text-body/80">
+                          Claims open for 14 days after the exam. We reply to
+                          your order email.
+                        </p>
+                      </form>
+                    </details>
+                  </div>
                 )}
               </section>
             );

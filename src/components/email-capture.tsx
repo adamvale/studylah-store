@@ -1,9 +1,17 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { LEVELS, PUBLISHED_LEVELS, SUBJECTS } from "@/lib/catalogue";
+import { LEVELS, PUBLISHED_LEVELS, SUBJECTS, type Level } from "@/lib/catalogue";
+import { topForecast } from "@/lib/topics";
+import { forecastTier, TierPill } from "@/components/heat";
 
 type Status = "idle" | "submitting" | "success" | "error";
+
+interface Reveal {
+  subjectName: string;
+  topic: string;
+  probability: number;
+}
 
 export function EmailCaptureForm({
   source,
@@ -16,6 +24,7 @@ export function EmailCaptureForm({
 }) {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string>("");
+  const [reveal, setReveal] = useState<Reveal | null>(null);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -45,6 +54,21 @@ export function EmailCaptureForm({
         const body = (await res.json().catch(() => null)) as { error?: string } | null;
         throw new Error(body?.error ?? "Something went wrong. Try again.");
       }
+      // Instant gratification: reveal the No. 1 call on the spot — the rest
+      // of the heatmap is the reason to open the email.
+      if (level && subjectSlug) {
+        const subject = SUBJECTS.find(
+          (s) => s.level === (level as Level) && s.slug === subjectSlug
+        );
+        if (subject) {
+          const top = topForecast(subject.family, `${level}/${subjectSlug}`)[0];
+          setReveal({
+            subjectName: subject.name,
+            topic: top.topic,
+            probability: top.probability,
+          });
+        }
+      }
       setStatus("success");
       form.reset();
     } catch (e) {
@@ -55,15 +79,30 @@ export function EmailCaptureForm({
 
   if (status === "success") {
     return (
-      <div
-        className="rounded-lg bg-guarantee/10 px-4 py-3 text-sm text-guarantee"
-        role="status"
-      >
-        <p className="font-medium">You&apos;re on the list — check your inbox.</p>
-        <p className="mt-1 text-ink/70">
-          Your free heatmap PDF is on its way. If it doesn&apos;t arrive in a
-          few minutes, check your spam folder. Your consent has been recorded.
-        </p>
+      <div role="status" className="space-y-3">
+        {reveal && (
+          <div className="rounded-xl border border-hairline bg-surface p-4">
+            <p className="text-xs font-medium uppercase tracking-wide text-body">
+              Your No. 1 call — {reveal.subjectName}, 2026
+            </p>
+            <p className="mt-2 flex flex-wrap items-center gap-2">
+              <span className="font-display text-lg font-bold text-ink">
+                {reveal.topic}
+              </span>
+              <TierPill tier={forecastTier(reveal.probability)} />
+            </p>
+            <p className="mt-1 text-xs text-body">
+              Calls 2–5 are in the PDF heading to your inbox.
+            </p>
+          </div>
+        )}
+        <div className="rounded-lg bg-guarantee/10 px-4 py-3 text-sm text-guarantee">
+          <p className="font-medium">You&apos;re on the list — check your inbox.</p>
+          <p className="mt-1 text-ink/70">
+            Your free heatmap PDF is on its way. If it doesn&apos;t arrive in a
+            few minutes, check your spam folder. Your consent has been recorded.
+          </p>
+        </div>
       </div>
     );
   }

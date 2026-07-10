@@ -2,10 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
 import { LEVELS, PUBLISHED_LEVELS } from "@/lib/catalogue";
 import { useCart } from "@/lib/cart-context";
+
+// Reads the non-sensitive "logged in" hint cookie set at sign-in, so the
+// header can say "My PDFs" to returning students. Server snapshot = false
+// keeps SSR and hydration consistent; the value settles on the client.
+const noopSubscribe = () => () => {};
+const hasAccountCookie = () => document.cookie.includes("studylah_acct=1");
+
+function useSignedIn(): boolean {
+  return useSyncExternalStore(noopSubscribe, hasAccountCookie, () => false);
+}
 
 const NAV = [
   ...PUBLISHED_LEVELS.map((level) => ({
@@ -36,6 +46,8 @@ export function Header() {
   const { count } = useCart();
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const signedIn = useSignedIn();
+  const accountLabel = signedIn ? "My PDFs" : "Account";
 
   return (
     <header className="sticky top-0 z-40 border-b border-hairline bg-night/95 backdrop-blur">
@@ -65,7 +77,7 @@ export function Header() {
             href="/account"
             className="hidden rounded-md px-3 py-1.5 text-sm font-medium text-cloud hover:bg-surface sm:block"
           >
-            Account
+            {accountLabel}
           </Link>
           <Link
             href="/cart"
@@ -105,7 +117,7 @@ export function Header() {
           {[
             ...NAV,
             { href: "/free-heatmap", label: "Free heatmap" },
-            { href: "/account", label: "Account" },
+            { href: "/account", label: accountLabel },
           ].map((item) => (
             <Link
               key={item.href}

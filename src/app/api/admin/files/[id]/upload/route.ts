@@ -48,5 +48,12 @@ export async function POST(
   await fs.mkdir(path.dirname(target), { recursive: true });
   await fs.writeFile(target, bytes);
 
+  // Owners see an "updated - re-download" badge for files replaced after
+  // their purchase.
+  await prisma.productFile.update({
+    where: { id },
+    data: { updatedAt: new Date() },
+  });
+
   return NextResponse.json({ ok: true, bytes: bytes.length });
 }

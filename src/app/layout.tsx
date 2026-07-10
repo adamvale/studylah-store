@@ -23,12 +23,24 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.studylah.education"),
   title: {
     default: "StudyLah! — Study Less, Score More.",
     template: "%s · StudyLah!",
   },
   description:
     "AI exam forecasts, original practice questions, and full timed rehearsals for the Singapore-Cambridge O-Level and N(A)-Level. Built from 10 years of real exam data.",
+  // Social share cards — referral links travel by WhatsApp/Telegram, and a
+  // branded unfurl converts far better than a bare grey URL.
+  openGraph: {
+    siteName: "StudyLah!",
+    type: "website",
+    images: [{ url: "/og-card.png", width: 1200, height: 630, alt: "StudyLah — 2026 exam forecasts" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og-card.png"],
+  },
 };
 
 export default async function RootLayout({

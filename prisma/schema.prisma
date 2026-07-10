@@ -44,6 +44,8 @@ model ProductFile {
   // Path relative to PDF_STORAGE_DIR; never publicly routable.
   filePath   String
   sortOrder  Int         @default(0)
+  // Set on admin re-upload, so owners see "updated — re-download" badges.
+  updatedAt  DateTime?
   orderItems OrderItem[]
 
   @@unique([productId, key])
@@ -133,6 +135,47 @@ model DownloadToken {
   expiresAt   DateTime
   maxUses     Int
   uses        Int       @default(0)
+}
+
+// Study-plan progress: one row per topic a customer has touched. status:
+// 0 untouched · 1 revised · 2 practised · 3 confident.
+model TopicProgress {
+  id         String   @id @default(cuid())
+  customerId String
+  level      String
+  slug       String
+  topic      String
+  status     Int      @default(0)
+  updatedAt  DateTime @updatedAt
+
+  @@unique([customerId, level, slug, topic])
+  @@index([customerId])
+}
+
+// A customer's own exam timetable ("Physics P1", 19 Oct 2026 08:00) — entered
+// manually until SEAB publishes the official 2026 dates.
+model ExamDate {
+  id         String   @id @default(cuid())
+  customerId String
+  label      String
+  at         DateTime
+  createdAt  DateTime @default(now())
+
+  @@index([customerId])
+}
+
+// Money-back guarantee claims, filed from the dashboard. Handled by a human;
+// the row is the audit trail. status: submitted | approved | rejected.
+model GuaranteeClaim {
+  id          String   @id @default(cuid())
+  orderId     Int
+  customerId  String
+  subjectName String
+  message     String
+  status      String   @default("submitted")
+  createdAt   DateTime @default(now())
+
+  @@index([customerId])
 }
 
 // One row per successful download, for the customer's activity history. `via`

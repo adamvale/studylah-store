@@ -21,7 +21,8 @@ import { TierSelector } from "./tier-selector";
 
 export async function SubjectView({ subject }: { subject: Subject }) {
   const forecast = topForecast(subject.family, `${subject.level}/${subject.slug}`);
-  const { alacartePrice } = await getPricing();
+  const pricing = await getPricing();
+  const { alacartePrice } = pricing;
   const copy = subjectCopy(subject.level, subject.slug);
   const products = productsForSubject(subject);
 
@@ -29,8 +30,31 @@ export async function SubjectView({ subject }: { subject: Subject }) {
     ? `${subject.name} ${copy.syllabusCode}`
     : subject.name;
 
+  // Product rich-result markup: puts the price in Google's snippet.
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: `${subject.name} — 2026 Exam Forecast pack (${LEVELS[subject.level].shortName})`,
+    description:
+      "Data-driven 2026 exam forecast, original practice questions and a full timed rehearsal. Independent publisher — not affiliated with SEAB, MOE, or Cambridge.",
+    brand: { "@type": "Brand", name: "StudyLah" },
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "SGD",
+      lowPrice: pricing.tierPrice(subject.level, "essential"),
+      highPrice: pricing.tierPrice(subject.level, "master"),
+      availability: "https://schema.org/InStock",
+      url: `https://www.studylah.education/${subject.level}/${subject.slug}`,
+    },
+  };
+  const accuracyAnchor = `${subject.level}-${subject.slug}`;
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       <nav aria-label="Breadcrumb" className="text-sm text-body">
         <Link href={`/${subject.level}`} className="hover:underline">
           {LEVELS[subject.level].name}
@@ -90,6 +114,12 @@ export async function SubjectView({ subject }: { subject: Subject }) {
             <p className="mt-4 border-t border-hairline pt-3 font-mono text-xs text-body">
               Every topic tiered — Very High to Watch — in the Forecast PDF
             </p>
+            <Link
+              href={`/accuracy?open=${accuracyAnchor}#${accuracyAnchor}`}
+              className="mt-2 inline-block text-xs font-medium text-accent hover:underline"
+            >
+              See how we scored on {subject.name} in 2025 →
+            </Link>
           </div>
 
           {copy && copy.headlineCalls.length > 0 && (

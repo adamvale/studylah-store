@@ -24,5 +24,8 @@ export async function GET(request: Request) {
     status: 303,
   });
   res.cookies.set(CUSTOMER_COOKIE, signSessionToken(customerId), sessionCookieOptions());
+  // Non-sensitive hint (no id, just "logged in") so the header can greet
+  // returning students. Auth always rides the httpOnly cookie above.
+  res.cookies.set("studylah_acct", "1", { ...sessionCookieOptions(), httpOnly: false });
   return res;
 }

@@ -10,7 +10,14 @@ export const metadata: Metadata = {
     "The five highest-mark topics in each real O-Level and N(A)-Level paper — and the confidence tier StudyLah forecast for each. Hits and misses, per subject.",
 };
 
-export default function AccuracyPage() {
+export default async function AccuracyPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ open?: string }>;
+}) {
+  // Deep link from a subject page: ?open=o-level-physics-pure#same-anchor
+  // pre-expands that subject's scorecard and scrolls to it.
+  const { open } = await searchParams;
   const entries = Object.entries(SUBJECT_MARKS)
     .map(([key, data]) => {
       const [level, slug] = key.split("/") as [Level, string];
@@ -41,7 +48,9 @@ export default function AccuracyPage() {
         {entries.map(({ key, level, subject, data }) => (
           <details
             key={key}
-            className="group rounded-2xl border border-hairline bg-surface"
+            id={key.replace("/", "-")}
+            open={open === key.replace("/", "-") || undefined}
+            className="group scroll-mt-20 rounded-2xl border border-hairline bg-surface"
           >
             <summary className="flex cursor-pointer items-center justify-between gap-3 px-5 py-4">
               <span className="font-display font-bold text-ink">

@@ -134,3 +134,21 @@ export function topForecast(family: TopicFamily, seedKey: string): TopicForecast
     probability: Math.min(94, Math.max(20, p + ((h >> (i * 3)) % 7) - 3)),
   }));
 }
+
+// The WHOLE pool for a subject in forecast order — same seed and same first
+// five entries as topForecast, then the tail stepping down — so the study
+// plan's checklist agrees with every forecast preview on the site.
+export function fullForecast(family: TopicFamily, seedKey: string): TopicForecast[] {
+  const pool = TOPIC_POOLS[family];
+  const head = topForecast(family, seedKey);
+  const h = seededHash(seedKey);
+  const start = h % Math.max(1, pool.length - 5);
+  const tail: TopicForecast[] = [];
+  for (let i = 5; i < pool.length; i++) {
+    tail.push({
+      topic: pool[(start + i) % pool.length],
+      probability: Math.max(20, 33 - (i - 4) * 5 + ((h >> (i * 2)) % 5) - 2),
+    });
+  }
+  return [...head, ...tail];
+}
