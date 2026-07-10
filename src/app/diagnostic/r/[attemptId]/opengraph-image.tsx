@@ -8,7 +8,7 @@ export const contentType = "image/png";
 export const alt = "My StudyLah readiness score";
 
 const BAND_TITLE: Record<Band, string> = {
-  storm: "Storm warning on this topic",
+  storm: "Storm warning on these topics",
   cloudy: "Partly cloudy — marks are leaking",
   clear: "Clear skies — keep it sharp",
 };
@@ -30,7 +30,7 @@ export default async function OgImage({
   const band = (attempt?.band ?? "cloudy") as Band;
   const score = attempt ? `${attempt.score}/${attempt.totalMarks}` : "?";
   const subjectLine = attempt && subject
-    ? `${subject.name} · ${LEVELS[attempt.level as Level].shortName} · most-likely 2026 topic`
+    ? `${subject.name} · ${LEVELS[attempt.level as Level].shortName} · most-likely 2026 topics`
     : "StudyLah readiness check";
 
   return new ImageResponse(

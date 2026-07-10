@@ -60,7 +60,7 @@ export default async function DiagnosticResultsPage({
   const refCode = buyer[0]?.referralCode ?? null;
 
   const shareUrl = `${serverConfig.siteUrl}/diagnostic/r/${attempt.id}?utm_source=share&utm_medium=social&utm_campaign=diagnostic${refCode ? `&ref=${refCode}` : ""}`;
-  const shareMessage = `I scored ${attempt.score}/${attempt.totalMarks} on the most-likely ${subject.name} topic for 2026. What's your forecast?`;
+  const shareMessage = `I scored ${attempt.score}/${attempt.totalMarks} across the most-likely ${subject.name} topics for 2026. What's your forecast?`;
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
@@ -80,7 +80,7 @@ export default async function DiagnosticResultsPage({
       </h1>
       <p className="mt-2 max-w-xl text-body">{BAND_COPY[band].line}</p>
       <p className="mt-2 text-xs text-body/80">
-        Readiness on this topic only — not a grade prediction.
+        Readiness on these topics only — not a grade prediction.
       </p>
 
       {/* Per-question breakdown with worked solutions */}

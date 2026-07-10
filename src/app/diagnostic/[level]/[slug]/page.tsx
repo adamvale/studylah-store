@@ -16,8 +16,8 @@ export async function generateMetadata({
   const subject = getSubject(level as Level, slug);
   if (!subject) return {};
   return {
-    title: `${subject.name} readiness check — 60 seconds`,
-    description: `Five auto-marked questions on the most-likely ${subject.name} topic for 2026. Instant score, worked solutions after.`,
+    title: `${subject.name} quick readiness check`,
+    description: `Five auto-marked questions across the most-likely  topics for 2026. Instant score, worked solutions after.`,
     alternates: { canonical: `/diagnostic/${level}/${slug}` },
   };
 }
@@ -74,10 +74,10 @@ export default async function DiagnosticSubjectPage({
           {subject.name} · {LEVELS[level as Level].shortName} · 2026
         </p>
         <h1 className="mt-1 font-display text-2xl font-black text-ink">
-          The 60-second readiness check
+          The quick readiness check
         </h1>
         <p className="mt-2 flex flex-wrap items-center justify-center gap-2 text-sm text-body">
-          Topic under test: <span className="text-ink">{pub.topicLabel}</span>
+          Testing: <span className="text-ink">{pub.topicLabel}</span>
           {top && <TierPill tier={top.tier} />}
         </p>
       </div>
@@ -89,7 +89,7 @@ export default async function DiagnosticSubjectPage({
         questions={pub.questions}
       />
       <p className="mx-auto mt-10 max-w-md text-center text-xs text-body/80">
-        Readiness on this topic only — not a grade prediction. Questions are
+        Readiness on these topics only — not a grade prediction. Questions are
         original StudyLah practice content built from public past-paper
         patterns.
       </p>

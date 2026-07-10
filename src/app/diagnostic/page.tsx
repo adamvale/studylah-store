@@ -7,16 +7,17 @@ import { TierPill } from "@/components/heat";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/diagnostic" },
-  title: "Am I Ready? — the 60-second exam-readiness check",
+  title: "Am I Ready? — the quick exam-readiness check",
   description:
-    "Five auto-marked questions on the single most-likely topic for your 2026 paper. Instant readiness score, worked solutions, and a fix plan.",
+    "Five auto-marked questions mixed across the most-likely topics for your 2026 paper. Instant readiness score, worked solutions, and a fix plan.",
 };
 
 export default function DiagnosticIndexPage() {
   const available = listDiagnosticSets()
-    .map(({ level, slug }) => ({
+    .map(({ level, slug, topicLabel }) => ({
       level: level as Level,
       slug,
+      topicLabel,
       subject: getSubject(level as Level, slug),
       top: realTopCalls(level, slug, 1)[0],
     }))
@@ -25,23 +26,20 @@ export default function DiagnosticIndexPage() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-14">
       <p className="font-mono text-xs font-medium uppercase tracking-wide text-accent">
-        Free · 60 seconds · no sign-up to start
+        Free · quick check · no sign-up to start
       </p>
       <h1 className="mt-2 font-display text-4xl font-black text-ink">
         Am I ready for the topic that&apos;s most likely to show up?
       </h1>
       <p className="mt-3 text-body">
-        Our forecast ranks every topic on your 2026 paper. This check takes the
-        single highest-confidence call for your subject and asks you five quick
-        questions on it — marked instantly. You&apos;ll know in a minute whether
-        the most-likely topic is a banker or a leak.
+        Our forecast ranks every topic on your 2026 paper. This check mixes five quick questions across your subject&apos;s VERY HIGH calls — marked instantly. You&apos;ll know in minutes whether the most-likely topics are bankers or leaks.
       </p>
 
       <h2 className="mt-8 font-display text-lg font-bold text-ink">
         Pick your subject
       </h2>
       <div className="mt-3 space-y-2">
-        {available.map(({ level, slug, subject, top }) => (
+        {available.map(({ level, slug, topicLabel, subject, top }) => (
           <Link
             key={`${level}/${slug}`}
             href={`/diagnostic/${level}/${slug}`}
@@ -54,7 +52,7 @@ export default function DiagnosticIndexPage() {
               </span>
               {top && (
                 <span className="mt-1 block text-xs text-body">
-                  Tests: {top.topic}
+                  {topicLabel}
                 </span>
               )}
             </span>

@@ -1,6 +1,7 @@
-// "Am I Ready?" question bank. One 5-question set per subject, on that
-// subject's #1 VERY HIGH topic (see forecast-tables.ts). Adding a subject =
-// adding one entry here — no component changes.
+// "Am I Ready?" question bank. One 5-question set per subject, mixed across
+// that subject's VERY HIGH topics (see forecast-tables.ts), sourced from the
+// subject's own Sure Questions Vault. Adding a subject = adding one entry
+// here — no component changes.
 //
 // SECURITY: this module must ONLY be imported from server code. `correctKey`
 // and `workedSolution` must never reach the client before submission; pages
@@ -11,6 +12,8 @@ export type DiagnosticProduct = "companion" | "vault" | "master";
 export interface DiagnosticQuestion {
   id: string;
   type: "mcq" | "short";
+  // Which VERY HIGH topic this question belongs to (shown to the student).
+  topic: string;
   stem: string;
   // MCQ options; omitted for short-answer.
   options?: string[];
@@ -27,82 +30,98 @@ export interface DiagnosticQuestion {
 export interface DiagnosticSet {
   level: "o-level" | "na-level";
   slug: string;
-  // Display name for the topic — should match the Forecast PDF's naming.
+  // Display name for what the check covers.
   topicLabel: string;
   questions: DiagnosticQuestion[];
 }
 
 // ---------------------------------------------------------------------------
 // O-LEVEL CHEMISTRY (PURE) — reference set.
-// Topic: C4 Chemical Calculations (Mole Concept & Stoichiometry).
+// One question per VERY HIGH topic, ADAPTED FROM THE SUBJECT'S OWN SURE
+// QUESTIONS VAULT (vault.pdf warm-up/core items + their mark schemes), so the
+// quiz previews real product content.
 //
-// ⚠️ PLACEHOLDER CONTENT — DRAFTED FOR OWNER REVIEW, per the build brief
-// ("leave a clearly marked placeholder set if I haven't yet [supplied one]").
-// Review every stem, answer and worked solution before pushing live; replace
-// with your own five questions at any time — same shape.
+// ⚠️ REVIEW BEFORE LAUNCH: stems/answers follow the Vault's answer keys, but
+// confirm the adaptation (especially the short-answer variants) yourself.
 // ---------------------------------------------------------------------------
 const CHEMISTRY_PURE_O: DiagnosticSet = {
   level: "o-level",
   slug: "chemistry-pure",
-  topicLabel: "C4 Chemical Calculations — Mole Concept & Stoichiometry",
+  topicLabel: "Mixed — the five VERY HIGH topics",
   questions: [
     {
-      id: "cp-moles-1",
+      id: "cp-c4-mr",
+      type: "short",
+      topic: "C4 Chemical Calculations",
+      stem: "What is the relative formula mass, Mr, of ammonium sulfate, (NH₄)₂SO₄? (Ar: N = 14, H = 1, S = 32, O = 16)",
+      correctKey: ["132"],
+      marks: 2,
+      workedSolution:
+        "The brackets multiply everything inside them: 2 × (14 + 4) for the two NH₄ groups gives 36, plus 32 for sulfur and 4 × 16 = 64 for oxygen — total 132. Counting only one NH₄ group gives the classic wrong answer 114; doubling the whole formula gives 264.",
+      misconceptionTag: "Mr with brackets",
+      mapsToProduct: "vault",
+    },
+    {
+      id: "cp-c11-isomers",
       type: "mcq",
-      stem: "What is the relative molecular mass (Mr) of carbon dioxide, CO₂? (Ar: C = 12, O = 16)",
-      options: ["28", "44", "56", "22"],
+      topic: "C11 Organic Chemistry",
+      stem: "Which pair of compounds are isomers of each other?",
+      options: [
+        "ethanol and ethanoic acid",
+        "propanoic acid and methyl ethanoate",
+        "butane and but-1-ene",
+        "methanol and ethanol",
+      ],
       correctKey: ["1"],
       marks: 1,
       workedSolution:
-        "Mr of CO₂ = 12 + (2 × 16) = 12 + 32 = 44. One carbon atom plus two oxygen atoms — add every atom in the formula once.",
-      misconceptionTag: "Mr from formula",
+        "Isomers share one molecular formula but differ in structure. Propanoic acid (CH₃CH₂COOH) and methyl ethanoate (CH₃COOCH₃) are both C₃H₆O₂ — one a carboxylic acid, the other an ester. Every other pair differs in molecular formula, so they cannot be isomers. Count every atom before judging structures.",
+      misconceptionTag: "isomer definition",
       mapsToProduct: "vault",
     },
     {
-      id: "cp-moles-2",
-      type: "short",
-      stem: "How many moles are there in 8.8 g of carbon dioxide, CO₂? (Mr = 44) Give your answer as a number of moles.",
-      correctKey: ["0.2", "0.20", "0.2 mol", "0.20 mol"],
-      marks: 2,
-      workedSolution:
-        "moles = mass ÷ Mr = 8.8 ÷ 44 = 0.2 mol. The mass–mole conversion is the single most-used line of working in Paper 2 calculations.",
-      misconceptionTag: "mass-to-mole conversion",
-      mapsToProduct: "vault",
-    },
-    {
-      id: "cp-moles-3",
+      id: "cp-c3-conduct",
       type: "mcq",
-      stem: "Magnesium burns in oxygen: 2Mg + O₂ → 2MgO. How many moles of MgO are produced from 0.4 mol of magnesium (excess oxygen)?",
-      options: ["0.2 mol", "0.4 mol", "0.8 mol", "1.0 mol"],
-      correctKey: ["1"],
-      marks: 2,
+      topic: "C3 Chemical Bonding & Structure",
+      stem: "Which substance conducts electricity when molten but not when solid?",
+      options: ["copper", "graphite", "sodium chloride", "silicon dioxide"],
+      correctKey: ["2"],
+      marks: 1,
       workedSolution:
-        "The ratio of Mg : MgO in the equation is 2 : 2, i.e. 1 : 1. So 0.4 mol Mg → 0.4 mol MgO. Always take the ratio from the balanced equation, not from the masses.",
-      misconceptionTag: "mole ratio from equation",
+        "Sodium chloride is a giant ionic lattice: in the solid the ions are locked in fixed positions and cannot carry charge, but melting frees them to move, so the liquid conducts. Copper and graphite conduct in BOTH states (delocalised electrons); silicon dioxide conducts in neither. Always answer conductivity questions by naming the mobile charge carrier.",
+      misconceptionTag: "structure → conductivity reasoning",
       mapsToProduct: "companion",
     },
     {
-      id: "cp-moles-4",
+      id: "cp-c7-bleach",
       type: "mcq",
-      stem: "What is the volume of 0.5 mol of hydrogen gas at room temperature and pressure (r.t.p.)? (Molar volume at r.t.p. = 24 dm³/mol)",
-      options: ["6 dm³", "12 dm³", "24 dm³", "48 dm³"],
-      correctKey: ["1"],
-      marks: 2,
+      topic: "C7 Redox Chemistry & Electrochemistry",
+      stem: "Household bleach is made by passing chlorine into cold aqueous sodium hydroxide: Cl₂(g) + 2NaOH(aq) → NaCl(aq) + NaOCl(aq) + H₂O(l). Which statement about the chlorine is correct?",
+      options: [
+        "It is oxidised only.",
+        "It is reduced only.",
+        "It is both oxidised and reduced.",
+        "Its oxidation state does not change.",
+      ],
+      correctKey: ["2"],
+      marks: 1,
       workedSolution:
-        "volume = moles × 24 dm³ = 0.5 × 24 = 12 dm³ at r.t.p. Watch the units — questions switch between dm³ and cm³ (1 dm³ = 1000 cm³) to catch rushed working.",
-      misconceptionTag: "gas volume at r.t.p.",
-      mapsToProduct: "vault",
+        "Assign oxidation states element by element: chlorine starts at 0 in Cl₂, falls to −1 in NaCl (reduced) and rises to +1 in NaOCl (oxidised). The same element moving both up and down is a disproportionation — a favourite setter's twist. The method to bank: write the oxidation state of the element in EVERY species before judging.",
+      misconceptionTag: "oxidation-state method",
+      mapsToProduct: "companion",
     },
     {
-      id: "cp-moles-5",
-      type: "short",
-      stem: "25.0 cm³ of 0.100 mol/dm³ sodium hydroxide is neutralised by hydrochloric acid: NaOH + HCl → NaCl + H₂O. How many moles of HCl are needed? Give your answer in mol.",
-      correctKey: ["0.0025", "0.0025 mol", "2.5e-3", "2.5x10-3", "2.5 x 10-3", "0.00250"],
-      marks: 3,
+      id: "cp-c5-oxides",
+      type: "mcq",
+      topic: "C5 Acid-Base Chemistry",
+      stem: "Which oxide reacts with both dilute hydrochloric acid and aqueous sodium hydroxide?",
+      options: ["calcium oxide", "zinc oxide", "carbon dioxide", "copper(II) oxide"],
+      correctKey: ["1"],
+      marks: 1,
       workedSolution:
-        "moles NaOH = concentration × volume in dm³ = 0.100 × (25.0 ÷ 1000) = 0.0025 mol. The equation ratio NaOH : HCl is 1 : 1, so moles HCl = 0.0025 mol. Structure your working as: convert volume → find known moles → apply ratio.",
-      misconceptionTag: "titration working structure",
-      mapsToProduct: "companion",
+        "Zinc oxide is amphoteric — it neutralises hydrochloric acid (forming zinc chloride) and also dissolves in aqueous sodium hydroxide. Calcium oxide and copper(II) oxide are basic (react with acid only); carbon dioxide is acidic (reacts with alkali only). The amphoteric trio to memorise: ZnO, Al₂O₃, PbO.",
+      misconceptionTag: "oxide classification",
+      mapsToProduct: "vault",
     },
   ],
 };
@@ -115,14 +134,19 @@ export function getDiagnosticSet(level: string, slug: string): DiagnosticSet | u
   return SETS.find((s) => s.level === level && s.slug === slug);
 }
 
-export function listDiagnosticSets(): { level: string; slug: string }[] {
-  return SETS.map((s) => ({ level: s.level, slug: s.slug }));
+export function listDiagnosticSets(): {
+  level: string;
+  slug: string;
+  topicLabel: string;
+}[] {
+  return SETS.map((s) => ({ level: s.level, slug: s.slug, topicLabel: s.topicLabel }));
 }
 
 // What the browser is allowed to see before submission.
 export interface PublicQuestion {
   id: string;
   type: "mcq" | "short";
+  topic: string;
   stem: string;
   options?: string[];
   marks: number;
@@ -135,9 +159,10 @@ export function sanitizeSet(set: DiagnosticSet): {
 } {
   return {
     topicLabel: set.topicLabel,
-    questions: set.questions.map(({ id, type, stem, options, marks }) => ({
+    questions: set.questions.map(({ id, type, topic, stem, options, marks }) => ({
       id,
       type,
+      topic,
       stem,
       options,
       marks,

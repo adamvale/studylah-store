@@ -168,7 +168,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
                 href={`/diagnostic/${subject.level}/${subject.slug}`}
                 className="mt-3 inline-block rounded-lg bg-accent px-4 py-2 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
               >
-                Take the 60-second check →
+                Take the quick check →
               </Link>
             </div>
           )}

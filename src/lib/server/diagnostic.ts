@@ -4,7 +4,6 @@
 // grade promises; STANDARD_DISCLAIMER rides every email via emailLayout.
 import { prisma } from "../db";
 import { getSubject, type Level } from "../catalogue";
-import { realTopCalls } from "../forecast-tables";
 import {
   getDiagnosticSet,
   type DiagnosticProduct,
@@ -18,16 +17,16 @@ export type Band = "storm" | "cloudy" | "clear";
 
 export const BAND_COPY: Record<Band, { title: string; line: string }> = {
   storm: {
-    title: "Storm warning on this topic",
-    line: "This topic is forecast VERY HIGH for 2026 — and right now it would cost you marks. The good news: it's exactly the kind of gap two focused weeks can close.",
+    title: "Storm warning on these topics",
+    line: "These topics are forecast VERY HIGH for 2026 — and right now they would cost you marks. The good news: it's exactly the kind of gap two focused weeks can close.",
   },
   cloudy: {
     title: "Partly cloudy — close, but marks are leaking",
-    line: "You know this topic — but the paper pays for precision, and a few marks slipped. Tighten the working and this becomes a banker.",
+    line: "You know these topics — but the paper pays for precision, and a few marks slipped. Tighten the working and they become bankers.",
   },
   clear: {
     title: "Clear skies here — keep it sharp",
-    line: "Strong showing on the most-likely topic. Keep it warm and make sure the rest of the forecast looks like this.",
+    line: "Strong showing on the most-likely topics. Keep it warm and make sure the rest of the forecast looks like this.",
   },
 };
 
@@ -110,13 +109,13 @@ export function ctaFor(band: Band, weakness: DiagnosticProduct | null): {
     return {
       product: "vault",
       headline: "Practise where the marks are — the Sure Questions Vault",
-      body: "Original exam-style questions on the highest-tier calls, each with a full answer key — so the next time this topic appears, it pays in full.",
+      body: "Original exam-style questions on the highest-tier calls, each with a full answer key — so the next time these topics appear, they pay in full.",
     };
   }
   return {
     product: "rehearsal",
     headline: "Sharp here — now prove it under time",
-    body: "The Final Rehearsal is a complete original mock in the 2026 format. Sit it under exam conditions and keep this topic (and the rest) match-fit.",
+    body: "The Final Rehearsal is a complete original mock in the 2026 format. Sit it under exam conditions and keep these topics (and the rest) match-fit.",
   };
 }
 
@@ -200,14 +199,13 @@ export async function sendResultsEmail(attemptId: string): Promise<boolean> {
 
   const intro = isParent
     ? `<p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 12px;">
-        Your child took our 60-second readiness check on <strong>${set.topicLabel}</strong> —
-        the topic our data rates most likely for the 2026 ${subject.name} paper. Below is the
+        Your child took our quick readiness check on <strong>${set.topicLabel}</strong> —
+        the topics our data rates most likely for the 2026 ${subject.name} paper. Below is the
         honest picture and exactly what to use, and when, to close the gap. These are
         probabilistic forecasts from ten years of past papers — a calmer way to plan
         revision, not a shortcut around it.</p>`
     : `<p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 12px;">
-        You took the 60-second check on <strong>${set.topicLabel}</strong> — the topic our
-        data rates most likely for your 2026 ${subject.name} paper. Here's the full
+        You took the quick check on <strong>${set.topicLabel}</strong> — the topics our data rates most likely for your 2026 ${subject.name} paper. Here's the full
         breakdown and the fastest fix.</p>`;
 
   const html = emailLayout(`
@@ -260,13 +258,12 @@ export async function sendFollowUpEmail(attemptId: string): Promise<boolean> {
   if (!subject) return false;
   const band = attempt.band as Band;
   const cta = ctaFor(band, (attempt.weakness as DiagnosticProduct | null) ?? null);
-  const topic = realTopCalls(attempt.level, attempt.slug, 1)[0];
   const isParent = attempt.isParent;
 
   const proofLine = `We publish our accuracy after every sitting — hits AND misses — at <a href="${serverConfig.siteUrl}/accuracy" style="color:#f4552b;">the public scorecard</a>. A forecast you can't check is just marketing.`;
   const opener = isParent
-    ? `Two days ago your child scored ${attempt.score}/${attempt.totalMarks} on <strong>${topic?.topic ?? "the most-likely topic"}</strong> — the highest-confidence call for the 2026 ${subject.name} paper.`
-    : `Two days ago you scored ${attempt.score}/${attempt.totalMarks} on <strong>${topic?.topic ?? "the most-likely topic"}</strong> — the highest-confidence call for your 2026 ${subject.name} paper.`;
+    ? `Two days ago your child scored ${attempt.score}/${attempt.totalMarks} across <strong>the VERY HIGH-tier topics</strong> — the highest-confidence calls for the 2026 ${subject.name} paper.`
+    : `Two days ago you scored ${attempt.score}/${attempt.totalMarks} across <strong>the VERY HIGH-tier topics</strong> — the highest-confidence calls for your 2026 ${subject.name} paper.`;
 
   const html = emailLayout(`
     <h1 style="font-size:20px;margin:0 0 12px;color:#101f33;">That topic hasn't gotten less likely</h1>
@@ -286,9 +283,9 @@ export async function sendFollowUpEmail(attemptId: string): Promise<boolean> {
 
   const res = await sendEmail({
     to: attempt.email,
-    subject: `${subject.name}: the most-likely topic is still waiting`,
+    subject: `${subject.name}: the most-likely topics are still waiting`,
     html,
-    text: `You scored ${attempt.score}/${attempt.totalMarks} on the most-likely ${subject.name} topic. Proof of our track record: ${serverConfig.siteUrl}/accuracy\n\n${cta.headline}: ${productUrl(attempt.level, attempt.slug)}\n\nReply "unsubscribe" to stop these emails.`,
+    text: `You scored ${attempt.score}/${attempt.totalMarks} across the most-likely ${subject.name} topics. Proof of our track record: ${serverConfig.siteUrl}/accuracy\n\n${cta.headline}: ${productUrl(attempt.level, attempt.slug)}\n\nReply "unsubscribe" to stop these emails.`,
   });
   if (res.delivered) {
     await prisma.diagnosticAttempt.update({

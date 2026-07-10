@@ -42,14 +42,13 @@ export default function FreeHeatmapPage() {
               You know it&apos;s likely — but can you score it?
             </p>
             <p className="mt-1 text-xs text-body">
-              The 60-second check: five auto-marked questions on your
-              subject&apos;s top forecast call, instant readiness score.
+                            subject&apos;s top forecast call, instant readiness score.
             </p>
             <Link
               href="/diagnostic"
               className="mt-3 inline-block rounded-lg bg-accent px-4 py-2 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
             >
-              Take the 60-second check →
+              Take the quick check →
             </Link>
           </div>
         </div>

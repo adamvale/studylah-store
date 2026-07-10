@@ -21,7 +21,7 @@ export async function generateMetadata({
   return {
     title: `${attempt.score}/${attempt.totalMarks} on the most-likely ${subject?.name ?? ""} topic`,
     description:
-      "The 60-second readiness check: five auto-marked questions on the highest-confidence forecast call for the 2026 paper. What's your forecast?",
+      "The quick readiness check: five auto-marked questions across the highest-confidence forecast calls for the 2026 paper. What's your forecast?",
   };
 }
 
@@ -41,7 +41,7 @@ export default async function ShareLandingPage({
   return (
     <div className="mx-auto max-w-md px-4 py-16 text-center">
       <p className="font-mono text-xs text-body">
-        {subject.name} · {LEVELS[attempt.level as Level].shortName} · most-likely topic
+        {subject.name} · {LEVELS[attempt.level as Level].shortName} · most-likely topics
       </p>
       <p className="mt-4 font-display text-6xl font-black text-accent">
         {attempt.score}/{attempt.totalMarks}
@@ -59,11 +59,11 @@ export default async function ShareLandingPage({
           href={`/diagnostic/${attempt.level}/${attempt.slug}`}
           className="rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
         >
-          Take the 60-second check
+          Take the quick check
         </Link>
       </div>
       <p className="mt-6 text-xs text-body">
-        Free · instant marking · readiness on this topic only, not a grade
+        Free · instant marking · readiness on these topics only, not a grade
         prediction
       </p>
     </div>
