@@ -7,7 +7,7 @@ import { loadFullOrder, sendOrderConfirmationEmail } from "@/lib/server/orders";
 export async function POST(request: Request) {
   const customerId = await getCustomerId();
   const back = (flag: string) =>
-    NextResponse.redirect(new URL(`/account?${flag}`, serverConfig.siteUrl), {
+    NextResponse.redirect(new URL(`/account/orders?${flag}`, serverConfig.siteUrl), {
       status: 303,
     });
 

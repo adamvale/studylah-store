@@ -358,6 +358,12 @@ export function CartView() {
             PayNow and cards via Stripe · Money-back guarantee · Instant
             download after payment · PDFs watermarked to your email
           </p>
+          <p className="mt-2 text-xs text-body">
+            Every subject also unlocks{" "}
+            <span className="font-medium text-ink">Study HQ</span> — daily
+            practice, mistake notebook, study plan and exam timers. No
+            subscription.
+          </p>
         </div>
       </aside>
     </div>

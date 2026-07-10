@@ -62,6 +62,26 @@ function Badge({ children }: { children: React.ReactNode }) {
   );
 }
 
+// The receipts, right at the promise: same data source as /accuracy, so the
+// hero and the scorecard can never disagree.
+function HeroProof() {
+  const { perfect, total } = scorecardHeadline();
+  return (
+    <Link
+      href="/accuracy"
+      className="mt-4 inline-flex flex-wrap items-center gap-2 rounded-full border border-hairline bg-surface px-3.5 py-1.5 text-xs text-cloud transition-colors hover:border-accent"
+    >
+      <span className="font-display font-bold text-guarantee">
+        {perfect} of {total}
+      </span>
+      <span>
+        published scorecards called all five top-mark topics High or above —
+        see every hit and miss →
+      </span>
+    </Link>
+  );
+}
+
 function Hero({ pricing }: { pricing: Pricing }) {
   const { alacartePrice } = pricing;
   return (
@@ -79,9 +99,10 @@ function Hero({ pricing }: { pricing: Pricing }) {
           Most students revise everything and hope. StudyLah reads ten years of
           your{" "}
           {PUBLISHED_LEVELS.map((l) => LEVELS[l].shortName).join(" and ")} papers,
-          ranks the topics most likely to appear in 2026, and hands you original
-          questions and a full timed rehearsal for them — so your last weeks land
-          where the marks are.
+          ranks the topics most likely to appear in 2026 — then runs your
+          revision around them: original practice, daily questions, a
+          self-keeping mistake notebook, and a plan that counts down to your
+          real paper dates.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Link
@@ -91,16 +112,17 @@ function Hero({ pricing }: { pricing: Pricing }) {
             Find your subject&apos;s forecast
           </Link>
           <Link
-            href="/free-heatmap"
+            href="/diagnostic"
             className="rounded-lg border border-hairline bg-surface px-5 py-3 text-sm font-medium text-white transition-colors hover:border-accent"
           >
-            See a free sample →
+            Predict your mark — free →
           </Link>
         </div>
         <p className="mt-5 text-sm text-cloud">
-          Money-back guarantee · Instant PDF download · From{" "}
+          Money-back guarantee · Instant PDFs + Study HQ access · From{" "}
           {sgd(alacartePrice("o-level", "forecast"))} per subject
         </p>
+        <HeroProof />
         <ExamCountdown className="mt-4" />
       </div>
       <div className="fade-up" style={{ animationDelay: "150ms" }}>
@@ -246,6 +268,88 @@ const NEW_WAY = [
   "Understand exam patterns",
   "Walk in calmer & confident",
 ];
+
+const STUDY_HQ_FEATURES = [
+  {
+    emoji: "🎯",
+    title: "Marks at Risk",
+    body: "One honest number per subject: how much of a typical paper is still in play. Tick topics, clear mistakes — watch it fall.",
+  },
+  {
+    emoji: "🔥",
+    title: "The Daily Three",
+    body: "Three questions a day on your VERY HIGH and HIGH topics, marked instantly. Ten minutes that beat three-hour cramming.",
+  },
+  {
+    emoji: "📓",
+    title: "Mistake notebook (错题本)",
+    body: "Every miss saved automatically. Missed questions come back until you beat them twice — then they clear for good.",
+  },
+  {
+    emoji: "🧰",
+    title: "Skill drills",
+    body: "Keyword-precision for sciences, definitions decks, QA drillers, careless-error checklists, source-skills ladders, POA formats.",
+  },
+  {
+    emoji: "🚨",
+    title: "The rescue plan",
+    body: "Behind? One tap ranks what's left by marks recovered per hour and lays it out day by day to your first paper. Printable.",
+  },
+  {
+    emoji: "⏱",
+    title: "Exam timers & pacing",
+    body: "A rehearsal clock with invigilator chimes, a focus timer with weekly totals, and a pace target from your real paper dates.",
+  },
+] as const;
+
+function StudyHq() {
+  return (
+    <section className="bg-night-2 py-20">
+      <div className="mx-auto max-w-6xl px-4">
+        <p className="text-center font-mono text-xs font-medium uppercase tracking-wide text-teal">
+          Included with every subject · no subscription
+        </p>
+        <h2 className="mt-2 text-center font-display text-4xl font-black text-white sm:text-5xl">
+          The PDFs are the plan.{" "}
+          <span className="text-accent">Study HQ runs it.</span>
+        </h2>
+        <p className="mx-auto mt-5 max-w-2xl text-center text-lg text-cloud">
+          Buy any subject and your dashboard wakes up: daily practice aimed by
+          the forecast, a notebook that hunts your weak spots, and a live count
+          of the marks still on the table.
+        </p>
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {STUDY_HQ_FEATURES.map((f) => (
+            <div
+              key={f.title}
+              className="rounded-2xl border border-hairline bg-surface p-6"
+            >
+              <p aria-hidden="true" className="text-2xl">
+                {f.emoji}
+              </p>
+              <h3 className="mt-3 font-display text-lg font-bold text-white">
+                {f.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-cloud">{f.body}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10 text-center">
+          <Link
+            href="/diagnostic"
+            className="rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
+          >
+            Start free: predict your mark →
+          </Link>
+          <p className="mt-3 text-xs text-cloud">
+            10 questions on your subject&apos;s most-likely topics · instant
+            marking · indicative grade band, never a promise
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function Decision() {
   return (
@@ -476,6 +580,7 @@ export default async function Home() {
       <Hero pricing={pricing} />
       <WhyItWorks />
       <Journey pricing={pricing} />
+      <StudyHq />
       <Decision />
       <LevelEntry pricing={pricing} />
       <TrustStrip />

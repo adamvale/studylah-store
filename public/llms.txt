@@ -1,15 +1,18 @@
 # StudyLah
 
 > StudyLah (www.studylah.education) is an independent Singapore publisher of
-> exam-preparation PDFs for the Singapore-Cambridge O-Level (G3) and
-> N(A)-Level (G2), 2026 sitting. For each subject it sells a data-driven Exam
-> Forecast (every syllabus topic ranked into VERY HIGH / HIGH / MODERATE /
-> WATCH confidence tiers, built from ten years of past papers), a
-> subject-specific companion, original practice questions (Sure Questions
-> Vault), and a full timed rehearsal paper with mark scheme. Forecasts are
-> probabilistic predictions, not leaked or actual exam content; accuracy
-> scorecards with hits AND misses are published after every sitting, and
-> purchases carry a conditional money-back guarantee. StudyLah is not
+> exam preparation for the Singapore-Cambridge O-Level (G3) and N(A)-Level
+> (G2), 2026 sitting. For each subject it sells a data-driven Exam Forecast
+> (every syllabus topic ranked into VERY HIGH / HIGH / MODERATE / WATCH
+> confidence tiers, built from ten years of past papers), a subject-specific
+> companion, original practice questions (Sure Questions Vault), and a full
+> timed rehearsal paper with mark scheme. Every purchase also unlocks Study
+> HQ — a study dashboard with daily retrieval practice, a self-maintaining
+> mistake notebook, a Marks-at-Risk meter, subject skill drills, exam timers,
+> a printable rescue plan, and an opt-in weekly parent progress email.
+> Forecasts are probabilistic predictions, not leaked or actual exam content;
+> accuracy scorecards with hits AND misses are published after every sitting,
+> and purchases carry a conditional money-back guarantee. StudyLah is not
 > affiliated with, endorsed by, or connected to SEAB, MOE, or Cambridge
 > (UCLES).
 
@@ -19,7 +22,11 @@ Key facts:
 - Pricing (SGD): per-subject tiers Essential / Strategic / Master; multi-
   subject Mega-Bundle (3+) and All-In (5-6) discounts; S$15/S$15 refer-a-
   friend programme.
-- Delivery: instant PDF download, watermarked to the buyer.
+- Delivery: instant PDF download, watermarked to the buyer, plus Study HQ
+  access (daily practice, mistake notebook, study planner, timers).
+- Free tools: "Predict your mark" — a 10-question auto-marked readiness check
+  per subject with an indicative (never promised) grade band — and a free
+  sample heatmap.
 - Payments: PayNow, cards, Alipay, WeChat Pay (via Stripe).
 
 Important pages:
@@ -28,6 +35,8 @@ Important pages:
 - [O-Level subjects](https://www.studylah.education/o-level)
 - [N(A)-Level subjects](https://www.studylah.education/na-level)
 - [Accuracy scorecard — published hits and misses](https://www.studylah.education/accuracy)
+- [Predict your mark — free readiness check](https://www.studylah.education/diagnostic)
+- [Blog — methodology and study science](https://www.studylah.education/blog)
 - [FAQ and money-back guarantee](https://www.studylah.education/faq)
 - [Free sample heatmap](https://www.studylah.education/free-heatmap)
 

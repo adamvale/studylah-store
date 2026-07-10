@@ -271,6 +271,61 @@ export async function SubjectView({ subject }: { subject: Subject }) {
         />
       </div>
 
+      {/* The value stack: what a purchase actually is, in one glance. */}
+      <div className="mt-4 rounded-2xl border border-hairline bg-surface p-6">
+        <p className="font-display text-lg font-bold text-ink">
+          What you&apos;re actually getting
+        </p>
+        <ul className="mt-3 space-y-2 text-sm">
+          <li className="flex gap-3">
+            <span aria-hidden="true" className="text-accent">1.</span>
+            <span className="text-body">
+              <span className="font-medium text-ink">Know what&apos;s coming</span>{" "}
+              — every {subject.name} topic ranked into four confidence tiers for 2026.
+            </span>
+          </li>
+          <li className="flex gap-3">
+            <span aria-hidden="true" className="text-accent">2.</span>
+            <span className="text-body">
+              <span className="font-medium text-ink">Practise exactly that</span>{" "}
+              — original exam-style questions with full answer keys, weighted to
+              the forecast.
+            </span>
+          </li>
+          <li className="flex gap-3">
+            <span aria-hidden="true" className="text-accent">3.</span>
+            <span className="text-body">
+              <span className="font-medium text-ink">Bank the method marks</span>{" "}
+              — the companion covers the paper or skill strand most students
+              under-rehearse.
+            </span>
+          </li>
+          <li className="flex gap-3">
+            <span aria-hidden="true" className="text-accent">4.</span>
+            <span className="text-body">
+              <span className="font-medium text-ink">Sit it before you sit it</span>{" "}
+              — a complete timed mock in the exact 2026 format, with mark scheme.
+            </span>
+          </li>
+          <li className="flex gap-3">
+            <span aria-hidden="true" className="text-accent">5.</span>
+            <span className="text-body">
+              <span className="font-medium text-ink">
+                And Study <span className="text-accent">HQ</span> runs it daily
+              </span>{" "}
+              — three questions a day on your top-tier topics, a mistake notebook
+              that re-tests you until you clear it, a live Marks-at-Risk meter,
+              skill drills, exam timers, and a printable rescue plan. Included,
+              no subscription.
+            </span>
+          </li>
+        </ul>
+        <p className="mt-4 border-t border-hairline pt-3 text-xs text-body">
+          One-time purchase, works until exam day — less than the cost of a
+          single tuition session, and it never cancels on you.
+        </p>
+      </div>
+
       {copy && (
         <p className="mt-4 max-w-3xl text-sm leading-relaxed text-body">
           <span className="font-medium text-ink">The Complete Pack.</span>{" "}

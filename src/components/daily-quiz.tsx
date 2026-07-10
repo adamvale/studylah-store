@@ -34,18 +34,28 @@ interface SubmitResponse {
   clearedMistakes: number;
 }
 
+// Where to send the student after marking — the session chains instead of
+// dead-ending. Computed server-side on the Today page.
+export interface NextUpItem {
+  label: string;
+  detail: string;
+  href: string;
+}
+
 export function DailyQuiz({
   questions,
   streak,
   doneToday,
   todayScore,
   todayTotal,
+  nextUp = [],
 }: {
   questions: PublicDailyQuestion[];
   streak: number;
   doneToday: boolean;
   todayScore: number | null;
   todayTotal: number | null;
+  nextUp?: NextUpItem[];
 }) {
   const [open, setOpen] = useState(!doneToday);
   const [answers, setAnswers] = useState<Record<string, string>>({});
@@ -84,11 +94,16 @@ export function DailyQuiz({
   if (result) {
     return (
       <div className="space-y-5">
-        <div className="rounded-2xl border border-hairline bg-surface p-6 text-center">
+        <div
+          className={`rounded-2xl border bg-surface p-6 text-center ${
+            result.score === result.total ? "border-guarantee/50" : "border-hairline"
+          }`}
+        >
           <p className="font-mono text-xs uppercase tracking-wide text-body">
             Today&apos;s three
           </p>
           <p className="mt-1 font-display text-5xl font-black text-ink">
+            {result.score === result.total && "🎉 "}
             {result.score}/{result.total}
           </p>
           <p className="mt-2 text-sm text-body">
@@ -165,6 +180,32 @@ export function DailyQuiz({
             <p className="mt-2 text-sm text-body">{r.workedSolution}</p>
           </div>
         ))}
+
+        {nextUp.length > 0 && (
+          <div className="rounded-2xl border border-accent/40 bg-surface p-5">
+            <p className="font-display font-bold text-ink">
+              Keep the session going
+            </p>
+            <ul className="mt-3 space-y-2">
+              {nextUp.map((item, i) => (
+                <li key={i}>
+                  <Link
+                    href={item.href}
+                    className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-hairline bg-night px-4 py-3 transition-colors hover:border-accent"
+                  >
+                    <span className="min-w-0">
+                      <span className="block text-sm font-medium text-ink">{item.label}</span>
+                      <span className="text-xs text-body">{item.detail}</span>
+                    </span>
+                    <span aria-hidden="true" className="text-accent">
+                      →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <p className="text-center text-xs text-body">
           Come back tomorrow for a fresh three — the streak grows every day you

@@ -301,6 +301,21 @@ export default async function ExamForecastPage() {
           <div className="mt-10 flex justify-center">
             <CTA>Browse subjects &amp; buy</CTA>
           </div>
+
+          {/* Every tier ships the study system, not just the files */}
+          <div className="mx-auto mt-12 max-w-3xl rounded-2xl border border-hairline bg-surface p-6 text-center">
+            <p className="font-display text-xl font-bold text-white">
+              And every tier switches on{" "}
+              <span className="text-accent">Study HQ</span>
+            </p>
+            <p className="mt-2 text-sm text-cloud">
+              A dashboard that runs the plan for you: three practice questions
+              a day on your most-likely topics, a mistake notebook that re-tests
+              you until you clear it, a live Marks-at-Risk meter per subject,
+              exam timers, and a printable rescue plan for when the calendar
+              gets scary. Included — no subscription.
+            </p>
+          </div>
         </div>
       </section>
 

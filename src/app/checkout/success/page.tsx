@@ -100,7 +100,26 @@ export default async function CheckoutSuccessPage({
         </Link>
       </p>
 
-      <div className="mt-10 rounded-2xl border border-hairline bg-surface p-5 text-left">
+      <div className="mt-10 rounded-2xl border border-accent/40 bg-surface p-5 text-left">
+        <p className="font-display text-lg font-bold text-ink">
+          Your Study <span className="text-accent">HQ</span> just switched on
+        </p>
+        <p className="mt-1 text-sm text-body">
+          The PDFs tell you what to revise — Study HQ makes it happen daily:
+          three questions a day on your most-likely topics, a mistake notebook
+          that re-tests you, a Marks-at-Risk meter, timers and a study plan
+          paced to your paper dates. Two minutes to set up, included with your
+          order.
+        </p>
+        <Link
+          href="/account"
+          className="mt-4 inline-block rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
+        >
+          Open Study HQ
+        </Link>
+      </div>
+
+      <div className="mt-4 rounded-2xl border border-hairline bg-surface p-5 text-left">
         <p className="font-display text-lg font-bold text-ink">
           Know someone sitting the papers too?
         </p>
@@ -112,7 +131,7 @@ export default async function CheckoutSuccessPage({
         </p>
         <Link
           href="/account/referrals"
-          className="mt-4 inline-block rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
+          className="mt-4 inline-block rounded-lg border border-hairline px-5 py-2.5 text-sm font-medium text-ink hover:border-accent"
         >
           Get my referral code
         </Link>

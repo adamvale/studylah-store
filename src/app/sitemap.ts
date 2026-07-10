@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { PUBLISHED_LEVELS, subjectsForLevel } from "@/lib/catalogue";
+import { allPosts } from "@/lib/blog";
 
 const BASE = "https://www.studylah.education";
 
@@ -16,11 +17,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/faq`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/free-heatmap`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/diagnostic`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE}/legal/refunds`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
     { url: `${BASE}/legal/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
     { url: `${BASE}/legal/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
     { url: `${BASE}/legal/referral-terms`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
   ];
+
+  const posts: MetadataRoute.Sitemap = allPosts().map((p) => ({
+    url: `${BASE}/blog/${p.slug}`,
+    lastModified: new Date(`${p.date}T00:00:00+08:00`),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
 
   const levels: MetadataRoute.Sitemap = PUBLISHED_LEVELS.map((level) => ({
     url: `${BASE}/${level}`,
@@ -38,5 +47,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...statics, ...levels, ...subjects];
+  return [...statics, ...posts, ...levels, ...subjects];
 }

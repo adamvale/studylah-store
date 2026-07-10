@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { sgDay, computeStreak } from "@/lib/server/study";
 import { AccountNav } from "@/components/account-nav";
 
 export const metadata: Metadata = {
@@ -25,14 +26,35 @@ export default async function AccountDashboardLayout({
   });
   if (!customer) redirect("/account/login");
 
+  // The streak rides the shell so it's visible from every tab — quiet,
+  // permanent pressure to come back tomorrow.
+  const dayRows = await prisma.dailyQuizDay.findMany({
+    where: { customerId },
+    select: { day: true },
+  });
+  const streak = computeStreak(
+    dayRows.map((r) => r.day),
+    sgDay()
+  );
+
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
       {/* print:hidden — printed pages (e.g. the rescue plan) keep only content */}
       <div className="flex flex-wrap items-start justify-between gap-4 print:hidden">
         <div>
-          <h1 className="font-display text-4xl font-bold text-ink">Your account</h1>
+          <h1 className="flex flex-wrap items-center gap-3 font-display text-4xl font-bold text-ink">
+            <span>
+              Study <span className="text-accent">HQ</span>
+            </span>
+            {streak.current > 0 && (
+              <span className="rounded-full bg-accent/10 px-3 py-1 font-mono text-sm font-medium text-accent">
+                🔥 {streak.current}
+              </span>
+            )}
+          </h1>
           <p className="mt-1 text-sm text-body">
-            Signed in as <span className="font-medium text-ink">{customer.email}</span>
+            Your PDFs, plan, practice and progress — signed in as{" "}
+            <span className="font-medium text-ink">{customer.email}</span>
           </p>
         </div>
         <form action="/api/account/logout" method="post">

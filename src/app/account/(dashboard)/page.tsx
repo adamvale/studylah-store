@@ -1,345 +1,370 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { getCustomerId } from "@/lib/server/customer-session";
-import { Banner, fmtDate, sgd } from "./ui";
+import {
+  ownedSubjects,
+  dailyPicks,
+  toPublicDaily,
+  sgDay,
+  computeStreak,
+} from "@/lib/server/study";
+import { computeRisk } from "@/lib/server/risk";
+import { getScoreHistory } from "@/lib/server/progress";
+import { DailyQuiz, type NextUpItem } from "@/components/daily-quiz";
+import { GettingStarted, type StartStep } from "@/components/getting-started";
+import { TierPill } from "@/components/heat";
 
-type ItemRow = {
-  id: string;
-  productId: string;
-  subjectName: string;
-  productName: string;
-  levelName: string;
-  tier: string;
-  fileLabel: string;
-  product: { subject: { level: string; slug: string } };
-  productFile: { updatedAt: Date | null };
-  downloadEvents: { at: Date }[];
-};
+export const metadata: Metadata = { title: "Today" };
 
-// The file was re-uploaded after this buyer's purchase AND after their last
-// download — their saved copy is stale.
-function hasUpdate(item: ItemRow, orderCreatedAt: Date): boolean {
-  const updated = item.productFile.updatedAt;
-  if (!updated || updated <= orderCreatedAt) return false;
-  const last = item.downloadEvents[0]?.at;
-  return !last || updated > last;
+const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+
+// Kept outside the component so the impurity (Date.now) isn't called during
+// render — see react-hooks/purity.
+function staleAttemptSubject(
+  history: { subjectName: string; level: string; slug: string; latest: { at: string } }[]
+): { subjectName: string; level: string; slug: string } | null {
+  const cutoff = Date.now() - 2 * WEEK_MS;
+  const stale = history.find((h) => new Date(h.latest.at).getTime() < cutoff);
+  return stale ? { subjectName: stale.subjectName, level: stale.level, slug: stale.slug } : null;
 }
 
-// One order groups by subject (each a dropdown for multi-subject orders), and
-// within a subject by product (a subject's Master pack ships several products).
-function groupBySubject(items: ItemRow[]) {
-  const groups = new Map<
-    string,
-    { key: string; subjectName: string; levelName: string; items: ItemRow[] }
-  >();
-  for (const item of items) {
-    const key = `${item.product.subject.level}/${item.product.subject.slug}`;
-    const existing = groups.get(key);
-    if (existing) existing.items.push(item);
-    else groups.set(key, { key, subjectName: item.subjectName, levelName: item.levelName, items: [item] });
-  }
-  return [...groups.values()];
+function todayLabel(): string {
+  return new Date().toLocaleDateString("en-SG", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    timeZone: "Asia/Singapore",
+  });
 }
 
-function groupByProduct(items: ItemRow[]) {
-  const groups = new Map<
-    string,
-    { key: string; productName: string; tier: string; items: ItemRow[] }
-  >();
-  for (const item of items) {
-    const existing = groups.get(item.productId);
-    if (existing) existing.items.push(item);
-    else
-      groups.set(item.productId, {
-        key: item.productId,
-        productName: item.productName,
-        tier: item.tier,
-        items: [item],
-      });
-  }
-  return [...groups.values()];
+interface MissionItem {
+  done: boolean;
+  minutes: number;
+  title: string;
+  detail: string;
+  href: string;
+  cta: string;
 }
 
-function FileRow({
-  item,
-  refunded,
-  updated,
-}: {
-  item: ItemRow;
-  refunded: boolean;
-  updated: boolean;
-}) {
-  const last = item.downloadEvents[0]?.at;
-  return (
-    <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-hairline bg-night px-4 py-3">
-      <div>
-        <p className="flex flex-wrap items-center gap-2 text-sm text-body">
-          {item.fileLabel}
-          {updated && !refunded && (
-            <span className="rounded-full bg-accent/15 px-2 py-0.5 text-xs font-medium text-accent">
-              Updated — re-download
-            </span>
-          )}
-        </p>
-        <p className="mt-0.5 text-xs text-body/80">
-          {last ? `Last downloaded ${fmtDate(last)}` : "Not downloaded yet"}
-        </p>
-      </div>
-      {refunded ? (
-        <span className="text-xs text-body">Unavailable</span>
-      ) : (
-        <a
-          href={`/api/account/download/${item.id}`}
-          className="rounded-lg bg-signal px-4 py-2 text-sm font-medium text-white hover:bg-signal-deep"
-        >
-          Download
-        </a>
-      )}
-    </div>
-  );
-}
-
-// A subject's products + file download rows — shown inline (single-subject
-// order) or inside a dropdown (multi-subject order).
-function SubjectFiles({
-  items,
-  refunded,
-  orderCreatedAt,
-}: {
-  items: ItemRow[];
-  refunded: boolean;
-  orderCreatedAt: Date;
-}) {
-  return (
-    <div className="space-y-4">
-      {groupByProduct(items).map((group) => (
-        <div key={group.key}>
-          <p className="text-sm font-medium text-ink">{group.productName}</p>
-          <p className="text-xs text-body">{group.tier} tier</p>
-          <div className="mt-2 space-y-2">
-            {group.items.map((item) => (
-              <FileRow
-                key={item.id}
-                item={item}
-                refunded={refunded}
-                updated={hasUpdate(item, orderCreatedAt)}
-              />
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-const MESSAGES = {
-  "sent=1": { tone: "ok" as const, msg: "Receipt email sent." },
-  "error=order": {
-    tone: "bad" as const,
-    msg: "Couldn't resend that receipt — please try again.",
-  },
-  "claim=1": {
-    tone: "ok" as const,
-    msg: "Claim received — we'll reply to your order email within 5 business days.",
-  },
-  "error=claim": {
-    tone: "bad" as const,
-    msg: "Couldn't file that claim — pick the subject and tell us a little more.",
-  },
-};
-
-export default async function AccountOrdersPage({
-  searchParams,
-}: {
-  searchParams: Promise<Record<string, string | undefined>>;
-}) {
+// The one question every student actually has: "what should I do right now?"
+// This page answers it with a short, time-boxed mission computed from every
+// system in Study HQ — then gets out of the way.
+export default async function TodayPage() {
   const customerId = await getCustomerId();
   if (!customerId) redirect("/account/login");
 
-  const orders = await prisma.order.findMany({
-    where: { customerId },
-    orderBy: { createdAt: "desc" },
-    include: {
-      items: {
-        include: {
-          product: { include: { subject: true } },
-          productFile: { select: { updatedAt: true } },
-          downloadEvents: { orderBy: { at: "desc" }, take: 1 },
-        },
-      },
-    },
+  const customer = await prisma.customer.findUnique({
+    where: { id: customerId },
+    select: { email: true },
   });
+  const subjects = await ownedSubjects(customerId);
+  const today = sgDay();
 
-  const params = await searchParams;
+  const [dayRows, unresolvedMistakes, examDates, orderCount, downloads, attempts, goals] =
+    await Promise.all([
+      prisma.dailyQuizDay.findMany({ where: { customerId }, orderBy: { day: "desc" } }),
+      prisma.mistakeEntry.count({ where: { customerId, resolved: false } }),
+      prisma.examDate.count({ where: { customerId } }),
+      prisma.order.count({ where: { customerId, status: { not: "refunded" } } }),
+      prisma.downloadEvent.count({ where: { orderItem: { order: { customerId } } } }),
+      prisma.diagnosticAttempt.count({ where: { customerId } }),
+      prisma.subjectGoal.count({ where: { customerId } }),
+    ]);
 
-  return (
-    <div>
-      <Banner params={params} messages={MESSAGES} />
+  const streak = computeStreak(
+    dayRows.map((r) => r.day),
+    today
+  );
+  const todayRow = dayRows.find((r) => r.day === today) ?? null;
 
-      {orders.length === 0 ? (
-        <div className="mt-4 rounded-2xl border border-hairline bg-surface p-8 text-center">
-          <p className="font-display text-lg font-bold text-ink">No orders yet</p>
-          <p className="mt-2 text-sm text-body">
-            When you buy a forecast it&apos;ll appear here for re-download.
-          </p>
+  const picks = (await dailyPicks(customerId, subjects, today, !todayRow)).map(toPublicDaily);
+  const risks = await computeRisk(customerId);
+  const history = await getScoreHistory(customerId, customer?.email ?? "");
+
+  // The next topic worth a real session: the highest marks-at-risk topic that
+  // isn't confident yet, across every owned subject.
+  let focusTopic: { topic: string; tier: "very-high" | "high" | "moderate" | "watch"; subjectName: string } | null =
+    null;
+  let best = -1;
+  for (const r of risks) {
+    for (const t of r.topics) {
+      if (t.status >= 3) continue;
+      if (t.atRisk > best) {
+        best = t.atRisk;
+        focusTopic = { topic: t.topic, tier: t.tier, subjectName: r.name };
+      }
+      break; // topics are sorted by atRisk desc — first unfinished is the subject's best
+    }
+  }
+
+  const stale = staleAttemptSubject(history);
+  const neverChecked = attempts === 0;
+
+  // ── The mission ─────────────────────────────────────────────────────────
+  const mission: MissionItem[] = [];
+  mission.push({
+    done: Boolean(todayRow),
+    minutes: 2,
+    title: "The daily three",
+    detail: streak.doneToday
+      ? `Done — ${todayRow?.correct ?? 0}/${todayRow?.answered ?? 3} today.`
+      : streak.current > 0
+      ? `Keep the ${streak.current}-day streak alive.`
+      : "Three questions on your most-likely topics, marked instantly.",
+    href: "#daily",
+    cta: "Answer them",
+  });
+  if (unresolvedMistakes > 0) {
+    mission.push({
+      done: false,
+      minutes: 5,
+      title: `Clear ${Math.min(unresolvedMistakes, 2)} from the mistake notebook`,
+      detail: `${unresolvedMistakes} unresolved — each one is a mark leak with your name on it.`,
+      href: "/account/mistakes",
+      cta: "Open notebook",
+    });
+  }
+  if (focusTopic) {
+    mission.push({
+      done: false,
+      minutes: 25,
+      title: `One real session: ${focusTopic.topic}`,
+      detail: `${focusTopic.subjectName} — your biggest marks-at-risk topic right now. Start the focus timer and work it.`,
+      href: "/account/timer",
+      cta: "Start the timer",
+    });
+  }
+  if (!neverChecked && stale) {
+    mission.push({
+      done: false,
+      minutes: 7,
+      title: `Re-check ${stale.subjectName}`,
+      detail: "It's been 2+ weeks since your last readiness check — see if the work moved the needle.",
+      href: `/diagnostic/${stale.level}/${stale.slug}`,
+      cta: "Predict your mark",
+    });
+  }
+  if (examDates === 0 && subjects.length > 0) {
+    mission.push({
+      done: false,
+      minutes: 2,
+      title: "Add your paper dates",
+      detail: "The pacing engine and rescue plan follow your real timetable once they know it.",
+      href: "/account/study",
+      cta: "Add dates",
+    });
+  }
+  const openItems = mission.filter((m) => !m.done);
+  const totalMinutes = openItems.reduce((s, m) => s + m.minutes, 0);
+
+  // What the quiz suggests once it's marked — the session chains instead of
+  // dead-ending.
+  const nextUp: NextUpItem[] = [];
+  if (unresolvedMistakes > 0) {
+    nextUp.push({
+      label: `Clear ${Math.min(unresolvedMistakes, 2)} mistakes`,
+      detail: `${unresolvedMistakes} waiting in the notebook`,
+      href: "/account/mistakes",
+    });
+  }
+  if (focusTopic) {
+    nextUp.push({
+      label: `25 focused minutes on ${focusTopic.topic}`,
+      detail: focusTopic.subjectName,
+      href: "/account/timer",
+    });
+  }
+  if (nextUp.length === 0) {
+    nextUp.push({
+      label: "See your progress",
+      detail: "Marks at risk, calibration, score history",
+      href: "/account/progress",
+    });
+  }
+
+  // ── Onboarding runway (until all four are done) ────────────────────────
+  const steps: StartStep[] = [
+    {
+      done: downloads > 0,
+      label: "Download your PDFs",
+      detail: "Forecast first — it tells the rest of the system where to aim.",
+      href: "/account/orders",
+      cta: "Orders",
+    },
+    {
+      done: attempts > 0,
+      label: "Predict your mark (7 minutes, free)",
+      detail: "Ten questions on your most-likely topics — your baseline before the work starts.",
+      href: "/diagnostic",
+      cta: "Take the check",
+    },
+    {
+      done: examDates > 0 || goals > 0,
+      label: "Set your paper dates and grade goals",
+      detail: "The pacing engine and rescue plan follow your real timetable.",
+      href: "/account/study",
+      cta: "Set them",
+    },
+    {
+      done: dayRows.length > 0,
+      label: "Start your daily streak",
+      detail: "Three questions a day on the topics that matter — the habit that moves marks.",
+      href: "#daily",
+      cta: "Do today's three",
+    },
+  ];
+
+  // ── Empty state: no purchases yet ───────────────────────────────────────
+  if (orderCount === 0) {
+    return (
+      <div className="rounded-2xl border border-hairline bg-surface p-8 text-center">
+        <p className="font-display text-lg font-bold text-ink">
+          Study HQ wakes up with your first subject
+        </p>
+        <p className="mt-2 text-sm text-body">
+          Buy any forecast and this page becomes your daily mission: what to
+          practise, what to fix, and what to work next — computed fresh every
+          day until your papers.
+        </p>
+        <div className="mt-4 flex flex-wrap justify-center gap-3">
           <Link
             href="/o-level"
-            className="mt-4 inline-block rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
+            className="rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
           >
             Browse subjects
           </Link>
+          <Link
+            href="/diagnostic"
+            className="rounded-lg border border-hairline px-5 py-2.5 text-sm font-medium text-ink hover:border-accent"
+          >
+            Predict your mark — free
+          </Link>
         </div>
-      ) : (
-        <div className="space-y-5">
-          {orders.map((order) => {
-            const refunded = order.status === "refunded";
-            const subjects = groupBySubject(order.items);
-            const multi = subjects.length > 1;
-            return (
-              <section key={order.id} className="rounded-2xl border border-hairline bg-surface p-5">
-                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <p className="font-display font-bold text-ink">
-                    Order No. {order.id}
-                    {refunded && (
-                      <span className="ml-2 rounded-full bg-coral/20 px-2 py-0.5 text-xs font-medium text-coral">
-                        Refunded
-                      </span>
-                    )}
-                  </p>
-                  <p className="font-mono text-sm text-body">
-                    {fmtDate(order.createdAt)} · {sgd(order.totalCents)}
-                  </p>
-                </div>
+      </div>
+    );
+  }
 
-                <div className="mt-4 space-y-3 border-t border-hairline pt-4">
-                  {subjects.map((subj) =>
-                    multi ? (
-                      <details key={subj.key} className="group rounded-xl border border-hairline">
-                        <summary className="flex cursor-pointer items-center justify-between gap-3 px-4 py-3">
-                          <span>
-                            <span className="font-medium text-ink">{subj.subjectName}</span>
-                            <span className="ml-2 text-xs text-body">{subj.levelName}</span>
-                          </span>
-                          <span className="flex items-center gap-3 text-xs text-body">
-                            {subj.items.length} file{subj.items.length === 1 ? "" : "s"}
-                            <span
-                              aria-hidden="true"
-                              className="transition-transform group-open:rotate-180"
-                            >
-                              ▾
-                            </span>
-                          </span>
-                        </summary>
-                        <div className="border-t border-hairline px-4 py-4">
-                          <SubjectFiles
-                            items={subj.items}
-                            refunded={refunded}
-                            orderCreatedAt={order.createdAt}
-                          />
-                        </div>
-                      </details>
-                    ) : (
-                      <div key={subj.key}>
-                        <p className="mb-3 text-sm font-medium text-ink">
-                          {subj.subjectName}{" "}
-                          <span className="text-xs font-normal text-body">{subj.levelName}</span>
-                        </p>
-                        <SubjectFiles
-                          items={subj.items}
-                          refunded={refunded}
-                          orderCreatedAt={order.createdAt}
-                        />
-                      </div>
-                    )
-                  )}
-                </div>
-
-                {!refunded && (
-                  <div className="mt-4 border-t border-hairline pt-3">
-                    <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-                      <a
-                        href={`/api/account/download-order/${order.id}`}
-                        className="text-xs font-medium text-accent underline"
-                      >
-                        Download everything (.zip)
-                      </a>
-                      <form action="/api/account/resend-receipt" method="post">
-                        <input type="hidden" name="orderId" value={order.id} />
-                        <button
-                          type="submit"
-                          className="text-xs font-medium text-accent underline"
-                        >
-                          Email me this receipt again
-                        </button>
-                      </form>
-                    </div>
-
-                    <details className="mt-3">
-                      <summary className="cursor-pointer text-xs font-medium text-body hover:text-ink">
-                        Claim the money-back guarantee
-                      </summary>
-                      <form
-                        action="/api/account/guarantee-claim"
-                        method="post"
-                        className="mt-3 space-y-3 rounded-xl border border-hairline bg-night p-4"
-                      >
-                        <input type="hidden" name="orderId" value={order.id} />
-                        <div>
-                          <label
-                            htmlFor={`claim-subject-${order.id}`}
-                            className="block text-xs font-medium text-body"
-                          >
-                            Subject
-                          </label>
-                          <select
-                            id={`claim-subject-${order.id}`}
-                            name="subject"
-                            required
-                            className="mt-1 w-full rounded-lg border border-hairline bg-surface px-3 py-2 text-sm text-ink"
-                          >
-                            {subjects.map((subj) => (
-                              <option key={subj.key} value={subj.subjectName}>
-                                {subj.subjectName}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                        <div>
-                          <label
-                            htmlFor={`claim-msg-${order.id}`}
-                            className="block text-xs font-medium text-body"
-                          >
-                            Which top-five topics didn&apos;t appear in your paper?
-                          </label>
-                          <textarea
-                            id={`claim-msg-${order.id}`}
-                            name="message"
-                            required
-                            minLength={10}
-                            rows={3}
-                            placeholder="Tell us the paper you sat and which forecast calls missed."
-                            className="mt-1 w-full rounded-lg border border-hairline bg-surface px-3 py-2 text-sm text-ink placeholder:text-body/40"
-                          />
-                        </div>
-                        <button
-                          type="submit"
-                          className="rounded-lg border border-hairline px-4 py-2 text-xs font-medium text-ink hover:border-accent"
-                        >
-                          Submit claim
-                        </button>
-                        <p className="text-xs text-body/80">
-                          Claims open for 14 days after the exam. We reply to
-                          your order email.
-                        </p>
-                      </form>
-                    </details>
-                  </div>
-                )}
-              </section>
-            );
-          })}
+  return (
+    <div className="space-y-8">
+      {/* Mission brief */}
+      <div>
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <h2 className="font-display text-2xl font-bold text-ink">{todayLabel()}</h2>
+          {streak.current > 0 && (
+            <span className="rounded-full bg-accent/10 px-3 py-1 font-mono text-xs font-medium text-accent">
+              🔥 {streak.current}-day streak{streak.doneToday ? "" : " — today keeps it"}
+            </span>
+          )}
         </div>
+        <p className="mt-1 text-sm text-body">
+          {openItems.length === 0
+            ? "Mission complete. Come back tomorrow — the system resets at midnight."
+            : `Today's mission: ${openItems.length} thing${openItems.length === 1 ? "" : "s"}, about ${totalMinutes} minutes. Do them in order.`}
+        </p>
+      </div>
+
+      <GettingStarted steps={steps} />
+
+      {/* The mission list */}
+      {openItems.length > 0 && (
+        <ol className="space-y-2">
+          {mission.map((m, i) => (
+            <li
+              key={i}
+              className={`flex flex-wrap items-center justify-between gap-3 rounded-2xl border px-5 py-4 ${
+                m.done ? "border-guarantee/40 bg-surface opacity-70" : "border-hairline bg-surface"
+              }`}
+            >
+              <span className="flex min-w-0 items-start gap-3">
+                <span
+                  aria-hidden="true"
+                  className={`mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full text-xs font-bold ${
+                    m.done ? "bg-guarantee/20 text-guarantee" : "bg-accent/15 text-accent"
+                  }`}
+                >
+                  {m.done ? "✓" : i + 1}
+                </span>
+                <span className="min-w-0">
+                  <span
+                    className={`block font-medium ${m.done ? "text-body line-through" : "text-ink"}`}
+                  >
+                    {m.title}
+                    <span className="ml-2 font-mono text-xs font-normal text-body">
+                      ~{m.minutes} min
+                    </span>
+                  </span>
+                  <span className="text-xs text-body">{m.detail}</span>
+                </span>
+              </span>
+              {!m.done && (
+                <Link
+                  href={m.href}
+                  className="shrink-0 text-sm font-medium text-accent hover:underline"
+                >
+                  {m.cta} →
+                </Link>
+              )}
+            </li>
+          ))}
+        </ol>
+      )}
+
+      {/* The daily three, in place */}
+      <div id="daily" className="scroll-mt-20">
+        {picks.length > 0 && (
+          <DailyQuiz
+            questions={picks}
+            streak={streak.current}
+            doneToday={streak.doneToday}
+            todayScore={todayRow?.correct ?? null}
+            todayTotal={todayRow?.answered ?? null}
+            nextUp={nextUp}
+          />
+        )}
+      </div>
+
+      {/* Compact risk line — the full meters live on Progress */}
+      {risks.length > 0 && (
+        <section className="rounded-2xl border border-hairline bg-surface p-5">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 className="font-display text-lg font-bold text-ink">Marks at risk</h3>
+            <span className="flex items-center gap-4 text-xs">
+              <Link href="/account/progress" className="font-medium text-accent hover:underline">
+                Full breakdown →
+              </Link>
+              <Link href="/account/rescue" className="font-medium text-body hover:text-ink">
+                Behind? Rescue plan →
+              </Link>
+            </span>
+          </div>
+          <ul className="mt-3 space-y-2">
+            {risks.map((r) => (
+              <li key={`${r.level}/${r.slug}`} className="flex items-center gap-3">
+                <span className="w-40 shrink-0 truncate text-sm text-ink">{r.name}</span>
+                <span className="h-2 flex-1 overflow-hidden rounded-full bg-night">
+                  <span
+                    className={`block h-full rounded-full ${
+                      r.marksAtRisk >= 60 ? "bg-coral" : r.marksAtRisk >= 30 ? "bg-accent" : "bg-guarantee"
+                    }`}
+                    style={{ width: `${Math.min(r.marksAtRisk, 100)}%` }}
+                  />
+                </span>
+                <span className="w-14 shrink-0 text-right font-mono text-xs text-body">
+                  ~{r.marksAtRisk}/100
+                </span>
+              </li>
+            ))}
+          </ul>
+          {focusTopic && (
+            <p className="mt-3 text-xs text-body">
+              Biggest single lever right now:{" "}
+              <span className="text-ink">{focusTopic.topic}</span> ({focusTopic.subjectName}){" "}
+              <TierPill tier={focusTopic.tier} />
+            </p>
+          )}
+        </section>
       )}
     </div>
   );

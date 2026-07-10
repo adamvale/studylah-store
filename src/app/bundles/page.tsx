@@ -23,7 +23,11 @@ export default function BundlesPage() {
         <strong className="font-medium text-ink">5 or 6</strong> and All-In caps
         the lot at {sgd(ALLIN_FLAT["o-level"])}{" "}
         for O-Level — your 6th subject is effectively free. Pick your subjects
-        below; you&apos;re always charged the cheapest combination.
+        below; you&apos;re always charged the cheapest combination. And every
+        subject you add feeds{" "}
+        <strong className="font-medium text-ink">Study HQ</strong>: more daily
+        practice, one combined study plan, one Marks-at-Risk view across your
+        whole exam season.
       </p>
       <BundleBuilder />
     </div>

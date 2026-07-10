@@ -64,6 +64,18 @@ const FAQS: { q: string; a: React.ReactNode; plain?: string }[] = [
     a: "Yes. Add every subject you're sitting and the cart automatically charges you the cheapest valid bundle. You never do the maths, and you never overpay.",
   },
   {
+    q: "What is Study HQ? Is it extra?",
+    a: "Study HQ is the study dashboard that comes with every purchase — no subscription, no extra cost. It turns your PDFs into a running system: a daily three-question practice drawn from your subjects' most-likely topics, a mistake notebook that saves every miss and re-tests you until you clear it, a Marks-at-Risk meter per subject, skill drills, exam timers, grade goals, and a printable rescue plan for when you're behind schedule. Sign in with the email you bought with — a magic link, no password.",
+  },
+  {
+    q: "What is \"Predict your mark\"?",
+    a: "A free ten-question check per subject, drawn from the topics our forecast rates most likely for 2026. It's auto-marked in seven minutes and ends with a score, worked solutions, and an indicative grade band on those topics. The band is an estimate from a small sample — never a promise or prediction of your actual result — but retake it every couple of weeks and the trend tells you honestly whether the work is working.",
+  },
+  {
+    q: "Can my parents see how I'm doing?",
+    a: "Only if you choose. In Study HQ settings you can add a parent's email and switch on a short weekly summary — topics revised, practice done, current streak. No grades are promised in it, they can unsubscribe from any email, and you can turn it off any time. Nothing is shared without your explicit opt-in (PDPA applies).",
+  },
+  {
     q: "When should I buy?",
     a: "Sooner is cheaper. The Forecast is built for your last two weeks, the Vault for your last week, the Rehearsal for the final days — and early-bird pricing runs when forecasts first drop. Get on the free heatmap list and we'll tell you the moment yours goes live.",
   },
