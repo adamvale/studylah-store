@@ -25,6 +25,15 @@ RUN npm ci --include=dev
 # Copy the rest of the app and build. Database reads during the build fall back
 # to the code constants, so no database is required at build time.
 COPY . .
+
+# Next.js inlines NEXT_PUBLIC_* values into the client bundle AT BUILD TIME.
+# On Railway (Dockerfile builds), service variables only reach the build when
+# declared as ARGs — Railway auto-populates build args with matching names.
+# Without this, the web-push public key ships as an empty string and the
+# "Remind me" toggle is dead.
+ARG NEXT_PUBLIC_VAPID_PUBLIC_KEY
+ENV NEXT_PUBLIC_VAPID_PUBLIC_KEY=$NEXT_PUBLIC_VAPID_PUBLIC_KEY
+
 RUN npx prisma generate && npm run build
 
 ENV NODE_ENV=production
