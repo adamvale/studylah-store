@@ -1,71 +1,96 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getSubject, LEVELS, type Level } from "@/lib/catalogue";
+import { LEVELS, PUBLISHED_LEVELS, subjectsForLevel, type Level } from "@/lib/catalogue";
 import { listDiagnosticSets } from "@/lib/diagnostic-questions";
 import { realTopCalls } from "@/lib/forecast-tables";
 import { TierPill } from "@/components/heat";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/diagnostic" },
-  title: "Am I Ready? — the quick exam-readiness check",
+  title: "Predict your mark — the exam-readiness check",
   description:
-    "Five auto-marked questions mixed across the most-likely topics for your 2026 paper. Instant readiness score, worked solutions, and a fix plan.",
+    "Ten auto-marked questions across the most-likely topics for your 2026 paper. Instant score, an indicative grade band, worked solutions, and a fix plan.",
 };
 
 export default function DiagnosticIndexPage() {
-  const available = listDiagnosticSets()
-    .map(({ level, slug, topicLabel }) => ({
-      level: level as Level,
-      slug,
-      topicLabel,
-      subject: getSubject(level as Level, slug),
-      top: realTopCalls(level, slug, 1)[0],
-    }))
-    .filter((s) => s.subject);
+  const hasSet = new Set(listDiagnosticSets().map((s) => `${s.level}/${s.slug}`));
+
+  // Group by level, in catalogue order — one dropdown per level.
+  const groups = PUBLISHED_LEVELS.map((level) => ({
+    level,
+    subjects: subjectsForLevel(level)
+      .filter((s) => hasSet.has(`${level}/${s.slug}`))
+      .map((s) => ({
+        slug: s.slug,
+        name: s.name,
+        top: realTopCalls(level, s.slug, 1)[0],
+      })),
+  })).filter((g) => g.subjects.length > 0);
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-14">
       <p className="font-mono text-xs font-medium uppercase tracking-wide text-accent">
-        Free · quick check · no sign-up to start
+        Free · 10 questions · 7:00 on the clock
       </p>
       <h1 className="mt-2 font-display text-4xl font-black text-ink">
-        Am I ready for the topic that&apos;s most likely to show up?
+        Predict your mark on the topics most likely to show up
       </h1>
       <p className="mt-3 text-body">
-        Our forecast ranks every topic on your 2026 paper. This check mixes five quick questions across your subject&apos;s VERY HIGH calls — marked instantly. You&apos;ll know in minutes whether the most-likely topics are bankers or leaks.
+        Our forecast ranks every topic on your 2026 paper. This check mixes ten
+        quick questions across your subject&apos;s VERY HIGH and HIGH calls —
+        marked instantly, with an indicative grade band for those topics and
+        worked solutions after.
       </p>
 
       <h2 className="mt-8 font-display text-lg font-bold text-ink">
         Pick your subject
       </h2>
-      <div className="mt-3 space-y-2">
-        {available.map(({ level, slug, topicLabel, subject, top }) => (
-          <Link
-            key={`${level}/${slug}`}
-            href={`/diagnostic/${level}/${slug}`}
-            className="flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-hairline bg-surface px-5 py-4 transition-colors hover:border-accent"
+      <div className="mt-3 space-y-3">
+        {groups.map(({ level, subjects }) => (
+          <details
+            key={level}
+            open={level === "o-level" || undefined}
+            className="group rounded-2xl border border-hairline bg-surface"
           >
-            <span>
-              <span className="font-display font-bold text-ink">{subject!.name}</span>
-              <span className="ml-2 font-mono text-xs text-body">
-                {LEVELS[level].shortName}
+            <summary className="flex cursor-pointer items-center justify-between gap-3 px-5 py-4">
+              <span className="font-display text-lg font-bold text-ink">
+                {LEVELS[level as Level].name}
               </span>
-              {top && (
-                <span className="mt-1 block text-xs text-body">
-                  {topicLabel}
+              <span className="flex items-center gap-3 text-xs text-body">
+                {subjects.length} subjects
+                <span
+                  aria-hidden="true"
+                  className="transition-transform group-open:rotate-180"
+                >
+                  ▾
                 </span>
-              )}
-            </span>
-            <span className="flex items-center gap-2">
-              {top && <TierPill tier={top.tier} />}
-              <span aria-hidden="true" className="text-accent">
-                →
               </span>
-            </span>
-          </Link>
+            </summary>
+            <div className="space-y-2 border-t border-hairline px-4 py-4">
+              {subjects.map(({ slug, name, top }) => (
+                <Link
+                  key={slug}
+                  href={`/diagnostic/${level}/${slug}`}
+                  className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-hairline bg-night px-4 py-3 transition-colors hover:border-accent"
+                >
+                  <span className="font-medium text-ink">{name}</span>
+                  <span className="flex items-center gap-2">
+                    {top && <TierPill tier={top.tier} />}
+                    <span aria-hidden="true" className="text-accent">
+                      →
+                    </span>
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </details>
         ))}
       </div>
 
+      <p className="mt-6 text-xs text-body/80">
+        The grade shown is an estimate from a 10-question sample on the
+        most-likely topics — not a promise of your actual result.
+      </p>
     </div>
   );
 }

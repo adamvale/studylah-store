@@ -10,8 +10,12 @@ interface SubmitResult {
   score: number;
   totalMarks: number;
   band: "storm" | "cloudy" | "clear";
+  gradeEstimate: string;
   topicTier: ForecastTier;
 }
+
+const ESTIMATE_CAVEAT =
+  "An estimate from this 10-question sample on the topics forecast most likely — not a promise or prediction of your actual result.";
 
 const BAND_UI: Record<SubmitResult["band"], { title: string; line: string; cls: string }> = {
   storm: {
@@ -33,7 +37,7 @@ const BAND_UI: Record<SubmitResult["band"], { title: string; line: string; cls: 
 
 // The exam clock: generous ceiling for a quick check — nobody should lose to
 // the timer, but it keeps the "sit it like the real thing" pressure honest.
-const QUIZ_SECONDS = 3 * 60;
+const QUIZ_SECONDS = 7 * 60;
 
 function beacon(type: string, attemptId?: string, meta?: string) {
   void fetch("/api/diagnostic/event", {
@@ -203,6 +207,13 @@ export function DiagnosticQuiz({
           >
             {ui.title}
           </h2>
+          <p className="mt-3 rounded-xl border border-hairline bg-night px-4 py-3 text-sm text-ink">
+            Indicative grade on these topics:{" "}
+            <span className={`font-display text-lg font-bold ${ui.cls}`}>
+              {result.gradeEstimate}
+            </span>
+            <span className="mt-1 block text-xs text-body/80">{ESTIMATE_CAVEAT}</span>
+          </p>
           <p className="mt-2 text-sm text-body">{ui.line}</p>
           {timeExpired && (
             <p className="mt-3 rounded-lg bg-coral/15 px-3 py-2 text-xs text-ink">
@@ -288,7 +299,8 @@ export function DiagnosticQuiz({
           </h2>
           <p className="mt-2 text-sm text-body">
             {questions.length} quick questions mixed across {subjectName}&apos;s
-            VERY HIGH topics for 2026. Marked instantly.
+            VERY HIGH and HIGH topics for 2026. Marked instantly, with an
+            indicative grade band.
           </p>
           <p className="mt-4 font-mono text-4xl font-bold text-ink">
             {Math.floor(QUIZ_SECONDS / 60)}:{String(QUIZ_SECONDS % 60).padStart(2, "0")}

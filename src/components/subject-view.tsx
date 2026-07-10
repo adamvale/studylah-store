@@ -161,14 +161,14 @@ export async function SubjectView({ subject }: { subject: Subject }) {
                 You know it&apos;s likely — but can you score it?
               </p>
               <p className="mt-1 text-xs text-body">
-                Five auto-marked questions on the top forecast call. Instant
-                readiness score.
+                Ten auto-marked questions across the top forecast calls —
+                instant score and an indicative grade band.
               </p>
               <Link
                 href={`/diagnostic/${subject.level}/${subject.slug}`}
                 className="mt-3 inline-block rounded-lg bg-accent px-4 py-2 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
               >
-                Take the quick check →
+                Predict your mark →
               </Link>
             </div>
           )}

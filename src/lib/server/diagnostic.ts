@@ -37,6 +37,32 @@ export function bandFor(score: number, totalMarks: number): Band {
   return "clear";
 }
 
+// Indicative grade band from this 10-question sample. ALWAYS presented as an
+// estimate on the tested topics with the caveat line — never a promise
+// (compliance: no grade guarantees). N(A) subjects use N(A) grades 1–5.
+export function gradeEstimateFor(
+  level: string,
+  score: number,
+  totalMarks: number
+): string {
+  const pct = totalMarks === 0 ? 0 : (score / totalMarks) * 100;
+  if (level === "na-level") {
+    if (pct >= 90) return "Grade 1–2";
+    if (pct >= 75) return "Grade 2–3";
+    if (pct >= 55) return "Grade 3–4";
+    if (pct >= 40) return "Grade 4–5";
+    return "below Grade 5";
+  }
+  if (pct >= 90) return "A1–A2";
+  if (pct >= 75) return "B3–B4";
+  if (pct >= 55) return "C5–C6";
+  if (pct >= 40) return "D7–E8";
+  return "below E8";
+}
+
+export const ESTIMATE_CAVEAT =
+  "An estimate from this 10-question sample on the topics forecast most likely — not a promise or prediction of your actual result.";
+
 export interface GradedAnswer {
   questionId: string;
   given: string;
@@ -211,7 +237,9 @@ export async function sendResultsEmail(attemptId: string): Promise<boolean> {
   const html = emailLayout(`
     <h1 style="font-size:20px;margin:0 0 12px;color:#101f33;">${BAND_COPY[band].title}</h1>
     ${intro}
-    <p style="font-size:15px;margin:0 0 16px;color:#101f33;"><strong>Score: ${attempt.score}/${attempt.totalMarks}</strong> on a VERY HIGH-tier topic.</p>
+    <p style="font-size:15px;margin:0 0 6px;color:#101f33;"><strong>Score: ${attempt.score}/${attempt.totalMarks}</strong> across the highest-tier forecast topics.</p>
+    <p style="font-size:14px;margin:0 0 4px;color:#101f33;">Indicative grade on these topics: <strong>${gradeEstimateFor(attempt.level, attempt.score, attempt.totalMarks)}</strong></p>
+    <p style="font-size:11px;color:#8894a3;margin:0 0 16px;">${ESTIMATE_CAVEAT}</p>
     <ul style="margin:0 0 16px;padding-left:18px;">${rowsHtml}</ul>
     <p style="font-size:14px;color:#101f33;margin:0 0 6px;"><strong>${cta.headline}</strong></p>
     <p style="font-size:13px;color:#3d4e63;line-height:1.6;margin:0 0 14px;">${cta.body}</p>
@@ -228,7 +256,8 @@ export async function sendResultsEmail(attemptId: string): Promise<boolean> {
 
   const text = [
     `${BAND_COPY[band].title}`,
-    `Score: ${attempt.score}/${attempt.totalMarks} on ${set.topicLabel} (forecast VERY HIGH for 2026).`,
+    `Score: ${attempt.score}/${attempt.totalMarks} on ${set.topicLabel}.`,
+    `Indicative grade on these topics: ${gradeEstimateFor(attempt.level, attempt.score, attempt.totalMarks)} — ${ESTIMATE_CAVEAT}`,
     ``,
     `Full breakdown + worked solutions: ${resultsUrl}`,
     `${cta.headline} — ${productUrl(attempt.level, attempt.slug)}`,

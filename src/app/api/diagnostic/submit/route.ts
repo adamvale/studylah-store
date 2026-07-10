@@ -6,6 +6,7 @@ import { realTopCalls } from "@/lib/forecast-tables";
 import {
   bandFor,
   gradeAttempt,
+  gradeEstimateFor,
   logDiagnosticEvent,
 } from "@/lib/server/diagnostic";
 
@@ -83,6 +84,7 @@ export async function POST(request: Request) {
     score,
     totalMarks,
     band,
+    gradeEstimate: gradeEstimateFor(level, score, totalMarks),
     topicTier: topic?.tier ?? "very-high",
   });
 }

@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { prisma } from "@/lib/db";
 import { getSubject, LEVELS, type Level } from "@/lib/catalogue";
-import type { Band } from "@/lib/server/diagnostic";
+import { gradeEstimateFor, type Band } from "@/lib/server/diagnostic";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -29,9 +29,12 @@ export default async function OgImage({
   const subject = attempt ? getSubject(attempt.level as Level, attempt.slug) : null;
   const band = (attempt?.band ?? "cloudy") as Band;
   const score = attempt ? `${attempt.score}/${attempt.totalMarks}` : "?";
+  const estimate = attempt
+    ? `Indicative: ${gradeEstimateFor(attempt.level, attempt.score, attempt.totalMarks)} on the tested topics`
+    : "";
   const subjectLine = attempt && subject
     ? `${subject.name} · ${LEVELS[attempt.level as Level].shortName} · most-likely 2026 topics`
-    : "StudyLah readiness check";
+    : "StudyLah — predict your mark";
 
   return new ImageResponse(
     (
@@ -61,11 +64,16 @@ export default async function OgImage({
         <div style={{ display: "flex", marginTop: 10, fontSize: 44, fontWeight: 700, color: "#ffffff" }}>
           {BAND_TITLE[band]}
         </div>
+        {estimate ? (
+          <div style={{ display: "flex", marginTop: 14, fontSize: 30, fontWeight: 700, color: BAND_COLOR[band] }}>
+            {estimate}
+          </div>
+        ) : null}
         <div style={{ display: "flex", marginTop: 18, fontSize: 26, color: "#aeb8c6" }}>
           {subjectLine}
         </div>
         <div style={{ display: "flex", marginTop: 30, fontSize: 26, color: "#ffdc00" }}>
-          What&apos;s your forecast? → studylah.education/diagnostic
+          What would you score? → studylah.education/diagnostic
         </div>
       </div>
     ),

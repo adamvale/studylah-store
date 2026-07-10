@@ -48,7 +48,7 @@ export default function FreeHeatmapPage() {
               href="/diagnostic"
               className="mt-3 inline-block rounded-lg bg-accent px-4 py-2 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
             >
-              Take the quick check →
+              Predict your mark →
             </Link>
           </div>
         </div>

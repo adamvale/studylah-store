@@ -9,6 +9,8 @@ import { STANDARD_DISCLAIMER } from "@/lib/compliance";
 import {
   BAND_COPY,
   ctaFor,
+  ESTIMATE_CAVEAT,
+  gradeEstimateFor,
   type Band,
   type GradedAnswer,
 } from "@/lib/server/diagnostic";
@@ -51,6 +53,7 @@ export default async function DiagnosticResultsPage({
   const graded = JSON.parse(attempt.answersJson) as GradedAnswer[];
   const band = attempt.band as Band;
   const cta = ctaFor(band, (attempt.weakness as DiagnosticProduct | null) ?? null);
+  const estimate = gradeEstimateFor(attempt.level, attempt.score, attempt.totalMarks);
   const top = realTopCalls(attempt.level, attempt.slug, 1)[0];
 
   // Referral line: known buyers get their live link.
@@ -60,7 +63,7 @@ export default async function DiagnosticResultsPage({
   const refCode = buyer[0]?.referralCode ?? null;
 
   const shareUrl = `${serverConfig.siteUrl}/diagnostic/r/${attempt.id}?utm_source=share&utm_medium=social&utm_campaign=diagnostic${refCode ? `&ref=${refCode}` : ""}`;
-  const shareMessage = `I scored ${attempt.score}/${attempt.totalMarks} across the most-likely ${subject.name} topics for 2026. What's your forecast?`;
+  const shareMessage = `My mark check on the most-likely ${subject.name} topics for 2026: ${attempt.score}/${attempt.totalMarks} — ${estimate} territory. What would you score?`;
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
@@ -79,8 +82,10 @@ export default async function DiagnosticResultsPage({
         {BAND_COPY[band].title}
       </h1>
       <p className="mt-2 max-w-xl text-body">{BAND_COPY[band].line}</p>
-      <p className="mt-2 text-xs text-body/80">
-        Readiness on these topics only — not a grade prediction.
+      <p className="mt-4 max-w-xl rounded-xl border border-hairline bg-surface px-4 py-3 text-sm text-ink">
+        Indicative grade on these topics:{" "}
+        <span className="font-display text-lg font-bold text-accent">{estimate}</span>
+        <span className="mt-1 block text-xs text-body/80">{ESTIMATE_CAVEAT}</span>
       </p>
 
       {/* Per-question breakdown with worked solutions */}
