@@ -163,11 +163,16 @@ export function StudyPlanBoard({
       <section className="rounded-2xl border border-hairline bg-surface p-5">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h3 className="font-display text-lg font-bold text-ink">Your pace</h3>
-          <p className="font-mono text-xs text-body">
-            {weeksLeft && weeksLeft > 0
-              ? `≈ ${weeksLeft} week${weeksLeft === 1 ? "" : "s"} to your first paper`
-              : "Add your paper dates below for a weekly target"}
-          </p>
+          <span className="flex items-center gap-3">
+            <p className="font-mono text-xs text-body">
+              {weeksLeft && weeksLeft > 0
+                ? `≈ ${weeksLeft} week${weeksLeft === 1 ? "" : "s"} to your first paper`
+                : "Add your paper dates below for a weekly target"}
+            </p>
+            <a href="/account/rescue" className="text-xs font-medium text-accent hover:underline">
+              Behind? Rescue plan →
+            </a>
+          </span>
         </div>
         <ul className="mt-3 space-y-2">
           {pacing.map(({ subject, total, remaining, perWeek, untouchedVH }) => (

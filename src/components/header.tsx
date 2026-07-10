@@ -50,7 +50,7 @@ export function Header() {
   const accountLabel = signedIn ? "My PDFs" : "Account";
 
   return (
-    <header className="sticky top-0 z-40 border-b border-hairline bg-night/95 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-hairline bg-night/95 backdrop-blur print:hidden">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4">
         <Logo />
         <nav aria-label="Main" className="hidden items-center gap-1 md:flex">

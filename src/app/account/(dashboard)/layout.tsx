@@ -27,7 +27,8 @@ export default async function AccountDashboardLayout({
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
-      <div className="flex flex-wrap items-start justify-between gap-4">
+      {/* print:hidden — printed pages (e.g. the rescue plan) keep only content */}
+      <div className="flex flex-wrap items-start justify-between gap-4 print:hidden">
         <div>
           <h1 className="font-display text-4xl font-bold text-ink">Your account</h1>
           <p className="mt-1 text-sm text-body">
@@ -44,11 +45,13 @@ export default async function AccountDashboardLayout({
         </form>
       </div>
 
-      <AccountNav />
+      <div className="print:hidden">
+        <AccountNav />
+      </div>
 
       <div className="mt-6">{children}</div>
 
-      <p className="mt-10 text-xs text-body">
+      <p className="mt-10 text-xs text-body print:hidden">
         Every PDF is watermarked to your email and order number. Trouble with
         anything?{" "}
         <a

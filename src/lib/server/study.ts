@@ -101,20 +101,27 @@ function mulberry32(seed: number): () => number {
 export interface DailyPick {
   question: DiagnosticQuestion;
   subject: OwnedSubject;
+  // Set when this slot is a spaced re-test of a mistake-notebook entry.
+  mistakeId?: string;
 }
 
 export function pickDailyQuestions(
   subjects: OwnedSubject[],
   customerId: string,
-  day: string
+  day: string,
+  excludeQuestionIds: Set<string> = new Set(),
+  count: number = DAILY_COUNT
 ): DailyPick[] {
   const pool: DailyPick[] = [];
   for (const s of subjects) {
     const set = getDiagnosticSet(s.level, s.slug);
     if (!set) continue;
-    for (const question of set.questions) pool.push({ question, subject: s });
+    for (const question of set.questions) {
+      if (excludeQuestionIds.has(question.id)) continue;
+      pool.push({ question, subject: s });
+    }
   }
-  if (pool.length === 0) return [];
+  if (pool.length === 0 || count <= 0) return [];
 
   const rand = mulberry32(hashStr(`${customerId}:${day}`));
   const idx = pool.map((_, i) => i);
@@ -128,25 +135,81 @@ export function pickDailyQuestions(
   const chosen: number[] = [];
   const usedSubjects = new Set<string>();
   for (const i of idx) {
-    if (chosen.length >= DAILY_COUNT) break;
+    if (chosen.length >= count) break;
     const key = `${pool[i].subject.level}/${pool[i].subject.slug}`;
     if (usedSubjects.has(key)) continue;
     chosen.push(i);
     usedSubjects.add(key);
   }
   for (const i of idx) {
-    if (chosen.length >= DAILY_COUNT) break;
+    if (chosen.length >= count) break;
     if (!chosen.includes(i)) chosen.push(i);
   }
   return chosen.map((i) => pool[i]);
 }
 
+// ── Spaced resurrection ──────────────────────────────────────────────────
+// Unresolved mistake-notebook entries with a questionId come back in the
+// daily three once their nextResurfaceAt passes. Selection is DAY-stable
+// (due = before the end of today in Singapore), so the page render and the
+// grading pass inside one attempt agree on which questions were asked.
+
+const MAX_RESURRECTIONS = 2;
+
+function endOfSgDay(day: string): Date {
+  return new Date(`${addDays(day, 1)}T00:00:00+08:00`);
+}
+
+export async function dailyPicks(
+  customerId: string,
+  subjects: OwnedSubject[],
+  day: string,
+  includeResurrections: boolean
+): Promise<DailyPick[]> {
+  const resurrected: DailyPick[] = [];
+  if (includeResurrections && subjects.length > 0) {
+    const owned = new Set(subjects.map((s) => `${s.level}/${s.slug}`));
+    const due = await prisma.mistakeEntry.findMany({
+      where: {
+        customerId,
+        resolved: false,
+        questionId: { not: null },
+        nextResurfaceAt: { lt: endOfSgDay(day) },
+      },
+      orderBy: { nextResurfaceAt: "asc" },
+      take: 8, // a few spares in case some no longer resolve to a question
+    });
+    for (const m of due) {
+      if (resurrected.length >= MAX_RESURRECTIONS) break;
+      if (!owned.has(`${m.level}/${m.slug}`)) continue;
+      const subject = subjects.find((s) => s.level === m.level && s.slug === m.slug)!;
+      const set = getDiagnosticSet(m.level, m.slug);
+      const question = set?.questions.find((q) => q.id === m.questionId);
+      if (!question) continue;
+      if (resurrected.some((r) => r.question.id === question.id)) continue;
+      resurrected.push({ question, subject, mistakeId: m.id });
+    }
+  }
+
+  const exclude = new Set(resurrected.map((r) => r.question.id));
+  const fresh = pickDailyQuestions(
+    subjects,
+    customerId,
+    day,
+    exclude,
+    DAILY_COUNT - resurrected.length
+  );
+  return [...resurrected, ...fresh];
+}
+
 // What the browser may see before answering — the sanitized question plus the
-// subject context the daily card shows.
+// subject context the daily card shows. `resurrected` marks a spaced re-test
+// from the mistake notebook (the UI badges it; answers are graded the same).
 export interface PublicDailyQuestion extends PublicQuestion {
   level: Level;
   slug: string;
   subjectName: string;
+  resurrected: boolean;
 }
 
 export function toPublicDaily(pick: DailyPick): PublicDailyQuestion {
@@ -161,6 +224,7 @@ export function toPublicDaily(pick: DailyPick): PublicDailyQuestion {
     level: pick.subject.level,
     slug: pick.subject.slug,
     subjectName: pick.subject.name,
+    resurrected: Boolean(pick.mistakeId),
   };
 }
 
@@ -171,4 +235,51 @@ export function normaliseAnswer(s: string): string {
 
 export function isCorrect(question: DiagnosticQuestion, given: string): boolean {
   return question.correctKey.some((k) => normaliseAnswer(k) === normaliseAnswer(given));
+}
+
+// ── Calibration ──────────────────────────────────────────────────────────
+// Aggregates the per-question confidence taps stored in DailyQuizDay.detailJson.
+// The interesting number is sure-accuracy: well-calibrated students are right
+// nearly every time they say "sure"; a low number means concept gaps are being
+// filed as carelessness.
+
+export type Confidence = "sure" | "unsure" | "guess";
+
+export interface CalibrationBucket {
+  level: Confidence;
+  n: number;
+  pctRight: number;
+}
+
+export function calibrationFrom(
+  rows: { detailJson: string | null }[]
+): { taps: number; buckets: CalibrationBucket[] } {
+  const tally: Record<Confidence, { n: number; right: number }> = {
+    sure: { n: 0, right: 0 },
+    unsure: { n: 0, right: 0 },
+    guess: { n: 0, right: 0 },
+  };
+  for (const row of rows) {
+    if (!row.detailJson) continue;
+    let detail: { correct?: boolean; confidence?: string | null }[];
+    try {
+      detail = JSON.parse(row.detailJson) as typeof detail;
+    } catch {
+      continue;
+    }
+    for (const d of detail) {
+      const c = d.confidence as Confidence | null | undefined;
+      if (!c || !(c in tally)) continue;
+      tally[c].n++;
+      if (d.correct) tally[c].right++;
+    }
+  }
+  const buckets = (Object.keys(tally) as Confidence[])
+    .map((level) => ({
+      level,
+      n: tally[level].n,
+      pctRight: tally[level].n === 0 ? 0 : Math.round((tally[level].right / tally[level].n) * 100),
+    }))
+    .filter((b) => b.n > 0);
+  return { taps: buckets.reduce((s, b) => s + b.n, 0), buckets };
 }

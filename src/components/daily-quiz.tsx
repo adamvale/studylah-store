@@ -4,6 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import type { PublicDailyQuestion } from "@/lib/server/study";
 
+type Confidence = "sure" | "unsure" | "guess";
+
+const CONFIDENCE_UI: { key: Confidence; label: string }[] = [
+  { key: "sure", label: "Sure" },
+  { key: "unsure", label: "Think so" },
+  { key: "guess", label: "Guessing" },
+];
+
 interface Result {
   id: string;
   subjectName: string;
@@ -12,6 +20,9 @@ interface Result {
   givenDisplay: string;
   correctAnswer: string;
   workedSolution: string;
+  confidence: Confidence | null;
+  resurrected: boolean;
+  clearedNow: boolean;
 }
 
 interface SubmitResponse {
@@ -20,6 +31,7 @@ interface SubmitResponse {
   total: number;
   streak: number;
   seededMistakes: number;
+  clearedMistakes: number;
 }
 
 export function DailyQuiz({
@@ -37,11 +49,18 @@ export function DailyQuiz({
 }) {
   const [open, setOpen] = useState(!doneToday);
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [confidence, setConfidence] = useState<Record<string, Confidence>>({});
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<SubmitResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const answeredCount = Object.values(answers).filter((v) => v !== "").length;
+  const answeredIds = Object.entries(answers)
+    .filter(([, v]) => v !== "")
+    .map(([k]) => k);
+  const answeredCount = answeredIds.length;
+  // The calibration tap is part of the answer: every answered question needs
+  // a confidence pick before marking.
+  const missingConfidence = answeredIds.filter((id) => !confidence[id]).length;
 
   async function submit() {
     setSubmitting(true);
@@ -50,7 +69,7 @@ export function DailyQuiz({
       const res = await fetch("/api/account/daily-quiz/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ answers }),
+        body: JSON.stringify({ answers, confidence }),
       });
       if (!res.ok) throw new Error();
       setResult((await res.json()) as SubmitResponse);
@@ -83,6 +102,14 @@ export function DailyQuiz({
                 </Link>
               </>
             )}
+            {result.clearedMistakes > 0 && (
+              <>
+                {" · "}
+                <span className="font-medium text-guarantee">
+                  {result.clearedMistakes} mistake{result.clearedMistakes === 1 ? "" : "s"} cleared for good 🎉
+                </span>
+              </>
+            )}
           </p>
         </div>
 
@@ -93,23 +120,46 @@ export function DailyQuiz({
               r.correct ? "border-guarantee/40" : "border-coral/40"
             }`}
           >
-            <div className="flex items-center justify-between gap-2">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <p className="font-mono text-xs text-accent">
                 {r.subjectName} · {r.topic}
               </p>
-              <span
-                className={`rounded-full px-2 py-0.5 text-xs font-bold ${
-                  r.correct ? "bg-guarantee/15 text-guarantee" : "bg-coral/15 text-coral"
-                }`}
-              >
-                {r.correct ? "Correct" : "Review"}
+              <span className="flex items-center gap-2">
+                {r.resurrected && (
+                  <span className="rounded-full bg-violet/15 px-2 py-0.5 text-xs font-medium text-violet">
+                    ↻ re-test
+                  </span>
+                )}
+                <span
+                  className={`rounded-full px-2 py-0.5 text-xs font-bold ${
+                    r.correct ? "bg-guarantee/15 text-guarantee" : "bg-coral/15 text-coral"
+                  }`}
+                >
+                  {r.correct ? "Correct" : "Review"}
+                </span>
               </span>
             </div>
+            {r.clearedNow && (
+              <p className="mt-2 text-sm font-medium text-guarantee">
+                Cleared ✓ — answered right twice, so it leaves your notebook.
+              </p>
+            )}
+            {r.resurrected && r.correct && !r.clearedNow && (
+              <p className="mt-2 text-sm text-body">
+                Right this time — one more correct re-test and it clears for good.
+              </p>
+            )}
             {!r.correct && (
               <p className="mt-2 text-sm text-body">
                 You answered{" "}
                 <span className="text-ink">{r.givenDisplay || "—"}</span>. Correct
                 answer: <span className="font-medium text-ink">{r.correctAnswer}</span>.
+                {r.confidence === "sure" && (
+                  <span className="text-coral">
+                    {" "}
+                    You were sure about this one — treat it as a concept gap, not a slip.
+                  </span>
+                )}
               </p>
             )}
             <p className="mt-2 text-sm text-body">{r.workedSolution}</p>
@@ -162,13 +212,25 @@ export function DailyQuiz({
       </div>
 
       {questions.map((q, i) => (
-        <div key={q.id} className="rounded-2xl border border-hairline bg-surface p-5">
-          <div className="flex items-center justify-between gap-2">
+        <div
+          key={q.id}
+          className={`rounded-2xl border bg-surface p-5 ${
+            q.resurrected ? "border-violet/50" : "border-hairline"
+          }`}
+        >
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <p className="font-mono text-xs text-accent">
               {q.subjectName} · {q.topic}
             </p>
-            <span className="font-mono text-xs text-body">
-              {i + 1} of {questions.length}
+            <span className="flex items-center gap-2">
+              {q.resurrected && (
+                <span className="rounded-full bg-violet/15 px-2 py-0.5 text-xs font-medium text-violet">
+                  ↻ from your mistakes
+                </span>
+              )}
+              <span className="font-mono text-xs text-body">
+                {i + 1} of {questions.length}
+              </span>
             </span>
           </div>
           <p className="mt-2 font-medium text-ink">{q.stem}</p>
@@ -207,6 +269,27 @@ export function DailyQuiz({
               className="mt-3 w-full rounded-xl border border-hairline bg-night px-4 py-2.5 text-sm text-ink outline-none focus:border-accent"
             />
           )}
+
+          {/* Calibration tap — how sure are you? */}
+          {(answers[q.id] ?? "") !== "" && (
+            <div className="mt-3 flex flex-wrap items-center gap-2">
+              <span className="text-xs text-body">How sure?</span>
+              {CONFIDENCE_UI.map(({ key, label }) => (
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => setConfidence((c) => ({ ...c, [q.id]: key }))}
+                  className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+                    confidence[q.id] === key
+                      ? "border-accent text-accent"
+                      : "border-hairline text-body hover:text-ink"
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       ))}
 
@@ -215,10 +298,14 @@ export function DailyQuiz({
       <button
         type="button"
         onClick={() => void submit()}
-        disabled={submitting || answeredCount === 0}
+        disabled={submitting || answeredCount === 0 || missingConfidence > 0}
         className="w-full rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5 disabled:opacity-50"
       >
-        {submitting ? "Marking…" : "Mark my answers"}
+        {submitting
+          ? "Marking…"
+          : missingConfidence > 0
+          ? `Tap "How sure?" on ${missingConfidence} more`
+          : "Mark my answers"}
       </button>
     </div>
   );

@@ -5,13 +5,16 @@ import { prisma } from "@/lib/db";
 import { getCustomerId } from "@/lib/server/customer-session";
 import {
   ownedSubjects,
-  pickDailyQuestions,
+  dailyPicks,
   toPublicDaily,
   sgDay,
   computeStreak,
+  calibrationFrom,
 } from "@/lib/server/study";
+import { computeRisk } from "@/lib/server/risk";
 import { getScoreHistory, getCohortStanding } from "@/lib/server/progress";
 import { DailyQuiz } from "@/components/daily-quiz";
+import { RiskMeterSection, CalibrationCard } from "@/components/risk-meter";
 import { ScoreHistorySection, type ProgressCard } from "@/components/score-history";
 
 export const metadata: Metadata = { title: "Daily" };
@@ -73,7 +76,11 @@ export default async function DailyPage() {
   );
   const todayRow = dayRows.find((r) => r.day === today) ?? null;
 
-  const picks = pickDailyQuestions(subjects, customerId, today).map(toPublicDaily);
+  // Resurrections ride the first attempt of the day only, so the questions
+  // rendered here always match what the grader recomputes at submit time.
+  const picks = (await dailyPicks(customerId, subjects, today, !todayRow)).map(toPublicDaily);
+  const risks = await computeRisk(customerId);
+  const calibration = calibrationFrom(dayRows);
 
   return (
     <div className="space-y-8">
@@ -115,6 +122,10 @@ export default async function DailyPage() {
           todayTotal={todayRow?.answered ?? null}
         />
       )}
+
+      {subjects.length > 0 && <RiskMeterSection risks={risks} />}
+
+      <CalibrationCard taps={calibration.taps} buckets={calibration.buckets} />
 
       {subjects.length > 0 && <ScoreHistorySection cards={cards} />}
     </div>

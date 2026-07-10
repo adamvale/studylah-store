@@ -160,13 +160,16 @@ model TopicProgress {
 
 // Daily retrieval practice: one row per (customer, day). Streak = consecutive
 // days with a row. `day` is a YYYY-MM-DD string in Asia/Singapore so the
-// streak boundary matches the student's own midnight, not UTC.
+// streak boundary matches the student's own midnight, not UTC. detailJson
+// holds the per-question record ([{questionId, correct, confidence,
+// resurrected}]) that powers the calibration card.
 model DailyQuizDay {
   id         String   @id @default(cuid())
   customerId String
   day        String
   answered   Int      @default(0)
   correct    Int      @default(0)
+  detailJson String?
   createdAt  DateTime @default(now())
 
   @@unique([customerId, day])
@@ -177,21 +180,29 @@ model DailyQuizDay {
 // auto-seeded from a diagnostic/daily miss or added by hand from a school
 // paper. reason: careless | concept | method | time. source: diagnostic |
 // daily | manual. Resolved entries drop out of the review list.
+//
+// Resurrection (spaced re-testing): entries with a questionId come back in
+// the daily three once nextResurfaceAt passes. Answer right twice in a row
+// (clearStreak) and the entry auto-resolves; answer wrong and it returns in
+// two days. Entries without a questionId (manual) are review-only.
 model MistakeEntry {
-  id            String   @id @default(cuid())
-  customerId    String
-  level         String
-  slug          String
-  topic         String
-  questionId    String?
-  stem          String
-  correctAnswer String?
-  myAnswer      String?
-  reason        String
-  source        String
-  note          String?
-  resolved      Boolean  @default(false)
-  createdAt     DateTime @default(now())
+  id              String    @id @default(cuid())
+  customerId      String
+  level           String
+  slug            String
+  topic           String
+  questionId      String?
+  stem            String
+  correctAnswer   String?
+  myAnswer        String?
+  reason          String
+  source          String
+  note            String?
+  resolved        Boolean   @default(false)
+  resurfaceStage  Int       @default(0)
+  clearStreak     Int       @default(0)
+  nextResurfaceAt DateTime?
+  createdAt       DateTime  @default(now())
 
   @@index([customerId])
 }
