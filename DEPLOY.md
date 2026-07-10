@@ -139,6 +139,25 @@ https://www.studylah.education/api/cron/streak-reminder?key=<CRON_SECRET>
 Requires the three `VAPID_*` variables from 2b. Outside the evening window a
 correct call answers `{"window":"closed","sent":0}` — that's normal.
 
+### 2i. Schedule the nightly database backup (strongly recommended)
+
+The volume holds the ONLY copy of orders and customers. This endpoint
+snapshots the SQLite database (consistent even while live), gzips it, and
+stores it in Cloudflare R2, keeping ~30 days of dailies. Add a fourth
+cron-job.org job, **once a day** (e.g. 03:00):
+
+```
+https://www.studylah.education/api/cron/backup-db?key=<CRON_SECRET>
+```
+
+Requires four `R2_*` variables in Railway (from the Cloudflare R2 dashboard:
+an API token scoped to the backup bucket): `R2_ACCESS_KEY_ID`,
+`R2_SECRET_ACCESS_KEY`, `R2_ENDPOINT`, `R2_BUCKET`. A correct call answers
+`{"key":"backups/prod-YYYY-MM-DD.db.gz","bytes":…,"gzBytes":…,"retained":…}`.
+
+**To restore:** download the object from R2, `gunzip` it, replace
+`/data/prod.db` on the volume (service stopped), redeploy.
+
 ---
 
 ## Part 3 — Point your subdomain at it (SiteGround)
@@ -199,6 +218,8 @@ won't get the confirmation email.
 - [ ] Confirm the three `VAPID_*` variables are set and the hourly
       streak-reminder ping is running (2h) — otherwise installed apps never
       get their streak push.
+- [ ] Confirm the four `R2_*` variables are set and the nightly backup job is
+      running (2i) — the volume must never be the only copy of the database.
 - [ ] Switch Stripe from test keys to **live** keys, and confirm the webhook is
       on the live endpoint.
 - [ ] Have a lawyer review the `/legal/*` pages (they're marked FOR LAWYER
