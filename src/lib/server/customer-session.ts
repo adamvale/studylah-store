@@ -111,6 +111,38 @@ export function verifyChangeEmailToken(
   }
 }
 
+// --- Parent-digest unsubscribe (emailed to the parent, long-lived) ---
+const PARENT_UNSUB_TTL_MS = 365 * 24 * 60 * 60 * 1000; // 1 year
+
+export function signParentUnsubToken(customerId: string): string {
+  const body = Buffer.from(
+    `parentunsub:${customerId}:${Date.now() + PARENT_UNSUB_TTL_MS}`
+  ).toString("base64url");
+  const sig = createHmac("sha256", secret()).update(body).digest("base64url");
+  return `${body}.${sig}`;
+}
+
+export function verifyParentUnsubToken(token: string | undefined | null): string | null {
+  const key = secret();
+  if (!key || !token) return null;
+  const [body, sig] = token.split(".");
+  if (!body || !sig) return null;
+  const expected = createHmac("sha256", key).update(body).digest("base64url");
+  if (!timingEqual(sig, expected)) return null;
+  let decoded: string;
+  try {
+    decoded = Buffer.from(body, "base64url").toString();
+  } catch {
+    return null;
+  }
+  const [kind, customerId, expStr] = decoded.split(":");
+  const exp = Number(expStr);
+  if (kind !== "parentunsub" || !customerId || !Number.isFinite(exp) || exp < Date.now()) {
+    return null;
+  }
+  return customerId;
+}
+
 // --- Session cookie ---
 export function signSessionToken(customerId: string): string {
   return signToken("session", customerId, SESSION_TTL_MS);

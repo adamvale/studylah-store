@@ -108,6 +108,20 @@ idempotent (each attempt is followed up at most once), returns 401 without
 the correct key, and processes at most 50 emails per run. A correct call
 answers `{"due":N,"sent":M}`.
 
+### 2g. Schedule the weekly parent digest (optional)
+
+If students opt a parent in (Settings → weekly progress email), a second
+scheduled endpoint sends that digest. Add another cron-job.org job, **once a
+day** is plenty:
+
+```
+https://www.studylah.education/api/cron/parent-digest?key=<CRON_SECRET>
+```
+
+Same `CRON_SECRET`. Each parent gets at most one email per ~week regardless of
+how often it runs (idempotent via `parentDigestSentAt`); every email carries a
+one-click unsubscribe. A correct call answers `{"candidates":N,"sent":M}`.
+
 ---
 
 ## Part 3 — Point your subdomain at it (SiteGround)

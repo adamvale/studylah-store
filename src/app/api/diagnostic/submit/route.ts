@@ -3,6 +3,7 @@ import { prisma } from "@/lib/db";
 import { getSubject, type Level } from "@/lib/catalogue";
 import { getDiagnosticSet } from "@/lib/diagnostic-questions";
 import { realTopCalls } from "@/lib/forecast-tables";
+import { getCustomerId } from "@/lib/server/customer-session";
 import {
   bandFor,
   gradeAttempt,
@@ -62,6 +63,9 @@ export async function POST(request: Request) {
   const { graded, score, totalMarks, weakness } = gradeAttempt(set, answers);
   const band = bandFor(score, totalMarks);
   const topic = realTopCalls(level, slug, 1)[0];
+  // Signed-in students get their attempt linked, so the dashboard can chart
+  // their score history without an email round-trip. Anonymous takers stay null.
+  const customerId = await getCustomerId();
 
   const attempt = await prisma.diagnosticAttempt.create({
     data: {
@@ -73,6 +77,7 @@ export async function POST(request: Request) {
       totalMarks,
       band,
       weakness,
+      customerId,
       utm: typeof body.utm === "string" ? body.utm.slice(0, 200) : null,
       ref: typeof body.ref === "string" ? body.ref.slice(0, 40) : null,
     },

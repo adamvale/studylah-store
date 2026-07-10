@@ -77,6 +77,29 @@ export function StudyPlanBoard({
       .slice(0, 6);
   }, [subjects, progress]);
 
+  // Pacing: for each subject, how many topics remain and — given the weeks
+  // left — how many to close per week, plus any VERY HIGH topics not yet
+  // started (the ones it would hurt most to leave).
+  const pacing = useMemo(
+    () =>
+      subjects.map((subject) => {
+        const total = subject.topics.length;
+        const confident = subject.topics.filter(
+          (t) => (progress[keyOf(subject, t.topic)] ?? 0) >= 3
+        ).length;
+        const remaining = total - confident;
+        const untouchedVH = subject.topics
+          .filter(
+            (t) => t.tier === "very-high" && (progress[keyOf(subject, t.topic)] ?? 0) === 0
+          )
+          .map((t) => t.topic);
+        const perWeek =
+          weeksLeft && weeksLeft > 0 ? Math.ceil(remaining / weeksLeft) : null;
+        return { subject, total, remaining, perWeek, untouchedVH };
+      }),
+    [subjects, progress, weeksLeft]
+  );
+
   const allDone =
     subjects.length > 0 &&
     subjects.every((s) =>
@@ -134,6 +157,43 @@ export function StudyPlanBoard({
           Tap a status to advance it: Not started → Revised → Practised →
           Confident. Confident topics leave this list.
         </p>
+      </section>
+
+      {/* Pacing */}
+      <section className="rounded-2xl border border-hairline bg-surface p-5">
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <h3 className="font-display text-lg font-bold text-ink">Your pace</h3>
+          <p className="font-mono text-xs text-body">
+            {weeksLeft && weeksLeft > 0
+              ? `≈ ${weeksLeft} week${weeksLeft === 1 ? "" : "s"} to your first paper`
+              : "Add your paper dates below for a weekly target"}
+          </p>
+        </div>
+        <ul className="mt-3 space-y-2">
+          {pacing.map(({ subject, total, remaining, perWeek, untouchedVH }) => (
+            <li
+              key={`${subject.level}/${subject.slug}`}
+              className="rounded-xl border border-hairline bg-night px-4 py-2.5"
+            >
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span className="text-sm text-ink">{subject.name}</span>
+                <span className="font-mono text-xs text-body">
+                  {remaining === 0
+                    ? "All confident ✓"
+                    : perWeek
+                    ? `${remaining} left · ~${perWeek}/week`
+                    : `${remaining} of ${total} to go`}
+                </span>
+              </div>
+              {untouchedVH.length > 0 && (
+                <p className="mt-1 text-xs text-coral">
+                  ⚠ VERY HIGH still untouched: {untouchedVH.slice(0, 3).join(", ")}
+                  {untouchedVH.length > 3 ? `, +${untouchedVH.length - 3} more` : ""}
+                </p>
+              )}
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* Per-subject checklists */}

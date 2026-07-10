@@ -62,8 +62,14 @@ model Customer {
   // handle is sensitive personal data (PDPA): admin-eyes only, never logged.
   referralCode String?    @unique
   payoutHandle String?
-  orders       Order[]
-  referrals    Referral[]
+  // Opt-in weekly parent digest (PDPA: consent timestamp is the provable
+  // opt-in; sentAt throttles the weekly cron). Parent email is theirs, not
+  // the student's — admin-eyes only, never logged.
+  parentEmail           String?
+  parentDigestConsentAt DateTime?
+  parentDigestSentAt    DateTime?
+  orders                Order[]
+  referrals             Referral[]
 }
 
 // One row per rewarded referral: `referrer` shared their code, the referee's
@@ -152,6 +158,59 @@ model TopicProgress {
   @@index([customerId])
 }
 
+// Daily retrieval practice: one row per (customer, day). Streak = consecutive
+// days with a row. `day` is a YYYY-MM-DD string in Asia/Singapore so the
+// streak boundary matches the student's own midnight, not UTC.
+model DailyQuizDay {
+  id         String   @id @default(cuid())
+  customerId String
+  day        String
+  answered   Int      @default(0)
+  correct    Int      @default(0)
+  createdAt  DateTime @default(now())
+
+  @@unique([customerId, day])
+  @@index([customerId])
+}
+
+// The mistake notebook (错题本): every question a student got wrong, whether
+// auto-seeded from a diagnostic/daily miss or added by hand from a school
+// paper. reason: careless | concept | method | time. source: diagnostic |
+// daily | manual. Resolved entries drop out of the review list.
+model MistakeEntry {
+  id            String   @id @default(cuid())
+  customerId    String
+  level         String
+  slug          String
+  topic         String
+  questionId    String?
+  stem          String
+  correctAnswer String?
+  myAnswer      String?
+  reason        String
+  source        String
+  note          String?
+  resolved      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@index([customerId])
+}
+
+// A student's target grade per subject ("A1", "B3", N(A) "Grade 2"). Drives
+// the goal-gap card: latest estimate vs target, and which tier closes it.
+model SubjectGoal {
+  id          String   @id @default(cuid())
+  customerId  String
+  level       String
+  slug        String
+  targetGrade String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([customerId, level, slug])
+  @@index([customerId])
+}
+
 // A customer's own exam timetable ("Physics P1", 19 Oct 2026 08:00) — entered
 // manually until SEAB publishes the official 2026 dates.
 model ExamDate {
@@ -233,6 +292,9 @@ model DiagnosticAttempt {
   // Where the marks were dropped: companion | vault | null (nothing dropped).
   weakness          String?
   email             String?
+  // Set when a signed-in customer takes the check, so the dashboard can show
+  // their score history without an email round-trip. Anonymous takers stay null.
+  customerId        String?
   leadId            String?
   isParent          Boolean   @default(false)
   utm               String?
