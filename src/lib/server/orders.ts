@@ -14,6 +14,7 @@ import {
 import type { CheckoutQuote } from "./checkout";
 import { serverConfig } from "./config";
 import { emailLayout, sendEmail } from "./email";
+import { processReferralReward } from "./referral";
 
 export function newToken(): string {
   return randomBytes(24).toString("hex");
@@ -170,7 +171,9 @@ export async function createOrderFromCheckout(options: {
         });
       }
       if (quote.discountCode) {
-        await tx.discountCode.update({
+        // updateMany: a referral code has no DiscountCode row — a plain
+        // update would throw and roll back the whole paid order.
+        await tx.discountCode.updateMany({
           where: { code: quote.discountCode },
           data: { redemptions: { increment: 1 } },
         });
@@ -179,6 +182,9 @@ export async function createOrderFromCheckout(options: {
     });
 
     const full = await loadFullOrder(order.id);
+
+    // Refer-a-friend bookkeeping — never throws, idempotent per order.
+    await processReferralReward(full);
 
     // Best-effort: a failed email must never lose a paid order.
     try {

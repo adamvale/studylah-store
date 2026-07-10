@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   LEVELS,
   SUBJECTS,
@@ -57,23 +57,52 @@ export function CartView() {
     setDiscountError("");
   }
 
-  async function applyDiscount() {
+  async function applyDiscount(codeArg?: string, silent = false) {
+    const code = (codeArg ?? codeInput).trim();
     setDiscountError("");
-    if (codeInput.trim() === "") return;
+    if (code === "") return;
     try {
       const res = await fetch("/api/discount", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items, code: codeInput }),
+        // Email (when typed) lets referral codes be checked early — the
+        // buyer sees "first order only" here, not at the pay button.
+        body: JSON.stringify({ items, code, email: email || undefined }),
       });
       const body = (await res.json()) as AppliedDiscount & { error?: string };
       if (!res.ok) throw new Error(body.error ?? "That code isn't valid.");
       setDiscount(body);
     } catch (e) {
       setDiscount(null);
-      setDiscountError(e instanceof Error ? e.message : "That code isn't valid.");
+      // A failed auto-apply (referral link cookie) stays quiet — the shopper
+      // never asked for it; manual attempts always explain themselves.
+      if (!silent) {
+        setDiscountError(e instanceof Error ? e.message : "That code isn't valid.");
+      }
     }
   }
+
+  // Referral link (?ref=CODE) sets a cookie site-wide; the cart redeems it
+  // automatically once there is something to price. The ref makes it one-shot
+  // per visit, and all state updates happen after the fetch (async), so this
+  // effect never sets state synchronously.
+  const refAutoTried = useRef(false);
+  useEffect(() => {
+    if (refAutoTried.current) return;
+    if (items.length === 0 || discount || codeInput !== "") return;
+    const raw = document.cookie
+      .split("; ")
+      .find((c) => c.startsWith("studylah_ref="))
+      ?.split("=")[1];
+    refAutoTried.current = true;
+    if (!raw) return;
+    const code = decodeURIComponent(raw).toUpperCase();
+    void (async () => {
+      await applyDiscount(code, true);
+      setCodeInput(code);
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items, discount, codeInput]);
 
   async function checkout() {
     setCheckoutError("");
@@ -284,7 +313,7 @@ export function CartView() {
                 />
                 <button
                   type="button"
-                  onClick={applyDiscount}
+                  onClick={() => applyDiscount()}
                   className="shrink-0 rounded-lg border border-hairline px-3 py-2 text-sm font-medium text-accent hover:border-hairline"
                 >
                   Apply

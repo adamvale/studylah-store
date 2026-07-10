@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const result = await quoteCheckout(body.items, body.discountCode);
+  const result = await quoteCheckout(body.items, body.discountCode, email);
   if (!result.ok) {
     return NextResponse.json({ error: result.error }, { status: result.status });
   }

@@ -4,6 +4,7 @@ import { prisma } from "@/lib/db";
 import { quoteCheckout } from "@/lib/server/checkout";
 import { serverConfig, stripeConfigured } from "@/lib/server/config";
 import { createOrderFromCheckout } from "@/lib/server/orders";
+import { voidReferralForOrder } from "@/lib/server/referral";
 import type { Level, Tier } from "@/lib/catalogue";
 
 export async function POST(request: Request) {
@@ -107,6 +108,9 @@ async function handleRefund(stripe: Stripe, charge: Stripe.Charge) {
       data: { expiresAt: new Date(0) },
     }),
   ]);
+  // A refunded order also stops owing its referrer a reward (unless already
+  // paid out — clawing back sent cash is a human decision, not the app's).
+  await voidReferralForOrder(order.id);
   console.warn(`Refund: order No. ${order.id} marked refunded, downloads revoked.`);
 }
 

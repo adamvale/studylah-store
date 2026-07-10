@@ -7,6 +7,7 @@ import { getEarlyBird, getPricingTable } from "@/lib/server/pricing-store";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { SiteChrome } from "@/components/site-chrome";
+import { RefCapture } from "@/components/ref-capture";
 
 // Type pairing borrowed from the live site: Inter for body/UI, Archivo for
 // bold display headings.
@@ -42,6 +43,7 @@ export default async function RootLayout({
       className={`${inter.variable} ${archivo.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
+        <RefCapture />
         <PricingProvider table={table} earlyBird={earlyBird}>
           <CartProvider>
             <SiteChrome header={<Header />} footer={<Footer />}>

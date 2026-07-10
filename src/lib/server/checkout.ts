@@ -12,6 +12,7 @@ import {
 import { type CartItem, type PricedCart } from "../pricing";
 import { prisma } from "../db";
 import { getEarlyBird, getPricing } from "./pricing-store";
+import { checkReferralCode, REFERRAL_DISCOUNT_CENTS } from "./referral";
 
 export interface QuoteLine {
   item: CartItem;
@@ -81,7 +82,11 @@ function allocate(totalCents: number, weights: number[]): number[] {
 
 export async function quoteCheckout(
   rawItems: unknown,
-  rawCode?: unknown
+  rawCode?: unknown,
+  // Buyer's email, when known. Enables the strict referral guards (no
+  // self-referral, first order only) — omitted by the webhook's re-quote so a
+  // paid order can never fail on referral rules after the money moved.
+  buyerEmail?: string
 ): Promise<QuoteResult> {
   const items = parseItems(rawItems);
   if (!items) {
@@ -102,18 +107,29 @@ export async function quoteCheckout(
   if (typeof rawCode === "string" && rawCode.trim() !== "") {
     const code = rawCode.trim().toUpperCase();
     const found = await prisma.discountCode.findUnique({ where: { code } });
-    const expired = found?.expiresAt != null && found.expiresAt < new Date();
-    const exhausted =
-      found?.maxRedemptions != null && found.redemptions >= found.maxRedemptions;
-    if (!found || !found.active || expired || exhausted) {
-      return { ok: false, error: "That discount code isn't valid.", status: 400 };
+    if (found) {
+      const expired = found.expiresAt != null && found.expiresAt < new Date();
+      const exhausted =
+        found.maxRedemptions != null && found.redemptions >= found.maxRedemptions;
+      if (!found.active || expired || exhausted) {
+        return { ok: false, error: "That discount code isn't valid.", status: 400 };
+      }
+      discountCents =
+        found.kind === "percent"
+          ? Math.round((subtotalCents * found.value) / 100)
+          : Math.min(found.value, subtotalCents);
+      discountCode = found.code;
+      discountDescription = found.description || found.code;
+    } else {
+      // Not an admin discount code — maybe a friend's referral code.
+      const referral = await checkReferralCode(code, buyerEmail);
+      if (!referral.ok) {
+        return { ok: false, error: referral.error, status: 400 };
+      }
+      discountCents = Math.min(REFERRAL_DISCOUNT_CENTS, subtotalCents);
+      discountCode = code;
+      discountDescription = "Referral — S$15 off your first order";
     }
-    discountCents =
-      found.kind === "percent"
-        ? Math.round((subtotalCents * found.value) / 100)
-        : Math.min(found.value, subtotalCents);
-    discountCode = found.code;
-    discountDescription = found.description || found.code;
   }
 
   const totalCents = subtotalCents - discountCents;

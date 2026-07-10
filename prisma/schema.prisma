@@ -55,7 +55,32 @@ model Customer {
   id        String   @id @default(cuid())
   email     String   @unique
   createdAt DateTime @default(now())
-  orders    Order[]
+  // Refer-a-friend: this customer's shareable code (minted on first visit to
+  // the account section) and where to pay their cash rewards. The payout
+  // handle is sensitive personal data (PDPA): admin-eyes only, never logged.
+  referralCode String?    @unique
+  payoutHandle String?
+  orders       Order[]
+  referrals    Referral[]
+}
+
+// One row per rewarded referral: `referrer` shared their code, the referee's
+// order used it and was paid. Cash rewards are disbursed MANUALLY by the
+// owner from the admin payouts list — nothing in the app moves money.
+// status: payable (owed) -> paid (owner sent it) | void (referee refunded).
+model Referral {
+  id             String    @id @default(cuid())
+  referrer       Customer  @relation(fields: [referrerId], references: [id])
+  referrerId     String
+  // Unique = one reward per order, and idempotent under webhook retries.
+  refereeOrderId Int       @unique
+  refereeEmail   String
+  rewardCents    Int
+  status         String    @default("payable")
+  createdAt      DateTime  @default(now())
+  paidAt         DateTime?
+
+  @@index([referrerId])
 }
 
 model Order {
