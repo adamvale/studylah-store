@@ -71,6 +71,8 @@ In the service's **Variables** tab, add these (Railway sets `PORT`,
 | Variable | Value |
 | --- | --- |
 | `ADMIN_PASSWORD` | a long random string (run `openssl rand -base64 24`) |
+| `CUSTOMER_AUTH_SECRET` | a long random string (run `openssl rand -hex 32`) — signs customer magic-link logins; the portal fails closed without it |
+| `CRON_SECRET` | a long random string (run `openssl rand -hex 32`) — protects the scheduled diagnostic follow-up endpoint (see 2f) |
 | `NEXT_PUBLIC_SITE_URL` | for now, your Railway URL (you'll set the domain in step 3) |
 | `EMAIL_FROM` | `StudyLah <orders@studylah.education>` |
 | `DOWNLOAD_EXPIRY_DAYS` | `7` |
@@ -89,6 +91,22 @@ into `NEXT_PUBLIC_SITE_URL` and let it redeploy.
 Visit the URL — the storefront should load. Visit `/admin` and sign in with your
 `ADMIN_PASSWORD`. Place a test order and download a PDF: it should arrive
 watermarked with the buyer email and order number. 🎉
+
+### 2f. Schedule the diagnostic follow-up emails
+
+The "Predict your mark" check sends a follow-up email ~48 hours after a
+student unlocks their results. The app never sends these on its own — an
+external scheduler must call the endpoint every hour:
+
+```
+https://www.studylah.education/api/cron/diagnostic-followup?key=<CRON_SECRET>
+```
+
+Use any free pinger, e.g. **cron-job.org**: create a job with that URL and an
+**every 1 hour** schedule. The endpoint is safe to over-call — it is
+idempotent (each attempt is followed up at most once), returns 401 without
+the correct key, and processes at most 50 emails per run. A correct call
+answers `{"due":N,"sent":M}`.
 
 ---
 
@@ -145,6 +163,8 @@ won't get the confirmation email.
       pricing → Product PDFs → Replace** for each product.
 - [ ] Set your real prices and toggle early-bird as needed in **/admin**.
 - [ ] Confirm `ADMIN_PASSWORD` is long and private.
+- [ ] Confirm `CUSTOMER_AUTH_SECRET` and `CRON_SECRET` are set, and the hourly
+      cron-job.org ping for the diagnostic follow-up is running (2f).
 - [ ] Switch Stripe from test keys to **live** keys, and confirm the webhook is
       on the live endpoint.
 - [ ] Have a lawyer review the `/legal/*` pages (they're marked FOR LAWYER
