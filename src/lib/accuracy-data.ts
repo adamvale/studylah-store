@@ -128,3 +128,18 @@ export function highOrAbove(topics: MarkTopic[]): number {
 export function veryHighCount(topics: MarkTopic[]): number {
   return topics.filter((t) => t.tier === "very-high").length;
 }
+
+// The storefront headline, derived from the same data the scorecard renders so
+// the trust strip and /accuracy can never disagree: scorecards where all five
+// top-mark topics were forecast High or above, out of all published scorecards.
+export function scorecardHeadline(): { perfect: number; total: number } {
+  let perfect = 0;
+  let total = 0;
+  for (const data of Object.values(SUBJECT_MARKS)) {
+    for (const y of data.years) {
+      total++;
+      if (highOrAbove(y.topics) === y.topics.length) perfect++;
+    }
+  }
+  return { perfect, total };
+}

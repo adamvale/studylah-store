@@ -58,11 +58,9 @@ export default function AccuracyPage() {
                   return (
                     <span key={y.year} className="text-sm text-body">
                       {y.year}:{" "}
-                      <span
-                        className={`font-mono font-medium ${
-                          pct >= 80 ? "text-accent-deep" : "text-accent"
-                        }`}
-                      >
+                      {/* accent-deep was the light-theme workaround; on the
+                          dark surface it fails contrast — yellow reads fine. */}
+                      <span className="font-mono font-medium text-accent">
                         {pct}%
                       </span>
                     </span>

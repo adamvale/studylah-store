@@ -57,7 +57,7 @@ function FileRow({ item, refunded }: { item: ItemRow; refunded: boolean }) {
     <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-hairline bg-night px-4 py-3">
       <div>
         <p className="text-sm text-body">{item.fileLabel}</p>
-        <p className="mt-0.5 text-xs text-body/70">
+        <p className="mt-0.5 text-xs text-body/80">
           {last ? `Last downloaded ${fmtDate(last)}` : "Not downloaded yet"}
         </p>
       </div>

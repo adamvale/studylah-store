@@ -99,7 +99,11 @@ export function BundleBuilder({
   }
 
   return (
-    <div className={stacked ? "mt-4 space-y-6" : "mt-10 grid gap-8 lg:grid-cols-3"}>
+    <div
+      className={`${stacked ? "mt-4 space-y-6" : "mt-10 grid gap-8 lg:grid-cols-3"} ${
+        count > 0 ? "pb-20 lg:pb-0" : ""
+      }`}
+    >
       <div className={stacked ? "space-y-6" : "space-y-8 lg:col-span-2"}>
         {levels.map(({ level, subjects }) => (
           <section key={level} aria-labelledby={`bundle-${level}`}>
@@ -155,7 +159,7 @@ export function BundleBuilder({
                     <li key={`${item.level}-${item.subjectSlug}`} className="flex justify-between gap-2">
                       <span className="text-body">
                         {subject?.name}{" "}
-                        <span className="text-xs text-body/60">
+                        <span className="text-xs text-body/75">
                           · {LEVELS[item.level].shortName}
                         </span>
                       </span>
@@ -201,6 +205,36 @@ export function BundleBuilder({
           )}
         </div>
       </aside>
+
+      {/* On phones the summary card sits below the pickers, so the running
+          total rides in a sticky bar — watching the price drop as subjects go
+          in is the whole fun of the bundle. */}
+      {count > 0 && (
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-hairline bg-night/95 backdrop-blur lg:hidden">
+          <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3">
+            <div className="min-w-0">
+              <p className="font-mono text-base font-bold text-ink">
+                {sgd(priced.total)}
+                {priced.savings > 0 && (
+                  <span className="ml-2 text-xs font-medium text-guarantee">
+                    save {sgd(priced.savings)}
+                  </span>
+                )}
+              </p>
+              <p className="truncate text-xs text-body">
+                {count} subject{count === 1 ? "" : "s"} · Master pack each
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={addAllToCart}
+              className="shrink-0 rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
+            >
+              Add to cart
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

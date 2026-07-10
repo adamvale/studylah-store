@@ -7,13 +7,17 @@ export const metadata: Metadata = {
     "How StudyLah forecasts work, what the money-back guarantee covers, and answers to common questions.",
 };
 
-const FAQS: { q: string; a: React.ReactNode }[] = [
+// `plain` mirrors ReactNode answers as text for the FAQPage JSON-LD below —
+// Google rich results need plain strings.
+const FAQS: { q: string; a: React.ReactNode; plain?: string }[] = [
   {
     q: "Is this cheating? Are these the real exam questions?",
     a: "No — and that's the whole point. We don't have the real papers and we'd never touch them; they belong to Cambridge and MOE / SEAB. What we do is read ten years of past papers and forecast which topics are most likely to come up, then write our own original questions in that exact style. This isn't a shortcut around studying. It's studying the right things.",
   },
   {
     q: "Isn't this just guessing?",
+    plain:
+      "Guessing is revising everything and hoping. This is ten years of classified questions, mark weightings and setter patterns turned into a ranked probability for every topic on your syllabus. And we don't ask you to take our word for it — after every sitting the accuracy scorecard shows exactly what we called against what appeared. Hits and misses. In public.",
     a: (
       <>
         Guessing is revising everything and hoping. This is ten years of
@@ -58,6 +62,8 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
   },
   {
     q: "What happens to my email address?",
+    plain:
+      "We use it to send what you asked for, store your consent timestamp because PDPA requires provable opt-in, and do nothing else with it. No reselling, no spam. Full details in the privacy policy.",
     a: (
       <>
         We use it to send what you asked for, store your consent timestamp
@@ -73,8 +79,25 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
 ];
 
 export default function FaqPage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: typeof faq.a === "string" ? faq.a : (faq.plain ?? faq.q),
+      },
+    })),
+  };
+
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <h1 className="font-display text-4xl font-black text-ink">
         Straight answers. No fine print.
       </h1>

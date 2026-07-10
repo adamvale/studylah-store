@@ -1,15 +1,24 @@
 "use client";
 
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useEffect, useState } from "react";
+
+// Mirrors the server's 60s per-email throttle so "Resend" only lights up when
+// a resend would actually go out.
+const RESEND_COOLDOWN_S = 60;
 
 export function LoginForm({ error }: { error?: string }) {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [cooldown, setCooldown] = useState(0);
 
-  async function submit(e: FormEvent) {
-    e.preventDefault();
-    if (!email.trim()) return;
+  useEffect(() => {
+    if (cooldown <= 0) return;
+    const t = setInterval(() => setCooldown((c) => c - 1), 1000);
+    return () => clearInterval(t);
+  }, [cooldown]);
+
+  async function requestLink() {
     setBusy(true);
     try {
       await fetch("/api/account/request-link", {
@@ -22,7 +31,14 @@ export function LoginForm({ error }: { error?: string }) {
     } finally {
       setBusy(false);
       setSent(true);
+      setCooldown(RESEND_COOLDOWN_S);
     }
+  }
+
+  async function submit(e: FormEvent) {
+    e.preventDefault();
+    if (!email.trim()) return;
+    await requestLink();
   }
 
   if (sent) {
@@ -33,13 +49,34 @@ export function LoginForm({ error }: { error?: string }) {
           If <span className="font-medium text-ink">{email}</span> has ordered
           from us, a sign-in link is on its way. It works for 15 minutes.
         </p>
-        <button
-          type="button"
-          onClick={() => setSent(false)}
-          className="mt-4 text-sm font-medium text-accent underline"
-        >
-          Use a different email
-        </button>
+        <p className="mt-2 text-xs text-body/80">
+          Nothing after a minute? Check your spam or promotions folder — the
+          sender is orders@studylah.education.
+        </p>
+        <div className="mt-4 flex flex-wrap items-center gap-4">
+          <button
+            type="button"
+            disabled={cooldown > 0 || busy}
+            onClick={() => void requestLink()}
+            className="rounded-lg border border-hairline px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-accent disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {cooldown > 0
+              ? `Resend in 0:${String(cooldown).padStart(2, "0")}`
+              : busy
+                ? "Sending…"
+                : "Resend link"}
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setSent(false);
+              setCooldown(0);
+            }}
+            className="text-sm font-medium text-accent underline"
+          >
+            Use a different email
+          </button>
+        </div>
       </div>
     );
   }

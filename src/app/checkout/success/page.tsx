@@ -98,6 +98,24 @@ export default async function CheckoutSuccessPage({
           How the guarantee works
         </Link>
       </p>
+
+      <div className="mt-10 rounded-2xl border border-hairline bg-surface p-5 text-left">
+        <p className="font-display text-lg font-bold text-ink">
+          Know someone sitting the papers too?
+        </p>
+        <p className="mt-1 text-sm text-body">
+          Refer a friend and{" "}
+          <span className="font-medium text-ink">you both get S$15</span> —
+          they save on their first order, we PayNow you the reward. Your
+          personal code is waiting in your account.
+        </p>
+        <Link
+          href="/account/referrals"
+          className="mt-4 inline-block rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
+        >
+          Get my referral code
+        </Link>
+      </div>
     </div>
   );
 }

@@ -99,7 +99,7 @@ export default async function ReferralsPage({
               >
                 <div>
                   <p className="text-sm text-body">{maskEmail(r.refereeEmail)}</p>
-                  <p className="mt-0.5 text-xs text-body/70">{fmtDate(r.createdAt)}</p>
+                  <p className="mt-0.5 text-xs text-body/80">{fmtDate(r.createdAt)}</p>
                 </div>
                 <span className="flex items-center gap-3">
                   <span className="font-mono text-sm font-medium text-ink">
@@ -140,7 +140,7 @@ export default async function ReferralsPage({
         >
           Save
         </button>
-        <p className="w-full text-xs text-body/70">
+        <p className="w-full text-xs text-body/80">
           Used only to send your rewards, visible only to you and StudyLah.
           Under 18? Use a parent or guardian&apos;s PayNow.
         </p>

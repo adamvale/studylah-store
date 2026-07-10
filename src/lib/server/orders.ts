@@ -231,10 +231,15 @@ export async function sendOrderConfirmationEmail(order: OrderWithItems) {
       </a>
     </p>
     <ul style="margin:0 0 16px;padding-left:18px;">${itemsHtml}</ul>
-    <p style="font-size:12px;color:#3d4e63;line-height:1.6;margin:0;">
+    <p style="font-size:12px;color:#3d4e63;line-height:1.6;margin:0 0 12px;">
       Each PDF is watermarked to ${order.email}. Lost the link? Reply to this
       email and we'll re-send it. Money-back guarantee applies — see
       studylah.education/faq.
+    </p>
+    <p style="font-size:12px;color:#3d4e63;line-height:1.6;margin:0;">
+      Know someone sitting the papers too? <strong>You both get S$15</strong>
+      when they use your referral code — grab yours at
+      <a href="${serverConfig.siteUrl}/account/referrals" style="color:#f4552b;">your account page</a>.
     </p>
   `);
 

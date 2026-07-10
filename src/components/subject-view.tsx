@@ -14,7 +14,9 @@ import { getPricing } from "@/lib/server/pricing-store";
 import { subjectCopy } from "@/lib/subject-copy";
 import { topForecast } from "@/lib/topics";
 import { DisclaimerBox } from "./disclaimer";
+import { ExamCountdown } from "./exam-countdown";
 import { HeatBar } from "./heat";
+import { SubjectStickyCta } from "./subject-sticky-cta";
 import { TierSelector } from "./tier-selector";
 
 export async function SubjectView({ subject }: { subject: Subject }) {
@@ -39,6 +41,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
       <h1 className="mt-2 font-display text-4xl font-black tracking-tight text-ink">
         {title}
       </h1>
+      <ExamCountdown className="mt-3" />
 
       {/* One quantified claim leads the page. A single claim reads as analysis;
           stacked claims read as advertising. */}
@@ -211,6 +214,12 @@ export async function SubjectView({ subject }: { subject: Subject }) {
           Build your bundle
         </Link>
       </div>
+
+      <SubjectStickyCta
+        level={subject.level}
+        subjectSlug={subject.slug}
+        subjectName={subject.name}
+      />
     </div>
   );
 }

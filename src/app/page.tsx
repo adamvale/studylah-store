@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { averageHitRate } from "@/lib/accuracy";
+import { scorecardHeadline } from "@/lib/accuracy-data";
 import {
   COMING_SOON,
   JOURNEY_ORDER,
@@ -12,6 +12,7 @@ import {
 import type { Pricing } from "@/lib/pricing";
 import { getPricing } from "@/lib/server/pricing-store";
 import { EmailCaptureForm } from "@/components/email-capture";
+import { ExamCountdown } from "@/components/exam-countdown";
 import { ForecastCard } from "@/components/forecast-card";
 import { HeatTiles } from "@/components/heat";
 
@@ -95,6 +96,7 @@ function Hero({ pricing }: { pricing: Pricing }) {
           Money-back guarantee · Instant PDF download · From{" "}
           {sgd(alacartePrice("o-level", "forecast"))} per subject
         </p>
+        <ExamCountdown className="mt-4" />
       </div>
       <div className="fade-up" style={{ animationDelay: "150ms" }}>
         <ForecastCard />
@@ -333,6 +335,7 @@ function LevelEntry({ pricing }: { pricing: Pricing }) {
 }
 
 function TrustStrip() {
+  const { perfect, total } = scorecardHeadline();
   return (
     <section aria-labelledby="trust-heading" className="bg-violet-2 py-16 text-white">
       <div className="mx-auto max-w-6xl px-4">
@@ -342,10 +345,11 @@ function TrustStrip() {
         <div className="grid gap-8 sm:grid-cols-3">
           <div>
             <p className="font-display text-5xl font-black text-accent">
-              {averageHitRate()}%
+              {perfect} of {total}
             </p>
             <p className="mt-1 text-sm text-white/80">
-              average forecast hit rate, 2025 sitting*
+              2024–25 scorecards where all five highest-mark topics were
+              forecast High or above*
             </p>
             <Link
               href="/accuracy"
@@ -372,8 +376,8 @@ function TrustStrip() {
           </div>
         </div>
         <p className="mt-8 text-xs text-white/50">
-          *Measured against the 2025 papers after the sitting — every hit and
-          miss is in the full scorecard.
+          *Counted from the published per-subject scorecards — every hit and
+          miss is on the accuracy page.
         </p>
       </div>
     </section>

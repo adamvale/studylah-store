@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { averageHitRate } from "@/lib/accuracy";
+import { scorecardHeadline } from "@/lib/accuracy-data";
 import { sgd } from "@/lib/catalogue";
 import { getPricing } from "@/lib/server/pricing-store";
 import { StickyCta } from "@/components/sticky-cta";
@@ -247,10 +247,11 @@ export default async function ExamForecastPage() {
           promise, and we don&apos;t make promises.
         </p>
         <p className="mt-6 font-display text-5xl font-black text-accent">
-          {averageHitRate()}%
+          {scorecardHeadline().perfect} of {scorecardHeadline().total}
         </p>
         <p className="mt-1 text-sm text-cloud">
-          average forecast hit rate, 2025 sitting*
+          2024–25 scorecards where all five highest-mark topics were forecast
+          High or above*
         </p>
         <Link
           href="/accuracy"
@@ -259,8 +260,8 @@ export default async function ExamForecastPage() {
           See the full scorecard →
         </Link>
         <p className="mx-auto mt-6 max-w-md text-xs text-cloud/60">
-          *Measured against the 2025 papers after the sitting — every hit and
-          miss is in the full scorecard.
+          *Counted from the published per-subject scorecards — every hit and
+          miss is on the accuracy page.
         </p>
       </section>
 

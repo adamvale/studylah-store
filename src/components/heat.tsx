@@ -1,18 +1,3 @@
-export function heatBg(probability: number): string {
-  if (probability >= 80) return "bg-heat-5";
-  if (probability >= 65) return "bg-heat-4";
-  if (probability >= 50) return "bg-heat-3";
-  if (probability >= 35) return "bg-heat-2";
-  return "bg-heat-1";
-}
-
-export function heatText(probability: number): string {
-  // The ≥80 bars are brand yellow; yellow text is unreadable on white, so the
-  // near-certain figures use the deep-amber ink from the same family instead.
-  if (probability >= 80) return "text-accent-deep";
-  return "text-accent";
-}
-
 // The four confidence tiers used across the product — the same labels the
 // Forecast PDFs print (VERY HIGH / HIGH / MODERATE / WATCH). The site shows
 // these tiers, never a raw percentage, so it reads identically to the PDF.
@@ -98,34 +83,41 @@ export function HeatBar({
 }) {
   const tier = forecastTier(probability);
   const label = TIER_LABEL[tier];
+  // On phones the topic name gets its own line — it IS the information; the
+  // bar is decoration. From `sm` up, the classic label · bar · pill row.
   return (
-    <div className="flex items-center gap-3">
-      <span className="w-36 shrink-0 truncate text-sm text-body sm:w-44" title={topic}>
+    <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3">
+      <span
+        className="truncate text-sm text-body sm:w-44 sm:shrink-0"
+        title={topic}
+      >
         {topic}
       </span>
-      <div
-        className="h-3 flex-1 overflow-hidden rounded-full bg-heat-1"
-        role="img"
-        aria-label={
-          masked
-            ? `${topic}: confidence tier hidden in preview`
-            : `${topic}: ${label} confidence`
-        }
-      >
+      <div className="flex flex-1 items-center gap-3">
         <div
-          className={`heat-fill h-full rounded-full ${tierBg(tier)}`}
-          style={{ width: `${TIER_FILL[tier]}%`, animationDelay: `${delayMs}ms` }}
-        />
+          className="h-3 flex-1 overflow-hidden rounded-full bg-heat-1"
+          role="img"
+          aria-label={
+            masked
+              ? `${topic}: confidence tier hidden in preview`
+              : `${topic}: ${label} confidence`
+          }
+        >
+          <div
+            className={`heat-fill h-full rounded-full ${tierBg(tier)}`}
+            style={{ width: `${TIER_FILL[tier]}%`, animationDelay: `${delayMs}ms` }}
+          />
+        </div>
+        <span className="flex w-24 shrink-0 justify-end" aria-hidden={masked}>
+          {masked ? (
+            <span className="select-none rounded-md bg-hairline px-2 py-0.5 text-[11px] font-bold uppercase leading-tight tracking-wide text-body/50 blur-[4px]">
+              Hidden
+            </span>
+          ) : (
+            <TierPill tier={tier} />
+          )}
+        </span>
       </div>
-      <span className="flex w-24 shrink-0 justify-end" aria-hidden={masked}>
-        {masked ? (
-          <span className="select-none rounded-md bg-hairline px-2 py-0.5 text-[11px] font-bold uppercase leading-tight tracking-wide text-body/50 blur-[4px]">
-            Hidden
-          </span>
-        ) : (
-          <TierPill tier={tier} />
-        )}
-      </span>
     </div>
   );
 }
