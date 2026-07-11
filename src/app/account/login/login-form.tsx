@@ -53,6 +53,37 @@ export function LoginForm({ error }: { error?: string }) {
           Nothing after a minute? Check your spam or promotions folder — the
           sender is orders@studylah.education.
         </p>
+        {/* Code entry — the email carries a 6-digit code for app users (and
+            anyone who'd rather type than tap a link). */}
+        <form
+          action="/api/account/verify-code"
+          method="post"
+          className="mt-4 rounded-xl border border-hairline bg-night p-4"
+        >
+          <input type="hidden" name="email" value={email} />
+          <label htmlFor="login-code" className="block text-xs font-medium text-body">
+            Or enter the 6-digit code from the email
+          </label>
+          <div className="mt-2 flex gap-2">
+            <input
+              id="login-code"
+              name="code"
+              inputMode="numeric"
+              pattern="\d{6}"
+              maxLength={6}
+              required
+              placeholder="000000"
+              className="w-32 rounded-lg border border-hairline bg-surface px-3 py-2 text-center font-mono text-lg tracking-widest text-ink outline-none focus:border-accent"
+            />
+            <button
+              type="submit"
+              className="rounded-lg bg-accent px-4 py-2 text-sm font-bold text-night"
+            >
+              Sign in
+            </button>
+          </div>
+        </form>
+
         <div className="mt-4 flex flex-wrap items-center gap-4">
           <button
             type="button"
@@ -87,6 +118,17 @@ export function LoginForm({ error }: { error?: string }) {
         <p className="mb-4 rounded-lg bg-coral/15 px-4 py-2.5 text-sm text-ink">
           That sign-in link has expired or was already used. Enter your email for
           a fresh one.
+        </p>
+      )}
+      {error === "code" && (
+        <p className="mb-4 rounded-lg bg-coral/15 px-4 py-2.5 text-sm text-ink">
+          That code didn&apos;t match or has expired (codes last ~20 minutes).
+          Request a fresh email below.
+        </p>
+      )}
+      {error === "throttle" && (
+        <p className="mb-4 rounded-lg bg-coral/15 px-4 py-2.5 text-sm text-ink">
+          Too many tries — wait ten minutes, then request a fresh code.
         </p>
       )}
       <label htmlFor="email" className="block text-sm font-medium text-ink">

@@ -8,7 +8,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { SiteChrome } from "@/components/site-chrome";
 import { RefCapture } from "@/components/ref-capture";
-import { SwRegister } from "@/components/pwa";
+import { SwRegister, NativePushBridge } from "@/components/pwa";
 
 // PWA chrome: the browser UI matches the night theme, and the installed app
 // gets a proper title + status bar on iOS.
@@ -109,6 +109,7 @@ export default async function RootLayout({
         </a>
         <RefCapture />
         <SwRegister />
+        <NativePushBridge />
         <PricingProvider table={table} earlyBird={earlyBird}>
           <CartProvider>
             <SiteChrome header={<Header />} footer={<Footer />}>

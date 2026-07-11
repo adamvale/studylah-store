@@ -3,6 +3,7 @@ import { prisma } from "@/lib/db";
 import { serverConfig } from "@/lib/server/config";
 import { sgDay, addDays, computeStreak } from "@/lib/server/study";
 import { sendPushToCustomer } from "@/lib/server/push";
+import { sendNativePushToCustomer } from "@/lib/server/native-push";
 
 // "Your streak dies at midnight" — the retention push. Run hourly; it only
 // fires inside the Singapore evening window (19:00–22:59), targets customers
@@ -44,15 +45,28 @@ export async function GET(request: Request) {
   );
   // NB: `not: today` alone would drop NULLs (SQL: NULL != x is not true), so
   // never-pinged customers need the explicit null branch.
-  const customers = await prisma.customer.findMany({
+  const eligible = await prisma.customer.findMany({
     where: {
       id: { in: alive.filter((id) => !doneToday.has(id)) },
       OR: [{ streakPingDay: null }, { streakPingDay: { not: today } }],
-      pushSubscriptions: { some: {} },
     },
     select: { id: true },
     take: 200,
   });
+  // Reachable on EITHER channel: web push subscription or native FCM token.
+  const ids = eligible.map((c) => c.id);
+  const [webSubs, nativeToks] = await Promise.all([
+    prisma.pushSubscription.findMany({
+      where: { customerId: { in: ids } },
+      select: { customerId: true },
+    }),
+    prisma.nativePushToken.findMany({
+      where: { customerId: { in: ids } },
+      select: { customerId: true },
+    }),
+  ]);
+  const reachable = new Set([...webSubs, ...nativeToks].map((r) => r.customerId));
+  const customers = eligible.filter((c) => reachable.has(c.id));
 
   let sent = 0;
   for (const c of customers) {
@@ -65,13 +79,16 @@ export async function GET(request: Request) {
         rows.map((r) => r.day),
         today
       );
-      const delivered = await sendPushToCustomer(c.id, {
+      const payload = {
         title: `🔥 Your ${streak.current}-day streak ends at midnight`,
         body: "Three questions keeps it alive — two minutes, marked instantly.",
         url: "/account",
-        tag: "streak-reminder",
-      });
-      if (delivered > 0) sent++;
+      };
+      const [web, native] = await Promise.all([
+        sendPushToCustomer(c.id, { ...payload, tag: "streak-reminder" }),
+        sendNativePushToCustomer(c.id, payload),
+      ]);
+      if (web + native > 0) sent++;
       await prisma.customer.update({
         where: { id: c.id },
         data: { streakPingDay: today },

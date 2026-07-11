@@ -1,3 +1,4 @@
+import { CommerceGate } from "@/components/commerce-gate";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
@@ -28,6 +29,7 @@ export default async function AddSubjectsPage() {
   );
 
   return (
+    <CommerceGate>
     <div>
       <h2 className="font-display text-lg font-bold text-ink">Complete your set</h2>
       <p className="mt-1 text-sm text-body">
@@ -42,5 +44,6 @@ export default async function AddSubjectsPage() {
         </p>
       )}
     </div>
+    </CommerceGate>
   );
 }

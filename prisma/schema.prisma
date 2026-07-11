@@ -76,6 +76,19 @@ model Customer {
   pushSubscriptions     PushSubscription[]
 }
 
+// One FCM device token per native app install that enabled reminders
+// (Android and iOS both route through Firebase Cloud Messaging). Dead tokens
+// (UNREGISTERED from FCM) are deleted on send.
+model NativePushToken {
+  id         String   @id @default(cuid())
+  customerId String
+  token      String   @unique
+  platform   String // ios | android
+  createdAt  DateTime @default(now())
+
+  @@index([customerId])
+}
+
 // One web-push subscription per browser/device the student enabled reminders
 // on. endpoint is the push service URL (unique per subscription); p256dh/auth
 // are the client's encryption keys. Dead endpoints (404/410 from the push

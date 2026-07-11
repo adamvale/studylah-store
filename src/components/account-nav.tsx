@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useHideCommerce } from "@/lib/native";
 
 const LINKS = [
   { href: "/account", label: "Today" },
@@ -19,12 +20,20 @@ const LINKS = [
 
 export function AccountNav() {
   const pathname = usePathname();
+  // Reader-app rule: no purchase surfaces (Add subjects) and no cash-reward
+  // surfaces (Refer a friend) inside the native app.
+  const hideCommerce = useHideCommerce();
+  const links = hideCommerce
+    ? LINKS.filter(
+        (l) => l.href !== "/account/add-subjects" && l.href !== "/account/referrals"
+      )
+    : LINKS;
   return (
     <nav
       aria-label="Account"
       className="mt-6 flex flex-wrap gap-1 border-b border-hairline"
     >
-      {LINKS.map((link) => {
+      {links.map((link) => {
         const active =
           link.href === "/account"
             ? pathname === "/account"

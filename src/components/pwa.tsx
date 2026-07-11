@@ -1,6 +1,43 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
+import { useNativePlatform } from "@/lib/native";
+
+// ── Native (Capacitor) push bridge ────────────────────────────────────────
+// Inside the shell, Capacitor injects window.Capacitor.Plugins.* — including
+// PushNotifications when the native project bundles it. The web build never
+// imports the plugin package; everything goes through the injected bridge.
+
+interface PushPlugin {
+  requestPermissions: () => Promise<{ receive: string }>;
+  register: () => Promise<void>;
+  addListener: (
+    event: string,
+    cb: (data: { value?: string; notification?: { data?: { url?: string } } }) => void
+  ) => Promise<{ remove: () => void }> | { remove: () => void };
+}
+
+function nativePushPlugin(): PushPlugin | null {
+  if (typeof window === "undefined") return null;
+  const cap = (window as unknown as { Capacitor?: { Plugins?: { PushNotifications?: PushPlugin } } })
+    .Capacitor;
+  return cap?.Plugins?.PushNotifications ?? null;
+}
+
+// Mounted once (root layout): routes notification taps to their in-app URL.
+export function NativePushBridge() {
+  const platform = useNativePlatform();
+  useEffect(() => {
+    if (!platform) return;
+    const plugin = nativePushPlugin();
+    if (!plugin) return;
+    void plugin.addListener("pushNotificationActionPerformed", (data) => {
+      const url = data.notification?.data?.url;
+      if (url && url.startsWith("/")) window.location.href = url;
+    });
+  }, [platform]);
+  return null;
+}
 
 // PWA plumbing + prompts, all in one place:
 //   <SwRegister />        — registers the service worker (mounted site-wide)
@@ -154,14 +191,35 @@ function urlBase64ToUint8Array(base64String: string): Uint8Array<ArrayBuffer> {
 
 type PushState = "unsupported" | "default" | "granted" | "denied" | "subscribed";
 
+const NATIVE_TOKEN_KEY = "studylah_native_push_token";
+
 export function NotificationToggle() {
   const [state, setState] = useState<PushState>("unsupported");
   const [busy, setBusy] = useState(false);
   const publicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY ?? "";
+  const platform = useNativePlatform();
 
   useEffect(() => {
-    // Default state is already "unsupported" — only the supported path needs
-    // to probe, and it sets state strictly in the async continuation.
+    // Native shell: the toggle drives the Capacitor plugin, not web push.
+    if (platform) {
+      let stored: string | null = null;
+      try {
+        stored = localStorage.getItem(NATIVE_TOKEN_KEY);
+      } catch {
+        // storage unavailable
+      }
+      const plugin = nativePushPlugin();
+      if (!plugin) return; // shell without the plugin — leave "unsupported"
+      let cancelled = false;
+      queueMicrotask(() => {
+        if (!cancelled) setState(stored ? "subscribed" : "default");
+      });
+      return () => {
+        cancelled = true;
+      };
+    }
+    // Web: default state is already "unsupported" — only the supported path
+    // probes, and it sets state strictly in the async continuation.
     if (!("serviceWorker" in navigator) || !("PushManager" in window) || !publicKey) {
       return;
     }
@@ -175,7 +233,68 @@ export function NotificationToggle() {
     return () => {
       cancelled = true;
     };
-  }, [publicKey]);
+  }, [publicKey, platform]);
+
+  async function enableNative() {
+    const plugin = nativePushPlugin();
+    if (!plugin || !platform) return;
+    setBusy(true);
+    try {
+      const perm = await plugin.requestPermissions();
+      if (perm.receive !== "granted") {
+        setState("denied");
+        return;
+      }
+      const registration = new Promise<string>((resolve, reject) => {
+        void plugin.addListener("registration", (data) => {
+          if (data.value) resolve(data.value);
+        });
+        void plugin.addListener("registrationError", () => reject(new Error("registration failed")));
+        setTimeout(() => reject(new Error("registration timeout")), 15000);
+      });
+      await plugin.register();
+      const token = await registration;
+      const res = await fetch("/api/account/push/native", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token, platform }),
+      });
+      if (!res.ok) throw new Error();
+      try {
+        localStorage.setItem(NATIVE_TOKEN_KEY, token);
+      } catch {
+        // storage unavailable — server still has the token
+      }
+      setState("subscribed");
+    } catch {
+      setState("default");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function disableNative() {
+    setBusy(true);
+    try {
+      let token: string | null = null;
+      try {
+        token = localStorage.getItem(NATIVE_TOKEN_KEY);
+        localStorage.removeItem(NATIVE_TOKEN_KEY);
+      } catch {
+        // storage unavailable
+      }
+      if (token) {
+        await fetch("/api/account/push/native", {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token }),
+        });
+      }
+      setState("default");
+    } finally {
+      setBusy(false);
+    }
+  }
 
   async function enable() {
     setBusy(true);
@@ -252,7 +371,7 @@ export function NotificationToggle() {
       {state === "subscribed" ? (
         <button
           type="button"
-          onClick={() => void disable()}
+          onClick={() => void (platform ? disableNative() : disable())}
           disabled={busy}
           className="rounded-lg border border-hairline px-4 py-2 text-sm font-medium text-body hover:text-ink disabled:opacity-50"
         >
@@ -261,7 +380,7 @@ export function NotificationToggle() {
       ) : (
         <button
           type="button"
-          onClick={() => void enable()}
+          onClick={() => void (platform ? enableNative() : enable())}
           disabled={busy}
           className="rounded-lg bg-accent px-4 py-2 text-sm font-bold text-night disabled:opacity-50"
         >

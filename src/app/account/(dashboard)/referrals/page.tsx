@@ -1,3 +1,4 @@
+import { CommerceGate } from "@/components/commerce-gate";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -52,6 +53,7 @@ export default async function ReferralsPage({
   const params = await searchParams;
 
   return (
+    <CommerceGate>
     <div>
       <Banner params={params} messages={MESSAGES} />
 
@@ -146,5 +148,6 @@ export default async function ReferralsPage({
         </p>
       </form>
     </div>
+    </CommerceGate>
   );
 }

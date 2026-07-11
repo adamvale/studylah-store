@@ -1,0 +1,76 @@
+# Codemagic CI for the Study HQ native shell.
+#
+# Both workflows are MANUAL — trigger them from the Codemagic dashboard when a
+# native release is actually needed. Day-to-day features ship server-side and
+# never require a build (the shell loads the live site).
+#
+# One-time dashboard setup (see DEPLOY-APP.md for the click-by-click):
+#   iOS     → Teams → Integrations → App Store Connect (API key), then set
+#             APP_STORE_CONNECT integration name below if different.
+#   Android → a keystore uploaded as "studylah_keystore" under Code signing
+#             identities, and android/app/google-services.json committed.
+
+workflows:
+  android-release:
+    name: Android release (.aab)
+    instance_type: linux_x2
+    max_build_duration: 45
+    environment:
+      java: 17
+      node: 20
+      android_signing:
+        - studylah_keystore
+    scripts:
+      - name: Install deps + sync Capacitor
+        script: |
+          npm ci
+          npx cap sync android
+      - name: Guard - Firebase config present
+        script: |
+          test -f android/app/google-services.json || {
+            echo "android/app/google-services.json missing — download it from the"
+            echo "Firebase console (Android app) and commit it. Push won't work without it."
+            exit 1
+          }
+      - name: Build release bundle
+        script: |
+          cd android
+          ./gradlew bundleRelease
+    artifacts:
+      - android/app/build/outputs/**/*.aab
+    # After the first manual upload to Play Console, uncomment to auto-publish
+    # to the internal track (needs the Google Play integration):
+    # publishing:
+    #   google_play:
+    #     credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+    #     track: internal
+
+  ios-release:
+    name: iOS release (TestFlight)
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    integrations:
+      app_store_connect: studylah-asc # ← the integration name you set in Codemagic
+    environment:
+      node: 20
+      xcode: latest
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: education.studylah.app
+    scripts:
+      - name: Install deps + sync Capacitor
+        script: |
+          npm ci
+          npx cap sync ios
+      - name: Build signed IPA
+        script: |
+          xcode-project use-profiles
+          xcode-project build-ipa \
+            --project ios/App/App.xcodeproj \
+            --scheme App
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true

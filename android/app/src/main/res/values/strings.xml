@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Study HQ</string>
+    <string name="title_activity_main">Study HQ</string>
+    <string name="package_name">education.studylah.app</string>
+    <string name="custom_url_scheme">education.studylah.app</string>
+</resources>

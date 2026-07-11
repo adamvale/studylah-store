@@ -111,6 +111,30 @@ export function verifyChangeEmailToken(
   }
 }
 
+// --- 6-digit login codes (for the native app, where magic links break) ---
+// Stateless: the code is an HMAC of (email, 10-minute window), so nothing is
+// stored. Verification accepts the current and previous window (grace for
+// slow typers). Brute force is bounded by the caller's rate limiting PLUS the
+// 20-minute total validity.
+const CODE_WINDOW_MS = 10 * 60 * 1000;
+
+function codeFor(email: string, window: number): string {
+  const digest = createHmac("sha256", secret())
+    .update(`logincode:${email.toLowerCase()}:${window}`)
+    .digest();
+  return String(digest.readUInt32BE(0) % 1_000_000).padStart(6, "0");
+}
+
+export function currentLoginCode(email: string): string {
+  return codeFor(email, Math.floor(Date.now() / CODE_WINDOW_MS));
+}
+
+export function verifyLoginCode(email: string, code: string): boolean {
+  if (!secret() || !/^\d{6}$/.test(code)) return false;
+  const w = Math.floor(Date.now() / CODE_WINDOW_MS);
+  return timingEqual(code, codeFor(email, w)) || timingEqual(code, codeFor(email, w - 1));
+}
+
 // --- Parent-digest unsubscribe (emailed to the parent, long-lived) ---
 const PARENT_UNSUB_TTL_MS = 365 * 24 * 60 * 60 * 1000; // 1 year
 

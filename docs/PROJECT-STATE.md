@@ -130,17 +130,40 @@ banned-words grep on new copy, and a real browser/API pass (log in as
 Clean up test rows from `prisma/dev.db` afterwards. An upload's HTTP 200
 proves nothing about persistence — snapshot ids/hashes, redeploy, re-compare.
 
-## Current roadmap
+## The game layer ("Clear the Fog") — SHIPPED, web-first
 
-1. **RPG gamification layer, web-first** ("Clear the Fog"): XP engine +
-   levels + quests on Today, fog-of-war campaign map from forecast tables,
-   mistake monsters (Careless Imp / Concept Wraith / Method Golem / Time
-   Vampire), evolving ghost companion, badge case.
-2. **Capacitor native shell** (iOS + Android): Codemagic builds, native push
-   (FCM/APNs) beside web push, 6-digit code login, iOS build must hide all
-   purchase surfaces (reader-app rule).
-3. **Scanned question-bank ingestion**: R2 for scans, Claude-vision OCR into
-   structured questions, owner review queue in admin.
+XP ledger (`XpEvent`, unique per-action sourceKeys = farm-proof; levels/titles
+derived in `src/lib/game.ts`), badges (`Achievement`), evolving ghost
+companion, quest-framed Today, fog-of-war hex campaign maps on Study plan
+(`campaign-map.tsx`, always-visible section), the bestiary (mistakes as
+monsters with HP + respawn), and **Adventure mode** (`/account/adventure`):
+a canvas GB-style overworld — walk the ghost, wild battles in tall grass,
+subject gyms — all questions server-graded (`/api/account/game/*`,
+ownership-gated, wild XP capped 15/day, gym clear 25 XP once).
+
+## The native shell (Capacitor) — code complete, stores pending owner setup
+
+`capacitor.config.ts` loads the LIVE site (features ship server-side, no
+store re-review). `android/` + `ios/` scaffolds committed (iOS uses SPM, no
+CocoaPods). Push: Android→FCM (`fcm.ts`), iOS→direct APNs over node http2
+(`apns.ts`), orchestrated per-token in `native-push.ts`; device tokens in
+`NativePushToken` via `/api/account/push/native`; streak cron sends to web +
+native. **6-digit code login** (stateless HMAC windows,
+`currentLoginCode`/`verifyLoginCode`, throttled `/api/account/verify-code`,
+code included in the login email) because magic links break in webviews;
+`REVIEW_EMAIL`/`REVIEW_CODE` env pair = store-reviewer demo login.
+**Reader-app gating**: `src/lib/native.ts` (`useNativePlatform`, dev
+override `localStorage.studylah_native`), header/account-nav hide all
+commerce in-shell, `CommerceGate` wraps add-subjects + referrals pages.
+Builds run on **Codemagic** (`codemagic.yaml`, manual workflows; iOS needs
+the `studylah-asc` integration, Android the `studylah_keystore`).
+**`DEPLOY-APP.md` is the complete store playbook** — Firebase, APNs key,
+listings, review notes, release runbook.
+
+## Next
+
+**Scanned question-bank ingestion**: R2 for scans, Claude-vision OCR into
+structured questions, owner review queue in admin.
 
 ## Quiet backlog (raise only when the owner asks "what's pending")
 

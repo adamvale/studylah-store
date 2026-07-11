@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "816228278823",
+    "project_id": "studylah-7b829",
+    "storage_bucket": "studylah-7b829.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:816228278823:android:7a1e3a52f78f29e1576402",
+        "android_client_info": {
+          "package_name": "education.studylah.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwU-cDQ_Cch3NstOXK0DoZhVfyRMbff6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
