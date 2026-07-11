@@ -28,7 +28,7 @@ const LEGAL = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-hairline bg-night-2 text-white print:hidden">
+    <footer className="native-hide border-t border-hairline bg-night-2 text-white print:hidden">
       <div className="mx-auto max-w-6xl px-4 py-12">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>

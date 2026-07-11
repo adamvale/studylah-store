@@ -14,7 +14,16 @@ import { SwRegister, NativePushBridge } from "@/components/pwa";
 // gets a proper title + status bar on iOS.
 export const viewport: Viewport = {
   themeColor: "#161c26",
+  // Let content extend under the iPhone notch/home bar; the native game
+  // shell pads with env(safe-area-inset-*) itself.
+  viewportFit: "cover",
 };
+
+// Runs before first paint (parser-blocking): stamps html[data-native] when
+// the page is inside the Capacitor shell (or the dev override is set), so
+// the game-shell CSS applies with zero flash of website chrome. Capacitor
+// injects window.Capacitor at document start, ahead of any page script.
+const NATIVE_STAMP = `(function(){try{var o=localStorage.getItem("studylah_native");if(o==="ios"||o==="android"){document.documentElement.setAttribute("data-native",o);return}}catch(e){}var c=window.Capacitor;if(c&&c.isNativePlatform&&c.isNativePlatform()){var p=c.getPlatform?c.getPlatform():"app";document.documentElement.setAttribute("data-native",p)}})();`;
 
 // Type pairing borrowed from the live site: Inter for body/UI, Archivo for
 // bold display headings.
@@ -97,6 +106,7 @@ export default async function RootLayout({
       className={`${inter.variable} ${archivo.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
+        <script dangerouslySetInnerHTML={{ __html: NATIVE_STAMP }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }}

@@ -28,9 +28,9 @@ const NAV = [
   { href: "/faq", label: "FAQ" },
 ];
 
-function Logo() {
+function Logo({ href = "/" }: { href?: string }) {
   return (
-    <Link href="/" className="flex items-center" aria-label="StudyLah home">
+    <Link href={href} className="flex items-center" aria-label="StudyLah home">
       <Image
         src="/studylah-logo.png"
         alt="StudyLah"
@@ -53,10 +53,16 @@ export function Header() {
   // marketing nav, no cart (Apple reader-app rule).
   const hideCommerce = useHideCommerce();
 
+  // In the native app the account area IS the app — the game shell brings
+  // its own HUD, so the site header disappears there entirely. On the few
+  // reachable non-account pages (blog, legal) it stays as a slim bar whose
+  // logo leads back to HQ, since a webview has no back button.
+  if (hideCommerce && pathname.startsWith("/account")) return null;
+
   return (
     <header className="sticky top-0 z-40 border-b border-hairline bg-night/95 backdrop-blur print:hidden">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4">
-        <Logo />
+        <Logo href={hideCommerce ? "/account" : "/"} />
         <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
           {(hideCommerce ? [] : NAV).map((item) => (
             <Link

@@ -155,6 +155,14 @@ code included in the login email) because magic links break in webviews;
 **Reader-app gating**: `src/lib/native.ts` (`useNativePlatform`, dev
 override `localStorage.studylah_native`), header/account-nav hide all
 commerce in-shell, `CommerceGate` wraps add-subjects + referrals pages.
+**Game shell**: inside the native app the account area renders as a game
+app, not a website — an inline root-layout script stamps `html[data-native]`
+pre-paint, `AccountChrome` (`account-chrome.tsx`) swaps the web dashboard
+for a HUD (ghost/level/XP/streak) + bottom tab bar (Missions/World/Battle/
+Bestiary/More), the site header returns null on `/account*` in-shell, the
+footer is CSS-hidden, `/account/more` is the fifth tab (campaign/stats/
+timer/loot/settings/blog + legal + sign out), and the dashboard `template.tsx`
+gives game-style screen transitions. Web rendering is untouched.
 Builds run on **Codemagic** (`codemagic.yaml`, manual workflows; iOS needs
 the `studylah-asc` integration, Android the `studylah_keystore`).
 **`DEPLOY-APP.md` is the complete store playbook** — Firebase, APNs key,

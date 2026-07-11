@@ -93,3 +93,51 @@ body {
     animation: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Native game shell (the Capacitor app). A tiny inline script in the root
+   layout stamps html[data-native] before first paint, so these rules apply
+   with no flash of website chrome. The web experience is untouched.
+--------------------------------------------------------------------------- */
+
+html[data-native] .native-hide {
+  display: none !important;
+}
+
+html[data-native] body {
+  /* Feel like an app, not a page: no tap flashes, no long-press callouts,
+     no rubber-band scrolling the whole viewport. */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  overscroll-behavior-y: none;
+}
+
+html[data-native] main {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+html[data-native] input,
+html[data-native] textarea {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* Screen-to-screen transition — the account template remounts per
+   navigation, so this retriggers like a game screen swap. */
+@keyframes native-screen-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+html[data-native] .native-screen {
+  animation: native-screen-in 0.22s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-native] .native-screen {
+    animation: none;
+  }
+}
