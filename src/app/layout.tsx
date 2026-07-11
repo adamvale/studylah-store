@@ -23,7 +23,10 @@ export const viewport: Viewport = {
 // the page is inside the Capacitor shell (or the dev override is set), so
 // the game-shell CSS applies with zero flash of website chrome. Capacitor
 // injects window.Capacitor at document start, ahead of any page script.
-const NATIVE_STAMP = `(function(){try{var o=localStorage.getItem("studylah_native");if(o==="ios"||o==="android"){document.documentElement.setAttribute("data-native",o);return}}catch(e){}var c=window.Capacitor;if(c&&c.isNativePlatform&&c.isNativePlatform()){var p=c.getPlatform?c.getPlatform():"app";document.documentElement.setAttribute("data-native",p)}})();`;
+// ?native=ios|android persists the game-app preview in any browser (demos,
+// support, playtesting); ?native=off clears it. The real shell needs no
+// param — Capacitor injects window.Capacitor.
+const NATIVE_STAMP = `(function(){try{var q=new URLSearchParams(location.search).get("native");if(q==="off")localStorage.removeItem("studylah_native");else if(q==="ios"||q==="android")localStorage.setItem("studylah_native",q);var o=localStorage.getItem("studylah_native");if(o==="ios"||o==="android"){document.documentElement.setAttribute("data-native",o);return}}catch(e){}var c=window.Capacitor;if(c&&c.isNativePlatform&&c.isNativePlatform()){var p=c.getPlatform?c.getPlatform():"app";document.documentElement.setAttribute("data-native",p)}})();`;
 
 // Type pairing borrowed from the live site: Inter for body/UI, Archivo for
 // bold display headings.
