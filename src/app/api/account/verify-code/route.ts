@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
+import { serverConfig } from "@/lib/server/config";
 import {
   CUSTOMER_COOKIE,
   customerAuthEnabled,
@@ -37,14 +38,14 @@ export async function POST(request: Request) {
   const email = String(form?.get("email") ?? "").trim().toLowerCase();
   const code = String(form?.get("code") ?? "").trim();
   const fail = () =>
-    NextResponse.redirect(new URL("/account/login?error=code", request.url), 303);
+    NextResponse.redirect(new URL("/account/login?error=code", serverConfig.siteUrl), 303);
 
   if (!customerAuthEnabled() || !email.includes("@") || !/^\d{6}$/.test(code)) {
     return fail();
   }
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
   if (throttled(`e:${email}`) || throttled(`ip:${ip}`)) {
-    return NextResponse.redirect(new URL("/account/login?error=throttle", request.url), 303);
+    return NextResponse.redirect(new URL("/account/login?error=throttle", serverConfig.siteUrl), 303);
   }
 
   const reviewEmail = (process.env.REVIEW_EMAIL ?? "").toLowerCase();
@@ -60,7 +61,7 @@ export async function POST(request: Request) {
   const customer = rows[0];
   if (!customer) return fail();
 
-  const res = NextResponse.redirect(new URL("/account", request.url), 303);
+  const res = NextResponse.redirect(new URL("/account", serverConfig.siteUrl), 303);
   res.cookies.set(CUSTOMER_COOKIE, signSessionToken(customer.id), sessionCookieOptions());
   res.cookies.set("studylah_acct", "1", { ...sessionCookieOptions(), httpOnly: false });
   return res;
