@@ -377,6 +377,16 @@ export function AdventureGame({
   useEffect(() => {
     viewRef.current = { cols: viewCols, rows: viewRows };
   }, [viewCols, viewRows]);
+  // No long-press selection/callout anywhere in the game.
+  useEffect(() => {
+    const onCtx = (e: Event) => {
+      const t = e.target as HTMLElement | null;
+      if (t?.closest('[data-testid="fog-frontier"]')) e.preventDefault();
+    };
+    document.addEventListener("contextmenu", onCtx);
+    return () => document.removeEventListener("contextmenu", onCtx);
+  }, []);
+
   // The game owns the screen: freeze the page behind it (no webpage scroll).
   useEffect(() => {
     const html = document.documentElement;

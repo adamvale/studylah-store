@@ -329,3 +329,12 @@ html[data-native] .native-screen {
     animation: none;
   }
 }
+
+/* The game is portalled to <body>, outside the shell's selection rules:
+   nothing inside it is ever text to select or long-press-copy. */
+[data-testid="fog-frontier"],
+[data-testid="fog-frontier"] * {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
