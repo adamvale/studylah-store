@@ -75,6 +75,15 @@ export async function unlockedBadgeIds(customerId: string): Promise<Set<string>>
   return new Set(rows.map((r) => r.badgeId));
 }
 
+// Which subject gyms this player has cleared, as "level/slug" keys.
+export async function clearedGyms(customerId: string): Promise<Set<string>> {
+  const rows = await prisma.achievement.findMany({
+    where: { customerId, badgeId: { startsWith: "gym:" } },
+    select: { badgeId: true },
+  });
+  return new Set(rows.map((r) => r.badgeId.slice("gym:".length)));
+}
+
 // The read model for headers/cards.
 export async function getPlayer(customerId: string): Promise<{
   xp: number;
