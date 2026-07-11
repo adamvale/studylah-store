@@ -76,6 +76,7 @@ export const BADGES: BadgeDef[] = [
   { id: "fog-25", name: "Sky Clearer", emoji: "☀️", hint: "Get 25 topics to Confident", xp: 50 },
   { id: "calibrated", name: "Straight Shooter", emoji: "🎯", hint: "Be right on 85% of your \"Sure\" answers (20+ taps)", xp: 25 },
   { id: "full-recon", name: "Full Recon", emoji: "🧭", hint: "Predict your mark in every subject you own", xp: 25 },
+  { id: "champion", name: "Regional Champion", emoji: "🏆", hint: "Clear the Championship gauntlet at the Summit of Clarity", xp: 100 },
 ];
 
 export function badgeById(id: string): BadgeDef | undefined {
@@ -92,6 +93,47 @@ export const XP = {
   diagnosticAttempt: 15, // capped 1/subject/day
   diagnosticBest: 10, // new personal best on a subject
 } as const;
+
+// ── Companion spirits (starters) ──────────────────────────────────────────
+// Chosen once during onboarding. PURELY cosmetic + flavour (a scarf tint on
+// the overworld ghost): no stats, no advantages — the audience is minors and
+// a "wrong choice" must never cost marks or progress.
+
+export interface StarterDef {
+  id: string;
+  name: string;
+  emoji: string;
+  colour: string; // scarf tint on the overworld sprite
+  philosophy: string;
+}
+
+export const STARTERS: StarterDef[] = [
+  {
+    id: "ember",
+    name: "Emberkin",
+    emoji: "🔥",
+    colour: "#ff7a45",
+    philosophy: "Powerful and direct — charges the hard questions head-on.",
+  },
+  {
+    id: "tide",
+    name: "Tidekin",
+    emoji: "🌊",
+    colour: "#6ea0ff",
+    philosophy: "Fast and technical — picks battles apart step by step.",
+  },
+  {
+    id: "grove",
+    name: "Grovekin",
+    emoji: "🌿",
+    colour: "#3ddc84",
+    philosophy: "Patient and durable — outlasts anything the Fog sends.",
+  },
+];
+
+export function starterById(id: string): StarterDef | undefined {
+  return STARTERS.find((s) => s.id === id);
+}
 
 // ── The bestiary ──────────────────────────────────────────────────────────
 // Every mistake is a monster; its species is WHY the mark was lost (the

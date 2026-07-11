@@ -15,13 +15,14 @@ export interface DexCounts {
   banished: number;
 }
 
-export function MonsterDex({ counts }: { counts: DexCounts[] }) {
+export function MonsterDex({ counts, wildCaptured = [] }: { counts: DexCounts[]; wildCaptured?: string[] }) {
   const native = useNativePlatform();
+  const wild = new Set(wildCaptured);
   if (!native) return null;
 
   const totalAtLarge = counts.reduce((s, c) => s + c.atLarge, 0);
   const totalBanished = counts.reduce((s, c) => s + c.banished, 0);
-  if (totalAtLarge + totalBanished === 0) return null;
+  if (totalAtLarge + totalBanished + wild.size === 0) return null;
 
   return (
     <section aria-label="Monster collection" className="rounded-2xl border border-hairline bg-night-2 p-4">
@@ -34,7 +35,7 @@ export function MonsterDex({ counts }: { counts: DexCounts[] }) {
       <div className="mt-3 grid grid-cols-5 gap-2">
         {Object.entries(MONSTERS).map(([key, m]) => {
           const c = counts.find((x) => x.reason === key);
-          const seen = Boolean(c && c.atLarge + c.banished > 0);
+          const seen = Boolean((c && c.atLarge + c.banished > 0) || wild.has(key));
           return (
             <div
               key={key}
@@ -53,6 +54,9 @@ export function MonsterDex({ counts }: { counts: DexCounts[] }) {
                   )}
                   {(c?.banished ?? 0) > 0 && (
                     <span className="font-pixel text-[7px] text-guarantee">🏆{c?.banished}</span>
+                  )}
+                  {wild.has(key) && (
+                    <span className="font-pixel text-[7px] text-trust">WILD✓</span>
                   )}
                 </>
               ) : (

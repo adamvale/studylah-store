@@ -3,11 +3,11 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { ownedSubjects } from "@/lib/server/study";
-import { clearedGyms } from "@/lib/server/xp";
-import { Adventure } from "@/components/adventure";
-import type { WorldSubject } from "@/lib/game/world";
+import { clearedGyms, achievementSuffixes } from "@/lib/server/xp";
+import { AdventureGame } from "@/components/adventure-game";
+import type { WorldSubject } from "@/lib/game/world2";
 
-export const metadata: Metadata = { title: "Adventure" };
+export const metadata: Metadata = { title: "Fog Frontier" };
 
 // Two-letter subject sigil for the gym signs.
 function sigil(name: string): string {
@@ -32,9 +32,11 @@ export default async function AdventurePage() {
   const customerId = await getCustomerId();
   if (!customerId) redirect("/account/login");
 
-  const [subjects, cleared] = await Promise.all([
+  const [subjects, cleared, story, starters] = await Promise.all([
     ownedSubjects(customerId),
     clearedGyms(customerId),
+    achievementSuffixes(customerId, "story:"),
+    achievementSuffixes(customerId, "starter:"),
   ]);
 
   const worldSubjects: WorldSubject[] = subjects.map((s) => ({
@@ -45,36 +47,32 @@ export default async function AdventurePage() {
     emoji: EMOJI_BY_FAMILY[s.family] ?? "🏛️",
   }));
 
-  return (
-    <div className="space-y-6">
-      <div>
-        <h2 className="font-display text-2xl font-bold text-ink">Adventure</h2>
-        <p className="mt-1 text-sm text-body">
-          Walk the town, cross the tall grass — wild monsters attack, and the
-          only way to beat them is to answer correctly. Clear each subject&apos;s
-          gym to earn its badge. Every question is real; every win is real XP.
+  if (worldSubjects.length === 0) {
+    return (
+      <div className="rounded-2xl border border-hairline bg-surface p-8 text-center">
+        <p className="font-display text-lg font-bold text-ink">
+          The Fog Frontier unlocks with your first subject
         </p>
+        <p className="mt-2 text-sm text-body">
+          Each subject you own becomes a whole province — a route of wild
+          monsters, a town, and a gym to conquer.
+        </p>
+        <Link
+          href="/account/add-subjects"
+          className="mt-4 inline-block rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
+        >
+          Add a subject
+        </Link>
       </div>
+    );
+  }
 
-      {worldSubjects.length === 0 ? (
-        <div className="rounded-2xl border border-hairline bg-surface p-8 text-center">
-          <p className="font-display text-lg font-bold text-ink">
-            The map unlocks with your first subject
-          </p>
-          <p className="mt-2 text-sm text-body">
-            Each subject you own becomes a gym on the map, with its own monsters
-            to battle.
-          </p>
-          <Link
-            href="/account/add-subjects"
-            className="mt-4 inline-block rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
-          >
-            Add a subject
-          </Link>
-        </div>
-      ) : (
-        <Adventure subjects={worldSubjects} cleared={[...cleared]} />
-      )}
-    </div>
+  return (
+    <AdventureGame
+      subjects={worldSubjects}
+      cleared={[...cleared]}
+      story={[...story]}
+      starter={[...starters][0] ?? null}
+    />
   );
 }

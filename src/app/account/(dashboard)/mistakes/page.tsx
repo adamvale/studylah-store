@@ -6,6 +6,7 @@ import { fullForecast } from "@/lib/topics";
 import { FORECAST_TABLES } from "@/lib/forecast-tables";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { ownedSubjects } from "@/lib/server/study";
+import { achievementSuffixes } from "@/lib/server/xp";
 import { MistakeNotebook, type MistakeItem } from "@/components/mistake-notebook";
 import { MonsterDex, type DexCounts } from "@/components/monster-dex";
 
@@ -15,12 +16,13 @@ export default async function MistakesPage() {
   const customerId = await getCustomerId();
   if (!customerId) redirect("/account/login");
 
-  const [rows, subjects] = await Promise.all([
+  const [rows, subjects, wildCaptured] = await Promise.all([
     prisma.mistakeEntry.findMany({
       where: { customerId },
       orderBy: [{ resolved: "asc" }, { createdAt: "desc" }],
     }),
     ownedSubjects(customerId),
+    achievementSuffixes(customerId, "dex:"),
   ]);
 
   const nameFor = (level: string, slug: string) =>
@@ -71,7 +73,7 @@ export default async function MistakesPage() {
 
   return (
     <div className="space-y-6">
-      <MonsterDex counts={dexCounts} />
+      <MonsterDex counts={dexCounts} wildCaptured={[...wildCaptured]} />
       <div>
         <h2 className="font-display text-2xl font-bold text-ink">
           The bestiary <span className="text-body">(错题本)</span>

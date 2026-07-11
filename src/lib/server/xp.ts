@@ -77,11 +77,28 @@ export async function unlockedBadgeIds(customerId: string): Promise<Set<string>>
 
 // Which subject gyms this player has cleared, as "level/slug" keys.
 export async function clearedGyms(customerId: string): Promise<Set<string>> {
+  return achievementSuffixes(customerId, "gym:");
+}
+
+// Generic prefix read on the Achievement table — the game's progression store
+// (gym:<key>, story:<beat>, dex:<species>, starter:<choice>). Returns the
+// suffixes after the prefix.
+export async function achievementSuffixes(customerId: string, prefix: string): Promise<Set<string>> {
   const rows = await prisma.achievement.findMany({
-    where: { customerId, badgeId: { startsWith: "gym:" } },
+    where: { customerId, badgeId: { startsWith: prefix } },
     select: { badgeId: true },
   });
-  return new Set(rows.map((r) => r.badgeId.slice("gym:".length)));
+  return new Set(rows.map((r) => r.badgeId.slice(prefix.length)));
+}
+
+// Idempotent progression marker (no XP of its own — pair with awardXp).
+export async function markAchievement(customerId: string, badgeId: string): Promise<boolean> {
+  try {
+    await prisma.achievement.create({ data: { customerId, badgeId } });
+    return true;
+  } catch {
+    return false; // already marked
+  }
 }
 
 // The read model for headers/cards.

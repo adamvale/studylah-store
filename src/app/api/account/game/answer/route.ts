@@ -4,7 +4,8 @@ import { getSubject, type Level } from "@/lib/catalogue";
 import { getDiagnosticSet } from "@/lib/diagnostic-questions";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { ownedSubjects, sgDay, isCorrect } from "@/lib/server/study";
-import { awardXp, totalXpFor, gamePayload, type GamePayload } from "@/lib/server/xp";
+import { MONSTERS } from "@/lib/game";
+import { awardXp, totalXpFor, gamePayload, markAchievement, type GamePayload } from "@/lib/server/xp";
 
 // Grades ONE wild-battle answer server-side. Correct hits earn a little XP,
 // hard-capped per day so grinding encounters can't out-earn real study.
@@ -18,7 +19,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }
 
-  let body: { level?: unknown; slug?: unknown; questionId?: unknown; answer?: unknown };
+  let body: { level?: unknown; slug?: unknown; questionId?: unknown; answer?: unknown; species?: unknown };
   try {
     body = (await request.json()) as typeof body;
   } catch {
@@ -48,6 +49,15 @@ export async function POST(request: Request) {
       ? question.options[Number(question.correctKey[0])] ?? question.correctKey.join(" / ")
       : question.correctKey.join(" / ");
 
+  // Dex capture: the first time a species is defeated in the wild it is
+  // registered to the player's monster-dex. Cosmetic collection only — no
+  // XP, so a spoofed species earns nothing.
+  let newCapture = false;
+  const species = typeof body.species === "string" ? body.species : "";
+  if (correct && species && species in MONSTERS && species !== "unset") {
+    newCapture = await markAchievement(customerId, `dex:${species}`);
+  }
+
   let game: GamePayload | null = null;
   if (correct) {
     const today = sgDay();
@@ -73,6 +83,7 @@ export async function POST(request: Request) {
     correct,
     correctAnswer,
     workedSolution: question.workedSolution,
+    newCapture,
     game,
   });
 }

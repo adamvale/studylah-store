@@ -130,6 +130,29 @@ banned-words grep on new copy, and a real browser/API pass (log in as
 Clean up test rows from `prisma/dev.db` afterwards. An upload's HTTP 200
 proves nothing about persistence — snapshot ids/hashes, redeploy, re-compare.
 
+## Fog Frontier — the full creature-collecting RPG (native game shell)
+
+`/account/adventure` is a complete original-IP RPG (`adventure-game.tsx` +
+`src/lib/game/world2.ts`), portalled to `document.body` for a true full-screen
+canvas with PUBG-style overlay controls (floating D-pad + A/B, safe-area
+padded). **The battle IS the exam question** — a wild encounter shows a
+strike menu (Quick Jab 1 dmg / Power Strike 2 dmg / Take a Breath heal, each
+graded by a real server question via `/api/account/game/answer`); wrong
+answers cost hearts, three hearts lost = warp back to Haven. Region generated
+from owned subjects: **Haven Hollow** hub → one **Province** per subject
+(route of tall-grass wild battles + a gym) → **Summit of Clarity**
+championship (sealed until every gym emblem is won). Story is diegetic and
+persisted as achievements (`story:<beat>`, `starter:<id>`, `dex:<species>`
+via `achievementSuffixes`/`markAchievement`, XP through
+`/api/account/game/story`): onboarding with Elder Maple + a **companion
+spirit** pick (cosmetic scarf tint only — no stats), rival **Kai** (rematch
+at the Summit), the **Fog Order** (grunts → Commander Murk), and the
+Championship gauntlet (mixed-subject, unlocks the `champion` badge). NPCs
+give dialogue/heal/battle; wild wins register species to the **monster-dex**
+(shown on the bestiary), shiny variants are 1/16 cosmetic. Compliance intact:
+every reward is effort, questions graded server-side, XP daily-capped, no
+purchasable advantage. The older single-screen `adventure.tsx` was replaced.
+
 ## The game layer ("Clear the Fog") — SHIPPED, web-first
 
 XP ledger (`XpEvent`, unique per-action sourceKeys = farm-proof; levels/titles
