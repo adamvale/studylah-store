@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { getCustomerId } from "@/lib/server/customer-session";
-import { sgDay, computeStreak } from "@/lib/server/study";
+import { sgDay, streakState } from "@/lib/server/study";
 import { getPlayer } from "@/lib/server/xp";
 import { AccountChrome } from "@/components/account-chrome";
 
@@ -29,21 +29,17 @@ export default async function AccountDashboardLayout({
   if (!customer) redirect("/account/login");
 
   // The streak + player level ride the shell so they're visible from every
-  // tab — quiet, permanent pressure to come back tomorrow.
-  const dayRows = await prisma.dailyQuizDay.findMany({
-    where: { customerId },
-    select: { day: true },
-  });
-  const streak = computeStreak(
-    dayRows.map((r) => r.day),
-    sgDay()
-  );
+  // tab — quiet, permanent pressure to come back tomorrow. streakState also
+  // auto-spends a shield if yesterday slipped.
+  const streak = await streakState(customerId, sgDay());
   const player = await getPlayer(customerId);
 
   return (
     <AccountChrome
       email={customer.email}
       streak={streak.current}
+      todayDone={streak.doneToday}
+      shields={streak.shields}
       player={{
         level: player.level,
         title: player.title,

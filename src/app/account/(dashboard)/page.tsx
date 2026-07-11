@@ -8,13 +8,15 @@ import {
   dailyPicks,
   toPublicDaily,
   sgDay,
-  computeStreak,
+  streakState,
 } from "@/lib/server/study";
 import { computeRisk } from "@/lib/server/risk";
 import { getScoreHistory } from "@/lib/server/progress";
 import { DailyQuiz, type NextUpItem } from "@/components/daily-quiz";
 import { GettingStarted, type StartStep } from "@/components/getting-started";
 import { TierPill } from "@/components/heat";
+import { QuestBoard, type BossInfo } from "@/components/quest-board";
+import { HomeBase } from "@/components/home-base";
 
 export const metadata: Metadata = { title: "Today" };
 
@@ -74,10 +76,7 @@ export default async function TodayPage() {
       prisma.subjectGoal.count({ where: { customerId } }),
     ]);
 
-  const streak = computeStreak(
-    dayRows.map((r) => r.day),
-    today
-  );
+  const streak = await streakState(customerId, today);
   const todayRow = dayRows.find((r) => r.day === today) ?? null;
 
   const picks = (await dailyPicks(customerId, subjects, today, !todayRow)).map(toPublicDaily);
@@ -88,6 +87,7 @@ export default async function TodayPage() {
   // isn't confident yet, across every owned subject.
   let focusTopic: { topic: string; tier: "very-high" | "high" | "moderate" | "watch"; subjectName: string } | null =
     null;
+  let boss: BossInfo | null = null;
   let best = -1;
   for (const r of risks) {
     for (const t of r.topics) {
@@ -95,6 +95,14 @@ export default async function TodayPage() {
       if (t.atRisk > best) {
         best = t.atRisk;
         focusTopic = { topic: t.topic, tier: t.tier, subjectName: r.name };
+        // The weekly boss IS the biggest at-risk topic; its HP falls as the
+        // topic's study-plan status climbs toward Confident (3 steps).
+        boss = {
+          topic: t.topic,
+          subjectName: r.name,
+          tier: t.tier,
+          hpPct: Math.round(((3 - t.status) / 3) * 100),
+        };
       }
       break; // topics are sorted by atRisk desc — first unfinished is the subject's best
     }
@@ -254,6 +262,12 @@ export default async function TodayPage() {
 
   return (
     <div className="space-y-8">
+      <HomeBase
+        todayDone={streak.doneToday}
+        streak={streak.current}
+        dueMistakes={unresolvedMistakes}
+      />
+
       {/* Mission brief */}
       <div>
         <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -273,52 +287,8 @@ export default async function TodayPage() {
 
       <GettingStarted steps={steps} />
 
-      {/* The mission list */}
-      {openItems.length > 0 && (
-        <ol className="space-y-2">
-          {mission.map((m, i) => (
-            <li
-              key={i}
-              className={`flex flex-wrap items-center justify-between gap-3 rounded-2xl border px-5 py-4 ${
-                m.done ? "border-guarantee/40 bg-surface opacity-70" : "border-hairline bg-surface"
-              }`}
-            >
-              <span className="flex min-w-0 items-start gap-3">
-                <span
-                  aria-hidden="true"
-                  className={`mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full text-xs font-bold ${
-                    m.done ? "bg-guarantee/20 text-guarantee" : "bg-accent/15 text-accent"
-                  }`}
-                >
-                  {m.done ? "✓" : i + 1}
-                </span>
-                <span className="min-w-0">
-                  <span
-                    className={`block font-medium ${m.done ? "text-body line-through" : "text-ink"}`}
-                  >
-                    {m.title}
-                    <span className="ml-2 font-mono text-xs font-normal text-body">
-                      ~{m.minutes} min
-                    </span>
-                    <span className="ml-2 rounded-full bg-accent/10 px-2 py-0.5 font-mono text-[10px] font-medium text-accent">
-                      {m.xp}
-                    </span>
-                  </span>
-                  <span className="text-xs text-body">{m.detail}</span>
-                </span>
-              </span>
-              {!m.done && (
-                <Link
-                  href={m.href}
-                  className="shrink-0 text-sm font-medium text-accent hover:underline"
-                >
-                  {m.cta} →
-                </Link>
-              )}
-            </li>
-          ))}
-        </ol>
-      )}
+      {/* The mission list — quest board in the app, checklist on the web */}
+      {openItems.length > 0 && <QuestBoard mission={mission} boss={boss} />}
 
       {/* The daily three, in place */}
       <div id="daily" className="scroll-mt-20">

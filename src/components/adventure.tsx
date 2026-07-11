@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { TILE, isWalkable, buildWorld, type World, type WorldSubject } from "@/lib/game/world";
 import { MONSTERS } from "@/lib/game";
+import { emitGame, emitFx, useHud } from "@/lib/game/fx";
 
 // ── Game-Boy-style overworld ───────────────────────────────────────────────
 // Canvas tile engine: walk the town, cross tall grass for random battles,
@@ -162,8 +163,14 @@ export function Adventure({ subjects, cleared: initialCleared }: { subjects: Wor
 
   const [cleared, setCleared] = useState<Set<string>>(new Set(initialCleared));
   const [toast, setToast] = useState<string | null>(null);
-  const [battle, setBattle] = useState<{ subject: WorldSubject; question: PublicQuestion; monster: string } | null>(null);
+  const [battle, setBattle] = useState<{ subject: WorldSubject; question: PublicQuestion; monster: string; shiny: boolean } | null>(null);
   const [gym, setGym] = useState<WorldSubject | null>(null);
+  // Session log (combo + battle report). Combo is celebration-only — XP stays
+  // server-authoritative and capped.
+  const [combo, setCombo] = useState(0);
+  const [wins, setWins] = useState(0);
+  const [gymsCleared, setGymsCleared] = useState(0);
+  const hudState = useHud();
 
   const showToast = useCallback((msg: string) => {
     setToast(msg);
@@ -172,6 +179,7 @@ export function Adventure({ subjects, cleared: initialCleared }: { subjects: Wor
 
   const applyGame = useCallback(
     (game: GameResult | null, prefix: string) => {
+      emitGame(game, { x: window.innerWidth / 2, y: window.innerHeight * 0.35 });
       if (game && game.xpGained > 0) {
         showToast(game.leveledUp ? `${prefix} +${game.xpGained} XP · ⬆️ Level ${game.level}!` : `${prefix} +${game.xpGained} XP`);
       } else if (prefix) {
@@ -219,7 +227,11 @@ export function Adventure({ subjects, cleared: initialCleared }: { subjects: Wor
         modeRef.current = "walk";
         return;
       }
-      setBattle({ subject: s, question, monster: WILD[Math.floor(Math.random() * WILD.length)] });
+      // 1-in-16 shiny: pure cosmetic sparkle, never a reward — the audience
+      // is minors and randomness must stay flavour, not economy.
+      const shiny = Math.random() < 1 / 16;
+      emitFx({ type: shiny ? "shiny" : "encounter" });
+      setBattle({ subject: s, question, monster: WILD[Math.floor(Math.random() * WILD.length)], shiny });
     },
     [fetchQueue]
   );
@@ -365,6 +377,71 @@ export function Adventure({ subjects, cleared: initialCleared }: { subjects: Wor
     dirRef.current = null;
   }, []);
 
+  // ── Shareable battle report ──────────────────────────────────────────────
+  // Canvas-drawn card: session wins + level + wordmark. PDPA: no name, no
+  // email — nothing personal beyond a level number.
+  const shareReport = useCallback(async () => {
+    const W = 640;
+    const H = 800;
+    const cv = document.createElement("canvas");
+    cv.width = W;
+    cv.height = H;
+    const c = cv.getContext("2d")!;
+    c.imageSmoothingEnabled = false;
+    c.fillStyle = "#161c26";
+    c.fillRect(0, 0, W, H);
+    // pixel border
+    c.fillStyle = "#ffdc00";
+    for (let i = 0; i < W; i += 32) {
+      c.fillRect(i, 0, 16, 8);
+      c.fillRect(i + 16, H - 8, 16, 8);
+    }
+    c.fillStyle = "#2f3a4d";
+    c.fillRect(24, 24, W - 48, H - 48);
+    c.fillStyle = "#161c26";
+    c.fillRect(28, 28, W - 56, H - 56);
+    // big ghost (the drawGhost sprite, scaled 8×)
+    c.save();
+    c.translate(W / 2 - 64, 90);
+    c.scale(8, 8);
+    drawGhost(c, 0, 0, "down", 0);
+    c.restore();
+    const center = (txt: string, y: number, font: string, col: string) => {
+      c.font = font;
+      c.textAlign = "center";
+      c.fillStyle = col;
+      c.fillText(txt, W / 2, y);
+    };
+    center("BATTLE REPORT", 260, "bold 28px monospace", "#ffdc00");
+    if (hudState) {
+      center(`LV ${hudState.level} · ${hudState.title.toUpperCase()}`, 300, "bold 20px monospace", "#eef2f7");
+    }
+    center(`⚔️ Monsters defeated: ${wins}`, 380, "22px monospace", "#eef2f7");
+    center(`🏅 Gyms cleared this session: ${gymsCleared}`, 420, "22px monospace", "#eef2f7");
+    center(`🗓 ${new Date().toLocaleDateString("en-SG", { day: "numeric", month: "short", year: "numeric" })}`, 460, "18px monospace", "#aeb8c6");
+    center("Every battle is a real exam question.", 560, "16px monospace", "#aeb8c6");
+    center("STUDY HQ — studylah.education", 620, "bold 18px monospace", "#ffdc00");
+
+    const blob: Blob | null = await new Promise((resolve) => cv.toBlob(resolve, "image/png"));
+    if (!blob) return;
+    const file = new File([blob], "studyhq-battle-report.png", { type: "image/png" });
+    const nav = navigator as Navigator & { canShare?: (d: ShareData) => boolean };
+    if (nav.share && nav.canShare?.({ files: [file] })) {
+      try {
+        await nav.share({ files: [file], title: "Study HQ battle report" });
+        return;
+      } catch {
+        // user cancelled — fall through to download
+      }
+    }
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "studyhq-battle-report.png";
+    a.click();
+    URL.revokeObjectURL(url);
+  }, [hudState, wins, gymsCleared]);
+
   const closeMenu = useCallback(() => {
     modeRef.current = "walk";
     setBattle(null);
@@ -409,6 +486,16 @@ export function Adventure({ subjects, cleared: initialCleared }: { subjects: Wor
         </div>
       </div>
 
+      {wins + gymsCleared > 0 && (
+        <button
+          type="button"
+          onClick={() => void shareReport()}
+          className="w-full rounded-xl border border-hairline bg-surface px-4 py-2.5 text-sm font-medium text-body hover:border-accent hover:text-ink"
+        >
+          📸 Share today&apos;s battle report
+        </button>
+      )}
+
       {/* Gym roster */}
       <div className="flex flex-wrap gap-2">
         {world.gyms.map((g) => {
@@ -433,6 +520,17 @@ export function Adventure({ subjects, cleared: initialCleared }: { subjects: Wor
           subject={battle.subject}
           question={battle.question}
           monster={battle.monster}
+          shiny={battle.shiny}
+          combo={combo}
+          onOutcome={(correct) => {
+            emitFx({ type: correct ? "correct" : "wrong" });
+            if (correct) {
+              setWins((w) => w + 1);
+              setCombo((c) => c + 1);
+            } else {
+              setCombo(0);
+            }
+          }}
           onDone={applyGame}
           onClose={closeMenu}
         />
@@ -441,7 +539,10 @@ export function Adventure({ subjects, cleared: initialCleared }: { subjects: Wor
         <GymOverlay
           subject={gym}
           fetchQuestions={fetchQueue}
-          onCleared={(key) => setCleared((c) => new Set(c).add(key))}
+          onCleared={(key) => {
+            setCleared((c) => new Set(c).add(key));
+            setGymsCleared((g) => g + 1);
+          }}
           onDone={applyGame}
           onClose={closeMenu}
         />
@@ -484,12 +585,18 @@ function BattleOverlay({
   subject,
   question,
   monster,
+  shiny,
+  combo,
+  onOutcome,
   onDone,
   onClose,
 }: {
   subject: WorldSubject;
   question: PublicQuestion;
   monster: string;
+  shiny: boolean;
+  combo: number;
+  onOutcome: (correct: boolean) => void;
   onDone: (game: GameResult | null, prefix: string) => void;
   onClose: () => void;
 }) {
@@ -511,20 +618,42 @@ function BattleOverlay({
       const data = (await res.json()) as { correct: boolean; correctAnswer: string; workedSolution: string; game: GameResult | null };
       setResult(data);
       setPhase("result");
-      onDone(data.game, data.correct ? `⚔️ ${m.name} defeated!` : "");
+      onOutcome(data.correct);
+      const comboNow = data.correct ? combo + 1 : 0;
+      onDone(
+        data.game,
+        data.correct
+          ? comboNow >= 3
+            ? `🔥 COMBO ×${comboNow}! ${m.name} defeated!`
+            : `⚔️ ${m.name} defeated!`
+          : ""
+      );
     } finally {
       setBusy(false);
     }
   }
 
   return (
-    <Overlay title="⚔️ A wild monster appears!">
+    <Overlay title={shiny ? "✨ A SHINY monster appears!" : "⚔️ A wild monster appears!"}>
       <div className="flex items-center gap-3">
-        <span aria-hidden="true" className="text-4xl">{m.emoji}</span>
+        <span
+          aria-hidden="true"
+          className={`fx-hero text-4xl ${shiny ? "drop-shadow-[0_0_10px_rgba(255,220,0,0.9)]" : ""}`}
+        >
+          {m.emoji}
+        </span>
         <div>
-          <p className="font-display font-bold text-ink">{m.name}</p>
+          <p className="font-display font-bold text-ink">
+            {shiny && <span className="text-accent">✨ Shiny </span>}
+            {m.name}
+          </p>
           <p className="text-xs text-body">{subject.name} · {question.topic}</p>
         </div>
+        {combo >= 2 && (
+          <span className="ml-auto rounded bg-accent/15 px-2 py-1 font-pixel text-[9px] text-accent">
+            COMBO ×{combo}
+          </span>
+        )}
       </div>
       <p className="mt-4 font-medium text-ink">{question.stem}</p>
 

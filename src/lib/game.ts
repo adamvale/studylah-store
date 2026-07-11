@@ -140,6 +140,27 @@ export const MONSTERS: Record<string, MonsterDef> = {
 
 export const MONSTER_HP = 2; // consecutive correct re-tests to banish
 
+// ── "Almost there" pull ───────────────────────────────────────────────────
+// The next thing levelling up actually GETS you — shown under XP bars and in
+// the level-up ceremony so tomorrow always has a reason.
+const UNLOCKS: [number, string][] = [
+  [3, "your ghost earns its headband"],
+  [5, "the “Streak Keeper” title"],
+  [7, "your ghost earns a cape"],
+  [10, "the “Topic Tamer” title"],
+  [12, "your ghost earns reading glasses"],
+  [16, "your ghost earns the crown"],
+  [20, "your ghost starts to glow"],
+  [25, "the final title: “Grand Scholar of 2026”"],
+];
+
+export function nextUnlock(level: number): { level: number; what: string } | null {
+  for (const [lv, what] of UNLOCKS) {
+    if (lv > level) return { level: lv, what };
+  }
+  return null;
+}
+
 // ── Ghost companion stages ────────────────────────────────────────────────
 // The companion grows with level; accessories stack.
 export function ghostStage(level: number): {

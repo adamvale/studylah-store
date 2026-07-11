@@ -158,11 +158,26 @@ commerce in-shell, `CommerceGate` wraps add-subjects + referrals pages.
 **Game shell**: inside the native app the account area renders as a game
 app, not a website — an inline root-layout script stamps `html[data-native]`
 pre-paint, `AccountChrome` (`account-chrome.tsx`) swaps the web dashboard
-for a HUD (ghost/level/XP/streak) + bottom tab bar (Missions/World/Battle/
-Bestiary/More), the site header returns null on `/account*` in-shell, the
-footer is CSS-hidden, `/account/more` is the fifth tab (campaign/stats/
-timer/loot/settings/blog + legal + sign out), and the dashboard `template.tsx`
-gives game-style screen transitions. Web rendering is untouched.
+for a HUD (living ghost/level/animated XP bar/streak flame/shields) + a
+pixel-icon bottom tab bar (Missions/World/Battle/Bestiary/More), the site
+header returns null on `/account*` in-shell, the footer is CSS-hidden,
+`/account/more` is the fifth tab, and the dashboard `template.tsx` gives
+screen-swap transitions. Web rendering is untouched.
+**The juice layer** (native only): `src/lib/game/fx.ts` is the event bus —
+every graded response calls `emitGame()` client-side, which drives XP
+fly-ups, the animated HUD (client store synced to the server's totalXp),
+full-screen level-up/badge ceremonies with confetti (`game-fx.tsx`), and
+synthesized chiptune SFX (`src/lib/game/sound.ts`, WebAudio, zero assets,
+mute toggle in the HUD). Pixel identity: `pixel-icons.tsx` + Press Start 2P
+(`--font-pixel`, numbers/labels only). Today = Home Base scene
+(`home-base.tsx`, speaking ghost) + quest board with weekly boss
+(`quest-board.tsx`, boss = biggest marks-at-risk topic, HP = study-plan
+status). Bestiary = monster-dex collection (`monster-dex.tsx`). Adventure:
+shiny variants (1/16, cosmetic only), combo streaks (celebration only — XP
+stays server-capped), canvas-drawn shareable battle report (no personal
+data). **Streak shields** (`StreakShield` table): earned every 5th
+consecutive day (max 2, `streakState()` in study.ts auto-spends one on a
+single missed day) — earned by effort only, never bought.
 Builds run on **Codemagic** (`codemagic.yaml`, manual workflows; iOS needs
 the `studylah-asc` integration, Android the `studylah_keystore`).
 **`DEPLOY-APP.md` is the complete store playbook** — Firebase, APNs key,

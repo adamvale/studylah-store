@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Inter } from "next/font/google";
+import { Archivo, Inter, Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import { PricingProvider } from "@/lib/pricing-context";
@@ -36,6 +36,14 @@ const archivo = Archivo({
   variable: "--font-archivo",
   subsets: ["latin"],
   weight: ["600", "700", "800", "900"],
+});
+
+// The game voice: used ONLY for numbers and short game labels (HUD, level-up
+// ceremony, tab bar) — body text stays Inter for readability.
+const pressStart = Press_Start_2P({
+  variable: "--font-press-start",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -103,7 +111,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${archivo.variable} h-full antialiased`}
+      className={`${inter.variable} ${archivo.variable} ${pressStart.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
         <script dangerouslySetInnerHTML={{ __html: NATIVE_STAMP }} />

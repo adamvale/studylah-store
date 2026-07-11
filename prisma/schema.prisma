@@ -74,6 +74,7 @@ model Customer {
   orders                Order[]
   referrals             Referral[]
   pushSubscriptions     PushSubscription[]
+  streakShields         StreakShield[]
 }
 
 // One FCM device token per native app install that enabled reminders
@@ -399,4 +400,20 @@ model Achievement {
 model Setting {
   key   String @id
   value String
+}
+
+// Streak insurance, earned by effort (every 5th consecutive daily-three day,
+// max 2 held). Spent automatically — and at most one per missed day — when
+// yesterday was missed but the day before wasn't, so a single slip doesn't
+// erase weeks of habit. Compliance: earned only, never bought.
+model StreakShield {
+  id         String   @id @default(cuid())
+  customerId String
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  earnedDay  String
+  spentDay   String?
+  createdAt  DateTime @default(now())
+
+  @@unique([customerId, earnedDay])
+  @@unique([customerId, spentDay])
 }

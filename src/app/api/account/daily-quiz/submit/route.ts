@@ -6,8 +6,9 @@ import {
   dailyPicks,
   sgDay,
   isCorrect,
-  computeStreak,
   calibrationFrom,
+  streakState,
+  MAX_SHIELDS,
 } from "@/lib/server/study";
 import { XP } from "@/lib/game";
 import {
@@ -177,14 +178,19 @@ export async function POST(request: Request) {
     }
   }
 
-  const rows = await prisma.dailyQuizDay.findMany({
-    where: { customerId },
-    select: { day: true },
-  });
-  const streak = computeStreak(
-    rows.map((r) => r.day),
-    today
-  );
+  const streak = await streakState(customerId, today);
+
+  // Every 5th consecutive day banks a streak shield (max held: 2) — the
+  // earned insurance that lets one missed day not erase weeks of habit.
+  let shieldEarned = false;
+  if (firstAttempt && streak.current > 0 && streak.current % 5 === 0 && streak.shields < MAX_SHIELDS) {
+    try {
+      await prisma.streakShield.create({ data: { customerId, earnedDay: today } });
+      shieldEarned = true;
+    } catch {
+      // unique(customerId, earnedDay) — already banked for this day
+    }
+  }
 
   // ── XP + badges (first attempt of the day only; every key dedupes) ──────
   let game: GamePayload | null = null;
@@ -254,6 +260,8 @@ export async function POST(request: Request) {
     score: correctCount,
     total: results.length,
     streak: streak.current,
+    shields: streak.shields + (shieldEarned ? 1 : 0),
+    shieldEarned,
     seededMistakes: firstAttempt
       ? results.filter((r) => !r.correct && !r.resurrected).length
       : 0,

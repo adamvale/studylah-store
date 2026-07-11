@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { PublicDailyQuestion } from "@/lib/server/study";
+import { emitGame, emitFx } from "@/lib/game/fx";
 
 type Confidence = "sure" | "unsure" | "guess";
 
@@ -42,6 +43,8 @@ interface SubmitResponse {
   streak: number;
   seededMistakes: number;
   clearedMistakes: number;
+  shields?: number;
+  shieldEarned?: boolean;
   game: GameResult | null;
 }
 
@@ -93,7 +96,11 @@ export function DailyQuiz({
         body: JSON.stringify({ answers, confidence }),
       });
       if (!res.ok) throw new Error();
-      setResult((await res.json()) as SubmitResponse);
+      const data = (await res.json()) as SubmitResponse;
+      setResult(data);
+      // The juice: fly-up + HUD bar + ceremonies + sounds (native shell).
+      emitFx({ type: data.score === data.total ? "correct" : data.score > 0 ? "blip" : "wrong" });
+      emitGame(data.game ?? null, { x: window.innerWidth / 2, y: window.innerHeight * 0.35 });
     } catch {
       setError("Couldn't mark that — check your connection and try again.");
     } finally {
@@ -117,6 +124,11 @@ export function DailyQuiz({
             {result.score === result.total && "🎉 "}
             {result.score}/{result.total}
           </p>
+          {result.score === result.total && (
+            <p className="fx-hero mt-2 font-pixel text-xs tracking-widest text-guarantee">
+              PERFECT!
+            </p>
+          )}
           <p className="mt-2 text-sm text-body">
             🔥 {result.streak}-day streak
             {result.seededMistakes > 0 && (
@@ -137,6 +149,11 @@ export function DailyQuiz({
               </>
             )}
           </p>
+          {result.shieldEarned && (
+            <p className="mt-3 text-sm font-medium text-trust">
+              🛡️ Streak shield earned — one missed day is now covered, automatically.
+            </p>
+          )}
           {result.game && result.game.xpGained > 0 && (
             <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-accent/15 px-4 py-1.5 font-mono text-sm font-bold text-accent">
               +{result.game.xpGained} XP

@@ -7,6 +7,7 @@ import { FORECAST_TABLES } from "@/lib/forecast-tables";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { ownedSubjects } from "@/lib/server/study";
 import { MistakeNotebook, type MistakeItem } from "@/components/mistake-notebook";
+import { MonsterDex, type DexCounts } from "@/components/monster-dex";
 
 export const metadata: Metadata = { title: "Mistakes" };
 
@@ -58,8 +59,19 @@ export default async function MistakesPage() {
         ).map((t) => t.topic);
   }
 
+  // Dex counts: species (the WHY) × at-large / banished.
+  const dexMap = new Map<string, DexCounts>();
+  for (const r of rows) {
+    const entry = dexMap.get(r.reason) ?? { reason: r.reason, atLarge: 0, banished: 0 };
+    if (r.resolved) entry.banished++;
+    else entry.atLarge++;
+    dexMap.set(r.reason, entry);
+  }
+  const dexCounts = [...dexMap.values()];
+
   return (
     <div className="space-y-6">
+      <MonsterDex counts={dexCounts} />
       <div>
         <h2 className="font-display text-2xl font-bold text-ink">
           The bestiary <span className="text-body">(错题本)</span>

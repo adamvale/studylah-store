@@ -71,6 +71,48 @@ export function computeStreak(
   return { current, doneToday };
 }
 
+// Shield-aware streak: spent shields count as done-days, and if yesterday
+// was missed (single-day gap only) while an unspent shield is available, it
+// is spent automatically — the streak survives one slip. Earning happens in
+// the daily-quiz submit route (every 5th consecutive day, max 2 held).
+// Compliance: shields are earned by effort only, never bought.
+export const MAX_SHIELDS = 2;
+
+export async function streakState(
+  customerId: string,
+  today: string
+): Promise<{ current: number; doneToday: boolean; shields: number }> {
+  const [dayRows, shieldRows] = await Promise.all([
+    prisma.dailyQuizDay.findMany({ where: { customerId }, select: { day: true } }),
+    prisma.streakShield.findMany({ where: { customerId } }),
+  ]);
+  const days = new Set(dayRows.map((r) => r.day));
+  for (const s of shieldRows) if (s.spentDay) days.add(s.spentDay);
+
+  // Auto-spend: exactly yesterday missing, the day before present.
+  const yesterday = addDays(today, -1);
+  const dayBefore = addDays(today, -2);
+  if (!days.has(yesterday) && days.has(dayBefore)) {
+    const unspent = shieldRows.find((s) => !s.spentDay);
+    if (unspent) {
+      try {
+        await prisma.streakShield.update({
+          where: { id: unspent.id },
+          data: { spentDay: yesterday },
+        });
+        unspent.spentDay = yesterday;
+      } catch {
+        // concurrent spend (unique customerId+spentDay) — another request won
+      }
+      days.add(yesterday);
+    }
+  }
+
+  const streak = computeStreak([...days], today);
+  const shields = shieldRows.filter((s) => !s.spentDay).length;
+  return { ...streak, shields };
+}
+
 // --- Daily question selection -------------------------------------------
 // Deterministic per (customer, day): the same questions all day, different
 // across days, spread across owned subjects. Recomputable at submit time, so
