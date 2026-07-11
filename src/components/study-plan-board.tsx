@@ -133,6 +133,51 @@ export function StudyPlanBoard({
           {xpToast}
         </p>
       )}
+      {/* The campaign — always visible, one map per subject */}
+      {subjects.length > 0 && (
+        <section className="rounded-2xl border border-hairline bg-surface p-5">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 className="font-display text-lg font-bold text-ink">
+              🗺️ The campaign
+            </h3>
+            <p className="font-mono text-xs text-body">
+              clear the fog before exam day
+            </p>
+          </div>
+          <div className={`mt-4 grid gap-8 ${subjects.length > 1 ? "sm:grid-cols-2" : ""}`}>
+            {subjects.map((subject) => {
+              const total = subject.topics.length;
+              const cleared = subject.topics.filter(
+                (t) => (progress[keyOf(subject, t.topic)] ?? 0) >= 3
+              ).length;
+              const pct = total === 0 ? 0 : Math.round((cleared / total) * 100);
+              return (
+                <div key={`map-${subject.level}/${subject.slug}`}>
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <p className="text-sm font-medium text-ink">
+                      {subject.name}{" "}
+                      <span className="font-mono text-xs font-normal text-body">
+                        {subject.levelShort}
+                      </span>
+                    </p>
+                    <span className="font-mono text-xs text-body">
+                      {cleared}/{total} · {pct}% clear
+                    </span>
+                  </div>
+                  <div className="mt-2">
+                    <CampaignMap
+                      topics={subject.topics}
+                      statusFor={(t) => progress[keyOf(subject, t)] ?? 0}
+                      onSelect={(t) => void cycle(subject, t)}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
       {/* This week */}
       <section className="rounded-2xl border border-accent/40 bg-surface p-5">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -263,14 +308,7 @@ export function StudyPlanBoard({
                 </span>
               </span>
             </summary>
-            <div className="border-t border-hairline px-5 pt-5">
-              <CampaignMap
-                topics={subject.topics}
-                statusFor={(t) => progress[keyOf(subject, t)] ?? 0}
-                onSelect={(t) => void cycle(subject, t)}
-              />
-            </div>
-            <div className="space-y-2 px-5 py-4">
+            <div className="space-y-2 border-t border-hairline px-5 py-4">
               {subject.topics.map((topic) => (
                 <div
                   key={topic.topic}
