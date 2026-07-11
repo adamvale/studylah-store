@@ -122,9 +122,9 @@ export function DailyQuiz({
             {result.seededMistakes > 0 && (
               <>
                 {" · "}
-                {result.seededMistakes} saved to your{" "}
+                {result.seededMistakes} new monster{result.seededMistakes === 1 ? "" : "s"} in your{" "}
                 <Link href="/account/mistakes" className="font-medium text-accent underline">
-                  mistake notebook
+                  bestiary
                 </Link>
               </>
             )}
@@ -132,7 +132,7 @@ export function DailyQuiz({
               <>
                 {" · "}
                 <span className="font-medium text-guarantee">
-                  {result.clearedMistakes} mistake{result.clearedMistakes === 1 ? "" : "s"} cleared for good 🎉
+                  {result.clearedMistakes} monster{result.clearedMistakes === 1 ? "" : "s"} banished 🏆
                 </span>
               </>
             )}
@@ -188,7 +188,7 @@ export function DailyQuiz({
               <span className="flex items-center gap-2">
                 {r.resurrected && (
                   <span className="rounded-full bg-violet/15 px-2 py-0.5 text-xs font-medium text-violet">
-                    ↻ re-test
+                    ⚔️ monster attack
                   </span>
                 )}
                 <span
@@ -202,12 +202,12 @@ export function DailyQuiz({
             </div>
             {r.clearedNow && (
               <p className="mt-2 text-sm font-medium text-guarantee">
-                Cleared ✓ — answered right twice, so it leaves your notebook.
+                🏆 Banished — beaten twice. It doesn&apos;t come back.
               </p>
             )}
             {r.resurrected && r.correct && !r.clearedNow && (
               <p className="mt-2 text-sm text-body">
-                Right this time — one more correct re-test and it clears for good.
+                ⚔️ Wounded! One more correct hit and it&apos;s banished for good.
               </p>
             )}
             {!r.correct && (
@@ -312,7 +312,7 @@ export function DailyQuiz({
             <span className="flex items-center gap-2">
               {q.resurrected && (
                 <span className="rounded-full bg-violet/15 px-2 py-0.5 text-xs font-medium text-violet">
-                  ↻ from your mistakes
+                  ⚔️ a monster returns
                 </span>
               )}
               <span className="font-mono text-xs text-body">

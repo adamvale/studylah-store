@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { MISTAKE_REASONS, REASON_LABEL } from "@/lib/server/mistakes";
+import { MONSTERS, MONSTER_HP } from "@/lib/game";
 
 export interface MistakeItem {
   id: string;
@@ -16,6 +17,9 @@ export interface MistakeItem {
   source: string;
   note: string | null;
   resolved: boolean;
+  clearStreak: number;
+  nextResurfaceAt: string | null;
+  canRetest: boolean;
   createdAt: string;
 }
 
@@ -39,6 +43,7 @@ export function MistakeNotebook({
   const [items, setItems] = useState<MistakeItem[]>(initial);
   const [filter, setFilter] = useState<Filter>("review");
   const [showAdd, setShowAdd] = useState(false);
+  const [xpToast, setXpToast] = useState<string | null>(null);
 
   const counts = useMemo(
     () => ({
@@ -65,6 +70,17 @@ export function MistakeNotebook({
         body: JSON.stringify(body),
       });
       if (!res.ok) throw new Error();
+      const data = (await res.json()) as {
+        game?: { xpGained: number; leveledUp: boolean; level: number } | null;
+      };
+      if (data.game && data.game.xpGained > 0) {
+        setXpToast(
+          data.game.leveledUp
+            ? `+${data.game.xpGained} XP · ⬆️ Level ${data.game.level}!`
+            : `+${data.game.xpGained} XP — monster identified`
+        );
+        setTimeout(() => setXpToast(null), 3000);
+      }
     } catch {
       setItems(prev); // roll back
     }
@@ -83,6 +99,14 @@ export function MistakeNotebook({
 
   return (
     <div className="space-y-6">
+      {xpToast && (
+        <p
+          role="status"
+          className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full border border-accent/50 bg-night px-5 py-2.5 font-mono text-sm font-bold text-accent shadow-lg"
+        >
+          {xpToast}
+        </p>
+      )}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap gap-1">
           {(
@@ -158,6 +182,46 @@ export function MistakeNotebook({
                     : "added"}
                 </span>
               </div>
+              {(() => {
+                const monster = MONSTERS[item.reason] ?? MONSTERS.unset;
+                const hpLeft = Math.max(MONSTER_HP - item.clearStreak, 0);
+                const respawn = item.nextResurfaceAt
+                  ? Math.ceil(
+                      (new Date(item.nextResurfaceAt).getTime() - Date.now()) /
+                        (24 * 60 * 60 * 1000)
+                    )
+                  : null;
+                return (
+                  <div className="mt-3 flex flex-wrap items-center gap-3 rounded-xl border border-hairline bg-night px-4 py-2.5">
+                    <span aria-hidden="true" className="text-2xl">
+                      {item.resolved ? "🏆" : monster.emoji}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-sm font-medium text-ink">
+                        {item.resolved ? `${monster.name} — banished` : monster.name}
+                      </span>
+                      <span className="block text-xs text-body">
+                        {item.resolved ? "Beaten twice. It doesn't come back." : monster.tag}
+                      </span>
+                    </span>
+                    {!item.resolved && item.canRetest && (
+                      <span className="shrink-0 text-right">
+                        <span aria-label={`${hpLeft} of ${MONSTER_HP} HP left`} className="block text-sm">
+                          {"❤️".repeat(hpLeft)}
+                          {"🖤".repeat(MONSTER_HP - hpLeft)}
+                        </span>
+                        <span className="block text-[10px] text-body">
+                          {respawn !== null && respawn <= 0
+                            ? "prowling your daily three"
+                            : respawn !== null
+                            ? `returns in ~${respawn} day${respawn === 1 ? "" : "s"}`
+                            : "waiting"}
+                        </span>
+                      </span>
+                    )}
+                  </div>
+                );
+              })()}
               <p className="mt-2 text-sm text-ink">{item.stem}</p>
 
               {(item.myAnswer || item.correctAnswer) && (
@@ -179,10 +243,14 @@ export function MistakeNotebook({
               {item.note && <p className="mt-2 text-sm italic text-body">{item.note}</p>}
 
               <div className="mt-4 flex flex-wrap items-center gap-2">
+                {item.reason === "unset" && !item.resolved && (
+                  <span className="text-xs font-medium text-ink">Identify it:</span>
+                )}
                 {MISTAKE_REASONS.map((r) => (
                   <button
                     key={r}
                     type="button"
+                    title={REASON_LABEL[r]}
                     onClick={() => void patch(item.id, { reason: r })}
                     className={`rounded-full border px-2.5 py-1 text-xs transition-colors ${
                       item.reason === r
@@ -190,7 +258,7 @@ export function MistakeNotebook({
                         : "border-hairline text-body hover:text-ink"
                     }`}
                   >
-                    {REASON_LABEL[r]}
+                    {MONSTERS[r].emoji} {MONSTERS[r].name}
                   </button>
                 ))}
                 <span className="ml-auto flex items-center gap-3">
@@ -199,7 +267,7 @@ export function MistakeNotebook({
                     onClick={() => void patch(item.id, { resolved: !item.resolved })}
                     className="text-xs font-medium text-accent hover:underline"
                   >
-                    {item.resolved ? "Reopen" : "Mark resolved"}
+                    {item.resolved ? "Revive it" : "Banish by hand"}
                   </button>
                   <button
                     type="button"
@@ -280,6 +348,9 @@ function AddMistakeForm({
         source: "manual",
         note: note.trim() || null,
         resolved: false,
+        clearStreak: 0,
+        nextResurfaceAt: null,
+        canRetest: false,
         createdAt: new Date().toISOString(),
       });
     } catch {

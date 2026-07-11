@@ -38,6 +38,9 @@ export default async function MistakesPage() {
     source: r.source,
     note: r.note,
     resolved: r.resolved,
+    clearStreak: r.clearStreak,
+    nextResurfaceAt: r.nextResurfaceAt ? r.nextResurfaceAt.toISOString() : null,
+    canRetest: Boolean(r.questionId),
     createdAt: r.createdAt.toISOString(),
   }));
 
@@ -58,11 +61,14 @@ export default async function MistakesPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="font-display text-2xl font-bold text-ink">Mistake notebook</h2>
+        <h2 className="font-display text-2xl font-bold text-ink">
+          The bestiary <span className="text-body">(错题本)</span>
+        </h2>
         <p className="mt-1 text-sm text-body">
-          Every question you miss, in one place — auto-saved from your daily
-          three and readiness checks, plus anything you add from school papers.
-          Classify why you lost the mark, then clear them before the exam.
+          Every mistake is a monster, and its species is WHY you lost the mark.
+          Identify each one, then beat it twice in your daily three to banish it
+          for good. Auto-captured from your daily practice and readiness checks
+          — add your own from school papers.
         </p>
       </div>
 

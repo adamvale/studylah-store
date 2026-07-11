@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { TierPill, type ForecastTier } from "@/components/heat";
+import { CampaignMap } from "@/components/campaign-map";
 
 export interface PlanTopic {
   topic: string;
@@ -252,7 +253,7 @@ export function StudyPlanBoard({
                   />
                 </span>
                 <span className="font-mono text-xs text-body">
-                  {confident}/{total}
+                  {confident}/{total} · {pct}% clear
                 </span>
                 <span
                   aria-hidden="true"
@@ -262,7 +263,14 @@ export function StudyPlanBoard({
                 </span>
               </span>
             </summary>
-            <div className="space-y-2 border-t border-hairline px-5 py-4">
+            <div className="border-t border-hairline px-5 pt-5">
+              <CampaignMap
+                topics={subject.topics}
+                statusFor={(t) => progress[keyOf(subject, t)] ?? 0}
+                onSelect={(t) => void cycle(subject, t)}
+              />
+            </div>
+            <div className="space-y-2 px-5 py-4">
               {subject.topics.map((topic) => (
                 <div
                   key={topic.topic}

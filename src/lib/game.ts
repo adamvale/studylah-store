@@ -93,6 +93,53 @@ export const XP = {
   diagnosticBest: 10, // new personal best on a subject
 } as const;
 
+// ── The bestiary ──────────────────────────────────────────────────────────
+// Every mistake is a monster; its species is WHY the mark was lost (the
+// notebook's reason field). Monsters have 2 HP — two consecutive correct
+// re-tests in the daily three banish them (the resurrection mechanic).
+
+export interface MonsterDef {
+  name: string;
+  emoji: string;
+  tag: string; // what it does to you
+  beat: string; // how to fight it
+}
+
+export const MONSTERS: Record<string, MonsterDef> = {
+  unset: {
+    name: "Unknown Spirit",
+    emoji: "❓",
+    tag: "Unidentified — you can't fight what you haven't named.",
+    beat: "Classify why you lost the mark and it takes its true form.",
+  },
+  careless: {
+    name: "Careless Imp",
+    emoji: "😈",
+    tag: "Steals marks you already own.",
+    beat: "Slow down on the final step. Re-read the question before answering.",
+  },
+  concept: {
+    name: "Concept Wraith",
+    emoji: "👻",
+    tag: "The dangerous one — it wears carelessness as a disguise.",
+    beat: "Re-learn the idea from your notes, then let the re-test come to you.",
+  },
+  method: {
+    name: "Method Golem",
+    emoji: "🗿",
+    tag: "Heavy and slow — it blocks the working, not the idea.",
+    beat: "Drill the working structure until the steps are automatic.",
+  },
+  time: {
+    name: "Time Vampire",
+    emoji: "🧛",
+    tag: "Feeds on your final ten minutes.",
+    beat: "Timed practice. The rehearsal clock is garlic.",
+  },
+};
+
+export const MONSTER_HP = 2; // consecutive correct re-tests to banish
+
 // ── Ghost companion stages ────────────────────────────────────────────────
 // The companion grows with level; accessories stack.
 export function ghostStage(level: number): {
