@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import {
   TILE,
   PORTAL,
+  ROOF,
   walkable,
   buildRegion,
   type Zone,
@@ -32,8 +33,6 @@ interface PublicQuestion {
 }
 
 const TS = 16;
-const VW = 13;
-const VH = 15; // portrait-friendly viewport; letterboxes invisibly on desktop
 const MOVE_MS = 150;
 const ENCOUNTER = 0.14;
 const WILD = ["careless", "concept", "method", "time"] as const;
@@ -45,6 +44,31 @@ const noopSub = () => () => {};
 const clientTrue = () => true;
 const serverFalse = () => false;
 
+// ── Viewport: the tile grid matches the real screen aspect ────────────────
+// Shorter screen side ≈ 13 tiles, the longer side fills to the same ratio —
+// with object-cover on the canvas there are NO letterbox bars. Quantised
+// snapshot string keeps useSyncExternalStore referentially stable.
+function viewSnapshot(): string {
+  if (typeof window === "undefined") return "13x15";
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  if (h >= w) {
+    const rows = Math.max(13, Math.min(28, Math.round((13 * h) / w)));
+    return `13x${rows}`;
+  }
+  const cols = Math.max(13, Math.min(30, Math.round((13 * w) / h)));
+  return `${cols}x13`;
+}
+const viewServer = () => "13x15";
+function subscribeView(cb: () => void): () => void {
+  window.addEventListener("resize", cb);
+  window.addEventListener("orientationchange", cb);
+  return () => {
+    window.removeEventListener("resize", cb);
+    window.removeEventListener("orientationchange", cb);
+  };
+}
+
 // ── Strikes: choosing your move = choosing your stakes ─────────────────────
 const STRIKES = [
   { id: "jab", name: "Quick Jab", desc: "1 dmg · miss costs 1 ❤", dmg: 1, cost: 1 },
@@ -53,8 +77,10 @@ const STRIKES = [
 ] as const;
 type StrikeId = (typeof STRIKES)[number]["id"];
 
-// ── Pixel tileset ──────────────────────────────────────────────────────────
-function makeTileset(): Record<number, HTMLCanvasElement> {
+// ── Pixel tileset v2 ───────────────────────────────────────────────────────
+// Two animation frames (water waves, swaying grass, pulsing portals) of
+// hand-drawn original pixels — no external assets, nothing licensed.
+function makeTileset(f: number): Record<number, HTMLCanvasElement> {
   const out: Record<number, HTMLCanvasElement> = {};
   const mk = (draw: (c: CanvasRenderingContext2D) => void) => {
     const cv = document.createElement("canvas");
@@ -68,78 +94,144 @@ function makeTileset(): Record<number, HTMLCanvasElement> {
     c.fillStyle = col;
     c.fillRect(x, y, w, h);
   };
+
   const grass = (c: CanvasRenderingContext2D) => {
-    rect(c, 0, 0, TS, TS, "#4a9d52");
-    rect(c, 3, 4, 2, 1, "#3f8a47");
-    rect(c, 10, 9, 2, 1, "#3f8a47");
-    rect(c, 6, 12, 2, 1, "#57ad5f");
+    rect(c, 0, 0, TS, TS, "#4e9d54");
+    rect(c, 0, 0, 8, 8, "#4a9750");
+    rect(c, 8, 8, 8, 8, "#4a9750");
+    for (const [x, y] of [[2, 3], [11, 2], [6, 6], [13, 10], [3, 12], [9, 14]] as const) {
+      rect(c, x, y, 2, 1, "#419047");
+    }
+    rect(c, 5, 10, 1, 1, "#63b46a");
+    rect(c, 12, 5, 1, 1, "#63b46a");
   };
   out[TILE.GRASS] = mk(grass);
+
   out[TILE.TALL] = mk((c) => {
     grass(c);
-    c.fillStyle = "#2f6d38";
-    for (const x of [1, 5, 9, 13]) {
-      c.fillRect(x, 8, 2, 6);
-      c.fillRect(x + 1, 6, 1, 3);
+    const sway = f ? 1 : 0;
+    for (const bx of [1, 5, 9, 13]) {
+      rect(c, bx, 8, 2, 7, "#2f6d38");
+      rect(c, bx + 1, 8, 1, 7, "#3b8746");
+      rect(c, bx + sway, 5, 1, 4, "#2f6d38");
+      rect(c, bx + 1 - sway, 4, 1, 2, "#79d47a");
     }
-    rect(c, 2, 6, 1, 1, "#6fca6a");
-    rect(c, 10, 6, 1, 1, "#6fca6a");
   });
+
   out[TILE.TREE] = mk((c) => {
     grass(c);
-    rect(c, 7, 11, 2, 4, "#7a4b28");
-    c.fillStyle = "#256b30";
+    c.fillStyle = "rgba(20,40,25,0.35)";
+    c.fillRect(3, 13, 10, 2);
+    rect(c, 7, 10, 3, 5, "#6b4423");
+    rect(c, 7, 10, 1, 5, "#523418");
+    c.fillStyle = "#1f5c2a";
     c.beginPath();
-    c.arc(8, 7, 6, 0, Math.PI * 2);
+    c.arc(8, 7, 6.5, 0, Math.PI * 2);
     c.fill();
-    c.fillStyle = "#2f7d3a";
+    c.fillStyle = "#2b7436";
     c.beginPath();
-    c.arc(6, 6, 4, 0, Math.PI * 2);
+    c.arc(7, 6, 5, 0, Math.PI * 2);
     c.fill();
+    c.fillStyle = "#3f8f4a";
+    c.beginPath();
+    c.arc(6, 5, 3, 0, Math.PI * 2);
+    c.fill();
+    rect(c, 5, 3, 1, 1, "#63b46a");
   });
+
   out[TILE.WATER] = mk((c) => {
-    rect(c, 0, 0, TS, TS, "#3b7dd8");
-    rect(c, 2, 4, 5, 1, "#6aa6f0");
-    rect(c, 9, 9, 5, 1, "#6aa6f0");
+    rect(c, 0, 0, TS, TS, "#2f6fc9");
+    rect(c, 0, 0, TS, 4, "#3b7dd8");
+    const o = f ? 3 : 0;
+    rect(c, 1 + o, 4, 5, 1, "#7fb2f0");
+    rect(c, 8 - o + 3, 9, 5, 1, "#7fb2f0");
+    rect(c, 3 + o, 13, 4, 1, "#5e97e3");
+    rect(c, 12 - o, 2, 2, 1, "#a9ccf7");
   });
+
   out[TILE.PATH] = mk((c) => {
     rect(c, 0, 0, TS, TS, "#d9c48a");
-    rect(c, 3, 3, 1, 1, "#c9b070");
-    rect(c, 11, 7, 1, 1, "#c9b070");
-    rect(c, 6, 12, 1, 1, "#c9b070");
+    rect(c, 0, 0, TS, 1, "#e5d4a1");
+    for (const [x, y] of [[3, 4], [11, 7], [6, 12], [13, 13]] as const) {
+      rect(c, x, y, 2, 1, "#c4ac72");
+    }
+    rect(c, 8, 2, 1, 1, "#b89f66");
   });
+
   out[TILE.WALL] = mk((c) => {
-    rect(c, 0, 0, TS, TS, "#9aa3af");
-    c.fillStyle = "#7c8593";
-    c.fillRect(0, 5, TS, 1);
-    c.fillRect(0, 11, TS, 1);
-    c.fillRect(5, 0, 1, 5);
-    c.fillRect(10, 6, 1, 5);
+    rect(c, 0, 0, TS, TS, "#e2d9c8");
+    rect(c, 0, 0, TS, 1, "#f0e8d8");
+    rect(c, 0, 14, TS, 2, "#c9bda6");
+    rect(c, 0, 7, TS, 1, "#cfc3ac");
+    // window
+    rect(c, 5, 3, 6, 7, "#8a7a5f");
+    rect(c, 6, 4, 4, 5, "#2c3a52");
+    rect(c, 6, 4, 2, 2, "#6ea0ff");
   });
+
+  out[ROOF] = mk((c) => {
+    rect(c, 0, 0, TS, TS, "#b0503a");
+    rect(c, 0, 0, TS, 2, "#d98a5f");
+    for (const y of [5, 9, 13]) {
+      rect(c, 0, y, TS, 1, "#8f3e2d");
+    }
+    for (const [x, y] of [[3, 3], [10, 7], [6, 11]] as const) {
+      rect(c, x, y, 2, 1, "#c96a4b");
+    }
+  });
+
   out[TILE.DOOR] = mk((c) => {
-    rect(c, 0, 0, TS, TS, "#9aa3af");
-    rect(c, 0, 0, TS, 3, "#ffdc00");
-    rect(c, 3, 4, 10, 12, "#3a2f4a");
-    rect(c, 5, 7, 6, 9, "#221b2e");
+    rect(c, 0, 0, TS, TS, "#e2d9c8");
+    rect(c, 0, 0, TS, 2, "#ffdc00");
+    rect(c, 0, 14, TS, 2, "#c9bda6");
+    rect(c, 3, 3, 10, 13, "#6b4423");
+    rect(c, 4, 4, 8, 12, "#3a2f4a");
+    rect(c, 5, 6, 6, 9, "#221b2e");
+    rect(c, 9, 10, 1, 1, "#ffdc00");
   });
+
   out[TILE.FLOWER] = mk((c) => {
     grass(c);
-    rect(c, 4, 5, 2, 2, "#ff7ab0");
-    rect(c, 10, 9, 2, 2, "#ffdc00");
+    rect(c, 3, 4, 3, 3, "#ff7ab0");
+    rect(c, 4, 5, 1, 1, "#fff1f7");
+    rect(c, 10, 9, 3, 3, "#ffdc00");
+    rect(c, 11, 10, 1, 1, "#b8860b");
+    if (f) rect(c, 8, 3, 1, 1, "#ffffff");
   });
+
   out[TILE.SIGN] = mk((c) => {
     grass(c);
-    rect(c, 7, 8, 2, 6, "#7a4b28");
-    rect(c, 3, 3, 10, 6, "#b98a4e");
+    rect(c, 7, 9, 2, 6, "#6b4423");
+    rect(c, 2, 3, 12, 6, "#b98a4e");
+    rect(c, 2, 3, 12, 1, "#d0a668");
+    rect(c, 2, 8, 12, 1, "#8f6a3a");
+    rect(c, 4, 5, 8, 1, "#6b4423");
+    rect(c, 4, 7, 6, 1, "#6b4423");
   });
+
   out[PORTAL] = mk((c) => {
     grass(c);
-    rect(c, 3, 3, 10, 10, "#221b2e");
-    rect(c, 4, 4, 8, 8, "#3a2f4a");
-    rect(c, 6, 6, 4, 4, "#ffdc00");
-    rect(c, 7, 7, 2, 2, "#fff6bf");
+    rect(c, 2, 2, 12, 12, "#221b2e");
+    rect(c, 3, 3, 10, 10, "#3a2f4a");
+    if (f) {
+      rect(c, 5, 5, 6, 6, "#b89a00");
+      rect(c, 6, 6, 4, 4, "#ffdc00");
+      rect(c, 7, 7, 2, 2, "#fff6bf");
+    } else {
+      rect(c, 6, 6, 4, 4, "#ffdc00");
+      rect(c, 7, 7, 2, 2, "#ffffff");
+    }
   });
+
   return out;
+}
+
+// Soft shadow disc under every character — depth for free.
+function drawShadow(ctx: CanvasRenderingContext2D, x: number, y: number) {
+  ctx.fillStyle = "rgba(10, 14, 20, 0.32)";
+  ctx.beginPath();
+  ctx.ellipse(x + 8, y + 14.5, 5.5, 2, 0, 0, Math.PI * 2);
+  ctx.fill();
 }
 
 function drawGhost(
@@ -155,12 +247,16 @@ function drawGhost(
     ctx.fillStyle = col;
     ctx.fillRect(x + dx, y + dy + bob, w, h);
   };
+  // dark outline first, then the body inside it — sprites pop off the map
+  px(2, 1, 12, 11, "#1a2230");
+  px(2, 11, 12, 4, "#1a2230");
   px(3, 2, 10, 9, "#ffffff");
   px(3, 10, 10, 4, "#ffffff");
+  px(4, 3, 3, 2, "#f2f6fa");
   px(3, 13, 3, 2, frame ? "#ffffff" : "#e7ecf2");
   px(7, 13, 2, 2, "#ffffff");
   px(10, 13, 3, 2, frame ? "#e7ecf2" : "#ffffff");
-  // companion-spirit scarf
+  // companion-spirit scarf + trailing knot
   if (scarf) {
     px(3, 10, 10, 2, scarf);
     px(11, 12, 2, 3, scarf);
@@ -169,6 +265,8 @@ function drawGhost(
   const ey = facing === "up" ? -1 : 0;
   px(5 + ex, 6 + ey, 2, 2, "#161c26");
   px(9 + ex, 6 + ey, 2, 2, "#161c26");
+  px(5 + ex, 6 + ey, 1, 1, "#8fa3c0");
+  px(9 + ex, 6 + ey, 1, 1, "#8fa3c0");
 }
 
 type Dir = "up" | "down" | "left" | "right";
@@ -221,6 +319,8 @@ export function AdventureGame({
   const router = useRouter();
   const hudState = useHud();
   const mounted = useSyncExternalStore(noopSub, clientTrue, serverFalse);
+  const viewStr = useSyncExternalStore(subscribeView, viewSnapshot, viewServer);
+  const [viewCols, viewRows] = viewStr.split("x").map(Number);
 
   const [story, setStory] = useState<Set<string>>(new Set(initialStory));
   const [cleared, setCleared] = useState<Set<string>>(new Set(initialCleared));
@@ -255,7 +355,8 @@ export function AdventureGame({
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const zoneRef = useRef<Zone>(zone);
-  const tilesetRef = useRef<Record<number, HTMLCanvasElement> | null>(null);
+  const tilesetRef = useRef<Record<number, HTMLCanvasElement>[] | null>(null);
+  const viewRef = useRef({ cols: viewCols, rows: viewRows });
   const modeRef = useRef<"walk" | "ui">("walk");
   const scarfRef = useRef<string | undefined>(undefined);
   const player = useRef({
@@ -273,6 +374,23 @@ export function AdventureGame({
   useEffect(() => {
     zoneRef.current = zone;
   }, [zone]);
+  useEffect(() => {
+    viewRef.current = { cols: viewCols, rows: viewRows };
+  }, [viewCols, viewRows]);
+  // The game owns the screen: freeze the page behind it (no webpage scroll).
+  useEffect(() => {
+    const html = document.documentElement;
+    const body = document.body;
+    const prev = [html.style.overflow, body.style.overflow, body.style.overscrollBehavior] as const;
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    body.style.overscrollBehavior = "none";
+    return () => {
+      html.style.overflow = prev[0];
+      body.style.overflow = prev[1];
+      body.style.overscrollBehavior = prev[2];
+    };
+  }, []);
   useEffect(() => {
     scarfRef.current = starter ? starterById(starter)?.colour : undefined;
   }, [starter]);
@@ -523,7 +641,7 @@ export function AdventureGame({
 
   // ── main loop ────────────────────────────────────────────────────────────
   useEffect(() => {
-    tilesetRef.current = makeTileset();
+    tilesetRef.current = [makeTileset(0), makeTileset(1)];
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext("2d")!;
     ctx.imageSmoothingEnabled = false;
@@ -571,22 +689,34 @@ export function AdventureGame({
         animClock += dt;
       }
 
+      const { cols, rows } = viewRef.current;
+      if (canvas.width !== cols * TS || canvas.height !== rows * TS) {
+        canvas.width = cols * TS;
+        canvas.height = rows * TS;
+        ctx.imageSmoothingEnabled = false;
+      }
+
       const rx = p.moving ? p.fromX + (p.tx - p.fromX) * p.t : p.tx;
       const ry = p.moving ? p.fromY + (p.ty - p.fromY) * p.t : p.ty;
-      const camX = Math.max(0, Math.min(rx - VW / 2 + 0.5, z.width - VW));
-      const camY = Math.max(0, Math.min(ry - VH / 2 + 0.5, z.height - VH));
+      // small zones sit centred in an endless forest instead of a void
+      const camX =
+        z.width <= cols
+          ? (z.width - cols) / 2
+          : Math.max(0, Math.min(rx - cols / 2 + 0.5, z.width - cols));
+      const camY =
+        z.height <= rows
+          ? (z.height - rows) / 2
+          : Math.max(0, Math.min(ry - rows / 2 + 0.5, z.height - rows));
 
-      ctx.fillStyle = "#161c26";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      const ts = tilesetRef.current!;
+      const ts = tilesetRef.current![Math.floor(now / 550) % 2];
       const x0 = Math.floor(camX);
       const y0 = Math.floor(camY);
-      for (let vy = -1; vy <= VH; vy++) {
-        for (let vx = -1; vx <= VW; vx++) {
+      for (let vy = -1; vy <= rows; vy++) {
+        for (let vx = -1; vx <= cols; vx++) {
           const tx = x0 + vx;
           const ty = y0 + vy;
-          const tile = z.grid[ty]?.[tx];
-          if (tile === undefined) continue;
+          // outside the map = forest, so the screen is always fully drawn
+          const tile = z.grid[ty]?.[tx] ?? TILE.TREE;
           const sx = Math.round((tx - camX) * TS);
           const sy = Math.round((ty - camY) * TS);
           ctx.drawImage(ts[tile] ?? ts[TILE.GRASS], sx, sy);
@@ -597,19 +727,21 @@ export function AdventureGame({
           }
         }
       }
-      // NPCs
+      // NPCs (shadow disc + emoji sprite)
       ctx.font = "12px sans-serif";
       ctx.textAlign = "center";
       for (const n of z.npcs) {
         const sx = Math.round((n.x - camX) * TS);
         const sy = Math.round((n.y - camY) * TS);
         if (sx < -TS || sy < -TS || sx > canvas.width || sy > canvas.height) continue;
+        drawShadow(ctx, sx, sy);
         ctx.fillText(n.emoji, sx + TS / 2, sy + TS - 3);
       }
       // player
       const pfx = Math.round((rx - camX) * TS);
       const pfy = Math.round((ry - camY) * TS);
       const frame = p.moving ? Math.floor(animClock / 130) % 2 : 0;
+      drawShadow(ctx, pfx, pfy);
       drawGhost(ctx, pfx, pfy, p.facing, frame, scarfRef.current);
 
       raf = requestAnimationFrame(step);
@@ -913,12 +1045,19 @@ export function AdventureGame({
       {/* the world */}
       <canvas
         ref={canvasRef}
-        width={VW * TS}
-        height={VH * TS}
-        className="h-full w-full object-contain"
+        width={viewCols * TS}
+        height={viewRows * TS}
+        className="h-full w-full touch-none object-cover"
         style={{ imageRendering: "pixelated" }}
         aria-label="Fog Frontier overworld — walk with the D-pad, talk with A, grass hides wild battles"
       />
+
+      {/* atmosphere: drifting fog + vignette (pure CSS, zero assets) */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+        <span className="ff-fog ff-fog-a" />
+        <span className="ff-fog ff-fog-b" />
+      </div>
+      <div className="ff-vignette pointer-events-none absolute inset-0" aria-hidden />
 
       {/* top bar */}
       <div className="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between gap-2 p-3 pt-[max(env(safe-area-inset-top),12px)]">
@@ -964,7 +1103,7 @@ export function AdventureGame({
       )}
 
       {/* PUBG-style overlay controls */}
-      <div className="absolute bottom-0 left-0 p-4 pb-[max(env(safe-area-inset-bottom),16px)]">
+      <div className="absolute bottom-0 left-0 touch-none p-4 pb-[max(env(safe-area-inset-bottom),16px)]">
         <div className="grid grid-cols-3 grid-rows-3" style={{ width: 156 }}>
           <span />
           <PadBtn dir="up" onPress={setDir} onRelease={clearDir} label="▲" />
@@ -977,7 +1116,7 @@ export function AdventureGame({
           <span />
         </div>
       </div>
-      <div className="absolute bottom-0 right-0 flex items-end gap-3 p-5 pb-[max(env(safe-area-inset-bottom),20px)]">
+      <div className="absolute bottom-0 right-0 flex touch-none items-end gap-3 p-5 pb-[max(env(safe-area-inset-bottom),20px)]">
         <button
           type="button"
           aria-label="Cancel"

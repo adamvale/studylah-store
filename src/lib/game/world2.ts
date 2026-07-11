@@ -13,6 +13,7 @@ export { TILE } from "@/lib/game/world";
 export type { WorldSubject } from "@/lib/game/world";
 
 export const PORTAL = 9 as const;
+export const ROOF = 10 as const;
 
 export function walkable(t: number): boolean {
   return baseWalkable(t) || t === PORTAL;
@@ -95,8 +96,9 @@ function put(grid: number[][], x: number, y: number, t: number) {
 }
 
 function building(grid: number[][], x0: number, y0: number, w: number, h: number, doorX?: number) {
+  // roof rows above a plastered wall row — reads as a house, not a block
   for (let y = y0; y < y0 + h; y++) {
-    for (let x = x0; x < x0 + w; x++) put(grid, x, y, TILE.WALL);
+    for (let x = x0; x < x0 + w; x++) put(grid, x, y, y < y0 + h - 1 ? ROOF : TILE.WALL);
   }
   if (doorX !== undefined) put(grid, doorX, y0 + h - 1, TILE.DOOR);
 }
@@ -194,7 +196,7 @@ function buildHub(subjects: WorldSubject[], allGymsCleared: boolean, story: Set<
     {
       id: "villager2",
       x: 16,
-      y: 8,
+      y: 10,
       emoji: "👴",
       name: "Old Tan",
       lines: ["In my day the Fog took whole cohorts. Then Elder Maple taught us to write down every mistake."],
