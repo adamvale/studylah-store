@@ -17,7 +17,7 @@ workflows:
     max_build_duration: 45
     environment:
       java: 17
-      node: 20
+      node: 22
       android_signing:
         - studylah_keystore
     scripts:
@@ -52,7 +52,7 @@ workflows:
     integrations:
       app_store_connect: studylah-asc # ← the integration name you set in Codemagic
     environment:
-      node: 20
+      node: 22
       xcode: latest
       ios_signing:
         distribution_type: app_store
