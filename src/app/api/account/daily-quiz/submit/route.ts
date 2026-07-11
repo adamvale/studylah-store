@@ -7,7 +7,16 @@ import {
   sgDay,
   isCorrect,
   computeStreak,
+  calibrationFrom,
 } from "@/lib/server/study";
+import { XP } from "@/lib/game";
+import {
+  awardXp,
+  unlockBadge,
+  totalXpFor,
+  gamePayload,
+  type GamePayload,
+} from "@/lib/server/xp";
 
 // Grades today's daily three SERVER-SIDE. The selection is deterministic per
 // (customer, day) — including which mistake-notebook entries are due for a
@@ -177,7 +186,58 @@ export async function POST(request: Request) {
     today
   );
 
+  // ── XP + badges (first attempt of the day only; every key dedupes) ──────
+  let game: GamePayload | null = null;
+  if (firstAttempt) {
+    const xpBefore = await totalXpFor(customerId);
+    let gained = 0;
+    const newBadges: { id: string; name: string; emoji: string }[] = [];
+    const collect = (b: { id: string; name: string; emoji: string; xp: number } | null) => {
+      if (!b) return;
+      newBadges.push({ id: b.id, name: b.name, emoji: b.emoji });
+      gained += b.xp;
+    };
+
+    gained += await awardXp(
+      customerId,
+      "daily",
+      `daily:${today}`,
+      XP.dailyBase + XP.dailyPerCorrect * correctCount,
+      `${correctCount}/${results.length}`
+    );
+    for (const r of results) {
+      if (r.clearedNow && r.mistakeId) {
+        gained += await awardXp(customerId, "mistake_cleared", `mclear:${r.mistakeId}`, XP.mistakeCleared);
+      }
+    }
+
+    // Badges — cheap checks piggybacking data already in hand.
+    collect(await unlockBadge(customerId, "first-steps"));
+    const hourSg = Number(
+      new Date().toLocaleString("en-GB", { hour: "2-digit", hour12: false, timeZone: "Asia/Singapore" })
+    );
+    if (hourSg < 8) collect(await unlockBadge(customerId, "early-bird"));
+    for (const [n, id] of [[3, "streak-3"], [7, "streak-7"], [14, "streak-14"], [30, "streak-30"]] as const) {
+      if (streak.current >= n) collect(await unlockBadge(customerId, id));
+    }
+    const clearedTotal = await prisma.xpEvent.count({
+      where: { customerId, kind: "mistake_cleared" },
+    });
+    if (clearedTotal >= 1) collect(await unlockBadge(customerId, "slayer-1"));
+    if (clearedTotal >= 10) collect(await unlockBadge(customerId, "slayer-10"));
+    const calib = calibrationFrom(
+      await prisma.dailyQuizDay.findMany({ where: { customerId }, select: { detailJson: true } })
+    );
+    const sure = calib.buckets.find((b) => b.level === "sure");
+    if (sure && sure.n >= 20 && sure.pctRight >= 85) {
+      collect(await unlockBadge(customerId, "calibrated"));
+    }
+
+    game = await gamePayload(customerId, xpBefore, gained, newBadges);
+  }
+
   return NextResponse.json({
+    game,
     // Explicit whitelist — internal fields (mistakeId, raw `given`) stay here.
     results: results.map((r) => ({
       id: r.id,

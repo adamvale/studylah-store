@@ -37,6 +37,7 @@ export function StudyPlanBoard({
   weeksLeft: number | null;
 }) {
   const [progress, setProgress] = useState<Record<string, number>>(initialProgress);
+  const [xpToast, setXpToast] = useState<string | null>(null);
 
   async function cycle(subject: PlanSubject, topic: string) {
     const k = keyOf(subject, topic);
@@ -54,6 +55,21 @@ export function StudyPlanBoard({
         }),
       });
       if (!res.ok) throw new Error();
+      const data = (await res.json()) as {
+        game?: {
+          xpGained: number;
+          leveledUp: boolean;
+          level: number;
+          newBadges: { name: string; emoji: string }[];
+        } | null;
+      };
+      if (data.game && (data.game.xpGained > 0 || data.game.newBadges.length > 0)) {
+        const bits = [`+${data.game.xpGained} XP`];
+        if (data.game.leveledUp) bits.push(`⬆️ Level ${data.game.level}!`);
+        for (const b of data.game.newBadges) bits.push(`${b.emoji} ${b.name}`);
+        setXpToast(bits.join(" · "));
+        setTimeout(() => setXpToast(null), 3500);
+      }
     } catch {
       setProgress((p) => ({ ...p, [k]: (next + 3) % 4 })); // roll back
     }
@@ -108,6 +124,14 @@ export function StudyPlanBoard({
 
   return (
     <div className="space-y-6">
+      {xpToast && (
+        <p
+          role="status"
+          className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full border border-accent/50 bg-night px-5 py-2.5 font-mono text-sm font-bold text-accent shadow-lg"
+        >
+          {xpToast}
+        </p>
+      )}
       {/* This week */}
       <section className="rounded-2xl border border-accent/40 bg-surface p-5">
         <div className="flex flex-wrap items-baseline justify-between gap-2">

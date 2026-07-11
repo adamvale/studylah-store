@@ -84,6 +84,29 @@ function topicsWithTiers(s: OwnedSubject): { topic: string; tier: ForecastTier }
   }));
 }
 
+// The tier a single topic carries — used to price topic-progress XP by how
+// much the forecast says the topic matters. Null when the topic isn't in the
+// subject's table (e.g. a renamed label).
+export function tierForTopic(
+  level: string,
+  slug: string,
+  topic: string
+): ForecastTier | null {
+  const key = `${level}/${slug}`;
+  const table = FORECAST_TABLES[key];
+  const want = normTopic(topic);
+  if (table) {
+    const hit = table.find((t) => normTopic(t.topic) === want);
+    return hit ? hit.tier : null;
+  }
+  const family = getSubject(level as OwnedSubject["level"], slug)?.family;
+  if (!family) return null;
+  const hit = fullForecast(family as Parameters<typeof fullForecast>[0], key).find(
+    (t) => normTopic(t.topic) === want
+  );
+  return hit ? forecastTier(hit.probability) : null;
+}
+
 export async function computeRisk(customerId: string): Promise<SubjectRisk[]> {
   const subjects = await ownedSubjects(customerId);
   if (subjects.length === 0) return [];

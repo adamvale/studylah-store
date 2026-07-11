@@ -25,6 +25,16 @@ interface Result {
   clearedNow: boolean;
 }
 
+interface GameResult {
+  xpGained: number;
+  totalXp: number;
+  level: number;
+  title: string;
+  leveledUp: boolean;
+  progressPct: number;
+  newBadges: { id: string; name: string; emoji: string }[];
+}
+
 interface SubmitResponse {
   results: Result[];
   score: number;
@@ -32,6 +42,7 @@ interface SubmitResponse {
   streak: number;
   seededMistakes: number;
   clearedMistakes: number;
+  game: GameResult | null;
 }
 
 // Where to send the student after marking — the session chains instead of
@@ -126,7 +137,42 @@ export function DailyQuiz({
               </>
             )}
           </p>
+          {result.game && result.game.xpGained > 0 && (
+            <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-accent/15 px-4 py-1.5 font-mono text-sm font-bold text-accent">
+              +{result.game.xpGained} XP
+            </p>
+          )}
         </div>
+
+        {result.game?.leveledUp && (
+          <div className="rounded-2xl border border-accent bg-surface p-5 text-center">
+            <p className="font-display text-2xl font-black text-accent">
+              ⬆️ Level {result.game.level}
+            </p>
+            <p className="mt-1 font-display text-lg font-bold text-ink">
+              {result.game.title}
+            </p>
+            <p className="mt-1 text-xs text-body">
+              Your companion grew a little. Check the header. 👻
+            </p>
+          </div>
+        )}
+
+        {result.game && result.game.newBadges.length > 0 && (
+          <div className="rounded-2xl border border-hairline bg-surface p-5">
+            <p className="font-display font-bold text-ink">Badge{result.game.newBadges.length === 1 ? "" : "s"} unlocked</p>
+            <div className="mt-3 flex flex-wrap gap-3">
+              {result.game.newBadges.map((b) => (
+                <span
+                  key={b.id}
+                  className="inline-flex items-center gap-2 rounded-full border border-accent/50 bg-night px-3.5 py-1.5 text-sm text-ink"
+                >
+                  <span aria-hidden="true">{b.emoji}</span> {b.name}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
 
         {result.results.map((r) => (
           <div

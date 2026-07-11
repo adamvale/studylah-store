@@ -6,7 +6,9 @@ import { getCustomerId } from "@/lib/server/customer-session";
 import { ownedSubjects, calibrationFrom } from "@/lib/server/study";
 import { computeRisk } from "@/lib/server/risk";
 import { getScoreHistory, getCohortStanding } from "@/lib/server/progress";
+import { unlockedBadgeIds } from "@/lib/server/xp";
 import { RiskMeterSection, CalibrationCard } from "@/components/risk-meter";
+import { BadgeCase } from "@/components/game";
 import { ScoreHistorySection, type ProgressCard } from "@/components/score-history";
 
 export const metadata: Metadata = { title: "Progress" };
@@ -65,6 +67,7 @@ export default async function ProgressPage() {
   });
   const risks = await computeRisk(customerId);
   const calibration = calibrationFrom(dayRows);
+  const badges = await unlockedBadgeIds(customerId);
 
   if (subjects.length === 0) {
     return (
@@ -102,6 +105,8 @@ export default async function ProgressPage() {
       </div>
 
       <RiskMeterSection risks={risks} />
+
+      <BadgeCase unlocked={badges} />
 
       <CalibrationCard taps={calibration.taps} buckets={calibration.buckets} />
 

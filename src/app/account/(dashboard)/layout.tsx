@@ -3,7 +3,9 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { sgDay, computeStreak } from "@/lib/server/study";
+import { getPlayer } from "@/lib/server/xp";
 import { AccountNav } from "@/components/account-nav";
+import { PlayerHeader } from "@/components/game";
 import { InstallPrompt } from "@/components/pwa";
 
 export const metadata: Metadata = {
@@ -27,8 +29,8 @@ export default async function AccountDashboardLayout({
   });
   if (!customer) redirect("/account/login");
 
-  // The streak rides the shell so it's visible from every tab — quiet,
-  // permanent pressure to come back tomorrow.
+  // The streak + player level ride the shell so they're visible from every
+  // tab — quiet, permanent pressure to come back tomorrow.
   const dayRows = await prisma.dailyQuizDay.findMany({
     where: { customerId },
     select: { day: true },
@@ -37,26 +39,30 @@ export default async function AccountDashboardLayout({
     dayRows.map((r) => r.day),
     sgDay()
   );
+  const player = await getPlayer(customerId);
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
       {/* print:hidden — printed pages (e.g. the rescue plan) keep only content */}
       <div className="flex flex-wrap items-start justify-between gap-4 print:hidden">
         <div>
-          <h1 className="flex flex-wrap items-center gap-3 font-display text-4xl font-bold text-ink">
-            <span>
-              Study <span className="text-accent">HQ</span>
-            </span>
-            {streak.current > 0 && (
-              <span className="rounded-full bg-accent/10 px-3 py-1 font-mono text-sm font-medium text-accent">
-                🔥 {streak.current}
-              </span>
-            )}
+          <h1 className="font-display text-4xl font-bold text-ink">
+            Study <span className="text-accent">HQ</span>
           </h1>
           <p className="mt-1 text-sm text-body">
             Your PDFs, plan, practice and progress — signed in as{" "}
             <span className="font-medium text-ink">{customer.email}</span>
           </p>
+          <div className="mt-3">
+            <PlayerHeader
+              level={player.level}
+              title={player.title}
+              intoLevel={player.intoLevel}
+              needed={player.needed}
+              progressPct={player.progressPct}
+              streak={streak.current}
+            />
+          </div>
         </div>
         <form action="/api/account/logout" method="post">
           <button

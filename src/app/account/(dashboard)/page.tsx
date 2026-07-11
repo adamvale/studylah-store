@@ -42,6 +42,7 @@ function todayLabel(): string {
 interface MissionItem {
   done: boolean;
   minutes: number;
+  xp: string; // quest reward label, mirrors the server award rules
   title: string;
   detail: string;
   href: string;
@@ -107,6 +108,7 @@ export default async function TodayPage() {
   mission.push({
     done: Boolean(todayRow),
     minutes: 2,
+    xp: "+20–35 XP",
     title: "The daily three",
     detail: streak.doneToday
       ? `Done — ${todayRow?.correct ?? 0}/${todayRow?.answered ?? 3} today.`
@@ -120,6 +122,7 @@ export default async function TodayPage() {
     mission.push({
       done: false,
       minutes: 5,
+      xp: "+15 XP each",
       title: `Clear ${Math.min(unresolvedMistakes, 2)} from the mistake notebook`,
       detail: `${unresolvedMistakes} unresolved — each one is a mark leak with your name on it.`,
       href: "/account/mistakes",
@@ -130,6 +133,7 @@ export default async function TodayPage() {
     mission.push({
       done: false,
       minutes: 25,
+      xp: "+10 XP + topic XP",
       title: `One real session: ${focusTopic.topic}`,
       detail: `${focusTopic.subjectName} — your biggest marks-at-risk topic right now. Start the focus timer and work it.`,
       href: "/account/timer",
@@ -140,6 +144,7 @@ export default async function TodayPage() {
     mission.push({
       done: false,
       minutes: 7,
+      xp: "+15 XP (+10 on a best)",
       title: `Re-check ${stale.subjectName}`,
       detail: "It's been 2+ weeks since your last readiness check — see if the work moved the needle.",
       href: `/diagnostic/${stale.level}/${stale.slug}`,
@@ -150,6 +155,7 @@ export default async function TodayPage() {
     mission.push({
       done: false,
       minutes: 2,
+      xp: "unlocks pacing",
       title: "Add your paper dates",
       detail: "The pacing engine and rescue plan follow your real timetable once they know it.",
       href: "/account/study",
@@ -261,7 +267,7 @@ export default async function TodayPage() {
         <p className="mt-1 text-sm text-body">
           {openItems.length === 0
             ? "Mission complete. Come back tomorrow — the system resets at midnight."
-            : `Today's mission: ${openItems.length} thing${openItems.length === 1 ? "" : "s"}, about ${totalMinutes} minutes. Do them in order.`}
+            : `Today's quests: ${openItems.length}, about ${totalMinutes} minutes. Do them in order — the XP is real.`}
         </p>
       </div>
 
@@ -293,6 +299,9 @@ export default async function TodayPage() {
                     {m.title}
                     <span className="ml-2 font-mono text-xs font-normal text-body">
                       ~{m.minutes} min
+                    </span>
+                    <span className="ml-2 rounded-full bg-accent/10 px-2 py-0.5 font-mono text-[10px] font-medium text-accent">
+                      {m.xp}
                     </span>
                   </span>
                   <span className="text-xs text-body">{m.detail}</span>

@@ -350,6 +350,37 @@ model DiagnosticEvent {
   @@index([type])
 }
 
+// Game layer ("Clear the Fog") ---------------------------------------------
+
+// One row per XP award. Server-authoritative: XP is only ever granted inside
+// API routes when a real study action happens, and `sourceKey` is unique per
+// customer so no action can be farmed (re-doing it hits the unique index and
+// awards nothing). Level/title are derived from SUM(amount) at read time.
+model XpEvent {
+  id         String   @id @default(cuid())
+  customerId String
+  amount     Int
+  kind       String // daily | mistake_cleared | topic_up | diagnostic | focus | badge
+  sourceKey  String
+  meta       String?
+  createdAt  DateTime @default(now())
+
+  @@unique([customerId, sourceKey])
+  @@index([customerId])
+}
+
+// Unlocked badges. Definitions (names, emoji, hints) live in code
+// (src/lib/game.ts); this table only records who unlocked what, when.
+model Achievement {
+  id         String   @id @default(cuid())
+  customerId String
+  badgeId    String
+  unlockedAt DateTime @default(now())
+
+  @@unique([customerId, badgeId])
+  @@index([customerId])
+}
+
 // Operations -------------------------------------------------------------
 
 model Setting {

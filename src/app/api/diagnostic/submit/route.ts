@@ -4,6 +4,9 @@ import { getSubject, type Level } from "@/lib/catalogue";
 import { getDiagnosticSet } from "@/lib/diagnostic-questions";
 import { realTopCalls } from "@/lib/forecast-tables";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { ownedSubjects, sgDay } from "@/lib/server/study";
+import { XP } from "@/lib/game";
+import { awardXp, unlockBadge } from "@/lib/server/xp";
 import {
   bandFor,
   gradeAttempt,
@@ -83,6 +86,46 @@ export async function POST(request: Request) {
     },
   });
   await logDiagnosticEvent("diagnostic_complete", attempt.id, `${level}/${slug} ${score}/${totalMarks}`);
+
+  // ── XP for signed-in students (silent here; lands in Study HQ) ─────────
+  if (customerId) {
+    try {
+      await awardXp(
+        customerId,
+        "diagnostic",
+        `diag:${level}/${slug}:${sgDay()}`,
+        XP.diagnosticAttempt
+      );
+      // Personal-best bonus: strictly better % than any earlier attempt.
+      const pct = totalMarks === 0 ? 0 : Math.round((score / totalMarks) * 100);
+      const previous = await prisma.diagnosticAttempt.findMany({
+        where: { customerId, level, slug, id: { not: attempt.id } },
+        select: { score: true, totalMarks: true },
+      });
+      const bestBefore = previous.reduce(
+        (m, a) => Math.max(m, a.totalMarks === 0 ? 0 : Math.round((a.score / a.totalMarks) * 100)),
+        -1
+      );
+      if (previous.length > 0 && pct > bestBefore) {
+        await awardXp(customerId, "diagnostic", `diagbest:${level}/${slug}:${pct}`, XP.diagnosticBest);
+      }
+      // Full Recon: at least one attempt in every owned subject.
+      const owned = await ownedSubjects(customerId);
+      if (owned.length > 0) {
+        const attempted = await prisma.diagnosticAttempt.findMany({
+          where: { customerId },
+          select: { level: true, slug: true },
+          distinct: ["level", "slug"],
+        });
+        const have = new Set(attempted.map((a) => `${a.level}/${a.slug}`));
+        if (owned.every((s) => have.has(`${s.level}/${s.slug}`))) {
+          await unlockBadge(customerId, "full-recon");
+        }
+      }
+    } catch (e) {
+      console.error("diagnostic XP award failed", e); // never block the result
+    }
+  }
 
   return NextResponse.json({
     attemptId: attempt.id,

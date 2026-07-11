@@ -72,6 +72,7 @@ export function PomodoroTimer() {
   const [phase, setPhase] = useState<"focus" | "break">("focus");
   const [leftS, setLeftS] = useState(PRESETS[0].focus * 60);
   const [running, setRunning] = useState(false);
+  const [xpToast, setXpToast] = useState<string | null>(null);
   // Lazy initial read (guarded for SSR) rather than a set-state-in-effect load.
   // The chart is mount-gated below, so SSR renders nothing to mismatch.
   const [log, setLog] = useState<Log>(loadLog);
@@ -85,6 +86,27 @@ export function PomodoroTimer() {
     logRef.current = updated;
     saveLog(updated);
     setLog(updated);
+
+    // Report the completed block for XP (server caps at 4/day; failures are
+    // silent — the timer never depends on the network).
+    void fetch("/api/account/xp/focus", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ minutes: mins }),
+    })
+      .then(async (res) => {
+        if (!res.ok) return;
+        const data = (await res.json()) as { game?: { xpGained: number; leveledUp: boolean; level: number } | null };
+        if (data.game && data.game.xpGained > 0) {
+          setXpToast(
+            data.game.leveledUp
+              ? `+${data.game.xpGained} XP · ⬆️ Level ${data.game.level}!`
+              : `+${data.game.xpGained} XP — focus block banked`
+          );
+          setTimeout(() => setXpToast(null), 4000);
+        }
+      })
+      .catch(() => {});
   }
 
   useEffect(() => {
@@ -232,6 +254,12 @@ export function PomodoroTimer() {
             ))}
           </div>
         </div>
+      )}
+
+      {xpToast && (
+        <p className="mt-4 text-center font-mono text-sm font-bold text-accent" role="status">
+          {xpToast}
+        </p>
       )}
 
       <p className="mt-6 text-center text-xs text-body">
