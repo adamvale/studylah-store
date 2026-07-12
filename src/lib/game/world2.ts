@@ -35,6 +35,7 @@ export const HEARTH = 26 as const; // cosy fireplace (animated campfire)
 export const STALL = 27 as const; // market counter
 export const RUG = 28 as const; // decorative, walkable
 export const MAT = 29 as const; // the exit doormat inside a building
+export const LANTERN = 30 as const; // a lit beacon-lamp (the Lightbearer motif)
 
 const EXTRA_WALKABLE = new Set<number>([
   PORTAL, STAIRS, CAVE_FLOOR, FOGBANK, SAND, RUINS, BRIDGE, INT_FLOOR, RUG, MAT,
@@ -155,14 +156,17 @@ const INTERIOR_FURNITURE: Record<InteriorStyle, [number, number, number][]> = {
   study: [
     [2, 1, BOOKSHELF], [3, 1, BOOKSHELF], [5, 1, BOOKSHELF], [6, 1, BOOKSHELF],
     [7, 1, TELESCOPE], [4, 2, DESK],
+    [1, 6, LANTERN], [7, 6, LANTERN],
     [3, 4, RUG], [4, 4, RUG], [5, 4, RUG],
   ],
   home: [
     [2, 1, HEARTH], [6, 1, BOOKSHELF], [7, 2, DESK],
+    [1, 6, LANTERN], [7, 6, LANTERN],
     [3, 4, RUG], [4, 4, RUG], [5, 4, RUG],
   ],
   shop: [
     [2, 1, STALL], [4, 1, STALL], [6, 1, STALL],
+    [1, 6, LANTERN], [7, 6, LANTERN],
     [3, 4, RUG], [4, 4, RUG], [5, 4, RUG],
   ],
 };

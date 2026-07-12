@@ -25,6 +25,7 @@ import {
   STALL,
   RUG,
   MAT,
+  LANTERN,
   walkable,
   buildRegion,
   type Zone,
@@ -622,6 +623,24 @@ function drawSheetTile(
       ctx.fillStyle = "#8a6d3b";
       ctx.fillRect(sx + 3, sy + 10, 10, 4);
       break;
+    case LANTERN: {
+      intFloor(ctx, sx, sy, tx, ty);
+      // a lit beacon-lamp — the Lightbearer motif. Soft glow, gold flame that
+      // flickers on the 2-frame terrain clock.
+      ctx.fillStyle = "rgba(255, 220, 0, 0.14)";
+      ctx.beginPath();
+      ctx.arc(sx + 8, sy + 8, 8, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = "#3a2f4a"; // post
+      ctx.fillRect(sx + 7, sy + 9, 2, 5);
+      ctx.fillStyle = "#1a2230"; // lamp housing
+      ctx.fillRect(sx + 5, sy + 3, 6, 6);
+      ctx.fillStyle = f2 ? "#ffdc00" : "#ffb703"; // flame flicker
+      ctx.fillRect(sx + 7, sy + 4, 2, 4);
+      ctx.fillStyle = "#fff3b0";
+      ctx.fillRect(sx + 7, sy + 5, 1, 2);
+      break;
+    }
     default:
       grassBase();
   }
