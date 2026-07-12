@@ -437,3 +437,35 @@ model Duel {
   @@index([creatorId])
   @@index([challengerId])
 }
+
+// Game content bank. Authored in content/game-bank/*.md, seeded here by
+// seedGameBank() (idempotent). The runtime reads from these tables via the
+// server-only question-bank layer, so answer keys (correctJson,
+// workedSolution) live only in the database and never enter any JS bundle.
+model GameQuestion {
+  id              String  @id // stable "<slug>-g<n>" from the source file
+  level           String
+  slug            String
+  ord             Int     @default(0)
+  type            String  // "mcq" | "short"
+  topic           String
+  stem            String
+  optionsJson     String? // JSON array of option strings (mcq only)
+  correctJson     String  // JSON array: mcq = [optionIndex]; short = accepted[]
+  marks           Int     @default(1)
+  workedSolution  String
+  misconceptionTag String @default("unset")
+
+  @@index([level, slug])
+}
+
+model GameTeachingCard {
+  id       String @id @default(cuid())
+  level    String
+  slug     String
+  ord      Int    @default(0)
+  kind     String // definition | precision | qa | careless | sbq | poa
+  dataJson String // the card's remaining fields, verbatim from source
+
+  @@index([level, slug])
+}

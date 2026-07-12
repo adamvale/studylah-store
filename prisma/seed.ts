@@ -14,6 +14,7 @@ import {
 } from "../src/lib/catalogue";
 import { topForecast } from "../src/lib/topics";
 import { generateProductPdf } from "../src/lib/server/pdf-gen";
+import { parseGameBankDir } from "../scripts/game-bank-parse.mjs";
 
 const storageDir = path.resolve(
   process.cwd(),
@@ -221,6 +222,65 @@ async function importJsonLeads() {
   return imported;
 }
 
+// Seed the game content bank from content/game-bank/*.md. Idempotent: each
+// subject's rows are replaced wholesale, so edits, additions and removals all
+// take effect on re-run. If the folder is absent (e.g. a minimal deploy), it
+// no-ops and the runtime falls back to the hand-authored sets.
+async function seedGameBank(): Promise<{ subjects: number; questions: number; cards: number }> {
+  const dir = path.resolve(process.cwd(), "content", "game-bank");
+  let parsed: Array<{
+    level: string;
+    slug: string;
+    questions: Array<Record<string, unknown>>;
+    teaching: Array<{ ord: number; kind: string; data: unknown }>;
+  }>;
+  try {
+    parsed = parseGameBankDir(dir);
+  } catch (e) {
+    console.warn(`  game-bank: skipped (${(e as Error).message.split("\n")[0]})`);
+    return { subjects: 0, questions: 0, cards: 0 };
+  }
+
+  let questions = 0;
+  let cards = 0;
+  for (const subj of parsed) {
+    const { level, slug } = subj;
+    await prisma.$transaction([
+      prisma.gameQuestion.deleteMany({ where: { level, slug } }),
+      prisma.gameTeachingCard.deleteMany({ where: { level, slug } }),
+      prisma.gameQuestion.createMany({
+        data: subj.questions.map((q) => ({
+          id: q.id as string,
+          level,
+          slug,
+          ord: q.ord as number,
+          type: q.type as string,
+          topic: q.topic as string,
+          stem: q.stem as string,
+          optionsJson: q.options ? JSON.stringify(q.options) : null,
+          correctJson: JSON.stringify(q.correctKey),
+          marks: q.marks as number,
+          workedSolution: q.workedSolution as string,
+          misconceptionTag: q.misconceptionTag as string,
+        })),
+      }),
+      prisma.gameTeachingCard.createMany({
+        data: subj.teaching.map((c) => ({
+          id: `${level}-${slug}-t${c.ord}`,
+          level,
+          slug,
+          ord: c.ord,
+          kind: c.kind,
+          dataJson: JSON.stringify(c.data),
+        })),
+      }),
+    ]);
+    questions += subj.questions.length;
+    cards += subj.teaching.length;
+  }
+  return { subjects: parsed.length, questions, cards };
+}
+
 async function main() {
   // Snapshot before seeding, to detect the ephemeral-storage failure mode.
   const productsBefore = await prisma.product.count();
@@ -229,6 +289,7 @@ async function main() {
   const pdfs = await seedCatalogue();
   await seedDiscounts();
   await seedSettings();
+  const gb = await seedGameBank();
   const leads = await importJsonLeads();
 
   const counts = {
@@ -242,7 +303,8 @@ async function main() {
     `Seeded: ${counts.subjects} subjects, ${counts.products} products, ` +
       `${counts.productFiles} files (${pdfs} PDFs generated), ` +
       `${counts.discountCodes} discount codes, ` +
-      `${counts.leads} leads (${leads} imported from JSON stub).`
+      `${counts.leads} leads (${leads} imported from JSON stub), ` +
+      `game bank ${gb.subjects} subjects / ${gb.questions} questions / ${gb.cards} cards.`
   );
 
   // First boot regenerates every placeholder and that is expected. But

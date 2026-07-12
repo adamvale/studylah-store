@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getSubject, type Level } from "@/lib/catalogue";
-import { getDiagnosticSet } from "@/lib/diagnostic-questions";
+import { getQuestionSet } from "@/lib/server/question-bank";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { ownedSubjects } from "@/lib/server/study";
 
@@ -44,7 +44,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Own this subject to duel in it." }, { status: 403 });
   }
 
-  const set = getDiagnosticSet(level, slug);
+  const set = await getQuestionSet(level, slug);
   const mcqs = set?.questions.filter((q) => q.type === "mcq" && q.options?.length) ?? [];
   if (mcqs.length < DUEL_SIZE) {
     return NextResponse.json({ error: "Not enough questions for a duel here yet." }, { status: 400 });

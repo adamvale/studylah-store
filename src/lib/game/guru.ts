@@ -8,7 +8,7 @@ import {
   COMMAND_WORDS,
   POA_TEMPLATES,
 } from "@/lib/study/practice-content";
-import { IMPORTED_TEACHING, type ImportedCard } from "@/lib/generated/game-bank";
+import type { ImportedCard } from "@/lib/server/question-bank";
 
 // ─────────────────────────────────────────────────────────────────────────
 // The Subject Guru's lesson deck. Each owned subject has a Guru who TEACHES
@@ -100,11 +100,15 @@ function importedBeat(card: ImportedCard): LessonBeat | null {
 // Build a fresh short lesson (2–3 beats) for a subject's Guru. Imported author
 // content for the exact level+slug wins; otherwise the shared family library
 // is used. Either way the paired check-question enforces the depth.
-export function guruLesson(family: TopicFamily, level: Level, slug?: string): LessonBeat[] {
-  // Prefer the subject's own imported teaching cards.
-  const imported = slug ? IMPORTED_TEACHING[`${level}/${slug}`] : undefined;
-  if (imported && imported.length) {
-    const shuffled = [...imported].sort(() => Math.random() - 0.5);
+export function guruLesson(
+  family: TopicFamily,
+  level: Level,
+  cards?: ImportedCard[]
+): LessonBeat[] {
+  // Prefer the subject's own imported teaching cards (from the DB, passed in
+  // by the route); otherwise use the shared family library below.
+  if (cards && cards.length) {
+    const shuffled = [...cards].sort(() => Math.random() - 0.5);
     const picked = shuffled.map(importedBeat).filter((b): b is LessonBeat => b !== null);
     if (picked.length) return picked.slice(0, 3);
   }

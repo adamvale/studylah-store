@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getSubject, type Level } from "@/lib/catalogue";
-import { getDiagnosticSet } from "@/lib/diagnostic-questions";
+import { getQuestionSet } from "@/lib/server/question-bank";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { ownedSubjects, isCorrect } from "@/lib/server/study";
 import { awardXp, totalXpFor, gamePayload, type GamePayload } from "@/lib/server/xp";
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
   if (!owned.some((s) => s.level === level && s.slug === slug)) {
     return NextResponse.json({ error: "Own this subject to challenge its gym." }, { status: 403 });
   }
-  const set = getDiagnosticSet(level, slug);
+  const set = await getQuestionSet(level, slug);
   if (!set) {
     return NextResponse.json({ error: "No questions for this subject yet." }, { status: 404 });
   }

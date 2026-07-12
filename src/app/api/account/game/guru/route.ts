@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getSubject, type Level, type TopicFamily } from "@/lib/catalogue";
-import { getDiagnosticSet, type PublicQuestion } from "@/lib/diagnostic-questions";
+import { type PublicQuestion } from "@/lib/diagnostic-questions";
+import { getQuestionSet, getTeachingCards } from "@/lib/server/question-bank";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { ownedSubjects, sgDay, isCorrect } from "@/lib/server/study";
 import { awardXp, totalXpFor, gamePayload, type GamePayload } from "@/lib/server/xp";
@@ -25,15 +26,17 @@ export async function GET() {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }
   const owned = await ownedSubjects(customerId);
-  const gurus = owned
-    .filter((s) => familyCanTeach(s.family as TopicFamily))
-    .map((s) => {
-      const set = getDiagnosticSet(s.level, s.slug);
-      const canCheck = Boolean(
-        set?.questions.some((q) => q.type === "mcq" && q.options?.length)
-      );
-      return { level: s.level, slug: s.slug, name: s.name, family: s.family, canCheck };
-    });
+  const gurus = await Promise.all(
+    owned
+      .filter((s) => familyCanTeach(s.family as TopicFamily))
+      .map(async (s) => {
+        const set = await getQuestionSet(s.level, s.slug);
+        const canCheck = Boolean(
+          set?.questions.some((q) => q.type === "mcq" && q.options?.length)
+        );
+        return { level: s.level, slug: s.slug, name: s.name, family: s.family, canCheck };
+      })
+  );
   return NextResponse.json({ gurus });
 }
 
@@ -60,10 +63,11 @@ export async function PUT(request: Request) {
     return NextResponse.json({ error: "Enrol in this subject to study with its Guru." }, { status: 403 });
   }
 
-  const lesson = guruLesson(subject.family as TopicFamily, level, slug);
+  const cards = await getTeachingCards(level, slug);
+  const lesson = guruLesson(subject.family as TopicFamily, level, cards);
 
   // one sealed check-question from this subject's own set
-  const mcqs = getDiagnosticSet(level, slug)?.questions.filter(
+  const mcqs = (await getQuestionSet(level, slug))?.questions.filter(
     (q) => q.type === "mcq" && q.options?.length
   );
   let question: PublicQuestion | null = null;
@@ -102,7 +106,7 @@ export async function POST(request: Request) {
   if (!owned.some((s) => s.level === level && s.slug === slug)) {
     return NextResponse.json({ error: "Enrol in this subject to study with its Guru." }, { status: 403 });
   }
-  const question = getDiagnosticSet(level, slug)?.questions.find((q) => q.id === questionId);
+  const question = (await getQuestionSet(level, slug))?.questions.find((q) => q.id === questionId);
   if (!question) {
     return NextResponse.json({ error: "Unknown question." }, { status: 400 });
   }

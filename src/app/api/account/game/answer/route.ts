@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getSubject, type Level } from "@/lib/catalogue";
-import { getDiagnosticSet } from "@/lib/diagnostic-questions";
+import { getQuestionSet } from "@/lib/server/question-bank";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { ownedSubjects, sgDay, isCorrect } from "@/lib/server/study";
 import { MONSTERS } from "@/lib/game";
@@ -40,7 +40,7 @@ export async function POST(request: Request) {
   if (!owned.some((s) => s.level === level && s.slug === slug)) {
     return NextResponse.json({ error: "Own this subject to battle here." }, { status: 403 });
   }
-  const question = getDiagnosticSet(level, slug)?.questions.find((q) => q.id === questionId);
+  const question = (await getQuestionSet(level, slug))?.questions.find((q) => q.id === questionId);
   if (!question) {
     return NextResponse.json({ error: "Unknown question." }, { status: 400 });
   }

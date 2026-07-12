@@ -13,7 +13,7 @@ import {
 import { getPricing } from "@/lib/server/pricing-store";
 import { subjectCopy } from "@/lib/subject-copy";
 import { realTopCalls } from "@/lib/forecast-tables";
-import { getDiagnosticSet } from "@/lib/diagnostic-questions";
+import { getQuestionSet } from "@/lib/server/question-bank";
 import { DisclaimerBox } from "./disclaimer";
 import { ExamCountdown } from "./exam-countdown";
 import { HeatBar } from "./heat";
@@ -26,6 +26,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
   const forecast = realTopCalls(subject.level, subject.slug, 4);
   const pricing = await getPricing();
   const { alacartePrice } = pricing;
+  const hasQuiz = Boolean(await getQuestionSet(subject.level, subject.slug));
   const copy = subjectCopy(subject.level, subject.slug);
   const products = productsForSubject(subject);
 
@@ -155,7 +156,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
             </Link>
           </div>
 
-          {getDiagnosticSet(subject.level, subject.slug) && (
+          {hasQuiz && (
             <div className="mt-4 rounded-2xl border border-accent/40 bg-surface p-5">
               <p className="font-display text-base font-bold text-ink">
                 You know it&apos;s likely — but can you score it?

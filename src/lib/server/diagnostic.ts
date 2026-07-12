@@ -5,10 +5,10 @@
 import { prisma } from "../db";
 import { getSubject, type Level } from "../catalogue";
 import {
-  getDiagnosticSet,
   type DiagnosticProduct,
   type DiagnosticSet,
 } from "../diagnostic-questions";
+import { getQuestionSet } from "./question-bank";
 import { STANDARD_DISCLAIMER } from "../compliance";
 import { serverConfig } from "./config";
 import { emailLayout, sendEmail } from "./email";
@@ -201,7 +201,7 @@ async function referralCodeFor(email: string): Promise<string | null> {
 export async function sendResultsEmail(attemptId: string): Promise<boolean> {
   const attempt = await prisma.diagnosticAttempt.findUnique({ where: { id: attemptId } });
   if (!attempt?.email || !attempt.unlockedAt) return false;
-  const set = getDiagnosticSet(attempt.level, attempt.slug);
+  const set = await getQuestionSet(attempt.level, attempt.slug);
   const subject = getSubject(attempt.level as Level, attempt.slug);
   if (!set || !subject) return false;
 

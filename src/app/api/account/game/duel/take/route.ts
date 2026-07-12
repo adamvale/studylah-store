@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
-import { getDiagnosticSet } from "@/lib/diagnostic-questions";
+import { getQuestionSet } from "@/lib/server/question-bank";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { ownedSubjects, isCorrect } from "@/lib/server/study";
 import { awardXp, totalXpFor, gamePayload, type GamePayload } from "@/lib/server/xp";
@@ -48,7 +48,7 @@ export async function PUT(request: Request) {
     );
   }
   const already = myRole === "creator" ? duel.creatorScore !== null : duel.challengerScore !== null;
-  const set = getDiagnosticSet(duel.level as Level, duel.slug);
+  const set = await getQuestionSet(duel.level as Level, duel.slug);
   const ids = JSON.parse(duel.questionIdsJson) as string[];
   const questions = ids
     .map((id) => set?.questions.find((q) => q.id === id))
@@ -104,7 +104,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Your side is already sealed." }, { status: 409 });
   }
 
-  const set = getDiagnosticSet(duel.level as Level, duel.slug);
+  const set = await getQuestionSet(duel.level as Level, duel.slug);
   const ids = JSON.parse(duel.questionIdsJson) as string[];
   const results = ids.map((id) => {
     const q = set?.questions.find((qq) => qq.id === id);

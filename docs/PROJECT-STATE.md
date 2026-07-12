@@ -183,26 +183,32 @@ worked solution, and awards effort XP (`guru:<day>:<n>`, ATTEMPT 8 + PASS 8,
 daily cap 80). Compliance-safe: answer keys never leave the server pre-grade,
 XP rewards effort not grades, no cross-subject/level bleed.
 
-**Author content importer (UNBLOCKED):** the PDF author exports each subject's
-questions + teaching as Markdown (`content/game-bank/<level>__<slug>.md`:
+**Author content bank (DATABASE-BACKED):** the PDF author exports each
+subject's questions + teaching as Markdown (`content/game-bank/<level>__<slug>.md`:
 frontmatter + fenced ```yaml blocks, `type:` mcq|short questions with answer
-key + worked solution, `kind:` teaching cards). `node scripts/import-game-bank.mjs`
-parses them (js-yaml) into `src/lib/generated/game-bank.ts` (`IMPORTED_SETS`
-+ `IMPORTED_TEACHING`, AUTO-GENERATED — never hand-edit; re-run on new files).
-`getDiagnosticSet` prefers `IMPORTED_SETS` per exact level+slug (question ids
-`<slug>-g<n>`); `guruLesson(family, level, slug)` prefers `IMPORTED_TEACHING`,
-both falling back to the hand-authored `diagnostic-questions.ts` /
-`practice-content.ts` for undelivered subjects. So battles, duels, and Gurus
-all serve the author's real content the moment a file lands, still
-ownership-gated and level-exact. **ALL 22 subjects delivered & imported**
-(120 questions = 100 MCQ + 20 short, plus 50 teaching cards each → **2,640
-questions + 1,100 teaching cards**; generated file ~2.7 MB / 58k lines).
-Audited clean: every MCQ answer index in range, all worked solutions present,
-short-answer `accepted` all ASCII, no banned words, essay subjects delivered
-as MCQ/short recall (not open essays). Verified E2E over the HTTP routes
-(battles/guru serve `<slug>-g*`, grading + Unicode worked solutions resolve).
-To refresh any subject: replace its `.md`, re-run `node
-scripts/import-game-bank.mjs`, rebuild.
+key + worked solution, `kind:` teaching cards) — this stays the git-tracked
+source of truth. `scripts/game-bank-parse.mjs` parses it; **`seedGameBank()`
+in `prisma/seed.ts` upserts into the `GameQuestion` + `GameTeachingCard`
+tables** (indexed by level+slug), so `npm run db:seed` / `db:setup` (deploy)
+populates it idempotently — each subject's rows are replaced wholesale, so
+edits/additions/removals all take on re-seed. **ALL 22 subjects: 2,640
+questions (100 MCQ + 20 short each) + 1,100 teaching cards.** Question ids are
+level-qualified `<level>-<slug>-g<n>` (a-math/e-math/POA share a slug across
+levels, so the PK must include level).
+
+Runtime reads go through the **server-only** `src/lib/server/question-bank.ts`
+(`getQuestionSet` / `getTeachingCards`, in-process per-subject cache, falls
+back to the hand-authored `diagnostic-questions.ts` sets if a subject is
+unseeded). Because that module imports prisma it can never enter a client
+bundle — **answer keys physically cannot leak to the browser** (verified: zero
+`correctKey`/worked-solution content in `.next/static/chunks`). The old 2.7 MB
+generated `IMPORTED_SETS` module and the dead client import are gone; the ~13
+`getDiagnosticSet` call sites (all already async) now call `getQuestionSet`;
+`guruLesson(family, level, cards?)` takes DB teaching cards passed by the
+route. Audited clean (answer indices in range, worked solutions present,
+short-answer `accepted` ASCII, no banned words, essay subjects are MCQ/short
+recall). Verified E2E: battles/guru/grading read DB `<level>-<slug>-g*`.
+**To update content:** replace the `.md`, run `npm run db:seed`, restart.
 
 ## Fog Frontier — Duel Hall + playable heroes
 

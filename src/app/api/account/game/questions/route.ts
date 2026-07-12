@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getSubject, type Level } from "@/lib/catalogue";
-import { getDiagnosticSet, type PublicQuestion } from "@/lib/diagnostic-questions";
+import { type PublicQuestion } from "@/lib/diagnostic-questions";
+import { getQuestionSet } from "@/lib/server/question-bank";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { ownedSubjects } from "@/lib/server/study";
 
@@ -26,7 +27,7 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Own this subject to battle here." }, { status: 403 });
   }
 
-  const set = getDiagnosticSet(level, slug);
+  const set = await getQuestionSet(level, slug);
   if (!set) {
     return NextResponse.json({ error: "No questions for this subject yet." }, { status: 404 });
   }

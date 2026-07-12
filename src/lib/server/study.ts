@@ -1,9 +1,9 @@
 import { prisma } from "@/lib/db";
 import {
-  getDiagnosticSet,
   type DiagnosticQuestion,
   type PublicQuestion,
 } from "@/lib/diagnostic-questions";
+import { getQuestionSet } from "@/lib/server/question-bank";
 import { LEVELS, type Level } from "@/lib/catalogue";
 
 // Shared server helpers for the study suite (daily retrieval, mistakes, goals,
@@ -147,16 +147,16 @@ export interface DailyPick {
   mistakeId?: string;
 }
 
-export function pickDailyQuestions(
+export async function pickDailyQuestions(
   subjects: OwnedSubject[],
   customerId: string,
   day: string,
   excludeQuestionIds: Set<string> = new Set(),
   count: number = DAILY_COUNT
-): DailyPick[] {
+): Promise<DailyPick[]> {
   const pool: DailyPick[] = [];
   for (const s of subjects) {
-    const set = getDiagnosticSet(s.level, s.slug);
+    const set = await getQuestionSet(s.level, s.slug);
     if (!set) continue;
     for (const question of set.questions) {
       if (excludeQuestionIds.has(question.id)) continue;
@@ -225,7 +225,7 @@ export async function dailyPicks(
       if (resurrected.length >= MAX_RESURRECTIONS) break;
       if (!owned.has(`${m.level}/${m.slug}`)) continue;
       const subject = subjects.find((s) => s.level === m.level && s.slug === m.slug)!;
-      const set = getDiagnosticSet(m.level, m.slug);
+      const set = await getQuestionSet(m.level, m.slug);
       const question = set?.questions.find((q) => q.id === m.questionId);
       if (!question) continue;
       if (resurrected.some((r) => r.question.id === question.id)) continue;
@@ -234,7 +234,7 @@ export async function dailyPicks(
   }
 
   const exclude = new Set(resurrected.map((r) => r.question.id));
-  const fresh = pickDailyQuestions(
+  const fresh = await pickDailyQuestions(
     subjects,
     customerId,
     day,
