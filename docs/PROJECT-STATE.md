@@ -90,6 +90,13 @@ change, streak push, parent digest). Key engines:
    `https://www.studylah.education/...` URLs.
 6. Deleting a route leaves stale `.next/types` — remove the folder and
    rebuild rather than chasing ghost type errors.
+7. **iOS TestFlight rejects re-used build numbers** ("The bundle version must
+   be higher than the previously uploaded version"). `CFBundleVersion` comes
+   from `CURRENT_PROJECT_VERSION`, which the Capacitor template left at `1`.
+   The `ios-release` Codemagic workflow now **auto-stamps** it with the Unix
+   timestamp (`sed` on both pbxproj build configs, after `cap sync`) so every
+   upload is strictly higher — build numbers are never bumped by hand. Only
+   the user-facing `MARKETING_VERSION` (and Android `versionCode`) stay manual.
 
 ## Content & notation rules
 
@@ -381,17 +388,71 @@ data). **Streak shields** (`StreakShield` table): earned every 5th
 consecutive day (max 2, `streakState()` in study.ts auto-spends one on a
 single missed day) — earned by effort only, never bought.
 Builds run on **Codemagic** (`codemagic.yaml`, manual workflows; iOS needs
-the `studylah-asc` integration, Android the `studylah_keystore`).
+the `studylah-asc` integration, Android the `studylah_keystore`; the iOS
+workflow auto-stamps a unique build number — see gotcha #7).
+**True fullscreen**: `ios.contentInset: "never"` in `capacitor.config.ts`
+(was `"always"`, which left a black band under the status bar) — the webview
+extends under the notch and the UI pads itself with `env(safe-area-inset-*)` +
+`viewportFit: cover`. **Native-shell config changes (contentInset, build
+number, plugins, icons) only take effect on the next Codemagic build**, not a
+web deploy.
 **`DEPLOY-APP.md` is the complete store playbook** — Firebase, APNs key,
 listings, review notes, release runbook.
 
+## Fog Frontier — arcade UI + world polish (device-feedback pass)
+
+The overworld HUD and controls were reskinned to the **v3 arcade aesthetic**
+(neon panels, `.btn-pixel` hard-shadow buttons) in `adventure-game.tsx`:
+SCORE (XP + level title) / ROUND (zone · Singapore district) / LIVES (hearts)
+panels, mint/pink/gold on navy. The D-pad renders **inline SVG triangles, not
+emoji** — emoji are selectable text and long-press popped the iOS Copy/Look-Up
+bar; SVG has no text node (plus `touch-callout`/`user-select: none`). A **🎓
+Academy tab** in the HUD opens the Subject Gurus panel directly (no walk to
+the Sage).
+
+**Gugu** (the companion) is drawn at **half scale** and follows via a smooth
+sub-tile **distance-trail** (`trailRef`, fixed `GAP = 1.15` tiles,
+interpolated, resets on zone change) — the old "snap two tiles back" looked
+blocked. Sprite is the favicon-traced v2 `player_ghost.png`.
+
+**Singapore map** (`singapore.ts` + `singapore-map.tsx`): the corner minimap +
+tap-to-expand full map use the arcade palette (`SG_ARCADE`), map every game
+zone to a real district (`districtForZone`), and pin the **15 famous
+landmarks** (`LANDMARKS`: Marina Bay Sands, Merlion, Jewel Changi, Zoo…). The
+`sg_*.png` asset-based map from `SINGAPORE_MAP_INSTRUCTIONS` is NOT shipped —
+this is the SVG approximation of that intent.
+
+**Building interiors**: hub doors (`TILE.DOOR`) are portals into furnished
+rooms (`HUB_INTERIORS` + `buildInterior`, styles study/home/shop with
+BOOKSHELF/DESK/HEARTH/STALL/RUG/**LANTERN** tiles); step on the exit `MAT` to
+leave. Bug fixed this pass: `onArrive` only honoured portals on PORTAL tiles,
+so doors did nothing — it now resolves a portal on **any** tile (locked gates
+still block at the movement step). The `LANTERN` tile (a lit beacon-lamp, the
+Lightbearer motif) draws zone-aware bases (wood indoors, cave/sand in saga
+zones).
+
+**Test-unlock (device-local, safe on prod)**: `/account/adventure?unlock=1`
+sets `localStorage.studylah_unlock` → every zone/gate opens for that device
+only (`?unlock=0` clears it). Server ownership + gating are untouched, so real
+players are unaffected even with this shipped.
+
 ## Next
 
-**Scanned question-bank ingestion**: R2 for scans, Claude-vision OCR into
-structured questions, owner review queue in admin.
+- **Store deployment (the live blocker)**: iOS TestFlight upload was failing
+  on the re-used build number — now auto-stamped (gotcha #7), so the next
+  Codemagic `ios-release` run should reach TestFlight. Then: on-device pass of
+  the fullscreen + door + Guru-tab fixes, Android first build, store listings
+  + review submission. Requires a fresh Codemagic build to pick up the native
+  config changes (contentInset, build number).
+- **Content refresh is hands-off**: author edits `content/game-bank/*.md` →
+  `npm run db:seed` on deploy re-seeds. No code changes.
 
 ## Quiet backlog (raise only when the owner asks "what's pending")
 
+- **Lightbearer Saga** (`docs/STORY-CODEX.md`) is fully built; only the
+  Reading Room + Lantern Walk want an on-device walkthrough (Sunken Cells was
+  verified in-browser). Optional future art: the `sg_*.png` asset-based
+  Singapore map + `gugu_evolutions.png` showcase (asset shipped, not surfaced).
 - Biology (Science) companion PDF page 2 still shows Pure Biology's Paper 3
   spec; Vault covers vs site question counts mismatch (owner to confirm).
 - Referral terms + refund policy await real lawyer review.
