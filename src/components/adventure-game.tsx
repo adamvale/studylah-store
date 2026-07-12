@@ -24,6 +24,7 @@ import {
   buildingXY,
   ghostBlockX,
   npcBlockX,
+  guardianX,
   type Sheets,
   type NpcSprite,
   type GuardianName,
@@ -283,6 +284,48 @@ function drawShadow(ctx: CanvasRenderingContext2D, x: number, y: number) {
   ctx.fill();
 }
 
+// Level accessories painted over the walker cell (drawn at dy−8, 16×24).
+// Placeholder pixels until the v2 overlay sheets are commissioned —
+// positions mirror ghostStage() in src/lib/game.ts.
+function drawAccessories(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  level: number,
+  facing: string
+) {
+  const top = y - 8; // walker cell origin
+  const px = (dx: number, dy: number, w: number, h: number, col: string) => {
+    ctx.fillStyle = col;
+    ctx.fillRect(x + dx, top + dy, w, h);
+  };
+  if (level >= 3) {
+    // headband with a trailing knot
+    px(3, 6, 10, 2, "#ffdc00");
+    px(13, 6, 2, 3, "#ffdc00");
+  }
+  if (level >= 7 && facing !== "down") {
+    // cape peeks out behind the shoulders
+    px(2, 10, 2, 8, "#7c3aed");
+    px(12, 10, 2, 8, "#7c3aed");
+  }
+  if (level >= 12 && facing !== "up") {
+    // reading glasses on the eye line
+    px(4, 9, 3, 3, "#1a2230");
+    px(9, 9, 3, 3, "#1a2230");
+    px(5, 10, 1, 1, "#8fa3c0");
+    px(10, 10, 1, 1, "#8fa3c0");
+    px(7, 10, 2, 1, "#1a2230");
+  }
+  if (level >= 16) {
+    // the crown
+    px(5, 1, 6, 2, "#ffdc00");
+    px(5, 0, 1, 1, "#ffdc00");
+    px(8, 0, 1, 1, "#ffdc00");
+    px(10, 0, 1, 1, "#ffdc00");
+  }
+}
+
 function drawGhost(
   ctx: CanvasRenderingContext2D,
   x: number,
@@ -481,6 +524,10 @@ export function AdventureGame({
   const tilesetRef = useRef<Record<number, HTMLCanvasElement>[] | null>(null);
   const sheetsRef = useRef<Sheets | null>(null);
   const ghostVariantRef = useRef<string>("none");
+  const levelRef = useRef(1);
+  const clearedRef = useRef<Set<string>>(new Set(initialCleared));
+  const storyRef = useRef<Set<string>>(new Set(initialStory));
+  const npcFacingRef = useRef<Record<string, Dir>>({});
   const viewRef = useRef({ cols: viewCols, rows: viewRows });
   const modeRef = useRef<"walk" | "ui">("walk");
   const scarfRef = useRef<string | undefined>(undefined);
@@ -531,6 +578,15 @@ export function AdventureGame({
     // champions walk the frontier in gold
     ghostVariantRef.current = story.has("championship") ? "gold" : starter ?? "none";
   }, [starter, story]);
+  useEffect(() => {
+    levelRef.current = hudState?.level ?? 1;
+  }, [hudState]);
+  useEffect(() => {
+    clearedRef.current = cleared;
+  }, [cleared]);
+  useEffect(() => {
+    storyRef.current = story;
+  }, [story]);
   // the original sprite sheets load once; until then the procedural art draws
   useEffect(() => {
     void loadSheets().then((sh) => {
@@ -749,6 +805,9 @@ export function AdventureGame({
     const fy = p.ty + (p.facing === "up" ? -1 : p.facing === "down" ? 1 : 0);
     const npc = npcAt(fx, fy);
     if (!npc) return;
+    // the character turns to face you — small thing, big life
+    const OPPOSITE: Record<Dir, Dir> = { up: "down", down: "up", left: "right", right: "left" };
+    npcFacingRef.current[npc.id] = OPPOSITE[p.facing];
     const beatDone = npc.battle?.beat ? story.has(npc.battle.beat) : beatenNpcs.has(npc.id);
     const lines = beatDone && npc.winLines ? npc.winLines : npc.lines;
     const willBattle = npc.battle && !beatDone;
@@ -878,6 +937,25 @@ export function AdventureGame({
           }
         }
       }
+      // Guardians roam beside conquered gyms; Clarity keeps the Summit.
+      if (sh) {
+        const guardianSpot =
+          z.gym && clearedRef.current.has(`${z.gym.level}/${z.gym.slug}`)
+            ? { name: guardianFor(z.gym.family), x: z.gym.x + 2, y: z.gym.y + 1 }
+            : z.id === "summit" && storyRef.current.has("championship")
+            ? { name: "clarity" as GuardianName, x: 5, y: 3 }
+            : null;
+        if (guardianSpot) {
+          const gsx = Math.round((guardianSpot.x - camX) * TS);
+          const gsy = Math.round((guardianSpot.y - camY) * TS);
+          if (gsx > -32 && gsy > -32 && gsx < canvas.width && gsy < canvas.height) {
+            drawShadow(ctx, gsx, gsy);
+            drawShadow(ctx, gsx + 12, gsy);
+            const bob2 = Math.floor(now / 600) % 2;
+            ctx.drawImage(sh.guardians, guardianX(guardianSpot.name), 0, 32, 32, gsx - 8, gsy - 16 + bob2, 32, 32);
+          }
+        }
+      }
       // NPCs — real walker sprites once the sheets are in
       ctx.font = "12px sans-serif";
       ctx.textAlign = "center";
@@ -887,7 +965,7 @@ export function AdventureGame({
         if (sx < -TS || sy < -TS * 2 || sx > canvas.width || sy > canvas.height) continue;
         drawShadow(ctx, sx, sy);
         if (sh) {
-          drawWalker(ctx, sh.npcs, npcBlockX(n.sprite as NpcSprite), "down", 1, sx, sy);
+          drawWalker(ctx, sh.npcs, npcBlockX(n.sprite as NpcSprite), npcFacingRef.current[n.id] ?? "down", 1, sx, sy);
         } else {
           ctx.fillText(n.emoji, sx + TS / 2, sy + TS - 3);
         }
@@ -900,7 +978,19 @@ export function AdventureGame({
         // 3-frame ping-pong walk (1-2-3-2); idle = centre frame
         const seq = [0, 1, 2, 1];
         const wf = p.moving ? seq[Math.floor(animClock / 140) % 4] : 1;
+        const lvl = levelRef.current;
+        if (lvl >= 20) {
+          // champion's glow, painted behind the sprite
+          ctx.save();
+          ctx.globalAlpha = 0.22;
+          ctx.fillStyle = "#ffdc00";
+          ctx.beginPath();
+          ctx.arc(pfx + 8, pfy + 4, 13, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
         drawWalker(ctx, sh.player, ghostBlockX(ghostVariantRef.current), p.facing, wf, pfx, pfy);
+        drawAccessories(ctx, pfx, pfy, lvl, p.facing);
       } else {
         const frame = p.moving ? Math.floor(animClock / 130) % 2 : 0;
         drawGhost(ctx, pfx, pfy, p.facing, frame, scarfRef.current);
