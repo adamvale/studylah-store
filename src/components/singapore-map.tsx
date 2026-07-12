@@ -38,7 +38,7 @@ export function SingaporeMinimap({
       className="pointer-events-auto rounded-lg border-2 p-1.5 backdrop-blur active:scale-95"
       style={{ borderColor: `${SG_ARCADE.mint}80`, background: `${SG_ARCADE.bg}cc` }}
     >
-      <svg viewBox={SG_VIEWBOX} className="block h-16 w-28" role="img">
+      <svg viewBox={SG_VIEWBOX} className="block h-12 w-24" role="img">
         <path
           d={SG_OUTLINE}
           fill={SG_ARCADE.land}

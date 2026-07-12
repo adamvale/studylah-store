@@ -13,8 +13,9 @@ import type { WorldSubject } from "@/lib/game/world2";
 // heartland. Straight segments read fine at the retro pixel scale.
 export const SG_VIEWBOX = "0 0 100 54";
 export const SG_OUTLINE =
-  "M3,40 L12,30 L22,22 L33,15 L44,10 L55,9 L65,11 L73,12 L82,16 L90,21 " +
-  "L97,27 L89,30 L80,35 L70,41 L60,45 L51,47 L43,45 L34,42 L24,41 L14,41 L6,39 Z";
+  "M4,38 L10,30 L18,24 L28,18 L38,13 L46,10 L54,9 L60,11 L68,11 L75,13 " +
+  "L83,16 L89,20 L97,26 L90,29 L82,33 L74,37 L66,41 L58,44 L52,46 L45,44 " +
+  "L38,43 L30,42 L20,41 L10,40 Z";
 
 export interface District {
   name: string;
@@ -52,7 +53,7 @@ export const DISTRICTS: readonly District[] = [
   { name: "Tuas", x: 9, y: 37 },
   { name: "Fort Canning", x: 51, y: 39 },
   { name: "Bras Basah", x: 58, y: 43 },
-  { name: "Sentosa", x: 48, y: 50 },
+  { name: "Sentosa", x: 49, y: 46 },
 ];
 
 const DISTRICT_BY_NAME = new Map(DISTRICTS.map((d) => [d.name, d]));
@@ -89,9 +90,9 @@ export const LANDMARKS: readonly Landmark[] = [
   { name: "Our Tampines Hub", emoji: "🏬", x: 82, y: 27 },
   { name: "Singapore Expo", emoji: "🏢", x: 86, y: 30 },
   { name: "Singapore Zoo", emoji: "🐘", x: 48, y: 20 },
-  { name: "Woodlands Checkpoint", emoji: "🛂", x: 40, y: 12 },
+  { name: "Woodlands Checkpoint", emoji: "🛂", x: 40, y: 14 },
   { name: "Kranji War Memorial", emoji: "🎖️", x: 32, y: 17 },
-  { name: "Punggol Point", emoji: "⚓", x: 78, y: 14 },
+  { name: "Punggol Point", emoji: "⚓", x: 77, y: 15 },
   { name: "Hougang Stadium", emoji: "🏟️", x: 69, y: 23 },
   { name: "NEX Serangoon", emoji: "🛍️", x: 62, y: 30 },
   { name: "NTU Hive", emoji: "🎓", x: 14, y: 30 },
