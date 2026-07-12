@@ -1,4 +1,4 @@
-# Fog Frontier — The Lightbearer Saga (Story Bible)
+# Fog Frontier — The Lightbearer Saga (Story Codex)
 
 > Original IP for StudyLah. Copyright-free, Singapore-rooted, exam-prep at its
 > heart. This is the narrative spine the game is designed around. Every wild

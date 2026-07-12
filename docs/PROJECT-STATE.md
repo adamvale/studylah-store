@@ -159,6 +159,32 @@ greetings. Deferred pending owner sign-off: keepsake poster (share-safety),
 festival (needs calendar anchor), companion chores beyond the Home Base
 line. Murk battle barks + Q4 moving marker downgraded per pack fallbacks.
 
+## Fog Frontier — the Lightbearer Saga (story + expansion zones)
+
+`docs/STORY-CODEX.md` is the game's original, copyright-free narrative spine
+("the Fog is the hush before a paper"), written to ABSORB every existing
+element rather than replace it. Implemented zones (all Singapore-named, wired
+in `world2.ts`, districts in `singapore.ts`):
+
+- **The Sunken Cells — Fort Canning** (`cells`): Act III dungeon off the hub
+  spine's south end (portal locked until 2 gyms; test-unlock opens). Cave
+  serpentine, three name-plaque signs with relit LANTERN tiles, two Fog Order
+  battles (beats `cells1`/`cells2`), and the Murk reveal — a dialogue-only NPC
+  (`murkcells`, special-cased in handleA) that posts beat `cells` on finish.
+- **The Lantern Walk — Sentosa/Southern Isles** (`lantern`): five sand islets
+  joined by plank bridges off the Saltwind shore; wind-warden battle (beat
+  `walk`); the silent Examiner (`finalpaper`, 5-question perfect-score battle,
+  dialogue "…") appears ONLY once all Three Hushes are beaten.
+- **The Reading Room — Bras Basah** (`reading`): post-game New Game+ hearth
+  (interior tiles + campfire + lanterns) off the hub's south-east lane, locked
+  until `championship`; Maple/Kai/Rin/Sage epilogue dialogue.
+
+New beats whitelisted in the story route: cells1/cells2/cells/walk/finalpaper.
+LANTERN + SIGN tiles draw zone-aware bases (cave/sand/wood). Verified: the
+Cells fully in-browser (zone, art, NPCs, minimap→Fort Canning); all 5 beats
+accepted server-side; Reading Room/Lantern Walk registered via the same
+proven portal mechanics — worth an on-device walkthrough.
+
 ## Fog Frontier — the Academy (Subject Gurus, teach + check)
 
 `🎓 Sage of the Academy` (`guru` NPC, Haven Hollow (8,12), sprite
@@ -272,7 +298,7 @@ purchasable advantage. The older single-screen `adventure.tsx` was replaced.
 headband/glasses/cape/crown/glow by level), guardians_walkers (7 × 16px
 walkers + shiny), buildings_anim (4-frame door/fountain/campfire — doors
 open on approach, hub fountain animates). The season design pack (11 docs:
-arc, zones, quests, bosses, balance, retention, bible, encounter tables,
+arc, zones, quests, bosses, balance, retention, content guide, encounter tables,
 dialogue, scripts, copy deck) lives in the owner's drive under
 `claude_code_handoff 1.1/design_docs` — implement in waves, honour its
 flagged risks.

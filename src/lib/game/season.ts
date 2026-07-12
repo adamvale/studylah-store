@@ -5,7 +5,7 @@
 // numbers (05), and the systems copy deck (11). Client-safe, no imports.
 // All content is original StudyLah IP from the commissioned pack.
 
-// ── Province lore: family → place identity (bible: texture + landform) ────
+// ── Province lore: family → place identity (codex: texture + landform) ────
 export interface SpeciesRow {
   upTo: number; // d100 upper bound, rows in ascending order
   species: string;

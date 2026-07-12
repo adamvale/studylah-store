@@ -543,7 +543,9 @@ function drawSheetTile(
       t(f2 ? "flowers_f2" : "flowers_f1");
       break;
     case TILE.SIGN:
-      grassBase();
+      if (z.id === "cells") t("cave_floor");
+      else if (z.id === "lantern") t("sand");
+      else grassBase();
       t("sign");
       break;
     case PORTAL:
@@ -624,7 +626,9 @@ function drawSheetTile(
       ctx.fillRect(sx + 3, sy + 10, 10, 4);
       break;
     case LANTERN: {
-      intFloor(ctx, sx, sy, tx, ty);
+      if (z.id === "cells") t("cave_floor");
+      else if (z.id === "lantern") t("sand");
+      else intFloor(ctx, sx, sy, tx, ty);
       // a lit beacon-lamp — the Lightbearer motif. Soft glow, gold flame that
       // flickers on the 2-frame terrain clock.
       ctx.fillStyle = "rgba(255, 220, 0, 0.14)";
@@ -1335,6 +1339,22 @@ export function AdventureGame({
         lines: npc.lines,
         idx: 0,
         onDone: () => setDuelHallOpen(true),
+      });
+      return;
+    }
+
+    // Finding Murk in the Sunken Cells IS the beat — no battle, just the truth.
+    if (npc.id === "murkcells") {
+      setDialogue({
+        name: npc.name,
+        emoji: npc.emoji,
+        sprite: npc.sprite,
+        lines: npc.lines,
+        idx: 0,
+        onDone: () => {
+          void postBeat("cells");
+          showToast("🕯 The names are yours to light now.");
+        },
       });
       return;
     }

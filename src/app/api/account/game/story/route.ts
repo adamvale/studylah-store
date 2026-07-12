@@ -28,6 +28,12 @@ const BEATS: Record<string, number> = {
   rival2: 15, // rival rematch at the Summit
   championship: 50, // cleared the gauntlet (also unlocks the champion badge)
   ninth: 50, // lit the unofficial Old Campus beacon (post-game epilogue)
+  // The Lightbearer Saga (docs/STORY-CODEX.md)
+  cells1: 10, // Sunken Cells: past the Archivist of the Hush
+  cells2: 10, // Sunken Cells: past the Keeper of the Lower Shelf
+  cells: 25, // Sunken Cells: heard Murk's name read from the top of his own list
+  walk: 15, // Lantern Walk: crossed the wind with your own lamp
+  finalpaper: 60, // the Examiner's silent final paper (post-game)
 };
 
 export async function POST(request: Request) {

@@ -50,6 +50,9 @@ export const DISTRICTS: readonly District[] = [
   { name: "Jurong East", x: 26, y: 35 },
   { name: "Jurong West", x: 17, y: 33 },
   { name: "Tuas", x: 9, y: 37 },
+  { name: "Fort Canning", x: 51, y: 39 },
+  { name: "Bras Basah", x: 58, y: 43 },
+  { name: "Sentosa", x: 48, y: 50 },
 ];
 
 const DISTRICT_BY_NAME = new Map(DISTRICTS.map((d) => [d.name, d]));
@@ -102,6 +105,9 @@ const FIXED_ZONE_DISTRICT: Record<string, string> = {
   summit: "Bukit Timah",
   saltwind: "Marine Parade",
   campus: "one-north",
+  cells: "Fort Canning",
+  lantern: "Sentosa",
+  reading: "Bras Basah",
 };
 
 // Heartland towns handed out to owned subjects, in order — a nice geographic
@@ -144,7 +150,10 @@ export function districtForZone(zoneId: string, subjects: WorldSubject[]): strin
 // The set of districts that are "in play" this run: hub, owned subjects, and
 // the always-present landmarks — used to light the minimap.
 export function activeDistricts(subjects: WorldSubject[]): Set<string> {
-  const set = new Set<string>(["Toa Payoh", "Bukit Timah", "Marine Parade", "one-north"]);
+  const set = new Set<string>([
+    "Toa Payoh", "Bukit Timah", "Marine Parade", "one-north",
+    "Fort Canning", "Bras Basah", "Sentosa",
+  ]);
   subjects.forEach((_, i) => set.add(PROVINCE_POOL[i % PROVINCE_POOL.length]));
   return set;
 }

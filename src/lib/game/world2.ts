@@ -231,7 +231,9 @@ function buildHub(
   story: Set<string>,
   frontPlace: string | null,
   saltwindOpen: boolean,
-  blankHere: boolean
+  blankHere: boolean,
+  cellsOpen: boolean,
+  readingOpen: boolean
 ): Zone {
   const lit = subjects.filter((s) => cleared.has(`${s.level}/${s.slug}`)).length;
   const total = subjects.length;
@@ -501,6 +503,34 @@ function buildHub(
   for (const it of HUB_INTERIORS) {
     portals.push({ x: it.doorX, y: it.doorY, toZone: it.id, toX: 4, toY: 6, label: it.name });
   }
+
+  // The saga gates: the Sunken Cells descend from the spine's south end, and
+  // the Reading Room waits at the end of the south lane.
+  put(grid, 10, 15, PORTAL);
+  portals.push({
+    x: 10,
+    y: 15,
+    toZone: "cells",
+    toX: 6,
+    toY: 2,
+    label: "🕯 The Sunken Cells — Fort Canning",
+    locked: cellsOpen
+      ? undefined
+      : "The Cells listen for footsteps that have lit two beacons. Not yet.",
+  });
+  for (let x = 11; x <= 18; x++) if (grid[14][x] === TILE.GRASS) put(grid, x, 14, TILE.PATH);
+  put(grid, 19, 14, PORTAL);
+  portals.push({
+    x: 19,
+    y: 14,
+    toZone: "reading",
+    toX: 6,
+    toY: 8,
+    label: "📖 The Reading Room — Bras Basah",
+    locked: readingOpen
+      ? undefined
+      : "The Reading Room opens when the island is safe — after the Championship.",
+  });
 
   return {
     id: "hub",
@@ -825,6 +855,8 @@ function buildSaltwind(subjects: WorldSubject[], beaten: Set<string>): Zone {
   }
   put(grid, 2, 2, TILE.FLOWER);
   put(grid, 9, 8, SAND);
+  // the ferry stone south along the shore — out to the Southern Isles
+  put(grid, 11, 9, PORTAL);
 
   const npcs: Npc[] = [
     {
@@ -877,7 +909,7 @@ function buildSaltwind(subjects: WorldSubject[], beaten: Set<string>): Zone {
     width: W,
     height: H,
     start: { x: 2, y: 4 },
-    portals: [{ x: W - 2, y: 4, toZone: "hub", toX: 18, toY: 8, label: "Haven Hollow" }],
+    portals: [{ x: W - 2, y: 4, toZone: "hub", toX: 18, toY: 8, label: "Haven Hollow" }, { x: 11, y: 9, toZone: "lantern", toX: 2, toY: 5, label: "🏮 The Lantern Walk — the Southern Isles" }],
     npcs,
     encounter: subjects[0],
     mixed: subjects,
@@ -1118,6 +1150,292 @@ export interface RegionState {
   unlockAll?: boolean; // device-local test flag: every zone open, ignore gates
 }
 
+
+// ── THE LIGHTBEARER SAGA — expansion zones (see docs/STORY-CODEX.md) ─────────
+
+// Act III: the Sunken Cells beneath Fort Canning. The Fog Order's records-room,
+// where Murk keeps the names of everyone the island ever hushed. Read the
+// plaques to bring them home; at the bottom you don't fight Murk — you FIND him.
+function buildCells(subjects: WorldSubject[], story: Set<string>): Zone {
+  const W = 13;
+  const H = 15;
+  const grid: number[][] = [];
+  for (let y = 0; y < H; y++) {
+    const row: number[] = [];
+    for (let x = 0; x < W; x++) {
+      const edge = x === 0 || x === W - 1 || y === 0 || y === H - 1;
+      row.push(edge ? CAVE_WALL : CAVE_FLOOR);
+    }
+    grid.push(row);
+  }
+  // serpentine descent: two wall shelves with offset gaps
+  for (let x = 1; x <= 8; x++) put(grid, x, 4, CAVE_WALL);
+  for (let x = 4; x <= 11; x++) put(grid, x, 8, CAVE_WALL);
+  // the way home
+  put(grid, 6, 1, PORTAL);
+  // name plaques, each with its lamp relit beside it
+  put(grid, 2, 3, TILE.SIGN);
+  put(grid, 3, 3, LANTERN);
+  put(grid, 10, 6, TILE.SIGN);
+  put(grid, 9, 6, LANTERN);
+  put(grid, 2, 10, TILE.SIGN);
+  put(grid, 3, 10, LANTERN);
+  // Murk's empty desk-light at the bottom
+  put(grid, 5, 13, LANTERN);
+  put(grid, 7, 13, LANTERN);
+
+  const npcs: Npc[] = [];
+  if (!story.has("cells1")) {
+    npcs.push({
+      id: "cells1",
+      x: 10,
+      y: 3,
+      emoji: "🌫️",
+      sprite: "fog_grunt",
+      name: "Archivist of the Hush",
+      battle: { questions: 2, threshold: 2, beat: "cells1", mixed: true },
+      lines: [
+        "Shh. This is a records-room. Every name here CHOSE the quiet… mostly.",
+        "You want to read them out loud? Names are heavy. Show me you can carry two questions first.",
+      ],
+      winLines: ["…they never sound heavy when YOU say them. Go on, then. Read."],
+    });
+  }
+  if (!story.has("cells2")) {
+    npcs.push({
+      id: "cells2",
+      x: 2,
+      y: 7,
+      emoji: "🌫️",
+      sprite: "fog_grunt",
+      name: "Keeper of the Lower Shelf",
+      battle: { questions: 2, threshold: 2, beat: "cells2", mixed: true },
+      lines: [
+        "The deeper shelves are older. Cohorts your grandparents whispered about.",
+        "The Commander files a new name every season. Yours has a folder ready. Two questions say it stays empty.",
+      ],
+      winLines: ["Folder's… blank. First blank folder I've ever shelved. Keep walking, Lightbearer."],
+    });
+  }
+  if (!story.has("cells")) {
+    npcs.push({
+      id: "murkcells",
+      x: 6,
+      y: 12,
+      emoji: "🌫️",
+      sprite: "commander_murk",
+      name: "Commander Murk",
+      lines: [
+        "…You read them aloud. Forty years I've kept this room, and no one ever came to READ.",
+        "You want to know why I keep the list? Look at the top. First name filed. Maple's first prodigy — the first beacon-keeper. The boy who burned out and found the island simply… looked away.",
+        "It's my name, Lightbearer. I filed myself. The Order was never an army — it's a waiting room for everyone the island forgot to forgive.",
+        "Take the room. Light every one of them. And when you reach the Summit — bring your notebook. I want to see the move I never learned.",
+      ],
+    });
+  } else {
+    npcs.push({
+      id: "cellsdone",
+      x: 6,
+      y: 12,
+      emoji: "🕯️",
+      sprite: "elder_maple",
+      name: "Elder Maple",
+      lines: [
+        "So this is where he kept them. All those names… and his own at the top, all along.",
+        "I taught him everything except how to fail. That lesson he had to wait forty years for a student to bring DOWN here.",
+      ],
+    });
+  }
+
+  return {
+    id: "cells",
+    name: "The Sunken Cells",
+    grid,
+    width: W,
+    height: H,
+    start: { x: 6, y: 2 },
+    portals: [{ x: 6, y: 1, toZone: "hub", toX: 10, toY: 14, label: "Haven Hollow" }],
+    npcs,
+    mixed: subjects,
+    encounterRate: 1 / 14,
+    encounterTiles: [CAVE_FLOOR],
+    signs: [
+      { x: 2, y: 3, text: "KOH S.L., Class of 1987 — faced the paper at last. Welcome home." },
+      { x: 10, y: 6, text: "R. NAIR, Class of 1994 — asked the question out loud. Welcome home." },
+      { x: 2, y: 10, text: "TAN W.M., Class of 2003 — opened the notebook again. Welcome home." },
+    ],
+  };
+}
+
+// Late game: the Lantern Walk across the Southern Isles — cross the water by
+// keeping your own lamp lit against the wind. The Examiner waits at the last
+// islet, but only for a student all Three Hushes have learned to trust.
+function buildLanternWalk(
+  subjects: WorldSubject[],
+  story: Set<string>,
+  beaten: Set<string>
+): Zone {
+  const W = 21;
+  const H = 11;
+  const grid: number[][] = [];
+  for (let y = 0; y < H; y++) {
+    const row: number[] = [];
+    for (let x = 0; x < W; x++) row.push(TILE.WATER as number);
+    grid.push(row);
+  }
+  // five islets, joined by plank bridges along the walk row
+  const islets = [2, 6, 10, 14, 18];
+  for (const cx of islets) {
+    for (let y = 4; y <= 6; y++) {
+      for (let x = cx - 1; x <= cx + 1; x++) put(grid, x, y, SAND);
+    }
+    put(grid, cx, 4, LANTERN);
+  }
+  for (let x = 3; x < 18; x++) {
+    if (grid[5][x] === TILE.WATER) put(grid, x, 5, BRIDGE);
+  }
+  put(grid, 2, 6, PORTAL); // the way back to the Saltwind shore
+  put(grid, 6, 6, TILE.SIGN);
+
+  const npcs: Npc[] = [];
+  if (!story.has("walk")) {
+    npcs.push({
+      id: "walkgrunt",
+      x: 10,
+      y: 5,
+      emoji: "🌫️",
+      sprite: "fog_grunt",
+      name: "Warden of the Wind",
+      battle: { questions: 3, threshold: 2, beat: "walk", mixed: true },
+      lines: [
+        "Out here there's no beacon to borrow. Just your own little lamp and the wind.",
+        "The Whisper calls these isles home. Three questions in the open air — let's see whose light gutters first.",
+      ],
+      winLines: ["Steady little flame you've got. The last islet is watching you now."],
+    });
+  }
+  const allHushes = beaten.has("whisper") && beaten.has("hurry") && beaten.has("blank");
+  if (allHushes && !story.has("finalpaper")) {
+    npcs.push({
+      id: "examfinal",
+      x: 18,
+      y: 5,
+      emoji: "🎓",
+      sprite: "examiner_sage",
+      name: "…",
+      battle: { questions: 5, threshold: 5, beat: "finalpaper", mixed: true },
+      lines: ["…"],
+      winLines: ["…", "(The Examiner bows. The wind carries the last of the Fog out to sea.)"],
+    });
+  } else if (!allHushes) {
+    put(grid, 18, 4, TILE.SIGN);
+  }
+
+  return {
+    id: "lantern",
+    name: "The Lantern Walk",
+    grid,
+    width: W,
+    height: H,
+    start: { x: 2, y: 5 },
+    portals: [{ x: 2, y: 6, toZone: "saltwind", toX: 11, toY: 8, label: "Saltwind Steps" }],
+    npcs,
+    mixed: subjects,
+    encounterRate: 1 / 12,
+    encounterTiles: [SAND],
+    signs: [
+      { x: 6, y: 6, text: "THE LANTERN WALK — five isles, one flame. The wind tests every lamp; only the steady cross." },
+      { x: 18, y: 4, text: "A stone seat faces the open sea. Someone is expected — after the Three Hushes rest." },
+    ],
+  };
+}
+
+// Post-game: the Reading Room at Bras Basah — the calm New Game+ hearth where
+// the island gathers once it is safe.
+function buildReadingRoom(story: Set<string>): Zone {
+  const W = 13;
+  const H = 10;
+  const grid: number[][] = [];
+  for (let y = 0; y < H; y++) {
+    const row: number[] = [];
+    for (let x = 0; x < W; x++) {
+      const edge = x === 0 || x === W - 1 || y === 0 || y === H - 1;
+      row.push(edge ? INT_WALL : INT_FLOOR);
+    }
+    grid.push(row);
+  }
+  for (const x of [2, 3, 4, 8, 9, 10]) put(grid, x, 1, BOOKSHELF);
+  put(grid, 6, 1, HEARTH); // the campfire at the story's end
+  put(grid, 1, 7, LANTERN);
+  put(grid, 11, 7, LANTERN);
+  for (let x = 5; x <= 7; x++) for (let y = 4; y <= 5; y++) put(grid, x, y, RUG);
+  put(grid, 6, 9, MAT);
+
+  const after = story.has("championship");
+  const npcs: Npc[] = [
+    {
+      id: "maple_reading",
+      x: 4,
+      y: 3,
+      emoji: "🕯️",
+      sprite: "elder_maple",
+      name: "Elder Maple",
+      lines: after
+        ? [
+            "Forty years I lit one lamp a night and called it hope. You lit an island and called it homework.",
+            "The end is just New Game+, child. There is always another cohort to carry the light to.",
+          ]
+        : ["When the island is safe, we will all read together here. Finish what you started, Lightbearer."],
+    },
+    {
+      id: "kai_reading",
+      x: 8,
+      y: 3,
+      emoji: "🧢",
+      sprite: "kai_rival",
+      name: "Kai",
+      lines: after
+        ? [
+            "My sister came here yesterday. Sat in that chair. Read for an HOUR. Didn't check the clock once.",
+            "Turns out the finish line was a reading room. Race you to the next shelf.",
+          ]
+        : ["I'm saving that chair by the fire. For someone who's been gone a long time."],
+    },
+    {
+      id: "rin_reading",
+      x: 3,
+      y: 6,
+      emoji: "⚔️",
+      sprite: "student_c",
+      name: "Rin the Duel Warden",
+      lines: ["Even wardens read. ESPECIALLY wardens. The best duellists are the best readers — codes can wait."],
+    },
+    {
+      id: "sage_reading",
+      x: 9,
+      y: 6,
+      emoji: "🎓",
+      sprite: "examiner_sage",
+      name: "Examiner Sage",
+      lines: [
+        "THE END IS JUST NEW GAME+. I had that carved above the hearth. The Fog never understood it — endings are where readers begin.",
+      ],
+    },
+  ];
+
+  return {
+    id: "reading",
+    name: "The Reading Room",
+    grid,
+    width: W,
+    height: H,
+    start: { x: 6, y: 8 },
+    portals: [{ x: 6, y: 9, toZone: "hub", toX: 18, toY: 14, label: "Haven Hollow" }],
+    npcs,
+    encounterRate: 0,
+  };
+}
+
 export function buildRegion(subjects: WorldSubject[], st: RegionState): Region {
   const gymsLit = subjects.filter((s) => st.cleared.has(`${s.level}/${s.slug}`)).length;
   const unlock = st.unlockAll === true;
@@ -1127,6 +1445,9 @@ export function buildRegion(subjects: WorldSubject[], st: RegionState): Region {
   const blankHere = gymsLit >= 3 && !st.beaten.has("blank") && !st.story.has("championship");
   const frontActive = st.front && !st.examWeek ? st.front : null;
 
+  const cellsOpen = unlock || gymsLit >= 2;
+  const readingOpen = unlock || st.story.has("championship");
+
   const zones: Record<string, Zone> = {
     hub: buildHub(
       subjects,
@@ -1135,9 +1456,14 @@ export function buildRegion(subjects: WorldSubject[], st: RegionState): Region {
       st.story,
       frontActive ? frontActive.place : null,
       saltwindOpen,
-      blankHere
+      blankHere,
+      cellsOpen,
+      readingOpen
     ),
     summit: buildSummit(st.story),
+    cells: buildCells(subjects, st.story),
+    lantern: buildLanternWalk(subjects, st.story, st.beaten),
+    reading: buildReadingRoom(st.story),
   };
   for (const s of subjects) {
     const key = `${s.level}/${s.slug}`;
