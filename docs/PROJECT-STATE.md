@@ -194,11 +194,15 @@ parses them (js-yaml) into `src/lib/generated/game-bank.ts` (`IMPORTED_SETS`
 both falling back to the hand-authored `diagnostic-questions.ts` /
 `practice-content.ts` for undelivered subjects. So battles, duels, and Gurus
 all serve the author's real content the moment a file lands, still
-ownership-gated and level-exact. First delivered: `o-level chemistry-pure`
-(30 MCQ + 3 short + 20 teaching cards) — verified E2E over the HTTP routes
-(battles/guru serve `chemistry-pure-g*`, grading + Unicode worked solutions
-resolve). Remaining 21 subject files are a drop-in: add the `.md`, re-run the
-script, rebuild.
+ownership-gated and level-exact. **ALL 22 subjects delivered & imported**
+(120 questions = 100 MCQ + 20 short, plus 50 teaching cards each → **2,640
+questions + 1,100 teaching cards**; generated file ~2.7 MB / 58k lines).
+Audited clean: every MCQ answer index in range, all worked solutions present,
+short-answer `accepted` all ASCII, no banned words, essay subjects delivered
+as MCQ/short recall (not open essays). Verified E2E over the HTTP routes
+(battles/guru serve `<slug>-g*`, grading + Unicode worked solutions resolve).
+To refresh any subject: replace its `.md`, re-run `node
+scripts/import-game-bank.mjs`, rebuild.
 
 ## Fog Frontier — Duel Hall + playable heroes
 
