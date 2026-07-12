@@ -300,6 +300,18 @@ function buildHub(
       ],
     },
     {
+      id: "guru",
+      x: 8,
+      y: 12,
+      emoji: "🎓",
+      sprite: "examiner_sage",
+      name: "Sage of the Academy",
+      lines: [
+        "Every subject you carry has a teacher waiting in the Academy — one for each.",
+        "Sit a while. Learn a little, prove it with a question, and the Fog loses its grip.",
+      ],
+    },
+    {
       id: "student_b",
       x: 12,
       y: 4,

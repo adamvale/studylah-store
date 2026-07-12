@@ -159,6 +159,39 @@ greetings. Deferred pending owner sign-off: keepsake poster (share-safety),
 festival (needs calendar anchor), companion chores beyond the Home Base
 line. Murk battle barks + Q4 moving marker downgraded per pack fallbacks.
 
+## Fog Frontier — the Academy (Subject Gurus, teach + check)
+
+`🎓 Sage of the Academy` (`guru` NPC, Haven Hollow (8,12), sprite
+`examiner_sage`) opens **The Academy** (`src/components/subject-guru.tsx`):
+one Guru per subject the student is ENROLLED in. Each Guru teaches a short
+lesson (2–3 beats) then sets one check-question from that subject's own bank.
+Content: the lesson deck is `src/lib/game/guru.ts` (`guruLesson(family,
+level)`), which maps every subject family to level-appropriate teaching
+beats drawn from the **original** in-house library `practice-content.ts`
+(definitions, marker's-phrasing precision cards, chem qualitative-analysis,
+maths careless-error checklists, humanities SBQ ladder + command words, POA
+formats) — never scraped from any paper. The check-question comes from the
+exact `level`+`slug` diagnostic set, so O-Level Pure, O-Level Science and
+N(A)-Level each stay at their own depth (verified: a student owning O-Level
+Physics (Pure) + N(A)-Level Physics + N(A)-Level Biology sees exactly those
+three Gurus with correct level badges; a non-owned subject 403s).
+
+Server route `src/app/api/account/game/guru/route.ts`: GET lists the
+student's Gurus (gated by `ownedSubjects`); PUT starts a lesson (beats + one
+SEALED check-question, no answer key); POST grades the check, reveals the
+worked solution, and awards effort XP (`guru:<day>:<n>`, ATTEMPT 8 + PASS 8,
+daily cap 80). Compliance-safe: answer keys never leave the server pre-grade,
+XP rewards effort not grades, no cross-subject/level bleed.
+
+**Paid-PDF ingestion (owner-authorised, blocked on content):** the owner
+opted to expose paid-product questions in the game, but the real exam PDFs
+are external opaque binaries (repo `private/pdfs` are `pdf-gen.ts`
+placeholders that extract to 0 chars) — there is no structured question text
+to ingest. The game's structured source of truth remains
+`diagnostic-questions.ts` (222 original MCQs, all 22 subjects, level-keyed).
+To actually load the paid questions, the owner must supply them as
+text/structured data; until then Gurus + battles run on the original bank.
+
 ## Fog Frontier — Duel Hall + playable heroes
 
 Two additions on top of the season pack:

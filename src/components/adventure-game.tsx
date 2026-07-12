@@ -66,6 +66,7 @@ import {
   CaptureSwirl,
 } from "@/components/sprite";
 import { DuelHall } from "@/components/duel-hall";
+import { SubjectGuru } from "@/components/subject-guru";
 
 // Subject family → gym emblem + province guardian (original sheet art).
 const EMBLEM_BY_FAMILY: Record<string, string> = {
@@ -701,6 +702,7 @@ export function AdventureGame({
   const [questStore, setQuestStore] = useState<QuestProgressStore>(loadQuestStore);
   const [questLogOpen, setQuestLogOpen] = useState(false);
   const [duelHallOpen, setDuelHallOpen] = useState(false);
+  const [guruOpen, setGuruOpen] = useState(false);
   const [wipeLetter, setWipeLetter] = useState<{ stem: string; solution: string } | null>(null);
   const rungRef = useRef<Record<string, string[]>>({});
   const [stonesOpen, setStonesOpen] = useState<Set<string>>(new Set());
@@ -808,7 +810,7 @@ export function AdventureGame({
       sheetsRef.current = sh;
     });
   }, []);
-  const uiOpen = Boolean(dialogue || battle || trainer || gym || onboard || duelHallOpen || questLogOpen);
+  const uiOpen = Boolean(dialogue || battle || trainer || gym || onboard || duelHallOpen || guruOpen || questLogOpen);
   useEffect(() => {
     modeRef.current = uiOpen ? "ui" : "walk";
     if (uiOpen) dirRef.current = null;
@@ -1231,6 +1233,19 @@ export function AdventureGame({
         lines: npc.lines,
         idx: 0,
         onDone: () => setDuelHallOpen(true),
+      });
+      return;
+    }
+
+    // Sage of the Academy opens the Subject Gurus
+    if (npc.id === "guru") {
+      setDialogue({
+        name: npc.name,
+        emoji: npc.emoji,
+        sprite: npc.sprite,
+        lines: npc.lines,
+        idx: 0,
+        onDone: () => setGuruOpen(true),
       });
       return;
     }
@@ -2402,6 +2417,7 @@ export function AdventureGame({
 
       {/* the Duel Hall */}
       {duelHallOpen && <DuelHall subjects={subjects} onClose={() => setDuelHallOpen(false)} />}
+      {guruOpen && <SubjectGuru onClose={() => setGuruOpen(false)} />}
 
       {/* quest log */}
       {questLogOpen && (
