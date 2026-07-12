@@ -8,6 +8,14 @@ import {
   PORTAL,
   ROOF,
   ROOF_RIDGE,
+  STAIRS,
+  CAVE_FLOOR,
+  CAVE_WALL,
+  FOGBANK,
+  SAND,
+  RUINS,
+  FENCE,
+  BRIDGE,
   walkable,
   buildRegion,
   type Zone,
@@ -15,6 +23,19 @@ import {
   type NpcBattle,
   type WorldSubject,
 } from "@/lib/game/world2";
+import {
+  loreFor,
+  rollSpecies,
+  stageForLevel,
+  hpForStage,
+  bossById,
+  QUESTS,
+  questById,
+  COPY,
+  FRONT_CLEARED,
+  type MiniBoss,
+  type QuestDef,
+} from "@/lib/game/season";
 import { MONSTERS, STARTERS, starterById } from "@/lib/game";
 import { emitGame, emitFx, useHud, type FxGame } from "@/lib/game/fx";
 import {
@@ -23,6 +44,8 @@ import {
   buildingXY,
   ghostBlockX,
   npcBlockX,
+  monsterBlockX,
+  fxXY,
   accessoryBlockX,
   guardianWalkerRect,
   buildingAnimXY,
@@ -83,6 +106,7 @@ interface PublicQuestion {
   stem: string;
   options?: string[];
   marks: number;
+  fogIndex?: number; // Whisper's fog: one WRONG option the server marked
 }
 
 const TS = 16;
@@ -122,11 +146,11 @@ function subscribeView(cb: () => void): () => void {
   };
 }
 
-// ── Strikes: choosing your move = choosing your stakes ─────────────────────
+// ── Strikes v3 (balance pass): stakes and rhythm, not raw difficulty ───────
 const STRIKES = [
-  { id: "jab", name: "Quick Jab", desc: "1 dmg · miss costs 1 ❤", dmg: 1, cost: 1 },
-  { id: "power", name: "Power Strike", desc: "2 dmg · miss costs 2 ❤", dmg: 2, cost: 2 },
-  { id: "guard", name: "Take a Breath", desc: "heal 1 ❤ · once per battle", dmg: 0, cost: 0 },
+  { id: "jab", name: "Quick Jab", desc: "1 dmg · miss costs 1 ❤", dmg: 1 },
+  { id: "power", name: "Power Strike", desc: "2 dmg · miss: −1 ❤ and it heals", dmg: 2 },
+  { id: "guard", name: "Take a Breath", desc: "shield the next miss · once", dmg: 0 },
 ] as const;
 type StrikeId = (typeof STRIKES)[number]["id"];
 
@@ -424,6 +448,36 @@ function drawSheetTile(
       grassBase();
       t(f2 ? "portal_f2" : "portal_f1");
       break;
+    case STAIRS:
+      grassBase();
+      t("stairs");
+      break;
+    case CAVE_FLOOR:
+      t("cave_floor");
+      break;
+    case CAVE_WALL:
+      t("cave_wall");
+      break;
+    case FOGBANK: {
+      t("ruins_brick");
+      const [fxx, fxy] = fxXY(f2 ? "fog2" : "fog1");
+      ctx.drawImage(sh.fx, fxx, fxy, 16, 16, sx, sy, 16, 16);
+      break;
+    }
+    case SAND:
+      t("sand");
+      break;
+    case RUINS:
+      t("ruins_brick");
+      break;
+    case FENCE:
+      grassBase();
+      t("fence_h");
+      break;
+    case BRIDGE:
+      t(f2 ? "water_f2" : "water_f1");
+      t("bridge_h");
+      break;
     default:
       grassBase();
   }
@@ -445,14 +499,24 @@ interface WildBattle {
   subject: WorldSubject;
   monster: string;
   shiny: boolean;
+  echo?: boolean; // notebook echo — this one is personal
+  stage: 1 | 2 | 3;
   hp: number;
   maxHp: number;
+  round: number; // questions resolved so far
   phase: "strike" | "question" | "reveal" | "victory";
   strike?: StrikeId;
   question?: PublicQuestion;
   result?: { correct: boolean; correctAnswer: string; workedSolution: string; newCapture?: boolean };
-  guarded: boolean;
+  guarded: boolean; // breather stock: absorbs the next miss
+  breatherBonus?: boolean; // Blank: composure pays +1 on the next hit
+  fogCleared?: boolean; // Whisper: breather lifts the fog for the next question
   captured: boolean;
+  boss?: MiniBoss;
+  bark?: string; // the boss speaks between rounds, never over a question
+  keystoneKey?: string; // Undercroft keystone: wrong answers cost +1 ❤
+  isFront?: boolean; // the weekly Fog Front
+  tileKey?: string; // Old Campus: clearing converts this tile for good
 }
 
 interface TrainerBattle {
@@ -467,16 +531,46 @@ interface TrainerBattle {
   won?: boolean;
 }
 
+// per-device quest progress (steps live client-side; rewards verify server-side)
+interface QuestProgressStore {
+  active: Record<string, number>;
+  signs: string[];
+}
+function loadQuestStore(): QuestProgressStore {
+  if (typeof window === "undefined") return { active: {}, signs: [] };
+  try {
+    const raw = localStorage.getItem("ff_quest_state");
+    if (raw) return JSON.parse(raw) as QuestProgressStore;
+  } catch {
+    // corrupted store — start fresh
+  }
+  return { active: {}, signs: [] };
+}
+
 export function AdventureGame({
   subjects,
   cleared: initialCleared,
   story: initialStory,
   starter: initialStarter,
+  beaten: initialBeaten,
+  underCleared: initialUnder,
+  campusCleared: initialCampus,
+  questsDone: initialQuests,
+  front,
+  echoBySubject,
+  examWeek,
 }: {
   subjects: WorldSubject[];
   cleared: string[];
   story: string[];
   starter: string | null;
+  beaten: string[];
+  underCleared: string[];
+  campusCleared: string[];
+  questsDone: string[];
+  front: { key: string; species: string; place: string } | null;
+  echoBySubject: Record<string, string>;
+  examWeek: boolean;
 }) {
   const router = useRouter();
   const hudState = useHud();
@@ -508,10 +602,36 @@ export function AdventureGame({
   const [onboard, setOnboard] = useState<"intro" | "pick" | "done" | null>(
     initialStory.includes("starter") ? null : "intro"
   );
+  const [beaten, setBeaten] = useState<Set<string>>(new Set(initialBeaten));
+  const [underCleared, setUnderCleared] = useState<Set<string>>(new Set(initialUnder));
+  const [campusCleared, setCampusCleared] = useState<Set<string>>(new Set(initialCampus));
+  const [questsDone, setQuestsDone] = useState<Set<string>>(new Set(initialQuests));
+  const [questStore, setQuestStore] = useState<QuestProgressStore>(loadQuestStore);
+  const [questLogOpen, setQuestLogOpen] = useState(false);
+  const [wipeLetter, setWipeLetter] = useState<{ stem: string; solution: string } | null>(null);
+  const rungRef = useRef<Record<string, string[]>>({});
+  const [stonesOpen, setStonesOpen] = useState<Set<string>>(new Set());
+  const capToastRef = useRef(false);
+  useEffect(() => {
+    try {
+      localStorage.setItem("ff_quest_state", JSON.stringify(questStore));
+    } catch {
+      // storage unavailable — session-only progress
+    }
+  }, [questStore]);
 
   const region = useMemo(
-    () => buildRegion(subjects, cleared, story),
-    [subjects, cleared, story]
+    () =>
+      buildRegion(subjects, {
+        cleared,
+        story,
+        beaten,
+        underCleared,
+        campusCleared,
+        front,
+        examWeek,
+      }),
+    [subjects, cleared, story, beaten, underCleared, campusCleared, front, examWeek]
   );
   const zone = region.zones[zoneId] ?? region.zones[region.startZone];
 
@@ -600,14 +720,23 @@ export function AdventureGame({
     window.setTimeout(() => setToast(null), 3000);
   }, []);
 
+  // Exam Week Mode: the game steps back — the greeting says so, once.
+  // (queueMicrotask keeps the strict no-sync-setState-in-effect rule happy.)
+  useEffect(() => {
+    if (!examWeek) return;
+    queueMicrotask(() =>
+      showToast(COPY.examGreetings[Math.floor(Math.random() * COPY.examGreetings.length)])
+    );
+  }, [examWeek, showToast]);
+
   // ── question supply ──────────────────────────────────────────────────────
   const fetchQueue = useCallback(
-    async (s: WorldSubject): Promise<PublicQuestion[]> => {
-      const key = `${s.level}/${s.slug}`;
+    async (s: WorldSubject, hint = false): Promise<PublicQuestion[]> => {
+      const key = `${s.level}/${s.slug}${hint ? ":hint" : ""}`;
       if (queues.current[key]?.length) return queues.current[key];
       try {
         const res = await fetch(
-          `/api/account/game/questions?level=${s.level}&slug=${s.slug}&count=10`,
+          `/api/account/game/questions?level=${s.level}&slug=${s.slug}&count=10${hint ? "&hint=1" : ""}`,
           { credentials: "include" }
         );
         if (!res.ok) return [];
@@ -708,27 +837,51 @@ export function AdventureGame({
     player.current.fromX = hub.start.x;
     player.current.fromY = hub.start.y;
     player.current.moving = false;
-    showToast("💫 Every researcher falls. Nurse Fern patches you up — Lightbearers get back up.");
+    showToast(`💫 ${COPY.wipe}`);
   }, [region, showToast]);
 
   const openWild = useCallback(
-    async (s: WorldSubject) => {
-      const q = await fetchQueue(s);
+    async (
+      s: WorldSubject,
+      opts: {
+        species?: string;
+        stage?: 1 | 2 | 3;
+        hp?: number;
+        echo?: boolean;
+        boss?: MiniBoss;
+        keystoneKey?: string;
+        isFront?: boolean;
+        tileKey?: string;
+      } = {}
+    ) => {
+      const q = await fetchQueue(s, opts.boss?.modifier === "fog_option");
       if (!q.length) return;
-      const shiny = Math.random() < 1 / 16;
+      const shiny = !opts.boss && !opts.isFront && Math.random() < 1 / 16;
       emitFx({ type: shiny ? "shiny" : "encounter" });
+      if (shiny) showToast(COPY.shiny);
+      if (opts.echo) showToast(COPY.echoSpawn);
+      const stage = opts.stage ?? stageForLevel(levelRef.current);
+      const hp = opts.hp ?? hpForStage(stage);
       setBattle({
         subject: s,
-        monster: WILD[Math.floor(Math.random() * WILD.length)],
+        monster: opts.species ?? WILD[Math.floor(Math.random() * WILD.length)],
         shiny,
-        hp: 2,
-        maxHp: 2,
+        echo: opts.echo,
+        stage,
+        hp,
+        maxHp: hp,
+        round: 0,
         phase: "strike",
         guarded: false,
         captured: false,
+        boss: opts.boss,
+        bark: opts.boss ? opts.boss.reveal : undefined,
+        keystoneKey: opts.keystoneKey,
+        isFront: opts.isFront,
+        tileKey: opts.tileKey,
       });
     },
-    [fetchQueue]
+    [fetchQueue, showToast]
   );
 
   const startTrainer = useCallback(
@@ -767,21 +920,84 @@ export function AdventureGame({
       }
       if (tile === TILE.DOOR && z.gym) {
         if (z.gym.x === tx && z.gym.y === ty) {
-          setGym({ level: z.gym.level, slug: z.gym.slug, name: z.gym.name, short: z.gym.short, emoji: z.gym.emoji });
+          setGym({ level: z.gym.level, slug: z.gym.slug, name: z.gym.name, short: z.gym.short, emoji: z.gym.emoji, family: z.gym.family });
           setGymState(null);
+          setQuestStore((prev) =>
+            prev.active.shortcut !== undefined && prev.active.shortcut < 1
+              ? { ...prev, active: { ...prev.active, shortcut: 1 } }
+              : prev
+          );
         }
         return;
       }
-      if (tile === TILE.TALL && z.encounter && Math.random() < ENCOUNTER) {
-        void openWild(z.encounter);
+      const encTiles = z.encounterTiles ?? [TILE.TALL];
+      if (encTiles.includes(tile) && (z.encounter || z.mixed)) {
+        const rate = (z.encounterRate ?? ENCOUNTER) * (examWeek ? 0.5 : 1);
+        if (Math.random() < rate) {
+          const subject = z.mixed
+            ? z.mixed[Math.floor(Math.random() * z.mixed.length)]
+            : z.encounter!;
+          const subjKey = `${subject.level}/${subject.slug}`;
+          const echoSpecies = echoBySubject[subjKey];
+          const isEcho = Boolean(echoSpecies) && z.id !== "campus" && Math.random() < 0.25;
+          const table = z.table ?? loreFor(subject.family).route;
+          const species = isEcho ? echoSpecies : rollSpecies(table, 1 + Math.floor(Math.random() * 100));
+          void openWild(subject, {
+            species,
+            stage: z.id === "campus" ? 3 : undefined,
+            echo: isEcho,
+            tileKey: z.respawn === false ? `${tx}-${ty}` : undefined,
+          });
+        }
       }
     },
-    [region, openWild, showToast]
+    [region, openWild, showToast, examWeek, echoBySubject]
   );
 
   const npcAt = useCallback((x: number, y: number): Npc | undefined => {
     return zoneRef.current.npcs.find((n) => n.x === x && n.y === y);
   }, []);
+
+  // ── quest plumbing ───────────────────────────────────────────────────────
+  const acceptQuest = useCallback((quest: QuestDef) => {
+    setQuestStore((prev) => ({ ...prev, active: { ...prev.active, [quest.id]: 0 } }));
+  }, []);
+
+  const turnInQuest = useCallback(
+    async (npc: Npc, quest: QuestDef) => {
+      try {
+        const res = await fetch("/api/account/game/quest", {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: quest.id }),
+        });
+        const data = (await res.json()) as { done?: boolean; hint?: string; game?: FxGame | null };
+        if (!data.done) {
+          showToast(data.hint ?? quest.progress);
+          return;
+        }
+        emitGame(data.game ?? null, { x: window.innerWidth / 2, y: window.innerHeight * 0.3 });
+        setQuestsDone((prev) => new Set(prev).add(quest.id));
+        setQuestStore((prev) => {
+          const active = { ...prev.active };
+          delete active[quest.id];
+          return { ...prev, active };
+        });
+        setDialogue({
+          name: npc.name,
+          emoji: npc.emoji,
+          sprite: npc.sprite,
+          emotive: true,
+          lines: quest.done,
+          idx: 0,
+        });
+      } catch {
+        showToast(COPY.serverDown);
+      }
+    },
+    [showToast]
+  );
 
   // A button: advance dialogue, or interact with what you're facing.
   const handleA = useCallback(() => {
@@ -799,14 +1015,168 @@ export function AdventureGame({
     const p = player.current;
     const fx = p.tx + (p.facing === "left" ? -1 : p.facing === "right" ? 1 : 0);
     const fy = p.ty + (p.facing === "up" ? -1 : p.facing === "down" ? 1 : 0);
+    const z = zoneRef.current;
+
+    // signposts — readable, and Old Tan's quest counts them
+    const sign = z.signs?.find((sg) => sg.x === fx && sg.y === fy);
+    if (sign) {
+      const signKey = `${z.id}:${fx}-${fy}`;
+      setQuestStore((prev) => {
+        if (prev.active.signs === undefined || prev.signs.includes(signKey)) return prev;
+        return {
+          ...prev,
+          signs: [...prev.signs, signKey],
+          active: { ...prev.active, signs: prev.active.signs + 1 },
+        };
+      });
+      setDialogue({ name: "Signpost", emoji: "🪧", lines: [sign.text], idx: 0 });
+      return;
+    }
+
     const npc = npcAt(fx, fy);
-    if (!npc) return;
+    if (!npc) {
+      // the guardian's round — standing with it counts
+      if (questStore.active.guardianround !== undefined && z.gym && cleared.has(`${z.gym.level}/${z.gym.slug}`)) {
+        const gx = z.gym.x + 2;
+        const gy = z.gym.y + 1;
+        if (Math.abs(fx - gx) <= 1 && Math.abs(fy - gy) <= 1) {
+          setQuestStore((prev) => ({ ...prev, active: { ...prev.active, guardianround: 1 } }));
+          setDialogue({
+            name: "The Guardian",
+            emoji: "🦌",
+            lines: ["(It looks at the beacon. Then at you. Then walks on, satisfied about something.)"],
+            idx: 0,
+          });
+          return;
+        }
+      }
+      return;
+    }
+
+    // echo stones — the Undercroft's puzzle
+    if (npc.stone) {
+      const order = z.stoneOrder ?? [];
+      const rung = rungRef.current[z.id] ?? [];
+      const next = [...rung, npc.stone];
+      const ok = order.slice(0, next.length).every((o, ix) => o === next[ix]);
+      if (!ok) {
+        rungRef.current[z.id] = [];
+        showToast("The notes scatter. The stones reset, unbothered.");
+        return;
+      }
+      rungRef.current[z.id] = next;
+      emitFx({ type: "blip" });
+      if (next.length >= order.length) {
+        setStonesOpen((prev) => new Set(prev).add(z.id));
+        showToast("🎵 The third note lands — the keystone door grinds open.");
+      } else {
+        showToast(`🎵 The ${npc.stone} stone sings. ${next.length}/${order.length}.`);
+      }
+      return;
+    }
+
+    // the Undercroft keystone
+    if (npc.keystone) {
+      if (!stonesOpen.has(z.id)) {
+        setDialogue({ name: npc.name, emoji: npc.emoji, sprite: npc.sprite, lines: npc.lines, idx: 0 });
+        return;
+      }
+      const ks = npc.keystone;
+      const subj = subjects.find((su) => su.level === ks.level && su.slug === ks.slug);
+      if (subj) {
+        void openWild(subj, { species: ks.species, stage: 2, hp: 4, keystoneKey: `${ks.level}/${ks.slug}` });
+      }
+      return;
+    }
+
+    // the weekly Fog Front + the Order's mini-bosses: dialogue, then battle
+    if (npc.front || npc.boss) {
+      const subj = npc.front
+        ? subjects.find((su) => su.level === npc.front!.level && su.slug === npc.front!.slug)
+        : zoneRef.current.encounter ?? subjects[0];
+      const boss = npc.boss ? bossById(npc.boss) : undefined;
+      setDialogue({
+        name: npc.name,
+        emoji: npc.emoji,
+        sprite: npc.sprite,
+        lines: boss ? boss.intro : npc.lines,
+        idx: 0,
+        onDone: () => {
+          if (!subj) return;
+          if (boss) {
+            void openWild(subj, { species: boss.species, stage: boss.stage, hp: boss.hp, boss });
+          } else if (npc.front) {
+            void openWild(subj, {
+              species: npc.front.species,
+              stage: Math.max(2, stageForLevel(levelRef.current)) as 2 | 3,
+              hp: 5,
+              isFront: true,
+            });
+          }
+        },
+      });
+      return;
+    }
     // the character turns to face you — small thing, big life
     const OPPOSITE: Record<Dir, Dir> = { up: "down", down: "up", left: "right", right: "left" };
     npcFacingRef.current[npc.id] = OPPOSITE[p.facing];
     const beatDone = npc.battle?.beat ? story.has(npc.battle.beat) : beatenNpcs.has(npc.id);
-    const lines = beatDone && npc.winLines ? npc.winLines : npc.lines;
     const willBattle = npc.battle && !beatDone;
+
+    // quest-giver flow: offer → progress reminder → turn-in
+    const quest = npc.quest && !npc.quest.startsWith("ninth") ? questById(npc.quest) : undefined;
+    let lines = beatDone && npc.winLines ? npc.winLines : npc.lines;
+    let onDone: (() => void) | undefined = () => {
+      if (npc.heal) {
+        setHearts(MAX_HEARTS);
+        emitFx({ type: "correct" });
+        showToast("❤️ Hearts restored!");
+        // Nurse Fern's errand: reaching a camp keeper is the whole point
+        if (npc.id.startsWith("heal:")) {
+          setQuestStore((prev) =>
+            prev.active.unswept !== undefined
+              ? { ...prev, active: { ...prev.active, unswept: 1 } }
+              : prev
+          );
+        }
+      }
+      if (willBattle && npc.battle) void startTrainer(npc, npc.battle);
+    };
+
+    if (quest && !questsDone.has(quest.id)) {
+      const progress = questStore.active[quest.id];
+      if (progress === undefined) {
+        lines = quest.offer;
+        const inner = onDone;
+        onDone = () => {
+          acceptQuest(quest);
+          showToast(`📜 Quest accepted: ${quest.name}`);
+          inner?.();
+        };
+      } else if (progress >= quest.target) {
+        void turnInQuest(npc, quest);
+        return;
+      } else {
+        lines = [quest.progress];
+      }
+    }
+
+    // Murk's ninth lamp lives on the story route, not the quest table
+    if (npc.quest === "ninth") {
+      setDialogue({
+        name: npc.name,
+        emoji: npc.emoji,
+        sprite: npc.sprite,
+        lines: npc.lines,
+        idx: 0,
+        onDone: () => {
+          void postBeat("ninth");
+          showToast("🔦 The ninth lamp takes the flame. Everyone in Haven can see it.");
+        },
+      });
+      return;
+    }
+
     setDialogue({
       name: npc.name,
       emoji: npc.emoji,
@@ -814,16 +1184,25 @@ export function AdventureGame({
       emotive: beatDone,
       lines,
       idx: 0,
-      onDone: () => {
-        if (npc.heal) {
-          setHearts(MAX_HEARTS);
-          emitFx({ type: "correct" });
-          showToast("❤️ Hearts restored!");
-        }
-        if (willBattle && npc.battle) void startTrainer(npc, npc.battle);
-      },
+      onDone,
     });
-  }, [dialogue, npcAt, story, beatenNpcs, startTrainer, showToast]);
+  }, [
+    dialogue,
+    npcAt,
+    story,
+    beatenNpcs,
+    startTrainer,
+    showToast,
+    questStore,
+    questsDone,
+    cleared,
+    subjects,
+    stonesOpen,
+    openWild,
+    acceptQuest,
+    turnInQuest,
+    postBeat,
+  ]);
 
   const handleB = useCallback(() => {
     if (dialogue) {
@@ -962,7 +1341,11 @@ export function AdventureGame({
         const sy = Math.round((n.y - camY) * TS);
         if (sx < -TS || sy < -TS * 2 || sx > canvas.width || sy > canvas.height) continue;
         drawShadow(ctx, sx, sy);
-        if (sh) {
+        if (sh && n.monster) {
+          const mseq = [0, 1, 2, 1] as const;
+          const mcell = mseq[Math.floor(now / 320) % 4];
+          ctx.drawImage(sh.monsters, monsterBlockX(n.monster) + mcell * 16, 48, 16, 16, sx, sy, 16, 16);
+        } else if (sh) {
           drawWalker(ctx, sh.npcs, npcBlockX(n.sprite as NpcSprite), npcFacingRef.current[n.id] ?? "down", 1, sx, sy);
         } else {
           ctx.fillText(n.emoji, sx + TS / 2, sy + TS - 3);
@@ -1050,15 +1433,21 @@ export function AdventureGame({
     async (id: StrikeId) => {
       if (!battle || battle.phase !== "strike" || busy) return;
       emitFx({ type: "blip" });
+      const boss = battle.boss;
       if (id === "guard") {
         if (battle.guarded) return;
-        setHearts((h) => Math.min(MAX_HEARTS, h + 1));
-        setBattle({ ...battle, guarded: true });
-        showToast("You steady your breathing… +1 ❤");
+        setBattle({
+          ...battle,
+          guarded: true,
+          breatherBonus: boss?.modifier === "jab_lock" ? true : battle.breatherBonus,
+          fogCleared: boss?.modifier === "fog_option" ? true : battle.fogCleared,
+          bark: boss ? boss.onBreather : battle.bark,
+        });
+        showToast("You steady your breathing — the next miss won't touch your hearts.");
         return;
       }
       setBusy(true);
-      const q = (await fetchQueue(battle.subject)).shift();
+      const q = (await fetchQueue(battle.subject, boss?.modifier === "fog_option")).shift();
       setBusy(false);
       if (!q) {
         setBattle(null);
@@ -1070,6 +1459,68 @@ export function AdventureGame({
     [battle, busy, fetchQueue, showToast]
   );
 
+  const finishSpecialBattle = useCallback(
+    (b: WildBattle) => {
+      // persistence + world reaction for the season battles
+      if (b.boss) {
+        void fetch("/api/account/game/quest", {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: `boss:${b.boss.id}` }),
+        }).then(async (r) => {
+          if (r.ok) emitGame(((await r.json()) as { game: FxGame | null }).game);
+        });
+        setBeaten((prev) => new Set(prev).add(b.boss!.id));
+      } else if (b.isFront) {
+        void fetch("/api/account/game/quest", {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: "front" }),
+        }).then(async (r) => {
+          if (r.ok) emitGame(((await r.json()) as { game: FxGame | null }).game);
+        });
+        setBeaten((prev) => new Set(prev).add("front"));
+        showToast(FRONT_CLEARED[Math.floor(Math.random() * FRONT_CLEARED.length)]);
+      } else if (b.keystoneKey) {
+        void fetch("/api/account/game/quest", {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: `under:${b.keystoneKey}` }),
+        }).then(async (r) => {
+          if (r.ok) emitGame(((await r.json()) as { game: FxGame | null }).game);
+        });
+        setUnderCleared((prev) => new Set(prev).add(b.keystoneKey!));
+        showToast("🔦 An under-beacon glows — the fog on the route above thins.");
+      }
+      if (b.tileKey) {
+        void fetch("/api/account/game/quest", {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: `campus:${b.tileKey}` }),
+        });
+        setCampusCleared((prev) => new Set(prev).add(b.tileKey!));
+      }
+    },
+    [showToast]
+  );
+
+  const bumpBattleQuests = useCallback(
+    (zoneId: string) => {
+      // quest hooks: wild wins count toward Study Buddies / the Fisher's Tide
+      setQuestStore((prev) => {
+        const next = { ...prev, active: { ...prev.active } };
+        if (next.active.buddies !== undefined) next.active.buddies++;
+        if (zoneId === "saltwind" && next.active.tide !== undefined) next.active.tide++;
+        return next;
+      });
+    },
+    []
+  );
+
   const answerWild = useCallback(
     async (i: number) => {
       if (!battle || !battle.question || !battle.strike || busy) return;
@@ -1077,32 +1528,61 @@ export function AdventureGame({
       const res = await gradeAnswer(battle.subject, battle.question.id, String(i), battle.monster);
       setBusy(false);
       if (!res) {
-        showToast("Connection hiccup — that one didn't count.");
+        showToast(COPY.questionFail);
         return;
       }
       const strike = STRIKES.find((s) => s.id === battle.strike)!;
+      const boss = battle.boss;
       emitFx({ type: res.correct ? "correct" : "wrong" });
       emitGame(res.game, { x: window.innerWidth / 2, y: window.innerHeight * 0.3 });
+      if ((res as { capped?: boolean }).capped && !capToastRef.current) {
+        capToastRef.current = true;
+        showToast(COPY.capReached);
+      }
+      const round = battle.round + 1;
       if (res.correct) {
-        const hp = battle.hp - strike.dmg;
+        const dmg = strike.dmg + (battle.breatherBonus ? 1 : 0);
+        const hp = battle.hp - dmg;
+        const bark = boss ? boss.onCorrect[round % boss.onCorrect.length] : undefined;
         if (hp <= 0) {
           setWins((w) => w + 1);
-          setBattle({ ...battle, hp: 0, phase: "victory", result: res, captured: Boolean(res.newCapture) });
+          bumpBattleQuests(zoneRef.current.id);
+          finishSpecialBattle(battle);
+          setBattle({
+            ...battle,
+            hp: 0,
+            round,
+            phase: "victory",
+            result: res,
+            captured: Boolean(res.newCapture),
+            breatherBonus: false,
+            bark: boss ? boss.defeated[1] : undefined,
+          });
         } else {
-          setBattle({ ...battle, hp, phase: "strike", result: res });
-          showToast(`💥 Hit! ${strike.dmg} damage.`);
+          setBattle({ ...battle, hp, round, phase: "strike", result: res, breatherBonus: false, fogCleared: false, bark });
+          showToast(`💥 Hit! ${dmg} damage.`);
         }
       } else {
-        const left = hearts - strike.cost;
+        const bark = boss ? boss.onWrong[round % boss.onWrong.length] : undefined;
+        if (battle.guarded) {
+          setBattle({ ...battle, round, phase: "reveal", result: res, guarded: false, fogCleared: false, bark });
+          showToast("The breath held — no hearts lost.");
+          return;
+        }
+        const cost = 1 + (battle.keystoneKey ? 1 : 0);
+        // a missed heavy feeds the monster
+        const healed = battle.strike === "power" ? Math.min(battle.maxHp, battle.hp + 1) : battle.hp;
+        const left = hearts - cost;
         setHearts(Math.max(0, left));
         if (left <= 0) {
+          setWipeLetter({ stem: battle.question.stem, solution: res.workedSolution });
           blackout();
         } else {
-          setBattle({ ...battle, phase: "reveal", result: res });
+          setBattle({ ...battle, hp: healed, round, phase: "reveal", result: res, fogCleared: false, bark });
         }
       }
     },
-    [battle, busy, hearts, gradeAnswer, blackout, showToast]
+    [battle, busy, hearts, gradeAnswer, blackout, showToast, finishSpecialBattle, bumpBattleQuests]
   );
 
   // ── trainer battle actions ───────────────────────────────────────────────
@@ -1140,6 +1620,14 @@ export function AdventureGame({
       setWins((w) => w + 1);
       setBeatenNpcs((prev) => new Set(prev).add(trainer.npc.id));
       if (trainer.battle.beat) void postBeat(trainer.battle.beat);
+      // Grunt Work: the defector counts his squadmates' teas going cold
+      if (trainer.npc.id.startsWith("grunt:")) {
+        setQuestStore((prev) =>
+          prev.active.gruntwork !== undefined
+            ? { ...prev, active: { ...prev.active, gruntwork: prev.active.gruntwork + 1 } }
+            : prev
+        );
+      }
     }
   }, [trainer, postBeat]);
 
@@ -1316,6 +1804,14 @@ export function AdventureGame({
           </p>
         </div>
         <div className="pointer-events-auto flex gap-2">
+          <button
+            type="button"
+            onClick={() => setQuestLogOpen(true)}
+            aria-label="Quest log"
+            className="rounded-lg bg-night/70 px-2.5 py-1.5 text-sm backdrop-blur"
+          >
+            📜
+          </button>
           {wins > 0 && (
             <button
               type="button"
@@ -1413,11 +1909,26 @@ export function AdventureGame({
 
       {/* wild battle */}
       {battle && m && (
-        <Panel title={battle.shiny ? "✨ A SHINY monster appears!" : "⚔️ A wild monster appears!"}>
+        <Panel
+          title={
+            battle.boss
+              ? `🌫 ${battle.boss.name} — ${battle.boss.epithet}`
+              : battle.isFront
+              ? "🌫 The Fog Front holds this ground"
+              : battle.keystoneKey
+              ? "🗿 The Keystone stirs"
+              : battle.echo
+              ? "🌫 A notebook echo takes shape!"
+              : battle.shiny
+              ? "✨ A SHINY monster appears!"
+              : "⚔️ A wild monster appears!"
+          }
+        >
           <div className="flex items-center gap-3">
             <MonsterSprite
               species={battle.monster}
               shiny={battle.shiny}
+              stage={battle.stage}
               scale={2.5}
               className={`fx-hero rounded-xl ${battle.shiny ? "drop-shadow-[0_0_12px_rgba(255,220,0,0.8)]" : ""}`}
               label={m.name}
@@ -1431,44 +1942,86 @@ export function AdventureGame({
             </div>
             <HeartRow current={battle.hp} max={battle.maxHp} scale={1.25} />
           </div>
+          {battle.bark && (
+            <p className="mt-2 rounded-lg bg-night/60 px-3 py-1.5 text-xs italic text-body">
+              {battle.bark}
+            </p>
+          )}
 
           {battle.phase === "strike" && (
             <div className="mt-4 space-y-2">
-              <p className="font-pixel text-[9px] text-body">CHOOSE YOUR STRIKE</p>
-              {STRIKES.map((s) => (
-                <button
-                  key={s.id}
-                  type="button"
-                  disabled={busy || (s.id === "guard" && battle.guarded)}
-                  onClick={() => void chooseStrike(s.id)}
-                  className="block w-full rounded-xl border border-hairline bg-night px-4 py-2.5 text-left hover:border-accent disabled:opacity-40"
-                >
-                  <span className="text-sm font-bold text-ink">{s.name}</span>
-                  <span className="ml-2 text-xs text-body">{s.desc}</span>
+              <p className="font-pixel text-[9px] text-body">
+                {battle.boss?.modifier === "jab_lock" && battle.round < 2
+                  ? "THE PATH IS WHITE — ONLY THE SMALLEST START IS ALLOWED"
+                  : "CHOOSE YOUR STRIKE"}
+              </p>
+              {battle.keystoneKey && (
+                <p className="text-[10px] text-coral">Undercroft rule: a miss here costs 2 ❤</p>
+              )}
+              {STRIKES.map((s) => {
+                const locked =
+                  battle.boss?.modifier === "jab_lock" && battle.round < 2 && s.id !== "jab";
+                return (
+                  <button
+                    key={s.id}
+                    type="button"
+                    disabled={busy || locked || (s.id === "guard" && battle.guarded)}
+                    onClick={() => void chooseStrike(s.id)}
+                    className={`block w-full rounded-xl border px-4 py-2.5 text-left disabled:opacity-40 ${
+                      locked ? "border-hairline/40 bg-night/60" : "border-hairline bg-night hover:border-accent"
+                    }`}
+                  >
+                    <span className="text-sm font-bold text-ink">{s.name}</span>
+                    <span className="ml-2 text-xs text-body">{locked ? "frosted over…" : s.desc}</span>
+                  </button>
+                );
+              })}
+              {battle.breatherBonus && (
+                <p className="text-[10px] text-guarantee">Composure pays: your next hit lands +1.</p>
+              )}
+              {!battle.boss && !battle.isFront && !battle.keystoneKey && (
+                <button type="button" onClick={handleB} className="mt-1 text-xs text-body hover:text-ink">
+                  Run away →
                 </button>
-              ))}
-              <button type="button" onClick={handleB} className="mt-1 text-xs text-body hover:text-ink">
-                Run away →
-              </button>
+              )}
             </div>
           )}
 
           {battle.phase === "question" && battle.question && (
             <div className="mt-4">
+              {battle.boss?.modifier === "soft_timer" && (battle.round === 1 || battle.round === 3) && (
+                <SoftTimer key={battle.round} onExpire={() => showToast("Tick. (Nothing happens. Panic is not how this works.)")} />
+              )}
               <p className="font-mono text-xs text-accent">{battle.question.topic}</p>
               <p className="mt-1 font-medium text-ink">{battle.question.stem}</p>
               <div className="mt-3 space-y-2">
-                {(battle.question.options ?? []).map((opt, i) => (
-                  <button
-                    key={i}
-                    type="button"
-                    disabled={busy}
-                    onClick={() => void answerWild(i)}
-                    className="block w-full rounded-xl border border-hairline bg-night px-4 py-2.5 text-left text-sm text-ink hover:border-accent disabled:opacity-50"
-                  >
-                    {opt}
-                  </button>
-                ))}
+                {(battle.question.options ?? []).map((opt, i) => {
+                  const fogged =
+                    battle.boss?.modifier === "fog_option" &&
+                    !battle.fogCleared &&
+                    battle.question?.fogIndex === i;
+                  if (fogged) {
+                    return (
+                      <div
+                        key={i}
+                        className="block w-full rounded-xl border border-violet/40 bg-night/70 px-4 py-2.5 text-left text-sm italic text-body/50"
+                      >
+                        <span className="text-violet">～ fog smokes gently over this one ～</span>
+                      </div>
+                    );
+                  }
+                  return (
+                    <button
+                      key={i}
+                      type="button"
+                      disabled={busy}
+                      onClick={() => void answerWild(i)}
+                      className="block w-full rounded-xl border border-hairline bg-night px-4 py-2.5 text-left text-sm text-ink hover:border-accent disabled:opacity-50"
+                    >
+                      {opt}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -1494,7 +2047,15 @@ export function AdventureGame({
 
           {battle.phase === "victory" && (
             <div className="mt-4 space-y-3">
-              <p className="font-display text-lg font-bold text-guarantee">🏆 It&apos;s defeated!</p>
+              <p className="font-display text-lg font-bold text-guarantee">
+                {battle.boss
+                  ? `🕊 ${battle.boss.defeated[0]}`
+                  : battle.isFront
+                  ? "🌤 The fog lifts off the landmark!"
+                  : battle.tileKey
+                  ? "🌤 The memory settles — this ground stays clear."
+                  : "🏆 It's defeated!"}
+              </p>
               {battle.captured && (
                 <p className="fx-hero flex items-center justify-center gap-2 rounded-xl border border-accent/50 bg-accent/10 p-3 text-center font-pixel text-[10px] text-accent">
                   <CaptureSwirl />
@@ -1695,6 +2256,71 @@ export function AdventureGame({
         </Panel>
       )}
 
+      {/* quest log */}
+      {questLogOpen && (
+        <Panel title="📜 Errands & Quests">
+          <div className="space-y-2">
+            {QUESTS.filter((q) => questsDone.has(q.id) || questStore.active[q.id] !== undefined).map(
+              (q) => {
+                const done = questsDone.has(q.id);
+                const prog = questStore.active[q.id] ?? 0;
+                return (
+                  <div
+                    key={q.id}
+                    className={`rounded-xl border px-3 py-2 ${
+                      done ? "border-guarantee/40 opacity-70" : "border-hairline"
+                    }`}
+                  >
+                    <p className="text-sm font-bold text-ink">
+                      {done ? "✓ " : ""}
+                      {q.name}
+                      {q.star && <span className="ml-1 text-accent">★</span>}
+                    </p>
+                    <p className="mt-0.5 text-xs text-body">
+                      {done ? "Done — the world remembers." : `${Math.min(prog, q.target)}/${q.target} · ${q.progress}`}
+                    </p>
+                  </div>
+                );
+              }
+            )}
+            {QUESTS.every((q) => !questsDone.has(q.id) && questStore.active[q.id] === undefined) && (
+              <p className="text-sm text-body">
+                No errands yet. Talk to the folk of Haven — anyone with a task will say so.
+              </p>
+            )}
+            <p className="text-[10px] text-body">★ = a real study action, in game clothes.</p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setQuestLogOpen(false)}
+            className="mt-3 w-full rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
+          >
+            Close
+          </button>
+        </Panel>
+      )}
+
+      {/* wipe letter — the session ends on a plan, not a loss */}
+      {wipeLetter && (
+        <Panel title="📬 A letter in the mailbox">
+          <p className="text-sm text-body">{COPY.wipeLetterIntro}</p>
+          <p className="mt-2 rounded-xl border border-hairline bg-night p-3 text-xs text-body">
+            {wipeLetter.stem}
+          </p>
+          <p className="mt-2 rounded-xl border border-hairline bg-night p-3 text-sm text-body">
+            {wipeLetter.solution}
+          </p>
+          <p className="mt-2 text-xs italic text-body">{COPY.wipeLetterOutro}</p>
+          <button
+            type="button"
+            onClick={() => setWipeLetter(null)}
+            className="mt-3 w-full rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
+          >
+            Noted
+          </button>
+        </Panel>
+      )}
+
       {/* onboarding */}
       {onboard && (
         <div className="absolute inset-0 z-[62] flex flex-col items-center justify-center gap-5 bg-night/97 px-6 text-center backdrop-blur">
@@ -1793,6 +2419,38 @@ export function AdventureGame({
       )}
     </div>,
     document.body
+  );
+}
+
+// The Hurry's soft timer — visual pressure only, per the accepted fallback:
+// expiry never costs hearts, XP, or the answer. It just ticks.
+function SoftTimer({ onExpire }: { onExpire: () => void }) {
+  const [left, setLeft] = useState(60);
+  useEffect(() => {
+    const t = window.setInterval(() => {
+      setLeft((v) => {
+        if (v <= 1) {
+          window.clearInterval(t);
+          onExpire();
+          return 0;
+        }
+        return v - 1;
+      });
+    }, 1000);
+    return () => window.clearInterval(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return (
+    <div className="mb-2 flex items-center gap-2" aria-label="soft timer — pressure only, no cost">
+      <span className="font-pixel text-[9px] text-coral">⏱ {left}s</span>
+      <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-night">
+        <span
+          className="block h-full rounded-full bg-coral transition-[width] duration-1000"
+          style={{ width: `${(left / 60) * 100}%` }}
+        />
+      </span>
+      <span className="font-pixel text-[7px] text-body">NO COST</span>
+    </div>
   );
 }
 

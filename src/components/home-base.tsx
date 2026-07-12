@@ -64,16 +64,21 @@ export function HomeBase({
   todayDone,
   streak,
   dueMistakes,
+  shields = 0,
 }: {
   todayDone: boolean;
   streak: number;
   dueMistakes: number;
+  shields?: number;
 }) {
   const native = useNativePlatform();
   const live = useHud();
   if (!native) return null;
   const level = live?.level ?? 1;
-  const line = speech({ todayDone, streak, dueMistakes, level });
+  const line =
+    shields > 0 && !todayDone
+      ? "Your shield's up — today is free. (But the quests are fun, just saying.)"
+      : speech({ todayDone, streak, dueMistakes, level });
 
   return (
     <section

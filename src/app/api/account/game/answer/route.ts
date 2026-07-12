@@ -7,11 +7,13 @@ import { ownedSubjects, sgDay, isCorrect } from "@/lib/server/study";
 import { MONSTERS } from "@/lib/game";
 import { awardXp, totalXpFor, gamePayload, markAchievement, type GamePayload } from "@/lib/server/xp";
 
-// Grades ONE wild-battle answer server-side. Correct hits earn a little XP,
-// hard-capped per day so grinding encounters can't out-earn real study.
-// Wrong answers reveal nothing — the monster just strikes back.
-const WILD_XP = 2;
-const WILD_CAP_PER_DAY = 15;
+// Grades ONE wild-battle answer server-side. Balance pass (season pack
+// deliverable 5): every ATTEMPT pays, wins pay more — effort-weighted, so a
+// losing session still earns. Hard daily cap keeps grinding pointless while
+// battles stay meaningful (notebook clears + Fronts work past the cap).
+const ATTEMPT_XP = 10;
+const WIN_XP = 10;
+const WILD_CAP_PER_DAY = 150;
 
 export async function POST(request: Request) {
   const customerId = await getCustomerId();
@@ -59,21 +61,28 @@ export async function POST(request: Request) {
   }
 
   let game: GamePayload | null = null;
-  if (correct) {
+  let capped = false;
+  {
     const today = sgDay();
-    const usedToday = await prisma.xpEvent.count({
+    const agg = await prisma.xpEvent.aggregate({
       where: { customerId, kind: "wild", sourceKey: { startsWith: `wild:${today}:` } },
+      _sum: { amount: true },
+      _count: true,
     });
-    if (usedToday < WILD_CAP_PER_DAY) {
+    const usedXp = agg._sum.amount ?? 0;
+    const amount = ATTEMPT_XP + (correct ? WIN_XP : 0);
+    if (usedXp + amount <= WILD_CAP_PER_DAY) {
       const xpBefore = await totalXpFor(customerId);
       const gained = await awardXp(
         customerId,
         "wild",
-        `wild:${today}:${usedToday + 1}`,
-        WILD_XP,
+        `wild:${today}:${agg._count + 1}`,
+        amount,
         questionId
       );
       if (gained > 0) game = await gamePayload(customerId, xpBefore, gained, []);
+    } else {
+      capped = true;
     }
   }
 
@@ -84,6 +93,7 @@ export async function POST(request: Request) {
     correctAnswer,
     workedSolution: question.workedSolution,
     newCapture,
+    capped,
     game,
   });
 }

@@ -130,6 +130,35 @@ banned-words grep on new copy, and a real browser/API pass (log in as
 Clean up test rows from `prisma/dev.db` afterwards. An upload's HTTP 200
 proves nothing about persistence — snapshot ids/hashes, redeploy, re-compare.
 
+## Fog Frontier — the season pack (all 4 waves shipped)
+
+The commissioned season design pack (owner's drive, `claude_code_handoff
+1.1/design_docs`) is implemented as data in `src/lib/game/season.ts`:
+province lore names + d100 encounter tables per subject family (the table
+IS the pedagogy), balance pass (monster HP by stage 3/4/5, stage from
+player level bands L1-6/7-13/14+, breather = shield-next-miss, missed
+heavy heals the monster, wild XP = 10/attempt +10/win capped 150/day,
+mistakeCleared 25), 10 side quests with the pack's scripts (client step
+tracking in localStorage `ff_quest_state`, notebook quests server-verified
+in `/api/account/game/quest`), quest log (📜 top bar). Zones: per-province
+**Undercroft** (echo-stone order puzzle from the entrance tablet →
+keystone set-battle, +1 ❤ on miss, persists `under:<key>`), **Saltwind
+Steps** (mixed-subject breather zone, unlocks at 2 gyms), **Old Campus**
+(post-championship; fog-bank tiles are non-respawning S3 battles persisted
+`campus:<x>-<y>`; Murk's diary unlocks by progress; the ninth-lamp beat).
+Weekly **Fog Front** (weakest subject via risk engine, landmark named on
+the hub notice board, 50 XP once per ISO week `front:<week>`), mini-bosses
+**Whisper/Hurry/Blank** with battle modifiers (server-safe fog-hint hides
+one WRONG option; soft timer is VISUAL-ONLY per the pack's approved
+fallback; jab-lock rounds 1-2 + composure bonus) + their bark pools.
+Retention: wipe letters (worked-solution recap overlay on 0 hearts),
+notebook echoes (25% of route encounters use the subject's latest
+uncleared mistake species), shield morning line in Home Base. **Exam Week
+Mode** (any ExamDate within 7 days): −50% encounters, Front paused, quiet
+greetings. Deferred pending owner sign-off: keepsake poster (share-safety),
+festival (needs calendar anchor), companion chores beyond the Home Base
+line. Murk battle barks + Q4 moving marker downgraded per pack fallbacks.
+
 ## Fog Frontier — the full creature-collecting RPG (native game shell)
 
 `/account/adventure` is a complete original-IP RPG (`adventure-game.tsx` +

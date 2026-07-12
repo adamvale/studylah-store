@@ -24,6 +24,7 @@ const BEATS: Record<string, number> = {
   fog2: 15, // defeated the Fog Order commander at the Summit
   rival2: 15, // rival rematch at the Summit
   championship: 50, // cleared the gauntlet (also unlocks the champion badge)
+  ninth: 50, // lit the unofficial Old Campus beacon (post-game epilogue)
 };
 
 export async function POST(request: Request) {

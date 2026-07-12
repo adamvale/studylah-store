@@ -34,8 +34,25 @@ export async function GET(request: Request) {
   const mcqs = set.questions.filter((q) => q.type === "mcq" && q.options?.length);
   // Shuffle server-side so each hand differs.
   const shuffled = [...mcqs].sort(() => Math.random() - 0.5).slice(0, count);
-  const questions: PublicQuestion[] = shuffled.map(
-    ({ id, type, topic, stem, options, marks }) => ({ id, type, topic, stem, options, marks })
-  );
+  // The Whisper's "fog on the page": hint=1 marks ONE WRONG option per
+  // question so the client can hide it. Safe by construction — it reveals
+  // an option that is NOT the answer, never the answer itself.
+  const hint = url.searchParams.get("hint") === "1";
+  const questions: (PublicQuestion & { fogIndex?: number })[] = shuffled.map((q) => {
+    const base: PublicQuestion & { fogIndex?: number } = {
+      id: q.id,
+      type: q.type,
+      topic: q.topic,
+      stem: q.stem,
+      options: q.options,
+      marks: q.marks,
+    };
+    if (hint && q.options && q.options.length > 2) {
+      const correctIdx = Number(q.correctKey[0]);
+      const wrongIdxs = q.options.map((_, i) => i).filter((i) => i !== correctIdx);
+      base.fogIndex = wrongIdxs[Math.floor(Math.random() * wrongIdxs.length)];
+    }
+    return base;
+  });
   return NextResponse.json({ questions });
 }

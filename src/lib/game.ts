@@ -87,7 +87,7 @@ export function badgeById(id: string): BadgeDef | undefined {
 export const XP = {
   dailyBase: 20,
   dailyPerCorrect: 5, // ×3 max
-  mistakeCleared: 15,
+  mistakeCleared: 25, // the premium action (season balance pass)
   topicStepByTier: { "very-high": 10, high: 7, moderate: 4, watch: 2 } as Record<string, number>,
   focusSession: 10, // capped 4/day
   diagnosticAttempt: 15, // capped 1/subject/day

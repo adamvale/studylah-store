@@ -130,7 +130,7 @@ export default async function TodayPage() {
     mission.push({
       done: false,
       minutes: 5,
-      xp: "+15 XP each",
+      xp: "+25 XP each",
       title: `Clear ${Math.min(unresolvedMistakes, 2)} from the mistake notebook`,
       detail: `${unresolvedMistakes} unresolved — each one is a mark leak with your name on it.`,
       href: "/account/mistakes",
@@ -266,6 +266,7 @@ export default async function TodayPage() {
         todayDone={streak.doneToday}
         streak={streak.current}
         dueMistakes={unresolvedMistakes}
+        shields={streak.shields}
       />
 
       {/* Mission brief */}
