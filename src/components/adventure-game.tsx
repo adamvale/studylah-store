@@ -44,6 +44,7 @@ import {
   buildingXY,
   ghostBlockX,
   npcBlockX,
+  heroBlockX,
   monsterBlockX,
   fxXY,
   accessoryBlockX,
@@ -338,21 +339,21 @@ function drawAccessories(
 }
 
 // ── The playable researchers ───────────────────────────────────────────────
-// Three ORIGINAL 16×24 pixel walkers drawn in code to the pack's spec
-// (1px #1a2230 outline, feet on the tile, 3-frame walk). The commissioned
-// v2 sheet can replace this painter cell-for-cell later.
+// Heroes render from the commissioned heroes.png sheet (jun / mei / agent).
+// This painter is the PROCEDURAL FALLBACK only, used when the sheet fails to
+// load — 16×24, 1px #1a2230 outline, feet on the tile, 3-frame walk.
 interface HeroPalette {
   hair: string;
   skin: string;
   top: string;
   bottom: string;
   accent: string;
-  shades?: boolean; // Agent Sable's eyewear
+  shades?: boolean; // Agent X's eyewear
 }
 
 const HERO_PALETTES: Record<string, HeroPalette> = {
-  scout: { hair: "#6b4423", skin: "#f0c8a0", top: "#3b7dd8", bottom: "#d9c48a", accent: "#db222a" },
-  keeper: { hair: "#1a2230", skin: "#e8b88a", top: "#ff7ab0", bottom: "#7c3aed", accent: "#ffdc00" },
+  jun: { hair: "#6b4423", skin: "#f0c8a0", top: "#3b7dd8", bottom: "#d9c48a", accent: "#db222a" },
+  mei: { hair: "#1a2230", skin: "#e8b88a", top: "#ff7ab0", bottom: "#7c3aed", accent: "#ffdc00" },
   agent: { hair: "#221b2e", skin: "#e8b88a", top: "#2b3242", bottom: "#1a2230", accent: "#db222a", shades: true },
 };
 
@@ -364,7 +365,7 @@ function drawHero(
   frame: number, // 0..2, 1 = idle
   heroId: string
 ) {
-  const pal = HERO_PALETTES[heroId] ?? HERO_PALETTES.scout;
+  const pal = HERO_PALETTES[heroId] ?? HERO_PALETTES.jun;
   const top = y - 8;
   const px = (dx: number, dy: number, w: number, h: number, col: string) => {
     ctx.fillStyle = col;
@@ -378,7 +379,7 @@ function drawHero(
   px(3, 18, 10, 6, "#1a2230");
   // hair + head
   px(5, 2, 6, 3, pal.hair);
-  if (heroId === "keeper") {
+  if (heroId === "mei") {
     px(11, 3, 2, 5, pal.hair); // ponytail
     px(11, 8, 1, 1, pal.accent);
   }
@@ -405,12 +406,12 @@ function drawHero(
     px(3, 10, 1, 7, pal.top); // long coat edges
     px(12, 10, 1, 7, pal.top);
   }
-  if (heroId === "scout") px(4, 10, 8, 1, pal.accent); // scarf line
+  if (heroId === "jun") px(4, 10, 8, 1, pal.accent); // scarf line
   // arms (swing subtly)
   px(3, 11 + (step === -1 ? 1 : 0), 1, 3, pal.skin);
   px(12, 11 + (step === 1 ? 1 : 0), 1, 3, pal.skin);
-  // legs (skirt for the keeper)
-  if (heroId === "keeper") {
+  // legs (skirt for Mei)
+  if (heroId === "mei") {
     px(4, 15, 8, 3, pal.bottom);
     px(5 + (step === -1 ? -1 : 0), 18, 2, 4, pal.skin);
     px(9 + (step === 1 ? 1 : 0), 18, 2, 4, pal.skin);
@@ -732,7 +733,7 @@ export function AdventureGame({
   const tilesetRef = useRef<Record<number, HTMLCanvasElement>[] | null>(null);
   const sheetsRef = useRef<Sheets | null>(null);
   const ghostVariantRef = useRef<string>("none");
-  const heroRef = useRef<string>("scout");
+  const heroRef = useRef<string>("jun");
   // the companion trails the hero: a short breadcrumb of recent tiles
   const trailRef = useRef<{ x: number; y: number; facing: Dir }[]>([]);
   const levelRef = useRef(1);
@@ -793,7 +794,7 @@ export function AdventureGame({
     levelRef.current = hudState?.level ?? 1;
   }, [hudState]);
   useEffect(() => {
-    heroRef.current = heroId ?? "scout";
+    heroRef.current = heroId ?? "jun";
   }, [heroId]);
   useEffect(() => {
     clearedRef.current = cleared;
@@ -1491,7 +1492,11 @@ export function AdventureGame({
       {
         const seq = [0, 1, 2, 1];
         const wf = p.moving ? seq[Math.floor(animClock / 140) % 4] : 1;
-        drawHero(ctx, pfx, pfy, p.facing, wf, heroRef.current);
+        if (sh) {
+          drawWalker(ctx, sh.heroes, heroBlockX(heroRef.current), p.facing, wf, pfx, pfy);
+        } else {
+          drawHero(ctx, pfx, pfy, p.facing, wf, heroRef.current);
+        }
       }
 
       raf = requestAnimationFrame(step);
@@ -2484,7 +2489,7 @@ export function AdventureGame({
                 </p>
                 <p>
                   I believe you&apos;re that student, Lightbearer. Choose who you&apos;ll be out
-                  there — and the companion spirit who&apos;ll trail a step behind you, carrying
+                  there — and Gugu, the companion spirit, will trail a step behind you, carrying
                   the lantern.
                 </p>
               </div>
@@ -2627,7 +2632,8 @@ function SoftTimer({ onExpire }: { onExpire: () => void }) {
   );
 }
 
-// Little live preview of a hero walker for the onboarding cards.
+// Little live preview of a hero walker for the onboarding cards. Draws from
+// the commissioned heroes.png when it has loaded; procedural fallback until.
 function HeroPreview({ heroId }: { heroId: string }) {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -2635,9 +2641,22 @@ function HeroPreview({ heroId }: { heroId: string }) {
     if (!cv) return;
     const c = cv.getContext("2d");
     if (!c) return;
-    c.imageSmoothingEnabled = false;
-    c.clearRect(0, 0, cv.width, cv.height);
-    drawHero(c, 0, 8, "down", 1, heroId);
+    let cancelled = false;
+    const paint = () => {
+      if (cancelled || !ref.current) return;
+      c.imageSmoothingEnabled = false;
+      c.clearRect(0, 0, cv.width, cv.height);
+      drawHero(c, 0, 8, "down", 1, heroId); // fallback first paint
+      void loadSheets().then((sh) => {
+        if (cancelled || !sh) return;
+        c.clearRect(0, 0, cv.width, cv.height);
+        drawWalker(c, sh.heroes, heroBlockX(heroId), "down", 1, 0, 8);
+      });
+    };
+    paint();
+    return () => {
+      cancelled = true;
+    };
   }, [heroId]);
   return (
     <canvas

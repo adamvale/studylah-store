@@ -82,6 +82,11 @@ export type GuardianName = (typeof GUARDIAN_ORDER)[number];
 // player_ghost.png: 48px block per scarf variant.
 export const GHOST_VARIANTS = ["none", "ember", "tide", "grove", "gold"] as const;
 
+// heroes.png: 3 playable researchers chosen at onboarding, 48px block each,
+// same 16×24 walker layout as npcs/ghost (rows down/left/right/up).
+export const HERO_ORDER = ["jun", "mei", "agent"] as const;
+export type HeroSprite = (typeof HERO_ORDER)[number];
+
 const DIR_ROW: Record<string, number> = { down: 0, left: 1, right: 2, up: 3 };
 export const WALKER_W = 16;
 export const WALKER_H = 24;
@@ -92,6 +97,7 @@ export interface Sheets {
   buildingsAnim: HTMLImageElement;
   player: HTMLImageElement;
   accessories: HTMLImageElement;
+  heroes: HTMLImageElement;
   npcs: HTMLImageElement;
   monsters: HTMLImageElement;
   evolutions: HTMLImageElement;
@@ -124,6 +130,7 @@ export function loadSheets(): Promise<Sheets | null> {
     loadImage("/game/buildings_anim.png"),
     loadImage("/game/player_ghost.png"),
     loadImage("/game/ghost_accessories.png"),
+    loadImage("/game/heroes.png"),
     loadImage("/game/npcs.png"),
     loadImage("/game/monsters.png"),
     loadImage("/game/monsters_evolutions.png"),
@@ -134,13 +141,14 @@ export function loadSheets(): Promise<Sheets | null> {
     loadImage("/game/portraits.png"),
   ])
     .then(
-      ([terrain, buildings, buildingsAnim, player, accessories, npcs, monsters, evolutions, guardians, guardianWalkers, fx, ui, portraits]) => {
+      ([terrain, buildings, buildingsAnim, player, accessories, heroes, npcs, monsters, evolutions, guardians, guardianWalkers, fx, ui, portraits]) => {
         loaded = {
           terrain,
           buildings,
           buildingsAnim,
           player,
           accessories,
+          heroes,
           npcs,
           monsters,
           evolutions,
@@ -208,6 +216,11 @@ export function ghostBlockX(variant: string): number {
 
 export function npcBlockX(sprite: NpcSprite): number {
   return NPC_ORDER.indexOf(sprite) * 48;
+}
+
+export function heroBlockX(sprite: string): number {
+  const i = HERO_ORDER.indexOf(sprite as HeroSprite);
+  return (i < 0 ? 0 : i) * 48;
 }
 
 // Accessory overlays: cell-for-cell aligned with player_ghost.png, one

@@ -146,24 +146,25 @@ export interface HeroDef {
   blurb: string;
 }
 
+// ids and art come from the commissioned heroes.png sheet (jun / mei / agent).
 export const HEROES: HeroDef[] = [
   {
-    id: "scout",
-    name: "Jun the Scout",
+    id: "jun",
+    name: "Jun",
     emoji: "🧭",
-    blurb: "First out the door every morning. Maps the routes so others don't get lost.",
+    blurb: "A steady all-rounder. First out the door every morning, maps the routes so others don't get lost.",
   },
   {
-    id: "keeper",
-    name: "Wren the Keeper",
+    id: "mei",
+    name: "Mei",
     emoji: "🔖",
-    blurb: "Keeps the neatest notebook in Haven. The Fog hates a good index.",
+    blurb: "Quick and curious. Keeps the neatest notebook in Haven — the Fog hates a good index.",
   },
   {
     id: "agent",
-    name: "Agent Sable",
+    name: "Agent X",
     emoji: "🕶️",
-    blurb: "Nobody knows who sent them. Their mission folder just says 'pass'.",
+    blurb: "A mysterious transfer student. Nobody knows who sent them; their mission folder just says 'pass'.",
   },
 ];
 

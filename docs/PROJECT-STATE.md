@@ -163,18 +163,22 @@ line. Murk battle barks + Q4 moving marker downgraded per pack fallbacks.
 
 Two additions on top of the season pack:
 
-**Three playable heroes.** Onboarding now has a "Choose your researcher"
-step (`HEROES` in `src/lib/game.ts`: `scout` Jun / `keeper` Wren / `agent`
-Agent Sable) before the companion pick. The choice persists as achievement
+**Three playable heroes.** Onboarding has a "Choose your researcher"
+step (`HEROES` in `src/lib/game.ts`: `jun` Jun / `mei` Mei / `agent`
+Agent X) before the companion pick. The choice persists as achievement
 `hero:<id>` (written by the story route's `hero` beat, whitelisted to those
-three ids) and is passed into the game via the `hero` prop. The player
-sprite is drawn by `drawHero` in `adventure-game.tsx` (16×24, per-hero
-palette, agent has shades) — purely cosmetic, all three walk the same roads
-with the same weapon (correct answers). Existing users who onboarded before
-this ship get a one-time hero-only picker (`initialStory.includes("starter")
-&& !initialHero`). The ghost researcher is now a **companion that trails one
-step behind** the hero (breadcrumb `trailRef`, ghost drawn at `trail[-2]`
-with the same accessory overlays), not the player character.
+three ids) and is passed into the game via the `hero` prop. Heroes render
+from the commissioned **`heroes.png`** sheet (144×96, 3 blocks of 48px, same
+16×24 walker layout as npcs — `heroBlockX` + `HERO_ORDER` in `sheets.ts`);
+`drawHero` in `adventure-game.tsx` is now the procedural FALLBACK only.
+Purely cosmetic — all three walk the same roads with the same weapon
+(correct answers). Existing users who onboarded before this ship get a
+one-time hero-only picker (`initialStory.includes("starter") && !initialHero`).
+The ghost companion — **Gugu** — trails one step behind the hero (breadcrumb
+`trailRef`, drawn from `player_ghost.png` at `trail[-2]` with the same scarf
++ accessory overlays), not the player character. Art drop
+`claude_code_handoff v2` also refreshed `guardians/monsters/portraits/ui.png`
+(same dims + manifest order — art only).
 
 **The Duel Hall.** Async 1-v-1 by share code — no matchmaking, no chat, no
 leaderboard (a deliberate rejection of grade-adjacent social pressure).

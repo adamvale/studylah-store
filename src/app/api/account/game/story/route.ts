@@ -16,7 +16,7 @@ import {
 // one-time (unique sourceKey), and beats are idempotent. Worst case for a
 // dishonest client: a few dozen XP once — no marks, no grades, no content.
 
-const HEROES = ["scout", "keeper", "agent"]; // male / female / secret agent
+const HEROES = ["jun", "mei", "agent"]; // male / female / secret agent (heroes.png)
 
 const BEATS: Record<string, number> = {
   hero: 5, // chose a researcher
