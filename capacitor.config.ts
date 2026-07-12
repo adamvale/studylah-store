@@ -14,7 +14,10 @@ const config: CapacitorConfig = {
     allowNavigation: ["www.studylah.education", "studylah.education"],
   },
   ios: {
-    contentInset: "always",
+    // "never" lets the webview extend under the status bar / notch, so the
+    // game is truly full-screen ("always" left a black band up top). The web
+    // UI pads itself with env(safe-area-inset-*) and viewportFit: cover.
+    contentInset: "never",
     backgroundColor: "#161c26",
   },
   android: {

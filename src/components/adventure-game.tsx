@@ -1081,9 +1081,12 @@ export function AdventureGame({
     (tx: number, ty: number) => {
       const z = zoneRef.current;
       const tile = z.grid[ty]?.[tx];
-      if (tile === PORTAL) {
-        const p = z.portals.find((pt) => pt.x === tx && pt.y === ty);
-        if (p && !p.locked) {
+      // A portal can sit on ANY tile — portal pads, building DOORs (into the
+      // furnished interiors), and the interior exit MAT. Locked gates never
+      // get this far (movement blocks them with their own message).
+      const p = z.portals.find((pt) => pt.x === tx && pt.y === ty);
+      if (p) {
+        if (!p.locked) {
           const to = region.zones[p.toZone];
           if (to) {
             setZoneId(p.toZone);
@@ -2106,6 +2109,14 @@ export function AdventureGame({
             </p>
           </div>
           <div className="pointer-events-auto flex gap-1.5">
+            <button
+              type="button"
+              onClick={() => setGuruOpen(true)}
+              aria-label="The Academy — study with your subject Gurus"
+              className="rounded-lg border border-accent/60 bg-night/70 px-2.5 py-1.5 text-sm backdrop-blur active:border-accent"
+            >
+              🎓
+            </button>
             <button
               type="button"
               onClick={() => setQuestLogOpen(true)}
