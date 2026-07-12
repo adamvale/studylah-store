@@ -309,10 +309,10 @@ function makeTileset(f: number): Record<number, HTMLCanvasElement> {
 }
 
 // Soft shadow disc under every character — depth for free.
-function drawShadow(ctx: CanvasRenderingContext2D, x: number, y: number) {
+function drawShadow(ctx: CanvasRenderingContext2D, x: number, y: number, scale = 1) {
   ctx.fillStyle = "rgba(10, 14, 20, 0.32)";
   ctx.beginPath();
-  ctx.ellipse(x + 8, y + 14.5, 5.5, 2, 0, 0, Math.PI * 2);
+  ctx.ellipse(x + 8 * scale, y + 14.5 * scale, 5.5 * scale, 2 * scale, 0, 0, Math.PI * 2);
   ctx.fill();
 }
 
@@ -739,8 +739,11 @@ export function AdventureGame({
   const sheetsRef = useRef<Sheets | null>(null);
   const ghostVariantRef = useRef<string>("none");
   const heroRef = useRef<string>("jun");
-  // the companion trails the hero: a short breadcrumb of recent tiles
+  // Gugu trails the hero smoothly: a breadcrumb of the hero's recent SUB-TILE
+  // positions (tile units). The companion is drawn at a fixed path-distance
+  // behind, interpolated, so it glides one step back and never snaps/blocks.
   const trailRef = useRef<{ x: number; y: number; facing: Dir }[]>([]);
+  const guguFacingRef = useRef<Dir>("down");
   const levelRef = useRef(1);
   const clearedRef = useRef<Set<string>>(new Set(initialCleared));
   const storyRef = useRef<Set<string>>(new Set(initialStory));
@@ -941,6 +944,7 @@ export function AdventureGame({
     player.current.fromX = hub.start.x;
     player.current.fromY = hub.start.y;
     player.current.moving = false;
+    trailRef.current = [];
     showToast(`💫 ${COPY.wipe}`);
   }, [region, showToast]);
 
@@ -1016,6 +1020,7 @@ export function AdventureGame({
             player.current.fromX = p.toX;
             player.current.fromY = p.toY;
             player.current.moving = false;
+            trailRef.current = []; // don't streak Gugu across the new zone
             showToast(`— ${to.name} —`);
             emitFx({ type: "blip" });
           }
@@ -1481,25 +1486,65 @@ export function AdventureGame({
           ctx.fillText(n.emoji, sx + TS / 2, sy + TS - 3);
         }
       }
-      // the companion ghost trails one tile behind on the breadcrumb path
+      // ── Gugu, the companion — smooth path-follow, half size ──────────────
+      // Record the hero's sub-tile position each frame; draw Gugu at a fixed
+      // path-distance behind, interpolated along the trail. This keeps a steady
+      // one-step gap that glides around corners instead of snapping tile to
+      // tile (which looked like it was being "blocked").
       const trail = trailRef.current;
-      const crumb = trail[trail.length - 1];
-      if (!crumb || crumb.x !== p.tx || crumb.y !== p.ty) {
-        trail.push({ x: p.tx, y: p.ty, facing: p.facing });
-        if (trail.length > 4) trail.shift();
+      const head = trail[trail.length - 1];
+      if (!head || Math.abs(head.x - rx) > 0.02 || Math.abs(head.y - ry) > 0.02) {
+        trail.push({ x: rx, y: ry, facing: p.facing });
+        if (trail.length > 64) trail.shift();
       }
-      const ghostSpot = trail.length >= 2 ? trail[trail.length - 2] : null;
-      if (ghostSpot && (ghostSpot.x !== p.tx || ghostSpot.y !== p.ty)) {
-        const gx2 = Math.round((ghostSpot.x - camX) * TS);
-        const gy2 = Math.round((ghostSpot.y - camY) * TS);
-        drawShadow(ctx, gx2, gy2);
+      const GAP = 1.15; // tiles behind the hero
+      let gx = trail[0]?.x ?? rx;
+      let gy = trail[0]?.y ?? ry;
+      let gFacing = guguFacingRef.current;
+      {
+        let need = GAP;
+        for (let i = trail.length - 1; i > 0; i--) {
+          const a = trail[i];
+          const b = trail[i - 1];
+          const seg = Math.hypot(a.x - b.x, a.y - b.y);
+          if (seg >= need) {
+            const t = seg === 0 ? 0 : need / seg;
+            gx = a.x + (b.x - a.x) * t;
+            gy = a.y + (b.y - a.y) * t;
+            // face the way it's walking (toward the newer point a)
+            const dx = a.x - gx;
+            const dy = a.y - gy;
+            if (Math.abs(dx) > 0.01 || Math.abs(dy) > 0.01) {
+              gFacing = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? "right" : "left") : dy > 0 ? "down" : "up";
+              guguFacingRef.current = gFacing;
+            }
+            break;
+          }
+          need -= seg;
+        }
+      }
+      {
+        const gx2 = (gx - camX) * TS;
+        const gy2 = (gy - camY) * TS;
+        drawShadow(ctx, Math.round(gx2 + 4), Math.round(gy2 + 8), 0.5);
+        const gseq = [0, 1, 2, 1];
+        const moving = trail.length > 1 && (Math.abs(gx - rx) > 0.03 || Math.abs(gy - ry) > 0.03);
+        const gwf = moving ? gseq[Math.floor(animClock / 140) % 4] : 1;
         if (sh) {
-          const gseq = [0, 1, 2, 1];
-          const gwf = p.moving ? gseq[Math.floor(animClock / 140) % 4] : 1;
-          drawWalker(ctx, sh.player, ghostBlockX(ghostVariantRef.current), ghostSpot.facing, gwf, gx2, gy2);
-          drawAccessories(ctx, sh.accessories, levelRef.current, ghostSpot.facing, gwf, gx2, gy2);
+          // Half scale (50% smaller), centred on the tile with feet on the ground.
+          ctx.save();
+          ctx.imageSmoothingEnabled = false;
+          ctx.translate(Math.round(gx2) + 4, Math.round(gy2) + 8);
+          ctx.scale(0.5, 0.5);
+          drawWalker(ctx, sh.player, ghostBlockX(ghostVariantRef.current), gFacing, gwf, 0, 0);
+          drawAccessories(ctx, sh.accessories, levelRef.current, gFacing, gwf, 0, 0);
+          ctx.restore();
         } else {
-          drawGhost(ctx, gx2, gy2, ghostSpot.facing, 0, scarfRef.current);
+          ctx.save();
+          ctx.translate(Math.round(gx2) + 4, Math.round(gy2) + 4);
+          ctx.scale(0.5, 0.5);
+          drawGhost(ctx, 0, 0, gFacing, 0, scarfRef.current);
+          ctx.restore();
         }
       }
 
@@ -2010,13 +2055,13 @@ export function AdventureGame({
       <div className="absolute bottom-0 left-0 touch-none p-4 pb-[max(env(safe-area-inset-bottom),16px)]">
         <div className="grid grid-cols-3 grid-rows-3" style={{ width: 156 }}>
           <span />
-          <PadBtn dir="up" onPress={setDir} onRelease={clearDir} label="▲" />
+          <PadBtn dir="up" onPress={setDir} onRelease={clearDir} />
           <span />
-          <PadBtn dir="left" onPress={setDir} onRelease={clearDir} label="◀" />
+          <PadBtn dir="left" onPress={setDir} onRelease={clearDir} />
           <span className="h-[52px] w-[52px]" />
-          <PadBtn dir="right" onPress={setDir} onRelease={clearDir} label="▶" />
+          <PadBtn dir="right" onPress={setDir} onRelease={clearDir} />
           <span />
-          <PadBtn dir="down" onPress={setDir} onRelease={clearDir} label="▼" />
+          <PadBtn dir="down" onPress={setDir} onRelease={clearDir} />
           <span />
         </div>
       </div>
@@ -2695,15 +2740,17 @@ function HeroPreview({ heroId }: { heroId: string }) {
 
 function PadBtn({
   dir,
-  label,
   onPress,
   onRelease,
 }: {
   dir: Dir;
-  label: string;
   onPress: (d: Dir) => void;
   onRelease: () => void;
 }) {
+  // A drawn triangle (not an emoji glyph): emoji are selectable text, which on
+  // iOS pops the Copy / Look Up / Translate bar on a long-press. An inline SVG
+  // has no text node, so nothing is selectable.
+  const rot = dir === "up" ? 0 : dir === "right" ? 90 : dir === "down" ? 180 : 270;
   return (
     <button
       type="button"
@@ -2715,9 +2762,19 @@ function PadBtn({
       onPointerUp={onRelease}
       onPointerLeave={onRelease}
       onPointerCancel={onRelease}
-      className="flex h-[52px] w-[52px] select-none items-center justify-center rounded-xl border border-hairline/50 bg-night/40 text-lg text-ink backdrop-blur active:border-accent active:bg-accent/25 active:text-accent"
+      onContextMenu={(e) => e.preventDefault()}
+      style={{ WebkitTouchCallout: "none", WebkitUserSelect: "none", userSelect: "none" }}
+      className="flex h-[52px] w-[52px] select-none items-center justify-center rounded-xl border border-hairline/50 bg-night/40 text-ink backdrop-blur active:border-accent active:bg-accent/25 active:text-accent"
     >
-      {label}
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 16 16"
+        aria-hidden="true"
+        style={{ transform: `rotate(${rot}deg)`, pointerEvents: "none" }}
+      >
+        <path d="M8 3 L13 12.5 L3 12.5 Z" fill="currentColor" />
+      </svg>
     </button>
   );
 }
