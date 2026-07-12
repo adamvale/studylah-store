@@ -357,3 +357,40 @@ html[data-native] .native-screen {
     animation: none;
   }
 }
+
+
+/* ── Marketing: Fog Frontier pixel identity ──────────────────────────────────
+   Homepage redesign (webdesign-updates handoff). Pixel art must render
+   nearest-neighbour; primary CTAs get the game's hard-shadow "pressable"
+   button; the mascot bobs. */
+.px-img {
+  image-rendering: pixelated;
+}
+/* Hard-shadow pixel button — gold primary. Presses down 2px on click, just
+   like the game's pressed-button sprite. */
+.btn-pixel {
+  box-shadow: 0 3px 0 #b98a4e;
+  transition: transform 0.06s ease, box-shadow 0.06s ease;
+}
+.btn-pixel:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #b98a4e;
+}
+.btn-pixel-green {
+  box-shadow: 0 3px 0 #2f6d38;
+}
+.btn-pixel-green:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #2f6d38;
+}
+@keyframes mascot-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.mascot-bob {
+  animation: mascot-bob 3.2s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-pixel, .btn-pixel-green { transition: none; }
+  .mascot-bob { animation: none; }
+}

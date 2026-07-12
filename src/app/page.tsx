@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { scorecardHeadline } from "@/lib/accuracy-data";
 
 export const metadata: Metadata = {
@@ -41,16 +42,44 @@ function PlayIcons() {
   );
 }
 
-function Ghost() {
+// Crisp pixel art from the Fog Frontier suite. next/image with unoptimized so
+// the sprites are served 1:1 and scaled with nearest-neighbour.
+function Px({
+  src,
+  size,
+  w,
+  h,
+  alt = "",
+  className = "",
+}: {
+  src: string;
+  size?: number;
+  w?: number;
+  h?: number;
+  alt?: string;
+  className?: string;
+}) {
   return (
-    <svg width="52" height="46" viewBox="0 0 52 46" aria-hidden="true">
-      <path
-        d="M26 2C14 2 6 10 6 22v20l6-5 6 5 8-5 8 5 6-5 6 5V22C46 10 38 2 26 2Z"
-        fill="#ffffff"
-      />
-      <circle cx="20" cy="20" r="2.6" fill="#161c26" />
-      <circle cx="32" cy="20" r="2.6" fill="#161c26" />
-    </svg>
+    <Image
+      src={src}
+      alt={alt}
+      width={w ?? size ?? 48}
+      height={h ?? size ?? 48}
+      unoptimized
+      aria-hidden={alt === "" ? true : undefined}
+      className={`px-img ${className}`}
+    />
+  );
+}
+
+// Gugu, the ghost mascot (traced from the app favicon).
+function Ghost({ size = 48, pose = "default" }: { size?: number; pose?: "default" | "victory" }) {
+  return (
+    <Px
+      src={`/marketing/mascot_${pose}.png`}
+      size={size}
+      alt=""
+    />
   );
 }
 
@@ -107,7 +136,7 @@ function Hero({ pricing }: { pricing: Pricing }) {
         <div className="mt-7 flex flex-wrap gap-3">
           <Link
             href="/o-level"
-            className="rounded-lg bg-accent px-5 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
+            className="btn-pixel rounded bg-accent px-5 py-3 text-sm font-bold text-night"
           >
             Find your subject&apos;s forecast
           </Link>
@@ -122,10 +151,23 @@ function Hero({ pricing }: { pricing: Pricing }) {
           Money-back guarantee · Instant PDFs + Study HQ access · From{" "}
           {sgd(alacartePrice("o-level", "forecast"))} per subject
         </p>
+        <p className="mt-2 inline-flex items-center gap-2 text-sm text-cloud">
+          <Ghost size={24} />
+          Every purchase now unlocks{" "}
+          <Link href="#fog-frontier" className="font-medium text-accent hover:underline">
+            Fog Frontier
+          </Link>
+          <span className="rounded bg-violet px-1.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wide text-white">
+            Beta
+          </span>
+        </p>
         <HeroProof />
         <ExamCountdown className="mt-4" />
       </div>
-      <div className="fade-up" style={{ animationDelay: "150ms" }}>
+      <div className="fade-up relative" style={{ animationDelay: "150ms" }}>
+        <div className="mascot-bob pointer-events-none absolute -right-2 -top-8 z-10 hidden sm:block">
+          <Ghost size={72} pose="victory" />
+        </div>
         <ForecastCard />
       </div>
     </section>
@@ -337,13 +379,162 @@ function StudyHq() {
         <div className="mt-10 text-center">
           <Link
             href="/diagnostic"
-            className="rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
+            className="btn-pixel inline-block rounded bg-accent px-6 py-3 text-sm font-bold text-night"
           >
             Start free: predict your mark →
           </Link>
           <p className="mt-3 text-xs text-cloud">
             10 questions on your subject&apos;s most-likely topics · instant
             marking · indicative grade band, never a promise
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const HEROES = [
+  { src: "/marketing/hero_jun.png", name: "JUN" },
+  { src: "/marketing/hero_mei.png", name: "MEI" },
+  { src: "/marketing/hero_agent.png", name: "AGENT X" },
+] as const;
+
+const GURUS = [
+  {
+    sprite: "/marketing/guru_newt.png",
+    emblem: "/marketing/emblem_flask.png",
+    name: "Guru Fen",
+    province: "Chemistry · Marshlight Fen",
+    teach: "Moles, bonding and acids from first principles — one bubbling experiment at a time.",
+  },
+  {
+    sprite: "/marketing/guru_ram.png",
+    emblem: "/marketing/emblem_atom.png",
+    name: "Guru Tor",
+    province: "Physics · Kitestone Highlands",
+    teach: "Forces, fields and units taught on the windiest cliff in the world.",
+  },
+  {
+    sprite: "/marketing/guru_sprout.png",
+    emblem: "/marketing/emblem_leaf.png",
+    name: "Guru Vale",
+    province: "Biology · Deepgrove",
+    teach: "Cells to ecosystems, with the keyword precision examiners reward.",
+  },
+  {
+    sprite: "/marketing/guru_counter.png",
+    emblem: "/marketing/icon_abacus.png",
+    name: "Guru Sum",
+    province: "Mathematics · Terrace Vale",
+    teach: "Steps stacked in the right order. Method drills until careless slips vanish.",
+  },
+  {
+    sprite: "/marketing/guru_drifter.png",
+    emblem: "/marketing/emblem_globe.png",
+    name: "Guru Mere",
+    province: "Geography · Windmere Shores",
+    teach: "Map skills and case studies that stick, taught with the tide as a chalkboard.",
+  },
+  {
+    sprite: "/marketing/guru_watcher.png",
+    emblem: "/marketing/icon_scroll.png",
+    name: "Guru Ash",
+    province: "History · Ashlight Ruins",
+    teach: "Sources, evidence and essays that finish on time.",
+  },
+] as const;
+
+// The game — framed exactly as the owner wants it: the prediction suite is the
+// product; Fog Frontier is a beta playground it unlocks, for purchasers only.
+function FogFrontierBeta() {
+  return (
+    <section id="fog-frontier" className="scroll-mt-20 bg-night-2 py-20">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          <span className="rounded bg-violet px-2.5 py-1 font-mono text-[11px] font-bold uppercase tracking-widest text-white">
+            Beta
+          </span>
+          <span className="rounded-full border border-hairline bg-surface px-3 py-1 font-mono text-[11px] font-medium uppercase tracking-wide text-cloud">
+            Included with any subject · purchasers only
+          </span>
+        </div>
+        <h2 className="mx-auto mt-5 max-w-3xl text-center font-display text-4xl font-black text-white sm:text-5xl">
+          Revision that plays like an adventure —{" "}
+          <span className="text-accent">because combat is real exam questions.</span>
+        </h2>
+        <p className="mx-auto mt-5 max-w-2xl text-center text-lg text-cloud">
+          Every subject you own opens a province to explore. Wild monsters are the
+          questions you tend to miss; every answer builds a worked-solution you keep.
+          Fifteen minutes a day, aimed by your forecast at your actual weak topics.
+        </p>
+        <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-cloud">
+          <span className="font-semibold text-white">The prediction suite is the product you buy.</span>{" "}
+          Fog Frontier is the beta playground it unlocks — a bonus, not the pitch.
+          It&apos;s in active development, so expect it to keep growing.
+        </p>
+
+        {/* Pick your researcher + Gugu */}
+        <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-hairline bg-surface p-6">
+          <div className="flex flex-wrap items-end justify-center gap-6">
+            {HEROES.map((h) => (
+              <div key={h.name} className="flex flex-col items-center gap-2">
+                <Px src={h.src} w={48} h={72} alt={h.name} />
+                <span className="font-mono text-xs font-bold tracking-widest text-accent">
+                  {h.name}
+                </span>
+              </div>
+            ))}
+          </div>
+          <p className="mt-5 text-center text-sm text-cloud">
+            Pick your researcher. <span className="text-white">Gugu</span>, your ghost
+            companion, drifts a step behind — cheering every strike and evolving with
+            your effort: Gugu → Guglow → Gugleam → Gubright → Guguardian.
+          </p>
+        </div>
+
+        {/* The Gurus */}
+        <div className="mt-14">
+          <p className="text-center font-mono text-xs font-medium uppercase tracking-widest text-violet">
+            The Academy
+          </p>
+          <h3 className="mt-2 text-center font-display text-2xl font-black text-white">
+            Every subject has a Guru waiting to teach you.
+          </h3>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-cloud">
+            Short lessons, worked examples, then a check-question tuned to your own
+            mistake notebook. Visit any time — they never judge, they only teach.
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {GURUS.map((g) => (
+              <div
+                key={g.name}
+                className="flex items-start gap-4 rounded-2xl border border-hairline bg-surface p-5"
+              >
+                <Px src={g.sprite} size={56} alt={g.name} />
+                <div>
+                  <div className="flex items-center gap-2">
+                    <Px src={g.emblem} size={20} />
+                    <h4 className="font-display text-lg font-bold text-white">{g.name}</h4>
+                  </div>
+                  <p className="mt-0.5 font-mono text-[11px] uppercase tracking-wide text-teal">
+                    {g.province}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-cloud">{g.teach}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12 text-center">
+          <Link
+            href="/o-level"
+            className="btn-pixel inline-block rounded bg-accent px-6 py-3 text-sm font-bold text-night"
+          >
+            Unlock Fog Frontier with any subject →
+          </Link>
+          <p className="mt-3 text-xs text-cloud">
+            No separate purchase, no subscription. Buy the forecast; the beta comes with it.
           </p>
         </div>
       </div>
@@ -581,6 +772,7 @@ export default async function Home() {
       <WhyItWorks />
       <Journey pricing={pricing} />
       <StudyHq />
+      <FogFrontierBeta />
       <Decision />
       <LevelEntry pricing={pricing} />
       <TrustStrip />

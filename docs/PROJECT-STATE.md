@@ -271,6 +271,23 @@ froze in her exam year, Commander Murk is Maple's burned-out first prodigy,
 and Examiner Sage's championship ends with the Clarity guardian + champion
 crest. The player ghost walks in the starter scarf; champions walk in gold.
 
+## Homepage — Fog Frontier identity + game-as-beta (`src/app/page.tsx`)
+
+The marketing homepage (`webdesign-updates` handoff) carries the Fog Frontier
+pixel identity: pixel mascot (Gugu, `/public/marketing/mascot_*.png`) in the
+hero + brand marks, `.btn-pixel` hard-shadow "pressable" gold CTAs
+(globals.css), `.mascot-bob`. **Positioning (owner-mandated): the prediction
+suite is the product; the game is a purchaser-only beta bonus.** The hero pitch
+stays 100% on the forecast/PDFs; a `#fog-frontier` section (`FogFrontierBeta`)
+is explicitly badged **BETA · Included with any subject · purchasers only** and
+says verbatim "The prediction suite is the product you buy. Fog Frontier is the
+beta playground it unlocks — a bonus, not the pitch." It showcases the three
+heroes (Jun/Mei/Agent X sprites), the Gugu companion + evolution line, and the
+six subject Gurus (Fen/Tor/Vale/Sum/Mere/Ash) — CTA "Unlock with any subject"
+→ `/o-level` (no standalone game purchase). Assets in `/public/marketing/`
+(original Fog Frontier IP). Compliance clean (no banned words; effort-framed).
+Preserves all commerce (pricing, ForecastCard, EmailCapture, accuracy proof).
+
 ## The game layer ("Clear the Fog") — SHIPPED, web-first
 
 XP ledger (`XpEvent`, unique per-action sourceKeys = farm-proof; levels/titles
