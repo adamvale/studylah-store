@@ -9,6 +9,7 @@ import {
   districtForZone,
   districtPos,
   activeDistricts,
+  labelFor,
 } from "@/lib/game/singapore";
 import type { WorldSubject } from "@/lib/game/world2";
 
@@ -139,19 +140,26 @@ export function SingaporeMapOverlay({
                     fill={isHere ? SG_ARCADE.pink : isActive ? SG_ARCADE.gold : SG_ARCADE.mint}
                     opacity={isActive || isHere ? 1 : 0.45}
                   />
-                  {(isActive || isHere) && (
-                    <text
-                      x={d.x}
-                      y={d.y - 2.4}
-                      textAnchor="middle"
-                      fontSize={2.5}
-                      fill={isHere ? SG_ARCADE.pink : SG_ARCADE.white}
-                      fontWeight={700}
-                      style={{ pointerEvents: "none" }}
-                    >
-                      {d.name}
-                    </text>
-                  )}
+                  {(isActive || isHere) &&
+                    (() => {
+                      const off = labelFor(d.name);
+                      return (
+                        <text
+                          x={d.x + off.dx}
+                          y={d.y + off.dy}
+                          textAnchor={off.anchor}
+                          fontSize={2.5}
+                          fill={isHere ? SG_ARCADE.pink : SG_ARCADE.white}
+                          fontWeight={700}
+                          stroke={SG_ARCADE.bg}
+                          strokeWidth={0.4}
+                          paintOrder="stroke"
+                          style={{ pointerEvents: "none" }}
+                        >
+                          {d.name}
+                        </text>
+                      );
+                    })()}
                 </g>
               );
             })}

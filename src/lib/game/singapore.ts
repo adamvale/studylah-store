@@ -61,6 +61,28 @@ export function districtPos(name: string): District | undefined {
   return DISTRICT_BY_NAME.get(name);
 }
 
+// Label placement (viewBox units, relative to the dot) for the full map.
+// Default is centred 2.4 above the dot; the central cluster is fanned out
+// (left / right / below) so the labels don't stack on top of each other.
+export type LabelOffset = { dx: number; dy: number; anchor: "start" | "middle" | "end" };
+export const DEFAULT_LABEL: LabelOffset = { dx: 0, dy: -2.4, anchor: "middle" };
+export const LABEL_OFFSET: Record<string, LabelOffset> = {
+  Bishan: { dx: -2, dy: -1.4, anchor: "end" },
+  "Bukit Timah": { dx: -2.2, dy: 0.9, anchor: "end" },
+  "Toa Payoh": { dx: 2.4, dy: 1, anchor: "start" },
+  "one-north": { dx: -2.2, dy: 0.9, anchor: "end" },
+  "Fort Canning": { dx: -1.4, dy: 3.3, anchor: "end" },
+  Sentosa: { dx: 0, dy: 3.6, anchor: "middle" },
+  "Bras Basah": { dx: 1.6, dy: 2.7, anchor: "start" },
+  "Marine Parade": { dx: 2.4, dy: 0.9, anchor: "start" },
+  Kallang: { dx: -2, dy: 0.9, anchor: "end" },
+  City: { dx: 0, dy: 3.4, anchor: "middle" },
+  Queenstown: { dx: -2.2, dy: 0.9, anchor: "end" },
+};
+export function labelFor(name: string): LabelOffset {
+  return LABEL_OFFSET[name] ?? DEFAULT_LABEL;
+}
+
 // ── v3 arcade palette (from SINGAPORE_MAP_INSTRUCTIONS) ──────────────────────
 export const SG_ARCADE = {
   bg: "#1b1b3a", // navy
