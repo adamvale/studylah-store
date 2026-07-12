@@ -152,6 +152,14 @@ give dialogue/heal/battle; wild wins register species to the **monster-dex**
 (shown on the bestiary), shiny variants are 1/16 cosmetic. Compliance intact:
 every reward is effort, questions graded server-side, XP daily-capped, no
 purchasable advantage. The older single-screen `adventure.tsx` was replaced.
+**Sprite suite v1.1**: adds ghost_accessories (cell-aligned overlays:
+headband/glasses/cape/crown/glow by level), guardians_walkers (7 × 16px
+walkers + shiny), buildings_anim (4-frame door/fountain/campfire — doors
+open on approach, hub fountain animates). The season design pack (11 docs:
+arc, zones, quests, bosses, balance, retention, bible, encounter tables,
+dialogue, scripts, copy deck) lives in the owner's drive under
+`claude_code_handoff 1.1/design_docs` — implement in waves, honour its
+flagged risks.
 **Sprite suite**: `/public/game/*.png` are COMMISSIONED ORIGINAL sheets
 (StudyLah IP — see the design_handoff README on the owner's drive; never
 substitute third-party/RPG-Maker assets, whose EULAs are engine-locked).

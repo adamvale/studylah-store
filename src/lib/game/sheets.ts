@@ -89,11 +89,14 @@ export const WALKER_H = 24;
 export interface Sheets {
   terrain: HTMLImageElement;
   buildings: HTMLImageElement;
+  buildingsAnim: HTMLImageElement;
   player: HTMLImageElement;
+  accessories: HTMLImageElement;
   npcs: HTMLImageElement;
   monsters: HTMLImageElement;
   evolutions: HTMLImageElement;
   guardians: HTMLImageElement;
+  guardianWalkers: HTMLImageElement;
   fx: HTMLImageElement;
   ui: HTMLImageElement;
   portraits: HTMLImageElement;
@@ -118,19 +121,38 @@ export function loadSheets(): Promise<Sheets | null> {
   loading = Promise.all([
     loadImage("/game/terrain.png"),
     loadImage("/game/buildings.png"),
+    loadImage("/game/buildings_anim.png"),
     loadImage("/game/player_ghost.png"),
+    loadImage("/game/ghost_accessories.png"),
     loadImage("/game/npcs.png"),
     loadImage("/game/monsters.png"),
     loadImage("/game/monsters_evolutions.png"),
     loadImage("/game/guardians.png"),
+    loadImage("/game/guardians_walkers.png"),
     loadImage("/game/fx.png"),
     loadImage("/game/ui.png"),
     loadImage("/game/portraits.png"),
   ])
-    .then(([terrain, buildings, player, npcs, monsters, evolutions, guardians, fx, ui, portraits]) => {
-      loaded = { terrain, buildings, player, npcs, monsters, evolutions, guardians, fx, ui, portraits };
-      return loaded;
-    })
+    .then(
+      ([terrain, buildings, buildingsAnim, player, accessories, npcs, monsters, evolutions, guardians, guardianWalkers, fx, ui, portraits]) => {
+        loaded = {
+          terrain,
+          buildings,
+          buildingsAnim,
+          player,
+          accessories,
+          npcs,
+          monsters,
+          evolutions,
+          guardians,
+          guardianWalkers,
+          fx,
+          ui,
+          portraits,
+        };
+        return loaded;
+      }
+    )
     .catch(() => null);
   return loading;
 }
@@ -186,6 +208,27 @@ export function ghostBlockX(variant: string): number {
 
 export function npcBlockX(sprite: NpcSprite): number {
   return NPC_ORDER.indexOf(sprite) * 48;
+}
+
+// Accessory overlays: cell-for-cell aligned with player_ghost.png, one
+// 48px block per accessory (walk-bob offsets baked into the art).
+export const ACCESSORY_ORDER = ["headband", "glasses", "cape", "crown", "glow"] as const;
+export type AccessoryName = (typeof ACCESSORY_ORDER)[number];
+
+export function accessoryBlockX(name: AccessoryName): number {
+  return ACCESSORY_ORDER.indexOf(name) * 48;
+}
+
+// guardians_walkers.png: 64px block per guardian — walk f1 / bob f2 /
+// mirror f3 / shiny, all 16×16.
+export function guardianWalkerRect(name: GuardianName, cell: 0 | 1 | 2 | 3): [number, number] {
+  return [GUARDIAN_ORDER.indexOf(name) * 64 + cell * 16, 0];
+}
+
+// buildings_anim.png rows: door / fountain / campfire, 4 frames each.
+export function buildingAnimXY(row: "door" | "fountain" | "campfire", frame: number): [number, number] {
+  const rows = { door: 0, fountain: 1, campfire: 2 } as const;
+  return [Math.max(0, Math.min(3, frame)) * TS, rows[row] * TS];
 }
 
 // Draw one 16×24 walker cell (feet on the tile, head overlapping above).
@@ -257,6 +300,9 @@ export function sheetSprite(
 export const SHEET_DIMS: Record<string, [number, number]> = {
   terrain: [192, 80],
   buildings: [192, 48],
+  buildings_anim: [64, 48],
+  ghost_accessories: [240, 96],
+  guardians_walkers: [448, 16],
   player_ghost: [240, 96],
   npcs: [624, 96],
   monsters: [320, 64],

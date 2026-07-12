@@ -19,12 +19,15 @@ import { MONSTERS, STARTERS, starterById } from "@/lib/game";
 import { emitGame, emitFx, useHud, type FxGame } from "@/lib/game/fx";
 import {
   loadSheets,
-  drawWalker,
   terrainXY,
   buildingXY,
   ghostBlockX,
   npcBlockX,
-  guardianX,
+  accessoryBlockX,
+  guardianWalkerRect,
+  buildingAnimXY,
+  drawWalker,
+  type AccessoryName,
   type Sheets,
   type NpcSprite,
   type GuardianName,
@@ -284,45 +287,28 @@ function drawShadow(ctx: CanvasRenderingContext2D, x: number, y: number) {
   ctx.fill();
 }
 
-// Level accessories painted over the walker cell (drawn at dy−8, 16×24).
-// Placeholder pixels until the v2 overlay sheets are commissioned —
-// positions mirror ghostStage() in src/lib/game.ts.
+// Level accessories from ghost_accessories.png — cell-for-cell aligned with
+// the player walker (bob offsets baked into the art), drawn straight over.
+// Thresholds mirror ghostStage() in src/lib/game.ts.
+const ACCESSORY_LEVELS: [number, AccessoryName][] = [
+  [7, "cape"],
+  [3, "headband"],
+  [12, "glasses"],
+  [16, "crown"],
+  [20, "glow"],
+];
+
 function drawAccessories(
   ctx: CanvasRenderingContext2D,
-  x: number,
-  y: number,
+  sheet: HTMLImageElement,
   level: number,
-  facing: string
+  dir: string,
+  frame: number,
+  x: number,
+  y: number
 ) {
-  const top = y - 8; // walker cell origin
-  const px = (dx: number, dy: number, w: number, h: number, col: string) => {
-    ctx.fillStyle = col;
-    ctx.fillRect(x + dx, top + dy, w, h);
-  };
-  if (level >= 3) {
-    // headband with a trailing knot
-    px(3, 6, 10, 2, "#ffdc00");
-    px(13, 6, 2, 3, "#ffdc00");
-  }
-  if (level >= 7 && facing !== "down") {
-    // cape peeks out behind the shoulders
-    px(2, 10, 2, 8, "#7c3aed");
-    px(12, 10, 2, 8, "#7c3aed");
-  }
-  if (level >= 12 && facing !== "up") {
-    // reading glasses on the eye line
-    px(4, 9, 3, 3, "#1a2230");
-    px(9, 9, 3, 3, "#1a2230");
-    px(5, 10, 1, 1, "#8fa3c0");
-    px(10, 10, 1, 1, "#8fa3c0");
-    px(7, 10, 2, 1, "#1a2230");
-  }
-  if (level >= 16) {
-    // the crown
-    px(5, 1, 6, 2, "#ffdc00");
-    px(5, 0, 1, 1, "#ffdc00");
-    px(8, 0, 1, 1, "#ffdc00");
-    px(10, 0, 1, 1, "#ffdc00");
+  for (const [min, name] of ACCESSORY_LEVELS) {
+    if (level >= min) drawWalker(ctx, sheet, accessoryBlockX(name), dir, frame, x, y);
   }
 }
 
@@ -373,8 +359,15 @@ function drawSheetTile(
   ty: number,
   sx: number,
   sy: number,
-  f2: number
+  f2: number,
+  f4: number,
+  ptx: number,
+  pty: number
 ) {
+  const anim = (row: "door" | "fountain" | "campfire", frame: number) => {
+    const [ax, ay] = buildingAnimXY(row, frame);
+    ctx.drawImage(sh.buildingsAnim, ax, ay, 16, 16, sx, sy, 16, 16);
+  };
   const t = (name: string) => {
     const [ux, uy] = terrainXY(name);
     ctx.drawImage(sh.terrain, ux, uy, 16, 16, sx, sy, 16, 16);
@@ -398,7 +391,7 @@ function drawSheetTile(
       t((tx * 31 + ty * 17) % 7 === 0 ? "pine" : "tree");
       break;
     case TILE.WATER:
-      if (z.id === "hub") b(f2 ? "fountain_f2" : "fountain_f1");
+      if (z.id === "hub") anim("fountain", f4);
       else t(f2 ? "water_f2" : "water_f1");
       break;
     case TILE.PATH:
@@ -413,9 +406,12 @@ function drawSheetTile(
     case ROOF:
       b("terracotta_slope");
       break;
-    case TILE.DOOR:
-      b("door_closed");
+    case TILE.DOOR: {
+      // the door opens as you approach — pure delight, zero cost
+      const dist = Math.abs(tx - ptx) + Math.abs(ty - pty);
+      anim("door", dist <= 1 ? 3 : dist === 2 ? 1 : 0);
       break;
+    }
     case TILE.FLOWER:
       grassBase();
       t(f2 ? "flowers_f2" : "flowers_f1");
@@ -913,6 +909,7 @@ export function AdventureGame({
           : Math.max(0, Math.min(ry - rows / 2 + 0.5, z.height - rows));
 
       const f2 = Math.floor(now / 550) % 2; // 2-frame terrain animation
+      const f4 = Math.floor(now / 170) % 4; // 4-frame building animation
       const ts = tilesetRef.current![f2];
       const sh = sheetsRef.current;
       const x0 = Math.floor(camX);
@@ -926,7 +923,7 @@ export function AdventureGame({
           const sx = Math.round((tx - camX) * TS);
           const sy = Math.round((ty - camY) * TS);
           if (sh) {
-            drawSheetTile(ctx, sh, z, tile, tx, ty, sx, sy, f2);
+            drawSheetTile(ctx, sh, z, tile, tx, ty, sx, sy, f2, f4, p.tx, p.ty);
           } else {
             ctx.drawImage(ts[tile] ?? ts[TILE.GRASS], sx, sy);
           }
@@ -950,9 +947,10 @@ export function AdventureGame({
           const gsy = Math.round((guardianSpot.y - camY) * TS);
           if (gsx > -32 && gsy > -32 && gsx < canvas.width && gsy < canvas.height) {
             drawShadow(ctx, gsx, gsy);
-            drawShadow(ctx, gsx + 12, gsy);
-            const bob2 = Math.floor(now / 600) % 2;
-            ctx.drawImage(sh.guardians, guardianX(guardianSpot.name), 0, 32, 32, gsx - 8, gsy - 16 + bob2, 32, 32);
+            const gseq = [0, 1, 2, 1] as const;
+            const gcell = gseq[Math.floor(now / 300) % 4] as 0 | 1 | 2;
+            const [gwx, gwy] = guardianWalkerRect(guardianSpot.name, gcell);
+            ctx.drawImage(sh.guardianWalkers, gwx, gwy, 16, 16, gsx, gsy, 16, 16);
           }
         }
       }
@@ -978,19 +976,8 @@ export function AdventureGame({
         // 3-frame ping-pong walk (1-2-3-2); idle = centre frame
         const seq = [0, 1, 2, 1];
         const wf = p.moving ? seq[Math.floor(animClock / 140) % 4] : 1;
-        const lvl = levelRef.current;
-        if (lvl >= 20) {
-          // champion's glow, painted behind the sprite
-          ctx.save();
-          ctx.globalAlpha = 0.22;
-          ctx.fillStyle = "#ffdc00";
-          ctx.beginPath();
-          ctx.arc(pfx + 8, pfy + 4, 13, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.restore();
-        }
         drawWalker(ctx, sh.player, ghostBlockX(ghostVariantRef.current), p.facing, wf, pfx, pfy);
-        drawAccessories(ctx, pfx, pfy, lvl, p.facing);
+        drawAccessories(ctx, sh.accessories, levelRef.current, p.facing, wf, pfx, pfy);
       } else {
         const frame = p.moving ? Math.floor(animClock / 130) % 2 : 0;
         drawGhost(ctx, pfx, pfy, p.facing, frame, scarfRef.current);
