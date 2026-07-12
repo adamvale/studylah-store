@@ -25,8 +25,20 @@ export const SAND = 17 as const;
 export const RUINS = 18 as const; // walkable restored-campus floor
 export const FENCE = 19 as const;
 export const BRIDGE = 20 as const;
+// Building interiors
+export const INT_FLOOR = 21 as const; // walkable wooden floor
+export const INT_WALL = 22 as const; // interior wall (solid)
+export const BOOKSHELF = 23 as const;
+export const DESK = 24 as const;
+export const TELESCOPE = 25 as const;
+export const HEARTH = 26 as const; // cosy fireplace (animated campfire)
+export const STALL = 27 as const; // market counter
+export const RUG = 28 as const; // decorative, walkable
+export const MAT = 29 as const; // the exit doormat inside a building
 
-const EXTRA_WALKABLE = new Set<number>([PORTAL, STAIRS, CAVE_FLOOR, FOGBANK, SAND, RUINS, BRIDGE]);
+const EXTRA_WALKABLE = new Set<number>([
+  PORTAL, STAIRS, CAVE_FLOOR, FOGBANK, SAND, RUINS, BRIDGE, INT_FLOOR, RUG, MAT,
+]);
 
 export function walkable(t: number): boolean {
   return baseWalkable(t) || EXTRA_WALKABLE.has(t);
@@ -134,6 +146,77 @@ function building(grid: number[][], x0: number, y0: number, w: number, h: number
   if (doorX !== undefined) put(grid, doorX, y0 + h - 1, TILE.DOOR);
 }
 
+// ── Building interiors ───────────────────────────────────────────────────────
+// A door in the hub is a portal into a small furnished room. Each room is its
+// own zone with wall border, wooden floor, themed furniture and an exit mat.
+type InteriorStyle = "study" | "home" | "shop";
+
+const INTERIOR_FURNITURE: Record<InteriorStyle, [number, number, number][]> = {
+  study: [
+    [2, 1, BOOKSHELF], [3, 1, BOOKSHELF], [5, 1, BOOKSHELF], [6, 1, BOOKSHELF],
+    [7, 1, TELESCOPE], [4, 2, DESK],
+    [3, 4, RUG], [4, 4, RUG], [5, 4, RUG],
+  ],
+  home: [
+    [2, 1, HEARTH], [6, 1, BOOKSHELF], [7, 2, DESK],
+    [3, 4, RUG], [4, 4, RUG], [5, 4, RUG],
+  ],
+  shop: [
+    [2, 1, STALL], [4, 1, STALL], [6, 1, STALL],
+    [3, 4, RUG], [4, 4, RUG], [5, 4, RUG],
+  ],
+};
+
+// The hub's enterable buildings — shared so buildHub (portals) and buildRegion
+// (the interior zones) agree on door coordinates.
+const HUB_INTERIORS: {
+  id: string;
+  name: string;
+  style: InteriorStyle;
+  doorX: number;
+  doorY: number;
+}[] = [
+  { id: "int:study", name: "Elder Maple's Study", style: "study", doorX: 5, doorY: 5 },
+  { id: "int:home1", name: "A Cosy Home", style: "home", doorX: 16, doorY: 4 },
+  { id: "int:home2", name: "A Quiet Home", style: "home", doorX: 4, doorY: 12 },
+  { id: "int:corner", name: "The Corner Shop", style: "shop", doorX: 16, doorY: 12 },
+];
+
+function buildInterior(
+  id: string,
+  name: string,
+  style: InteriorStyle,
+  exitZone: string,
+  exitX: number,
+  exitY: number
+): Zone {
+  const W = 9;
+  const H = 8;
+  const grid: number[][] = [];
+  for (let y = 0; y < H; y++) {
+    const row: number[] = [];
+    for (let x = 0; x < W; x++) {
+      const edge = x === 0 || x === W - 1 || y === 0 || y === H - 1;
+      row.push(edge ? INT_WALL : INT_FLOOR);
+    }
+    grid.push(row);
+  }
+  for (const [fx, fy, t] of INTERIOR_FURNITURE[style]) put(grid, fx, fy, t);
+  const mx = 4;
+  put(grid, mx, H - 1, MAT); // exit doormat, breaking the bottom wall
+  return {
+    id,
+    name,
+    grid,
+    width: W,
+    height: H,
+    start: { x: mx, y: H - 2 },
+    portals: [{ x: mx, y: H - 1, toZone: exitZone, toX: exitX, toY: exitY, label: "Outside" }],
+    npcs: [],
+    encounterRate: 0,
+  };
+}
+
 const provId = (s: WorldSubject) => `prov:${s.level}/${s.slug}`;
 
 // ── Haven Hollow (hub) ─────────────────────────────────────────────────────
@@ -162,12 +245,12 @@ function buildHub(
   put(grid, 12, 7, TILE.WATER);
   put(grid, 13, 7, TILE.WATER);
 
-  // Elder Maple's study (big building, west)
+  // Elder Maple's study (big building, west) + three enterable homes/shop.
+  // Doors line up with HUB_INTERIORS so each opens into a furnished room.
   building(grid, 3, 3, 5, 3, 5);
-  // homes
-  building(grid, 15, 3, 3, 2);
-  building(grid, 3, 11, 3, 2);
-  building(grid, 15, 11, 3, 2);
+  building(grid, 15, 3, 3, 2, 16);
+  building(grid, 3, 11, 3, 2, 4);
+  building(grid, 15, 11, 3, 2, 16);
   // flowers around the plaza
   for (const [fx, fy] of [
     [8, 6],
@@ -408,6 +491,11 @@ function buildHub(
       ],
       winLines: ["Tch — Commander Murk will hear about you, Lightbearer."],
     });
+  }
+
+  // Doors into the furnished interiors — you land just above the exit mat.
+  for (const it of HUB_INTERIORS) {
+    portals.push({ x: it.doorX, y: it.doorY, toZone: it.id, toX: 4, toY: 6, label: it.name });
   }
 
   return {
@@ -1063,6 +1151,10 @@ export function buildRegion(subjects: WorldSubject[], st: RegionState): Region {
   if (saltwindOpen) zones["saltwind"] = buildSaltwind(subjects, st.beaten);
   if (unlock || st.story.has("championship")) {
     zones["campus"] = buildCampus(subjects, st.campusCleared, st.story);
+  }
+  // Enterable hub interiors — exit lands the player just south of the door.
+  for (const it of HUB_INTERIORS) {
+    zones[it.id] = buildInterior(it.id, it.name, it.style, "hub", it.doorX, it.doorY + 1);
   }
   return { zones, startZone: "hub" };
 }

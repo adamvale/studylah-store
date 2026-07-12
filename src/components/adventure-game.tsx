@@ -16,6 +16,15 @@ import {
   RUINS,
   FENCE,
   BRIDGE,
+  INT_FLOOR,
+  INT_WALL,
+  BOOKSHELF,
+  DESK,
+  TELESCOPE,
+  HEARTH,
+  STALL,
+  RUG,
+  MAT,
   walkable,
   buildRegion,
   type Zone,
@@ -570,9 +579,60 @@ function drawSheetTile(
       t(f2 ? "water_f2" : "water_f1");
       t("bridge_h");
       break;
+    // ── building interiors ──────────────────────────────────────────────
+    case INT_FLOOR:
+      intFloor(ctx, sx, sy, tx, ty);
+      break;
+    case INT_WALL:
+      b((tx + ty) % 4 === 0 ? "window_dark" : "wall_timber");
+      break;
+    case BOOKSHELF:
+      intFloor(ctx, sx, sy, tx, ty);
+      b("prop_bookshelf");
+      break;
+    case DESK:
+      intFloor(ctx, sx, sy, tx, ty);
+      b("prop_desk");
+      break;
+    case TELESCOPE:
+      intFloor(ctx, sx, sy, tx, ty);
+      b("prop_telescope");
+      break;
+    case HEARTH:
+      intFloor(ctx, sx, sy, tx, ty);
+      anim("campfire", f4);
+      break;
+    case STALL:
+      intFloor(ctx, sx, sy, tx, ty);
+      b("market_stall");
+      break;
+    case RUG:
+      intFloor(ctx, sx, sy, tx, ty);
+      ctx.fillStyle = "rgba(219, 34, 42, 0.55)";
+      ctx.fillRect(sx + 1, sy + 1, 14, 14);
+      ctx.fillStyle = "rgba(255, 220, 0, 0.5)";
+      ctx.fillRect(sx + 3, sy + 3, 10, 10);
+      ctx.fillStyle = "rgba(219, 34, 42, 0.55)";
+      ctx.fillRect(sx + 5, sy + 5, 6, 6);
+      break;
+    case MAT:
+      intFloor(ctx, sx, sy, tx, ty);
+      ctx.fillStyle = "#6b4423";
+      ctx.fillRect(sx + 2, sy + 9, 12, 6);
+      ctx.fillStyle = "#8a6d3b";
+      ctx.fillRect(sx + 3, sy + 10, 10, 4);
+      break;
     default:
       grassBase();
   }
+}
+
+// A warm wooden interior floor with a subtle plank grain, drawn per tile.
+function intFloor(ctx: CanvasRenderingContext2D, sx: number, sy: number, tx: number, ty: number) {
+  ctx.fillStyle = (tx + ty) % 2 === 0 ? "#b98a4e" : "#a97e45";
+  ctx.fillRect(sx, sy, 16, 16);
+  ctx.fillStyle = "rgba(107, 68, 35, 0.35)";
+  ctx.fillRect(sx, sy + (ty % 2 === 0 ? 0 : 8), 16, 1);
 }
 
 type Dir = "up" | "down" | "left" | "right";
