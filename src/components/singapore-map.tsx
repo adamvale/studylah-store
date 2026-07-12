@@ -109,7 +109,7 @@ export function SingaporeMapOverlay({
           className="mt-3 overflow-hidden rounded-xl border-2 p-2"
           style={{ borderColor: `${SG_ARCADE.mint}40`, background: SG_ARCADE.sea }}
         >
-          <svg viewBox={SG_VIEWBOX} className="block w-full" style={{ aspectRatio: "100 / 54" }} role="img">
+          <svg viewBox={SG_VIEWBOX} className="block w-full" style={{ aspectRatio: "100 / 48" }} role="img">
             <path
               d={SG_OUTLINE}
               fill={SG_ARCADE.land}
