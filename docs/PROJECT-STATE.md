@@ -159,6 +159,38 @@ greetings. Deferred pending owner sign-off: keepsake poster (share-safety),
 festival (needs calendar anchor), companion chores beyond the Home Base
 line. Murk battle barks + Q4 moving marker downgraded per pack fallbacks.
 
+## Fog Frontier — Duel Hall + playable heroes
+
+Two additions on top of the season pack:
+
+**Three playable heroes.** Onboarding now has a "Choose your researcher"
+step (`HEROES` in `src/lib/game.ts`: `scout` Jun / `keeper` Wren / `agent`
+Agent Sable) before the companion pick. The choice persists as achievement
+`hero:<id>` (written by the story route's `hero` beat, whitelisted to those
+three ids) and is passed into the game via the `hero` prop. The player
+sprite is drawn by `drawHero` in `adventure-game.tsx` (16×24, per-hero
+palette, agent has shades) — purely cosmetic, all three walk the same roads
+with the same weapon (correct answers). Existing users who onboarded before
+this ship get a one-time hero-only picker (`initialStory.includes("starter")
+&& !initialHero`). The ghost researcher is now a **companion that trails one
+step behind** the hero (breadcrumb `trailRef`, ghost drawn at `trail[-2]`
+with the same accessory overlays), not the player character.
+
+**The Duel Hall.** Async 1-v-1 by share code — no matchmaking, no chat, no
+leaderboard (a deliberate rejection of grade-adjacent social pressure).
+Model `Duel` (`prisma/schema.prisma`); routes `duel/route.ts` (create deals
+a SEALED set of 5 MCQs behind an 8-char code + lists your recent duels) and
+`duel/take/route.ts` (PUT fetch-by-code, POST submit — server-graded, each
+side answers once). Both players earn the same `DUEL_XP` 20 for finishing,
+win or lose (`duel:<id>:<role>` source key); the only prize is a cosmetic
+laurel on the result screen, shown only when your score is strictly higher
+and the duel is complete. Question keys never leave the server pre-grade;
+worked solutions are revealed only in the post-submit results. UI is
+`src/components/duel-hall.tsx`, opened by talking to **Rin the Duel Warden**
+(`duelwarden`, Haven Hollow (14,12)). Verified E2E: create → 5/5 graded →
+sealed; a second real customer took the code → challenger graded 0/5 →
+duel complete → both sides got 20 XP → laurel to the higher score.
+
 ## Fog Frontier — the full creature-collecting RPG (native game shell)
 
 `/account/adventure` is a complete original-IP RPG (`adventure-game.tsx` +

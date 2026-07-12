@@ -417,3 +417,23 @@ model StreakShield {
   @@unique([customerId, earnedDay])
   @@unique([customerId, spentDay])
 }
+
+// Study Duels: asynchronous student-vs-student challenges. A creator seals
+// a server-dealt question set behind a share code; one challenger answers
+// the SAME set; scores compare privately. No leaderboards, no chat, no
+// stranger discovery — codes travel outside the app between friends.
+model Duel {
+  id             String   @id @default(cuid())
+  code           String   @unique
+  level          String
+  slug           String
+  questionIdsJson String
+  creatorId      String
+  creatorScore   Int?
+  challengerId   String?
+  challengerScore Int?
+  createdAt      DateTime @default(now())
+
+  @@index([creatorId])
+  @@index([challengerId])
+}

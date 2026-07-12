@@ -16,7 +16,10 @@ import {
 // one-time (unique sourceKey), and beats are idempotent. Worst case for a
 // dishonest client: a few dozen XP once — no marks, no grades, no content.
 
+const HEROES = ["scout", "keeper", "agent"]; // male / female / secret agent
+
 const BEATS: Record<string, number> = {
+  hero: 5, // chose a researcher
   intro: 5, // finished onboarding with the Elder
   starter: 5, // chose a companion spirit
   rival1: 15, // first rival battle won
@@ -44,8 +47,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Unknown beat." }, { status: 400 });
   }
 
-  // The starter choice rides its own achievement so the sprite tint survives
-  // reinstalls. First choice wins; choosing is one-time.
+  // Hero + starter choices ride their own achievements so the sprites
+  // survive reinstalls. First choice wins; choosing is one-time.
+  if (beat === "hero") {
+    const choice = typeof body.choice === "string" ? body.choice : "";
+    if (!HEROES.includes(choice)) {
+      return NextResponse.json({ error: "Unknown researcher." }, { status: 400 });
+    }
+    await markAchievement(customerId, `hero:${choice}`);
+  }
   if (beat === "starter") {
     const choice = typeof body.choice === "string" ? body.choice : "";
     if (!STARTERS.some((s) => s.id === choice)) {

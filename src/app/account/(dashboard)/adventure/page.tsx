@@ -43,12 +43,13 @@ export default async function AdventurePage() {
   if (!customerId) redirect("/account/login");
 
   const today = sgDay();
-  const [subjects, cleared, story, starters, beatenBosses, fronts, underCleared, campusCleared, questsDone] =
+  const [subjects, cleared, story, starters, heroes, beatenBosses, fronts, underCleared, campusCleared, questsDone] =
     await Promise.all([
       ownedSubjects(customerId),
       clearedGyms(customerId),
       achievementSuffixes(customerId, "story:"),
       achievementSuffixes(customerId, "starter:"),
+      achievementSuffixes(customerId, "hero:"),
       achievementSuffixes(customerId, "boss:"),
       achievementSuffixes(customerId, "front:"),
       achievementSuffixes(customerId, "under:"),
@@ -138,6 +139,7 @@ export default async function AdventurePage() {
       front={front}
       echoBySubject={echoBySubject}
       examWeek={examWeek}
+      hero={[...heroes][0] ?? null}
     />
   );
 }

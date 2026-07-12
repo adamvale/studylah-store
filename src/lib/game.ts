@@ -135,6 +135,42 @@ export function starterById(id: string): StarterDef | undefined {
   return STARTERS.find((s) => s.id === id);
 }
 
+// ── Playable researchers (heroes) ─────────────────────────────────────────
+// The student plays a HUMAN researcher; the ghost is their companion,
+// trailing one step behind. Original designs; purely cosmetic choice.
+
+export interface HeroDef {
+  id: string;
+  name: string;
+  emoji: string;
+  blurb: string;
+}
+
+export const HEROES: HeroDef[] = [
+  {
+    id: "scout",
+    name: "Jun the Scout",
+    emoji: "🧭",
+    blurb: "First out the door every morning. Maps the routes so others don't get lost.",
+  },
+  {
+    id: "keeper",
+    name: "Wren the Keeper",
+    emoji: "🔖",
+    blurb: "Keeps the neatest notebook in Haven. The Fog hates a good index.",
+  },
+  {
+    id: "agent",
+    name: "Agent Sable",
+    emoji: "🕶️",
+    blurb: "Nobody knows who sent them. Their mission folder just says 'pass'.",
+  },
+];
+
+export function heroById(id: string): HeroDef | undefined {
+  return HEROES.find((h) => h.id === id);
+}
+
 // ── The bestiary ──────────────────────────────────────────────────────────
 // Every mistake is a monster; its species is WHY the mark was lost (the
 // notebook's reason field). Monsters have 2 HP — two consecutive correct

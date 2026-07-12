@@ -36,7 +36,7 @@ import {
   type MiniBoss,
   type QuestDef,
 } from "@/lib/game/season";
-import { MONSTERS, STARTERS, starterById } from "@/lib/game";
+import { MONSTERS, STARTERS, HEROES, starterById } from "@/lib/game";
 import { emitGame, emitFx, useHud, type FxGame } from "@/lib/game/fx";
 import {
   loadSheets,
@@ -64,6 +64,7 @@ import {
   HeartRow,
   CaptureSwirl,
 } from "@/components/sprite";
+import { DuelHall } from "@/components/duel-hall";
 
 // Subject family → gym emblem + province guardian (original sheet art).
 const EMBLEM_BY_FAMILY: Record<string, string> = {
@@ -336,6 +337,93 @@ function drawAccessories(
   }
 }
 
+// ── The playable researchers ───────────────────────────────────────────────
+// Three ORIGINAL 16×24 pixel walkers drawn in code to the pack's spec
+// (1px #1a2230 outline, feet on the tile, 3-frame walk). The commissioned
+// v2 sheet can replace this painter cell-for-cell later.
+interface HeroPalette {
+  hair: string;
+  skin: string;
+  top: string;
+  bottom: string;
+  accent: string;
+  shades?: boolean; // Agent Sable's eyewear
+}
+
+const HERO_PALETTES: Record<string, HeroPalette> = {
+  scout: { hair: "#6b4423", skin: "#f0c8a0", top: "#3b7dd8", bottom: "#d9c48a", accent: "#db222a" },
+  keeper: { hair: "#1a2230", skin: "#e8b88a", top: "#ff7ab0", bottom: "#7c3aed", accent: "#ffdc00" },
+  agent: { hair: "#221b2e", skin: "#e8b88a", top: "#2b3242", bottom: "#1a2230", accent: "#db222a", shades: true },
+};
+
+function drawHero(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  dir: string,
+  frame: number, // 0..2, 1 = idle
+  heroId: string
+) {
+  const pal = HERO_PALETTES[heroId] ?? HERO_PALETTES.scout;
+  const top = y - 8;
+  const px = (dx: number, dy: number, w: number, h: number, col: string) => {
+    ctx.fillStyle = col;
+    ctx.fillRect(x + dx, top + dy, w, h);
+  };
+  const step = frame === 0 ? -1 : frame === 2 ? 1 : 0;
+
+  // outline silhouette
+  px(4, 1, 8, 10, "#1a2230");
+  px(3, 10, 10, 9, "#1a2230");
+  px(3, 18, 10, 6, "#1a2230");
+  // hair + head
+  px(5, 2, 6, 3, pal.hair);
+  if (heroId === "keeper") {
+    px(11, 3, 2, 5, pal.hair); // ponytail
+    px(11, 8, 1, 1, pal.accent);
+  }
+  if (heroId === "agent") px(4, 2, 8, 2, pal.hair); // slicked flat
+  px(5, 5, 6, 4, pal.skin);
+  // face by direction
+  const ex = dir === "left" ? -1 : dir === "right" ? 1 : 0;
+  if (dir !== "up") {
+    if (pal.shades) {
+      px(5 + ex, 6, 6, 2, "#10131a");
+      px(6 + ex, 6, 1, 1, "#6ea0ff");
+    } else {
+      px(6 + ex, 6, 1, 1, "#1a2230");
+      px(9 + ex, 6, 1, 1, "#1a2230");
+    }
+  } else {
+    px(5, 5, 6, 4, pal.hair); // back of head
+  }
+  // torso
+  px(4, 10, 8, 5, pal.top);
+  if (heroId === "agent") {
+    px(7, 10, 2, 5, "#e2d9c8"); // shirt + tie
+    px(7, 11, 2, 3, pal.accent);
+    px(3, 10, 1, 7, pal.top); // long coat edges
+    px(12, 10, 1, 7, pal.top);
+  }
+  if (heroId === "scout") px(4, 10, 8, 1, pal.accent); // scarf line
+  // arms (swing subtly)
+  px(3, 11 + (step === -1 ? 1 : 0), 1, 3, pal.skin);
+  px(12, 11 + (step === 1 ? 1 : 0), 1, 3, pal.skin);
+  // legs (skirt for the keeper)
+  if (heroId === "keeper") {
+    px(4, 15, 8, 3, pal.bottom);
+    px(5 + (step === -1 ? -1 : 0), 18, 2, 4, pal.skin);
+    px(9 + (step === 1 ? 1 : 0), 18, 2, 4, pal.skin);
+  } else {
+    px(4, 15, 8, 3, pal.bottom);
+    px(5 + (step === -1 ? -1 : 0), 18, 3, 4, pal.bottom);
+    px(8 + (step === 1 ? 1 : 0), 18, 3, 4, pal.bottom);
+  }
+  // shoes
+  px(5 + (step === -1 ? -1 : 0), 22, 3, 2, "#1a2230");
+  px(8 + (step === 1 ? 1 : 0), 22, 3, 2, "#1a2230");
+}
+
 function drawGhost(
   ctx: CanvasRenderingContext2D,
   x: number,
@@ -559,6 +647,7 @@ export function AdventureGame({
   front,
   echoBySubject,
   examWeek,
+  hero: initialHero,
 }: {
   subjects: WorldSubject[];
   cleared: string[];
@@ -571,6 +660,7 @@ export function AdventureGame({
   front: { key: string; species: string; place: string } | null;
   echoBySubject: Record<string, string>;
   examWeek: boolean;
+  hero: string | null;
 }) {
   const router = useRouter();
   const hudState = useHud();
@@ -581,6 +671,7 @@ export function AdventureGame({
   const [story, setStory] = useState<Set<string>>(new Set(initialStory));
   const [cleared, setCleared] = useState<Set<string>>(new Set(initialCleared));
   const [starter, setStarter] = useState<string | null>(initialStarter);
+  const [heroId, setHeroId] = useState<string | null>(initialHero);
   const [hearts, setHearts] = useState(MAX_HEARTS);
   const [wins, setWins] = useState(0);
   const [zoneId, setZoneId] = useState("hub");
@@ -599,8 +690,8 @@ export function AdventureGame({
   // Grunts without a story beat are re-fightable across sessions but stand
   // down once beaten within one.
   const [beatenNpcs, setBeatenNpcs] = useState<Set<string>>(new Set());
-  const [onboard, setOnboard] = useState<"intro" | "pick" | "done" | null>(
-    initialStory.includes("starter") ? null : "intro"
+  const [onboard, setOnboard] = useState<"intro" | "hero" | "pick" | "done" | null>(
+    !initialStory.includes("starter") ? "intro" : initialHero ? null : "hero"
   );
   const [beaten, setBeaten] = useState<Set<string>>(new Set(initialBeaten));
   const [underCleared, setUnderCleared] = useState<Set<string>>(new Set(initialUnder));
@@ -608,6 +699,7 @@ export function AdventureGame({
   const [questsDone, setQuestsDone] = useState<Set<string>>(new Set(initialQuests));
   const [questStore, setQuestStore] = useState<QuestProgressStore>(loadQuestStore);
   const [questLogOpen, setQuestLogOpen] = useState(false);
+  const [duelHallOpen, setDuelHallOpen] = useState(false);
   const [wipeLetter, setWipeLetter] = useState<{ stem: string; solution: string } | null>(null);
   const rungRef = useRef<Record<string, string[]>>({});
   const [stonesOpen, setStonesOpen] = useState<Set<string>>(new Set());
@@ -640,6 +732,9 @@ export function AdventureGame({
   const tilesetRef = useRef<Record<number, HTMLCanvasElement>[] | null>(null);
   const sheetsRef = useRef<Sheets | null>(null);
   const ghostVariantRef = useRef<string>("none");
+  const heroRef = useRef<string>("scout");
+  // the companion trails the hero: a short breadcrumb of recent tiles
+  const trailRef = useRef<{ x: number; y: number; facing: Dir }[]>([]);
   const levelRef = useRef(1);
   const clearedRef = useRef<Set<string>>(new Set(initialCleared));
   const storyRef = useRef<Set<string>>(new Set(initialStory));
@@ -698,6 +793,9 @@ export function AdventureGame({
     levelRef.current = hudState?.level ?? 1;
   }, [hudState]);
   useEffect(() => {
+    heroRef.current = heroId ?? "scout";
+  }, [heroId]);
+  useEffect(() => {
     clearedRef.current = cleared;
   }, [cleared]);
   useEffect(() => {
@@ -709,7 +807,7 @@ export function AdventureGame({
       sheetsRef.current = sh;
     });
   }, []);
-  const uiOpen = Boolean(dialogue || battle || trainer || gym || onboard);
+  const uiOpen = Boolean(dialogue || battle || trainer || gym || onboard || duelHallOpen || questLogOpen);
   useEffect(() => {
     modeRef.current = uiOpen ? "ui" : "walk";
     if (uiOpen) dirRef.current = null;
@@ -1123,6 +1221,19 @@ export function AdventureGame({
     const beatDone = npc.battle?.beat ? story.has(npc.battle.beat) : beatenNpcs.has(npc.id);
     const willBattle = npc.battle && !beatDone;
 
+    // Rin the Duel Warden opens the hall
+    if (npc.id === "duelwarden") {
+      setDialogue({
+        name: npc.name,
+        emoji: npc.emoji,
+        sprite: npc.sprite,
+        lines: npc.lines,
+        idx: 0,
+        onDone: () => setDuelHallOpen(true),
+      });
+      return;
+    }
+
     // quest-giver flow: offer → progress reminder → turn-in
     const quest = npc.quest && !npc.quest.startsWith("ninth") ? questById(npc.quest) : undefined;
     let lines = beatDone && npc.winLines ? npc.winLines : npc.lines;
@@ -1351,19 +1462,36 @@ export function AdventureGame({
           ctx.fillText(n.emoji, sx + TS / 2, sy + TS - 3);
         }
       }
-      // player
+      // the companion ghost trails one tile behind on the breadcrumb path
+      const trail = trailRef.current;
+      const crumb = trail[trail.length - 1];
+      if (!crumb || crumb.x !== p.tx || crumb.y !== p.ty) {
+        trail.push({ x: p.tx, y: p.ty, facing: p.facing });
+        if (trail.length > 4) trail.shift();
+      }
+      const ghostSpot = trail.length >= 2 ? trail[trail.length - 2] : null;
+      if (ghostSpot && (ghostSpot.x !== p.tx || ghostSpot.y !== p.ty)) {
+        const gx2 = Math.round((ghostSpot.x - camX) * TS);
+        const gy2 = Math.round((ghostSpot.y - camY) * TS);
+        drawShadow(ctx, gx2, gy2);
+        if (sh) {
+          const gseq = [0, 1, 2, 1];
+          const gwf = p.moving ? gseq[Math.floor(animClock / 140) % 4] : 1;
+          drawWalker(ctx, sh.player, ghostBlockX(ghostVariantRef.current), ghostSpot.facing, gwf, gx2, gy2);
+          drawAccessories(ctx, sh.accessories, levelRef.current, ghostSpot.facing, gwf, gx2, gy2);
+        } else {
+          drawGhost(ctx, gx2, gy2, ghostSpot.facing, 0, scarfRef.current);
+        }
+      }
+
+      // the researcher — the student's own hero — leads
       const pfx = Math.round((rx - camX) * TS);
       const pfy = Math.round((ry - camY) * TS);
       drawShadow(ctx, pfx, pfy);
-      if (sh) {
-        // 3-frame ping-pong walk (1-2-3-2); idle = centre frame
+      {
         const seq = [0, 1, 2, 1];
         const wf = p.moving ? seq[Math.floor(animClock / 140) % 4] : 1;
-        drawWalker(ctx, sh.player, ghostBlockX(ghostVariantRef.current), p.facing, wf, pfx, pfy);
-        drawAccessories(ctx, sh.accessories, levelRef.current, p.facing, wf, pfx, pfy);
-      } else {
-        const frame = p.moving ? Math.floor(animClock / 130) % 2 : 0;
-        drawGhost(ctx, pfx, pfy, p.facing, frame, scarfRef.current);
+        drawHero(ctx, pfx, pfy, p.facing, wf, heroRef.current);
       }
 
       raf = requestAnimationFrame(step);
@@ -1696,6 +1824,17 @@ export function AdventureGame({
   );
 
   // ── onboarding ───────────────────────────────────────────────────────────
+  const pickHero = useCallback(
+    async (id: string) => {
+      emitFx({ type: "correct" });
+      setHeroId(id);
+      // fresh onboarding continues to the spirit; returning players are done
+      setOnboard((o) => (o === "hero" && story.has("starter") ? null : "pick"));
+      await postBeat("hero", id);
+    },
+    [postBeat, story]
+  );
+
   const pickStarter = useCallback(
     async (id: string) => {
       emitFx({ type: "correct" });
@@ -2256,6 +2395,9 @@ export function AdventureGame({
         </Panel>
       )}
 
+      {/* the Duel Hall */}
+      {duelHallOpen && <DuelHall subjects={subjects} onClose={() => setDuelHallOpen(false)} />}
+
       {/* quest log */}
       {questLogOpen && (
         <Panel title="📜 Errands & Quests">
@@ -2340,18 +2482,49 @@ export function AdventureGame({
                   Order wants it to stay that way. But a student who faces questions honestly can
                   light beacons the Order can&apos;t snuff.
                 </p>
-                <p>I believe you&apos;re that student, Lightbearer. First — choose the companion spirit who&apos;ll walk with you.</p>
+                <p>
+                  I believe you&apos;re that student, Lightbearer. Choose who you&apos;ll be out
+                  there — and the companion spirit who&apos;ll trail a step behind you, carrying
+                  the lantern.
+                </p>
               </div>
               <button
                 type="button"
                 onClick={() => {
                   emitFx({ type: "blip" });
-                  setOnboard("pick");
+                  setOnboard("hero");
                 }}
                 className="rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night"
               >
-                Meet the spirits →
+                Begin →
               </button>
+            </>
+          )}
+          {onboard === "hero" && (
+            <>
+              <p className="font-pixel text-[10px] tracking-widest text-accent">CHOOSE YOUR RESEARCHER</p>
+              <div className="w-full max-w-sm space-y-3">
+                {HEROES.map((h) => (
+                  <button
+                    key={h.id}
+                    type="button"
+                    onClick={() => void pickHero(h.id)}
+                    className="block w-full rounded-2xl border border-hairline bg-surface p-4 text-left transition-transform hover:border-accent active:scale-[0.98]"
+                  >
+                    <p className="flex items-center gap-2">
+                      <span className="text-2xl" aria-hidden>
+                        {h.emoji}
+                      </span>
+                      <span className="font-display text-base font-bold text-ink">{h.name}</span>
+                      <HeroPreview heroId={h.id} />
+                    </p>
+                    <p className="mt-1 text-xs text-body">{h.blurb}</p>
+                  </button>
+                ))}
+              </div>
+              <p className="max-w-xs text-[11px] text-body">
+                Style only — every researcher walks the same roads with the same weapon: your answers.
+              </p>
             </>
           )}
           {onboard === "pick" && (
@@ -2451,6 +2624,30 @@ function SoftTimer({ onExpire }: { onExpire: () => void }) {
       </span>
       <span className="font-pixel text-[7px] text-body">NO COST</span>
     </div>
+  );
+}
+
+// Little live preview of a hero walker for the onboarding cards.
+function HeroPreview({ heroId }: { heroId: string }) {
+  const ref = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    const cv = ref.current;
+    if (!cv) return;
+    const c = cv.getContext("2d");
+    if (!c) return;
+    c.imageSmoothingEnabled = false;
+    c.clearRect(0, 0, cv.width, cv.height);
+    drawHero(c, 0, 8, "down", 1, heroId);
+  }, [heroId]);
+  return (
+    <canvas
+      ref={ref}
+      width={16}
+      height={24}
+      className="ml-auto"
+      style={{ width: 32, height: 48, imageRendering: "pixelated" }}
+      aria-hidden
+    />
   );
 }
 

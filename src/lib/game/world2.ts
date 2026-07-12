@@ -288,6 +288,18 @@ function buildHub(
           : ["ALL the beacons are lit! When I take my papers, I'm going to remember this sky."],
     },
     {
+      id: "duelwarden",
+      x: 14,
+      y: 12,
+      emoji: "⚔️",
+      sprite: "student_c",
+      name: "Rin the Duel Warden",
+      lines: [
+        "Two researchers, one sealed set of questions, no audience. That's a duel done properly.",
+        "Make a code and hand it to a friend — or bring me a code someone handed you.",
+      ],
+    },
+    {
       id: "student_b",
       x: 12,
       y: 4,
