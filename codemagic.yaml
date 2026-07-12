@@ -87,4 +87,18 @@ workflows:
     publishing:
       app_store_connect:
         auth: integration
-        submit_to_testflight: true
+        # Upload only — this is what makes the build appear in App Store
+        # Connect. It's then IMMEDIATELY available to INTERNAL testers
+        # (App Store Connect → TestFlight → Internal Testing → add yourself as
+        # a tester): no review, no metadata, install via the TestFlight app.
+        #
+        # `submit_to_testflight: true` submits to EXTERNAL (public) beta review,
+        # which Apple rejects until you fill in — ONE TIME, at
+        # appstoreconnect.apple.com/apps/<id>/testflight/test-info —
+        #   • Beta App Information → Feedback Email
+        #   • Beta App Review Information → First name, Last name, Phone, Email
+        # Once that's saved, flip this to true (and optionally add beta_groups)
+        # and external testers get every build automatically.
+        submit_to_testflight: false
+        # beta_groups:
+        #   - External Testers

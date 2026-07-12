@@ -101,8 +101,24 @@ Reviewers can't receive our login emails, so a fixed pair lets them in:
 
 1. Codemagic dashboard → studylah-store → **Start new build** → pick
    `android-release` or `ios-release` → branch `main` → Start.
-2. iOS: the build lands in **TestFlight** automatically. Test it on your
-   iPhone (TestFlight app), then App Store Connect → promote to review.
+2. iOS: the build **uploads to App Store Connect** automatically. To test on
+   your own iPhone, use **Internal Testing** (no Apple review, no metadata):
+   App Store Connect → your app → **TestFlight** → **Internal Testing** →
+   add yourself under **App Store Connect Users** → install the **TestFlight**
+   app on your iPhone and open the build. Every future build shows up there
+   automatically.
+   - **External / public testing** (share a link with people outside your
+     team) is off by default because Apple requires a one-time metadata fill,
+     or the build submission fails with *"Complete test information is
+     required."* Fill it once at
+     `App Store Connect → app → TestFlight → Test Information`:
+     **Beta App Information → Feedback Email**, and **Beta App Review
+     Information → First name, Last name, Phone, Email**. Then set
+     `submit_to_testflight: true` in `codemagic.yaml` (and optionally list
+     `beta_groups`). After that, external testers get every build
+     automatically.
+   - Promote to the App Store: App Store Connect → **Distribution** → submit
+     for review.
 3. Android: download the `.aab` artifact → Play Console → upload to
    **Internal testing**, then promote. (After the first release you can
    uncomment the auto-publish block in codemagic.yaml.)
