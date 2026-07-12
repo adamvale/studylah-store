@@ -57,6 +57,45 @@ export function districtPos(name: string): District | undefined {
   return DISTRICT_BY_NAME.get(name);
 }
 
+// ── v3 arcade palette (from SINGAPORE_MAP_INSTRUCTIONS) ──────────────────────
+export const SG_ARCADE = {
+  bg: "#1b1b3a", // navy
+  sea: "#262657",
+  land: "#2a2a52",
+  mint: "#4ef3c9", // borders / coastline / accents
+  pink: "#ff2e88", // the player "you are here"
+  gold: "#ffd166", // your provinces / landmarks
+  white: "#f7f7ff",
+  dim: "#8b93c6",
+} as const;
+
+// ── 15 real Singapore landmarks (v3 sg_buildings index order) ────────────────
+// Placed at roughly their real relative positions on the outline. Emoji stand
+// in for the pixel building sprites until the sg_buildings.png sheet ships.
+export interface Landmark {
+  name: string;
+  emoji: string;
+  x: number;
+  y: number;
+}
+export const LANDMARKS: readonly Landmark[] = [
+  { name: "Marina Bay Sands", emoji: "🏨", x: 56, y: 44 },
+  { name: "Merlion Park", emoji: "🦁", x: 53, y: 44 },
+  { name: "Botanic Gardens", emoji: "🌳", x: 48, y: 34 },
+  { name: "Jewel Changi", emoji: "✈️", x: 90, y: 26 },
+  { name: "Our Tampines Hub", emoji: "🏬", x: 82, y: 27 },
+  { name: "Singapore Expo", emoji: "🏢", x: 86, y: 30 },
+  { name: "Singapore Zoo", emoji: "🐘", x: 48, y: 20 },
+  { name: "Woodlands Checkpoint", emoji: "🛂", x: 40, y: 12 },
+  { name: "Kranji War Memorial", emoji: "🎖️", x: 32, y: 17 },
+  { name: "Punggol Point", emoji: "⚓", x: 78, y: 14 },
+  { name: "Hougang Stadium", emoji: "🏟️", x: 69, y: 23 },
+  { name: "NEX Serangoon", emoji: "🛍️", x: 62, y: 30 },
+  { name: "NTU Hive", emoji: "🎓", x: 14, y: 30 },
+  { name: "Science Centre", emoji: "🔬", x: 27, y: 36 },
+  { name: "Chinese Garden", emoji: "🏯", x: 22, y: 34 },
+];
+
 // Fixed anchors for the always-present zones.
 const FIXED_ZONE_DISTRICT: Record<string, string> = {
   hub: "Toa Payoh",
