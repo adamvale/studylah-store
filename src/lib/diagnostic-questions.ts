@@ -14,6 +14,8 @@
 // and `workedSolution` must never reach the client before submission; pages
 // send the client a sanitized shape via sanitizeSet().
 
+import { IMPORTED_SETS } from "@/lib/generated/game-bank";
+
 export type DiagnosticProduct = "companion" | "vault" | "master";
 
 export interface DiagnosticQuestion {
@@ -2805,6 +2807,11 @@ const SETS: DiagnosticSet[] = [
 ];
 
 export function getDiagnosticSet(level: string, slug: string): DiagnosticSet | undefined {
+  // Imported author content (content/game-bank → generated) wins per exact
+  // level+slug; the hand-authored SETS are the fallback for subjects not yet
+  // delivered. Imported sets are richer (15–30+ real questions per subject).
+  const imported = IMPORTED_SETS.find((s) => s.level === level && s.slug === slug);
+  if (imported && imported.questions.length > 0) return imported;
   return SETS.find((s) => s.level === level && s.slug === slug);
 }
 

@@ -60,7 +60,7 @@ export async function PUT(request: Request) {
     return NextResponse.json({ error: "Enrol in this subject to study with its Guru." }, { status: 403 });
   }
 
-  const lesson = guruLesson(subject.family as TopicFamily, level);
+  const lesson = guruLesson(subject.family as TopicFamily, level, slug);
 
   // one sealed check-question from this subject's own set
   const mcqs = getDiagnosticSet(level, slug)?.questions.filter(

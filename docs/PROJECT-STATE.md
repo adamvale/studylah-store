@@ -183,14 +183,22 @@ worked solution, and awards effort XP (`guru:<day>:<n>`, ATTEMPT 8 + PASS 8,
 daily cap 80). Compliance-safe: answer keys never leave the server pre-grade,
 XP rewards effort not grades, no cross-subject/level bleed.
 
-**Paid-PDF ingestion (owner-authorised, blocked on content):** the owner
-opted to expose paid-product questions in the game, but the real exam PDFs
-are external opaque binaries (repo `private/pdfs` are `pdf-gen.ts`
-placeholders that extract to 0 chars) — there is no structured question text
-to ingest. The game's structured source of truth remains
-`diagnostic-questions.ts` (222 original MCQs, all 22 subjects, level-keyed).
-To actually load the paid questions, the owner must supply them as
-text/structured data; until then Gurus + battles run on the original bank.
+**Author content importer (UNBLOCKED):** the PDF author exports each subject's
+questions + teaching as Markdown (`content/game-bank/<level>__<slug>.md`:
+frontmatter + fenced ```yaml blocks, `type:` mcq|short questions with answer
+key + worked solution, `kind:` teaching cards). `node scripts/import-game-bank.mjs`
+parses them (js-yaml) into `src/lib/generated/game-bank.ts` (`IMPORTED_SETS`
++ `IMPORTED_TEACHING`, AUTO-GENERATED — never hand-edit; re-run on new files).
+`getDiagnosticSet` prefers `IMPORTED_SETS` per exact level+slug (question ids
+`<slug>-g<n>`); `guruLesson(family, level, slug)` prefers `IMPORTED_TEACHING`,
+both falling back to the hand-authored `diagnostic-questions.ts` /
+`practice-content.ts` for undelivered subjects. So battles, duels, and Gurus
+all serve the author's real content the moment a file lands, still
+ownership-gated and level-exact. First delivered: `o-level chemistry-pure`
+(30 MCQ + 3 short + 20 teaching cards) — verified E2E over the HTTP routes
+(battles/guru serve `chemistry-pure-g*`, grading + Unicode worked solutions
+resolve). Remaining 21 subject files are a drop-in: add the `.md`, re-run the
+script, rebuild.
 
 ## Fog Frontier — Duel Hall + playable heroes
 

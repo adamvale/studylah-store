@@ -8,6 +8,7 @@ import {
   COMMAND_WORDS,
   POA_TEMPLATES,
 } from "@/lib/study/practice-content";
+import { IMPORTED_TEACHING, type ImportedCard } from "@/lib/generated/game-bank";
 
 // ─────────────────────────────────────────────────────────────────────────
 // The Subject Guru's lesson deck. Each owned subject has a Guru who TEACHES
@@ -54,10 +55,60 @@ export function familyCanTeach(family: TopicFamily): boolean {
   );
 }
 
-// Build a fresh short lesson (2–3 beats) for a subject's Guru. `level` is
-// used only to label the lesson at the right band; the concepts are shared,
-// but the paired check-question enforces the depth.
-export function guruLesson(family: TopicFamily, level: Level): LessonBeat[] {
+// Convert an imported teaching card (from the author's content file) into a
+// lesson beat. Imported content is subject-exact, so it's preferred over the
+// family library when present.
+function importedBeat(card: ImportedCard): LessonBeat | null {
+  const s = (v: unknown) => (typeof v === "string" ? v : "");
+  const arr = (v: unknown) => (Array.isArray(v) ? v.map((x) => String(x)) : []);
+  switch (card.kind) {
+    case "definition":
+      return { tag: "DEFINITION", title: s(card.term), body: `${s(card.body)}  ·  ${s(card.topic)}` };
+    case "precision": {
+      const kw = arr(card.keywords);
+      return {
+        tag: "MARKER'S PHRASING",
+        title: s(card.prompt),
+        body: `${s(card.model)}${kw.length ? `\n\nKey words the marker looks for: ${kw.join(", ")}.` : ""}`,
+      };
+    }
+    case "qa":
+      return {
+        tag: "IN THE LAB",
+        title: s(card.test),
+        body: `Observation: ${s(card.observation)}\nConclusion: ${s(card.conclusion)}`,
+      };
+    case "careless":
+      return {
+        tag: "BEFORE YOU MOVE ON",
+        title: s(card.topic),
+        body: arr(card.checks).map((x) => `• ${x}`).join("\n"),
+      };
+    case "sbq":
+      return { tag: "SOURCE SKILL", title: s(card.rung), body: `${s(card.what)}\n\nHow: ${s(card.how)}` };
+    case "poa":
+      return {
+        tag: "FORMAT MARKS",
+        title: s(card.name),
+        body: arr(card.lines).map((x) => `• ${x}`).join("\n") + (card.note ? `\n\n${s(card.note)}` : ""),
+      };
+    default:
+      return null;
+  }
+}
+
+// Build a fresh short lesson (2–3 beats) for a subject's Guru. Imported author
+// content for the exact level+slug wins; otherwise the shared family library
+// is used. Either way the paired check-question enforces the depth.
+export function guruLesson(family: TopicFamily, level: Level, slug?: string): LessonBeat[] {
+  // Prefer the subject's own imported teaching cards.
+  const imported = slug ? IMPORTED_TEACHING[`${level}/${slug}`] : undefined;
+  if (imported && imported.length) {
+    const shuffled = [...imported].sort(() => Math.random() - 0.5);
+    const picked = shuffled.map(importedBeat).filter((b): b is LessonBeat => b !== null);
+    if (picked.length) return picked.slice(0, 3);
+  }
+
   const beats: LessonBeat[] = [];
   const band = LEVEL_LABEL[level];
 
