@@ -338,3 +338,22 @@ html[data-native] .native-screen {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
+
+
+/* Capture swirl: 4 fx-sheet frames (cols 5-8, row 0) stepped at 10 fps.
+   Positions are per-scale; the component sets bg-size to match. */
+@keyframes ff-swirl-2x {
+  0% { background-position: -160px 0; }
+  25% { background-position: -192px 0; }
+  50% { background-position: -224px 0; }
+  75% { background-position: -256px 0; }
+  100% { background-position: -160px 0; }
+}
+.ff-capture-swirl {
+  animation: ff-swirl-2x 0.4s steps(1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ff-capture-swirl {
+    animation: none;
+  }
+}

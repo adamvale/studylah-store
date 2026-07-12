@@ -7,6 +7,7 @@ import {
   TILE,
   PORTAL,
   ROOF,
+  ROOF_RIDGE,
   walkable,
   buildRegion,
   type Zone,
@@ -16,6 +17,54 @@ import {
 } from "@/lib/game/world2";
 import { MONSTERS, STARTERS, starterById } from "@/lib/game";
 import { emitGame, emitFx, useHud, type FxGame } from "@/lib/game/fx";
+import {
+  loadSheets,
+  drawWalker,
+  terrainXY,
+  buildingXY,
+  ghostBlockX,
+  npcBlockX,
+  type Sheets,
+  type NpcSprite,
+  type GuardianName,
+  type PortraitName,
+} from "@/lib/game/sheets";
+import {
+  MonsterSprite,
+  GuardianSprite,
+  PortraitSprite,
+  UiSprite,
+  HeartRow,
+  CaptureSwirl,
+} from "@/components/sprite";
+
+// Subject family → gym emblem + province guardian (original sheet art).
+const EMBLEM_BY_FAMILY: Record<string, string> = {
+  chemistry: "emblem_flask",
+  physics: "emblem_atom",
+  biology: "emblem_leaf",
+  geography: "emblem_globe",
+  history: "emblem_scroll",
+  "social-studies": "emblem_compass",
+  emath: "emblem_abacus",
+  amath: "emblem_abacus",
+  poa: "emblem_abacus",
+  fnn: "emblem_gear",
+};
+const GUARDIAN_BY_FAMILY: Record<string, GuardianName> = {
+  chemistry: "marsh_newt",
+  physics: "highland_ram",
+  biology: "grove_sproutling",
+  emath: "terrace_counter",
+  amath: "terrace_counter",
+  poa: "terrace_counter",
+  geography: "coast_drifter",
+  history: "ruins_watcher",
+  "social-studies": "ruins_watcher",
+  fnn: "grove_sproutling",
+};
+const emblemFor = (family?: string) => EMBLEM_BY_FAMILY[family ?? ""] ?? "emblem_gear";
+const guardianFor = (family?: string): GuardianName => GUARDIAN_BY_FAMILY[family ?? ""] ?? "ruins_watcher";
 
 // ── Fog Frontier — the full game ───────────────────────────────────────────
 // Immersive full-screen canvas RPG with PUBG-style overlay controls. Every
@@ -269,11 +318,85 @@ function drawGhost(
   px(9 + ex, 6 + ey, 1, 1, "#8fa3c0");
 }
 
+// Draw one tile from the original terrain/buildings sheets. Grass always
+// underlays transparent props; the hub's pool renders as a fountain; gym
+// buildings get the gold-emblem facade.
+function drawSheetTile(
+  ctx: CanvasRenderingContext2D,
+  sh: Sheets,
+  z: { id: string; gym?: { x: number; y: number } },
+  tile: number,
+  tx: number,
+  ty: number,
+  sx: number,
+  sy: number,
+  f2: number
+) {
+  const t = (name: string) => {
+    const [ux, uy] = terrainXY(name);
+    ctx.drawImage(sh.terrain, ux, uy, 16, 16, sx, sy, 16, 16);
+  };
+  const b = (name: string) => {
+    const [ux, uy] = buildingXY(name);
+    ctx.drawImage(sh.buildings, ux, uy, 16, 16, sx, sy, 16, 16);
+  };
+  const grassBase = () => t((tx * 7 + ty * 13) % 5 === 0 ? "grass2" : "grass1");
+
+  switch (tile) {
+    case TILE.GRASS:
+      grassBase();
+      break;
+    case TILE.TALL:
+      grassBase();
+      t(f2 ? "tallgrass_f2" : "tallgrass_f1");
+      break;
+    case TILE.TREE:
+      grassBase();
+      t((tx * 31 + ty * 17) % 7 === 0 ? "pine" : "tree");
+      break;
+    case TILE.WATER:
+      if (z.id === "hub") b(f2 ? "fountain_f2" : "fountain_f1");
+      else t(f2 ? "water_f2" : "water_f1");
+      break;
+    case TILE.PATH:
+      t("path");
+      break;
+    case TILE.WALL:
+      b(z.gym ? "gym_facade" : (tx + ty) % 2 === 0 ? "window_lit" : "wall_plaster");
+      break;
+    case ROOF_RIDGE:
+      b("terracotta_ridge");
+      break;
+    case ROOF:
+      b("terracotta_slope");
+      break;
+    case TILE.DOOR:
+      b("door_closed");
+      break;
+    case TILE.FLOWER:
+      grassBase();
+      t(f2 ? "flowers_f2" : "flowers_f1");
+      break;
+    case TILE.SIGN:
+      grassBase();
+      t("sign");
+      break;
+    case PORTAL:
+      grassBase();
+      t(f2 ? "portal_f2" : "portal_f1");
+      break;
+    default:
+      grassBase();
+  }
+}
+
 type Dir = "up" | "down" | "left" | "right";
 
 interface DialogueState {
   name: string;
   emoji: string;
+  sprite?: string; // portrait on the sheets
+  emotive?: boolean;
   lines: string[];
   idx: number;
   onDone?: () => void;
@@ -356,6 +479,8 @@ export function AdventureGame({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const zoneRef = useRef<Zone>(zone);
   const tilesetRef = useRef<Record<number, HTMLCanvasElement>[] | null>(null);
+  const sheetsRef = useRef<Sheets | null>(null);
+  const ghostVariantRef = useRef<string>("none");
   const viewRef = useRef({ cols: viewCols, rows: viewRows });
   const modeRef = useRef<"walk" | "ui">("walk");
   const scarfRef = useRef<string | undefined>(undefined);
@@ -403,7 +528,15 @@ export function AdventureGame({
   }, []);
   useEffect(() => {
     scarfRef.current = starter ? starterById(starter)?.colour : undefined;
-  }, [starter]);
+    // champions walk the frontier in gold
+    ghostVariantRef.current = story.has("championship") ? "gold" : starter ?? "none";
+  }, [starter, story]);
+  // the original sprite sheets load once; until then the procedural art draws
+  useEffect(() => {
+    void loadSheets().then((sh) => {
+      sheetsRef.current = sh;
+    });
+  }, []);
   const uiOpen = Boolean(dialogue || battle || trainer || gym || onboard);
   useEffect(() => {
     modeRef.current = uiOpen ? "ui" : "walk";
@@ -523,7 +656,7 @@ export function AdventureGame({
     player.current.fromX = hub.start.x;
     player.current.fromY = hub.start.y;
     player.current.moving = false;
-    showToast("💫 You stumble back to Haven Hollow… Nurse Fern patches you up.");
+    showToast("💫 Every researcher falls. Nurse Fern patches you up — Lightbearers get back up.");
   }, [region, showToast]);
 
   const openWild = useCallback(
@@ -622,6 +755,8 @@ export function AdventureGame({
     setDialogue({
       name: npc.name,
       emoji: npc.emoji,
+      sprite: npc.sprite,
+      emotive: beatDone,
       lines,
       idx: 0,
       onDone: () => {
@@ -718,7 +853,9 @@ export function AdventureGame({
           ? (z.height - rows) / 2
           : Math.max(0, Math.min(ry - rows / 2 + 0.5, z.height - rows));
 
-      const ts = tilesetRef.current![Math.floor(now / 550) % 2];
+      const f2 = Math.floor(now / 550) % 2; // 2-frame terrain animation
+      const ts = tilesetRef.current![f2];
+      const sh = sheetsRef.current;
       const x0 = Math.floor(camX);
       const y0 = Math.floor(camY);
       for (let vy = -1; vy <= rows; vy++) {
@@ -729,7 +866,11 @@ export function AdventureGame({
           const tile = z.grid[ty]?.[tx] ?? TILE.TREE;
           const sx = Math.round((tx - camX) * TS);
           const sy = Math.round((ty - camY) * TS);
-          ctx.drawImage(ts[tile] ?? ts[TILE.GRASS], sx, sy);
+          if (sh) {
+            drawSheetTile(ctx, sh, z, tile, tx, ty, sx, sy, f2);
+          } else {
+            ctx.drawImage(ts[tile] ?? ts[TILE.GRASS], sx, sy);
+          }
           if (tile === TILE.DOOR && z.gym && z.gym.x === tx && z.gym.y === ty) {
             ctx.font = "9px sans-serif";
             ctx.textAlign = "center";
@@ -737,22 +878,33 @@ export function AdventureGame({
           }
         }
       }
-      // NPCs (shadow disc + emoji sprite)
+      // NPCs — real walker sprites once the sheets are in
       ctx.font = "12px sans-serif";
       ctx.textAlign = "center";
       for (const n of z.npcs) {
         const sx = Math.round((n.x - camX) * TS);
         const sy = Math.round((n.y - camY) * TS);
-        if (sx < -TS || sy < -TS || sx > canvas.width || sy > canvas.height) continue;
+        if (sx < -TS || sy < -TS * 2 || sx > canvas.width || sy > canvas.height) continue;
         drawShadow(ctx, sx, sy);
-        ctx.fillText(n.emoji, sx + TS / 2, sy + TS - 3);
+        if (sh) {
+          drawWalker(ctx, sh.npcs, npcBlockX(n.sprite as NpcSprite), "down", 1, sx, sy);
+        } else {
+          ctx.fillText(n.emoji, sx + TS / 2, sy + TS - 3);
+        }
       }
       // player
       const pfx = Math.round((rx - camX) * TS);
       const pfy = Math.round((ry - camY) * TS);
-      const frame = p.moving ? Math.floor(animClock / 130) % 2 : 0;
       drawShadow(ctx, pfx, pfy);
-      drawGhost(ctx, pfx, pfy, p.facing, frame, scarfRef.current);
+      if (sh) {
+        // 3-frame ping-pong walk (1-2-3-2); idle = centre frame
+        const seq = [0, 1, 2, 1];
+        const wf = p.moving ? seq[Math.floor(animClock / 140) % 4] : 1;
+        drawWalker(ctx, sh.player, ghostBlockX(ghostVariantRef.current), p.facing, wf, pfx, pfy);
+      } else {
+        const frame = p.moving ? Math.floor(animClock / 130) % 2 : 0;
+        drawGhost(ctx, pfx, pfy, p.facing, frame, scarfRef.current);
+      }
 
       raf = requestAnimationFrame(step);
     };
@@ -919,7 +1071,14 @@ export function AdventureGame({
     const { npc, won } = { npc: trainer.npc, won: trainer.won };
     setTrainer(null);
     if (won && npc.winLines) {
-      setDialogue({ name: npc.name, emoji: npc.emoji, lines: npc.winLines, idx: 0 });
+      setDialogue({
+        name: npc.name,
+        emoji: npc.emoji,
+        sprite: npc.sprite,
+        emotive: true,
+        lines: npc.winLines,
+        idx: 0,
+      });
     }
   }, [trainer]);
 
@@ -1075,9 +1234,8 @@ export function AdventureGame({
           <p className="rounded bg-night/70 px-2 py-1 font-pixel text-[9px] text-ink backdrop-blur">
             {zone.name}
           </p>
-          <p className="rounded bg-night/70 px-2 py-1 font-pixel text-[10px] text-coral backdrop-blur" aria-label={`${hearts} hearts`}>
-            {"♥".repeat(hearts)}
-            <span className="opacity-30">{"♥".repeat(Math.max(0, MAX_HEARTS - hearts))}</span>
+          <p className="rounded bg-night/70 px-2 py-1 backdrop-blur">
+            <HeartRow current={hearts} max={MAX_HEARTS} scale={1.25} />
           </p>
         </div>
         <div className="pointer-events-auto flex gap-2">
@@ -1156,15 +1314,23 @@ export function AdventureGame({
         <button
           type="button"
           onClick={handleA}
-          className="absolute inset-x-3 bottom-28 z-[58] rounded-2xl border border-hairline bg-night/95 p-4 text-left backdrop-blur"
+          className="absolute inset-x-3 bottom-28 z-[58] flex items-start gap-3 rounded-2xl border border-violet/40 bg-night/95 p-4 text-left backdrop-blur"
         >
-          <p className="font-pixel text-[9px] text-accent">
-            {dialogue.emoji} {dialogue.name.toUpperCase()}
-          </p>
-          <p className="mt-2 text-sm leading-relaxed text-ink">{dialogue.lines[dialogue.idx]}</p>
-          <p className="mt-2 text-right font-pixel text-[8px] text-body">
-            {dialogue.idx < dialogue.lines.length - 1 ? "▼ A" : "● A"}
-          </p>
+          {dialogue.sprite && (
+            <PortraitSprite
+              name={dialogue.sprite as PortraitName}
+              emotive={dialogue.emotive}
+              scale={1.5}
+              className="rounded-lg border border-hairline bg-night-2"
+            />
+          )}
+          <span className="min-w-0 flex-1">
+            <span className="block font-pixel text-[9px] text-accent">{dialogue.name.toUpperCase()}</span>
+            <span className="mt-2 block text-sm leading-relaxed text-ink">{dialogue.lines[dialogue.idx]}</span>
+            <span className="mt-2 block text-right font-pixel text-[8px] text-body">
+              {dialogue.idx < dialogue.lines.length - 1 ? "▼ A" : "● A"}
+            </span>
+          </span>
         </button>
       )}
 
@@ -1172,12 +1338,13 @@ export function AdventureGame({
       {battle && m && (
         <Panel title={battle.shiny ? "✨ A SHINY monster appears!" : "⚔️ A wild monster appears!"}>
           <div className="flex items-center gap-3">
-            <span
-              className={`fx-hero text-4xl ${battle.shiny ? "drop-shadow-[0_0_10px_rgba(255,220,0,0.9)]" : ""}`}
-              aria-hidden
-            >
-              {m.emoji}
-            </span>
+            <MonsterSprite
+              species={battle.monster}
+              shiny={battle.shiny}
+              scale={2.5}
+              className={`fx-hero rounded-xl ${battle.shiny ? "drop-shadow-[0_0_12px_rgba(255,220,0,0.8)]" : ""}`}
+              label={m.name}
+            />
             <div className="min-w-0 flex-1">
               <p className="font-display font-bold text-ink">
                 {battle.shiny && <span className="text-accent">✨ Shiny </span>}
@@ -1185,10 +1352,7 @@ export function AdventureGame({
               </p>
               <p className="text-xs text-body">{battle.subject.name}</p>
             </div>
-            <span className="font-pixel text-[10px] text-coral">
-              {"♥".repeat(battle.hp)}
-              <span className="opacity-30">{"♥".repeat(battle.maxHp - battle.hp)}</span>
-            </span>
+            <HeartRow current={battle.hp} max={battle.maxHp} scale={1.25} />
           </div>
 
           {battle.phase === "strike" && (
@@ -1255,8 +1419,10 @@ export function AdventureGame({
             <div className="mt-4 space-y-3">
               <p className="font-display text-lg font-bold text-guarantee">🏆 It&apos;s defeated!</p>
               {battle.captured && (
-                <p className="fx-hero rounded-xl border border-accent/50 bg-accent/10 p-3 text-center font-pixel text-[10px] text-accent">
-                  ✨ {m.name.toUpperCase()} REGISTERED TO YOUR DEX
+                <p className="fx-hero flex items-center justify-center gap-2 rounded-xl border border-accent/50 bg-accent/10 p-3 text-center font-pixel text-[10px] text-accent">
+                  <CaptureSwirl />
+                  {m.name.toUpperCase()} REGISTERED TO YOUR DEX
+                  <CaptureSwirl />
                 </p>
               )}
               {battle.result && (
@@ -1278,7 +1444,14 @@ export function AdventureGame({
 
       {/* trainer battle */}
       {trainer && (
-        <Panel title={`${trainer.npc.emoji} ${trainer.npc.name} — ${Math.min(trainer.idx + 1, trainer.questions.length)}/${trainer.questions.length}`}>
+        <Panel
+          title={
+            <span className="flex items-center gap-2">
+              <PortraitSprite name={trainer.npc.sprite as PortraitName} scale={1} className="rounded border border-hairline" />
+              {trainer.npc.name} — {Math.min(trainer.idx + 1, trainer.questions.length)}/{trainer.questions.length}
+            </span>
+          }
+        >
           {trainer.phase === "question" && (
             <div>
               <p className="font-mono text-xs text-accent">
@@ -1329,8 +1502,19 @@ export function AdventureGame({
           )}
           {trainer.phase === "end" && (
             <div className="space-y-3 text-center">
+              {trainer.won && trainer.battle.beat === "championship" && (
+                <div className="fx-hero flex items-center justify-center gap-3">
+                  <UiSprite name="champion_crest" scale={2} label="Champion crest" />
+                  <GuardianSprite name="clarity" scale={2.5} label="The Clarity guardian" />
+                  <UiSprite name="champion_crest" scale={2} label="Champion crest" />
+                </div>
+              )}
               <p className={`fx-hero font-display text-2xl font-black ${trainer.won ? "text-guarantee" : "text-coral"}`}>
-                {trainer.won ? "🏆 VICTORY!" : "Defeated…"}
+                {trainer.won
+                  ? trainer.battle.beat === "championship"
+                    ? "🏆 REGIONAL CHAMPION!"
+                    : "🏆 VICTORY!"
+                  : "Defeated…"}
               </p>
               <p className="text-sm text-body">
                 {trainer.correct}/{trainer.questions.length} correct — needed {trainer.battle.threshold}.
@@ -1350,7 +1534,14 @@ export function AdventureGame({
 
       {/* gym */}
       {gym && (
-        <Panel title={`${gym.emoji} ${gym.name} Gym${gymState && !gymState.outcome ? ` — ${gymState.idx + 1}/${gymState.questions.length}` : ""}`}>
+        <Panel
+          title={
+            <span className="flex items-center gap-2">
+              <UiSprite name={emblemFor(gym.family)} scale={1.5} label={`${gym.name} emblem`} />
+              {gym.name} Gym{gymState && !gymState.outcome ? ` — ${gymState.idx + 1}/${gymState.questions.length}` : ""}
+            </span>
+          }
+        >
           {!gymState ? (
             <div className="space-y-3">
               <p className="text-sm text-body">
@@ -1377,14 +1568,20 @@ export function AdventureGame({
             </div>
           ) : gymState.outcome ? (
             <div className="space-y-3 text-center">
+              {gymState.outcome.cleared && (
+                <div className="fx-hero flex items-center justify-center gap-3">
+                  <UiSprite name={emblemFor(gym.family)} scale={2} label="Gym emblem" />
+                  <GuardianSprite name={guardianFor(gym.family)} scale={2.5} label="Province guardian" />
+                </div>
+              )}
               <p className={`fx-hero font-display text-2xl font-black ${gymState.outcome.cleared ? "text-guarantee" : "text-coral"}`}>
-                {gymState.outcome.cleared ? "🏅 Emblem earned!" : "Not this time"}
+                {gymState.outcome.cleared ? "🔦 Beacon lit!" : "Not this time"}
               </p>
               <p className="text-sm text-body">
                 {gymState.outcome.correct}/5 correct.{" "}
                 {gymState.outcome.cleared
-                  ? "The Fog retreats from this province."
-                  : "The tall grass is good training — come back stronger."}
+                  ? "The province guardian stirs from the grass to watch it burn — the Fog retreats, and one more light guards Haven."
+                  : "The tall grass is good training — come back stronger. The beacon will wait."}
               </p>
               <button
                 type="button"
@@ -1426,17 +1623,21 @@ export function AdventureGame({
         <div className="absolute inset-0 z-[62] flex flex-col items-center justify-center gap-5 bg-night/97 px-6 text-center backdrop-blur">
           {onboard === "intro" && (
             <>
-              <span className="fx-hero text-6xl" aria-hidden>
-                🧓
+              <span className="fx-hero" aria-hidden>
+                <PortraitSprite name="elder_maple" scale={2} className="rounded-xl border border-hairline bg-night-2" />
               </span>
               <p className="font-pixel text-[10px] tracking-widest text-accent">ELDER MAPLE</p>
               <div className="max-w-sm space-y-3 text-sm leading-relaxed text-ink">
-                <p>Welcome to the Fog Frontier, young researcher.</p>
                 <p>
-                  Out there, every wild monster is a real exam question wearing a costume — and the
-                  Fog Order wants you to stay confused.
+                  Years ago, the Fog swallowed the Old Campus beyond the Summit — a whole cohort who
+                  stopped believing they could pass. Haven&apos;s beacons have been dark since.
                 </p>
-                <p>Before you go: choose the companion spirit who&apos;ll walk beside you.</p>
+                <p>
+                  Every wild monster out there is a real exam question wearing a costume, and the Fog
+                  Order wants it to stay that way. But a student who faces questions honestly can
+                  light beacons the Order can&apos;t snuff.
+                </p>
+                <p>I believe you&apos;re that student, Lightbearer. First — choose the companion spirit who&apos;ll walk with you.</p>
               </div>
               <button
                 type="button"
@@ -1492,10 +1693,11 @@ export function AdventureGame({
               <div className="max-w-sm space-y-3 text-sm leading-relaxed text-ink">
                 <p>
                   Walk with the D-pad. Talk to people with <span className="font-pixel text-[10px] text-accent">A</span>.
-                  Tall grass hides wild battles.
+                  Tall grass hides wild battles — every strike is a real question.
                 </p>
                 <p>
-                  Clear every province gym to open the Summit gate. Kai will try to beat you to it.
+                  Each gym you clear lights a beacon over Haven. Light them all and the Summit gate
+                  opens — Kai will race you to it, and the Fog Order will try to stop you both.
                 </p>
               </div>
               <button
@@ -1546,7 +1748,7 @@ function PadBtn({
   );
 }
 
-function Panel({ title, children }: { title: string; children: React.ReactNode }) {
+function Panel({ title, children }: { title: React.ReactNode; children: React.ReactNode }) {
   return (
     <div className="absolute inset-0 z-[60] flex items-end justify-center bg-black/60 p-4 pb-[max(env(safe-area-inset-bottom),16px)] sm:items-center">
       <div className="max-h-[80vh] w-full max-w-md overflow-y-auto rounded-2xl border border-accent/40 bg-surface p-5 shadow-2xl">

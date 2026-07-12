@@ -14,6 +14,7 @@ export type { WorldSubject } from "@/lib/game/world";
 
 export const PORTAL = 9 as const;
 export const ROOF = 10 as const;
+export const ROOF_RIDGE = 11 as const;
 
 export function walkable(t: number): boolean {
   return baseWalkable(t) || t === PORTAL;
@@ -40,7 +41,8 @@ export interface Npc {
   id: string;
   x: number;
   y: number;
-  emoji: string;
+  emoji: string; // fallback when sheets fail to load
+  sprite: string; // walker block + portrait name on the original sheets
   name: string;
   lines: string[];
   heal?: boolean;
@@ -56,6 +58,7 @@ export interface GymSpot {
   name: string;
   short: string;
   emoji: string;
+  family?: string;
 }
 
 export interface Zone {
@@ -96,9 +99,12 @@ function put(grid: number[][], x: number, y: number, t: number) {
 }
 
 function building(grid: number[][], x0: number, y0: number, w: number, h: number, doorX?: number) {
-  // roof rows above a plastered wall row — reads as a house, not a block
+  // ridge cap, sloped roof, then a plastered wall row — reads as a real house
   for (let y = y0; y < y0 + h; y++) {
-    for (let x = x0; x < x0 + w; x++) put(grid, x, y, y < y0 + h - 1 ? ROOF : TILE.WALL);
+    for (let x = x0; x < x0 + w; x++) {
+      const t = y === y0 ? ROOF_RIDGE : y < y0 + h - 1 ? ROOF : TILE.WALL;
+      put(grid, x, y, t);
+    }
   }
   if (doorX !== undefined) put(grid, doorX, y0 + h - 1, TILE.DOOR);
 }
@@ -106,7 +112,14 @@ function building(grid: number[][], x0: number, y0: number, w: number, h: number
 const provId = (s: WorldSubject) => `prov:${s.level}/${s.slug}`;
 
 // ── Haven Hollow (hub) ─────────────────────────────────────────────────────
-function buildHub(subjects: WorldSubject[], allGymsCleared: boolean, story: Set<string>): Zone {
+function buildHub(
+  subjects: WorldSubject[],
+  cleared: Set<string>,
+  allGymsCleared: boolean,
+  story: Set<string>
+): Zone {
+  const lit = subjects.filter((s) => cleared.has(`${s.level}/${s.slug}`)).length;
+  const total = subjects.length;
   const W = 21;
   const H = 17;
   const grid = blank(W, H);
@@ -157,7 +170,7 @@ function buildHub(subjects: WorldSubject[], allGymsCleared: boolean, story: Set<
     label: "⛰ Summit of Clarity",
     locked: allGymsCleared
       ? undefined
-      : "The Summit gate is sealed. Clear every subject gym to open it.",
+      : `The gate answers to beacons, not keys — ${lit}/${total} lit. Every gym emblem lights one.`,
   });
 
   const npcs: Npc[] = [
@@ -166,11 +179,12 @@ function buildHub(subjects: WorldSubject[], allGymsCleared: boolean, story: Set<
       x: 5,
       y: 7,
       emoji: "🧓",
+      sprite: "elder_maple",
       name: "Elder Maple",
       lines: [
-        "The Fog thickens every year around exam season — it feeds on half-remembered ideas.",
-        "Each province gym will test you. Win, and the Fog retreats a little.",
-        "When every gym emblem is yours, the Summit gate opens. I'll be watching, researcher.",
+        "Years ago the Fog swallowed the Old Campus beyond the Summit. A whole cohort stopped believing they could pass — and it fed.",
+        "I walked out of that Fog with one notebook: every mistake I ever made, written down and faced. That book burned a path.",
+        `Each gym emblem lights a beacon over Haven — ${lit} of ${total} burn tonight. Light them all, Lightbearer, and the Summit gate will open.`,
       ],
     },
     {
@@ -178,18 +192,23 @@ function buildHub(subjects: WorldSubject[], allGymsCleared: boolean, story: Set<
       x: 9,
       y: 5,
       emoji: "💚",
+      sprite: "nurse_fern",
       name: "Nurse Fern",
       heal: true,
-      lines: ["Rough battle? Rest a moment — there. Hearts restored. Go get them."],
+      lines: [
+        "Every researcher falls. The ones who matter get back up — there, hearts restored.",
+        "Elder Maple says courage isn't never failing. It's coming back the next morning.",
+      ],
     },
     {
       id: "villager1",
       x: 13,
       y: 10,
       emoji: "👧",
+      sprite: "mina",
       name: "Mina",
       lines: [
-        "My brother tried to cram the whole syllabus the night before. The Fog LOVES that.",
+        "My brother tried to cram the whole syllabus the night before his papers. The Fog LOVES that.",
         "A little every day — that's what actually scares it.",
       ],
     },
@@ -198,22 +217,52 @@ function buildHub(subjects: WorldSubject[], allGymsCleared: boolean, story: Set<
       x: 16,
       y: 10,
       emoji: "👴",
+      sprite: "old_tan",
       name: "Old Tan",
-      lines: ["In my day the Fog took whole cohorts. Then Elder Maple taught us to write down every mistake."],
+      lines: [
+        "I was there when the Old Campus fell. We didn't lose to hard questions, child — we lost to silence. Nobody admitted what they didn't know.",
+        "Your bestiary is the opposite of silence. Keep writing the monsters down.",
+      ],
+    },
+    {
+      id: "student_a",
+      x: 6,
+      y: 10,
+      emoji: "🧒",
+      sprite: "student_a",
+      name: "Ping",
+      lines:
+        lit === 0
+          ? ["The sky over Haven used to have lights, my grandma says. I've never seen one…"]
+          : lit < total
+          ? [`${lit} beacon${lit === 1 ? "" : "s"}! I saw ${lit === 1 ? "it" : "them"} come on from my window! Are you doing that?`]
+          : ["ALL the beacons are lit! When I take my papers, I'm going to remember this sky."],
+    },
+    {
+      id: "student_b",
+      x: 12,
+      y: 4,
+      emoji: "👦",
+      sprite: "student_b",
+      name: "Wei",
+      lines:
+        lit === 0
+          ? ["I failed my mid-years and I didn't tell anyone. The fog outside my window got thicker that week. Weird, right?"]
+          : ["I showed my mistake book to Elder Maple like you do. The fog by my window… it's thinner now. Thank you."],
     },
   ];
-
-  // Kai, the rival — waits by the south road until beaten, then cheers you on
+  // Kai, the rival — races you for a reason he won't say out loud at first
   if (story.has("rival1")) {
     npcs.push({
       id: "rival",
       x: 12,
       y: 12,
       emoji: "🧢",
+      sprite: "kai_rival",
       name: "Kai",
       lines: [
-        "Okay, that round was yours. I've been drilling my weak topics since.",
-        "Meet me at the Summit when the gate opens. I want the rematch there.",
+        "Okay, that round was yours. Truth? My big sister froze in her exam year. The Fog got loud and she just… stopped answering.",
+        "That's why I race. If I'm fast enough, maybe it never catches me. Meet me at the Summit — I want the rematch where she gave up.",
       ],
     });
   } else if (story.has("starter")) {
@@ -222,14 +271,15 @@ function buildHub(subjects: WorldSubject[], allGymsCleared: boolean, story: Set<
       x: 10,
       y: 12,
       emoji: "🧢",
+      sprite: "kai_rival",
       name: "Kai",
       battle: { questions: 3, threshold: 2, beat: "rival1" },
       lines: [
-        "You're the new researcher? I'm Kai — Elder Maple trained me first.",
-        "Nothing personal, but I'm going to clear the Summit before you.",
-        "Show me three questions' worth of proof!",
+        "You're the new Lightbearer? I'm Kai — Elder Maple trained me first, whatever the old ghost says.",
+        "The Summit gate hasn't opened in years. I'm going to be the one standing there when it does.",
+        "Show me three questions' worth of proof you belong on this road!",
       ],
-      winLines: ["Fine — you're real. See you on the routes."],
+      winLines: ["…Fine. You're real. See you on the routes, Lightbearer."],
     });
   }
 
@@ -240,13 +290,14 @@ function buildHub(subjects: WorldSubject[], allGymsCleared: boolean, story: Set<
       x: 9,
       y: 3,
       emoji: "🌫️",
+      sprite: "fog_grunt",
       name: "Fog Order Grunt",
       battle: { questions: 2, threshold: 2, beat: "fog1" },
       lines: [
-        "The Fog Order thanks you for every topic you skip, kid.",
-        "Confusion is our harvest. Care to donate?",
+        "Beacons, beacons. The Order snuffed them once and Haven slept SO peacefully.",
+        "Nobody fails a paper they never face, kid. Confusion is mercy. Care to donate yours?",
       ],
-      winLines: ["Tch — the commander will hear about you."],
+      winLines: ["Tch — Commander Murk will hear about you, Lightbearer."],
     });
   }
 
@@ -301,28 +352,37 @@ function buildProvince(s: WorldSubject): Zone {
       x: 5,
       y: 22,
       emoji: "⛺",
+      sprite: "camp_keeper",
       name: "Camp Keeper",
       heal: true,
-      lines: ["Long route ahead. Rest up — hearts restored."],
+      lines: [
+        "Long route ahead. Rest — there, hearts restored.",
+        `They say this province has a guardian creature. It only shows itself to those who take the gym honestly.`,
+      ],
     },
     {
       id: `grunt:${s.slug}`,
       x: 6,
       y: 14,
       emoji: "🌫️",
+      sprite: "fog_grunt",
       name: "Fog Order Grunt",
       battle: { questions: 2, threshold: 1 },
-      lines: [`The ${s.name} gym? The Fog got there first. Prove you're worth the door.`],
-      winLines: ["Ugh. Go on then."],
+      lines: [
+        `The ${s.name} beacon has been dark for years — cosy, isn't it?`,
+        "Prove you're worth the gym door, or go home and skip this topic like everyone else.",
+      ],
+      winLines: ["Ugh. Go on then. The beacon's your problem now."],
     },
     {
       id: `villager:${s.slug}`,
       x: 9,
       y: 18,
       emoji: "🧑‍🌾",
+      sprite: "route_farmer",
       name: "Route Farmer",
       lines: [
-        `Wild ones in the grass here fight with real ${s.name} questions.`,
+        `Wild ones in the grass fight with real ${s.name} questions — the Fog dresses them up as monsters.`,
         "Beat one and it joins your dex. The grass regrows — train as long as you like.",
       ],
     },
@@ -337,7 +397,7 @@ function buildProvince(s: WorldSubject): Zone {
     start: { x: 7, y: 23 },
     portals,
     npcs,
-    gym: { x: 7, y: 4, level: s.level, slug: s.slug, name: s.name, short: s.short, emoji: s.emoji },
+    gym: { x: 7, y: 4, ...s },
     encounter: s,
   };
 }
@@ -363,14 +423,18 @@ function buildSummit(story: Set<string>): Zone {
       x: 7,
       y: 8,
       emoji: "🌫️",
+      sprite: "commander_murk",
       name: "Commander Murk",
       battle: { questions: 3, threshold: 2, beat: "fog2", mixed: true },
       lines: [
-        "So the Order's grunts couldn't stop one student.",
-        "I am Murk. Every mark you've ever dropped belongs to the Fog.",
-        "Let's see you take them back.",
+        "Stop. Before you judge me, Lightbearer, know this: I was Maple's first prodigy. First beacon-keeper. First to burn out.",
+        "One bad year and everyone I'd ever impressed looked away. The Fog didn't laugh at me. It was QUIET. So I joined the quiet.",
+        "A student who never faces the question never fails it. That is the Order's mercy. Show me your answer to that — three questions, every subject.",
       ],
-      winLines: ["Impossible… the Fog will remember you."],
+      winLines: [
+        "You dropped a mark against the grunts, you know. And you… wrote it down. And came back.",
+        "…That was the move I never learned. The Summit is yours. Perhaps the quiet isn't.",
+      ],
     });
   }
   if (!story.has("rival2")) {
@@ -379,13 +443,17 @@ function buildSummit(story: Set<string>): Zone {
       x: 7,
       y: 6,
       emoji: "🧢",
+      sprite: "kai_rival",
       name: "Kai",
       battle: { questions: 3, threshold: 2, beat: "rival2", mixed: true },
       lines: [
-        "Told you I'd be here first. The commander slowed me down, that's all.",
-        "One last round — winner walks in to Sage.",
+        "This is where my sister's cohort fell. I swore I'd stand here one day and not be afraid.",
+        "I'm not racing you anymore — I'm racing the version of me that would've quit. One last round. Make it worthy.",
       ],
-      winLines: ["…Go. Take the championship. And thanks for the push, honestly."],
+      winLines: [
+        "Ha… I lost and the sky didn't fall. She'd laugh at how long that took me to learn.",
+        "Go. Take the championship for Haven — and when your real papers come, remember you already beat the Fog on its own mountain.",
+      ],
     });
   }
   npcs.push({
@@ -393,20 +461,21 @@ function buildSummit(story: Set<string>): Zone {
     x: 7,
     y: 3,
     emoji: "🎓",
+    sprite: "examiner_sage",
     name: "Examiner Sage",
     battle: story.has("rival2")
       ? { questions: 8, threshold: 6, beat: "championship", mixed: true }
       : undefined,
     lines: story.has("rival2")
       ? [
-          "Every gym emblem, and both gatekeepers behind you. Well then.",
-          "Eight questions, every subject you own, no theme, no mercy — the frontier's whole syllabus.",
-          "Six correct makes you Regional Champion. Begin.",
+          "Every beacon burning, Murk answered, Kai answered. The Old Campus has waited years for a sky like tonight's.",
+          "Eight questions now, one from every corner of your frontier — no theme, no mercy, exactly like the morning that matters.",
+          "Six correct and Haven has a Champion again. Lightbearer… begin.",
         ]
-      : ["The gauntlet has an order, researcher. Settle things behind you first."],
+      : ["The gauntlet has an order, researcher. Settle what stands behind you first."],
     winLines: [
-      "Regional Champion. The Fog thins wherever you walk now.",
-      "The real papers are your post-game, and you've already trained for them.",
+      "It is done. The Clarity guardian stirs for the first time since the Old Campus fell — look up, Champion.",
+      "Hear me: the Fog is never slain, only kept out by lights like yours. Tend the beacons. Keep the notebook. Sit the real papers the way you climbed this mountain — one honest question at a time.",
     ],
   });
 
@@ -430,7 +499,7 @@ export function buildRegion(
   const allGymsCleared =
     subjects.length > 0 && subjects.every((s) => cleared.has(`${s.level}/${s.slug}`));
   const zones: Record<string, Zone> = {
-    hub: buildHub(subjects, allGymsCleared, story),
+    hub: buildHub(subjects, cleared, allGymsCleared, story),
     summit: buildSummit(story),
   };
   for (const s of subjects) zones[provId(s)] = buildProvince(s);

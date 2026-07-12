@@ -39,6 +39,7 @@ export interface WorldSubject {
   name: string;
   short: string; // subject initials for the gym sign
   emoji: string;
+  family?: string; // catalogue family — picks the gym emblem + guardian
 }
 
 export interface World {

@@ -45,6 +45,7 @@ export default async function AdventurePage() {
     name: s.name,
     short: sigil(s.name),
     emoji: EMOJI_BY_FAMILY[s.family] ?? "🏛️",
+    family: s.family,
   }));
 
   if (worldSubjects.length === 0) {

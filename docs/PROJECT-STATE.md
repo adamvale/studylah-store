@@ -152,6 +152,18 @@ give dialogue/heal/battle; wild wins register species to the **monster-dex**
 (shown on the bestiary), shiny variants are 1/16 cosmetic. Compliance intact:
 every reward is effort, questions graded server-side, XP daily-capped, no
 purchasable advantage. The older single-screen `adventure.tsx` was replaced.
+**Sprite suite**: `/public/game/*.png` are COMMISSIONED ORIGINAL sheets
+(StudyLah IP — see the design_handoff README on the owner's drive; never
+substitute third-party/RPG-Maker assets, whose EULAs are engine-locked).
+`src/lib/game/sheets.ts` holds the inlined manifests + loader;
+`src/components/sprite.tsx` renders DOM sprites (portraits, monsters,
+guardians, emblems, hearts, capture swirl). The canvas draws sheet tiles/
+walkers with the procedural tileset as an offline fallback. Story is the
+heroic **Beacon arc** (all original writing): each gym emblem lights a
+beacon (hub NPC lines react to the lit count), Kai races because his sister
+froze in her exam year, Commander Murk is Maple's burned-out first prodigy,
+and Examiner Sage's championship ends with the Clarity guardian + champion
+crest. The player ghost walks in the starter scarf; champions walk in gold.
 
 ## The game layer ("Clear the Fog") — SHIPPED, web-first
 
