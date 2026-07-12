@@ -1023,13 +1023,15 @@ export interface RegionState {
   campusCleared: Set<string>; // fog-tile keys "x-y"
   front: { key: string; species: string; place: string } | null; // weekly Fog Front
   examWeek: boolean;
+  unlockAll?: boolean; // device-local test flag: every zone open, ignore gates
 }
 
 export function buildRegion(subjects: WorldSubject[], st: RegionState): Region {
   const gymsLit = subjects.filter((s) => st.cleared.has(`${s.level}/${s.slug}`)).length;
-  const allGymsCleared = subjects.length > 0 && gymsLit === subjects.length;
-  const underOpen = gymsLit >= 1;
-  const saltwindOpen = gymsLit >= 2;
+  const unlock = st.unlockAll === true;
+  const allGymsCleared = unlock || (subjects.length > 0 && gymsLit === subjects.length);
+  const underOpen = unlock || gymsLit >= 1;
+  const saltwindOpen = unlock || gymsLit >= 2;
   const blankHere = gymsLit >= 3 && !st.beaten.has("blank") && !st.story.has("championship");
   const frontActive = st.front && !st.examWeek ? st.front : null;
 
@@ -1059,7 +1061,7 @@ export function buildRegion(subjects: WorldSubject[], st: RegionState): Region {
     zones[`under:${key}`] = buildUndercroft(s, st.underCleared.has(key));
   }
   if (saltwindOpen) zones["saltwind"] = buildSaltwind(subjects, st.beaten);
-  if (st.story.has("championship")) {
+  if (unlock || st.story.has("championship")) {
     zones["campus"] = buildCampus(subjects, st.campusCleared, st.story);
   }
   return { zones, startZone: "hub" };

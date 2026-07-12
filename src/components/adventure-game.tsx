@@ -718,6 +718,17 @@ export function AdventureGame({
     }
   }, [questStore]);
 
+  // Device-local test switch: `?unlock=1` (persists) opens every zone so the
+  // owner can walk the whole map while testing. Server-side progression is
+  // untouched, so real players are unaffected. `?unlock=0` clears it.
+  const [unlockAll] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const p = new URLSearchParams(window.location.search).get("unlock");
+    if (p === "1") localStorage.setItem("studylah_unlock", "1");
+    if (p === "0") localStorage.removeItem("studylah_unlock");
+    return localStorage.getItem("studylah_unlock") === "1";
+  });
+
   const region = useMemo(
     () =>
       buildRegion(subjects, {
@@ -728,8 +739,9 @@ export function AdventureGame({
         campusCleared,
         front,
         examWeek,
+        unlockAll,
       }),
-    [subjects, cleared, story, beaten, underCleared, campusCleared, front, examWeek]
+    [subjects, cleared, story, beaten, underCleared, campusCleared, front, examWeek, unlockAll]
   );
   const zone = region.zones[zoneId] ?? region.zones[region.startZone];
 
@@ -2000,44 +2012,67 @@ export function AdventureGame({
       </div>
       <div className="ff-vignette pointer-events-none absolute inset-0" aria-hidden />
 
-      {/* top bar */}
+      {/* ── arcade HUD ─────────────────────────────────────────────────── */}
       <div className="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between gap-2 p-3 pt-[max(env(safe-area-inset-top),12px)]">
-        <div className="space-y-1">
-          <p className="rounded bg-night/70 px-2 py-1 font-pixel text-[9px] text-ink backdrop-blur">
-            {zone.name} <span className="text-teal">· {districtForZone(zoneId, subjects)}</span>
-          </p>
-          <p className="rounded bg-night/70 px-2 py-1 backdrop-blur">
-            <HeartRow current={hearts} max={MAX_HEARTS} scale={1.25} />
-          </p>
+        {/* SCORE */}
+        <div className="space-y-1.5">
+          <div className="rounded-xl border-2 border-mint/80 bg-night/85 px-3 py-1.5 shadow-[0_0_14px_rgba(61,220,132,0.25)] backdrop-blur">
+            <p className="font-pixel text-[8px] tracking-[0.2em] text-mint">SCORE</p>
+            <p className="mt-1 flex items-center gap-1.5 font-pixel text-[13px] text-accent">
+              <span className="inline-block h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_6px_var(--color-accent)]" />
+              {(hudState?.totalXp ?? 0).toLocaleString()}
+            </p>
+            <p className="mt-0.5 font-pixel text-[7px] tracking-wide text-teal">
+              LV {hudState?.level ?? 1} · {(hudState?.title ?? "Rookie").toUpperCase()}
+            </p>
+          </div>
           <SingaporeMinimap zoneId={zoneId} subjects={subjects} onOpen={() => setMapOpen(true)} />
         </div>
-        <div className="pointer-events-auto flex gap-2">
-          <button
-            type="button"
-            onClick={() => setQuestLogOpen(true)}
-            aria-label="Quest log"
-            className="rounded-lg bg-night/70 px-2.5 py-1.5 text-sm backdrop-blur"
-          >
-            📜
-          </button>
-          {wins > 0 && (
+
+        {/* ROUND / current place */}
+        <div className="mt-0.5 rounded-xl border-2 border-accent/70 bg-night/85 px-4 py-1.5 text-center shadow-[0_0_14px_rgba(255,220,0,0.2)] backdrop-blur">
+          <p className="font-pixel text-[10px] tracking-[0.15em] text-accent">{zone.name.toUpperCase()}</p>
+          <p className="mt-0.5 font-pixel text-[7px] tracking-widest text-teal">
+            {districtForZone(zoneId, subjects).toUpperCase()}
+          </p>
+        </div>
+
+        {/* LIVES + controls */}
+        <div className="flex flex-col items-end gap-1.5">
+          <div className="rounded-xl border-2 border-coral/70 bg-night/85 px-3 py-1.5 text-right shadow-[0_0_14px_rgba(255,107,107,0.25)] backdrop-blur">
+            <p className="font-pixel text-[8px] tracking-[0.2em] text-coral">LIVES</p>
+            <p className="mt-1 flex justify-end">
+              <HeartRow current={hearts} max={MAX_HEARTS} scale={1.25} />
+            </p>
+          </div>
+          <div className="pointer-events-auto flex gap-1.5">
             <button
               type="button"
-              onClick={() => void shareReport()}
-              aria-label="Share expedition report"
-              className="rounded-lg bg-night/70 px-2.5 py-1.5 text-sm backdrop-blur"
+              onClick={() => setQuestLogOpen(true)}
+              aria-label="Quest log"
+              className="rounded-lg border border-mint/50 bg-night/70 px-2.5 py-1.5 text-sm backdrop-blur active:border-mint"
             >
-              📸
+              📜
             </button>
-          )}
-          <button
-            type="button"
-            onClick={() => router.push("/account")}
-            aria-label="Leave the Fog Frontier"
-            className="rounded-lg bg-night/70 px-2.5 py-1.5 font-pixel text-[9px] text-body backdrop-blur"
-          >
-            EXIT ↩
-          </button>
+            {wins > 0 && (
+              <button
+                type="button"
+                onClick={() => void shareReport()}
+                aria-label="Share expedition report"
+                className="rounded-lg border border-mint/50 bg-night/70 px-2.5 py-1.5 text-sm backdrop-blur active:border-mint"
+              >
+                📸
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={() => router.push("/account")}
+              aria-label="Leave the Fog Frontier"
+              className="rounded-lg border border-coral/50 bg-night/70 px-2.5 py-1.5 font-pixel text-[9px] text-body backdrop-blur active:border-coral"
+            >
+              EXIT ↩
+            </button>
+          </div>
         </div>
       </div>
 
@@ -2073,7 +2108,7 @@ export function AdventureGame({
             e.preventDefault();
             handleB();
           }}
-          className="h-12 w-12 select-none rounded-full border border-hairline/60 bg-night/50 font-pixel text-[11px] text-body backdrop-blur active:bg-coral/30"
+          className="h-14 w-14 select-none rounded-full border-[3px] border-coral/80 bg-coral/25 font-pixel text-[12px] text-coral shadow-[0_0_14px_rgba(255,107,107,0.35)] backdrop-blur active:scale-95 active:bg-coral/45"
         >
           B
         </button>
@@ -2084,7 +2119,7 @@ export function AdventureGame({
             e.preventDefault();
             handleA();
           }}
-          className="h-16 w-16 select-none rounded-full border border-accent/60 bg-accent/20 font-pixel text-sm text-accent backdrop-blur active:bg-accent/40"
+          className="h-[72px] w-[72px] select-none rounded-full border-[3px] border-accent/90 bg-accent/25 font-pixel text-base text-accent shadow-[0_0_18px_rgba(255,220,0,0.4)] backdrop-blur active:scale-95 active:bg-accent/50"
         >
           A
         </button>
@@ -2764,7 +2799,7 @@ function PadBtn({
       onPointerCancel={onRelease}
       onContextMenu={(e) => e.preventDefault()}
       style={{ WebkitTouchCallout: "none", WebkitUserSelect: "none", userSelect: "none" }}
-      className="flex h-[52px] w-[52px] select-none items-center justify-center rounded-xl border border-hairline/50 bg-night/40 text-ink backdrop-blur active:border-accent active:bg-accent/25 active:text-accent"
+      className="flex h-[52px] w-[52px] select-none items-center justify-center rounded-xl border-2 border-mint/50 bg-night/50 text-mint backdrop-blur active:border-accent active:bg-accent/25 active:text-accent"
     >
       <svg
         width="18"
