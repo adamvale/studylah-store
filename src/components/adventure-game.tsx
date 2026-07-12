@@ -67,6 +67,8 @@ import {
 } from "@/components/sprite";
 import { DuelHall } from "@/components/duel-hall";
 import { SubjectGuru } from "@/components/subject-guru";
+import { SingaporeMinimap, SingaporeMapOverlay } from "@/components/singapore-map";
+import { districtForZone } from "@/lib/game/singapore";
 
 // Subject family → gym emblem + province guardian (original sheet art).
 const EMBLEM_BY_FAMILY: Record<string, string> = {
@@ -703,6 +705,7 @@ export function AdventureGame({
   const [questLogOpen, setQuestLogOpen] = useState(false);
   const [duelHallOpen, setDuelHallOpen] = useState(false);
   const [guruOpen, setGuruOpen] = useState(false);
+  const [mapOpen, setMapOpen] = useState(false);
   const [wipeLetter, setWipeLetter] = useState<{ stem: string; solution: string } | null>(null);
   const rungRef = useRef<Record<string, string[]>>({});
   const [stonesOpen, setStonesOpen] = useState<Set<string>>(new Set());
@@ -810,7 +813,7 @@ export function AdventureGame({
       sheetsRef.current = sh;
     });
   }, []);
-  const uiOpen = Boolean(dialogue || battle || trainer || gym || onboard || duelHallOpen || guruOpen || questLogOpen);
+  const uiOpen = Boolean(dialogue || battle || trainer || gym || onboard || duelHallOpen || guruOpen || questLogOpen || mapOpen);
   useEffect(() => {
     modeRef.current = uiOpen ? "ui" : "walk";
     if (uiOpen) dirRef.current = null;
@@ -1956,11 +1959,12 @@ export function AdventureGame({
       <div className="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between gap-2 p-3 pt-[max(env(safe-area-inset-top),12px)]">
         <div className="space-y-1">
           <p className="rounded bg-night/70 px-2 py-1 font-pixel text-[9px] text-ink backdrop-blur">
-            {zone.name}
+            {zone.name} <span className="text-teal">· {districtForZone(zoneId, subjects)}</span>
           </p>
           <p className="rounded bg-night/70 px-2 py-1 backdrop-blur">
             <HeartRow current={hearts} max={MAX_HEARTS} scale={1.25} />
           </p>
+          <SingaporeMinimap zoneId={zoneId} subjects={subjects} onOpen={() => setMapOpen(true)} />
         </div>
         <div className="pointer-events-auto flex gap-2">
           <button
@@ -2418,6 +2422,9 @@ export function AdventureGame({
       {/* the Duel Hall */}
       {duelHallOpen && <DuelHall subjects={subjects} onClose={() => setDuelHallOpen(false)} />}
       {guruOpen && <SubjectGuru onClose={() => setGuruOpen(false)} />}
+      {mapOpen && (
+        <SingaporeMapOverlay zoneId={zoneId} subjects={subjects} onClose={() => setMapOpen(false)} />
+      )}
 
       {/* quest log */}
       {questLogOpen && (
