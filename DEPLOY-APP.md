@@ -106,9 +106,14 @@ Reviewers can't receive our login emails, so a fixed pair lets them in:
 3. Android: download the `.aab` artifact → Play Console → upload to
    **Internal testing**, then promote. (After the first release you can
    uncomment the auto-publish block in codemagic.yaml.)
-4. Version bumps live in `android/app/build.gradle` (versionCode/Name) and
-   `ios/App/App.xcodeproj` (MARKETING_VERSION) — bump before each store
-   release.
+4. **Build numbers are automatic.** The iOS pipeline stamps a unique,
+   always-increasing `CURRENT_PROJECT_VERSION` (Unix timestamp) on every run,
+   so you never hand-bump it — this fixes the "bundle version … has already
+   been used / must be higher than the previously uploaded version" upload
+   error. Only the **marketing version** (what users see, e.g. 1.0 → 1.1) is
+   manual: `ios/App/App.xcodeproj` `MARKETING_VERSION` and
+   `android/app/build.gradle` `versionName`. Android `versionCode` still needs
+   bumping per Play upload.
 
 ## Part 3 — Verifying push end-to-end
 

@@ -62,6 +62,20 @@ workflows:
         script: |
           npm ci
           npx cap sync ios
+      - name: Stamp a unique build number
+        script: |
+          # App Store Connect rejects any build number it has already seen
+          # ("The bundle version must be higher than the previously uploaded
+          # version" — the first upload was "1"). Stamp CURRENT_PROJECT_VERSION
+          # with the current Unix time: always higher than any prior upload and
+          # never repeats, so releases just work with no manual bumping.
+          # Info.plist's CFBundleVersion is $(CURRENT_PROJECT_VERSION), so
+          # patching the pbxproj build setting is all that's needed. Run AFTER
+          # `cap sync` so nothing overwrites it.
+          BUILD=$(date +%s)
+          echo "Setting iOS build number to $BUILD"
+          sed -i '' "s/CURRENT_PROJECT_VERSION = [0-9.]*;/CURRENT_PROJECT_VERSION = $BUILD;/g" ios/App/App.xcodeproj/project.pbxproj
+          grep -n "CURRENT_PROJECT_VERSION" ios/App/App.xcodeproj/project.pbxproj
       - name: Build signed IPA
         script: |
           xcode-project use-profiles
