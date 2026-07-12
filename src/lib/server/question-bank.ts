@@ -65,10 +65,20 @@ export async function getQuestionSet(
   const cached = setCache.get(key);
   if (cached !== undefined) return cached ?? undefined;
 
-  const rows = await prisma.gameQuestion.findMany({
-    where: { level, slug },
-    orderBy: { ord: "asc" },
-  });
+  // The query can throw when the DB is unreachable or the table doesn't exist
+  // yet — notably during `next build` static generation, which runs BEFORE
+  // `prisma migrate deploy`. In every such case, fall back to the hand-authored
+  // set rather than crash the build/request. Don't cache DB errors (so a real
+  // runtime process retries once the tables exist).
+  let rows: Awaited<ReturnType<typeof prisma.gameQuestion.findMany>> = [];
+  try {
+    rows = await prisma.gameQuestion.findMany({
+      where: { level, slug },
+      orderBy: { ord: "asc" },
+    });
+  } catch {
+    return staticSet(level, slug);
+  }
   if (rows.length > 0) {
     const set: DiagnosticSet = {
       level: level as "o-level" | "na-level",
@@ -92,10 +102,15 @@ export async function getTeachingCards(level: string, slug: string): Promise<Imp
   const cached = teachCache.get(key);
   if (cached !== undefined) return cached;
 
-  const rows = await prisma.gameTeachingCard.findMany({
-    where: { level, slug },
-    orderBy: { ord: "asc" },
-  });
+  let rows: Awaited<ReturnType<typeof prisma.gameTeachingCard.findMany>> = [];
+  try {
+    rows = await prisma.gameTeachingCard.findMany({
+      where: { level, slug },
+      orderBy: { ord: "asc" },
+    });
+  } catch {
+    return []; // DB not ready (e.g. build-time) → Guru uses its family library
+  }
   const cards = rows.map((r) => JSON.parse(r.dataJson) as ImportedCard);
   teachCache.set(key, cards);
   return cards;
