@@ -391,7 +391,6 @@ function TheCause() {
 const SOLUTIONS: {
   no: string;
   name: string;
-  emoji: string;
   tag: string;
   body: React.ReactNode;
   tier: string;
@@ -399,7 +398,6 @@ const SOLUTIONS: {
   {
     no: "Solution No.1",
     name: "Exam Forecast",
-    emoji: "🎯",
     tag: "Know What's Likely",
     body: (
       <>
@@ -413,7 +411,6 @@ const SOLUTIONS: {
   {
     no: "Solution No.2",
     name: "Sure Questions Vault",
-    emoji: "🗝️",
     tag: "Core Concept Certainty",
     body: (
       <>
@@ -427,7 +424,6 @@ const SOLUTIONS: {
   {
     no: "Solution No.3",
     name: "Final Rehearsal",
-    emoji: "📝",
     tag: "Pattern Familiarity + Execution",
     body: (
       <>
@@ -441,7 +437,6 @@ const SOLUTIONS: {
   {
     no: "Solution No.4",
     name: "The Companion",
-    emoji: "🧭",
     tag: "The Under-Rehearsed Marks",
     body: (
       <>
@@ -521,12 +516,6 @@ function TheSolution() {
                 <h3 className="mt-1 font-display text-2xl font-black text-white sm:text-3xl">
                   {s.name}
                 </h3>
-                <div
-                  aria-hidden="true"
-                  className="mx-auto mt-6 grid h-24 w-24 place-items-center rounded-2xl bg-night-2 text-5xl"
-                >
-                  {s.emoji}
-                </div>
                 <div className="mt-6 flex justify-center">
                   <span className="rounded-full border border-hairline px-4 py-2 text-sm font-semibold text-cloud">
                     {s.tag}
