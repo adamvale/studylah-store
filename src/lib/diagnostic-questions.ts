@@ -31,6 +31,10 @@ export interface DiagnosticQuestion {
   workedSolution: string;
   // What a wrong answer here signals — drives the tailored CTA.
   misconceptionTag: string;
+  // 1 = easy, 2 = medium, 3 = hard. From the DB bank; the hand-authored static
+  // sets omit it (treated as medium). Drives diagnostic hard-question selection
+  // and is available to the game for difficulty ramping.
+  difficulty?: number;
   mapsToProduct: DiagnosticProduct;
 }
 

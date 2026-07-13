@@ -81,6 +81,12 @@ export function BundleBuilder({
   }
 
   const count = selected.size;
+  // Price-per-subject is the story: it drops with every subject added. Shown as
+  // the headline figure; the total rides underneath in smaller type. Recomputed
+  // from `priced` on every toggle, so it updates instantly.
+  const money = (n: number) => (Number.isInteger(n) ? `S$${n}` : `S$${n.toFixed(2)}`);
+  const perSubject = count > 0 ? priced.total / count : 0;
+  const perSubjectList = count > 0 ? priced.baseline / count : 0;
   // Fall back to the first available level if the active one has no subjects
   // (e.g. an embed that hides a whole level).
   const shownLevel = levels.some((g) => g.level === activeLevel)
@@ -215,16 +221,39 @@ export function BundleBuilder({
                 })}
               </ul>
               <div className="mt-4 border-t border-hairline pt-4">
+                {/* Headline: price per subject — the number that keeps dropping. */}
+                <p className="font-mono text-xs font-medium uppercase tracking-wide text-body">
+                  Price per subject
+                </p>
+                <p className="mt-0.5 flex items-baseline gap-2">
+                  <span className="font-display text-4xl font-black text-accent">
+                    {money(perSubject)}
+                  </span>
+                  {priced.savings > 0 && (
+                    <span className="font-mono text-sm text-body line-through">
+                      {money(perSubjectList)}
+                    </span>
+                  )}
+                  <span className="text-sm text-body">/ subject</span>
+                </p>
                 {priced.savings > 0 && (
-                  <p className="flex justify-between text-sm text-body">
-                    <span>{priced.bundles[0]?.kind === "all-in" ? "All-In" : "Mega-Bundle"} applied</span>
-                    <span className="font-mono line-through">{sgd(priced.baseline)}</span>
+                  <p className="mt-1 text-sm font-medium text-guarantee">
+                    {priced.bundles[0]?.kind === "all-in" ? "All-In" : "Mega-Bundle"}{" "}
+                    applied — it gets cheaper with every subject you add.
                   </p>
                 )}
-                <p className="mt-1 flex justify-between font-display text-xl font-bold text-ink">
-                  <span>Total</span>
-                  <span className="font-mono">{sgd(priced.total)}</span>
-                </p>
+                {/* Total, in smaller type underneath. */}
+                <div className="mt-3 flex items-center justify-between border-t border-hairline pt-3">
+                  <span className="text-sm text-body">Total · {count} subject{count === 1 ? "" : "s"}</span>
+                  <span className="flex items-baseline gap-2">
+                    {priced.savings > 0 && (
+                      <span className="font-mono text-xs text-body line-through">
+                        {sgd(priced.baseline)}
+                      </span>
+                    )}
+                    <span className="font-mono text-base font-bold text-ink">{sgd(priced.total)}</span>
+                  </span>
+                </div>
                 {priced.savings > 0 && (
                   <p className="mt-1 text-right text-sm font-medium text-guarantee">
                     You save {sgd(priced.savings)}
@@ -262,16 +291,17 @@ export function BundleBuilder({
         >
           <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3">
             <div className="min-w-0">
-              <p className="font-mono text-base font-bold text-ink">
-                {sgd(priced.total)}
+              <p className="font-mono text-base font-bold text-accent">
+                {money(perSubject)}{" "}
+                <span className="text-xs font-medium text-body">/ subject</span>
+              </p>
+              <p className="truncate text-xs text-body">
+                {count} subject{count === 1 ? "" : "s"} · total {sgd(priced.total)}
                 {priced.savings > 0 && (
-                  <span className="ml-2 text-xs font-medium text-guarantee">
+                  <span className="ml-1 font-medium text-guarantee">
                     save {sgd(priced.savings)}
                   </span>
                 )}
-              </p>
-              <p className="truncate text-xs text-body">
-                {count} subject{count === 1 ? "" : "s"} · Master pack each
               </p>
             </div>
             <button

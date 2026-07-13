@@ -455,6 +455,10 @@ model GameQuestion {
   marks           Int     @default(1)
   workedSolution  String
   misconceptionTag String @default("unset")
+  // 1 = easy, 2 = medium, 3 = hard. Drives diagnostic hard-question selection
+  // and lets StudyLah Legends ramp battle difficulty. Authored in the markdown
+  // bank (`difficulty:`); inferred from the question's signals when omitted.
+  difficulty      Int     @default(2)
 
   @@index([level, slug])
 }

@@ -11,6 +11,33 @@ const yaml = require("js-yaml");
 
 const VALID_KINDS = new Set(["definition", "precision", "qa", "careless", "sbq", "poa"]);
 
+const DIFFICULTY_WORDS = { easy: 1, medium: 2, hard: 3 };
+
+// Difficulty tier for a question (1 easy / 2 medium / 3 hard). An explicit
+// `difficulty:` in the YAML wins (number 1–3 or easy/medium/hard); otherwise it
+// is inferred from the question's own signals so existing content is graded
+// sensibly without hand-editing every block.
+function questionDifficulty(doc) {
+  if (doc.difficulty != null) {
+    if (typeof doc.difficulty === "number") {
+      return Math.min(3, Math.max(1, Math.round(doc.difficulty)));
+    }
+    const w = DIFFICULTY_WORDS[String(doc.difficulty).toLowerCase()];
+    if (w) return w;
+  }
+  const stem = String(doc.stem ?? "");
+  const marks = Number(doc.marks ?? 1);
+  let s = 0;
+  if (doc.type === "short") s += 2; // recall beats recognition
+  s += Math.max(0, marks - 1); // multi-mark questions are harder
+  if (/\d/.test(stem)) s += 1; // numeric reasoning
+  if (/\b(calculate|how many|determine|deduce|explain why|work out|find the|derive|compare)\b/i.test(stem)) {
+    s += 1;
+  }
+  if (stem.length > 140) s += 1; // long, multi-clause stems
+  return s >= 3 ? 3 : s >= 1 ? 2 : 1;
+}
+
 function fencedYamlBlocks(md) {
   const blocks = [];
   const re = /```ya?ml\s*\n([\s\S]*?)```/g;
@@ -89,6 +116,7 @@ export function parseGameBankFile(md, file = "?") {
         marks: Number(doc.marks ?? 1),
         workedSolution: String(doc.worked ?? "").trim(),
         misconceptionTag: String(doc.misconception ?? "unset"),
+        difficulty: questionDifficulty(doc),
       });
       continue;
     }

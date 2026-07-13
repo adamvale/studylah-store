@@ -40,6 +40,7 @@ function rowToQuestion(r: {
   marks: number;
   workedSolution: string;
   misconceptionTag: string;
+  difficulty: number;
 }): DiagnosticQuestion {
   return {
     id: r.id,
@@ -51,6 +52,7 @@ function rowToQuestion(r: {
     marks: r.marks,
     workedSolution: r.workedSolution,
     misconceptionTag: r.misconceptionTag,
+    difficulty: r.difficulty,
     mapsToProduct: "vault",
   };
 }
@@ -103,11 +105,12 @@ export async function getQuestionSet(
 // page and the results email all see the identical ten.
 const DIAGNOSTIC_COUNT = 10;
 
-// No difficulty column exists in the bank, so rank by signals that track
-// difficulty: short-answer (recall) over MCQ (recognition), higher marks,
-// longer/analytical stems, and numeric or command-word reasoning.
+// Rank by hardness. The authored `difficulty` tier (1–3) dominates; the older
+// content signals (short-answer over MCQ, marks, analytical/numeric stems) break
+// ties and grade the hand-authored static sets, which carry no difficulty.
 function hardness(q: DiagnosticQuestion): number {
-  let s = q.marks * 2;
+  let s = (q.difficulty ?? 2) * 10;
+  s += q.marks * 2;
   if (q.type === "short") s += 3;
   s += Math.min(q.stem.length / 40, 3);
   if (/\d/.test(q.stem)) s += 1;

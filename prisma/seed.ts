@@ -262,6 +262,7 @@ async function seedGameBank(): Promise<{ subjects: number; questions: number; ca
           marks: q.marks as number,
           workedSolution: q.workedSolution as string,
           misconceptionTag: q.misconceptionTag as string,
+          difficulty: q.difficulty as number,
         })),
       }),
       prisma.gameTeachingCard.createMany({
