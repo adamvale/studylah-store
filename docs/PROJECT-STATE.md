@@ -339,6 +339,27 @@ six subject Gurus (Fen/Tor/Vale/Sum/Mere/Ash) — CTA "Unlock with any subject"
 (original StudyLah Legends IP). Compliance clean (no banned words; effort-framed).
 Preserves all commerce (pricing, ForecastCard, EmailCapture, accuracy proof).
 
+## Gugu — floating sales chatbot (`src/components/gugu-chat.tsx`)
+
+A floating helper (bottom-left, pixel-art Gugu from `/public/marketing/ghost_neutral.png`
+resting / `ghost_happy.png` on interaction) that answers buyer questions to
+clear pre-purchase doubts. Mounted in `SiteChrome` and gated to `!chromeless`
+routes (hidden on `/admin` + ad landings); self-hides inside the native game
+shell (returns null when `html[data-native]` is stamped). One-time greeting
+bubble gated by `localStorage` (`studylah_gugu_seen`).
+
+**TIER 1 — fully SCRIPTED, by owner decision.** Every answer is pre-written,
+vetted copy (a chat-sized version of `/faq` + the game-as-beta positioning); the
+bot never generates text, so it cannot invent a price, promise a grade, or drift
+into a banned word. `TOPICS[]` holds the quick-reply knowledge base; free-typed
+questions route via `matchTopic()` (keyword scoring) with an honest
+"email a human" fallback when nothing matches. The pricing answer pulls the live
+"from" price from `usePricing()` (cheapest `essential` tier across levels) — never
+a hard-coded number. Compliance rule lives in a header comment: keep answers
+factual/product-focused, no `guaranteed/100%/confirmed/leaked/insider/sure-win`,
+no grade promises. **Tier 2 (Claude-API-powered, with guardrails) is a possible
+phase 2** — the widget shell is designed to be reused if that's ever built.
+
 ## The game layer ("Clear the Fog") — SHIPPED, web-first
 
 XP ledger (`XpEvent`, unique per-action sourceKeys = farm-proof; levels/titles
