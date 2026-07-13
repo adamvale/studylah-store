@@ -41,7 +41,7 @@ export function NativePushBridge() {
 
 // PWA plumbing + prompts, all in one place:
 //   <SwRegister />        — registers the service worker (mounted site-wide)
-//   <InstallPrompt />     — "add Study HQ to your home screen" card (portal)
+//   <InstallPrompt />     — "add StudyLand to your home screen" card (portal)
 //   <NotificationToggle/> — enable/disable streak reminders (Settings + card)
 //
 // Everything degrades silently: unsupported browsers see nothing.
@@ -142,7 +142,7 @@ export function InstallPrompt() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="min-w-0">
           <p className="font-display font-bold text-ink">
-            📲 Put Study HQ on your home screen
+            📲 Put StudyLand on your home screen
           </p>
           <p className="mt-0.5 text-xs text-body">
             {deferred

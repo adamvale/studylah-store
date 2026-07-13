@@ -59,7 +59,7 @@ export const POSTS: BlogPost[] = [
       { kind: "h2", text: "How to actually use it" },
       {
         kind: "p",
-        text: "Don't read the forecast like a horoscope — run your revision through it. Work the VERY HIGH tier until you'd welcome those questions, then move down. Inside your Study HQ, the study plan turns each subject's forecast into a tiered checklist, and the Marks at Risk meter shows how much of a typical paper you've actually banked so far.",
+        text: "Don't read the forecast like a horoscope — run your revision through it. Work the VERY HIGH tier until you'd welcome those questions, then move down. Inside your StudyLand, the study plan turns each subject's forecast into a tiered checklist, and the Marks at Risk meter shows how much of a typical paper you've actually banked so far.",
       },
       {
         kind: "cta",
@@ -89,7 +89,7 @@ export const POSTS: BlogPost[] = [
       { kind: "h2", text: "Why three questions, why daily" },
       {
         kind: "p",
-        text: "Because the habit you keep beats the marathon you abandon. The Daily Three in your Study HQ serves three questions a day drawn from your subjects' VERY HIGH and HIGH forecast topics — marked instantly, worked solutions included, streak on the line. Ten minutes, every day, aimed exactly where the 2026 paper is most likely to pay.",
+        text: "Because the habit you keep beats the marathon you abandon. The Daily Three in your StudyLand serves three questions a day drawn from your subjects' VERY HIGH and HIGH forecast topics — marked instantly, worked solutions included, streak on the line. Ten minutes, every day, aimed exactly where the 2026 paper is most likely to pay.",
       },
       {
         kind: "ul",
@@ -105,7 +105,7 @@ export const POSTS: BlogPost[] = [
       },
       {
         kind: "cta",
-        label: "Start your streak in Study HQ",
+        label: "Start your streak in StudyLand",
         href: "/account",
         note: "Included with every StudyLah subject.",
       },
@@ -146,7 +146,7 @@ export const POSTS: BlogPost[] = [
         kind: "cta",
         label: "Open your mistake notebook",
         href: "/account/mistakes",
-        note: "In Study HQ, included with every subject.",
+        note: "In StudyLand, included with every subject.",
       },
     ],
   },
@@ -157,7 +157,7 @@ export const POSTS: BlogPost[] = [
       "A to-do list tells you what's left. The Marks at Risk meter tells you what it's costing you — and watching the number fall changes how revision feels.",
     date: "2026-07-11",
     readMinutes: 5,
-    tag: "Study HQ",
+    tag: "StudyLand",
     blocks: [
       {
         kind: "p",
@@ -185,7 +185,7 @@ export const POSTS: BlogPost[] = [
         kind: "cta",
         label: "See your Marks at Risk",
         href: "/account/progress",
-        note: "Live in Study HQ for every subject you own.",
+        note: "Live in StudyLand for every subject you own.",
       },
     ],
   },
@@ -208,7 +208,7 @@ export const POSTS: BlogPost[] = [
         items: [
           "Where you stand today on the topics most likely to matter — not on the whole syllabus, on the part the data says pays first.",
           "Which kind of marks you're dropping: knowledge gaps versus method and precision.",
-          "Whether you're improving — retake it after two weeks of work and the trend line in Study HQ tells the truth.",
+          "Whether you're improving — retake it after two weeks of work and the trend line in StudyLand tells the truth.",
         ],
       },
       { kind: "h2", text: "What it CAN'T tell you" },

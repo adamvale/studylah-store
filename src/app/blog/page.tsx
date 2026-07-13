@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/blog" },
   title: "The StudyLah Blog — study smarter for the 2026 papers",
   description:
-    "How the forecasts are built, the study science behind Study HQ, and honest guides to revising for the Singapore-Cambridge O-Level and N(A)-Level.",
+    "How the forecasts are built, the study science behind StudyLand, and honest guides to revising for the Singapore-Cambridge O-Level and N(A)-Level.",
 };
 
 const fmtDate = (iso: string) =>
@@ -28,7 +28,7 @@ export default function BlogIndexPage() {
         Study smarter, not longer
       </h1>
       <p className="mt-3 max-w-xl text-body">
-        How the forecasts are built, the learning science behind Study HQ, and
+        How the forecasts are built, the learning science behind StudyLand, and
         straight answers about what works — written for students sitting the
         2026 papers (and the parents backing them).
       </p>

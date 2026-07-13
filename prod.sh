@@ -3,4 +3,4 @@
 # worker spawns, which the preview sandbox blocks). Run `npm run build` first.
 export PATH="$HOME/.local/node/bin:$PATH"
 cd "$(dirname "$0")"
-exec npm run start
+exec npm run start -- -p "${PORT:-3000}"

@@ -115,10 +115,10 @@ function Hero({ pricing }: { pricing: Pricing }) {
   return (
     <section className="mx-auto grid max-w-6xl items-center gap-10 px-4 pb-16 pt-12 lg:grid-cols-2 lg:pt-20">
       <div className="fade-up">
-        <p className="inline-flex items-center gap-2 rounded-full border border-hairline bg-surface px-3 py-1 font-mono text-xs font-medium text-cloud">
+        <span className="inline-flex items-center gap-2 rounded-full border border-hairline bg-surface px-3 py-1 font-mono text-xs font-medium text-cloud">
           <HeatTiles />
           Built from 10 years of real exam data
-        </p>
+        </span>
         <h1 className="mt-5 font-display text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl">
           Stop revising blind. Walk in knowing{" "}
           <span className="text-accent">what&apos;s likely.</span>
@@ -147,7 +147,7 @@ function Hero({ pricing }: { pricing: Pricing }) {
           </Link>
         </div>
         <p className="mt-5 text-sm text-cloud">
-          Money-back guarantee · Instant PDFs + Study HQ access · From{" "}
+          Money-back guarantee · Instant PDFs + StudyLand access · From{" "}
           {sgd(alacartePrice("o-level", "forecast"))} per subject
         </p>
         <p className="mt-2 inline-flex items-center gap-2 text-sm text-cloud">
@@ -352,7 +352,7 @@ function StudyHq() {
         </p>
         <h2 className="mt-2 text-center font-display text-4xl font-black text-white sm:text-5xl">
           The PDFs are the plan.{" "}
-          <span className="text-accent">Study HQ runs it.</span>
+          <span className="text-accent">StudyLand runs it.</span>
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-center text-lg text-cloud">
           Buy any subject and your dashboard wakes up: daily practice aimed by

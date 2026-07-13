@@ -50,7 +50,7 @@ export async function POST(request: Request) {
       </a>
     </p>
     <p style="font-size:13px;color:#3d4e63;line-height:1.6;margin:0 0 6px;">
-      Signing in on the Study HQ app? Enter this code instead:
+      Signing in on the StudyLand app? Enter this code instead:
     </p>
     <p style="font-size:28px;font-weight:bold;letter-spacing:6px;color:#101f33;margin:0 0 16px;">${code}</p>
     <p style="font-size:12px;color:#3d4e63;line-height:1.6;margin:0;">
@@ -61,7 +61,7 @@ export async function POST(request: Request) {
     `Sign in to your StudyLah account:`,
     url,
     ``,
-    `On the Study HQ app? Enter this code instead: ${code}`,
+    `On the StudyLand app? Enter this code instead: ${code}`,
     ``,
     `This link works for 15 minutes. If you didn't request it, ignore this email.`,
   ].join("\n");

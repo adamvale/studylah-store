@@ -306,7 +306,7 @@ export default async function ExamForecastPage() {
           <div className="mx-auto mt-12 max-w-3xl rounded-2xl border border-hairline bg-surface p-6 text-center">
             <p className="font-display text-xl font-bold text-white">
               And every tier switches on{" "}
-              <span className="text-accent">Study HQ</span>
+              <span className="text-accent">StudyLand</span>
             </p>
             <p className="mt-2 text-sm text-cloud">
               A dashboard that runs the plan for you: three practice questions

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const TIERS: { badge: string; title: string; note: string }[] = [
   { badge: "3+", title: "Mega-Bundle", note: "save S$36" },
   { badge: "5+", title: "All-In", note: "lowest price per subject" },
-  { badge: "8", title: "max subjects", note: "one combined Study HQ plan" },
+  { badge: "8", title: "max subjects", note: "one combined StudyLand plan" },
 ];
 
 export default function BundlesPage() {

@@ -8,7 +8,7 @@ import { useCart } from "@/lib/cart-context";
 import { useHideCommerce } from "@/lib/native";
 
 // Reads the non-sensitive "logged in" hint cookie set at sign-in, so the
-// header can say "Study HQ" to returning students. Server snapshot = false
+// header can say "StudyLand" to returning students. Server snapshot = false
 // keeps SSR and hydration consistent; the value settles on the client.
 const noopSubscribe = () => () => {};
 const hasAccountCookie = () => document.cookie.includes("studylah_acct=1");
@@ -44,7 +44,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const signedIn = useSignedIn();
-  const accountLabel = signedIn ? "Study HQ" : "Account";
+  const accountLabel = signedIn ? "StudyLand" : "Account";
   // Inside the native app the header is app chrome, not a storefront: no
   // marketing nav, no cart (Apple reader-app rule).
   const hideCommerce = useHideCommerce();

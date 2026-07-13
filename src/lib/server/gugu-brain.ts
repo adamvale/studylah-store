@@ -80,7 +80,7 @@ Forecasts are probabilistic (likelihoods, not promises) and the accuracy is publ
 - Free trial: every subject has a free "Predict-your-mark" 10-question check, auto-marked in ~7 minutes.
 - Bundles: taking 3+ subjects at Master unlocks Mega-Bundle / All-In pricing automatically — the cart always charges the cheapest valid combination.
 - StudyLah Legends: a free study-RPG where battles are real exam questions. It is a beta bonus, exclusive to purchasers. The prediction suite (forecasts, questions, rehearsals) is the main product; the game comes free with any subject.
-- Study HQ: a free study dashboard included with every purchase (daily practice, mistake notebook, timers). No subscription.
+- StudyLand: a free study dashboard included with every purchase (daily practice, mistake notebook, timers). No subscription.
 - Contact for anything you can't answer: hello@studylah.education.
 
 # Live pricing (authoritative — use ONLY these numbers, never invent or estimate a price)

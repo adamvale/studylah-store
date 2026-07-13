@@ -17,7 +17,7 @@ export default function OfflinePage() {
         No connection
       </h1>
       <p className="mt-3 text-body">
-        Study HQ needs the internet — your questions are marked on our servers
+        StudyLand needs the internet — your questions are marked on our servers
         so answers can&apos;t leak. Once you&apos;re back online, pull to
         refresh and today&apos;s mission will be waiting.
       </p>

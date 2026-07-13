@@ -53,7 +53,7 @@ interface MissionItem {
 
 // The one question every student actually has: "what should I do right now?"
 // This page answers it with a short, time-boxed mission computed from every
-// system in Study HQ — then gets out of the way.
+// system in StudyLand — then gets out of the way.
 export default async function TodayPage() {
   const customerId = await getCustomerId();
   if (!customerId) redirect("/account/login");
@@ -235,7 +235,7 @@ export default async function TodayPage() {
     return (
       <div className="rounded-2xl border border-hairline bg-surface p-8 text-center">
         <p className="font-display text-lg font-bold text-ink">
-          Study HQ wakes up with your first subject
+          StudyLand wakes up with your first subject
         </p>
         <p className="mt-2 text-sm text-body">
           Buy any forecast and this page becomes your daily mission: what to

@@ -87,7 +87,7 @@ export async function POST(request: Request) {
   });
   await logDiagnosticEvent("diagnostic_complete", attempt.id, `${level}/${slug} ${score}/${totalMarks}`);
 
-  // ── XP for signed-in students (silent here; lands in Study HQ) ─────────
+  // ── XP for signed-in students (silent here; lands in StudyLand) ─────────
   if (customerId) {
     try {
       await awardXp(

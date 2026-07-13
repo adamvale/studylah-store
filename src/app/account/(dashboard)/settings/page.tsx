@@ -89,7 +89,7 @@ export default async function SettingsPage({
       </h2>
       <p className="mt-1 text-sm text-body">
         One push notification, only on evenings your daily streak is about to
-        break. Works on Android from the browser; on iPhone, add Study HQ to
+        break. Works on Android from the browser; on iPhone, add StudyLand to
         your home screen first.
       </p>
       <div className="mt-4 rounded-2xl border border-hairline bg-surface p-4">

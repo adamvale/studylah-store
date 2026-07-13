@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LEVELS, PUBLISHED_LEVELS, subjectsForLevel, type Level } from "@/lib/catalogue";
 import { listDiagnosticSets } from "@/lib/diagnostic-questions";
-import { realTopCalls } from "@/lib/forecast-tables";
-import { TierPill } from "@/components/heat";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/diagnostic" },
@@ -23,7 +21,6 @@ export default function DiagnosticIndexPage() {
       .map((s) => ({
         slug: s.slug,
         name: s.name,
-        top: realTopCalls(level, s.slug, 1)[0],
       })),
   })).filter((g) => g.subjects.length > 0);
 
@@ -67,18 +64,15 @@ export default function DiagnosticIndexPage() {
               </span>
             </summary>
             <div className="space-y-2 border-t border-hairline px-4 py-4">
-              {subjects.map(({ slug, name, top }) => (
+              {subjects.map(({ slug, name }) => (
                 <Link
                   key={slug}
                   href={`/diagnostic/${level}/${slug}`}
-                  className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-hairline bg-night px-4 py-3 transition-colors hover:border-accent"
+                  className="flex items-center justify-between gap-2 rounded-xl border border-hairline bg-night px-4 py-3 transition-colors hover:border-accent"
                 >
                   <span className="font-medium text-ink">{name}</span>
-                  <span className="flex items-center gap-2">
-                    {top && <TierPill tier={top.tier} />}
-                    <span aria-hidden="true" className="text-accent">
-                      →
-                    </span>
+                  <span className="shrink-0 rounded-lg bg-accent px-3.5 py-1.5 text-xs font-bold text-night">
+                    Begin →
                   </span>
                 </Link>
               ))}

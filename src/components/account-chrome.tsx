@@ -20,7 +20,7 @@ import {
   IconShield,
 } from "@/components/pixel-icons";
 
-// The account area has two faces. On the web it's the familiar Study HQ
+// The account area has two faces. On the web it's the familiar StudyLand
 // dashboard. Inside the Capacitor shell it becomes a GAME APP: the site
 // chrome disappears (header returns null there) and this component renders a
 // HUD — living ghost, level, animated XP bar, streak flame, shields — with a
@@ -215,7 +215,7 @@ export function AccountChrome({
       <div className="flex flex-wrap items-start justify-between gap-4 print:hidden">
         <div>
           <h1 className="font-display text-4xl font-bold text-ink">
-            Study <span className="text-accent">HQ</span>
+            Study<span className="text-accent">Land</span>
           </h1>
           <p className="mt-1 text-sm text-body">
             Your PDFs, plan, practice and progress — signed in as{" "}

@@ -102,10 +102,10 @@ export default async function CheckoutSuccessPage({
 
       <div className="mt-10 rounded-2xl border border-accent/40 bg-surface p-5 text-left">
         <p className="font-display text-lg font-bold text-ink">
-          Your Study <span className="text-accent">HQ</span> just switched on
+          Your Study<span className="text-accent">Land</span> just switched on
         </p>
         <p className="mt-1 text-sm text-body">
-          The PDFs tell you what to revise — Study HQ makes it happen daily:
+          The PDFs tell you what to revise — StudyLand makes it happen daily:
           three questions a day on your most-likely topics, a mistake notebook
           that re-tests you, a Marks-at-Risk meter, timers and a study plan
           paced to your paper dates. Two minutes to set up, included with your
@@ -115,7 +115,7 @@ export default async function CheckoutSuccessPage({
           href="/account"
           className="mt-4 inline-block rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
         >
-          Open Study HQ
+          Open StudyLand
         </Link>
       </div>
 

@@ -328,7 +328,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
             <span aria-hidden="true" className="text-accent">5.</span>
             <span className="text-body">
               <span className="font-medium text-ink">
-                And Study <span className="text-accent">HQ</span> runs it daily
+                And Study<span className="text-accent">Land</span> runs it daily
               </span>{" "}
               — three questions a day on your top-tier topics, a mistake notebook
               that re-tests you until you clear it, a live Marks-at-Risk meter,
@@ -360,7 +360,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
             {subject.level === "o-level"
               ? "any 3 Master subjects for S$168 (save S$36), up to S$188 off a full stack"
               : "a ~17% discount on any 3, scaling up the more you add"}
-            . Every subject also feeds one combined Study HQ plan.
+            . Every subject also feeds one combined StudyLand plan.
           </p>
         </div>
         <Link

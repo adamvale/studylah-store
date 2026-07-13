@@ -360,7 +360,7 @@ export function CartView() {
           </p>
           <p className="mt-2 text-xs text-body">
             Every subject also unlocks{" "}
-            <span className="font-medium text-ink">Study HQ</span> — daily
+            <span className="font-medium text-ink">StudyLand</span> — daily
             practice, mistake notebook, study plan and exam timers. No
             subscription.
           </p>
