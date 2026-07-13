@@ -68,17 +68,18 @@ export async function LevelCatalogue({
       <div className="mt-10 flex flex-col gap-4 rounded-2xl bg-trust p-6 text-white sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="font-display text-xl font-bold">
-            Taking three or more subjects?
+            The more subjects, the less each one costs.
           </p>
           <p className="mt-1 text-sm text-white/80">
-            Mega-Bundle and All-In pricing can save you up to S$140.
+            Bundle 3+ and the per-subject price drops automatically — Mega-Bundle
+            and All-In pricing save up to S$188.
           </p>
         </div>
         <Link
           href="/bundles"
-          className="shrink-0 rounded-lg bg-signal px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-signal-deep"
+          className="shrink-0 rounded-lg bg-accent px-5 py-2.5 text-center text-sm font-bold text-night transition-opacity hover:opacity-90"
         >
-          Build your bundle
+          Build your bundle →
         </Link>
       </div>
       {!embedded && (

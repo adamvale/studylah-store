@@ -355,14 +355,59 @@ export const EARLY_BIRD_ACTIVE = false;
 // N(A) and mixed-level carts derive naturally.
 export const MEGA_RATIO = 168 / 204;
 
-// All-In: flat price covering 5 or 6 Master subjects. N(A) flat derived at the
+// All-In: flat price covering up to 6 Master subjects. N(A) flat derived at the
 // same discount depth as O-Level's S$268 (268/408 of six Masters).
 export const ALLIN_FLAT: Record<Level, number> = {
   "o-level": 268,
   "na-level": 213,
 };
 
-export const MAX_SUBJECTS = 6;
+// Each subject beyond the 6th is added at the All-In per-subject rate (≈ flat /
+// 6), so 7- and 8-subject bundles scale up instead of giving the extra subjects
+// away free. O-Level: 7 = S$312, 8 = S$356. N(A): 7 = S$249, 8 = S$285.
+export const ALLIN_EXTRA: Record<Level, number> = {
+  "o-level": 44,
+  "na-level": 36,
+};
+
+export const MAX_SUBJECTS = 8;
+
+// Syllabus codes, mirrored verbatim from the authoritative `syllabusCode` field
+// in subject-copy.ts (taken from each subject's Marketing Hooks pack, the same
+// code shown on the subject page title). Kept as a small standalone map so the
+// client bundle builder can show codes without importing the whole (large)
+// subject-copy module. If a code changes, update it in BOTH places.
+// Keyed by `${level}::${slug}`.
+export const SUBJECT_CODES: Record<string, string> = {
+  // O-Level (G3)
+  "o-level::physics-pure": "6091",
+  "o-level::physics-science": "5086 / 5087",
+  "o-level::chemistry-pure": "6092",
+  "o-level::chemistry-science": "5086 / 5088",
+  "o-level::biology-pure": "6093",
+  "o-level::biology-science": "5088",
+  "o-level::geography-pure": "2279",
+  "o-level::geography-elective": "2260",
+  "o-level::history-pure": "2174",
+  "o-level::history-elective": "2261",
+  "o-level::social-studies": "2260 / 2261",
+  "o-level::principles-of-accounts": "7087",
+  "o-level::e-math": "4052",
+  "o-level::a-math": "4049",
+  // N(A)-Level (G2)
+  "na-level::physics": "5105 / 5106",
+  "na-level::chemistry": "5105 / 5107",
+  "na-level::biology": "5106 / 5107",
+  "na-level::food-and-nutrition": "6073",
+  "na-level::history": "2126",
+  "na-level::principles-of-accounts": "7086",
+  "na-level::e-math": "4045",
+  "na-level::a-math": "4051",
+};
+
+export function subjectCode(level: Level, slug: string): string | undefined {
+  return SUBJECT_CODES[`${level}::${slug}`];
+}
 
 export const COMING_SOON = [
   { slug: "nt-level", name: "N(T)-Level", eta: "2026" },

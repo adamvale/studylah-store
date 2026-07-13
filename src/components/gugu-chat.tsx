@@ -108,11 +108,12 @@ const TOPICS: Topic[] = [
     keywords: ["cost", "price", "much", "cheap", "expensive", "pay", "worth", "bundle", "discount"],
     answer: ({ fromPrice, closePanel }) => (
       <>
-        A single subject starts from <strong>{fromPrice}</strong>, and taking
-        three or more subjects unlocks bundle pricing automatically — the cart
-        always charges you the cheapest valid combination.
+        A single subject starts from <strong>{fromPrice}</strong> — but here&apos;s
+        the money-saver: the more subjects you take, the cheaper each one gets. Bundle
+        3+ and the price drops automatically; an all-in stack saves the most per
+        subject. If you&apos;re sitting a few papers, building a bundle is the smart move.
         <br />
-        <CtaButton href="/subjects" label="Browse subjects & prices" onNavigate={closePanel} />
+        <CtaButton href="/bundles" label="Build a bundle & save" onNavigate={closePanel} />
       </>
     ),
   },
@@ -291,7 +292,7 @@ function CtaButton({
 // in plain words rather than a raw path.
 const PATH_LABELS: Record<string, string> = {
   "/subjects": "Browse subjects & prices",
-  "/bundles": "Build a bundle",
+  "/bundles": "Build a bundle & save",
   "/accuracy": "See our track record",
   "/faq": "Read the FAQ",
   "/free-heatmap": "Get the free heatmap",
@@ -537,15 +538,22 @@ export function GuguChat() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 z-40 flex flex-col items-start gap-3 print:hidden">
+    <div className="pointer-events-none fixed bottom-8 left-4 z-40 flex flex-col items-start gap-3 print:hidden">
       {/* Chat panel — StudyLah Legends arcade-HUD styling (mint #4ef3c9 frame,
           pixel-font labels, pink user bubbles, gold pressable Ask button, faint
-          CRT scanlines). Answer text stays Inter for readability. */}
-      {open && (
+          CRT scanlines). Answer text stays Inter for readability.
+          Always mounted (so replies never re-run their typing animation on
+          reopen); open/minimise is a scale+fade transition from the bottom-left. */}
+      {mounted && (
         <div
           role="dialog"
           aria-label="Chat with Gugu"
-          className="relative flex h-[70vh] max-h-[520px] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-2xl border-2 border-[#4ef3c9] bg-[#12122b] shadow-[0_0_28px_-4px_rgba(78,243,201,0.45),0_24px_50px_-12px_rgba(0,0,0,0.85)] sm:w-[360px]"
+          aria-hidden={!open}
+          className={`relative flex h-[70vh] max-h-[520px] w-[calc(100vw-2rem)] origin-bottom-left flex-col overflow-hidden rounded-2xl border-2 border-[#4ef3c9] bg-[#12122b] shadow-[0_0_28px_-4px_rgba(78,243,201,0.45),0_24px_50px_-12px_rgba(0,0,0,0.85)] transition-all duration-200 ease-out sm:w-[360px] ${
+            open
+              ? "pointer-events-auto scale-100 opacity-100 translate-y-0"
+              : "pointer-events-none scale-90 opacity-0 translate-y-4"
+          }`}
         >
           {/* Header — arcade "PROFILE" style: sprite in a bordered chip + pixel name */}
           <div className="flex items-center gap-2.5 border-b-2 border-[#4ef3c9]/40 bg-[#0d0d22] px-4 py-3">
@@ -684,14 +692,14 @@ export function GuguChat() {
       {/* Gugu + speech bubble in a row — RPG "character speaking" layout:
           Gugu on the left, a rotating bubble to its right with a tail that
           points back at him. */}
-      <div className="flex items-center gap-1.5">
+      <div className="flex items-start gap-1.5">
         {/* Floating Gugu — bare ghost bobbing above a soft drop shadow */}
         <button
           type="button"
           onClick={() => (open ? setOpen(false) : openChat())}
           aria-label={open ? "Close chat" : "Chat with Gugu"}
           aria-expanded={open}
-          className="group flex shrink-0 flex-col items-center transition-transform hover:scale-105 active:scale-95"
+          className="group pointer-events-auto flex shrink-0 flex-col items-center transition-transform hover:scale-105 active:scale-95"
         >
           <GuguSprite size={60} className="ghost-bob drop-shadow-lg" />
           {/* shadow ellipse the ghost floats over */}
@@ -708,7 +716,7 @@ export function GuguChat() {
             onClick={openChat}
             aria-hidden="true"
             tabIndex={-1}
-            className="relative max-w-[190px] rounded-xl border-2 border-[#4ef3c9] bg-[#12122b] px-3 py-1.5 text-left text-sm font-semibold text-[#4ef3c9] shadow-[0_0_16px_-4px_rgba(78,243,201,0.5)]"
+            className="pointer-events-auto relative max-w-[190px] rounded-xl border-2 border-[#4ef3c9] bg-[#12122b] px-3 py-1.5 text-left text-sm font-semibold text-[#4ef3c9] shadow-[0_0_16px_-4px_rgba(78,243,201,0.5)]"
           >
             {/* tail pointing left, back at Gugu */}
             <span

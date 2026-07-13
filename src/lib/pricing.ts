@@ -1,4 +1,5 @@
 import {
+  ALLIN_EXTRA,
   ALLIN_FLAT,
   BASE_TIER_PRODUCTS,
   EARLY_BIRD_ACTIVE,
@@ -70,12 +71,21 @@ function megaPrice(regularMasterSum: number): number {
   return Math.round(regularMasterSum * MEGA_RATIO);
 }
 
-// All-In is a flat price covering 5-6 Master subjects. For mixed-level carts
-// the flat is the mean of each subject's level flat, which reduces to exactly
-// S$268 (O) / S$213 (N(A)) for single-level carts of 5 or 6 subjects.
+// All-In covers up to 6 Master subjects at a flat price, then each subject
+// beyond the 6th is added at the per-subject extra rate. For mixed-level carts
+// both the flat and the extra are the mean of each subject's level value, which
+// reduces to exactly S$268 (O) / S$213 (N(A)) for single-level carts of 5-6,
+// then +S$44 (O) / +S$36 (N(A)) for each of the 7th and 8th.
 function allInPrice(masters: CartItem[]): number {
-  const sum = masters.reduce((s, m) => s + ALLIN_FLAT[m.level], 0);
-  return Math.round(sum / masters.length);
+  const n = masters.length;
+  const flat = Math.round(
+    masters.reduce((s, m) => s + ALLIN_FLAT[m.level], 0) / n
+  );
+  if (n <= 6) return flat;
+  const extra = Math.round(
+    masters.reduce((s, m) => s + ALLIN_EXTRA[m.level], 0) / n
+  );
+  return flat + (n - 6) * extra;
 }
 
 interface Composition {

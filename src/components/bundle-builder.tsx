@@ -8,6 +8,7 @@ import {
   MAX_SUBJECTS,
   SUBJECTS,
   sgd,
+  subjectCode,
   PUBLISHED_LEVELS,
   type Level,
 } from "@/lib/catalogue";
@@ -28,6 +29,9 @@ export function BundleBuilder({
 } = {}) {
   const [selected, setSelected] = useState<Set<SelectionKey>>(new Set());
   const [limitHit, setLimitHit] = useState(false);
+  const [activeLevel, setActiveLevel] = useState<Level>(
+    PUBLISHED_LEVELS[0] ?? "o-level"
+  );
   const { addItem } = useCart();
   const router = useRouter();
   const pricing = usePricing();
@@ -77,6 +81,11 @@ export function BundleBuilder({
   }
 
   const count = selected.size;
+  // Fall back to the first available level if the active one has no subjects
+  // (e.g. an embed that hides a whole level).
+  const shownLevel = levels.some((g) => g.level === activeLevel)
+    ? activeLevel
+    : levels[0]?.level;
   const stepMessage =
     count === 0
       ? "Pick your subjects — each comes as the full Master pack: forecast, practice and a full rehearsal."
@@ -88,7 +97,9 @@ export function BundleBuilder({
             : "Mega-Bundle applied. Add more subjects and the saving grows."
           : count === 5
             ? "All-In applied — add your 6th and it's effectively free."
-            : "All-In applied — every subject covered, at the lowest price per subject.";
+            : count === 6
+              ? "All-In applied — you can still add up to 2 more subjects."
+              : "All-In applied — every subject you take, at the lowest price per subject.";
 
   if (levels.length === 0) {
     return (
@@ -104,39 +115,74 @@ export function BundleBuilder({
         count > 0 ? "pb-20 lg:pb-0" : ""
       }`}
     >
-      <div className={stacked ? "space-y-6" : "space-y-8 lg:col-span-2"}>
-        {levels.map(({ level, subjects }) => (
-          <section key={level} aria-labelledby={`bundle-${level}`}>
-            <h3 id={`bundle-${level}`} className="font-display text-base font-bold text-ink">
-              {LEVELS[level].name}
-            </h3>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {subjects.map((subject) => {
-                const key: SelectionKey = `${level}::${subject.slug}`;
-                const active = selected.has(key);
-                return (
-                  <button
-                    key={key}
-                    type="button"
-                    aria-pressed={active}
-                    onClick={() => toggle(key)}
-                    className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors ${
-                      active
-                        ? "border-trust bg-trust text-white"
-                        : "border-hairline bg-surface text-body hover:border-hairline"
-                    }`}
-                  >
-                    {subject.name}
-                  </button>
-                );
-              })}
-            </div>
-          </section>
-        ))}
+      <div className={stacked ? "space-y-4" : "space-y-5 lg:col-span-2"}>
+        {/* Level toggle — pick O-Level (G3) or N(A)-Level (G2); selections in
+            both levels persist as you switch. */}
+        {levels.length > 1 && (
+          <div
+            role="tablist"
+            aria-label="Choose a level"
+            className="inline-flex gap-1 rounded-xl border border-hairline bg-surface p-1"
+          >
+            {levels.map(({ level }) => {
+              const isActive = level === shownLevel;
+              return (
+                <button
+                  key={level}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => setActiveLevel(level)}
+                  className={`rounded-lg px-4 py-2 text-sm font-bold transition-colors ${
+                    isActive
+                      ? "bg-accent text-night"
+                      : "text-body hover:bg-night-2 hover:text-white"
+                  }`}
+                >
+                  {LEVELS[level].name}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {levels
+          .filter(({ level }) => level === shownLevel)
+          .map(({ level, subjects }) => (
+            <section key={level} aria-labelledby={`bundle-${level}`}>
+              <h3 id={`bundle-${level}`} className="sr-only">
+                {LEVELS[level].name}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {subjects.map((subject) => {
+                  const key: SelectionKey = `${level}::${subject.slug}`;
+                  const active = selected.has(key);
+                  const code = subjectCode(level, subject.slug);
+                  return (
+                    <button
+                      key={key}
+                      type="button"
+                      aria-pressed={active}
+                      onClick={() => toggle(key)}
+                      className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors ${
+                        active
+                          ? "border-accent bg-accent text-night"
+                          : "border-hairline bg-surface text-body hover:border-accent/60"
+                      }`}
+                    >
+                      {subject.name}
+                      {code && (
+                        <span className="ml-1.5 font-mono text-xs opacity-70">{code}</span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
+          ))}
         {limitHit && (
           <p className="rounded-lg bg-heat-3/25 px-4 py-2.5 text-sm text-ink" role="alert">
-            Bundles cover up to {MAX_SUBJECTS} subjects — the most anyone sits.
-            Remove one to swap.
+            Bundles cover up to {MAX_SUBJECTS} subjects. Remove one to swap.
           </p>
         )}
       </div>
@@ -188,7 +234,7 @@ export function BundleBuilder({
               <button
                 type="button"
                 onClick={addAllToCart}
-                className="mt-5 w-full rounded-lg bg-signal px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-signal-deep"
+                className="mt-5 w-full rounded-lg bg-accent px-5 py-3 text-sm font-bold text-night transition-opacity hover:opacity-90"
               >
                 Add {count} subject{count === 1 ? "" : "s"} to cart
               </button>

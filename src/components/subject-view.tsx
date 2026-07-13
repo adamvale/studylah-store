@@ -119,6 +119,22 @@ export async function SubjectView({ subject }: { subject: Subject }) {
         </p>
       )}
 
+      {/* Bundle upsell right under the title — most students sit several
+          subjects, and the per-subject price drops the more they add. */}
+      <Link
+        href="/bundles"
+        className="mt-4 flex max-w-2xl items-center gap-3 rounded-xl border border-accent/40 bg-accent/10 px-4 py-3 text-sm transition-colors hover:bg-accent/20"
+      >
+        <span className="text-ink">
+          Sitting more than one subject?{" "}
+          <span className="font-bold text-accent">Build a bundle</span> — the more
+          you pick, the cheaper each one gets (save up to S$188).
+        </span>
+        <span aria-hidden="true" className="ml-auto shrink-0 font-bold text-accent">
+          →
+        </span>
+      </Link>
+
       <div className="mt-10 grid gap-8 lg:grid-cols-5">
         <div className="lg:col-span-2">
           <div className="rounded-2xl border border-hairline bg-surface p-5">
@@ -337,18 +353,21 @@ export async function SubjectView({ subject }: { subject: Subject }) {
       <div className="mt-12 flex flex-col gap-4 rounded-2xl bg-indigo p-6 text-white sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="font-display text-xl font-bold">
-            Taking {subject.name} and two more subjects?
+            Don&apos;t stop at {subject.name}.
           </p>
           <p className="mt-1 text-sm text-white/80">
-            The Mega-Bundle prices any 3 Master subjects at{" "}
-            {subject.level === "o-level" ? "S$168 — save S$36" : "a ~17% discount"}.
+            The more subjects you bundle, the cheaper each one gets —{" "}
+            {subject.level === "o-level"
+              ? "any 3 Master subjects for S$168 (save S$36), up to S$188 off a full stack"
+              : "a ~17% discount on any 3, scaling up the more you add"}
+            . Every subject also feeds one combined Study HQ plan.
           </p>
         </div>
         <Link
           href="/bundles"
-          className="shrink-0 rounded-lg bg-signal px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-signal-deep"
+          className="shrink-0 rounded-lg bg-accent px-5 py-2.5 text-center text-sm font-bold text-night transition-opacity hover:opacity-90"
         >
-          Build your bundle
+          Build your bundle →
         </Link>
       </div>
 
