@@ -394,3 +394,11 @@ html[data-native] .native-screen {
   .btn-pixel, .btn-pixel-green { transition: none; }
   .mascot-bob { animation: none; }
 }
+
+/* Lift the floating Gugu helper above any bottom sticky CTA bar (bundle
+   summary, subject/level buy bar, account tab bar) so the two never overlap.
+   The bars carry data-bottom-cta only while actually visible, so Gugu drops
+   back to its normal position when no bar is showing. */
+body:has([data-bottom-cta]) .gugu-fab {
+  bottom: 6.75rem;
+}

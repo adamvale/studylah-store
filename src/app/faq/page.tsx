@@ -57,7 +57,7 @@ const FAQS: { q: string; a: React.ReactNode; plain?: string }[] = [
   },
   {
     q: "Can I share my PDFs with friends?",
-    a: "Please don't — every page is watermarked with your email and order ID, so a shared copy points straight back to you. Send them the free heatmap instead and let them judge us for themselves.",
+    a: "Please don't — every page is watermarked with your email and order ID, so a shared copy points straight back to you. Send them the free Predict-your-mark check instead and let them judge us for themselves.",
   },
   {
     q: "I take multiple subjects. Do bundles work?",
@@ -77,7 +77,7 @@ const FAQS: { q: string; a: React.ReactNode; plain?: string }[] = [
   },
   {
     q: "When should I buy?",
-    a: "Sooner is cheaper. The Forecast is built for your last two weeks, the Vault for your last week, the Rehearsal for the final days — and early-bird pricing runs when forecasts first drop. Get on the free heatmap list and we'll tell you the moment yours goes live.",
+    a: "Sooner is cheaper. The Forecast is built for your last two weeks, the Vault for your last week, the Rehearsal for the final days — and early-bird pricing runs when forecasts first drop. Take the free Predict-your-mark check — you'll be on the list and first to know the moment your forecast goes live.",
   },
   {
     q: "What happens to my email address?",

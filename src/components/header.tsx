@@ -75,10 +75,10 @@ export function Header() {
         <div className="flex items-center gap-2">
           {!hideCommerce && (
             <Link
-              href="/free-heatmap"
+              href="/diagnostic"
               className="hidden rounded-md px-3 py-1.5 text-sm font-medium text-cloud hover:bg-surface sm:block"
             >
-              Free heatmap
+              Predict your mark
             </Link>
           )}
           <Link
@@ -128,7 +128,7 @@ export function Header() {
             ? [{ href: "/account", label: accountLabel }]
             : [
                 ...NAV,
-                { href: "/free-heatmap", label: "Free heatmap" },
+                { href: "/diagnostic", label: "Predict your mark" },
                 { href: "/account", label: accountLabel },
               ]
           ).map((item) => (

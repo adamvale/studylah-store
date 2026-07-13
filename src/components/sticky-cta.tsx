@@ -18,6 +18,7 @@ export function StickyCta({ label = "Find your subject's forecast" }: { label?: 
 
   return (
     <div
+      data-bottom-cta={shown ? "" : undefined}
       className={`fixed inset-x-0 bottom-0 z-40 border-t border-hairline bg-night/95 backdrop-blur transition-transform duration-300 ${
         shown ? "translate-y-0" : "translate-y-full"
       }`}

@@ -113,7 +113,7 @@ export const POSTS: BlogPost[] = [
   },
   {
     slug: "mistake-notebook-cuo-ti-ben",
-    title: "错题本: the mistake notebook top scorers swear by",
+    title: "The mistake notebook top scorers swear by",
     description:
       "Ask a straight-A student for their secret and many will show you a battered notebook of every question they ever got wrong. Yours now keeps itself.",
     date: "2026-07-11",
@@ -122,7 +122,7 @@ export const POSTS: BlogPost[] = [
     blocks: [
       {
         kind: "p",
-        text: "Walk into any top junior college and ask the A-graders how they revise. A surprising number will pull out the same thing: a 错题本 — a \"wrong-answer book\". Every question they missed, copied out by hand, with a note on why they missed it. Before every exam, they revise the notebook, not the textbook.",
+        text: "Walk into any top junior college and ask the A-graders how they revise. A surprising number will pull out the same thing: a \"wrong-answer book\". Every question they missed, copied out by hand, with a note on why they missed it. Before every exam, they revise the notebook, not the textbook.",
       },
       {
         kind: "p",

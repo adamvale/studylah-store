@@ -140,7 +140,7 @@ const TOPICS: Topic[] = [
         auto-marked in about seven minutes. It ends with a score and worked
         solutions so you can judge us for yourself.
         <br />
-        <CtaButton href="/subjects" label="Pick a subject to try" onNavigate={closePanel} />
+        <CtaButton href="/diagnostic" label="Predict your mark — free" onNavigate={closePanel} />
       </>
     ),
   },
@@ -295,7 +295,8 @@ const PATH_LABELS: Record<string, string> = {
   "/bundles": "Build a bundle & save",
   "/accuracy": "See our track record",
   "/faq": "Read the FAQ",
-  "/free-heatmap": "Get the free heatmap",
+  "/diagnostic": "Predict your mark — free",
+  "/free-heatmap": "Predict your mark — free",
 };
 
 function labelForPath(href: string): string {
@@ -310,7 +311,7 @@ function labelForPath(href: string): string {
 // (/subjects, /bundles, …) become CTA buttons, so Gugu can hand over a purchase
 // link that reads as an obvious button. Everything else stays literal text.
 const LINK_RE =
-  /(https?:\/\/[^\s<]+|\/(?:subjects|bundles|accuracy|faq|free-heatmap|o-level|na-level)(?:\/[\w-]+)*\/?)/g;
+  /(https?:\/\/[^\s<]+|\/(?:subjects|bundles|accuracy|faq|diagnostic|free-heatmap|o-level|na-level)(?:\/[\w-]+)*\/?)/g;
 
 function renderWithLinks(text: string, onNavigate?: () => void): ReactNode {
   const parts: ReactNode[] = [];
@@ -538,7 +539,7 @@ export function GuguChat() {
   if (!mounted) return null;
 
   return (
-    <div className="pointer-events-none fixed bottom-8 left-4 z-40 flex flex-col items-start gap-3 print:hidden">
+    <div className="gugu-fab pointer-events-none fixed bottom-8 left-4 z-40 flex flex-col items-start gap-3 transition-[bottom] duration-200 print:hidden">
       {/* Chat panel — StudyLah Legends arcade-HUD styling (mint #4ef3c9 frame,
           pixel-font labels, pink user bubbles, gold pressable Ask button, faint
           CRT scanlines). Answer text stays Inter for readability.

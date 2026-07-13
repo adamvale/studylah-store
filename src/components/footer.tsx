@@ -10,7 +10,6 @@ const SHOP = [
     label: LEVELS[level].name,
   })),
   { href: "/bundles", label: "Bundle builder" },
-  { href: "/free-heatmap", label: "Free heatmap" },
 ];
 
 const TRUST = [

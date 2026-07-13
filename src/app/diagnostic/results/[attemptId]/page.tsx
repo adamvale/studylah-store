@@ -16,7 +16,7 @@ import {
 } from "@/lib/server/diagnostic";
 import type { DiagnosticProduct } from "@/lib/diagnostic-questions";
 import { serverConfig } from "@/lib/server/config";
-import { TierPill } from "@/components/heat";
+import { HeatBar, TierPill } from "@/components/heat";
 import {
   CtaLink,
   ResendButton,
@@ -132,6 +132,25 @@ export default async function DiagnosticResultsPage({
           );
         })}
       </div>
+
+      {/* Free topic heatmap — the giveaway, now delivered with your result */}
+      <section className="mt-8 rounded-2xl border border-hairline bg-surface p-6">
+        <p className="font-mono text-xs font-medium uppercase tracking-wide text-accent">
+          Your free topic heatmap
+        </p>
+        <h2 className="mt-2 font-display text-lg font-bold text-ink">
+          The 5 topics most likely on your 2026 {subject.name} paper
+        </h2>
+        <div className="mt-4 space-y-3">
+          {realTopCalls(attempt.level, attempt.slug, 5).map((row) => (
+            <HeatBar key={row.topic} topic={row.topic} tier={row.tier} />
+          ))}
+        </div>
+        <p className="mt-4 border-t border-hairline pt-3 text-xs text-body">
+          Every topic — Very High to Watch — is ranked in the full Exam Forecast,
+          with a ten-year deep dive on each.
+        </p>
+      </section>
 
       {/* Tailored fix plan */}
       <section className="mt-8 rounded-2xl border border-accent/40 bg-surface p-6">

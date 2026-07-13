@@ -256,7 +256,10 @@ export function BundleBuilder({
           total rides in a sticky bar — watching the price drop as subjects go
           in is the whole fun of the bundle. */}
       {count > 0 && (
-        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-hairline bg-night/95 backdrop-blur lg:hidden">
+        <div
+          data-bottom-cta=""
+          className="fixed inset-x-0 bottom-0 z-40 border-t border-hairline bg-night/95 backdrop-blur lg:hidden"
+        >
           <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3">
             <div className="min-w-0">
               <p className="font-mono text-base font-bold text-ink">

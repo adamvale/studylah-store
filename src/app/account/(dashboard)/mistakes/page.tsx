@@ -76,7 +76,7 @@ export default async function MistakesPage() {
       <MonsterDex counts={dexCounts} wildCaptured={[...wildCaptured]} />
       <div>
         <h2 className="font-display text-2xl font-bold text-ink">
-          The bestiary <span className="text-body">(错题本)</span>
+          The bestiary
         </h2>
         <p className="mt-1 text-sm text-body">
           Every mistake is a monster, and its species is WHY you lost the mark.

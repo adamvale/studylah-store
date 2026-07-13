@@ -31,10 +31,10 @@ function CTA({ children = "Find your subject's forecast" }: { children?: string 
         {children}
       </Link>
       <Link
-        href="/free-heatmap"
+        href="/diagnostic"
         className="rounded-lg border border-hairline bg-surface px-6 py-3.5 text-sm font-medium text-white hover:border-accent"
       >
-        See a free sample →
+        Predict your mark — free →
       </Link>
     </div>
   );

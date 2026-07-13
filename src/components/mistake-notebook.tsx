@@ -158,7 +158,7 @@ export function MistakeNotebook({
           <p className="mt-2 text-sm text-body">
             Questions you miss in the daily three land here automatically. Add
             your own from school papers with the button above — the top scorers
-            all keep a 错题本 (wrong-answer book).
+            all keep a wrong-answer book.
           </p>
         </div>
       ) : (

@@ -63,6 +63,7 @@ async function buildSystemPrompt(): Promise<string> {
 # Links you can share (write them exactly, as plain paths)
 - /bundles — build a multi-subject bundle; the more subjects, the cheaper each one (your go-to link for anyone taking 2+ subjects)
 - /subjects — browse every subject with live prices (for a single subject or general browsing)
+- /diagnostic — the free "Predict your mark" check: 10 questions, instant score + grade band + worked solutions, and a free topic heatmap with the result (the no-risk way in for anyone hesitant)
 - /accuracy — the published hits-and-misses scorecard (proof, for sceptics)
 
 # What StudyLah is

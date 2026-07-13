@@ -17,7 +17,6 @@ import {
 } from "@/lib/catalogue";
 import type { Pricing } from "@/lib/pricing";
 import { getPricing } from "@/lib/server/pricing-store";
-import { EmailCaptureForm } from "@/components/email-capture";
 import { ExamCountdown } from "@/components/exam-countdown";
 import { ForecastCard } from "@/components/forecast-card";
 import { HeatTiles } from "@/components/heat";
@@ -324,7 +323,7 @@ const STUDY_HQ_FEATURES = [
   },
   {
     emoji: "📓",
-    title: "Mistake notebook (错题本)",
+    title: "Mistake notebook",
     body: "Every miss saved automatically. Missed questions come back until you beat them twice — then they clear for good.",
   },
   {
@@ -749,15 +748,22 @@ function FreeHeatmapBanner() {
             id="heatmap-heading"
             className="font-display text-2xl font-black text-white"
           >
-            Try it free: the Top 5 heatmap
+            Try it free: predict your mark
           </h2>
           <p className="mt-2 text-sm text-cloud">
-            The five most likely topics for one subject of your choice, as a
-            free PDF. No card, no catch — just proof.
+            Ten questions on the topics most likely to come up in your subject,
+            auto-marked in about seven minutes. Get an instant score, an
+            indicative grade band, and worked solutions — free, no card. See
+            exactly where you stand before you spend a cent.
           </p>
         </div>
-        <div className="mt-5 max-w-2xl">
-          <EmailCaptureForm source="homepage-banner" showSubjectSelect />
+        <div className="mt-5">
+          <Link
+            href="/diagnostic"
+            className="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
+          >
+            Predict your mark — free →
+          </Link>
         </div>
       </div>
     </section>

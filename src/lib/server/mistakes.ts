@@ -1,4 +1,4 @@
-// Shared constants for the mistake notebook (错题本).
+// Shared constants for the mistake notebook.
 
 // Why a mark was lost. "unset" is the auto-seeded default until the student
 // classifies it — the notebook nudges them to pick one of the real four.
