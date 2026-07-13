@@ -97,6 +97,11 @@ change, streak push, parent digest). Key engines:
    timestamp (`sed` on both pbxproj build configs, after `cap sync`) so every
    upload is strictly higher — build numbers are never bumped by hand. Only
    the user-facing `MARKETING_VERSION` (and Android `versionCode`) stay manual.
+8. **`ANTHROPIC_API_KEY` (Railway server var) powers the Gugu chatbot's
+   free-text answers.** Missing/unset ⇒ the bot silently degrades to
+   scripted-fallback mode (quick replies still work, no error). Server-side
+   only — not `NEXT_PUBLIC_`. See the Gugu chatbot section for the full flow +
+   compliance guardrails.
 
 ## Content & notation rules
 
@@ -353,17 +358,32 @@ would be invisible on the white field). Mounted in `SiteChrome` and gated to `!c
 (hidden on `/admin` + ad landings); self-hides inside the native game shell
 (returns null when `html[data-native]` is stamped).
 
-**TIER 1 — fully SCRIPTED, by owner decision.** Every answer is pre-written,
-vetted copy (a chat-sized version of `/faq` + the game-as-beta positioning); the
-bot never generates text, so it cannot invent a price, promise a grade, or drift
-into a banned word. `TOPICS[]` holds the quick-reply knowledge base; free-typed
-questions route via `matchTopic()` (keyword scoring) with an honest
-"email a human" fallback when nothing matches. The pricing answer pulls the live
-"from" price from `usePricing()` (cheapest `essential` tier across levels) — never
-a hard-coded number. Compliance rule lives in a header comment: keep answers
-factual/product-focused, no `guaranteed/100%/confirmed/leaked/insider/sure-win`,
-no grade promises. **Tier 2 (Claude-API-powered, with guardrails) is a possible
-phase 2** — the widget shell is designed to be reused if that's ever built.
+**The 8 quick-reply chips stay SCRIPTED** — `TOPICS[]` holds pre-written, vetted
+answers (chat-sized `/faq` + game-as-beta positioning), instant and zero-cost;
+the pricing chip pulls the live "from" price from `usePricing()` (cheapest
+`essential` tier across levels), never hard-coded.
+
+**Free-typed questions are Claude-powered (TIER 2, owner-approved).** Flow:
+client `POST /api/chat` (`src/app/api/chat/route.ts`) → `askGugu()` in
+`src/lib/server/gugu-brain.ts` → **Claude Haiku 4.5** (`GUGU_MODEL`, owner's
+choice — one-line swap). Guardrails, all mandatory:
+- **System prompt** = StudyLah facts + **live pricing** (from `getPricing()`, "use
+  ONLY these numbers") + hard rules (no grade/result promises, banned certainty
+  words, StudyLah-only, decline off-topic, minors-safe, ignore prompt-injection).
+- **Post-generation compliance filter** (`violatesCompliance()`, `BANNED_PATTERNS`):
+  any reply containing `guaranteed/confirmed/leaked/insider/sure-win/100%/`
+  "guarantee your grade" is **discarded** → scripted fallback shown instead. The
+  noun "money-back guarantee" is deliberately allowed (real feature). Unit-verified.
+- **Graceful degradation**: no `ANTHROPIC_API_KEY`, API error, empty reply, or a
+  filtered reply all return `{ fallback: true }`, and the client serves the
+  scripted `matchTopic()` answer — so the bot never breaks, it just degrades to
+  Tier-1 behaviour.
+- **Rate limit**: in-memory per-IP (8/min; single Railway replica) → over-limit
+  returns `{ fallback: true }`. Message history capped to last 6 turns × 500 chars.
+
+⚠️ **DEPLOY DEPENDENCY: set `ANTHROPIC_API_KEY` in the Railway env** or the
+free-text bot silently stays in scripted-fallback mode (quick replies still work).
+Cost is tiny (Haiku, ~$1/$5 per 1M tokens, ≤400 output tokens/reply).
 
 ## The game layer ("Clear the Fog") — SHIPPED, web-first
 

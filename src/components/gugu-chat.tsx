@@ -215,6 +215,7 @@ export function GuguChat() {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
+  const [thinking, setThinking] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const nextId = useRef(1);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -263,12 +264,10 @@ export function GuguChat() {
     ]);
   }
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    const text = input.trim();
-    if (!text) return;
-    setInput("");
-    setMessages((m) => [...m, { id: nextId.current++, role: "user", content: text }]);
+  // Scripted answer for a free-typed question — used when the Claude brain is
+  // unavailable (no API key, error, rate-limited) or returns a non-compliant
+  // reply. Routes to the closest topic, else an honest "email a human".
+  function scriptedFallback(text: string) {
     const topic = matchTopic(text);
     if (topic) {
       pushGugu(topic.answer(ctx));
@@ -286,6 +285,45 @@ export function GuguChat() {
           and we&apos;ll help.
         </>
       );
+    }
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const text = input.trim();
+    if (!text || thinking) return;
+    setInput("");
+
+    // Build the API transcript from string-content turns only (user questions +
+    // prior Claude replies); scripted quick-reply answers are ReactNode and are
+    // naturally skipped. The new question is appended last.
+    const priorHistory = messages
+      .filter((m) => typeof m.content === "string")
+      .map((m) => ({
+        role: m.role === "gugu" ? ("assistant" as const) : ("user" as const),
+        content: m.content as string,
+      }));
+
+    setMessages((m) => [...m, { id: nextId.current++, role: "user", content: text }]);
+    setThinking(true);
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          messages: [...priorHistory, { role: "user", content: text }],
+        }),
+      });
+      const data = (await res.json()) as { reply?: string; fallback?: boolean };
+      if (data.reply) {
+        pushGugu(data.reply);
+      } else {
+        scriptedFallback(text);
+      }
+    } catch {
+      scriptedFallback(text);
+    } finally {
+      setThinking(false);
     }
   }
 
@@ -339,6 +377,16 @@ export function GuguChat() {
                 </div>
               )
             )}
+            {thinking && (
+              <div className="flex items-end gap-2">
+                <GuguSprite size={24} className="shrink-0" />
+                <div className="flex gap-1 rounded-2xl rounded-bl-sm bg-night-2/10 px-3.5 py-3">
+                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-body [animation-delay:-0.2s]" />
+                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-body [animation-delay:-0.1s]" />
+                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-body" />
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Quick replies */}
@@ -365,12 +413,15 @@ export function GuguChat() {
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type a question…"
               aria-label="Type a question"
-              className="min-w-0 flex-1 rounded-lg border border-hairline bg-white px-3 py-2 text-sm text-night outline-none placeholder:text-night/45 focus:border-accent"
+              // text-base = 16px: iOS Safari auto-zooms the page when a focused
+              // input is under 16px, so keep this at 16 to stop the zoom-in.
+              className="min-w-0 flex-1 rounded-lg border border-hairline bg-white px-3 py-2 text-base text-night outline-none placeholder:text-night/45 focus:border-accent"
             />
             <button
               type="submit"
               aria-label="Send"
-              className="shrink-0 rounded-lg bg-accent px-3.5 py-2 text-sm font-bold text-night hover:opacity-90"
+              disabled={thinking}
+              className="shrink-0 rounded-lg bg-accent px-3.5 py-2 text-sm font-bold text-night hover:opacity-90 disabled:opacity-50"
             >
               Ask
             </button>
