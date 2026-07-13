@@ -17,6 +17,7 @@ import {
   sgd,
   PUBLISHED_LEVELS,
   subjectsForLevel,
+  tierProducts,
 } from "@/lib/catalogue";
 import { subjectCopy } from "@/lib/subject-copy";
 import type { Pricing } from "@/lib/pricing";
@@ -379,6 +380,341 @@ function TheCause() {
           <p className="mt-10 font-display text-xl font-black text-accent sm:text-2xl">
             StudyLah! focuses on patterns, probability, and strategy, not volume.
           </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// "The Solution": the four products in every subject's suite. Names and copy
+// stay compliant, no "predicted papers" / leaked-exam framing.
+const SOLUTIONS: {
+  no: string;
+  name: string;
+  emoji: string;
+  tag: string;
+  body: React.ReactNode;
+  tier: string;
+}[] = [
+  {
+    no: "Solution No.1",
+    name: "Exam Forecast",
+    emoji: "🎯",
+    tag: "Know What's Likely",
+    body: (
+      <>
+        Built to <span className="font-bold text-accent">narrow revision down</span>{" "}
+        to the topics most likely on the 2026 paper, so the last weeks go to
+        what matters, not everything.
+      </>
+    ),
+    tier: "In every tier",
+  },
+  {
+    no: "Solution No.2",
+    name: "Sure Questions Vault",
+    emoji: "🗝️",
+    tag: "Core Concept Certainty",
+    body: (
+      <>
+        Built to <span className="font-bold text-accent">narrow revision down</span>{" "}
+        to the non-negotiable core concepts and high-impact question types that
+        students should not risk skipping.
+      </>
+    ),
+    tier: "Strategic tier and up",
+  },
+  {
+    no: "Solution No.3",
+    name: "Final Rehearsal",
+    emoji: "📝",
+    tag: "Pattern Familiarity + Execution",
+    body: (
+      <>
+        Built to <span className="font-bold text-accent">simulate exam conditions</span>{" "}
+        so students practise how questions are framed, how marks are awarded,
+        and how to start confidently.
+      </>
+    ),
+    tier: "In the Master tier",
+  },
+  {
+    no: "Solution No.4",
+    name: "The Companion",
+    emoji: "🧭",
+    tag: "The Under-Rehearsed Marks",
+    body: (
+      <>
+        Built to <span className="font-bold text-accent">bank the marks most students skip</span>:
+        a dedicated forecast for the paper or skill strand that decides the most
+        marks, with model full-credit exhibits.
+      </>
+    ),
+    tier: "In the Master tier",
+  },
+];
+
+const STRATEGY_STEPS = [
+  "Use the Exam Forecast to aim your final weeks at the likeliest topics.",
+  "Use the Sure Questions Vault to lock the non-negotiable core concepts.",
+  "Use the Final Rehearsal to train pattern recognition and exam execution closer to the paper.",
+  "Add the Companion to bank the marks most students under-rehearse.",
+];
+
+function TheSolution() {
+  const artPath = "/marketing/solution-target.png";
+  const hasArt = existsSync(
+    join(process.cwd(), "public", "marketing", "solution-target.png")
+  );
+  return (
+    <section aria-labelledby="solution-heading" className="reveal py-12">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="rounded-3xl border border-hairline bg-night-2 px-4 py-16 text-center sm:px-10">
+          <div className="flex justify-center">
+            <Ghost size={64} />
+          </div>
+          <div className="relative z-10 -mt-3 flex justify-center">
+            <Badge>The Solution</Badge>
+          </div>
+          <h2
+            id="solution-heading"
+            className="mt-4 font-display text-3xl font-black text-accent sm:text-4xl lg:text-5xl"
+          >
+            What StudyLah! Does
+          </h2>
+
+          {hasArt && (
+            <div className="mt-6 flex justify-center">
+              <Image
+                src={artPath}
+                alt="Darts hitting the centre of a target"
+                width={320}
+                height={298}
+                className="h-auto w-40 sm:w-52"
+              />
+            </div>
+          )}
+
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-cloud sm:text-xl">
+            We don&apos;t promise magic. We create{" "}
+            <span className="font-semibold text-accent">
+              clarity, direction, and focus
+            </span>
+            .
+          </p>
+
+          <p className="mx-auto mt-3 max-w-2xl text-sm text-body">
+            Every subject you buy includes all four, one for each job in the run
+            up to the paper.
+          </p>
+
+          {/* The four solutions */}
+          <div className="mt-10 grid gap-5 text-center sm:grid-cols-2">
+            {SOLUTIONS.map((s) => (
+              <div
+                key={s.no}
+                className="flex flex-col rounded-3xl border border-hairline bg-surface p-8"
+              >
+                <p className="font-display text-lg font-black text-accent">
+                  {s.no}
+                </p>
+                <h3 className="mt-1 font-display text-2xl font-black text-white sm:text-3xl">
+                  {s.name}
+                </h3>
+                <div
+                  aria-hidden="true"
+                  className="mx-auto mt-6 grid h-24 w-24 place-items-center rounded-2xl bg-night-2 text-5xl"
+                >
+                  {s.emoji}
+                </div>
+                <div className="mt-6 flex justify-center">
+                  <span className="rounded-full border border-hairline px-4 py-2 text-sm font-semibold text-cloud">
+                    {s.tag}
+                  </span>
+                </div>
+                <p className="mx-auto mt-6 max-w-md flex-1 leading-relaxed text-cloud">
+                  {s.body}
+                </p>
+                <div className="mt-6">
+                  <Link
+                    href="/subjects"
+                    className="inline-block rounded-full border border-guarantee/60 px-6 py-2.5 text-sm font-bold uppercase tracking-wide text-guarantee transition-colors hover:bg-guarantee/10"
+                  >
+                    Learn more
+                  </Link>
+                </div>
+                <p className="mt-6 font-mono text-xs text-body">{s.tier}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* The bundle: The Smarter Strategy */}
+          <div className="mt-6 rounded-3xl border border-hairline bg-surface p-8 text-center sm:p-12">
+            <p className="font-display text-lg font-black text-accent">
+              Bundled Up
+            </p>
+            <h3 className="mt-1 font-display text-2xl font-black text-white sm:text-3xl">
+              The Smarter Strategy
+            </h3>
+            <p className="mx-auto mt-6 max-w-3xl leading-relaxed text-cloud">
+              The <span className="font-bold text-white">Exam Forecast</span>{" "}
+              locks in the highest-impact topics. The{" "}
+              <span className="font-bold text-white">Sure Questions Vault</span>{" "}
+              drills the must-know question types. The{" "}
+              <span className="font-bold text-white">Final Rehearsal</span> trains
+              exam execution under time, and the{" "}
+              <span className="font-bold text-white">Companion</span> banks the
+              marks most students under-rehearse.
+            </p>
+            <ul className="mx-auto mt-8 flex max-w-2xl flex-col gap-4 text-left">
+              {STRATEGY_STEPS.map((step) => (
+                <li key={step} className="flex items-start gap-3 text-cloud">
+                  <span
+                    aria-hidden="true"
+                    className="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full border-2 border-guarantee"
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-guarantee" />
+                  </span>
+                  <span className="leading-relaxed">{step}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8">
+              <Link
+                href="#tiers"
+                className="btn-pixel cta-sheen glow-soft inline-block rounded bg-accent px-6 py-3 text-sm font-bold text-night"
+              >
+                Get all four with Master →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const TIERS: {
+  key: "essential" | "strategic" | "master";
+  name: string;
+  note: string;
+  popular?: boolean;
+  products: string[];
+}[] = [
+  {
+    key: "essential",
+    name: "Essential",
+    note: "The entry point",
+    products: ["Exam Forecast"],
+  },
+  {
+    key: "strategic",
+    name: "Strategic",
+    note: "",
+    products: ["Exam Forecast", "Sure Questions Vault"],
+  },
+  {
+    key: "master",
+    name: "Master",
+    note: "",
+    popular: true,
+    products: [
+      "Exam Forecast",
+      "Sure Questions Vault",
+      "Final Rehearsal",
+      "Subject Companion",
+    ],
+  },
+];
+
+function PricingTiers({ pricing }: { pricing: Pricing }) {
+  const { tierPrice, tierValue, tierSavings } = pricing;
+  // Value/savings reflect a full four-product (science) suite, so Master reads
+  // its true bundle value rather than the 3-product default.
+  const refSubject = getSubject("o-level", "chemistry-pure");
+  return (
+    <section id="tiers" className="reveal scroll-mt-24 py-12">
+      <div className="mx-auto max-w-6xl px-4">
+        <h2 className="text-center font-display text-3xl font-black text-white sm:text-4xl">
+          Choose your tier
+        </h2>
+        <p className="mx-auto mt-2 max-w-2xl text-center text-cloud">
+          Most students take Master, the full plan (forecast, practice and a
+          full rehearsal) at the biggest saving. Start smaller only if you
+          prefer.
+        </p>
+
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
+          {TIERS.map((t) => {
+            const products = refSubject
+              ? tierProducts(t.key, refSubject)
+              : undefined;
+            const price = tierPrice("o-level", t.key);
+            const value = tierValue("o-level", t.key, products);
+            const savings = tierSavings("o-level", t.key, products);
+            return (
+              <div
+                key={t.key}
+                className={`relative flex flex-col rounded-2xl border p-6 ${
+                  t.popular
+                    ? "border-accent bg-night-2"
+                    : "border-hairline bg-surface"
+                }`}
+              >
+                {t.popular && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wide text-night">
+                    Most popular · Best value
+                  </span>
+                )}
+                <p className="font-display text-2xl font-bold text-white">
+                  {t.name}
+                </p>
+                <p className="mt-1 font-display text-4xl font-black text-accent">
+                  {sgd(price)}
+                </p>
+                {t.key === "essential" ? (
+                  <p className="mt-1 text-sm text-body">{t.note}</p>
+                ) : (
+                  <p className="mt-1 text-sm font-medium text-guarantee">
+                    {sgd(value)} value, save {sgd(savings)}
+                  </p>
+                )}
+                <ul className="mt-5 space-y-2">
+                  {t.products.map((p) => (
+                    <li key={p} className="flex gap-2 text-sm text-cloud">
+                      <span aria-hidden="true" className="text-guarantee">
+                        •
+                      </span>
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-8 flex flex-col items-center gap-4">
+          <Link
+            href="/subjects"
+            className="btn-pixel cta-sheen glow-soft rounded bg-accent px-7 py-3.5 text-sm font-bold text-night"
+          >
+            Choose your subject →
+          </Link>
+          <p className="text-center font-mono text-xs text-body">
+            Instant PDF download · works right up to exam day · watermarked to
+            you
+          </p>
+          <div className="mx-auto max-w-2xl rounded-xl border border-hairline bg-surface px-4 py-3 text-center text-sm text-cloud">
+            <span className="font-medium text-guarantee">
+              Money-back guarantee.
+            </span>{" "}
+            Full refund if fewer than 3 of our top-5 forecast topics appear in
+            the paper, email your order ID within 14 days of the exam.{" "}
+            <Link href="/faq" className="font-medium text-accent hover:underline">
+              How it works
+            </Link>
+          </div>
         </div>
       </div>
     </section>
@@ -1078,6 +1414,8 @@ export default async function Home() {
       <TheProblem />
       <TheCause />
       <SocialProof />
+      <TheSolution />
+      <PricingTiers pricing={pricing} />
       <WhyItWorks />
       <Journey pricing={pricing} />
       <StudyHq />
