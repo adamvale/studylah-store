@@ -264,7 +264,7 @@ function TheProblem() {
     join(process.cwd(), "public", "marketing", "parent-thinking.png")
   );
   return (
-    <section aria-labelledby="problem-heading" className="reveal bg-night-2 py-20">
+    <section aria-labelledby="problem-heading" className="reveal py-20">
       <div className="mx-auto max-w-3xl px-4 text-center">
         <div className="flex justify-center">
           <SectionGhost />
@@ -419,7 +419,7 @@ function TheCause() {
                 key={t.label}
                 className="rounded-2xl border border-hairline bg-surface p-6"
               >
-                <p className="font-display text-lg font-bold text-accent">
+                <p className="text-center font-display text-lg font-bold text-accent sm:text-left">
                   {t.label}
                 </p>
                 <div className="mt-3 flex gap-3">
@@ -461,7 +461,7 @@ const SOLUTIONS: {
         what matters, not everything.
       </>
     ),
-    tier: "In every tier",
+    tier: "Every tier",
   },
   {
     no: "Solution No.2",
@@ -474,7 +474,7 @@ const SOLUTIONS: {
         students should not risk skipping.
       </>
     ),
-    tier: "Strategic tier and up",
+    tier: "Strategic & up",
   },
   {
     no: "Solution No.3",
@@ -487,7 +487,7 @@ const SOLUTIONS: {
         and how to start confidently.
       </>
     ),
-    tier: "In the Master tier",
+    tier: "Master tier",
   },
   {
     no: "Solution No.4",
@@ -500,7 +500,7 @@ const SOLUTIONS: {
         marks, with model full-credit exhibits.
       </>
     ),
-    tier: "In the Master tier",
+    tier: "Master tier",
   },
 ];
 
@@ -540,7 +540,7 @@ function TheSolution() {
                 alt="Darts hitting the centre of a target"
                 width={320}
                 height={298}
-                className="h-auto w-40 sm:w-52"
+                className="h-auto w-28 sm:w-36"
               />
             </div>
           )}
@@ -579,15 +579,12 @@ function TheSolution() {
                 <p className="mx-auto mt-4 max-w-md flex-1 leading-relaxed text-cloud">
                   {s.body}
                 </p>
-                <div className="mt-5">
-                  <Link
-                    href="/subjects"
-                    className="inline-block rounded-full border border-guarantee/60 px-6 py-2.5 text-sm font-bold uppercase tracking-wide text-guarantee transition-colors hover:bg-guarantee/10"
-                  >
-                    Learn more
-                  </Link>
+                <div className="mt-6 flex justify-center">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-sm">
+                    <span className="text-body">Included in:</span>
+                    <span className="font-bold text-accent">{s.tier}</span>
+                  </span>
                 </div>
-                <p className="mt-4 font-mono text-xs text-body">{s.tier}</p>
               </div>
             ))}
           </div>
@@ -889,7 +886,7 @@ function WhyItWorks() {
     join(process.cwd(), "public", "marketing", "why-brain.png")
   );
   return (
-    <section className="reveal bg-night-2 py-20">
+    <section className="reveal py-20">
       <div className="mx-auto max-w-6xl px-4 text-center">
         <div className="flex justify-center">
           <SectionGhost />
@@ -958,8 +955,12 @@ function Journey({ pricing }: { pricing: Pricing }) {
           Your last 14 days, planned
         </h2>
         <p className="mx-auto mt-2 max-w-xl text-center text-cloud">
-          Three PDFs per subject, each built for a different moment in your
-          countdown.
+          No more staring at a mountain of notes. Each subject arrives as a
+          day-by-day plan, so the final fortnight has a{" "}
+          <span className="font-semibold text-white">
+            clear start, middle and calm finish
+          </span>
+          .
         </p>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {JOURNEY_ORDER.map((key, i) => {
@@ -1054,7 +1055,7 @@ const STUDY_HQ_FEATURES = [
 
 function StudyHq() {
   return (
-    <section className="reveal bg-night-2 py-20">
+    <section className="reveal py-20">
       <div className="mx-auto max-w-6xl px-4">
         <p className="text-center font-mono text-xs font-medium uppercase tracking-wide text-teal">
           Included with every subject · no subscription
@@ -1156,7 +1157,7 @@ const GURUS = [
 // product; StudyLah Legends is a beta playground it unlocks, for purchasers only.
 function FogFrontierBeta() {
   return (
-    <section id="fog-frontier" className="reveal scroll-mt-20 bg-night-2 py-20">
+    <section id="fog-frontier" className="reveal scroll-mt-20 py-20">
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex flex-wrap items-center justify-center gap-2">
           <span className="rounded bg-violet px-2.5 py-1 font-mono text-[11px] font-bold uppercase tracking-widest text-white">
