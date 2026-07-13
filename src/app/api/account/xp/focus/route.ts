@@ -6,7 +6,7 @@ import { XP } from "@/lib/game";
 import { awardXp, totalXpFor, gamePayload } from "@/lib/server/xp";
 
 // A completed focus block (pomodoro) reports here for XP. The timer runs
-// client-side, so this is the one award the server can't fully witness —
+// client-side, so this is the one award the server can't fully witness, 
 // exposure is capped hard: only full blocks (≥20 min claimed) and at most
 // 4 awards per Singapore day.
 const MAX_PER_DAY = 4;

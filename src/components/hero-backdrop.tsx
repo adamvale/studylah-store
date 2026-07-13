@@ -1,5 +1,5 @@
 // Purely decorative hero atmosphere: drifting aurora clouds, a masked dot grid,
-// rising pixel motes and film grain — all CSS, no images (CSP-safe), no client
+// rising pixel motes and film grain, all CSS, no images (CSP-safe), no client
 // JS. Mote positions are hardcoded (not random) so server and client render
 // identically and never trip a hydration mismatch.
 
@@ -22,7 +22,7 @@ export function HeroBackdrop() {
       aria-hidden="true"
       className="grain pointer-events-none absolute inset-0 -z-10 overflow-hidden"
     >
-      {/* Base wash — a deep radial that adds depth even before the blobs. */}
+      {/* Base wash, a deep radial that adds depth even before the blobs. */}
       <div
         className="absolute inset-0"
         style={{

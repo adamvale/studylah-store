@@ -39,7 +39,7 @@ export default async function PracticePage() {
       <div>
         <h2 className="font-display text-2xl font-bold text-ink">Practice drills</h2>
         <p className="mt-1 text-sm text-body">
-          Skill drills tuned to your subjects — the phrasing, definitions and
+          Skill drills tuned to your subjects, the phrasing, definitions and
           formats that decide marks beyond just knowing the content.
         </p>
       </div>
@@ -61,7 +61,7 @@ export default async function PracticePage() {
         </div>
       ) : tools.length === 0 ? (
         <div className="rounded-2xl border border-hairline bg-surface p-8 text-center text-sm text-body">
-          Skill drills for your subjects are on the way — check back soon.
+          Skill drills for your subjects are on the way, check back soon.
         </div>
       ) : (
         <PracticeTools data={data} />

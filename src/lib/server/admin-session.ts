@@ -3,7 +3,7 @@ import { createHmac, timingSafeEqual } from "crypto";
 // Pure-crypto mirror of the admin session check in admin-auth.ts, safe to import
 // from the proxy (which must not pull in next/headers). Keep these two constants
 // identical to admin-auth.ts. If they ever drift, the only effect is that the
-// admin maintenance-bypass stops working — fail-safe, not a security hole.
+// admin maintenance-bypass stops working, fail-safe, not a security hole.
 export const ADMIN_COOKIE = "studylah_admin";
 const SESSION_PAYLOAD = "studylah-admin-v1";
 

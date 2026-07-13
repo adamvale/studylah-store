@@ -69,18 +69,18 @@ export async function POST(request: Request) {
       });
       await sendEmail({
         to: email,
-        subject: `Your free ${subject.name} heatmap — StudyLah`,
+        subject: `Your free ${subject.name} heatmap, StudyLah`,
         html: emailLayout(`
           <h1 style="font-size:20px;margin:0 0 12px;color:#101f33;">Your Top 5 heatmap is attached</h1>
           <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 16px;">
             The five topics our model rates most likely for ${subject.name}
-            (${LEVELS[level].name}), 2026 sitting. Judge us on it — and when
+            (${LEVELS[level].name}), 2026 sitting. Judge us on it, and when
             you're ready for every topic with confidence tiers, worked questions,
             and a timed rehearsal, the full pack is at studylah.education.
           </p>
           <p style="font-size:12px;color:#3d4e63;margin:0;">
             You're getting this because you asked for it. Unsubscribe anytime
-            with one click — your consent is recorded and revocable (PDPA).
+            with one click, your consent is recorded and revocable (PDPA).
           </p>
         `),
         text: `Your free ${subject.name} heatmap (${LEVELS[level].name}) is attached.\n\nWant every topic, questions, and a rehearsal? studylah.education`,

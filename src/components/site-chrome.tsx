@@ -29,10 +29,10 @@ export function SiteChrome({
         {children}
       </main>
       {!chromeless && footer}
-      {/* Floating sales helper — storefront only (hidden on chromeless ad
+      {/* Floating sales helper, storefront only (hidden on chromeless ad
           landings + /admin, and self-hidden inside the native game shell). */}
       {!chromeless && <GuguChat />}
-      {/* Exit-intent welcome offer — self-suppresses on cart/checkout/native
+      {/* Exit-intent welcome offer, self-suppresses on cart/checkout/native
           and after one dismissal. */}
       {!chromeless && <WelcomeOffer />}
     </>

@@ -20,6 +20,7 @@ import { HeatBar, TierPill } from "@/components/heat";
 import { GuaranteeBadge } from "@/components/guarantee-badge";
 import {
   CtaLink,
+  GuguResultCheer,
   ResendButton,
   ResultsViewedBeacon,
   ShareRow,
@@ -68,11 +69,12 @@ export default async function DiagnosticResultsPage({
   const refCode = buyer[0]?.referralCode ?? null;
 
   const shareUrl = `${serverConfig.siteUrl}/diagnostic/r/${attempt.id}?utm_source=share&utm_medium=social&utm_campaign=diagnostic${refCode ? `&ref=${refCode}` : ""}`;
-  const shareMessage = `My mark check on the most-likely ${subject.name} topics for 2026: ${attempt.score}/${attempt.totalMarks} — ${estimate} territory. What would you score?`;
+  const shareMessage = `My mark check on the most-likely ${subject.name} topics for 2026: ${attempt.score}/${attempt.totalMarks}, ${estimate} territory. What would you score?`;
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
       <ResultsViewedBeacon attemptId={attempt.id} />
+      <GuguResultCheer band={band} />
 
       <p className="font-mono text-xs text-body">
         {subject.name} · {attempt.topic}
@@ -113,7 +115,7 @@ export default async function DiagnosticResultsPage({
                     ok ? "bg-guarantee/15 text-guarantee" : "bg-coral/15 text-coral"
                   }`}
                 >
-                  {ok ? `${q.marks}/${q.marks}` : `0/${q.marks} — marks dropped`}
+                  {ok ? `${q.marks}/${q.marks}` : `0/${q.marks}, marks dropped`}
                 </span>
               </summary>
               <div className="border-t border-hairline px-5 py-4 text-sm">
@@ -138,7 +140,7 @@ export default async function DiagnosticResultsPage({
         })}
       </div>
 
-      {/* Free topic heatmap — the giveaway, now delivered with your result */}
+      {/* Free topic heatmap, the giveaway, now delivered with your result */}
       <section className="mt-8 rounded-2xl border border-hairline bg-surface p-6">
         <p className="font-mono text-xs font-medium uppercase tracking-wide text-accent">
           Your free topic heatmap
@@ -152,12 +154,12 @@ export default async function DiagnosticResultsPage({
           ))}
         </div>
         <p className="mt-4 border-t border-hairline pt-3 text-xs text-body">
-          Every topic — Very High to Watch — is ranked in the full Exam Forecast,
+          Every topic, Very High to Watch, is ranked in the full Exam Forecast,
           with a ten-year deep dive on each.
         </p>
       </section>
 
-      {/* Tailored fix plan — the sales close. Leads with the loss frame (what
+      {/* Tailored fix plan, the sales close. Leads with the loss frame (what
           these gaps would cost in November), then the exact fix, made risk-free
           by the guarantee and anchored against the price of tuition. */}
       <section className="mt-8 rounded-2xl border border-accent/40 bg-surface p-6">
@@ -170,7 +172,7 @@ export default async function DiagnosticResultsPage({
             <span className="font-display text-lg font-bold text-coral">
               {droppedMarks} mark{droppedMarks === 1 ? "" : "s"}
             </span>{" "}
-            on topics forecast most likely for your 2026 {subject.name} paper —
+            on topics forecast most likely for your 2026 {subject.name} paper, 
             marks that are still recoverable now, not in the exam hall.
           </p>
         )}
@@ -216,7 +218,7 @@ export default async function DiagnosticResultsPage({
       </div>
 
       <p className="mt-3 text-xs text-body">
-        Refer a friend — you both get S$15.{" "}
+        Refer a friend, you both get S$15.{" "}
         {refCode ? (
           <>
             Your link:{" "}

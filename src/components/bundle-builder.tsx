@@ -94,23 +94,23 @@ export function BundleBuilder({
     : levels[0]?.level;
   const stepMessage =
     count === 0
-      ? "Pick your subjects — each comes as the full Master pack: forecast, practice and a full rehearsal."
+      ? "Pick your subjects, each comes as the full Master pack: forecast, practice and a full rehearsal."
       : count < 3
-        ? `Add ${3 - count} more subject${3 - count === 1 ? "" : "s"} to unlock Mega-Bundle pricing — you'll save on every one.`
+        ? `Add ${3 - count} more subject${3 - count === 1 ? "" : "s"} to unlock Mega-Bundle pricing, you'll save on every one.`
         : count < 5
           ? count === 4
-            ? "One more subject unlocks All-In — the lowest price per subject there is."
+            ? "One more subject unlocks All-In, the lowest price per subject there is."
             : "Mega-Bundle applied. Add more subjects and the saving grows."
           : count === 5
-            ? "All-In applied — add your 6th and it's effectively free."
+            ? "All-In applied, add your 6th and it's effectively free."
             : count === 6
-              ? "All-In applied — you can still add up to 2 more subjects."
-              : "All-In applied — every subject you take, at the lowest price per subject.";
+              ? "All-In applied, you can still add up to 2 more subjects."
+              : "All-In applied, every subject you take, at the lowest price per subject.";
 
   if (levels.length === 0) {
     return (
       <p className="mt-4 rounded-2xl border border-hairline bg-surface p-5 text-sm text-body">
-        You already own every published subject — nice work.
+        You already own every published subject, nice work.
       </p>
     );
   }
@@ -122,7 +122,7 @@ export function BundleBuilder({
       }`}
     >
       <div className={stacked ? "space-y-4" : "space-y-5 lg:col-span-2"}>
-        {/* Level toggle — pick O-Level (G3) or N(A)-Level (G2); selections in
+        {/* Level toggle, pick O-Level (G3) or N(A)-Level (G2); selections in
             both levels persist as you switch. */}
         {levels.length > 1 && (
           <div
@@ -221,7 +221,7 @@ export function BundleBuilder({
                 })}
               </ul>
               <div className="mt-4 border-t border-hairline pt-4">
-                {/* Headline: price per subject — the number that keeps dropping. */}
+                {/* Headline: price per subject, the number that keeps dropping. */}
                 <p className="font-mono text-xs font-medium uppercase tracking-wide text-body">
                   Price per subject
                 </p>
@@ -239,7 +239,7 @@ export function BundleBuilder({
                 {priced.savings > 0 && (
                   <p className="mt-1 text-sm font-medium text-guarantee">
                     {priced.bundles[0]?.kind === "all-in" ? "All-In" : "Mega-Bundle"}{" "}
-                    applied — it gets cheaper with every subject you add.
+                    applied, it gets cheaper with every subject you add.
                   </p>
                 )}
                 {/* Total, in smaller type underneath. */}
@@ -282,7 +282,7 @@ export function BundleBuilder({
       </aside>
 
       {/* On phones the summary card sits below the pickers, so the running
-          total rides in a sticky bar — watching the price drop as subjects go
+          total rides in a sticky bar, watching the price drop as subjects go
           in is the whole fun of the bundle. */}
       {count > 0 && (
         <div

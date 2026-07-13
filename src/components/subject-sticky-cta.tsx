@@ -45,7 +45,7 @@ export function SubjectStickyCta({
       <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3">
         <div className="hidden min-w-0 sm:block">
           <p className="truncate text-sm font-medium text-white">
-            {subjectName} — full Master pack
+            {subjectName}, full Master pack
           </p>
           <p className="truncate text-xs text-guarantee">
             Less than one hour of tuition · fully refundable if the forecast
@@ -57,7 +57,7 @@ export function SubjectStickyCta({
           onClick={buyMaster}
           className="cta-sheen w-full rounded-lg bg-accent px-5 py-3 text-center text-sm font-bold text-night transition-transform hover:-translate-y-0.5 sm:w-auto"
         >
-          Get Master — {sgd(tierPrice(level, "master"))}
+          Get Master, {sgd(tierPrice(level, "master"))}
         </button>
       </div>
     </div>

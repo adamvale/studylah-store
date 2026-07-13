@@ -1,6 +1,6 @@
 // A tiny window-event bus so any page can make Gugu's floating bubble speak.
 // Gugu lives in the site chrome (persists across route changes), while callers
-// like the diagnostic quiz live in the page tree — a CustomEvent decouples them
+// like the diagnostic quiz live in the page tree, a CustomEvent decouples them
 // without a shared provider. Client-only; a no-op during SSR.
 
 export const GUGU_SAY_EVENT = "gugu:say";

@@ -2,10 +2,10 @@
 
 import { useMemo, useState } from "react";
 
-// A scientific calculator for the diagnostic quiz — enough for O-/N-Level
+// A scientific calculator for the diagnostic quiz, enough for O-/N-Level
 // Mathematics: the four operations, powers & roots, trig (deg/rad), log & ln,
 // factorial, π and e, parentheses and scientific notation. It evaluates a typed
-// expression with a small recursive-descent parser — NO eval, so it's safe and
+// expression with a small recursive-descent parser, NO eval, so it's safe and
 // CSP-clean. Keeps its own open state; the quiz just drops <QuizCalculator/> in.
 
 // ── Expression evaluator ─────────────────────────────────────────────────────

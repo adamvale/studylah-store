@@ -31,7 +31,7 @@ export function TierSelector({
   const { addItem } = useCart();
   const { earlyBird, tierPrice, regularTierPrice, tierValue, tierSavings } = usePricing();
 
-  // Master's contents vary by subject — only the sciences include Paper 3.
+  // Master's contents vary by subject, only the sciences include Paper 3.
   const subject = getSubject(level, subjectSlug);
   const productsFor = (t: Tier) => (subject ? tierProducts(t, subject) : []);
   const masterValue = tierValue(level, "master", productsFor("master"));
@@ -47,7 +47,7 @@ export function TierSelector({
         Choose your tier
       </h2>
       <p className="mt-1 max-w-2xl text-sm text-body">
-        Most students take Master — the full plan (forecast, practice and a
+        Most students take Master, the full plan (forecast, practice and a
         full rehearsal) at the biggest saving. It&apos;s selected for you below;
         start smaller only if you prefer.
       </p>
@@ -99,7 +99,7 @@ export function TierSelector({
                   </span>
                   {savings > 0 ? (
                     <span className="mt-1 text-xs font-medium text-guarantee">
-                      {sgd(value)} value — save {sgd(value - price)}
+                      {sgd(value)} value, save {sgd(value - price)}
                     </span>
                   ) : (
                     <span className="mt-1 text-xs text-body">
@@ -129,7 +129,7 @@ export function TierSelector({
           onClick={add}
           className="cta-sheen glow-soft rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
         >
-          Get {TIER_NAMES[tier]} — {sgd(tierPrice(level, tier))}
+          Get {TIER_NAMES[tier]}, {sgd(tierPrice(level, tier))}
         </button>
         <p className="text-xs text-body">
           Instant PDF download · less than one hour of tuition · works right up

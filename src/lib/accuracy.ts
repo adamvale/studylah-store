@@ -1,6 +1,6 @@
 // The published accuracy scorecard: the forecast's top calls for each subject
 // against what actually appeared in the paper, per sitting. Every scorecard
-// shows at least one miss — reporting misses is the point.
+// shows at least one miss, reporting misses is the point.
 import { SUBJECTS, type Level, type Subject } from "./catalogue";
 import { seededHash, TOPIC_POOLS } from "./topics";
 
@@ -27,7 +27,7 @@ export function scorecardFor(subject: Subject): YearScorecard[] {
     const pool = TOPIC_POOLS[subject.family];
     const h = seededHash(`${subject.level}/${subject.slug}/${year}`);
     const start = h % pool.length;
-    // Show the forecast's top 8–10 calls (capped by the pool). Probabilities
+    // Show the forecast's top 8-10 calls (capped by the pool). Probabilities
     // step down from the strongest call to the weakest.
     const topicCount = Math.min(pool.length, 8 + (h % 3));
     // Always report at least one miss; a second ~25% of the time, and only when

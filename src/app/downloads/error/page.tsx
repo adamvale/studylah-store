@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 const REASONS: Record<string, { title: string; body: string }> = {
   expired: {
     title: "This download link has expired",
-    body: "Links last 7 days from purchase. Email us with your order number and we'll issue a fresh link — your purchase is never lost.",
+    body: "Links last 7 days from purchase. Email us with your order number and we'll issue a fresh link, your purchase is never lost.",
   },
   "used-up": {
     title: "This file hit its download limit",
@@ -15,7 +15,7 @@ const REASONS: Record<string, { title: string; body: string }> = {
   },
   "missing-file": {
     title: "We couldn't fetch your file",
-    body: "That's on us, not you — the file didn't load from storage and your download count wasn't used. Try again in a minute, or email us and we'll sort it immediately.",
+    body: "That's on us, not you, the file didn't load from storage and your download count wasn't used. Try again in a minute, or email us and we'll sort it immediately.",
   },
   "not-found": {
     title: "We don't recognise this download link",

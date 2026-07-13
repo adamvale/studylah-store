@@ -5,7 +5,7 @@ import type { ForecastTier } from "@/components/heat";
 // The fog-of-war campaign map. Each topic is a hex territory; VERY HIGH
 // topics sit at the centre of the region (they're worth the most marks) and
 // the fog burns off as the study-plan status advances. Tapping a hex advances
-// it — the map IS the checklist, drawn as terrain.
+// it, the map IS the checklist, drawn as terrain.
 //
 // Layout is a deterministic hex spiral (no physics, no randomness): the same
 // subject always draws the same map.
@@ -111,7 +111,7 @@ export function CampaignMap({
         viewBox={`${minX.toFixed(0)} ${minY.toFixed(0)} ${w.toFixed(0)} ${h.toFixed(0)}`}
         className="mx-auto block w-full max-w-md"
         role="group"
-        aria-label="Campaign map — one territory per topic"
+        aria-label="Campaign map, one territory per topic"
       >
         {cells.map((c) => {
           const status = statusFor(c.topic);
@@ -131,7 +131,7 @@ export function CampaignMap({
               key={c.topic}
               role="button"
               tabIndex={0}
-              aria-label={`${c.topic} — ${TIER_LABEL[c.tier]} — ${STATUS_LABEL[status] ?? "Fogged"}. Activate to advance.`}
+              aria-label={`${c.topic}, ${TIER_LABEL[c.tier]}, ${STATUS_LABEL[status] ?? "Fogged"}. Activate to advance.`}
               className="cursor-pointer outline-none focus:opacity-80"
               onClick={() => onSelect(c.topic)}
               onKeyDown={(e) => {
@@ -162,7 +162,7 @@ export function CampaignMap({
                 </text>
               )}
               {status === 0 && (
-                // drawn fog puffs — no emoji-font dependency
+                // drawn fog puffs, no emoji-font dependency
                 <g aria-hidden="true" opacity="0.45">
                   <circle cx={c.x - 6} cy={c.y + 2} r="4.5" fill="#8894a3" />
                   <circle cx={c.x + 1} cy={c.y - 2.5} r="5.5" fill="#aeb8c6" />
@@ -179,7 +179,7 @@ export function CampaignMap({
       <p className="mt-2 text-center text-[11px] text-body/80">
         <span className="text-body/50">●</span> fogged ·{" "}
         <span className="text-accent">●</span> revised/practised ·{" "}
-        <span className="text-guarantee">✓</span> cleared — tap a territory to
+        <span className="text-guarantee">✓</span> cleared, tap a territory to
         advance it. Border colour = forecast tier.
       </p>
     </div>

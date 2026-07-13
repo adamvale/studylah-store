@@ -23,7 +23,7 @@ worked: |
   Divide the mantissas: 4.8 ÷ 1.6 = 3.
   Subtract the indices: 10⁵ ÷ 10⁻² = 10^(5 − (−2)) = 10⁷.
   So the answer is 3 × 10⁷.
-  The trap is writing 10^(5 − 2) = 10³ — subtracting −2 ADDS 2.
+  The trap is writing 10^(5 − 2) = 10³, subtracting −2 ADDS 2.
 ```
 
 ```yaml
@@ -39,7 +39,7 @@ answer: 1
 marks: 2
 misconception: coefficient-not-raised-to-the-power
 worked: |
-  (2a³b)⁴ = 2⁴ × a¹² × b⁴ = 16a¹²b⁴ — the 2 must be raised to the power 4 as well.
+  (2a³b)⁴ = 2⁴ × a¹² × b⁴ = 16a¹²b⁴, the 2 must be raised to the power 4 as well.
   16a¹²b⁴ ÷ 4a⁵b² = (16 ÷ 4) a^(12−5) b^(4−2) = 4a⁷b².
 ```
 
@@ -208,7 +208,7 @@ misconception: reverse-percentage-add-the-discount-back
 worked: |
   The sale price is (100 − 12) = 88% of the original price.
   0.88 × original = 308, so original = 308 ÷ 0.88 = $350.
-  Adding 12% back on to $308 gives $344.96 — that is the wrong base.
+  Adding 12% back on to $308 gives $344.96, that is the wrong base.
 ```
 
 ```yaml
@@ -333,7 +333,7 @@ worked: |
   Instalments = 24 × 46 = $1104.
   Total hire-purchase price = 240 + 1104 = $1344.
   Extra paid = 1344 − 1200 = $144.
-  Leaving the deposit out gives 1104 − 1200 = −$96, i.e. nonsense — the deposit is part of what you pay.
+  Leaving the deposit out gives 1104 − 1200 = −$96, i.e. nonsense, the deposit is part of what you pay.
 ```
 
 ```yaml
@@ -351,7 +351,7 @@ misconception: multiplied-instead-of-dividing
 worked: |
   RM 3.45 buys S$1, so divide by 3.45 to go from ringgit to Singapore dollars.
   690 ÷ 3.45 = S$200.
-  Multiplying (690 × 3.45 = 2380.50) converts the wrong way — a sanity check tells you the answer must be SMALLER than 690.
+  Multiplying (690 × 3.45 = 2380.50) converts the wrong way, a sanity check tells you the answer must be SMALLER than 690.
 ```
 
 ```yaml
@@ -370,7 +370,7 @@ worked: |
   Average speed = TOTAL distance ÷ TOTAL time.
   Time 1 = 60/40 = 1.5 h.  Time 2 = 60/60 = 1 h.  Total time = 2.5 h.
   Total distance = 120 km, so average speed = 120 / 2.5 = 48 km/h.
-  The mean of 40 and 60 is 50 km/h — but more time is spent at the slower speed, so the true average is below 50.
+  The mean of 40 and 60 is 50 km/h, but more time is spent at the slower speed, so the true average is below 50.
 ```
 
 ```yaml
@@ -604,7 +604,7 @@ marks: 2
 misconception: squared-each-term-separately
 worked: |
   (3x − 2y)² = (3x)² − 2(3x)(2y) + (2y)² = 9x² − 12xy + 4y².
-  The middle term is essential — (a − b)² is NOT a² − b² and it is NOT a² + b².
+  The middle term is essential, (a − b)² is NOT a² − b² and it is NOT a² + b².
   Note the last term is +4y², because (−2y)² is positive.
 ```
 
@@ -655,7 +655,7 @@ marks: 2
 misconception: added-before-multiplying
 worked: |
   f = (6 × 3)/(6 + 3) = 18/9 = 2.
-  The whole of a + b is the denominator — work out the bracket before dividing.
+  The whole of a + b is the denominator, work out the bracket before dividing.
 ```
 
 ```yaml
@@ -838,7 +838,7 @@ worked: |
   x = [−b ± √(b² − 4ac)] / (2a) = [5 ± √(25 + 32)] / 4 = (5 ± √57)/4.
   √57 = 7.5498…
   x = (5 + 7.5498)/4 = 3.14  or  x = (5 − 7.5498)/4 = −0.64.
-  −b with b = −5 is +5, not −5 — that sign flip is the most common lost mark.
+  −b with b = −5 is +5, not −5, that sign flip is the most common lost mark.
 ```
 
 ```yaml
@@ -934,7 +934,7 @@ worked: |
   x(x + 3) = 40  →  x² + 3x − 40 = 0  →  (x + 8)(x − 5) = 0.
   x = 5 (reject x = −8, a length cannot be negative).
   Length = 8 cm, width = 5 cm.
-  Perimeter = 2(8 + 5) = 26 cm — the question asks for the PERIMETER, not x.
+  Perimeter = 2(8 + 5) = 26 cm, the question asks for the PERIMETER, not x.
 ```
 
 ```yaml
@@ -954,7 +954,7 @@ worked: |
   −4 < 2x ≤ 6
   −2 < x ≤ 3.
   x = −2 is NOT included (strict <), but x = 3 IS included (≤).
-  Integers: −1, 0, 1, 2, 3 — that is 5 values.
+  Integers: −1, 0, 1, 2, 3, that is 5 values.
 ```
 
 ```yaml
@@ -990,7 +990,7 @@ answer: 3
 marks: 2
 misconception: divided-both-sides-by-x
 worked: |
-  Never divide by x — you would throw away the root x = 0.
+  Never divide by x, you would throw away the root x = 0.
   Bring everything to one side: 3x² − 12x = 0.
   Factorise: 3x(x − 4) = 0.
   So x = 0 or x = 4.
@@ -1037,7 +1037,7 @@ misconception: gave-the-exterior-angle
 worked: |
   Exterior angle = 360° ÷ 12 = 30°.
   Interior angle = 180° − 30° = 150°.
-  The quick route (360 ÷ n) gives the EXTERIOR angle — you must still subtract from 180°.
+  The quick route (360 ÷ n) gives the EXTERIOR angle, you must still subtract from 180°.
 ```
 
 ```yaml
@@ -1073,7 +1073,7 @@ misconception: divided-360-by-the-interior-angle
 worked: |
   Exterior angle = 180° − 162° = 18°.
   n = 360° ÷ exterior angle = 360 ÷ 18 = 20 sides.
-  Dividing 360 by the INTERIOR angle (360 ÷ 162) is meaningless — the exterior angles are the ones that add to 360°.
+  Dividing 360 by the INTERIOR angle (360 ÷ 162) is meaningless, the exterior angles are the ones that add to 360°.
 ```
 
 ```yaml
@@ -1148,7 +1148,7 @@ worked: |
   Volume ratio 27 : 64, so the LENGTH ratio is ∛27 : ∛64 = 3 : 4.
   Area ratio = 3² : 4² = 9 : 16.
   Larger surface area = 45 × 16/9 = 80 cm².
-  Using the volume ratio directly (45 × 64/27 ≈ 107 cm²) is the classic error — go back to lengths first.
+  Using the volume ratio directly (45 × 64/27 ≈ 107 cm²) is the classic error, go back to lengths first.
 ```
 
 ```yaml
@@ -1521,7 +1521,7 @@ misconception: forgot-the-one-third
 worked: |
   Volume of a cone = ⅓ πr²h
   = ⅓ × π × 5² × 12 = ⅓ × π × 300 = 100π = 314.159… = 314 cm³ (3 s.f.).
-  Leaving out the ⅓ gives 942 cm³ — that is the volume of the CYLINDER around it.
+  Leaving out the ⅓ gives 942 cm³, that is the volume of the CYLINDER around it.
 ```
 
 ```yaml
@@ -1777,7 +1777,7 @@ marks: 2
 misconception: added-the-components-instead-of-using-pythagoras
 worked: |
   Magnitude = √(5² + (−12)²) = √(25 + 144) = √169 = 13.
-  The components are squared, so the minus sign disappears — the magnitude is never negative.
+  The components are squared, so the minus sign disappears, the magnitude is never negative.
 ```
 
 ```yaml
@@ -1880,7 +1880,7 @@ worked: |
   Total goals = (1×5) + (2×8) + (3×4) + (4×3) = 5 + 16 + 12 + 12 = 45.
   Total matches = 5 + 8 + 4 + 3 = 20.
   Mean = 45 ÷ 20 = 2.25 goals.
-  Dividing by 4 (the number of different scores) gives 11.25 — divide by the total FREQUENCY.
+  Dividing by 4 (the number of different scores) gives 11.25, divide by the total FREQUENCY.
 ```
 
 ```yaml
@@ -1919,7 +1919,7 @@ worked: |
   Squared deviations: 9, 1, 1, 1, 16.  Their sum = 28.
   Variance = 28 ÷ 5 = 5.6  (divide by n, not n − 1).
   Standard deviation = √5.6 = 2.3664… = 2.37 (3 s.f.).
-  Dividing by 4 gives √7 = 2.65 — the wrong divisor.
+  Dividing by 4 gives √7 = 2.65, the wrong divisor.
 ```
 
 ```yaml
@@ -1991,7 +1991,7 @@ marks: 2
 misconception: standard-deviation-shifts-with-the-data
 worked: |
   Adding a constant slides every value along by the same amount, so the mean goes up by 5.
-  But the SPREAD of the values does not change — every gap between values is exactly the same as before.
+  But the SPREAD of the values does not change, every gap between values is exactly the same as before.
   So the standard deviation is unchanged.
   Example: for 2, 4, 6 the mean is 4 and the standard deviation is 1.63; for 7, 9, 11 the mean is 9 but the standard deviation is still 1.63.
 ```
@@ -2094,7 +2094,7 @@ marks: 3
 misconception: miscounted-the-favourable-outcomes
 worked: |
   There are 6 × 6 = 36 equally likely outcomes.
-  Sums of 9: (3,6), (4,5), (5,4), (6,3) — that is 4 outcomes. Order matters, so (3,6) and (6,3) are different.
+  Sums of 9: (3,6), (4,5), (5,4), (6,3), that is 4 outcomes. Order matters, so (3,6) and (6,3) are different.
   P(sum = 9) = 4/36 = 1/9.
 ```
 
@@ -2106,7 +2106,7 @@ accepted: ["1/2", "0.5", "4/8"]
 marks: 2
 misconception: counted-1-as-a-prime-number
 worked: |
-  The prime numbers from 1 to 8 are 2, 3, 5 and 7 — that is 4 of them.
+  The prime numbers from 1 to 8 are 2, 3, 5 and 7, that is 4 of them.
   1 is NOT prime.
   P(prime) = 4/8 = 1/2.
 ```

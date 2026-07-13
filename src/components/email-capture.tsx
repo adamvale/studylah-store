@@ -54,7 +54,7 @@ export function EmailCaptureForm({
         const body = (await res.json().catch(() => null)) as { error?: string } | null;
         throw new Error(body?.error ?? "Something went wrong. Try again.");
       }
-      // Instant gratification: reveal the No. 1 call on the spot — the rest
+      // Instant gratification: reveal the No. 1 call on the spot, the rest
       // of the heatmap is the reason to open the email.
       if (level && subjectSlug) {
         const subject = SUBJECTS.find(
@@ -83,7 +83,7 @@ export function EmailCaptureForm({
         {reveal && (
           <div className="rounded-xl border border-hairline bg-surface p-4">
             <p className="text-xs font-medium uppercase tracking-wide text-body">
-              Your No. 1 call — {reveal.subjectName}, 2026
+              Your No. 1 call, {reveal.subjectName}, 2026
             </p>
             <p className="mt-2 flex flex-wrap items-center gap-2">
               <span className="font-display text-lg font-bold text-ink">
@@ -92,12 +92,12 @@ export function EmailCaptureForm({
               <TierPill tier={reveal.tier} />
             </p>
             <p className="mt-1 text-xs text-body">
-              Calls 2–5 are in the PDF heading to your inbox.
+              Calls 2-5 are in the PDF heading to your inbox.
             </p>
           </div>
         )}
         <div className="rounded-lg bg-guarantee/10 px-4 py-3 text-sm text-guarantee">
-          <p className="font-medium">You&apos;re on the list — check your inbox.</p>
+          <p className="font-medium">You&apos;re on the list, check your inbox.</p>
           <p className="mt-1 text-ink/70">
             Your free heatmap PDF is on its way. If it doesn&apos;t arrive in a
             few minutes, check your spam folder. Your consent has been recorded.

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ghostStage, BADGES } from "@/lib/game";
 
 // Server-renderable game UI: the evolving ghost companion, the player header
-// (level · title · XP bar), and the badge case. No client state — award
+// (level · title · XP bar), and the badge case. No client state, award
 // toasts live in the components that call the APIs.
 
 export function GhostCompanion({ level, size = 44 }: { level: number; size?: number }) {
@@ -136,7 +136,7 @@ export function BadgeCase({ unlocked }: { unlocked: Set<string> }) {
         })}
       </div>
       <p className="mt-3 text-xs text-body/80">
-        Badges reward the work, not the grade — every one of these is earned by
+        Badges reward the work, not the grade, every one of these is earned by
         showing up. See what&apos;s left on{" "}
         <Link href="/account" className="font-medium text-accent hover:underline">
           Today

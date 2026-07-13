@@ -35,7 +35,7 @@ export function SingaporeMinimap({
     <button
       type="button"
       onClick={onOpen}
-      aria-label={`Map of Singapore — you are in ${here}. Tap to open.`}
+      aria-label={`Map of Singapore, you are in ${here}. Tap to open.`}
       className="pointer-events-auto rounded-lg border-2 p-1.5 backdrop-blur active:scale-95"
       style={{ borderColor: `${SG_ARCADE.mint}80`, background: `${SG_ARCADE.bg}cc` }}
     >
@@ -163,7 +163,7 @@ export function SingaporeMapOverlay({
                 </g>
               );
             })}
-            {/* famous landmarks — emoji pins */}
+            {/* famous landmarks, emoji pins */}
             {LANDMARKS.map((l) => (
               <text
                 key={l.name}

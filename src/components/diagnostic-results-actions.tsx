@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { guguSay } from "@/lib/gugu-bus";
 
 function beacon(type: string, attemptId: string, meta?: string) {
   void fetch("/api/diagnostic/event", {
@@ -56,7 +57,7 @@ export function ResendButton({ attemptId }: { attemptId: string }) {
       className="text-xs font-medium text-accent underline disabled:opacity-60"
     >
       {state === "sent"
-        ? "Sent — check your inbox"
+        ? "Sent, check your inbox"
         : state === "busy"
           ? "Sending…"
           : state === "error"
@@ -125,7 +126,7 @@ export function ShareRow({
       >
         {copied ? "Copied!" : "Copy link"}
       </button>
-      {/* Instagram Stories / TikTok have no web share intents — the card
+      {/* Instagram Stories / TikTok have no web share intents, the card
           image downloads for reposting, and native share covers mobile. */}
       <a
         href={`${shareUrl}/opengraph-image`}
@@ -144,6 +145,21 @@ export function ShareRow({
       </button>
     </div>
   );
+}
+
+// Once the student has revealed their result, Gugu carries on with the
+// performance-based line (the neutral "pop your email in" fired on the quiz).
+const BAND_CHEER: Record<"danger" | "warning" | "pass", string> = {
+  pass: "Sharp work! 🎯 You're on top of these. Keep that edge.",
+  warning: "So close! 💡 A few marks slipping, see exactly where below.",
+  danger: "Big marks to win back 💪 The fix plan below shows how.",
+};
+
+export function GuguResultCheer({ band }: { band: "danger" | "warning" | "pass" }) {
+  useEffect(() => {
+    guguSay(BAND_CHEER[band], { hold: false });
+  }, [band]);
+  return null;
 }
 
 export function ResultsViewedBeacon({ attemptId }: { attemptId: string }) {

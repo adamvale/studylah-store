@@ -1,18 +1,18 @@
 import Link from "next/link";
 
 // The risk-reversal, in one reusable badge. The money-back guarantee is a real
-// on-site feature (src/lib/compliance.ts allows the NOUN "guarantee") — putting
+// on-site feature (src/lib/compliance.ts allows the NOUN "guarantee"), putting
 // it beside every buy decision is what makes trying feel risk-free. Keep the
 // wording honest: it states the exact refund condition, never a grade promise.
 //
 // `variant`:
-//   "pill"   — compact inline chip, for sticky bars and buttons rows.
-//   "line"   — one plain sentence, for microcopy under a CTA.
-//   "card"   — bordered block with the full condition + FAQ link, for buy boxes.
+//   "pill", compact inline chip, for sticky bars and buttons rows.
+//   "line", one plain sentence, for microcopy under a CTA.
+//   "card", bordered block with the full condition + FAQ link, for buy boxes.
 
 const SHORT = "Money-back guarantee";
 const CONDITION =
-  "Full refund if fewer than 3 of our top-5 forecast topics appear in the paper — email your order ID within 14 days of the exam.";
+  "Full refund if fewer than 3 of our top-5 forecast topics appear in the paper, email your order ID within 14 days of the exam.";
 
 function ShieldIcon({ className = "" }: { className?: string }) {
   return (
@@ -52,7 +52,7 @@ export function GuaranteeBadge({
     return (
       <span className={`inline-flex items-center gap-1.5 text-xs text-guarantee ${className}`}>
         <ShieldIcon />
-        <span>{SHORT} — {CONDITION}</span>
+        <span>{SHORT}, {CONDITION}</span>
       </span>
     );
   }

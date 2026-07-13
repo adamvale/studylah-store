@@ -6,7 +6,7 @@ import { getCustomerId } from "@/lib/server/customer-session";
 import { ownedSubjects } from "@/lib/server/study";
 
 // Adventure mode: deal a hand of battle questions for a subject the player
-// OWNS. MCQ only (battles need tappable options), sanitized — correct keys
+// OWNS. MCQ only (battles need tappable options), sanitized, correct keys
 // never leave the server.
 export async function GET(request: Request) {
   const customerId = await getCustomerId();
@@ -36,7 +36,7 @@ export async function GET(request: Request) {
   // Shuffle server-side so each hand differs.
   const shuffled = [...mcqs].sort(() => Math.random() - 0.5).slice(0, count);
   // The Whisper's "fog on the page": hint=1 marks ONE WRONG option per
-  // question so the client can hide it. Safe by construction — it reveals
+  // question so the client can hide it. Safe by construction, it reveals
   // an option that is NOT the answer, never the answer itself.
   const hint = url.searchParams.get("hint") === "1";
   const questions: (PublicQuestion & { fogIndex?: number })[] = shuffled.map((q) => {

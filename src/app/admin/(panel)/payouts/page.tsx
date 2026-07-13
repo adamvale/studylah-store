@@ -8,7 +8,7 @@ const fmtDate = (d: Date) =>
   d.toLocaleDateString("en-SG", { day: "numeric", month: "short", year: "numeric" });
 
 // The manual-payout worklist: who is owed what, and where to PayNow it.
-// "Mark paid" is clicked AFTER the transfer is sent — it only records the fact.
+// "Mark paid" is clicked AFTER the transfer is sent, it only records the fact.
 export default async function PayoutsPage({
   searchParams,
 }: {
@@ -21,7 +21,7 @@ export default async function PayoutsPage({
     include: { referrer: true },
   });
 
-  // Group payable rewards per referrer — one PayNow transfer settles a person.
+  // Group payable rewards per referrer, one PayNow transfer settles a person.
   const owed = new Map<
     string,
     {
@@ -81,7 +81,7 @@ export default async function PayoutsPage({
                 <div>
                   <p className="font-medium text-ink">{referrer.email}</p>
                   <p className="mt-0.5 text-xs text-body">
-                    Code {referrer.referralCode ?? "—"} · PayNow:{" "}
+                    Code {referrer.referralCode ?? ", "} · PayNow:{" "}
                     <span className="font-mono text-ink">
                       {referrer.payoutHandle ?? "not provided yet"}
                     </span>
@@ -153,7 +153,7 @@ export default async function PayoutsPage({
                       </span>
                     </td>
                     <td className="px-4 py-2.5 font-mono text-body">
-                      {r.paidAt ? fmtDate(r.paidAt) : "—"}
+                      {r.paidAt ? fmtDate(r.paidAt) : ", "}
                     </td>
                   </tr>
                 ))}

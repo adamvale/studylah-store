@@ -1,4 +1,4 @@
-// Hand-drawn pixel icon set — same 16px language as the Adventure tileset,
+// Hand-drawn pixel icon set, same 16px language as the Adventure tileset,
 // so the chrome and the overworld read as one game. Pure SVG rects on a
 // 16×16 grid; `currentColor` inherits the active/inactive tab colour.
 
@@ -26,7 +26,7 @@ const r = (x: number, y: number, w: number, h: number, key?: string) => (
   <rect key={key ?? `${x}-${y}-${w}-${h}`} x={x} y={y} width={w} height={h} fill="currentColor" />
 );
 
-// 🎯 Missions — a scroll with a checkmark
+// 🎯 Missions, a scroll with a checkmark
 export function IconMissions(p: P) {
   return (
     <Px {...p}>
@@ -41,7 +41,7 @@ export function IconMissions(p: P) {
   );
 }
 
-// 🗺️ World — a folded map with a route dot
+// 🗺️ World, a folded map with a route dot
 export function IconWorld(p: P) {
   return (
     <Px {...p}>
@@ -55,7 +55,7 @@ export function IconWorld(p: P) {
   );
 }
 
-// ⚔️ Battle — crossed pixel swords
+// ⚔️ Battle, crossed pixel swords
 export function IconBattle(p: P) {
   return (
     <Px {...p}>
@@ -72,7 +72,7 @@ export function IconBattle(p: P) {
   );
 }
 
-// 👾 Bestiary — an 8-bit monster
+// 👾 Bestiary, an 8-bit monster
 export function IconBestiary(p: P) {
   return (
     <Px {...p}>
@@ -89,7 +89,7 @@ export function IconBestiary(p: P) {
   );
 }
 
-// 🎒 More — an adventurer's backpack
+// 🎒 More, an adventurer's backpack
 export function IconMore(p: P) {
   return (
     <Px {...p}>
@@ -103,7 +103,7 @@ export function IconMore(p: P) {
   );
 }
 
-// 🔊 Sound on / off — pixel speaker
+// 🔊 Sound on / off, pixel speaker
 export function IconSound({ muted, ...p }: P & { muted: boolean }) {
   return (
     <Px {...p}>

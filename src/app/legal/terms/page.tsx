@@ -19,7 +19,7 @@ export default function TermsPage() {
       <p>
         Purchased PDFs are licensed to the buyer for personal study use.
         Files are watermarked with your email address and order ID. Sharing,
-        reselling, or republishing them — in whole or in part — is prohibited
+        reselling, or republishing them, in whole or in part, is prohibited
         and terminates your licence.
       </p>
       <h2>Downloads</h2>
@@ -33,7 +33,7 @@ export default function TermsPage() {
         To the maximum extent permitted by law, StudyLah&apos;s total
         liability for any claim is limited to the amount you paid for the
         product concerned. [Standard limitation and governing-law clauses FOR
-        LAWYER REVIEW — governing law: Singapore.]
+        LAWYER REVIEW, governing law: Singapore.]
       </p>
     </LegalPage>
   );

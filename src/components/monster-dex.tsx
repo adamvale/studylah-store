@@ -42,7 +42,7 @@ export function MonsterDex({ counts, wildCaptured = [] }: { counts: DexCounts[];
               className={`flex flex-col items-center gap-1 rounded-xl border p-2 text-center ${
                 seen ? "border-hairline bg-surface" : "border-hairline/50 opacity-40"
               }`}
-              title={seen ? `${m.name} — ${m.tag}` : "Not yet encountered"}
+              title={seen ? `${m.name}, ${m.tag}` : "Not yet encountered"}
             >
               <span className={`text-2xl ${seen ? "" : "grayscale"}`} aria-hidden>
                 {seen ? m.emoji : "❔"}

@@ -4,7 +4,7 @@ import { sendEmail, emailLayout } from "./email";
 import { signParentUnsubToken } from "./customer-session";
 import { sgDay, computeStreak } from "./study";
 
-// Opt-in weekly progress digest for a parent. Factual and encouraging — never
+// Opt-in weekly progress digest for a parent. Factual and encouraging, never
 // a grade promise, never another student's data. Idempotent per ~week via
 // Customer.parentDigestSentAt.
 
@@ -95,7 +95,7 @@ export async function sendParentDigest(customerId: string, force = false): Promi
 
   await sendEmail({
     to: customer.parentEmail,
-    subject: `This week's revision — ${customer.email}`,
+    subject: `This week's revision, ${customer.email}`,
     html: digestHtml(customer.email, stats, unsubUrl),
     text: textLines.join("\n"),
   });

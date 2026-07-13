@@ -282,7 +282,7 @@ function SourceSkills() {
             {COMMAND_WORDS.map((c) => (
               <li key={c.word} className="rounded-xl border border-hairline bg-surface px-4 py-2.5 text-sm">
                 <span className="font-medium text-ink">{c.word}</span>
-                <span className="text-body"> — {c.means}</span>
+                <span className="text-body">, {c.means}</span>
               </li>
             ))}
           </ul>
@@ -294,7 +294,7 @@ function SourceSkills() {
               <li key={i} className="rounded-xl border border-hairline bg-surface px-4 py-2.5 text-sm">
                 <span className="font-display font-bold text-accent">{p.letter}</span>{" "}
                 <span className="font-medium text-ink">{p.label}</span>
-                <span className="text-body"> — {p.detail}</span>
+                <span className="text-body">, {p.detail}</span>
               </li>
             ))}
           </ul>

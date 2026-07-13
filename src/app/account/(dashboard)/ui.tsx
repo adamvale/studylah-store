@@ -5,7 +5,7 @@ export const sgd = (cents: number) => `S$${(cents / 100).toFixed(2)}`;
 export const fmtDate = (d: Date) =>
   d.toLocaleDateString("en-SG", { day: "numeric", month: "short", year: "numeric" });
 
-// Referees' emails belong to them, not the referrer — show enough to
+// Referees' emails belong to them, not the referrer, show enough to
 // recognise a friend, no more.
 export function maskEmail(email: string): string {
   const [user, domain] = email.split("@");

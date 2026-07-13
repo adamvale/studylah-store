@@ -1,6 +1,6 @@
 // The overworld generator for Adventure mode. Pure data (no DOM) so it can be
 // reasoned about and tested: given the subjects a player owns, lay out a
-// Game-Boy-style town — a central route, one gym per subject alternating left
+// Game-Boy-style town, a central route, one gym per subject alternating left
 // and right, and bands of tall grass the player crosses to reach them.
 
 export const TILE = {
@@ -39,7 +39,7 @@ export interface WorldSubject {
   name: string;
   short: string; // subject initials for the gym sign
   emoji: string;
-  family?: string; // catalogue family — picks the gym emblem + guardian
+  family?: string; // catalogue family, picks the gym emblem + guardian
 }
 
 export interface World {
@@ -107,7 +107,7 @@ export function buildWorld(subjects: WorldSubject[]): World {
 
     gyms.push({ x: gx, y: cy, ...s, index: i });
 
-    // A band of tall grass across the route, below the station — you cross it
+    // A band of tall grass across the route, below the station, you cross it
     // to advance. Keep the flanking tiles clear so it's not a wall.
     const bandY = cy + 2;
     for (let x = PATH_X - 2; x <= PATH_X + 2; x++) {

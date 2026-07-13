@@ -26,7 +26,7 @@ export function LoginForm({ error }: { error?: string }) {
         body: new URLSearchParams({ email }),
       });
     } catch {
-      // Deliberately ignored — we show the same confirmation either way so the
+      // Deliberately ignored, we show the same confirmation either way so the
       // page never reveals whether an email has an account.
     } finally {
       setBusy(false);
@@ -50,10 +50,10 @@ export function LoginForm({ error }: { error?: string }) {
           from us, a sign-in link is on its way. It works for 15 minutes.
         </p>
         <p className="mt-2 text-xs text-body/80">
-          Nothing after a minute? Check your spam or promotions folder — the
+          Nothing after a minute? Check your spam or promotions folder, the
           sender is orders@studylah.education.
         </p>
-        {/* Code entry — the email carries a 6-digit code for app users (and
+        {/* Code entry, the email carries a 6-digit code for app users (and
             anyone who'd rather type than tap a link). */}
         <form
           action="/api/account/verify-code"
@@ -128,7 +128,7 @@ export function LoginForm({ error }: { error?: string }) {
       )}
       {error === "throttle" && (
         <p className="mb-4 rounded-lg bg-coral/15 px-4 py-2.5 text-sm text-ink">
-          Too many tries — wait ten minutes, then request a fresh code.
+          Too many tries, wait ten minutes, then request a fresh code.
         </p>
       )}
       <label htmlFor="email" className="block text-sm font-medium text-ink">

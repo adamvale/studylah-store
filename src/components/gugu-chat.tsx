@@ -14,9 +14,9 @@ import { usePricing } from "@/lib/pricing-context";
 import { sgd } from "@/lib/catalogue";
 import { GUGU_SAY_EVENT, type GuguSayDetail } from "@/lib/gugu-bus";
 
-// Gugu — the floating sales helper (bottom-left of the storefront).
+// Gugu, the floating sales helper (bottom-left of the storefront).
 //
-// TIER 1: fully SCRIPTED. Every answer below is copy we wrote and vetted — the
+// TIER 1: fully SCRIPTED. Every answer below is copy we wrote and vetted, the
 // bot never generates text, so it cannot invent a price, promise a grade, or
 // drift into a banned word. This is deliberate: the store is minors-facing and
 // compliance-sensitive (see docs/PROJECT-STATE.md). Keep answers factual and
@@ -42,7 +42,7 @@ interface Topic {
   answer: (ctx: GuguCtx) => Answer;
 }
 
-// The scripted knowledge base — a curated, chat-sized version of /faq plus the
+// The scripted knowledge base, a curated, chat-sized version of /faq plus the
 // game positioning from the homepage (prediction suite is the product; the
 // game is a free beta, exclusive to buyers).
 const TOPICS: Topic[] = [
@@ -54,8 +54,8 @@ const TOPICS: Topic[] = [
       <>
         StudyLah is an independent Singapore publisher of exam-prep PDFs for the
         O-Level (G3) and N(A)-Level (G2). For each subject you get a data-driven{" "}
-        <strong>Exam Forecast</strong> — every syllabus topic ranked by how
-        likely it is for 2026, built from ten years of past papers — plus
+        <strong>Exam Forecast</strong>, every syllabus topic ranked by how
+        likely it is for 2026, built from ten years of past papers, plus
         original practice questions and a full timed rehearsal paper.
       </>
     ),
@@ -66,11 +66,11 @@ const TOPICS: Topic[] = [
     keywords: ["cheat", "cheating", "real", "leak", "actual", "legit", "legal"],
     answer: () => (
       <>
-        No — the opposite. We don&apos;t have the real papers and would never
+        No, the opposite. We don&apos;t have the real papers and would never
         touch them; they belong to Cambridge and MOE / SEAB. We read ten years of
         past papers, forecast which topics are most likely to come up, and write
         our own original questions in that style. It&apos;s not a shortcut around
-        studying — it&apos;s studying the right things.
+        studying, it&apos;s studying the right things.
       </>
     ),
   },
@@ -82,7 +82,7 @@ const TOPICS: Topic[] = [
       <>
         Guessing is revising everything and hoping. This is ten years of
         classified questions and setter patterns turned into a ranked probability
-        for every topic. And we publish the receipts — after every sitting our{" "}
+        for every topic. And we publish the receipts, after every sitting our{" "}
         <InlineLink href="/accuracy" onNavigate={closePanel}>
           accuracy scorecard
         </InlineLink>{" "}
@@ -97,7 +97,7 @@ const TOPICS: Topic[] = [
     keywords: ["wrong", "refund", "guarantee", "money back", "risk", "fail", "miss"],
     answer: () => (
       <>
-        Then you get your money back. Forecasts are probabilities, not promises —
+        Then you get your money back. Forecasts are probabilities, not promises, 
         so we carry the risk, not you. If fewer than three of our top-five
         forecast topics appear in your paper, email your order ID within 14 days
         of the exam for a full refund. No forms, no argument.
@@ -110,7 +110,7 @@ const TOPICS: Topic[] = [
     keywords: ["cost", "price", "much", "cheap", "expensive", "pay", "worth", "bundle", "discount"],
     answer: ({ fromPrice, closePanel }) => (
       <>
-        A single subject starts from <strong>{fromPrice}</strong> — but here&apos;s
+        A single subject starts from <strong>{fromPrice}</strong>, but here&apos;s
         the money-saver: the more subjects you take, the cheaper each one gets. Bundle
         3+ and the price drops automatically; an all-in stack saves the most per
         subject. If you&apos;re sitting a few papers, building a bundle is the smart move.
@@ -125,7 +125,7 @@ const TOPICS: Topic[] = [
     keywords: ["get", "download", "delivery", "receive", "pdf", "instant", "email", "how do i"],
     answer: () => (
       <>
-        Instantly. Pay, and your download page opens on the spot — the same link
+        Instantly. Pay, and your download page opens on the spot, the same link
         also lands in your inbox. Links stay live for 7 days, up to 5 downloads
         per file. Every page is watermarked with your email and order ID.
       </>
@@ -137,12 +137,12 @@ const TOPICS: Topic[] = [
     keywords: ["try", "free", "sample", "demo", "test", "before", "predict", "heatmap"],
     answer: ({ closePanel }) => (
       <>
-        Yes. Every subject has a free <strong>Predict-your-mark</strong> check —
+        Yes. Every subject has a free <strong>Predict-your-mark</strong> check, 
         ten questions drawn from the topics our forecast rates most likely,
         auto-marked in about seven minutes. It ends with a score and worked
         solutions so you can judge us for yourself.
         <br />
-        <CtaButton href="/diagnostic" label="Predict your mark — free" onNavigate={closePanel} />
+        <CtaButton href="/diagnostic" label="Predict your mark, free" onNavigate={closePanel} />
       </>
     ),
   },
@@ -153,7 +153,7 @@ const TOPICS: Topic[] = [
     answer: () => (
       <>
         <strong>StudyLah Legends</strong> is a free study-RPG where the battles
-        are real exam questions. It&apos;s a beta bonus, exclusive to purchasers —
+        are real exam questions. It&apos;s a beta bonus, exclusive to purchasers, 
         the prediction suite (forecasts, questions, rehearsals) is still the main
         product. Buy any subject and the game comes with it.
       </>
@@ -164,7 +164,7 @@ const TOPICS: Topic[] = [
 // Routes the free-typed question to the best-matching topic by counting keyword
 // hits. Returns null when nothing matches, so we can give an honest fallback
 // instead of a wrong answer.
-// Small-talk greetings — handled warmly in scripted-fallback mode so "hi"
+// Small-talk greetings, handled warmly in scripted-fallback mode so "hi"
 // never gets the robotic no-match reply (live Claude handles this itself).
 const GREETING_RE =
   /^\s*(hi+|hey+|hello+|holla|hallo|helo|yo|sup|heya|hiya|good\s?(morning|afternoon|evening)|greetings|wass?up|whats?\s?up)\b/i;
@@ -210,7 +210,7 @@ function matchTopic(text: string): Topic | null {
 
 // Reorder the quick-reply chips so the questions most relevant to the current
 // page surface first. Every topic still appears (page-relevant ones lead, the
-// rest keep their original order) — so Gugu feels aware of where you are.
+// rest keep their original order), so Gugu feels aware of where you are.
 const DEFAULT_PROMPT = "Not sure what to ask? Here are some common questions to start.";
 const PAGE_PRIORITY: { test: (p: string) => boolean; ids: string[]; prompt: string }[] = [
   {
@@ -262,7 +262,7 @@ function promptForPath(pathname: string): string {
   return PAGE_PRIORITY.find((r) => r.test(pathname))?.prompt ?? DEFAULT_PROMPT;
 }
 
-// The canonical Gugu: the FIRST cell of the walker sheet — the plain white,
+// The canonical Gugu: the FIRST cell of the walker sheet, the plain white,
 // front-facing, both-eyes-forward ghost. player_ghost.png is 240×96, laid out
 // in 16×24 cells; cell (0,0) is Gugu facing down (toward the viewer). Rendered
 // as a CSS-cropped background so we don't need a separate exported PNG.
@@ -351,8 +351,8 @@ const PATH_LABELS: Record<string, string> = {
   "/bundles": "Build a bundle & save",
   "/accuracy": "See our track record",
   "/faq": "Read the FAQ",
-  "/diagnostic": "Predict your mark — free",
-  "/free-heatmap": "Predict your mark — free",
+  "/diagnostic": "Predict your mark, free",
+  "/free-heatmap": "Predict your mark, free",
 };
 
 function labelForPath(href: string): string {
@@ -443,7 +443,7 @@ function TypewriterText({
 }
 
 // Types the floating bubble out character-by-character and RE-types whenever the
-// message changes — so every new bubble (a rotated attract line, or a
+// message changes, so every new bubble (a rotated attract line, or a
 // quiz-driven message like "Shh… 🙊") looks like Gugu is speaking it. Splits by
 // code point (Array.from) so emoji are never sliced mid-surrogate.
 function BubbleText({ text }: { text: string }) {
@@ -487,7 +487,7 @@ export function GuguChat() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   // "From" price = the cheapest single-subject entry tier across both levels,
-  // priced with the live early-bird flag — always the real storefront number.
+  // priced with the live early-bird flag, always the real storefront number.
   const fromPrice = useMemo(() => {
     const prices = (["o-level", "na-level"] as const).map((level) =>
       pricing.tierPrice(level, "essential")
@@ -495,7 +495,7 @@ export function GuguChat() {
     return sgd(Math.min(...prices));
   }, [pricing]);
 
-  // Minimise the chat — used when a visitor clicks any link Gugu offers, so the
+  // Minimise the chat, used when a visitor clicks any link Gugu offers, so the
   // destination page is visible instead of hidden behind the panel.
   const closePanel = useCallback(() => setOpen(false), []);
   const ctx = useMemo(() => ({ fromPrice, closePanel }), [fromPrice, closePanel]);
@@ -539,7 +539,7 @@ export function GuguChat() {
 
   const bubbleText = override ? override.text : bubblePool[bubbleIdx % bubblePool.length];
 
-  // Keep the latest message in view — on new messages and on each typed char.
+  // Keep the latest message in view, on new messages and on each typed char.
   const scrollToBottom = useCallback(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight });
   }, []);
@@ -555,7 +555,7 @@ export function GuguChat() {
     setOpen(true);
     if (messages.length === 0) {
       pushGugu(
-        "Hi! I'm Gugu, your StudyLah helper. Ask me anything — or tap a question below."
+        "Hi! I'm Gugu, your StudyLah helper. Ask me anything, or tap a question below."
       );
     }
   }
@@ -568,7 +568,7 @@ export function GuguChat() {
     ]);
   }
 
-  // Scripted answer for a free-typed question — used when the Claude brain is
+  // Scripted answer for a free-typed question, used when the Claude brain is
   // unavailable (no API key, error, rate-limited) or returns a non-compliant
   // reply. Routes to the closest topic, else an honest "email a human".
   function scriptedFallback(text: string) {
@@ -584,7 +584,7 @@ export function GuguChat() {
     } else {
       pushGugu(
         <>
-          Happy to help with that! I&apos;m sharpest on StudyLah itself — the
+          Happy to help with that! I&apos;m sharpest on StudyLah itself, the
           forecasts, what&apos;s included, pricing, or how you get your PDFs. Tap
           a question below, or if it&apos;s something specific, drop the team a
           line at{" "}
@@ -644,7 +644,7 @@ export function GuguChat() {
 
   return (
     <div className="gugu-fab pointer-events-none fixed bottom-8 left-4 z-40 flex flex-col items-start gap-3 transition-[bottom] duration-200 print:hidden">
-      {/* Chat panel — StudyLah Legends arcade-HUD styling (mint #4ef3c9 frame,
+      {/* Chat panel, StudyLah Legends arcade-HUD styling (mint #4ef3c9 frame,
           pixel-font labels, pink user bubbles, gold pressable Ask button, faint
           CRT scanlines). Answer text stays Inter for readability.
           Always mounted (so replies never re-run their typing animation on
@@ -660,7 +660,7 @@ export function GuguChat() {
               : "pointer-events-none scale-90 opacity-0 translate-y-4"
           }`}
         >
-          {/* Header — arcade "PROFILE" style: sprite in a bordered chip + pixel name */}
+          {/* Header, arcade "PROFILE" style: sprite in a bordered chip + pixel name */}
           <div className="flex items-center gap-2.5 border-b-2 border-[#4ef3c9]/40 bg-[#0d0d22] px-4 py-3">
             <div className="flex h-9 w-9 items-center justify-center rounded-md border border-[#4ef3c9]/60 bg-[#1b1a38]">
               <GuguSprite size={26} />
@@ -719,7 +719,7 @@ export function GuguChat() {
             )}
           </div>
 
-          {/* Quick replies — collapsed by default behind a friendly prompt */}
+          {/* Quick replies, collapsed by default behind a friendly prompt */}
           <div className="border-t-2 border-[#4ef3c9]/30 px-3 pb-2.5 pt-2">
             <button
               type="button"
@@ -782,7 +782,7 @@ export function GuguChat() {
             </button>
           </form>
 
-          {/* Faint CRT scanlines — sits above content, clicks pass through. */}
+          {/* Faint CRT scanlines, sits above content, clicks pass through. */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0"
@@ -794,11 +794,11 @@ export function GuguChat() {
         </div>
       )}
 
-      {/* Gugu + speech bubble in a row — RPG "character speaking" layout:
+      {/* Gugu + speech bubble in a row, RPG "character speaking" layout:
           Gugu on the left, a rotating bubble to its right with a tail that
           points back at him. */}
       <div className="flex items-start gap-1.5">
-        {/* Floating Gugu — bare ghost bobbing above a soft drop shadow */}
+        {/* Floating Gugu, bare ghost bobbing above a soft drop shadow */}
         <button
           type="button"
           onClick={() => (open ? setOpen(false) : openChat())}

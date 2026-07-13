@@ -5,7 +5,7 @@ import { LevelCatalogue } from "@/components/level-catalogue";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/subjects" },
-  title: "Subjects — O-Level (G3) & N(A)-Level (G2)",
+  title: "Subjects, O-Level (G3) & N(A)-Level (G2)",
   description:
     "AI exam forecasts, original practice questions, and timed rehearsals. Switch between O-Level (G3) and N(A)-Level (G2) subjects.",
 };
@@ -25,7 +25,7 @@ export default async function SubjectsPage({
     <div className="mx-auto max-w-6xl px-4 py-12">
       <h1 className="font-display text-4xl font-bold text-ink">Subjects</h1>
 
-      {/* Level switcher — O-Level (G3) | N(A)-Level (G2), default O-Level */}
+      {/* Level switcher, O-Level (G3) | N(A)-Level (G2), default O-Level */}
       <div
         role="tablist"
         aria-label="Choose a level"

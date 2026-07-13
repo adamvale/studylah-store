@@ -5,7 +5,7 @@ import { loreFor, SALTWIND_TABLE, ENCOUNTER_RATE, type SpeciesRow } from "@/lib/
 // Pure data (no DOM): the whole game world generated from the subjects a
 // student owns. Haven Hollow (the hub town) links to one province per
 // subject (route + gym) and, once every gym is cleared, to the Summit of
-// Clarity — the championship. NPC presence and positions are derived from
+// Clarity, the championship. NPC presence and positions are derived from
 // the story-beat set so progress physically opens the world.
 //
 // All names, characters and lore here are ORIGINAL StudyLah IP.
@@ -74,7 +74,7 @@ export interface Npc {
   battle?: NpcBattle;
   winLines?: string[]; // spoken once the battle beat is already done
   monster?: string; // draw as a monster walker instead of a human sprite
-  boss?: string; // mini-boss id (season.ts MINI_BOSSES) — boss battle rules
+  boss?: string; // mini-boss id (season.ts MINI_BOSSES), boss battle rules
   front?: { level: string; slug: string; species: string }; // weekly Fog Front
   keystone?: { level: string; slug: string; species: string }; // Undercroft keystone
   stone?: "left" | "near" | "far"; // Undercroft echo stone
@@ -137,7 +137,7 @@ function put(grid: number[][], x: number, y: number, t: number) {
 }
 
 function building(grid: number[][], x0: number, y0: number, w: number, h: number, doorX?: number) {
-  // ridge cap, sloped roof, then a plastered wall row — reads as a real house
+  // ridge cap, sloped roof, then a plastered wall row, reads as a real house
   for (let y = y0; y < y0 + h; y++) {
     for (let x = x0; x < x0 + w; x++) {
       const t = y === y0 ? ROOF_RIDGE : y < y0 + h - 1 ? ROOF : TILE.WALL;
@@ -171,7 +171,7 @@ const INTERIOR_FURNITURE: Record<InteriorStyle, [number, number, number][]> = {
   ],
 };
 
-// The hub's enterable buildings — shared so buildHub (portals) and buildRegion
+// The hub's enterable buildings, shared so buildHub (portals) and buildRegion
 // (the interior zones) agree on door coordinates.
 const HUB_INTERIORS: {
   id: string;
@@ -290,7 +290,7 @@ function buildHub(
     label: "🌊 Saltwind Steps",
     locked: saltwindOpen
       ? undefined
-      : "The coast road opens when two beacons burn — the Provinces have to meet somewhere.",
+      : "The coast road opens when two beacons burn, the Provinces have to meet somewhere.",
   });
 
   // Championship gate, north
@@ -304,7 +304,7 @@ function buildHub(
     label: "⛰ Summit of Clarity",
     locked: allGymsCleared
       ? undefined
-      : `The gate answers to beacons, not keys — ${lit}/${total} lit. Every gym emblem lights one.`,
+      : `The gate answers to beacons, not keys, ${lit}/${total} lit. Every gym emblem lights one.`,
   });
 
   const npcs: Npc[] = [
@@ -317,9 +317,9 @@ function buildHub(
       name: "Elder Maple",
       quest: "notebook3",
       lines: [
-        "Years ago the Fog swallowed the Old Campus beyond the Summit. A whole cohort stopped believing they could pass — and it fed.",
+        "Years ago the Fog swallowed the Old Campus beyond the Summit. A whole cohort stopped believing they could pass, and it fed.",
         "I walked out of that Fog with one notebook: every mistake I ever made, written down and faced. That book burned a path.",
-        `Each gym emblem lights a beacon over Haven — ${lit} of ${total} burn tonight. Light them all, Lightbearer, and the Summit gate will open.`,
+        `Each gym emblem lights a beacon over Haven, ${lit} of ${total} burn tonight. Light them all, Lightbearer, and the Summit gate will open.`,
       ],
     },
     {
@@ -332,7 +332,7 @@ function buildHub(
       heal: true,
       quest: "unswept",
       lines: [
-        "Every researcher falls. The ones who matter get back up — there, hearts restored.",
+        "Every researcher falls. The ones who matter get back up, there, hearts restored.",
         "Elder Maple says courage isn't never failing. It's coming back the next morning.",
       ],
     },
@@ -345,7 +345,7 @@ function buildHub(
       name: "Mina",
       lines: [
         "My brother tried to cram the whole syllabus the night before his papers. The Fog LOVES that.",
-        "A little every day — that's what actually scares it.",
+        "A little every day, that's what actually scares it.",
       ],
     },
     {
@@ -357,7 +357,7 @@ function buildHub(
       name: "Old Tan",
       quest: "signs",
       lines: [
-        "I was there when the Old Campus fell. We didn't lose to hard questions, child — we lost to silence. Nobody admitted what they didn't know.",
+        "I was there when the Old Campus fell. We didn't lose to hard questions, child, we lost to silence. Nobody admitted what they didn't know.",
         "Your bestiary is the opposite of silence. Keep writing the monsters down.",
       ],
     },
@@ -385,7 +385,7 @@ function buildHub(
       name: "Rin the Duel Warden",
       lines: [
         "Two researchers, one sealed set of questions, no audience. That's a duel done properly.",
-        "Make a code and hand it to a friend — or bring me a code someone handed you.",
+        "Make a code and hand it to a friend, or bring me a code someone handed you.",
       ],
     },
     {
@@ -396,7 +396,7 @@ function buildHub(
       sprite: "examiner_sage",
       name: "Sage of the Academy",
       lines: [
-        "Every subject you carry has a teacher waiting in the Academy — one for each.",
+        "Every subject you carry has a teacher waiting in the Academy, one for each.",
         "Sit a while. Learn a little, prove it with a question, and the Fog loses its grip.",
       ],
     },
@@ -413,7 +413,7 @@ function buildHub(
           : ["I showed my mistake book to Elder Maple like you do. The fog by my window… it's thinner now. Thank you."],
     },
   ];
-  // Kai, the rival — races you for a reason he won't say out loud at first
+  // Kai, the rival, races you for a reason he won't say out loud at first
   if (story.has("rival1")) {
     npcs.push({
       id: "rival",
@@ -425,7 +425,7 @@ function buildHub(
       quest: "shortcut",
       lines: [
         "Okay, that round was yours. Truth? My big sister froze in her exam year. The Fog got loud and she just… stopped answering.",
-        "That's why I race. If I'm fast enough, maybe it never catches me. Meet me at the Summit — I want the rematch where she gave up.",
+        "That's why I race. If I'm fast enough, maybe it never catches me. Meet me at the Summit, I want the rematch where she gave up.",
       ],
     });
   } else if (story.has("starter")) {
@@ -438,7 +438,7 @@ function buildHub(
       name: "Kai",
       battle: { questions: 3, threshold: 2, beat: "rival1" },
       lines: [
-        "You're the new Lightbearer? I'm Kai — Elder Maple trained me first, whatever the old ghost says.",
+        "You're the new Lightbearer? I'm Kai, Elder Maple trained me first, whatever the old ghost says.",
         "The Summit gate hasn't opened in years. I'm going to be the one standing there when it does.",
         "Show me three questions' worth of proof you belong on this road!",
       ],
@@ -475,8 +475,8 @@ function buildHub(
       boss: "blank",
       name: "The Blank",
       lines: [
-        "The path ahead is white. Not fog — unwritten.",
-        "Don't. Whatever you're about to do — the first bit will be small and stupid. Better to do nothing beautifully.",
+        "The path ahead is white. Not fog, unwritten.",
+        "Don't. Whatever you're about to do, the first bit will be small and stupid. Better to do nothing beautifully.",
       ],
     });
   }
@@ -495,11 +495,11 @@ function buildHub(
         "Beacons, beacons. The Order snuffed them once and Haven slept SO peacefully.",
         "Nobody fails a paper they never face, kid. Confusion is mercy. Care to donate yours?",
       ],
-      winLines: ["Tch — Commander Murk will hear about you, Lightbearer."],
+      winLines: ["Tch, Commander Murk will hear about you, Lightbearer."],
     });
   }
 
-  // Doors into the furnished interiors — you land just above the exit mat.
+  // Doors into the furnished interiors, you land just above the exit mat.
   for (const it of HUB_INTERIORS) {
     portals.push({ x: it.doorX, y: it.doorY, toZone: it.id, toX: 4, toY: 6, label: it.name });
   }
@@ -513,7 +513,7 @@ function buildHub(
     toZone: "cells",
     toX: 6,
     toY: 2,
-    label: "🕯 The Sunken Cells — Fort Canning",
+    label: "🕯 The Sunken Cells, Fort Canning",
     locked: cellsOpen
       ? undefined
       : "The Cells listen for footsteps that have lit two beacons. Not yet.",
@@ -526,10 +526,10 @@ function buildHub(
     toZone: "reading",
     toX: 6,
     toY: 8,
-    label: "📖 The Reading Room — Bras Basah",
+    label: "📖 The Reading Room, Bras Basah",
     locked: readingOpen
       ? undefined
-      : "The Reading Room opens when the island is safe — after the Championship.",
+      : "The Reading Room opens when the island is safe, after the Championship.",
   });
 
   return {
@@ -585,7 +585,7 @@ function buildProvince(
     label: lore.undercroft,
     locked: opts.underOpen
       ? undefined
-      : "The Undercroft opens once Haven trusts you — light any beacon first.",
+      : "The Undercroft opens once Haven trusts you, light any beacon first.",
   });
 
   // tall-grass bands the route must cross
@@ -612,7 +612,7 @@ function buildProvince(
 
   const signs = [
     { x: 4, y: 4, text: "THE FOG READS YOUR NOTEBOOK. Read it first." },
-    { x: 9, y: 10, text: "TALL GRASS AHEAD — imps love a rusher. Walk in with hearts full." },
+    { x: 9, y: 10, text: "TALL GRASS AHEAD, imps love a rusher. Walk in with hearts full." },
     { x: 4, y: 21, text: "CAMP: 40 PACES SOUTH. Closer than you think. Everything is." },
   ];
 
@@ -627,7 +627,7 @@ function buildProvince(
       heal: true,
       quest: "guardianround",
       lines: [
-        "Long route ahead. Rest — there, hearts restored.",
+        "Long route ahead. Rest, there, hearts restored.",
         `They say ${lore.place} has a guardian. It only shows itself to those who take the gym honestly.`,
       ],
     },
@@ -640,7 +640,7 @@ function buildProvince(
       name: "Fog Order Grunt",
       battle: { questions: 2, threshold: 1 },
       lines: [
-        `The ${lore.place} beacon has been dark for years — cosy, isn't it?`,
+        `The ${lore.place} beacon has been dark for years, cosy, isn't it?`,
         "Quota's quota, kid. Prove you're worth the gym door.",
       ],
       winLines: ["…huh. It's warmer out here than they said."],
@@ -654,8 +654,8 @@ function buildProvince(
       name: "Route Farmer",
       quest: "blueprint",
       lines: [
-        `Wild ones in this grass fight with real ${s.name} questions — the Fog dresses them up as monsters.`,
-        "Beat one and it joins your dex. The grass regrows — train as long as you like.",
+        `Wild ones in this grass fight with real ${s.name} questions, the Fog dresses them up as monsters.`,
+        "Beat one and it joins your dex. The grass regrows, train as long as you like.",
       ],
     },
   ];
@@ -690,8 +690,8 @@ function buildProvince(
       boss: "whisper",
       name: "The Whisper",
       lines: [
-        "The grass stops rustling — everything holds its breath.",
-        "Oh, good. You. Don't worry — I'll make this easy for you. You need that, don't you?",
+        "The grass stops rustling, everything holds its breath.",
+        "Oh, good. You. Don't worry, I'll make this easy for you. You need that, don't you?",
       ],
     });
   }
@@ -845,7 +845,7 @@ function buildSaltwind(subjects: WorldSubject[], beaten: Set<string>): Zone {
   }
   // sandy shore strip
   for (let y = 1; y < H - 1; y++) put(grid, 11, y, SAND);
-  // the long bridge — the postcard moment
+  // the long bridge, the postcard moment
   for (let x = 12; x < W - 1; x++) put(grid, x, 4, BRIDGE);
   put(grid, W - 2, 4, PORTAL);
   // paths + grass
@@ -855,7 +855,7 @@ function buildSaltwind(subjects: WorldSubject[], beaten: Set<string>): Zone {
   }
   put(grid, 2, 2, TILE.FLOWER);
   put(grid, 9, 8, SAND);
-  // the ferry stone south along the shore — out to the Southern Isles
+  // the ferry stone south along the shore, out to the Southern Isles
   put(grid, 11, 9, PORTAL);
 
   const npcs: Npc[] = [
@@ -880,7 +880,7 @@ function buildSaltwind(subjects: WorldSubject[], beaten: Set<string>): Zone {
       sprite: "camp_keeper",
       name: "Shore Keeper",
       heal: true,
-      lines: ["Salt air fixes most things. Hearts restored — mind the tide."],
+      lines: ["Salt air fixes most things. Hearts restored, mind the tide."],
     },
   ];
 
@@ -909,7 +909,7 @@ function buildSaltwind(subjects: WorldSubject[], beaten: Set<string>): Zone {
     width: W,
     height: H,
     start: { x: 2, y: 4 },
-    portals: [{ x: W - 2, y: 4, toZone: "hub", toX: 18, toY: 8, label: "Haven Hollow" }, { x: 11, y: 9, toZone: "lantern", toX: 2, toY: 5, label: "🏮 The Lantern Walk — the Southern Isles" }],
+    portals: [{ x: W - 2, y: 4, toZone: "hub", toX: 18, toY: 8, label: "Haven Hollow" }, { x: 11, y: 9, toZone: "lantern", toX: 2, toY: 5, label: "🏮 The Lantern Walk, the Southern Isles" }],
     npcs,
     encounter: subjects[0],
     mixed: subjects,
@@ -918,7 +918,7 @@ function buildSaltwind(subjects: WorldSubject[], beaten: Set<string>): Zone {
   };
 }
 
-// ── The Old Campus: the school the Fog claimed — Murk's story, walkable ────
+// ── The Old Campus: the school the Fog claimed, Murk's story, walkable ────
 function buildCampus(subjects: WorldSubject[], campusCleared: Set<string>, story: Set<string>): Zone {
   const W = 21;
   const H = 12;
@@ -937,7 +937,7 @@ function buildCampus(subjects: WorldSubject[], campusCleared: Set<string>, story
   building(grid, 3, 2, 4, 3, 4);
   building(grid, 9, 2, 4, 3, 10);
   building(grid, 15, 2, 4, 3, 16);
-  // fog banks — the encounter tiles; cleared ones become plain ruins floor
+  // fog banks, the encounter tiles; cleared ones become plain ruins floor
   const fogSpots: [number, number][] = [
     [2, 6], [4, 7], [6, 6], [8, 8], [10, 7], [12, 6], [14, 8], [16, 7], [18, 6], [5, 9], [11, 9], [17, 9],
   ];
@@ -957,9 +957,9 @@ function buildCampus(subjects: WorldSubject[], campusCleared: Set<string>, story
     "Entry one: I never failed an exam. Write that down, whoever finds this. Not one.",
     "Entry two: the trick is momentum. I had it once. Whole cohorts borrowed mine.",
     "Entry three: the beacons made it worse, somehow. Every light was a thing to keep lit.",
-    "Entry four: I stopped being able to start. Not finish — START. Nobody warns you about starting.",
+    "Entry four: I stopped being able to start. Not finish, START. Nobody warns you about starting.",
     "Entry five: today I did not open the book. The quiet was… I want to say kind.",
-    "Entry six: if anyone reads this — the fog isn't the enemy. The silence about the fog is.",
+    "Entry six: if anyone reads this, the fog isn't the enemy. The silence about the fog is.",
   ];
 
   const npcs: Npc[] = [
@@ -982,7 +982,7 @@ function buildCampus(subjects: WorldSubject[], campusCleared: Set<string>, story
       quest: allClear && !story.has("ninth") ? "ninth" : undefined,
       lines: allClear
         ? story.has("ninth")
-          ? ["It's warm. It was always going to be warm.", "Thorough is not the same as brave — but you already knew that."]
+          ? ["It's warm. It was always going to be warm.", "Thorough is not the same as brave, but you already knew that."]
           : [
               "…I know this plinth. I used to eat lunch on it. Before it was a plinth. Before everything was fog.",
               "Eight beacons for the syllabus. The ninth is for the ones who stopped. Light it anyway.",
@@ -1062,7 +1062,7 @@ function buildSummit(story: Set<string>): Zone {
       lines: [
         "Stop. Before you judge me, Lightbearer, know this: I was Maple's first prodigy. First beacon-keeper. First to burn out.",
         "One bad year and everyone I'd ever impressed looked away. The Fog didn't laugh at me. It was QUIET. So I joined the quiet.",
-        "A student who never faces the question never fails it. That is the Order's mercy. Show me your answer to that — three questions, every subject.",
+        "A student who never faces the question never fails it. That is the Order's mercy. Show me your answer to that, three questions, every subject.",
       ],
       winLines: [
         "You dropped a mark against the grunts, you know. And you… wrote it down. And came back.",
@@ -1081,11 +1081,11 @@ function buildSummit(story: Set<string>): Zone {
       battle: { questions: 3, threshold: 2, beat: "rival2", mixed: true },
       lines: [
         "This is where my sister's cohort fell. I swore I'd stand here one day and not be afraid.",
-        "I'm not racing you anymore — I'm racing the version of me that would've quit. One last round. Make it worthy.",
+        "I'm not racing you anymore, I'm racing the version of me that would've quit. One last round. Make it worthy.",
       ],
       winLines: [
         "Ha… I lost and the sky didn't fall. She'd laugh at how long that took me to learn.",
-        "Go. Take the championship for Haven — and when your real papers come, remember you already beat the Fog on its own mountain.",
+        "Go. Take the championship for Haven, and when your real papers come, remember you already beat the Fog on its own mountain.",
       ],
     });
   }
@@ -1102,13 +1102,13 @@ function buildSummit(story: Set<string>): Zone {
     lines: story.has("rival2")
       ? [
           "Every beacon burning, Murk answered, Kai answered. The Old Campus has waited years for a sky like tonight's.",
-          "Eight questions now, one from every corner of your frontier — no theme, no mercy, exactly like the morning that matters.",
+          "Eight questions now, one from every corner of your frontier, no theme, no mercy, exactly like the morning that matters.",
           "Six correct and Haven has a Champion again. Lightbearer… begin.",
         ]
       : ["The gauntlet has an order, researcher. Settle what stands behind you first."],
     winLines: [
-      "It is done. The Clarity guardian stirs for the first time since the Old Campus fell — look up, Champion.",
-      "Hear me: the Fog is never slain, only kept out by lights like yours. Tend the beacons. Keep the notebook. Sit the real papers the way you climbed this mountain — one honest question at a time.",
+      "It is done. The Clarity guardian stirs for the first time since the Old Campus fell, look up, Champion.",
+      "Hear me: the Fog is never slain, only kept out by lights like yours. Tend the beacons. Keep the notebook. Sit the real papers the way you climbed this mountain, one honest question at a time.",
     ],
   });
 
@@ -1151,11 +1151,11 @@ export interface RegionState {
 }
 
 
-// ── THE LIGHTBEARER SAGA — expansion zones (see docs/STORY-CODEX.md) ─────────
+// ── THE LIGHTBEARER SAGA, expansion zones (see docs/STORY-CODEX.md) ─────────
 
 // Act III: the Sunken Cells beneath Fort Canning. The Fog Order's records-room,
 // where Murk keeps the names of everyone the island ever hushed. Read the
-// plaques to bring them home; at the bottom you don't fight Murk — you FIND him.
+// plaques to bring them home; at the bottom you don't fight Murk, you FIND him.
 function buildCells(subjects: WorldSubject[], story: Set<string>): Zone {
   const W = 13;
   const H = 15;
@@ -1227,9 +1227,9 @@ function buildCells(subjects: WorldSubject[], story: Set<string>): Zone {
       name: "Commander Murk",
       lines: [
         "…You read them aloud. Forty years I've kept this room, and no one ever came to READ.",
-        "You want to know why I keep the list? Look at the top. First name filed. Maple's first prodigy — the first beacon-keeper. The boy who burned out and found the island simply… looked away.",
-        "It's my name, Lightbearer. I filed myself. The Order was never an army — it's a waiting room for everyone the island forgot to forgive.",
-        "Take the room. Light every one of them. And when you reach the Summit — bring your notebook. I want to see the move I never learned.",
+        "You want to know why I keep the list? Look at the top. First name filed. Maple's first prodigy, the first beacon-keeper. The boy who burned out and found the island simply… looked away.",
+        "It's my name, Lightbearer. I filed myself. The Order was never an army, it's a waiting room for everyone the island forgot to forgive.",
+        "Take the room. Light every one of them. And when you reach the Summit, bring your notebook. I want to see the move I never learned.",
       ],
     });
   } else {
@@ -1260,14 +1260,14 @@ function buildCells(subjects: WorldSubject[], story: Set<string>): Zone {
     encounterRate: 1 / 14,
     encounterTiles: [CAVE_FLOOR],
     signs: [
-      { x: 2, y: 3, text: "KOH S.L., Class of 1987 — faced the paper at last. Welcome home." },
-      { x: 10, y: 6, text: "R. NAIR, Class of 1994 — asked the question out loud. Welcome home." },
-      { x: 2, y: 10, text: "TAN W.M., Class of 2003 — opened the notebook again. Welcome home." },
+      { x: 2, y: 3, text: "KOH S.L., Class of 1987, faced the paper at last. Welcome home." },
+      { x: 10, y: 6, text: "R. NAIR, Class of 1994, asked the question out loud. Welcome home." },
+      { x: 2, y: 10, text: "TAN W.M., Class of 2003, opened the notebook again. Welcome home." },
     ],
   };
 }
 
-// Late game: the Lantern Walk across the Southern Isles — cross the water by
+// Late game: the Lantern Walk across the Southern Isles, cross the water by
 // keeping your own lamp lit against the wind. The Examiner waits at the last
 // islet, but only for a student all Three Hushes have learned to trust.
 function buildLanternWalk(
@@ -1309,7 +1309,7 @@ function buildLanternWalk(
       battle: { questions: 3, threshold: 2, beat: "walk", mixed: true },
       lines: [
         "Out here there's no beacon to borrow. Just your own little lamp and the wind.",
-        "The Whisper calls these isles home. Three questions in the open air — let's see whose light gutters first.",
+        "The Whisper calls these isles home. Three questions in the open air, let's see whose light gutters first.",
       ],
       winLines: ["Steady little flame you've got. The last islet is watching you now."],
     });
@@ -1344,13 +1344,13 @@ function buildLanternWalk(
     encounterRate: 1 / 12,
     encounterTiles: [SAND],
     signs: [
-      { x: 6, y: 6, text: "THE LANTERN WALK — five isles, one flame. The wind tests every lamp; only the steady cross." },
-      { x: 18, y: 4, text: "A stone seat faces the open sea. Someone is expected — after the Three Hushes rest." },
+      { x: 6, y: 6, text: "THE LANTERN WALK, five isles, one flame. The wind tests every lamp; only the steady cross." },
+      { x: 18, y: 4, text: "A stone seat faces the open sea. Someone is expected, after the Three Hushes rest." },
     ],
   };
 }
 
-// Post-game: the Reading Room at Bras Basah — the calm New Game+ hearth where
+// Post-game: the Reading Room at Bras Basah, the calm New Game+ hearth where
 // the island gathers once it is safe.
 function buildReadingRoom(story: Set<string>): Zone {
   const W = 13;
@@ -1408,7 +1408,7 @@ function buildReadingRoom(story: Set<string>): Zone {
       emoji: "⚔️",
       sprite: "student_c",
       name: "Rin the Duel Warden",
-      lines: ["Even wardens read. ESPECIALLY wardens. The best duellists are the best readers — codes can wait."],
+      lines: ["Even wardens read. ESPECIALLY wardens. The best duellists are the best readers, codes can wait."],
     },
     {
       id: "sage_reading",
@@ -1418,7 +1418,7 @@ function buildReadingRoom(story: Set<string>): Zone {
       sprite: "examiner_sage",
       name: "Examiner Sage",
       lines: [
-        "THE END IS JUST NEW GAME+. I had that carved above the hearth. The Fog never understood it — endings are where readers begin.",
+        "THE END IS JUST NEW GAME+. I had that carved above the hearth. The Fog never understood it, endings are where readers begin.",
       ],
     },
   ];
@@ -1482,7 +1482,7 @@ export function buildRegion(subjects: WorldSubject[], st: RegionState): Region {
   if (unlock || st.story.has("championship")) {
     zones["campus"] = buildCampus(subjects, st.campusCleared, st.story);
   }
-  // Enterable hub interiors — exit lands the player just south of the door.
+  // Enterable hub interiors, exit lands the player just south of the door.
   for (const it of HUB_INTERIORS) {
     zones[it.id] = buildInterior(it.id, it.name, it.style, "hub", it.doorX, it.doorY + 1);
   }

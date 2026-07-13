@@ -7,7 +7,7 @@ import { getCustomerId } from "@/lib/server/customer-session";
 import { watermarkPdf } from "@/lib/server/watermark";
 
 // Re-download for a signed-in owner. Authorised by session + order ownership,
-// so there are no token expiry or use-count limits — a paying customer can
+// so there are no token expiry or use-count limits, a paying customer can
 // always fetch a fresh, watermarked copy of what they bought.
 export async function GET(
   _request: Request,
@@ -53,7 +53,7 @@ export async function GET(
     orderRef: `No. ${item.orderId}`,
   });
 
-  // Activity log — best-effort, never block the download on it.
+  // Activity log, best-effort, never block the download on it.
   try {
     await prisma.downloadEvent.create({
       data: { orderItemId: item.id, via: "account" },

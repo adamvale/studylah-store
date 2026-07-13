@@ -9,7 +9,7 @@ import type { Level } from "@/lib/catalogue";
 // Study Duels, half 2: fetch a duel by code (to see its sealed questions)
 // and submit one side's answers. Grading is server-side; each player may
 // answer their side exactly once; both earn the same effort XP for
-// completing, win or lose — the laurel on the result screen is cosmetic.
+// completing, win or lose, the laurel on the result screen is cosmetic.
 
 const DUEL_XP = 20;
 

@@ -176,7 +176,7 @@ marks: 1
 misconception: purity-melting-range
 worked: |
   A pure substance melts sharply at ONE fixed temperature.
-  Impurities lower the melting point and make the solid melt over a range of temperatures, so a range such as 68–75 °C would indicate an impure solid.
+  Impurities lower the melting point and make the solid melt over a range of temperatures, so a range such as 68-75 °C would indicate an impure solid.
 ```
 
 ```yaml
@@ -387,7 +387,7 @@ misconception: electronic-configuration
 worked: |
   A neutral chlorine atom has 17 electrons.
   The first shell holds 2, the second holds 8, leaving 17 − 10 = 7 in the third shell.
-  So the configuration is 2,8,7 — seven valence electrons, which is why chlorine is in Group 17.
+  So the configuration is 2,8,7, seven valence electrons, which is why chlorine is in Group 17.
 ```
 
 ```yaml
@@ -404,7 +404,7 @@ marks: 1
 misconception: electron-relative-mass
 worked: |
   Protons and neutrons each have a relative mass of 1 and are found in the nucleus.
-  An electron is far lighter — about 1/1840 of a proton — so its mass is taken as negligible, which is why nucleon number counts only protons and neutrons.
+  An electron is far lighter, about 1/1840 of a proton, so its mass is taken as negligible, which is why nucleon number counts only protons and neutrons.
 ```
 
 ```yaml
@@ -482,7 +482,7 @@ marks: 1
 misconception: ionic-charge-ratio
 worked: |
   Magnesium is in Group 2 and has 2 valence electrons; each chlorine atom needs only 1 electron.
-  So one Mg atom gives one electron to each of TWO chlorine atoms, forming Mg²⁺ and 2 Cl⁻ — which is why the formula is MgCl₂.
+  So one Mg atom gives one electron to each of TWO chlorine atoms, forming Mg²⁺ and 2 Cl⁻, which is why the formula is MgCl₂.
 ```
 
 ```yaml
@@ -500,7 +500,7 @@ misconception: ionic-conduction-mobility
 worked: |
   Sodium chloride is made of charged ions.
   In the solid lattice the ions are locked in fixed positions and cannot move, so no charge can flow.
-  When melted (or dissolved), the lattice breaks up and the ions are free to move and carry charge — so it conducts.
+  When melted (or dissolved), the lattice breaks up and the ions are free to move and carry charge, so it conducts.
   Ionic compounds contain ions, not free electrons, and have no covalent bonds.
 ```
 
@@ -568,7 +568,7 @@ answer: 1
 marks: 1
 misconception: intermolecular-vs-bond
 worked: |
-  When a simple molecular substance boils, the molecules are pulled apart from one another — the strong covalent bonds INSIDE the molecules are not broken.
+  When a simple molecular substance boils, the molecules are pulled apart from one another, the strong covalent bonds INSIDE the molecules are not broken.
   The forces of attraction between separate molecules are weak, so only a little energy is needed and the boiling point is low.
 ```
 
@@ -586,7 +586,7 @@ marks: 1
 misconception: metallic-conduction
 worked: |
   In a metal the valence electrons are not held to one atom; they are free to move through the whole structure.
-  These mobile electrons carry charge, so a solid metal conducts electricity — unlike a solid ionic compound, whose ions are fixed.
+  These mobile electrons carry charge, so a solid metal conducts electricity, unlike a solid ionic compound, whose ions are fixed.
 ```
 
 ```yaml
@@ -620,7 +620,7 @@ marks: 1
 misconception: alloy-hardness
 worked: |
   In a pure metal the atoms are all the same size and are arranged in neat layers that can slide over one another, so the metal is soft and easily bent.
-  An alloy contains atoms of a different size. These break up the regular arrangement, so the layers can no longer slide easily — the alloy is harder and stronger.
+  An alloy contains atoms of a different size. These break up the regular arrangement, so the layers can no longer slide easily, the alloy is harder and stronger.
 ```
 
 ```yaml
@@ -637,7 +637,7 @@ marks: 1
 misconception: element-compound-mixture
 worked: |
   A compound contains two or more different elements chemically joined in a fixed ratio.
-  Water is H₂O — hydrogen and oxygen chemically combined — so it is a compound.
+  Water is H₂O, hydrogen and oxygen chemically combined, so it is a compound.
   Air, brass and sea water are all mixtures, whose parts are not chemically joined and can vary in proportion.
 ```
 
@@ -790,7 +790,7 @@ misconception: mole-mass-formula
 worked: |
   Mᵣ(NaCl) = 23 + 35.5 = 58.5, so M = 58.5 g/mol.
   m = n × M = 2.0 × 58.5 = 117 g.
-  Dividing instead of multiplying gives 29.3 g — a common slip.
+  Dividing instead of multiplying gives 29.3 g, a common slip.
 ```
 
 ```yaml
@@ -860,7 +860,7 @@ misconception: formula-from-ion-charges
 worked: |
   The compound must have no overall charge, so the positive and negative charges must cancel.
   Two Al³⁺ give 2 × (+3) = +6; three O²⁻ give 3 × (−2) = −6. These balance.
-  So the formula is Al₂O₃ — swap the charges and use them as the subscripts.
+  So the formula is Al₂O₃, swap the charges and use them as the subscripts.
 ```
 
 ```yaml
@@ -984,7 +984,7 @@ marks: 1
 misconception: ph-scale-direction
 worked: |
   Sodium hydroxide is a strong alkali, so it produces a high concentration of OH⁻ ions.
-  Alkaline solutions have a pH above 7, and a strong alkali is near the top of the scale — pH 13.
+  Alkaline solutions have a pH above 7, and a strong alkali is near the top of the scale, pH 13.
   pH 7 is neutral and pH values below 7 are acidic.
 ```
 
@@ -1022,7 +1022,7 @@ misconception: acid-carbonate-products
 worked: |
   acid + metal carbonate → salt + water + carbon dioxide
   CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂.
-  The fizzing seen is the carbon dioxide gas escaping — it would turn limewater milky.
+  The fizzing seen is the carbon dioxide gas escaping, it would turn limewater milky.
 ```
 
 ```yaml
@@ -1268,7 +1268,7 @@ misconception: config-to-position
 worked: |
   The number of electrons in the OUTER shell gives the group: 1 outer electron → Group 1.
   The number of shells gives the period: three shells (2, 8, 1) → Period 3.
-  So the element is in Group 1, Period 3 — it is sodium.
+  So the element is in Group 1, Period 3, it is sodium.
 ```
 
 ```yaml
@@ -1285,8 +1285,8 @@ marks: 1
 misconception: period-trend-character
 worked: |
   Across a period, the number of valence electrons increases.
-  Elements on the left have few outer electrons and lose them easily — they are metals.
-  Elements on the right have many outer electrons and gain electrons — they are non-metals.
+  Elements on the left have few outer electrons and lose them easily, they are metals.
+  Elements on the right have many outer electrons and gain electrons, they are non-metals.
   So across Period 3 the character changes from metallic (Na, Mg, Al) to non-metallic (S, Cl).
 ```
 
@@ -1357,7 +1357,7 @@ misconception: group17-reactivity-trend
 worked: |
   Halogens react by GAINING an electron.
   Going down the group the outer shell is further from the nucleus, so an extra electron is attracted less strongly and is harder to gain.
-  So reactivity DECREASES down Group 17 — the opposite of the Group 1 trend.
+  So reactivity DECREASES down Group 17, the opposite of the Group 1 trend.
 ```
 
 ```yaml
@@ -1428,7 +1428,7 @@ marks: 1
 misconception: deduce-reactivity-order
 worked: |
   The more reactive a metal is, the more easily it reacts and the less severe the conditions it needs.
-  X reacts with COLD water — the easiest condition — so X is the most reactive.
+  X reacts with COLD water, the easiest condition, so X is the most reactive.
   Y needs the harsher condition of steam, so it is less reactive than X.
   Z will not react with water at all and only reacts slowly with acid, so Z is the least reactive.
   Order: X, Y, Z.
@@ -1466,7 +1466,7 @@ marks: 1
 misconception: rusting-conditions
 worked: |
   Rusting is the reaction of iron with oxygen (from the air) and water.
-  If either one is missing — for example iron kept in dry air, or iron under boiled water covered with oil — no rust forms.
+  If either one is missing, for example iron kept in dry air, or iron under boiled water covered with oil, no rust forms.
   Salt water speeds rusting up but is not needed for it to happen.
 ```
 
@@ -1539,7 +1539,7 @@ misconception: halogen-displacement
 worked: |
   A halogen only displaces one BELOW it in Group 17.
   Bromine is above iodine, so bromine displaces iodine from potassium iodide.
-  Bromine is below chlorine, so it cannot displace bromine from potassium bromide — and it is already bromine, so no displacement is possible there anyway.
+  Bromine is below chlorine, so it cannot displace bromine from potassium bromide, and it is already bromine, so no displacement is possible there anyway.
   Chlorine would displace both, and iodine would displace neither, so the answer must be bromine.
 ```
 
@@ -1608,7 +1608,7 @@ answer: 1
 marks: 1
 misconception: renewable-vs-fossil
 worked: |
-  Natural gas, crude oil and coal are fossil fuels — they took millions of years to form and are being used up far faster than they are made, so they are non-renewable.
+  Natural gas, crude oil and coal are fossil fuels, they took millions of years to form and are being used up far faster than they are made, so they are non-renewable.
   Bioethanol is made from sugarcane, which can be re-grown each season, so it is renewable.
 ```
 
@@ -1644,7 +1644,7 @@ marks: 1
 misconception: general-formula-mixup
 worked: |
   Alkanes are saturated, so each carbon holds as many hydrogens as possible.
-  The general formula is CₙH₂ₙ₊₂ — check with methane: n = 1 gives CH₄ ✓, and with propane: n = 3 gives C₃H₈ ✓.
+  The general formula is CₙH₂ₙ₊₂, check with methane: n = 1 gives CH₄ ✓, and with propane: n = 3 gives C₃H₈ ✓.
   CₙH₂ₙ is the alkene formula.
 ```
 
@@ -1662,7 +1662,7 @@ marks: 1
 misconception: general-formula-mixup
 worked: |
   An alkene has a C=C double bond, so it holds two fewer hydrogen atoms than the alkane with the same number of carbons.
-  The general formula is CₙH₂ₙ — check with ethene: n = 2 gives C₂H₄ ✓, and with propene: n = 3 gives C₃H₆ ✓.
+  The general formula is CₙH₂ₙ, check with ethene: n = 2 gives C₂H₄ ✓, and with propene: n = 3 gives C₃H₆ ✓.
 ```
 
 ```yaml
@@ -1793,7 +1793,7 @@ worked: |
 ```yaml
 type: mcq
 topic: "C8 Organic Chemistry"
-stem: "The repeat unit of a polymer is —CH(CH₃)—CH₂—. What is the monomer used to make it?"
+stem: "The repeat unit of a polymer is, CH(CH₃), CH₂, . What is the monomer used to make it?"
 options:
   - "Propane"
   - "Ethene"
@@ -1838,7 +1838,7 @@ answer: 2
 marks: 1
 misconception: recycling-physical-vs-chemical
 worked: |
-  PHYSICAL recycling means melting the plastic and remoulding it (for example into pellets or new objects) — the molecules are unchanged.
+  PHYSICAL recycling means melting the plastic and remoulding it (for example into pellets or new objects), the molecules are unchanged.
   CHEMICAL recycling changes the molecules: the plastic is cracked into smaller molecules, which can then be used as fuels or to make new chemicals.
 ```
 
@@ -1876,7 +1876,7 @@ marks: 1
 misconception: bromine-test-unsaturation
 worked: |
   Ethene is unsaturated: it has a C=C double bond.
-  Bromine adds across the double bond, so the orange-brown aqueous bromine loses its colour — it is decolourised (turns colourless).
+  Bromine adds across the double bond, so the orange-brown aqueous bromine loses its colour, it is decolourised (turns colourless).
 ```
 
 ```yaml
@@ -1944,7 +1944,7 @@ marks: 1
 misconception: co-toxicity-mechanism
 worked: |
   Carbon monoxide attaches itself to the haemoglobin in red blood cells more strongly than oxygen does.
-  That haemoglobin can then no longer carry oxygen, so less oxygen reaches the body's cells — which is why carbon monoxide is toxic.
+  That haemoglobin can then no longer carry oxygen, so less oxygen reaches the body's cells, which is why carbon monoxide is toxic.
   Acid rain is caused by sulfur dioxide and nitrogen dioxide, not carbon monoxide.
 ```
 
@@ -2076,7 +2076,7 @@ body: "A shared pair of electrons between two non-metal atoms, attracted to both
 kind: definition
 term: "Alloy"
 topic: "C3 Chemical Bonding and Structure"
-body: "A mixture of a metal with one or more other elements. The different-sized atoms disrupt the regular layers, so an alloy is harder than the pure metal — for example brass (copper + zinc) and stainless steel (iron + chromium)."
+body: "A mixture of a metal with one or more other elements. The different-sized atoms disrupt the regular layers, so an alloy is harder than the pure metal, for example brass (copper + zinc) and stainless steel (iron + chromium)."
 ```
 
 ```yaml
@@ -2125,14 +2125,14 @@ body: "The reaction of an acid with a base in which H⁺ ions and OH⁻ ions com
 kind: definition
 term: "Amphoteric oxide"
 topic: "C5 Acid-Base Chemistry"
-body: "An oxide that reacts with BOTH acids and alkalis to form a salt and water — for example aluminium oxide, Al₂O₃, and zinc oxide, ZnO."
+body: "An oxide that reacts with BOTH acids and alkalis to form a salt and water, for example aluminium oxide, Al₂O₃, and zinc oxide, ZnO."
 ```
 
 ```yaml
 kind: definition
 term: "Reactivity series"
 topic: "C7 Patterns in the Periodic Table"
-body: "A list of metals in order of how readily they react — judged from their reactions with water, with steam and with dilute acid. The more reactive the metal, the milder the conditions it needs to react."
+body: "A list of metals in order of how readily they react, judged from their reactions with water, with steam and with dilute acid. The more reactive the metal, the milder the conditions it needs to react."
 ```
 
 ```yaml
@@ -2153,14 +2153,14 @@ body: "A compound containing hydrogen and carbon ONLY. Crude oil is a mixture of
 kind: definition
 term: "Homologous series"
 topic: "C8 Organic Chemistry"
-body: "A family of organic compounds with the same general formula and similar chemical properties, in which each member differs from the next by a CH₂ unit — for example the alkanes (CₙH₂ₙ₊₂) and the alkenes (CₙH₂ₙ)."
+body: "A family of organic compounds with the same general formula and similar chemical properties, in which each member differs from the next by a CH₂ unit, for example the alkanes (CₙH₂ₙ₊₂) and the alkenes (CₙH₂ₙ)."
 ```
 
 ```yaml
 kind: definition
 term: "Cracking"
 topic: "C8 Organic Chemistry"
-body: "The breaking down of long-chain alkane molecules by strong heating into shorter, more useful molecules — a smaller alkane plus an alkene (and sometimes hydrogen)."
+body: "The breaking down of long-chain alkane molecules by strong heating into shorter, more useful molecules, a smaller alkane plus an alkene (and sometimes hydrogen)."
 ```
 
 ```yaml
@@ -2220,7 +2220,7 @@ keywords: [random motion, gas particles move faster, large spaces, liquid partic
 kind: precision
 topic: "C3 Chemical Bonding and Structure"
 prompt: "Explain why solid sodium chloride does not conduct electricity but molten sodium chloride does."
-model: "Sodium chloride is made of Na⁺ and Cl⁻ ions. To conduct electricity, charged particles must be free to MOVE. In the solid the ions are held in fixed positions in the lattice by strong electrostatic forces, so no charge can flow. When it is melted the lattice breaks up, so the ions become free to move and carry charge — the molten compound conducts."
+model: "Sodium chloride is made of Na⁺ and Cl⁻ ions. To conduct electricity, charged particles must be free to MOVE. In the solid the ions are held in fixed positions in the lattice by strong electrostatic forces, so no charge can flow. When it is melted the lattice breaks up, so the ions become free to move and carry charge, the molten compound conducts."
 keywords: [ions, fixed positions in the lattice, free to move when molten, carry charge]
 ```
 
@@ -2276,7 +2276,7 @@ keywords: [base, neutralises the acid, H+ plus OH- gives water, raises the pH]
 kind: precision
 topic: "C7 Patterns in the Periodic Table"
 prompt: "Explain why the Group 1 metals become MORE reactive going down the group."
-model: "A Group 1 metal reacts by LOSING its single outer electron. Going down the group the atoms get larger, so the outer electron is further from the nucleus and is held less strongly. It is therefore lost more easily, so the metal reacts more readily — potassium reacts more vigorously with water than sodium, which reacts more vigorously than lithium."
+model: "A Group 1 metal reacts by LOSING its single outer electron. Going down the group the atoms get larger, so the outer electron is further from the nucleus and is held less strongly. It is therefore lost more easily, so the metal reacts more readily, potassium reacts more vigorously with water than sodium, which reacts more vigorously than lithium."
 keywords: [loses one outer electron, atoms get larger down the group, outer electron further from nucleus, held less strongly, lost more easily]
 ```
 
@@ -2284,7 +2284,7 @@ keywords: [loses one outer electron, atoms get larger down the group, outer elec
 kind: precision
 topic: "C7 Patterns in the Periodic Table"
 prompt: "Describe what you would see when a small piece of sodium is dropped into a trough of cold water containing universal indicator."
-model: "The sodium floats on the surface, melts into a shiny silver ball and moves about rapidly, fizzing as a gas (hydrogen) is given off. The piece gets smaller and eventually disappears. The universal indicator turns blue or purple, because sodium hydroxide — an alkali — has been formed."
+model: "The sodium floats on the surface, melts into a shiny silver ball and moves about rapidly, fizzing as a gas (hydrogen) is given off. The piece gets smaller and eventually disappears. The universal indicator turns blue or purple, because sodium hydroxide, an alkali, has been formed."
 keywords: [floats, melts into a ball, moves about, fizzing hydrogen given off, indicator turns purple]
 ```
 
@@ -2316,7 +2316,7 @@ keywords: [supply does not match demand, long chains broken by heat, shorter mor
 kind: precision
 topic: "C8 Organic Chemistry"
 prompt: "Explain how aqueous bromine is used to tell an alkane apart from an alkene, and give the observations for each."
-model: "Shake each hydrocarbon separately with orange-brown aqueous bromine. The alkene is UNSATURATED — it has a C=C double bond, so bromine adds across the double bond and the orange-brown colour is decolourised (turns colourless). The alkane is SATURATED — it has only single C–C bonds, so it does not react quickly and the orange-brown colour remains."
+model: "Shake each hydrocarbon separately with orange-brown aqueous bromine. The alkene is UNSATURATED, it has a C=C double bond, so bromine adds across the double bond and the orange-brown colour is decolourised (turns colourless). The alkane is SATURATED, it has only single C-C bonds, so it does not react quickly and the orange-brown colour remains."
 keywords: [aqueous bromine is orange-brown, alkene decolourises it, C=C double bond, addition reaction, alkane stays orange-brown]
 ```
 
@@ -2324,7 +2324,7 @@ keywords: [aqueous bromine is orange-brown, alkene decolourises it, C=C double b
 kind: precision
 topic: "C8 Organic Chemistry"
 prompt: "Explain the argument that bioethanol made from sugarcane adds less carbon dioxide to the atmosphere overall than petrol does."
-model: "Burning bioethanol does release carbon dioxide. However, the sugarcane grown to make it absorbs carbon dioxide from the atmosphere by photosynthesis as it grows, so much of the CO₂ released when the fuel burns is taken back out again — the CO₂ is offset. Petrol comes from crude oil, a fossil fuel whose carbon has been locked underground for millions of years, so burning it simply adds extra carbon dioxide to the atmosphere. Bioethanol is also renewable, because the crop can be re-grown."
+model: "Burning bioethanol does release carbon dioxide. However, the sugarcane grown to make it absorbs carbon dioxide from the atmosphere by photosynthesis as it grows, so much of the CO₂ released when the fuel burns is taken back out again, the CO₂ is offset. Petrol comes from crude oil, a fossil fuel whose carbon has been locked underground for millions of years, so burning it simply adds extra carbon dioxide to the atmosphere. Bioethanol is also renewable, because the crop can be re-grown."
 keywords: [burning bioethanol still releases CO2, sugarcane absorbs CO2 by photosynthesis, offset, fossil fuel carbon is extra, renewable crop]
 ```
 
@@ -2332,7 +2332,7 @@ keywords: [burning bioethanol still releases CO2, sugarcane absorbs CO2 by photo
 kind: precision
 topic: "C8 Organic Chemistry"
 prompt: "Describe the difference between physical and chemical recycling of waste plastic, and give one drawback of recycling."
-model: "In PHYSICAL recycling the waste plastic is sorted, cleaned, melted and remoulded — usually into pellets — and used to make new objects; the molecules themselves are unchanged. In CHEMICAL recycling the plastic is cracked into smaller molecules, which can then be used as fuels or as feedstock for making new chemicals. A drawback is that sorting and cleaning mixed plastic waste is difficult and costly, and the recycling process itself uses energy."
+model: "In PHYSICAL recycling the waste plastic is sorted, cleaned, melted and remoulded, usually into pellets, and used to make new objects; the molecules themselves are unchanged. In CHEMICAL recycling the plastic is cracked into smaller molecules, which can then be used as fuels or as feedstock for making new chemicals. A drawback is that sorting and cleaning mixed plastic waste is difficult and costly, and the recycling process itself uses energy."
 keywords: [physical recycling melts and remoulds, chemical recycling cracks the plastic, molecules changed only in chemical recycling, sorting is difficult and costly, uses energy]
 ```
 
@@ -2383,5 +2383,5 @@ conclusion: "The gas given off is hydrogen, H₂"
 kind: qa
 test: "Bubble the unknown gas through limewater, then test a fresh sample with a glowing splint"
 observation: "The limewater stays colourless; the glowing splint relights"
-conclusion: "The gas is oxygen, O₂ — it is not carbon dioxide"
+conclusion: "The gas is oxygen, O₂, it is not carbon dioxide"
 ```

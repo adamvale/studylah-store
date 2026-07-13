@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ComingSoon } from "@/components/coming-soon";
 
-export const metadata: Metadata = { title: "A-Level — coming 2026" };
+export const metadata: Metadata = { title: "A-Level, coming 2026" };
 
 export default function ALevelPage() {
   return (

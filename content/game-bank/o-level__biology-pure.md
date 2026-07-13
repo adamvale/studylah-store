@@ -53,14 +53,14 @@ stem: "A purple-flowered plant of unknown genotype is crossed with a white-flowe
 options:
   - "pp"
   - "PP"
-  - "either PP or Pp — the cross cannot distinguish them"
+  - "either PP or Pp, the cross cannot distinguish them"
   - "Pp"
 answer: 1
 marks: 1
 misconception: test-cross-interpretation
 worked: |
   This is a test cross: unknown × homozygous recessive.
-  If the purple parent were Pp, the cross Pp × pp would give 1 Pp (purple) : 1 pp (white) — about half the offspring would be white.
+  If the purple parent were Pp, the cross Pp × pp would give 1 Pp (purple) : 1 pp (white), about half the offspring would be white.
   No white offspring appeared among 60, so the purple parent is almost certainly PP: PP × pp gives all Pp, all purple.
 ```
 
@@ -77,7 +77,7 @@ answer: 2
 marks: 1
 misconception: codominance-ratio
 worked: |
-  Pink parents are heterozygous CᴿCᵂ: both alleles are expressed, so neither is dominant — this is codominance.
+  Pink parents are heterozygous CᴿCᵂ: both alleles are expressed, so neither is dominant, this is codominance.
   Gametes from each parent: Cᴿ and Cᵂ.
   Offspring: CᴿCᴿ, CᴿCᵂ, CᴿCᵂ, CᵂCᵂ.
   CᴿCᴿ = red, CᴿCᵂ = pink, CᵂCᵂ = white.
@@ -90,7 +90,7 @@ topic: "T14 Inheritance"
 stem: "A couple already have three daughters. What is the probability that their fourth child is a boy?"
 options:
   - "1/2"
-  - "0 — they can only have daughters"
+  - "0, they can only have daughters"
   - "1/8"
   - "1/4"
 answer: 0
@@ -100,7 +100,7 @@ worked: |
   The mother is XX, so every egg carries X.
   The father is XY, so half his sperm carry X and half carry Y.
   A Y-bearing sperm gives XY (boy); an X-bearing sperm gives XX (girl).
-  Each fertilisation is an independent event — earlier children do not change the odds.
+  Each fertilisation is an independent event, earlier children do not change the odds.
   Probability of a boy = 1/2.
 ```
 
@@ -172,7 +172,7 @@ answer: 0
 marks: 1
 misconception: continuous-discontinuous-variation
 worked: |
-  Discontinuous variation puts individuals into a few clear-cut categories with no intermediates, and is controlled by a small number of genes with little environmental effect — ABO blood group (A, B, AB or O) is the classic example.
+  Discontinuous variation puts individuals into a few clear-cut categories with no intermediates, and is controlled by a small number of genes with little environmental effect, ABO blood group (A, B, AB or O) is the classic example.
   Body mass, height and hand span form a continuous range of values (a normal distribution), so they show continuous variation.
 ```
 
@@ -226,9 +226,9 @@ answer: 2
 marks: 1
 misconception: carrier-parents-deduction
 worked: |
-  If the allele were dominant, at least one parent would show the condition — neither does.
+  If the allele were dominant, at least one parent would show the condition, neither does.
   So the allele must be recessive (call it a). The affected child is aa, taking one a from each parent.
-  Each parent therefore carries an a but does not show the condition, so each must be Aa — a heterozygous carrier.
+  Each parent therefore carries an a but does not show the condition, so each must be Aa, a heterozygous carrier.
   The cross Aa × Aa gives a 1 in 4 chance of an aa child.
 ```
 
@@ -247,7 +247,7 @@ misconception: insulin-glucagon-swap
 worked: |
   A rise in blood glucose is detected by the pancreas, which secretes insulin.
   Insulin increases the uptake of glucose by liver and muscle cells and increases the conversion of glucose into glycogen for storage; respiration of glucose also increases.
-  Blood glucose therefore falls back towards the set point — negative feedback.
+  Blood glucose therefore falls back towards the set point, negative feedback.
   Glucagon does the opposite job and is secreted when glucose is low; insulin is made by the pancreas, not the liver.
 ```
 
@@ -339,7 +339,7 @@ marks: 1
 misconception: myelin-function
 worked: |
   The myelin sheath is a fatty layer that electrically insulates the axon.
-  The impulse cannot pass through the insulated regions, so it jumps between the gaps in the sheath instead of travelling along every part of the membrane — this makes conduction much faster.
+  The impulse cannot pass through the insulated regions, so it jumps between the gaps in the sheath instead of travelling along every part of the membrane, this makes conduction much faster.
   Myelin does not carry impulses across synapses; a chemical neurotransmitter does that.
 ```
 
@@ -358,7 +358,7 @@ misconception: vessels-move-in-skin
 worked: |
   Vasodilation means the arterioles supplying the skin capillaries widen, so a greater volume of blood flows through the capillary loops near the skin surface.
   More heat is therefore carried to the surface and lost by radiation (and by conduction/convection), cooling the blood and the body.
-  The vessels themselves do not move up or down in the skin — this is the classic error; only the volume of blood flowing through them changes.
+  The vessels themselves do not move up or down in the skin, this is the classic error; only the volume of blood flowing through them changes.
 ```
 
 ```yaml
@@ -374,9 +374,9 @@ answer: 0
 marks: 1
 misconception: sweat-cooling-mechanism
 worked: |
-  Sweat is secreted onto the skin at body temperature — it is not cold.
+  Sweat is secreted onto the skin at body temperature, it is not cold.
   Cooling happens when the water in the sweat evaporates: the energy (latent heat of vaporisation) needed to change liquid water into water vapour is taken from the skin and the blood beneath it.
-  The body surface therefore loses heat and cools. Sweat that drips off without evaporating gives no cooling — which is why humid air makes people feel hotter.
+  The body surface therefore loses heat and cools. Sweat that drips off without evaporating gives no cooling, which is why humid air makes people feel hotter.
 ```
 
 ```yaml
@@ -450,7 +450,7 @@ misconception: food-chain-arrow-direction
 worked: |
   The arrows in a food chain point in the direction that energy (and biomass) is transferred.
   Grass is the producer; it traps light energy in photosynthesis. Energy passes to the grasshopper when it eats the grass, then to the frog, then to the snake.
-  The arrow therefore always points from the organism that is eaten to the organism that eats it — never 'is eaten by' in the opposite direction.
+  The arrow therefore always points from the organism that is eaten to the organism that eats it, never 'is eaten by' in the opposite direction.
 ```
 
 ```yaml
@@ -470,7 +470,7 @@ worked: |
   = (1 080 ÷ 12 000) × 100
   = 0.09 × 100
   = 9%.
-  The remaining 91% is lost — mostly as heat from respiration, in undigested material in faeces, and in urine.
+  The remaining 91% is lost, mostly as heat from respiration, in undigested material in faeces, and in urine.
 ```
 
 ```yaml
@@ -486,7 +486,7 @@ answer: 2
 marks: 1
 misconception: pyramid-numbers-vs-biomass
 worked: |
-  A pyramid of numbers counts organisms, ignoring their size. Here the producer level is a single very large tree, so its bar (1) is far narrower than the caterpillar bar (500) — the pyramid is inverted at the base.
+  A pyramid of numbers counts organisms, ignoring their size. Here the producer level is a single very large tree, so its bar (1) is far narrower than the caterpillar bar (500), the pyramid is inverted at the base.
   A pyramid of biomass uses the total dry mass at each level. The one oak tree has a huge biomass, far greater than 500 caterpillars, so the biomass pyramid is upright.
   The oak is a producer: it photosynthesises.
 ```
@@ -557,7 +557,7 @@ answer: 3
 marks: 1
 misconception: food-web-knock-on-effects
 worked: |
-  Losing most rabbits removes one of the hawks' two food sources, so predation pressure shifts onto the remaining prey — the mice. More mice are eaten, so the mouse population falls.
+  Losing most rabbits removes one of the hawks' two food sources, so predation pressure shifts onto the remaining prey, the mice. More mice are eaten, so the mouse population falls.
   Grass is grazed less (fewer rabbits), so grass biomass would rise, not fall.
   Hawks lose a food source, so their numbers are more likely to fall than to rise.
 ```
@@ -597,7 +597,7 @@ worked: |
   Nitrates and phosphates in the run-off act as nutrients, causing an algal bloom that covers the water surface.
   Algae below are shaded, cannot photosynthesise, and die.
   Decomposing bacteria feed on the dead algae, multiply rapidly and respire aerobically, using up the dissolved oxygen.
-  The oxygen concentration of the water falls, so fish and other aquatic animals cannot respire and die. The fertiliser itself is not a poison — the oxygen shortage kills the fish.
+  The oxygen concentration of the water falls, so fish and other aquatic animals cannot respire and die. The fertiliser itself is not a poison, the oxygen shortage kills the fish.
 ```
 
 ```yaml
@@ -624,10 +624,10 @@ type: mcq
 topic: "T5 Transport in Humans"
 stem: "A blood vessel is seen in section to have a thick wall containing muscle and elastic fibres, and a relatively narrow lumen. Which vessel is it, and why does it have this structure?"
 options:
-  - "A capillary — a narrow lumen brings blood close to the surrounding cells."
-  - "An artery — it must withstand and help maintain the high pressure of blood leaving the heart."
-  - "A vein — the thick wall is needed to prevent the backflow of blood."
-  - "A vein — it must withstand the highest pressure in the circulatory system."
+  - "A capillary, a narrow lumen brings blood close to the surrounding cells."
+  - "An artery, it must withstand and help maintain the high pressure of blood leaving the heart."
+  - "A vein, the thick wall is needed to prevent the backflow of blood."
+  - "A vein, it must withstand the highest pressure in the circulatory system."
 answer: 1
 marks: 1
 misconception: artery-vein-identification
@@ -653,7 +653,7 @@ misconception: vein-valve-function
 worked: |
   Blood in veins is at low pressure, so it is at risk of flowing backwards, especially when it must travel upwards from the legs.
   When surrounding skeletal muscles contract they squeeze the veins and push the blood along; the semilunar valves then close if blood starts to move the wrong way.
-  The valves do not pump — the muscles do the pushing; the valves simply make the flow one-way.
+  The valves do not pump, the muscles do the pushing; the valves simply make the flow one-way.
 ```
 
 ```yaml
@@ -690,7 +690,7 @@ worked: |
   Blood from the body enters the heart through the vena cava into the right atrium.
   The right atrium contracts and blood passes through a valve into the right ventricle.
   The right ventricle contracts and pumps blood into the pulmonary artery, which carries it to the lungs.
-  The pulmonary vein returns oxygenated blood to the left atrium — that is the second circuit of the double circulation.
+  The pulmonary vein returns oxygenated blood to the left atrium, that is the second circuit of the double circulation.
 ```
 
 ```yaml
@@ -706,7 +706,7 @@ answer: 0
 marks: 1
 misconception: ventricle-wall-thickness
 worked: |
-  The right ventricle pumps blood only to the lungs, which are close by and contain delicate capillaries — a lower pressure is needed.
+  The right ventricle pumps blood only to the lungs, which are close by and contain delicate capillaries, a lower pressure is needed.
   The left ventricle pumps blood into the aorta and all around the body, so it must produce a much higher pressure to push blood through a far greater distance and resistance.
   A thicker layer of cardiac muscle contracts more powerfully, generating that higher pressure.
   Both ventricles hold about the same volume of blood.
@@ -725,7 +725,7 @@ answer: 2
 marks: 1
 misconception: oxygenation-vs-pressure
 worked: |
-  The aorta leaves the left ventricle, the most powerful chamber, so the blood inside it is at the highest pressure in the body — and it is oxygenated.
+  The aorta leaves the left ventricle, the most powerful chamber, so the blood inside it is at the highest pressure in the body, and it is oxygenated.
   The pulmonary artery is also at fairly high pressure but carries deoxygenated blood.
   The pulmonary vein carries oxygenated blood but at low pressure (it has already passed through the lung capillaries).
   The vena cava carries deoxygenated blood at the lowest pressure.
@@ -745,7 +745,7 @@ marks: 1
 misconception: rbc-adaptation-surface-area
 worked: |
   The biconcave disc shape (a flattened disc dipped in on both sides) gives a larger surface area to volume ratio than a sphere of the same volume, so oxygen can diffuse in and out faster.
-  Having no nucleus creates more room for haemoglobin — that increases the oxygen-carrying capacity, not the surface area.
+  Having no nucleus creates more room for haemoglobin, that increases the oxygen-carrying capacity, not the surface area.
   Haemoglobin is the molecule that binds the oxygen; flexibility lets the cell pass through narrow capillaries.
 ```
 
@@ -819,7 +819,7 @@ misconception: photosynthesis-equation
 worked: |
   Photosynthesis uses carbon dioxide and water as the raw materials, with light absorbed by chlorophyll providing the energy, to make glucose and release oxygen as a by-product.
   Word equation: carbon dioxide + water → glucose + oxygen.
-  The distractor C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O is aerobic respiration — the reverse process — and C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂ is anaerobic respiration in yeast.
+  The distractor C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O is aerobic respiration, the reverse process, and C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂ is anaerobic respiration in yeast.
 ```
 
 ```yaml
@@ -837,7 +837,7 @@ misconception: limiting-factor-plateau
 worked: |
   On the steep part, increasing light increases the rate, so light is the limiting factor there.
   On the plateau, further increases in light make no difference, so light can no longer be the factor holding the rate back.
-  Something else must now be in short supply — with light plentiful, the rate is limited by the carbon dioxide concentration or by temperature.
+  Something else must now be in short supply, with light plentiful, the rate is limited by the carbon dioxide concentration or by temperature.
   The rate is still high on the plateau, so photosynthesis has certainly not stopped.
 ```
 
@@ -854,7 +854,7 @@ answer: 0
 marks: 1
 misconception: leaf-tissue-function
 worked: |
-  Palisade mesophyll cells are column-shaped, packed closely together near the top of the leaf and contain the most chloroplasts, so they absorb the maximum amount of light — they are the main site of photosynthesis.
+  Palisade mesophyll cells are column-shaped, packed closely together near the top of the leaf and contain the most chloroplasts, so they absorb the maximum amount of light, they are the main site of photosynthesis.
   Spongy mesophyll has fewer chloroplasts and large air spaces for gas diffusion.
   Xylem transports water; the epidermis is a protective layer with few or no chloroplasts.
 ```
@@ -874,7 +874,7 @@ misconception: guard-cell-mechanism
 worked: |
   Guard cells take in water by osmosis and become turgid.
   Their inner wall (next to the pore) is thicker and less elastic than the outer wall, so as they swell they curve away from each other and the stoma opens.
-  When guard cells lose water they become flaccid, straighten and the stoma closes — reducing water loss.
+  When guard cells lose water they become flaccid, straighten and the stoma closes, reducing water loss.
   Opening lets CO₂ diffuse in for photosynthesis; CO₂ does not force the pore open.
 ```
 
@@ -893,7 +893,7 @@ misconception: xylem-phloem-confusion
 worked: |
   Xylem vessels are made of dead cells joined end to end with their end walls broken down, forming continuous hollow tubes.
   Their walls are strengthened with lignin, which supports the plant and stops the vessels collapsing under tension.
-  They carry water and dissolved mineral ions in one direction only — upwards from root to leaf.
+  They carry water and dissolved mineral ions in one direction only, upwards from root to leaf.
   Sieve tubes with sieve plates and companion cells are phloem, not xylem.
 ```
 
@@ -910,7 +910,7 @@ answer: 1
 marks: 1
 misconception: translocation-tissue
 worked: |
-  Translocation is the transport of manufactured food substances — mainly sucrose and amino acids — from a source (such as a photosynthesising leaf) to a sink (such as a growing tuber, fruit or root).
+  Translocation is the transport of manufactured food substances, mainly sucrose and amino acids, from a source (such as a photosynthesising leaf) to a sink (such as a growing tuber, fruit or root).
   It takes place in the phloem sieve tubes, which are living cells supported by companion cells, and it can occur up or down the plant.
   Xylem carries only water and mineral ions, and only upwards.
 ```
@@ -928,7 +928,7 @@ answer: 3
 marks: 1
 misconception: wind-transpiration-explanation
 worked: |
-  In still air, water vapour builds up in a layer just outside the stomata, so the humidity there rises and the water-potential gradient between the air spaces inside the leaf and the air outside becomes shallow — diffusion slows.
+  In still air, water vapour builds up in a layer just outside the stomata, so the humidity there rises and the water-potential gradient between the air spaces inside the leaf and the air outside becomes shallow, diffusion slows.
   Moving air removes that humid layer, so the air next to the stomata stays dry and the gradient stays steep.
   Water vapour therefore diffuses out of the stomata faster and transpiration increases. Wind does not push water out, and a cooler leaf would evaporate water more slowly, not faster.
 ```
@@ -984,7 +984,7 @@ marks: 1
 misconception: ultrafiltration-site
 worked: |
   Blood enters the glomerulus through a wide afferent arteriole and leaves through a narrower efferent arteriole, so the blood inside is under high pressure.
-  This pressure forces water and small dissolved molecules out through the capillary wall and the wall of the Bowman's capsule into the capsule space — ultrafiltration.
+  This pressure forces water and small dissolved molecules out through the capillary wall and the wall of the Bowman's capsule into the capsule space, ultrafiltration.
   The proximal convoluted tubule is where selective reabsorption happens; the collecting duct is where water reabsorption is adjusted by ADH.
 ```
 
@@ -1011,16 +1011,16 @@ type: mcq
 topic: "T7 Excretion in Humans"
 stem: "All of the glucose in the filtrate is normally returned to the blood before the filtrate reaches the collecting duct. What is this process called, and how does it occur?"
 options:
-  - "selective reabsorption — glucose is moved from the proximal convoluted tubule back into the blood capillaries, using active transport"
-  - "deamination — glucose is broken down in the tubule wall"
-  - "osmosis — glucose passes back into the blood because it is a small molecule"
-  - "ultrafiltration — glucose is forced back into the blood by high pressure"
+  - "selective reabsorption, glucose is moved from the proximal convoluted tubule back into the blood capillaries, using active transport"
+  - "deamination, glucose is broken down in the tubule wall"
+  - "osmosis, glucose passes back into the blood because it is a small molecule"
+  - "ultrafiltration, glucose is forced back into the blood by high pressure"
 answer: 0
 marks: 1
 misconception: selective-reabsorption-mechanism
 worked: |
   Selective reabsorption means useful substances are taken back into the blood while wastes are left behind.
-  Glucose (and much of the mineral ion content) is reabsorbed in the proximal convoluted tubule; because glucose must often move against its concentration gradient, active transport is used, requiring energy from respiration — which is why the tubule cells contain many mitochondria.
+  Glucose (and much of the mineral ion content) is reabsorbed in the proximal convoluted tubule; because glucose must often move against its concentration gradient, active transport is used, requiring energy from respiration, which is why the tubule cells contain many mitochondria.
   Water follows by osmosis. Urea is largely left in the tubule and excreted.
 ```
 
@@ -1040,7 +1040,7 @@ worked: |
   Sweating and low water intake lower the water content of the blood.
   This is detected by the brain, and more ADH (antidiuretic hormone) is released into the blood.
   ADH makes the walls of the collecting duct more permeable to water, so more water is reabsorbed back into the blood.
-  Less water is lost, so a small volume of concentrated urine is produced and the water content of the blood returns towards normal — negative feedback.
+  Less water is lost, so a small volume of concentrated urine is produced and the water content of the blood returns towards normal, negative feedback.
 ```
 
 ```yaml
@@ -1058,7 +1058,7 @@ misconception: urea-production-site
 worked: |
   Excess amino acids cannot be stored. In the liver they are deaminated: the amino group is removed and converted into ammonia, which is very toxic, and is immediately converted into the less toxic urea.
   The remaining carbon-containing part can be respired or converted into glycogen or fat.
-  Urea is carried in the blood plasma to the kidneys, which remove it — the kidneys excrete urea but do not make it.
+  Urea is carried in the blood plasma to the kidneys, which remove it, the kidneys excrete urea but do not make it.
 ```
 
 ```yaml
@@ -1075,7 +1075,7 @@ marks: 1
 misconception: filtrate-urine-comparison
 worked: |
   Work through the three columns.
-  Plasma protein is too large to be filtered, so it never enters the filtrate — it fails the second condition.
+  Plasma protein is too large to be filtered, so it never enters the filtrate, it fails the second condition.
   Urea is filtered and is not reabsorbed, so it appears in the urine.
   Water is filtered and appears in urine (urine is mostly water).
   Glucose is small enough to be filtered, but it is completely reabsorbed by active transport, so a healthy person's urine contains none. Glucose fits all three columns.
@@ -1114,7 +1114,7 @@ marks: 1
 misconception: fertilisation-site
 worked: |
   After ovulation the egg passes into the oviduct (fallopian tube) and is moved along by cilia.
-  Sperm swim from the vagina through the cervix and uterus into the oviduct, where one sperm nucleus fuses with the egg nucleus — fertilisation.
+  Sperm swim from the vagina through the cervix and uterus into the oviduct, where one sperm nucleus fuses with the egg nucleus, fertilisation.
   The resulting zygote divides by mitosis as it travels on to the uterus, where the ball of cells implants in the thick uterus lining.
 ```
 
@@ -1131,7 +1131,7 @@ answer: 0
 marks: 1
 misconception: placenta-blood-mixing
 worked: |
-  In the placenta, fetal capillaries lie very close to pools of the mother's blood, giving a large surface area and a short diffusion distance — but the two blood systems never mix.
+  In the placenta, fetal capillaries lie very close to pools of the mother's blood, giving a large surface area and a short diffusion distance, but the two blood systems never mix.
   Oxygen, glucose, amino acids, mineral ions and antibodies diffuse from mother to fetus; carbon dioxide and urea diffuse from fetus to mother for removal.
   Keeping the blood separate protects the fetus from the mother's high blood pressure and prevents problems if their blood groups differ.
 ```
@@ -1151,7 +1151,7 @@ misconception: menstrual-cycle-timing
 worked: |
   Day 1 marks the start of menstruation, when the uterus lining breaks down and is lost.
   The lining then repairs and thickens as a follicle matures in the ovary.
-  Ovulation — the release of the egg — happens roughly midway through the cycle, at about day 14.
+  Ovulation, the release of the egg, happens roughly midway through the cycle, at about day 14.
   After ovulation the lining is maintained; if no fertilised egg implants, the cycle repeats.
 ```
 
@@ -1206,7 +1206,7 @@ marks: 1
 misconception: ovule-ovary-fate
 worked: |
   A pollen grain lands on the stigma and grows a pollen tube down the style to the ovule.
-  The male gamete nucleus travels down the tube and fuses with the female gamete nucleus inside the ovule — fertilisation — forming a zygote.
+  The male gamete nucleus travels down the tube and fuses with the female gamete nucleus inside the ovule, fertilisation, forming a zygote.
   The zygote develops into the embryo, and the whole ovule becomes the seed.
   The ovary wall develops into the fruit, which protects the seeds and often helps to disperse them.
 ```
@@ -1260,10 +1260,10 @@ answer: 1
 marks: 1
 misconception: food-test-matching
 worked: |
-  Starch test: add iodine solution — brown to blue-black is a positive result.
-  Reducing sugar test: heat with Benedict's solution — blue to brick-red.
-  Protein test: add Biuret reagent — blue to violet.
-  Fat test: dissolve in ethanol then add water — a cloudy white emulsion forms.
+  Starch test: add iodine solution, brown to blue-black is a positive result.
+  Reducing sugar test: heat with Benedict's solution, blue to brick-red.
+  Protein test: add Biuret reagent, blue to violet.
+  Fat test: dissolve in ethanol then add water, a cloudy white emulsion forms.
   Each test has its own reagent and its own colour change; the commonest error is to mix them up.
 ```
 
@@ -1318,8 +1318,8 @@ misconception: denaturation-explanation
 worked: |
   Up to the optimum, heating increases kinetic energy, so enzyme and substrate collide more often and the rate rises.
   Above the optimum, the extra vibration breaks the bonds holding the enzyme's three-dimensional shape together.
-  The active site changes shape permanently, so it is no longer complementary to the substrate; fewer enzyme–substrate complexes form and the rate falls sharply.
-  Say 'the active site changes shape', not 'the enzyme is killed' — an enzyme is a molecule, not a living thing.
+  The active site changes shape permanently, so it is no longer complementary to the substrate; fewer enzyme-substrate complexes form and the rate falls sharply.
+  Say 'the active site changes shape', not 'the enzyme is killed', an enzyme is a molecule, not a living thing.
 ```
 
 ```yaml
@@ -1356,7 +1356,7 @@ worked: |
   Rate at 30 °C = 1 ÷ 200 = 0.005 s⁻¹.
   Rate at 40 °C = 1 ÷ 100 = 0.010 s⁻¹.
   0.010 ÷ 0.005 = 2, so the rate at 40 °C is twice the rate at 30 °C.
-  A shorter time means a faster rate — the reaction that finishes first has the higher rate, so the larger rate value must belong to the 40 °C run.
+  A shorter time means a faster rate, the reaction that finishes first has the higher rate, so the larger rate value must belong to the 40 °C run.
 ```
 
 ```yaml
@@ -1410,7 +1410,7 @@ marks: 1
 misconception: alveoli-adaptation
 worked: |
   Alveoli are adapted for rapid diffusion in several ways: there are millions of them, giving a very large total surface area; their walls are one cell thick and the capillary walls are one cell thick, so the diffusion distance is very short; they are covered by a dense capillary network, and blood flow constantly removes oxygen and brings carbon dioxide, keeping the concentration gradients steep; the surfaces are moist so gases dissolve before diffusing.
-  Alveoli have no muscle and no cartilage — ventilation is done by the diaphragm and intercostal muscles.
+  Alveoli have no muscle and no cartilage, ventilation is done by the diaphragm and intercostal muscles.
 ```
 
 ```yaml
@@ -1469,7 +1469,7 @@ worked: |
   In the alveoli, oxygen diffuses from the air into the blood and carbon dioxide diffuses from the blood into the air.
   Expired air therefore contains less oxygen (about 16% instead of about 21%) and much more carbon dioxide (about 4% instead of about 0.04%).
   It is also warmer and saturated with water vapour, which has evaporated from the moist alveolar surfaces.
-  The proportion of nitrogen is effectively unchanged — nitrogen is not used by the body.
+  The proportion of nitrogen is effectively unchanged, nitrogen is not used by the body.
 ```
 
 ```yaml
@@ -1485,7 +1485,7 @@ answer: 3
 marks: 1
 misconception: transmission-routes
 worked: |
-  Coughing and sneezing release tiny droplets containing the pathogen into the air; another person inhales them — airborne (droplet) transmission.
+  Coughing and sneezing release tiny droplets containing the pathogen into the air; another person inhales them, airborne (droplet) transmission.
   Contaminated water spreads diseases such as cholera; blood contact and insect vectors spread other diseases.
   Airborne spread is reduced by covering the mouth and nose, wearing a mask, ventilating rooms and keeping a distance from infected people.
 ```
@@ -1503,7 +1503,7 @@ answer: 3
 marks: 1
 misconception: vaccine-contents
 worked: |
-  A vaccine introduces a harmless version of the pathogen — weakened, inactivated, or just a part of it — so that the immune system responds without the person becoming ill.
+  A vaccine introduces a harmless version of the pathogen, weakened, inactivated, or just a part of it, so that the immune system responds without the person becoming ill.
   The body's white blood cells respond, and some remain afterwards so that a later infection by the real pathogen is dealt with far more quickly.
   A vaccine is not an antibiotic and does not kill viruses that are already established; it prepares the body in advance.
 ```
@@ -1540,7 +1540,7 @@ marks: 1
 misconception: antibiotic-causes-resistance
 worked: |
   This is natural selection.
-  Variation: random mutation in the bacterial DNA gives a few individuals resistance — this happens by chance, before the antibiotic is used.
+  Variation: random mutation in the bacterial DNA gives a few individuals resistance, this happens by chance, before the antibiotic is used.
   Selection pressure: the antibiotic kills the non-resistant bacteria.
   Survival and reproduction: the resistant ones survive, reproduce rapidly and pass on the resistance allele.
   Over time the whole population becomes resistant. The antibiotic selects for resistance; it does not create it, and bacteria cannot 'learn'.
@@ -1564,7 +1564,7 @@ worked: |
   = (315 ÷ 450) × 100
   = 0.70 × 100
   = 70%.
-  (135 ÷ 450) × 100 = 30% is the percentage of cases remaining, not the percentage decrease — a very common trap.
+  (135 ÷ 450) × 100 = 30% is the percentage of cases remaining, not the percentage decrease, a very common trap.
 ```
 
 ```yaml
@@ -1581,7 +1581,7 @@ marks: 1
 misconception: organelle-function
 worked: |
   Mitochondria are the site of aerobic respiration, where glucose is oxidised and energy is released for the cell's activities.
-  Cells with a high energy demand — muscle cells, sperm cells and the cells lining the kidney tubules — contain very large numbers of mitochondria.
+  Cells with a high energy demand, muscle cells, sperm cells and the cells lining the kidney tubules, contain very large numbers of mitochondria.
   The nucleus contains the DNA and controls the cell; ribosomes are the site of protein synthesis; the vacuole in a plant cell stores cell sap.
 ```
 
@@ -1598,7 +1598,7 @@ answer: 2
 marks: 1
 misconception: plant-animal-cell-structures
 worked: |
-  A palisade mesophyll cell is a plant cell. Plant cells have a cellulose cell wall, chloroplasts (in green parts) and a large permanent central vacuole filled with cell sap — none of which an animal cell has.
+  A palisade mesophyll cell is a plant cell. Plant cells have a cellulose cell wall, chloroplasts (in green parts) and a large permanent central vacuole filled with cell sap, none of which an animal cell has.
   Both plant and animal cells have a cell membrane, cytoplasm, a nucleus, mitochondria and ribosomes, so any option containing those cannot be the answer.
 ```
 
@@ -1618,7 +1618,7 @@ worked: |
   Magnification = image size ÷ actual size, and both must be in the same unit.
   Convert the image size: 25 mm × 1000 = 25 000 μm.
   Magnification = 25 000 μm ÷ 50 μm = 500, so the magnification is ×500.
-  Dividing 25 by 50 without converting units (giving 0.5 or 2) is the classic error — always convert first. Magnification has no unit.
+  Dividing 25 by 50 without converting units (giving 0.5 or 2) is the classic error, always convert first. Magnification has no unit.
 ```
 
 ```yaml
@@ -1637,7 +1637,7 @@ worked: |
   Rearranging magnification = image size ÷ actual size gives actual size = image size ÷ magnification.
   Actual size = 60 mm ÷ 300 = 0.2 mm.
   Convert to micrometres: 0.2 mm × 1000 = 200 μm.
-  Multiplying instead of dividing gives 18 000 (60 × 300), which would make the real cell larger than the drawing — always check that the answer is sensible.
+  Multiplying instead of dividing gives 18 000 (60 × 300), which would make the real cell larger than the drawing, always check that the answer is sensible.
 ```
 
 ```yaml
@@ -1674,7 +1674,7 @@ misconception: amylase-product
 worked: |
   Amylase breaks the long starch molecule down into the disaccharide maltose, not straight to glucose.
   Maltose is then digested to glucose by maltase, made by the small intestine.
-  Amylase is secreted in saliva by the salivary glands and in pancreatic juice by the pancreas, which acts in the small intestine. There is no amylase in the stomach — the acid there would denature it.
+  Amylase is secreted in saliva by the salivary glands and in pancreatic juice by the pancreas, which acts in the small intestine. There is no amylase in the stomach, the acid there would denature it.
 ```
 
 ```yaml
@@ -1691,7 +1691,7 @@ marks: 1
 misconception: bile-is-an-enzyme
 worked: |
   Bile is made in the liver, stored in the gall bladder and released into the small intestine.
-  It is not an enzyme and carries out no chemical digestion. It emulsifies fats — it breaks large fat globules into many tiny droplets, which greatly increases the surface area for the enzyme lipase to work on, speeding up fat digestion.
+  It is not an enzyme and carries out no chemical digestion. It emulsifies fats, it breaks large fat globules into many tiny droplets, which greatly increases the surface area for the enzyme lipase to work on, speeding up fat digestion.
   Bile is alkaline, so it also neutralises the acidic mixture arriving from the stomach and provides the alkaline pH that the intestinal enzymes need.
 ```
 
@@ -1748,7 +1748,7 @@ worked: |
   A concentrated sucrose solution has a lower water potential than the cell sap inside the plant cell.
   Water therefore moves out of the cell, down the water-potential gradient, through the partially permeable cell membrane by osmosis.
   The vacuole shrinks and the cell becomes flaccid; if enough water leaves, the cell membrane pulls away from the cell wall and the cell is plasmolysed.
-  A plant cell cannot burst because the strong cellulose cell wall resists expansion, and it is freely permeable to water — the membrane controls the movement.
+  A plant cell cannot burst because the strong cellulose cell wall resists expansion, and it is freely permeable to water, the membrane controls the movement.
 ```
 
 ```yaml
@@ -1770,7 +1770,7 @@ worked: |
   = 0.15 × 100
   = +15%.
   The gain is expected: distilled water has a higher water potential than the potato cell sap, so water enters the cells by osmosis.
-  Dividing by the final mass (0.6 ÷ 4.6 ≈ 13%) is the usual error — always divide by the INITIAL mass.
+  Dividing by the final mass (0.6 ÷ 4.6 ≈ 13%) is the usual error, always divide by the INITIAL mass.
 ```
 
 ```yaml
@@ -1786,7 +1786,7 @@ answer: 2
 marks: 1
 misconception: active-transport-against-gradient
 worked: |
-  The ions are already more concentrated inside the root hair cell than in the soil water, so diffusion would move them the wrong way — out of the cell.
+  The ions are already more concentrated inside the root hair cell than in the soil water, so diffusion would move them the wrong way, out of the cell.
   To take them in, the cell must move them against the concentration gradient, using carrier proteins in the cell membrane and energy released by respiration in the many mitochondria: this is active transport.
   Osmosis moves only water; translocation moves sucrose in the phloem.
 ```
@@ -1805,7 +1805,7 @@ marks: 1
 misconception: diffusion-definition
 worked: |
   The alveolar air has a higher oxygen concentration than the blood arriving in the capillary, which has just come from the body.
-  Oxygen molecules move randomly, and the net movement is down the concentration gradient into the blood — that is diffusion, and it is a passive process needing no energy from the cell.
+  Oxygen molecules move randomly, and the net movement is down the concentration gradient into the blood, that is diffusion, and it is a passive process needing no energy from the cell.
   Blood flow constantly carries oxygenated blood away, keeping the gradient steep.
   Osmosis refers to water only; active transport works against a gradient and needs energy.
 ```
@@ -1861,7 +1861,7 @@ answer: 1
 marks: 1
 misconception: gene-allele-chromosome
 worked: |
-  A gene is a section of a DNA molecule that codes for one particular protein — the sequence of bases determines the sequence of amino acids in that protein.
+  A gene is a section of a DNA molecule that codes for one particular protein, the sequence of bases determines the sequence of amino acids in that protein.
   A chromosome is a long DNA molecule wound around proteins, and carries many genes.
   An allele is one of the alternative forms of the same GENE (not of a chromosome), for example the tall allele and the short allele of the height gene.
 ```
@@ -1929,7 +1929,7 @@ worked: |
   = (1 920 ÷ 24 000) × 100
   = 0.08 × 100
   = 8%.
-  The rest is lost as heat from respiration, in faeces and in urine — which is why food chains rarely have more than four or five trophic levels.
+  The rest is lost as heat from respiration, in faeces and in urine, which is why food chains rarely have more than four or five trophic levels.
 ```
 
 ```yaml
@@ -2023,7 +2023,7 @@ misconception: urea-vs-urine
 worked: |
   Excess amino acids cannot be stored, so in the liver they are deaminated: the amino group is removed and converted first into toxic ammonia and then into the less toxic urea.
   Urea is carried in the blood plasma to the kidneys and excreted in urine.
-  Urea is the substance; urine is the fluid that contains it — do not confuse the two.
+  Urea is the substance; urine is the fluid that contains it, do not confuse the two.
 ```
 
 ```yaml
@@ -2064,7 +2064,7 @@ worked: |
   glucose → ethanol + carbon dioxide (+ a small amount of energy released)
   C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂.
   The carbon dioxide makes bread rise and the ethanol is used in brewing.
-  In human muscle the anaerobic product is different — lactic acid, and no carbon dioxide is released.
+  In human muscle the anaerobic product is different, lactic acid, and no carbon dioxide is released.
 ```
 
 ```yaml
@@ -2094,7 +2094,7 @@ worked: |
   Magnification = image size ÷ actual size, with both in the same unit.
   Convert the drawing (image) size: 60 mm × 1000 = 60 000 μm.
   Magnification = 60 000 μm ÷ 20 μm = 3000.
-  So the drawing is ×3000. Magnification has no units — never write mm or μm in the answer.
+  So the drawing is ×3000. Magnification has no units, never write mm or μm in the answer.
 ```
 
 ```yaml
@@ -2150,7 +2150,7 @@ worked: |
 kind: definition
 term: "Diffusion"
 topic: "T2 Movement of Substances"
-body: "The net movement of particles from a region of higher concentration to a region of lower concentration, down a concentration gradient, as a result of their random movement. It is a passive process — no energy from the cell is needed."
+body: "The net movement of particles from a region of higher concentration to a region of lower concentration, down a concentration gradient, as a result of their random movement. It is a passive process, no energy from the cell is needed."
 ```
 
 ```yaml
@@ -2164,7 +2164,7 @@ body: "The net movement of water molecules from a region of higher water potenti
 kind: definition
 term: "Active transport"
 topic: "T2 Movement of Substances"
-body: "The movement of particles through a cell membrane from a region of lower concentration to a region of higher concentration — that is, against a concentration gradient — using carrier proteins and energy released by respiration."
+body: "The movement of particles through a cell membrane from a region of lower concentration to a region of higher concentration, that is, against a concentration gradient, using carrier proteins and energy released by respiration."
 ```
 
 ```yaml
@@ -2199,7 +2199,7 @@ body: "The loss of water vapour from the leaves and stems of a plant. Water evap
 kind: definition
 term: "Translocation"
 topic: "T10 Nutrition & Transport in Plants"
-body: "The transport of manufactured food substances — mainly sucrose and amino acids — in the phloem, from a source (such as a photosynthesising leaf) to a sink (such as a growing root, fruit or storage organ)."
+body: "The transport of manufactured food substances, mainly sucrose and amino acids, in the phloem, from a source (such as a photosynthesising leaf) to a sink (such as a growing root, fruit or storage organ)."
 ```
 
 ```yaml
@@ -2227,14 +2227,14 @@ body: "The maintenance of a constant internal environment in the body, within na
 kind: definition
 term: "Reflex action"
 topic: "T8 Homeostasis, Co-ordination & Response"
-body: "A rapid, automatic response to a stimulus that does not involve conscious control by the brain, so it protects the body from harm — for example the withdrawal of a hand from a hot object."
+body: "A rapid, automatic response to a stimulus that does not involve conscious control by the brain, so it protects the body from harm, for example the withdrawal of a hand from a hot object."
 ```
 
 ```yaml
 kind: definition
 term: "Excretion"
 topic: "T7 Excretion in Humans"
-body: "The removal from the body of the toxic or unwanted products of metabolism — such as urea, carbon dioxide and excess water and mineral ions. It is not the same as egestion, which is the removal of undigested food that never entered the body's cells."
+body: "The removal from the body of the toxic or unwanted products of metabolism, such as urea, carbon dioxide and excess water and mineral ions. It is not the same as egestion, which is the removal of undigested food that never entered the body's cells."
 ```
 
 ```yaml
@@ -2248,7 +2248,7 @@ body: "The filtering of the blood in the glomerulus under high blood pressure, s
 kind: definition
 term: "Selective reabsorption"
 topic: "T7 Excretion in Humans"
-body: "The process in which useful substances are returned from the filtrate in the kidney tubule to the blood — all the glucose and much of the mineral ion content by active transport (mainly in the proximal convoluted tubule), and water by osmosis."
+body: "The process in which useful substances are returned from the filtrate in the kidney tubule to the blood, all the glucose and much of the mineral ion content by active transport (mainly in the proximal convoluted tubule), and water by osmosis."
 ```
 
 ```yaml
@@ -2262,7 +2262,7 @@ body: "A length (section) of DNA that codes for one particular protein, and so c
 kind: definition
 term: "Allele"
 topic: "T14 Inheritance"
-body: "One of two or more alternative forms of the same gene, occupying the same position on a pair of homologous chromosomes — for example the tall allele (T) and the short allele (t) of the stem-height gene."
+body: "One of two or more alternative forms of the same gene, occupying the same position on a pair of homologous chromosomes, for example the tall allele (T) and the short allele (t) of the stem-height gene."
 ```
 
 ```yaml
@@ -2276,14 +2276,14 @@ body: "The genetic make-up of an organism in terms of the alleles it contains, f
 kind: definition
 term: "Phenotype"
 topic: "T14 Inheritance"
-body: "The observable characteristics of an organism, resulting from the interaction between its genotype and the environment — for example 'tall stem' or 'red flowers'."
+body: "The observable characteristics of an organism, resulting from the interaction between its genotype and the environment, for example 'tall stem' or 'red flowers'."
 ```
 
 ```yaml
 kind: definition
 term: "Codominance"
 topic: "T14 Inheritance"
-body: "The situation in which both alleles in a heterozygote are expressed in the phenotype, so neither is dominant over the other — for example CᴿCᵂ flowers are pink, showing both the red and the white allele. Codominant alleles are written as a common capital letter with different superscripts."
+body: "The situation in which both alleles in a heterozygote are expressed in the phenotype, so neither is dominant over the other, for example CᴿCᵂ flowers are pink, showing both the red and the white allele. Codominant alleles are written as a common capital letter with different superscripts."
 ```
 
 ```yaml
@@ -2325,7 +2325,7 @@ body: "The breakdown of large, insoluble food molecules into small, soluble mole
 kind: precision
 topic: "T2 Movement of Substances"
 prompt: "Explain, in terms of water potential, why a plant cell placed in a concentrated sucrose solution becomes plasmolysed."
-model: "The sucrose solution has a lower water potential than the cell sap in the vacuole. Water therefore moves out of the cell down the water-potential gradient, by osmosis, through the partially permeable cell membrane. The vacuole and cytoplasm shrink, the cell becomes flaccid, and the cell membrane pulls away from the cell wall — the cell is plasmolysed."
+model: "The sucrose solution has a lower water potential than the cell sap in the vacuole. Water therefore moves out of the cell down the water-potential gradient, by osmosis, through the partially permeable cell membrane. The vacuole and cytoplasm shrink, the cell becomes flaccid, and the cell membrane pulls away from the cell wall, the cell is plasmolysed."
 keywords: [lower water potential, osmosis, partially permeable membrane, down the gradient, flaccid, plasmolysed]
 ```
 
@@ -2349,7 +2349,7 @@ keywords: [denatured, active site changes shape, no longer complementary, substr
 kind: precision
 topic: "T3 Biological Molecules & Enzymes"
 prompt: "Explain why each enzyme catalyses only one type of reaction."
-model: "An enzyme has an active site with a specific three-dimensional shape. Only a substrate with a shape complementary to that active site can fit into it and form an enzyme-substrate complex — the lock-and-key model. Substrates of any other shape cannot bind, so the enzyme cannot catalyse their reactions. This makes each enzyme specific to one substrate."
+model: "An enzyme has an active site with a specific three-dimensional shape. Only a substrate with a shape complementary to that active site can fit into it and form an enzyme-substrate complex, the lock-and-key model. Substrates of any other shape cannot bind, so the enzyme cannot catalyse their reactions. This makes each enzyme specific to one substrate."
 keywords: [active site, specific shape, complementary, enzyme-substrate complex, lock and key, specificity]
 ```
 
@@ -2365,7 +2365,7 @@ keywords: [large surface area for light, thin - short diffusion distance, palisa
 kind: precision
 topic: "T10 Nutrition & Transport in Plants"
 prompt: "A graph of the rate of photosynthesis against light intensity levels off at high light intensity. Explain the shape of the graph."
-model: "At low light intensity the rate increases as light intensity increases, so light intensity is the limiting factor — it is the factor in shortest supply and it is holding the rate back. At high light intensity the graph levels off: increasing light no longer increases the rate, so light is no longer limiting. Another factor — the carbon dioxide concentration or the temperature — has now become the limiting factor."
+model: "At low light intensity the rate increases as light intensity increases, so light intensity is the limiting factor, it is the factor in shortest supply and it is holding the rate back. At high light intensity the graph levels off: increasing light no longer increases the rate, so light is no longer limiting. Another factor, the carbon dioxide concentration or the temperature, has now become the limiting factor."
 keywords: [limiting factor, factor in shortest supply, rate increases with light, plateau, carbon dioxide concentration or temperature now limiting]
 ```
 
@@ -2373,7 +2373,7 @@ keywords: [limiting factor, factor in shortest supply, rate increases with light
 kind: precision
 topic: "T10 Nutrition & Transport in Plants"
 prompt: "Explain how water moves from the soil to the leaves of a tall tree."
-model: "Water enters the root hair cells by osmosis, moving down a water-potential gradient, and crosses the root to the xylem. Water evaporates from the mesophyll cell surfaces in the leaf and the vapour diffuses out through the stomata — transpiration. This loss lowers the water potential in the leaf cells and creates a transpiration pull, placing the water in the xylem under tension. Because water molecules are cohesive, they are pulled up as a continuous column through the dead lignified xylem vessels from root to leaf."
+model: "Water enters the root hair cells by osmosis, moving down a water-potential gradient, and crosses the root to the xylem. Water evaporates from the mesophyll cell surfaces in the leaf and the vapour diffuses out through the stomata, transpiration. This loss lowers the water potential in the leaf cells and creates a transpiration pull, placing the water in the xylem under tension. Because water molecules are cohesive, they are pulled up as a continuous column through the dead lignified xylem vessels from root to leaf."
 keywords: [osmosis into root hair, xylem, transpiration pull, tension, cohesion, continuous column of water]
 ```
 
@@ -2405,7 +2405,7 @@ keywords: [external intercostal muscles contract, ribcage up and out, diaphragm 
 kind: precision
 topic: "T8 Homeostasis, Co-ordination & Response"
 prompt: "Explain how the body lowers the blood glucose concentration after a large meal."
-model: "The rise in blood glucose is detected by the pancreas, which secretes more insulin into the blood. Insulin travels in the blood to the liver and muscle cells and increases their uptake of glucose. In the liver, glucose is converted into glycogen and stored, and the rate of respiration of glucose increases. Less glucose remains in the blood, so the concentration falls back towards the set point — an example of negative feedback."
+model: "The rise in blood glucose is detected by the pancreas, which secretes more insulin into the blood. Insulin travels in the blood to the liver and muscle cells and increases their uptake of glucose. In the liver, glucose is converted into glycogen and stored, and the rate of respiration of glucose increases. Less glucose remains in the blood, so the concentration falls back towards the set point, an example of negative feedback."
 keywords: [pancreas detects the rise, insulin secreted, liver and muscle take up glucose, glucose converted to glycogen, falls back to set point, negative feedback]
 ```
 
@@ -2413,7 +2413,7 @@ keywords: [pancreas detects the rise, insulin secreted, liver and muscle take up
 kind: precision
 topic: "T8 Homeostasis, Co-ordination & Response"
 prompt: "Describe how the body responds when the core body temperature falls below normal."
-model: "The fall is detected by the brain. Vasoconstriction occurs: the arterioles supplying the skin capillaries narrow, so less blood flows near the surface and less heat is lost by radiation. Sweat production is reduced, so less heat is lost by evaporation. Hairs are raised by the erector muscles, trapping an insulating layer of air. Shivering begins — muscles contract rapidly, and the increased rate of respiration releases extra heat. The core temperature rises back towards 37 °C."
+model: "The fall is detected by the brain. Vasoconstriction occurs: the arterioles supplying the skin capillaries narrow, so less blood flows near the surface and less heat is lost by radiation. Sweat production is reduced, so less heat is lost by evaporation. Hairs are raised by the erector muscles, trapping an insulating layer of air. Shivering begins, muscles contract rapidly, and the increased rate of respiration releases extra heat. The core temperature rises back towards 37 °C."
 keywords: [vasoconstriction, less blood near the surface, less heat lost by radiation, sweating reduced, shivering, respiration releases heat]
 ```
 
@@ -2421,7 +2421,7 @@ keywords: [vasoconstriction, less blood near the surface, less heat lost by radi
 kind: precision
 topic: "T8 Homeostasis, Co-ordination & Response"
 prompt: "Describe the pathway of the nerve impulse in a reflex arc when a hand touches a hot object."
-model: "Heat receptors in the skin detect the stimulus and set up an impulse. The impulse travels along a sensory neurone to the spinal cord. Inside the spinal cord it passes across a synapse to a relay neurone, and across a second synapse to a motor neurone. The motor neurone carries the impulse to the effector — the biceps muscle — which contracts and pulls the hand away. The pathway bypasses the conscious brain, so the response is rapid and automatic and reduces injury."
+model: "Heat receptors in the skin detect the stimulus and set up an impulse. The impulse travels along a sensory neurone to the spinal cord. Inside the spinal cord it passes across a synapse to a relay neurone, and across a second synapse to a motor neurone. The motor neurone carries the impulse to the effector, the biceps muscle, which contracts and pulls the hand away. The pathway bypasses the conscious brain, so the response is rapid and automatic and reduces injury."
 keywords: [receptor, sensory neurone, synapse, relay neurone, motor neurone, effector muscle contracts, rapid and automatic]
 ```
 
@@ -2453,7 +2453,7 @@ keywords: [haemoglobin, oxyhaemoglobin, no nucleus - more room for haemoglobin, 
 kind: precision
 topic: "T7 Excretion in Humans"
 prompt: "Describe how urine is formed in the kidney, referring to ultrafiltration and selective reabsorption."
-model: "Blood enters the glomerulus through a wide afferent arteriole and leaves through a narrower efferent arteriole, so the blood is under high pressure. This forces water, glucose, urea and mineral ions out through the capillary wall and the wall of the Bowman's capsule — ultrafiltration. Blood cells and plasma proteins are too large to pass through and stay in the blood. As the filtrate flows along the tubule, useful substances are selectively reabsorbed: all the glucose and much of the mineral ion content by active transport, and water by osmosis. The urea and excess water and salts left in the tubule pass to the collecting duct and are excreted as urine."
+model: "Blood enters the glomerulus through a wide afferent arteriole and leaves through a narrower efferent arteriole, so the blood is under high pressure. This forces water, glucose, urea and mineral ions out through the capillary wall and the wall of the Bowman's capsule, ultrafiltration. Blood cells and plasma proteins are too large to pass through and stay in the blood. As the filtrate flows along the tubule, useful substances are selectively reabsorbed: all the glucose and much of the mineral ion content by active transport, and water by osmosis. The urea and excess water and salts left in the tubule pass to the collecting duct and are excreted as urine."
 keywords: [high pressure in the glomerulus, ultrafiltration, small molecules filtered, proteins and cells too large, selective reabsorption, glucose by active transport, water by osmosis, urea excreted]
 ```
 
@@ -2461,7 +2461,7 @@ keywords: [high pressure in the glomerulus, ultrafiltration, small molecules fil
 kind: precision
 topic: "T7 Excretion in Humans"
 prompt: "Explain how the body responds when the water content of the blood falls too low."
-model: "The fall in the water content of the blood is detected by the brain, which causes the pituitary gland to release more ADH into the blood. ADH makes the walls of the collecting ducts more permeable to water, so more water is reabsorbed from the filtrate back into the blood by osmosis. A smaller volume of more concentrated urine is produced, and the water content of the blood rises back towards normal — negative feedback."
+model: "The fall in the water content of the blood is detected by the brain, which causes the pituitary gland to release more ADH into the blood. ADH makes the walls of the collecting ducts more permeable to water, so more water is reabsorbed from the filtrate back into the blood by osmosis. A smaller volume of more concentrated urine is produced, and the water content of the blood rises back towards normal, negative feedback."
 keywords: [detected by the brain, more ADH released, collecting duct more permeable, more water reabsorbed by osmosis, small volume of concentrated urine, negative feedback]
 ```
 
@@ -2469,7 +2469,7 @@ keywords: [detected by the brain, more ADH released, collecting duct more permea
 kind: precision
 topic: "T14 Inheritance"
 prompt: "Two heterozygous tall pea plants are crossed (Tt × Tt). Explain, using a genetic diagram, why about one quarter of the offspring are short."
-model: "Parent phenotypes: tall × tall. Parent genotypes: Tt × Tt. Gametes (circled): T and t from each parent. Combining them in a Punnett square gives TT, Tt, Tt and tt. TT and Tt are tall because T is dominant and only one T allele is needed for the tall phenotype. Only tt is short, because a recessive allele is expressed only when both alleles are recessive. The offspring genotype ratio is 1 TT : 2 Tt : 1 tt, giving a phenotype ratio of 3 tall : 1 short — so about one quarter are short. Each line of the genetic diagram (phenotypes, genotypes, gametes, offspring, ratio) earns a separate mark."
+model: "Parent phenotypes: tall × tall. Parent genotypes: Tt × Tt. Gametes (circled): T and t from each parent. Combining them in a Punnett square gives TT, Tt, Tt and tt. TT and Tt are tall because T is dominant and only one T allele is needed for the tall phenotype. Only tt is short, because a recessive allele is expressed only when both alleles are recessive. The offspring genotype ratio is 1 TT : 2 Tt : 1 tt, giving a phenotype ratio of 3 tall : 1 short, so about one quarter are short. Each line of the genetic diagram (phenotypes, genotypes, gametes, offspring, ratio) earns a separate mark."
 keywords: [parent genotypes, gametes circled, Punnett square, dominant allele masks recessive, homozygous recessive tt, 3 to 1 phenotype ratio]
 ```
 
@@ -2501,7 +2501,7 @@ keywords: [nitrates act as nutrients, algal bloom, light blocked, plants die, ba
 kind: precision
 topic: "T9 Infectious Diseases in Humans"
 prompt: "Explain how a population of bacteria can become resistant to an antibiotic."
-model: "Within the bacterial population there is variation: a random mutation in the DNA of a few bacteria gives them resistance to the antibiotic. When the antibiotic is used, it acts as a selection pressure and kills the non-resistant bacteria. The resistant bacteria survive, reproduce rapidly and pass on the allele for resistance to their offspring. Over many generations the proportion of resistant bacteria increases until most of the population is resistant. This is natural selection — the antibiotic selects for resistance, it does not create it."
+model: "Within the bacterial population there is variation: a random mutation in the DNA of a few bacteria gives them resistance to the antibiotic. When the antibiotic is used, it acts as a selection pressure and kills the non-resistant bacteria. The resistant bacteria survive, reproduce rapidly and pass on the allele for resistance to their offspring. Over many generations the proportion of resistant bacteria increases until most of the population is resistant. This is natural selection, the antibiotic selects for resistance, it does not create it."
 keywords: [random mutation, variation already present, selection pressure, non-resistant killed, resistant survive and reproduce, allele passed on, natural selection]
 ```
 

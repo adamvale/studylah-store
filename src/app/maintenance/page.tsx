@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "We'll be right back — StudyLah",
+  title: "We'll be right back, StudyLah",
   robots: { index: false, follow: false },
 };
 
@@ -26,7 +26,7 @@ export default function MaintenancePage() {
         </h1>
         <p className="mt-4 text-lg leading-relaxed text-body">
           StudyLah is briefly offline for scheduled updates. We&apos;ll be back
-          very shortly — thank you for your patience.
+          very shortly, thank you for your patience.
         </p>
         <p className="mt-6 text-sm text-body">
           Already bought a pack? The download links in your order email still

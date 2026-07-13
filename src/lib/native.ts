@@ -4,7 +4,7 @@ import { useSyncExternalStore } from "react";
 
 // Detecting the Capacitor shell. The native app injects window.Capacitor;
 // everything commerce-shaped must disappear on iOS (Apple's reader-app rule:
-// apps that show purchasable digital content owe 15–30% — so the app shows
+// apps that show purchasable digital content owe 15-30%, so the app shows
 // NONE; buying lives on the website).
 //
 // Dev aid: localStorage.studylah_native = "ios" | "android" simulates the
@@ -23,7 +23,7 @@ function detect(): NativePlatform {
     const override = localStorage.getItem("studylah_native");
     if (override === "ios" || override === "android") return override;
   } catch {
-    // storage unavailable — fall through to real detection
+    // storage unavailable, fall through to real detection
   }
   const cap = (window as unknown as { Capacitor?: CapacitorGlobal }).Capacitor;
   if (cap?.isNativePlatform?.()) {

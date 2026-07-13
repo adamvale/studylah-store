@@ -45,7 +45,7 @@ export async function sendPushToCustomer(
     } catch (e) {
       const status = (e as { statusCode?: number }).statusCode;
       if (status === 404 || status === 410) {
-        // Subscription expired or was revoked — forget it.
+        // Subscription expired or was revoked, forget it.
         await prisma.pushSubscription.delete({ where: { id: sub.id } }).catch(() => {});
       } else {
         console.error(`Push failed for subscription ${sub.id}`, e);

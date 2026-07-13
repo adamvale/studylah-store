@@ -162,7 +162,7 @@ export function HeartRow({ current, max, scale = 1.5 }: { current: number; max: 
 }
 
 // 4-frame gold capture swirl, animated via CSS steps (see globals.css).
-// Fixed 2× scale — the keyframe offsets are baked for it.
+// Fixed 2× scale, the keyframe offsets are baked for it.
 export function CaptureSwirl() {
   const [sw, sh] = SHEET_DIMS.fx;
   return (

@@ -21,7 +21,7 @@ type ItemRow = {
 };
 
 // The file was re-uploaded after this buyer's purchase AND after their last
-// download — their saved copy is stale.
+// download, their saved copy is stale.
 function hasUpdate(item: ItemRow, orderCreatedAt: Date): boolean {
   const updated = item.productFile.updatedAt;
   if (!updated || updated <= orderCreatedAt) return false;
@@ -81,7 +81,7 @@ function FileRow({
           {item.fileLabel}
           {updated && !refunded && (
             <span className="rounded-full bg-accent/15 px-2 py-0.5 text-xs font-medium text-accent">
-              Updated — re-download
+              Updated, re-download
             </span>
           )}
         </p>
@@ -103,7 +103,7 @@ function FileRow({
   );
 }
 
-// A subject's products + file download rows — shown inline (single-subject
+// A subject's products + file download rows, shown inline (single-subject
 // order) or inside a dropdown (multi-subject order).
 function SubjectFiles({
   items,
@@ -140,15 +140,15 @@ const MESSAGES = {
   "sent=1": { tone: "ok" as const, msg: "Receipt email sent." },
   "error=order": {
     tone: "bad" as const,
-    msg: "Couldn't resend that receipt — please try again.",
+    msg: "Couldn't resend that receipt, please try again.",
   },
   "claim=1": {
     tone: "ok" as const,
-    msg: "Claim received — we'll reply to your order email within 5 business days.",
+    msg: "Claim received, we'll reply to your order email within 5 business days.",
   },
   "error=claim": {
     tone: "bad" as const,
-    msg: "Couldn't file that claim — pick the subject and tell us a little more.",
+    msg: "Couldn't file that claim, pick the subject and tell us a little more.",
   },
 };
 

@@ -5,7 +5,7 @@ import { useSyncExternalStore } from "react";
 // ── Chiptune SFX, synthesized in code ──────────────────────────────────────
 // Zero assets, zero downloads: every sound is a couple of oscillator notes.
 // Sounds only ever play inside the native shell (html[data-native]) and the
-// mute toggle persists. AudioContext is created lazily on the first play —
+// mute toggle persists. AudioContext is created lazily on the first play, 
 // which always follows a user gesture (a tap), so autoplay policy is happy.
 
 const KEY = "studylah_sound";
@@ -29,7 +29,7 @@ export function setSoundMuted(muted: boolean): void {
   try {
     localStorage.setItem(KEY, muted ? "off" : "on");
   } catch {
-    // storage unavailable — session-only default
+    // storage unavailable, session-only default
   }
   window.dispatchEvent(new Event(EVT));
 }
@@ -85,7 +85,7 @@ function play(fn: () => void): void {
   try {
     fn();
   } catch {
-    // audio unavailable — a silent game beats a crashed one
+    // audio unavailable, a silent game beats a crashed one
   }
 }
 

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
   title: "Sign in to your account",
   description:
-    "Sign in to re-download your StudyLah purchases. No password — we email you a one-time link.",
+    "Sign in to re-download your StudyLah purchases. No password, we email you a one-time link.",
 };
 
 export default async function LoginPage({

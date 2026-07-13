@@ -6,7 +6,7 @@ import type { WorldSubject } from "@/lib/game/world2";
 
 // ── The Duel Hall ──────────────────────────────────────────────────────────
 // Asynchronous friend-vs-friend duels: a sealed, server-dealt set of 5
-// questions behind a share code. No matchmaking, no chat, no leaderboards —
+// questions behind a share code. No matchmaking, no chat, no leaderboards, 
 // codes travel outside the app between friends. Both sides earn the same
 // effort XP for completing; the laurel on the result screen is cosmetic
 // and is the entire prize.
@@ -82,7 +82,7 @@ export function DuelHall({
       });
       const data = (await res.json()) as { error?: string; code?: string; questions?: DuelQuestion[] };
       if (!res.ok || !data.code || !data.questions) {
-        setNote(data.error ?? "The hall is busy — try again in a moment.");
+        setNote(data.error ?? "The hall is busy, try again in a moment.");
         return;
       }
       setScreen({ kind: "answering", code: data.code, questions: data.questions, idx: 0, answers: {} });
@@ -154,7 +154,7 @@ export function DuelHall({
           game?: FxGame | null;
         };
         if (!res.ok) {
-          setNote(data.error ?? "That didn't land — try again.");
+          setNote(data.error ?? "That didn't land, try again.");
           return;
         }
         emitFx({ type: "correct" });
@@ -194,7 +194,7 @@ export function DuelHall({
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
-      setNote(`Code: ${code} — jot it down!`);
+      setNote(`Code: ${code}, jot it down!`);
     }
   }, []);
 
@@ -211,7 +211,7 @@ export function DuelHall({
           <div className="mt-3 space-y-2">
             <p className="text-xs text-body">
               One sealed set of questions, two researchers, no audience. Codes travel by
-              you — hand one to a friend, or bring one here.
+              you, hand one to a friend, or bring one here.
             </p>
             <button
               type="button"
@@ -239,14 +239,14 @@ export function DuelHall({
             </button>
             <p className="text-[10px] text-body">
               Both sides earn the same XP for finishing, win or lose. The laurel is for
-              bragging rights only — nothing is ranked, nothing is public.
+              bragging rights only, nothing is ranked, nothing is public.
             </p>
           </div>
         )}
 
         {screen.kind === "pickSubject" && (
           <div className="mt-3 space-y-2">
-            <p className="text-xs text-body">Pick the battleground — your friend needs this subject too.</p>
+            <p className="text-xs text-body">Pick the battleground, your friend needs this subject too.</p>
             {subjects.map((s) => (
               <button
                 key={`${s.level}/${s.slug}`}
@@ -317,7 +317,7 @@ export function DuelHall({
               ))}
             </div>
             <p className="mt-2 text-[10px] text-body">
-              Answers seal when you finish — no backsies, same as your friend.
+              Answers seal when you finish, no backsies, same as your friend.
             </p>
           </div>
         )}
@@ -329,7 +329,7 @@ export function DuelHall({
               <p className="mt-2 font-display text-3xl font-black text-ink">
                 {screen.score}/{screen.total}
                 <span className="mx-3 text-body">·</span>
-                {screen.rivalScore !== null ? `${screen.rivalScore}/${screen.total}` : "—"}
+                {screen.rivalScore !== null ? `${screen.rivalScore}/${screen.total}` : ", "}
               </p>
               <p className="mt-1 text-xs text-body">
                 you
@@ -337,13 +337,13 @@ export function DuelHall({
               </p>
               {screen.rivalScore === null ? (
                 <p className="mt-2 text-sm text-body">
-                  Your side is sealed. Hand the code over — the duel completes when they answer.
+                  Your side is sealed. Hand the code over, the duel completes when they answer.
                 </p>
               ) : screen.score > screen.rivalScore ? (
                 <p className="fx-hero mt-2 font-pixel text-[10px] text-accent">🏵 THE LAUREL IS YOURS</p>
               ) : screen.score < screen.rivalScore ? (
                 <p className="mt-2 text-sm text-body">
-                  The laurel travels — and the worked solutions below are how it comes back.
+                  The laurel travels, and the worked solutions below are how it comes back.
                 </p>
               ) : (
                 <p className="mt-2 text-sm text-body">Dead even. The rematch decides it.</p>
@@ -374,7 +374,7 @@ export function DuelHall({
                   className={`rounded-xl border p-3 text-xs ${r.correct ? "border-guarantee/40" : "border-coral/40"}`}
                 >
                   <p className="font-bold text-ink">
-                    Q{i + 1} — {r.correct ? "✅ yours" : `❌ answer: ${r.correctAnswer}`}
+                    Q{i + 1}, {r.correct ? "✅ yours" : `❌ answer: ${r.correctAnswer}`}
                   </p>
                   <p className="mt-1 text-body">{r.workedSolution}</p>
                 </div>
@@ -392,7 +392,7 @@ export function DuelHall({
         {screen.kind === "list" && (
           <div className="mt-3 space-y-2">
             {screen.duels.length === 0 && (
-              <p className="text-sm text-body">No duels yet. Start one — Rin will hold the code.</p>
+              <p className="text-sm text-body">No duels yet. Start one, Rin will hold the code.</p>
             )}
             {screen.duels.map((d) => (
               <button
@@ -407,7 +407,7 @@ export function DuelHall({
                 </p>
                 <p className="text-xs text-body">
                   {d.complete
-                    ? `done — you ${d.myScore}/${d.total} · rival ${d.rivalScore}/${d.total}`
+                    ? `done, you ${d.myScore}/${d.total} · rival ${d.rivalScore}/${d.total}`
                     : d.myScore !== null
                     ? "waiting on your rival…"
                     : "your side still open"}

@@ -8,7 +8,7 @@ import { GhostCompanion } from "@/components/game";
 
 // ── Home Base ──────────────────────────────────────────────────────────────
 // The native app opens INTO the game: your ghost at home, speaking, with the
-// day's places to go. Pure presentation — every fact comes from the server-
+// day's places to go. Pure presentation, every fact comes from the server-
 // rendered page around it. Web renders nothing (the dashboard already has
 // its own information hierarchy).
 
@@ -23,12 +23,12 @@ function speech({
   dueMistakes: number;
   level: number;
 }): string {
-  if (!todayDone && streak > 0) return `Our ${streak}-day flame dies at midnight! The daily three — quick!`;
+  if (!todayDone && streak > 0) return `Our ${streak}-day flame dies at midnight! The daily three, quick!`;
   if (!todayDone) return "New day, new quests. Start with the daily three?";
   if (dueMistakes > 0)
     return `Nice work today! But I sense ${dueMistakes} monster${dueMistakes === 1 ? "" : "s"} stirring in the bestiary…`;
   const nu = nextUnlock(level);
-  if (nu) return `All clear, boss! Next unlock — Lv ${nu.level}: ${nu.what}.`;
+  if (nu) return `All clear, boss! Next unlock, Lv ${nu.level}: ${nu.what}.`;
   return "All clear, boss! The world is yours.";
 }
 
@@ -77,7 +77,7 @@ export function HomeBase({
   const level = live?.level ?? 1;
   const line =
     shields > 0 && !todayDone
-      ? "Your shield's up — today is free. (But the quests are fun, just saying.)"
+      ? "Your shield's up, today is free. (But the quests are fun, just saying.)"
       : speech({ todayDone, streak, dueMistakes, level });
 
   return (

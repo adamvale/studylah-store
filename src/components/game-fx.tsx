@@ -164,7 +164,7 @@ export function FxLayer() {
                 const nu = nextUnlock(current.level);
                 return nu ? (
                   <span className="text-sm text-body">
-                    Next — Lv {nu.level}: {nu.what}
+                    Next, Lv {nu.level}: {nu.what}
                   </span>
                 ) : null;
               })()}

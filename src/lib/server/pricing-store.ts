@@ -6,7 +6,7 @@ const PRICING_KEY = "pricingConfig";
 const EARLY_BIRD_KEY = "earlyBirdActive";
 const LEVELS: Level[] = ["o-level", "na-level"];
 
-// Structural validation so a malformed DB row can never crash pricing — we
+// Structural validation so a malformed DB row can never crash pricing, we
 // fall back to the code constants instead.
 function isValidTable(value: unknown): value is PricingTable {
   if (typeof value !== "object" || value === null) return false;

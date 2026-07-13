@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getCustomerId } from "@/lib/server/customer-session";
 
-// Register (POST) / remove (DELETE) a native app's FCM device token — the
+// Register (POST) / remove (DELETE) a native app's FCM device token, the
 // Capacitor twin of the web-push subscription route.
 
 export async function POST(request: Request) {

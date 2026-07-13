@@ -63,7 +63,7 @@ export function SubjectGoals({ initial }: { initial: GoalSubject[] }) {
                     onChange={(e) => void setTarget(s.level, s.slug, e.target.value)}
                     className="rounded-lg border border-hairline bg-surface px-2 py-1 text-sm text-ink outline-none focus:border-accent"
                   >
-                    <option value="">—</option>
+                    <option value="">, </option>
                     {GRADE_OPTIONS[s.level].map((g) => (
                       <option key={g} value={g}>
                         {g}
@@ -84,13 +84,13 @@ export function SubjectGoals({ initial }: { initial: GoalSubject[] }) {
                     </span>
                   ) : onTrack ? (
                     <span className="text-guarantee">
-                      On track — estimating {s.estimate}, target {s.target} ✓ Keep it warm.
+                      On track, estimating {s.estimate}, target {s.target} ✓ Keep it warm.
                     </span>
                   ) : (
                     <span className="text-body">
                       Now estimating <span className="text-ink">{s.estimate}</span>, aiming for{" "}
                       <span className="text-ink">{s.target}</span>. Close it on your VERY HIGH
-                      topics — the{" "}
+                      topics, the{" "}
                       <Link href={`/${s.level}/${s.slug}`} className="font-medium text-accent hover:underline">
                         Sure Questions Vault
                       </Link>{" "}

@@ -1,7 +1,7 @@
 // Shared constants for the mistake notebook.
 
 // Why a mark was lost. "unset" is the auto-seeded default until the student
-// classifies it — the notebook nudges them to pick one of the real four.
+// classifies it, the notebook nudges them to pick one of the real four.
 export const MISTAKE_REASONS = ["careless", "concept", "method", "time"] as const;
 export type MistakeReason = (typeof MISTAKE_REASONS)[number] | "unset";
 

@@ -6,7 +6,7 @@ import { isMaintenanceOn } from "@/lib/server/maintenance";
 // Runs before every storefront page render (Next 16 proxy, Node.js runtime).
 // When maintenance mode is on, the public sees the maintenance screen while
 // logged-in admins pass through to preview production. Everything is wrapped so
-// a fault here can never take the live site down — it fails OPEN.
+// a fault here can never take the live site down, it fails OPEN.
 export function proxy(request: NextRequest) {
   try {
     if (!isMaintenanceOn()) return NextResponse.next();
@@ -31,7 +31,7 @@ export function proxy(request: NextRequest) {
 export const config = {
   // Run on storefront PAGES only. Exclude APIs (Stripe webhook, downloads),
   // Next internals, the admin panel (so it stays reachable to toggle off),
-  // customer download pages, the maintenance page itself, and — crucially —
+  // customer download pages, the maintenance page itself, and, crucially, 
   // any static file (anything with a dot, e.g. /studylah-logo.png). Without the
   // dot exclusion, maintenance mode rewrote the logo to HTML and it broke.
   matcher: [

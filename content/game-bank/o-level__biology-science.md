@@ -21,7 +21,7 @@ marks: 1
 misconception: photosynthesis-equation-reversed
 worked: |
   Word equation: carbon dioxide + water → glucose + oxygen (in the presence of light energy, absorbed by chlorophyll).
-  The distractor reading 'glucose and oxygen → carbon dioxide and water' is aerobic respiration written backwards — a very common swap. Oxygen is a PRODUCT of photosynthesis, never a raw material.
+  The distractor reading 'glucose and oxygen → carbon dioxide and water' is aerobic respiration written backwards, a very common swap. Oxygen is a PRODUCT of photosynthesis, never a raw material.
 ```
 
 ```yaml
@@ -54,7 +54,7 @@ answer: 1
 marks: 1
 misconception: palisade-vs-spongy
 worked: |
-  Palisade mesophyll cells sit directly under the upper epidermis — nearest the light — and are packed with chloroplasts, so most photosynthesis happens there.
+  Palisade mesophyll cells sit directly under the upper epidermis, nearest the light, and are packed with chloroplasts, so most photosynthesis happens there.
   Spongy mesophyll has fewer chloroplasts (its main job is gaseous exchange through the air spaces). The upper epidermis is transparent and has no chloroplasts; xylem is a transport tissue.
 ```
 
@@ -88,7 +88,7 @@ answer: 2
 marks: 1
 misconception: limiting-factor-plateau
 worked: |
-  On the sloping part of the curve, rate rises with light — light is the limiting factor.
+  On the sloping part of the curve, rate rises with light, light is the limiting factor.
   Once the curve levels off, adding more light changes nothing, so light can no longer be the limiting factor. Some OTHER factor (CO₂ concentration or temperature) must now be limiting.
   The rate is constant, not zero, so photosynthesis is still happening.
 ```
@@ -141,7 +141,7 @@ answer: 0
 marks: 1
 misconception: root-hair-adaptation
 worked: |
-  The hair-like extension gives a LARGE SURFACE AREA for water to enter by osmosis and for mineral ions to be taken up — a faster rate of uptake.
+  The hair-like extension gives a LARGE SURFACE AREA for water to enter by osmosis and for mineral ions to be taken up, a faster rate of uptake.
   A waxy cuticle would block water uptake. Root hair cells are underground and have no chloroplasts. All plant cells have a cellulose cell wall, so it cannot be the special adaptation.
 ```
 
@@ -228,7 +228,7 @@ marks: 1
 misconception: translocation-definition
 worked: |
   Translocation = transport of manufactured food (mainly sucrose) in the PHLOEM.
-  Water and mineral ions travel in the xylem — that is not translocation.
+  Water and mineral ions travel in the xylem, that is not translocation.
 ```
 
 ```yaml
@@ -244,7 +244,7 @@ answer: 3
 marks: 1
 misconception: transpiration-pull
 worked: |
-  Water evaporates from the mesophyll cell surfaces and diffuses out of the stomata. This 'pulls' on the continuous column of water in the xylem (the water molecules stick to one another), so water is drawn up from the roots — the transpiration pull.
+  Water evaporates from the mesophyll cell surfaces and diffuses out of the stomata. This 'pulls' on the continuous column of water in the xylem (the water molecules stick to one another), so water is drawn up from the roots, the transpiration pull.
   No pumping and no energy from the plant is involved.
 ```
 
@@ -261,7 +261,7 @@ answer: 3
 marks: 1
 misconception: stomata-day-night
 worked: |
-  Stomata open in the light so that CO₂ can diffuse in for photosynthesis. The unavoidable cost is that water vapour diffuses out through the same pores — so transpiration peaks by day.
+  Stomata open in the light so that CO₂ can diffuse in for photosynthesis. The unavoidable cost is that water vapour diffuses out through the same pores, so transpiration peaks by day.
   At night the stomata close, the exit route is blocked, and the transpiration rate falls almost to zero.
   The marks come from LINKING the stomata to the transpiration rate, not just describing the graph.
 ```
@@ -271,10 +271,10 @@ type: mcq
 topic: "T10 Organisms & their Environment"
 stem: "What is the role of a green plant in a food chain?"
 options:
-  - "A producer — it makes its own food using light energy in photosynthesis"
-  - "A decomposer — it breaks down dead material"
-  - "A secondary consumer — it feeds on herbivores"
-  - "A primary consumer — it feeds on other organisms"
+  - "A producer, it makes its own food using light energy in photosynthesis"
+  - "A decomposer, it breaks down dead material"
+  - "A secondary consumer, it feeds on herbivores"
+  - "A primary consumer, it feeds on other organisms"
 answer: 0
 marks: 1
 misconception: producer-role
@@ -296,7 +296,7 @@ marks: 1
 misconception: decomposer-role
 worked: |
   Decomposers feed on dead organisms, faeces and waste. As they respire, carbon dioxide returns to the air and mineral nutrients return to the soil, where producers can take them up again.
-  This is why NUTRIENTS are recycled — but energy is not.
+  This is why NUTRIENTS are recycled, but energy is not.
 ```
 
 ```yaml
@@ -333,7 +333,7 @@ worked: |
   • used in respiration and released as heat (also used for movement)
   • parts of the organism are not eaten (bones, roots)
   • some material is not digested and is egested in faeces.
-  Energy cannot be destroyed — it is transferred to the surroundings as heat.
+  Energy cannot be destroyed, it is transferred to the surroundings as heat.
 ```
 
 ```yaml
@@ -458,7 +458,7 @@ marks: 1
 misconception: food-web-predator-removed
 worked: |
   Frogs are the PREDATOR of grasshoppers, not their food. Removing the predator removes the main check on the grasshopper population, so it rises.
-  (Later, the grass may be over-grazed and snake numbers fall — but the question asks for the immediate effect.)
+  (Later, the grass may be over-grazed and snake numbers fall, but the question asks for the immediate effect.)
 ```
 
 ```yaml
@@ -509,7 +509,7 @@ marks: 1
 misconception: capillary-wall
 worked: |
   Exchange happens by DIFFUSION, and diffusion is faster over a shorter distance. A wall one cell thick means oxygen and dissolved food need only cross a single layer to reach the cells, and CO₂ and waste can pass back just as easily.
-  Blood actually flows SLOWLY through capillaries — another adaptation, giving more time for exchange.
+  Blood actually flows SLOWLY through capillaries, another adaptation, giving more time for exchange.
 ```
 
 ```yaml
@@ -525,7 +525,7 @@ answer: 0
 marks: 1
 misconception: vein-valves
 worked: |
-  Blood in veins is at low pressure, so it could easily flow backwards, especially against gravity in the legs. Semi-lunar valves snap shut if blood starts to move backwards, so it can only travel one way — towards the heart.
+  Blood in veins is at low pressure, so it could easily flow backwards, especially against gravity in the legs. Semi-lunar valves snap shut if blood starts to move backwards, so it can only travel one way, towards the heart.
 ```
 
 ```yaml
@@ -558,7 +558,7 @@ answer: 2
 marks: 1
 misconception: pulmonary-artery-oxygenation
 worked: |
-  An ARTERY carries blood AWAY from the heart — that is the rule, whatever the blood is carrying.
+  An ARTERY carries blood AWAY from the heart, that is the rule, whatever the blood is carrying.
   The pulmonary artery is the one exception to 'arteries carry oxygenated blood': it takes deoxygenated blood from the right ventricle to the lungs. The pulmonary vein brings oxygenated blood back.
 ```
 
@@ -593,7 +593,7 @@ answer: 3
 marks: 1
 misconception: red-blood-cell-adaptation
 worked: |
-  A mature red blood cell loses its nucleus, freeing up space that is filled with haemoglobin — the protein that binds oxygen to form oxyhaemoglobin. More haemoglobin per cell = more oxygen carried.
+  A mature red blood cell loses its nucleus, freeing up space that is filled with haemoglobin, the protein that binds oxygen to form oxyhaemoglobin. More haemoglobin per cell = more oxygen carried.
   Its biconcave disc shape also gives a large surface area for oxygen to diffuse in and out.
   Animal cells have no cell wall, and red blood cells have no vacuole.
 ```
@@ -665,7 +665,7 @@ marks: 1
 misconception: infectious-vs-non-infectious
 worked: |
   An infectious disease can be passed from person to person; a non-infectious disease cannot.
-  Influenza is caused by a virus and spreads between people, so it is infectious. Type 2 diabetes, coronary heart disease and lung cancer are not passed from person to person — they are non-infectious.
+  Influenza is caused by a virus and spreads between people, so it is infectious. Type 2 diabetes, coronary heart disease and lung cancer are not passed from person to person, they are non-infectious.
 ```
 
 ```yaml
@@ -682,7 +682,7 @@ marks: 1
 misconception: pathogen-definition
 worked: |
   Pathogen = disease-CAUSING organism. Bacteria and viruses are the two named examples.
-  The other options describe the body's defences (phagocytes, antibodies) or a treatment (antibiotic) — they fight pathogens, they are not pathogens.
+  The other options describe the body's defences (phagocytes, antibodies) or a treatment (antibiotic), they fight pathogens, they are not pathogens.
 ```
 
 ```yaml
@@ -715,7 +715,7 @@ answer: 2
 marks: 1
 misconception: pneumococcal-cause
 worked: |
-  Pneumococcal disease is caused by the BACTERIUM pneumococcus. It can cause pneumonia — signs and symptoms include a high fever, chest pain, a cough with phlegm and difficulty breathing.
+  Pneumococcal disease is caused by the BACTERIUM pneumococcus. It can cause pneumonia, signs and symptoms include a high fever, chest pain, a cough with phlegm and difficulty breathing.
   Because it is bacterial, antibiotics CAN be used to treat it, and a vaccine is available to prevent it.
 ```
 
@@ -785,7 +785,7 @@ marks: 1
 misconception: antibiotic-resistance-mechanism
 worked: |
   Variation already exists: a few bacteria carry a resistance allele by chance.
-  The antibiotic kills the non-resistant bacteria. The resistant ones survive, have less competition, and reproduce — passing on the resistance.
+  The antibiotic kills the non-resistant bacteria. The resistant ones survive, have less competition, and reproduce, passing on the resistance.
   Over many such treatments the resistant type comes to dominate the population. Bacteria do not 'decide' to become resistant.
 ```
 
@@ -802,8 +802,8 @@ answer: 3
 marks: 1
 misconception: secondary-immune-response
 worked: |
-  First exposure (primary response): the white blood cells must first recognise the new pathogen, so antibody production is SLOW and the concentration stays LOW — the person may fall ill.
-  Second exposure (secondary response): memory white blood cells recognise the same pathogen at once, so antibodies appear SOONER, RISE FASTER and reach a HIGHER concentration — the pathogen is destroyed before symptoms appear.
+  First exposure (primary response): the white blood cells must first recognise the new pathogen, so antibody production is SLOW and the concentration stays LOW, the person may fall ill.
+  Second exposure (secondary response): memory white blood cells recognise the same pathogen at once, so antibodies appear SOONER, RISE FASTER and reach a HIGHER concentration, the pathogen is destroyed before symptoms appear.
   This is exactly the protection a vaccine gives. Always quote figures from the graph when you describe it.
 ```
 
@@ -840,7 +840,7 @@ answer: 2
 marks: 1
 misconception: airway-order
 worked: |
-  Air passes the larynx, down the trachea, which divides into two bronchi (one to each lung); each bronchus branches into many finer bronchioles, which end in air sacs made of alveoli — where gaseous exchange happens.
+  Air passes the larynx, down the trachea, which divides into two bronchi (one to each lung); each bronchus branches into many finer bronchioles, which end in air sacs made of alveoli, where gaseous exchange happens.
   Bronchi are WIDE tubes, bronchioles are the NARROW branches: the order is large to small.
 ```
 
@@ -859,7 +859,7 @@ misconception: aerobic-equation
 worked: |
   Aerobic respiration is the release of energy by the breakdown of glucose IN THE PRESENCE OF OXYGEN:
   glucose + oxygen → carbon dioxide + water
-  Energy is RELEASED, not made — never write 'energy' as a product in the equation itself; write it alongside.
+  Energy is RELEASED, not made, never write 'energy' as a product in the equation itself; write it alongside.
   The distractor reading 'carbon dioxide + water → glucose + oxygen' is photosynthesis, not respiration.
 ```
 
@@ -878,7 +878,7 @@ misconception: anaerobic-equation-human
 worked: |
   In HUMAN cells, anaerobic respiration is the release of energy by the breakdown of glucose in the ABSENCE of oxygen:
   glucose → lactic acid
-  Ethanol and carbon dioxide is the equation for yeast, not for human muscle — a favourite distractor.
+  Ethanol and carbon dioxide is the equation for yeast, not for human muscle, a favourite distractor.
   Much less energy is released than in aerobic respiration.
 ```
 
@@ -912,7 +912,7 @@ answer: 1
 marks: 1
 misconception: oxygen-debt-definition
 worked: |
-  Anaerobic respiration leaves lactic acid in the muscles. Removing it requires oxygen — but that oxygen was not available at the time, so it is 'owed'.
+  Anaerobic respiration leaves lactic acid in the muscles. Removing it requires oxygen, but that oxygen was not available at the time, so it is 'owed'.
   After the exercise the athlete keeps breathing rapidly and deeply, taking in the extra oxygen needed to break down the lactic acid. That extra oxygen is the oxygen debt, and repaying it is why panting continues after you stop running.
 ```
 
@@ -949,7 +949,7 @@ marks: 1
 misconception: anaerobic-energy-yield
 worked: |
   Aerobic respiration breaks glucose COMPLETELY down to carbon dioxide and water, releasing a large amount of energy.
-  Anaerobic respiration breaks glucose down only PARTLY, to lactic acid. Lactic acid still contains a great deal of chemical energy, so only a small amount is released — which is why anaerobic respiration cannot be sustained for long.
+  Anaerobic respiration breaks glucose down only PARTLY, to lactic acid. Lactic acid still contains a great deal of chemical energy, so only a small amount is released, which is why anaerobic respiration cannot be sustained for long.
 ```
 
 ```yaml
@@ -1203,8 +1203,8 @@ answer: 1
 marks: 1
 misconception: continuous-vs-discontinuous
 worked: |
-  Discontinuous variation: a few clearly separate categories, with no in-between values, e.g. ABO blood group (A, B, AB or O) — you plot it as a bar chart.
-  Continuous variation: a full range of values between two extremes, e.g. height, mass, hand span — you plot it as a histogram giving a bell-shaped curve.
+  Discontinuous variation: a few clearly separate categories, with no in-between values, e.g. ABO blood group (A, B, AB or O), you plot it as a bar chart.
+  Continuous variation: a full range of values between two extremes, e.g. height, mass, hand span, you plot it as a histogram giving a bell-shaped curve.
 ```
 
 ```yaml
@@ -1221,7 +1221,7 @@ marks: 1
 misconception: hormone-definition
 worked: |
   The definition has four parts, and the mark scheme wants all of them: a CHEMICAL, made by a GLAND, transported in the BLOOD, acting on a specific TARGET ORGAN.
-  The distractor about 'a substance that speeds up a reaction and is unchanged at the end of it' is the definition of a catalyst, i.e. an enzyme — a classic confusion.
+  The distractor about 'a substance that speeds up a reaction and is unchanged at the end of it' is the definition of a catalyst, i.e. an enzyme, a classic confusion.
 ```
 
 ```yaml
@@ -1272,7 +1272,7 @@ marks: 1
 misconception: negative-feedback-idea
 worked: |
   This is homeostasis by negative feedback. The change (a rise) is DETECTED by the pancreas; the response (insulin) has the OPPOSITE effect (a fall); the level is brought back towards the normal set point.
-  The level does fluctuate — homeostasis keeps it within narrow limits, it does not freeze it.
+  The level does fluctuate, homeostasis keeps it within narrow limits, it does not freeze it.
 ```
 
 ```yaml
@@ -1369,10 +1369,10 @@ type: mcq
 topic: "T3 Biological Molecules & Enzymes"
 stem: "Which row correctly matches a food substance with its main role in the body?"
 options:
-  - "Fat — as the immediate source of energy for respiration"
-  - "Protein — to waterproof the surface of the skin"
-  - "Carbohydrate — for insulation and long-term energy storage"
-  - "Protein — for the growth and repair of cells"
+  - "Fat, as the immediate source of energy for respiration"
+  - "Protein, to waterproof the surface of the skin"
+  - "Carbohydrate, for insulation and long-term energy storage"
+  - "Protein, for the growth and repair of cells"
 answer: 3
 marks: 1
 misconception: food-group-roles
@@ -1435,7 +1435,7 @@ marks: 1
 misconception: enzyme-denatured-not-killed
 worked: |
   Below the optimum: a higher temperature gives molecules more kinetic energy → more frequent collisions between enzyme and substrate → a faster rate.
-  Above the optimum: the heat breaks the bonds holding the enzyme's three-dimensional shape. The ACTIVE SITE changes shape permanently — the enzyme is DENATURED, the substrate no longer fits, and the rate falls to zero.
+  Above the optimum: the heat breaks the bonds holding the enzyme's three-dimensional shape. The ACTIVE SITE changes shape permanently, the enzyme is DENATURED, the substrate no longer fits, and the rate falls to zero.
   Write 'denatured', never 'killed': an enzyme is a molecule, not a living thing.
 ```
 
@@ -1454,7 +1454,7 @@ misconception: plant-vs-animal-cell
 worked: |
   Plant cell only: cellulose cell wall (support and shape), chloroplasts (photosynthesis) and one large permanent sap-filled vacuole.
   Both cells have: cell membrane, cytoplasm, nucleus, mitochondria and ribosomes.
-  Animal cells may have small, temporary vacuoles — so it is the LARGE, permanent, sap-filled one that is the plant feature.
+  Animal cells may have small, temporary vacuoles, so it is the LARGE, permanent, sap-filled one that is the plant feature.
 ```
 
 ```yaml
@@ -1504,7 +1504,7 @@ answer: 2
 marks: 1
 misconception: specialised-cell-adaptation
 worked: |
-  Structure is always linked to function. Contraction requires energy, energy is released in aerobic respiration, and aerobic respiration happens in the mitochondria — so more mitochondria means more energy released per second.
+  Structure is always linked to function. Contraction requires energy, energy is released in aerobic respiration, and aerobic respiration happens in the mitochondria, so more mitochondria means more energy released per second.
   Compare: a red blood cell has NO nucleus (more room for haemoglobin) and a root hair cell has a long extension (large surface area for absorption).
 ```
 
@@ -1538,7 +1538,7 @@ answer: 2
 marks: 1
 misconception: magnification-unit-conversion
 worked: |
-  Magnification = image size ÷ actual size — but BOTH lengths must be in the same unit first.
+  Magnification = image size ÷ actual size, but BOTH lengths must be in the same unit first.
   Convert the image size to micrometres: 45 mm × 1000 = 45 000 μm.
   Magnification = 45 000 μm ÷ 30 μm = 1500.
   So the magnification is ×1500. Forgetting the unit conversion (1 mm = 1000 μm) is the classic error here.
@@ -1557,7 +1557,7 @@ answer: 1
 marks: 1
 misconception: diffusion-definition
 worked: |
-  Diffusion: particles move randomly, and the NET result is movement down a concentration gradient — from high to low — until they are evenly spread. No energy from the cell is needed.
+  Diffusion: particles move randomly, and the NET result is movement down a concentration gradient, from high to low, until they are evenly spread. No energy from the cell is needed.
   The distractor about water molecules crossing a partially permeable membrane describes osmosis, which is a special case of diffusion, for water only.
 ```
 
@@ -1637,12 +1637,12 @@ worked: |
 ```yaml
 type: mcq
 topic: "T11 Molecular Genetics"
-stem: "One strand of a DNA molecule has the base sequence A–T–G–C–C. What is the base sequence of the complementary strand?"
+stem: "One strand of a DNA molecule has the base sequence A-T-G-C-C. What is the base sequence of the complementary strand?"
 options:
-  - "A–T–G–C–C"
-  - "T–A–C–G–G"
-  - "C–G–T–A–A"
-  - "T–A–G–C–C"
+  - "A-T-G-C-C"
+  - "T-A-C-G-G"
+  - "C-G-T-A-A"
+  - "T-A-G-C-C"
 answer: 1
 marks: 1
 misconception: complementary-base-pairing
@@ -1654,7 +1654,7 @@ worked: |
   G → C
   C → G
   C → G
-  Complementary strand = T–A–C–G–G. Work base by base and this mark can never be lost.
+  Complementary strand = T-A-C-G-G. Work base by base and this mark can never be lost.
 ```
 
 ```yaml
@@ -1671,7 +1671,7 @@ marks: 1
 misconception: gene-definition
 worked: |
   A gene is a SECTION of a DNA molecule (a sequence of nucleotides). Each gene codes for ONE polypeptide, and each gene is a unit of inheritance passed from parent to offspring.
-  DNA carries the genetic code, which is used to make specific polypeptides — the detail of how (transcription and translation) is not required at this level.
+  DNA carries the genetic code, which is used to make specific polypeptides, the detail of how (transcription and translation) is not required at this level.
 ```
 
 ```yaml
@@ -1705,7 +1705,7 @@ marks: 1
 misconception: sexual-reproduction-definition
 worked: |
   Three parts must be present: the FUSION of the NUCLEI of a male gamete (sperm) and a female gamete (egg); the formation of a ZYGOTE; and offspring that are genetically DISSIMILAR (they receive genes from two parents).
-  'Fusion of gametes' alone is not enough — the mark scheme wants the fusion of their NUCLEI.
+  'Fusion of gametes' alone is not enough, the mark scheme wants the fusion of their NUCLEI.
 ```
 
 ```yaml
@@ -1742,7 +1742,7 @@ misconception: menstrual-cycle-hormones
 worked: |
   Oestrogen causes the uterus lining to repair and thicken after menstruation.
   Progesterone MAINTAINS that thick lining, ready to receive a ball of cells.
-  If the egg is not fertilised, the progesterone level FALLS, the lining can no longer be maintained, and it breaks down and is lost — menstruation.
+  If the egg is not fertilised, the progesterone level FALLS, the lining can no longer be maintained, and it breaks down and is lost, menstruation.
   Insulin and glucagon control blood glucose; they have no role here.
 ```
 
@@ -1790,7 +1790,7 @@ marks: 1
 misconception: photosynthesis-equation-reversed
 worked: |
   carbon dioxide + water → glucose + oxygen
-  Light energy, absorbed by chlorophyll, is written above the arrow (it is a condition, not a reactant). Do not write oxygen on the left-hand side — that is respiration.
+  Light energy, absorbed by chlorophyll, is written above the arrow (it is a condition, not a reactant). Do not write oxygen on the left-hand side, that is respiration.
 ```
 
 ```yaml
@@ -1874,7 +1874,7 @@ accepted: ["stop smoking", "stopping smoking", "do not smoke", "give up smoking"
 marks: 1
 misconception: chd-definition
 worked: |
-  The named risk factors are an unhealthy diet (high in saturated fat), a sedentary lifestyle and smoking — so any change that removes one of them is credited: stop smoking, exercise regularly, or eat a balanced diet low in saturated fat.
+  The named risk factors are an unhealthy diet (high in saturated fat), a sedentary lifestyle and smoking, so any change that removes one of them is credited: stop smoking, exercise regularly, or eat a balanced diet low in saturated fat.
 ```
 
 ```yaml
@@ -1910,7 +1910,7 @@ misconception: anaerobic-equation-human
 worked: |
   glucose → lactic acid (energy is released)
   No oxygen is involved, and much less energy is released than in aerobic respiration because the glucose is only partly broken down.
-  Ethanol + carbon dioxide is the YEAST equation — it does not apply to human muscle.
+  Ethanol + carbon dioxide is the YEAST equation, it does not apply to human muscle.
 ```
 
 ```yaml
@@ -1945,7 +1945,7 @@ marks: 1
 misconception: sex-determination
 worked: |
   Female = XX; male = XY.
-  Every egg therefore carries an X chromosome, while sperm carry either X or Y — so the sperm determines the sex of the child.
+  Every egg therefore carries an X chromosome, while sperm carry either X or Y, so the sperm determines the sex of the child.
 ```
 
 ```yaml
@@ -1969,7 +1969,7 @@ marks: 1
 misconception: insulin-action
 worked: |
   The pancreas secretes insulin when blood glucose is high, and glucagon when blood glucose is low.
-  The LIVER is the target organ — it stores the glucose as glycogen — but it does not make the hormone.
+  The LIVER is the target organ, it stores the glucose as glycogen, but it does not make the hormone.
 ```
 
 ```yaml
@@ -2376,8 +2376,8 @@ keywords: [female XX, every egg carries X, male XY, half of sperm X and half Y, 
 ```yaml
 kind: precision
 topic: "T11 Molecular Genetics"
-prompt: "A strand of DNA has the base sequence T–A–C–G–A. Write the sequence of the complementary strand and explain the rule you used."
-model: "The complementary strand is A–T–G–C–T. The rule of complementary base pairing is that adenine always pairs with thymine, and cytosine always pairs with guanine. Working base by base: T pairs with A, A pairs with T, C pairs with G, G pairs with C, and A pairs with T."
+prompt: "A strand of DNA has the base sequence T-A-C-G-A. Write the sequence of the complementary strand and explain the rule you used."
+model: "The complementary strand is A-T-G-C-T. The rule of complementary base pairing is that adenine always pairs with thymine, and cytosine always pairs with guanine. Working base by base: T pairs with A, A pairs with T, C pairs with G, G pairs with C, and A pairs with T."
 keywords: [A pairs with T, C pairs with G, complementary base pairing, work base by base, A-T-G-C-T]
 ```
 

@@ -7,7 +7,7 @@ import {
 
 // Client-side funnel beacons (start, per-question, CTA clicks, shares).
 // Whitelisted types only; everything lands in DiagnosticEvent for the admin
-// dashboard — no third-party analytics, no cookies.
+// dashboard, no third-party analytics, no cookies.
 export async function POST(request: Request) {
   let body: { type?: unknown; attemptId?: unknown; meta?: unknown };
   try {

@@ -8,20 +8,13 @@ import { QuizCalculator } from "@/components/quiz-calculator";
 import { guguSay } from "@/lib/gugu-bus";
 
 // Gugu's floating-bubble reactions to the quiz. Compliant: encouragement about
-// effort and next steps, never a grade promise.
-const GUGU_START = "Shh… 🙊 focus mode — you've got this.";
+// effort and next steps, never a grade promise. On finish Gugu stays NEUTRAL
+// (the score is email-gated); the performance-based line fires later, on the
+// results page after the student reveals it (see GuguResultCheer).
+const GUGU_START = "Shh… focus mode, you've got this.";
 const GUGU_QUIT =
-  "Don't quit — I believe in you! 💪 Come back any time and we'll close the gap together.";
-function guguFinishLine(band: SubmitResult["band"]): string {
-  switch (band) {
-    case "pass":
-      return "Sharp work! 🎯 You're on top of these. Want to lock it in?";
-    case "warning":
-      return "So close! 💡 A few marks slipping — I can show you exactly where.";
-    case "danger":
-      return "Great start! 💪 Big marks to win back — let's close the gap together.";
-  }
-}
+  "Don't quit, I believe in you! 💪 Come back any time and we'll close the gap together.";
+const GUGU_FINISH = "All done! 🎉 Pop your email in to see how you did.";
 
 interface SubmitResult {
   attemptId: string;
@@ -32,7 +25,7 @@ interface SubmitResult {
   topicTier: ForecastTier;
 }
 
-// The exam clock: generous ceiling for a quick check — nobody should lose to
+// The exam clock: generous ceiling for a quick check, nobody should lose to
 // the timer, but it keeps the "sit it like the real thing" pressure honest.
 const QUIZ_SECONDS = 7 * 60;
 
@@ -79,16 +72,17 @@ export function DiagnosticQuiz({
   const startedRef = useRef(false);
   const completedRef = useRef(false);
 
-  // Move focus to the step heading on change — keeps screen readers oriented.
+  // Move focus to the step heading on change, keeps screen readers oriented.
   useEffect(() => {
     headingRef.current?.focus();
   }, [step, phase]);
 
-  // Gugu cheers based on the result the moment the check is marked.
+  // The moment the check is marked, Gugu nudges toward the email gate, NEUTRAL,
+  // so the score isn't spoiled before the student unlocks it.
   useEffect(() => {
     if (!result) return;
     completedRef.current = true;
-    guguSay(guguFinishLine(result.band), { hold: false });
+    guguSay(GUGU_FINISH, { hold: false });
   }, [result]);
 
   // If they navigate away mid-check (started but never finished), Gugu urges
@@ -156,12 +150,12 @@ export function DiagnosticQuiz({
         }),
       });
       const body = (await res.json()) as SubmitResult & { error?: string };
-      if (!res.ok) throw new Error(body.error ?? "Something went wrong — try again.");
+      if (!res.ok) throw new Error(body.error ?? "Something went wrong, try again.");
       setResult(body);
       setStep(questions.length);
     } catch (e) {
       submittedRef.current = false; // allow a retry after a network hiccup
-      setError(e instanceof Error ? e.message : "Something went wrong — try again.");
+      setError(e instanceof Error ? e.message : "Something went wrong, try again.");
     } finally {
       setBusy(false);
     }
@@ -170,7 +164,7 @@ export function DiagnosticQuiz({
   async function next() {
     if (!q) return;
     if (!(answers[q.id] ?? "").trim()) {
-      setError("Give it a shot — even a guess tells you something.");
+      setError("Give it a shot, even a guess tells you something.");
       return;
     }
     setError("");
@@ -185,10 +179,10 @@ export function DiagnosticQuiz({
   async function unlock(e: FormEvent) {
     e.preventDefault();
     if (!result) return;
-    // The full diagnosis is emailed, and the result unlocks here — so a real,
+    // The full diagnosis is emailed, and the result unlocks here, so a real,
     // valid address matters. Check before spending the request.
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
-      setError("Please enter a valid email — your full diagnosis is sent there, so double-check it.");
+      setError("Please enter a valid email, your full diagnosis is sent there, so double-check it.");
       return;
     }
     if (!consent) {
@@ -205,16 +199,16 @@ export function DiagnosticQuiz({
       });
       const body = (await res.json()) as { resultsUrl?: string; error?: string };
       if (!res.ok || !body.resultsUrl) {
-        throw new Error(body.error ?? "Something went wrong — try again.");
+        throw new Error(body.error ?? "Something went wrong, try again.");
       }
       router.push(body.resultsUrl);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Something went wrong — try again.");
+      setError(e instanceof Error ? e.message : "Something went wrong, try again.");
       setBusy(false);
     }
   }
 
-  // ---- Step: email gate — the result stays LOCKED until a valid email is in ----
+  // ---- Step: email gate, the result stays LOCKED until a valid email is in ----
   if (result && step >= questions.length) {
     return (
       <div className="mx-auto max-w-md">
@@ -241,7 +235,7 @@ export function DiagnosticQuiz({
           </p>
           {timeExpired && (
             <p className="mt-3 rounded-lg bg-coral/15 px-3 py-2 text-xs text-ink">
-              Time&apos;s up — we marked what you&apos;d answered. Unanswered
+              Time&apos;s up, we marked what you&apos;d answered. Unanswered
               questions scored 0.
             </p>
           )}
@@ -252,12 +246,12 @@ export function DiagnosticQuiz({
           className="mt-4 rounded-2xl border border-accent/40 bg-surface p-6"
         >
           <h3 className="font-display text-lg font-bold text-ink">
-            Reveal your result — free
+            Reveal your result, free
           </h3>
           <p className="mt-1 text-sm text-body">
             Your score, indicative grade, every mark you dropped, the worked
             solutions, and a fix plan. We&apos;ll <strong className="text-ink">email the full
-            diagnosis</strong> to you too — so use a real address you can open.
+            diagnosis</strong> to you too, so use a real address you can open.
           </p>
           <label htmlFor="diag-email" className="mt-4 block text-xs font-medium text-body">
             Email for your results (double-check it&apos;s valid)
@@ -269,7 +263,7 @@ export function DiagnosticQuiz({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
-            className="mt-1 w-full rounded-lg border border-hairline bg-night px-4 py-2.5 text-sm text-ink outline-none focus:border-accent"
+            className="mt-1 w-full rounded-lg border border-hairline bg-night px-4 py-2.5 text-base text-ink outline-none focus:border-accent"
           />
           <label className="mt-3 flex items-start gap-2 text-xs text-body">
             <input
@@ -331,7 +325,7 @@ export function DiagnosticQuiz({
             {Math.floor(QUIZ_SECONDS / 60)}:{String(QUIZ_SECONDS % 60).padStart(2, "0")}
           </p>
           <p className="mt-1 text-xs text-body">
-            on the clock — most finish well inside it
+            on the clock, most finish well inside it
           </p>
           <button
             type="button"
@@ -431,7 +425,8 @@ export function DiagnosticQuiz({
               if (e.key === "Enter") void next();
             }}
             placeholder="Type your answer"
-            className="w-full rounded-xl border border-hairline bg-surface px-4 py-3 text-sm text-ink outline-none focus:border-accent"
+            // text-base (16px) stops iOS Safari auto-zooming on focus.
+            className="w-full rounded-xl border border-hairline bg-surface px-4 py-3 text-base text-ink outline-none focus:border-accent"
           />
         </div>
       )}

@@ -48,7 +48,7 @@ interface SubmitResponse {
   game: GameResult | null;
 }
 
-// Where to send the student after marking — the session chains instead of
+// Where to send the student after marking, the session chains instead of
 // dead-ending. Computed server-side on the Today page.
 export interface NextUpItem {
   label: string;
@@ -102,7 +102,7 @@ export function DailyQuiz({
       emitFx({ type: data.score === data.total ? "correct" : data.score > 0 ? "blip" : "wrong" });
       emitGame(data.game ?? null, { x: window.innerWidth / 2, y: window.innerHeight * 0.35 });
     } catch {
-      setError("Couldn't mark that — check your connection and try again.");
+      setError("Couldn't mark that, check your connection and try again.");
     } finally {
       setSubmitting(false);
     }
@@ -151,7 +151,7 @@ export function DailyQuiz({
           </p>
           {result.shieldEarned && (
             <p className="mt-3 text-sm font-medium text-trust">
-              🛡️ Streak shield earned — one missed day is now covered, automatically.
+              🛡️ Streak shield earned, one missed day is now covered, automatically.
             </p>
           )}
           {result.game && result.game.xpGained > 0 && (
@@ -219,7 +219,7 @@ export function DailyQuiz({
             </div>
             {r.clearedNow && (
               <p className="mt-2 text-sm font-medium text-guarantee">
-                🏆 Banished — beaten twice. It doesn&apos;t come back.
+                🏆 Banished, beaten twice. It doesn&apos;t come back.
               </p>
             )}
             {r.resurrected && r.correct && !r.clearedNow && (
@@ -230,12 +230,12 @@ export function DailyQuiz({
             {!r.correct && (
               <p className="mt-2 text-sm text-body">
                 You answered{" "}
-                <span className="text-ink">{r.givenDisplay || "—"}</span>. Correct
+                <span className="text-ink">{r.givenDisplay || ", "}</span>. Correct
                 answer: <span className="font-medium text-ink">{r.correctAnswer}</span>.
                 {r.confidence === "sure" && (
                   <span className="text-coral">
                     {" "}
-                    You were sure about this one — treat it as a concept gap, not a slip.
+                    You were sure about this one, treat it as a concept gap, not a slip.
                   </span>
                 )}
               </p>
@@ -271,7 +271,7 @@ export function DailyQuiz({
         )}
 
         <p className="text-center text-xs text-body">
-          Come back tomorrow for a fresh three — the streak grows every day you
+          Come back tomorrow for a fresh three, the streak grows every day you
           practise.
         </p>
       </div>
@@ -298,7 +298,7 @@ export function DailyQuiz({
           Practise three more
         </button>
         <p className="mt-3 text-xs text-body/80">
-          Extra practice won&apos;t change today&apos;s streak — it&apos;s
+          Extra practice won&apos;t change today&apos;s streak, it&apos;s
           already counted.
         </p>
       </div>
@@ -374,7 +374,7 @@ export function DailyQuiz({
             />
           )}
 
-          {/* Calibration tap — how sure are you? */}
+          {/* Calibration tap, how sure are you? */}
           {(answers[q.id] ?? "") !== "" && (
             <div className="mt-3 flex flex-wrap items-center gap-2">
               <span className="text-xs text-body">How sure?</span>

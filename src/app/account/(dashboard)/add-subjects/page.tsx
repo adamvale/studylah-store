@@ -12,7 +12,7 @@ export default async function AddSubjectsPage() {
   const customerId = await getCustomerId();
   if (!customerId) redirect("/account/login");
 
-  // What they already own (ignore refunded orders) — those are hidden from
+  // What they already own (ignore refunded orders), those are hidden from
   // the builder so it only offers genuinely new subjects.
   const orders = await prisma.order.findMany({
     where: { customerId, status: { not: "refunded" } },
@@ -33,14 +33,14 @@ export default async function AddSubjectsPage() {
     <div>
       <h2 className="font-display text-lg font-bold text-ink">Complete your set</h2>
       <p className="mt-1 text-sm text-body">
-        Add the subjects you don&apos;t own yet — pick 3 or more and bundle
+        Add the subjects you don&apos;t own yet, pick 3 or more and bundle
         pricing applies automatically.
       </p>
       {hasUnowned ? (
         <BundleBuilder hide={[...owned]} stacked />
       ) : (
         <p className="mt-4 rounded-2xl border border-hairline bg-surface p-5 text-sm text-body">
-          You already own every published subject — nice work.
+          You already own every published subject, nice work.
         </p>
       )}
     </div>

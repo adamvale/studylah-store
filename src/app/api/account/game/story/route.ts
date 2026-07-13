@@ -14,7 +14,7 @@ import {
 // by play the client can't fake cheaply (battles are graded server-side by
 // /game/answer before the client reports the beat), the XP here is small and
 // one-time (unique sourceKey), and beats are idempotent. Worst case for a
-// dishonest client: a few dozen XP once — no marks, no grades, no content.
+// dishonest client: a few dozen XP once, no marks, no grades, no content.
 
 const HEROES = ["jun", "mei", "agent"]; // male / female / secret agent (heroes.png)
 

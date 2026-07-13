@@ -20,7 +20,7 @@ function heatColor(probability: number) {
   return rgb(0.894, 0.929, 0.973);
 }
 
-// Confidence-tier pill colours — identical to the Forecast PDFs and the site.
+// Confidence-tier pill colours, identical to the Forecast PDFs and the site.
 const TIER_PDF: Record<string, { label: string; color: ReturnType<typeof rgb> }> = {
   "very-high": { label: "VERY HIGH", color: rgb(0.859, 0.133, 0.165) },
   high: { label: "HIGH", color: rgb(0.51, 0.141, 0.89) },

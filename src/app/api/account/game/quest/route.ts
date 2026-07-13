@@ -14,7 +14,7 @@ import {
 // Completes a season-pack activity: side quests (with server verification
 // where the notebook can prove it), Undercroft keystones, the weekly Fog
 // Front, mini-bosses, and Old Campus tile marks. Everything is idempotent
-// (achievement + unique XP sourceKey) and small — a dishonest client earns
+// (achievement + unique XP sourceKey) and small, a dishonest client earns
 // pocket change once, never content, marks, or grades.
 
 const ISO_WEEK = () => isoWeekOf(sgDay());
@@ -38,7 +38,7 @@ export async function POST(request: Request) {
   let badgeId = "";
 
   if (id.startsWith("campus:")) {
-    // fog-tile clear marker — world state only, XP comes from the battle
+    // fog-tile clear marker, world state only, XP comes from the battle
     if (!/^campus:\d+-\d+$/.test(id)) {
       return NextResponse.json({ error: "Unknown mark." }, { status: 400 });
     }
@@ -76,7 +76,7 @@ export async function POST(request: Request) {
       const n = await prisma.mistakeEntry.count({
         where: { customerId, resolved: true, reason: "method" },
       });
-      if (n < 2) return NextResponse.json({ done: false, hint: "Two golem entries, re-stacked — the notebook will know." });
+      if (n < 2) return NextResponse.json({ done: false, hint: "Two golem entries, re-stacked, the notebook will know." });
     } else if (quest.serverCheck === "oldest") {
       const oldest = await prisma.mistakeEntry.findFirst({
         where: { customerId },

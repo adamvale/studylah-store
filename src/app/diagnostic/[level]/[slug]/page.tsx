@@ -17,7 +17,7 @@ export async function generateMetadata({
   const subject = getSubject(level as Level, slug);
   if (!subject) return {};
   return {
-    title: `${subject.name} — predict your mark`,
+    title: `${subject.name}, predict your mark`,
     description: `Ten auto-marked questions across the most-likely ${subject.name} topics for 2026. Instant score and an indicative grade band; worked solutions after.`,
     alternates: { canonical: `/diagnostic/${level}/${slug}` },
   };
@@ -45,7 +45,7 @@ export default async function DiagnosticSubjectPage({
         </h1>
         <p className="mt-3 text-sm text-body">
           We&apos;re writing this subject&apos;s five questions on its top
-          forecast call{top ? ` — ${top.topic}` : ""}. Meanwhile, grab the free
+          forecast call{top ? `, ${top.topic}` : ""}. Meanwhile, grab the free
           heatmap for {subject.name} or try another subject&apos;s check.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
@@ -91,7 +91,7 @@ export default async function DiagnosticSubjectPage({
       />
       <p className="mx-auto mt-10 max-w-md text-center text-xs text-body/80">
         The grade shown is an estimate from a 10-question sample on the
-        most-likely topics — not a promise of your actual result. Questions are
+        most-likely topics, not a promise of your actual result. Questions are
         original StudyLah practice content built from public past-paper
         patterns.
       </p>

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-// The installable StudyLand app. start_url is the Today hub — students who
+// The installable StudyLand app. start_url is the Today hub, students who
 // install this are buyers, and Today is the page that runs their revision.
 export default function manifest(): MetadataRoute.Manifest {
   return {

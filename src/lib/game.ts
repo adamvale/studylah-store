@@ -1,12 +1,12 @@
-// "Clear the Fog" — the game rules. Client-safe (no server imports): the
+// "Clear the Fog", the game rules. Client-safe (no server imports): the
 // level curve, titles, badge catalogue and ghost-companion stages. XP is
 // awarded ONLY server-side (src/lib/server/xp.ts); this file just interprets
-// totals. Compliance: everything here rewards EFFORT — never grades.
+// totals. Compliance: everything here rewards EFFORT, never grades.
 
 // ── Level curve ───────────────────────────────────────────────────────────
 // Total XP required to REACH level L: 25·(L−1)·L.
 // L2=50 · L3=150 · L5=500 · L7=1050 · L10=2250 · L15=5250 · L20=9500.
-// An engaged student (~60 XP/day) hits L5 in ~1 week, L10 in ~6 weeks —
+// An engaged student (~60 XP/day) hits L5 in ~1 week, L10 in ~6 weeks, 
 // paced for a 4-month exam season.
 
 export function levelForXp(xp: number): number {
@@ -96,7 +96,7 @@ export const XP = {
 
 // ── Companion spirits (starters) ──────────────────────────────────────────
 // Chosen once during onboarding. PURELY cosmetic + flavour (a scarf tint on
-// the overworld ghost): no stats, no advantages — the audience is minors and
+// the overworld ghost): no stats, no advantages, the audience is minors and
 // a "wrong choice" must never cost marks or progress.
 
 export interface StarterDef {
@@ -113,21 +113,21 @@ export const STARTERS: StarterDef[] = [
     name: "Emberkin",
     emoji: "🔥",
     colour: "#ff7a45",
-    philosophy: "Powerful and direct — charges the hard questions head-on.",
+    philosophy: "Powerful and direct, charges the hard questions head-on.",
   },
   {
     id: "tide",
     name: "Tidekin",
     emoji: "🌊",
     colour: "#6ea0ff",
-    philosophy: "Fast and technical — picks battles apart step by step.",
+    philosophy: "Fast and technical, picks battles apart step by step.",
   },
   {
     id: "grove",
     name: "Grovekin",
     emoji: "🌿",
     colour: "#3ddc84",
-    philosophy: "Patient and durable — outlasts anything the Fog sends.",
+    philosophy: "Patient and durable, outlasts anything the Fog sends.",
   },
 ];
 
@@ -158,7 +158,7 @@ export const HEROES: HeroDef[] = [
     id: "mei",
     name: "Mei",
     emoji: "🔖",
-    blurb: "Quick and curious. Keeps the neatest notebook in Haven — the Fog hates a good index.",
+    blurb: "Quick and curious. Keeps the neatest notebook in Haven, the Fog hates a good index.",
   },
   {
     id: "agent",
@@ -174,7 +174,7 @@ export function heroById(id: string): HeroDef | undefined {
 
 // ── The bestiary ──────────────────────────────────────────────────────────
 // Every mistake is a monster; its species is WHY the mark was lost (the
-// notebook's reason field). Monsters have 2 HP — two consecutive correct
+// notebook's reason field). Monsters have 2 HP, two consecutive correct
 // re-tests in the daily three banish them (the resurrection mechanic).
 
 export interface MonsterDef {
@@ -188,7 +188,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   unset: {
     name: "Unknown Spirit",
     emoji: "❓",
-    tag: "Unidentified — you can't fight what you haven't named.",
+    tag: "Unidentified, you can't fight what you haven't named.",
     beat: "Classify why you lost the mark and it takes its true form.",
   },
   careless: {
@@ -200,13 +200,13 @@ export const MONSTERS: Record<string, MonsterDef> = {
   concept: {
     name: "Concept Wraith",
     emoji: "👻",
-    tag: "The dangerous one — it wears carelessness as a disguise.",
+    tag: "The dangerous one, it wears carelessness as a disguise.",
     beat: "Re-learn the idea from your notes, then let the re-test come to you.",
   },
   method: {
     name: "Method Golem",
     emoji: "🗿",
-    tag: "Heavy and slow — it blocks the working, not the idea.",
+    tag: "Heavy and slow, it blocks the working, not the idea.",
     beat: "Drill the working structure until the steps are automatic.",
   },
   time: {
@@ -220,7 +220,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
 export const MONSTER_HP = 2; // consecutive correct re-tests to banish
 
 // ── "Almost there" pull ───────────────────────────────────────────────────
-// The next thing levelling up actually GETS you — shown under XP bars and in
+// The next thing levelling up actually GETS you, shown under XP bars and in
 // the level-up ceremony so tomorrow always has a reason.
 const UNLOCKS: [number, string][] = [
   [3, "your ghost earns its headband"],

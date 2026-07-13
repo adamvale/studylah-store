@@ -32,7 +32,7 @@ export default function RefundsPage() {
       <h2>Faulty files</h2>
       <p>
         Broken, corrupted, or wrongly delivered files are replaced or refunded
-        in full — whichever you prefer.
+        in full, whichever you prefer.
       </p>
     </LegalPage>
   );

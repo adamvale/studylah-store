@@ -99,7 +99,7 @@ export function emailLayout(bodyHtml: string): string {
       </div>
       <p style="font-size:10px;color:#3d4e63;line-height:1.6;margin:20px 0 0;">
         StudyLah materials are data-driven probabilistic forecasts and original practice
-        content — not actual exam content. StudyLah is not affiliated with SEAB, MOE, or
+        content, not actual exam content. StudyLah is not affiliated with SEAB, MOE, or
         Cambridge (UCLES). You received this email because of a purchase or a request
         you made at studylah.education.
       </p>

@@ -20,8 +20,8 @@ import {
 } from "@/lib/server/xp";
 
 // Grades today's daily three SERVER-SIDE. The selection is deterministic per
-// (customer, day) — including which mistake-notebook entries are due for a
-// spaced re-test — so we recompute it here rather than trusting the client
+// (customer, day), including which mistake-notebook entries are due for a
+// spaced re-test, so we recompute it here rather than trusting the client
 // about which questions were asked. First completion of the day records the
 // streak day, updates resurrection state, and seeds fresh misses into the
 // notebook; re-submits just return marked results without double-counting.
@@ -180,7 +180,7 @@ export async function POST(request: Request) {
 
   const streak = await streakState(customerId, today);
 
-  // Every 5th consecutive day banks a streak shield (max held: 2) — the
+  // Every 5th consecutive day banks a streak shield (max held: 2), the
   // earned insurance that lets one missed day not erase weeks of habit.
   let shieldEarned = false;
   if (firstAttempt && streak.current > 0 && streak.current % 5 === 0 && streak.shields < MAX_SHIELDS) {
@@ -188,7 +188,7 @@ export async function POST(request: Request) {
       await prisma.streakShield.create({ data: { customerId, earnedDay: today } });
       shieldEarned = true;
     } catch {
-      // unique(customerId, earnedDay) — already banked for this day
+      // unique(customerId, earnedDay), already banked for this day
     }
   }
 
@@ -217,7 +217,7 @@ export async function POST(request: Request) {
       }
     }
 
-    // Badges — cheap checks piggybacking data already in hand.
+    // Badges, cheap checks piggybacking data already in hand.
     collect(await unlockBadge(customerId, "first-steps"));
     const hourSg = Number(
       new Date().toLocaleString("en-GB", { hour: "2-digit", hour12: false, timeZone: "Asia/Singapore" })
@@ -244,7 +244,7 @@ export async function POST(request: Request) {
 
   return NextResponse.json({
     game,
-    // Explicit whitelist — internal fields (mistakeId, raw `given`) stay here.
+    // Explicit whitelist, internal fields (mistakeId, raw `given`) stay here.
     results: results.map((r) => ({
       id: r.id,
       subjectName: r.subjectName,

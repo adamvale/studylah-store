@@ -4,7 +4,7 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { useNativePlatform } from "@/lib/native";
 
 // ── Native (Capacitor) push bridge ────────────────────────────────────────
-// Inside the shell, Capacitor injects window.Capacitor.Plugins.* — including
+// Inside the shell, Capacitor injects window.Capacitor.Plugins.*, including
 // PushNotifications when the native project bundles it. The web build never
 // imports the plugin package; everything goes through the injected bridge.
 
@@ -40,9 +40,9 @@ export function NativePushBridge() {
 }
 
 // PWA plumbing + prompts, all in one place:
-//   <SwRegister />        — registers the service worker (mounted site-wide)
-//   <InstallPrompt />     — "add StudyLand to your home screen" card (portal)
-//   <NotificationToggle/> — enable/disable streak reminders (Settings + card)
+//   <SwRegister />, registers the service worker (mounted site-wide)
+//   <InstallPrompt />, "add StudyLand to your home screen" card (portal)
+//   <NotificationToggle/>, enable/disable streak reminders (Settings + card)
 //
 // Everything degrades silently: unsupported browsers see nothing.
 
@@ -82,7 +82,7 @@ const DISMISS_KEY = "studylah_install_dismissed";
 const noopSubscribe = () => () => {};
 
 // Client-only reads via useSyncExternalStore: the server snapshot renders
-// nothing, the client re-reads after hydration — no mismatch, no effect-time
+// nothing, the client re-reads after hydration, no mismatch, no effect-time
 // setState (see ExamCountdown for the same pattern).
 function useStoredDismissed(): boolean {
   return useSyncExternalStore(
@@ -132,7 +132,7 @@ export function InstallPrompt() {
     try {
       localStorage.setItem(DISMISS_KEY, "1");
     } catch {
-      // storage unavailable — the card returns next visit, acceptable
+      // storage unavailable, the card returns next visit, acceptable
     }
     setJustDismissed(true);
   }
@@ -146,7 +146,7 @@ export function InstallPrompt() {
           </p>
           <p className="mt-0.5 text-xs text-body">
             {deferred
-              ? "One tap — opens full-screen like an app, no store needed."
+              ? "One tap, opens full-screen like an app, no store needed."
               : "In Safari: tap Share, then “Add to Home Screen”. Opens full-screen like an app."}
           </p>
         </div>
@@ -209,7 +209,7 @@ export function NotificationToggle() {
         // storage unavailable
       }
       const plugin = nativePushPlugin();
-      if (!plugin) return; // shell without the plugin — leave "unsupported"
+      if (!plugin) return; // shell without the plugin, leave "unsupported"
       let cancelled = false;
       queueMicrotask(() => {
         if (!cancelled) setState(stored ? "subscribed" : "default");
@@ -218,7 +218,7 @@ export function NotificationToggle() {
         cancelled = true;
       };
     }
-    // Web: default state is already "unsupported" — only the supported path
+    // Web: default state is already "unsupported", only the supported path
     // probes, and it sets state strictly in the async continuation.
     if (!("serviceWorker" in navigator) || !("PushManager" in window) || !publicKey) {
       return;
@@ -263,7 +263,7 @@ export function NotificationToggle() {
       try {
         localStorage.setItem(NATIVE_TOKEN_KEY, token);
       } catch {
-        // storage unavailable — server still has the token
+        // storage unavailable, server still has the token
       }
       setState("subscribed");
     } catch {
@@ -355,7 +355,7 @@ export function NotificationToggle() {
   if (state === "denied") {
     return (
       <p className="text-sm text-body">
-        Notifications are blocked for this site in your browser settings —
+        Notifications are blocked for this site in your browser settings, 
         allow them there, then come back and switch reminders on.
       </p>
     );
@@ -365,8 +365,8 @@ export function NotificationToggle() {
     <div className="flex flex-wrap items-center justify-between gap-3">
       <p className="text-sm text-body">
         {state === "subscribed"
-          ? "Streak reminders are on for this device — an evening nudge only on days your streak is at risk."
-          : "Get one evening nudge on days your streak is about to break. No spam — that's the only push we send."}
+          ? "Streak reminders are on for this device, an evening nudge only on days your streak is at risk."
+          : "Get one evening nudge on days your streak is about to break. No spam, that's the only push we send."}
       </p>
       {state === "subscribed" ? (
         <button

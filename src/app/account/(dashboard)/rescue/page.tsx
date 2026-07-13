@@ -13,7 +13,7 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 const SEASON_START = Date.UTC(2026, 9, 1); // fallback until paper dates are entered
 
 // Kept outside the component so the impurity (Date.now) isn't called during
-// render — see react-hooks/purity.
+// render, see react-hooks/purity.
 function daysUntilFirstPaper(examDates: { at: Date }[]): {
   days: number;
   usingRealDates: boolean;
@@ -70,7 +70,7 @@ export default async function RescuePage() {
           </h2>
           <p className="mt-1 text-sm text-body">
             Behind is a position, not a verdict. This plan spends your remaining
-            days only where the forecast says the marks concentrate — VERY HIGH
+            days only where the forecast says the marks concentrate, VERY HIGH
             and HIGH topics you haven&apos;t banked yet, highest payoff first.
           </p>
         </div>
@@ -84,11 +84,11 @@ export default async function RescuePage() {
               <>
                 <span className="font-display text-xl font-black text-ink">{days}</span>{" "}
                 day{days === 1 ? "" : "s"} to your first paper
-                {days > 14 && <> — planning the next 14</>}
+                {days > 14 && <>, planning the next 14</>}
               </>
             ) : (
               <>
-                No paper dates entered yet — planning a 14-day sprint.{" "}
+                No paper dates entered yet, planning a 14-day sprint.{" "}
                 <Link href="/account/study" className="font-medium text-accent hover:underline">
                   Add your dates
                 </Link>{" "}

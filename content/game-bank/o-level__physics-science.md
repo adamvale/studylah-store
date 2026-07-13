@@ -21,7 +21,7 @@ marks: 1
 misconception: base-vs-derived-quantity
 worked: |
   The SI base quantities include length, mass, time, electric current and thermodynamic temperature.
-  Force, energy and density are derived quantities — they are built from base quantities
+  Force, energy and density are derived quantities, they are built from base quantities
   (1 N = 1 kg·m/s², 1 J = 1 N·m, density = kg/m³).
   So the base quantity here is mass.
 ```
@@ -59,7 +59,7 @@ marks: 1
 misconception: scalar-vector-confusion
 worked: |
   A vector has both magnitude and direction; a scalar has magnitude only.
-  Weight is a force — it acts downwards, towards the centre of the Earth — so it is a vector.
+  Weight is a force, it acts downwards, towards the centre of the Earth, so it is a vector.
   Mass, speed and time have size but no direction, so they are scalars.
 ```
 
@@ -115,7 +115,7 @@ worked: |
   a = Δv ÷ t, where Δv is the CHANGE in speed.
   Δv = 20 − 5.0 = 15 m/s
   a = 15 ÷ 6.0 = 2.5 m/s².
-  Dividing the final speed (20) by the time gives 3.3 — that is the common slip.
+  Dividing the final speed (20) by the time gives 3.3, that is the common slip.
 ```
 
 ```yaml
@@ -131,7 +131,7 @@ answer: 2
 marks: 1
 misconception: area-under-speed-time-graph
 worked: |
-  Distance = area under the speed–time graph.
+  Distance = area under the speed-time graph.
   Steady stage: a rectangle, area = 12 × 4.0 = 48 m.
   Deceleration stage: a triangle, area = ½ × 6.0 × 12 = 36 m.
   Total distance = 48 + 36 = 84 m.
@@ -140,7 +140,7 @@ worked: |
 ```yaml
 type: mcq
 topic: "T2 Kinematics"
-stem: "On a distance–time graph, a horizontal (flat) line shows that the object is:"
+stem: "On a distance-time graph, a horizontal (flat) line shows that the object is:"
 options:
   - "moving at constant speed"
   - "accelerating uniformly"
@@ -150,9 +150,9 @@ answer: 3
 marks: 1
 misconception: distance-time-graph-flat-line
 worked: |
-  On a distance–time graph the GRADIENT gives the speed.
-  A horizontal line has zero gradient, so the speed is zero — the distance from the start is not changing.
-  The object is at rest. (A flat line on a SPEED–time graph would mean constant speed.)
+  On a distance-time graph the GRADIENT gives the speed.
+  A horizontal line has zero gradient, so the speed is zero, the distance from the start is not changing.
+  The object is at rest. (A flat line on a SPEED-time graph would mean constant speed.)
 ```
 
 ```yaml
@@ -176,7 +176,7 @@ worked: |
 ```yaml
 type: mcq
 topic: "T2 Kinematics"
-stem: "The speed–time graph for a train is a straight line sloping downwards from 30 m/s to 0 m/s. Which statement is correct?"
+stem: "The speed-time graph for a train is a straight line sloping downwards from 30 m/s to 0 m/s. Which statement is correct?"
 options:
   - "The train moves at constant speed"
   - "The train decelerates uniformly"
@@ -186,7 +186,7 @@ answer: 1
 marks: 1
 misconception: speed-time-graph-gradient-sign
 worked: |
-  The gradient of a speed–time graph is the acceleration.
+  The gradient of a speed-time graph is the acceleration.
   A straight line means a constant gradient, so the acceleration is uniform.
   The line slopes downwards, so the gradient is negative: the speed is falling.
   The train is decelerating uniformly until it stops.
@@ -246,7 +246,7 @@ worked: |
   p = F ÷ A
   = 250 ÷ 0.050
   = 5000 Pa (5000 N/m²).
-  Multiplying F by A gives 12.5 — a common slip when dividing by a decimal feels awkward.
+  Multiplying F by A gives 12.5, a common slip when dividing by a decimal feels awkward.
 ```
 
 ```yaml
@@ -340,7 +340,7 @@ worked: |
   g = F ÷ m (gravitational force per unit mass)
   = 40 ÷ 5.0
   = 8.0 N/kg.
-  Do not assume g = 10 N/kg — that value is for Earth.
+  Do not assume g = 10 N/kg, that value is for Earth.
 ```
 
 ```yaml
@@ -376,7 +376,7 @@ misconception: balanced-forces-constant-velocity
 worked: |
   The forces are balanced, so the resultant force is zero.
   From F = ma, a zero resultant force means zero acceleration.
-  The van is already moving, so it keeps moving at the same speed in the same direction — constant velocity.
+  The van is already moving, so it keeps moving at the same speed in the same direction, constant velocity.
   Balanced forces do NOT mean the object must be stationary.
 ```
 
@@ -396,7 +396,7 @@ worked: |
   First find the RESULTANT force:
   F = 40 − 15 = 25 N.
   Then a = F ÷ m = 25 ÷ 5.0 = 5.0 m/s².
-  Using the 40 N push alone gives 8.0 m/s² — friction must be subtracted first.
+  Using the 40 N push alone gives 8.0 m/s², friction must be subtracted first.
 ```
 
 ```yaml
@@ -412,11 +412,11 @@ answer: 1
 marks: 1
 misconception: action-reaction-pair-identification
 worked: |
-  An action–reaction pair is the SAME type of force, equal in size, opposite in direction,
+  An action-reaction pair is the SAME type of force, equal in size, opposite in direction,
   and the two forces act on DIFFERENT bodies.
   The Earth pulls the book down (gravitational), so the book pulls the Earth up (gravitational).
   The table's push on the book is a contact force and it acts on the same body as the weight,
-  so it is not the third-law partner — it merely balances the weight.
+  so it is not the third-law partner, it merely balances the weight.
 ```
 
 ```yaml
@@ -435,7 +435,7 @@ worked: |
   As the skydiver speeds up, air resistance increases.
   At terminal velocity the upward air resistance has grown until it is equal in size to her downward weight.
   The resultant force is zero, so from F = ma the acceleration is zero and she falls at a steady speed.
-  Her weight has not changed — the forces are simply balanced.
+  Her weight has not changed, the forces are simply balanced.
 ```
 
 ```yaml
@@ -508,7 +508,7 @@ marks: 1
 misconception: centre-of-gravity-definition
 worked: |
   The centre of gravity is the single point through which the entire weight of the body appears to act.
-  It need not lie inside the material at all — for a ring or a boomerang it lies in the empty space.
+  It need not lie inside the material at all, for a ring or a boomerang it lies in the empty space.
   It has nothing to do with where the object is thickest or densest.
 ```
 
@@ -660,7 +660,7 @@ worked: |
   = (12 ÷ 60) × 100
   = 0.20 × 100
   = 20%.
-  The other 48 J is transferred to the surroundings by heating — it is not destroyed, just dissipated.
+  The other 48 J is transferred to the surroundings by heating, it is not destroyed, just dissipated.
 ```
 
 ```yaml
@@ -789,7 +789,7 @@ answer: 1
 marks: 1
 misconception: constant-temperature-during-boiling
 worked: |
-  During boiling, all the energy supplied is used to separate the particles completely —
+  During boiling, all the energy supplied is used to separate the particles completely, 
   it increases their potential energy by overcoming the forces of attraction in the liquid.
   None of it goes to increasing the average kinetic energy, so the temperature stays constant
   at the boiling point until all the liquid has turned to gas.
@@ -808,7 +808,7 @@ answer: 2
 marks: 1
 misconception: liquid-vs-gas-properties
 worked: |
-  A liquid has a fixed volume (its particles are still close together) but no fixed shape —
+  A liquid has a fixed volume (its particles are still close together) but no fixed shape, 
   it takes the shape of its container.
   A gas has neither a fixed shape nor a fixed volume: it spreads out to fill any container.
   Both can flow, and the particles of both are in motion.
@@ -829,7 +829,7 @@ misconception: cooling-curve-plateau
 worked: |
   During solidification the particles come closer together and the forces of attraction between them
   pull them into fixed positions. Their potential energy falls, and that energy is released to the surroundings.
-  The average kinetic energy does not change, so the temperature stays constant — hence the flat section.
+  The average kinetic energy does not change, so the temperature stays constant, hence the flat section.
   The particles never stop moving; in the solid they vibrate about fixed positions.
 ```
 
@@ -885,7 +885,7 @@ answer: 2
 marks: 1
 misconception: radiation-surface-emission
 worked: |
-  A dull, black, rough surface is the best emitter of infrared radiation — and also the best absorber.
+  A dull, black, rough surface is the best emitter of infrared radiation, and also the best absorber.
   A shiny, light-coloured, smooth surface is the poorest emitter and the poorest absorber,
   because it reflects radiation instead. Good emitters are good absorbers.
 ```
@@ -905,7 +905,7 @@ misconception: thermal-equilibrium
 worked: |
   Thermal energy is transferred from the region of higher temperature to the region of lower temperature.
   The hot block cools and the cold block warms until both are at the SAME temperature.
-  There is then no net transfer of energy between them — they are in thermal equilibrium.
+  There is then no net transfer of energy between them, they are in thermal equilibrium.
   The hot block still has internal energy; it simply has no temperature difference to drive a transfer.
 ```
 
@@ -922,7 +922,7 @@ answer: 0
 marks: 1
 misconception: radiation-through-vacuum
 worked: |
-  Between the Sun and the Earth there is a vacuum — almost no particles.
+  Between the Sun and the Earth there is a vacuum, almost no particles.
   Conduction and convection both need a material medium (particles to vibrate, collide or circulate).
   Radiation is an electromagnetic wave (mainly infrared, visible and ultraviolet) and needs no medium,
   so radiation is the only process that can carry energy across the vacuum of space.
@@ -1019,7 +1019,7 @@ worked: |
   Sound is a longitudinal wave: the air particles vibrate BACKWARDS AND FORWARDS along the same line
   as the direction in which the wave travels, producing compressions (particles pushed together)
   and rarefactions (particles spread apart).
-  The particles only oscillate about fixed positions — they are not carried along with the wave —
+  The particles only oscillate about fixed positions, they are not carried along with the wave, 
   and sound cannot travel through a vacuum because there are no particles to pass the vibration on.
 ```
 
@@ -1038,7 +1038,7 @@ misconception: waves-transfer-energy-not-matter
 worked: |
   The cork (and the water around it) only oscillates about a fixed position as each wave passes.
   Nothing is carried across the pond, so no matter is transferred.
-  The cork is set moving, so it gains energy — energy has been carried to it from the source.
+  The cork is set moving, so it gains energy, energy has been carried to it from the source.
   A wave transfers energy from one place to another without transferring matter.
 ```
 
@@ -1096,7 +1096,7 @@ worked: |
   Sound is a longitudinal wave carried by the vibration of particles, which pass the vibration on
   to their neighbours through compressions and rarefactions.
   As the air is removed there are fewer and fewer particles to carry the wave, so the sound gets fainter.
-  In a vacuum there are no particles at all, so no sound can travel — even though the bell is still vibrating
+  In a vacuum there are no particles at all, so no sound can travel, even though the bell is still vibrating
   (you can still see the hammer moving).
 ```
 
@@ -1134,7 +1134,7 @@ misconception: em-waves-common-properties
 worked: |
   Every electromagnetic wave is transverse, carries energy, needs no medium,
   and travels at the same speed in a vacuum (3.0 × 10⁸ m/s).
-  What differs from region to region is the frequency and the wavelength — linked by v = fλ.
+  What differs from region to region is the frequency and the wavelength, linked by v = fλ.
 ```
 
 ```yaml
@@ -1266,7 +1266,7 @@ answer: 2
 marks: 1
 misconception: converging-lens-image-nature
 worked: |
-  An image that can be caught on a screen is a REAL image — the rays actually meet there.
+  An image that can be caught on a screen is a REAL image, the rays actually meet there.
   For a converging lens, whenever the object is beyond the focal length the refracted rays converge
   on the far side of the lens and cross, so the image formed is real and INVERTED.
   A virtual image (as in a magnifying glass) cannot be projected onto a screen.
@@ -1382,7 +1382,7 @@ worked: |
   1/R = 1/R₁ + 1/R₂ = 1/6.0 + 1/3.0 = 1/6.0 + 2/6.0 = 3/6.0
   R = 6.0 ÷ 3 = 2.0 Ω.
   (Product ÷ sum shortcut: (6.0 × 3.0) ÷ (6.0 + 3.0) = 18 ÷ 9.0 = 2.0 Ω.)
-  The effective resistance in parallel is always SMALLER than the smallest resistor — a useful check.
+  The effective resistance in parallel is always SMALLER than the smallest resistor, a useful check.
 ```
 
 ```yaml
@@ -1400,7 +1400,7 @@ misconception: current-used-up-in-series
 worked: |
   There is only one path in a series circuit, so charge cannot pile up or disappear anywhere.
   The same current therefore flows through every component.
-  Current is NOT used up — it is the ENERGY carried by the charge that is transferred to the components.
+  Current is NOT used up, it is the ENERGY carried by the charge that is transferred to the components.
   It is the potential difference that is shared between the components in series.
 ```
 
@@ -1418,7 +1418,7 @@ marks: 1
 misconception: parallel-pd-shared
 worked: |
   Components in parallel are connected between the SAME two points in the circuit,
-  so they all have the same potential difference across them — that of the supply.
+  so they all have the same potential difference across them, that of the supply.
   Each lamp therefore has the full 6.0 V across it.
   It is the CURRENT that splits between the branches in parallel, not the p.d.
 ```
@@ -1492,9 +1492,9 @@ answer: 2
 marks: 1
 misconception: meter-connection
 worked: |
-  An ammeter measures the current THROUGH a component, so the same current must pass through it —
+  An ammeter measures the current THROUGH a component, so the same current must pass through it, 
   it goes in SERIES. It has a very low resistance so that it hardly changes the circuit.
-  A voltmeter measures the p.d. ACROSS a component, so it must be connected between the same two points —
+  A voltmeter measures the p.d. ACROSS a component, so it must be connected between the same two points, 
   it goes in PARALLEL. It has a very high resistance so that it draws almost no current.
 ```
 
@@ -1626,7 +1626,7 @@ marks: 1
 misconception: iron-vs-steel-core
 worked: |
   Soft iron is magnetically SOFT: it is magnetised easily, which greatly strengthens the field,
-  and it loses almost all of its magnetism as soon as the current stops — a temporary magnet.
+  and it loses almost all of its magnetism as soon as the current stops, a temporary magnet.
   Steel is magnetically HARD: it would stay magnetised after the current was switched off,
   so the electromagnet could not be turned off. Copper and plastic are not magnetic materials.
 ```
@@ -1705,7 +1705,7 @@ worked: |
   Reversing the current alone reverses the force. Reversing the field alone also reverses the force.
   Doing BOTH reverses the force twice, so it ends up pointing in its original direction.
   You can check this with Fleming's left-hand rule: turn the hand over to reverse the field,
-  then point the second finger the other way to reverse the current — the thumb ends up as it started.
+  then point the second finger the other way to reverse the current, the thumb ends up as it started.
 ```
 
 ```yaml
@@ -1760,7 +1760,7 @@ marks: 1
 misconception: isotope-definition
 worked: |
   Isotopes are atoms of the SAME element, so they must have the same number of protons
-  (the same proton number Z) — that is what fixes the element.
+  (the same proton number Z), that is what fixes the element.
   They differ in the number of NEUTRONS, so their nucleon numbers A are different.
   For example, carbon-12 and carbon-14 both have Z = 6 but A = 12 and A = 14.
 ```
@@ -1895,7 +1895,7 @@ worked: |
   Random means that each nucleus has the same fixed probability of decaying in a given time,
   but there is no way to tell which one will go next, or when.
   Decay is also SPONTANEOUS: it is not affected by outside conditions such as temperature,
-  pressure or chemical combination — so heating the source changes nothing.
+  pressure or chemical combination, so heating the source changes nothing.
   Over a large sample, the count rate does fall steadily, which is why half-life is a useful average.
 ```
 
@@ -1963,7 +1963,7 @@ worked: |
   Anticlockwise moment = 300 × 1.2 = 360 N m.
   For balance, clockwise moment = 360 N m, so 400 × d = 360.
   d = 360 ÷ 400 = 0.90 m.
-  The heavier child must sit closer to the pivot — which matches the answer.
+  The heavier child must sit closer to the pivot, which matches the answer.
 ```
 
 ```yaml
@@ -2030,7 +2030,7 @@ worked: |
   Conduction needs particles to vibrate and collide; convection needs a fluid that can circulate.
   A vacuum has no particles, so neither can occur.
   Radiation is an electromagnetic wave (mainly infrared) and needs no medium, so it is the only process
-  that can carry energy across a vacuum — this is how energy reaches the Earth from the Sun.
+  that can carry energy across a vacuum, this is how energy reaches the Earth from the Sun.
 ```
 
 ```yaml
@@ -2081,7 +2081,7 @@ marks: 1
 misconception: plane-mirror-image-nature
 worked: |
   The reflected rays that reach the eye are diverging; they only APPEAR to come from a point behind the mirror.
-  The rays do not actually meet there, so the image cannot be caught on a screen — it is VIRTUAL.
+  The rays do not actually meet there, so the image cannot be caught on a screen, it is VIRTUAL.
   It is also upright, laterally inverted, the same size as the object, and as far behind the mirror
   as the object is in front.
 ```
@@ -2177,14 +2177,14 @@ worked: |
 kind: definition
 term: "Vector quantity"
 topic: "T1 Physical Quantities & Measurement"
-body: "A quantity that has both magnitude (size) and direction — for example force, weight, velocity and acceleration. A scalar has magnitude only, such as mass, speed, time and energy."
+body: "A quantity that has both magnitude (size) and direction, for example force, weight, velocity and acceleration. A scalar has magnitude only, such as mass, speed, time and energy."
 ```
 
 ```yaml
 kind: definition
 term: "Acceleration"
 topic: "T2 Kinematics"
-body: "The rate of change of velocity: a = Δv ÷ t, measured in m/s². A negative value (deceleration) means the object is slowing down. On a speed–time graph the acceleration is the gradient."
+body: "The rate of change of velocity: a = Δv ÷ t, measured in m/s². A negative value (deceleration) means the object is slowing down. On a speed-time graph the acceleration is the gradient."
 ```
 
 ```yaml
@@ -2282,7 +2282,7 @@ body: "The state reached when two objects in thermal contact are at the same tem
 kind: definition
 term: "Wavelength"
 topic: "T9 General Wave Properties & Sound"
-body: "The distance between two consecutive points on a wave that are in phase — crest to crest, or one compression to the next. Symbol λ, measured in metres."
+body: "The distance between two consecutive points on a wave that are in phase, crest to crest, or one compression to the next. Symbol λ, measured in metres."
 ```
 
 ```yaml
@@ -2296,7 +2296,7 @@ body: "The number of complete waves produced, or passing a point, each second: f
 kind: definition
 term: "Focal length"
 topic: "T11 Light"
-body: "The distance between the centre of a thin converging lens and its principal focus — the point at which rays travelling parallel to the principal axis are brought to a focus."
+body: "The distance between the centre of a thin converging lens and its principal focus, the point at which rays travelling parallel to the principal axis are brought to a focus."
 ```
 
 ```yaml
@@ -2338,14 +2338,14 @@ body: "The ratio of the potential difference across a component to the current t
 kind: definition
 term: "Isotope"
 topic: "T16 Radioactivity"
-body: "Atoms of the same element that have the same proton number but different nucleon numbers — the same number of protons, but a different number of neutrons. Example: carbon-12 and carbon-14."
+body: "Atoms of the same element that have the same proton number but different nucleon numbers, the same number of protons, but a different number of neutrons. Example: carbon-12 and carbon-14."
 ```
 
 ```yaml
 kind: definition
 term: "Half-life"
 topic: "T16 Radioactivity"
-body: "The time taken for half of the radioactive nuclei in a sample to decay — equivalently, the time taken for the activity or corrected count rate of the source to fall to half of its value."
+body: "The time taken for half of the radioactive nuclei in a sample to decay, equivalently, the time taken for the activity or corrected count rate of the source to fall to half of its value."
 ```
 
 ```yaml
@@ -2384,15 +2384,15 @@ keywords: [forces are balanced, resultant force is zero, no acceleration, consta
 kind: precision
 topic: "T4 Dynamics"
 prompt: "A swimmer pushes backwards on the water and moves forwards. Explain this using Newton's third law."
-model: "The swimmer's hands exert a backward force on the water. By Newton's third law, the water exerts an equal and opposite forward force on the swimmer. The two forces are of the same type, equal in size and opposite in direction, but they act on DIFFERENT bodies, so they do not cancel out — and the forward force on the swimmer produces her forward acceleration."
+model: "The swimmer's hands exert a backward force on the water. By Newton's third law, the water exerts an equal and opposite forward force on the swimmer. The two forces are of the same type, equal in size and opposite in direction, but they act on DIFFERENT bodies, so they do not cancel out, and the forward force on the swimmer produces her forward acceleration."
 keywords: [equal in size, opposite in direction, same type of force, act on different bodies, do not cancel]
 ```
 
 ```yaml
 kind: precision
 topic: "T2 Kinematics"
-prompt: "State what the gradient and the area under a speed–time graph each represent, and what the gradient of a distance–time graph represents."
-model: "On a speed–time graph, the gradient gives the acceleration (change in speed ÷ time taken), and the area under the line gives the distance travelled. On a distance–time graph, the gradient gives the speed, and a horizontal line means the object is at rest."
+prompt: "State what the gradient and the area under a speed-time graph each represent, and what the gradient of a distance-time graph represents."
+model: "On a speed-time graph, the gradient gives the acceleration (change in speed ÷ time taken), and the area under the line gives the distance travelled. On a distance-time graph, the gradient gives the speed, and a horizontal line means the object is at rest."
 keywords: [gradient = acceleration, area under graph = distance travelled, distance-time gradient = speed, flat line = at rest]
 ```
 
@@ -2400,7 +2400,7 @@ keywords: [gradient = acceleration, area under graph = distance travelled, dista
 kind: precision
 topic: "T6 Energy"
 prompt: "A lamp is supplied with 50 J of electrical energy each second and gives out 8 J of light each second. Explain what happens to the rest of the energy."
-model: "The other 42 J each second is transferred to the internal (thermal) energy store of the lamp and then to the surroundings, by heating. Energy is conserved — none of it is destroyed — but this energy is dissipated to the surroundings, where it becomes spread out and is no longer useful. The lamp is therefore only about 16% efficient."
+model: "The other 42 J each second is transferred to the internal (thermal) energy store of the lamp and then to the surroundings, by heating. Energy is conserved, none of it is destroyed, but this energy is dissipated to the surroundings, where it becomes spread out and is no longer useful. The lamp is therefore only about 16% efficient."
 keywords: [energy is conserved, internal thermal energy store, dissipated to the surroundings, spread out and not useful]
 ```
 
@@ -2464,7 +2464,7 @@ keywords: [soft iron is easily magnetised, strengthens the field, loses magnetis
 kind: precision
 topic: "T7 Kinetic Particle Model"
 prompt: "A solid is heated at a steady rate. Explain why its temperature stays constant while it is melting."
-model: "During melting, the energy supplied is used to weaken and break the forces of attraction that hold the particles in fixed positions — it increases the POTENTIAL energy of the particles. It does not increase their average KINETIC energy. Temperature is a measure of the average kinetic energy of the particles, so while all the energy is going into the potential energy store, the temperature does not change."
+model: "During melting, the energy supplied is used to weaken and break the forces of attraction that hold the particles in fixed positions, it increases the POTENTIAL energy of the particles. It does not increase their average KINETIC energy. Temperature is a measure of the average kinetic energy of the particles, so while all the energy is going into the potential energy store, the temperature does not change."
 keywords: [energy weakens the forces of attraction, potential energy increases, average kinetic energy unchanged, temperature measures average KE]
 ```
 
@@ -2472,7 +2472,7 @@ keywords: [energy weakens the forces of attraction, potential energy increases, 
 kind: precision
 topic: "T7 Kinetic Particle Model"
 prompt: "Explain, in terms of particles, why a gas has neither a fixed shape nor a fixed volume, while a solid has both."
-model: "In a gas the particles are far apart and move rapidly in random directions, and the forces of attraction between them are negligible, so nothing holds them together — they spread out to fill whatever container they are in, giving no fixed shape and no fixed volume. In a solid the particles are close together in a regular arrangement and are held in fixed positions by strong forces of attraction; they can only vibrate about those positions, so the solid keeps both its shape and its volume."
+model: "In a gas the particles are far apart and move rapidly in random directions, and the forces of attraction between them are negligible, so nothing holds them together, they spread out to fill whatever container they are in, giving no fixed shape and no fixed volume. In a solid the particles are close together in a regular arrangement and are held in fixed positions by strong forces of attraction; they can only vibrate about those positions, so the solid keeps both its shape and its volume."
 keywords: [far apart, random rapid motion, negligible forces, held in fixed positions, strong forces, vibrate about fixed positions]
 ```
 
@@ -2488,7 +2488,7 @@ keywords: [average kinetic energy increases, particles move faster, temperature 
 kind: precision
 topic: "T16 Radioactivity"
 prompt: "Describe how you would find the half-life of a source from a graph of corrected count rate against time."
-model: "First subtract the background count rate from every reading, so the values are corrected. Read the initial corrected count rate off the graph, halve it, and read off the time at which the curve reaches that halved value — that time is the half-life. Repeat the process from a different starting point, for example the time taken to fall from half to a quarter, and take an average, because decay is random and this reduces the effect of random fluctuations."
+model: "First subtract the background count rate from every reading, so the values are corrected. Read the initial corrected count rate off the graph, halve it, and read off the time at which the curve reaches that halved value, that time is the half-life. Repeat the process from a different starting point, for example the time taken to fall from half to a quarter, and take an average, because decay is random and this reduces the effect of random fluctuations."
 keywords: [subtract the background count, read time for the count rate to halve, repeat from another starting point, take an average, decay is random]
 ```
 
@@ -2496,7 +2496,7 @@ keywords: [subtract the background count, read time for the count rate to halve,
 kind: precision
 topic: "T16 Radioactivity"
 prompt: "Explain why alpha radiation is the most ionising but the least penetrating of the three emissions."
-model: "An alpha particle is relatively large and carries a charge of +2, so it interacts very strongly with the atoms it passes and knocks electrons off them readily — it is strongly ionising. Because it loses energy so rapidly in these many ionising collisions, it travels only a few centimetres in air and is stopped by a sheet of paper. Gamma radiation is uncharged and interacts only weakly, so it ionises very little but penetrates far, and is only reduced by thick lead."
+model: "An alpha particle is relatively large and carries a charge of +2, so it interacts very strongly with the atoms it passes and knocks electrons off them readily, it is strongly ionising. Because it loses energy so rapidly in these many ionising collisions, it travels only a few centimetres in air and is stopped by a sheet of paper. Gamma radiation is uncharged and interacts only weakly, so it ionises very little but penetrates far, and is only reduced by thick lead."
 keywords: [large particle, charge of +2, many ionising collisions, loses energy quickly, stopped by paper, gamma weakly ionising but penetrating]
 ```
 
@@ -2504,7 +2504,7 @@ keywords: [large particle, charge of +2, many ionising collisions, loses energy 
 kind: precision
 topic: "T16 Radioactivity"
 prompt: "State what is meant by saying that radioactive decay is random and spontaneous."
-model: "Random means that it is impossible to predict which nucleus will decay next, or when a particular nucleus will decay — only the probability that a nucleus decays in a given time is known. Spontaneous means that the decay is not affected by external conditions such as temperature, pressure or chemical combination; nothing can be done to speed it up or slow it down."
+model: "Random means that it is impossible to predict which nucleus will decay next, or when a particular nucleus will decay, only the probability that a nucleus decays in a given time is known. Spontaneous means that the decay is not affected by external conditions such as temperature, pressure or chemical combination; nothing can be done to speed it up or slow it down."
 keywords: [cannot predict which nucleus decays, cannot predict when, probability only, unaffected by temperature or pressure]
 ```
 

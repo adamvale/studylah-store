@@ -23,7 +23,7 @@ import {
 // The account area has two faces. On the web it's the familiar StudyLand
 // dashboard. Inside the Capacitor shell it becomes a GAME APP: the site
 // chrome disappears (header returns null there) and this component renders a
-// HUD — living ghost, level, animated XP bar, streak flame, shields — with a
+// HUD, living ghost, level, animated XP bar, streak flame, shields, with a
 // pixel-icon bottom tab bar and the FxLayer (fly-ups, ceremonies, SFX).
 // Same pages, same server data; only the shell changes, so everything still
 // ships server-side with no store re-review.
@@ -116,7 +116,7 @@ function GameHud({
           className={`shrink-0 font-pixel text-[11px] ${
             flameAtRisk ? "flame-risk text-accent" : streak > 0 ? "text-accent" : "text-body opacity-50"
           }`}
-          aria-label={`${streak}-day streak${flameAtRisk ? " — at risk, practise today" : ""}`}
+          aria-label={`${streak}-day streak${flameAtRisk ? ", at risk, practise today" : ""}`}
           title={flameAtRisk ? "Today keeps the streak alive!" : undefined}
         >
           🔥{streak}
@@ -211,14 +211,14 @@ export function AccountChrome({
   // The web dashboard, unchanged.
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
-      {/* print:hidden — printed pages (e.g. the rescue plan) keep only content */}
+      {/* print:hidden, printed pages (e.g. the rescue plan) keep only content */}
       <div className="flex flex-wrap items-start justify-between gap-4 print:hidden">
         <div>
           <h1 className="font-display text-4xl font-bold text-ink">
             Study<span className="text-accent">Land</span>
           </h1>
           <p className="mt-1 text-sm text-body">
-            Your PDFs, plan, practice and progress — signed in as{" "}
+            Your PDFs, plan, practice and progress, signed in as{" "}
             <span className="font-medium text-ink">{email}</span>
           </p>
           <div className="mt-3">

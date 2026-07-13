@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/accuracy" },
   title: "Accuracy scorecard",
   description:
-    "The five highest-mark topics in each real O-Level and N(A)-Level paper — and the confidence tier StudyLah forecast for each. Hits and misses, per subject.",
+    "The five highest-mark topics in each real O-Level and N(A)-Level paper, and the confidence tier StudyLah forecast for each. Hits and misses, per subject.",
 };
 
 export default async function AccuracyPage({
@@ -69,7 +69,7 @@ export default async function AccuracyPage({
                     <span key={y.year} className="text-sm text-body">
                       {y.year}:{" "}
                       {/* accent-deep was the light-theme workaround; on the
-                          dark surface it fails contrast — yellow reads fine. */}
+                          dark surface it fails contrast, yellow reads fine. */}
                       <span className="font-mono font-medium text-accent">
                         {pct}%
                       </span>
@@ -139,7 +139,7 @@ export default async function AccuracyPage({
 
       <p className="mt-12 max-w-2xl text-sm text-body">
         More subjects publish here as each 2025 and 2024 paper is scored.
-        Forecasts are probabilities, not certainties — where a high-mark topic
+        Forecasts are probabilities, not certainties, where a high-mark topic
         was tiered only Moderate or Watch, it shows above, and it&apos;s covered
         by the{" "}
         <Link href="/faq" className="font-medium text-accent underline">

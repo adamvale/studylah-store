@@ -9,7 +9,7 @@ import { r2Configured, r2Put, r2List, r2Delete } from "@/lib/server/r2";
 import { sgDay } from "@/lib/server/study";
 
 // Nightly offsite backup of the production SQLite database to R2. The volume
-// is otherwise the ONLY copy of orders/customers — this is the disaster
+// is otherwise the ONLY copy of orders/customers, this is the disaster
 // hedge. `VACUUM INTO` produces a consistent snapshot even while the app is
 // serving traffic. One object per (Singapore) day, ~30 days retained.
 // Fails closed without CRON_SECRET; safe to run any number of times a day

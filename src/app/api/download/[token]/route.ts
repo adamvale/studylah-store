@@ -67,7 +67,7 @@ export async function GET(
     orderRef: `No. ${orderItem.orderId}`,
   });
 
-  // Activity log — best-effort, never block the download on it.
+  // Activity log, best-effort, never block the download on it.
   try {
     await prisma.downloadEvent.create({
       data: { orderItemId: orderItem.id, via: "email" },

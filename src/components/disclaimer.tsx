@@ -1,7 +1,7 @@
 import { STANDARD_DISCLAIMER } from "@/lib/compliance";
 
 /**
- * The mandated disclaimer. Appears on every product page, verbatim — see
+ * The mandated disclaimer. Appears on every product page, verbatim, see
  * `src/lib/compliance.ts`. Do not reword the text.
  */
 export function DisclaimerBox() {

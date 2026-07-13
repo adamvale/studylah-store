@@ -4,7 +4,7 @@ import { getSubject, type Level } from "@/lib/catalogue";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { isValidReason } from "@/lib/server/mistakes";
 
-// Add a mistake by hand — typically a question missed on a school paper.
+// Add a mistake by hand, typically a question missed on a school paper.
 export async function POST(request: Request) {
   const customerId = await getCustomerId();
   if (!customerId) {

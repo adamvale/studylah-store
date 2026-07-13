@@ -27,7 +27,7 @@ const teachCache = new Map<string, ImportedCard[]>();
 
 function labelFor(level: string, slug: string): string {
   const s = getSubject(level as never, slug);
-  return s ? `${s.name} — predicted topics` : "Predicted topics";
+  return s ? `${s.name}, predicted topics` : "Predicted topics";
 }
 
 function rowToQuestion(r: {
@@ -68,7 +68,7 @@ export async function getQuestionSet(
   if (cached !== undefined) return cached ?? undefined;
 
   // The query can throw when the DB is unreachable or the table doesn't exist
-  // yet — notably during `next build` static generation, which runs BEFORE
+  // yet, notably during `next build` static generation, which runs BEFORE
   // `prisma migrate deploy`. In every such case, fall back to the hand-authored
   // set rather than crash the build/request. Don't cache DB errors (so a real
   // runtime process retries once the tables exist).
@@ -98,14 +98,14 @@ export async function getQuestionSet(
 }
 
 // ── The "Predict your mark" diagnostic set ───────────────────────────────────
-// The diagnostic is a fixed 10-question check — NOT the whole battle bank (which
+// The diagnostic is a fixed 10-question check, NOT the whole battle bank (which
 // can run to 100+ questions per subject). getQuestionSet returns the full bank
 // for the game; getDiagnosticSet trims it to exactly ten HARD questions from
 // DISTINCT topics, chosen deterministically so the quiz, the grader, the results
 // page and the results email all see the identical ten.
 const DIAGNOSTIC_COUNT = 10;
 
-// Rank by hardness. The authored `difficulty` tier (1–3) dominates; the older
+// Rank by hardness. The authored `difficulty` tier (1-3) dominates; the older
 // content signals (short-answer over MCQ, marks, analytical/numeric stems) break
 // ties and grade the hand-authored static sets, which carry no difficulty.
 function hardness(q: DiagnosticQuestion): number {
@@ -125,7 +125,7 @@ function rankHardest(a: DiagnosticQuestion, b: DiagnosticQuestion): number {
   return hardness(b) - hardness(a) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
 }
 
-// Natural bank order for the final set — the trailing "-g<n>" from the id — so
+// Natural bank order for the final set, the trailing "-g<n>" from the id, so
 // the ten don't come out grouped by type or difficulty.
 function ord(q: DiagnosticQuestion): number {
   const m = /g(\d+)$/.exec(q.id);
@@ -157,7 +157,7 @@ function pickHardDistinct(questions: DiagnosticQuestion[], n: number): Diagnosti
   };
 
   // Reserve a floor for each format (hardest first), then fill with the hardest
-  // remaining of any format — all from still-unused topics.
+  // remaining of any format, all from still-unused topics.
   take((q) => q.type === "mcq" && typeCount.mcq < MIN_PER_TYPE);
   take((q) => q.type === "short" && typeCount.short < MIN_PER_TYPE);
   take(() => true);
@@ -186,7 +186,7 @@ export async function getDiagnosticSet(
   return { ...full, questions: pickHardDistinct(full.questions, DIAGNOSTIC_COUNT) };
 }
 
-// The subject's imported teaching cards (empty if none — the Guru then uses
+// The subject's imported teaching cards (empty if none, the Guru then uses
 // its family library).
 export async function getTeachingCards(level: string, slug: string): Promise<ImportedCard[]> {
   const key = `${level}/${slug}`;

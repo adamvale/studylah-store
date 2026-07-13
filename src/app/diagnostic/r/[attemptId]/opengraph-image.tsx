@@ -9,8 +9,8 @@ export const alt = "My StudyLah readiness score";
 
 const BAND_TITLE: Record<Band, string> = {
   danger: "Danger zone on these topics",
-  warning: "Warning — marks are leaking",
-  pass: "Pass territory — keep it sharp",
+  warning: "Warning, marks are leaking",
+  pass: "Pass territory, keep it sharp",
 };
 const BAND_COLOR: Record<Band, string> = {
   danger: "#ff6b6b",
@@ -34,7 +34,7 @@ export default async function OgImage({
     : "";
   const subjectLine = attempt && subject
     ? `${subject.name} · ${LEVELS[attempt.level as Level].shortName} · most-likely 2026 topics`
-    : "StudyLah — predict your mark";
+    : "StudyLah, predict your mark";
 
   return new ImageResponse(
     (

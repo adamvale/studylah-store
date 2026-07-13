@@ -22,7 +22,7 @@ import { TierSelector } from "./tier-selector";
 
 export async function SubjectView({ subject }: { subject: Subject }) {
   // The preview shows the subject's REAL top calls from its Forecast PDF's
-  // 2026 prediction table — No. 1 in the open, the rest masked.
+  // 2026 prediction table, No. 1 in the open, the rest masked.
   const forecast = realTopCalls(subject.level, subject.slug, 4);
   const pricing = await getPricing();
   const { alacartePrice } = pricing;
@@ -38,9 +38,9 @@ export async function SubjectView({ subject }: { subject: Subject }) {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: `${subject.name} — 2026 Exam Forecast pack (${LEVELS[subject.level].shortName})`,
+    name: `${subject.name}, 2026 Exam Forecast pack (${LEVELS[subject.level].shortName})`,
     description:
-      "Data-driven 2026 exam forecast, original practice questions and a full timed rehearsal. Independent publisher — not affiliated with SEAB, MOE, or Cambridge.",
+      "Data-driven 2026 exam forecast, original practice questions and a full timed rehearsal. Independent publisher, not affiliated with SEAB, MOE, or Cambridge.",
     brand: { "@type": "Brand", name: "StudyLah" },
     offers: {
       "@type": "AggregateOffer",
@@ -109,7 +109,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
       ) : (
         <p className="mt-2 max-w-xl text-body">
           Forecast, practice, and rehearsal for the {LEVELS[subject.level].name}{" "}
-          {subject.name} paper — the 2026 sitting.
+          {subject.name} paper, the 2026 sitting.
         </p>
       )}
 
@@ -119,7 +119,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
         </p>
       )}
 
-      {/* Bundle upsell right under the title — most students sit several
+      {/* Bundle upsell right under the title, most students sit several
           subjects, and the per-subject price drops the more they add. */}
       <Link
         href="/bundles"
@@ -127,7 +127,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
       >
         <span className="text-ink">
           Sitting more than one subject?{" "}
-          <span className="font-bold text-accent">Build a bundle</span> — the more
+          <span className="font-bold text-accent">Build a bundle</span>, the more
           you pick, the cheaper each one gets (save up to S$188).
         </span>
         <span aria-hidden="true" className="ml-auto shrink-0 font-bold text-accent">
@@ -150,7 +150,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
               {forecast.slice(0, 1).map((row) => (
                 <HeatBar key={row.topic} topic={row.topic} tier={row.tier} />
               ))}
-              {/* Masked rows carry NO real data — a topic key or prop would
+              {/* Masked rows carry NO real data, a topic key or prop would
                   leak the call into the serialized RSC payload. */}
               {forecast.slice(1, 4).map((_row, i) => (
                 <HeatBar
@@ -162,7 +162,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
               ))}
             </div>
             <p className="mt-4 border-t border-hairline pt-3 font-mono text-xs text-body">
-              Every topic tiered — Very High to Watch — in the Forecast PDF
+              Every topic tiered, Very High to Watch, in the Forecast PDF
             </p>
             <Link
               href={`/accuracy?open=${accuracyAnchor}#${accuracyAnchor}`}
@@ -175,10 +175,10 @@ export async function SubjectView({ subject }: { subject: Subject }) {
           {hasQuiz && (
             <div className="mt-4 rounded-2xl border border-accent/40 bg-surface p-5">
               <p className="font-display text-base font-bold text-ink">
-                You know it&apos;s likely — but can you score it?
+                You know it&apos;s likely, but can you score it?
               </p>
               <p className="mt-1 text-xs text-body">
-                Ten auto-marked questions across the top forecast calls —
+                Ten auto-marked questions across the top forecast calls, 
                 instant score and an indicative grade band.
               </p>
               <Link
@@ -298,14 +298,14 @@ export async function SubjectView({ subject }: { subject: Subject }) {
             <span aria-hidden="true" className="text-accent">1.</span>
             <span className="text-body">
               <span className="font-medium text-ink">Know what&apos;s coming</span>{" "}
-              — every {subject.name} topic ranked into four confidence tiers for 2026.
+, every {subject.name} topic ranked into four confidence tiers for 2026.
             </span>
           </li>
           <li className="flex gap-3">
             <span aria-hidden="true" className="text-accent">2.</span>
             <span className="text-body">
               <span className="font-medium text-ink">Practise exactly that</span>{" "}
-              — original exam-style questions with full answer keys, weighted to
+, original exam-style questions with full answer keys, weighted to
               the forecast.
             </span>
           </li>
@@ -313,7 +313,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
             <span aria-hidden="true" className="text-accent">3.</span>
             <span className="text-body">
               <span className="font-medium text-ink">Bank the method marks</span>{" "}
-              — the companion covers the paper or skill strand most students
+, the companion covers the paper or skill strand most students
               under-rehearse.
             </span>
           </li>
@@ -321,7 +321,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
             <span aria-hidden="true" className="text-accent">4.</span>
             <span className="text-body">
               <span className="font-medium text-ink">Sit it before you sit it</span>{" "}
-              — a complete timed mock in the exact 2026 format, with mark scheme.
+, a complete timed mock in the exact 2026 format, with mark scheme.
             </span>
           </li>
           <li className="flex gap-3">
@@ -330,7 +330,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
               <span className="font-medium text-ink">
                 And Study<span className="text-accent">Land</span> runs it daily
               </span>{" "}
-              — three questions a day on your top-tier topics, a mistake notebook
+, three questions a day on your top-tier topics, a mistake notebook
               that re-tests you until you clear it, a live Marks-at-Risk meter,
               skill drills, exam timers, and a printable rescue plan. Included,
               no subscription.
@@ -338,7 +338,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
           </li>
         </ul>
         <p className="mt-4 border-t border-hairline pt-3 text-xs text-body">
-          One-time purchase, works until exam day — less than the cost of a
+          One-time purchase, works until exam day, less than the cost of a
           single tuition session, and it never cancels on you.
         </p>
       </div>
@@ -356,7 +356,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
             Don&apos;t stop at {subject.name}.
           </p>
           <p className="mt-1 text-sm text-white/80">
-            The more subjects you bundle, the cheaper each one gets —{" "}
+            The more subjects you bundle, the cheaper each one gets, {" "}
             {subject.level === "o-level"
               ? "any 3 Master subjects for S$168 (save S$36), up to S$188 off a full stack"
               : "a ~17% discount on any 3, scaling up the more you add"}

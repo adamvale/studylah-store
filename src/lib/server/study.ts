@@ -54,7 +54,7 @@ export function addDays(day: string, delta: number): string {
 }
 
 // Current streak = consecutive days with a completed daily quiz, counting back
-// from today (or yesterday, if today isn't done yet — so the UI can say "do
+// from today (or yesterday, if today isn't done yet, so the UI can say "do
 // today to keep your 5-day streak").
 export function computeStreak(
   days: string[],
@@ -73,7 +73,7 @@ export function computeStreak(
 
 // Shield-aware streak: spent shields count as done-days, and if yesterday
 // was missed (single-day gap only) while an unspent shield is available, it
-// is spent automatically — the streak survives one slip. Earning happens in
+// is spent automatically, the streak survives one slip. Earning happens in
 // the daily-quiz submit route (every 5th consecutive day, max 2 held).
 // Compliance: shields are earned by effort only, never bought.
 export const MAX_SHIELDS = 2;
@@ -102,7 +102,7 @@ export async function streakState(
         });
         unspent.spentDay = yesterday;
       } catch {
-        // concurrent spend (unique customerId+spentDay) — another request won
+        // concurrent spend (unique customerId+spentDay), another request won
       }
       days.add(yesterday);
     }
@@ -244,7 +244,7 @@ export async function dailyPicks(
   return [...resurrected, ...fresh];
 }
 
-// What the browser may see before answering — the sanitized question plus the
+// What the browser may see before answering, the sanitized question plus the
 // subject context the daily card shows. `resurrected` marks a spaced re-test
 // from the mistake notebook (the UI badges it; answers are graded the same).
 export interface PublicDailyQuestion extends PublicQuestion {

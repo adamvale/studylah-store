@@ -42,7 +42,7 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
   await prisma.mistakeEntry.update({ where: { id }, data });
 
   // Identifying a monster (first classification away from "unset") pays a
-  // little XP — the why matters more than the what. Once per entry, ever.
+  // little XP, the why matters more than the what. Once per entry, ever.
   let game: GamePayload | null = null;
   if (
     data.reason &&

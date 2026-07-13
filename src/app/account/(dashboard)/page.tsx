@@ -23,7 +23,7 @@ export const metadata: Metadata = { title: "Today" };
 const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
 
 // Kept outside the component so the impurity (Date.now) isn't called during
-// render — see react-hooks/purity.
+// render, see react-hooks/purity.
 function staleAttemptSubject(
   history: { subjectName: string; level: string; slug: string; latest: { at: string } }[]
 ): { subjectName: string; level: string; slug: string } | null {
@@ -53,7 +53,7 @@ interface MissionItem {
 
 // The one question every student actually has: "what should I do right now?"
 // This page answers it with a short, time-boxed mission computed from every
-// system in StudyLand — then gets out of the way.
+// system in StudyLand, then gets out of the way.
 export default async function TodayPage() {
   const customerId = await getCustomerId();
   if (!customerId) redirect("/account/login");
@@ -104,7 +104,7 @@ export default async function TodayPage() {
           hpPct: Math.round(((3 - t.status) / 3) * 100),
         };
       }
-      break; // topics are sorted by atRisk desc — first unfinished is the subject's best
+      break; // topics are sorted by atRisk desc, first unfinished is the subject's best
     }
   }
 
@@ -116,10 +116,10 @@ export default async function TodayPage() {
   mission.push({
     done: Boolean(todayRow),
     minutes: 2,
-    xp: "+20–35 XP",
+    xp: "+20-35 XP",
     title: "The daily three",
     detail: streak.doneToday
-      ? `Done — ${todayRow?.correct ?? 0}/${todayRow?.answered ?? 3} today.`
+      ? `Done, ${todayRow?.correct ?? 0}/${todayRow?.answered ?? 3} today.`
       : streak.current > 0
       ? `Keep the ${streak.current}-day streak alive.`
       : "Three questions on your most-likely topics, marked instantly.",
@@ -132,7 +132,7 @@ export default async function TodayPage() {
       minutes: 5,
       xp: "+25 XP each",
       title: `Clear ${Math.min(unresolvedMistakes, 2)} from the mistake notebook`,
-      detail: `${unresolvedMistakes} unresolved — each one is a mark leak with your name on it.`,
+      detail: `${unresolvedMistakes} unresolved, each one is a mark leak with your name on it.`,
       href: "/account/mistakes",
       cta: "Open notebook",
     });
@@ -143,7 +143,7 @@ export default async function TodayPage() {
       minutes: 25,
       xp: "+10 XP + topic XP",
       title: `One real session: ${focusTopic.topic}`,
-      detail: `${focusTopic.subjectName} — your biggest marks-at-risk topic right now. Start the focus timer and work it.`,
+      detail: `${focusTopic.subjectName}, your biggest marks-at-risk topic right now. Start the focus timer and work it.`,
       href: "/account/timer",
       cta: "Start the timer",
     });
@@ -154,7 +154,7 @@ export default async function TodayPage() {
       minutes: 7,
       xp: "+15 XP (+10 on a best)",
       title: `Re-check ${stale.subjectName}`,
-      detail: "It's been 2+ weeks since your last readiness check — see if the work moved the needle.",
+      detail: "It's been 2+ weeks since your last readiness check, see if the work moved the needle.",
       href: `/diagnostic/${stale.level}/${stale.slug}`,
       cta: "Predict your mark",
     });
@@ -173,7 +173,7 @@ export default async function TodayPage() {
   const openItems = mission.filter((m) => !m.done);
   const totalMinutes = openItems.reduce((s, m) => s + m.minutes, 0);
 
-  // What the quiz suggests once it's marked — the session chains instead of
+  // What the quiz suggests once it's marked, the session chains instead of
   // dead-ending.
   const nextUp: NextUpItem[] = [];
   if (unresolvedMistakes > 0) {
@@ -203,14 +203,14 @@ export default async function TodayPage() {
     {
       done: downloads > 0,
       label: "Download your PDFs",
-      detail: "Forecast first — it tells the rest of the system where to aim.",
+      detail: "Forecast first, it tells the rest of the system where to aim.",
       href: "/account/orders",
       cta: "Orders",
     },
     {
       done: attempts > 0,
       label: "Predict your mark (7 minutes, free)",
-      detail: "Ten questions on your most-likely topics — your baseline before the work starts.",
+      detail: "Ten questions on your most-likely topics, your baseline before the work starts.",
       href: "/diagnostic",
       cta: "Take the check",
     },
@@ -224,7 +224,7 @@ export default async function TodayPage() {
     {
       done: dayRows.length > 0,
       label: "Start your daily streak",
-      detail: "Three questions a day on the topics that matter — the habit that moves marks.",
+      detail: "Three questions a day on the topics that matter, the habit that moves marks.",
       href: "#daily",
       cta: "Do today's three",
     },
@@ -239,7 +239,7 @@ export default async function TodayPage() {
         </p>
         <p className="mt-2 text-sm text-body">
           Buy any forecast and this page becomes your daily mission: what to
-          practise, what to fix, and what to work next — computed fresh every
+          practise, what to fix, and what to work next, computed fresh every
           day until your papers.
         </p>
         <div className="mt-4 flex flex-wrap justify-center gap-3">
@@ -253,7 +253,7 @@ export default async function TodayPage() {
             href="/diagnostic"
             className="rounded-lg border border-hairline px-5 py-2.5 text-sm font-medium text-ink hover:border-accent"
           >
-            Predict your mark — free
+            Predict your mark, free
           </Link>
         </div>
       </div>
@@ -275,20 +275,20 @@ export default async function TodayPage() {
           <h2 className="font-display text-2xl font-bold text-ink">{todayLabel()}</h2>
           {streak.current > 0 && (
             <span className="rounded-full bg-accent/10 px-3 py-1 font-mono text-xs font-medium text-accent">
-              🔥 {streak.current}-day streak{streak.doneToday ? "" : " — today keeps it"}
+              🔥 {streak.current}-day streak{streak.doneToday ? "" : ", today keeps it"}
             </span>
           )}
         </div>
         <p className="mt-1 text-sm text-body">
           {openItems.length === 0
-            ? "Mission complete. Come back tomorrow — the system resets at midnight."
-            : `Today's quests: ${openItems.length}, about ${totalMinutes} minutes. Do them in order — the XP is real.`}
+            ? "Mission complete. Come back tomorrow, the system resets at midnight."
+            : `Today's quests: ${openItems.length}, about ${totalMinutes} minutes. Do them in order, the XP is real.`}
         </p>
       </div>
 
       <GettingStarted steps={steps} />
 
-      {/* The mission list — quest board in the app, checklist on the web */}
+      {/* The mission list, quest board in the app, checklist on the web */}
       {openItems.length > 0 && <QuestBoard mission={mission} boss={boss} />}
 
       {/* The daily three, in place */}
@@ -305,7 +305,7 @@ export default async function TodayPage() {
         )}
       </div>
 
-      {/* Compact risk line — the full meters live on Progress */}
+      {/* Compact risk line, the full meters live on Progress */}
       {risks.length > 0 && (
         <section className="rounded-2xl border border-hairline bg-surface p-5">
           <div className="flex flex-wrap items-baseline justify-between gap-2">

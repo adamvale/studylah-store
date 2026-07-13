@@ -7,7 +7,7 @@ import { ownedSubjects } from "@/lib/server/study";
 
 // Study Duels, half 1: create + list. A duel is a server-dealt, SEALED set
 // of 5 MCQs behind a share code. Codes travel outside the app between
-// friends — there is no matchmaking, no discovery, no chat, and no
+// friends, there is no matchmaking, no discovery, no chat, and no
 // leaderboard. Compliance: both sides earn effort XP on submission (see
 // take/route.ts); the only "prize" is a cosmetic laurel on that result
 // screen. Question keys never leave the server.
@@ -83,7 +83,7 @@ export async function POST(request: Request) {
   });
 }
 
-// GET: the caller's recent duels (capped — a mailbox, not a ranking).
+// GET: the caller's recent duels (capped, a mailbox, not a ranking).
 export async function GET() {
   const customerId = await getCustomerId();
   if (!customerId) {

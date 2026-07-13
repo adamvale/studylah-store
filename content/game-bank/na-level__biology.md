@@ -22,7 +22,7 @@ misconception: plant-animal-cell-differences
 worked: |
   Plant and animal cells both have a cell membrane, cytoplasm and a nucleus.
   Only the plant cell has a cellulose cell wall (and chloroplasts, and a large central vacuole).
-  The cell membrane is not the same thing as the cell wall — every cell has a membrane.
+  The cell membrane is not the same thing as the cell wall, every cell has a membrane.
 ```
 
 ```yaml
@@ -138,7 +138,7 @@ accepted: ["chloroplast", "chloroplasts", "a chloroplast"]
 marks: 1
 misconception: chlorophyll-vs-chloroplast
 worked: |
-  The organelle is the CHLOROPLAST. Chlorophyll is the green pigment held inside the chloroplast — the pigment absorbs the light, but the organelle is the chloroplast.
+  The organelle is the CHLOROPLAST. Chlorophyll is the green pigment held inside the chloroplast, the pigment absorbs the light, but the organelle is the chloroplast.
 ```
 
 ```yaml
@@ -156,7 +156,7 @@ misconception: osmosis-vs-diffusion
 worked: |
   Osmosis is about WATER only, and it must cross a PARTIALLY PERMEABLE membrane.
   Water moves from where there is a higher water potential (more water, more dilute) to where there is a lower water potential (less water, more concentrated).
-  It is a passive process — no energy is needed.
+  It is a passive process, no energy is needed.
 ```
 
 ```yaml
@@ -173,7 +173,7 @@ marks: 1
 misconception: diffusion-needs-energy
 worked: |
   Diffusion applies to ANY particle (a gas or a dissolved solute), and no membrane is needed.
-  The particles spread out from where they are crowded to where they are less crowded — down the concentration gradient.
+  The particles spread out from where they are crowded to where they are less crowded, down the concentration gradient.
   It happens because particles move randomly, so no energy from respiration is required.
 ```
 
@@ -210,7 +210,7 @@ misconception: percent-change-denominator
 worked: |
   Change in mass = 4.6 − 4.0 = +0.6 g.
   Percentage change = (change ÷ INITIAL mass) × 100 = (0.6 ÷ 4.0) × 100 = 15.
-  So the mass increased by 15%. Dividing by the FINAL mass by mistake gives 0.6 ÷ 4.6 ≈ 13% — always divide by the starting mass.
+  So the mass increased by 15%. Dividing by the FINAL mass by mistake gives 0.6 ÷ 4.6 ≈ 13%, always divide by the starting mass.
 ```
 
 ```yaml
@@ -227,7 +227,7 @@ marks: 1
 misconception: osmosis-direction-hypertonic
 worked: |
   The concentrated sugar solution has a LOWER water potential than the cell sap.
-  Water therefore moves OUT of the cell by osmosis. The vacuole shrinks and the cell becomes soft and floppy — flaccid.
+  Water therefore moves OUT of the cell by osmosis. The vacuole shrinks and the cell becomes soft and floppy, flaccid.
   The cell cannot burst, and sugar does not move by osmosis (only water does).
 ```
 
@@ -245,7 +245,7 @@ marks: 1
 misconception: animal-cell-has-wall
 worked: |
   Distilled water has a higher water potential than the cytoplasm, so water enters the cell by osmosis.
-  An animal cell has only a cell membrane — no strong cell wall — so nothing stops it from swelling, and it may burst.
+  An animal cell has only a cell membrane, no strong cell wall, so nothing stops it from swelling, and it may burst.
   A plant cell in the same situation becomes turgid instead, because its cell wall pushes back.
 ```
 
@@ -262,7 +262,7 @@ answer: 2
 marks: 1
 misconception: no-net-movement-means-no-movement
 worked: |
-  No change in mass means water enters and leaves at the SAME rate — there is no net movement.
+  No change in mass means water enters and leaves at the SAME rate, there is no net movement.
   That happens when the water potential of the solution equals the water potential of the cell sap.
   Water molecules are still moving both ways; the two flows simply cancel out.
 ```
@@ -318,7 +318,7 @@ misconception: water-potential-gradient-root
 worked: |
   Soil water is dilute, so it has a HIGH water potential. The cell sap contains dissolved solutes, so it has a LOWER water potential.
   Water therefore crosses the partially permeable cell membrane by osmosis, from the soil into the cell.
-  Roots have no stomata — stomata are found in leaves.
+  Roots have no stomata, stomata are found in leaves.
 ```
 
 ```yaml
@@ -330,7 +330,7 @@ marks: 1
 misconception: osmosis-for-solutes
 worked: |
   Glucose molecules are small enough to pass through the tiny pores in the visking tubing.
-  They move from their higher concentration inside the bag to their lower concentration in the beaker — that is DIFFUSION.
+  They move from their higher concentration inside the bag to their lower concentration in the beaker, that is DIFFUSION.
   Starch molecules are far too large to fit through the pores, so they stay inside. (Osmosis would only describe the movement of water.)
 ```
 
@@ -378,7 +378,7 @@ marks: 1
 misconception: benedicts-for-starch
 worked: |
   Benedict's solution is blue. When heated with a reducing sugar (such as glucose) it changes through green, yellow and orange to a brick-red precipitate.
-  The more reducing sugar there is, the further along the colour range the mixture goes. Heating is essential — the test does not work cold.
+  The more reducing sugar there is, the further along the colour range the mixture goes. Heating is essential, the test does not work cold.
 ```
 
 ```yaml
@@ -395,7 +395,7 @@ marks: 1
 misconception: biuret-test-use
 worked: |
   Biuret solution is the test for protein. It is blue, and it turns violet (purple) if protein is present.
-  No heating is needed for the biuret test — just add the reagent and shake gently.
+  No heating is needed for the biuret test, just add the reagent and shake gently.
 ```
 
 ```yaml
@@ -412,7 +412,7 @@ marks: 1
 misconception: ethanol-test-result
 worked: |
   The food is shaken with ethanol so that any fat dissolves in it. The ethanol is then poured into water.
-  Fat is not soluble in water, so it comes out of solution as tiny droplets, giving a cloudy white emulsion — a positive result.
+  Fat is not soluble in water, so it comes out of solution as tiny droplets, giving a cloudy white emulsion, a positive result.
   If there is no fat, the mixture stays clear.
 ```
 
@@ -465,9 +465,9 @@ answer: 2
 marks: 1
 misconception: enzyme-killed-by-heat
 worked: |
-  High temperature makes the enzyme molecule vibrate so much that its structure is permanently changed — it is DENATURED.
+  High temperature makes the enzyme molecule vibrate so much that its structure is permanently changed, it is DENATURED.
   The active site changes shape, so the substrate can no longer fit into it and no enzyme-substrate complex forms.
-  Denaturing is not reversible. Never say the enzyme is 'killed' — an enzyme is a molecule, not a living thing.
+  Denaturing is not reversible. Never say the enzyme is 'killed', an enzyme is a molecule, not a living thing.
 ```
 
 ```yaml
@@ -553,7 +553,7 @@ answer: 3
 marks: 1
 misconception: nutrient-roles
 worked: |
-  Protein supplies the amino acids used to build new cells — for growth and for repairing damaged tissue. Enzymes are also proteins.
+  Protein supplies the amino acids used to build new cells, for growth and for repairing damaged tissue. Enzymes are also proteins.
   Carbohydrate is the main immediate energy source; fat is the long-term store and gives insulation under the skin.
 ```
 
@@ -570,7 +570,7 @@ answer: 0
 marks: 1
 misconception: optimum-vs-maximum-temperature
 worked: |
-  The optimum temperature is the temperature at which the rate of reaction is HIGHEST — the peak of the curve, at 40 °C.
+  The optimum temperature is the temperature at which the rate of reaction is HIGHEST, the peak of the curve, at 40 °C.
   By 60 °C the enzyme has been denatured, so the rate has fallen to zero. 60 °C is the highest temperature on the graph, not the optimum.
 ```
 
@@ -593,7 +593,7 @@ accepted: ["blue to violet", "blue to purple", "from blue to violet", "from blue
 marks: 1
 misconception: biuret-colour-change
 worked: |
-  Biuret solution is blue. With protein present it turns violet (purple). Always give BOTH colours — the starting colour and the final colour — to score the mark.
+  Biuret solution is blue. With protein present it turns violet (purple). Always give BOTH colours, the starting colour and the final colour, to score the mark.
 ```
 
 ```yaml
@@ -690,7 +690,7 @@ answer: 0
 marks: 1
 misconception: bile-is-an-enzyme
 worked: |
-  Bile is NOT an enzyme — it contains no enzyme and does not break any bonds.
+  Bile is NOT an enzyme, it contains no enzyme and does not break any bonds.
   It emulsifies fat: it breaks large fat globules into many tiny droplets. This gives a much larger surface area for lipase to act on, so fat is digested faster.
   Bile is also alkaline, which neutralises the acid arriving from the stomach.
 ```
@@ -744,7 +744,7 @@ answer: 3
 marks: 1
 misconception: type2-no-insulin
 worked: |
-  In type-2 diabetes the body still makes insulin, but the cells have become resistant to it — they no longer respond properly.
+  In type-2 diabetes the body still makes insulin, but the cells have become resistant to it, they no longer respond properly.
   Glucose is therefore not taken out of the blood fast enough and blood glucose stays high for long periods.
   It is managed with a controlled diet, weight loss, regular exercise and, if needed, medication.
 ```
@@ -863,7 +863,7 @@ marks: 1
 misconception: pancreas-vs-liver
 worked: |
   The PANCREAS makes both insulin and glucagon and releases them into the blood.
-  The liver is the organ that RESPONDS to them by storing glycogen or breaking it down — a common mix-up.
+  The liver is the organ that RESPONDS to them by storing glycogen or breaking it down, a common mix-up.
 ```
 
 ```yaml
@@ -875,7 +875,7 @@ marks: 1
 misconception: glycogen-vs-glucagon
 worked: |
   Excess glucose is converted into GLYCOGEN and stored in the liver (and in muscle).
-  Do not confuse glycogen (the stored carbohydrate) with glucagon (the hormone that releases it) — they differ by one letter.
+  Do not confuse glycogen (the stored carbohydrate) with glucagon (the hormone that releases it), they differ by one letter.
 ```
 
 ```yaml
@@ -954,7 +954,7 @@ marks: 1
 misconception: wbc-function
 worked: |
   In phagocytosis a white blood cell flows around the bacterium, takes it inside and digests it with enzymes.
-  Other white blood cells work differently — they produce antibodies that stick to the pathogen and mark it for destruction.
+  Other white blood cells work differently, they produce antibodies that stick to the pathogen and mark it for destruction.
 ```
 
 ```yaml
@@ -971,7 +971,7 @@ marks: 1
 misconception: plasma-transport-list
 worked: |
   Plasma is the straw-coloured liquid that carries dissolved substances: digested food (glucose, amino acids), urea, hormones, carbon dioxide and heat.
-  Oxygen is the exception — nearly all of it is carried by the haemoglobin in red blood cells, not dissolved in plasma.
+  Oxygen is the exception, nearly all of it is carried by the haemoglobin in red blood cells, not dissolved in plasma.
 ```
 
 ```yaml
@@ -1007,7 +1007,7 @@ misconception: valves-pump-blood
 worked: |
   By the time blood reaches the veins its pressure is low, so it could easily flow backwards.
   The semilunar valves are flaps that open one way only: they let blood pass towards the heart and close if it starts to flow back.
-  Valves do not pump — the squeezing of the surrounding skeletal muscles pushes the blood along.
+  Valves do not pump, the squeezing of the surrounding skeletal muscles pushes the blood along.
 ```
 
 ```yaml
@@ -1024,7 +1024,7 @@ marks: 1
 misconception: capillary-wall-reason
 worked: |
   Substances such as oxygen and glucose must diffuse out of the blood, and carbon dioxide must diffuse in.
-  A wall one cell thick means a very short diffusion distance, so diffusion is fast. Capillaries are also very numerous and narrow, giving a large surface area and slow flow — both help exchange.
+  A wall one cell thick means a very short diffusion distance, so diffusion is fast. Capillaries are also very numerous and narrow, giving a large surface area and slow flow, both help exchange.
 ```
 
 ```yaml
@@ -1057,7 +1057,7 @@ answer: 1
 marks: 1
 misconception: arteries-always-oxygenated
 worked: |
-  An ARTERY always carries blood AWAY from the heart, and a VEIN always carries blood TOWARDS the heart — that is what defines them, not the oxygen they carry.
+  An ARTERY always carries blood AWAY from the heart, and a VEIN always carries blood TOWARDS the heart, that is what defines them, not the oxygen they carry.
   The pulmonary artery is the exception that proves the rule: it leaves the heart, so it is an artery, but it carries deoxygenated blood to the lungs.
   The pulmonary vein is the other exception: it returns oxygenated blood from the lungs to the heart.
 ```
@@ -1076,7 +1076,7 @@ marks: 1
 misconception: left-ventricle-volume
 worked: |
   Both ventricles hold about the same volume of blood, so volume is not the reason.
-  The left ventricle pushes blood through the aorta to every organ in the body, which needs a much higher pressure — so it needs far more muscle in its wall.
+  The left ventricle pushes blood through the aorta to every organ in the body, which needs a much higher pressure, so it needs far more muscle in its wall.
   The right ventricle only pushes blood the short distance to the lungs, at lower pressure.
 ```
 
@@ -1163,7 +1163,7 @@ marks: 1
 misconception: respiration-photosynthesis-swap
 worked: |
   Aerobic respiration uses oxygen to break glucose down completely: glucose + oxygen → carbon dioxide + water, releasing energy.
-  The second option is photosynthesis written backwards — a very common slip. Energy is RELEASED in respiration, not a reactant.
+  The second option is photosynthesis written backwards, a very common slip. Energy is RELEASED in respiration, not a reactant.
 ```
 
 ```yaml
@@ -1181,7 +1181,7 @@ misconception: human-anaerobic-produces-ethanol
 worked: |
   In human muscle, when oxygen runs short, glucose is only partly broken down to LACTIC ACID, releasing a small amount of energy.
   Ethanol and carbon dioxide are the products of anaerobic respiration in YEAST, not in humans.
-  No oxygen appears anywhere in the anaerobic equation — that is the whole point.
+  No oxygen appears anywhere in the anaerobic equation, that is the whole point.
 ```
 
 ```yaml
@@ -1232,7 +1232,7 @@ marks: 1
 misconception: alveoli-surface-area
 worked: |
   The rate of diffusion depends on the surface area available.
-  Millions of tiny alveoli provide a huge total surface area, so a large volume of oxygen can diffuse into the blood, and carbon dioxide out of it, in a short time — enough to meet the body's needs.
+  Millions of tiny alveoli provide a huge total surface area, so a large volume of oxygen can diffuse into the blood, and carbon dioxide out of it, in a short time, enough to meet the body's needs.
 ```
 
 ```yaml
@@ -1300,7 +1300,7 @@ marks: 1
 misconception: air-path-order
 worked: |
   Air passes the larynx (voice box), goes down the trachea (windpipe), then into the two bronchi.
-  Each bronchus branches into many smaller bronchioles, and each bronchiole ends in a cluster of air sacs — the alveoli — where gas exchange happens.
+  Each bronchus branches into many smaller bronchioles, and each bronchiole ends in a cluster of air sacs, the alveoli, where gas exchange happens.
 ```
 
 ```yaml
@@ -1318,7 +1318,7 @@ misconception: expired-air-has-no-oxygen
 worked: |
   In the alveoli, oxygen diffuses out of the air into the blood and carbon dioxide diffuses in, so expired air has LESS oxygen and MORE carbon dioxide.
   Expired air is also warmer and carries more water vapour, picked up from the moist lining of the airways.
-  Expired air still contains plenty of oxygen — about 16 parts in every 100 — which is why rescue breathing works.
+  Expired air still contains plenty of oxygen, about 16 parts in every 100, which is why rescue breathing works.
 ```
 
 ```yaml
@@ -1335,7 +1335,7 @@ marks: 1
 misconception: nicotine-vs-carbon-monoxide
 worked: |
   Nicotine is the addictive drug in tobacco smoke. It also stimulates the body so that heart rate and blood pressure rise.
-  Carbon monoxide is the one that binds to haemoglobin; tar is the sticky carcinogen. Learn all three separately — the exam swaps them around.
+  Carbon monoxide is the one that binds to haemoglobin; tar is the sticky carcinogen. Learn all three separately, the exam swaps them around.
 ```
 
 ```yaml
@@ -1368,7 +1368,7 @@ answer: 0
 marks: 1
 misconception: tar-effect
 worked: |
-  Tar is the sticky brown material in tobacco smoke. It is a carcinogen — it can cause lung cancer.
+  Tar is the sticky brown material in tobacco smoke. It is a carcinogen, it can cause lung cancer.
   It also settles in the airways, where it damages the cilia and stimulates extra mucus. Mucus and trapped dirt then build up, causing a smoker's cough and bronchitis.
 ```
 
@@ -1471,7 +1471,7 @@ answer: 1
 marks: 1
 misconception: pathogen-vs-antibody
 worked: |
-  A pathogen is a disease-causing microorganism — for example a bacterium or a virus.
+  A pathogen is a disease-causing microorganism, for example a bacterium or a virus.
   The chemical that kills bacteria is an antibiotic; the protein made by white blood cells to fight infection is an antibody.
 ```
 
@@ -1560,7 +1560,7 @@ misconception: bacteria-choose-to-resist
 worked: |
   In a large population of bacteria, a few may already be resistant to the antibiotic.
   The antibiotic kills the non-resistant ones. The resistant ones survive, reproduce rapidly and pass the resistance on, so over time the resistant type becomes common.
-  The antibiotic does not CREATE resistance and bacteria cannot choose or learn — resistance is simply selected for.
+  The antibiotic does not CREATE resistance and bacteria cannot choose or learn, resistance is simply selected for.
 ```
 
 ```yaml
@@ -1577,7 +1577,7 @@ marks: 1
 misconception: stop-antibiotics-when-better
 worked: |
   A patient often feels better before every bacterium has been killed.
-  If the course is stopped early, the hardiest bacteria — the ones most likely to be resistant — survive, multiply and can be passed on.
+  If the course is stopped early, the hardiest bacteria, the ones most likely to be resistant, survive, multiply and can be passed on.
   Finishing the course kills them off, which slows the spread of resistance.
 ```
 
@@ -1652,7 +1652,7 @@ marks: 1
 misconception: antibody-vs-antibiotic
 worked: |
   White blood cells produce ANTIBODIES. Each antibody has a shape that fits one particular pathogen, so it is specific.
-  An antibiotic is different — that is a medicine that kills bacteria.
+  An antibiotic is different, that is a medicine that kills bacteria.
 ```
 
 ```yaml
@@ -1669,7 +1669,7 @@ marks: 1
 misconception: photosynthesis-equation-reversed
 worked: |
   Photosynthesis: carbon dioxide + water → glucose + oxygen, in the presence of light energy and chlorophyll.
-  Light and chlorophyll are written above and below the arrow — they are the conditions, not the raw materials.
+  Light and chlorophyll are written above and below the arrow, they are the conditions, not the raw materials.
   The second option is respiration, which is the reverse process.
 ```
 
@@ -1703,8 +1703,8 @@ answer: 2
 marks: 1
 misconception: limiting-factor-plateau
 worked: |
-  While the graph is still rising, light is the limiting factor — more light gives a faster rate.
-  Once the line levels off, adding more light makes no difference, so light can no longer be the limiting factor. Something else must now be holding the rate back — usually the carbon dioxide concentration or the temperature.
+  While the graph is still rising, light is the limiting factor, more light gives a faster rate.
+  Once the line levels off, adding more light makes no difference, so light can no longer be the limiting factor. Something else must now be holding the rate back, usually the carbon dioxide concentration or the temperature.
 ```
 
 ```yaml
@@ -1722,7 +1722,7 @@ misconception: rate-formula-bubbles
 worked: |
   Rate = number of bubbles ÷ time.
   Rate = 90 ÷ 3 = 30 bubbles per minute.
-  Multiplying (90 × 3 = 270) or adding gives a meaningless figure — check the unit in the question and let it tell you the operation.
+  Multiplying (90 × 3 = 270) or adding gives a meaningless figure, check the unit in the question and let it tell you the operation.
 ```
 
 ```yaml
@@ -1756,7 +1756,7 @@ marks: 1
 misconception: stomata-absorb-light
 worked: |
   Stomata are tiny pores, mostly on the lower surface, each controlled by two guard cells.
-  They let carbon dioxide diffuse into the leaf and oxygen diffuse out. Water vapour is also lost through them — that is transpiration.
+  They let carbon dioxide diffuse into the leaf and oxygen diffuse out. Water vapour is also lost through them, that is transpiration.
 ```
 
 ```yaml
@@ -1823,7 +1823,7 @@ answer: 1
 marks: 1
 misconception: xylem-phloem-swap
 worked: |
-  Xylem vessels are dead, hollow tubes that carry water and dissolved mineral ions in ONE direction — upwards from the root to the leaf. They also help support the plant.
+  Xylem vessels are dead, hollow tubes that carry water and dissolved mineral ions in ONE direction, upwards from the root to the leaf. They also help support the plant.
   Phloem is the tissue that carries sucrose, and it can carry it up OR down the plant.
 ```
 
@@ -1840,8 +1840,8 @@ answer: 2
 marks: 1
 misconception: translocation-vs-transpiration
 worked: |
-  Translocation is the movement of the food the plant has made — mainly sucrose — through the PHLOEM, from the leaves to wherever it is needed (growing shoots, roots, storage organs).
-  Transpiration is the loss of water vapour, and water movement up the plant happens in the xylem — do not mix the two tissues up.
+  Translocation is the movement of the food the plant has made, mainly sucrose, through the PHLOEM, from the leaves to wherever it is needed (growing shoots, roots, storage organs).
+  Transpiration is the loss of water vapour, and water movement up the plant happens in the xylem, do not mix the two tissues up.
 ```
 
 ```yaml
@@ -1909,7 +1909,7 @@ marks: 1
 misconception: wilting-cause
 worked: |
   On a hot day the plant loses water by transpiration faster than the roots can absorb it.
-  The cells lose water, the vacuoles shrink and the cells become FLACCID — they stop pushing out against their cell walls.
+  The cells lose water, the vacuoles shrink and the cells become FLACCID, they stop pushing out against their cell walls.
   Turgid cells are what hold a non-woody plant up, so once they go flaccid the plant droops. Water is carried in the xylem, not the phloem.
 ```
 
@@ -1927,7 +1927,7 @@ marks: 1
 misconception: root-hair-chloroplasts
 worked: |
   The long, narrow extension reaches between the soil particles and greatly increases the surface area in contact with soil water, so water enters faster by osmosis and mineral ions are absorbed more quickly.
-  Root hair cells are underground, so they have no chloroplasts — there is no light. They do have a cell wall, like all plant cells.
+  Root hair cells are underground, so they have no chloroplasts, there is no light. They do have a cell wall, like all plant cells.
 ```
 
 ```yaml
@@ -1944,7 +1944,7 @@ marks: 1
 misconception: varnish-experiment-reasoning
 worked: |
   Varnish blocks the stomata, so water vapour cannot escape through a varnished surface.
-  Leaf C has BOTH surfaces varnished, so almost every stoma is blocked and it loses the least water — it loses mass most slowly.
+  Leaf C has BOTH surfaces varnished, so almost every stoma is blocked and it loses the least water, it loses mass most slowly.
   Leaf D, with no varnish, loses mass fastest. Leaf B (lower surface blocked) loses much less than leaf A, because most stomata are on the lower surface.
 ```
 
@@ -1980,7 +1980,7 @@ misconception: rate-division-inverted
 worked: |
   Rate = volume of water lost ÷ time taken.
   Rate = 12 cm³ ÷ 4 h = 3 cm³ per hour.
-  Check the unit asked for — 'per hour' tells you to divide by the number of hours.
+  Check the unit asked for, 'per hour' tells you to divide by the number of hours.
 ```
 
 ## TEACHING
@@ -1989,14 +1989,14 @@ worked: |
 kind: definition
 term: "Chloroplast"
 topic: "B1 Cell Structure and Organisation"
-body: "The organelle in a plant cell that contains chlorophyll and is the site of photosynthesis. Chlorophyll is the green pigment INSIDE the chloroplast — do not use the two words as if they mean the same thing."
+body: "The organelle in a plant cell that contains chlorophyll and is the site of photosynthesis. Chlorophyll is the green pigment INSIDE the chloroplast, do not use the two words as if they mean the same thing."
 ```
 
 ```yaml
 kind: definition
 term: "Diffusion"
 topic: "B2 Movement of Substances"
-body: "The net movement of particles from a region of their higher concentration to a region of their lower concentration, down a concentration gradient. It is passive — no energy from respiration is needed."
+body: "The net movement of particles from a region of their higher concentration to a region of their lower concentration, down a concentration gradient. It is passive, no energy from respiration is needed."
 ```
 
 ```yaml
@@ -2010,7 +2010,7 @@ body: "The net movement of water molecules from a region of higher water potenti
 kind: definition
 term: "Enzyme"
 topic: "B3 Biological Molecules & Enzymes"
-body: "A biological catalyst — a protein that speeds up a chemical reaction in a living organism and is not used up or changed by the reaction, so it can be used again."
+body: "A biological catalyst, a protein that speeds up a chemical reaction in a living organism and is not used up or changed by the reaction, so it can be used again."
 ```
 
 ```yaml
@@ -2045,7 +2045,7 @@ body: "The hormone from the pancreas released when blood glucose is too HIGH. It
 kind: definition
 term: "Glucagon"
 topic: "B4 Nutrition in Humans"
-body: "The hormone from the pancreas released when blood glucose is too LOW. It makes the liver convert stored glycogen back into glucose, so blood glucose rises. Note the spelling — glucaGON, not glycoGEN."
+body: "The hormone from the pancreas released when blood glucose is too LOW. It makes the liver convert stored glycogen back into glucose, so blood glucose rises. Note the spelling, glucaGON, not glycoGEN."
 ```
 
 ```yaml
@@ -2108,7 +2108,7 @@ body: "One of the millions of tiny air sacs at the end of the bronchioles, where
 kind: definition
 term: "Pathogen"
 topic: "B7 Infectious Diseases in Humans"
-body: "A microorganism that causes disease — for example a bacterium or a virus. Do not confuse it with an antibody (a defence protein) or an antibiotic (a medicine)."
+body: "A microorganism that causes disease, for example a bacterium or a virus. Do not confuse it with an antibody (a defence protein) or an antibiotic (a medicine)."
 ```
 
 ```yaml
@@ -2136,7 +2136,7 @@ body: "The ability of some bacteria to survive treatment with an antibiotic. The
 kind: definition
 term: "Photosynthesis"
 topic: "B8 Nutrition & Transport in Flowering Plants"
-body: "The process by which plants make glucose using light energy trapped by chlorophyll: carbon dioxide + water → glucose + oxygen. Light and chlorophyll are written above and below the arrow — they are conditions, not raw materials."
+body: "The process by which plants make glucose using light energy trapped by chlorophyll: carbon dioxide + water → glucose + oxygen. Light and chlorophyll are written above and below the arrow, they are conditions, not raw materials."
 ```
 
 ```yaml
@@ -2157,7 +2157,7 @@ body: "The transport of sucrose and other manufactured food substances through t
 kind: definition
 term: "Xylem"
 topic: "B8 Nutrition & Transport in Flowering Plants"
-body: "The plant tissue made of dead, hollow vessels that carries water and dissolved mineral ions in one direction only — from the roots up to the leaves. It also gives the plant support."
+body: "The plant tissue made of dead, hollow vessels that carries water and dissolved mineral ions in one direction only, from the roots up to the leaves. It also gives the plant support."
 ```
 
 ```yaml
@@ -2188,7 +2188,7 @@ keywords: [higher water potential, osmosis, partially permeable membrane, into t
 kind: precision
 topic: "B3 Biological Molecules & Enzymes"
 prompt: "Explain why the rate of an enzyme-controlled reaction falls to almost zero above about 45 °C. (3 marks)"
-model: "The high temperature makes the enzyme molecules vibrate so much that their structure is permanently changed — the enzyme is DENATURED. The shape of the ACTIVE SITE is altered, so it is no longer COMPLEMENTARY to the substrate. The substrate can no longer fit in, so no ENZYME-SUBSTRATE COMPLEX forms and almost no product is made. The change is not reversible. Never write that the enzyme has been 'killed' — an enzyme is a molecule, not an organism."
+model: "The high temperature makes the enzyme molecules vibrate so much that their structure is permanently changed, the enzyme is DENATURED. The shape of the ACTIVE SITE is altered, so it is no longer COMPLEMENTARY to the substrate. The substrate can no longer fit in, so no ENZYME-SUBSTRATE COMPLEX forms and almost no product is made. The change is not reversible. Never write that the enzyme has been 'killed', an enzyme is a molecule, not an organism."
 keywords: [denatured, active site changes shape, no longer complementary, substrate cannot fit, no enzyme substrate complex, not reversible]
 ```
 
@@ -2196,7 +2196,7 @@ keywords: [denatured, active site changes shape, no longer complementary, substr
 kind: precision
 topic: "B7 Infectious Diseases in Humans"
 prompt: "Explain how a vaccine protects a person against a disease. (4 marks)"
-model: "The vaccine contains a WEAKENED, DEAD OR INACTIVE form of the pathogen, so it does not cause the disease. WHITE BLOOD CELLS recognise it and produce the specific ANTIBODY against it. MEMORY CELLS remain in the body afterwards. If the real pathogen later invades, the memory cells produce the correct antibody MUCH FASTER AND IN LARGER AMOUNTS, so the pathogen is destroyed before it can multiply enough to cause symptoms — the person is immune."
+model: "The vaccine contains a WEAKENED, DEAD OR INACTIVE form of the pathogen, so it does not cause the disease. WHITE BLOOD CELLS recognise it and produce the specific ANTIBODY against it. MEMORY CELLS remain in the body afterwards. If the real pathogen later invades, the memory cells produce the correct antibody MUCH FASTER AND IN LARGER AMOUNTS, so the pathogen is destroyed before it can multiply enough to cause symptoms, the person is immune."
 keywords: [weakened or inactive pathogen, white blood cells, antibodies, memory cells, faster and larger response, destroyed before symptoms]
 ```
 
@@ -2212,7 +2212,7 @@ keywords: [humid layer blown away, steep concentration gradient, diffusion out o
 kind: precision
 topic: "B8 Nutrition & Transport in Flowering Plants"
 prompt: "A plant is left unwatered on a hot day and wilts. Explain, in terms of its cells, why it wilts. (3 marks)"
-model: "On a hot day the plant LOSES WATER BY TRANSPIRATION faster than the roots can absorb it. The cells lose water by OSMOSIS, the VACUOLES SHRINK and the cells become FLACCID — the cytoplasm no longer presses out against the cell wall. Turgid cells are what keep a non-woody stem and its leaves firm, so once the cells lose their TURGOR the leaves and stem droop. Watering the plant lets the cells become turgid again and it recovers."
+model: "On a hot day the plant LOSES WATER BY TRANSPIRATION faster than the roots can absorb it. The cells lose water by OSMOSIS, the VACUOLES SHRINK and the cells become FLACCID, the cytoplasm no longer presses out against the cell wall. Turgid cells are what keep a non-woody stem and its leaves firm, so once the cells lose their TURGOR the leaves and stem droop. Watering the plant lets the cells become turgid again and it recovers."
 keywords: [transpiration exceeds uptake, water lost by osmosis, vacuole shrinks, cells become flaccid, loss of turgor, no support]
 ```
 
@@ -2220,7 +2220,7 @@ keywords: [transpiration exceeds uptake, water lost by osmosis, vacuole shrinks,
 kind: precision
 topic: "B8 Nutrition & Transport in Flowering Plants"
 prompt: "The rate of photosynthesis of a pondweed rises as light intensity increases, then levels off. Explain the shape of this graph. (3 marks)"
-model: "On the RISING part of the graph, LIGHT INTENSITY IS THE LIMITING FACTOR: more light means more light energy trapped by chlorophyll, so the rate increases. Where the graph LEVELS OFF, increasing the light no longer increases the rate, so light is no longer the limiting factor. Some OTHER FACTOR — most likely the CARBON DIOXIDE CONCENTRATION or the TEMPERATURE — is now limiting the rate. To test this, repeat the experiment with a higher carbon dioxide concentration and see whether the plateau rises."
+model: "On the RISING part of the graph, LIGHT INTENSITY IS THE LIMITING FACTOR: more light means more light energy trapped by chlorophyll, so the rate increases. Where the graph LEVELS OFF, increasing the light no longer increases the rate, so light is no longer the limiting factor. Some OTHER FACTOR, most likely the CARBON DIOXIDE CONCENTRATION or the TEMPERATURE, is now limiting the rate. To test this, repeat the experiment with a higher carbon dioxide concentration and see whether the plateau rises."
 keywords: [limiting factor, light intensity, levels off, carbon dioxide concentration, temperature, plateau]
 ```
 
@@ -2268,7 +2268,7 @@ keywords: [thick muscular elastic wall, narrow lumen, high pressure, thin wall, 
 kind: precision
 topic: "B5 Transport in Humans"
 prompt: "Explain why the wall of the left ventricle is thicker than the wall of the right ventricle. (2 marks)"
-model: "The LEFT ventricle pumps blood through the aorta to the WHOLE BODY, so it must generate a MUCH HIGHER PRESSURE, and that needs MORE MUSCLE in the wall. The RIGHT ventricle only pumps blood the SHORT DISTANCE to the LUNGS, at a lower pressure — too high a pressure would damage the delicate capillaries around the alveoli. Do NOT say the left ventricle is bigger because it holds more blood: the two ventricles hold about the same volume."
+model: "The LEFT ventricle pumps blood through the aorta to the WHOLE BODY, so it must generate a MUCH HIGHER PRESSURE, and that needs MORE MUSCLE in the wall. The RIGHT ventricle only pumps blood the SHORT DISTANCE to the LUNGS, at a lower pressure, too high a pressure would damage the delicate capillaries around the alveoli. Do NOT say the left ventricle is bigger because it holds more blood: the two ventricles hold about the same volume."
 keywords: [left pumps to whole body, higher pressure, more muscle, right pumps only to lungs, same volume of blood]
 ```
 
@@ -2308,7 +2308,7 @@ keywords: [emulsifies fat, small droplets, larger surface area, lipase works fas
 kind: precision
 topic: "B3 Biological Molecules & Enzymes"
 prompt: "Explain the effect of pH on the rate of an enzyme-controlled reaction. (3 marks)"
-model: "Every enzyme has an OPTIMUM pH at which the shape of its ACTIVE SITE is best suited to the substrate and the rate of reaction is HIGHEST. As the pH moves away from the optimum in either direction, the active site CHANGES SHAPE, so fewer substrate molecules fit and fewer ENZYME-SUBSTRATE COMPLEXES form — the rate FALLS. Far from the optimum the enzyme is DENATURED and the rate drops to almost zero. Example: pepsin has an optimum of about pH 2 (stomach), while amylase works best at about pH 7."
+model: "Every enzyme has an OPTIMUM pH at which the shape of its ACTIVE SITE is best suited to the substrate and the rate of reaction is HIGHEST. As the pH moves away from the optimum in either direction, the active site CHANGES SHAPE, so fewer substrate molecules fit and fewer ENZYME-SUBSTRATE COMPLEXES form, the rate FALLS. Far from the optimum the enzyme is DENATURED and the rate drops to almost zero. Example: pepsin has an optimum of about pH 2 (stomach), while amylase works best at about pH 7."
 keywords: [optimum pH, active site changes shape, fewer enzyme substrate complexes, rate falls, denatured, pepsin acidic amylase neutral]
 ```
 
@@ -2340,7 +2340,7 @@ keywords: [haemoglobin, no nucleus, more room for haemoglobin, biconcave disc, l
 kind: precision
 topic: "B7 Infectious Diseases in Humans"
 prompt: "A patient with influenza asks the doctor for antibiotics. Explain why the doctor refuses, and why taking antibiotics unnecessarily is harmful. (4 marks)"
-model: "Influenza is caused by a VIRUS. ANTIBIOTICS ONLY KILL BACTERIA — they attack structures and processes found in bacterial cells — so they have NO EFFECT on a virus, and the patient would get no benefit. Taking antibiotics when they are not needed also SPEEDS UP THE SPREAD OF ANTIBIOTIC RESISTANCE: the antibiotic kills the harmless non-resistant bacteria in the body, while any RESISTANT bacteria SURVIVE AND REPRODUCE, so resistant strains become more common and useful antibiotics stop working."
+model: "Influenza is caused by a VIRUS. ANTIBIOTICS ONLY KILL BACTERIA, they attack structures and processes found in bacterial cells, so they have NO EFFECT on a virus, and the patient would get no benefit. Taking antibiotics when they are not needed also SPEEDS UP THE SPREAD OF ANTIBIOTIC RESISTANCE: the antibiotic kills the harmless non-resistant bacteria in the body, while any RESISTANT bacteria SURVIVE AND REPRODUCE, so resistant strains become more common and useful antibiotics stop working."
 keywords: [influenza is viral, antibiotics kill bacteria only, no effect on viruses, resistant bacteria survive and reproduce, resistance spreads]
 ```
 

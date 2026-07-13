@@ -22,7 +22,7 @@ const MESSAGES = {
   "handlecleared=1": { tone: "ok" as const, msg: "Payout details removed." },
   "error=handle": {
     tone: "bad" as const,
-    msg: "That payout detail looks too long — try again.",
+    msg: "That payout detail looks too long, try again.",
   },
 };
 
@@ -58,14 +58,14 @@ export default async function ReferralsPage({
       <Banner params={params} messages={MESSAGES} />
 
       <h2 className="font-display text-lg font-bold text-ink">
-        Refer a friend — you both get {sgd(REFERRAL_REWARD_CENTS)}
+        Refer a friend, you both get {sgd(REFERRAL_REWARD_CENTS)}
       </h2>
       <p className="mt-1 text-sm text-body">
         Share your code. A friend gets{" "}
         <span className="font-medium text-ink">S$15 off</span>{" "}
         their first order, and once it&apos;s paid, we pay{" "}
         <span className="font-medium text-ink">S$15 to you</span>{" "}
-        — by PayNow,
+, by PayNow,
         processed manually within a few days.{" "}
         <Link href="/legal/referral-terms" className="text-accent underline">
           Programme terms
@@ -124,7 +124,7 @@ export default async function ReferralsPage({
       >
         <div className="flex-1">
           <label htmlFor="payout-handle" className="block text-xs font-medium text-body">
-            Where we pay you — PayNow mobile number
+            Where we pay you, PayNow mobile number
           </label>
           <input
             id="payout-handle"

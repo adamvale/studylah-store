@@ -106,7 +106,7 @@ function HeroProof() {
         {perfect} of {total}
       </span>
       <span>
-        published scorecards called all five top-mark topics High or above —
+        published scorecards called all five top-mark topics High or above, 
         see every hit and miss →
       </span>
     </Link>
@@ -136,7 +136,7 @@ function Hero({ pricing }: { pricing: Pricing }) {
             Most students revise everything and hope. StudyLah reads ten years of
             your{" "}
             {PUBLISHED_LEVELS.map((l) => LEVELS[l].shortName).join(" and ")}{" "}
-            papers, ranks the topics most likely to appear in 2026 — then runs
+            papers, ranks the topics most likely to appear in 2026, then runs
             your revision around them: original practice, daily questions, a
             self-keeping mistake notebook, and a plan that counts down to your
             real paper dates.
@@ -146,7 +146,7 @@ function Hero({ pricing }: { pricing: Pricing }) {
               href="/diagnostic"
               className="btn-pixel cta-sheen glow-soft rounded bg-accent px-5 py-3 text-sm font-bold text-night"
             >
-              See the topics you&apos;ll lose marks on — free
+              See the topics you&apos;ll lose marks on, free
             </Link>
             <Link
               href="/subjects"
@@ -190,7 +190,7 @@ function Hero({ pricing }: { pricing: Pricing }) {
         </div>
       </div>
 
-      {/* Scroll cue — signals there's more below the full-height hero. */}
+      {/* Scroll cue, signals there's more below the full-height hero. */}
       <div className="pointer-events-none absolute inset-x-0 bottom-5 hidden justify-center md:flex">
         <span className="scroll-cue text-cloud" aria-hidden="true">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
@@ -209,7 +209,7 @@ const WHY = [
   },
   {
     title: "Core Concepts",
-    body: "The recurring topics that consistently anchor the most marks in past exams — so you revise them first.",
+    body: "The recurring topics that consistently anchor the most marks in past exams, so you revise them first.",
   },
   {
     title: "High-Chance Questions",
@@ -231,7 +231,7 @@ function WhyItWorks() {
           Why StudyLah! Works
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-cloud">
-          Exams don&apos;t reward more hours of study — they reward{" "}
+          Exams don&apos;t reward more hours of study, they reward{" "}
           <span className="text-accent">
             focused preparation on high-impact topics
           </span>
@@ -316,7 +316,7 @@ function Journey({ pricing }: { pricing: Pricing }) {
           })}
         </div>
         <p className="mt-6 rounded-xl border border-hairline bg-surface px-4 py-3 text-sm text-cloud">
-          Get all three with the Master tier —{" "}
+          Get all three with the Master tier, {" "}
           <span className="text-accent">
             {sgd(tierValue("o-level", "master"))}
           </span>{" "}
@@ -343,7 +343,7 @@ const STUDY_HQ_FEATURES = [
   {
     emoji: "🎯",
     title: "Marks at Risk",
-    body: "One honest number per subject: how much of a typical paper is still in play. Tick topics, clear mistakes — watch it fall.",
+    body: "One honest number per subject: how much of a typical paper is still in play. Tick topics, clear mistakes, watch it fall.",
   },
   {
     emoji: "🔥",
@@ -353,7 +353,7 @@ const STUDY_HQ_FEATURES = [
   {
     emoji: "📓",
     title: "Mistake notebook",
-    body: "Every miss saved automatically. Missed questions come back until you beat them twice — then they clear for good.",
+    body: "Every miss saved automatically. Missed questions come back until you beat them twice, then they clear for good.",
   },
   {
     emoji: "🧰",
@@ -433,7 +433,7 @@ const GURUS = [
     emblem: "/marketing/emblem_flask.png",
     name: "Guru Fen",
     province: "Chemistry · Marshlight Fen",
-    teach: "Moles, bonding and acids from first principles — one bubbling experiment at a time.",
+    teach: "Moles, bonding and acids from first principles, one bubbling experiment at a time.",
   },
   {
     sprite: "/marketing/guru_ram.png",
@@ -472,7 +472,7 @@ const GURUS = [
   },
 ] as const;
 
-// The game — framed exactly as the owner wants it: the prediction suite is the
+// The game, framed exactly as the owner wants it: the prediction suite is the
 // product; StudyLah Legends is a beta playground it unlocks, for purchasers only.
 function FogFrontierBeta() {
   return (
@@ -487,7 +487,7 @@ function FogFrontierBeta() {
           </span>
         </div>
         <h2 className="mx-auto mt-5 max-w-3xl text-center font-display text-4xl font-black text-white sm:text-5xl">
-          Revision that plays like an adventure —{" "}
+          Revision that plays like an adventure, {" "}
           <span className="text-accent">because combat is real exam questions.</span>
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-center text-lg text-cloud">
@@ -497,7 +497,7 @@ function FogFrontierBeta() {
         </p>
         <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-cloud">
           <span className="font-semibold text-white">The prediction suite is the product you buy.</span>{" "}
-          StudyLah Legends is the beta playground it unlocks — a bonus, not the pitch.
+          StudyLah Legends is the beta playground it unlocks, a bonus, not the pitch.
           It&apos;s in active development, so expect it to keep growing.
         </p>
 
@@ -515,7 +515,7 @@ function FogFrontierBeta() {
           </div>
           <p className="mt-5 text-center text-sm text-cloud">
             Pick your researcher. <span className="text-white">Gugu</span>, your ghost
-            companion, drifts a step behind — cheering every strike and evolving with
+            companion, drifts a step behind, cheering every strike and evolving with
             your effort: Gugu → Guglow → Gugleam → Gubright → Guguardian.
           </p>
         </div>
@@ -530,7 +530,7 @@ function FogFrontierBeta() {
           </h3>
           <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-cloud">
             Short lessons, worked examples, then a check-question tuned to your own
-            mistake notebook. Visit any time — they never judge, they only teach.
+            mistake notebook. Visit any time, they never judge, they only teach.
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {GURUS.map((g) => (
@@ -676,7 +676,7 @@ function TrustStrip() {
               {perfect} of {total}
             </p>
             <p className="mt-1 text-sm text-white/80">
-              2024–25 scorecards where all five highest-mark topics were
+              2024-25 scorecards where all five highest-mark topics were
               forecast High or above*
             </p>
             <Link
@@ -689,7 +689,7 @@ function TrustStrip() {
           <div>
             <p className="font-display text-5xl font-black text-accent">Zero</p>
             <p className="mt-1 text-sm text-white/80">
-              recycled past-paper content — every question is written for
+              recycled past-paper content, every question is written for
               StudyLah
             </p>
           </div>
@@ -704,7 +704,7 @@ function TrustStrip() {
           </div>
         </div>
         <p className="mt-8 text-xs text-white/50">
-          *Counted from the published per-subject scorecards — every hit and
+          *Counted from the published per-subject scorecards, every hit and
           miss is on the accuracy page.
         </p>
       </div>
@@ -723,7 +723,7 @@ const HOW_STEPS = [
   },
   {
     title: "Publish",
-    body: "You get the forecast. After the sitting, we publish what hit and what missed — in public, every year.",
+    body: "You get the forecast. After the sitting, we publish what hit and what missed, in public, every year.",
   },
 ];
 
@@ -751,7 +751,7 @@ function HowItWorks() {
         ))}
       </div>
       <p className="mt-6 text-sm text-cloud">
-        A forecast can be wrong — that&apos;s why the{" "}
+        A forecast can be wrong, that&apos;s why the{" "}
         <Link href="/accuracy" className="font-medium text-accent underline">
           accuracy scorecard
         </Link>{" "}
@@ -782,7 +782,7 @@ function FreeHeatmapBanner() {
           <p className="mt-2 text-sm text-cloud">
             Ten questions on the topics most likely to come up in your subject,
             auto-marked in about seven minutes. Get an instant score, an
-            indicative grade band, and worked solutions — free, no card. See
+            indicative grade band, and worked solutions, free, no card. See
             exactly where you stand before you spend a cent.
           </p>
         </div>
@@ -791,7 +791,7 @@ function FreeHeatmapBanner() {
             href="/diagnostic"
             className="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
           >
-            Predict your mark — free →
+            Predict your mark, free →
           </Link>
         </div>
       </div>

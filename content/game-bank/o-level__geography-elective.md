@@ -2036,7 +2036,7 @@ how: "Sentence 1: name the pattern (clustered, linear along the coast, concentra
 ```yaml
 kind: sbq
 rung: "Describe a trend on a graph or in a table"
-what: "Direction of change, size of change, and any turning point — all with figures and units."
+what: "Direction of change, size of change, and any turning point, all with figures and units."
 how: "Say whether the values rise, fall or fluctuate overall. Quote the first value and the last value with their units, then state the change between them. Name any year where the direction changes and quote that value too. If the question says 'using Fig. 2', an answer without figures from Fig. 2 is an incomplete answer."
 ```
 
@@ -2093,7 +2093,7 @@ how: "Attach a specific example to every main point: a named destination and wha
 kind: sbq
 rung: "Two-sided evaluation and the final judgement"
 what: "A judgement weighs the sides against stated criteria; it is not a summary of what you have just written."
-how: "Choose criteria openly: scale of impact, how long the effect lasts, how many people are affected, cost, feasibility, who bears the cost. Then write 'judged by X, the stronger argument is Y, because...'. If you genuinely conclude 'it depends', you must say exactly what it depends on — otherwise it reads as an unsupported evaluation."
+how: "Choose criteria openly: scale of impact, how long the effect lasts, how many people are affected, cost, feasibility, who bears the cost. Then write 'judged by X, the stronger argument is Y, because...'. If you genuinely conclude 'it depends', you must say exactly what it depends on, otherwise it reads as an unsupported evaluation."
 ```
 
 ```yaml
@@ -2121,7 +2121,7 @@ body: "The meaning and emotional attachment a person gives to a place, acquired 
 kind: definition
 term: "Spatial pattern"
 topic: "GE1.1 Thinking Geographically"
-body: "The non-random arrangement of features across space — for example clustered, linear (strung along a route), dispersed or spaced at regular intervals."
+body: "The non-random arrangement of features across space, for example clustered, linear (strung along a route), dispersed or spaced at regular intervals."
 ```
 
 ```yaml
@@ -2163,7 +2163,7 @@ body: "The ability of a community to prepare for, absorb, respond to and recover
 kind: definition
 term: "Hypothesis"
 topic: "GE1.3 Geographical Methods"
-body: "A testable statement predicting a relationship, which the data collected can support or reject — for example 'visitor numbers are higher in the evening than at midday'."
+body: "A testable statement predicting a relationship, which the data collected can support or reject, for example 'visitor numbers are higher in the evening than at midday'."
 ```
 
 ```yaml
@@ -2198,14 +2198,14 @@ body: "The stages a destination passes through: exploration, involvement, develo
 kind: definition
 term: "Personality spectrum: Dependables and Venturers"
 topic: "GE2.1 Tourism Activity"
-body: "Dependables sit at the cautious end — familiar destinations, organised packages, plenty of facilities, low risk, repeat visits. Venturers sit at the adventurous end — independent, curious, comfortable with uncertainty, drawn to new places before facilities develop."
+body: "Dependables sit at the cautious end, familiar destinations, organised packages, plenty of facilities, low risk, repeat visits. Venturers sit at the adventurous end, independent, curious, comfortable with uncertainty, drawn to new places before facilities develop."
 ```
 
 ```yaml
 kind: definition
 term: "Leakage"
 topic: "GE2.2 Tourism Development"
-body: "The share of tourist spending that flows out of the destination's economy — profits sent abroad by foreign owners, imported goods bought for tourists, and wages paid to foreign staff."
+body: "The share of tourist spending that flows out of the destination's economy, profits sent abroad by foreign owners, imported goods bought for tourists, and wages paid to foreign staff."
 ```
 
 ```yaml
@@ -2233,7 +2233,7 @@ body: "Tourism owned and managed by the local community itself, so that resident
 kind: definition
 term: "Pro-poor tourism"
 topic: "GE2.3 Sustainable Tourism Development"
-body: "Tourism managed so that a larger share of the net benefit reaches poor people in the destination — for example by sourcing food from local smallholders and training and hiring residents from low-income households."
+body: "Tourism managed so that a larger share of the net benefit reaches poor people in the destination, for example by sourcing food from local smallholders and training and hiring residents from low-income households."
 ```
 
 ```yaml
@@ -2268,14 +2268,14 @@ body: "The fall in the pH of seawater as it absorbs carbon dioxide and forms car
 kind: definition
 term: "Mitigation"
 topic: "GE3.3 Climate Action"
-body: "Action that tackles the CAUSE of climate change by reducing greenhouse-gas emissions or increasing their removal — clean energy, low-carbon technology, sustainable consumption, international agreements and the protection of carbon sinks."
+body: "Action that tackles the CAUSE of climate change by reducing greenhouse-gas emissions or increasing their removal, clean energy, low-carbon technology, sustainable consumption, international agreements and the protection of carbon sinks."
 ```
 
 ```yaml
 kind: definition
 term: "Adaptation"
 topic: "GE3.3 Climate Action"
-body: "Action that adjusts to the IMPACTS of a changing climate so that harm is reduced — flood and water management, drought-resistant crops and food technology, raised platform levels, early-warning systems and public awareness."
+body: "Action that adjusts to the IMPACTS of a changing climate so that harm is reduced, flood and water management, drought-resistant crops and food technology, raised platform levels, early-warning systems and public awareness."
 ```
 
 ```yaml
@@ -2317,14 +2317,14 @@ body: "The presence of people, buildings and assets in a place where a hazard ca
 kind: definition
 term: "Vulnerability"
 topic: "GE4.3 Disaster Risk Management"
-body: "How easily the people and assets that are exposed are harmed, and how poorly they can cope — shaped by building design, soil type, wealth, age, health and preparedness. Hazard-resistant design and education reduce vulnerability."
+body: "How easily the people and assets that are exposed are harmed, and how poorly they can cope, shaped by building design, soil type, wealth, age, health and preparedness. Hazard-resistant design and education reduce vulnerability."
 ```
 
 ```yaml
 kind: definition
 term: "Command word: Describe"
 topic: "GEDS Data skills"
-body: "State what is shown, supported by evidence from the resource — figures with units, compass directions, named places. No reasons are required, and none are credited."
+body: "State what is shown, supported by evidence from the resource, figures with units, compass directions, named places. No reasons are required, and none are credited."
 ```
 
 ```yaml

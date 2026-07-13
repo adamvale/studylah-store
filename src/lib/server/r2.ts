@@ -1,6 +1,6 @@
 import { S3Client, PutObjectCommand, ListObjectsV2Command, DeleteObjectCommand } from "@aws-sdk/client-s3";
 
-// Cloudflare R2 (S3-compatible) — offsite home for database backups and,
+// Cloudflare R2 (S3-compatible), offsite home for database backups and,
 // later, the master content store. Fails closed: without the four R2_* env
 // vars every helper is a no-op that reports "not configured".
 

@@ -112,7 +112,7 @@ misconception: penetration-order
 worked: |
   α is stopped by paper (or a few cm of air), so it cannot be α.
   γ passes through several cm of lead, so a few mm of aluminium would not stop it.
-  β passes through paper but is absorbed by a few mm of aluminium — so the radiation is β.
+  β passes through paper but is absorbed by a few mm of aluminium, so the radiation is β.
 ```
 
 ```yaml
@@ -128,7 +128,7 @@ answer: 0
 marks: 1
 misconception: gamma-changes-nucleus
 worked: |
-  A γ-ray is a high-energy electromagnetic wave — it carries away energy but no nucleons and no charge.
+  A γ-ray is a high-energy electromagnetic wave, it carries away energy but no nucleons and no charge.
   So the nucleon number and the proton number are both unchanged; only the energy of the nucleus falls.
 ```
 
@@ -179,8 +179,8 @@ answer: 1
 marks: 1
 misconception: gauge-source-choice
 worked: |
-  α would be absorbed completely by the foil — the detector would read nothing whatever the thickness.
-  γ would pass through almost unchanged — the reading would barely respond to thickness.
+  α would be absorbed completely by the foil, the detector would read nothing whatever the thickness.
+  γ would pass through almost unchanged, the reading would barely respond to thickness.
   β is partly absorbed by a few tenths of a millimetre of metal, so the transmitted count rate is sensitive to thickness. A long half-life is also needed so the source output stays steady.
 ```
 
@@ -207,7 +207,7 @@ misconception: decay-equation-balance
 worked: |
   Balance the nucleon numbers: 238 − 234 = 4.
   Balance the proton numbers: 92 − 90 = 2.
-  X has nucleon number 4 and proton number 2, i.e. ⁴₂He — an α-particle.
+  X has nucleon number 4 and proton number 2, i.e. ⁴₂He, an α-particle.
 ```
 
 ```yaml
@@ -249,7 +249,7 @@ worked: |
 ```yaml
 type: mcq
 topic: "T12 Light"
-stem: "A glass block has a refractive index of 1.50. Calculate the critical angle for the glass–air boundary."
+stem: "A glass block has a refractive index of 1.50. Calculate the critical angle for the glass-air boundary."
 options:
   - "30°"
   - "42°"
@@ -358,21 +358,21 @@ topic: "T12 Light"
 stem: "Why does light stay inside the core of an optical fibre even when the fibre bends?"
 options:
   - "The core is silvered so it acts as a perfect mirror"
-  - "The light strikes the core–cladding boundary at an angle greater than the critical angle, so it is totally internally reflected back into the core"
+  - "The light strikes the core-cladding boundary at an angle greater than the critical angle, so it is totally internally reflected back into the core"
   - "The cladding absorbs the light and re-emits it into the core"
   - "The cladding has a higher refractive index than the core, so light is refracted back in"
 answer: 1
 marks: 1
 misconception: optical-fibre-mechanism
 worked: |
-  The core is optically denser than the cladding, so a critical angle exists at the core–cladding boundary.
-  The fibre is designed so that light always meets that boundary at an angle of incidence greater than the critical angle, so it is totally internally reflected — repeatedly — and travels along the fibre with almost no loss.
+  The core is optically denser than the cladding, so a critical angle exists at the core-cladding boundary.
+  The fibre is designed so that light always meets that boundary at an angle of incidence greater than the critical angle, so it is totally internally reflected, repeatedly, and travels along the fibre with almost no loss.
 ```
 
 ```yaml
 type: short
 topic: "T12 Light"
-stem: "The refractive index of water is 1.33. Calculate the critical angle for a water–air boundary, giving your answer to the nearest degree."
+stem: "The refractive index of water is 1.33. Calculate the critical angle for a water-air boundary, giving your answer to the nearest degree."
 accepted: ["49", "49 degrees", "48.8", "48.8 degrees"]
 marks: 1
 misconception: critical-angle-water
@@ -478,7 +478,7 @@ marks: 1
 misconception: third-law-pair-identification
 worked: |
   A third-law pair acts on TWO DIFFERENT bodies, is the same type of force, and is equal in size but opposite in direction.
-  W is the gravitational pull of the Earth on the book, so its partner must be the gravitational pull of the book on the Earth — the book pulls the Earth up with a force of size W.
+  W is the gravitational pull of the Earth on the book, so its partner must be the gravitational pull of the book on the Earth, the book pulls the Earth up with a force of size W.
   The upward push of the table on the book acts on the same body and is a contact force, so it is NOT the partner of W.
 ```
 
@@ -549,7 +549,7 @@ marks: 1
 misconception: parachute-deceleration
 worked: |
   Opening the parachute suddenly increases the surface area, so the air resistance jumps and becomes larger than the weight.
-  The resultant force is now upwards, so she decelerates. As she slows, the air resistance falls again until it once more equals her weight — she then falls at a new, much lower terminal velocity.
+  The resultant force is now upwards, so she decelerates. As she slows, the air resistance falls again until it once more equals her weight, she then falls at a new, much lower terminal velocity.
 ```
 
 ```yaml
@@ -626,7 +626,7 @@ marks: 1
 misconception: transformer-needs-changing-flux
 worked: |
   An e.m.f. is induced only when the magnetic flux linking the secondary coil CHANGES (Faraday's law).
-  A steady d.c. current does produce a magnetic field, but a constant one — the flux through the secondary never changes, so no e.m.f. is induced. An a.c. supply gives a continually changing flux, so it works.
+  A steady d.c. current does produce a magnetic field, but a constant one, the flux through the secondary never changes, so no e.m.f. is induced. An a.c. supply gives a continually changing flux, so it works.
 ```
 
 ```yaml
@@ -696,8 +696,8 @@ marks: 1
 misconception: generator-speed-effects
 worked: |
   Two things change together when the coil spins faster.
-  Frequency: one cycle is produced per revolution, so twice the revolutions per second means twice the frequency — the peaks are half as far apart on the graph.
-  Peak e.m.f.: the flux is cut at twice the rate, so by Faraday's law the peak e.m.f. doubles — the graph is twice as tall.
+  Frequency: one cycle is produced per revolution, so twice the revolutions per second means twice the frequency, the peaks are half as far apart on the graph.
+  Peak e.m.f.: the flux is cut at twice the rate, so by Faraday's law the peak e.m.f. doubles, the graph is twice as tall.
 ```
 
 ```yaml
@@ -714,7 +714,7 @@ marks: 1
 misconception: laminated-core-purpose
 worked: |
   The changing magnetic flux would induce large circulating (eddy) currents in a solid iron core, and these would heat the core and waste energy.
-  Laminating the core — thin sheets separated by insulation — breaks up the paths available to those currents, so the eddy currents (and the heating) are much smaller.
+  Laminating the core, thin sheets separated by insulation, breaks up the paths available to those currents, so the eddy currents (and the heating) are much smaller.
 ```
 
 ```yaml
@@ -791,7 +791,7 @@ marks: 1
 misconception: fuse-live-wire-reason
 worked: |
   The live wire is at a high potential; the neutral wire is at (or near) earth potential.
-  If the fuse were in the neutral wire it would still blow and stop the current, BUT the appliance would remain connected to the live wire — so its internal parts would stay at a high potential and could give a fatal shock to anyone touching them.
+  If the fuse were in the neutral wire it would still blow and stop the current, BUT the appliance would remain connected to the live wire, so its internal parts would stay at a high potential and could give a fatal shock to anyone touching them.
   Putting the fuse in the live wire cuts the appliance off from the high potential.
 ```
 
@@ -862,7 +862,7 @@ misconception: time-unit-in-energy
 worked: |
   Convert the time to seconds: 5.0 minutes = 300 s.
   E = VIt = 12 × 3.0 × 300 = 10 800 J.
-  (Using minutes instead of seconds gives 180 J — a common slip.)
+  (Using minutes instead of seconds gives 180 J, a common slip.)
 ```
 
 ```yaml
@@ -879,7 +879,7 @@ marks: 1
 misconception: wet-hands-resistance
 worked: |
   Dry skin has a fairly high resistance, which limits the current through the body.
-  Water (especially impure water) provides a much better conducting path, so the resistance of the body-to-earth path falls. From I = V ÷ R, a lower R with the same mains voltage gives a much larger current — and it is the size of the current through the body that makes a shock dangerous.
+  Water (especially impure water) provides a much better conducting path, so the resistance of the body-to-earth path falls. From I = V ÷ R, a lower R with the same mains voltage gives a much larger current, and it is the size of the current through the body that makes a shock dangerous.
 ```
 
 ```yaml
@@ -976,7 +976,7 @@ misconception: thermistor-potential-divider
 worked: |
   Warming a thermistor DECREASES its resistance.
   Total circuit resistance falls, so the current from the battery increases.
-  Across the fixed resistor, V = IR with R constant and I larger — so the p.d. across the fixed resistor increases. (Equivalently, the thermistor now takes a smaller share of the supply p.d., so the fixed resistor takes a bigger share.)
+  Across the fixed resistor, V = IR with R constant and I larger, so the p.d. across the fixed resistor increases. (Equivalently, the thermistor now takes a smaller share of the supply p.d., so the fixed resistor takes a bigger share.)
 ```
 
 ```yaml
@@ -1009,8 +1009,8 @@ answer: 0
 marks: 1
 misconception: meter-connection-rules
 worked: |
-  An ammeter measures the current THROUGH a component, so it must be in series with it — and its resistance must be very low so that it does not reduce the current it is measuring.
-  A voltmeter measures the p.d. ACROSS a component, so it must be in parallel with it — and its resistance must be very high so that it draws almost no current away from the component.
+  An ammeter measures the current THROUGH a component, so it must be in series with it, and its resistance must be very low so that it does not reduce the current it is measuring.
+  A voltmeter measures the p.d. ACROSS a component, so it must be in parallel with it, and its resistance must be very high so that it draws almost no current away from the component.
 ```
 
 ```yaml
@@ -1131,7 +1131,7 @@ worked: |
 ```yaml
 type: mcq
 topic: "T2 Kinematics"
-stem: "On a speed–time graph, a car's speed rises uniformly from 4.0 m/s to 20 m/s in 8.0 s. Calculate its acceleration."
+stem: "On a speed-time graph, a car's speed rises uniformly from 4.0 m/s to 20 m/s in 8.0 s. Calculate its acceleration."
 options:
   - "0.50 m/s²"
   - "2.0 m/s²"
@@ -1141,7 +1141,7 @@ answer: 1
 marks: 1
 misconception: gradient-not-subtracting-initial
 worked: |
-  Acceleration = gradient of the speed–time graph = change in speed ÷ time taken.
+  Acceleration = gradient of the speed-time graph = change in speed ÷ time taken.
   a = (20 − 4.0) ÷ 8.0 = 16 ÷ 8.0 = 2.0 m/s².
   (Using 20 ÷ 8.0 = 2.5 m/s² forgets to subtract the initial speed.)
 ```
@@ -1149,7 +1149,7 @@ worked: |
 ```yaml
 type: mcq
 topic: "T2 Kinematics"
-stem: "A train travels at a constant speed of 15 m/s for 12 s. Use the area under the speed–time graph to find the distance travelled."
+stem: "A train travels at a constant speed of 15 m/s for 12 s. Use the area under the speed-time graph to find the distance travelled."
 options:
   - "1.25 m"
   - "27 m"
@@ -1159,9 +1159,9 @@ answer: 3
 marks: 1
 misconception: area-under-speed-time
 worked: |
-  Distance = area under the speed–time graph.
+  Distance = area under the speed-time graph.
   The graph is a horizontal line, so the area is a rectangle: 15 × 12 = 180 m.
-  (90 m would be the area of a triangle — wrong shape here, because the speed is constant.)
+  (90 m would be the area of a triangle, wrong shape here, because the speed is constant.)
 ```
 
 ```yaml
@@ -1198,13 +1198,13 @@ worked: |
   Average speed = TOTAL distance ÷ TOTAL time.
   Total distance = 100 + 300 = 400 m; total time = 20 + 30 = 50 s.
   Average speed = 400 ÷ 50 = 8.0 m/s.
-  (Averaging the two speeds — 5.0 and 10 — to get 7.5 m/s is wrong, because the cyclist spends different times at each speed.)
+  (Averaging the two speeds, 5.0 and 10, to get 7.5 m/s is wrong, because the cyclist spends different times at each speed.)
 ```
 
 ```yaml
 type: mcq
 topic: "T2 Kinematics"
-stem: "A distance–time graph for a moving object contains a horizontal (flat) section. What does this section show?"
+stem: "A distance-time graph for a moving object contains a horizontal (flat) section. What does this section show?"
 options:
   - "The object is at rest"
   - "The object is moving at a constant speed"
@@ -1214,9 +1214,9 @@ answer: 0
 marks: 1
 misconception: distance-time-flat-section
 worked: |
-  On a distance–time graph the gradient is the speed.
-  A horizontal line has zero gradient, so the speed is zero — the object is stationary.
-  (On a SPEED–time graph a horizontal line would mean constant speed instead; do not confuse the two graphs.)
+  On a distance-time graph the gradient is the speed.
+  A horizontal line has zero gradient, so the speed is zero, the object is stationary.
+  (On a SPEED-time graph a horizontal line would mean constant speed instead; do not confuse the two graphs.)
 ```
 
 ```yaml
@@ -1229,7 +1229,7 @@ misconception: uniform-deceleration-distance
 worked: |
   For uniform deceleration, average speed = (30 + 0) ÷ 2 = 15 m/s.
   Distance = average speed × time = 15 × 6.0 = 90 m.
-  (This is the same as the area of the triangle under the speed–time graph: ½ × 6.0 × 30 = 90 m.)
+  (This is the same as the area of the triangle under the speed-time graph: ½ × 6.0 × 30 = 90 m.)
 ```
 
 ```yaml
@@ -1271,7 +1271,7 @@ type: mcq
 topic: "T9 Thermal Properties of Matter"
 stem: "A solid is heated at a steady rate. While it is melting, its temperature stays constant. Why?"
 options:
-  - "The energy supplied is used to weaken and break the bonds between the particles — it increases their potential energy, not their kinetic energy"
+  - "The energy supplied is used to weaken and break the bonds between the particles, it increases their potential energy, not their kinetic energy"
   - "The heater automatically stops supplying energy during melting"
   - "The particles stop moving completely while the solid melts"
   - "The energy supplied increases the average kinetic energy of the particles"
@@ -1280,7 +1280,7 @@ marks: 1
 misconception: melting-plateau-explanation
 worked: |
   Temperature is a measure of the AVERAGE KINETIC energy of the particles.
-  During melting, the energy supplied does work against the forces between the particles — it goes into their POTENTIAL energy as the regular lattice breaks down.
+  During melting, the energy supplied does work against the forces between the particles, it goes into their POTENTIAL energy as the regular lattice breaks down.
   Because the average kinetic energy does not change, the temperature does not change, and the graph shows a flat plateau.
 ```
 
@@ -1317,7 +1317,7 @@ misconception: evaporation-cooling
 worked: |
   Only the molecules with the highest kinetic energy have enough energy to escape from the surface of the liquid.
   When they leave, the AVERAGE kinetic energy of the molecules remaining behind is lower.
-  Temperature is a measure of average kinetic energy, so the temperature of the liquid falls — it cools.
+  Temperature is a measure of average kinetic energy, so the temperature of the liquid falls, it cools.
 ```
 
 ```yaml
@@ -1383,7 +1383,7 @@ worked: |
   The pulse travels DOWN and back UP, so it covers twice the depth.
   Total distance = v t = 1500 × 0.60 = 900 m.
   Depth = 900 ÷ 2 = 450 m.
-  (Forgetting to halve gives 900 m — the classic error.)
+  (Forgetting to halve gives 900 m, the classic error.)
 ```
 
 ```yaml
@@ -1399,7 +1399,7 @@ answer: 0
 marks: 1
 misconception: sound-wave-nature
 worked: |
-  In a sound wave the particles of the medium vibrate BACK AND FORTH along the same direction as the wave travels — that makes it longitudinal, and it moves as compressions (particles bunched) and rarefactions (particles spread out).
+  In a sound wave the particles of the medium vibrate BACK AND FORTH along the same direction as the wave travels, that makes it longitudinal, and it moves as compressions (particles bunched) and rarefactions (particles spread out).
   Sound needs a medium, so it cannot travel through a vacuum; it can be reflected (that is how echoes form); and it travels fastest in solids such as steel.
 ```
 
@@ -1416,7 +1416,7 @@ answer: 0
 marks: 1
 misconception: diffraction-gap-size
 worked: |
-  Diffraction is greatest when the gap width is comparable to the wavelength — the waves then spread into almost semicircular wavefronts beyond the gap.
+  Diffraction is greatest when the gap width is comparable to the wavelength, the waves then spread into almost semicircular wavefronts beyond the gap.
   If the gap is much wider than the wavelength, only the edges of the wave bend slightly and the middle passes almost straight through. Amplitude does not control the amount of spreading.
 ```
 
@@ -1480,8 +1480,8 @@ marks: 1
 misconception: filament-lamp-resistance
 worked: |
   A larger current heats the filament to a higher temperature.
-  The metal ions in the filament then vibrate with larger amplitude, so the free electrons collide with them more often and lose energy more readily — the resistance rises.
-  That is why the I–V graph of a filament lamp is an S-shaped curve that flattens off, rather than the straight line of an ohmic conductor.
+  The metal ions in the filament then vibrate with larger amplitude, so the free electrons collide with them more often and lose energy more readily, the resistance rises.
+  That is why the I-V graph of a filament lamp is an S-shaped curve that flattens off, rather than the straight line of an ohmic conductor.
 ```
 
 ```yaml
@@ -1529,7 +1529,7 @@ marks: 1
 misconception: soft-iron-vs-steel
 worked: |
   An electromagnet must switch OFF when the current is switched off.
-  Soft iron is a soft magnetic material: it magnetises strongly when the current flows and loses almost all its magnetism when the current stops — exactly what is needed.
+  Soft iron is a soft magnetic material: it magnetises strongly when the current flows and loses almost all its magnetism when the current stops, exactly what is needed.
   Steel is a hard magnetic material and would stay magnetised, so it is used for permanent magnets instead. Copper and aluminium are not magnetic materials at all.
 ```
 
@@ -1548,7 +1548,7 @@ misconception: field-line-rules
 worked: |
   By convention, field lines outside a magnet point from N to S (they show the direction of the force on a free N pole).
   They can never cross, because the field can only have one direction at any point.
-  Where the lines are CLOSER together, the field is STRONGER — for example just outside the poles.
+  Where the lines are CLOSER together, the field is STRONGER, for example just outside the poles.
 ```
 
 ```yaml
@@ -1583,7 +1583,7 @@ marks: 1
 misconception: magnetic-material-classification
 worked: |
   Iron, steel, nickel and cobalt are magnetic materials and are attracted by a magnet.
-  Copper is not a magnetic material — nor are aluminium, brass, plastic, wood or glass — so it is not attracted, even though copper is an excellent conductor of electricity.
+  Copper is not a magnetic material, nor are aluminium, brass, plastic, wood or glass, so it is not attracted, even though copper is an excellent conductor of electricity.
 ```
 
 ```yaml
@@ -1666,7 +1666,7 @@ marks: 1
 misconception: commutator-purpose
 worked: |
   As the coil passes the vertical position, the forces on its two sides would begin to turn it back the other way.
-  The split-ring commutator swaps the connections to the supply at exactly that moment, so the current through the coil reverses. The force on each side therefore reverses too, and the turning effect keeps acting in the SAME rotational sense — so the coil spins continuously in one direction.
+  The split-ring commutator swaps the connections to the supply at exactly that moment, so the current through the coil reverses. The force on each side therefore reverses too, and the turning effect keeps acting in the SAME rotational sense, so the coil spins continuously in one direction.
 ```
 
 ```yaml
@@ -1720,7 +1720,7 @@ marks: 1
 misconception: stability-factors
 worked: |
   An object topples once its centre of gravity passes outside the edge of its base.
-  A LOWER centre of gravity and a WIDER base both mean the object must be tilted through a larger angle before that happens, so it is more stable — this is why racing cars are low and wide.
+  A LOWER centre of gravity and a WIDER base both mean the object must be tilted through a larger angle before that happens, so it is more stable, this is why racing cars are low and wide.
 ```
 
 ```yaml
@@ -1771,7 +1771,7 @@ misconception: liquid-pressure-rho-g-h
 worked: |
   p = ρ g h.
   p = 1000 × 10 × 5.0 = 50 000 Pa = 5.0 × 10⁴ Pa.
-  Note that this depends only on the DEPTH and the density — the surface area of the lake and the shape of the container make no difference.
+  Note that this depends only on the DEPTH and the density, the surface area of the lake and the shape of the container make no difference.
 ```
 
 ```yaml
@@ -1819,7 +1819,7 @@ misconception: gas-pressure-kinetic-model
 worked: |
   Heating raises the average kinetic energy of the molecules, so they move faster.
   Two effects follow: they hit the walls MORE FREQUENTLY, and each collision produces a GREATER change of momentum, so a greater force.
-  The total force on unit area of wall therefore rises — the pressure increases. The molecules themselves never expand, and none are added.
+  The total force on unit area of wall therefore rises, the pressure increases. The molecules themselves never expand, and none are added.
 ```
 
 ```yaml
@@ -1836,7 +1836,7 @@ marks: 1
 misconception: brownian-motion-explanation
 worked: |
   This is Brownian motion. The smoke particles are large enough to see, but the air molecules hitting them are not.
-  At any instant the bombardment from the invisible air molecules is unequal on different sides of a smoke particle, so there is a small resultant force that keeps changing in size and direction — the particle jerks about randomly.
+  At any instant the bombardment from the invisible air molecules is unequal on different sides of a smoke particle, so there is a small resultant force that keeps changing in size and direction, the particle jerks about randomly.
   It is evidence that the air molecules are small, fast-moving and in continuous random motion.
 ```
 
@@ -1850,7 +1850,7 @@ misconception: pressure-volume-inverse
 worked: |
   At constant temperature, pressure and volume are inversely proportional (p V = constant).
   Halving the volume packs the same molecules into half the space, so they hit unit area of wall twice as often.
-  The pressure therefore doubles — it changes by a factor of 2.
+  The pressure therefore doubles, it changes by a factor of 2.
 ```
 
 ```yaml
@@ -1866,7 +1866,7 @@ answer: 0
 marks: 1
 misconception: charging-by-friction-electrons
 worked: |
-  Only ELECTRONS move during charging by friction — protons are held in the nuclei and cannot be transferred.
+  Only ELECTRONS move during charging by friction, protons are held in the nuclei and cannot be transferred.
   The rod ends up negative, so it must have GAINED electrons; they came from the cloth, which is left with an equal positive charge.
 ```
 
@@ -1883,7 +1883,7 @@ answer: 0
 marks: 1
 misconception: attraction-of-uncharged-object
 worked: |
-  The charged comb attracts the opposite charges in each piece of paper towards its near side and pushes like charges to the far side — charging by induction.
+  The charged comb attracts the opposite charges in each piece of paper towards its near side and pushes like charges to the far side, charging by induction.
   The electrostatic force weakens with distance, so the attraction on the nearer (opposite) charge is larger than the repulsion on the further (like) charge.
   The resultant force is therefore an attraction, and the light paper is pulled up.
 ```
@@ -1902,7 +1902,7 @@ marks: 1
 misconception: electrostatic-hazard-earthing
 worked: |
   Fuel rubbing against the walls of the pipe transfers electrons, so charge builds up on the tanker.
-  If enough charge collects, the p.d. can become large enough to produce a spark — and a spark near fuel vapour could cause a fire or explosion.
+  If enough charge collects, the p.d. can become large enough to produce a spark, and a spark near fuel vapour could cause a fire or explosion.
   Earthing gives the charge a conducting path to the ground, so it leaks away continuously and never builds up.
 ```
 
@@ -1988,7 +1988,7 @@ answer: 1
 marks: 1
 misconception: vector-addition-perpendicular
 worked: |
-  The two forces are at right angles, so add them as vectors using Pythagoras' theorem — do NOT simply add the sizes.
+  The two forces are at right angles, so add them as vectors using Pythagoras' theorem, do NOT simply add the sizes.
   Resultant = √(6.0² + 8.0²) = √(36 + 64) = √100 = 10 N.
   (Adding the numbers gives 14 N, which would only be correct if the forces acted in the same direction.)
 ```
@@ -2042,7 +2042,7 @@ body: "The rate of change of velocity. a = (change in velocity) ÷ (time taken);
 kind: definition
 term: "Mass"
 topic: "T3 Dynamics"
-body: "A measure of the amount of matter in a body; it is also a measure of the body's inertia — its reluctance to change its state of rest or motion. Mass is a scalar, measured in kg, and does not depend on location."
+body: "A measure of the amount of matter in a body; it is also a measure of the body's inertia, its reluctance to change its state of rest or motion. Mass is a scalar, measured in kg, and does not depend on location."
 ```
 
 ```yaml
@@ -2140,7 +2140,7 @@ body: "The amount of thermal energy required to change unit mass of a substance 
 kind: definition
 term: "Wavelength"
 topic: "T10 General Wave Properties"
-body: "The distance between two consecutive points on a wave that are in phase — for example from one crest to the next crest. Symbol λ, measured in metres."
+body: "The distance between two consecutive points on a wave that are in phase, for example from one crest to the next crest. Symbol λ, measured in metres."
 ```
 
 ```yaml
@@ -2203,7 +2203,7 @@ body: "A region in which a magnetic pole (or a magnetic material, or a moving ch
 kind: definition
 term: "Half-life"
 topic: "T20 Radioactivity"
-body: "The time taken for half the unstable nuclei in a sample to decay — equivalently, the time taken for the (background-corrected) activity of the sample to fall to half its original value."
+body: "The time taken for half the unstable nuclei in a sample to decay, equivalently, the time taken for the (background-corrected) activity of the sample to fall to half its original value."
 ```
 
 ```yaml
@@ -2274,7 +2274,7 @@ keywords: [alternating current in primary, changing magnetic field/flux, soft-ir
 kind: precision
 topic: "T19 Electromagnetic Induction"
 prompt: "Explain why electrical energy is transmitted over long distances at very high voltage."
-model: "The power delivered is P = VI, so for a fixed power a higher transmission voltage means a smaller current in the cables. The power wasted as heat in the cables is P = I²R, which depends on the SQUARE of the current, so reducing the current greatly reduces the energy wasted — halving the current cuts the loss to a quarter. The resistance of the cables is not changed by the voltage; it is the smaller current that saves the energy."
+model: "The power delivered is P = VI, so for a fixed power a higher transmission voltage means a smaller current in the cables. The power wasted as heat in the cables is P = I²R, which depends on the SQUARE of the current, so reducing the current greatly reduces the energy wasted, halving the current cuts the loss to a quarter. The resistance of the cables is not changed by the voltage; it is the smaller current that saves the energy."
 keywords: [P = VI, smaller current for same power, power loss = I squared R, less energy wasted as heat, resistance unchanged]
 ```
 
@@ -2282,7 +2282,7 @@ keywords: [P = VI, smaller current for same power, power loss = I squared R, les
 kind: precision
 topic: "T19 Electromagnetic Induction"
 prompt: "The N pole of a magnet is pushed towards a coil connected to a complete circuit. Explain the direction of the induced current and why work must be done to push the magnet in."
-model: "By Lenz's law the induced current flows in the direction that opposes the change producing it. The change is the approach of a N pole, so the induced current makes the near end of the coil a N pole, which repels the incoming magnet. Work must therefore be done against this repulsive force to push the magnet in, and that work is what is transferred into electrical energy in the circuit — this is required by the conservation of energy."
+model: "By Lenz's law the induced current flows in the direction that opposes the change producing it. The change is the approach of a N pole, so the induced current makes the near end of the coil a N pole, which repels the incoming magnet. Work must therefore be done against this repulsive force to push the magnet in, and that work is what is transferred into electrical energy in the circuit, this is required by the conservation of energy."
 keywords: [Lenz's law, opposes the change, induced N pole at near end, repels the magnet, work done against repulsion, conservation of energy]
 ```
 
@@ -2290,7 +2290,7 @@ keywords: [Lenz's law, opposes the change, induced N pole at near end, repels th
 kind: precision
 topic: "T19 Electromagnetic Induction"
 prompt: "The coil of an a.c. generator is turned twice as fast. Describe and explain the two changes to the output voltage-time graph."
-model: "One complete cycle is produced per revolution, so turning the coil twice as fast doubles the number of cycles per second: the frequency doubles and the peaks on the graph are half as far apart. At the same time the coil cuts the magnetic field lines at twice the rate, so by Faraday's law the induced e.m.f. is twice as large: the peak value doubles and the graph is twice as tall. Both changes happen together — a common error is to change only one of them."
+model: "One complete cycle is produced per revolution, so turning the coil twice as fast doubles the number of cycles per second: the frequency doubles and the peaks on the graph are half as far apart. At the same time the coil cuts the magnetic field lines at twice the rate, so by Faraday's law the induced e.m.f. is twice as large: the peak value doubles and the graph is twice as tall. Both changes happen together, a common error is to change only one of them."
 keywords: [frequency doubles, peaks closer together, rate of cutting flux doubles, peak e.m.f. doubles, graph twice as tall]
 ```
 
@@ -2298,7 +2298,7 @@ keywords: [frequency doubles, peaks closer together, rate of cutting flux double
 kind: precision
 topic: "T9 Thermal Properties of Matter"
 prompt: "A solid is heated at a steady rate. Explain why its temperature stays constant on the plateau of the heating curve while it is melting."
-model: "Temperature is a measure of the average kinetic energy of the particles. On the plateau, the energy supplied is used to do work against the forces of attraction between the particles, weakening and breaking the bonds of the lattice — it increases the potential energy of the particles, not their kinetic energy. Because the average kinetic energy does not change, the temperature does not change, even though energy is still being supplied."
+model: "Temperature is a measure of the average kinetic energy of the particles. On the plateau, the energy supplied is used to do work against the forces of attraction between the particles, weakening and breaking the bonds of the lattice, it increases the potential energy of the particles, not their kinetic energy. Because the average kinetic energy does not change, the temperature does not change, even though energy is still being supplied."
 keywords: [temperature measures average kinetic energy, energy breaks/weakens bonds, increases potential energy, kinetic energy unchanged, temperature constant]
 ```
 
@@ -2306,7 +2306,7 @@ keywords: [temperature measures average kinetic energy, energy breaks/weakens bo
 kind: precision
 topic: "T9 Thermal Properties of Matter"
 prompt: "Explain, in terms of molecules, why a liquid cools as it evaporates."
-model: "The molecules in a liquid have a range of speeds and therefore a range of kinetic energies. Only the most energetic molecules near the surface have enough energy to overcome the attractive forces of the other molecules and escape. When these fastest molecules leave, the average kinetic energy of the molecules remaining in the liquid is lower. Since temperature is a measure of the average kinetic energy of the molecules, the temperature of the liquid falls — the liquid cools."
+model: "The molecules in a liquid have a range of speeds and therefore a range of kinetic energies. Only the most energetic molecules near the surface have enough energy to overcome the attractive forces of the other molecules and escape. When these fastest molecules leave, the average kinetic energy of the molecules remaining in the liquid is lower. Since temperature is a measure of the average kinetic energy of the molecules, the temperature of the liquid falls, the liquid cools."
 keywords: [range of kinetic energies, most energetic molecules escape, average kinetic energy of those left falls, temperature measures average KE, liquid cools]
 ```
 
@@ -2314,7 +2314,7 @@ keywords: [range of kinetic energies, most energetic molecules escape, average k
 kind: precision
 topic: "T3 Dynamics"
 prompt: "Explain, in terms of forces, why a skydiver falling from rest eventually reaches a constant terminal velocity."
-model: "At the instant of release the only significant force is the weight, so the resultant force is large and downwards and the skydiver accelerates. As the speed increases, the air resistance increases. The resultant force (weight − air resistance) therefore gets smaller, so the acceleration decreases. Eventually the air resistance becomes equal in size to the weight, the resultant force is zero, the acceleration is zero, and the skydiver falls at a constant, maximum speed — the terminal velocity."
+model: "At the instant of release the only significant force is the weight, so the resultant force is large and downwards and the skydiver accelerates. As the speed increases, the air resistance increases. The resultant force (weight − air resistance) therefore gets smaller, so the acceleration decreases. Eventually the air resistance becomes equal in size to the weight, the resultant force is zero, the acceleration is zero, and the skydiver falls at a constant, maximum speed, the terminal velocity."
 keywords: [weight constant, air resistance increases with speed, resultant force decreases, acceleration decreases, air resistance equals weight, resultant zero, constant velocity]
 ```
 
@@ -2322,7 +2322,7 @@ keywords: [weight constant, air resistance increases with speed, resultant force
 kind: precision
 topic: "T3 Dynamics"
 prompt: "A book rests on a table. State the Newton's third law partner of the weight of the book, and explain how you know the upward push of the table is NOT that partner."
-model: "The weight of the book is the gravitational pull of the Earth on the book, so its third-law partner is the gravitational pull of the book on the Earth — the book pulls the Earth upwards with an equal and opposite force. A third-law pair must be the same type of force and must act on two DIFFERENT bodies. The upward push of the table is a contact force, not a gravitational one, and it acts on the same body (the book), so it cannot be the partner of the weight — it merely balances it."
+model: "The weight of the book is the gravitational pull of the Earth on the book, so its third-law partner is the gravitational pull of the book on the Earth, the book pulls the Earth upwards with an equal and opposite force. A third-law pair must be the same type of force and must act on two DIFFERENT bodies. The upward push of the table is a contact force, not a gravitational one, and it acts on the same body (the book), so it cannot be the partner of the weight, it merely balances it."
 keywords: [gravitational pull of Earth on book, partner: book pulls Earth up, equal and opposite, acts on a different body, same type of force, contact force is not the pair]
 ```
 
@@ -2354,7 +2354,7 @@ keywords: [measure background with source removed, subtract from every reading, 
 kind: precision
 topic: "T20 Radioactivity"
 prompt: "Explain why α-radiation is the most ionising but the least penetrating of the three radiations."
-model: "An α-particle is a helium nucleus: it is relatively massive and carries a charge of +2, which is double that of a β-particle. This large charge exerts a strong attractive or repulsive force on the electrons of the atoms it passes, so it knocks electrons off very readily — it is strongly ionising. Each ionisation takes energy from the α-particle, so because it ionises so heavily it loses its energy over a very short distance and is stopped by a sheet of paper or a few centimetres of air. γ-radiation is uncharged, ionises only weakly, and therefore travels much further before being absorbed."
+model: "An α-particle is a helium nucleus: it is relatively massive and carries a charge of +2, which is double that of a β-particle. This large charge exerts a strong attractive or repulsive force on the electrons of the atoms it passes, so it knocks electrons off very readily, it is strongly ionising. Each ionisation takes energy from the α-particle, so because it ionises so heavily it loses its energy over a very short distance and is stopped by a sheet of paper or a few centimetres of air. γ-radiation is uncharged, ionises only weakly, and therefore travels much further before being absorbed."
 keywords: [alpha is a helium nucleus, charge +2  relatively massive, strongly ionising, loses energy quickly, short range  stopped by paper, gamma uncharged and weakly ionising]
 ```
 
@@ -2378,14 +2378,14 @@ keywords: [average kinetic energy increases, molecules move faster, collide with
 kind: precision
 topic: "T15 D.C. Circuits"
 prompt: "A thermistor is connected in series with a fixed resistor across a battery. Explain what happens to the p.d. across the fixed resistor as the thermistor is warmed."
-model: "Warming the thermistor decreases its resistance. The total resistance of the series circuit therefore falls, so by I = V ÷ R the current from the battery increases. The p.d. across the fixed resistor is V = IR, and since R is constant while I has increased, the p.d. across the fixed resistor increases. Equivalently, the thermistor now takes a smaller share of the supply p.d., so the fixed resistor takes a larger share — the two p.d.s must still add up to the supply p.d."
+model: "Warming the thermistor decreases its resistance. The total resistance of the series circuit therefore falls, so by I = V ÷ R the current from the battery increases. The p.d. across the fixed resistor is V = IR, and since R is constant while I has increased, the p.d. across the fixed resistor increases. Equivalently, the thermistor now takes a smaller share of the supply p.d., so the fixed resistor takes a larger share, the two p.d.s must still add up to the supply p.d."
 keywords: [resistance of thermistor decreases, total resistance falls, current increases, V = IR across fixed resistor, p.d. across fixed resistor increases, shares add to supply p.d.]
 ```
 
 ```yaml
 kind: precision
 topic: "T14 Current of Electricity"
-prompt: "Explain why the I–V graph for a filament lamp is a curve that becomes less steep, rather than a straight line."
+prompt: "Explain why the I-V graph for a filament lamp is a curve that becomes less steep, rather than a straight line."
 model: "As the current through the lamp increases, more energy is transferred to the filament each second, so the filament becomes hotter. The metal ions in the filament then vibrate with a larger amplitude, so the free electrons drifting through the metal collide with them more often and are obstructed more. The resistance of the filament therefore increases as the current increases. Because R = V ÷ I is no longer constant, the graph is not a straight line: the current rises less and less for each further increase in p.d., so the curve flattens."
 keywords: [current increases, filament gets hotter, ions vibrate more, electrons collide more often, resistance increases, not ohmic / graph curves]
 ```
@@ -2394,7 +2394,7 @@ keywords: [current increases, filament gets hotter, ions vibrate more, electrons
 kind: precision
 topic: "T13 Static Electricity"
 prompt: "Explain why a charged plastic rod attracts a small piece of uncharged paper."
-model: "The charged rod exerts a force on the charges within the paper. The charges opposite in sign to the rod are attracted to the near side of the paper and the like charges are pushed to the far side — charge has been separated by induction, although the paper as a whole is still uncharged. The electrostatic force gets weaker with distance, so the attraction on the nearer (unlike) charges is greater than the repulsion on the further (like) charges. There is therefore a resultant force of attraction, and because the paper is very light it is pulled up to the rod."
+model: "The charged rod exerts a force on the charges within the paper. The charges opposite in sign to the rod are attracted to the near side of the paper and the like charges are pushed to the far side, charge has been separated by induction, although the paper as a whole is still uncharged. The electrostatic force gets weaker with distance, so the attraction on the nearer (unlike) charges is greater than the repulsion on the further (like) charges. There is therefore a resultant force of attraction, and because the paper is very light it is pulled up to the rod."
 keywords: [charge separation by induction, unlike charge on the near side, like charge pushed to the far side, force weakens with distance, attraction greater than repulsion, resultant attraction]
 ```
 

@@ -2,7 +2,7 @@ import { realTopCalls } from "@/lib/forecast-tables";
 import { HeatBar } from "./heat";
 
 // The hero visual: the REAL top calls from the Chemistry (Pure) Forecast's
-// 2026 prediction table — No. 1 in the open, the rest masked until purchase.
+// 2026 prediction table, No. 1 in the open, the rest masked until purchase.
 export function ForecastCard() {
   const rows = realTopCalls("o-level", "chemistry-pure", 5);
   return (
@@ -19,7 +19,7 @@ export function ForecastCard() {
         </span>
       </div>
       <div className="mt-5 space-y-3">
-        {/* Only the No. 1 call ships to the browser — masked rows carry no
+        {/* Only the No. 1 call ships to the browser, masked rows carry no
             real data (a topic key/prop would leak via the RSC payload). */}
         {rows.map((row, i) =>
           i === 0 ? (
@@ -30,7 +30,7 @@ export function ForecastCard() {
         )}
       </div>
       <p className="mt-5 border-t border-hairline pt-3 font-mono text-xs text-body">
-        The real 2026 table&apos;s top call — the full PDF tiers every topic
+        The real 2026 table&apos;s top call, the full PDF tiers every topic
       </p>
     </div>
   );

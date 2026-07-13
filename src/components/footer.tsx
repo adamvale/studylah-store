@@ -14,7 +14,7 @@ const SHOP = [
 
 const TRUST = [
   { href: "/accuracy", label: "Accuracy scorecard" },
-  { href: "/diagnostic", label: "Predict your mark — free" },
+  { href: "/diagnostic", label: "Predict your mark, free" },
   { href: "/blog", label: "Blog" },
   { href: "/faq", label: "FAQ and guarantee" },
 ];
@@ -95,7 +95,7 @@ export function Footer() {
           </nav>
         </div>
         <div className="mt-10 border-t border-white/15 pt-6">
-          {/* Mandated disclaimer — verbatim, see src/lib/compliance.ts */}
+          {/* Mandated disclaimer, verbatim, see src/lib/compliance.ts */}
           <p className="text-xs leading-relaxed text-white/60">
             {STANDARD_DISCLAIMER}
           </p>

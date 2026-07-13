@@ -43,7 +43,7 @@ export async function POST(request: Request) {
     signChangeEmailToken(customerId, newEmail)
   )}`;
 
-  // Verification link to the NEW address — clicking it applies the change.
+  // Verification link to the NEW address, clicking it applies the change.
   try {
     await sendEmail({
       to: newEmail,
@@ -60,7 +60,7 @@ export async function POST(request: Request) {
           </a>
         </p>
         <p style="font-size:12px;color:#3d4e63;line-height:1.6;margin:0;">
-          Didn't request this? You can ignore this email — nothing changes.
+          Didn't request this? You can ignore this email, nothing changes.
         </p>
       `),
       text: `Confirm your new StudyLah email: ${url}\n\nThis link works for 30 minutes. If you didn't request it, ignore this email.`,

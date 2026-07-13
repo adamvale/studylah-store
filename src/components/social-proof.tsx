@@ -1,6 +1,6 @@
 import { TESTIMONIALS } from "@/lib/testimonials";
 
-// Peer proof, right under the hero — the herd signal the data scorecard can't
+// Peer proof, right under the hero, the herd signal the data scorecard can't
 // give. Renders NOTHING until real, permissioned quotes exist in
 // src/lib/testimonials.ts, so the live site never shows a fabricated review.
 export function SocialProof() {

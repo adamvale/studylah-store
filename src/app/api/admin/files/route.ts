@@ -6,7 +6,7 @@ import { prisma } from "@/lib/db";
 import { isAdmin } from "@/lib/server/admin-auth";
 import { serverConfig } from "@/lib/server/config";
 
-/** Digest of what is actually on disk — proves an upload landed intact. */
+/** Digest of what is actually on disk, proves an upload landed intact. */
 async function digest(filePath: string) {
   try {
     const abs = path.join(serverConfig.pdfStorageDir, filePath);

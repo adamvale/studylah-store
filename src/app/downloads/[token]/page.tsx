@@ -75,7 +75,7 @@ export default async function DownloadsPage({
           We don&apos;t recognise this link
         </h1>
         <p className="mt-3 text-body">
-          The download link may be incomplete — check it copied fully from your
+          The download link may be incomplete, check it copied fully from your
           email. If it still doesn&apos;t work, reply to your order email or
           write to{" "}
           <a href="mailto:hello@studylah.education" className="font-medium text-accent underline">
@@ -128,7 +128,7 @@ export default async function DownloadsPage({
     <div className="mx-auto max-w-3xl px-4 py-12">
       {isMock && (
         <p className="mb-6 rounded-lg border border-heat-3 bg-heat-3/20 px-4 py-2.5 text-sm font-medium text-ink">
-          Test order — created in mock mode, no payment was taken.
+          Test order, created in mock mode, no payment was taken.
         </p>
       )}
       <p className="font-mono text-xs font-medium text-body">
@@ -140,7 +140,7 @@ export default async function DownloadsPage({
       <p className="mt-2 max-w-xl text-body">
         Each file is watermarked to your email address. Links work for{" "}
         {serverConfig.downloadExpiryDays} days from purchase, up to{" "}
-        {serverConfig.downloadMaxUses} downloads per file — save them somewhere
+        {serverConfig.downloadMaxUses} downloads per file, save them somewhere
         safe.
       </p>
 
@@ -148,7 +148,7 @@ export default async function DownloadsPage({
         {groupByProduct(order.items).map((group) => (
           <section key={group.key}>
             <h2 className="font-display text-lg font-bold text-ink">
-              {group.subjectName} — {group.productName}
+              {group.subjectName}, {group.productName}
             </h2>
             <p className="text-xs text-body">
               {group.levelName} · {group.tier} tier
@@ -187,7 +187,7 @@ export default async function DownloadsPage({
                 </a>
               ) : (
                 <p className="text-sm text-body">
-                  {expired ? "Link expired" : "Download limit reached"} —{" "}
+                  {expired ? "Link expired" : "Download limit reached"}, {" "}
                   <a
                     href="mailto:hello@studylah.education"
                     className="font-medium text-accent underline"
@@ -205,7 +205,7 @@ export default async function DownloadsPage({
       </div>
 
       <p className="mt-8 text-xs text-body">
-        Sharing these files breaks the licence — every page carries your email
+        Sharing these files breaks the licence, every page carries your email
         and order number. Something wrong with a file? We&apos;ll replace or
         refund it: hello@studylah.education.
       </p>

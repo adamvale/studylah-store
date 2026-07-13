@@ -10,13 +10,13 @@ import { ownedSubjects, type OwnedSubject } from "./study";
 // 100-mark paper is currently "in play" for this student.
 //
 //   topic marks   = tier weight, normalised so each subject's topics sum to
-//                   100 (VERY HIGH counts 6, HIGH 4, MODERATE 2, WATCH 1 —
+//                   100 (VERY HIGH counts 6, HIGH 4, MODERATE 2, WATCH 1, 
 //                   mirroring how heavily past papers lean on top-tier calls)
 //   risk fraction = how unfinished the topic is (study-plan status), plus a
 //                   penalty per unresolved mistake logged on that topic
 //   marks at risk = Σ topic marks × risk fraction
 //
-// It is a MODEL for prioritising effort — every surface that shows it must
+// It is a MODEL for prioritising effort, every surface that shows it must
 // carry the caveat that it is not a prediction of anyone's actual paper.
 // ─────────────────────────────────────────────────────────────────────────
 
@@ -28,7 +28,7 @@ const TIER_WEIGHT: Record<ForecastTier, number> = {
 };
 
 // Status 0 untouched · 1 revised · 2 practised · 3 confident. Confident keeps
-// a 10% residual — honest (nothing is banked until the paper is sat) and it
+// a 10% residual, honest (nothing is banked until the paper is sat) and it
 // keeps "retain it" work visible.
 const STATUS_RISK = [1.0, 0.7, 0.4, 0.1] as const;
 
@@ -36,14 +36,14 @@ const MISTAKE_PENALTY = 0.15; // per unresolved mistake on the topic
 const MISTAKE_PENALTY_CAP = 0.3;
 
 export const RISK_CAVEAT =
-  "Modelled from the forecast tiers and your own progress so you can rank your effort — not a prediction or promise about your actual paper.";
+  "Modelled from the forecast tiers and your own progress so you can rank your effort, not a prediction or promise about your actual paper.";
 
-// Topic labels differ slightly between sources ("N5 — Algebraic Manipulation"
+// Topic labels differ slightly between sources ("N5, Algebraic Manipulation"
 // vs "Algebraic Manipulation"). Strip any leading section code + dash before
 // comparing.
 export function normTopic(t: string): string {
   return t
-    .replace(/^[A-Z]{1,3}\d{1,2}(\.\d)?\s*(—|–|-)?\s*/, "")
+    .replace(/^[A-Z]{1,3}\d{1,2}(\.\d)?\s*(, |-|-)?\s*/, "")
     .toLowerCase()
     .trim();
 }
@@ -52,7 +52,7 @@ export interface TopicRisk {
   topic: string;
   tier: ForecastTier;
   marks: number; // share of a 100-mark paper
-  status: number; // 0–3
+  status: number; // 0-3
   mistakes: number; // unresolved entries matched to this topic
   atRisk: number; // marks × risk fraction
 }
@@ -62,7 +62,7 @@ export interface SubjectRisk {
   slug: string;
   name: string;
   levelShort: string;
-  marksAtRisk: number; // 0–100
+  marksAtRisk: number; // 0-100
   // Decomposition for the meter card (rounded, so they may not sum exactly).
   fromVeryHigh: number;
   fromHigh: number;
@@ -84,7 +84,7 @@ function topicsWithTiers(s: OwnedSubject): { topic: string; tier: ForecastTier }
   }));
 }
 
-// The tier a single topic carries — used to price topic-progress XP by how
+// The tier a single topic carries, used to price topic-progress XP by how
 // much the forecast says the topic matters. Null when the topic isn't in the
 // subject's table (e.g. a renamed label).
 export function tierForTopic(
@@ -205,7 +205,7 @@ export interface RescueDay {
 export interface RescuePlan {
   daysUntilPaper: number;
   planDays: RescueDay[];
-  extras: RescueItem[]; // didn't fit the window — "if you find extra time"
+  extras: RescueItem[]; // didn't fit the window, "if you find extra time"
   protectedBySubject: { name: string; levelShort: string; marks: number }[];
   unresolvedMistakes: number;
 }
@@ -213,7 +213,7 @@ export interface RescuePlan {
 const ACTION_BY_STATUS = [
   "Learn it from the Forecast + your notes",
   "Drill it with Vault questions",
-  "Timed practice — full questions, no notes",
+  "Timed practice, full questions, no notes",
 ] as const;
 
 const SLOTS_PER_DAY = 3;

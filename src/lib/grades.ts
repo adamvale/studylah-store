@@ -26,10 +26,10 @@ export function gradeRank(level: string, grade: string): number {
   return i === -1 ? 99 : i;
 }
 
-// The optimistic end of an estimate range like "B3–B4" or "Grade 2–3" →
+// The optimistic end of an estimate range like "B3-B4" or "Grade 2-3" →
 // "B3" / "Grade 2". "below E8" has no range and returns as-is.
 export function estimateTop(estimate: string): string {
-  return estimate.split("–")[0].trim();
+  return estimate.split("-")[0].trim();
 }
 
 // Is `target` at least as good as the top of the estimate range?

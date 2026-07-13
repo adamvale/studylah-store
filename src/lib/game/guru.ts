@@ -13,7 +13,7 @@ import type { ImportedCard } from "@/lib/server/question-bank";
 // ─────────────────────────────────────────────────────────────────────────
 // The Subject Guru's lesson deck. Each owned subject has a Guru who TEACHES
 // a short, level-appropriate lesson (drawn from the original in-house
-// teaching library — never scraped from any paper) and then sets a
+// teaching library, never scraped from any paper) and then sets a
 // check-question from that subject's own bank. Content is selected by the
 // subject's TopicFamily; the check-question (server-side, elsewhere) comes
 // from the exact level+slug set, so O-Level Pure, O-Level Science and
@@ -97,7 +97,7 @@ function importedBeat(card: ImportedCard): LessonBeat | null {
   }
 }
 
-// Build a fresh short lesson (2–3 beats) for a subject's Guru. Imported author
+// Build a fresh short lesson (2-3 beats) for a subject's Guru. Imported author
 // content for the exact level+slug wins; otherwise the shared family library
 // is used. Either way the paired check-question enforces the depth.
 export function guruLesson(
@@ -159,7 +159,7 @@ export function guruLesson(
       beats.push({ tag: "COMMAND WORD", title: w.word, body: w.means });
     }
   }
-  // POA: a statement format — the free format marks.
+  // POA: a statement format, the free format marks.
   if (family === "poa") {
     for (const t of pick(POA_TEMPLATES, 1)) {
       beats.push({

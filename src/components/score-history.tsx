@@ -56,7 +56,7 @@ export function ScoreHistorySection({ cards }: { cards: ProgressCard[] }) {
         <h3 className="font-display text-lg font-bold text-ink">Your progress</h3>
         <p className="mt-2 text-sm text-body">
           Take a &ldquo;Predict your mark&rdquo; check and your score history
-          shows up here — every retake charts how much you&apos;ve moved.
+          shows up here, every retake charts how much you&apos;ve moved.
         </p>
       </div>
     );
@@ -107,7 +107,7 @@ export function ScoreHistorySection({ cards }: { cards: ProgressCard[] }) {
                 className="font-medium text-accent hover:underline"
               >
                 {c.weeksSince >= 2
-                  ? `Retake — it's been ${c.weeksSince} weeks →`
+                  ? `Retake, it's been ${c.weeksSince} weeks →`
                   : "Retake the check →"}
               </Link>
             </div>

@@ -6,11 +6,11 @@ import type { TopicFamily } from "@/lib/catalogue";
 // ⚠️  FOR OWNER REVIEW. This is a conservative STARTER set authored in-house
 // (not extracted from any paper). Every item is factual O/N-level material,
 // but expand and verify against the current syllabus before leaning on it.
-// Chemistry uses proper Unicode notation (H₂SO₄, Fe²⁺) — see the
+// Chemistry uses proper Unicode notation (H₂SO₄, Fe²⁺), see the
 // diagnostic-chem-notation note; never regex it.
 // ─────────────────────────────────────────────────────────────────────────
 
-// 1. Keyword-precision trainer (sciences) — the exact marker phrasing ---------
+// 1. Keyword-precision trainer (sciences), the exact marker phrasing ---------
 export interface PrecisionCard {
   topic: string;
   prompt: string;
@@ -24,7 +24,7 @@ export const PRECISION: Partial<Record<TopicFamily, PrecisionCard[]>> = {
       topic: "Rate of reaction",
       prompt: "Explain, in terms of particles, why a higher temperature increases the rate of reaction.",
       modelAnswer:
-        "At a higher temperature particles have more kinetic energy and move faster, so there are more frequent collisions AND a greater proportion of collisions have energy above the activation energy — so the frequency of effective collisions increases.",
+        "At a higher temperature particles have more kinetic energy and move faster, so there are more frequent collisions AND a greater proportion of collisions have energy above the activation energy, so the frequency of effective collisions increases.",
       keywords: ["kinetic energy", "frequency", "effective collisions", "activation energy"],
     },
     {
@@ -89,7 +89,7 @@ export const PRECISION: Partial<Record<TopicFamily, PrecisionCard[]>> = {
       topic: "Enzymes",
       prompt: "Explain why an enzyme stops working at high temperature.",
       modelAnswer:
-        "The high temperature denatures the enzyme: the active site changes shape, so the substrate no longer fits and enzyme–substrate complexes cannot form.",
+        "The high temperature denatures the enzyme: the active site changes shape, so the substrate no longer fits and enzyme-substrate complexes cannot form.",
       keywords: ["denatured", "active site", "changes shape", "substrate", "no longer fits"],
     },
     {
@@ -132,7 +132,7 @@ export const PRECISION: Partial<Record<TopicFamily, PrecisionCard[]>> = {
   ],
 };
 
-// 2. Definitions bank (flashcards) — the verbatim-worthy definitions ----------
+// 2. Definitions bank (flashcards), the verbatim-worthy definitions ----------
 export interface DefinitionCard {
   term: string;
   definition: string;
@@ -169,7 +169,7 @@ export const DEFINITIONS: Partial<Record<TopicFamily, DefinitionCard[]>> = {
   ],
 };
 
-// 3. Qualitative-analysis driller (chemistry) — observation → conclusion ------
+// 3. Qualitative-analysis driller (chemistry), observation → conclusion ------
 export interface QaDrill {
   test: string;
   observation: string;
@@ -192,7 +192,7 @@ export const QA_DRILLS: QaDrill[] = [
   { test: "Hold damp litmus paper in the gas", observation: "Damp blue litmus turns red, then is bleached white", conclusion: "Cl₂ gas" },
 ];
 
-// 4. Careless-error checklist (maths) — check before you move on ---------------
+// 4. Careless-error checklist (maths), check before you move on ---------------
 export interface CarelessItem {
   topic: string;
   checks: string[];
@@ -204,19 +204,19 @@ export const CARELESS: Partial<Record<TopicFamily, CarelessItem[]>> = {
     { topic: "Indices", checks: ["Add powers when multiplying, subtract when dividing.", "Anything to the power 0 is 1.", "A negative power means reciprocal, not a negative number."] },
     { topic: "Trigonometry", checks: ["Is the calculator in DEGREES, not radians?", "Did you use the correct ratio (SOH-CAH-TOA)?", "For obtuse angles, remember the second solution."] },
     { topic: "Mensuration", checks: ["Are all lengths in the same unit before substituting?", "Did you use radius, not diameter, in the formula?", "Did you include units (cm², cm³) in the final answer?"] },
-    { topic: "Statistics", checks: ["Did you order the data before finding the median?", "Mean = total ÷ frequency, not ÷ number of classes.", "Read the axis scale carefully — it may not go up in 1s."] },
+    { topic: "Statistics", checks: ["Did you order the data before finding the median?", "Mean = total ÷ frequency, not ÷ number of classes.", "Read the axis scale carefully, it may not go up in 1s."] },
     { topic: "Rounding", checks: ["Round only at the FINAL step, not mid-working.", "3 significant figures unless told otherwise.", "Money to 2 decimal places."] },
   ],
   amath: [
-    { topic: "Differentiation", checks: ["Chain rule: × the derivative of the inside.", "Product/quotient rule — don't just differentiate each part.", "Set dy/dx = 0 for stationary points, then test the nature."] },
+    { topic: "Differentiation", checks: ["Chain rule: × the derivative of the inside.", "Product/quotient rule, don't just differentiate each part.", "Set dy/dx = 0 for stationary points, then test the nature."] },
     { topic: "Integration", checks: ["Add + c for indefinite integrals.", "Increase the power by 1, then divide by the new power.", "Swap limits → change the sign."] },
     { topic: "Trigonometric identities", checks: ["Quote the identity before using it.", "Watch the range for the number of solutions.", "Convert everything to sin/cos before simplifying."] },
     { topic: "Logarithms & exponentials", checks: ["log a + log b = log(ab), not log(a+b).", "Check the base of the log.", "e^(ln x) = x and ln(e^x) = x."] },
-    { topic: "Binomial theorem", checks: ["The general term uses (n choose r) — check r.", "Powers of the two terms add to n.", "Include the sign of a negative term."] },
+    { topic: "Binomial theorem", checks: ["The general term uses (n choose r), check r.", "Powers of the two terms add to n.", "Include the sign of a negative term."] },
   ],
 };
 
-// 5. SBQ skill ladder (humanities) — shared across geog/hist/social studies ---
+// 5. SBQ skill ladder (humanities), shared across geog/hist/social studies ---
 export interface SbqRung {
   rung: string;
   what: string;
@@ -224,16 +224,16 @@ export interface SbqRung {
 }
 
 export const SBQ_LADDER: SbqRung[] = [
-  { rung: "Comprehension / inference", what: "Draw a valid message from the source — go beyond copying.", how: "Start 'This source suggests that…' then support it with a detail you quote from the source." },
+  { rung: "Comprehension / inference", what: "Draw a valid message from the source, go beyond copying.", how: "Start 'This source suggests that…' then support it with a detail you quote from the source." },
   { rung: "Purpose", what: "Explain WHY the source was produced.", how: "Link provenance (who, when, why) to the intended effect on the audience. 'The author wanted the reader to…'" },
   { rung: "Comparison", what: "Compare two sources by content AND message.", how: "Match a point from A with a point from B; say whether they agree or disagree, and quote both." },
-  { rung: "Reliability / utility", what: "Judge how far a source can be trusted or used.", how: "Weigh provenance and tone against your own knowledge — not 'it's biased so it's useless'." },
+  { rung: "Reliability / utility", what: "Judge how far a source can be trusted or used.", how: "Weigh provenance and tone against your own knowledge, not 'it's biased so it's useless'." },
   { rung: "Evaluation / 'How far do you agree'", what: "Reach a supported judgement using several sources.", how: "Group sources for and against, cross-reference them, then give a reasoned final stand." },
 ];
 
 export const COMMAND_WORDS: { word: string; means: string }[] = [
-  { word: "Describe", means: "Say what you see — the key features, no reasons needed." },
-  { word: "Explain", means: "Give reasons — why or how, with a 'because'." },
+  { word: "Describe", means: "Say what you see, the key features, no reasons needed." },
+  { word: "Explain", means: "Give reasons, why or how, with a 'because'." },
   { word: "Compare", means: "Point out similarities AND differences, side by side." },
   { word: "Assess / Evaluate", means: "Weigh both sides and reach a judgement." },
   { word: "How far do you agree", means: "Argue for and against, then take a clear, supported stand." },
@@ -242,7 +242,7 @@ export const COMMAND_WORDS: { word: string; means: string }[] = [
 export const PEEL_TEMPLATE = [
   { letter: "P", label: "Point", detail: "State your argument directly, answering the question." },
   { letter: "E", label: "Evidence", detail: "Give specific facts, dates, statistics or a source detail." },
-  { letter: "E", label: "Explain", detail: "Link the evidence back to the point — why does it matter?" },
+  { letter: "E", label: "Explain", detail: "Link the evidence back to the point, why does it matter?" },
   { letter: "L", label: "Link", detail: "Tie back to the question, or lead to your next point." },
 ];
 
@@ -264,7 +264,7 @@ export const POA_TEMPLATES: PoaTemplate[] = [
       "Less: Expenses (wages, rent, utilities, depreciation…)",
       "= Profit for the year",
     ],
-    note: "Format marks are free marks — get the headings and the order right every time.",
+    note: "Format marks are free marks, get the headings and the order right every time.",
   },
   {
     name: "Statement of Financial Position (Balance Sheet)",
@@ -285,7 +285,7 @@ export const POA_TEMPLATES: PoaTemplate[] = [
       "Credit column: liabilities, income, capital, sales",
       "Totals of both columns must be equal",
     ],
-    note: "A quick memory aid: DEAD-CLIC — Debits: Expenses, Assets, Drawings; Credits: Liabilities, Income, Capital.",
+    note: "A quick memory aid: DEAD-CLIC, Debits: Expenses, Assets, Drawings; Credits: Liabilities, Income, Capital.",
   },
 ];
 

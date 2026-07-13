@@ -11,7 +11,7 @@ import { TierPill } from "@/components/heat";
 // Native: chunky tappable quest cards with pixel XP bounties, the first open
 // quest glowing, and the weekly boss (the student's biggest marks-at-risk
 // topic, straight from the risk engine) framed as a fight. Compliance: the
-// boss is a topic to master, XP rewards the work — never the grade.
+// boss is a topic to master, XP rewards the work, never the grade.
 
 export interface QuestItem {
   done: boolean;

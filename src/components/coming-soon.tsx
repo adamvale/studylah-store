@@ -19,7 +19,7 @@ export function ComingSoon({
       <p className="mt-3 text-body">
         Forecasts, question vaults, and rehearsals for {name} are in the works.
         {detail ? ` ${detail}` : ""} Leave your email and you&apos;ll be first
-        to know — early-bird pricing included.
+        to know, early-bird pricing included.
       </p>
       <div className="mt-7">
         <EmailCaptureForm source={`waitlist-${name}`} buttonLabel="Join the waitlist" />

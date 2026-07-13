@@ -17,7 +17,7 @@ export default async function TimerPage() {
           🐉 Boss battle: the Final Rehearsal
         </h2>
         <p className="mt-1 text-sm text-body">
-          The paper is the boss — sit it before you meet it. The Final
+          The paper is the boss, sit it before you meet it. The Final
           Rehearsal only counts under exam conditions: pick your paper&apos;s
           length, start the clock, and don&apos;t stop writing until it chimes.
         </p>

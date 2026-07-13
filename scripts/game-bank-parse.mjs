@@ -14,7 +14,7 @@ const VALID_KINDS = new Set(["definition", "precision", "qa", "careless", "sbq",
 const DIFFICULTY_WORDS = { easy: 1, medium: 2, hard: 3 };
 
 // Difficulty tier for a question (1 easy / 2 medium / 3 hard). An explicit
-// `difficulty:` in the YAML wins (number 1–3 or easy/medium/hard); otherwise it
+// `difficulty:` in the YAML wins (number 1-3 or easy/medium/hard); otherwise it
 // is inferred from the question's own signals so existing content is graded
 // sensibly without hand-editing every block.
 function questionDifficulty(doc) {
@@ -69,7 +69,7 @@ export function parseGameBankFile(md, file = "?") {
     try {
       doc = yaml.load(raw);
     } catch (e) {
-      errors.push(`${file}: bad yaml block — ${e.message}`);
+      errors.push(`${file}: bad yaml block, ${e.message}`);
       continue;
     }
     if (!doc || typeof doc !== "object") continue;

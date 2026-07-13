@@ -20,7 +20,7 @@ answer: 2
 marks: 1
 misconception: brackets-in-formula-mass
 worked: |
-  Ca(OH)₂ contains 1 Ca, 2 O and 2 H — the bracket multiplies BOTH the O and the H by 2.
+  Ca(OH)₂ contains 1 Ca, 2 O and 2 H, the bracket multiplies BOTH the O and the H by 2.
   Mᵣ = 40 + 2 × (16 + 1) = 40 + 34 = 74.
   Reading it as 40 + 16 + 1 = 57 ignores the subscript outside the bracket.
 ```
@@ -39,7 +39,7 @@ marks: 1
 misconception: mole-mass-formula
 worked: |
   n = mass ÷ molar mass = 12 ÷ 24 = 0.50 mol.
-  Dividing the wrong way round (24 ÷ 12) gives 2.0 mol — the usual slip.
+  Dividing the wrong way round (24 ÷ 12) gives 2.0 mol, the usual slip.
 ```
 
 ```yaml
@@ -92,7 +92,7 @@ marks: 1
 misconception: limiting-reactant-by-mass
 worked: |
   n(Mg) = 4.8 ÷ 24 = 0.20 mol. n(O₂) = 1.6 ÷ 32 = 0.050 mol.
-  The equation needs 2 mol Mg per 1 mol O₂, so 0.20 mol Mg would need 0.10 mol O₂ — more than is present.
+  The equation needs 2 mol Mg per 1 mol O₂, so 0.20 mol Mg would need 0.10 mol O₂, more than is present.
   Oxygen runs out first. 0.050 mol O₂ reacts with 2 × 0.050 = 0.10 mol Mg, leaving 0.10 mol Mg unreacted.
 ```
 
@@ -143,7 +143,7 @@ answer: 3
 marks: 1
 misconception: ionic-equation-spectators
 worked: |
-  In an acid-alkali neutralisation the metal ion and the acid's anion stay in solution unchanged — they are spectator ions.
+  In an acid-alkali neutralisation the metal ion and the acid's anion stay in solution unchanged, they are spectator ions.
   Cross them out and what is left is H⁺(aq) + OH⁻(aq) → H₂O(l).
   This one equation describes every acid-alkali neutralisation.
 ```
@@ -321,7 +321,7 @@ marks: 1
 misconception: fraction-boiling-point-trend
 worked: |
   The column is hottest at the bottom and coolest at the top.
-  Only molecules with low boiling points — the short-chain fractions — stay as vapour long enough to rise to the top before condensing.
+  Only molecules with low boiling points, the short-chain fractions, stay as vapour long enough to rise to the top before condensing.
   Long-chain fractions have high boiling points and condense low down.
 ```
 
@@ -346,7 +346,7 @@ worked: |
 ```yaml
 type: mcq
 topic: "C11 Organic Chemistry"
-stem: "Part of a polymer chain is —CH₂—CH(CH₃)—CH₂—CH(CH₃)—. What is the monomer?"
+stem: "Part of a polymer chain is, CH₂, CH(CH₃), CH₂, CH(CH₃), . What is the monomer?"
 options:
   - "propene"
   - "propane"
@@ -356,7 +356,7 @@ answer: 0
 marks: 1
 misconception: monomer-deduction
 worked: |
-  The repeat unit is —CH₂—CH(CH₃)—, which contains three carbon atoms.
+  The repeat unit is, CH₂, CH(CH₃), , which contains three carbon atoms.
   To get back to the monomer, replace the two bonds leaving the repeat unit with a C=C double bond: CH₂=CHCH₃.
   That is propene, so the polymer is poly(propene).
 ```
@@ -447,7 +447,7 @@ marks: 1
 misconception: hydrogenation-of-oils
 worked: |
   Vegetable oils are polyunsaturated: their molecules contain several C=C double bonds.
-  Hydrogen adds across some of these double bonds — an addition reaction.
+  Hydrogen adds across some of these double bonds, an addition reaction.
   With fewer C=C bonds the melting point rises, so the liquid oil becomes a solid spread.
 ```
 
@@ -466,7 +466,7 @@ misconception: biofuel-carbon-offset
 worked: |
   Bioethanol is made by fermenting sugars from crops that are regrown each season, so it is renewable.
   While the crops grow they take in carbon dioxide by photosynthesis, which offsets much of the carbon dioxide given out when the fuel is burned.
-  Burning it does still release carbon dioxide — the point is the offset, not zero emission.
+  Burning it does still release carbon dioxide, the point is the offset, not zero emission.
 ```
 
 ```yaml
@@ -519,7 +519,7 @@ marks: 1
 misconception: ion-formation-electrons
 worked: |
   Metals lose their valence electrons to reach a noble-gas arrangement.
-  Sodium loses its single outer electron, leaving 10 electrons: 2,8 — the same as neon.
+  Sodium loses its single outer electron, leaving 10 electrons: 2,8, the same as neon.
   Losing one negative electron leaves the ion with a single positive charge, Na⁺. Protons never move.
 ```
 
@@ -555,7 +555,7 @@ marks: 1
 misconception: intermolecular-vs-bond-strength
 worked: |
   Boiling separates whole particles from one another; it does not break the bonds inside a molecule.
-  For carbon dioxide only the weak forces BETWEEN molecules must be overcome — very little energy is needed.
+  For carbon dioxide only the weak forces BETWEEN molecules must be overcome, very little energy is needed.
   For sodium chloride the strong attractions between oppositely charged ions throughout the giant lattice must be overcome, needing much more energy.
 ```
 
@@ -606,7 +606,7 @@ answer: 2
 marks: 1
 misconception: alloy-hardness
 worked: |
-  A pure metal has atoms of one size in regular layers that can slide when a force is applied — that is why it is soft.
+  A pure metal has atoms of one size in regular layers that can slide when a force is applied, that is why it is soft.
   An alloy mixes in atoms of a different size, distorting the layers.
   The distorted layers cannot slide easily, so the alloy is harder.
 ```
@@ -660,7 +660,7 @@ answer: 3
 marks: 1
 misconception: element-compound-mixture
 worked: |
-  Air contains nitrogen, oxygen, argon and carbon dioxide that are not chemically joined and can vary in proportion — a mixture.
+  Air contains nitrogen, oxygen, argon and carbon dioxide that are not chemically joined and can vary in proportion, a mixture.
   Carbon dioxide and sodium chloride are compounds (elements chemically combined in fixed ratios).
   Copper is an element.
 ```
@@ -769,7 +769,7 @@ misconception: noble-gas-unreactivity
 worked: |
   A noble gas atom already has a full outer shell (helium 2; the others 8).
   Because that arrangement is already stable, the atom has no tendency to lose, gain or share electrons.
-  Bonding is how atoms reach a full outer shell — the noble gases do not need to.
+  Bonding is how atoms reach a full outer shell, the noble gases do not need to.
 ```
 
 ```yaml
@@ -947,7 +947,7 @@ marks: 1
 misconception: iron-ion-colours
 worked: |
   Iron(II) hydroxide is a green precipitate, insoluble in excess sodium hydroxide.
-  Iron(III) hydroxide is red-brown — the easiest way to tell the two iron ions apart.
+  Iron(III) hydroxide is red-brown, the easiest way to tell the two iron ions apart.
 ```
 
 ```yaml
@@ -1370,7 +1370,7 @@ misconception: surface-area-explanation
 worked: |
   Breaking the solid into powder exposes far more of it to the acid.
   With a larger surface area, more solid particles are available to be hit at any moment, so collisions are more frequent.
-  The mass is the same, so the same total volume of gas is produced in the end — just faster.
+  The mass is the same, so the same total volume of gas is produced in the end, just faster.
 ```
 
 ```yaml
@@ -1423,7 +1423,7 @@ marks: 1
 misconception: pressure-effect
 worked: |
   Raising the pressure squeezes the same number of gas particles into a smaller volume.
-  That means more particles per unit volume — the gas equivalent of a higher concentration.
+  That means more particles per unit volume, the gas equivalent of a higher concentration.
   Collisions are therefore more frequent and the rate rises.
 ```
 
@@ -1440,7 +1440,7 @@ answer: 3
 marks: 1
 misconception: rate-factor-identification
 worked: |
-  Larger pieces have a SMALLER total surface area, so the acid can collide with less zinc at any moment — the rate goes DOWN.
+  Larger pieces have a SMALLER total surface area, so the acid can collide with less zinc at any moment, the rate goes DOWN.
   Higher concentration, higher temperature and finer powder all raise the rate.
 ```
 
@@ -1704,7 +1704,7 @@ marks: 1
 misconception: neutralisation-energetics
 worked: |
   An acid reacting with an alkali is a neutralisation.
-  The temperature rises, so energy is being transferred to the surroundings — the reaction is exothermic.
+  The temperature rises, so energy is being transferred to the surroundings, the reaction is exothermic.
 ```
 
 ```yaml
@@ -1874,7 +1874,7 @@ accepted: ["8", "eight"]
 marks: 1
 misconception: shared-electron-count
 worked: |
-  Methane has four C–H single bonds.
+  Methane has four C-H single bonds.
   Each single bond is one shared PAIR = 2 electrons.
   4 × 2 = 8 electrons shared in total.
 ```
@@ -1889,7 +1889,7 @@ misconception: electron-shell-filling
 worked: |
   A potassium atom has 19 electrons.
   The shells fill 2, then 8, then 8, which uses 18 electrons, leaving 1 for the fourth shell.
-  The arrangement is 2,8,8,1 — one valence electron, so potassium is in Group 1, Period 4.
+  The arrangement is 2,8,8,1, one valence electron, so potassium is in Group 1, Period 4.
 ```
 
 ```yaml
@@ -1901,7 +1901,7 @@ marks: 1
 misconception: rusting-conditions
 worked: |
   Rusting is the slow oxidation of iron and it needs both oxygen (from the air) and water.
-  Remove either one — for example with boiled water under oil, or dry air over a drying agent — and the iron does not rust.
+  Remove either one, for example with boiled water under oil, or dry air over a drying agent, and the iron does not rust.
   Salt does not cause rusting; it only speeds it up.
 ```
 
@@ -2293,7 +2293,7 @@ keywords: [greenhouse gases, absorb heat energy, re-radiate back to Earth, melti
 kind: precision
 topic: "C1 Experimental Chemistry"
 prompt: "A chromatogram shows unknown dye X run alongside three known dyes A, B and C. Explain how the chromatogram is interpreted."
-model: "Compare the spots produced on the same paper. If a spot from X is at the same height as the spot from a known dye, that dye is present in X. If X gives more than one spot it is a mixture; a single spot suggests that X is a pure substance. No Rf arithmetic is needed — the comparison is with the known samples."
+model: "Compare the spots produced on the same paper. If a spot from X is at the same height as the spot from a known dye, that dye is present in X. If X gives more than one spot it is a mixture; a single spot suggests that X is a pure substance. No Rf arithmetic is needed, the comparison is with the known samples."
 keywords: [spots at same height, same substance, more than one spot means mixture, single spot suggests pure]
 ```
 

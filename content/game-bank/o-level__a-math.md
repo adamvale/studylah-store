@@ -962,7 +962,7 @@ misconception: dividing-by-sin-loses-roots
 worked: |
   Write tan x = sin x/cos x and multiply through by cos x (cos x ≠ 0):
   3 sin x = 2 sin x cos x → sin x(3 − 2 cos x) = 0.
-  NEVER divide by sin x — that would throw away roots.
+  NEVER divide by sin x, that would throw away roots.
   sin x = 0 → x = 0°, 180°, 360°.
   3 − 2cos x = 0 → cos x = 1.5, which is impossible.
   So x = 0°, 180° and 360°.
@@ -1018,7 +1018,7 @@ answer: 3
 marks: 2
 misconception: multiple-angle-solution-count
 worked: |
-  Let u = 3x, so 0° ≤ u ≤ 1080° — three full revolutions.
+  Let u = 3x, so 0° ≤ u ≤ 1080°, three full revolutions.
   sin u = 0.4 has 2 solutions in every 360°, so it has 3 × 2 = 6 solutions in 1080°.
   Dividing each by 3 gives 6 values of x.
 ```
@@ -1396,7 +1396,7 @@ worked: |
   Quotient rule: (u'v − uv')/v² with u = 2x + 1, v = x − 3.
   = [2(x − 3) − (2x + 1)(1)]/(x − 3)²
   = (2x − 6 − 2x − 1)/(x − 3)² = −7/(x − 3)².
-  The numerator is u'v − uv', in that order — swapping the terms flips the sign.
+  The numerator is u'v − uv', in that order, swapping the terms flips the sign.
 ```
 
 ```yaml
@@ -1486,7 +1486,7 @@ misconception: chain-rule-on-a-power-of-a-trig-function
 worked: |
   Write it as (cos x)² and use the chain rule:
   d/dx (cos x)² = 2(cos x)¹ × d/dx(cos x) = 2 cos x × (−sin x) = −2 sin x cos x.
-  The derivative of cos x is −sin x — the minus sign is essential.
+  The derivative of cos x is −sin x, the minus sign is essential.
 ```
 
 ```yaml
@@ -1594,7 +1594,7 @@ misconception: stationary-points-set-derivative-zero
 worked: |
   dy/dx = 3x² − 6x.
   Stationary points: dy/dx = 0 → 3x(x − 2) = 0 → x = 0 or x = 2.
-  Do not divide by x — that would lose the root x = 0.
+  Do not divide by x, that would lose the root x = 0.
 ```
 
 ```yaml
@@ -1997,7 +1997,7 @@ answer: 2
 marks: 3
 misconception: expand-before-integrating
 worked: |
-  EXPAND first — there is no chain rule in reverse here:
+  EXPAND first, there is no chain rule in reverse here:
   (x + 1/x)² = x² + 2 + 1/x² = x² + 2 + x⁻².
   Integrating term by term: x³/3 + 2x + x⁻¹/(−1) + C = x³/3 + 2x − 1/x + C.
 ```
@@ -2038,7 +2038,7 @@ misconception: gradient-is-derivative-at-the-point
 worked: |
   dy/dx = 4x − 5.
   At x = 3: dy/dx = 12 − 5 = 7.
-  The gradient of the tangent is 7. (Substituting x = 3 into y instead gives 4 — that is the y-value.)
+  The gradient of the tangent is 7. (Substituting x = 3 into y instead gives 4, that is the y-value.)
 ```
 
 ```yaml
@@ -2120,7 +2120,7 @@ topic: "Discriminant: roots, tangency and range of values"
 checks:
   - "b² − 4ac > 0 two distinct roots; = 0 equal roots (tangent); < 0 no real roots."
   - "For a tangent to a curve, set the discriminant of the combined equation to ZERO."
-  - "Rearrange to = 0 before reading off a, b and c — signs included."
+  - "Rearrange to = 0 before reading off a, b and c, signs included."
   - "Sketch the k-parabola to decide whether the answer is 'between' or 'outside' the roots."
 ```
 
@@ -2130,7 +2130,7 @@ topic: "Quadratic inequalities"
 checks:
   - "Always bring everything to one side so the other side is 0."
   - "Positive quadratic: below zero BETWEEN the roots; above zero OUTSIDE them."
-  - "Never divide an inequality by an unknown — it may be negative and flip the sign."
+  - "Never divide an inequality by an unknown, it may be negative and flip the sign."
   - "Use ≤ / ≥ only if the original inequality was 'or equal to'."
 ```
 
@@ -2139,7 +2139,7 @@ kind: careless
 topic: "Simultaneous equations with one non-linear"
 checks:
   - "Substitute from the LINEAR equation into the non-linear one, not the other way round."
-  - "You should end up with a quadratic — expect TWO pairs of answers."
+  - "You should end up with a quadratic, expect TWO pairs of answers."
   - "Substitute each x back into the LINEAR equation (it is safer) and pair the answers up."
   - "State answers as coordinate pairs, so the x and y do not get mismatched."
 ```
@@ -2151,7 +2151,7 @@ checks:
   - "Pull out the largest square factor: √50 = √25 × √2 = 5√2."
   - "To rationalise, multiply top AND bottom by the CONJUGATE (change the middle sign only)."
   - "(a − b)(a + b) = a² − b², so the denominator becomes an integer."
-  - "Simplify each surd before adding or subtracting — only like surds combine."
+  - "Simplify each surd before adding or subtracting, only like surds combine."
   - "Isolate the surd before you square, because squaring can create extra roots."
   - "ALWAYS substitute back into the ORIGINAL equation and reject any root that fails."
 ```
@@ -2161,7 +2161,7 @@ kind: careless
 topic: "Indices: laws and index equations"
 checks:
   - "Write both sides to the SAME base, then equate the indices."
-  - "a^0 = 1, a^(−n) = 1/aⁿ and a^(1/n) is the n-th root — check before you cancel."
+  - "a^0 = 1, a^(−n) = 1/aⁿ and a^(1/n) is the n-th root, check before you cancel."
   - "(aᵐ)ⁿ = a^(mn): multiply the indices, do not add them."
   - "If a common base is impossible, take logarithms of both sides instead."
 ```
@@ -2173,7 +2173,7 @@ checks:
   - "Divisor (x − a) means substitute x = a; divisor (x + a) means substitute x = −a."
   - "For (2x + 1), substitute x = −1/2, not x = −1."
   - "Factor means the remainder is ZERO: set f(a) = 0 and solve for the unknown."
-  - "The remainder theorem gives the remainder only — you still need division for the quotient."
+  - "The remainder theorem gives the remainder only, you still need division for the quotient."
 ```
 
 ```yaml
@@ -2183,7 +2183,7 @@ checks:
   - "Test the factors of the constant term (±1, ±2, ±3, ...) until f(a) = 0."
   - "Divide by the known linear factor to get a quadratic, then factorise that quadratic."
   - "Expand your final answer mentally to check the constant term and the x³ coefficient."
-  - "Factorise COMPLETELY — a quadratic factor that still factorises loses a mark."
+  - "Factorise COMPLETELY, a quadratic factor that still factorises loses a mark."
 ```
 
 ```yaml
@@ -2200,7 +2200,7 @@ checks:
 kind: careless
 topic: "Partial fractions: form and constants"
 checks:
-  - "The fraction must be PROPER first — if not, divide out the polynomial part."
+  - "The fraction must be PROPER first, if not, divide out the polynomial part."
   - "Distinct linear factor (ax + b) takes a constant numerator A."
   - "Repeated factor (x − a)² needs BOTH A/(x − a) and B/(x − a)²."
   - "An irreducible quadratic (x² + c) needs a LINEAR numerator (Bx + C)."
@@ -2213,12 +2213,12 @@ checks:
 kind: careless
 topic: "Binomial theorem: the general term"
 checks:
-  - "The general term of (a + b)ⁿ is C(n,r) a^(n−r) bʳ — count r from 0."
+  - "The general term of (a + b)ⁿ is C(n,r) a^(n−r) bʳ, count r from 0."
   - "Raise the WHOLE bracket term to the power: (2x)³ = 8x³, not 2x³."
   - "Ascending powers of x means start with the constant term."
   - "For the term independent of x, set the total power of x to ZERO and solve for r."
   - "A minus inside the bracket makes the signs alternate: +, −, +, −."
-  - "'Coefficient of x³' means the NUMBER only — do not write x³ in your answer."
+  - "'Coefficient of x³' means the NUMBER only, do not write x³ in your answer."
 ```
 
 ```yaml
@@ -2226,9 +2226,9 @@ kind: careless
 topic: "Laws of logarithms"
 checks:
   - "log a + log b = log(ab); log a − log b = log(a/b); n log a = log(aⁿ)."
-  - "log(a + b) is NOT log a + log b — there is no law for the log of a sum."
+  - "log(a + b) is NOT log a + log b, there is no law for the log of a sum."
   - "Combine to a single log before removing the log."
-  - "Change of base: log_b a = (log a)/(log b) — needed when the base is not 10 or e."
+  - "Change of base: log_b a = (log a)/(log b), needed when the base is not 10 or e."
 ```
 
 ```yaml
@@ -2237,7 +2237,7 @@ topic: "Logarithmic equations and the domain"
 checks:
   - "Check the DOMAIN: the argument of every logarithm must be strictly positive."
   - "Solve the equation, then reject any root that makes an argument zero or negative."
-  - "log_b a = c means a = b^c — get the base and the index the right way round."
+  - "log_b a = c means a = b^c, get the base and the index the right way round."
   - "State the rejected root and the reason; that is where the final mark sits."
 ```
 
@@ -2248,7 +2248,7 @@ checks:
   - "Same base? Equate the indices. Different base? Take ln or lg of BOTH sides."
   - "For e^(2x) + pe^x + q = 0, substitute u = eˣ and solve the quadratic."
   - "eˣ is always positive, so REJECT any negative value of u."
-  - "ln(eˣ) = x, and e^(ln x) = x — use them to undo each other."
+  - "ln(eˣ) = x, and e^(ln x) = x, use them to undo each other."
 ```
 
 ```yaml
@@ -2265,10 +2265,10 @@ checks:
 kind: careless
 topic: "Coordinate geometry: lines"
 checks:
-  - "Gradient = (y₂ − y₁)/(x₂ − x₁) — keep the order of subtraction consistent top and bottom."
+  - "Gradient = (y₂ − y₁)/(x₂ − x₁), keep the order of subtraction consistent top and bottom."
   - "Parallel: m₁ = m₂. Perpendicular: m₁ × m₂ = −1 (negative RECIPROCAL)."
   - "Midpoint = average of the coordinates; distance uses Pythagoras."
-  - "Shoelace formula for area — remember the ½ and take the modulus."
+  - "Shoelace formula for area, remember the ½ and take the modulus."
 ```
 
 ```yaml
@@ -2278,7 +2278,7 @@ checks:
   - "(x − a)² + (y − b)² = r²: the centre signs FLIP, and the right side is r SQUARED."
   - "From the general form, complete the square in x and in y separately."
   - "If the x² and y² coefficients are not 1, DIVIDE the whole equation through first."
-  - "Radius = √(that number) — do not quote r² as the radius."
+  - "Radius = √(that number), do not quote r² as the radius."
 ```
 
 ```yaml
@@ -2300,7 +2300,7 @@ checks:
   - "y = kbˣ take lg: lg y = (lg b)x + lg k, so plot lg y against x."
   - "y = ax² + bx divide by x: y/x = ax + b, so plot y/x against x."
   - "Read the gradient from the STRAIGHT LINE, not from one raw data point."
-  - "If the intercept is lg A, then A = 10^(intercept) — remember to 'un-log' it."
+  - "If the intercept is lg A, then A = 10^(intercept), remember to 'un-log' it."
 ```
 
 ```yaml
@@ -2310,7 +2310,7 @@ checks:
   - "Learn the exact values for 30°, 45° and 60° (and their radian equivalents)."
   - "ASTC: All, Sine, Tangent, Cosine are positive in quadrants 1, 2, 3, 4."
   - "Find the BASIC (acute) angle first, then place it in the correct quadrants."
-  - "A negative value never changes the basic angle — only the quadrants."
+  - "A negative value never changes the basic angle, only the quadrants."
 ```
 
 ```yaml
@@ -2328,7 +2328,7 @@ kind: careless
 topic: "Trig equations: multiple and compound angles"
 checks:
   - "For sin 2x or cos(2x + 30°), transform the INTERVAL for the new angle first."
-  - "0° ≤ x ≤ 360° becomes 0° ≤ 2x ≤ 720° — twice as many solutions."
+  - "0° ≤ x ≤ 360° becomes 0° ≤ 2x ≤ 720°, twice as many solutions."
   - "Solve for the whole angle, then divide (or subtract) at the very END."
   - "Count your solutions: a 3x equation over one revolution usually gives 6."
 ```
@@ -2348,7 +2348,7 @@ checks:
 kind: careless
 topic: "R-formula: form and sign convention"
 checks:
-  - "R = √(a² + b²) — it is a Pythagorean combination, never a + b."
+  - "R = √(a² + b²), it is a Pythagorean combination, never a + b."
   - "Match the expansion term by term to get R cos α and R sin α."
   - "tan α = (the sine coefficient)/(the cosine coefficient); take α acute."
   - "a sin θ − b cos θ points you to R sin(θ − α): keep the sign convention consistent."
@@ -2360,7 +2360,7 @@ topic: "R-formula: maximum and minimum"
 checks:
   - "Max of R sin(θ ± α) is R; min is −R."
   - "If there is a constant added on, add it to BOTH the max and the min."
-  - "The maximum occurs when the bracket equals 90° (or π/2 rad) — solve for θ if asked."
+  - "The maximum occurs when the bracket equals 90° (or π/2 rad), solve for θ if asked."
   - "For 1/(R cos(...) + c) the maximum of the fraction happens at the MINIMUM of the bottom."
 ```
 
@@ -2369,7 +2369,7 @@ kind: careless
 topic: "Trig graphs: amplitude and period"
 checks:
   - "y = a sin(bx) + c: amplitude |a|, period 360°/b (or 2π/b), centre line y = c."
-  - "A bigger b SQUEEZES the graph — the period gets smaller, not bigger."
+  - "A bigger b SQUEEZES the graph, the period gets smaller, not bigger."
   - "tan has period 180° (π rad), not 360°, and has no amplitude."
   - "Read the number of cycles in the given interval to check your period."
 ```
@@ -2379,7 +2379,7 @@ kind: careless
 topic: "Differentiation: the chain rule"
 checks:
   - "Differentiate the outside, then MULTIPLY by the derivative of the inside."
-  - "(ax + b)ⁿ n(ax + b)^(n−1) × a — the × a is the mark most often lost."
+  - "(ax + b)ⁿ n(ax + b)^(n−1) × a, the × a is the mark most often lost."
   - "Rewrite roots and reciprocals as powers before differentiating."
   - "Check: does your answer still contain the bracket? It usually should."
 ```
@@ -2388,10 +2388,10 @@ checks:
 kind: careless
 topic: "Differentiation: product and quotient rules"
 checks:
-  - "Product: u'v + uv'. Quotient: (u'v − uv')/v² — the ORDER matters in the quotient rule."
+  - "Product: u'v + uv'. Quotient: (u'v − uv')/v², the ORDER matters in the quotient rule."
   - "Write u, v, u' and v' out separately before assembling."
   - "The square is on the DENOMINATOR only: v², not (uv)²."
-  - "A quotient with a constant denominator is not a quotient — just divide."
+  - "A quotient with a constant denominator is not a quotient, just divide."
 ```
 
 ```yaml
@@ -2400,8 +2400,8 @@ topic: "Differentiating trig, exponential and log functions"
 checks:
   - "These standard results assume x is in RADIANS."
   - "d/dx sin(f) = f' cos(f); d/dx cos(f) = −f' sin(f); d/dx tan(f) = f' sec²(f)."
-  - "d/dx e^(f) = f' e^(f) — the index never comes down as a power."
-  - "d/dx ln(f) = f'/f — divide by the inside, do not multiply."
+  - "d/dx e^(f) = f' e^(f), the index never comes down as a power."
+  - "d/dx ln(f) = f'/f, divide by the inside, do not multiply."
 ```
 
 ```yaml
@@ -2418,10 +2418,10 @@ checks:
 kind: careless
 topic: "Stationary points and their nature"
 checks:
-  - "Set dy/dx = 0 and solve — do not divide by x, or you will lose a root."
+  - "Set dy/dx = 0 and solve, do not divide by x, or you will lose a root."
   - "Substitute back into y to get the COORDINATES, not just the x-values."
   - "Second-derivative test: d²y/dx² > 0 minimum; < 0 maximum."
-  - "If d²y/dx² = 0, the test fails — use the SIGN of dy/dx just left and right instead."
+  - "If d²y/dx² = 0, the test fails, use the SIGN of dy/dx just left and right instead."
   - "'Maximum value' means the y-value, not the x-value."
 ```
 
@@ -2441,7 +2441,7 @@ topic: "Kinematics: displacement, velocity, acceleration"
 checks:
   - "Differentiate to go s v a; integrate to go a v s."
   - "'At rest' means v = 0. 'Maximum velocity' means a = 0."
-  - "Integration constants come from the initial conditions — read them carefully."
+  - "Integration constants come from the initial conditions, read them carefully."
   - "Displacement can be negative; DISTANCE cannot. If the particle turns back, split the integral."
 ```
 
@@ -2452,7 +2452,7 @@ checks:
   - "Every indefinite integral needs + C. No exceptions."
   - "Raise the power by 1 and divide by the NEW power."
   - "For (ax + b)ⁿ, also divide by a."
-  - "The power rule does not work for 1/x — that one gives ln|x|."
+  - "The power rule does not work for 1/x, that one gives ln|x|."
   - "Check any integral by differentiating your answer back."
 ```
 
@@ -2472,7 +2472,7 @@ topic: "Integrating trig, exponential and reciprocal functions"
 checks:
   - "The integral of cos(ax) = (1/a) sin(ax) + C; the integral of sin(ax) = −(1/a) cos(ax) + C."
   - "Integrating sine introduces a MINUS sign; integrating cosine does not."
-  - "The integral of e^(ax) = e^(ax)/a + C — DIVIDE by a (you multiply when differentiating)."
+  - "The integral of e^(ax) = e^(ax)/a + C, DIVIDE by a (you multiply when differentiating)."
   - "The integral of 1/(ax + b) = (1/a) ln|ax + b| + C."
   - "The integral of sec²(ax) = (1/a) tan(ax) + C."
 ```
@@ -2482,7 +2482,7 @@ kind: careless
 topic: "Area under a curve and below the x-axis"
 checks:
   - "Sketch first, and find where the curve meets the x-axis."
-  - "A region BELOW the x-axis gives a negative integral — take the modulus for the area."
+  - "A region BELOW the x-axis gives a negative integral, take the modulus for the area."
   - "If the curve crosses the axis inside the limits, SPLIT the integral at the crossing."
   - "Area is always positive; include 'square units' in your answer."
 ```
@@ -2491,7 +2491,7 @@ checks:
 kind: careless
 topic: "Area bounded by a curve and a line"
 checks:
-  - "Find the intersection points first — they become your limits."
+  - "Find the intersection points first, they become your limits."
   - "Integrate (top curve − bottom curve) between those limits."
   - "A negative answer means you subtracted the wrong way round."
   - "Alternatively, area under the line minus area under the curve gives the same result."
@@ -2504,7 +2504,7 @@ checks:
   - "Any calculus with trig functions is in RADIANS. Solving a trig equation may be in degrees."
   - "Set the calculator mode to match the question EVERY time."
   - "Answers to 3 significant figures, or 1 decimal place for angles in degrees."
-  - "Do not round in the middle of a calculation — store the full value."
+  - "Do not round in the middle of a calculation, store the full value."
   - "Did every 'find the set of values' answer end up as an inequality, not a single number?"
   - "Did every indefinite integral get its + C, and every trig equation ALL its solutions?"
   - "Did you reject the invalid roots (negative log arguments, negative surds, negative lengths)?"

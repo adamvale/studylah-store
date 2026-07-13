@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 };
 
 // The service worker serves this cached page when a navigation fails with no
-// network. Static by design — it must render with zero data.
+// network. Static by design, it must render with zero data.
 export default function OfflinePage() {
   return (
     <div className="mx-auto max-w-md px-4 py-24 text-center">
@@ -17,7 +17,7 @@ export default function OfflinePage() {
         No connection
       </h1>
       <p className="mt-3 text-body">
-        StudyLand needs the internet — your questions are marked on our servers
+        StudyLand needs the internet, your questions are marked on our servers
         so answers can&apos;t leak. Once you&apos;re back online, pull to
         refresh and today&apos;s mission will be waiting.
       </p>

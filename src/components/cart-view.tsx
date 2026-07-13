@@ -67,7 +67,7 @@ export function CartView() {
       const res = await fetch("/api/discount", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        // Email (when typed) lets referral codes be checked early — the
+        // Email (when typed) lets referral codes be checked early, the
         // buyer sees "first order only" here, not at the pay button.
         body: JSON.stringify({ items, code, email: email || undefined }),
       });
@@ -76,7 +76,7 @@ export function CartView() {
       setDiscount(body);
     } catch (e) {
       setDiscount(null);
-      // A failed auto-apply (referral link cookie) stays quiet — the shopper
+      // A failed auto-apply (referral link cookie) stays quiet, the shopper
       // never asked for it; manual attempts always explain themselves.
       if (!silent) {
         setDiscountError(e instanceof Error ? e.message : "That code isn't valid.");
@@ -154,7 +154,7 @@ export function CartView() {
         </h2>
         <p className="mt-3 text-body">
           Start with the subject that worries you most. The forecast shows you
-          exactly where to aim your last few weeks — and every pack is covered
+          exactly where to aim your last few weeks, and every pack is covered
           by the money-back guarantee.
         </p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
@@ -354,7 +354,7 @@ export function CartView() {
 
           {/* On mobile the Checkout lives in the sticky bottom bar; this
               in-summary button is the desktop CTA. The guarantee rides on the
-              button itself — the downside of trying is zero. */}
+              button itself, the downside of trying is zero. */}
           <button
             type="button"
             onClick={checkout}
@@ -365,7 +365,7 @@ export function CartView() {
               <span className="py-0.5 text-sm font-medium">Starting secure payment…</span>
             ) : (
               <>
-                <span className="text-sm font-bold">Checkout — {sgdCents(payableCents)}</span>
+                <span className="text-sm font-bold">Checkout, {sgdCents(payableCents)}</span>
                 <span className="text-[11px] font-medium text-white/80">
                   Fully refundable if the forecast misses
                 </span>
@@ -383,14 +383,14 @@ export function CartView() {
           </p>
           <p className="mt-2 text-xs text-body">
             Every subject also unlocks{" "}
-            <span className="font-medium text-ink">StudyLand</span> — daily
+            <span className="font-medium text-ink">StudyLand</span>, daily
             practice, mistake notebook, study plan and exam timers. No
             subscription.
           </p>
         </div>
       </aside>
 
-      {/* Sticky mobile checkout bar — same design as the bundle "add to cart"
+      {/* Sticky mobile checkout bar, same design as the bundle "add to cart"
           bar (data-bottom-cta lifts the Gugu helper above it). */}
       <div
         data-bottom-cta=""

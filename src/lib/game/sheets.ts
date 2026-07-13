@@ -120,7 +120,7 @@ function loadImage(src: string): Promise<HTMLImageElement> {
   });
 }
 
-// Resolves null if anything fails — callers fall back to procedural art.
+// Resolves null if anything fails, callers fall back to procedural art.
 export function loadSheets(): Promise<Sheets | null> {
   if (loaded) return Promise.resolve(loaded);
   if (loading) return loading;
@@ -232,7 +232,7 @@ export function accessoryBlockX(name: AccessoryName): number {
   return ACCESSORY_ORDER.indexOf(name) * 48;
 }
 
-// guardians_walkers.png: 64px block per guardian — walk f1 / bob f2 /
+// guardians_walkers.png: 64px block per guardian, walk f1 / bob f2 /
 // mirror f3 / shiny, all 16×16.
 export function guardianWalkerRect(name: GuardianName, cell: 0 | 1 | 2 | 3): [number, number] {
   return [GUARDIAN_ORDER.indexOf(name) * 64 + cell * 16, 0];

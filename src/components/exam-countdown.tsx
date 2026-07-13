@@ -5,7 +5,7 @@ import { useSyncExternalStore } from "react";
 // The written-paper season opens around the start of October. Weeks are
 // computed in the browser (server snapshot renders nothing) so statically
 // generated pages never bake in a stale number, and the wording stays
-// approximate on purpose — honest urgency.
+// approximate on purpose, honest urgency.
 const SEASON_START = Date.UTC(2026, 9, 1); // 1 Oct 2026
 
 const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
@@ -24,7 +24,7 @@ export function ExamCountdown({
   if (weeks === null || weeks <= 0) return null;
 
   // Urgent variant leans on a REAL deadline (the paper dates) with a
-  // loss-frame — honest urgency, no fake countdowns or invented scarcity.
+  // loss-frame, honest urgency, no fake countdowns or invented scarcity.
   if (variant === "urgent") {
     return (
       <div
@@ -33,7 +33,7 @@ export function ExamCountdown({
         <span aria-hidden="true" className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-accent" />
         <span className="text-cloud">
           <span className="font-bold text-accent">≈ {weeks} week{weeks === 1 ? "" : "s"}</span>{" "}
-          to the Oct/Nov 2026 papers — every week you wait is a week revising
+          to the Oct/Nov 2026 papers, every week you wait is a week revising
           blind.
         </span>
       </div>

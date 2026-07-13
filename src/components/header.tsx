@@ -49,7 +49,7 @@ export function Header() {
   // marketing nav, no cart (Apple reader-app rule).
   const hideCommerce = useHideCommerce();
 
-  // In the native app the account area IS the app — the game shell brings
+  // In the native app the account area IS the app, the game shell brings
   // its own HUD, so the site header disappears there entirely. On the few
   // reachable non-account pages (blog, legal) it stays as a slim bar whose
   // logo leads back to HQ, since a webview has no back button.

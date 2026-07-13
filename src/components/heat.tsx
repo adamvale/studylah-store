@@ -1,4 +1,4 @@
-// The four confidence tiers used across the product — the same labels the
+// The four confidence tiers used across the product, the same labels the
 // Forecast PDFs print (VERY HIGH / HIGH / MODERATE / WATCH). The site shows
 // these tiers, never a raw percentage, so it reads identically to the PDF.
 export type ForecastTier = "very-high" | "high" | "moderate" | "watch";
@@ -17,7 +17,7 @@ export const TIER_LABEL: Record<ForecastTier, string> = {
   watch: "Watch",
 };
 
-// Discrete bar fill per tier — a visual weight, never a precise value.
+// Discrete bar fill per tier, a visual weight, never a precise value.
 const TIER_FILL: Record<ForecastTier, number> = {
   "very-high": 92,
   high: 70,
@@ -25,7 +25,7 @@ const TIER_FILL: Record<ForecastTier, number> = {
   watch: 32,
 };
 
-// The bar fill behind a topic — uses the same tier palette as the pill.
+// The bar fill behind a topic, uses the same tier palette as the pill.
 export function tierBg(tier: ForecastTier): string {
   switch (tier) {
     case "very-high":
@@ -79,7 +79,7 @@ export function HeatBar({
 }: {
   topic: string;
   // Either pass the real tier (from a subject's prediction table) or a
-  // probability for the derived one — real data wins when both exist.
+  // probability for the derived one, real data wins when both exist.
   probability?: number;
   tier?: ForecastTier;
   delayMs?: number;
@@ -87,7 +87,7 @@ export function HeatBar({
 }) {
   const tier = tierProp ?? forecastTier(probability ?? 0);
   const label = TIER_LABEL[tier];
-  // On phones the topic name gets its own line — it IS the information; the
+  // On phones the topic name gets its own line, it IS the information; the
   // bar is decoration. From `sm` up, the classic label · bar · pill row.
   // Masked rows hide BOTH the name and the tier: these are the product's real
   // calls now, so the preview teases their existence, not their content.

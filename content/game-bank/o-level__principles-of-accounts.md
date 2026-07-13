@@ -127,7 +127,7 @@ misconception: turnover-times-vs-days
 worked: |
   Inventory turnover period = average inventory / cost of sales × 365.
   = 20,000 / 240,000 × 365 = 30.4 days ≈ 30 days.
-  (As a rate this is 12 times a year — times and days are not the same measure.)
+  (As a rate this is 12 times a year, times and days are not the same measure.)
 ```
 
 ```yaml
@@ -232,7 +232,7 @@ answer: 0
 marks: 1
 misconception: liquidity-ratio-choice
 worked: |
-  The quick ratio removes inventory — the least liquid current asset — from current assets.
+  The quick ratio removes inventory, the least liquid current asset, from current assets.
   It therefore tests whether the most liquid assets alone can settle current liabilities.
   The current ratio includes inventory; turnover and ROCE are not liquidity measures.
 ```
@@ -287,7 +287,7 @@ marks: 1
 misconception: collection-period-interpretation
 worked: |
   A rise from 30 to 55 days means customers take longer to pay, so cash is tied up.
-  The business now pays suppliers (30 days) well before it collects (55 days) — a liquidity strain.
+  The business now pays suppliers (30 days) well before it collects (55 days), a liquidity strain.
   Nothing in the data says anything about the margin.
 ```
 
@@ -352,7 +352,7 @@ misconception: residual-value-ignored
 worked: |
   Straight-line charge = (cost − residual value) / useful life.
   = (48,000 − 3,000) / 5 = 45,000 / 5 = $9,000 a year.
-  Forgetting the residual value gives 48,000 / 5 = $9,600 — a common slip.
+  Forgetting the residual value gives 48,000 / 5 = $9,600, a common slip.
 ```
 
 ```yaml
@@ -370,7 +370,7 @@ misconception: reducing-balance-on-cost
 worked: |
   Year 1 charge = 25% × 40,000 = $10,000. Net book value = 40,000 − 10,000 = $30,000.
   Year 2 charge = 25% × 30,000 = $7,500.
-  Charging 25% on cost again would give $10,000 — that is the straight-line answer.
+  Charging 25% on cost again would give $10,000, that is the straight-line answer.
 ```
 
 ```yaml
@@ -404,7 +404,7 @@ answer: 3
 marks: 1
 misconception: prepayment-months-counted
 worked: |
-  Only 3 months (Oct–Dec) of the cover has been used this year.
+  Only 3 months (Oct-Dec) of the cover has been used this year.
   Prepaid = 9 unused months / 12 × 9,600 = $7,200.
   The $2,400 used is the expense for the year; the $7,200 is a current asset.
 ```
@@ -531,7 +531,7 @@ marks: 1
 misconception: omitted-accrual-effect
 worked: |
   An expense of $1,800 has been left out, so total expenses are too low by $1,800.
-  Too little expense means the profit reported is $1,800 too high — overstated.
+  Too little expense means the profit reported is $1,800 too high, overstated.
   Correcting it will reduce profit by $1,800 and create a $1,800 current liability.
 ```
 
@@ -568,7 +568,7 @@ misconception: reducing-balance-nbv
 worked: |
   Year 1: charge = 20% × 60,000 = $12,000 → NBV = $48,000.
   Year 2: charge = 20% × 48,000 = $9,600 → NBV = 48,000 − 9,600 = $38,400.
-  Straight-line 20% would give 60,000 − 24,000 = $36,000 — a different method.
+  Straight-line 20% would give 60,000 − 24,000 = $36,000, a different method.
 ```
 
 ```yaml
@@ -608,7 +608,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "P7 Financial Statements — Sole Trader"
+topic: "P7 Financial Statements, Sole Trader"
 stem: "Opening inventory is $14,000, purchases are $96,000, purchases returns are $3,000, carriage inwards is $2,000 and closing inventory is $11,000. What is the cost of sales?"
 options:
   - "$104,000"
@@ -626,7 +626,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "P7 Financial Statements — Sole Trader"
+topic: "P7 Financial Statements, Sole Trader"
 stem: "Revenue is $160,000, sales returns are $4,000 and cost of sales is $98,000. What is the gross profit?"
 options:
   - "$62,000"
@@ -643,7 +643,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "P7 Financial Statements — Sole Trader"
+topic: "P7 Financial Statements, Sole Trader"
 stem: "Gross profit is $58,000, discount received is $1,200 and total expenses are $39,200. What is the profit for the year?"
 options:
   - "$18,800"
@@ -661,7 +661,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "P7 Financial Statements — Sole Trader"
+topic: "P7 Financial Statements, Sole Trader"
 stem: "How are the owner's drawings treated in the financial statements?"
 options:
   - "Deducted from capital in the statement of financial position"
@@ -672,14 +672,14 @@ answer: 0
 marks: 1
 misconception: drawings-as-expense
 worked: |
-  Drawings are the owner taking value out of the business — not a cost of running it.
+  Drawings are the owner taking value out of the business, not a cost of running it.
   They never appear in the income statement; they reduce the capital owed back to the owner.
   Capital = opening capital + profit − drawings.
 ```
 
 ```yaml
 type: mcq
-topic: "P7 Financial Statements — Sole Trader"
+topic: "P7 Financial Statements, Sole Trader"
 stem: "Opening capital is $80,000, the profit for the year is $20,000 and drawings are $14,000. What is the closing capital?"
 options:
   - "$74,000"
@@ -696,7 +696,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "P7 Financial Statements — Sole Trader"
+topic: "P7 Financial Statements, Sole Trader"
 stem: "Which of these is a current asset?"
 options:
   - "Bank overdraft"
@@ -707,14 +707,14 @@ answer: 2
 marks: 1
 misconception: asset-classification
 worked: |
-  Inventory is expected to be sold and turned into cash within a year — a current asset.
+  Inventory is expected to be sold and turned into cash within a year, a current asset.
   A bank overdraft is a current liability; a long-term loan is a non-current liability.
   Motor vehicles are a non-current asset.
 ```
 
 ```yaml
 type: mcq
-topic: "P7 Financial Statements — Sole Trader"
+topic: "P7 Financial Statements, Sole Trader"
 stem: "How is carriage outwards treated in the financial statements?"
 options:
   - "Added to purchases within the cost of sales"
@@ -725,14 +725,14 @@ answer: 3
 marks: 1
 misconception: carriage-outwards-in-cos
 worked: |
-  Carriage OUTWARDS is the cost of delivering goods TO customers — a selling/distribution expense.
+  Carriage OUTWARDS is the cost of delivering goods TO customers, a selling/distribution expense.
   It is listed with the other expenses after gross profit.
   Only carriage INWARDS belongs in the cost of sales.
 ```
 
 ```yaml
 type: mcq
-topic: "P7 Financial Statements — Sole Trader"
+topic: "P7 Financial Statements, Sole Trader"
 stem: "Total assets are $145,000 and total liabilities are $52,000. What is the owner's capital?"
 options:
   - "$93,000"
@@ -749,7 +749,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "P7 Financial Statements — Sole Trader"
+topic: "P7 Financial Statements, Sole Trader"
 stem: "Which item is ADDED to gross profit in the income statement?"
 options:
   - "Carriage inwards"
@@ -767,7 +767,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "P7 Financial Statements — Sole Trader"
+topic: "P7 Financial Statements, Sole Trader"
 stem: "Opening inventory is $9,000, purchases are $65,000, carriage inwards is $1,500 and closing inventory is $7,500. Calculate the cost of sales."
 accepted: ["68000", "68,000", "$68,000", "$68000"]
 marks: 2
@@ -778,7 +778,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "P7 Financial Statements — Sole Trader"
+topic: "P7 Financial Statements, Sole Trader"
 stem: "Opening capital is $55,000. During the year the owner paid in a further $5,000 of capital, the business made a profit of $18,000 and drawings were $12,500. Calculate the closing capital."
 accepted: ["65500", "65,500", "$65,500", "$65500"]
 marks: 2
@@ -789,7 +789,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "P8 Financial Statements — Limited Company"
+topic: "P8 Financial Statements, Limited Company"
 stem: "Which items together make up the equity of a limited company?"
 options:
   - "Ordinary share capital and the long-term bank loan"
@@ -807,7 +807,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "P8 Financial Statements — Limited Company"
+topic: "P8 Financial Statements, Limited Company"
 stem: "Retained earnings at the start of the year were $40,000. The profit for the year is $25,000 and dividends of $10,000 were paid. What are the retained earnings at the year end?"
 options:
   - "$75,000"
@@ -825,7 +825,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "P8 Financial Statements — Limited Company"
+topic: "P8 Financial Statements, Limited Company"
 stem: "Which entry records the payment of an ordinary dividend?"
 options:
   - "Dr Dividends (retained earnings); Cr Bank"
@@ -838,12 +838,12 @@ misconception: dividend-double-entry
 worked: |
   Cash leaves the business, so Bank is credited.
   The debit is to Dividends, which is written off against retained earnings.
-  Share capital is not touched — the shares themselves are unchanged.
+  Share capital is not touched, the shares themselves are unchanged.
 ```
 
 ```yaml
 type: mcq
-topic: "P8 Financial Statements — Limited Company"
+topic: "P8 Financial Statements, Limited Company"
 stem: "Which item is NOT part of a limited company's equity?"
 options:
   - "Ordinary share capital"
@@ -861,7 +861,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "P8 Financial Statements — Limited Company"
+topic: "P8 Financial Statements, Limited Company"
 stem: "Coralline Ltd issues 200,000 ordinary shares at $0.50 each, all fully paid. What is the ordinary share capital?"
 options:
   - "$200,000"
@@ -878,7 +878,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "P8 Financial Statements — Limited Company"
+topic: "P8 Financial Statements, Limited Company"
 stem: "Ordinary share capital is $150,000, the general reserve is $20,000 and retained earnings are $45,000. What is total equity?"
 options:
   - "$195,000"
@@ -894,7 +894,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "P8 Financial Statements — Limited Company"
+topic: "P8 Financial Statements, Limited Company"
 stem: "How is the interest on a company's long-term bank loan treated?"
 options:
   - "As a finance cost (expense) in the income statement"
@@ -912,7 +912,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "P8 Financial Statements — Limited Company"
+topic: "P8 Financial Statements, Limited Company"
 stem: "What does 'limited liability' mean for an ordinary shareholder?"
 options:
   - "The company may borrow only a limited amount of money"
@@ -930,7 +930,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "P8 Financial Statements — Limited Company"
+topic: "P8 Financial Statements, Limited Company"
 stem: "Retained earnings at 1 January were $62,000. The company made a loss of $8,000 for the year and paid dividends of $5,000. Calculate the retained earnings at 31 December."
 accepted: ["49000", "49,000", "$49,000", "$49000"]
 marks: 2
@@ -941,7 +941,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "P8 Financial Statements — Limited Company"
+topic: "P8 Financial Statements, Limited Company"
 stem: "Ordinary share capital is $300,000, retained earnings are $74,000 and the general reserve is $26,000. Calculate total equity."
 accepted: ["400000", "400,000", "$400,000", "$400000"]
 marks: 2
@@ -1089,7 +1089,7 @@ answer: 1
 marks: 1
 misconception: ethics-integrity
 worked: |
-  Recording sales early breaks the accrual theory and misleads the bank — a lack of integrity.
+  Recording sales early breaks the accrual theory and misleads the bank, a lack of integrity.
   A professional must be honest and objective, and refuse to prepare misleading statements.
   The right course is to refuse, explain why, and escalate if pressed.
 ```
@@ -1185,7 +1185,7 @@ answer: 1
 marks: 1
 misconception: one-sided-entry
 worked: |
-  Only one side of the rent entry was made, so debits exceed credits by $300 — the trial balance fails.
+  Only one side of the rent entry was made, so debits exceed credits by $300, the trial balance fails.
   The other three keep debits equal to credits (commission, omission, original entry).
   A trial balance only checks that the two sides are EQUAL, not that they are right.
 ```
@@ -1240,7 +1240,7 @@ marks: 1
 misconception: undercast-purchases-effect
 worked: |
   Undercast means the total was added up $500 too LOW, so purchases (and cost of sales) are too low by $500.
-  Too little cost of sales means gross profit — and profit for the year — is $500 too high.
+  Too little cost of sales means gross profit, and profit for the year, is $500 too high.
   Correcting it will reduce profit by $500.
 ```
 
@@ -1324,7 +1324,7 @@ misconception: capital-vs-revenue
 worked: |
   Capital expenditure is spending to acquire a non-current asset or to bring it into use.
   Installation is a necessary cost of getting the machine ready, so it is added to the asset's cost.
-  Repainting, insurance and wages are running costs — revenue expenditure.
+  Repainting, insurance and wages are running costs, revenue expenditure.
 ```
 
 ```yaml
@@ -1340,7 +1340,7 @@ answer: 1
 marks: 1
 misconception: capital-vs-revenue
 worked: |
-  Repairs simply maintain the earning power the business already has — an expense of the year.
+  Repairs simply maintain the earning power the business already has, an expense of the year.
   Buying a van, legal fees on premises and an extension all create or improve non-current assets.
   Those three are capital expenditure and appear in the statement of financial position.
 ```
@@ -1360,7 +1360,7 @@ misconception: equation-dual-effect
 worked: |
   Bank (an asset) rises by $5,000.
   The business now owes the owner $5,000 more, so capital rises by $5,000.
-  Assets = Capital + Liabilities still holds — every transaction has a dual effect.
+  Assets = Capital + Liabilities still holds, every transaction has a dual effect.
 ```
 
 ```yaml
@@ -1412,7 +1412,7 @@ answer: 1
 marks: 1
 misconception: income-vs-expense
 worked: |
-  Commission received increases the profit — it is income.
+  Commission received increases the profit, it is income.
   Carriage inwards and discount allowed are expenses.
   Drawings are neither income nor expense: they reduce capital.
 ```
@@ -1497,7 +1497,7 @@ misconception: capital-expenditure-entry
 worked: |
   Equipment for use in the business is a non-current asset, so Equipment is debited.
   Money leaves the bank, so Bank is credited.
-  Purchases is only for goods bought for RESALE — using it here would be an error of principle.
+  Purchases is only for goods bought for RESALE, using it here would be an error of principle.
 ```
 
 ```yaml
@@ -1549,7 +1549,7 @@ answer: 0
 marks: 1
 misconception: discount-allowed-direction
 worked: |
-  Discount ALLOWED is given to a customer, so it is an expense — debit Discount allowed.
+  Discount ALLOWED is given to a customer, so it is an expense, debit Discount allowed.
   The customer's debt is cleared for less cash, so the trade receivable is credited $60.
   Discount RECEIVED (income) applies to suppliers instead.
 ```
@@ -1736,7 +1736,7 @@ marks: 1
 misconception: control-account-sides
 worked: |
   Cash received reduces what customers owe, so it is credited in the control account.
-  Credit sales, interest charged and the opening balance all increase the amount owed — debits.
+  Credit sales, interest charged and the opening balance all increase the amount owed, debits.
   Sales returns, discount allowed and irrecoverable debts are also credits.
 ```
 
@@ -1838,7 +1838,7 @@ answer: 2
 marks: 1
 misconception: cash-book-update-items
 worked: |
-  Bank charges are a genuine business expense the trader did not know about — the cash book must be corrected.
+  Bank charges are a genuine business expense the trader did not know about, the cash book must be corrected.
   Unpresented cheques and uncredited deposits are only TIMING differences: they go in the reconciliation statement.
   A bank error is corrected by the bank, not by the trader.
 ```
@@ -1967,7 +1967,7 @@ marks: 1
 misconception: unlimited-liability
 worked: |
   A sole trader and the business are the same legal person.
-  If the business cannot pay its debts, the owner's private assets can be used — unlimited liability.
+  If the business cannot pay its debts, the owner's private assets can be used, unlimited liability.
   Only a company (or an LLP) gives its owners limited liability.
 ```
 
@@ -2002,7 +2002,7 @@ answer: 2
 marks: 1
 misconception: accounting-vs-non-accounting
 worked: |
-  Ratios and profit trends come straight from the financial statements — accounting information.
+  Ratios and profit trends come straight from the financial statements, accounting information.
   Management experience, competition, the economy and staff morale cannot be read from the accounts.
   A good decision uses BOTH kinds of information.
 ```
@@ -2029,7 +2029,7 @@ worked: |
 
 ```yaml
 kind: poa
-name: "Income Statement (Statement of Financial Performance) — Sole Trader"
+name: "Income Statement (Statement of Financial Performance), Sole Trader"
 lines:
   - "Revenue (Sales − Sales returns)"
   - "Less: Cost of sales"
@@ -2057,7 +2057,7 @@ note: "Carriage INWARDS is added here; carriage OUTWARDS is an expense after gro
 
 ```yaml
 kind: poa
-name: "Statement of Financial Position — Sole Trader"
+name: "Statement of Financial Position, Sole Trader"
 lines:
   - "ASSETS"
   - "Non-current assets (at cost − accumulated depreciation = net book value)"
@@ -2078,7 +2078,7 @@ lines:
   - "DEBIT column: assets, expenses, drawings, purchases, sales returns, carriage inwards and outwards"
   - "CREDIT column: capital, liabilities, income, sales, purchases returns"
   - "CREDIT column also: accumulated depreciation and allowance for impairment of trade receivables"
-  - "Total the two columns — they must be equal"
+  - "Total the two columns, they must be equal"
   - "Any difference is entered in a SUSPENSE account on the shorter side"
 note: "A trial balance proves arithmetic only. It cannot find errors of principle, commission, omission, original entry, or compensating errors."
 ```
@@ -2197,7 +2197,7 @@ note: "Only errors that unbalance the trial balance go through suspense. An erro
 
 ```yaml
 kind: poa
-name: "Income Statement — Limited Company"
+name: "Income Statement, Limited Company"
 lines:
   - "Revenue"
   - "Less: Cost of sales"
@@ -2206,12 +2206,12 @@ lines:
   - "Less: Expenses (including directors' fees and depreciation)"
   - "Less: Finance cost (loan/debenture interest)"
   - "= PROFIT FOR THE YEAR"
-note: "Loan interest is an EXPENSE (finance cost). Dividends are NOT an expense — they come after the profit, in retained earnings."
+note: "Loan interest is an EXPENSE (finance cost). Dividends are NOT an expense, they come after the profit, in retained earnings."
 ```
 
 ```yaml
 kind: poa
-name: "Statement of Financial Position — Limited Company (Equity Section)"
+name: "Statement of Financial Position, Limited Company (Equity Section)"
 lines:
   - "EQUITY"
   - "Ordinary share capital (number of shares × issue price)"
@@ -2222,7 +2222,7 @@ lines:
   - "= Retained earnings at the end of the year"
   - "= TOTAL EQUITY"
   - "Then: Non-current liabilities (long-term loan), then Current liabilities"
-note: "A bank loan is a liability, never equity. Show the retained-earnings movement as a working — the marks are in the lines."
+note: "A bank loan is a liability, never equity. Show the retained-earnings movement as a working, the marks are in the lines."
 ```
 
 ```yaml
@@ -2259,7 +2259,7 @@ lines:
   - "If the allowance must DECREASE: Dr Allowance; Cr Income statement (a reduction in the expense)"
   - "CREDIT: Balance c/d (this year's allowance)"
   - "Statement of financial position: Trade receivables less allowance = net trade receivables"
-note: "Only the MOVEMENT in the allowance hits the income statement — never the whole allowance."
+note: "Only the MOVEMENT in the allowance hits the income statement, never the whole allowance."
 ```
 
 ```yaml
@@ -2276,7 +2276,7 @@ note: "The reimbursement always equals the amount SPENT, which brings the float 
 
 ```yaml
 kind: poa
-name: "Effect of Errors on Profit — Correction Table"
+name: "Effect of Errors on Profit, Correction Table"
 lines:
   - "Column 1: the error | Column 2: increase / decrease / no effect on profit | Column 3: amount"
   - "Expense understated (e.g. accrual omitted) → profit overstated → correction DECREASES profit"
@@ -2416,14 +2416,14 @@ body: "The expense recorded when trade receivables are unlikely to be collected:
 ```yaml
 kind: definition
 term: "Drawings"
-topic: "P7 Financial Statements — Sole Trader"
+topic: "P7 Financial Statements, Sole Trader"
 body: "Cash, goods or other assets taken out of the business by the owner for private use. Drawings are deducted from capital; they are never an expense in the income statement."
 ```
 
 ```yaml
 kind: definition
 term: "Retained earnings"
-topic: "P8 Financial Statements — Limited Company"
+topic: "P8 Financial Statements, Limited Company"
 body: "The profits a limited company has kept in the business rather than paid out as dividends: opening retained earnings + profit for the year − dividends paid. It is part of equity."
 ```
 

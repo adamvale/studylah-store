@@ -7,7 +7,7 @@ function icsStamp(d: Date): string {
   return d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
 }
 
-// The student's entered paper dates as a calendar file — one import puts the
+// The student's entered paper dates as a calendar file, one import puts the
 // whole timetable in their (or a parent's) phone calendar.
 export async function GET() {
   const customerId = await getCustomerId();
@@ -31,7 +31,7 @@ export async function GET() {
         `DTSTAMP:${icsStamp(new Date())}`,
         `DTSTART:${icsStamp(d.at)}`,
         `DTEND:${icsStamp(end)}`,
-        `SUMMARY:${d.label.replace(/[,;\\]/g, " ")} — exam`,
+        `SUMMARY:${d.label.replace(/[,;\\]/g, " ")}, exam`,
         "BEGIN:VALARM",
         "TRIGGER:-P1D",
         "ACTION:DISPLAY",

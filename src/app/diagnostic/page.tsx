@@ -5,7 +5,7 @@ import { listDiagnosticSets } from "@/lib/diagnostic-questions";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/diagnostic" },
-  title: "Predict your mark — the exam-readiness check",
+  title: "Predict your mark, the exam-readiness check",
   description:
     "Ten auto-marked questions across the most-likely topics for your 2026 paper. Instant score, an indicative grade band, worked solutions, and a fix plan.",
 };
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function DiagnosticIndexPage() {
   const hasSet = new Set(listDiagnosticSets().map((s) => `${s.level}/${s.slug}`));
 
-  // Group by level, in catalogue order — one dropdown per level.
+  // Group by level, in catalogue order, one dropdown per level.
   const groups = PUBLISHED_LEVELS.map((level) => ({
     level,
     subjects: subjectsForLevel(level)
@@ -34,7 +34,7 @@ export default function DiagnosticIndexPage() {
       </h1>
       <p className="mt-3 text-body">
         Our forecast ranks every topic on your 2026 paper. This check mixes ten
-        quick questions across your subject&apos;s VERY HIGH and HIGH calls —
+        quick questions across your subject&apos;s VERY HIGH and HIGH calls, 
         marked instantly, with an indicative grade band for those topics and
         worked solutions after.
       </p>
@@ -83,7 +83,7 @@ export default function DiagnosticIndexPage() {
 
       <p className="mt-6 text-xs text-body/80">
         The grade shown is an estimate from a 10-question sample on the
-        most-likely topics — not a promise of your actual result.
+        most-likely topics, not a promise of your actual result.
       </p>
     </div>
   );

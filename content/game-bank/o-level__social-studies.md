@@ -9,7 +9,7 @@ family: social-studies
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Citizenship"
+topic: "Issue 1 Governance, Citizenship"
 stem: "In the study of citizenship, what does 'citizenship as legal status' mean?"
 options:
   - "Recognised membership of a country, which carries legal rights and responsibilities"
@@ -27,7 +27,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Citizenship"
+topic: "Issue 1 Governance, Citizenship"
 stem: "A student writes: 'When I sing the National Anthem at school I feel that I belong here and that this is my home.' Which aspect of citizenship is she describing?"
 options:
   - "Citizenship as identity"
@@ -45,7 +45,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Citizenship"
+topic: "Issue 1 Governance, Citizenship"
 stem: "Which of the following is the clearest example of citizenship as participation?"
 options:
   - "Holding a passport issued by one's country"
@@ -63,7 +63,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Citizenship"
+topic: "Issue 1 Governance, Citizenship"
 stem: "Which of these is an example of civic participation by an INDIVIDUAL, rather than through a community group?"
 options:
   - "A residents' committee runs a festival for the whole block"
@@ -81,7 +81,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Citizenship"
+topic: "Issue 1 Governance, Citizenship"
 stem: "Which of the following is best described as a RESPONSIBILITY of a citizen rather than a right?"
 options:
   - "Receiving a national identity document"
@@ -99,7 +99,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Citizenship"
+topic: "Issue 1 Governance, Citizenship"
 stem: "Which of the following is one of Singapore's five Shared Values?"
 options:
   - "Racial and religious harmony"
@@ -117,7 +117,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Citizenship"
+topic: "Issue 1 Governance, Citizenship"
 stem: "Which of these best explains how a shared national identity is built?"
 options:
   - "It is written into a citizen's passport at birth"
@@ -135,7 +135,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Citizenship"
+topic: "Issue 1 Governance, Citizenship"
 stem: "A man born overseas becomes a citizen of his new country, votes in its elections and coaches a free weekend football clinic for children in his estate. Which combination of citizenship aspects does this show?"
 options:
   - "Legal status only"
@@ -153,7 +153,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 1 Governance — Citizenship"
+topic: "Issue 1 Governance, Citizenship"
 stem: "Complete Singapore's first Shared Value: 'Nation before community and society above ____.'"
 accepted: ["self", "Self", "the self"]
 marks: 1
@@ -165,7 +165,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 1 Governance — Citizenship"
+topic: "Issue 1 Governance, Citizenship"
 stem: "Citizenship as ______ is the aspect that describes a person's sense of belonging to a country. Give the missing word."
 accepted: ["identity"]
 marks: 1
@@ -177,7 +177,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Working for the Good of Society"
+topic: "Issue 1 Governance, Working for the Good of Society"
 stem: "The three FUNCTIONS of government are best summarised as:"
 options:
   - "Making laws, implementing laws, and interpreting laws"
@@ -195,7 +195,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Working for the Good of Society"
+topic: "Issue 1 Governance, Working for the Good of Society"
 stem: "Parliament debates a Bill and passes it into law. Which function of government is being carried out?"
 options:
   - "The judicial function"
@@ -213,7 +213,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Working for the Good of Society"
+topic: "Issue 1 Governance, Working for the Good of Society"
 stem: "A ministry sets up an office, hires staff and begins processing applications under a new scheme that Parliament has just approved. Which function of government is this?"
 options:
   - "The executive function"
@@ -231,7 +231,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Working for the Good of Society"
+topic: "Issue 1 Governance, Working for the Good of Society"
 stem: "A court hears a dispute over whether a company broke a workplace safety law, and rules on what the law requires. Which function of government is this?"
 options:
   - "The judicial function"
@@ -249,7 +249,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Working for the Good of Society"
+topic: "Issue 1 Governance, Working for the Good of Society"
 stem: "Which of the following best illustrates the government's role of safeguarding the country's national interests?"
 options:
   - "Collecting rubbish from housing estates each morning"
@@ -267,7 +267,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Working for the Good of Society"
+topic: "Issue 1 Governance, Working for the Good of Society"
 stem: "Which of the following is a recognised way for citizens to influence government decisions?"
 options:
   - "Taking part in a public consultation exercise and giving feedback on a draft policy"
@@ -285,7 +285,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Working for the Good of Society"
+topic: "Issue 1 Governance, Working for the Good of Society"
 stem: "A group of residents forms a volunteer group that delivers free meals to elderly neighbours who live alone. This best illustrates:"
 options:
   - "The judicial function of government"
@@ -303,7 +303,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Working for the Good of Society"
+topic: "Issue 1 Governance, Working for the Good of Society"
 stem: "Why does a government consult citizens before making a major policy decision?"
 options:
   - "Because consultation removes the need for the government to make any decision"
@@ -321,7 +321,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 1 Governance — Working for the Good of Society"
+topic: "Issue 1 Governance, Working for the Good of Society"
 stem: "Name the branch of government whose function is to interpret the law and settle disputes."
 accepted: ["judiciary", "the judiciary", "judicial branch", "judiciary (courts)", "courts"]
 marks: 1
@@ -333,7 +333,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 stem: "A government funds research into new industries and pays for mid-career workers to retrain, because it expects today's main industries to shrink within twenty years. Which principle of governance does this best illustrate?"
 options:
   - "Leadership is Key"
@@ -351,7 +351,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 stem: "A housing scheme lets a large majority of households own the home they live in, so that citizens have a share in the country's progress. Which principle of governance does this best illustrate?"
 options:
   - "Anticipate Change and Stay Relevant"
@@ -369,7 +369,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 stem: "Which principle of governance is concerned with selecting honest, capable people to hold public office and holding them to high standards of integrity?"
 options:
   - "Leadership is Key"
@@ -387,7 +387,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 stem: "Scholarships and promotions are awarded on the basis of a person's ability and effort rather than family background. Which principle of governance does this reflect?"
 options:
   - "A Stake for Everyone, Opportunities for All"
@@ -405,7 +405,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 stem: "In governance, what is a trade-off?"
 options:
   - "A decision in which every group gains and no group loses"
@@ -423,7 +423,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 stem: "Why do trade-offs arise in the governance of any country?"
 options:
   - "Because citizens never agree with the government on anything"
@@ -441,7 +441,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 stem: "A city builds a new expressway. Journey times across the country fall, but households living beside the new road face more noise. This best illustrates which idea?"
 options:
   - "That the costs and benefits of a decision are often shared unequally"
@@ -459,7 +459,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 stem: "Which of the following pairs of goals most clearly involves a trade-off for a government with a fixed budget?"
 options:
   - "Printing more copies of a public notice and printing them in colour"
@@ -477,7 +477,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 stem: "What does meritocracy mean?"
 options:
   - "That everyone in society receives an identical income"
@@ -495,7 +495,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 stem: "Which of the following is a RECOGNISED challenge of relying on meritocracy?"
 options:
   - "It makes it impossible for anyone to succeed"
@@ -513,7 +513,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 stem: "'A Stake for Everyone, Opportunities for All' is best explained as meaning that:"
 options:
   - "Only citizens who own property may vote"
@@ -531,7 +531,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 stem: "Which action best shows a government 'staying relevant' in the face of change?"
 options:
   - "Keeping every policy exactly as it was fifty years ago"
@@ -549,7 +549,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 stem: "Complete the principle of governance: 'Anticipate change and stay ______.'"
 accepted: ["relevant"]
 marks: 1
@@ -561,7 +561,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 stem: "State the term for a decision in which gaining one desired outcome requires giving up another desired outcome."
 accepted: ["trade-off", "tradeoff", "trade off", "a trade-off", "trade-offs"]
 marks: 1
@@ -573,7 +573,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 stem: "Name the principle of governance, also known as meritocracy, that is summarised as 'reward for work and work for reward'."
 accepted: ["meritocracy", "reward for work and work for reward", "practising meritocracy"]
 marks: 1
@@ -585,7 +585,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Diversity of Identities"
+topic: "Issue 2 Diverse Society, Diversity of Identities"
 stem: "Which of the following is NOT one of the factors of identity named in the study of a diverse society?"
 options:
   - "Nationality"
@@ -603,7 +603,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Diversity of Identities"
+topic: "Issue 2 Diverse Society, Diversity of Identities"
 stem: "Socio-economic status refers to a person's position in society based on:"
 options:
   - "Their income, occupation and level of education"
@@ -621,7 +621,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Diversity of Identities"
+topic: "Issue 2 Diverse Society, Diversity of Identities"
 stem: "A woman born and raised overseas takes up citizenship of her adopted country and now describes herself as a national of that country. Which factor of identity is most directly involved?"
 options:
   - "Religion"
@@ -639,7 +639,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Diversity of Identities"
+topic: "Issue 2 Diverse Society, Diversity of Identities"
 stem: "In this subject, 'diversity' in a society means:"
 options:
   - "That everyone in the society is the same"
@@ -657,7 +657,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Diversity of Identities"
+topic: "Issue 2 Diverse Society, Diversity of Identities"
 stem: "Which of the following best explains why Singapore is a diverse society?"
 options:
   - "It has never had contact with other countries"
@@ -675,7 +675,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Diversity of Identities"
+topic: "Issue 2 Diverse Society, Diversity of Identities"
 stem: "Which statement about a person's identity is most accurate?"
 options:
   - "A person has exactly one identity, which never changes"
@@ -693,7 +693,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Diversity of Identities"
+topic: "Issue 2 Diverse Society, Diversity of Identities"
 stem: "A researcher records each household's monthly income, the occupation of the main earner and the type of housing lived in. Which factor of identity is being measured?"
 options:
   - "Socio-economic status"
@@ -711,7 +711,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Diversity of Identities"
+topic: "Issue 2 Diverse Society, Diversity of Identities"
 stem: "Which pair of factors gives rise to SOCIO-CULTURAL diversity?"
 options:
   - "Income and occupation"
@@ -729,7 +729,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 2 Diverse Society — Diversity of Identities"
+topic: "Issue 2 Diverse Society, Diversity of Identities"
 stem: "Name the factor of identity measured by a person's income, occupation and level of education."
 accepted: ["socio-economic status", "socioeconomic status", "socio economic status", "SES"]
 marks: 1
@@ -741,7 +741,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 2 Diverse Society — Diversity of Identities"
+topic: "Issue 2 Diverse Society, Diversity of Identities"
 stem: "State the single word for the differences among people in a society in terms of race, religion, nationality and socio-economic status."
 accepted: ["diversity"]
 marks: 1
@@ -753,7 +753,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Experiences and Effects"
+topic: "Issue 2 Diverse Society, Experiences and Effects"
 stem: "What is a stereotype?"
 options:
   - "A fixed, oversimplified idea held about all members of a group, which ignores individual differences"
@@ -771,7 +771,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Experiences and Effects"
+topic: "Issue 2 Diverse Society, Experiences and Effects"
 stem: "What is prejudice?"
 options:
   - "An action that denies someone a job because of their group"
@@ -789,7 +789,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Experiences and Effects"
+topic: "Issue 2 Diverse Society, Experiences and Effects"
 stem: "What is discrimination?"
 options:
   - "Treating a person or group unfairly in practice because of the group they belong to"
@@ -807,7 +807,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Experiences and Effects"
+topic: "Issue 2 Diverse Society, Experiences and Effects"
 stem: "Which sequence correctly matches each term to what it is?"
 options:
   - "Stereotype = action; prejudice = belief; discrimination = attitude"
@@ -826,7 +826,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Experiences and Effects"
+topic: "Issue 2 Diverse Society, Experiences and Effects"
 stem: "Residents of different backgrounds cook together at a block party and each family teaches the others a festival dish. Is this best classified as a benefit or a challenge of living in a diverse society, and why?"
 options:
   - "A challenge, because it creates competition for resources"
@@ -844,7 +844,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Experiences and Effects"
+topic: "Issue 2 Diverse Society, Experiences and Effects"
 stem: "An employer rejects a well-qualified applicant purely because of the group the applicant belongs to. Which effect of living in a diverse society does this illustrate?"
 options:
   - "Cultural exchange"
@@ -862,7 +862,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Experiences and Effects"
+topic: "Issue 2 Diverse Society, Experiences and Effects"
 stem: "A hospital recruits specialists trained in several different countries, and local staff learn new surgical techniques from them. Which positive effect of diversity does this show?"
 options:
   - "Exchange of knowledge, skills and expertise"
@@ -880,7 +880,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Experiences and Effects"
+topic: "Issue 2 Diverse Society, Experiences and Effects"
 stem: "Two groups in a town both want the same piece of vacant land: one for a sports field, the other for a place of worship. This is best described as:"
 options:
   - "Competition for limited resources"
@@ -898,7 +898,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Experiences and Effects"
+topic: "Issue 2 Diverse Society, Experiences and Effects"
 stem: "Which of the following is a POSITIVE effect of living in a diverse society?"
 options:
   - "Prejudice against unfamiliar groups"
@@ -916,7 +916,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Experiences and Effects"
+topic: "Issue 2 Diverse Society, Experiences and Effects"
 stem: "An invented survey of 500 residents in a fictional town found that 62 per cent had made a friend of a different background at a community event, while 41 per cent said they had never attended one. Which conclusion is BEST supported by these figures alone?"
 options:
   - "Community events are the only way to make friends of a different background"
@@ -934,7 +934,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 2 Diverse Society — Experiences and Effects"
+topic: "Issue 2 Diverse Society, Experiences and Effects"
 stem: "State the term for the unfair treatment of a person in practice because of the group they belong to."
 accepted: ["discrimination"]
 marks: 1
@@ -946,7 +946,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 2 Diverse Society — Experiences and Effects"
+topic: "Issue 2 Diverse Society, Experiences and Effects"
 stem: "State the term for a fixed, oversimplified idea held about all the members of a group."
 accepted: ["stereotype", "stereotyping", "a stereotype"]
 marks: 1
@@ -958,7 +958,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 stem: "What does an ASSIMILATIONIST approach to managing socio-cultural diversity require of minority groups?"
 options:
   - "That they adopt the practices and identity of the dominant culture and give up distinctive practices of their own"
@@ -976,7 +976,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 stem: "What does an INTEGRATION approach to managing socio-cultural diversity involve?"
 options:
   - "Requiring every group to give up its own culture"
@@ -994,7 +994,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 stem: "A country requires all schoolchildren to be taught only in the majority language and discourages the use of other languages in public life, expecting minority communities to adopt majority customs. This is an example of:"
 options:
   - "An integration approach"
@@ -1012,7 +1012,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 stem: "A country recognises several official languages, allows communities to run their own cultural and religious activities, and at the same time requires all children to attend national schools where they mix daily. This is an example of:"
 options:
   - "An assimilationist approach"
@@ -1030,7 +1030,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 stem: "Which of the following is a RECOGNISED tension or challenge of an assimilationist approach?"
 options:
   - "It makes cultural exchange impossible to imagine"
@@ -1048,7 +1048,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 stem: "Which of the following is a RECOGNISED tension or challenge of an integration approach?"
 options:
   - "It forces every group to abandon its religion"
@@ -1066,7 +1066,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 stem: "What is 'common space'?"
 options:
   - "A room reserved for the use of one community only"
@@ -1084,7 +1084,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 stem: "Which of the following most clearly creates common space?"
 options:
   - "A neighbourhood in which households of different races and religions live in the same blocks and share the same void decks, playgrounds and hawker centres"
@@ -1102,7 +1102,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 stem: "In managing SOCIO-ECONOMIC diversity, what is a government-financed approach?"
 options:
   - "The government leaves all support to families and charities"
@@ -1120,7 +1120,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 stem: "In managing socio-economic diversity, what is a shared-responsibility approach?"
 options:
   - "Support is shared among the individual, the family, the community and the government, rather than coming from the state alone"
@@ -1138,7 +1138,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 stem: "Which of the following is a RECOGNISED challenge of a government-financed approach?"
 options:
   - "It requires no money at all"
@@ -1156,7 +1156,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 stem: "Which of the following is a RECOGNISED challenge of a shared-responsibility approach?"
 options:
   - "It costs the government more than any other approach"
@@ -1174,7 +1174,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 stem: "Name the approach to managing socio-cultural diversity in which groups keep their own cultural practices while also sharing a common space and a common national identity."
 accepted: ["integration", "integration approach", "an integration approach", "integrationist approach"]
 marks: 1
@@ -1186,7 +1186,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 stem: "Name the approach to managing socio-economic diversity in which the government is the main provider of assistance, funded largely from public revenue."
 accepted: ["government-financed approach", "government financed approach", "government-financed", "government financed", "state-financed approach"]
 marks: 1
@@ -1198,7 +1198,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 stem: "State the two-word term for shared physical or online settings in which people of different backgrounds interact and build understanding."
 accepted: ["common space", "common spaces"]
 marks: 1
@@ -1210,7 +1210,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Economic Impacts"
+topic: "Issue 3 Globalised World, Economic Impacts"
 stem: "What is globalisation?"
 options:
   - "The process by which countries become increasingly connected through the movement of goods, services, people, capital, ideas and information across borders"
@@ -1228,7 +1228,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Economic Impacts"
+topic: "Issue 3 Globalised World, Economic Impacts"
 stem: "Which pair are the main DRIVING FORCES of globalisation named in the syllabus?"
 options:
   - "Population growth and climate change"
@@ -1246,7 +1246,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Economic Impacts"
+topic: "Issue 3 Globalised World, Economic Impacts"
 stem: "What is a multi-national corporation (MNC)?"
 options:
   - "A company that trades only within its own town"
@@ -1264,7 +1264,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Economic Impacts"
+topic: "Issue 3 Globalised World, Economic Impacts"
 stem: "A country attracts several MNCs to build factories there. Employment rises, incomes rise, and the country's output grows. Is this an economic, a cultural or a security impact of globalisation, and of which kind?"
 options:
   - "A cultural impact: spread of culture"
@@ -1282,7 +1282,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Economic Impacts"
+topic: "Issue 3 Globalised World, Economic Impacts"
 stem: "A country earns most of its income from exporting electronics. A global downturn causes overseas orders to collapse, and its factories cut production sharply. Which economic impact of globalisation does this illustrate?"
 options:
   - "Economic growth"
@@ -1300,7 +1300,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Economic Impacts"
+topic: "Issue 3 Globalised World, Economic Impacts"
 stem: "What does interdependence mean in the context of globalisation?"
 options:
   - "That countries no longer trade with one another"
@@ -1318,7 +1318,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Economic Impacts"
+topic: "Issue 3 Globalised World, Economic Impacts"
 stem: "For INDIVIDUALS, which of the following is an economic OPPORTUNITY created by globalisation?"
 options:
   - "Losing a job when a factory relocates overseas"
@@ -1336,7 +1336,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Economic Impacts"
+topic: "Issue 3 Globalised World, Economic Impacts"
 stem: "A long-established factory closes because the company has moved production to a cheaper location abroad, and its workers are laid off. Which impact of globalisation is this, and at which level?"
 options:
   - "A cultural impact on individuals"
@@ -1354,7 +1354,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Economic Impacts"
+topic: "Issue 3 Globalised World, Economic Impacts"
 stem: "Which of the following is a recognised economic CHALLENGE that globalisation can bring to a society?"
 options:
   - "Every worker earns exactly the same wage"
@@ -1372,7 +1372,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Economic Impacts"
+topic: "Issue 3 Globalised World, Economic Impacts"
 stem: "An invented table shows exports as a share of national output: Country P 15 per cent, Country Q 78 per cent, Country R 40 per cent. Assuming nothing else differs, which country is likely to be MOST exposed to a sharp fall in global demand?"
 options:
   - "Country P"
@@ -1390,7 +1390,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 3 Globalised World — Economic Impacts"
+topic: "Issue 3 Globalised World, Economic Impacts"
 stem: "State the term for the growing interconnectedness of countries through the movement of goods, people, capital and ideas across borders."
 accepted: ["globalisation", "globalization"]
 marks: 1
@@ -1402,7 +1402,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 3 Globalised World — Economic Impacts"
+topic: "Issue 3 Globalised World, Economic Impacts"
 stem: "State the two-word term for a country's heightened exposure to external shocks because its economy depends heavily on global trade and investment."
 accepted: ["economic vulnerability"]
 marks: 1
@@ -1414,7 +1414,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Cultural Impacts"
+topic: "Issue 3 Globalised World, Cultural Impacts"
 stem: "What is meant by the 'spread of culture' as an impact of globalisation?"
 options:
   - "The movement of cultural practices, foods, music, fashion and ideas from one society to another, so that people are exposed to cultures beyond their own"
@@ -1432,7 +1432,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Cultural Impacts"
+topic: "Issue 3 Globalised World, Cultural Impacts"
 stem: "What is meant by the 'dilution of culture' as an impact of globalisation?"
 options:
   - "The strengthening of a country's traditional practices"
@@ -1450,7 +1450,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Cultural Impacts"
+topic: "Issue 3 Globalised World, Cultural Impacts"
 stem: "In an invented country, fewer young people now learn a traditional string instrument, and a long-running local folk-theatre form struggles to find audiences, as globally marketed pop music becomes the norm. This best illustrates:"
 options:
   - "Spread of culture"
@@ -1468,7 +1468,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Cultural Impacts"
+topic: "Issue 3 Globalised World, Cultural Impacts"
 stem: "A local street dish becomes popular in restaurants in several other countries, and food writers abroad begin to write about the cuisine. This best illustrates:"
 options:
   - "Dilution of the local culture"
@@ -1486,7 +1486,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Cultural Impacts"
+topic: "Issue 3 Globalised World, Cultural Impacts"
 stem: "A local band performs new songs that combine a traditional instrument with contemporary global pop arrangements, and the songs find a young audience. Which response to the cultural impacts of globalisation does this best show?"
 options:
   - "Outright rejection of foreign culture"
@@ -1504,7 +1504,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Cultural Impacts"
+topic: "Issue 3 Globalised World, Cultural Impacts"
 stem: "'Soft power' is best described as:"
 options:
   - "The ability of a country to influence others through the appeal of its culture, values and ideas rather than through force or payment"
@@ -1522,7 +1522,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 3 Globalised World — Cultural Impacts"
+topic: "Issue 3 Globalised World, Cultural Impacts"
 stem: "State the term for the weakening or loss of local traditions and practices as foreign cultural influences become dominant."
 accepted: ["dilution of culture", "cultural dilution", "dilution of local culture", "dilution"]
 marks: 1
@@ -1534,7 +1534,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Security Impacts"
+topic: "Issue 3 Globalised World, Security Impacts"
 stem: "What is transnational terrorism?"
 options:
   - "Terrorism that is planned, funded, directed or carried out across national borders, so that no single country can deal with it alone"
@@ -1552,7 +1552,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Security Impacts"
+topic: "Issue 3 Globalised World, Security Impacts"
 stem: "Which of the following is an example of a cyber threat?"
 options:
   - "A power cut caused by a lightning strike"
@@ -1570,7 +1570,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Security Impacts"
+topic: "Issue 3 Globalised World, Security Impacts"
 stem: "Criminals operating from another country set up a fake banking website and steal the account details of thousands of people. Is this best classified as an economic, a cultural or a security impact of globalisation?"
 options:
   - "A cultural impact"
@@ -1588,7 +1588,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Security Impacts"
+topic: "Issue 3 Globalised World, Security Impacts"
 stem: "Why has globalisation increased security threats such as transnational terrorism and cybercrime?"
 options:
   - "Because countries no longer have police forces"
@@ -1606,7 +1606,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Security Impacts"
+topic: "Issue 3 Globalised World, Security Impacts"
 stem: "Total Defence in Singapore includes a pillar, introduced in 2019, that addresses cyber threats and online falsehoods. What is it called?"
 options:
   - "Digital Defence"
@@ -1624,7 +1624,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Security Impacts"
+topic: "Issue 3 Globalised World, Security Impacts"
 stem: "A person checks whether a message is from a genuine bank before clicking a link, uses strong and different passwords, and verifies a startling claim against reliable sources before forwarding it. Which type of response to security threats is this?"
 options:
   - "Cooperation among countries"
@@ -1642,7 +1642,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Security Impacts"
+topic: "Issue 3 Globalised World, Security Impacts"
 stem: "A country's security agency signs an agreement with agencies in neighbouring countries to share information about cross-border criminal networks and to run joint training exercises. Which type of response to security threats is this?"
 options:
   - "Individual vigilance"
@@ -1660,7 +1660,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Security Impacts"
+topic: "Issue 3 Globalised World, Security Impacts"
 stem: "Which of the following is best described as a GOVERNMENT measure in response to security threats?"
 options:
   - "A student choosing a stronger password"
@@ -1678,7 +1678,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 3 Globalised World — Security Impacts"
+topic: "Issue 3 Globalised World, Security Impacts"
 stem: "Name the sixth pillar of Total Defence, introduced in 2019, which addresses cyber threats and online falsehoods."
 accepted: ["digital defence", "Digital Defence", "digital defense", "Digital Defense"]
 marks: 1
@@ -1690,7 +1690,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 3 Globalised World — Security Impacts"
+topic: "Issue 3 Globalised World, Security Impacts"
 stem: "State the term for terrorism that is planned, financed or carried out across national borders."
 accepted: ["transnational terrorism"]
 marks: 1
@@ -1702,7 +1702,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Responses to Globalisation"
+topic: "Issue 3 Globalised World, Responses to Globalisation"
 stem: "Workers in an industry face job losses because production is moving to lower-cost countries. Which response most directly addresses this challenge?"
 options:
   - "A campaign to promote traditional festivals"
@@ -1720,7 +1720,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Responses to Globalisation"
+topic: "Issue 3 Globalised World, Responses to Globalisation"
 stem: "Which of the following is a response to globalisation made by an INDIVIDUAL rather than by a government?"
 options:
   - "Passing a cyber-security law"
@@ -1738,7 +1738,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Responses to Globalisation"
+topic: "Issue 3 Globalised World, Responses to Globalisation"
 stem: "A country funds a museum programme, supports young practitioners of a traditional craft and adds local heritage to the school curriculum. Which impact of globalisation is this response aimed at?"
 options:
   - "Cyber threats"
@@ -1756,7 +1756,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Responses to Globalisation"
+topic: "Issue 3 Globalised World, Responses to Globalisation"
 stem: "Which of the following best illustrates COOPERATION AMONG COUNTRIES as a response to globalisation?"
 options:
   - "A worker attending a coding bootcamp"
@@ -1774,7 +1774,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Responses to Globalisation"
+topic: "Issue 3 Globalised World, Responses to Globalisation"
 stem: "Which statement best captures the syllabus view of how societies respond to the spread of foreign culture?"
 options:
   - "Every society rejects foreign culture completely"
@@ -1792,7 +1792,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Issue 3 Globalised World — Responses to Globalisation"
+topic: "Issue 3 Globalised World, Responses to Globalisation"
 stem: "A government introduces a scheme that subsidises course fees so that mid-career workers can learn skills needed in growing industries. Which impact of globalisation is this response aimed at?"
 options:
   - "The employment challenges faced by individuals as industries change"
@@ -1810,7 +1810,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Issue 3 Globalised World — Responses to Globalisation"
+topic: "Issue 3 Globalised World, Responses to Globalisation"
 stem: "State the term for the process in which workers learn new skills so that they remain employable as industries change."
 accepted: ["upskilling", "reskilling", "skills upgrading", "retraining", "skills upgrade"]
 marks: 1
@@ -1822,7 +1822,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Exam Skills — Source-Based Case Study"
+topic: "Exam Skills, Source-Based Case Study"
 stem: "In source work, what is meant by the 'provenance' of a source?"
 options:
   - "The number of words in the source"
@@ -1840,7 +1840,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Exam Skills — Source-Based Case Study"
+topic: "Exam Skills, Source-Based Case Study"
 stem: "A question asks: 'What is the message of this cartoon?' Which answer shape earns the highest credit?"
 options:
   - "List every object that appears in the cartoon"
@@ -1858,7 +1858,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Exam Skills — Source-Based Case Study"
+topic: "Exam Skills, Source-Based Case Study"
 stem: "What is the difference between the MESSAGE of a source and its PURPOSE?"
 options:
   - "There is no difference; the terms are interchangeable"
@@ -1876,7 +1876,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Exam Skills — Source-Based Case Study"
+topic: "Exam Skills, Source-Based Case Study"
 stem: "A question asks: 'How far do Source A and Source B agree?' Which approach best fits the question?"
 options:
   - "Summarise Source A fully, then summarise Source B fully, and stop"
@@ -1894,7 +1894,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Exam Skills — Source-Based Case Study"
+topic: "Exam Skills, Source-Based Case Study"
 stem: "When judging how RELIABLE a source is, which consideration matters most?"
 options:
   - "How long the source is"
@@ -1912,7 +1912,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Exam Skills — Source-Based Case Study"
+topic: "Exam Skills, Source-Based Case Study"
 stem: "You need evidence about how residents of a fictional town FELT about a new recycling scheme. Which source would be MOST useful for that specific purpose?"
 options:
   - "A table of results from a survey of 800 residents, asking how satisfied they were with the scheme"
@@ -1930,7 +1930,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Exam Skills — Source-Based Case Study"
+topic: "Exam Skills, Source-Based Case Study"
 stem: "What does 'cross-referencing' mean when working with a set of sources?"
 options:
   - "Reading each source twice"
@@ -1948,7 +1948,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Exam Skills — Source-Based Case Study"
+topic: "Exam Skills, Source-Based Case Study"
 stem: "A question asks: 'Does Source D make you surprised by Source E?' What must a top answer do?"
 options:
   - "Describe Source E in detail"
@@ -1966,7 +1966,7 @@ worked: |
 
 ```yaml
 type: short
-topic: "Exam Skills — Source-Based Case Study"
+topic: "Exam Skills, Source-Based Case Study"
 stem: "State the term for the information about a source's author, date, origin, audience and purpose."
 accepted: ["provenance"]
 marks: 1
@@ -1978,7 +1978,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Exam Skills — Structured Response and Command Words"
+topic: "Exam Skills, Structured Response and Command Words"
 stem: "A question ends: 'How far do you agree?' What must the answer contain in order to reach the top level?"
 options:
   - "Only the arguments that support the statement"
@@ -1996,7 +1996,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Exam Skills — Structured Response and Command Words"
+topic: "Exam Skills, Structured Response and Command Words"
 stem: "The command word 'Explain' requires you to:"
 options:
   - "List points without developing them"
@@ -2014,7 +2014,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Exam Skills — Structured Response and Command Words"
+topic: "Exam Skills, Structured Response and Command Words"
 stem: "The command word 'Assess' (or 'Evaluate') requires you to:"
 options:
   - "Describe the topic in as much detail as possible"
@@ -2032,7 +2032,7 @@ worked: |
 
 ```yaml
 type: mcq
-topic: "Exam Skills — Structured Response and Command Words"
+topic: "Exam Skills, Structured Response and Command Words"
 stem: "A question asks: 'Which factor is MORE important in building a shared identity: schools or shared public spaces? Explain your answer.' What shape must the answer take?"
 options:
   - "Explain only the factor you think is more important"
@@ -2137,265 +2137,265 @@ how: "Before answering anything, annotate all sources with WHO, WHEN, WHY, TO WH
 ```yaml
 kind: definition
 term: "Citizenship as legal status"
-topic: "Issue 1 Governance — Citizenship"
+topic: "Issue 1 Governance, Citizenship"
 body: "The formal, recognised membership of a country, which carries legal rights (such as holding its passport and voting) and legal responsibilities (such as obeying its laws)."
 ```
 
 ```yaml
 kind: definition
 term: "Citizenship as identity"
-topic: "Issue 1 Governance — Citizenship"
+topic: "Issue 1 Governance, Citizenship"
 body: "The sense of belonging a person feels towards a country, built from shared experiences, symbols, values and memories held in common with fellow citizens."
 ```
 
 ```yaml
 kind: definition
 term: "Citizenship as participation"
-topic: "Issue 1 Governance — Citizenship"
+topic: "Issue 1 Governance, Citizenship"
 body: "Taking action to contribute to the well-being of society, either as an individual (for example writing to an MP or volunteering) or through community and interest groups."
 ```
 
 ```yaml
 kind: definition
 term: "Shared Values"
-topic: "Issue 1 Governance — Citizenship"
+topic: "Issue 1 Governance, Citizenship"
 body: "Singapore's five Shared Values: nation before community and society above self; family as the basic unit of society; community support and respect for the individual; consensus, not conflict; and racial and religious harmony."
 ```
 
 ```yaml
 kind: definition
 term: "Functions of government"
-topic: "Issue 1 Governance — Working for the Good of Society"
+topic: "Issue 1 Governance, Working for the Good of Society"
 body: "HOW government works: the legislature makes laws, the executive implements and enforces them, and the judiciary interprets and applies them. Do not confuse these with the roles of government."
 ```
 
 ```yaml
 kind: definition
 term: "Roles of government"
-topic: "Issue 1 Governance — Working for the Good of Society"
+topic: "Issue 1 Governance, Working for the Good of Society"
 body: "WHAT government does for society: maintaining law and order and internal security, ensuring the well-being of citizens through goods and services, and safeguarding the country's national interests."
 ```
 
 ```yaml
 kind: definition
 term: "Trade-off"
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 body: "A choice in which gaining one valued outcome means giving up another, because resources are limited while different groups have differing needs, interests and priorities. The costs and benefits are often shared unequally."
 ```
 
 ```yaml
 kind: definition
 term: "Meritocracy"
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 body: "The principle that rewards, positions and opportunities are earned through ability and effort rather than through birth, wealth or connections. Expressed in governance as 'reward for work and work for reward'."
 ```
 
 ```yaml
 kind: definition
 term: "Leadership is Key"
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 body: "The principle of governance that a country's progress depends on the quality and integrity of those who govern, so capable and honest leaders must be selected and held to high standards."
 ```
 
 ```yaml
 kind: definition
 term: "Anticipate Change and Stay Relevant"
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 body: "The principle of governance that a country must look ahead at how the world is changing and adjust early, for example by developing new industries and retraining workers, rather than reacting only after a problem has arrived."
 ```
 
 ```yaml
 kind: definition
 term: "A Stake for Everyone, Opportunities for All"
-topic: "Issue 1 Governance — Principles of Governance"
+topic: "Issue 1 Governance, Principles of Governance"
 body: "The principle of governance that every citizen should have a real share in the nation's progress and a fair chance to improve their life, so that all feel they belong and have something worth protecting."
 ```
 
 ```yaml
 kind: definition
 term: "Diversity"
-topic: "Issue 2 Diverse Society — Diversity of Identities"
+topic: "Issue 2 Diverse Society, Diversity of Identities"
 body: "The presence of differences among the people of a society. Socio-cultural diversity comes from nationality, race and ethnicity and religion; socio-economic diversity comes from income, occupation and education."
 ```
 
 ```yaml
 kind: definition
 term: "Socio-economic status"
-topic: "Issue 2 Diverse Society — Diversity of Identities"
+topic: "Issue 2 Diverse Society, Diversity of Identities"
 body: "A person's standing in society as measured by income, occupation and level of education, with housing type often used as a proxy. Differences in it produce socio-economic diversity."
 ```
 
 ```yaml
 kind: definition
 term: "Stereotype"
-topic: "Issue 2 Diverse Society — Experiences and Effects"
+topic: "Issue 2 Diverse Society, Experiences and Effects"
 body: "A fixed, oversimplified idea held about all the members of a group, which ignores individual differences. It is a BELIEF, and it can feed prejudice."
 ```
 
 ```yaml
 kind: definition
 term: "Prejudice"
-topic: "Issue 2 Diverse Society — Experiences and Effects"
+topic: "Issue 2 Diverse Society, Experiences and Effects"
 body: "A negative attitude or pre-judgement formed about a person or group before knowing them fairly, often based on a stereotype. It is an ATTITUDE, and it can lead to discrimination."
 ```
 
 ```yaml
 kind: definition
 term: "Discrimination"
-topic: "Issue 2 Diverse Society — Experiences and Effects"
+topic: "Issue 2 Diverse Society, Experiences and Effects"
 body: "Treating a person or group unfairly in practice because of the group they belong to, for example denying them a job or a service. It is an ACTION, and it is the stage at which harm is done."
 ```
 
 ```yaml
 kind: definition
 term: "Assimilation"
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 body: "An approach to managing socio-cultural diversity in which minority groups are expected to adopt the practices and identity of the dominant culture and to set aside distinctive practices of their own. Its recognised tension is that minorities may feel their heritage is being erased."
 ```
 
 ```yaml
 kind: definition
 term: "Integration"
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 body: "An approach to managing socio-cultural diversity in which groups keep their own cultural practices while also sharing common spaces and developing a common national identity. Its recognised tension is that building a shared identity takes time, and groups may still keep to themselves if common spaces are few."
 ```
 
 ```yaml
 kind: definition
 term: "Common space"
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 body: "Shared physical or online settings, such as national schools, mixed housing estates, workplaces and community centres, in which people of different backgrounds interact, build understanding and develop a shared identity."
 ```
 
 ```yaml
 kind: definition
 term: "Government-financed approach"
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 body: "An approach to socio-economic diversity in which the state is the main provider of assistance to lower-income groups, funded largely from public revenue. Its recognised challenge is the cost, usually met through higher taxes, and the risk of over-reliance."
 ```
 
 ```yaml
 kind: definition
 term: "Shared-responsibility approach"
-topic: "Issue 2 Diverse Society — Managing Diversity"
+topic: "Issue 2 Diverse Society, Managing Diversity"
 body: "An approach to socio-economic diversity in which support is shared among the individual, the family, the community and the government. Its recognised challenge is that those without strong family or community support may fall through the gaps."
 ```
 
 ```yaml
 kind: definition
 term: "Globalisation"
-topic: "Issue 3 Globalised World — Economic Impacts"
+topic: "Issue 3 Globalised World, Economic Impacts"
 body: "The growing interconnectedness of countries through the cross-border movement of goods, services, people, capital, ideas and information. Its driving forces are advances in transport and digital technology and the growth of multi-national corporations."
 ```
 
 ```yaml
 kind: definition
 term: "Economic vulnerability"
-topic: "Issue 3 Globalised World — Economic Impacts"
+topic: "Issue 3 Globalised World, Economic Impacts"
 body: "The country-level downside of globalisation: because an economy is deeply connected to world markets, a shock elsewhere, such as a fall in global demand, is transmitted rapidly to it. Its paired upside is economic growth."
 ```
 
 ```yaml
 kind: definition
 term: "Interdependence"
-topic: "Issue 3 Globalised World — Economic Impacts"
+topic: "Issue 3 Globalised World, Economic Impacts"
 body: "The mutual reliance of countries on one another for goods, components, services, investment and labour, so that what happens in one economy affects the others."
 ```
 
 ```yaml
 kind: definition
 term: "Dilution of culture"
-topic: "Issue 3 Globalised World — Cultural Impacts"
+topic: "Issue 3 Globalised World, Cultural Impacts"
 body: "The weakening or loss of local traditions, languages and practices as globally marketed cultural influences become dominant. Its paired impact is the spread of culture."
 ```
 
 ```yaml
 kind: definition
 term: "Soft power"
-topic: "Issue 3 Globalised World — Cultural Impacts"
+topic: "Issue 3 Globalised World, Cultural Impacts"
 body: "The ability of a country to influence others through the appeal of its culture, values and ideas, rather than through military force or economic pressure."
 ```
 
 ```yaml
 kind: definition
 term: "Transnational terrorism"
-topic: "Issue 3 Globalised World — Security Impacts"
+topic: "Issue 3 Globalised World, Security Impacts"
 body: "Terrorism that is planned, financed, directed or carried out across national borders, so that no single country can address it alone. It is one of the two named security impacts of globalisation."
 ```
 
 ```yaml
 kind: definition
 term: "Cyber threat"
-topic: "Issue 3 Globalised World — Security Impacts"
+topic: "Issue 3 Globalised World, Security Impacts"
 body: "An attack or crime carried out through computer networks, such as hacking, ransomware, phishing, data theft or the spread of online falsehoods. Responses are grouped into individual vigilance, government measures, and cooperation among countries."
 ```
 
 ```yaml
 kind: definition
 term: "Provenance"
-topic: "Exam Skills — Source-Based Case Study"
+topic: "Exam Skills, Source-Based Case Study"
 body: "The origin details of a source: who produced it, when, for what purpose and for which audience. Provenance is the basis of every judgement on reliability, purpose and usefulness."
 ```
 
 ```yaml
 kind: definition
 term: "Cross-referencing"
-topic: "Exam Skills — Source-Based Case Study"
+topic: "Exam Skills, Source-Based Case Study"
 body: "Testing a claim in one source against the other sources and your own knowledge, to see whether it is corroborated or contradicted. It is what lifts an answer on reliability, surprise and the final assertion above description."
 ```
 
 ```yaml
 kind: definition
-term: "Command word — Identify / State"
-topic: "Exam Skills — Structured Response and Command Words"
+term: "Command word, Identify / State"
+topic: "Exam Skills, Structured Response and Command Words"
 body: "Give the answer only. No explanation is required and none is credited, so do not waste time developing a point that carries no marks."
 ```
 
 ```yaml
 kind: definition
-term: "Command word — Describe"
-topic: "Exam Skills — Structured Response and Command Words"
+term: "Command word, Describe"
+topic: "Exam Skills, Structured Response and Command Words"
 body: "Say WHAT something is or what is happening, with detail and examples. Description does not require reasons, but on its own it cannot satisfy an 'explain' or 'assess' command."
 ```
 
 ```yaml
 kind: definition
-term: "Command word — Explain"
-topic: "Exam Skills — Structured Response and Command Words"
+term: "Command word, Explain"
+topic: "Exam Skills, Structured Response and Command Words"
 body: "Give reasons and DEVELOP them: point, evidence, explanation of how or why the point leads to the outcome, then link back to the question. A list of unexplained assertions stays at the lowest level."
 ```
 
 ```yaml
 kind: definition
-term: "Command word — Compare"
-topic: "Exam Skills — Structured Response and Command Words"
+term: "Command word, Compare"
+topic: "Exam Skills, Structured Response and Command Words"
 body: "Set two things against each other point by point, giving BOTH similarities and differences, and quoting or citing both. Two separate descriptions written side by side is not a comparison."
 ```
 
 ```yaml
 kind: definition
-term: "Command word — Assess / Evaluate"
-topic: "Exam Skills — Structured Response and Command Words"
+term: "Command word, Assess / Evaluate"
+topic: "Exam Skills, Structured Response and Command Words"
 body: "Weigh the strengths and limitations, or the arguments for and against, and reach a supported judgement. Description alone weighs nothing and cannot satisfy this command."
 ```
 
 ```yaml
 kind: definition
-term: "Command word — How far do you agree"
-topic: "Exam Skills — Structured Response and Command Words"
+term: "Command word, How far do you agree"
+topic: "Exam Skills, Structured Response and Command Words"
 body: "Argue BOTH sides with evidence, then give a stand and justify it, explaining why the side you favour outweighs the other. A stand that is announced but not justified stalls in the middle band."
 ```
 
 ```yaml
 kind: definition
-term: "Command word — Justify"
-topic: "Exam Skills — Structured Response and Command Words"
+term: "Command word, Justify"
+topic: "Exam Skills, Structured Response and Command Words"
 body: "Give the reasons that support your choice or stand, and show why they outweigh the alternatives. Naming a criterion (for example reach, durability, or root cause) is what turns an assertion into a justification."
 ```
 
 ```yaml
 kind: definition
-term: "Command word — How useful is this source"
-topic: "Exam Skills — Structured Response and Command Words"
+term: "Command word, How useful is this source"
+topic: "Exam Skills, Structured Response and Command Words"
 body: "Judge the source against the exact purpose stated in the question, using its content, its provenance, and what it leaves out. A biased source is not useless: state what it IS useful as evidence of."
 ```

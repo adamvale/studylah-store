@@ -108,7 +108,7 @@ const GUARDIAN_BY_FAMILY: Record<string, GuardianName> = {
 const emblemFor = (family?: string) => EMBLEM_BY_FAMILY[family ?? ""] ?? "emblem_gear";
 const guardianFor = (family?: string): GuardianName => GUARDIAN_BY_FAMILY[family ?? ""] ?? "ruins_watcher";
 
-// ── StudyLah Legends — the full game ───────────────────────────────────────────
+// ── StudyLah Legends, the full game ───────────────────────────────────────────
 // Immersive full-screen canvas RPG with PUBG-style overlay controls. Every
 // battle strike is a REAL exam question graded server-side; story beats,
 // gym emblems and dex captures persist as achievements. All content is
@@ -137,7 +137,7 @@ const clientTrue = () => true;
 const serverFalse = () => false;
 
 // ── Viewport: the tile grid matches the real screen aspect ────────────────
-// Shorter screen side ≈ 13 tiles, the longer side fills to the same ratio —
+// Shorter screen side ≈ 13 tiles, the longer side fills to the same ratio, 
 // with object-cover on the canvas there are NO letterbox bars. Quantised
 // snapshot string keeps useSyncExternalStore referentially stable.
 function viewSnapshot(): string {
@@ -171,7 +171,7 @@ type StrikeId = (typeof STRIKES)[number]["id"];
 
 // ── Pixel tileset v2 ───────────────────────────────────────────────────────
 // Two animation frames (water waves, swaying grass, pulsing portals) of
-// hand-drawn original pixels — no external assets, nothing licensed.
+// hand-drawn original pixels, no external assets, nothing licensed.
 function makeTileset(f: number): Record<number, HTMLCanvasElement> {
   const out: Record<number, HTMLCanvasElement> = {};
   const mk = (draw: (c: CanvasRenderingContext2D) => void) => {
@@ -318,7 +318,7 @@ function makeTileset(f: number): Record<number, HTMLCanvasElement> {
   return out;
 }
 
-// Soft shadow disc under every character — depth for free.
+// Soft shadow disc under every character, depth for free.
 function drawShadow(ctx: CanvasRenderingContext2D, x: number, y: number, scale = 1) {
   ctx.fillStyle = "rgba(10, 14, 20, 0.32)";
   ctx.beginPath();
@@ -326,7 +326,7 @@ function drawShadow(ctx: CanvasRenderingContext2D, x: number, y: number, scale =
   ctx.fill();
 }
 
-// Level accessories from ghost_accessories.png — cell-for-cell aligned with
+// Level accessories from ghost_accessories.png, cell-for-cell aligned with
 // the player walker (bob offsets baked into the art), drawn straight over.
 // Thresholds mirror ghostStage() in src/lib/game.ts.
 const ACCESSORY_LEVELS: [number, AccessoryName][] = [
@@ -354,7 +354,7 @@ function drawAccessories(
 // ── The playable researchers ───────────────────────────────────────────────
 // Heroes render from the commissioned heroes.png sheet (jun / mei / agent).
 // This painter is the PROCEDURAL FALLBACK only, used when the sheet fails to
-// load — 16×24, 1px #1a2230 outline, feet on the tile, 3-frame walk.
+// load, 16×24, 1px #1a2230 outline, feet on the tile, 3-frame walk.
 interface HeroPalette {
   hair: string;
   skin: string;
@@ -451,7 +451,7 @@ function drawGhost(
     ctx.fillStyle = col;
     ctx.fillRect(x + dx, y + dy + bob, w, h);
   };
-  // dark outline first, then the body inside it — sprites pop off the map
+  // dark outline first, then the body inside it, sprites pop off the map
   px(2, 1, 12, 11, "#1a2230");
   px(2, 11, 12, 4, "#1a2230");
   px(3, 2, 10, 9, "#ffffff");
@@ -533,7 +533,7 @@ function drawSheetTile(
       b("terracotta_slope");
       break;
     case TILE.DOOR: {
-      // the door opens as you approach — pure delight, zero cost
+      // the door opens as you approach, pure delight, zero cost
       const dist = Math.abs(tx - ptx) + Math.abs(ty - pty);
       anim("door", dist <= 1 ? 3 : dist === 2 ? 1 : 0);
       break;
@@ -629,7 +629,7 @@ function drawSheetTile(
       if (z.id === "cells") t("cave_floor");
       else if (z.id === "lantern") t("sand");
       else intFloor(ctx, sx, sy, tx, ty);
-      // a lit beacon-lamp — the Lightbearer motif. Soft glow, gold flame that
+      // a lit beacon-lamp, the Lightbearer motif. Soft glow, gold flame that
       // flickers on the 2-frame terrain clock.
       ctx.fillStyle = "rgba(255, 220, 0, 0.14)";
       ctx.beginPath();
@@ -674,7 +674,7 @@ interface WildBattle {
   subject: WorldSubject;
   monster: string;
   shiny: boolean;
-  echo?: boolean; // notebook echo — this one is personal
+  echo?: boolean; // notebook echo, this one is personal
   stage: 1 | 2 | 3;
   hp: number;
   maxHp: number;
@@ -717,7 +717,7 @@ function loadQuestStore(): QuestProgressStore {
     const raw = localStorage.getItem("ff_quest_state");
     if (raw) return JSON.parse(raw) as QuestProgressStore;
   } catch {
-    // corrupted store — start fresh
+    // corrupted store, start fresh
   }
   return { active: {}, signs: [] };
 }
@@ -797,7 +797,7 @@ export function AdventureGame({
     try {
       localStorage.setItem("ff_quest_state", JSON.stringify(questStore));
     } catch {
-      // storage unavailable — session-only progress
+      // storage unavailable, session-only progress
     }
   }, [questStore]);
 
@@ -922,7 +922,7 @@ export function AdventureGame({
     window.setTimeout(() => setToast(null), 3000);
   }, []);
 
-  // Exam Week Mode: the game steps back — the greeting says so, once.
+  // Exam Week Mode: the game steps back, the greeting says so, once.
   // (queueMicrotask keeps the strict no-sync-setState-in-effect rule happy.)
   useEffect(() => {
     if (!examWeek) return;
@@ -1020,7 +1020,7 @@ export function AdventureGame({
           emitGame(data.game, { x: window.innerWidth / 2, y: window.innerHeight * 0.3 });
         }
       } catch {
-        // offline — the beat replays next time, idempotent server-side
+        // offline, the beat replays next time, idempotent server-side
       }
       setStory((prev) => new Set(prev).add(beat));
     },
@@ -1092,7 +1092,7 @@ export function AdventureGame({
       const subject = b.mixed ? null : zoneRef.current.encounter ?? subjects[0] ?? null;
       const { qs, from } = await drawQuestions(b.questions, subject);
       if (qs.length < b.questions) {
-        showToast("Not enough fresh questions here right now — try again shortly.");
+        showToast("Not enough fresh questions here right now, try again shortly.");
         return;
       }
       setTrainer({ npc, battle: b, questions: qs, bySubject: from, idx: 0, correct: 0, phase: "question" });
@@ -1104,7 +1104,7 @@ export function AdventureGame({
     (tx: number, ty: number) => {
       const z = zoneRef.current;
       const tile = z.grid[ty]?.[tx];
-      // A portal can sit on ANY tile — portal pads, building DOORs (into the
+      // A portal can sit on ANY tile, portal pads, building DOORs (into the
       // furnished interiors), and the interior exit MAT. Locked gates never
       // get this far (movement blocks them with their own message).
       const p = z.portals.find((pt) => pt.x === tx && pt.y === ty);
@@ -1119,7 +1119,7 @@ export function AdventureGame({
             player.current.fromY = p.toY;
             player.current.moving = false;
             trailRef.current = []; // don't streak Gugu across the new zone
-            showToast(`— ${to.name} —`);
+            showToast(`, ${to.name}, `);
             emitFx({ type: "blip" });
           }
         }
@@ -1224,7 +1224,7 @@ export function AdventureGame({
     const fy = p.ty + (p.facing === "up" ? -1 : p.facing === "down" ? 1 : 0);
     const z = zoneRef.current;
 
-    // signposts — readable, and Old Tan's quest counts them
+    // signposts, readable, and Old Tan's quest counts them
     const sign = z.signs?.find((sg) => sg.x === fx && sg.y === fy);
     if (sign) {
       const signKey = `${z.id}:${fx}-${fy}`;
@@ -1242,7 +1242,7 @@ export function AdventureGame({
 
     const npc = npcAt(fx, fy);
     if (!npc) {
-      // the guardian's round — standing with it counts
+      // the guardian's round, standing with it counts
       if (questStore.active.guardianround !== undefined && z.gym && cleared.has(`${z.gym.level}/${z.gym.slug}`)) {
         const gx = z.gym.x + 2;
         const gy = z.gym.y + 1;
@@ -1260,7 +1260,7 @@ export function AdventureGame({
       return;
     }
 
-    // echo stones — the Undercroft's puzzle
+    // echo stones, the Undercroft's puzzle
     if (npc.stone) {
       const order = z.stoneOrder ?? [];
       const rung = rungRef.current[z.id] ?? [];
@@ -1275,7 +1275,7 @@ export function AdventureGame({
       emitFx({ type: "blip" });
       if (next.length >= order.length) {
         setStonesOpen((prev) => new Set(prev).add(z.id));
-        showToast("🎵 The third note lands — the keystone door grinds open.");
+        showToast("🎵 The third note lands, the keystone door grinds open.");
       } else {
         showToast(`🎵 The ${npc.stone} stone sings. ${next.length}/${order.length}.`);
       }
@@ -1324,7 +1324,7 @@ export function AdventureGame({
       });
       return;
     }
-    // the character turns to face you — small thing, big life
+    // the character turns to face you, small thing, big life
     const OPPOSITE: Record<Dir, Dir> = { up: "down", down: "up", left: "right", right: "left" };
     npcFacingRef.current[npc.id] = OPPOSITE[p.facing];
     const beatDone = npc.battle?.beat ? story.has(npc.battle.beat) : beatenNpcs.has(npc.id);
@@ -1343,7 +1343,7 @@ export function AdventureGame({
       return;
     }
 
-    // Finding Murk in the Sunken Cells IS the beat — no battle, just the truth.
+    // Finding Murk in the Sunken Cells IS the beat, no battle, just the truth.
     if (npc.id === "murkcells") {
       setDialogue({
         name: npc.name,
@@ -1582,7 +1582,7 @@ export function AdventureGame({
           }
         }
       }
-      // NPCs — real walker sprites once the sheets are in
+      // NPCs, real walker sprites once the sheets are in
       ctx.font = "12px sans-serif";
       ctx.textAlign = "center";
       for (const n of z.npcs) {
@@ -1600,7 +1600,7 @@ export function AdventureGame({
           ctx.fillText(n.emoji, sx + TS / 2, sy + TS - 3);
         }
       }
-      // ── Gugu, the companion — smooth path-follow, half size ──────────────
+      // ── Gugu, the companion, smooth path-follow, half size ──────────────
       // Record the hero's sub-tile position each frame; draw Gugu at a fixed
       // path-distance behind, interpolated along the trail. This keeps a steady
       // one-step gap that glides around corners instead of snapping tile to
@@ -1662,7 +1662,7 @@ export function AdventureGame({
         }
       }
 
-      // the researcher — the student's own hero — leads
+      // the researcher, the student's own hero, leads
       const pfx = Math.round((rx - camX) * TS);
       const pfy = Math.round((ry - camY) * TS);
       drawShadow(ctx, pfx, pfy);
@@ -1753,7 +1753,7 @@ export function AdventureGame({
           fogCleared: boss?.modifier === "fog_option" ? true : battle.fogCleared,
           bark: boss ? boss.onBreather : battle.bark,
         });
-        showToast("You steady your breathing — the next miss won't touch your hearts.");
+        showToast("You steady your breathing, the next miss won't touch your hearts.");
         return;
       }
       setBusy(true);
@@ -1761,7 +1761,7 @@ export function AdventureGame({
       setBusy(false);
       if (!q) {
         setBattle(null);
-        showToast("The monster melts into the fog — no questions left here today.");
+        showToast("The monster melts into the fog, no questions left here today.");
         return;
       }
       setBattle((b) => (b ? { ...b, phase: "question", strike: id, question: q } : b));
@@ -1803,7 +1803,7 @@ export function AdventureGame({
           if (r.ok) emitGame(((await r.json()) as { game: FxGame | null }).game);
         });
         setUnderCleared((prev) => new Set(prev).add(b.keystoneKey!));
-        showToast("🔦 An under-beacon glows — the fog on the route above thins.");
+        showToast("🔦 An under-beacon glows, the fog on the route above thins.");
       }
       if (b.tileKey) {
         void fetch("/api/account/game/quest", {
@@ -1876,7 +1876,7 @@ export function AdventureGame({
         const bark = boss ? boss.onWrong[round % boss.onWrong.length] : undefined;
         if (battle.guarded) {
           setBattle({ ...battle, round, phase: "reveal", result: res, guarded: false, fogCleared: false, bark });
-          showToast("The breath held — no hearts lost.");
+          showToast("The breath held, no hearts lost.");
           return;
         }
         const cost = 1 + (battle.keystoneKey ? 1 : 0);
@@ -1905,7 +1905,7 @@ export function AdventureGame({
       const res = await gradeAnswer(subject, q.id, String(i));
       setBusy(false);
       if (!res) {
-        showToast("Connection hiccup — that one didn't count.");
+        showToast("Connection hiccup, that one didn't count.");
         return;
       }
       emitFx({ type: res.correct ? "correct" : "wrong" });
@@ -2070,7 +2070,7 @@ export function AdventureGame({
       "#aeb8c6"
     );
     center("Every battle is a real exam question.", 560, "16px monospace", "#aeb8c6");
-    center("STUDY HQ — studylah.education", 620, "bold 18px monospace", "#ffdc00");
+    center("STUDY HQ, studylah.education", 620, "bold 18px monospace", "#ffdc00");
     const blob: Blob | null = await new Promise((resolve) => cv.toBlob(resolve, "image/png"));
     if (!blob) return;
     const file = new File([blob], "studylah-legends-report.png", { type: "image/png" });
@@ -2080,7 +2080,7 @@ export function AdventureGame({
         await nav.share({ files: [file], title: "StudyLah Legends expedition report" });
         return;
       } catch {
-        // cancelled — fall through
+        // cancelled, fall through
       }
     }
     const url = URL.createObjectURL(blob);
@@ -2104,7 +2104,7 @@ export function AdventureGame({
         height={viewRows * TS}
         className="h-full w-full touch-none object-cover"
         style={{ imageRendering: "pixelated" }}
-        aria-label="StudyLah Legends overworld — walk with the D-pad, talk with A, grass hides wild battles"
+        aria-label="StudyLah Legends overworld, walk with the D-pad, talk with A, grass hides wild battles"
       />
 
       {/* atmosphere: drifting fog + vignette (pure CSS, zero assets) */}
@@ -2151,7 +2151,7 @@ export function AdventureGame({
             <button
               type="button"
               onClick={() => setGuruOpen(true)}
-              aria-label="The Academy — study with your subject Gurus"
+              aria-label="The Academy, study with your subject Gurus"
               className="rounded-lg border border-accent/60 bg-night/70 px-2 py-1 text-xs backdrop-blur active:border-accent"
             >
               🎓
@@ -2265,7 +2265,7 @@ export function AdventureGame({
         <Panel
           title={
             battle.boss
-              ? `🌫 ${battle.boss.name} — ${battle.boss.epithet}`
+              ? `🌫 ${battle.boss.name}, ${battle.boss.epithet}`
               : battle.isFront
               ? "🌫 The Fog Front holds this ground"
               : battle.keystoneKey
@@ -2305,7 +2305,7 @@ export function AdventureGame({
             <div className="mt-4 space-y-2">
               <p className="font-pixel text-[9px] text-body">
                 {battle.boss?.modifier === "jab_lock" && battle.round < 2
-                  ? "THE PATH IS WHITE — ONLY THE SMALLEST START IS ALLOWED"
+                  ? "THE PATH IS WHITE, ONLY THE SMALLEST START IS ALLOWED"
                   : "CHOOSE YOUR STRIKE"}
               </p>
               {battle.keystoneKey && (
@@ -2406,7 +2406,7 @@ export function AdventureGame({
                   : battle.isFront
                   ? "🌤 The fog lifts off the landmark!"
                   : battle.tileKey
-                  ? "🌤 The memory settles — this ground stays clear."
+                  ? "🌤 The memory settles, this ground stays clear."
                   : "🏆 It's defeated!"}
               </p>
               {battle.captured && (
@@ -2439,7 +2439,7 @@ export function AdventureGame({
           title={
             <span className="flex items-center gap-2">
               <PortraitSprite name={trainer.npc.sprite as PortraitName} scale={1} className="rounded border border-hairline" />
-              {trainer.npc.name} — {Math.min(trainer.idx + 1, trainer.questions.length)}/{trainer.questions.length}
+              {trainer.npc.name}, {Math.min(trainer.idx + 1, trainer.questions.length)}/{trainer.questions.length}
             </span>
           }
         >
@@ -2508,7 +2508,7 @@ export function AdventureGame({
                   : "Defeated…"}
               </p>
               <p className="text-sm text-body">
-                {trainer.correct}/{trainer.questions.length} correct — needed {trainer.battle.threshold}.
+                {trainer.correct}/{trainer.questions.length} correct, needed {trainer.battle.threshold}.
                 {!trainer.won && " Train in the grass and challenge them again."}
               </p>
               <button
@@ -2529,7 +2529,7 @@ export function AdventureGame({
           title={
             <span className="flex items-center gap-2">
               <UiSprite name={emblemFor(gym.family)} scale={1.5} label={`${gym.name} emblem`} />
-              {gym.name} Gym{gymState && !gymState.outcome ? ` — ${gymState.idx + 1}/${gymState.questions.length}` : ""}
+              {gym.name} Gym{gymState && !gymState.outcome ? `, ${gymState.idx + 1}/${gymState.questions.length}` : ""}
             </span>
           }
         >
@@ -2537,7 +2537,7 @@ export function AdventureGame({
             <div className="space-y-3">
               <p className="text-sm text-body">
                 {cleared.has(`${gym.level}/${gym.slug}`)
-                  ? "You hold this gym's emblem already — but the leader always accepts a rematch."
+                  ? "You hold this gym's emblem already, but the leader always accepts a rematch."
                   : "Five questions. Four correct earns the emblem. Ready?"}
               </p>
               <div className="flex gap-2">
@@ -2571,8 +2571,8 @@ export function AdventureGame({
               <p className="text-sm text-body">
                 {gymState.outcome.correct}/5 correct.{" "}
                 {gymState.outcome.cleared
-                  ? "The province guardian stirs from the grass to watch it burn — the Fog retreats, and one more light guards Haven."
-                  : "The tall grass is good training — come back stronger. The beacon will wait."}
+                  ? "The province guardian stirs from the grass to watch it burn, the Fog retreats, and one more light guards Haven."
+                  : "The tall grass is good training, come back stronger. The beacon will wait."}
               </p>
               <button
                 type="button"
@@ -2637,7 +2637,7 @@ export function AdventureGame({
                       {q.star && <span className="ml-1 text-accent">★</span>}
                     </p>
                     <p className="mt-0.5 text-xs text-body">
-                      {done ? "Done — the world remembers." : `${Math.min(prog, q.target)}/${q.target} · ${q.progress}`}
+                      {done ? "Done, the world remembers." : `${Math.min(prog, q.target)}/${q.target} · ${q.progress}`}
                     </p>
                   </div>
                 );
@@ -2645,7 +2645,7 @@ export function AdventureGame({
             )}
             {QUESTS.every((q) => !questsDone.has(q.id) && questStore.active[q.id] === undefined) && (
               <p className="text-sm text-body">
-                No errands yet. Talk to the folk of Haven — anyone with a task will say so.
+                No errands yet. Talk to the folk of Haven, anyone with a task will say so.
               </p>
             )}
             <p className="text-[10px] text-body">★ = a real study action, in game clothes.</p>
@@ -2660,7 +2660,7 @@ export function AdventureGame({
         </Panel>
       )}
 
-      {/* wipe letter — the session ends on a plan, not a loss */}
+      {/* wipe letter, the session ends on a plan, not a loss */}
       {wipeLetter && (
         <Panel title="📬 A letter in the mailbox">
           <p className="text-sm text-body">{COPY.wipeLetterIntro}</p>
@@ -2692,7 +2692,7 @@ export function AdventureGame({
               <p className="font-pixel text-[10px] tracking-widest text-accent">ELDER MAPLE</p>
               <div className="max-w-sm space-y-3 text-sm leading-relaxed text-ink">
                 <p>
-                  Years ago, the Fog swallowed the Old Campus beyond the Summit — a whole cohort who
+                  Years ago, the Fog swallowed the Old Campus beyond the Summit, a whole cohort who
                   stopped believing they could pass. Haven&apos;s beacons have been dark since.
                 </p>
                 <p>
@@ -2702,7 +2702,7 @@ export function AdventureGame({
                 </p>
                 <p>
                   I believe you&apos;re that student, Lightbearer. Choose who you&apos;ll be out
-                  there — and Gugu, the companion spirit, will trail a step behind you, carrying
+                  there, and Gugu, the companion spirit, will trail a step behind you, carrying
                   the lantern.
                 </p>
               </div>
@@ -2741,7 +2741,7 @@ export function AdventureGame({
                 ))}
               </div>
               <p className="max-w-xs text-[11px] text-body">
-                Style only — every researcher walks the same roads with the same weapon: your answers.
+                Style only, every researcher walks the same roads with the same weapon: your answers.
               </p>
             </>
           )}
@@ -2772,7 +2772,7 @@ export function AdventureGame({
                 ))}
               </div>
               <p className="max-w-xs text-[11px] text-body">
-                Style only — every spirit fights with the same weapon: your correct answers.
+                Style only, every spirit fights with the same weapon: your correct answers.
               </p>
             </>
           )}
@@ -2787,11 +2787,11 @@ export function AdventureGame({
               <div className="max-w-sm space-y-3 text-sm leading-relaxed text-ink">
                 <p>
                   Walk with the D-pad. Talk to people with <span className="font-pixel text-[10px] text-accent">A</span>.
-                  Tall grass hides wild battles — every strike is a real question.
+                  Tall grass hides wild battles, every strike is a real question.
                 </p>
                 <p>
                   Each gym you clear lights a beacon over Haven. Light them all and the Summit gate
-                  opens — Kai will race you to it, and the Fog Order will try to stop you both.
+                  opens, Kai will race you to it, and the Fog Order will try to stop you both.
                 </p>
               </div>
               <button
@@ -2813,7 +2813,7 @@ export function AdventureGame({
   );
 }
 
-// The Hurry's soft timer — visual pressure only, per the accepted fallback:
+// The Hurry's soft timer, visual pressure only, per the accepted fallback:
 // expiry never costs hearts, XP, or the answer. It just ticks.
 function SoftTimer({ onExpire }: { onExpire: () => void }) {
   const [left, setLeft] = useState(60);
@@ -2832,7 +2832,7 @@ function SoftTimer({ onExpire }: { onExpire: () => void }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="mb-2 flex items-center gap-2" aria-label="soft timer — pressure only, no cost">
+    <div className="mb-2 flex items-center gap-2" aria-label="soft timer, pressure only, no cost">
       <span className="font-pixel text-[9px] text-coral">⏱ {left}s</span>
       <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-night">
         <span

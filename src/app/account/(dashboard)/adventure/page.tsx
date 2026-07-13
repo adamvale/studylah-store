@@ -18,7 +18,7 @@ function sigil(name: string): string {
   return (words[0]?.[0] ?? "?").concat(words[1]?.[0] ?? "").toUpperCase();
 }
 
-// Hoisted so the impurity (Date.now) isn't called during render — see
+// Hoisted so the impurity (Date.now) isn't called during render, see
 // react-hooks/purity and the same pattern on the Today page.
 function examWindow(): { from: Date; to: Date } {
   const now = Date.now();
@@ -73,7 +73,7 @@ export default async function AdventurePage() {
           StudyLah Legends unlocks with your first subject
         </p>
         <p className="mt-2 text-sm text-body">
-          Each subject you own becomes a whole province — a route of wild
+          Each subject you own becomes a whole province, a route of wild
           monsters, a town, and a gym to conquer.
         </p>
         <Link

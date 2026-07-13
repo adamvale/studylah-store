@@ -1,7 +1,7 @@
 import { createSign } from "crypto";
 import http2 from "http2";
 
-// Direct APNs (HTTP/2) sender for iOS — no Firebase needed on the Apple side.
+// Direct APNs (HTTP/2) sender for iOS, no Firebase needed on the Apple side.
 // Auth is a p8 token key (ES256 JWT), the modern certificate-free method.
 //
 // Config (all four, or iOS push is disabled fail-closed):
@@ -45,7 +45,7 @@ let cachedJwt: { token: string; issuedAt: number } | null = null;
 
 function providerJwt(c: ApnsConfig): string {
   // Apple rejects tokens older than 60 min and refreshes more often than
-  // every 20 min — reuse for 40.
+  // every 20 min, reuse for 40.
   if (cachedJwt && Date.now() - cachedJwt.issuedAt < 40 * 60 * 1000) {
     return cachedJwt.token;
   }
@@ -70,7 +70,7 @@ export interface ApnsPayload {
   url?: string;
 }
 
-// Returns "ok", "dead" (token gone — prune it), or "error".
+// Returns "ok", "dead" (token gone, prune it), or "error".
 export function sendApnsToToken(
   deviceToken: string,
   payload: ApnsPayload

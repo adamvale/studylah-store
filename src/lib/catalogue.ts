@@ -36,7 +36,7 @@ export const LEVELS: Record<
     /**
      * Unpublished levels are hidden from the storefront and rejected by
      * checkout. N(A) stays unpublished until its real PDFs replace the seed
-     * placeholders — a buyer must never pay for a placeholder.
+     * placeholders, a buyer must never pay for a placeholder.
      */
     published: boolean;
   }
@@ -137,7 +137,7 @@ export const PRODUCTS: Record<
     // Paper 5 and 6; O-Level Chemistry (Science) sits Paper 1 and 3).
     // `rehearsalBlurbFor` names the real ones.
     blurb:
-      "A complete original mock in the exact 2026 format, with the full mark scheme — so you walk in having already sat it once.",
+      "A complete original mock in the exact 2026 format, with the full mark scheme, so you walk in having already sat it once.",
   },
 };
 
@@ -155,20 +155,20 @@ export interface ProductFileSpec {
 
 /** The Final Rehearsal's shape depends on how the subject's papers are set. */
 const REHEARSAL_P1_P2: ProductFileSpec[] = [
-  { key: "paper1", label: "Final Rehearsal — Paper 1" },
-  { key: "paper2", label: "Final Rehearsal — Paper 2" },
-  { key: "markscheme", label: "Final Rehearsal — Mark Scheme" },
+  { key: "paper1", label: "Final Rehearsal, Paper 1" },
+  { key: "paper2", label: "Final Rehearsal, Paper 2" },
+  { key: "markscheme", label: "Final Rehearsal, Mark Scheme" },
 ];
 /** Combined-Science Chemistry sits Paper 1 and Paper 3, not Paper 2. */
 const REHEARSAL_P1_P3: ProductFileSpec[] = [
-  { key: "paper1", label: "Final Rehearsal — Paper 1" },
-  { key: "paper3", label: "Final Rehearsal — Paper 3" },
-  { key: "markscheme", label: "Final Rehearsal — Mark Scheme" },
+  { key: "paper1", label: "Final Rehearsal, Paper 1" },
+  { key: "paper3", label: "Final Rehearsal, Paper 3" },
+  { key: "markscheme", label: "Final Rehearsal, Mark Scheme" },
 ];
 /** Single-paper subjects (Elective Geography/History, Social Studies). */
 const REHEARSAL_SINGLE: ProductFileSpec[] = [
-  { key: "paper", label: "Final Rehearsal — Paper" },
-  { key: "markscheme", label: "Final Rehearsal — Mark Scheme" },
+  { key: "paper", label: "Final Rehearsal, Paper" },
+  { key: "markscheme", label: "Final Rehearsal, Mark Scheme" },
 ];
 
 /**
@@ -176,15 +176,15 @@ const REHEARSAL_SINGLE: ProductFileSpec[] = [
  * differ by subject: Physics 1/2, Chemistry 3/4, Biology 5/6.
  */
 const REHEARSAL_MCQ_STRUCTURED = (mcq: number, structured: number): ProductFileSpec[] => [
-  { key: `paper${mcq}`, label: `Final Rehearsal — Paper ${mcq} (MCQ)` },
-  { key: `paper${structured}`, label: `Final Rehearsal — Paper ${structured} (Structured)` },
-  { key: "markscheme", label: "Final Rehearsal — Mark Scheme" },
+  { key: `paper${mcq}`, label: `Final Rehearsal, Paper ${mcq} (MCQ)` },
+  { key: `paper${structured}`, label: `Final Rehearsal, Paper ${structured} (Structured)` },
+  { key: "markscheme", label: "Final Rehearsal, Mark Scheme" },
 ];
 
 /** N(A) Nutrition & Food Science sits a single written Paper 1. */
 const REHEARSAL_P1_ONLY: ProductFileSpec[] = [
-  { key: "paper1", label: "Final Rehearsal — Paper 1" },
-  { key: "markscheme", label: "Final Rehearsal — Mark Scheme" },
+  { key: "paper1", label: "Final Rehearsal, Paper 1" },
+  { key: "markscheme", label: "Final Rehearsal, Mark Scheme" },
 ];
 
 export interface SubjectSpec {
@@ -206,7 +206,7 @@ const FORMATS_LAYER = "The formats and workings layer.";
 const SKILLS_DATA_RESPONSE = "The data-response and skills forecast.";
 const SKILLS_EXTENDED_RESPONSE = "The extended-response and skills forecast.";
 
-// Derived from the actual 2026 product folders — see the per-subject packs.
+// Derived from the actual 2026 product folders, see the per-subject packs.
 const SUBJECT_SPECS: Record<string, SubjectSpec> = {
   "o-level::physics-pure": { companionName: "Paper 3 Practical Prediction", companionTagline: PRACTICAL_P3, rehearsalFiles: REHEARSAL_P1_P2 },
   "o-level::chemistry-pure": { companionName: "Paper 3 Practical Prediction", companionTagline: PRACTICAL_P3, rehearsalFiles: REHEARSAL_P1_P2 },
@@ -293,12 +293,12 @@ export function productTaglineFor(subject: Subject, key: ProductKey): string {
 export function rehearsalBlurbFor(subject: Subject): string {
   const papers = subjectSpec(subject)
     .rehearsalFiles.filter((f) => f.key !== "markscheme")
-    .map((f) => f.label.replace(/^Final Rehearsal — /, ""));
+    .map((f) => f.label.replace(/^Final Rehearsal, /, ""));
   const list =
     papers.length > 1
       ? `${papers.slice(0, -1).join(", ")} and ${papers[papers.length - 1]}`
       : papers[0];
-  return `A complete original mock in the exact 2026 format — ${list}, plus the full mark scheme — so you walk in having already sat it once.`;
+  return `A complete original mock in the exact 2026 format, ${list}, plus the full mark scheme, so you walk in having already sat it once.`;
 }
 
 /** The subject-accurate blurb for a product, falling back to the generic one. */

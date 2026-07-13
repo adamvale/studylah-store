@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "Account settings" };
 const MESSAGES = {
   "emailsent=1": {
     tone: "ok" as const,
-    msg: "Check your new inbox for a confirmation link — the change applies once you click it.",
+    msg: "Check your new inbox for a confirmation link, the change applies once you click it.",
   },
   "emailchanged=1": { tone: "ok" as const, msg: "Your sign-in email has been updated." },
   "error=same": { tone: "bad" as const, msg: "That's already the email on your account." },
@@ -21,11 +21,11 @@ const MESSAGES = {
   "error=email": { tone: "bad" as const, msg: "Please enter a valid email address." },
   "error=send": {
     tone: "bad" as const,
-    msg: "We couldn't send that email — please try again.",
+    msg: "We couldn't send that email, please try again.",
   },
   "error=emaillink": {
     tone: "bad" as const,
-    msg: "That confirmation link expired or was invalid — request a new one.",
+    msg: "That confirmation link expired or was invalid, request a new one.",
   },
   "parent=on": { tone: "ok" as const, msg: "Weekly progress emails are on. You can turn them off any time." },
   "parent=removed": { tone: "ok" as const, msg: "Weekly progress emails are off." },
@@ -54,7 +54,7 @@ export default async function SettingsPage({
       <h2 className="font-display text-lg font-bold text-ink">Account settings</h2>
       <p className="mt-1 text-sm text-body">
         Change the email you sign in with. We&apos;ll send a confirmation link
-        to the new address — it only takes effect once you click it. Past
+        to the new address, it only takes effect once you click it. Past
         orders keep the email they were bought under.
       </p>
       <form
@@ -101,7 +101,7 @@ export default async function SettingsPage({
         Weekly progress email to a parent
       </h2>
       <p className="mt-1 text-sm text-body">
-        Send a parent or guardian a short weekly summary — topics revised,
+        Send a parent or guardian a short weekly summary, topics revised,
         practice done, current streak. No grades are promised, and they can
         unsubscribe from any email.
       </p>

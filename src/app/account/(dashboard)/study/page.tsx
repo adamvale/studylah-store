@@ -30,7 +30,7 @@ const MESSAGES = {
   "dateadded=1": { tone: "ok" as const, msg: "Paper added to your timetable." },
   "dateremoved=1": { tone: "ok" as const, msg: "Paper removed." },
   "error=date": { tone: "bad" as const, msg: "Give the paper a name and a valid date." },
-  "error=datelimit": { tone: "bad" as const, msg: "That's plenty of papers — remove one first." },
+  "error=datelimit": { tone: "bad" as const, msg: "That's plenty of papers, remove one first." },
 };
 
 export default async function StudyPage({
@@ -149,7 +149,7 @@ export default async function StudyPage({
           )}
         </div>
         <p className="mt-1 text-sm text-body">
-          Enter your papers from the SEAB timetable when it&apos;s released —
+          Enter your papers from the SEAB timetable when it&apos;s released, 
           the countdown and weekly plan follow your real dates.
         </p>
 

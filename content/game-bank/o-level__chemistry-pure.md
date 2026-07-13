@@ -22,7 +22,7 @@ misconception: mole-mass-formula
 worked: |
   Mᵣ(CaCO₃) = 40 + 12 + (3 × 16) = 100.
   m = n × Mᵣ = 0.25 × 100 = 25 g.
-  Dividing instead of multiplying gives 0.0025 mol-sized nonsense — always check the units of the answer.
+  Dividing instead of multiplying gives 0.0025 mol-sized nonsense, always check the units of the answer.
 ```
 
 ```yaml
@@ -153,7 +153,7 @@ worked: |
   The mole ratio is 1 : 1, so the theoretical amount of ethanoic acid is 0.20 mol.
   Theoretical mass = 0.20 × 60 = 12.0 g.
   Percentage yield = (actual / theoretical) × 100 = (9.0 / 12.0) × 100 = 75%.
-  Inverting the fraction gives 133%, which is impossible — you cannot make more than the theoretical mass.
+  Inverting the fraction gives 133%, which is impossible, you cannot make more than the theoretical mass.
 ```
 
 ```yaml
@@ -190,7 +190,7 @@ misconception: concentration-units
 worked: |
   Concentration in g/dm³ = concentration in mol/dm³ × Mᵣ.
   = 0.200 × 40 = 8.00 g/dm³.
-  Dividing instead of multiplying gives 0.005 — a useful sanity check is that a dilute solution should be a few grams per dm³, not a fraction of a gram.
+  Dividing instead of multiplying gives 0.005, a useful sanity check is that a dilute solution should be a few grams per dm³, not a fraction of a gram.
 ```
 
 ```yaml
@@ -228,7 +228,7 @@ worked: |
   Each molecule of CH₄ contains 4 hydrogen atoms.
   n(H atoms) = 4 × 0.50 = 2.0 mol.
   Number of atoms = 2.0 × 6.0 × 10²³ = 1.2 × 10²⁴.
-  3.0 × 10²³ is the number of CH₄ molecules — the question asks for atoms of hydrogen.
+  3.0 × 10²³ is the number of CH₄ molecules, the question asks for atoms of hydrogen.
 ```
 
 ```yaml
@@ -264,7 +264,7 @@ marks: 1
 misconception: ionic-equation-spectators
 worked: |
   An ionic equation shows only the ions that actually react, with the correct charges and state symbols.
-  Na⁺ and NO₃⁻ stay in solution unchanged — they are spectator ions and are left out.
+  Na⁺ and NO₃⁻ stay in solution unchanged, they are spectator ions and are left out.
   The barium ion is 2+ and the sulfate ion is 2−, and the product is an insoluble solid:
   Ba²⁺(aq) + SO₄²⁻(aq) → BaSO₄(s).
   The full balanced equation is correct chemistry but it is not an ionic equation, and BaSO₄(aq) is wrong because the precipitate is a solid.
@@ -388,7 +388,7 @@ marks: 1
 misconception: bromine-water-test
 worked: |
   An unsaturated hydrocarbon has a C=C double bond, which undergoes an addition reaction with bromine.
-  The orange (or yellow-brown) bromine is used up, so the solution rapidly becomes colourless — it is decolourised.
+  The orange (or yellow-brown) bromine is used up, so the solution rapidly becomes colourless, it is decolourised.
   A saturated alkane gives no change in the dark, because it has no C=C to add across.
 ```
 
@@ -425,7 +425,7 @@ misconception: ester-naming-order
 worked: |
   The alkyl part of the name comes from the alcohol: methanol → methyl.
   The -oate part comes from the acid: propanoic acid → propanoate.
-  The ester is therefore methyl propanoate. Propyl methanoate would be made from propanol and methanoic acid — the two halves swapped over.
+  The ester is therefore methyl propanoate. Propyl methanoate would be made from propanol and methanoic acid, the two halves swapped over.
 ```
 
 ```yaml
@@ -461,7 +461,7 @@ marks: 1
 misconception: monomer-repeat-unit
 worked: |
   Addition polymerisation requires a C=C double bond, which opens up so that many monomers join end to end.
-  Ethene, CH₂=CH₂, is the monomer; the repeat unit of poly(ethene) is —CH₂—CH₂—.
+  Ethene, CH₂=CH₂, is the monomer; the repeat unit of poly(ethene) is, CH₂, CH₂, .
   Ethane has no double bond, so it cannot polymerise.
 ```
 
@@ -479,7 +479,7 @@ marks: 1
 misconception: isomer-definition
 worked: |
   Isomers have the SAME molecular formula but a different arrangement of atoms.
-  Butane and 2-methylpropane are both C₄H₁₀ — one is a straight chain, the other is branched. They are isomers.
+  Butane and 2-methylpropane are both C₄H₁₀, one is a straight chain, the other is branched. They are isomers.
   Ethane (C₂H₆) and ethene (C₂H₄) have different formulae, as do propane (C₃H₈) and butane (C₄H₁₀), and ethanol (C₂H₆O) and ethanoic acid (C₂H₄O₂).
 ```
 
@@ -534,7 +534,7 @@ answer: 2
 marks: 1
 misconception: substitution-vs-addition
 worked: |
-  Alkanes are saturated, so they cannot add chlorine — instead one hydrogen atom is SUBSTITUTED by a chlorine atom:
+  Alkanes are saturated, so they cannot add chlorine, instead one hydrogen atom is SUBSTITUTED by a chlorine atom:
   CH₄ + Cl₂ → CH₃Cl + HCl (ultraviolet light needed).
   CH₄Cl is not a real formula: carbon can only form four bonds, so the H must leave when the Cl joins.
 ```
@@ -546,14 +546,14 @@ stem: "Nylon is a polyamide made by condensation polymerisation. Which linkage j
 options:
   - "An ionic bond"
   - "A carbon-to-carbon double bond"
-  - "An amide linkage, —CONH—"
-  - "An ester linkage, —COO—"
+  - "An amide linkage,, CONH, "
+  - "An ester linkage,, COO, "
 answer: 2
 marks: 1
 misconception: polymer-linkage
 worked: |
-  A polyamide is joined by amide linkages, —CONH—, formed between a —COOH group on one monomer and an —NH₂ group on the other, with a small molecule (water) eliminated each time.
-  The ester linkage —COO— joins the monomers of a POLYESTER such as Terylene.
+  A polyamide is joined by amide linkages,, CONH, , formed between a, COOH group on one monomer and an, NH₂ group on the other, with a small molecule (water) eliminated each time.
+  The ester linkage, COO, joins the monomers of a POLYESTER such as Terylene.
   C=C bonds are used up in ADDITION polymerisation, which is a different process and loses no small molecule.
 ```
 
@@ -588,7 +588,7 @@ answer: 0
 marks: 1
 misconception: recycling-types
 worked: |
-  Physical recycling melts the plastic and re-moulds it into pellets — the polymer chains stay intact, but the plastic is downgraded a little each time.
+  Physical recycling melts the plastic and re-moulds it into pellets, the polymer chains stay intact, but the plastic is downgraded a little each time.
   Chemical recycling breaks the linkages, so the polymer is DEPOLYMERISED back to its monomers, which can then be purified and used to make new polymer.
   A polyester can be depolymerised because the ester linkages can be hydrolysed.
 ```
@@ -606,7 +606,7 @@ answer: 1
 marks: 1
 misconception: weak-acid-still-reacts
 worked: |
-  Ethanoic acid is a WEAK acid — only partially ionised — but it is still an acid, so it shows the typical acid reactions.
+  Ethanoic acid is a WEAK acid, only partially ionised, but it is still an acid, so it shows the typical acid reactions.
   Acid + carbonate → salt + water + carbon dioxide:
   2CH₃COOH + Na₂CO₃ → 2CH₃COONa + H₂O + CO₂.
   So there is effervescence, and the gas turns limewater milky, showing it is CO₂. The reaction is simply slower than with a strong acid of the same concentration.
@@ -662,7 +662,7 @@ answer: 0
 marks: 1
 misconception: conduction-needs-mobile-ions
 worked: |
-  Sodium chloride is a giant ionic lattice of Na⁺ and Cl⁻ ions in BOTH states — melting does not create ions.
+  Sodium chloride is a giant ionic lattice of Na⁺ and Cl⁻ ions in BOTH states, melting does not create ions.
   To conduct, charged particles must be free to MOVE. In the solid the ions are locked in fixed positions in the lattice.
   On melting, the lattice breaks down and the ions become mobile, so the liquid conducts (and is decomposed by the current).
   Delocalised electrons carry the current in metals, not in ionic compounds.
@@ -683,7 +683,7 @@ misconception: giant-vs-simple-covalent
 worked: |
   Diamond is a GIANT COVALENT structure: every carbon atom is joined to four others by strong covalent bonds throughout the whole crystal.
   Melting means breaking a huge number of these strong covalent bonds, which needs a very large amount of energy.
-  Diamond has no separate molecules, so 'forces between molecules' is the wrong explanation — that is the reason simple molecular substances melt easily.
+  Diamond has no separate molecules, so 'forces between molecules' is the wrong explanation, that is the reason simple molecular substances melt easily.
 ```
 
 ```yaml
@@ -700,7 +700,7 @@ marks: 1
 misconception: metallic-conduction
 worked: |
   In metallic bonding, the metal atoms lose their valence electrons into a 'sea' of delocalised electrons, leaving a lattice of positive ions.
-  These delocalised electrons can move through the whole structure, so they carry charge — the metal conducts, in the solid AND the liquid state.
+  These delocalised electrons can move through the whole structure, so they carry charge, the metal conducts, in the solid AND the liquid state.
   The positive ions themselves stay in the lattice.
 ```
 
@@ -736,7 +736,7 @@ misconception: alloy-hardness
 worked: |
   In a pure metal the atoms are the same size and are arranged in regular layers that can slide over one another, which is why pure metals are soft and malleable.
   In an alloy, atoms of a different size are mixed in. They distort the regular arrangement, so the layers no longer slide easily.
-  The alloy is therefore harder and stronger. Alloying does not change the bonding — it is still metallic.
+  The alloy is therefore harder and stronger. Alloying does not change the bonding, it is still metallic.
 ```
 
 ```yaml
@@ -811,7 +811,7 @@ worked: |
   Iodine is a simple molecular substance. It has two kinds of attraction:
   (i) the strong covalent bond INSIDE each I₂ molecule, and
   (ii) the weak forces of attraction BETWEEN the molecules.
-  Melting separates whole molecules from each other — it does not break the covalent bonds — so only the weak intermolecular forces have to be overcome. Little energy is needed, so the melting point is low.
+  Melting separates whole molecules from each other, it does not break the covalent bonds, so only the weak intermolecular forces have to be overcome. Little energy is needed, so the melting point is low.
 ```
 
 ```yaml
@@ -846,7 +846,7 @@ marks: 1
 misconception: polymer-structure-property
 worked: |
   Poly(ethene) is a mixture of very long covalent chains of different lengths, held together by weak forces between the chains.
-  Because the chains are not all the same length, there is no single melting point — the plastic softens over a range of temperatures.
+  Because the chains are not all the same length, there is no single melting point, the plastic softens over a range of temperatures.
   It has no ions or delocalised electrons, so it does not conduct, and it is not soluble in water.
 ```
 
@@ -859,7 +859,7 @@ marks: 1
 misconception: structure-classification
 worked: |
   Every silicon atom in SiO₂ is covalently bonded to oxygen atoms and vice versa, right through the crystal, with no separate molecules.
-  This is a giant covalent (giant molecular) structure — hence its very high melting point and its lack of electrical conductivity.
+  This is a giant covalent (giant molecular) structure, hence its very high melting point and its lack of electrical conductivity.
 ```
 
 ```yaml
@@ -967,7 +967,7 @@ worked: |
   Reduction takes place at the cathode: the cation GAINS electrons.
   Al³⁺ + 3e⁻ → Al balances both the atoms and the charge (3+ and 3− give 0 on the left, 0 on the right).
   Al → Al³⁺ + 3e⁻ and Al³⁺ → Al + 3e⁻ both LOSE electrons, so they cannot be the cathode reaction.
-  2O²⁻ → O₂ + 4e⁻ is the ANODE reaction — the oxidation of the oxide ion.
+  2O²⁻ → O₂ + 4e⁻ is the ANODE reaction, the oxidation of the oxide ion.
 ```
 
 ```yaml
@@ -1001,7 +1001,7 @@ answer: 1
 marks: 1
 misconception: electroplating-setup
 worked: |
-  The metal to be plated must GAIN the metal, so it must be the electrode where reduction occurs — the cathode (negative electrode).
+  The metal to be plated must GAIN the metal, so it must be the electrode where reduction occurs, the cathode (negative electrode).
   Ag⁺ + e⁻ → Ag deposits a thin, even layer of silver on the spoon.
   The electrolyte must contain the ions of the plating metal (a silver salt solution), and the anode is usually silver, so it dissolves and keeps the concentration of Ag⁺ steady.
   Electroplating is used to improve appearance and to protect the object from corrosion.
@@ -1021,8 +1021,8 @@ marks: 1
 misconception: oxidation-state-bookkeeping
 worked: |
   Track the oxidation states.
-  Carbon: 0 in C, then +2 in CO — an INCREASE, so carbon is oxidised (it is the reducing agent).
-  Zinc: +2 in ZnO, then 0 in Zn — a decrease, so zinc is reduced.
+  Carbon: 0 in C, then +2 in CO, an INCREASE, so carbon is oxidised (it is the reducing agent).
+  Zinc: +2 in ZnO, then 0 in Zn, a decrease, so zinc is reduced.
   Carbon also gains oxygen while zinc oxide loses it, which gives the same answer using the oxygen definition.
 ```
 
@@ -1077,7 +1077,7 @@ marks: 1
 misconception: fuel-cell-products
 worked: |
   In a hydrogen fuel cell, hydrogen is oxidised and oxygen is reduced at separate electrodes, and the electrons transferred flow round the external circuit as an electric current.
-  The overall reaction is 2H₂ + O₂ → 2H₂O, so water is the only product — no carbon dioxide, because there is no carbon in the fuel.
+  The overall reaction is 2H₂ + O₂ → 2H₂O, so water is the only product, no carbon dioxide, because there is no carbon in the fuel.
   It is not a rechargeable store like a battery: it keeps producing electricity as long as the fuel is supplied.
 ```
 
@@ -1103,7 +1103,7 @@ marks: 1
 misconception: reducing-agent-test
 worked: |
   The manganate(VII) ion is purple. A reducing agent donates electrons to it, reducing it to the Mn²⁺ ion, which in dilute solution is effectively colourless.
-  So the purple solution is decolourised — the standard test for a reducing agent.
+  So the purple solution is decolourised, the standard test for a reducing agent.
 ```
 
 ```yaml
@@ -1159,7 +1159,7 @@ worked: |
   A strong acid provides H⁺(aq) ions and a strong alkali provides OH⁻(aq) ions; every other ion is a spectator.
   The only reaction is H⁺(aq) + OH⁻(aq) → H₂O(l).
   Water is a liquid, so the state symbol must be (l), not (aq).
-  The full equation HCl + NaOH → NaCl + H₂O is correct chemistry, but it applies to one particular pair only — it is not the general ionic equation.
+  The full equation HCl + NaOH → NaCl + H₂O is correct chemistry, but it applies to one particular pair only, it is not the general ionic equation.
 ```
 
 ```yaml
@@ -1176,8 +1176,8 @@ marks: 1
 misconception: strong-vs-weak-acid
 worked: |
   Both solutions have the same CONCENTRATION, so concentration cannot be the reason.
-  Hydrochloric acid is a STRONG acid — it ionises completely in water, so it produces a high concentration of H⁺(aq).
-  Ethanoic acid is a WEAK acid — it ionises only partially, so it produces far fewer H⁺(aq) ions.
+  Hydrochloric acid is a STRONG acid, it ionises completely in water, so it produces a high concentration of H⁺(aq).
+  Ethanoic acid is a WEAK acid, it ionises only partially, so it produces far fewer H⁺(aq) ions.
   More H⁺(aq) means a lower pH, so the hydrochloric acid has the lower pH. Note that both acids would eventually neutralise the same amount of alkali.
 ```
 
@@ -1194,7 +1194,7 @@ answer: 0
 marks: 1
 misconception: excess-insoluble-base
 worked: |
-  Copper is below hydrogen in the reactivity series, so copper metal does NOT react with dilute sulfuric acid — that route fails.
+  Copper is below hydrogen in the reactivity series, so copper metal does NOT react with dilute sulfuric acid, that route fails.
   Copper(II) oxide is an insoluble base, so it can be added in EXCESS: it keeps reacting until all the acid is used up, and the leftover solid is simply filtered off.
   CuO + H₂SO₄ → CuSO₄ + H₂O.
   The filtrate is then heated to the point of crystallisation, cooled and the crystals are dried.
@@ -1215,7 +1215,7 @@ marks: 1
 misconception: titration-route-choice
 worked: |
   The 'add an excess and filter' route only works when one reactant is INSOLUBLE, so that the leftover can be filtered off.
-  Potassium nitrate would be made from nitric acid and potassium hydroxide — both are soluble, so an excess could not be removed by filtration. The exact volumes must be found by titration first.
+  Potassium nitrate would be made from nitric acid and potassium hydroxide, both are soluble, so an excess could not be removed by filtration. The exact volumes must be found by titration first.
   The other three salts can be made from an insoluble oxide, hydroxide, carbonate or (for zinc) the metal itself, added in excess.
 ```
 
@@ -1233,7 +1233,7 @@ marks: 1
 misconception: solubility-rules
 worked: |
   Apply the solubility rules:
-  All sodium, potassium and ammonium salts are soluble — that rules out three of the options.
+  All sodium, potassium and ammonium salts are soluble, that rules out three of the options.
   Chlorides are soluble EXCEPT silver chloride and lead(II) chloride.
   So lead(II) chloride is the insoluble one.
 ```
@@ -1371,7 +1371,7 @@ answer: 0
 marks: 1
 misconception: transition-element-properties
 worked: |
-  The transition elements have variable oxidation states — iron, for example, forms Fe²⁺ and Fe³⁺ compounds.
+  The transition elements have variable oxidation states, iron, for example, forms Fe²⁺ and Fe³⁺ compounds.
   Group 1 metals only ever form ions with a single +1 charge.
   Transition metals are also typically much denser, have much higher melting points, form coloured compounds, and act as catalysts.
   Conducting electricity, being shiny and forming positive ions are shared by all metals, so they do not distinguish the two families.
@@ -1430,7 +1430,7 @@ misconception: sacrificial-protection
 worked: |
   This is sacrificial protection.
   Magnesium is HIGHER in the reactivity series than iron, so it has a greater tendency to form positive ions.
-  The magnesium loses electrons in preference to the iron, and those electrons flow to the pipe. The iron is not oxidised, so it does not rust — the magnesium corrodes instead and is replaced periodically.
+  The magnesium loses electrons in preference to the iron, and those electrons flow to the pipe. The iron is not oxidised, so it does not rust, the magnesium corrodes instead and is replaced periodically.
   Note that the blocks do not cover the pipe, so this is not a barrier method (that is what paint, grease, plastic and galvanising do).
 ```
 
@@ -1556,7 +1556,7 @@ worked: |
   (i) The particles have more kinetic energy, so they move faster and collide MORE FREQUENTLY.
   (ii) More importantly, a greater PROPORTION of the colliding particles now have energy greater than or equal to the activation energy.
   The frequency of effective collisions therefore rises sharply and the rate increases.
-  The activation energy itself is fixed — only a catalyst provides a route with a lower one.
+  The activation energy itself is fixed, only a catalyst provides a route with a lower one.
 ```
 
 ```yaml
@@ -1573,7 +1573,7 @@ marks: 2
 misconception: rate-vs-yield
 worked: |
   The acid is in EXCESS in both runs, so the magnesium is the limiting reactant and it determines how much hydrogen can be made.
-  The mass of magnesium is unchanged, so the final volume of hydrogen is exactly the same — both graphs plateau at the same height.
+  The mass of magnesium is unchanged, so the final volume of hydrogen is exactly the same, both graphs plateau at the same height.
   Doubling the concentration means more acid particles per unit volume, so collisions with the ribbon are more frequent: the curve is steeper at the start and reaches the plateau sooner.
 ```
 
@@ -1590,7 +1590,7 @@ answer: 0
 marks: 1
 misconception: catalyst-definition
 worked: |
-  A catalyst alters the rate of a reaction but is itself chemically unchanged at the end — the same mass and composition can be recovered, so a small amount can be used over and over again.
+  A catalyst alters the rate of a reaction but is itself chemically unchanged at the end, the same mass and composition can be recovered, so a small amount can be used over and over again.
   It cannot increase the total amount of product; it only gets you there faster.
   It works by providing a pathway with a LOWER activation energy.
 ```
@@ -1610,8 +1610,8 @@ misconception: named-catalysts
 worked: |
   Manganese(IV) oxide, MnO₂, is the standard catalyst for the decomposition of hydrogen peroxide:
   2H₂O₂ → 2H₂O + O₂.
-  Oxygen is given off rapidly and the black MnO₂ can be filtered off, dried and weighed at the end — its mass is unchanged, showing it acted as a catalyst.
-  (In living cells, the enzyme catalase does the same job — enzymes are biological catalysts.)
+  Oxygen is given off rapidly and the black MnO₂ can be filtered off, dried and weighed at the end, its mass is unchanged, showing it acted as a catalyst.
+  (In living cells, the enzyme catalase does the same job, enzymes are biological catalysts.)
 ```
 
 ```yaml
@@ -1819,7 +1819,7 @@ misconception: state-change-particles
 worked: |
   Heating a solid gives the particles more energy, so they vibrate more strongly about their fixed positions.
   At the melting point they have enough energy to overcome the forces holding them in fixed positions in the lattice.
-  The particles stay close together but can now slide past one another — the substance flows and takes the shape of the container. That is a liquid.
+  The particles stay close together but can now slide past one another, the substance flows and takes the shape of the container. That is a liquid.
   Moving far apart to fill the container describes boiling, and the particles themselves are not broken up.
 ```
 
@@ -1867,7 +1867,7 @@ answer: 1
 marks: 1
 misconception: bond-energy-direction
 worked: |
-  Energy must be SUPPLIED to pull bonded atoms apart, so bond breaking always takes energy in — it is endothermic.
+  Energy must be SUPPLIED to pull bonded atoms apart, so bond breaking always takes energy in, it is endothermic.
   Energy is RELEASED when new bonds form, so bond making is exothermic.
   If more energy is released in making bonds than is taken in breaking them, the reaction is exothermic overall (ΔH is negative); if less, it is endothermic overall.
 ```
@@ -1887,7 +1887,7 @@ misconception: energy-profile-reading
 worked: |
   Exothermic means the chemicals lose energy, so the products line is drawn BELOW the reactants line and ΔH is negative (an arrow pointing down).
   Every reaction still has an energy barrier, so there is always a peak.
-  The activation energy, Eₐ, is the height from the REACTANTS up to the top of the peak — it is the minimum energy a collision needs in order to react.
+  The activation energy, Eₐ, is the height from the REACTANTS up to the top of the peak, it is the minimum energy a collision needs in order to react.
 ```
 
 ```yaml
@@ -1904,7 +1904,7 @@ marks: 1
 misconception: catalyst-profile-effect
 worked: |
   A catalyst provides an alternative pathway with a lower activation energy, so the PEAK of the profile is lower.
-  It does not change the energy of the reactants or of the products, so the vertical gap between them — the enthalpy change ΔH — is exactly the same.
+  It does not change the energy of the reactants or of the products, so the vertical gap between them, the enthalpy change ΔH, is exactly the same.
   This is why a catalyst speeds a reaction up but cannot change how much energy the reaction gives out overall.
 ```
 
@@ -1954,7 +1954,7 @@ misconception: cation-ladder-excess
 worked: |
   The key is the behaviour with EXCESS reagent, tested with both alkalis.
   Zn²⁺: white precipitate with NaOH that dissolves in excess, AND white precipitate with NH₃ that dissolves in excess. This matches.
-  Al³⁺: white precipitate with NaOH that dissolves in excess, but the precipitate with NH₃ is INSOLUBLE in excess — that is how Al³⁺ and Zn²⁺ are told apart.
+  Al³⁺: white precipitate with NaOH that dissolves in excess, but the precipitate with NH₃ is INSOLUBLE in excess, that is how Al³⁺ and Zn²⁺ are told apart.
   Ca²⁺: white precipitate with NaOH insoluble in excess, and no precipitate at all with NH₃.
   Fe²⁺ gives a green precipitate, not a white one.
 ```
@@ -2063,7 +2063,7 @@ misconception: rf-value-formula
 worked: |
   Rf = distance moved by the spot / distance moved by the solvent front.
   = 4.5 / 9.0 = 0.50.
-  Rf has no units, and it can never be greater than 1, because the spot cannot travel further than the solvent that carries it — so an answer of 2.0 must be wrong.
+  Rf has no units, and it can never be greater than 1, because the spot cannot travel further than the solvent that carries it, so an answer of 2.0 must be wrong.
 ```
 
 ```yaml
@@ -2080,9 +2080,9 @@ marks: 1
 misconception: drying-agent-choice
 worked: |
   A drying agent must remove water WITHOUT reacting with the gas itself.
-  Carbon dioxide is an acidic gas, and calcium oxide is a base — it would react with the CO₂ (CaO + CO₂ → CaCO₃) and absorb the gas instead of drying it.
+  Carbon dioxide is an acidic gas, and calcium oxide is a base, it would react with the CO₂ (CaO + CO₂ → CaCO₃) and absorb the gas instead of drying it.
   Concentrated sulfuric acid and fused calcium chloride are both acidic or neutral, so they dry carbon dioxide safely.
-  The mirror image of this rule: ammonia is alkaline, so it must NOT be dried with concentrated sulfuric acid — calcium oxide is used instead.
+  The mirror image of this rule: ammonia is alkaline, so it must NOT be dried with concentrated sulfuric acid, calcium oxide is used instead.
 ```
 
 ```yaml
@@ -2405,7 +2405,7 @@ conclusion: "Fe³⁺ (iron(III) ion)."
 kind: qa
 test: "Add aqueous sodium hydroxide dropwise, then in excess. Repeat with aqueous ammonia, dropwise then in excess."
 observation: "With NaOH: white precipitate, soluble in excess giving a colourless solution. With NH₃: white precipitate, soluble in excess giving a colourless solution."
-conclusion: "Zn²⁺ (zinc ion). Soluble in BOTH excesses — the contrast with Al³⁺."
+conclusion: "Zn²⁺ (zinc ion). Soluble in BOTH excesses, the contrast with Al³⁺."
 ```
 
 ```yaml
@@ -2426,7 +2426,7 @@ conclusion: "Cl⁻ (chloride ion). The nitric acid is added first to remove carb
 kind: qa
 test: "Acidify with dilute nitric acid, then add aqueous silver nitrate."
 observation: "Yellow precipitate."
-conclusion: "I⁻ (iodide ion). Yellow, not white — this is the pure-chemistry extra test."
+conclusion: "I⁻ (iodide ion). Yellow, not white, this is the pure-chemistry extra test."
 ```
 
 ```yaml
@@ -2447,7 +2447,7 @@ conclusion: "SO₄²⁻ (sulfate ion)."
 kind: qa
 test: "Hold a piece of damp red litmus paper in the gas."
 observation: "The damp red litmus paper turns blue."
-conclusion: "NH₃ (ammonia) — the common alkaline gas."
+conclusion: "NH₃ (ammonia), the common alkaline gas."
 ```
 
 ```yaml
@@ -2482,5 +2482,5 @@ conclusion: "O₂ (oxygen)."
 kind: qa
 test: "Bubble the gas through acidified aqueous potassium manganate(VII)."
 observation: "The purple solution turns colourless. The gas has a choking smell."
-conclusion: "SO₂ (sulfur dioxide) — it acts as a reducing agent."
+conclusion: "SO₂ (sulfur dioxide), it acts as a reducing agent."
 ```

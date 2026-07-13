@@ -27,7 +27,7 @@ export function GettingStarted({ steps }: { steps: StartStep[] }) {
         </p>
       </div>
       <p className="mt-1 text-sm text-body">
-        Your purchase is more than the PDFs — set these up once and StudyLand
+        Your purchase is more than the PDFs, set these up once and StudyLand
         runs your revision until exam day.
       </p>
       <ol className="mt-4 space-y-2">

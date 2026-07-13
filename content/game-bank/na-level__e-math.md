@@ -25,7 +25,7 @@ worked: |
   3 appears as 3¹ and 3⁴ → take 3¹.
   7 appears as 7² and 7¹ → take 7¹.
   HCF = 2³ × 3 × 7 = 8 × 3 × 7 = 168.
-  Taking the HIGHEST powers gives 127 008 — but that is the LCM, not the HCF.
+  Taking the HIGHEST powers gives 127 008, but that is the LCM, not the HCF.
 ```
 
 ```yaml
@@ -60,7 +60,7 @@ answer: 2
 marks: 2
 misconception: coefficient-not-raised-to-the-power
 worked: |
-  (3x²y³)³ = 3³ × x⁶ × y⁹ = 27x⁶y⁹ — the 3 must be cubed as well.
+  (3x²y³)³ = 3³ × x⁶ × y⁹ = 27x⁶y⁹, the 3 must be cubed as well.
   27x⁶y⁹ ÷ 9x⁴y⁵ = (27 ÷ 9) × x⁽⁶ ⁻ ⁴⁾ × y⁽⁹ ⁻ ⁵⁾ = 3x²y⁴.
   Leaving the 3 uncubed gives 3x⁶y⁹ ÷ 9x⁴y⁵ = x²y⁴/3, which is wrong.
 ```
@@ -78,7 +78,7 @@ answer: 3
 marks: 2
 misconception: zero-index-equals-zero
 worked: |
-  Anything (except 0) to the power 0 is 1, so 5⁰ = 1 — it is NOT 0.
+  Anything (except 0) to the power 0 is 1, so 5⁰ = 1, it is NOT 0.
   A negative index means a reciprocal: 2⁻³ = 1 ÷ 2³ = 1/8. It is NOT −8.
   1 + 1/8 = 8/8 + 1/8 = 9/8.
 ```
@@ -121,7 +121,7 @@ worked: |
   The significant digits start at the 4: 4, 0, 9, 6, 2.
   The first three are 4, 0, 9; the next digit is 6, so round the 9 up to 10, carrying:
   0.0040962 → 0.00410.
-  The final zero must be written — it is the third significant figure.
+  The final zero must be written, it is the third significant figure.
 ```
 
 ```yaml
@@ -224,7 +224,7 @@ worked: |
   1 cm on the map = 40 000 cm on the ground.
   8.5 cm on the map = 8.5 × 40 000 = 340 000 cm.
   1 km = 100 000 cm, so 340 000 ÷ 100 000 = 3.4 km.
-  Divide by 100 to reach metres and by 1000 again to reach kilometres — never by 100 only once.
+  Divide by 100 to reach metres and by 1000 again to reach kilometres, never by 100 only once.
 ```
 
 ```yaml
@@ -282,7 +282,7 @@ worked: |
   Direct proportion to √q means p = k√q.
   Substitute q = 16, p = 20: 20 = k × √16 = 4k, so k = 5.
   When q = 81: p = 5 × √81 = 5 × 9 = 45.
-  Treating p as proportional to q gives 20 × 81 ÷ 16 = 101.25 — the square root was dropped.
+  Treating p as proportional to q gives 20 × 81 ÷ 16 = 101.25, the square root was dropped.
 ```
 
 ```yaml
@@ -335,7 +335,7 @@ worked: |
   After a 15% discount the customer pays 85% of the original price.
   85% of the original = $68, so 1% = 68 ÷ 85 = $0.80.
   Original price = 0.80 × 100 = $80.
-  Adding 15% back on ($68 × 1.15 = $78.20) is WRONG — 15% of $68 is not 15% of $80.
+  Adding 15% back on ($68 × 1.15 = $78.20) is WRONG, 15% of $68 is not 15% of $80.
 ```
 
 ```yaml
@@ -373,7 +373,7 @@ worked: |
   Simple interest = P × R × T ÷ 100 = 2500 × 4 × 3 ÷ 100.
   = 2500 × 0.04 = $100 each year.
   $100 × 3 = $300 of interest.
-  $2800 is the TOTAL amount in the account, not the interest — read the question.
+  $2800 is the TOTAL amount in the account, not the interest, read the question.
 ```
 
 ```yaml
@@ -391,7 +391,7 @@ misconception: used-simple-interest-instead-of-compound
 worked: |
   Compound interest: amount = P × (1 + r/100)ⁿ.
   Amount = 2000 × (1.05)² = 2000 × 1.1025 = $2205.
-  Simple interest would give 2000 + 2 × 100 = $2200 — compound is $5 more because year 2 earns interest on year 1's interest as well.
+  Simple interest would give 2000 + 2 × 100 = $2200, compound is $5 more because year 2 earns interest on year 1's interest as well.
 ```
 
 ```yaml
@@ -411,7 +411,7 @@ worked: |
   Instalments = 12 × $68 = $816.
   Total hire-purchase price = $180 + $816 = $996.
   Extra paid = $996 − $900 = $96.
-  Leaving the deposit out gives $816, which is even less than the cash price — a clear signal you have missed a step.
+  Leaving the deposit out gives $816, which is even less than the cash price, a clear signal you have missed a step.
 ```
 
 ```yaml
@@ -447,7 +447,7 @@ misconception: reverse-percentage-applied-to-the-wrong-price
 worked: |
   GST is added ON TOP of $640, so the customer pays 109% of $640.
   640 × 1.09 = $697.60.
-  Treating $640 as the price INCLUDING GST and dividing by 1.09 gives $587.16 — that answers a different question.
+  Treating $640 as the price INCLUDING GST and dividing by 1.09 gives $587.16, that answers a different question.
   Adding $9 (rather than 9%) gives $649.00 and is a units slip.
 ```
 
@@ -474,7 +474,7 @@ misconception: subtracted-40-percent-in-one-go
 worked: |
   Each year the car keeps 80% of its value.
   Value after 2 years = 30 000 × 0.8² = 30 000 × 0.64 = $19 200.
-  Taking 40% off in one step gives $18 000 — depreciation compounds, so the two are not the same.
+  Taking 40% off in one step gives $18 000, depreciation compounds, so the two are not the same.
 ```
 
 ```yaml
@@ -520,7 +520,7 @@ worked: |
 ```yaml
 type: mcq
 topic: "N4 Rate & Speed"
-stem: "On a distance–time graph, a straight line runs from (0 min, 0 km) to (12 min, 9 km). Find the speed of the object in km/h."
+stem: "On a distance-time graph, a straight line runs from (0 min, 0 km) to (12 min, 9 km). Find the speed of the object in km/h."
 options:
   - "0.75 km/h"
   - "9 km/h"
@@ -530,7 +530,7 @@ answer: 3
 marks: 2
 misconception: forgot-to-convert-minutes-to-hours
 worked: |
-  On a distance–time graph the GRADIENT is the speed.
+  On a distance-time graph the GRADIENT is the speed.
   Gradient = 9 km ÷ 12 min = 0.75 km per minute.
   There are 60 minutes in an hour: 0.75 × 60 = 45 km/h.
   Leaving the answer as 0.75 ignores the units asked for.
@@ -539,7 +539,7 @@ worked: |
 ```yaml
 type: mcq
 topic: "N4 Rate & Speed"
-stem: "A train accelerates uniformly from rest to 30 m/s in 20 s, travels at 30 m/s for the next 60 s, then decelerates uniformly to rest in a further 40 s. Using the speed–time graph, find the total distance travelled."
+stem: "A train accelerates uniformly from rest to 30 m/s in 20 s, travels at 30 m/s for the next 60 s, then decelerates uniformly to rest in a further 40 s. Using the speed-time graph, find the total distance travelled."
 options:
   - "2700 m"
   - "2100 m"
@@ -549,18 +549,18 @@ answer: 0
 marks: 3
 misconception: used-the-gradient-instead-of-the-area
 worked: |
-  On a speed–time graph the AREA under the graph is the distance.
+  On a speed-time graph the AREA under the graph is the distance.
   Acceleration stage (triangle): ½ × 20 × 30 = 300 m.
   Constant stage (rectangle): 60 × 30 = 1800 m.
   Deceleration stage (triangle): ½ × 40 × 30 = 600 m.
   Total distance = 300 + 1800 + 600 = 2700 m.
-  Leaving out the final triangle gives 2100 m — always count every region.
+  Leaving out the final triangle gives 2100 m, always count every region.
 ```
 
 ```yaml
 type: mcq
 topic: "N4 Rate & Speed"
-stem: "A speed–time graph shows a car slowing uniformly from 24 m/s to 6 m/s over 12 s. Find its acceleration."
+stem: "A speed-time graph shows a car slowing uniformly from 24 m/s to 6 m/s over 12 s. Find its acceleration."
 options:
   - "1.5 m/s²"
   - "−1.5 m/s²"
@@ -570,7 +570,7 @@ answer: 1
 marks: 2
 misconception: ignored-the-sign-of-a-deceleration
 worked: |
-  On a speed–time graph the GRADIENT is the acceleration.
+  On a speed-time graph the GRADIENT is the acceleration.
   Gradient = (6 − 24) ÷ 12 = −18 ÷ 12 = −1.5 m/s².
   The car is slowing down, so the acceleration must be NEGATIVE.
   Forgetting the change in speed and using 18 ÷ 12 loses the sign.
@@ -645,7 +645,7 @@ worked: |
   Factorise the bottom: x² − 2x − 15 = (x − 5)(x + 3).
   The common FACTOR (x − 5) cancels:
   (x − 5)(x + 5) ÷ [(x − 5)(x + 3)] = (x + 5)/(x + 3).
-  You may never cancel single terms such as the x² — only whole factors.
+  You may never cancel single terms such as the x², only whole factors.
 ```
 
 ```yaml
@@ -759,7 +759,7 @@ worked: |
   Complete the square: x² + 4x − 7 = (x + 2)² − 4 − 7 = (x + 2)² − 11.
   A squared bracket is smallest when it equals 0, i.e. when x = −2.
   Then y = −11, so the minimum point is (−2, −11).
-  For (x + p)² + q the x-coordinate is −p — the sign FLIPS as it comes out of the bracket.
+  For (x + p)² + q the x-coordinate is −p, the sign FLIPS as it comes out of the bracket.
 ```
 
 ```yaml
@@ -816,7 +816,7 @@ worked: |
   Substitute (4, 3): 3 = a ÷ 4, so a = 12.
   The equation is y = 12/x.
   When x = 10: y = 12 ÷ 10 = 1.2.
-  On a reciprocal graph, MULTIPLYING x by 2.5 DIVIDES y by 2.5 — y does not grow with x.
+  On a reciprocal graph, MULTIPLYING x by 2.5 DIVIDES y by 2.5, y does not grow with x.
 ```
 
 ```yaml
@@ -834,7 +834,7 @@ misconception: inverted-the-gradient-formula
 worked: |
   The gradient of a curve at a point equals the gradient of the TANGENT drawn there.
   Gradient = (change in y) ÷ (change in x) = (14 − 2) ÷ (5 − 1) = 12 ÷ 4 = 3.
-  Using (change in x) ÷ (change in y) gives 1/3 — the formula is upside down.
+  Using (change in x) ÷ (change in y) gives 1/3, the formula is upside down.
   Always take your two points from the ENDS of the tangent you have drawn, not from the curve.
 ```
 
@@ -854,7 +854,7 @@ worked: |
   (−2)³ = −8 (an odd power keeps the minus sign).
   −4 × (−2) = +8.
   y = −8 + 8 = 0.
-  Getting −16 means the second term was left negative — check every sign separately.
+  Getting −16 means the second term was left negative, check every sign separately.
 ```
 
 ```yaml
@@ -927,7 +927,7 @@ worked: |
   2x² + 6x − x − 3 = 2x(x + 3) − 1(x + 3) = (2x − 1)(x + 3).
   So 2x − 1 = 0 or x + 3 = 0.
   x = 1/2 or x = −3.
-  The root has the OPPOSITE sign to the number in its bracket — that is where signs get flipped.
+  The root has the OPPOSITE sign to the number in its bracket, that is where signs get flipped.
 ```
 
 ```yaml
@@ -947,7 +947,7 @@ worked: |
   Discriminant: b² − 4ac = (−5)² − 4(1)(2) = 25 − 8 = 17.
   x = [−(−5) ± √17] ÷ 2 = (5 ± 4.1231) ÷ 2.
   x = 9.1231 ÷ 2 = 4.56 or x = 0.8769 ÷ 2 = 0.44.
-  The formula begins with −b, so with b = −5 it begins with +5 — never with −5.
+  The formula begins with −b, so with b = −5 it begins with +5, never with −5.
 ```
 
 ```yaml
@@ -1025,7 +1025,7 @@ worked: |
   Add 1 to all three parts: 4 < 2x ⩽ 10.
   Divide all three parts by 2: 2 < x ⩽ 5.
   x is strictly GREATER than 2 (so x = 2 is NOT allowed) and can equal 5.
-  The integers are 3, 4 and 5 — that is 3 values.
+  The integers are 3, 4 and 5, that is 3 values.
   Counting x = 2 as well would give 4, and is the classic endpoint slip.
 ```
 
@@ -1114,7 +1114,7 @@ worked: |
   Bring everything to one side: x² − 7x = 0.
   Factorise: x(x − 7) = 0.
   So x = 0 or x = 7.
-  NEVER divide both sides by x — that throws away the root x = 0.
+  NEVER divide both sides by x, that throws away the root x = 0.
 ```
 
 ```yaml
@@ -1169,7 +1169,7 @@ worked: |
   Interior and exterior angles at a vertex lie on a straight line:
   exterior angle = 180° − 150° = 30°.
   Number of sides = 360° ÷ 30° = 12.
-  Dividing 360° by the INTERIOR angle (360 ÷ 150 = 2.4) cannot be right — a polygon must have a whole number of sides.
+  Dividing 360° by the INTERIOR angle (360 ÷ 150 = 2.4) cannot be right, a polygon must have a whole number of sides.
 ```
 
 ```yaml
@@ -1189,7 +1189,7 @@ worked: |
   3x + 2x + 10 + x + 50 = 180.
   6x + 60 = 180, so 6x = 120 and x = 20.
   Check: 60° + 50° + 70° = 180°. ✓
-  Using 360 would give x = 50 — that is the angle sum of a QUADRILATERAL.
+  Using 360 would give x = 50, that is the angle sum of a QUADRILATERAL.
 ```
 
 ```yaml
@@ -1208,7 +1208,7 @@ worked: |
   Interior angles on the SAME side of a transversal (co-interior, or allied, angles) are SUPPLEMENTARY:
   they add up to 180°.
   Other angle = 180° − 118° = 62°.
-  Only ALTERNATE (Z) and CORRESPONDING (F) angles are equal — co-interior (C) angles are not.
+  Only ALTERNATE (Z) and CORRESPONDING (F) angles are equal, co-interior (C) angles are not.
 ```
 
 ```yaml
@@ -1277,7 +1277,7 @@ worked: |
   Because ST is parallel to QR, triangle PST is SIMILAR to triangle PQR.
   The ratio must use the FULL side: PS : PQ = 6 : (6 + 4) = 6 : 10.
   So ST : QR = 6 : 10, giving ST = 15 × 6 ÷ 10 = 9 cm.
-  Using PS : SQ = 6 : 4 gives 22.5 cm — but SQ is only PART of PQ, not the whole side.
+  Using PS : SQ = 6 : 4 gives 22.5 cm, but SQ is only PART of PQ, not the whole side.
   ST lies inside the triangle, so it must be SHORTER than QR.
 ```
 
@@ -1366,7 +1366,7 @@ worked: |
   OT is therefore the hypotenuse of right-angled triangle OAT.
   TA² = OT² − OA² = 25² − 7² = 625 − 49 = 576.
   TA = √576 = 24 cm.
-  Adding (625 + 49) gives 26.0 cm — but the hypotenuse is the LONGEST side, so it must be OT.
+  Adding (625 + 49) gives 26.0 cm, but the hypotenuse is the LONGEST side, so it must be OT.
 ```
 
 ```yaml
@@ -1385,7 +1385,7 @@ worked: |
   The hypotenuse is the LONGEST side, so it is squared and then SUBTRACTED from.
   x² = 13² − 5² = 169 − 25 = 144.
   x = √144 = 12 cm.
-  Adding (169 + 25 = 194, √194 = 13.9) would give a side LONGER than the hypotenuse — impossible.
+  Adding (169 + 25 = 194, √194 = 13.9) would give a side LONGER than the hypotenuse, impossible.
 ```
 
 ```yaml
@@ -1425,7 +1425,7 @@ worked: |
   sin 32° = opposite ÷ hypotenuse = 7.4 ÷ h.
   So h = 7.4 ÷ sin 32° = 7.4 ÷ 0.5299 = 13.96...
   h = 14.0 cm (3 s.f.).
-  Multiplying (7.4 × sin 32° = 3.92) gives an answer SHORTER than the side you started with — the hypotenuse must always be the longest side.
+  Multiplying (7.4 × sin 32° = 3.92) gives an answer SHORTER than the side you started with, the hypotenuse must always be the longest side.
 ```
 
 ```yaml
@@ -1446,7 +1446,7 @@ worked: |
       = 49 + 81 − 126 × 0.3746
       = 130 − 47.20 = 82.80.
   AC = √82.80 = 9.10 cm (3 s.f.).
-  The formula SUBTRACTS the cosine term. Adding it gives 13.3 cm, which is longer than both sides — a red flag.
+  The formula SUBTRACTS the cosine term. Adding it gives 13.3 cm, which is longer than both sides, a red flag.
 ```
 
 ```yaml
@@ -1466,7 +1466,7 @@ worked: |
   12 ÷ sin 40° = b ÷ sin 75°.
   b = 12 × sin 75° ÷ sin 40° = 12 × 0.9659 ÷ 0.6428 = 18.03...
   b = 18.0 cm (3 s.f.).
-  Side b faces the BIGGER angle (75° > 40°), so b must be longer than 12 cm — 7.99 cm cannot be right.
+  Side b faces the BIGGER angle (75° > 40°), so b must be longer than 12 cm, 7.99 cm cannot be right.
 ```
 
 ```yaml
@@ -1485,7 +1485,7 @@ worked: |
   The calculator gives sin⁻¹(0.5) = 30°, which is ACUTE.
   For an obtuse angle with the same sine, use x = 180° − 30° = 150°.
   Check: sin 150° = 0.5. ✓
-  The calculator only ever returns the acute value — you must convert it yourself.
+  The calculator only ever returns the acute value, you must convert it yourself.
 ```
 
 ```yaml
@@ -1505,7 +1505,7 @@ worked: |
   Area = ½ × 11 × 8 × sin 130°
        = 44 × 0.7660
        = 33.7 cm² (3 s.f.).
-  Dropping the ½ gives 67.4 cm² — exactly double, which is the tell-tale sign.
+  Dropping the ½ gives 67.4 cm², exactly double, which is the tell-tale sign.
 ```
 
 ```yaml
@@ -1523,7 +1523,7 @@ misconception: used-sine-for-the-north-south-component
 worked: |
   Bearings are measured CLOCKWISE from north. A bearing of 145° is 35° past due east... more precisely,
   the angle between the path and the SOUTH direction is 180° − 145° = 35°.
-  The southward distance is the side ADJACENT to the bearing measured from the north–south line:
+  The southward distance is the side ADJACENT to the bearing measured from the north-south line:
   south distance = 20 × cos 35° = 20 × 0.8192 = 16.4 km (3 s.f.).
   Using sine (20 × sin 35° = 11.5 km) gives the EAST distance instead.
 ```
@@ -1592,7 +1592,7 @@ worked: |
   Volume of a cone = ⅓πr²h (this formula is given on the formula sheet).
   V = ⅓ × π × 6² × 14 = ⅓ × π × 36 × 14 = π × 168 = 527.8...
   V = 528 cm³ (3 s.f.).
-  Leaving out the ⅓ gives 1580 cm³ — that is the volume of a CYLINDER with the same base and height.
+  Leaving out the ⅓ gives 1580 cm³, that is the volume of a CYLINDER with the same base and height.
 ```
 
 ```yaml
@@ -1611,7 +1611,7 @@ worked: |
   Surface area of a sphere = 4πr² (given on the formula sheet).
   A = 4 × π × 5² = 4 × π × 25 = 100π = 314.15...
   A = 314 cm² (3 s.f.).
-  Using ⁴⁄₃πr³ = 524 gives a VOLUME (cm³), not an area — always check the units of your answer.
+  Using ⁴⁄₃πr³ = 524 gives a VOLUME (cm³), not an area, always check the units of your answer.
 ```
 
 ```yaml
@@ -1669,7 +1669,7 @@ worked: |
   Arc length = (angle ÷ 360°) × circumference = (45 ÷ 360) × 2 × π × 14.
   = (1/8) × 87.96 = 10.996...
   Arc length = 11.0 cm (3 s.f.).
-  Using (45 ÷ 360) × πr² = 77.0 gives an AREA in cm², not a length — check the units.
+  Using (45 ÷ 360) × πr² = 77.0 gives an AREA in cm², not a length, check the units.
 ```
 
 ```yaml
@@ -1745,7 +1745,7 @@ misconception: used-100-instead-of-1000000-as-the-volume-conversion
 worked: |
   1 m = 100 cm, so 1 m³ = 100 × 100 × 100 = 1 000 000 cm³.
   0.75 m³ = 0.75 × 1 000 000 = 750 000 cm³.
-  Multiplying by 100 only once is the standard slip — for VOLUME the factor is cubed.
+  Multiplying by 100 only once is the standard slip, for VOLUME the factor is cubed.
 ```
 
 ```yaml
@@ -1758,7 +1758,7 @@ misconception: used-the-volume-formula-for-the-curved-surface-area
 worked: |
   Curved surface area of a cylinder = 2πrh.
   = 2 × π × 4 × 10 = 80π cm².
-  The volume formula πr²h would give 160π cm³ — an entirely different quantity.
+  The volume formula πr²h would give 160π cm³, an entirely different quantity.
 ```
 
 ```yaml
@@ -1847,10 +1847,10 @@ marks: 3
 misconception: negated-the-gradient-without-taking-the-reciprocal
 worked: |
   For perpendicular lines, m₁ × m₂ = −1.
-  m₁ = 2/3, so m₂ = −1 ÷ (2/3) = −3/2 = −1.5 (NEGATIVE RECIPROCAL — flip AND change sign).
+  m₁ = 2/3, so m₂ = −1 ÷ (2/3) = −3/2 = −1.5 (NEGATIVE RECIPROCAL, flip AND change sign).
   Substitute (4, 1): 1 = −1.5(4) + c = −6 + c, so c = 7.
   Equation: y = −1.5x + 7.
-  Just changing the sign (to −2/3) is not enough — you must invert the fraction too.
+  Just changing the sign (to −2/3) is not enough, you must invert the fraction too.
 ```
 
 ```yaml
@@ -1869,7 +1869,7 @@ worked: |
   The point is (k, 9), so x = k and y = 9.
   2k + 3(9) = 41.
   2k + 27 = 41, so 2k = 14 and k = 7.
-  Substituting 9 for x instead gives 18 + 3k = 41 and k = 7.67 — always check which coordinate is which.
+  Substituting 9 for x instead gives 18 + 3k = 41 and k = 7.67, always check which coordinate is which.
 ```
 
 ```yaml
@@ -1889,7 +1889,7 @@ worked: |
   BC is vertical: length = 10 − 2 = 8 units.
   The right angle is at B, so AB and BC are the base and height.
   Area = ½ × 6 × 8 = 24 square units.
-  Forgetting the ½ gives 48 — that is the area of the RECTANGLE, not the triangle.
+  Forgetting the ½ gives 48, that is the area of the RECTANGLE, not the triangle.
 ```
 
 ```yaml
@@ -1941,7 +1941,7 @@ worked: |
   The data are already in order and there are 9 values.
   The median is the middle value: the (9 + 1) ÷ 2 = 5th value.
   Counting along: 3, 7, 7, 9, 12 → the median is 12.
-  15 is the MODE (most frequent) and 11.2 is the MEAN — read which average is wanted.
+  15 is the MODE (most frequent) and 11.2 is the MEAN, read which average is wanted.
 ```
 
 ```yaml
@@ -1981,7 +1981,7 @@ worked: |
   Deviations: −4, −2, 0, 2, 4. Squares: 16, 4, 0, 4, 16. Sum = 40.
   Variance = 40 ÷ 5 = 8 (divide by n, the number of values).
   Standard deviation = √8 = 2.828... = 2.83 (3 s.f.).
-  Dividing by n − 1 = 4 gives √10 = 3.16 — the wrong n for this syllabus.
+  Dividing by n − 1 = 4 gives √10 = 3.16, the wrong n for this syllabus.
 ```
 
 ```yaml
@@ -2053,7 +2053,7 @@ answer: 1
 marks: 2
 misconception: gave-the-range-instead-of-the-interquartile-range
 worked: |
-  The interquartile range uses only the two quartiles — the ends of the BOX.
+  The interquartile range uses only the two quartiles, the ends of the BOX.
   IQR = 35 − 20 = 15.
   48 − 12 = 36 is the RANGE, measured from the ends of the WHISKERS.
 ```
@@ -2074,7 +2074,7 @@ worked: |
   Total of all five numbers = 5 × 15 = 75.
   Total of the four known numbers = 9 + 11 + 16 + 20 = 56.
   Fifth number = 75 − 56 = 19.
-  75 is the TOTAL, not a single value — read what the question wants.
+  75 is the TOTAL, not a single value, read what the question wants.
 ```
 
 ```yaml
@@ -2101,7 +2101,7 @@ worked: |
   Adding the same amount to every value slides the whole data set along;
   the values keep exactly the same distances from each other and from the new mean.
   The SPREAD is unchanged, so the standard deviation is still 4.5.
-  (The MEAN does rise by 3 — but the standard deviation does not.)
+  (The MEAN does rise by 3, but the standard deviation does not.)
 ```
 
 ```yaml
@@ -2180,7 +2180,7 @@ worked: |
   For INDEPENDENT events, P(A and B) = P(A) × P(B).
   = 0.6 × 0.25 = 0.15.
   AND → MULTIPLY. OR → ADD. Adding here gives 0.85, which answers a different question.
-  A combined probability must be SMALLER than each single one — 0.85 fails that check.
+  A combined probability must be SMALLER than each single one, 0.85 fails that check.
 ```
 
 ```yaml
@@ -2196,8 +2196,8 @@ answer: 3
 marks: 3
 misconception: missed-one-of-the-favourable-outcomes
 worked: |
-  Primes from 1 to 8: 2, 3, 5, 7 — that is 4 numbers (1 is NOT prime).
-  Multiples of 4 from 1 to 8: 4 and 8 — that is 2 numbers.
+  Primes from 1 to 8: 2, 3, 5, 7, that is 4 numbers (1 is NOT prime).
+  Multiples of 4 from 1 to 8: 4 and 8, that is 2 numbers.
   No number is in both lists, so there are 4 + 2 = 6 favourable outcomes out of 8.
   P = 6/8 = 3/4.
   Forgetting that 2 is prime, or that 8 is a multiple of 4, gives 5/8.
@@ -2224,7 +2224,7 @@ kind: careless
 topic: "Quadratic formula"
 checks:
   - "Write a, b and c down WITH their signs before you substitute. In 2x² - 5x - 4 = 0, b = -5 and c = -4."
-  - "The formula starts with -b. If b = -5 then -b = +5 — a minus sign in the equation becomes a PLUS in the formula."
+  - "The formula starts with -b. If b = -5 then -b = +5, a minus sign in the equation becomes a PLUS in the formula."
   - "Work out the discriminant b² - 4ac on its own line first. Watch -4 × 2 × (-4) = +32."
   - "The WHOLE of -b ± the square root is divided by 2a. Bracket the top line on your calculator."
   - "Give BOTH roots unless the question rejects one, and round only at the very last step."
@@ -2246,7 +2246,7 @@ kind: careless
 topic: "Factorising quadratics"
 checks:
   - "For ax² + bx + c, hunt for two numbers with product a × c and sum b."
-  - "A negative product means the two numbers have OPPOSITE signs — decide which is bigger."
+  - "A negative product means the two numbers have OPPOSITE signs, decide which is bigger."
   - "Take out any common factor first: 2x² - 18 = 2(x² - 9) = 2(x - 3)(x + 3)."
   - "'Factorise completely' means a difference of two squares must be split as well."
   - "Always expand your factors to verify they rebuild the original quadratic."
@@ -2257,9 +2257,9 @@ kind: careless
 topic: "Simultaneous equations"
 checks:
   - "Line the equations up so x, y and the constant sit in the same columns."
-  - "To eliminate, the coefficients must MATCH in size — multiply one or both equations first."
+  - "To eliminate, the coefficients must MATCH in size, multiply one or both equations first."
   - "Same signs: SUBTRACT. Different signs: ADD. Getting this backwards is the classic slip."
-  - "Substitute your value back to find the second unknown — and give BOTH answers."
+  - "Substitute your value back to find the second unknown, and give BOTH answers."
   - "Check your pair in the equation you did NOT use for the substitution."
 ```
 
@@ -2278,20 +2278,20 @@ checks:
 kind: careless
 topic: "Fractional equations"
 checks:
-  - "Multiply EVERY term on both sides by the denominator — not just the fraction."
+  - "Multiply EVERY term on both sides by the denominator, not just the fraction."
   - "6/(x + 4) = x - 1 becomes 6 = (x - 1)(x + 4). Expand the right-hand side carefully."
   - "Rearrange to 'quadratic = 0' before you factorise or use the formula."
   - "A denominator can never be zero, so reject any root that makes it zero."
-  - "Two roots usually means two answers — do not stop after the first one."
+  - "Two roots usually means two answers, do not stop after the first one."
 ```
 
 ```yaml
 kind: careless
 topic: "Expanding and simplifying"
 checks:
-  - "Every term in the first bracket multiplies every term in the second — four products for two binomials."
+  - "Every term in the first bracket multiplies every term in the second, four products for two binomials."
   - "A minus outside a bracket changes the sign of EVERYTHING inside: -(2x - 5) = -2x + 5."
-  - "(a + b)² is NOT a² + b². It is a² + 2ab + b² — the middle term is the one people lose."
+  - "(a + b)² is NOT a² + b². It is a² + 2ab + b², the middle term is the one people lose."
   - "Collect like terms at the end, and only like terms: 3x and 3x² can never be added."
   - "Substitute x = 1 into your answer and the original to spot a slip in seconds."
 ```
@@ -2311,7 +2311,7 @@ checks:
 kind: careless
 topic: "Changing the subject of a formula"
 checks:
-  - "Deal with the new subject LAST — strip everything else away from it first."
+  - "Deal with the new subject LAST, strip everything else away from it first."
   - "If the subject is squared, square-root at the end. Stopping at r² loses the mark."
   - "If the subject appears twice, gather those terms on one side and FACTORISE."
   - "Multiplying up a fraction means multiplying EVERY term on both sides."
@@ -2337,7 +2337,7 @@ checks:
   - "Multiplying? Multiply the numbers and ADD the powers. Dividing? Divide and SUBTRACT."
   - "Adding or subtracting? Rewrite both terms with the SAME power of ten first."
   - "Fix the mantissa afterwards: 18 × 10⁻³ = 1.8 × 10⁻²."
-  - "Count the decimal places carefully — moving the point right gives a NEGATIVE index."
+  - "Count the decimal places carefully, moving the point right gives a NEGATIVE index."
 ```
 
 ```yaml
@@ -2356,7 +2356,7 @@ kind: careless
 topic: "Rounding and significant figures"
 checks:
   - "Leading zeros are never significant: 0.00409 has 3 significant figures, not 5."
-  - "Keep the trailing zero when it is significant — write 0.00410, not 0.0041."
+  - "Keep the trailing zero when it is significant, write 0.00410, not 0.0041."
   - "Round ONLY at the end. Rounding halfway through drifts the final answer."
   - "The paper wants 3 significant figures, or 1 decimal place for angles in degrees."
   - "Copy the units and the degree symbol from the question into your final answer."
@@ -2370,7 +2370,7 @@ checks:
   - "One part = total amount ÷ total parts. Then multiply by the parts you actually want."
   - "Check your shares add back up to the original amount."
   - "Combining a : b with b : c? Scale both so that b is the SAME number in each."
-  - "Simplify ratios by dividing every part by the HCF — and keep whole numbers."
+  - "Simplify ratios by dividing every part by the HCF, and keep whole numbers."
 ```
 
 ```yaml
@@ -2380,7 +2380,7 @@ checks:
   - "Scale 1 : n means 1 cm on the map is n cm on the ground."
   - "Convert AFTER you multiply: 1 km = 100 000 cm, and 1 m = 100 cm."
   - "For AREA the scale factor is SQUARED: scale 1 : 25 000 gives an area factor of 25 000²."
-  - "1 km² = 10¹⁰ cm² — not 10⁵. Write the conversion out rather than guessing it."
+  - "1 km² = 10¹⁰ cm², not 10⁵. Write the conversion out rather than guessing it."
   - "Ask yourself whether the real distance should be bigger or smaller than the map distance."
 ```
 
@@ -2390,7 +2390,7 @@ topic: "Direct and inverse proportion"
 checks:
   - "Direct: y = kx (or kx², or k√x). Inverse: y = k/x (or k/x²)."
   - "ALWAYS find k first from the given pair of values."
-  - "'Proportional to the square' means x² goes in the formula — doubling x multiplies y by 4."
+  - "'Proportional to the square' means x² goes in the formula, doubling x multiplies y by 4."
   - "Inverse square: doubling x DIVIDES y by 4, not by 2."
   - "Substitute your k back and check the original pair still works."
 ```
@@ -2401,7 +2401,7 @@ topic: "Percentage change and reverse percentage"
 checks:
   - "Percentage change = (change ÷ ORIGINAL) × 100. The original is always the denominator."
   - "Reverse percentage: the amount you are given is already 85% (or 115%) of the answer."
-  - "Never take the same percentage back off a reduced price — 15% of $68 is not 15% of $80."
+  - "Never take the same percentage back off a reduced price, 15% of $68 is not 15% of $80."
   - "After a 15% discount, divide by 0.85. After a 15% increase, divide by 1.15."
   - "Check: put your original through the stated change and see if you land on the given value."
 ```
@@ -2421,11 +2421,11 @@ checks:
 kind: careless
 topic: "Simple and compound interest"
 checks:
-  - "Simple interest = P × R × T ÷ 100 — the same interest every single year."
-  - "Compound amount = P × (1 + R/100)ⁿ — interest earns interest."
+  - "Simple interest = P × R × T ÷ 100, the same interest every single year."
+  - "Compound amount = P × (1 + R/100)ⁿ, interest earns interest."
   - "The compound formula gives the TOTAL AMOUNT. Subtract P if the question wants the INTEREST."
   - "Read whether the interest is added yearly, half-yearly or monthly, and adjust R and n to match."
-  - "Compound interest is always slightly more than simple interest over the same period — use that as a check."
+  - "Compound interest is always slightly more than simple interest over the same period, use that as a check."
 ```
 
 ```yaml
@@ -2433,7 +2433,7 @@ kind: careless
 topic: "Hire purchase and money exchange"
 checks:
   - "Hire-purchase total = deposit + (number of instalments × amount of each instalment)."
-  - "Never leave the deposit out — if your total is less than the cash price, you have missed it."
+  - "Never leave the deposit out, if your total is less than the cash price, you have missed it."
   - "'How much MORE?' means subtract the cash price from the hire-purchase total."
   - "Exchanging money: decide first whether the answer should be a bigger or smaller number, then multiply or divide."
   - "Round money to 2 decimal places, and keep the currency symbol on the answer."
@@ -2444,7 +2444,7 @@ kind: careless
 topic: "Speed, distance and time"
 checks:
   - "Speed = distance ÷ time. Rearrange, do not guess."
-  - "Average speed = TOTAL distance ÷ TOTAL time — never the average of the speeds."
+  - "Average speed = TOTAL distance ÷ TOTAL time, never the average of the speeds."
   - "km/h to m/s: divide by 3.6. m/s to km/h: multiply by 3.6."
   - "Convert minutes to hours before dividing: 45 minutes is 0.75 h, not 0.45 h."
   - "Check the units the question asks for and convert your final answer to match."
@@ -2457,7 +2457,7 @@ checks:
   - "The GRADIENT of a distance-time graph is the speed."
   - "A HORIZONTAL line means the object is STATIONARY, not travelling at constant speed."
   - "A steeper line means a faster speed; a line sloping back down means returning towards the start."
-  - "Read the axis units. Minutes on the x-axis means your gradient is per minute — convert if km/h is wanted."
+  - "Read the axis units. Minutes on the x-axis means your gradient is per minute, convert if km/h is wanted."
   - "Take your two points from clear grid intersections, not from a rough eyeball."
 ```
 
@@ -2467,9 +2467,9 @@ topic: "Speed-time graphs"
 checks:
   - "The AREA under a speed-time graph is the DISTANCE travelled."
   - "The GRADIENT of a speed-time graph is the ACCELERATION."
-  - "Split the area into triangles and rectangles — and count EVERY region, including the last one."
+  - "Split the area into triangles and rectangles, and count EVERY region, including the last one."
   - "A negative gradient is a deceleration. Keep the minus sign in the answer."
-  - "A horizontal line here means CONSTANT SPEED (not stationary) — that is a distance-time idea."
+  - "A horizontal line here means CONSTANT SPEED (not stationary), that is a distance-time idea."
 ```
 
 ```yaml
@@ -2477,7 +2477,7 @@ kind: careless
 topic: "Quadratic graphs"
 checks:
   - "A positive x² coefficient gives a U-shaped curve with a MINIMUM; a negative one gives an upside-down curve with a MAXIMUM."
-  - "The line of symmetry is x = -b ÷ (2a) — watch the sign of b."
+  - "The line of symmetry is x = -b ÷ (2a), watch the sign of b."
   - "The curve cuts the y-axis at the constant term c."
   - "Plot every point from your table and join with a SMOOTH curve, never with straight segments."
   - "Reading a solution off the graph? State the x value(s) where the curve meets the required line."
@@ -2488,10 +2488,10 @@ kind: careless
 topic: "Gradient of a curve by drawing a tangent"
 checks:
   - "The gradient of a curve at a point is found by DRAWING A TANGENT at that point and finding its gradient."
-  - "The tangent must touch the curve at the point and match its direction — not cut across it."
+  - "The tangent must touch the curve at the point and match its direction, not cut across it."
   - "Take TWO points from the ends of the tangent you drew, as far apart as possible, to reduce error."
   - "Gradient = (change in y) ÷ (change in x). Never the other way up."
-  - "Use the SCALES on the axes, not the number of squares — the two axes rarely match."
+  - "Use the SCALES on the axes, not the number of squares, the two axes rarely match."
 ```
 
 ```yaml
@@ -2499,7 +2499,7 @@ kind: careless
 topic: "Coordinate geometry"
 checks:
   - "Gradient = (y₂ - y₁) ÷ (x₂ - x₁). Subtract in the SAME order on the top and the bottom."
-  - "Length uses Pythagoras — and you must square-root at the end."
+  - "Length uses Pythagoras, and you must square-root at the end."
   - "For y = mx + c, find m first, then substitute a point to find c."
   - "Parallel lines share a gradient. Perpendicular gradients multiply to -1 (flip AND change sign)."
   - "Midpoint means AVERAGE the coordinates: ((x₁ + x₂)/2, (y₁ + y₂)/2), never subtract them."
@@ -2522,7 +2522,7 @@ topic: "Congruence and similar triangles"
 checks:
   - "In similar triangles, match the corresponding vertices before writing any ratio."
   - "With a line parallel to one side, use the FULL side (AB), not just the part (DB)."
-  - "Set up the ratio as (small side) ÷ (big side) = (small side) ÷ (big side) — consistently."
+  - "Set up the ratio as (small side) ÷ (big side) = (small side) ÷ (big side), consistently."
   - "Congruent means IDENTICAL (SSS, SAS, ASA, RHS). Similar means the same SHAPE, different size."
   - "Check your answer is sensible: a side in the bigger triangle must come out bigger."
 ```
@@ -2545,7 +2545,7 @@ checks:
   - "Angle at the CENTRE = 2 × angle at the circumference on the same arc."
   - "The angle in a SEMICIRCLE is 90°."
   - "Angles in the SAME segment are equal; opposite angles of a cyclic quadrilateral add to 180°."
-  - "A TANGENT is perpendicular to the radius at the point of contact — that gives you a right angle to use."
+  - "A TANGENT is perpendicular to the radius at the point of contact, that gives you a right angle to use."
   - "Two tangents from the same external point are EQUAL, which makes an isosceles triangle."
 ```
 
@@ -2553,7 +2553,7 @@ checks:
 kind: careless
 topic: "Pythagoras' theorem"
 checks:
-  - "Identify the HYPOTENUSE first — it is opposite the right angle and is the longest side."
+  - "Identify the HYPOTENUSE first, it is opposite the right angle and is the longest side."
   - "Finding the hypotenuse: ADD the squares. Finding a shorter side: SUBTRACT."
   - "Square-root at the end. An answer left as 144 instead of 12 loses the mark."
   - "In 3D you use Pythagoras TWICE: base diagonal first, then bring in the height."
@@ -2577,10 +2577,10 @@ topic: "Sine rule and cosine rule"
 checks:
   - "Cosine rule when you have two sides and the INCLUDED angle, or all three sides."
   - "Sine rule when you have an angle paired with its opposite side."
-  - "The cosine rule SUBTRACTS the 2ab cos C term — do not add it."
+  - "The cosine rule SUBTRACTS the 2ab cos C term, do not add it."
   - "Square-root at the very end, after the whole right-hand side is worked out."
   - "The longest side must face the largest angle. If it does not, something is wrong."
-  - "Area of a triangle = ½ ab sin C — the angle must be BETWEEN the two sides, and do not lose the ½."
+  - "Area of a triangle = ½ ab sin C, the angle must be BETWEEN the two sides, and do not lose the ½."
 ```
 
 ```yaml
@@ -2590,7 +2590,7 @@ checks:
   - "Bearings are measured CLOCKWISE from NORTH, and always written with THREE figures: 030°, not 30°."
   - "Draw a north arrow at EVERY point you measure a bearing from."
   - "A back-bearing differs by 180°: add 180 if the bearing is under 180°, subtract 180 if it is over."
-  - "A bearing lies between 000° and 360° — an answer of 390° means you must subtract 360°."
+  - "A bearing lies between 000° and 360°, an answer of 390° means you must subtract 360°."
   - "Splitting a journey into north/south and east/west parts? Measure the angle from the north-south line first."
 ```
 
@@ -2632,7 +2632,7 @@ checks:
 kind: careless
 topic: "Standard deviation"
 checks:
-  - "Use the formula sheet version and divide by n — the number of values — NOT by n - 1."
+  - "Use the formula sheet version and divide by n, the number of values, NOT by n - 1."
   - "For a frequency table, n = Σf. Counting the number of rows instead is the classic error."
   - "Square-root the variance at the end. Leaving 8 instead of 2.83 loses the mark."
   - "A SMALLER standard deviation means the data are MORE consistent, not better."
@@ -2646,7 +2646,7 @@ topic: "Cumulative frequency and box plots"
 checks:
   - "Plot cumulative frequency against the UPPER class boundary, and join with a smooth curve."
   - "Median: read across at n/2. Lower quartile: n/4. Upper quartile: 3n/4."
-  - "Interquartile range = upper quartile − lower quartile. The RANGE is max − min — they are different."
+  - "Interquartile range = upper quartile − lower quartile. The RANGE is max − min, they are different."
   - "'How many scored more than 60?' means take the total MINUS the cumulative frequency at 60."
   - "On a box plot the box shows the quartiles and the whiskers show the extremes."
 ```
@@ -2659,7 +2659,7 @@ checks:
   - "AND means MULTIPLY along the branches; OR means ADD the completed branches."
   - "WITHOUT replacement: reduce BOTH the numerator and the denominator on the second branch."
   - "P(not A) = 1 − P(A). Read carefully whether the question wants the event or its complement."
-  - "For two dice, there are 36 ordered outcomes — (3,6) and (6,3) are different."
+  - "For two dice, there are 36 ordered outcomes, (3,6) and (6,3) are different."
   - "'At least one' is usually quickest as 1 − P(none)."
 ```
 

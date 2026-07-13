@@ -8,7 +8,7 @@ import { emitGame, emitFx, type FxGame } from "@/lib/game/fx";
 // level-appropriate lesson from the original in-house teaching library, then
 // sets one check-question from that subject's own bank. Strictly gated by
 // ownership: a student is only ever taught and tested on the exact subjects
-// and level/tier they own — O-Level Pure, O-Level Science and N(A)-Level each
+// and level/tier they own, O-Level Pure, O-Level Science and N(A)-Level each
 // stay at their own depth. Effort XP, daily-capped, answer keys stay server-
 // side until after the check is graded.
 
@@ -112,7 +112,7 @@ export function SubjectGuru({ onClose }: { onClose: () => void }) {
         question?: CheckQuestion | null;
       };
       if (!res.ok || !data.subject || !data.lesson) {
-        setNote(data.error ?? "The Guru is meditating — try again in a moment.");
+        setNote(data.error ?? "The Guru is meditating, try again in a moment.");
         return;
       }
       emitFx({ type: "blip" });
@@ -157,7 +157,7 @@ export function SubjectGuru({ onClose }: { onClose: () => void }) {
           game?: FxGame | null;
         };
         if (!res.ok) {
-          setNote(data.error ?? "That didn't land — try again.");
+          setNote(data.error ?? "That didn't land, try again.");
           return;
         }
         emitFx({ type: data.correct ? "correct" : "wrong" });
@@ -195,7 +195,7 @@ export function SubjectGuru({ onClose }: { onClose: () => void }) {
             {gurus === null && <p className="text-sm text-body">Waking the Gurus…</p>}
             {gurus !== null && menuList.length === 0 && (
               <p className="text-sm text-body">
-                No Gurus yet — enrol in a subject and its Guru will appear here.
+                No Gurus yet, enrol in a subject and its Guru will appear here.
               </p>
             )}
             {menuList.map((g) => (
@@ -220,7 +220,7 @@ export function SubjectGuru({ onClose }: { onClose: () => void }) {
               </button>
             ))}
             <p className="text-[10px] text-body">
-              You only ever study the subjects you own, at your own level — XP rewards the
+              You only ever study the subjects you own, at your own level, XP rewards the
               effort of showing up to learn, never a grade.
             </p>
           </div>
@@ -257,7 +257,7 @@ export function SubjectGuru({ onClose }: { onClose: () => void }) {
                     subject: screen.subject,
                     correct: true,
                     correctAnswer: "",
-                    workedSolution: "Lesson complete. Come back any time — the Guru always has more.",
+                    workedSolution: "Lesson complete. Come back any time, the Guru always has more.",
                   });
                 }
               }}
@@ -266,7 +266,7 @@ export function SubjectGuru({ onClose }: { onClose: () => void }) {
               {screen.idx + 1 < screen.beats.length
                 ? "Next →"
                 : screen.question
-                ? "I'm ready — check me"
+                ? "I'm ready, check me"
                 : "Done"}
             </button>
           </div>
@@ -305,7 +305,7 @@ export function SubjectGuru({ onClose }: { onClose: () => void }) {
                   ? "🎓 Lesson complete"
                   : screen.correct
                   ? "✅ Spot on!"
-                  : "Not quite — now you'll remember it"}
+                  : "Not quite, now you'll remember it"}
               </p>
               {screen.correctAnswer !== "" && !screen.correct && (
                 <p className="mt-1 text-sm text-body">Answer: {screen.correctAnswer}</p>

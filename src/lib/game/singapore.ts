@@ -133,7 +133,7 @@ const FIXED_ZONE_DISTRICT: Record<string, string> = {
   reading: "Bras Basah",
 };
 
-// Heartland towns handed out to owned subjects, in order — a nice geographic
+// Heartland towns handed out to owned subjects, in order, a nice geographic
 // spread around the central hub.
 const PROVINCE_POOL = [
   "Ang Mo Kio",
@@ -171,7 +171,7 @@ export function districtForZone(zoneId: string, subjects: WorldSubject[]): strin
 }
 
 // The set of districts that are "in play" this run: hub, owned subjects, and
-// the always-present landmarks — used to light the minimap.
+// the always-present landmarks, used to light the minimap.
 export function activeDistricts(subjects: WorldSubject[]): Set<string> {
   const set = new Set<string>([
     "Toa Payoh", "Bukit Timah", "Marine Parade", "one-north",

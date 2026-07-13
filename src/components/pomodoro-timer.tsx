@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 // Focus timer (Pomodoro): alternating focus/break blocks with a chime, plus a
-// 7-day "minutes studied" bar chart kept in localStorage. Self-contained — no
+// 7-day "minutes studied" bar chart kept in localStorage. Self-contained, no
 // server round-trips, no new tables.
 
 const STORE_KEY = "studylah_focus_v1";
@@ -29,7 +29,7 @@ function saveLog(log: Log) {
   try {
     localStorage.setItem(STORE_KEY, JSON.stringify(log));
   } catch {
-    // storage unavailable — the timer still works, stats just won't persist
+    // storage unavailable, the timer still works, stats just won't persist
   }
 }
 
@@ -88,7 +88,7 @@ export function PomodoroTimer() {
     setLog(updated);
 
     // Report the completed block for XP (server caps at 4/day; failures are
-    // silent — the timer never depends on the network).
+    // silent, the timer never depends on the network).
     void fetch("/api/account/xp/focus", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -101,7 +101,7 @@ export function PomodoroTimer() {
           setXpToast(
             data.game.leveledUp
               ? `+${data.game.xpGained} XP · ⬆️ Level ${data.game.level}!`
-              : `+${data.game.xpGained} XP — focus block banked`
+              : `+${data.game.xpGained} XP, focus block banked`
           );
           setTimeout(() => setXpToast(null), 4000);
         }
@@ -129,7 +129,7 @@ export function PomodoroTimer() {
         leftRef.current = preset.focus * 60;
         setLeftS(leftRef.current);
         setPhase("focus");
-        setRunning(false); // pause between cycles — restart when ready
+        setRunning(false); // pause between cycles, restart when ready
       }
     }, 1000);
     return () => clearInterval(t);
@@ -230,7 +230,7 @@ export function PomodoroTimer() {
         </button>
       </div>
 
-      {/* Weekly minutes — client-only to avoid a hydration mismatch. */}
+      {/* Weekly minutes, client-only to avoid a hydration mismatch. */}
       {mounted && (
         <div className="mt-8 border-t border-hairline pt-6">
           <div className="flex items-baseline justify-between">

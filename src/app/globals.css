@@ -4,9 +4,9 @@
   /* Dark / playful theme (park.studylah.education). The semantic tokens are
      INVERTED from the old light theme so the site-wide `text-ink` / `text-body`
      / `bg-paper` classes render correctly on a dark background without touching
-     every component. `text-ink` on a yellow button is the one exception — those
+     every component. `text-ink` on a yellow button is the one exception, those
      few spots use `text-night` explicitly. */
-  --color-ink: #eef2f7;         /* was dark; now light — default heading text */
+  --color-ink: #eef2f7;         /* was dark; now light, default heading text */
   --color-trust: #6ea0ff;       /* link/accent blue, lightened for dark bg */
   --color-trust-deep: #9dbcff;
   --color-trust-soft: #232e40;  /* was light-blue; now a dark tint for pills */
@@ -38,7 +38,7 @@
   --color-mint: #3ddc84;        /* "the StudyLah way" */
   --color-coral: #ff6b6b;       /* "the old way" */
   --color-rose: #ec4a6d;        /* playstation circle */
-  /* Confidence-tier pills — exact colours lifted from the Forecast PDFs. */
+  /* Confidence-tier pills, exact colours lifted from the Forecast PDFs. */
   --color-tier-veryhigh: #db222a;
   --color-tier-high: #8224e3;
   --color-tier-moderate: #dd9933;
@@ -124,7 +124,7 @@ html[data-native] textarea {
   -webkit-user-select: text;
 }
 
-/* Screen-to-screen transition — the account template remounts per
+/* Screen-to-screen transition, the account template remounts per
    navigation, so this retriggers like a game screen swap. */
 @keyframes native-screen-in {
   from {
@@ -202,7 +202,7 @@ html[data-native] .native-screen {
   animation: fx-hero-pop 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
-/* Ghost idle bob — the companion is alive, not a sticker */
+/* Ghost idle bob, the companion is alive, not a sticker */
 @keyframes ghost-bob {
   0%,
   100% {
@@ -366,7 +366,7 @@ html[data-native] .native-screen {
 .px-img {
   image-rendering: pixelated;
 }
-/* Hard-shadow pixel button — gold primary. Presses down 2px on click, just
+/* Hard-shadow pixel button, gold primary. Presses down 2px on click, just
    like the game's pressed-button sprite. */
 .btn-pixel {
   box-shadow: 0 3px 0 #b98a4e;
@@ -404,7 +404,7 @@ body:has([data-bottom-cta]) .gugu-fab {
 }
 
 /* Cap the chat panel's height to the space above the (possibly-lifted) widget
-   so its top — the GUGU header — never runs off-screen. Tighter when a bottom
+   so its top, the GUGU header, never runs off-screen. Tighter when a bottom
    sticky bar has pushed Gugu up. dvh tracks the real mobile viewport. */
 .gugu-panel {
   max-height: min(520px, calc(100dvh - 9rem));
@@ -414,7 +414,7 @@ body:has([data-bottom-cta]) .gugu-panel {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   MARKETING "WOW" LAYER — depth, motion and light for first impressions.
+   MARKETING "WOW" LAYER, depth, motion and light for first impressions.
    Pure CSS (no images, CSP-safe). Everything here degrades gracefully and
    respects prefers-reduced-motion.
    ═══════════════════════════════════════════════════════════════════════════ */
@@ -435,7 +435,7 @@ body:has([data-bottom-cta]) .gugu-panel {
   animation: aurora-drift 20s ease-in-out infinite;
 }
 
-/* Faint dot-grid — a subtle "data" texture, masked to fade at the edges. */
+/* Faint dot-grid, a subtle "data" texture, masked to fade at the edges. */
 .hero-grid {
   background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
   background-size: 24px 24px;
@@ -443,7 +443,7 @@ body:has([data-bottom-cta]) .gugu-panel {
   mask-image: radial-gradient(ellipse 85% 65% at 50% 25%, #000 35%, transparent 100%);
 }
 
-/* Film grain — inline SVG fractal noise, overlaid at low opacity. */
+/* Film grain, inline SVG fractal noise, overlaid at low opacity. */
 .grain::after {
   content: "";
   position: absolute;
@@ -454,7 +454,7 @@ body:has([data-bottom-cta]) .gugu-panel {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Pixel motes drifting up through the hero — the game identity, as ambience. */
+/* Pixel motes drifting up through the hero, the game identity, as ambience. */
 @keyframes mote-rise {
   0%   { transform: translateY(30px); opacity: 0; }
   12%  { opacity: 1; }
@@ -486,7 +486,7 @@ body:has([data-bottom-cta]) .gugu-panel {
   box-shadow: 0 0 70px -14px rgba(255, 220, 0, 0.4);
 }
 
-/* Bigger, richer halo for the hero's forecast card — a coloured double-glow
+/* Bigger, richer halo for the hero's forecast card, a coloured double-glow
    that lifts it off the aurora. */
 .glow-hero {
   box-shadow:
@@ -495,7 +495,7 @@ body:has([data-bottom-cta]) .gugu-panel {
     0 30px 80px -30px rgba(0, 0, 0, 0.8);
 }
 
-/* Live "data" sheen travelling across a filled forecast bar — makes the
+/* Live "data" sheen travelling across a filled forecast bar, makes the
    forecast card feel like a running instrument, not a static image. Rides on
    top of the existing heat-grow fill. */
 .heat-fill {
@@ -538,7 +538,7 @@ body:has([data-bottom-cta]) .gugu-panel {
   animation: scroll-cue 1.8s ease-in-out infinite;
 }
 
-/* Card lift-and-glow on hover — turns flat panels into responsive objects. */
+/* Card lift-and-glow on hover, turns flat panels into responsive objects. */
 .card-hover {
   transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
     box-shadow 0.28s ease, border-color 0.28s ease;
@@ -551,7 +551,7 @@ body:has([data-bottom-cta]) .gugu-panel {
     0 0 0 1px rgba(255, 220, 0, 0.12);
 }
 
-/* CTA sheen — a light sweep travels across primary buttons on hover. */
+/* CTA sheen, a light sweep travels across primary buttons on hover. */
 .cta-sheen {
   position: relative;
   overflow: hidden;

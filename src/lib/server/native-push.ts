@@ -2,8 +2,8 @@ import { prisma } from "@/lib/db";
 import { sendFcmToToken } from "./fcm";
 import { sendApnsToToken } from "./apns";
 
-// Native push orchestrator: routes each registered device by platform —
-// Android through FCM, iOS straight to APNs — and prunes tokens the services
+// Native push orchestrator: routes each registered device by platform, 
+// Android through FCM, iOS straight to APNs, and prunes tokens the services
 // report as dead. Mirrors the web-push sender's contract.
 
 export interface NativePushPayload {

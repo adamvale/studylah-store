@@ -5,12 +5,12 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 // Leaver-recovery: most visitors never buy on visit 1. This is the second
-// touch — an honest, low-pressure exit-intent card that offers the two things
+// touch, an honest, low-pressure exit-intent card that offers the two things
 // most likely to bring a hesitant visitor back: the free diagnostic (no-risk
 // wedge) and a real welcome discount (STUDYLAH10, seeded in the DB).
 //
 // It shows AT MOST once, then remembers the dismissal forever (localStorage),
-// so it never nags. No fake countdown, no dark patterns — the store is
+// so it never nags. No fake countdown, no dark patterns, the store is
 // minors-facing. Suppressed inside the native game shell and on the pages where
 // the visitor is already converting (cart/checkout) or already being pitched
 // the free check (diagnostic).
@@ -35,7 +35,7 @@ export function WelcomeOffer() {
     try {
       localStorage.setItem(STORAGE_KEY, "dismissed");
     } catch {
-      /* private mode — fine, it just won't persist */
+      /* private mode, fine, it just won't persist */
     }
   }, []);
 
@@ -110,13 +110,13 @@ export function WelcomeOffer() {
         </button>
 
         <p className="font-mono text-xs font-medium uppercase tracking-wide text-teal">
-          Before you go —
+          Before you go, 
         </p>
         <h2 id="welcome-offer-title" className="mt-2 font-display text-2xl font-black text-white">
           Not sure yet? Start free.
         </h2>
         <p className="mt-2 text-sm text-cloud">
-          See exactly which topics would cost you marks on your 2026 paper — 10
+          See exactly which topics would cost you marks on your 2026 paper, 10
           questions, about 7 minutes, instant score and worked solutions. No
           card.
         </p>
@@ -126,7 +126,7 @@ export function WelcomeOffer() {
           onClick={dismiss}
           className="btn-pixel mt-5 block rounded bg-accent px-5 py-3 text-center text-sm font-bold text-night"
         >
-          Predict my mark — free →
+          Predict my mark, free →
         </Link>
 
         <div className="mt-5 rounded-xl border border-hairline bg-surface p-4">

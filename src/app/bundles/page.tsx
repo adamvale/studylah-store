@@ -3,12 +3,12 @@ import { BundleBuilder } from "@/components/bundle-builder";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/bundles" },
-  title: "Bundle builder — Mega-Bundle and All-In pricing",
+  title: "Bundle builder, Mega-Bundle and All-In pricing",
   description:
     "Pick up to 8 subjects and watch Mega-Bundle and All-In pricing apply live. Master tier across every subject you take.",
 };
 
-// The savings ladder, as scannable badge-pills instead of a paragraph — the
+// The savings ladder, as scannable badge-pills instead of a paragraph, the
 // same message ("more subjects = cheaper each") with the picker in view sooner.
 const TIERS: { badge: string; title: string; note: string }[] = [
   { badge: "3+", title: "Mega-Bundle", note: "save S$36" },
@@ -23,7 +23,7 @@ export default function BundlesPage() {
         The more subjects, the less each one costs.
       </h1>
       <p className="mt-2 max-w-2xl text-sm text-body">
-        Every subject is the full Master pack — Forecast, Companion, Vault and
+        Every subject is the full Master pack, Forecast, Companion, Vault and
         Rehearsal. You&apos;re always charged the cheapest combination, so the
         price per subject drops the more you add.
       </p>

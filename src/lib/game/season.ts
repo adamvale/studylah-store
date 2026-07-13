@@ -213,8 +213,8 @@ export const MINI_BOSSES: MiniBoss[] = [
     hp: 5,
     modifier: "fog_option",
     intro: [
-      "The grass stops rustling — everything holds its breath.",
-      "Oh, good. You. Don't worry — I'll make this easy for you. You need that, don't you?",
+      "The grass stops rustling, everything holds its breath.",
+      "Oh, good. You. Don't worry, I'll make this easy for you. You need that, don't you?",
     ],
     reveal: "See? One less way to be wrong. You're welcome.",
     onCorrect: [
@@ -225,7 +225,7 @@ export const MINI_BOSSES: MiniBoss[] = [
     onBreather: "…Why would you WANT to see all of it?",
     defeated: [
       "The hush unclenches. Birdsong returns mid-note.",
-      "You'd have got those anyway…? That's — no one's ever said that back.",
+      "You'd have got those anyway…? That's, no one's ever said that back.",
     ],
   },
   {
@@ -246,10 +246,10 @@ export const MINI_BOSSES: MiniBoss[] = [
       "Tick.",
     ],
     onWrong: ["HA! …wait. You still answered. That's not how panic works."],
-    onBreather: "You can't just — sit there. Living. On MY time.",
+    onBreather: "You can't just, sit there. Living. On MY time.",
     defeated: [
       "It sits down for possibly the first time.",
-      "…What time is it? No — don't tell me. I want to not know for a minute.",
+      "…What time is it? No, don't tell me. I want to not know for a minute.",
     ],
   },
   {
@@ -261,8 +261,8 @@ export const MINI_BOSSES: MiniBoss[] = [
     hp: 6,
     modifier: "jab_lock",
     intro: [
-      "The path ahead is white. Not fog — unwritten.",
-      "Don't. Whatever you're about to do — the first bit will be small and stupid. Better to do nothing beautifully.",
+      "The path ahead is white. Not fog, unwritten.",
+      "Don't. Whatever you're about to do, the first bit will be small and stupid. Better to do nothing beautifully.",
     ],
     reveal: "See? Small and stupid. That's all you're allowed to be.",
     onCorrect: [
@@ -273,8 +273,8 @@ export const MINI_BOSSES: MiniBoss[] = [
     onWrong: ["Good! Stop there. Stopping is the only thing I've ever finished."],
     onBreather: "Composure? In THIS economy?",
     defeated: [
-      "The white path fills in behind it — grass, stones, ordinary things.",
-      "I was going to say something devastating but I couldn't decide how to sta—",
+      "The white path fills in behind it, grass, stones, ordinary things.",
+      "I was going to say something devastating but I couldn't decide how to sta, ",
     ],
   },
 ];
@@ -283,13 +283,13 @@ export function bossById(id: string): MiniBoss | undefined {
   return MINI_BOSSES.find((b) => b.id === id);
 }
 
-// Murk fights fair — no modifier. Somehow that's worse.
+// Murk fights fair, no modifier. Somehow that's worse.
 export const MURK_BARKS = {
   onCorrect: ["…Clean. The Elder teaches that stroke. She taught me."],
   onWrong: [
     "You will see that one again. That is not a threat. That is the only kind thing the world does reliably.",
   ],
-  onBreather: "Yes. That. I never once did that. Write it down — the Commander said to breathe.",
+  onBreather: "Yes. That. I never once did that. Write it down, the Commander said to breathe.",
 };
 
 // ── Quests (deliverables 3 + 9, adapted to shipped verbs) ─────────────────
@@ -357,12 +357,12 @@ export const QUESTS: QuestDef[] = [
     star: true,
     xp: 30,
     offer: [
-      "Sit a moment. Your notebook — heavy lately?",
+      "Sit a moment. Your notebook, heavy lately?",
       "The Fog quotes you to yourself. That's all it ever does. Answer back. Three entries, any three.",
     ],
     progress: "Clear 3 mistakes from your notebook (Bestiary → re-tests, or the daily three).",
     done: [
-      "Three questions. Then tea. You've had the questions — the tea's on.",
+      "Three questions. Then tea. You've had the questions, the tea's on.",
       "I'm leaving a lamp on your porch. Not for the dark outside, you understand.",
     ],
     target: 3,
@@ -415,7 +415,7 @@ export const QUESTS: QuestDef[] = [
     progress: "Defeat 3 Fog Order grunts on Province routes.",
     done: [
       "Three teas going cold up there where three grunts used to loom. Best work anyone's done in this cave for a generation.",
-      "Take the hood. Dye it something loud. That's an order — last one I'll ever give.",
+      "Take the hood. Dye it something loud. That's an order, last one I'll ever give.",
     ],
     target: 3,
     kind: "battle_wins",
@@ -429,7 +429,7 @@ export const QUESTS: QuestDef[] = [
     xp: 30,
     offer: [
       "See that fence? Fell over. Stacked the posts in the wrong order. Sound familiar?",
-      "Golems are just steps stacked wrong. You've got a couple in that notebook — re-stack two, and I'll re-stack this.",
+      "Golems are just steps stacked wrong. You've got a couple in that notebook, re-stack two, and I'll re-stack this.",
     ],
     progress: "Clear 2 Method Golem entries from your notebook.",
     done: ["Fence stands, golems don't. Same trade, ours. Steps in the right order."],
@@ -479,7 +479,7 @@ export const QUESTS: QuestDef[] = [
     xp: 30,
     offer: [
       "I have a schedule for facing my dreaded one. The schedule has a schedule.",
-      "Could you just — go beat three wild ones? So the three of us can watch it be survivable?",
+      "Could you just, go beat three wild ones? So the three of us can watch it be survivable?",
     ],
     progress: "Win 3 wild battles, then report back to Ping.",
     done: [
@@ -510,21 +510,21 @@ export const FRONT_CLEARED = [
 // ── Systems copy deck (deliverable 11) ─────────────────────────────────────
 export const COPY = {
   capReached:
-    "Your lamp is full today. Anything more you do now is just for you — the world still counts it, the lamp just can't hold more light till tomorrow.",
+    "Your lamp is full today. Anything more you do now is just for you, the world still counts it, the lamp just can't hold more light till tomorrow.",
   wipe: "The fog carries you home. It's oddly gentle about it.",
-  wipeLetterIntro: "That last question — here's how it walks, step by step.",
-  wipeLetterOutro: "The one that got you is still out there. Tomorrow's first hunt, if you want it. — the notebook",
+  wipeLetterIntro: "That last question, here's how it walks, step by step.",
+  wipeLetterOutro: "The one that got you is still out there. Tomorrow's first hunt, if you want it., the notebook",
   shiny:
-    "…it's gold-touched. Same creature, rarer light. Nothing about it is stronger — it's just yours to have seen.",
-  shieldMorning: "Your shield's up — today is free.",
+    "…it's gold-touched. Same creature, rarer light. Nothing about it is stronger, it's just yours to have seen.",
+  shieldMorning: "Your shield's up, today is free.",
   examGreetings: [
     "The Hollow is quiet this week. Quiet is on your side.",
-    "Lanterns are lit. Nothing here needs you today — it's just glad you came.",
+    "Lanterns are lit. Nothing here needs you today, it's just glad you came.",
     "You've done the walking. This week the path remembers it for you.",
   ],
   examShield: "Shield's up all week. Days off cost nothing here.",
   serverDown: "The archive's dozing. Your progress is safe; try the door again in a bit.",
-  questionFail: "That page blew away. Another's coming — no hearts were harmed.",
+  questionFail: "That page blew away. Another's coming, no hearts were harmed.",
   longSession: "My feet are tired. Split the rest with tomorrow-you?",
   echoSpawn: "A memory stirs in the fog…",
 } as const;

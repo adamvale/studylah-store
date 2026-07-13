@@ -1,6 +1,6 @@
 // Refer-a-friend: a customer's referral code gives a friend S$15 off their
 // FIRST order, and earns the referrer a S$15 cash reward once that order is
-// paid. Rewards are a ledger only — disbursement is manual (admin payouts
+// paid. Rewards are a ledger only, disbursement is manual (admin payouts
 // list); nothing here moves money.
 import { randomInt } from "crypto";
 import { Prisma, type Customer } from "@prisma/client";
@@ -42,7 +42,7 @@ export async function ensureReferralCode(customerId: string): Promise<string> {
       });
       return code;
     } catch (e) {
-      // Unique collision with another customer's code — roll a new one.
+      // Unique collision with another customer's code, roll a new one.
       if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2002") {
         continue;
       }
@@ -98,7 +98,7 @@ export async function checkReferralCode(
 
 /**
  * Record the referrer's reward for a freshly created paid order, if it used a
- * referral code and passes the guards. Never throws — a paid order must never
+ * referral code and passes the guards. Never throws, a paid order must never
  * fail on referral bookkeeping. Idempotent via the unique refereeOrderId.
  */
 export async function processReferralReward(order: {
@@ -133,7 +133,7 @@ export async function processReferralReward(order: {
     );
   } catch (e) {
     if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2002") {
-      return; // duplicate webhook delivery — reward already recorded
+      return; // duplicate webhook delivery, reward already recorded
     }
     console.error(`Referral bookkeeping failed for order ${order.id}`, e);
   }
@@ -141,7 +141,7 @@ export async function processReferralReward(order: {
 
 /**
  * A refunded referee order stops being payable. Rewards already marked paid
- * are left alone — the cash has left; clawing it back is a human decision.
+ * are left alone, the cash has left; clawing it back is a human decision.
  */
 export async function voidReferralForOrder(orderId: number): Promise<void> {
   try {

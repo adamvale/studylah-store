@@ -16,13 +16,13 @@ export const metadata: Metadata = { title: "Progress" };
 const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
 
 // Kept out of the component body so the impurity (Date.now) isn't called
-// during render — see react-hooks/purity.
+// during render, see react-hooks/purity.
 function weeksSince(iso: string): number {
   return Math.floor((Date.now() - new Date(iso).getTime()) / WEEK_MS);
 }
 
 // The measurement tab: marks at risk, calibration, and score history. The
-// DOING happens on Today — this page answers "is it working?".
+// DOING happens on Today, this page answers "is it working?".
 export default async function ProgressPage() {
   const customerId = await getCustomerId();
   if (!customerId) redirect("/account/login");
@@ -100,7 +100,7 @@ export default async function ProgressPage() {
           <Link href="/account" className="font-medium text-accent hover:underline">
             Today
           </Link>{" "}
-          — watch it land here.
+, watch it land here.
         </p>
       </div>
 

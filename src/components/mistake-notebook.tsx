@@ -77,7 +77,7 @@ export function MistakeNotebook({
         setXpToast(
           data.game.leveledUp
             ? `+${data.game.xpGained} XP · ⬆️ Level ${data.game.level}!`
-            : `+${data.game.xpGained} XP — monster identified`
+            : `+${data.game.xpGained} XP, monster identified`
         );
         setTimeout(() => setXpToast(null), 3000);
       }
@@ -153,11 +153,11 @@ export function MistakeNotebook({
       {visible.length === 0 ? (
         <div className="rounded-2xl border border-hairline bg-surface p-8 text-center">
           <p className="font-display text-lg font-bold text-ink">
-            {filter === "all" ? "No mistakes logged yet" : "Nothing to review — nice"}
+            {filter === "all" ? "No mistakes logged yet" : "Nothing to review, nice"}
           </p>
           <p className="mt-2 text-sm text-body">
             Questions you miss in the daily three land here automatically. Add
-            your own from school papers with the button above — the top scorers
+            your own from school papers with the button above, the top scorers
             all keep a wrong-answer book.
           </p>
         </div>
@@ -198,7 +198,7 @@ export function MistakeNotebook({
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="block text-sm font-medium text-ink">
-                        {item.resolved ? `${monster.name} — banished` : monster.name}
+                        {item.resolved ? `${monster.name}, banished` : monster.name}
                       </span>
                       <span className="block text-xs text-body">
                         {item.resolved ? "Beaten twice. It doesn't come back." : monster.tag}
@@ -354,7 +354,7 @@ function AddMistakeForm({
         createdAt: new Date().toISOString(),
       });
     } catch {
-      setError("Couldn't save that — try again.");
+      setError("Couldn't save that, try again.");
     } finally {
       setBusy(false);
     }

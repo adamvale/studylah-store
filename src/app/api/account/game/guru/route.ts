@@ -10,7 +10,7 @@ import { guruLesson, familyCanTeach } from "@/lib/game/guru";
 
 // The Subject Guru: enrolled students visit to LEARN a subject. The Guru
 // teaches a short level-appropriate lesson, then sets one check-question from
-// that subject's own bank. Strictly gated by ownership — a student is only
+// that subject's own bank. Strictly gated by ownership, a student is only
 // ever taught and tested on the exact subjects (and level/tier) they own, so
 // O-Level Pure, O-Level Science and N(A)-Level never bleed into each other.
 // Effort XP, daily-capped; compliance-safe (no answer keys before grading).
@@ -19,7 +19,7 @@ const GURU_ATTEMPT_XP = 8;
 const GURU_PASS_XP = 8;
 const GURU_CAP_PER_DAY = 80;
 
-// GET — the Gurus available to this student (one per owned subject).
+// GET, the Gurus available to this student (one per owned subject).
 export async function GET() {
   const customerId = await getCustomerId();
   if (!customerId) {
@@ -40,7 +40,7 @@ export async function GET() {
   return NextResponse.json({ gurus });
 }
 
-// PUT — begin a lesson: teaching beats + one SEALED check-question.
+// PUT, begin a lesson: teaching beats + one SEALED check-question.
 export async function PUT(request: Request) {
   const customerId = await getCustomerId();
   if (!customerId) {
@@ -83,7 +83,7 @@ export async function PUT(request: Request) {
   });
 }
 
-// POST — grade the check-question, award capped effort XP, reveal the solution.
+// POST, grade the check-question, award capped effort XP, reveal the solution.
 export async function POST(request: Request) {
   const customerId = await getCustomerId();
   if (!customerId) {
@@ -117,7 +117,7 @@ export async function POST(request: Request) {
       ? question.options[Number(question.correctKey[0])] ?? question.correctKey.join(" / ")
       : question.correctKey.join(" / ");
 
-  // Effort XP for studying, extra for a correct check — daily-capped so it
+  // Effort XP for studying, extra for a correct check, daily-capped so it
   // rewards showing up to learn, not grinding.
   let game: GamePayload | null = null;
   let capped = false;

@@ -7,7 +7,7 @@ const FOLLOW_UP_MS = 48 * 60 * 60 * 1000;
 
 // The email gate. Same PDPA pattern as the heatmap: explicit consent
 // (unticked by default in the UI), consent timestamp stored on the Lead.
-// Unlocking sets unlockedAt — only then do worked solutions render anywhere.
+// Unlocking sets unlockedAt, only then do worked solutions render anywhere.
 const lastByEmail = new Map<string, number>();
 
 export async function POST(request: Request) {
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
 
   const attempt = await prisma.diagnosticAttempt.findUnique({ where: { id: attemptId } });
   if (!attempt) {
-    return NextResponse.json({ error: "We couldn't find that attempt — retake the check." }, { status: 404 });
+    return NextResponse.json({ error: "We couldn't find that attempt, retake the check." }, { status: 404 });
   }
 
   const now = Date.now();
@@ -69,7 +69,7 @@ export async function POST(request: Request) {
   });
   await logDiagnosticEvent("email_captured", attempt.id, attempt.band);
 
-  // Best-effort: the unlock must not fail on a mail hiccup — the results
+  // Best-effort: the unlock must not fail on a mail hiccup, the results
   // page has a resend button.
   try {
     await sendResultsEmail(attempt.id);

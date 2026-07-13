@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 // Shared shell for every signed-in account page. Lives in a route group so
-// /account/login stays OUTSIDE it — wrapping the login page in this guard
+// /account/login stays OUTSIDE it, wrapping the login page in this guard
 // would redirect-loop. AccountChrome renders the web dashboard OR, inside
 // the native shell, the game HUD + bottom tab bar.
 export default async function AccountDashboardLayout({
@@ -29,7 +29,7 @@ export default async function AccountDashboardLayout({
   if (!customer) redirect("/account/login");
 
   // The streak + player level ride the shell so they're visible from every
-  // tab — quiet, permanent pressure to come back tomorrow. streakState also
+  // tab, quiet, permanent pressure to come back tomorrow. streakState also
   // auto-spends a shield if yesterday slipped.
   const streak = await streakState(customerId, sgDay());
   const player = await getPlayer(customerId);

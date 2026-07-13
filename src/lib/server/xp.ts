@@ -9,7 +9,7 @@ import {
 
 // Server-authoritative XP. Every award goes through awardXp(), whose
 // (customerId, sourceKey) unique index makes each real-world action worth XP
-// exactly once — repeating the action is a silent no-op. Levels and titles
+// exactly once, repeating the action is a silent no-op. Levels and titles
 // are derived from the summed ledger at read time; nothing is stored that
 // could drift.
 
@@ -47,7 +47,7 @@ export async function awardXp(
     });
     return amount;
   } catch {
-    return 0; // unique violation — already awarded
+    return 0; // unique violation, already awarded
   }
 }
 
@@ -80,7 +80,7 @@ export async function clearedGyms(customerId: string): Promise<Set<string>> {
   return achievementSuffixes(customerId, "gym:");
 }
 
-// Generic prefix read on the Achievement table — the game's progression store
+// Generic prefix read on the Achievement table, the game's progression store
 // (gym:<key>, story:<beat>, dex:<species>, starter:<choice>). Returns the
 // suffixes after the prefix.
 export async function achievementSuffixes(customerId: string, prefix: string): Promise<Set<string>> {
@@ -91,7 +91,7 @@ export async function achievementSuffixes(customerId: string, prefix: string): P
   return new Set(rows.map((r) => r.badgeId.slice(prefix.length)));
 }
 
-// Idempotent progression marker (no XP of its own — pair with awardXp).
+// Idempotent progression marker (no XP of its own, pair with awardXp).
 export async function markAchievement(customerId: string, badgeId: string): Promise<boolean> {
   try {
     await prisma.achievement.create({ data: { customerId, badgeId } });

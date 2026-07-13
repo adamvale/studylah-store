@@ -5,14 +5,14 @@ export const metadata: Metadata = { title: "More" };
 
 // The game shell's fifth tab: everything that isn't a core loop screen.
 // Reachable on the web too (it's harmless), but only linked from the native
-// bottom bar. Reader-app rule: no purchase or cash-reward surfaces here —
+// bottom bar. Reader-app rule: no purchase or cash-reward surfaces here, 
 // subjects and referrals are managed on the website.
 const ITEMS: Array<{ href: string; icon: string; title: string; blurb: string }> = [
   {
     href: "/account/study",
     icon: "🏰",
     title: "Campaign",
-    blurb: "Your study plan — clear the fog, topic by topic",
+    blurb: "Your study plan, clear the fog, topic by topic",
   },
   {
     href: "/account/progress",
@@ -30,7 +30,7 @@ const ITEMS: Array<{ href: string; icon: string; title: string; blurb: string }>
     href: "/account/orders",
     icon: "🎁",
     title: "Loot",
-    blurb: "Your packs — every PDF you own",
+    blurb: "Your packs, every PDF you own",
   },
   {
     href: "/account/settings",

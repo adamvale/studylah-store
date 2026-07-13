@@ -15,9 +15,9 @@ export default function PrivacyPage() {
       </p>
       <h2>What we collect and why</h2>
       <p>
-        Email address and order details — to deliver your purchases, send
+        Email address and order details, to deliver your purchases, send
         download links, and honour the guarantee. Free-resource email
-        addresses — with your recorded consent, to deliver the resource and
+        addresses, with your recorded consent, to deliver the resource and
         occasional exam-preparation emails. Payment details are processed by
         Stripe; we never see your card number.
       </p>

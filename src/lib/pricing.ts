@@ -116,7 +116,7 @@ export function createPricing(
   }
 
   // Sum of the à-la-carte prices of everything a tier includes. Pass the
-  // subject's real product list (from `tierProducts`) when you have it —
+  // subject's real product list (from `tierProducts`) when you have it, 
   // Master's contents vary by subject, since only the sciences include Paper 3.
   function tierValue(
     level: Level,
@@ -242,14 +242,14 @@ export function createPricing(
         const saving = regularTierPrice(level, "master") - extra;
         nudges.push({
           id: "mega",
-          message: `Add 1 more subject at Master to unlock Mega-Bundle pricing — save S$${saving}.`,
+          message: `Add 1 more subject at Master to unlock Mega-Bundle pricing, save S$${saving}.`,
           action: { type: "add-subject" },
         });
       } else if (masters.length === 4) {
         const extra = simulateExtraMaster();
         nudges.push({
           id: "all-in",
-          message: `Add your 5th subject at Master for S$${extra} — All-In covers every subject you take, up to 6.`,
+          message: `Add your 5th subject at Master for S$${extra}, All-In covers every subject you take, up to 6.`,
           action: { type: "add-subject" },
         });
       } else if (masters.length === 5) {
@@ -258,7 +258,7 @@ export function createPricing(
           id: "all-in-free",
           message:
             extra <= 0
-              ? "Your 6th subject is included free — All-In covers every subject you take."
+              ? "Your 6th subject is included free, All-In covers every subject you take."
               : `Add your 6th subject for S$${extra} with All-In.`,
           action: { type: "add-subject" },
         });

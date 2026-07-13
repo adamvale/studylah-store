@@ -2,7 +2,7 @@ import { prisma } from "@/lib/db";
 import { verifyParentUnsubToken } from "@/lib/server/customer-session";
 
 // One-click unsubscribe for parents (link in every digest). The token is
-// HMAC-signed and carries only the customer id — no login required.
+// HMAC-signed and carries only the customer id, no login required.
 function page(title: string, body: string): Response {
   return new Response(
     `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title}</title></head>

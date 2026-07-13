@@ -135,8 +135,8 @@ export function topForecast(family: TopicFamily, seedKey: string): TopicForecast
   }));
 }
 
-// The WHOLE pool for a subject in forecast order — same seed and same first
-// five entries as topForecast, then the tail stepping down — so the study
+// The WHOLE pool for a subject in forecast order, same seed and same first
+// five entries as topForecast, then the tail stepping down, so the study
 // plan's checklist agrees with every forecast preview on the site.
 export function fullForecast(family: TopicFamily, seedKey: string): TopicForecast[] {
   const pool = TOPIC_POOLS[family];

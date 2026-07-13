@@ -4,7 +4,7 @@ import { getCustomerId } from "@/lib/server/customer-session";
 import { pushConfigured } from "@/lib/server/config";
 
 // Register (POST) or remove (DELETE) this device's push subscription. The
-// subscription object comes from the browser's PushManager — we store exactly
+// subscription object comes from the browser's PushManager, we store exactly
 // the three fields web-push needs and nothing else.
 
 export async function POST(request: Request) {

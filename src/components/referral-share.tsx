@@ -9,7 +9,7 @@ function CopyButton({ value, label }: { value: string; label: string }) {
     try {
       await navigator.clipboard.writeText(value);
     } catch {
-      // Clipboard can be unavailable (old browser, permissions) — fall back
+      // Clipboard can be unavailable (old browser, permissions), fall back
       // to a prompt the user can copy from manually.
       window.prompt("Copy this:", value);
     }
@@ -29,7 +29,7 @@ function CopyButton({ value, label }: { value: string; label: string }) {
 }
 
 export function ReferralShare({ code, link }: { code: string; link: string }) {
-  const message = `Get S$15 off your first StudyLah exam forecast — use my code ${code} or this link: ${link}`;
+  const message = `Get S$15 off your first StudyLah exam forecast, use my code ${code} or this link: ${link}`;
   return (
     <div className="mt-4 space-y-2">
       <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-hairline bg-night px-4 py-3">
@@ -41,7 +41,7 @@ export function ReferralShare({ code, link }: { code: string; link: string }) {
       </div>
       <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-hairline bg-night px-4 py-3">
         <div className="min-w-0">
-          <p className="text-xs text-body">Your link — the code applies by itself</p>
+          <p className="text-xs text-body">Your link, the code applies by itself</p>
           <p className="truncate font-mono text-xs text-cloud">{link}</p>
         </div>
         <CopyButton value={link} label="Copy link" />
@@ -57,7 +57,7 @@ export function ReferralShare({ code, link }: { code: string; link: string }) {
         </a>
         <a
           href={`https://t.me/share/url?url=${encodeURIComponent(link)}&text=${encodeURIComponent(
-            `Get S$15 off your first StudyLah exam forecast — use my code ${code}`
+            `Get S$15 off your first StudyLah exam forecast, use my code ${code}`
           )}`}
           target="_blank"
           rel="noopener noreferrer"

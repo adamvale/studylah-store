@@ -15,7 +15,7 @@ export async function LevelCatalogue({
 }: {
   level: Level;
   // When rendered under the /subjects tab switcher, drop this component's own
-  // level heading and the "browse the other level" footer — the tabs own both.
+  // level heading and the "browse the other level" footer, the tabs own both.
   embedded?: boolean;
 }) {
   const subjects = subjectsForLevel(level);
@@ -35,7 +35,7 @@ export async function LevelCatalogue({
       )}
       <p className="max-w-xl text-body">
         {subjects.length} subjects, three PDFs each. Master tier gets you all
-        three for {sgd(masterPrice)} — a saving of{" "}
+        three for {sgd(masterPrice)}, a saving of{" "}
         {sgd(tierValue(level, "master") - masterPrice)} per subject.
         {earlyBird && " Early-bird pricing is on."}
       </p>
@@ -71,7 +71,7 @@ export async function LevelCatalogue({
             The more subjects, the less each one costs.
           </p>
           <p className="mt-1 text-sm text-white/80">
-            Bundle 3+ and the per-subject price drops automatically — Mega-Bundle
+            Bundle 3+ and the per-subject price drops automatically, Mega-Bundle
             and All-In pricing save up to S$188.
           </p>
         </div>

@@ -5,8 +5,8 @@ import { sgDay, addDays, computeStreak } from "@/lib/server/study";
 import { sendPushToCustomer } from "@/lib/server/push";
 import { sendNativePushToCustomer } from "@/lib/server/native-push";
 
-// "Your streak dies at midnight" — the retention push. Run hourly; it only
-// fires inside the Singapore evening window (19:00–22:59), targets customers
+// "Your streak dies at midnight", the retention push. Run hourly; it only
+// fires inside the Singapore evening window (19:00-22:59), targets customers
 // whose streak is alive (practised yesterday) but at risk (not yet today),
 // and marks streakPingDay so nobody is pinged twice in a day. Fails closed
 // without CRON_SECRET.
@@ -81,7 +81,7 @@ export async function GET(request: Request) {
       );
       const payload = {
         title: `🔥 Your ${streak.current}-day streak ends at midnight`,
-        body: "Three questions keeps it alive — two minutes, marked instantly.",
+        body: "Three questions keeps it alive, two minutes, marked instantly.",
         url: "/account",
       };
       const [web, native] = await Promise.all([

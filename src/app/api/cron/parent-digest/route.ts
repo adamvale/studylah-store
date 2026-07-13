@@ -5,7 +5,7 @@ import { sendParentDigest } from "@/lib/server/parent-digest";
 
 // Weekly parent-digest sender. Idempotent (parentDigestSentAt guards re-sends
 // within the week), so any scheduler works. Fails closed without CRON_SECRET.
-// Run this daily or weekly — customers only get one email per ~week regardless.
+// Run this daily or weekly, customers only get one email per ~week regardless.
 export async function GET(request: Request) {
   const key = new URL(request.url).searchParams.get("key");
   if (!serverConfig.cronSecret || key !== serverConfig.cronSecret) {

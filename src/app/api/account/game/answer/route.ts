@@ -8,7 +8,7 @@ import { MONSTERS } from "@/lib/game";
 import { awardXp, totalXpFor, gamePayload, markAchievement, type GamePayload } from "@/lib/server/xp";
 
 // Grades ONE wild-battle answer server-side. Balance pass (season pack
-// deliverable 5): every ATTEMPT pays, wins pay more — effort-weighted, so a
+// deliverable 5): every ATTEMPT pays, wins pay more, effort-weighted, so a
 // losing session still earns. Hard daily cap keeps grinding pointless while
 // battles stay meaningful (notebook clears + Fronts work past the cap).
 const ATTEMPT_XP = 10;
@@ -52,7 +52,7 @@ export async function POST(request: Request) {
       : question.correctKey.join(" / ");
 
   // Dex capture: the first time a species is defeated in the wild it is
-  // registered to the player's monster-dex. Cosmetic collection only — no
+  // registered to the player's monster-dex. Cosmetic collection only, no
   // XP, so a spoofed species earns nothing.
   let newCapture = false;
   const species = typeof body.species === "string" ? body.species : "";
@@ -86,7 +86,7 @@ export async function POST(request: Request) {
     }
   }
 
-  // Solution is only ever returned AFTER grading — safe, and it turns a lost
+  // Solution is only ever returned AFTER grading, safe, and it turns a lost
   // battle into a lesson.
   return NextResponse.json({
     correct,

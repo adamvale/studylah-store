@@ -77,7 +77,7 @@ export function StudyPlanBoard({
   }
 
   // This week's focus: the strongest-tier unfinished topics, spread across
-  // subjects (2 each, 6 total) — the digital version of the PDFs' revision-
+  // subjects (2 each, 6 total), the digital version of the PDFs' revision-
   // priority checklist.
   const focus = useMemo(() => {
     const picks: { subject: PlanSubject; topic: PlanTopic }[] = [];
@@ -94,8 +94,8 @@ export function StudyPlanBoard({
       .slice(0, 6);
   }, [subjects, progress]);
 
-  // Pacing: for each subject, how many topics remain and — given the weeks
-  // left — how many to close per week, plus any VERY HIGH topics not yet
+  // Pacing: for each subject, how many topics remain and, given the weeks
+  // left, how many to close per week, plus any VERY HIGH topics not yet
   // started (the ones it would hurt most to leave).
   const pacing = useMemo(
     () =>
@@ -133,7 +133,7 @@ export function StudyPlanBoard({
           {xpToast}
         </p>
       )}
-      {/* The campaign — always visible, one map per subject */}
+      {/* The campaign, always visible, one map per subject */}
       {subjects.length > 0 && (
         <section className="rounded-2xl border border-hairline bg-surface p-5">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -192,7 +192,7 @@ export function StudyPlanBoard({
         </div>
         {allDone ? (
           <p className="mt-3 text-sm text-body">
-            Everything&apos;s marked confident — run the Final Rehearsal under
+            Everything&apos;s marked confident, run the Final Rehearsal under
             timed conditions, then keep the strongest topics warm.
           </p>
         ) : focus.length === 0 ? (

@@ -30,7 +30,7 @@ const OUTCOME_SHAPES: Record<string, ForecastTier[]> = {
 
 // Per-subject pins that override the distribution for a specific sitting. The
 // pinned bucket is removed from the pool so the global 70/15/10/5 mix is kept
-// exact — the displaced outcome simply lands on another paper.
+// exact, the displaced outcome simply lands on another paper.
 const OVERRIDES: Record<string, Record<number, string>> = {
   "o-level/chemistry-pure": { 2024: "3vh2h" }, // 100%
   "na-level/principles-of-accounts": { 2024: "mod1" }, // 80%
@@ -45,7 +45,7 @@ function buildBuckets(n: number): string[] {
   // Exactly three papers carry a visible miss, all at 80% (mod1 = 4 of 5 High
   // or above). No mod2, so nothing ever reads 60%. The three misses are pinned
   // to specific subjects via OVERRIDES; the rest of the mix stays ~15% 5VH,
-  // ~10% 3VH+2H, remainder 4VH+1H — every one of which reads 100%.
+  // ~10% 3VH+2H, remainder 4VH+1H, every one of which reads 100%.
   const moderate = 3;
   const t3vh2h = Math.round(n * 0.1);
   const t5vh = Math.round(n * 0.15);
@@ -124,7 +124,7 @@ export function highOrAbove(topics: MarkTopic[]): number {
   return topics.filter((t) => t.tier === "very-high" || t.tier === "high").length;
 }
 
-// How many of the five we forecast VERY HIGH — the headline precision measure.
+// How many of the five we forecast VERY HIGH, the headline precision measure.
 export function veryHighCount(topics: MarkTopic[]): number {
   return topics.filter((t) => t.tier === "very-high").length;
 }

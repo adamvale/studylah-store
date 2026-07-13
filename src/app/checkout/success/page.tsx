@@ -25,11 +25,11 @@ export default async function CheckoutSuccessPage({
       <div className="mx-auto max-w-xl px-4 py-20 text-center">
         <meta httpEquiv="refresh" content="4" />
         <h1 className="font-display text-3xl font-bold text-ink">
-          Payment received — preparing your downloads
+          Payment received, preparing your downloads
         </h1>
         <p className="mt-3 text-body">
           This usually takes a few seconds. The page refreshes itself, and your
-          download link is also on its way to your inbox — you don&apos;t need
+          download link is also on its way to your inbox, you don&apos;t need
           to wait here.
         </p>
       </div>
@@ -40,7 +40,7 @@ export default async function CheckoutSuccessPage({
     return (
       <div className="mx-auto max-w-xl px-4 py-20 text-center">
         <h1 className="font-display text-3xl font-bold text-ink">
-          Thanks — check your inbox
+          Thanks, check your inbox
         </h1>
         <p className="mt-3 text-body">
           If you completed a payment, your download link is in your email. Lost
@@ -69,7 +69,7 @@ export default async function CheckoutSuccessPage({
       <ClearCartOnMount />
       {isMock && (
         <p className="mb-6 rounded-lg border border-heat-3 bg-heat-3/20 px-4 py-2.5 text-sm font-medium text-ink">
-          Test order — mock mode, no payment was taken.
+          Test order, mock mode, no payment was taken.
         </p>
       )}
       <p
@@ -105,7 +105,7 @@ export default async function CheckoutSuccessPage({
           Your Study<span className="text-accent">Land</span> just switched on
         </p>
         <p className="mt-1 text-sm text-body">
-          The PDFs tell you what to revise — StudyLand makes it happen daily:
+          The PDFs tell you what to revise, StudyLand makes it happen daily:
           three questions a day on your most-likely topics, a mistake notebook
           that re-tests you, a Marks-at-Risk meter, timers and a study plan
           paced to your paper dates. Two minutes to set up, included with your
@@ -125,7 +125,7 @@ export default async function CheckoutSuccessPage({
         </p>
         <p className="mt-1 text-sm text-body">
           Refer a friend and{" "}
-          <span className="font-medium text-ink">you both get S$15</span> —
+          <span className="font-medium text-ink">you both get S$15</span>, 
           they save on their first order, we PayNow you the reward. Your
           personal code is waiting in your account.
         </p>

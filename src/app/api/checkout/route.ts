@@ -28,7 +28,7 @@ export async function POST(request: Request) {
   }
   const quote = result.quote;
 
-  // MOCK MODE — no Stripe key configured. Creates a paid order directly so
+  // MOCK MODE, no Stripe key configured. Creates a paid order directly so
   // the full delivery flow is testable. Clearly marked in the UI.
   if (!stripeConfigured()) {
     const { order } = await createOrderFromCheckout({
@@ -69,7 +69,7 @@ export async function POST(request: Request) {
   // these you want in the Stripe Dashboard (Settings -> Payment methods);
   // Stripe only presents the ones eligible for SGD and the customer. If the
   // account hasn't activated some (e.g. Alipay/WeChat Pay), session creation
-  // for that set errors and we fall back to the next set — so checkout always
+  // for that set errors and we fall back to the next set, so checkout always
   // works with at least cards.
   const methodSets: Stripe.Checkout.SessionCreateParams.PaymentMethodType[][] = [
     ["paynow", "card", "alipay", "wechat_pay"],

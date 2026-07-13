@@ -53,7 +53,7 @@ export async function POST(request: Request) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
   if (rateLimited(ip)) {
     return NextResponse.json(
-      { error: "Too many attempts — take a breath and try again in a minute." },
+      { error: "Too many attempts, take a breath and try again in a minute." },
       { status: 429 }
     );
   }

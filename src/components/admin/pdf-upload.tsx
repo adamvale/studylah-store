@@ -8,7 +8,7 @@ export interface StoredFile {
   updatedAt: string;
 }
 
-/** Seed placeholders are ~2–3 KB; no real product PDF is anywhere near this. */
+/** Seed placeholders are ~2-3 KB; no real product PDF is anywhere near this. */
 const PLACEHOLDER_MAX_BYTES = 10_000;
 
 function formatSize(bytes: number): string {
@@ -21,7 +21,7 @@ function StoredFileNote({ stored }: { stored: StoredFile | null }) {
   if (!stored) {
     return (
       <span className="text-xs text-heat-5">
-        No file on disk — buyers of this product would get nothing.
+        No file on disk, buyers of this product would get nothing.
       </span>
     );
   }
@@ -33,7 +33,7 @@ function StoredFileNote({ stored }: { stored: StoredFile | null }) {
   });
   return (
     <span className={`text-xs ${isPlaceholder ? "text-teal" : "text-body"}`}>
-      {isPlaceholder ? "Placeholder — " : ""}
+      {isPlaceholder ? "Placeholder, " : ""}
       {formatSize(stored.sizeBytes)} · updated {when}
     </span>
   );

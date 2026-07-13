@@ -8,7 +8,7 @@ import { BAND_COPY, gradeEstimateFor, type Band } from "@/lib/server/diagnostic"
 import { TierPill } from "@/components/heat";
 
 // Public share landing: the band + score + a challenge CTA. No breakdown, no
-// solutions — this page exists to be shared and to start new attempts.
+// solutions, this page exists to be shared and to start new attempts.
 export async function generateMetadata({
   params,
 }: {

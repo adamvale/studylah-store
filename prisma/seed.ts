@@ -1,7 +1,7 @@
 // Seeds the full 24-subject catalogue and one placeholder PDF per product FILE
 // (the Final Rehearsal ships three; the sciences add a Paper 3 companion), plus
 // sample discount codes and settings.
-// Run: npm run db:seed  (idempotent — safe to re-run; never overwrites an
+// Run: npm run db:seed  (idempotent, safe to re-run; never overwrites an
 // existing PDF, so real uploaded content survives.)
 import { promises as fs } from "fs";
 import path from "path";
@@ -86,7 +86,7 @@ async function seedCatalogue() {
         });
       }
 
-      // Drop files no longer in the spec — e.g. the old single-file Final
+      // Drop files no longer in the spec, e.g. the old single-file Final
       // Rehearsal, now a three-part set. Never touch one a past order still
       // points at, so old download links keep working.
       const specKeys = specs.map((s) => s.key);
@@ -123,7 +123,7 @@ async function seedCatalogue() {
  * Drop subjects no longer in the catalogue (e.g. N(A) Geography, which has no
  * source PDFs). Without this they linger as orphans: invisible on the
  * storefront, but still listed by the admin file API. Never remove a subject a
- * past order references — a buyer must keep their download links.
+ * past order references, a buyer must keep their download links.
  */
 async function retireRemovedSubjects() {
   const live = new Set(SUBJECTS.map((s) => `${s.level}::${s.slug}`));
@@ -310,14 +310,14 @@ async function main() {
 
   // First boot regenerates every placeholder and that is expected. But
   // generating placeholders when the catalogue already existed means the PDF
-  // files were missing while their DB rows survived — the signature of storage
+  // files were missing while their DB rows survived, the signature of storage
   // that did not persist. If there are also orders, real customer files may
   // have just been overwritten with placeholders.
   if (pdfs > 0 && productsBefore > 0) {
     console.warn(
       `\n⚠️  WARNING: generated ${pdfs} placeholder PDF(s), but the database ` +
         `already held ${productsBefore} product(s) and ${ordersBefore} order(s).\n` +
-        `    The catalogue persisted while the PDF files did not — PDF storage is ` +
+        `    The catalogue persisted while the PDF files did not, PDF storage is ` +
         `probably NOT on the volume.\n` +
         `    Any admin-uploaded PDFs were likely replaced with placeholders. ` +
         `Check PDF_STORAGE_DIR points at the mounted volume, then re-upload.\n`

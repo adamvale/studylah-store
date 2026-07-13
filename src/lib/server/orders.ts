@@ -62,7 +62,7 @@ export async function createOrderFromCheckout(options: {
 
   // Resolve every PDF the order unlocks: each cart line expands to the products
   // its tier includes, and each product expands to its files (the Final
-  // Rehearsal ships three). One order item — and one download token — per file.
+  // Rehearsal ships three). One order item, and one download token, per file.
   const fileEntries: {
     productId: string;
     productFileId: string;
@@ -97,7 +97,7 @@ export async function createOrderFromCheckout(options: {
           `Product missing from database: ${subject.slug}/${key}. Run the seed script.`
         );
       }
-      // Driven by the catalogue spec, not by whatever rows exist — so a legacy
+      // Driven by the catalogue spec, not by whatever rows exist, so a legacy
       // file left behind by an older schema can never be delivered by mistake.
       for (const spec of productFilesFor(catalogueSubject, key)) {
         const file = product.files.find((f) => f.key === spec.key);
@@ -171,7 +171,7 @@ export async function createOrderFromCheckout(options: {
         });
       }
       if (quote.discountCode) {
-        // updateMany: a referral code has no DiscountCode row — a plain
+        // updateMany: a referral code has no DiscountCode row, a plain
         // update would throw and roll back the whole paid order.
         await tx.discountCode.updateMany({
           where: { code: quote.discountCode },
@@ -183,7 +183,7 @@ export async function createOrderFromCheckout(options: {
 
     const full = await loadFullOrder(order.id);
 
-    // Refer-a-friend bookkeeping — never throws, idempotent per order.
+    // Refer-a-friend bookkeeping, never throws, idempotent per order.
     await processReferralReward(full);
 
     // Best-effort: a failed email must never lose a paid order.
@@ -213,7 +213,7 @@ export async function sendOrderConfirmationEmail(order: OrderWithItems) {
   const itemsHtml = order.items
     .map(
       (item) =>
-        `<li style="margin:0 0 6px;font-size:13px;color:#3d4e63;">${item.subjectName} — ${item.fileLabel} <span style="color:#8894a3;">(${item.levelName}, ${item.tier} tier)</span></li>`
+        `<li style="margin:0 0 6px;font-size:13px;color:#3d4e63;">${item.subjectName}, ${item.fileLabel} <span style="color:#8894a3;">(${item.levelName}, ${item.tier} tier)</span></li>`
     )
     .join("");
   const total = `S$${(order.totalCents / 100).toFixed(2)}`;
@@ -233,12 +233,12 @@ export async function sendOrderConfirmationEmail(order: OrderWithItems) {
     <ul style="margin:0 0 16px;padding-left:18px;">${itemsHtml}</ul>
     <p style="font-size:12px;color:#3d4e63;line-height:1.6;margin:0 0 12px;">
       Each PDF is watermarked to ${order.email}. Lost the link? Reply to this
-      email and we'll re-send it. Money-back guarantee applies — see
+      email and we'll re-send it. Money-back guarantee applies, see
       studylah.education/faq.
     </p>
     <p style="font-size:12px;color:#3d4e63;line-height:1.6;margin:0;">
       Know someone sitting the papers too? <strong>You both get S$15</strong>
-      when they use your referral code — grab yours at
+      when they use your referral code, grab yours at
       <a href="${serverConfig.siteUrl}/account/referrals" style="color:#f4552b;">your account page</a>.
     </p>
   `);
@@ -249,12 +249,12 @@ export async function sendOrderConfirmationEmail(order: OrderWithItems) {
     `Download your PDFs: ${downloadUrl}`,
     `Links last ${serverConfig.downloadExpiryDays} days, ${serverConfig.downloadMaxUses} downloads per file.`,
     ``,
-    ...order.items.map((i) => `- ${i.subjectName} — ${i.fileLabel} (${i.levelName})`),
+    ...order.items.map((i) => `- ${i.subjectName}, ${i.fileLabel} (${i.levelName})`),
   ].join("\n");
 
   return sendEmail({
     to: order.email,
-    subject: `Your StudyLah downloads — order No. ${order.id}`,
+    subject: `Your StudyLah downloads, order No. ${order.id}`,
     html,
     text,
   });

@@ -47,7 +47,7 @@ export default async function MistakesPage() {
     createdAt: r.createdAt.toISOString(),
   }));
 
-  // Topic suggestions for the add form's datalist — the subject's real 2026
+  // Topic suggestions for the add form's datalist, the subject's real 2026
   // forecast topics, same source the study checklist uses.
   const topicsBySubject: Record<string, string[]> = {};
   for (const s of subjects) {
@@ -82,7 +82,7 @@ export default async function MistakesPage() {
           Every mistake is a monster, and its species is WHY you lost the mark.
           Identify each one, then beat it twice in your daily three to banish it
           for good. Auto-captured from your daily practice and readiness checks
-          — add your own from school papers.
+, add your own from school papers.
         </p>
       </div>
 

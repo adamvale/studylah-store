@@ -4,7 +4,7 @@ import { allPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/blog" },
-  title: "The StudyLah Blog — study smarter for the 2026 papers",
+  title: "The StudyLah Blog, study smarter for the 2026 papers",
   description:
     "How the forecasts are built, the study science behind StudyLand, and honest guides to revising for the Singapore-Cambridge O-Level and N(A)-Level.",
 };
@@ -29,7 +29,7 @@ export default function BlogIndexPage() {
       </h1>
       <p className="mt-3 max-w-xl text-body">
         How the forecasts are built, the learning science behind StudyLand, and
-        straight answers about what works — written for students sitting the
+        straight answers about what works, written for students sitting the
         2026 papers (and the parents backing them).
       </p>
 

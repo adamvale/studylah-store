@@ -61,7 +61,7 @@ export function RiskMeterSection({ risks }: { risks: SubjectRisk[] }) {
                 {r.untouchedVeryHigh.length > 0 && (
                   <> ({r.untouchedVeryHigh.length} not even started)</>
                 )}{" "}
-                —{" "}
+, {" "}
                 <Link href="/account/study" className="font-medium text-accent hover:underline">
                   work the plan →
                 </Link>
@@ -76,7 +76,7 @@ export function RiskMeterSection({ risks }: { risks: SubjectRisk[] }) {
             {r.fromMistakes > 0 && (
               <li>
                 • ~{r.fromMistakes} added by {r.unresolvedMistakes} unresolved mistake
-                {r.unresolvedMistakes === 1 ? "" : "s"} —{" "}
+                {r.unresolvedMistakes === 1 ? "" : "s"}, {" "}
                 <Link href="/account/mistakes" className="font-medium text-accent hover:underline">
                   clear them →
                 </Link>
@@ -84,7 +84,7 @@ export function RiskMeterSection({ risks }: { risks: SubjectRisk[] }) {
             )}
             {r.marksAtRisk <= 12 && (
               <li className="text-guarantee">
-                • Fully worked — the residual is retention: keep topics warm with the
+                • Fully worked, the residual is retention: keep topics warm with the
                 daily three and a timed Rehearsal.
               </li>
             )}
@@ -139,14 +139,14 @@ export function CalibrationCard({
         <p className="mt-3 text-sm text-body">
           When you say <span className="font-medium text-ink">Sure</span>, you&apos;re
           right {sure.pctRight}% of the time. A wrong &ldquo;sure&rdquo; is almost never
-          carelessness — file those as{" "}
+          carelessness, file those as{" "}
           <span className="font-medium text-coral">concept gaps</span> in your notebook
           and re-learn the idea, not just the question.
         </p>
       )}
       {sure && sure.n >= 5 && sure.pctRight >= 90 && (
         <p className="mt-3 text-sm text-guarantee">
-          Well calibrated — when you say sure, you deliver. Trust that instinct in the
+          Well calibrated, when you say sure, you deliver. Trust that instinct in the
           paper and bank those marks fast.
         </p>
       )}

@@ -8,9 +8,9 @@ import { StickyCta } from "@/components/sticky-cta";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/exam-forecast" },
-  title: "Know what's likely before you sit the paper — StudyLah",
+  title: "Know what's likely before you sit the paper, StudyLah",
   description:
-    "StudyLah reads ten years of your exact exam papers and forecasts the topics most likely to appear — with original practice and a full rehearsal. Money-back guarantee.",
+    "StudyLah reads ten years of your exact exam papers and forecasts the topics most likely to appear, with original practice and a full rehearsal. Money-back guarantee.",
 };
 
 function Badge({ children }: { children: React.ReactNode }) {
@@ -34,7 +34,7 @@ function CTA({ children = "Find your subject's forecast" }: { children?: string 
         href="/diagnostic"
         className="rounded-lg border border-hairline bg-surface px-6 py-3.5 text-sm font-medium text-white hover:border-accent"
       >
-        Predict your mark — free →
+        Predict your mark, free →
       </Link>
     </div>
   );
@@ -50,7 +50,7 @@ const STEPS = [
   {
     n: "01",
     t: "We read ten years of your exact papers",
-    b: "Every question from the last decade of your syllabus — classified, mark-weighted, and tracked for how setters rotate topics year to year.",
+    b: "Every question from the last decade of your syllabus, classified, mark-weighted, and tracked for how setters rotate topics year to year.",
   },
   {
     n: "02",
@@ -60,18 +60,18 @@ const STEPS = [
   {
     n: "03",
     t: "You practise it, then rehearse it",
-    b: "Original questions weighted to the forecast, then a full timed mock in the exact 2026 format — so the real paper feels like the second time, not the first.",
+    b: "Original questions weighted to the forecast, then a full timed mock in the exact 2026 format, so the real paper feels like the second time, not the first.",
   },
 ];
 
 const GETS = [
   {
     t: "Exam Forecast",
-    b: "The ranked, tiered map of your 2026 paper — every topic, with the evidence behind each call.",
+    b: "The ranked, tiered map of your 2026 paper, every topic, with the evidence behind each call.",
   },
   {
     t: "The Companion",
-    b: "A dedicated forecast for the paper or skill that decides the most marks — the practical, the source skills, the method layer.",
+    b: "A dedicated forecast for the paper or skill that decides the most marks, the practical, the source skills, the method layer.",
   },
   {
     t: "Sure Questions Vault",
@@ -79,18 +79,18 @@ const GETS = [
   },
   {
     t: "Final Rehearsal",
-    b: "A complete original mock in the exact 2026 format, with the full mark scheme — sit the exam before the exam.",
+    b: "A complete original mock in the exact 2026 format, with the full mark scheme, sit the exam before the exam.",
   },
 ];
 
 const OBJECTIONS = [
   {
     q: "Is this cheating?",
-    a: "No. We don't have the real papers and never will — they're Cambridge and MOE copyright. We forecast what's likely and write our own original questions. It's studying the right things, not skipping the studying.",
+    a: "No. We don't have the real papers and never will, they're Cambridge and MOE copyright. We forecast what's likely and write our own original questions. It's studying the right things, not skipping the studying.",
   },
   {
     q: "Isn't it just guessing?",
-    a: "Guessing is revising everything and hoping. This is ten years of data turned into a ranked probability — and we publish our hits and misses after every sitting.",
+    a: "Guessing is revising everything and hoping. This is ten years of data turned into a ranked probability, and we publish our hits and misses after every sitting.",
   },
   {
     q: "What if it's wrong?",
@@ -105,7 +105,7 @@ export default async function ExamForecastPage() {
     {
       name: "Essential",
       price: sgd(tierPrice("o-level", "essential")),
-      line: "The Exam Forecast — the map of your paper.",
+      line: "The Exam Forecast, the map of your paper.",
     },
     {
       name: "Strategic",
@@ -122,7 +122,7 @@ export default async function ExamForecastPage() {
 
   return (
     <div className="bg-night pb-24">
-      {/* Minimal chrome: brand only, no nav — nowhere to wander off. */}
+      {/* Minimal chrome: brand only, no nav, nowhere to wander off. */}
       <header className="border-b border-hairline">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
           <Image
@@ -169,7 +169,7 @@ export default async function ExamForecastPage() {
             The problem was never how hard you study.
           </h2>
           <p className="mt-4 text-lg text-cloud">
-            It&apos;s that no one tells you <em>where</em> to aim. So —
+            It&apos;s that no one tells you <em>where</em> to aim. So, 
           </p>
           <ul className="mt-6 space-y-3">
             {PROBLEMS.map((p) => (
@@ -242,7 +242,7 @@ export default async function ExamForecastPage() {
           <span className="text-accent">We publish the receipts.</span>
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-lg text-cloud">
-          After every sitting we put out an accuracy scorecard — what we
+          After every sitting we put out an accuracy scorecard, what we
           forecast against what actually appeared, per subject. Hits{" "}
           <em>and</em> misses. Because a forecast you can&apos;t check is just a
           promise, and we don&apos;t make promises.
@@ -251,7 +251,7 @@ export default async function ExamForecastPage() {
           {scorecardHeadline().perfect} of {scorecardHeadline().total}
         </p>
         <p className="mt-1 text-sm text-cloud">
-          2024–25 scorecards where all five highest-mark topics were forecast
+          2024-25 scorecards where all five highest-mark topics were forecast
           High or above*
         </p>
         <Link
@@ -261,7 +261,7 @@ export default async function ExamForecastPage() {
           See the full scorecard →
         </Link>
         <p className="mx-auto mt-6 max-w-md text-xs text-cloud/60">
-          *Counted from the published per-subject scorecards — every hit and
+          *Counted from the published per-subject scorecards, every hit and
           miss is on the accuracy page.
         </p>
       </section>
@@ -313,7 +313,7 @@ export default async function ExamForecastPage() {
               a day on your most-likely topics, a mistake notebook that re-tests
               you until you clear it, a live Marks-at-Risk meter per subject,
               exam timers, and a printable rescue plan for when the calendar
-              gets scary. Included — no subscription.
+              gets scary. Included, no subscription.
             </p>
           </div>
         </div>
@@ -326,7 +326,7 @@ export default async function ExamForecastPage() {
             If it doesn&apos;t deliver, it&apos;s free.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-white">
-            Forecasts are probabilities, not certainties — so we carry the risk,
+            Forecasts are probabilities, not certainties, so we carry the risk,
             not you. If fewer than three of our top-five forecast topics appear
             in your paper, email your order ID within 14 days and get a full
             refund. No forms. No argument.
@@ -371,7 +371,7 @@ export default async function ExamForecastPage() {
           <span className="text-accent">Walk in knowing what&apos;s likely.</span>
         </h2>
         <p className="mx-auto mt-5 max-w-lg text-lg text-cloud">
-          Sooner is cheaper — early-bird pricing runs while forecasts first
+          Sooner is cheaper, early-bird pricing runs while forecasts first
           drop. Start with the subject that worries you most.
         </p>
         <div className="mt-8 flex justify-center">

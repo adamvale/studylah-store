@@ -26,7 +26,7 @@ import {
 export const dynamic = "force-dynamic";
 
 /**
- * The file input can only ever say "no file chosen" — that describes the
+ * The file input can only ever say "no file chosen", that describes the
  * picker, not storage. Read what is actually on disk, so a placeholder is
  * never mistaken for a delivered product.
  */
@@ -63,7 +63,7 @@ function PriceField({
           defaultValue={value ?? ""}
           min={0}
           step={1}
-          placeholder={optional ? "—" : undefined}
+          placeholder={optional ? ", " : undefined}
           className="w-20 rounded-lg border border-hairline bg-surface px-2 py-1.5 text-right font-mono text-sm"
         />
       </span>
@@ -119,13 +119,13 @@ export default async function AdminProductsPage({
         )}
         {saved === "maintenance-on" && (
           <p className="mt-3 rounded-lg bg-heat-5/10 px-4 py-2 text-sm text-heat-5">
-            Maintenance mode is ON — the public site now shows the maintenance
+            Maintenance mode is ON, the public site now shows the maintenance
             screen. You (logged in) still see the live site.
           </p>
         )}
         {saved === "maintenance-off" && (
           <p className="mt-3 rounded-lg bg-guarantee/10 px-4 py-2 text-sm text-guarantee">
-            Maintenance mode is off — the site is live again.
+            Maintenance mode is off, the site is live again.
           </p>
         )}
       </div>
@@ -161,7 +161,7 @@ export default async function AdminProductsPage({
                   : "bg-heat-5 hover:opacity-90"
               }`}
             >
-              {maintenance ? "Turn OFF — go live" : "Turn ON maintenance"}
+              {maintenance ? "Turn OFF, go live" : "Turn ON maintenance"}
             </button>
           </form>
         </div>

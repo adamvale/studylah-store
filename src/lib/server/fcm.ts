@@ -1,6 +1,6 @@
 import { createSign } from "crypto";
 
-// Firebase Cloud Messaging (HTTP v1) sender for ANDROID — dependency-free.
+// Firebase Cloud Messaging (HTTP v1) sender for ANDROID, dependency-free.
 // Auth is a service-account JWT (RS256, node crypto) exchanged for an OAuth
 // token, cached until expiry. iOS goes via APNs directly (see apns.ts).
 //
@@ -73,7 +73,7 @@ export interface FcmPayload {
   url?: string;
 }
 
-// Returns "ok", "dead" (token gone — prune it), or "error".
+// Returns "ok", "dead" (token gone, prune it), or "error".
 export async function sendFcmToToken(
   token: string,
   payload: FcmPayload

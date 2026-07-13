@@ -34,7 +34,7 @@ function beep(times: number) {
       osc.stop(t + 0.3);
     }
   } catch {
-    // no audio available — the visual cues still work
+    // no audio available, the visual cues still work
   }
 }
 
@@ -144,7 +144,7 @@ export function RehearsalTimer() {
       </div>
 
       <p className="mt-6 text-center text-xs text-body">
-        Chimes at half-time, 15 minutes and 5 minutes — like an invigilator&apos;s
+        Chimes at half-time, 15 minutes and 5 minutes, like an invigilator&apos;s
         warnings. Keep this tab open and the volume up.
       </p>
     </div>

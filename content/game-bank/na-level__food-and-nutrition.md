@@ -40,7 +40,7 @@ misconception: hbv-lbv-sources
 worked: |
   HBV protein contains all the essential amino acids in the proportions the body needs.
   Egg is the classic HBV food (animal protein).
-  Rice, peanuts and peas are plant proteins of low biological value — each is short of at least one essential amino acid.
+  Rice, peanuts and peas are plant proteins of low biological value, each is short of at least one essential amino acid.
 ```
 
 ```yaml
@@ -218,7 +218,7 @@ misconception: fat-function
 worked: |
   Fat dissolves and carries vitamins A, D, E and K, and it also insulates the body and protects the organs.
   Nitrogen comes from protein and enamel from calcium and phosphorus.
-  Fat slows heat loss — it does not speed it up.
+  Fat slows heat loss, it does not speed it up.
 ```
 
 ```yaml
@@ -287,7 +287,7 @@ marks: 1
 misconception: vitamin-c-sources
 worked: |
   Vitamin C is found in fresh fruit and vegetables, especially guava, citrus fruit, papaya and dark green leafy vegetables.
-  Rice supplies starch, butter supplies fat and chicken supplies protein — none of them is a useful source of vitamin C.
+  Rice supplies starch, butter supplies fat and chicken supplies protein, none of them is a useful source of vitamin C.
 ```
 
 ```yaml
@@ -408,7 +408,7 @@ misconception: vitamin-c-iron-absorption
 worked: |
   Iron from plant foods (non-haem iron) is absorbed poorly.
   Vitamin C from fruit or fruit juice eaten in the same meal changes the iron into a form that the gut can absorb more easily.
-  The juice supplies no iron of its own — it improves the uptake of the iron already in the spinach and beans.
+  The juice supplies no iron of its own, it improves the uptake of the iron already in the spinach and beans.
 ```
 
 ```yaml
@@ -476,7 +476,7 @@ answer: 2
 marks: 1
 misconception: fibre-sources
 worked: |
-  Dietary fibre is the indigestible part of plant foods — wholegrain cereals, wholemeal bread and brown rice, fruit, vegetables and pulses.
+  Dietary fibre is the indigestible part of plant foods, wholegrain cereals, wholemeal bread and brown rice, fruit, vegetables and pulses.
   White rice has had the fibre-rich bran removed.
   Cheese and eggs are animal foods and contain no fibre at all.
 ```
@@ -647,15 +647,15 @@ type: mcq
 topic: "N8 Diet & Health Problems"
 stem: "Which pair correctly matches a diet-related health problem with a dietary cause?"
 options:
-  - "Coronary heart disease — a diet high in saturated fat"
-  - "Anaemia — a diet high in vitamin C"
-  - "Osteoporosis — a diet high in dietary fibre"
-  - "Obesity — a diet low in energy"
+  - "Coronary heart disease, a diet high in saturated fat"
+  - "Anaemia, a diet high in vitamin C"
+  - "Osteoporosis, a diet high in dietary fibre"
+  - "Obesity, a diet low in energy"
 answer: 0
 marks: 1
 misconception: diet-disease-links
 worked: |
-  Saturated fat raises blood cholesterol, which is deposited in the coronary arteries and can block them — the cause of coronary heart disease.
+  Saturated fat raises blood cholesterol, which is deposited in the coronary arteries and can block them, the cause of coronary heart disease.
   Anaemia is caused by too little iron, osteoporosis by too little calcium and vitamin D, and obesity by an energy intake that is too high, not too low.
 ```
 
@@ -710,7 +710,7 @@ answer: 3
 marks: 1
 misconception: balanced-diet-definition
 worked: |
-  A balanced diet supplies enough energy and all the nutrients — protein, carbohydrate, fat, vitamins, minerals, water and fibre — in the right amounts and proportions for the person's age, sex and activity.
+  A balanced diet supplies enough energy and all the nutrients, protein, carbohydrate, fat, vitamins, minerals, water and fibre, in the right amounts and proportions for the person's age, sex and activity.
   Equal masses of each nutrient would be nonsense (we need grams of protein but only milligrams of iron), and an energy surplus would cause obesity.
 ```
 
@@ -728,7 +728,7 @@ marks: 1
 misconception: pregnancy-iron
 worked: |
   During pregnancy the mother's blood volume rises and the growing fetus builds up its own store of iron.
-  If her intake of iron is too low, her haemoglobin falls and she becomes anaemic — tired, pale and breathless.
+  If her intake of iron is too low, her haemoglobin falls and she becomes anaemic, tired, pale and breathless.
   Red meat, liver, dark green vegetables and iron-fortified cereals, taken with a vitamin C source, help meet the need.
 ```
 
@@ -747,7 +747,7 @@ misconception: teenage-needs
 worked: |
   Adolescence brings a growth spurt: bones lengthen and muscle mass increases, so extra protein is needed for growth, and extra energy for growth plus sport and activity.
   Girls also need more iron once menstruation begins.
-  Body size and activity — not water storage or digestion speed — drive the higher needs.
+  Body size and activity, not water storage or digestion speed, drive the higher needs.
 ```
 
 ```yaml
@@ -817,7 +817,7 @@ answer: 1
 marks: 1
 misconception: vegan-b12
 worked: |
-  Vitamin B12 occurs naturally almost only in animal foods — meat, fish, eggs and milk.
+  Vitamin B12 occurs naturally almost only in animal foods, meat, fish, eggs and milk.
   A vegan eats none of these, so B12 must come from fortified foods such as fortified soya milk or breakfast cereal, or from a supplement.
   Vitamins C, K and B1 are all plentiful in plant foods.
 ```
@@ -983,7 +983,7 @@ answer: 2
 marks: 1
 misconception: convenience-food-types
 worked: |
-  Ready-to-eat convenience foods have been fully cooked or prepared and need no further cooking — canned beans, canned soup, biscuits, a chilled sandwich.
+  Ready-to-eat convenience foods have been fully cooked or prepared and need no further cooking, canned beans, canned soup, biscuits, a chilled sandwich.
   Dried pasta and frozen raw fish fingers are ready-to-cook: they still have to be cooked.
   Plain flour is a raw ingredient, not a convenience food.
 ```
@@ -1037,7 +1037,7 @@ marks: 1
 misconception: ingredient-list-order
 worked: |
   By law, the ingredient list runs from the largest amount to the smallest.
-  So if sugar appears first or second on a breakfast cereal, the product is largely sugar — a quick way for a shopper to compare two products.
+  So if sugar appears first or second on a breakfast cereal, the product is largely sugar, a quick way for a shopper to compare two products.
 ```
 
 ```yaml
@@ -1054,7 +1054,7 @@ marks: 1
 misconception: use-by-vs-best-before
 worked: |
   A 'use by' date is a SAFETY date, used on highly perishable chilled foods such as ready meals, fresh meat and milk: after it, harmful bacteria may have multiplied even if the food looks and smells fine.
-  A 'best before' date is a QUALITY date — the food may still be safe afterwards but may have lost flavour, colour or texture.
+  A 'best before' date is a QUALITY date, the food may still be safe afterwards but may have lost flavour, colour or texture.
 ```
 
 ```yaml
@@ -1070,7 +1070,7 @@ answer: 3
 marks: 1
 misconception: healthier-choice-symbol
 worked: |
-  The Healthier Choice Symbol is awarded by the Health Promotion Board to products that meet set nutrient criteria for their category — for example lower in saturated fat, sodium or sugar, or higher in wholegrain or calcium.
+  The Healthier Choice Symbol is awarded by the Health Promotion Board to products that meet set nutrient criteria for their category, for example lower in saturated fat, sodium or sugar, or higher in wholegrain or calcium.
   It is a comparison WITHIN a category; it does not mean the food is energy-free, additive-free or allergen-free.
 ```
 
@@ -1160,7 +1160,7 @@ marks: 1
 misconception: bacterial-growth-conditions
 worked: |
   Bacteria need warmth, moisture, food and time (and most food-poisoning bacteria also need a suitable pH).
-  They do not need light — food left in a dark cupboard spoils just as readily.
+  They do not need light, food left in a dark cupboard spoils just as readily.
   Removing one need, for example by drying (no moisture) or chilling (no warmth), slows their growth.
 ```
 
@@ -1232,7 +1232,7 @@ marks: 1
 misconception: reasons-for-cooking
 worked: |
   Cooking makes food safe, more digestible, tastier and more varied, and it improves keeping quality.
-  It does not add vitamin C — heat and water actually destroy and dissolve vitamin C, so cooking usually lowers it.
+  It does not add vitamin C, heat and water actually destroy and dissolve vitamin C, so cooking usually lowers it.
 ```
 
 ```yaml
@@ -1302,7 +1302,7 @@ marks: 1
 misconception: pulses-nutrients
 worked: |
   Pulses are a valuable plant source of protein (of low biological value, so best eaten with a cereal such as rice or bread), plus iron, dietary fibre and B vitamins, and they cost little.
-  Vitamin B12 and vitamin D are the nutrients that pulses do NOT supply — a vegan must get B12 from fortified foods.
+  Vitamin B12 and vitamin D are the nutrients that pulses do NOT supply, a vegan must get B12 from fortified foods.
 ```
 
 ```yaml
@@ -1373,7 +1373,7 @@ marks: 1
 misconception: milk-nutrients
 worked: |
   Milk supplies HBV protein, calcium and phosphorus for bones and teeth, riboflavin and (if fortified) vitamins A and D, plus the sugar lactose.
-  The two nutrients milk is famously LOW in are iron and vitamin C — and, like all animal foods, it contains no dietary fibre.
+  The two nutrients milk is famously LOW in are iron and vitamin C, and, like all animal foods, it contains no dietary fibre.
 ```
 
 ```yaml
@@ -1533,7 +1533,7 @@ answer: 1
 marks: 1
 misconception: heat-transfer-conduction
 worked: |
-  In shallow-frying, the hot pan and the thin film of oil are in direct contact with the egg, and heat passes from particle to particle into the food — conduction.
+  In shallow-frying, the hot pan and the thin film of oil are in direct contact with the egg, and heat passes from particle to particle into the food, conduction.
   Grilling is mainly radiation, boiling is mainly convection in the water, and roasting is mainly convection of hot air in the oven.
 ```
 
@@ -1551,7 +1551,7 @@ marks: 1
 misconception: gelatinisation-definition
 worked: |
   As the mixture is heated above about 60 °C the starch granules take in water and swell; near boiling they burst and release starch into the liquid, which thickens and sets on cooling.
-  That is gelatinisation — the reason a roux sauce, a custard thickened with cornflour and a gravy all thicken.
+  That is gelatinisation, the reason a roux sauce, a custard thickened with cornflour and a gravy all thicken.
   Coagulation is a protein change; caramelisation is a sugar change.
 ```
 
@@ -1568,7 +1568,7 @@ answer: 3
 marks: 1
 misconception: coagulation-definition
 worked: |
-  Heat first denatures the egg-white protein (its folded chains unravel), then the unfolded chains link up and trap water, setting into a firm white solid — coagulation.
+  Heat first denatures the egg-white protein (its folded chains unravel), then the unfolded chains link up and trap water, setting into a firm white solid, coagulation.
   It is irreversible: a boiled egg cannot be turned back into a raw one.
   The same change sets a custard, a quiche filling and a coating of batter.
 ```
@@ -1587,7 +1587,7 @@ marks: 1
 misconception: dextrinisation
 worked: |
   Dry heat breaks the long starch molecules on the surface of the bread into shorter chains called dextrins, which are golden brown and slightly sweet.
-  That is dextrinisation — it also browns the crust of bread and the top of a baked pie.
+  That is dextrinisation, it also browns the crust of bread and the top of a baked pie.
   Gelatinisation needs liquid, so it cannot happen on a dry toast surface.
 ```
 
@@ -1604,7 +1604,7 @@ answer: 1
 marks: 1
 misconception: maillard-reaction
 worked: |
-  At high dry-heat temperatures the amino acids of the meat protein react with the small amount of natural sugar present, producing brown pigments and hundreds of savoury flavour compounds — the Maillard reaction.
+  At high dry-heat temperatures the amino acids of the meat protein react with the small amount of natural sugar present, producing brown pigments and hundreds of savoury flavour compounds, the Maillard reaction.
   It also browns bread crusts, roast coffee and grilled onions.
   Caramelisation involves sugar alone, and enzymic browning is a cold, enzyme-driven reaction in cut fruit.
 ```
@@ -1695,7 +1695,7 @@ answer: 2
 marks: 1
 misconception: enzymic-browning
 worked: |
-  Cutting the apple lets oxygen reach enzymes inside the cells, which react with substances in the flesh to make brown pigments — enzymic browning.
+  Cutting the apple lets oxygen reach enzymes inside the cells, which react with substances in the flesh to make brown pigments, enzymic browning.
   Lemon juice is acidic and contains vitamin C (an antioxidant): the acid slows the enzyme and the vitamin C uses up the oxygen, so browning is delayed.
   Warmth, more cut surface and more air all speed the reaction up.
 ```
@@ -1731,7 +1731,7 @@ answer: 0
 marks: 1
 misconception: sensory-evaluation-purpose
 worked: |
-  Sensory evaluation uses the senses — sight, smell, taste, touch and hearing — to judge a food.
+  Sensory evaluation uses the senses, sight, smell, taste, touch and hearing, to judge a food.
   It tells a cook or a manufacturer whether the product is acceptable and how to improve it, and it is used to compare a new recipe with an existing one.
   Energy value, bacterial counts and costings are worked out by other methods entirely.
 ```
@@ -1835,7 +1835,7 @@ marks: 1
 misconception: vitamin-a-deficiency
 worked: |
   Vitamin A is used to make the pigment in the retina that lets the eye see in dim light.
-  A shortage means the pigment cannot be replaced fast enough, so the person cannot see well in poor light — night blindness.
+  A shortage means the pigment cannot be replaced fast enough, so the person cannot see well in poor light, night blindness.
   Sources: liver, egg yolk, oily fish, and carotene in carrots and dark green leafy vegetables.
 ```
 
@@ -1913,7 +1913,7 @@ accepted: ["vegan", "Vegan", "vegan diet", "veganism"]
 marks: 1
 misconception: vegetarian-types
 worked: |
-  A vegan eats only plant foods — no meat, fish, poultry, eggs, milk or milk products.
+  A vegan eats only plant foods, no meat, fish, poultry, eggs, milk or milk products.
   A lacto-vegetarian includes milk; a lacto-ovo-vegetarian includes milk and eggs.
   A vegan must plan carefully for protein complementation, iron, calcium and especially vitamin B12.
 ```
@@ -2002,7 +2002,7 @@ accepted: ["radiation", "Radiation"]
 marks: 1
 misconception: heat-transfer-radiation
 worked: |
-  The hot grill element emits infra-red rays that travel in straight lines and are absorbed by the surface of the food — radiation.
+  The hot grill element emits infra-red rays that travel in straight lines and are absorbed by the surface of the food, radiation.
   Heat then moves into the middle of the sausage by conduction.
 ```
 
@@ -2014,7 +2014,7 @@ accepted: ["caramelisation", "caramelization", "Caramelisation"]
 marks: 1
 misconception: caramelisation-definition
 worked: |
-  When sugar is heated above about 160 °C it melts and the sugar molecules break down and re-form as brown, strongly flavoured compounds — caramelisation.
+  When sugar is heated above about 160 °C it melts and the sugar molecules break down and re-form as brown, strongly flavoured compounds, caramelisation.
   It is used to make caramel and toffee and to brown the top of a crème brûlée.
   It involves sugar alone; the Maillard reaction needs protein as well.
 ```
@@ -2051,7 +2051,7 @@ worked: |
 kind: definition
 term: "Balanced diet"
 topic: "L9 Diet & Meal Planning"
-body: "A diet that supplies all the nutrients — protein, carbohydrate, fat, vitamins, minerals, water and dietary fibre — in the right amounts and proportions to meet the needs of the individual for energy, growth, repair and health."
+body: "A diet that supplies all the nutrients, protein, carbohydrate, fat, vitamins, minerals, water and dietary fibre, in the right amounts and proportions to meet the needs of the individual for energy, growth, repair and health."
 ```
 
 ```yaml
@@ -2065,7 +2065,7 @@ body: "The state in which the energy taken in from food equals the energy used b
 kind: definition
 term: "Basal metabolic rate (BMR)"
 topic: "L9 Diet & Meal Planning"
-body: "The rate at which the body uses energy at complete rest, just to keep essential processes going — breathing, heartbeat, maintaining body temperature and repairing cells. It is higher in a large, muscular or young person and falls with age."
+body: "The rate at which the body uses energy at complete rest, just to keep essential processes going, breathing, heartbeat, maintaining body temperature and repairing cells. It is higher in a large, muscular or young person and falls with age."
 ```
 
 ```yaml
@@ -2079,14 +2079,14 @@ body: "An amino acid that the body cannot make for itself, so it must be supplie
 kind: definition
 term: "High biological value (HBV) protein"
 topic: "N1 Proteins"
-body: "A protein that contains all the essential amino acids in the proportions the body needs — for example the protein in eggs, milk, meat, fish and soya beans."
+body: "A protein that contains all the essential amino acids in the proportions the body needs, for example the protein in eggs, milk, meat, fish and soya beans."
 ```
 
 ```yaml
 kind: definition
 term: "Complementary proteins"
 topic: "N1 Proteins"
-body: "Two low biological value proteins eaten in the same meal, each supplying the essential amino acid that the other lacks, so that together they act like an HBV protein — for example rice with beans, or bread with peanut butter."
+body: "Two low biological value proteins eaten in the same meal, each supplying the essential amino acid that the other lacks, so that together they act like an HBV protein, for example rice with beans, or bread with peanut butter."
 ```
 
 ```yaml
@@ -2100,7 +2100,7 @@ body: "A fat whose fatty acid chains carry no double bonds. It is usually solid 
 kind: definition
 term: "Fat-soluble vitamin"
 topic: "N4 Vitamins"
-body: "A vitamin that dissolves in fat, not water — vitamins A, D, E and K. They are carried in the fat of food, can be stored in the liver and fatty tissue, and are not lost into cooking water."
+body: "A vitamin that dissolves in fat, not water, vitamins A, D, E and K. They are carried in the fat of food, can be stored in the liver and fatty tissue, and are not lost into cooking water."
 ```
 
 ```yaml
@@ -2121,14 +2121,14 @@ body: "The indigestible part of plant foods, such as cellulose in wholegrains, f
 kind: definition
 term: "Malnutrition"
 topic: "N8 Diet & Health Problems"
-body: "A condition caused by a diet that supplies the wrong amounts of nutrients or energy — either a shortage (deficiency) or an excess. Both under-nutrition and over-nutrition are forms of malnutrition."
+body: "A condition caused by a diet that supplies the wrong amounts of nutrients or energy, either a shortage (deficiency) or an excess. Both under-nutrition and over-nutrition are forms of malnutrition."
 ```
 
 ```yaml
 kind: definition
 term: "Obesity"
 topic: "N8 Diet & Health Problems"
-body: "A condition in which so much excess body fat has been stored, because energy intake has exceeded energy expenditure over a long period, that health is put at risk — raising the risk of type-2 diabetes, hypertension, heart disease and joint problems."
+body: "A condition in which so much excess body fat has been stored, because energy intake has exceeded energy expenditure over a long period, that health is put at risk, raising the risk of type-2 diabetes, hypertension, heart disease and joint problems."
 ```
 
 ```yaml
@@ -2156,7 +2156,7 @@ body: "Food that has been partly or fully prepared by the manufacturer before it
 kind: definition
 term: "Gelatinisation"
 topic: "S15 Functional Properties & Reactions"
-body: "The thickening of a liquid when starch granules in it are heated: the granules absorb liquid, swell, burst and release starch, so the mixture thickens and sets on cooling — as in a roux sauce, a custard or a gravy."
+body: "The thickening of a liquid when starch granules in it are heated: the granules absorb liquid, swell, burst and release starch, so the mixture thickens and sets on cooling, as in a roux sauce, a custard or a gravy."
 ```
 
 ```yaml
@@ -2177,7 +2177,7 @@ body: "The unfolding of the coiled chains of a protein by heat, acid or mechanic
 kind: definition
 term: "Emulsification"
 topic: "S15 Functional Properties & Reactions"
-body: "The process of holding tiny droplets of one liquid dispersed evenly in another liquid that would not normally mix with it — for example oil in vinegar in mayonnaise — with the help of an emulsifier such as the lecithin in egg yolk."
+body: "The process of holding tiny droplets of one liquid dispersed evenly in another liquid that would not normally mix with it, for example oil in vinegar in mayonnaise, with the help of an emulsifier such as the lecithin in egg yolk."
 ```
 
 ```yaml
@@ -2226,7 +2226,7 @@ body: "The transfer of harmful bacteria from a raw food to a ready-to-eat food, 
 kind: precision
 topic: "L9 Diet & Meal Planning"
 prompt: "Explain why a 15-year-old girl needs more iron in her diet than a 7-year-old child."
-model: "A teenager is going through a growth spurt, so her blood volume and muscle mass are increasing and more haemoglobin has to be made, and haemoglobin needs iron. Once menstruation begins she also loses iron in the monthly blood loss. Without enough iron she would make too little haemoglobin, become anaemic, and feel tired, pale and breathless — so she needs iron-rich foods such as lean red meat, liver, dark green vegetables and iron-fortified cereal, eaten with a vitamin C food to improve absorption."
+model: "A teenager is going through a growth spurt, so her blood volume and muscle mass are increasing and more haemoglobin has to be made, and haemoglobin needs iron. Once menstruation begins she also loses iron in the monthly blood loss. Without enough iron she would make too little haemoglobin, become anaemic, and feel tired, pale and breathless, so she needs iron-rich foods such as lean red meat, liver, dark green vegetables and iron-fortified cereal, eaten with a vitamin C food to improve absorption."
 keywords: [growth spurt, haemoglobin, menstruation, anaemia, vitamin C absorption]
 ```
 
@@ -2242,7 +2242,7 @@ keywords: [starchy carbohydrate, HBV protein for growth, calcium for bones, fibr
 kind: precision
 topic: "L9 Diet & Meal Planning"
 prompt: "Explain why an elderly person needs plenty of calcium and vitamin D but less energy than they did at 30."
-model: "With age, bone density falls, so the bones become porous and break easily; calcium is the mineral that hardens bone and vitamin D is needed for the calcium to be absorbed from the gut, so a good intake of both slows the loss and lowers the risk of osteoporosis and fractures. At the same time the basal metabolic rate falls and the person is usually less active, so the body uses less energy each day. If the same amount of food were eaten as at 30, the surplus energy would be stored as fat and the person would become overweight — so energy-dense fatty and sugary foods should be cut, while nutrient-dense foods are kept."
+model: "With age, bone density falls, so the bones become porous and break easily; calcium is the mineral that hardens bone and vitamin D is needed for the calcium to be absorbed from the gut, so a good intake of both slows the loss and lowers the risk of osteoporosis and fractures. At the same time the basal metabolic rate falls and the person is usually less active, so the body uses less energy each day. If the same amount of food were eaten as at 30, the surplus energy would be stored as fat and the person would become overweight, so energy-dense fatty and sugary foods should be cut, while nutrient-dense foods are kept."
 keywords: [bone density falls, calcium and vitamin D, osteoporosis, lower BMR, energy surplus stored as fat]
 ```
 
@@ -2250,7 +2250,7 @@ keywords: [bone density falls, calcium and vitamin D, osteoporosis, lower BMR, e
 kind: precision
 topic: "L9 Diet & Meal Planning"
 prompt: "Explain how a vegan can obtain enough protein and iron from a plant-based diet."
-model: "Plant proteins are of low biological value, so a vegan should combine complementary proteins in the same meal — for example rice with dhal, or bread with peanut butter — so that the essential amino acid missing from one food is supplied by the other, and the mixture acts like an HBV protein. Soya products such as tofu and soya milk are especially useful because soya protein is HBV. For iron, she should eat dark green leafy vegetables, pulses, nuts, dried fruit and iron-fortified cereals, and eat a vitamin C food such as fruit or juice in the same meal, because vitamin C greatly increases the absorption of iron from plant foods."
+model: "Plant proteins are of low biological value, so a vegan should combine complementary proteins in the same meal, for example rice with dhal, or bread with peanut butter, so that the essential amino acid missing from one food is supplied by the other, and the mixture acts like an HBV protein. Soya products such as tofu and soya milk are especially useful because soya protein is HBV. For iron, she should eat dark green leafy vegetables, pulses, nuts, dried fruit and iron-fortified cereals, and eat a vitamin C food such as fruit or juice in the same meal, because vitamin C greatly increases the absorption of iron from plant foods."
 keywords: [complementary proteins, essential amino acids, soya HBV, non-haem iron, vitamin C improves absorption]
 ```
 
@@ -2258,7 +2258,7 @@ keywords: [complementary proteins, essential amino acids, soya HBV, non-haem iro
 kind: precision
 topic: "L9 Diet & Meal Planning"
 prompt: "Explain, using energy balance, why an office worker who has not changed his diet but now sits all day is putting on weight."
-model: "Body mass is controlled by energy balance: the energy taken in from food compared with the energy the body uses. Sitting all day means his physical activity level, and so his energy expenditure, has fallen, but his energy intake from food has stayed the same. His intake is now greater than his expenditure, so there is a daily energy surplus. The body stores this surplus energy as fat in adipose tissue, so week by week his body mass rises. To stop the gain he must either reduce his energy intake (smaller portions, less fried and sugary food) or raise his expenditure (walking, taking the stairs, exercise) — or both."
+model: "Body mass is controlled by energy balance: the energy taken in from food compared with the energy the body uses. Sitting all day means his physical activity level, and so his energy expenditure, has fallen, but his energy intake from food has stayed the same. His intake is now greater than his expenditure, so there is a daily energy surplus. The body stores this surplus energy as fat in adipose tissue, so week by week his body mass rises. To stop the gain he must either reduce his energy intake (smaller portions, less fried and sugary food) or raise his expenditure (walking, taking the stairs, exercise), or both."
 keywords: [energy intake, energy expenditure, surplus, stored as fat, raise activity]
 ```
 
@@ -2274,7 +2274,7 @@ keywords: [cheaper protein foods, pulses and eggs, seasonal produce, buy in bulk
 kind: precision
 topic: "N8 Diet & Health Problems"
 prompt: "Explain how a diet high in saturated fat increases a person's risk of coronary heart disease."
-model: "Saturated fat, found in fatty meat, butter, ghee, palm oil and many fried and baked convenience foods, raises the level of cholesterol carried in the blood. The excess cholesterol is deposited as fatty plaques inside the walls of the coronary arteries, which supply the heart muscle itself. The arteries become narrower and less elastic, so less oxygenated blood reaches the heart muscle, causing chest pain on exertion. If a plaque ruptures and a clot blocks the artery completely, part of the heart muscle is starved of oxygen and dies — a heart attack."
+model: "Saturated fat, found in fatty meat, butter, ghee, palm oil and many fried and baked convenience foods, raises the level of cholesterol carried in the blood. The excess cholesterol is deposited as fatty plaques inside the walls of the coronary arteries, which supply the heart muscle itself. The arteries become narrower and less elastic, so less oxygenated blood reaches the heart muscle, causing chest pain on exertion. If a plaque ruptures and a clot blocks the artery completely, part of the heart muscle is starved of oxygen and dies, a heart attack."
 keywords: [raises blood cholesterol, fatty deposits, coronary arteries narrow, less oxygen to heart muscle, heart attack]
 ```
 
@@ -2282,7 +2282,7 @@ keywords: [raises blood cholesterol, fatty deposits, coronary arteries narrow, l
 kind: precision
 topic: "N8 Diet & Health Problems"
 prompt: "Explain why a habit of drinking two sweetened bubble teas a day increases the risk of type-2 diabetes."
-model: "Sweetened drinks contain a large amount of free sugar but almost no fibre, protein or micronutrients, so they add a lot of energy without making the person feel full. The extra energy is stored as body fat, and being overweight, especially around the abdomen, makes the body's cells respond less well to insulin (insulin resistance). The pancreas must then make more and more insulin to keep blood glucose down and, in time, cannot keep up, so blood glucose stays high — type-2 diabetes. Replacing the drink with water or unsweetened tea removes the surplus energy and lowers the risk."
+model: "Sweetened drinks contain a large amount of free sugar but almost no fibre, protein or micronutrients, so they add a lot of energy without making the person feel full. The extra energy is stored as body fat, and being overweight, especially around the abdomen, makes the body's cells respond less well to insulin (insulin resistance). The pancreas must then make more and more insulin to keep blood glucose down and, in time, cannot keep up, so blood glucose stays high, type-2 diabetes. Replacing the drink with water or unsweetened tea removes the surplus energy and lowers the risk."
 keywords: [free sugar, energy dense, overweight, insulin resistance, blood glucose stays high]
 ```
 
@@ -2298,7 +2298,7 @@ keywords: [indigestible, absorbs water, soft bulky faeces, peristalsis, fluid ne
 kind: precision
 topic: "N8 Diet & Health Problems"
 prompt: "A pregnant woman's diet contains very little iron. Explain the effect on her health and state how she could improve her diet."
-model: "During pregnancy the mother's blood volume increases and the fetus builds up its own store of iron, so her need for iron is much higher. With too little iron she cannot make enough haemoglobin, so her blood carries less oxygen — she becomes anaemic and feels tired, weak, breathless and dizzy, and looks pale. She should eat more iron-rich foods such as lean red meat, liver, eggs, dark green leafy vegetables, pulses and iron-fortified cereals, and take a vitamin C source such as orange juice or guava with the meal, because vitamin C increases the absorption of iron from plant foods."
+model: "During pregnancy the mother's blood volume increases and the fetus builds up its own store of iron, so her need for iron is much higher. With too little iron she cannot make enough haemoglobin, so her blood carries less oxygen, she becomes anaemic and feels tired, weak, breathless and dizzy, and looks pale. She should eat more iron-rich foods such as lean red meat, liver, eggs, dark green leafy vegetables, pulses and iron-fortified cereals, and take a vitamin C source such as orange juice or guava with the meal, because vitamin C increases the absorption of iron from plant foods."
 keywords: [higher iron need, haemoglobin, anaemia, iron-rich foods, vitamin C with the meal]
 ```
 
@@ -2306,7 +2306,7 @@ keywords: [higher iron need, haemoglobin, anaemia, iron-rich foods, vitamin C wi
 kind: precision
 topic: "N1 Proteins"
 prompt: "Explain why a meal of rice and dhal supplies better quality protein than either food eaten on its own."
-model: "Both rice and dhal contain protein of low biological value, meaning each is short of at least one essential amino acid — cereals such as rice are low in lysine, while pulses such as dhal are low in the sulfur-containing amino acid methionine. When they are eaten in the same meal, the lysine from the dhal makes up for the shortage in the rice, and the methionine from the rice makes up for the shortage in the dhal. Together they supply all the essential amino acids in useful amounts, so the mixture acts like a high biological value protein. This is called protein complementation and it is very important in vegetarian and vegan meal planning."
+model: "Both rice and dhal contain protein of low biological value, meaning each is short of at least one essential amino acid, cereals such as rice are low in lysine, while pulses such as dhal are low in the sulfur-containing amino acid methionine. When they are eaten in the same meal, the lysine from the dhal makes up for the shortage in the rice, and the methionine from the rice makes up for the shortage in the dhal. Together they supply all the essential amino acids in useful amounts, so the mixture acts like a high biological value protein. This is called protein complementation and it is very important in vegetarian and vegan meal planning."
 keywords: [low biological value, essential amino acids, lysine, methionine, complementation]
 ```
 
@@ -2338,7 +2338,7 @@ keywords: [connective tissue, collagen, moist heat converts to gelatine, long sl
 kind: precision
 topic: "S14 Methods of Cooking"
 prompt: "Explain why grilling chicken is a healthier method of cooking than deep-frying it."
-model: "In grilling, the chicken sits on a rack under a radiant heat source, so as the fat in the meat melts it drips away into the tray below. No extra fat is added, so the finished dish is lower in fat and lower in energy value. In deep-frying, the chicken is completely surrounded by hot oil, and the food — especially any batter or crumb coating — absorbs a large amount of that oil, so the fat content and the energy value rise sharply. A diet high in this fat, much of it saturated, raises blood cholesterol and increases the risk of obesity and coronary heart disease."
+model: "In grilling, the chicken sits on a rack under a radiant heat source, so as the fat in the meat melts it drips away into the tray below. No extra fat is added, so the finished dish is lower in fat and lower in energy value. In deep-frying, the chicken is completely surrounded by hot oil, and the food, especially any batter or crumb coating, absorbs a large amount of that oil, so the fat content and the energy value rise sharply. A diet high in this fat, much of it saturated, raises blood cholesterol and increases the risk of obesity and coronary heart disease."
 keywords: [fat drips away, no added fat, absorbs oil, higher energy value, obesity and CHD risk]
 ```
 
@@ -2346,7 +2346,7 @@ keywords: [fat drips away, no added fat, absorbs oil, higher energy value, obesi
 kind: precision
 topic: "S14 Methods of Cooking"
 prompt: "Explain how heat reaches the food in (a) a pot of boiling soup and (b) a chop cooking under a grill."
-model: "In the pot of soup, heat first passes through the metal base of the pan by conduction, from particle to particle. It then spreads through the liquid by convection: the water at the bottom is heated, expands, becomes less dense and rises, while cooler, denser water sinks to take its place, setting up convection currents that carry heat through the whole pot and cook the food evenly. Under the grill, the glowing element gives out infra-red rays that travel in straight lines through the air and are absorbed by the surface of the chop, heating it — this is radiation. Heat then travels from the hot surface into the middle of the chop by conduction."
+model: "In the pot of soup, heat first passes through the metal base of the pan by conduction, from particle to particle. It then spreads through the liquid by convection: the water at the bottom is heated, expands, becomes less dense and rises, while cooler, denser water sinks to take its place, setting up convection currents that carry heat through the whole pot and cook the food evenly. Under the grill, the glowing element gives out infra-red rays that travel in straight lines through the air and are absorbed by the surface of the chop, heating it, this is radiation. Heat then travels from the hot surface into the middle of the chop by conduction."
 keywords: [conduction through the pan, convection currents, less dense rises, radiation infra-red, conduction into the food]
 ```
 
@@ -2370,7 +2370,7 @@ keywords: [roux coats starch granules, granules swell and burst, gelatinisation,
 kind: precision
 topic: "S15 Functional Properties & Reactions"
 prompt: "Explain why mayonnaise made from oil, vinegar and egg yolk does not separate into layers."
-model: "Oil and vinegar are immiscible: oil is non-polar and vinegar is mostly water, so left alone they separate into two layers. Egg yolk contains lecithin, a natural emulsifier. Each lecithin molecule has a water-loving (hydrophilic) end and an oil-loving (hydrophobic) end. When the oil is beaten in drop by drop, it is broken into tiny droplets, and the lecithin molecules arrange themselves around each droplet with the oil-loving end in the oil and the water-loving end in the vinegar. This coating keeps the droplets apart so they cannot join up again, and holds them suspended evenly throughout the vinegar — a stable emulsion. Adding the oil too quickly overloads the emulsifier, so the mayonnaise curdles."
+model: "Oil and vinegar are immiscible: oil is non-polar and vinegar is mostly water, so left alone they separate into two layers. Egg yolk contains lecithin, a natural emulsifier. Each lecithin molecule has a water-loving (hydrophilic) end and an oil-loving (hydrophobic) end. When the oil is beaten in drop by drop, it is broken into tiny droplets, and the lecithin molecules arrange themselves around each droplet with the oil-loving end in the oil and the water-loving end in the vinegar. This coating keeps the droplets apart so they cannot join up again, and holds them suspended evenly throughout the vinegar, a stable emulsion. Adding the oil too quickly overloads the emulsifier, so the mayonnaise curdles."
 keywords: [immiscible, lecithin emulsifier, water-loving and oil-loving ends, droplets held apart, stable emulsion]
 ```
 
@@ -2378,7 +2378,7 @@ keywords: [immiscible, lecithin emulsifier, water-loving and oil-loving ends, dr
 kind: precision
 topic: "S15 Functional Properties & Reactions"
 prompt: "Explain what happens when egg white is whisked, and why the foam sets permanently when it is baked."
-model: "Whisking beats air into the egg white and, at the same time, the mechanical action denatures the egg-white protein: the coiled chains unfold. The unfolded chains spread out around each air bubble and link with one another, forming a thin, elastic film that traps the air, so the liquid becomes a stiff white foam that can hold many times its own volume of air. The foam is only temporary: on standing it would slowly collapse and drain. When it is baked, the heat coagulates the protein film, setting it into a rigid solid, and the trapped air and water vapour expand and push it up — so a meringue keeps its light, risen, permanent structure."
+model: "Whisking beats air into the egg white and, at the same time, the mechanical action denatures the egg-white protein: the coiled chains unfold. The unfolded chains spread out around each air bubble and link with one another, forming a thin, elastic film that traps the air, so the liquid becomes a stiff white foam that can hold many times its own volume of air. The foam is only temporary: on standing it would slowly collapse and drain. When it is baked, the heat coagulates the protein film, setting it into a rigid solid, and the trapped air and water vapour expand and push it up, so a meringue keeps its light, risen, permanent structure."
 keywords: [air trapped, protein denatured by whisking, film around bubbles, coagulates on baking, permanent structure]
 ```
 
@@ -2386,7 +2386,7 @@ keywords: [air trapped, protein denatured by whisking, film around bubbles, coag
 kind: precision
 topic: "S15 Functional Properties & Reactions"
 prompt: "Explain why rubbing fat into flour gives a shortcrust pastry its short, crumbly texture."
-model: "In the rubbing-in method the fat is broken into tiny pieces and rubbed through the flour until the mixture looks like fine breadcrumbs. Each flour particle becomes coated with a waterproof film of fat. When the water is added, it cannot reach the flour proteins easily, so only short lengths of gluten can form and no long, elastic network can develop. The fat also lies in layers between the flour particles, so the baked pastry breaks apart into short crumbs instead of stretching — this is the shortening effect. To keep it short, the fat and water must be kept cold, the mixture handled lightly and as little water as possible used; too much water or heavy kneading develops gluten and makes the pastry tough."
+model: "In the rubbing-in method the fat is broken into tiny pieces and rubbed through the flour until the mixture looks like fine breadcrumbs. Each flour particle becomes coated with a waterproof film of fat. When the water is added, it cannot reach the flour proteins easily, so only short lengths of gluten can form and no long, elastic network can develop. The fat also lies in layers between the flour particles, so the baked pastry breaks apart into short crumbs instead of stretching, this is the shortening effect. To keep it short, the fat and water must be kept cold, the mixture handled lightly and as little water as possible used; too much water or heavy kneading develops gluten and makes the pastry tough."
 keywords: [fat coats flour particles, waterproof film, short gluten strands, shortening, handle lightly and keep cool]
 ```
 
@@ -2402,7 +2402,7 @@ keywords: [separate boards and knives, wash hands between tasks, store raw meat 
 kind: precision
 topic: "S12 Food Safety & Hygiene"
 prompt: "A family leaves a bowl of cooked rice on the kitchen counter overnight. Explain why this rice is unsafe to eat the next morning."
-model: "Cooked rice is warm, moist and full of nutrients — ideal conditions for bacteria. Left on the counter it stays for many hours in the danger zone, roughly 5 °C to 60 °C, in which bacteria multiply rapidly, doubling about every twenty minutes. Cooked rice can also contain heat-resistant bacterial spores that survive the original cooking; in the warm rice these spores grow into bacteria, which multiply and produce a toxin. The toxin is not destroyed by reheating, so even piping-hot fried rice made from it can cause food poisoning — vomiting and diarrhoea. Leftover rice should instead be cooled quickly, refrigerated within two hours, kept no more than a day, and reheated thoroughly only once."
+model: "Cooked rice is warm, moist and full of nutrients, ideal conditions for bacteria. Left on the counter it stays for many hours in the danger zone, roughly 5 °C to 60 °C, in which bacteria multiply rapidly, doubling about every twenty minutes. Cooked rice can also contain heat-resistant bacterial spores that survive the original cooking; in the warm rice these spores grow into bacteria, which multiply and produce a toxin. The toxin is not destroyed by reheating, so even piping-hot fried rice made from it can cause food poisoning, vomiting and diarrhoea. Leftover rice should instead be cooled quickly, refrigerated within two hours, kept no more than a day, and reheated thoroughly only once."
 keywords: [danger zone, warm moist nutrients, bacteria multiply rapidly, spores and toxin, cool quickly and refrigerate]
 ```
 
@@ -2418,6 +2418,6 @@ keywords: [avoid bias, random codes, identical containers and portions, same tem
 kind: precision
 topic: "L11 Convenience Food & Food Labels"
 prompt: "Explain how a shopper can use the nutrition information panel to choose between two breakfast cereals."
-model: "First she should compare the two cereals using the same basis — the 'per 100 g' column — because the serving sizes on the two packets may be different. She should then compare the figures that matter for health: she wants the cereal with the lower sugar, lower saturated fat and lower sodium, and the higher dietary fibre. The ingredient list also helps, because ingredients are listed in descending order of mass, so a cereal with sugar as the first or second ingredient is mostly sugar. A wholegrain as the first ingredient, and a Healthier Choice Symbol on the front, both point to the better choice. Finally she can work out what one real serving supplies by scaling the per-100 g figures to her own portion size."
+model: "First she should compare the two cereals using the same basis, the 'per 100 g' column, because the serving sizes on the two packets may be different. She should then compare the figures that matter for health: she wants the cereal with the lower sugar, lower saturated fat and lower sodium, and the higher dietary fibre. The ingredient list also helps, because ingredients are listed in descending order of mass, so a cereal with sugar as the first or second ingredient is mostly sugar. A wholegrain as the first ingredient, and a Healthier Choice Symbol on the front, both point to the better choice. Finally she can work out what one real serving supplies by scaling the per-100 g figures to her own portion size."
 keywords: [compare per 100 g, lower sugar and sodium, higher fibre, ingredients in descending order, Healthier Choice Symbol]
 ```

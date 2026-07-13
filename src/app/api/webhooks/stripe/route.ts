@@ -59,11 +59,11 @@ export async function POST(request: Request) {
  * refund event carries a payment_intent, not our checkout-session id, so the
  * order is found via the session behind that payment intent. Only a FULL
  * refund revokes: a partial refund (e.g. one subject of a bundle) leaves the
- * order intact. Idempotent — repeated deliveries reapply the same state.
+ * order intact. Idempotent, repeated deliveries reapply the same state.
  */
 async function handleRefund(stripe: Stripe, charge: Stripe.Charge) {
   if (charge.amount_refunded < charge.amount) {
-    // Partial refund — do not revoke the whole order.
+    // Partial refund, do not revoke the whole order.
     return;
   }
 
@@ -109,7 +109,7 @@ async function handleRefund(stripe: Stripe, charge: Stripe.Charge) {
     }),
   ]);
   // A refunded order also stops owing its referrer a reward (unless already
-  // paid out — clawing back sent cash is a human decision, not the app's).
+  // paid out, clawing back sent cash is a human decision, not the app's).
   await voidReferralForOrder(order.id);
   console.warn(`Refund: order No. ${order.id} marked refunded, downloads revoked.`);
 }

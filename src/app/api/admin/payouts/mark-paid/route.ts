@@ -4,7 +4,7 @@ import { isAdmin } from "@/lib/server/admin-auth";
 import { serverConfig } from "@/lib/server/config";
 
 // Records that the owner has SENT a referrer's pending rewards (one PayNow
-// transfer covering their payable balance). Bookkeeping only — the app never
+// transfer covering their payable balance). Bookkeeping only, the app never
 // moves money.
 export async function POST(request: Request) {
   if (!(await isAdmin())) {

@@ -6,7 +6,7 @@ import { getEarlyBird } from "@/lib/server/pricing-store";
 
 export const dynamic = "force-dynamic";
 
-// "Am I Ready?" funnel, straight from DiagnosticEvent/Attempt — the same
+// "Am I Ready?" funnel, straight from DiagnosticEvent/Attempt, the same
 // own-DB analytics pattern as the rest of this dashboard.
 async function getDiagnosticFunnel() {
   const [events, attempts, unlocked] = await Promise.all([

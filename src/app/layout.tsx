@@ -25,7 +25,7 @@ export const viewport: Viewport = {
 // injects window.Capacitor at document start, ahead of any page script.
 // ?native=ios|android persists the game-app preview in any browser (demos,
 // support, playtesting); ?native=off clears it. The real shell needs no
-// param — Capacitor injects window.Capacitor.
+// param, Capacitor injects window.Capacitor.
 const NATIVE_STAMP = `(function(){try{var q=new URLSearchParams(location.search).get("native");if(q==="off")localStorage.removeItem("studylah_native");else if(q==="ios"||q==="android")localStorage.setItem("studylah_native",q);var o=localStorage.getItem("studylah_native");if(o==="ios"||o==="android"){document.documentElement.setAttribute("data-native",o);return}}catch(e){}var c=window.Capacitor;if(c&&c.isNativePlatform&&c.isNativePlatform()){var p=c.getPlatform?c.getPlatform():"app";document.documentElement.setAttribute("data-native",p)}})();`;
 
 // Type pairing borrowed from the live site: Inter for body/UI, Archivo for
@@ -42,7 +42,7 @@ const archivo = Archivo({
 });
 
 // The game voice: used ONLY for numbers and short game labels (HUD, level-up
-// ceremony, tab bar) — body text stays Inter for readability.
+// ceremony, tab bar), body text stays Inter for readability.
 const pressStart = Press_Start_2P({
   variable: "--font-press-start",
   subsets: ["latin"],
@@ -52,17 +52,17 @@ const pressStart = Press_Start_2P({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.studylah.education"),
   title: {
-    default: "StudyLah! — Study Less, Score More.",
+    default: "StudyLah!, Study Less, Score More.",
     template: "%s · StudyLah!",
   },
   description:
     "AI exam forecasts, original practice questions, and full timed rehearsals for the Singapore-Cambridge O-Level and N(A)-Level. Built from 10 years of real exam data.",
-  // Social share cards — referral links travel by WhatsApp/Telegram, and a
+  // Social share cards, referral links travel by WhatsApp/Telegram, and a
   // branded unfurl converts far better than a bare grey URL.
   openGraph: {
     siteName: "StudyLah!",
     type: "website",
-    images: [{ url: "/og-card.png", width: 1200, height: 630, alt: "StudyLah — 2026 exam forecasts" }],
+    images: [{ url: "/og-card.png", width: 1200, height: 630, alt: "StudyLah, 2026 exam forecasts" }],
   },
   twitter: {
     card: "summary_large_image",

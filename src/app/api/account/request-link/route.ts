@@ -10,7 +10,7 @@ const lastSent = new Map<string, number>();
 const MIN_INTERVAL_MS = 60_000;
 
 export async function POST(request: Request) {
-  // Always answer the same way, whether or not the email has an account — never
+  // Always answer the same way, whether or not the email has an account, never
   // reveal who is a customer.
   const generic = NextResponse.json({ ok: true });
 
@@ -54,7 +54,7 @@ export async function POST(request: Request) {
     </p>
     <p style="font-size:28px;font-weight:bold;letter-spacing:6px;color:#101f33;margin:0 0 16px;">${code}</p>
     <p style="font-size:12px;color:#3d4e63;line-height:1.6;margin:0;">
-      Didn't ask to sign in? You can safely ignore this email — nothing changes.
+      Didn't ask to sign in? You can safely ignore this email, nothing changes.
     </p>
   `);
   const text = [

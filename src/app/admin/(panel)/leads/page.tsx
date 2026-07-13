@@ -4,7 +4,7 @@ import { prisma } from "@/lib/db";
 export const dynamic = "force-dynamic";
 
 function subjectLabel(level: string | null, slug: string | null): string {
-  if (!slug) return "—";
+  if (!slug) return ", ";
   const found = SUBJECTS.find((s) => s.level === level && s.slug === slug);
   return found ? found.name : slug;
 }

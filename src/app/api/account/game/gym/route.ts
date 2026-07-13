@@ -7,7 +7,7 @@ import { ownedSubjects, isCorrect } from "@/lib/server/study";
 import { awardXp, totalXpFor, gamePayload, type GamePayload } from "@/lib/server/xp";
 
 // The gym challenge: five answers graded atomically. Four or more correct
-// clears the gym — a per-subject achievement plus a one-time 25 XP. Gyms can
+// clears the gym, a per-subject achievement plus a one-time 25 XP. Gyms can
 // be re-fought any time (practice!), but the XP never pays twice.
 const PASS_MARK = 4;
 const GYM_XP = 25;
@@ -69,7 +69,7 @@ export async function POST(request: Request) {
       });
       firstClear = true;
     } catch {
-      // already cleared before — re-fights are free practice
+      // already cleared before, re-fights are free practice
     }
     if (firstClear) {
       const xpBefore = await totalXpFor(customerId);

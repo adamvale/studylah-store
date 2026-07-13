@@ -106,7 +106,7 @@ misconception: equal-roots-discriminant-zero
 worked: |
   Equal roots means the discriminant b² − 4ac = 0.
   Here a = 1, b = k, c = 9, so k² − 4(1)(9) = 0 → k² = 36.
-  k = 6 or k = −6, i.e. k = ±6. Both signs are valid — the question did not restrict k.
+  k = 6 or k = −6, i.e. k = ±6. Both signs are valid, the question did not restrict k.
 ```
 
 ```yaml
@@ -195,7 +195,7 @@ misconception: distinct-roots-strict-inequality
 worked: |
   Two distinct real roots means b² − 4ac > 0.
   k² − 4(1)(4) > 0 → k² > 16 → k < −4 or k > 4.
-  The inequality is strict (>), so k = ±4 is excluded — those give EQUAL roots, not distinct ones.
+  The inequality is strict (>), so k = ±4 is excluded, those give EQUAL roots, not distinct ones.
 ```
 
 ```yaml
@@ -231,7 +231,7 @@ marks: 3
 misconception: always-positive-needs-a-and-discriminant
 worked: |
   Two things must be checked. First the shape: a = 2 > 0, so the curve opens upwards.
-  Then the discriminant: (−4)² − 4(2)(5) = 16 − 40 = −24 < 0, so there are no real roots — the curve never meets the x-axis.
+  Then the discriminant: (−4)² − 4(2)(5) = 16 − 40 = −24 < 0, so there are no real roots, the curve never meets the x-axis.
   An upward curve that never meets the x-axis lies entirely above it: y > 0 for all real x.
   (Completing the square agrees: y = 2(x − 1)² + 3, whose minimum value is 3.)
 ```
@@ -252,7 +252,7 @@ worked: |
   Set them equal: x² + 3x + k = x − 1 → x² + 2x + (k + 1) = 0.
   No intersection means this quadratic has NO real roots: b² − 4ac < 0.
   2² − 4(1)(k + 1) < 0 → 4 − 4k − 4 < 0 → −4k < 0 → k > 0.
-  Dividing by −4 reverses the inequality sign — that is the step most answers lose.
+  Dividing by −4 reverses the inequality sign, that is the step most answers lose.
 ```
 
 ```yaml
@@ -333,7 +333,7 @@ worked: |
   Expand every pair: 3(3) + 3(−2√2) + √2(3) + √2(−2√2)
   = 9 − 6√2 + 3√2 − 2(√2 × √2) = 9 − 6√2 + 3√2 − 2(2)
   = 9 − 4 − 3√2 = 5 − 3√2.
-  The last term is −4, not −2√2 — remember √2 × √2 = 2.
+  The last term is −4, not −2√2, remember √2 × √2 = 2.
 ```
 
 ```yaml
@@ -350,7 +350,7 @@ marks: 2
 misconception: square-of-binomial-surd
 worked: |
   (2 + √3)² = 2² + 2(2)(√3) + (√3)² = 4 + 4√3 + 3 = 7 + 4√3.
-  The middle term is doubled and (√3)² = 3 — it does not stay as a surd.
+  The middle term is doubled and (√3)² = 3, it does not stay as a surd.
 ```
 
 ```yaml
@@ -380,7 +380,7 @@ answer: 1
 marks: 2
 misconception: remainder-theorem-root-sign
 worked: |
-  By the remainder theorem, the remainder is f(2) — the divisor (x − 2) is zero at x = 2.
+  By the remainder theorem, the remainder is f(2), the divisor (x − 2) is zero at x = 2.
   f(2) = 2(8) − 5(4) + 2 + 6 = 16 − 20 + 2 + 6 = 4.
 ```
 
@@ -417,7 +417,7 @@ misconception: linear-divisor-root-not-integer
 worked: |
   2x − 1 = 0 gives x = ½, so the remainder is f(½), not f(1).
   f(½) = 4(⅛) + 8(¼) − ½ + 3 = 0.5 + 2 − 0.5 + 3 = 5.
-  (Using x = 1 gives 14 — the classic error when the divisor is not of the form x − a.)
+  (Using x = 1 gives 14, the classic error when the divisor is not of the form x − a.)
 ```
 
 ```yaml
@@ -455,7 +455,7 @@ worked: |
   f(−1) = −1 − 4 − 1 + 6 = 0, so (x + 1) is a factor.
   Dividing: x³ − 4x² + x + 6 = (x + 1)(x² − 5x + 6) = (x + 1)(x − 2)(x − 3).
   Setting each factor to zero: x = −1, x = 2, x = 3.
-  The factor (x + 1) gives the root x = −1, NOT x = +1 — flip the sign when you read the root off.
+  The factor (x + 1) gives the root x = −1, NOT x = +1, flip the sign when you read the root off.
 ```
 
 ```yaml
@@ -547,7 +547,7 @@ worked: |
   x² + 4 cannot be factorised over the real numbers, so it is an irreducible quadratic factor.
   An irreducible quadratic denominator takes a LINEAR numerator, Bx + C, not a constant.
   The linear factor (x + 1) takes a constant numerator A.
-  So the form is A/(x + 1) + (Bx + C)/(x² + 4). Splitting x² + 4 into (x + 2)(x − 2) is wrong — that is x² − 4.
+  So the form is A/(x + 1) + (Bx + C)/(x² + 4). Splitting x² + 4 into (x + 2)(x − 2) is wrong, that is x² − 4.
 ```
 
 ```yaml
@@ -563,7 +563,7 @@ answer: 3
 marks: 3
 misconception: factor-theorem-test-value
 worked: |
-  Test each candidate with the factor theorem — the factor (x − a) works only if f(a) = 0.
+  Test each candidate with the factor theorem, the factor (x − a) works only if f(a) = 0.
   f(3) = 27 + 18 − 15 − 6 = 24, so (x − 3) is not a factor.
   f(−3) = −27 + 18 + 15 − 6 = 0, so (x + 3) IS a factor.
   (The full factorisation is (x + 1)(x − 2)(x + 3).)
@@ -584,7 +584,7 @@ misconception: remainder-theorem-wrong-sign
 worked: |
   (x + 2) is zero at x = −2, so the remainder is f(−2).
   f(−2) = 3(−8) − 2(−2) + 4 = −24 + 4 + 4 = −16.
-  Using x = +2 gives 24 — always flip the sign of the number in the bracket.
+  Using x = +2 gives 24, always flip the sign of the number in the bracket.
 ```
 
 ```yaml
@@ -701,7 +701,7 @@ misconception: period-divide-by-b
 worked: |
   For y = a sin bx the amplitude is |a| and the period is 2π/b (in radians).
   Here a = 3 and b = 2, so the amplitude is 3 and the period is 2π/2 = π.
-  The 2 squeezes the graph horizontally — it does not change the amplitude.
+  The 2 squeezes the graph horizontally, it does not change the amplitude.
 ```
 
 ```yaml
@@ -754,7 +754,7 @@ misconception: interval-find-all-solutions
 worked: |
   The basic angle is sin⁻¹(0.5) = 30°.
   Sine is positive in the first and second quadrants, so x = 30° and x = 180° − 30° = 150°.
-  Both lie in the interval, so there are 2 solutions. A calculator only gives the first one — you must find the rest yourself.
+  Both lie in the interval, so there are 2 solutions. A calculator only gives the first one, you must find the rest yourself.
 ```
 
 ```yaml
@@ -773,7 +773,7 @@ worked: |
   Work with the BASIC angle first: sin⁻¹(0.5) = 30°.
   Sine is negative in the third and fourth quadrants.
   Third quadrant: x = 180° + 30° = 210°. Fourth quadrant: x = 360° − 30° = 330°.
-  A calculator returns −30°, which is outside the required interval — convert it, do not quote it.
+  A calculator returns −30°, which is outside the required interval, convert it, do not quote it.
 ```
 
 ```yaml
@@ -789,7 +789,7 @@ answer: 2
 marks: 3
 misconception: double-angle-interval-not-doubled
 worked: |
-  Let u = 2x. As x runs from 0° to 180°, u runs from 0° to 360° — DOUBLE the interval.
+  Let u = 2x. As x runs from 0° to 180°, u runs from 0° to 360°, DOUBLE the interval.
   cos u = 0.5 → u = 60° or u = 360° − 60° = 300°.
   Then x = u ÷ 2 = 30° or 150°. Both are inside 0° ≤ x ≤ 180°.
   Forgetting to widen the interval for u loses the second solution.
@@ -879,7 +879,7 @@ misconception: cos2a-formula-choice
 worked: |
   Choose the version of cos 2A written in terms of sine only: cos 2A = 1 − 2 sin²A.
   cos 2A = 1 − 2(3/5)² = 1 − 2(9/25) = 1 − 18/25 = 7/25.
-  (24/25 is sin 2A = 2(3/5)(4/5) — a different quantity.)
+  (24/25 is sin 2A = 2(3/5)(4/5), a different quantity.)
 ```
 
 ```yaml
@@ -897,7 +897,7 @@ misconception: tan2a-denominator
 worked: |
   tan 2A = 2 tan A / (1 − tan²A).
   = 2(2) / (1 − 2²) = 4 / (1 − 4) = 4/(−3) = −4/3.
-  The denominator is 1 − tan²A, so it can be negative — do not force a positive answer.
+  The denominator is 1 − tan²A, so it can be negative, do not force a positive answer.
 ```
 
 ```yaml
@@ -971,7 +971,7 @@ misconception: r-formula-min-shifted
 worked: |
   3 cos θ + 4 sin θ = R cos(θ − α) with R = √(3² + 4²) = 5.
   So the expression is 8 + 5 cos(θ − α), and cos(θ − α) has a least value of −1.
-  Minimum = 8 + 5(−1) = 8 − 5 = 3. The constant 8 shifts the whole graph up — it must not be dropped.
+  Minimum = 8 + 5(−1) = 8 − 5 = 3. The constant 8 shifts the whole graph up, it must not be dropped.
 ```
 
 ```yaml
@@ -1026,7 +1026,7 @@ misconception: reciprocal-trig-inverse
 worked: |
   cosec θ = 1/sin θ, so sin θ = 1/2.
   For 0° < θ < 90°, sin⁻¹(0.5) = 30°.
-  There is no cosec⁻¹ button — always convert to sine first.
+  There is no cosec⁻¹ button, always convert to sine first.
 ```
 
 ```yaml
@@ -1129,7 +1129,7 @@ misconception: perpendicular-negative-reciprocal
 worked: |
   Rearrange to y = mx + c: 2y = −3x + 7 → y = −(3/2)x + 7/2, so the gradient is −3/2.
   For perpendicular lines m₁m₂ = −1, so the perpendicular gradient is −1 ÷ (−3/2) = 2/3.
-  Flip the fraction AND change the sign — doing only one of the two is the usual error.
+  Flip the fraction AND change the sign, doing only one of the two is the usual error.
 ```
 
 ```yaml
@@ -1166,7 +1166,7 @@ worked: |
   Use the shoelace formula, listing the points anticlockwise and repeating the first point:
   Area = ½ |(0×1 − 4×0) + (4×5 − 2×1) + (2×0 − 0×5)|
   = ½ |0 + (20 − 2) + 0| = ½ × 18 = 9.
-  Answer 18 is the shoelace sum before halving — the ½ is not optional.
+  Answer 18 is the shoelace sum before halving, the ½ is not optional.
 ```
 
 ```yaml
@@ -1273,7 +1273,7 @@ worked: |
   The centre is the midpoint of the diameter: ((1 + 7)/2, (2 + 10)/2) = (4, 6).
   The diameter has length √((7 − 1)² + (10 − 2)²) = √(36 + 64) = √100 = 10, so the radius is 5.
   Equation: (x − 4)² + (y − 6)² = 5² = 25.
-  Using 10² = 100 is the trap — halve the diameter first.
+  Using 10² = 100 is the trap, halve the diameter first.
 ```
 
 ```yaml
@@ -1290,7 +1290,7 @@ marks: 2
 misconception: point-circle-position
 worked: |
   Substitute the point into the left-hand side: 5² + 1² = 25 + 1 = 26.
-  26 > 25, so the point is further from the centre (0, 0) than the radius 5 — it lies OUTSIDE the circle.
+  26 > 25, so the point is further from the centre (0, 0) than the radius 5, it lies OUTSIDE the circle.
   (Equal would mean on the circle; less would mean inside.)
 ```
 
@@ -1396,7 +1396,7 @@ misconception: fractional-index-power-rule
 worked: |
   Rewrite as y = x^½.
   dy/dx = ½x^(−½) = 1/(2x^½) = 1/(2√x).
-  Subtract 1 from ½ to get −½ — the index becomes negative, which sends the x to the denominator.
+  Subtract 1 from ½ to get −½, the index becomes negative, which sends the x to the denominator.
 ```
 
 ```yaml
@@ -1415,7 +1415,7 @@ worked: |
   Chain rule: differentiate the outside, then MULTIPLY by the derivative of the inside.
   Outside: 5(3x − 1)⁴. Inside: d/dx(3x − 1) = 3.
   dy/dx = 5(3x − 1)⁴ × 3 = 15(3x − 1)⁴.
-  Answer 5(3x − 1)⁴ is what you get if the × 3 is forgotten — the single most common calculus slip.
+  Answer 5(3x − 1)⁴ is what you get if the × 3 is forgotten, the single most common calculus slip.
 ```
 
 ```yaml
@@ -1545,7 +1545,7 @@ misconception: tangent-equation-point-gradient
 worked: |
   dy/dx = 2x − 3. At x = 4 the gradient is 2(4) − 3 = 5.
   Tangent through (4, 4): y − 4 = 5(x − 4) → y = 5x − 20 + 4 = 5x − 16.
-  Check: at x = 4, y = 20 − 16 = 4 — the tangent really does pass through the point.
+  Check: at x = 4, y = 20 − 16 = 4, the tangent really does pass through the point.
 ```
 
 ```yaml
@@ -1564,7 +1564,7 @@ worked: |
   dy/dx = 2x, so the tangent gradient at x = 1 is 2.
   The normal is perpendicular: gradient = −1/2.
   y − 1 = −½(x − 1) → 2y − 2 = −x + 1 → x + 2y = 3.
-  (y = 2x − 1 is the TANGENT — read the question.)
+  (y = 2x − 1 is the TANGENT, read the question.)
 ```
 
 ```yaml
@@ -1582,7 +1582,7 @@ misconception: stationary-set-derivative-zero
 worked: |
   Stationary points occur where dy/dx = 0.
   dy/dx = 3x² − 6x = 3x(x − 2) = 0 → x = 0 or x = 2.
-  Set the FIRST derivative to zero — the second derivative is only used afterwards, to test the nature.
+  Set the FIRST derivative to zero, the second derivative is only used afterwards, to test the nature.
 ```
 
 ```yaml
@@ -1655,7 +1655,7 @@ marks: 3
 misconception: second-derivative-zero-inconclusive
 worked: |
   f'(−1) = 3(0)² = 0, so x = −1 IS a stationary point.
-  f''(x) = 6(x + 1), and f''(−1) = 0 — so the second-derivative test gives no decision.
+  f''(x) = 6(x + 1), and f''(−1) = 0, so the second-derivative test gives no decision.
   Look at the SIGN of f'(x) either side: 3(x + 1)² is positive on both sides (a square is never negative).
   The gradient is positive → 0 → positive, so the curve keeps rising: it is a stationary point of inflexion.
 ```
@@ -1676,7 +1676,7 @@ worked: |
   Connected rates: dy/dt = dy/dx × dx/dt.
   dy/dx = 3x² = 3(2)² = 12 when x = 2, and dx/dt = 0.5.
   dy/dt = 12 × 0.5 = 6 units per second.
-  Answer 12 is dy/dx alone — the given rate must still be multiplied in.
+  Answer 12 is dy/dx alone, the given rate must still be multiplied in.
 ```
 
 ```yaml
@@ -1695,7 +1695,7 @@ worked: |
   dA/dt = dA/dr × dr/dt.
   dA/dr = 2πr = 2π(5) = 10π when r = 5.
   dA/dt = 10π × 0.2 = 2π cm² per second (about 6.28 cm² per second).
-  Answer 10π is dA/dr — it is a gradient, not a rate in time.
+  Answer 10π is dA/dr, it is a gradient, not a rate in time.
 ```
 
 ```yaml
@@ -1731,7 +1731,7 @@ misconception: second-derivative-differentiate-twice
 worked: |
   First derivative: dy/dx = 12x³ − 4x.
   Differentiate again: d²y/dx² = 36x² − 4.
-  12x³ − 4x is only the FIRST derivative — the question asks for the second.
+  12x³ − 4x is only the FIRST derivative, the question asks for the second.
 ```
 
 ```yaml
@@ -1758,7 +1758,7 @@ misconception: stationary-set-derivative-zero
 worked: |
   dy/dx = 2x − 10.
   Set dy/dx = 0: 2x − 10 = 0 → x = 5.
-  (d²y/dx² = 2 > 0, so it is a minimum point — completing the square gives the same vertex, x = 5.)
+  (d²y/dx² = 2 > 0, so it is a minimum point, completing the square gives the same vertex, x = 5.)
 ```
 
 ```yaml
@@ -1785,7 +1785,7 @@ misconception: normal-gradient-negative-reciprocal
 worked: |
   dy/dx = 6x − 5. At x = 1 the TANGENT gradient is 6(1) − 5 = 1.
   The normal is perpendicular to the tangent, so its gradient is −1 ÷ 1 = −1.
-  Quoting 1 gives the tangent gradient — the question asked for the normal.
+  Quoting 1 gives the tangent gradient, the question asked for the normal.
 ```
 
 ```yaml
@@ -1915,7 +1915,7 @@ misconception: definite-integral-subtract-lower-limit
 worked: |
   Integrate first: the integral of 3x² is x³.
   Evaluate between the limits: [x³] from 1 to 3 = 3³ − 1³ = 27 − 1 = 26.
-  The lower limit must be SUBTRACTED — stopping at 27 forgets it. No + C is needed for a definite integral.
+  The lower limit must be SUBTRACTED, stopping at 27 forgets it. No + C is needed for a definite integral.
 ```
 
 ```yaml
@@ -1950,7 +1950,7 @@ misconception: negative-index-integration
 worked: |
   The integral of x⁻² is x⁻¹/(−1) = −1/x.
   [−1/x] from 1 to 2 = (−1/2) − (−1/1) = −0.5 + 1 = 0.5.
-  Both terms are negative, so subtracting the lower limit ADDS 1 — the answer is positive.
+  Both terms are negative, so subtracting the lower limit ADDS 1, the answer is positive.
 ```
 
 ```yaml
@@ -2042,7 +2042,7 @@ marks: 3
 misconception: constant-of-integration-from-point
 worked: |
   Integrate the gradient function: y = 3x² − 4x + C.
-  The + C is not optional — use the given point to find it.
+  The + C is not optional, use the given point to find it.
   At (2, 5): 5 = 3(4) − 4(2) + C = 12 − 8 + C → C = 1.
   So y = 3x² − 4x + 1.
 ```
@@ -2060,7 +2060,7 @@ answer: 3
 marks: 4
 misconception: split-fraction-before-integrating
 worked: |
-  You cannot integrate a quotient directly — SPLIT it into powers of x first:
+  You cannot integrate a quotient directly, SPLIT it into powers of x first:
   (x + 1)/√x = x/x^½ + 1/x^½ = x^½ + x^(−½).
   Integrate each: x^(3/2) ÷ (3/2) + x^(½) ÷ (½) = (2/3)x^(3/2) + 2x^½.
   So the integral is (2/3)x√x + 2√x + C.
@@ -2113,7 +2113,7 @@ checks:
   - "Halve the coefficient of x, then SUBTRACT the square you just added."
   - "If the x² coefficient is not 1, factor it out of the x-terms FIRST."
   - "When the factor goes back in, it multiplies the number inside the bracket too."
-  - "Check your work by expanding — it must return the original expression."
+  - "Check your work by expanding, it must return the original expression."
 ```
 
 ```yaml
@@ -2133,7 +2133,7 @@ checks:
   - "Rearrange to = 0 first, then read off a, b and c with their signs."
   - "b² − 4ac > 0 two distinct real roots; = 0 two equal roots; < 0 no real roots."
   - "'Real and distinct' is a strict >, so the equality case is excluded."
-  - "b² means (−3)² = 9, not −9 — square the whole coefficient, sign included."
+  - "b² means (−3)² = 9, not −9, square the whole coefficient, sign included."
 ```
 
 ```yaml
@@ -2152,7 +2152,7 @@ topic: "Quadratic inequalities"
 checks:
   - "Bring everything to one side so that the other side is 0 before factorising."
   - "Positive x² coefficient: the expression is NEGATIVE between the roots, POSITIVE outside them."
-  - "Sketch the parabola and the number line — do not guess the direction."
+  - "Sketch the parabola and the number line, do not guess the direction."
   - "Never divide an inequality by an unknown; it may be negative and flip the sign."
   - "Keep ≤ / ≥ only if the original inequality allowed equality."
 ```
@@ -2163,7 +2163,7 @@ topic: "Simultaneous equations (one linear, one quadratic)"
 checks:
   - "Substitute FROM the linear equation INTO the non-linear one."
   - "You should end up with a quadratic, so expect TWO pairs of answers."
-  - "Put each x back into the LINEAR equation — it is safer and faster."
+  - "Put each x back into the LINEAR equation, it is safer and faster."
   - "Pair the answers up: write (x₁, y₁) and (x₂, y₂) so the values do not get mixed."
 ```
 
@@ -2173,9 +2173,9 @@ topic: "Surds: simplifying and rationalising"
 checks:
   - "Pull out the largest square factor: √50 = √25 × √2 = 5√2."
   - "Only LIKE surds can be added: 5√2 + 3√2 = 8√2, but √2 + √3 stays as it is."
-  - "√a × √a = a — the root disappears, it does not stay as a surd."
+  - "√a × √a = a, the root disappears, it does not stay as a surd."
   - "To rationalise, multiply top and bottom by the CONJUGATE (change the middle sign only)."
-  - "The new denominator is a² − b², a whole number — if it is not, check your conjugate."
+  - "The new denominator is a² − b², a whole number, if it is not, check your conjugate."
 ```
 
 ```yaml
@@ -2193,9 +2193,9 @@ kind: careless
 topic: "Remainder and factor theorem"
 checks:
   - "For (x − a), test x = +a. For (x + a), test x = −a. Flip the sign every time."
-  - "For (bx − a), the test value is x = a/b, which is usually a fraction — not an integer."
+  - "For (bx − a), the test value is x = a/b, which is usually a fraction, not an integer."
   - "Remainder theorem: the remainder is f(a). Factor theorem: it is a factor only if f(a) = 0."
-  - "Two unknowns need two equations — set up both conditions given before you solve."
+  - "Two unknowns need two equations, set up both conditions given before you solve."
 ```
 
 ```yaml
@@ -2204,7 +2204,7 @@ topic: "Factorising and solving a cubic"
 checks:
   - "Find the first root by trial from the FACTORS of the constant term (±1, ±2, ±3, ...)."
   - "Divide by that factor (long division or comparing coefficients) to get a quadratic."
-  - "Factorise the quadratic — do not stop until you have three linear factors, or a quadratic that will not factorise."
+  - "Factorise the quadratic, do not stop until you have three linear factors, or a quadratic that will not factorise."
   - "The factor (x + 1) gives the root x = −1. Flip the sign when reading roots off."
 ```
 
@@ -2213,8 +2213,8 @@ kind: careless
 topic: "Sum and difference of two cubes"
 checks:
   - "Recognise cubes: 8x³ = (2x)³, 27 = 3³, 1 = 1³."
-  - "a³ − b³ = (a − b)(a² + ab + b²) — minus in front, plus in the middle."
-  - "a³ + b³ = (a + b)(a² − ab + b²) — plus in front, minus in the middle."
+  - "a³ − b³ = (a − b)(a² + ab + b²), minus in front, plus in the middle."
+  - "a³ + b³ = (a + b)(a² − ab + b²), plus in front, minus in the middle."
   - "The middle term is ab, with NO 2 in front (that would be a perfect square, a different formula)."
 ```
 
@@ -2222,7 +2222,7 @@ checks:
 kind: careless
 topic: "Partial fractions: choosing the correct form"
 checks:
-  - "Check the numerator degree first — if it is not lower than the denominator, divide out first."
+  - "Check the numerator degree first, if it is not lower than the denominator, divide out first."
   - "Distinct linear factor (ax + b) → one constant on top: A/(ax + b)."
   - "Repeated factor (ax + b)² → TWO fractions: B/(ax + b) and C/(ax + b)²."
   - "Irreducible quadratic (x² + c²) → a LINEAR numerator: (Bx + C)/(x² + c²)."
@@ -2234,7 +2234,7 @@ kind: careless
 topic: "Partial fractions: finding the constants"
 checks:
   - "Multiply through by the whole denominator to get an identity with no fractions."
-  - "Substitute the value that makes each bracket zero — this kills the other terms (the cover-up trick)."
+  - "Substitute the value that makes each bracket zero, this kills the other terms (the cover-up trick)."
   - "For a repeated factor you still need one more equation: compare coefficients or use any other x."
   - "Check by putting one extra value of x into both sides."
 ```
@@ -2243,10 +2243,10 @@ checks:
 kind: careless
 topic: "Exact values and the CAST diagram"
 checks:
-  - "Learn the 30-60-90 and 45-45-90 triangles — exact values must not come from a calculator."
+  - "Learn the 30-60-90 and 45-45-90 triangles, exact values must not come from a calculator."
   - "Find the BASIC (reference) angle first, then attach the sign from the quadrant."
   - "CAST: 4th quadrant Cos +, 1st All +, 2nd Sin +, 3rd Tan +."
-  - "'Exact value' means leave surds and fractions in — no decimals."
+  - "'Exact value' means leave surds and fractions in, no decimals."
 ```
 
 ```yaml
@@ -2264,7 +2264,7 @@ kind: careless
 topic: "Trig graphs: amplitude and period"
 checks:
   - "For y = a sin bx + c: amplitude = |a|; period = 360°/b (or 2π/b in radians)."
-  - "For tan bx the period is 180°/b (or π/b) — tangent repeats twice as often as sine and cosine."
+  - "For tan bx the period is 180°/b (or π/b), tangent repeats twice as often as sine and cosine."
   - "c moves the whole graph up or down; it does not change the amplitude."
   - "A bigger b means MORE cycles in the same width, so a SHORTER period."
 ```
@@ -2273,7 +2273,7 @@ checks:
 kind: careless
 topic: "Trig identities: proving and simplifying"
 checks:
-  - "Start from the messier side and work towards the other one — never work on both sides at once."
+  - "Start from the messier side and work towards the other one, never work on both sides at once."
   - "Change everything into sines and cosines when you are stuck."
   - "Keep sin²θ + cos²θ = 1 and its two rearrangements in view: 1 + tan²θ = sec²θ, 1 + cot²θ = cosec²θ."
   - "Write down what you are proving on the last line: LHS = RHS (proved)."
@@ -2286,14 +2286,14 @@ checks:
   - "cos(A ± B) FLIPS the sign in the middle: cos A cos B ∓ sin A sin B."
   - "sin(A ± B) keeps the sign: sin A cos B ± cos A sin B."
   - "Split awkward angles into known ones: 75° = 45° + 30°, 15° = 45° − 30°."
-  - "The formulae are printed on the formulae page — copy them exactly, do not trust memory."
+  - "The formulae are printed on the formulae page, copy them exactly, do not trust memory."
 ```
 
 ```yaml
 kind: careless
 topic: "Double angle formulae"
 checks:
-  - "sin 2A = 2 sin A cos A. There is a 2 in front — do not drop it."
+  - "sin 2A = 2 sin A cos A. There is a 2 in front, do not drop it."
   - "cos 2A has three forms. Pick the one that matches what you are given (sines only, cosines only, or both)."
   - "tan 2A = 2 tan A / (1 − tan²A). The denominator can be negative."
   - "2A is not 2 × (the answer for A). Substitute into the formula, not into the answer."
@@ -2305,7 +2305,7 @@ topic: "Solving trig equations in a given interval"
 checks:
   - "Write the interval down first, and keep checking every answer against it."
   - "Find the basic angle from the POSITIVE value, then use CAST to place all the quadrants."
-  - "A calculator gives you ONE answer. There are usually two per revolution — find them all."
+  - "A calculator gives you ONE answer. There are usually two per revolution, find them all."
   - "Sine and cosine repeat every 360°; tangent repeats every 180°."
   - "Reject any solution outside the interval; do not silently keep it."
 ```
@@ -2324,10 +2324,10 @@ checks:
 kind: careless
 topic: "R-formula: finding R and α"
 checks:
-  - "R = √(a² + b²) — add the SQUARES of the two coefficients, never the coefficients themselves."
+  - "R = √(a² + b²), add the SQUARES of the two coefficients, never the coefficients themselves."
   - "Expand the target form and COMPARE COEFFICIENTS to see which ratio gives tan α."
   - "α is always acute here, so take the positive value of tan⁻¹."
-  - "The sign in R cos(θ − α) or R sin(θ + α) is set by the question — do not change it to suit your answer."
+  - "The sign in R cos(θ − α) or R sin(θ + α) is set by the question, do not change it to suit your answer."
   - "Substitute one value of θ back to check that your R form matches the original expression."
 ```
 
@@ -2337,7 +2337,7 @@ topic: "R-formula: maximum, minimum and solving"
 checks:
   - "Maximum of R cos(θ − α) is +R, at θ = α. Minimum is −R."
   - "A constant in front (e.g. 8 + R cos(...)) shifts the max and min: they become 8 + R and 8 − R."
-  - "The question may ask for the VALUE of the maximum, or the value of θ where it occurs — read carefully."
+  - "The question may ask for the VALUE of the maximum, or the value of θ where it occurs, read carefully."
   - "When solving R cos(θ − α) = c, remember to add α back at the end."
 ```
 
@@ -2347,7 +2347,7 @@ topic: "Coordinate geometry: parallel and perpendicular lines"
 checks:
   - "Rearrange to y = mx + c before reading off any gradient."
   - "Parallel: same gradient. Perpendicular: m₁m₂ = −1, so flip the fraction AND change the sign."
-  - "A horizontal line (m = 0) has a VERTICAL normal — x = constant, which has no gradient."
+  - "A horizontal line (m = 0) has a VERTICAL normal, x = constant, which has no gradient."
   - "Substitute the given point at the end to find c, and check it satisfies your final equation."
 ```
 
@@ -2358,7 +2358,7 @@ checks:
   - "Midpoint ADDS and halves; distance SUBTRACTS and squares. Do not swap them."
   - "For the shoelace formula, list the points in order around the shape and repeat the first one at the end."
   - "Take the modulus, then multiply by ½. Forgetting the ½ doubles your area."
-  - "Going round the shape in the wrong order (crossing over) gives a wrong area — sketch it first."
+  - "Going round the shape in the wrong order (crossing over) gives a wrong area, sketch it first."
 ```
 
 ```yaml
@@ -2368,7 +2368,7 @@ checks:
   - "In (x − a)² + (y − b)² = r², the centre is (a, b): the signs FLIP."
   - "The right-hand side is r², so take the square root to get the radius."
   - "In x² + y² + 2gx + 2fy + c = 0, the centre is (−g, −f) and r = √(g² + f² − c)."
-  - "The x² and y² coefficients must both be 1 — divide through first if they are not."
+  - "The x² and y² coefficients must both be 1, divide through first if they are not."
 ```
 
 ```yaml
@@ -2387,8 +2387,8 @@ kind: careless
 topic: "Differentiation: powers, negative and fractional indices"
 checks:
   - "Rewrite everything as a power of x BEFORE differentiating: 4/x³ = 4x⁻³, √x = x^½."
-  - "d/dx(xⁿ) = nxⁿ⁻¹ — multiply by the old power, then subtract 1 from it."
-  - "Subtracting 1 from −3 gives −4, and from ½ gives −½ — the index goes DOWN, so it can get more negative."
+  - "d/dx(xⁿ) = nxⁿ⁻¹, multiply by the old power, then subtract 1 from it."
+  - "Subtracting 1 from −3 gives −4, and from ½ gives −½, the index goes DOWN, so it can get more negative."
   - "The derivative of a constant is 0."
   - "Convert your answer back to the form the question used (fraction or root) if it asks for it."
 ```
@@ -2408,8 +2408,8 @@ kind: careless
 topic: "Differentiation: the product rule"
 checks:
   - "Spot a product: two x-expressions MULTIPLIED together."
-  - "(uv)' = u'v + uv' — you differentiate each part in turn, never both at once."
-  - "The inner brackets usually need the chain rule as well — do that before you substitute."
+  - "(uv)' = u'v + uv', you differentiate each part in turn, never both at once."
+  - "The inner brackets usually need the chain rule as well, do that before you substitute."
   - "Factorise the answer if the question says 'in factorised form' or if you must then solve = 0."
 ```
 
@@ -2417,7 +2417,7 @@ checks:
 kind: careless
 topic: "Differentiation: the quotient rule"
 checks:
-  - "(u/v)' = (u'v − uv')/v². The MINUS makes the order matter — u' comes first."
+  - "(u/v)' = (u'v − uv')/v². The MINUS makes the order matter, u' comes first."
   - "The denominator is v SQUARED, not v."
   - "If the denominator is a single power of x, splitting the fraction is faster than the quotient rule."
   - "Simplify the numerator fully; many marks sit in the tidy-up."
@@ -2427,9 +2427,9 @@ checks:
 kind: careless
 topic: "Tangents and normals"
 checks:
-  - "The gradient of the tangent is dy/dx at that point — substitute the x-value into the DERIVATIVE."
+  - "The gradient of the tangent is dy/dx at that point, substitute the x-value into the DERIVATIVE."
   - "The gradient of the normal is −1 ÷ (tangent gradient)."
-  - "You need a POINT as well as a gradient — if only x is given, find y from the original curve."
+  - "You need a POINT as well as a gradient, if only x is given, find y from the original curve."
   - "Use y − y₁ = m(x − x₁) and check the point satisfies your final equation."
   - "Read carefully: tangent or normal? They are one sign apart, and both are asked for regularly."
 ```
@@ -2438,10 +2438,10 @@ checks:
 kind: careless
 topic: "Stationary points and their nature"
 checks:
-  - "Set dy/dx = 0 and solve — this gives the x-coordinates only."
+  - "Set dy/dx = 0 and solve, this gives the x-coordinates only."
   - "Substitute back into the ORIGINAL equation (not the derivative) to get the y-coordinates."
   - "Test the nature: d²y/dx² > 0 → minimum; < 0 → maximum."
-  - "If d²y/dx² = 0, the test fails — check the sign of dy/dx just before and just after instead."
+  - "If d²y/dx² = 0, the test fails, check the sign of dy/dx just before and just after instead."
   - "A stationary point of inflexion has dy/dx = 0 but the gradient keeps the same sign either side."
 ```
 
@@ -2451,7 +2451,7 @@ topic: "Increasing and decreasing functions"
 checks:
   - "Increasing means dy/dx > 0; decreasing means dy/dx < 0."
   - "'Show that f is increasing for all x' usually means showing f'(x) is a positive constant plus a square."
-  - "A square is never negative — that is what makes expressions like 3(x + 1)² ≥ 0 so useful."
+  - "A square is never negative, that is what makes expressions like 3(x + 1)² ≥ 0 so useful."
   - "State the conclusion in words; the reasoning mark is for saying WHY the derivative cannot be negative."
 ```
 
@@ -2460,7 +2460,7 @@ kind: careless
 topic: "Maxima and minima problems"
 checks:
   - "Form the expression to be maximised, then use the constraint to reduce it to ONE variable."
-  - "Differentiate, set = 0, solve — then test the nature with the second derivative."
+  - "Differentiate, set = 0, solve, then test the nature with the second derivative."
   - "Answer the question that was asked: the maximum VOLUME, not the value of x that produces it."
   - "Reject impossible values (negative lengths, x outside the given domain)."
   - "Keep the units and state them in the final answer."
@@ -2471,7 +2471,7 @@ kind: careless
 topic: "Connected rates of change"
 checks:
   - "Write down the rate you are GIVEN and the rate you WANT, with correct notation (dx/dt, dV/dt, ...)."
-  - "Chain them: dV/dt = dV/dx × dx/dt. The middle letters cancel — use that to check your chain."
+  - "Chain them: dV/dt = dV/dx × dx/dt. The middle letters cancel, use that to check your chain."
   - "You may need to invert one derivative: dx/dV = 1 ÷ (dV/dx)."
   - "Substitute the given instant (e.g. when r = 5) only AFTER differentiating, never before."
 ```
@@ -2481,8 +2481,8 @@ kind: careless
 topic: "Integration: indefinite integrals and + C"
 checks:
   - "Add 1 to the index, then divide by the NEW index. This is the reverse of differentiating."
-  - "NEVER forget + C on an indefinite integral — it is a mark on its own."
-  - "You cannot integrate a product or quotient term by term — expand or split it first."
+  - "NEVER forget + C on an indefinite integral, it is a mark on its own."
+  - "You cannot integrate a product or quotient term by term, expand or split it first."
   - "Check any integral by differentiating your answer: you must get back the original expression."
 ```
 
@@ -2500,7 +2500,7 @@ checks:
 kind: careless
 topic: "Definite integrals and area under a curve"
 checks:
-  - "No + C is needed for a definite integral — but the square brackets and limits are."
+  - "No + C is needed for a definite integral, but the square brackets and limits are."
   - "Substitute the UPPER limit first, then subtract the value at the lower limit. Brackets prevent sign errors."
   - "For an area, find the limits first: usually where the curve cuts the x-axis, or the given lines."
   - "For a region between a curve and a line, integrate (top − bottom) between the intersection points."
@@ -2515,7 +2515,7 @@ checks:
   - "Keep full accuracy in your working; round only on the FINAL line."
   - "'Exact value' means a surd or a fraction, not a decimal."
   - "'Show that' answers must be worked to greater accuracy first, then rounded to the printed value."
-  - "Show the method — omitting essential working loses method marks even when the answer is right."
+  - "Show the method, omitting essential working loses method marks even when the answer is right."
 ```
 
 ```yaml
@@ -2578,7 +2578,7 @@ body: "The value of an integral evaluated between two limits: F(b) − F(a), whe
 kind: definition
 term: "Amplitude and period"
 topic: "G1 Trigonometry"
-body: "For y = a sin bx + c, the amplitude is |a| (half the distance between the maximum and minimum values) and the period is 360°/b in degrees, or 2π/b in radians — the horizontal width of one complete cycle."
+body: "For y = a sin bx + c, the amplitude is |a| (half the distance between the maximum and minimum values) and the period is 360°/b in degrees, or 2π/b in radians, the horizontal width of one complete cycle."
 ```
 
 ```yaml

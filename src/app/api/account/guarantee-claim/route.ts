@@ -7,7 +7,7 @@ import { getCustomerId } from "@/lib/server/customer-session";
 const SUPPORT_EMAIL = "hello@studylah.education";
 
 // Structured money-back guarantee claim: stores the audit row and emails the
-// owner. A human decides — nothing here approves or refunds automatically.
+// owner. A human decides, nothing here approves or refunds automatically.
 export async function POST(request: Request) {
   const customerId = await getCustomerId();
   const back = (flag: string) =>
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     return back("error=claim");
   }
 
-  // One open claim per order+subject — resubmitting doesn't duplicate.
+  // One open claim per order+subject, resubmitting doesn't duplicate.
   const existing = await prisma.guaranteeClaim.findFirst({
     where: { orderId, subjectName, status: "submitted" },
   });
@@ -50,7 +50,7 @@ export async function POST(request: Request) {
   try {
     await sendEmail({
       to: SUPPORT_EMAIL,
-      subject: `Guarantee claim — order No. ${orderId}, ${subjectName}`,
+      subject: `Guarantee claim, order No. ${orderId}, ${subjectName}`,
       html: emailLayout(`
         <h1 style="font-size:18px;margin:0 0 12px;color:#101f33;">Guarantee claim</h1>
         <p style="font-size:14px;color:#3d4e63;margin:0 0 8px;">

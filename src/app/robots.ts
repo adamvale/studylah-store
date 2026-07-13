@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 // Crawl policy. AI answer engines (Google AI Overviews via Googlebot,
 // ChatGPT Search, Perplexity, Claude) are deliberately WELCOME on public
-// pages — citations in AI answers are a discovery channel for a store this
+// pages, citations in AI answers are a discovery channel for a store this
 // size, not a threat. Private/transactional surfaces stay out.
 const PRIVATE = [
   "/admin",

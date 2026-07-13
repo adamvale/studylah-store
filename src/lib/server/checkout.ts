@@ -84,13 +84,13 @@ export async function quoteCheckout(
   rawItems: unknown,
   rawCode?: unknown,
   // Buyer's email, when known. Enables the strict referral guards (no
-  // self-referral, first order only) — omitted by the webhook's re-quote so a
+  // self-referral, first order only), omitted by the webhook's re-quote so a
   // paid order can never fail on referral rules after the money moved.
   buyerEmail?: string
 ): Promise<QuoteResult> {
   const items = parseItems(rawItems);
   if (!items) {
-    return { ok: false, error: "Your cart looks invalid — refresh and try again.", status: 400 };
+    return { ok: false, error: "Your cart looks invalid, refresh and try again.", status: 400 };
   }
 
   // Authoritative pricing: the admin's live DB prices + early-bird flag, the
@@ -121,14 +121,14 @@ export async function quoteCheckout(
       discountCode = found.code;
       discountDescription = found.description || found.code;
     } else {
-      // Not an admin discount code — maybe a friend's referral code.
+      // Not an admin discount code, maybe a friend's referral code.
       const referral = await checkReferralCode(code, buyerEmail);
       if (!referral.ok) {
         return { ok: false, error: referral.error, status: 400 };
       }
       discountCents = Math.min(REFERRAL_DISCOUNT_CENTS, subtotalCents);
       discountCode = code;
-      discountDescription = "Referral — S$15 off your first order";
+      discountDescription = "Referral, S$15 off your first order";
     }
   }
 
@@ -149,7 +149,7 @@ export async function quoteCheckout(
     return {
       item: line.item,
       subjectName,
-      label: `${subjectName} — ${TIER_NAMES[line.item.tier]} (${LEVELS[line.item.level].shortName})`,
+      label: `${subjectName}, ${TIER_NAMES[line.item.tier]} (${LEVELS[line.item.level].shortName})`,
       cents: lineCents[i],
     };
   });
