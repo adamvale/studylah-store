@@ -14,7 +14,9 @@ import { getPricing } from "@/lib/server/pricing-store";
 import { subjectCopy } from "@/lib/subject-copy";
 import { realTopCalls } from "@/lib/forecast-tables";
 import { getQuestionSet } from "@/lib/server/question-bank";
+import { packPreviewFor } from "@/lib/pack-previews";
 import { DisclaimerBox } from "./disclaimer";
+import { PackPreview } from "./pack-preview";
 import { ExamCountdown } from "./exam-countdown";
 import { HeatBar } from "./heat";
 import { SubjectStickyCta } from "./subject-sticky-cta";
@@ -29,6 +31,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
   const hasQuiz = Boolean(await getQuestionSet(subject.level, subject.slug));
   const copy = subjectCopy(subject.level, subject.slug);
   const products = productsForSubject(subject);
+  const packPreview = packPreviewFor(subject.level, subject.slug);
 
   const title = copy
     ? `${subject.name} ${copy.syllabusCode}`
@@ -280,7 +283,11 @@ export async function SubjectView({ subject }: { subject: Subject }) {
         </div>
       </div>
 
-      <div className="mt-12">
+      {packPreview && (
+        <PackPreview preview={packPreview} subjectName={subject.name} />
+      )}
+
+      <div id="tiers" className="mt-12 scroll-mt-24">
         <TierSelector
           level={subject.level}
           subjectSlug={subject.slug}

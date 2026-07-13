@@ -18,8 +18,9 @@ import {
 import type { Pricing } from "@/lib/pricing";
 import { getPricing } from "@/lib/server/pricing-store";
 import { ExamCountdown } from "@/components/exam-countdown";
-import { ForecastCard } from "@/components/forecast-card";
 import { HeroBackdrop } from "@/components/hero-backdrop";
+import { PackPreview } from "@/components/pack-preview";
+import { packPreviewFor } from "@/lib/pack-previews";
 import { SocialProof } from "@/components/social-proof";
 
 /* Playful motifs, inline SVG so they need no external assets and pass CSP. */
@@ -94,6 +95,7 @@ function Badge({ children }: { children: React.ReactNode }) {
 function Hero({ pricing }: { pricing: Pricing }) {
   const { alacartePrice } = pricing;
   const { perfect, total } = scorecardHeadline();
+  const heroPreview = packPreviewFor("o-level", "chemistry-pure");
   return (
     <section className="relative flex items-center overflow-hidden md:min-h-[calc(100svh-4.5rem)]">
       <HeroBackdrop />
@@ -171,10 +173,15 @@ function Hero({ pricing }: { pricing: Pricing }) {
           <div className="mascot-bob pointer-events-none absolute -right-2 -top-8 z-10 hidden sm:block">
             <Ghost size={72} pose="victory" />
           </div>
-          {/* Glow frame lifts the forecast card off the aurora and floats it. */}
-          <div className="glow-hero hero-float rounded-2xl">
-            <ForecastCard />
-          </div>
+          {/* The flippable "see inside" preview of the real PDFs, floated off
+              the aurora. Replaces the old abstract forecast card. */}
+          {heroPreview && (
+            <PackPreview
+              preview={heroPreview}
+              subjectName="Chemistry (Pure)"
+              variant="hero"
+            />
+          )}
         </div>
       </div>
 

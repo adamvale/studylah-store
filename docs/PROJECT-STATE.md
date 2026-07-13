@@ -49,6 +49,18 @@ Rehearsal (2-3 PDFs; paper numbers vary by subject). Tiers
 Essential/Strategic/Master; Mega-Bundle (3 subjects), All-In (5-6). Slugs are
 FROZEN (they live in URLs and in every `ProductFile.filePath`).
 
+**"See inside" pack preview** (`src/components/pack-preview.tsx`, wired into
+`SubjectView` above the tier selector). A flippable, image-only viewer showing a
+few real pages of each of the 4 products, with the sellable content (2026 calls,
+questions, answer keys) Gaussian-blurred and a PREVIEW watermark baked in. The
+images live in `public/previews/<level>/<slug>/` and are rendered OFFLINE by
+`scripts/gen-pack-preview.py` (needs `pypdfium2` + `Pillow`; reads from
+`private/pdfs/…`), so **no source PDF is ever served to the browser**. To add a
+subject: render its previews (forecast inner pages FULL-blur to protect the
+prediction table; other products keep a thin title strip sharp), eyeball each
+image, then add a manifest entry to `PACK_PREVIEWS` in `src/lib/pack-previews.ts`.
+Currently populated for `o-level/chemistry-pure` only.
+
 ## Study HQ (the portal, `/account`)
 
 Tabs: **Today** (computed daily mission + daily-3 quiz + compact risk),
