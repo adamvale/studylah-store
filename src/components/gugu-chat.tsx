@@ -12,6 +12,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { usePricing } from "@/lib/pricing-context";
 import { sgd } from "@/lib/catalogue";
+import { GUGU_SAY_EVENT, type GuguSayDetail } from "@/lib/gugu-bus";
 
 // Gugu — the floating sales helper (bottom-left of the storefront).
 //
@@ -441,6 +442,28 @@ function TypewriterText({
   return <>{text.slice(0, count)}</>;
 }
 
+// Types the floating bubble out character-by-character and RE-types whenever the
+// message changes — so every new bubble (a rotated attract line, or a
+// quiz-driven message like "Shh… 🙊") looks like Gugu is speaking it. Splits by
+// code point (Array.from) so emoji are never sliced mid-surrogate.
+function BubbleText({ text }: { text: string }) {
+  const chars = useMemo(() => Array.from(text), [text]);
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    setCount(0);
+    const step = Math.max(1, Math.ceil(chars.length / 55));
+    const id = setInterval(() => {
+      setCount((c) => {
+        const next = Math.min(chars.length, c + step);
+        if (next >= chars.length) clearInterval(id);
+        return next;
+      });
+    }, 45);
+    return () => clearInterval(id);
+  }, [chars]);
+  return <>{chars.slice(0, count).join("")}</>;
+}
+
 interface ChatMessage {
   id: number;
   role: "gugu" | "user";
@@ -494,7 +517,27 @@ export function GuguChat() {
     const id = setInterval(() => setBubbleIdx((i) => i + 1), 6500);
     return () => clearInterval(id);
   }, [open]);
-  const bubbleText = bubblePool[bubbleIdx % bubblePool.length];
+
+  // A page (e.g. the diagnostic quiz) can push a message into the bubble via the
+  // gugu bus. `hold` pins it (no rotation) until replaced; otherwise it shows for
+  // a few seconds and the usual attract rotation resumes.
+  const [override, setOverride] = useState<{ text: string; hold: boolean } | null>(null);
+  useEffect(() => {
+    const onSay = (e: Event) => {
+      const detail = (e as CustomEvent<GuguSayDetail>).detail;
+      if (!detail?.text) return;
+      setOverride({ text: detail.text, hold: !!detail.hold });
+    };
+    window.addEventListener(GUGU_SAY_EVENT, onSay);
+    return () => window.removeEventListener(GUGU_SAY_EVENT, onSay);
+  }, []);
+  useEffect(() => {
+    if (!override || override.hold) return;
+    const id = setTimeout(() => setOverride(null), 8000);
+    return () => clearTimeout(id);
+  }, [override]);
+
+  const bubbleText = override ? override.text : bubblePool[bubbleIdx % bubblePool.length];
 
   // Keep the latest message in view — on new messages and on each typed char.
   const scrollToBottom = useCallback(() => {
@@ -785,7 +828,7 @@ export function GuguChat() {
               aria-hidden="true"
               className="absolute -left-[7px] top-1/2 h-3 w-3 -translate-y-1/2 rotate-45 border-b-2 border-l-2 border-[#4ef3c9] bg-[#12122b]"
             />
-            {bubbleText}
+            <BubbleText text={bubbleText} />
           </button>
         )}
       </div>

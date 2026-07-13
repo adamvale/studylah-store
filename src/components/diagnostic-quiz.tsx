@@ -5,6 +5,23 @@ import { useRouter } from "next/navigation";
 import type { PublicQuestion } from "@/lib/diagnostic-questions";
 import { TierPill, type ForecastTier } from "@/components/heat";
 import { QuizCalculator } from "@/components/quiz-calculator";
+import { guguSay } from "@/lib/gugu-bus";
+
+// Gugu's floating-bubble reactions to the quiz. Compliant: encouragement about
+// effort and next steps, never a grade promise.
+const GUGU_START = "Shh… 🙊 focus mode — you've got this.";
+const GUGU_QUIT =
+  "Don't quit — I believe in you! 💪 Come back any time and we'll close the gap together.";
+function guguFinishLine(band: SubmitResult["band"]): string {
+  switch (band) {
+    case "pass":
+      return "Sharp work! 🎯 You're on top of these. Want to lock it in?";
+    case "warning":
+      return "So close! 💡 A few marks slipping — I can show you exactly where.";
+    case "danger":
+      return "Great start! 💪 Big marks to win back — let's close the gap together.";
+  }
+}
 
 interface SubmitResult {
   attemptId: string;
@@ -79,11 +96,31 @@ export function DiagnosticQuiz({
   const answersRef = useRef(answers);
   answersRef.current = answers;
   const submittedRef = useRef(false);
+  // Gugu-bubble reactions: did they start, and did they finish (vs. bail).
+  const startedRef = useRef(false);
+  const completedRef = useRef(false);
 
   // Move focus to the step heading on change — keeps screen readers oriented.
   useEffect(() => {
     headingRef.current?.focus();
   }, [step, phase]);
+
+  // Gugu cheers based on the result the moment the check is marked.
+  useEffect(() => {
+    if (!result) return;
+    completedRef.current = true;
+    guguSay(guguFinishLine(result.band), { hold: false });
+  }, [result]);
+
+  // If they navigate away mid-check (started but never finished), Gugu urges
+  // them not to give up, then its usual messages resume.
+  useEffect(() => {
+    return () => {
+      if (startedRef.current && !completedRef.current) {
+        guguSay(GUGU_QUIT, { hold: false });
+      }
+    };
+  }, []);
 
   // The exam clock: runs from Start until submission; at zero, whatever has
   // been answered is marked (unanswered questions score 0).
@@ -108,6 +145,8 @@ export function DiagnosticQuiz({
     beacon("diagnostic_start", undefined, `${level}/${slug}`);
     setSecondsLeft(QUIZ_SECONDS);
     setPhase("quiz");
+    startedRef.current = true;
+    guguSay(GUGU_START, { hold: true });
   }
 
   function answer(qid: string, value: string) {
