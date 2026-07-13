@@ -29,12 +29,33 @@ export function BundleBuilder({
 } = {}) {
   const [selected, setSelected] = useState<Set<SelectionKey>>(new Set());
   const [limitHit, setLimitHit] = useState(false);
+  // Set when the visitor taps a subject that's already in their cart.
+  const [lockedMsg, setLockedMsg] = useState<string | null>(null);
   const [activeLevel, setActiveLevel] = useState<Level>(
     PUBLISHED_LEVELS[0] ?? "o-level"
   );
-  const { addItem } = useCart();
+  const { addItem, items: cartItems } = useCart();
   const router = useRouter();
   const pricing = usePricing();
+
+  // Master-tier subjects already in the cart (e.g. added by Gugu after a result)
+  // are auto-selected in the builder and LOCKED, so a subject can't be added
+  // twice: to drop one, remove it from the cart. Matched on Master because the
+  // builder's bundle is Master-only.
+  const inCart = useMemo(
+    () =>
+      new Set<SelectionKey>(
+        cartItems
+          .filter((i) => i.tier === "master")
+          .map((i) => `${i.level}::${i.subjectSlug}` as SelectionKey)
+      ),
+    [cartItems]
+  );
+  // The whole bundle on show = locked cart subjects + the visitor's new picks.
+  const allKeys = useMemo(
+    () => new Set<SelectionKey>([...inCart, ...selected]),
+    [inCart, selected]
+  );
 
   const hidden = useMemo(() => new Set(hide), [hide]);
   const levels = useMemo(
@@ -48,24 +69,39 @@ export function BundleBuilder({
     [hidden]
   );
 
+  const keyToItem = (key: SelectionKey): CartItem => {
+    const [level, subjectSlug] = key.split("::") as [Level, string];
+    return { level, subjectSlug, tier: "master" as const };
+  };
+
+  // The full bundle (locked cart subjects + new picks) drives the pricing.
   const items: CartItem[] = useMemo(
-    () =>
-      [...selected].map((key) => {
-        const [level, subjectSlug] = key.split("::") as [Level, string];
-        return { level, subjectSlug, tier: "master" as const };
-      }),
-    [selected]
+    () => [...allKeys].map(keyToItem),
+    [allKeys]
+  );
+  // Only the visitor's new picks get added on submit; cart ones are already in.
+  const newKeys = useMemo(
+    () => [...selected].filter((k) => !inCart.has(k)),
+    [selected, inCart]
   );
 
   const priced = useMemo(() => pricing.priceCart(items), [pricing, items]);
 
   function toggle(key: SelectionKey) {
+    if (inCart.has(key)) {
+      const subject = SUBJECTS.find((s) => `${s.level}::${s.slug}` === key);
+      setLockedMsg(
+        `${subject?.name ?? "That subject"} is already in your cart. Remove it from the cart first to deselect it here.`
+      );
+      return;
+    }
+    setLockedMsg(null);
     setSelected((prev) => {
       const next = new Set(prev);
       if (next.has(key)) {
         next.delete(key);
         setLimitHit(false);
-      } else if (next.size < MAX_SUBJECTS) {
+      } else if (allKeys.size < MAX_SUBJECTS) {
         next.add(key);
         setLimitHit(false);
       } else {
@@ -76,11 +112,11 @@ export function BundleBuilder({
   }
 
   function addAllToCart() {
-    for (const item of items) addItem(item);
+    for (const key of newKeys) addItem(keyToItem(key));
     router.push("/cart");
   }
 
-  const count = selected.size;
+  const count = allKeys.size;
   // Price-per-subject is the story: it drops with every subject added. Shown as
   // the headline figure; the total rides underneath in smaller type. Recomputed
   // from `priced` on every toggle, so it updates instantly.
@@ -162,24 +198,27 @@ export function BundleBuilder({
               <div className="flex flex-wrap gap-2">
                 {subjects.map((subject) => {
                   const key: SelectionKey = `${level}::${subject.slug}`;
-                  const active = selected.has(key);
+                  const locked = inCart.has(key);
+                  const active = allKeys.has(key);
                   const code = subjectCode(level, subject.slug);
                   return (
                     <button
                       key={key}
                       type="button"
                       aria-pressed={active}
+                      title={locked ? "Already in your cart" : undefined}
                       onClick={() => toggle(key)}
                       className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors ${
                         active
                           ? "border-accent bg-accent text-night"
                           : "border-hairline bg-surface text-body hover:border-accent/60"
-                      }`}
+                      } ${locked ? "cursor-default ring-2 ring-accent/40" : ""}`}
                     >
                       {subject.name}
                       {code && (
                         <span className="ml-1.5 font-mono text-xs opacity-70">{code}</span>
                       )}
+                      {locked && <span className="ml-1.5 text-xs font-bold">🔒 in cart</span>}
                     </button>
                   );
                 })}
@@ -189,6 +228,14 @@ export function BundleBuilder({
         {limitHit && (
           <p className="rounded-lg bg-heat-3/25 px-4 py-2.5 text-sm text-ink" role="alert">
             Bundles cover up to {MAX_SUBJECTS} subjects. Remove one to swap.
+          </p>
+        )}
+        {lockedMsg && (
+          <p className="flex flex-wrap items-center gap-2 rounded-lg bg-accent/15 px-4 py-2.5 text-sm text-ink" role="alert">
+            {lockedMsg}
+            <Link href="/cart" className="font-medium text-accent underline">
+              Go to cart
+            </Link>
           </p>
         )}
       </div>
@@ -207,6 +254,7 @@ export function BundleBuilder({
                   const subject = SUBJECTS.find(
                     (s) => s.level === item.level && s.slug === item.subjectSlug
                   );
+                  const locked = inCart.has(`${item.level}::${item.subjectSlug}` as SelectionKey);
                   return (
                     <li key={`${item.level}-${item.subjectSlug}`} className="flex justify-between gap-2">
                       <span className="text-body">
@@ -215,7 +263,9 @@ export function BundleBuilder({
                           · {LEVELS[item.level].shortName}
                         </span>
                       </span>
-                      <span className="font-mono text-ink">Master</span>
+                      <span className={`font-mono ${locked ? "text-guarantee" : "text-ink"}`}>
+                        {locked ? "in cart ✓" : "Master"}
+                      </span>
                     </li>
                   );
                 })}
@@ -265,7 +315,9 @@ export function BundleBuilder({
                 onClick={addAllToCart}
                 className="cta-sheen glow-soft mt-5 w-full rounded-lg bg-accent px-5 py-3 text-sm font-bold text-night transition-opacity hover:opacity-90"
               >
-                Add {count} subject{count === 1 ? "" : "s"} to cart
+                {newKeys.length > 0
+                  ? `Add ${newKeys.length} subject${newKeys.length === 1 ? "" : "s"} to cart`
+                  : "Go to cart →"}
               </button>
             </>
           )}
@@ -309,7 +361,7 @@ export function BundleBuilder({
               onClick={addAllToCart}
               className="cta-sheen shrink-0 rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
             >
-              Add to cart
+              {newKeys.length > 0 ? "Add to cart" : "Go to cart"}
             </button>
           </div>
         </div>
