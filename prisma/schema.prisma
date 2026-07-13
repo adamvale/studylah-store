@@ -319,6 +319,19 @@ model Lead {
   createdAt   DateTime @default(now())
 }
 
+// Carts where the shopper entered an email but didn't check out. A cron sends
+// one recovery email after a delay, then leaves it alone. Cleared on purchase.
+model AbandonedCart {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  itemsJson    String // JSON array of { level, subjectSlug, tier }
+  discountCode String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  remindedAt   DateTime?
+  recoveredAt  DateTime?
+}
+
 // Diagnostic ("Am I Ready?") ----------------------------------------------
 
 // One quiz attempt. Graded server-side; the unguessable cuid doubles as the

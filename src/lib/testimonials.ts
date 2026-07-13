@@ -17,13 +17,33 @@ export interface Testimonial {
 // useful, not result guarantees.
 //
 // This array is intentionally EMPTY. The homepage SocialProof section hides
-// itself completely while it is empty, so nothing fake ever ships. Paste in
-// genuine customer words (with consent) to switch the section on. Example shape:
+// itself completely while it is empty, so nothing fake ever ships.
 //
+// TO TURN IT ON: replace each placeholder below with a REAL, permissioned quote
+// (uncomment the block, keep the shape). These drafts show the safe TONE only,
+// they are NOT approved copy, do not ship them as-is. Three to five is plenty.
+//
+// export const TESTIMONIALS: Testimonial[] = [
 //   {
-//     quote: "It told me exactly what to revise in the last two weeks instead
-//             of drowning in everything. Walked in so much calmer.",
-//     name: "Rachel T.",
+//     quote:
+//       "It told me exactly what to revise in the last two weeks instead of " +
+//       "drowning in everything. I walked in so much calmer.",
+//     name: "<real first name + initial>",
 //     context: "O-Level Chemistry · 2024",
 //   },
+//   {
+//     quote:
+//       "The forecast matched what actually came up scarily well, and the " +
+//       "practice questions felt just like the real paper.",
+//     name: "<real first name + initial>",
+//     context: "O-Level Physics · 2024",
+//   },
+//   {
+//     quote:
+//       "As a parent I finally knew my son was revising the right things, not " +
+//       "just staying up late doing everything.",
+//     name: "Parent of an N(A)-Level student",
+//     context: "N(A)-Level · 2024",
+//   },
+// ];
 export const TESTIMONIALS: Testimonial[] = [];

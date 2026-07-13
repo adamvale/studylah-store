@@ -14,6 +14,7 @@ import {
 import type { CheckoutQuote } from "./checkout";
 import { serverConfig } from "./config";
 import { emailLayout, sendEmail } from "./email";
+import { clearAbandonedCart } from "./abandoned-cart";
 import { processReferralReward } from "./referral";
 
 export function newToken(): string {
@@ -192,6 +193,9 @@ export async function createOrderFromCheckout(options: {
     } catch (e) {
       console.error(`Order ${order.id}: confirmation email failed`, e);
     }
+
+    // They bought: clear any abandoned-cart recovery for this email.
+    await clearAbandonedCart(email);
 
     return { order: full, created: true };
   } catch (e) {

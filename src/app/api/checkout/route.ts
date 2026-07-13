@@ -7,7 +7,12 @@ import { createOrderFromCheckout } from "@/lib/server/orders";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: Request) {
-  let body: { items?: unknown; discountCode?: unknown; email?: unknown };
+  let body: {
+    items?: unknown;
+    discountCode?: unknown;
+    email?: unknown;
+    parentConsent?: unknown;
+  };
   try {
     body = (await request.json()) as typeof body;
   } catch {
@@ -62,6 +67,8 @@ export async function POST(request: Request) {
         quote.items.map((i) => ({ l: i.level, s: i.subjectSlug, t: i.tier }))
       ),
       discountCode: quote.discountCode ?? "",
+      // Record the parent/guardian acknowledgement (minors-facing store).
+      parentConsent: body.parentConsent === true ? "yes" : "no",
     },
   };
 

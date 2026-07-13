@@ -39,6 +39,7 @@ function sgdCents(cents: number): string {
 export function CartView() {
   const { items, ready, removeItem, setTier, clear } = useCart();
   const [email, setEmail] = useState("");
+  const [parentOk, setParentOk] = useState(false);
   const [codeInput, setCodeInput] = useState("");
   const [discount, setDiscount] = useState<AppliedDiscount | null>(null);
   const [discountError, setDiscountError] = useState("");
@@ -107,6 +108,21 @@ export function CartView() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items, discount, codeInput]);
 
+  // Once a valid email is on a non-empty cart, record it (debounced) so the
+  // abandoned-cart cron can send one recovery email if they don't check out.
+  useEffect(() => {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || items.length === 0) return;
+    const t = setTimeout(() => {
+      void fetch("/api/cart/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, items, discountCode: discount?.code }),
+        keepalive: true,
+      }).catch(() => {});
+    }, 1500);
+    return () => clearTimeout(t);
+  }, [email, items, discount]);
+
   async function checkout() {
     setCheckoutError("");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -115,6 +131,12 @@ export function CartView() {
       // view so the shopper sees what's missing.
       emailRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
       emailRef.current?.focus({ preventScroll: true });
+      return;
+    }
+    if (!parentOk) {
+      setCheckoutError(
+        "Please confirm a parent or guardian is completing this purchase."
+      );
       return;
     }
     setSubmitting(true);
@@ -126,6 +148,7 @@ export function CartView() {
           items,
           email,
           discountCode: discount?.code ?? undefined,
+          parentConsent: parentOk,
         }),
       });
       const body = (await res.json()) as { url?: string; error?: string };
@@ -366,8 +389,29 @@ export function CartView() {
               onChange={(e) => setEmail(e.target.value)}
               required
               placeholder="you@example.com"
-              className="mt-1 w-full rounded-lg border border-hairline bg-surface px-3 py-2 text-sm placeholder:text-body/40"
+              className="mt-1 w-full rounded-lg border border-hairline bg-surface px-3 py-2 text-base placeholder:text-body/40"
             />
+          </label>
+
+          {/* Minors-facing store: a parent/guardian must be the one paying. */}
+          <label className="mt-3 flex items-start gap-2 text-xs text-body">
+            <input
+              type="checkbox"
+              checked={parentOk}
+              onChange={(e) => setParentOk(e.target.checked)}
+              className="mt-0.5"
+            />
+            <span>
+              A parent or guardian is completing this purchase and agrees to the{" "}
+              <Link href="/legal/terms" className="text-accent underline">
+                Terms
+              </Link>{" "}
+              and{" "}
+              <Link href="/legal/privacy" className="text-accent underline">
+                Privacy Policy
+              </Link>
+              .
+            </span>
           </label>
 
           <GuaranteeBadge variant="card" className="mt-4" />

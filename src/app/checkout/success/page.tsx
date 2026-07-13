@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { ClearCartOnMount } from "@/components/clear-cart";
+import { PurchaseBeacon } from "@/components/analytics";
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false }, title: "Payment received" };
@@ -67,6 +68,10 @@ export default async function CheckoutSuccessPage({
   return (
     <div className="mx-auto max-w-xl px-4 py-20 text-center">
       <ClearCartOnMount />
+      {/* Fire the ad-pixel purchase conversion once (skips mock test orders). */}
+      {!isMock && (
+        <PurchaseBeacon orderId={order.id} valueSgd={order.totalCents / 100} />
+      )}
       {isMock && (
         <p className="mb-6 rounded-lg border border-heat-3 bg-heat-3/20 px-4 py-2.5 text-sm font-medium text-ink">
           Test order, mock mode, no payment was taken.

@@ -7,6 +7,7 @@ import { getEarlyBird, getPricingTable } from "@/lib/server/pricing-store";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { SiteChrome } from "@/components/site-chrome";
+import { Analytics } from "@/components/analytics";
 import { RefCapture } from "@/components/ref-capture";
 import { SwRegister, NativePushBridge } from "@/components/pwa";
 
@@ -131,6 +132,7 @@ export default async function RootLayout({
         <RefCapture />
         <SwRegister />
         <NativePushBridge />
+        <Analytics />
         <PricingProvider table={table} earlyBird={earlyBird}>
           <CartProvider>
             <SiteChrome header={<Header />} footer={<Footer />}>
