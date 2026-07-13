@@ -15,6 +15,7 @@ import {
 } from "@/lib/catalogue";
 import { useCart } from "@/lib/cart-context";
 import { usePricing } from "@/lib/pricing-context";
+import { GuaranteeBadge } from "./guarantee-badge";
 
 export function TierSelector({
   level,
@@ -46,9 +47,9 @@ export function TierSelector({
         Choose your tier
       </h2>
       <p className="mt-1 max-w-2xl text-sm text-body">
-        Master is the full plan — the forecast, the practice and a full
-        rehearsal — at the biggest saving. Start smaller and add later if you
-        prefer.
+        Most students take Master — the full plan (forecast, practice and a
+        full rehearsal) at the biggest saving. It&apos;s selected for you below;
+        start smaller only if you prefer.
       </p>
       <fieldset className="mt-5">
         <legend className="sr-only">Tier for {subjectName}</legend>
@@ -74,13 +75,15 @@ export function TierSelector({
                   className="peer sr-only"
                 />
                 <span
-                  className={`flex h-full flex-col rounded-2xl border-2 bg-surface p-5 transition-colors peer-checked:border-signal peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-trust ${
-                    isMaster ? "border-hairline" : "border-hairline"
+                  className={`flex h-full flex-col rounded-2xl border-2 bg-surface p-5 transition-all peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-trust ${
+                    isMaster
+                      ? "border-accent shadow-[0_0_0_1px_var(--color-accent),0_10px_30px_-14px_rgba(255,220,0,0.5)] peer-checked:border-accent"
+                      : "border-hairline opacity-80 peer-checked:border-signal peer-checked:opacity-100"
                   }`}
                 >
                   {isMaster && (
-                    <span className="absolute -top-3 left-5 rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-deep">
-                      Best value
+                    <span className="absolute -top-3 left-5 rounded-full bg-accent px-3 py-0.5 text-xs font-bold uppercase tracking-wide text-accent-deep">
+                      Most popular · best value
                     </span>
                   )}
                   <span className="font-display text-lg font-bold text-ink">
@@ -120,7 +123,7 @@ export function TierSelector({
           })}
         </div>
       </fieldset>
-      <div className="mt-6 flex flex-wrap items-center gap-4">
+      <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-3">
         <button
           type="button"
           onClick={add}
@@ -129,7 +132,8 @@ export function TierSelector({
           Get {TIER_NAMES[tier]} — {sgd(tierPrice(level, tier))}
         </button>
         <p className="text-xs text-body">
-          Instant PDF download · Money-back guarantee · Watermarked to you
+          Instant PDF download · less than one hour of tuition · works right up
+          to exam day · watermarked to you
         </p>
         {added && (
           <p className="text-sm text-guarantee" role="status">
@@ -147,6 +151,7 @@ export function TierSelector({
           </p>
         )}
       </div>
+      <GuaranteeBadge variant="card" className="mt-4 max-w-2xl" />
       <p className="mt-4 text-xs text-body">
         Prefer a single PDF? The Essential tier is the Forecast alone. The
         Vault and Rehearsal are sold within tiers, where they cost less than

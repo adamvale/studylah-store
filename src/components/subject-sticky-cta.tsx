@@ -43,9 +43,15 @@ export function SubjectStickyCta({
       }`}
     >
       <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3">
-        <p className="hidden truncate text-sm font-medium text-white sm:block">
-          {subjectName} — full Master pack
-        </p>
+        <div className="hidden min-w-0 sm:block">
+          <p className="truncate text-sm font-medium text-white">
+            {subjectName} — full Master pack
+          </p>
+          <p className="truncate text-xs text-guarantee">
+            Less than one hour of tuition · fully refundable if the forecast
+            misses
+          </p>
+        </div>
         <button
           type="button"
           onClick={buyMaster}

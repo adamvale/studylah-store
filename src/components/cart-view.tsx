@@ -13,6 +13,7 @@ import {
 } from "@/lib/catalogue";
 import { useCart } from "@/lib/cart-context";
 import { usePricing } from "@/lib/pricing-context";
+import { GuaranteeBadge } from "./guarantee-badge";
 
 function subjectName(level: Level, slug: string): string {
   return (
@@ -349,15 +350,27 @@ export function CartView() {
             />
           </label>
 
+          <GuaranteeBadge variant="card" className="mt-4" />
+
           {/* On mobile the Checkout lives in the sticky bottom bar; this
-              in-summary button is the desktop CTA. */}
+              in-summary button is the desktop CTA. The guarantee rides on the
+              button itself — the downside of trying is zero. */}
           <button
             type="button"
             onClick={checkout}
             disabled={submitting}
-            className="mt-4 hidden w-full rounded-lg bg-signal px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-signal-deep lg:block"
+            className="mt-3 hidden w-full flex-col items-center rounded-lg bg-signal px-5 py-2.5 text-white transition-colors hover:bg-signal-deep lg:flex"
           >
-            {submitting ? "Starting secure payment…" : `Checkout — ${sgdCents(payableCents)}`}
+            {submitting ? (
+              <span className="py-0.5 text-sm font-medium">Starting secure payment…</span>
+            ) : (
+              <>
+                <span className="text-sm font-bold">Checkout — {sgdCents(payableCents)}</span>
+                <span className="text-[11px] font-medium text-white/80">
+                  Fully refundable if the forecast misses
+                </span>
+              </>
+            )}
           </button>
           {checkoutError && (
             <p className="mt-3 rounded-lg bg-heat-5/10 px-3 py-2.5 text-xs text-heat-5" role="alert">
@@ -365,8 +378,8 @@ export function CartView() {
             </p>
           )}
           <p className="mt-4 text-xs text-body">
-            PayNow and cards via Stripe · Money-back guarantee · Instant
-            download after payment · PDFs watermarked to your email
+            PayNow and cards via Stripe · Instant download after payment · PDFs
+            watermarked to your email
           </p>
           <p className="mt-2 text-xs text-body">
             Every subject also unlocks{" "}
@@ -394,7 +407,7 @@ export function CartView() {
               )}
             </p>
             <p className="truncate text-xs text-body">
-              {items.length} subject{items.length === 1 ? "" : "s"} · PDFs to your email
+              {items.length} subject{items.length === 1 ? "" : "s"} · refundable · PDFs to your email
             </p>
           </div>
           <button

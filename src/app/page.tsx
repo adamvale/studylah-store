@@ -19,7 +19,9 @@ import type { Pricing } from "@/lib/pricing";
 import { getPricing } from "@/lib/server/pricing-store";
 import { ExamCountdown } from "@/components/exam-countdown";
 import { ForecastCard } from "@/components/forecast-card";
+import { GuaranteeBadge } from "@/components/guarantee-badge";
 import { HeatTiles } from "@/components/heat";
+import { SocialProof } from "@/components/social-proof";
 
 /* Playful motifs, inline SVG so they need no external assets and pass CSP. */
 
@@ -134,22 +136,29 @@ function Hero({ pricing }: { pricing: Pricing }) {
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Link
-            href="/subjects"
+            href="/diagnostic"
             className="btn-pixel rounded bg-accent px-5 py-3 text-sm font-bold text-night"
           >
-            Find your subject&apos;s forecast
+            See the topics you&apos;ll lose marks on — free
           </Link>
           <Link
-            href="/diagnostic"
+            href="/subjects"
             className="rounded-lg border border-hairline bg-surface px-5 py-3 text-sm font-medium text-white transition-colors hover:border-accent"
           >
-            Predict your mark — free →
+            Browse the forecasts →
           </Link>
         </div>
-        <p className="mt-5 text-sm text-cloud">
-          Money-back guarantee · Instant PDFs + StudyLand access · From{" "}
-          {sgd(alacartePrice("o-level", "forecast"))} per subject
+        <p className="mt-4 text-sm text-cloud">
+          10 questions · ~7 minutes · instant score, indicative grade &amp;
+          worked solutions. No card.
         </p>
+        <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-cloud">
+          <GuaranteeBadge />
+          <span>
+            Instant PDFs + StudyLand · from{" "}
+            {sgd(alacartePrice("o-level", "forecast"))} per subject
+          </span>
+        </div>
         <p className="mt-2 inline-flex items-center gap-2 text-sm text-cloud">
           <Ghost size={24} />
           Every purchase now unlocks{" "}
@@ -161,7 +170,7 @@ function Hero({ pricing }: { pricing: Pricing }) {
           </span>
         </p>
         <HeroProof />
-        <ExamCountdown className="mt-4" />
+        <ExamCountdown className="mt-4" variant="urgent" />
       </div>
       <div className="fade-up relative" style={{ animationDelay: "150ms" }}>
         <div className="mascot-bob pointer-events-none absolute -right-2 -top-8 z-10 hidden sm:block">
@@ -775,6 +784,7 @@ export default async function Home() {
   return (
     <div className="bg-night">
       <Hero pricing={pricing} />
+      <SocialProof />
       <WhyItWorks />
       <Journey pricing={pricing} />
       <StudyHq />

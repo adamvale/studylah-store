@@ -17,6 +17,7 @@ import {
 import type { DiagnosticProduct } from "@/lib/diagnostic-questions";
 import { serverConfig } from "@/lib/server/config";
 import { HeatBar, TierPill } from "@/components/heat";
+import { GuaranteeBadge } from "@/components/guarantee-badge";
 import {
   CtaLink,
   ResendButton,
@@ -51,6 +52,10 @@ export default async function DiagnosticResultsPage({
   if (!set || !subject) notFound();
 
   const graded = JSON.parse(attempt.answersJson) as GradedAnswer[];
+  // Loss frame: how many marks slipped on the topics forecast most likely.
+  const droppedMarks = graded
+    .filter((g) => !g.correct)
+    .reduce((sum, g) => sum + g.marks, 0);
   const band = attempt.band as Band;
   const cta = ctaFor(band, (attempt.weakness as DiagnosticProduct | null) ?? null);
   const estimate = gradeEstimateFor(attempt.level, attempt.score, attempt.totalMarks);
@@ -152,11 +157,23 @@ export default async function DiagnosticResultsPage({
         </p>
       </section>
 
-      {/* Tailored fix plan */}
+      {/* Tailored fix plan — the sales close. Leads with the loss frame (what
+          these gaps would cost in November), then the exact fix, made risk-free
+          by the guarantee and anchored against the price of tuition. */}
       <section className="mt-8 rounded-2xl border border-accent/40 bg-surface p-6">
         <p className="font-mono text-xs font-medium uppercase tracking-wide text-accent">
           Your fix plan
         </p>
+        {droppedMarks > 0 && (
+          <p className="mt-2 text-sm text-ink">
+            On this sample you dropped{" "}
+            <span className="font-display text-lg font-bold text-coral">
+              {droppedMarks} mark{droppedMarks === 1 ? "" : "s"}
+            </span>{" "}
+            on topics forecast most likely for your 2026 {subject.name} paper —
+            marks that are still recoverable now, not in the exam hall.
+          </p>
+        )}
         <h2 className="mt-2 font-display text-2xl font-bold text-ink">{cta.headline}</h2>
         <p className="mt-2 text-sm text-body">{cta.body}</p>
         <div className="mt-4">
@@ -168,6 +185,13 @@ export default async function DiagnosticResultsPage({
             See {subject.name} packs →
           </CtaLink>
         </div>
+        <GuaranteeBadge variant="card" className="mt-4" />
+        <p className="mt-3 text-xs text-body">
+          One-time purchase, less than a single tuition session, and it works
+          right up to exam day. New here? Use{" "}
+          <span className="font-mono font-medium text-accent">STUDYLAH10</span>{" "}
+          for 10% off your first pack.
+        </p>
       </section>
 
       {/* Share */}
