@@ -7,7 +7,15 @@ import {
 } from "@/lib/catalogue";
 import { getPricing } from "@/lib/server/pricing-store";
 import { realTopCalls } from "@/lib/forecast-tables";
-import { TierPill } from "./heat";
+import { SubjectBrowser, type SubjectCard } from "./subject-browser";
+
+function categoryFor(family: string): SubjectCard["category"] {
+  if (["chemistry", "physics", "biology"].includes(family)) return "Science";
+  if (["emath", "amath"].includes(family)) return "Math";
+  if (["geography", "history", "social-studies"].includes(family))
+    return "Humanities";
+  return "Others";
+}
 
 export async function LevelCatalogue({
   level,
@@ -20,8 +28,16 @@ export async function LevelCatalogue({
 }) {
   const subjects = subjectsForLevel(level);
   const other: Level = level === "o-level" ? "na-level" : "o-level";
-  const { earlyBird, tierPrice, tierSavings, tierValue } = await getPricing();
+  const { earlyBird, tierPrice, tierSavings } = await getPricing();
   const masterPrice = tierPrice(level, "master");
+  const savings = tierSavings(level, "master");
+
+  const cards: SubjectCard[] = subjects.map((subject) => ({
+    name: subject.name,
+    slug: subject.slug,
+    category: categoryFor(subject.family),
+    hottest: realTopCalls(level, subject.slug, 1)[0]?.topic ?? "",
+  }));
 
   return (
     <div className={embedded ? "" : "mx-auto max-w-6xl px-4 py-12"}>
@@ -33,38 +49,23 @@ export async function LevelCatalogue({
           </h1>
         </>
       )}
-      <p className="max-w-xl text-body">
-        {subjects.length} subjects, three PDFs each. Master tier gets you all
-        three for {sgd(masterPrice)}, a saving of{" "}
-        {sgd(tierValue(level, "master") - masterPrice)} per subject.
+      <p className="max-w-2xl text-body">
+        Every subject is <span className="font-semibold text-ink">4 PDFs</span>:
+        40+ pages of exam intelligence, 100s of original high-probability
+        practice questions, full worked answers and a timed rehearsal. The{" "}
+        <span className="font-semibold text-ink">Master</span> tier bundles all
+        four for {sgd(masterPrice)},{" "}
+        <span className="text-guarantee">{sgd(savings)} less</span> than buying
+        them apart.
         {earlyBird && " Early-bird pricing is on."}
       </p>
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {subjects.map((subject) => {
-          const hottest = realTopCalls(level, subject.slug, 1)[0];
-          return (
-            <Link
-              key={subject.slug}
-              href={`/${level}/${subject.slug}`}
-              className="group rounded-2xl border border-hairline bg-surface p-5 transition-shadow hover:shadow-md"
-            >
-              <h2 className="font-display text-lg font-bold text-accent group-hover:underline">
-                {subject.name}
-              </h2>
-              <p className="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-body">
-                Hottest topic: {hottest.topic}{" "}
-                <TierPill tier={hottest.tier} />
-              </p>
-              <p className="mt-3 font-mono text-sm text-ink">
-                Master {sgd(masterPrice)}{" "}
-                <span className="text-guarantee">
-                  · save {sgd(tierSavings(level, "master"))}
-                </span>
-              </p>
-            </Link>
-          );
-        })}
-      </div>
+
+      <SubjectBrowser
+        cards={cards}
+        masterPrice={sgd(masterPrice)}
+        savings={sgd(savings)}
+        level={level}
+      />
       <div className="mt-10 flex flex-col gap-4 rounded-2xl bg-trust p-6 text-white sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="font-display text-xl font-bold">

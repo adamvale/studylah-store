@@ -110,6 +110,38 @@ function SectionGhost() {
   );
 }
 
+// Colourful subject pills, one per O-Level subject, that link into each page.
+const PILL_STYLES = [
+  "bg-violet text-white",
+  "bg-teal text-night",
+  "bg-accent text-night",
+  "bg-coral text-white",
+  "bg-mint text-night",
+  "bg-[#5b5bd6] text-white",
+  "bg-[#0fb5ae] text-night",
+  "bg-[#e0729b] text-white",
+  "bg-[#3fbf5f] text-night",
+];
+
+function SubjectPills() {
+  const subjects = subjectsForLevel("o-level");
+  return (
+    <div className="mt-6 flex max-w-3xl flex-wrap justify-center gap-2">
+      {subjects.map((s, i) => (
+        <Link
+          key={s.slug}
+          href={`/o-level/${s.slug}`}
+          className={`rounded-full px-3 py-1 text-xs font-bold transition-opacity hover:opacity-85 ${
+            PILL_STYLES[i % PILL_STYLES.length]
+          }`}
+        >
+          {s.name}
+        </Link>
+      ))}
+    </div>
+  );
+}
+
 function Hero({ pricing }: { pricing: Pricing }) {
   const { alacartePrice } = pricing;
   const { perfect, total } = scorecardHeadline();
@@ -138,20 +170,23 @@ function Hero({ pricing }: { pricing: Pricing }) {
             </span>
           </h1>
 
-          {/* One-sentence subhead */}
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-cloud sm:text-lg">
-            We rank every{" "}
-            {PUBLISHED_LEVELS.map((l) => LEVELS[l].shortName).join(" and ")}{" "}
-            topic by how likely it is on the 2026 paper, and drill the questions
-            according to it, so your last weeks go to what matters, not
-            everything.
-          </p>
-
-          {/* The three 2026 packs, larger and tight together, right under the
-              subhead. */}
+          {/* The three 2026 packs, moved above the copy. */}
           <div className="mt-8 w-full">
             <PackRow />
           </div>
+
+          {/* One-sentence subhead, value-forward */}
+          <p className="mt-8 max-w-2xl text-base leading-relaxed text-cloud sm:text-lg">
+            We rank every{" "}
+            {PUBLISHED_LEVELS.map((l) => LEVELS[l].shortName).join(" and ")}{" "}
+            topic by how likely it is on the 2026 paper, then hand your child the
+            exact questions to drill, so their final weeks build{" "}
+            <span className="font-semibold text-white">calm, confident readiness</span>,
+            not last-minute panic.
+          </p>
+
+          {/* Colourful subject pills, one per subject */}
+          <SubjectPills />
           <Link
             href="/subjects"
             className="mt-4 inline-block text-sm font-medium text-accent hover:underline"
@@ -234,7 +269,7 @@ function TheProblem() {
         <div className="flex justify-center">
           <SectionGhost />
         </div>
-        <div className="relative z-10 -mt-[7px] flex justify-center">
+        <div className="relative z-10 -mt-[6px] flex justify-center">
           <Badge>The Problem</Badge>
         </div>
         <h2
@@ -348,7 +383,7 @@ function TheCause() {
           <div className="flex justify-center">
             <SectionGhost />
           </div>
-          <div className="relative z-10 -mt-[7px] flex justify-center">
+          <div className="relative z-10 -mt-[6px] flex justify-center">
             <Badge>The Cause</Badge>
           </div>
           <h2
@@ -488,7 +523,7 @@ function TheSolution() {
           <div className="flex justify-center">
             <SectionGhost />
           </div>
-          <div className="relative z-10 -mt-[7px] flex justify-center">
+          <div className="relative z-10 -mt-[6px] flex justify-center">
             <Badge>The Solution</Badge>
           </div>
           <h2
@@ -645,12 +680,13 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
           Choose your tier
         </h2>
         <p className="mx-auto mt-2 max-w-2xl text-center text-cloud">
-          Most students take Master, the full plan (forecast, practice and a
-          full rehearsal) at the biggest saving. Start smaller only if you
-          prefer.
+          Most families choose{" "}
+          <span className="font-semibold text-white">Master</span>: the complete
+          plan that turns ten years of exam data into a calm, focused final
+          month, and the biggest saving. Start smaller only if you prefer.
         </p>
 
-        <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-5">
+        <div className="mt-10 grid grid-cols-3 gap-2 sm:gap-4 md:gap-5">
           {TIERS.map((t) => {
             const products = refSubject
               ? tierProducts(t.key, refSubject)
@@ -661,33 +697,41 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
             return (
               <div
                 key={t.key}
-                className={`relative flex flex-col rounded-2xl border p-6 ${
+                className={`relative flex flex-col rounded-2xl border p-3 sm:p-6 ${
                   t.popular
-                    ? "col-span-2 border-accent bg-night-2 md:col-span-1"
+                    ? "border-accent bg-night-2"
                     : "border-hairline bg-surface"
                 }`}
               >
                 {t.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wide text-night">
-                    Most popular · Best value
+                  <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent px-2 py-0.5 font-mono text-[8px] font-bold uppercase tracking-wide text-night sm:-top-3 sm:px-3 sm:py-1 sm:text-[11px]">
+                    <span className="sm:hidden">Best value</span>
+                    <span className="hidden sm:inline">
+                      Most popular · Best value
+                    </span>
                   </span>
                 )}
-                <p className="font-display text-2xl font-bold text-white">
+                <p className="font-display text-base font-bold text-white sm:text-2xl">
                   {t.name}
                 </p>
-                <p className="mt-1 font-display text-4xl font-black text-accent">
+                <p className="mt-1 font-display text-xl font-black text-accent sm:text-4xl">
                   {sgd(price)}
                 </p>
                 {t.key === "essential" ? (
-                  <p className="mt-1 text-sm text-body">{t.note}</p>
+                  <p className="mt-1 text-[10px] text-body sm:text-sm">
+                    {t.note}
+                  </p>
                 ) : (
-                  <p className="mt-1 text-sm font-medium text-guarantee">
+                  <p className="mt-1 text-[10px] font-medium leading-tight text-guarantee sm:text-sm">
                     {sgd(value)} value, save {sgd(savings)}
                   </p>
                 )}
-                <ul className="mt-5 space-y-2">
+                <ul className="mt-3 space-y-1.5 sm:mt-5 sm:space-y-2">
                   {t.products.map((p) => (
-                    <li key={p} className="flex gap-2 text-sm text-cloud">
+                    <li
+                      key={p}
+                      className="flex gap-1.5 text-[11px] leading-tight text-cloud sm:gap-2 sm:text-sm"
+                    >
                       <span aria-hidden="true" className="text-guarantee">
                         •
                       </span>
@@ -850,7 +894,7 @@ function WhyItWorks() {
         <div className="flex justify-center">
           <SectionGhost />
         </div>
-        <div className="relative z-10 -mt-[7px] flex justify-center">
+        <div className="relative z-10 -mt-[6px] flex justify-center">
           <Badge>From Panic to Ready</Badge>
         </div>
         <h2 className="mt-4 font-display text-3xl font-black text-accent sm:text-4xl lg:text-5xl">
@@ -1213,7 +1257,7 @@ function Decision() {
         <div className="flex justify-center">
           <SectionGhost />
         </div>
-        <div className="relative z-10 -mt-[7px] flex justify-center">
+        <div className="relative z-10 -mt-[6px] flex justify-center">
           <Badge>Study Less, Score More</Badge>
         </div>
         <h2 className="mt-4 font-display text-3xl font-black text-accent sm:text-4xl lg:text-5xl">
