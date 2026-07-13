@@ -108,6 +108,11 @@ function Hero({ pricing }: { pricing: Pricing }) {
             Built from 10 years of real exam data
           </div>
 
+          {/* Countdown, right under the eyebrow */}
+          <div className="mt-3">
+            <ExamCountdown />
+          </div>
+
           {/* Layer 2 — headline */}
           <h1 className="mt-5 font-display text-[2.6rem] font-black leading-[1.05] tracking-tight text-white sm:text-6xl">
             Stop revising blind. Walk in knowing{" "}
@@ -118,8 +123,9 @@ function Hero({ pricing }: { pricing: Pricing }) {
           <p className="mt-4 max-w-md text-base leading-relaxed text-cloud sm:text-lg">
             We rank every{" "}
             {PUBLISHED_LEVELS.map((l) => LEVELS[l].shortName).join(" and ")}{" "}
-            topic by how likely it is on the 2026 paper, so your last weeks go to
-            what matters, not everything.
+            topic by how likely it is on the 2026 paper, and drill the questions
+            according to it, so your last weeks go to what matters, not
+            everything.
           </p>
 
           {/* Layer 4 — the two actions (full-width, stacked on mobile) */}
@@ -160,9 +166,6 @@ function Hero({ pricing }: { pricing: Pricing }) {
               forecasts on target →
             </Link>
           </div>
-
-          {/* Layer 6 — slim urgency cue */}
-          <ExamCountdown className="mt-4" />
         </div>
         <div className="fade-up relative" style={{ animationDelay: "150ms" }}>
           <div className="mascot-bob pointer-events-none absolute -right-2 -top-8 z-10 hidden sm:block">
