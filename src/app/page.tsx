@@ -127,10 +127,15 @@ function Hero({ pricing }: { pricing: Pricing }) {
             Built from 10 years of real exam data
           </div>
 
-          {/* Headline */}
-          <h1 className="mt-5 max-w-3xl font-display text-[2.6rem] font-black leading-[1.05] tracking-tight text-white sm:text-6xl">
-            Stop revising blind. Walk in knowing{" "}
-            <span className="text-gradient">what&apos;s likely.</span>
+          {/* Headline, sized to land the eye on the key words. */}
+          <h1 className="mt-5 flex max-w-4xl flex-col font-display font-black leading-[1.02] tracking-tight text-white">
+            <span className="text-4xl sm:text-6xl">Stop revising blind.</span>
+            <span className="mt-1 text-3xl font-extrabold text-cloud sm:text-5xl">
+              Walk in knowing
+            </span>
+            <span className="mt-1 text-5xl text-accent sm:text-7xl">
+              what&apos;s likely.
+            </span>
           </h1>
 
           {/* One-sentence subhead */}
@@ -645,7 +650,7 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
           prefer.
         </p>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-5">
           {TIERS.map((t) => {
             const products = refSubject
               ? tierProducts(t.key, refSubject)
@@ -658,7 +663,7 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
                 key={t.key}
                 className={`relative flex flex-col rounded-2xl border p-6 ${
                   t.popular
-                    ? "border-accent bg-night-2"
+                    ? "col-span-2 border-accent bg-night-2 md:col-span-1"
                     : "border-hairline bg-surface"
                 }`}
               >
@@ -751,26 +756,19 @@ function PackRow() {
     <div className="mx-auto grid max-w-4xl grid-cols-3 gap-0.5 sm:gap-1">
       {packs.map((p) =>
         p.img ? (
-          <Link
-            key={p.slug}
-            href={`/${p.level}/${p.slug}`}
-            className="group block"
-            aria-label={`${p.name}, 2026 pack`}
-          >
-            <div className="relative aspect-[333/456] w-full transition-transform duration-300 group-hover:-translate-y-1.5">
-              <Image
-                src={p.img}
-                alt={`${p.name}, StudyLah 2026 pack`}
-                fill
-                sizes="(max-width: 640px) 33vw, 300px"
-                className="object-contain drop-shadow-2xl"
-              />
-            </div>
-          </Link>
+          <div key={p.slug} className="relative aspect-[333/456] w-full">
+            <Image
+              src={p.img}
+              alt={`${p.name}, StudyLah 2026 pack`}
+              fill
+              sizes="(max-width: 640px) 33vw, 300px"
+              className="object-contain drop-shadow-2xl"
+            />
+          </div>
         ) : (
-          <Link key={p.slug} href={`/${p.level}/${p.slug}`} className="group">
+          <div key={p.slug}>
             <div
-              className="relative flex aspect-[3/4] flex-col overflow-hidden rounded-2xl border border-white/10 p-3 text-left shadow-xl transition-transform duration-300 group-hover:-translate-y-1.5 sm:p-5"
+              className="relative flex aspect-[3/4] flex-col overflow-hidden rounded-2xl border border-white/10 p-3 text-left shadow-xl sm:p-5"
               style={{ background: p.grad }}
             >
               {/* holographic sheen */}
@@ -803,65 +801,95 @@ function PackRow() {
                 </div>
               </div>
             </div>
-          </Link>
+          </div>
         )
       )}
     </div>
   );
 }
 
-const WHY = [
+const WHY: { title: string; body: React.ReactNode }[] = [
   {
     title: "AI Pattern Recognition",
-    body: "We analyse past papers to identify frequently tested topics and the question styles that keep coming back.",
+    body: (
+      <>
+        Analyse past papers to identify{" "}
+        <span className="font-semibold text-accent">frequently tested</span>{" "}
+        topics and question styles.
+      </>
+    ),
   },
   {
     title: "Core Concepts",
-    body: "The recurring topics that consistently anchor the most marks in past exams, so you revise them first.",
+    body: (
+      <>
+        Important <span className="font-semibold text-accent">recurring topics</span>{" "}
+        that consistently anchor marks in past exams.
+      </>
+    ),
   },
   {
     title: "High-Chance Questions",
-    body: "Original questions built around the highest-probability structures, giving your practice strategic focus.",
+    body: (
+      <>
+        Questions designed around{" "}
+        <span className="font-semibold text-accent">high probability</span>{" "}
+        structures, giving strategic focus.
+      </>
+    ),
   },
 ];
 
 function WhyItWorks() {
+  const hasArt = existsSync(
+    join(process.cwd(), "public", "marketing", "why-brain.png")
+  );
   return (
     <section className="reveal bg-night-2 py-20">
-      <div className="mx-auto max-w-5xl px-4 text-center">
+      <div className="mx-auto max-w-6xl px-4 text-center">
         <div className="flex justify-center">
-          <Ghost />
+          <SectionGhost />
         </div>
-        <div className="mt-4 flex justify-center">
+        <div className="relative z-10 -mt-[7px] flex justify-center">
           <Badge>From Panic to Ready</Badge>
         </div>
-        <h2 className="mt-6 font-display text-4xl font-black text-accent sm:text-5xl">
+        <h2 className="mt-4 font-display text-3xl font-black text-accent sm:text-4xl lg:text-5xl">
           Why StudyLah! Works
         </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-cloud">
+        {hasArt && (
+          <div className="mt-6 flex justify-center">
+            <Image
+              src="/marketing/why-brain.png"
+              alt="A brain lit up with circuitry"
+              width={320}
+              height={280}
+              className="h-auto w-40 sm:w-52"
+            />
+          </div>
+        )}
+        <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-cloud sm:text-xl">
           Exams don&apos;t reward more hours of study, they reward{" "}
-          <span className="text-accent">
+          <span className="font-semibold text-accent">
             focused preparation on high-impact topics
           </span>
-          . Our model studies ten years of MOE exam papers to find the patterns
-          that repeat across years, so you practise what is most likely to
-          appear.
+          . Our model studies{" "}
+          <span className="font-semibold text-accent">ten years</span> of
+          Singapore-Cambridge O-Level and N(A)-Level papers to find the patterns
+          that repeat, so your child practises what is most likely to appear.
         </p>
-        <div className="mt-12 grid gap-5 text-left md:grid-cols-3">
+        <div className="mt-10 grid gap-5 text-left md:grid-cols-3">
           {WHY.map((card, i) => (
             <div
               key={card.title}
-              className="card-hover rounded-2xl border border-hairline bg-surface p-6"
+              className="rounded-2xl border border-hairline bg-surface p-6"
             >
-              <p className="font-mono text-sm font-bold text-cloud">
+              <p className="font-mono text-sm font-bold text-body">
                 No.{i + 1}
               </p>
-              <h3 className="mt-3 font-display text-xl font-bold text-white">
+              <h3 className="mt-3 font-display text-2xl font-black text-white">
                 {card.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-cloud">
-                {card.body}
-              </p>
+              <p className="mt-3 leading-relaxed text-cloud">{card.body}</p>
             </div>
           ))}
         </div>
@@ -896,7 +924,7 @@ function Journey({ pricing }: { pricing: Pricing }) {
             return (
               <div
                 key={key}
-                className="card-hover relative rounded-2xl border border-hairline bg-surface p-6"
+                className="relative rounded-2xl border border-hairline bg-surface p-6"
               >
                 <span className="inline-block rounded-full bg-violet px-3 py-1 font-mono text-xs font-bold text-white">
                   {product.day}
@@ -1000,7 +1028,7 @@ function StudyHq() {
           {STUDY_HQ_FEATURES.map((f) => (
             <div
               key={f.title}
-              className="card-hover rounded-2xl border border-hairline bg-surface p-6"
+              className="rounded-2xl border border-hairline bg-surface p-6"
             >
               <p aria-hidden="true" className="text-2xl">
                 {f.emoji}
@@ -1144,7 +1172,7 @@ function FogFrontierBeta() {
             {GURUS.map((g) => (
               <div
                 key={g.name}
-                className="card-hover flex items-start gap-4 rounded-2xl border border-hairline bg-surface p-5"
+                className="flex items-start gap-4 rounded-2xl border border-hairline bg-surface p-5"
               >
                 <Px src={g.sprite} size={56} alt={g.name} />
                 <div>
@@ -1183,14 +1211,30 @@ function Decision() {
     <section className="reveal bg-gradient-to-b from-[#12312b] to-night py-20">
       <div className="mx-auto max-w-4xl px-4 text-center">
         <div className="flex justify-center">
+          <SectionGhost />
+        </div>
+        <div className="relative z-10 -mt-[7px] flex justify-center">
           <Badge>Study Less, Score More</Badge>
         </div>
-        <h2 className="mt-6 font-display text-4xl font-black text-accent sm:text-5xl">
+        <h2 className="mt-4 font-display text-3xl font-black text-accent sm:text-4xl lg:text-5xl">
           Your Moment of Decision
         </h2>
-        <p className="mx-auto mt-5 max-w-xl text-lg text-white">
+        {existsSync(
+          join(process.cwd(), "public", "marketing", "decision-summit.png")
+        ) && (
+          <div className="mt-6 flex justify-center">
+            <Image
+              src="/marketing/decision-summit.png"
+              alt="A flag planted on a mountain summit"
+              width={300}
+              height={320}
+              className="h-auto w-36 sm:w-44"
+            />
+          </div>
+        )}
+        <p className="mx-auto mt-6 max-w-xl text-lg text-white sm:text-xl">
           StudyLah! is not about studying more. It&apos;s about studying{" "}
-          <span className="text-mint">smarter</span>.
+          <span className="font-bold text-mint">smarter</span>.
         </p>
         <div className="mt-12 grid gap-8 rounded-3xl border border-hairline bg-surface/60 p-8 text-left sm:grid-cols-2">
           <div>
@@ -1239,7 +1283,7 @@ function LevelEntry({ pricing }: { pricing: Pricing }) {
           <Link
             key={level}
             href={`/${level}`}
-            className="card-hover group rounded-2xl border border-hairline bg-surface p-6 transition-colors hover:border-accent"
+            className="group rounded-2xl border border-hairline bg-surface p-6 transition-colors hover:border-accent"
           >
             <p className="font-mono text-xs font-medium text-cloud">
               {LEVELS[level].code}
@@ -1348,7 +1392,7 @@ function HowItWorks() {
         {HOW_STEPS.map((step, i) => (
           <div
             key={step.title}
-            className="card-hover rounded-2xl border border-hairline bg-surface p-6"
+            className="rounded-2xl border border-hairline bg-surface p-6"
           >
             <p className="font-mono text-sm font-bold text-teal">0{i + 1}</p>
             <h3 className="mt-2 font-display text-lg font-bold text-white">
@@ -1397,7 +1441,7 @@ function FreeHeatmapBanner() {
         <div className="mt-5">
           <Link
             href="/diagnostic"
-            className="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
+            className="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night"
           >
             Predict your mark, free →
           </Link>
