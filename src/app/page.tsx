@@ -95,6 +95,21 @@ function Badge({ children }: { children: React.ReactNode }) {
   );
 }
 
+// Smooth (non-pixel) ghost head that sits above the "The Problem / Cause /
+// Solution" badges, tucked slightly behind the pill.
+function SectionGhost() {
+  return (
+    <Image
+      src="/marketing/gugu-head.png"
+      alt=""
+      aria-hidden="true"
+      width={484}
+      height={371}
+      className="h-auto w-16"
+    />
+  );
+}
+
 function Hero({ pricing }: { pricing: Pricing }) {
   const { alacartePrice } = pricing;
   const { perfect, total } = scorecardHeadline();
@@ -212,9 +227,9 @@ function TheProblem() {
     <section aria-labelledby="problem-heading" className="reveal bg-night-2 py-20">
       <div className="mx-auto max-w-3xl px-4 text-center">
         <div className="flex justify-center">
-          <Ghost size={64} />
+          <SectionGhost />
         </div>
-        <div className="relative z-10 -mt-3 flex justify-center">
+        <div className="relative z-10 -mt-[7px] flex justify-center">
           <Badge>The Problem</Badge>
         </div>
         <h2
@@ -326,9 +341,9 @@ function TheCause() {
       <div className="mx-auto max-w-6xl px-4">
         <div className="rounded-3xl border border-hairline bg-night-2 px-4 py-16 text-center sm:px-10">
           <div className="flex justify-center">
-            <Ghost size={64} />
+            <SectionGhost />
           </div>
-          <div className="relative z-10 -mt-3 flex justify-center">
+          <div className="relative z-10 -mt-[7px] flex justify-center">
             <Badge>The Cause</Badge>
           </div>
           <h2
@@ -466,9 +481,9 @@ function TheSolution() {
       <div className="mx-auto max-w-6xl px-4">
         <div className="rounded-3xl border border-hairline bg-night-2 px-4 py-16 text-center sm:px-10">
           <div className="flex justify-center">
-            <Ghost size={64} />
+            <SectionGhost />
           </div>
-          <div className="relative z-10 -mt-3 flex justify-center">
+          <div className="relative z-10 -mt-[7px] flex justify-center">
             <Badge>The Solution</Badge>
           </div>
           <h2
@@ -516,15 +531,15 @@ function TheSolution() {
                 <h3 className="mt-1 font-display text-2xl font-black text-white sm:text-3xl">
                   {s.name}
                 </h3>
-                <div className="mt-6 flex justify-center">
+                <div className="mt-3 flex justify-center">
                   <span className="rounded-full border border-hairline px-4 py-2 text-sm font-semibold text-cloud">
                     {s.tag}
                   </span>
                 </div>
-                <p className="mx-auto mt-6 max-w-md flex-1 leading-relaxed text-cloud">
+                <p className="mx-auto mt-4 max-w-md flex-1 leading-relaxed text-cloud">
                   {s.body}
                 </p>
-                <div className="mt-6">
+                <div className="mt-5">
                   <Link
                     href="/subjects"
                     className="inline-block rounded-full border border-guarantee/60 px-6 py-2.5 text-sm font-bold uppercase tracking-wide text-guarantee transition-colors hover:bg-guarantee/10"
@@ -532,7 +547,7 @@ function TheSolution() {
                     Learn more
                   </Link>
                 </div>
-                <p className="mt-6 font-mono text-xs text-body">{s.tier}</p>
+                <p className="mt-4 font-mono text-xs text-body">{s.tier}</p>
               </div>
             ))}
           </div>
@@ -546,14 +561,11 @@ function TheSolution() {
               The Smarter Strategy
             </h3>
             <p className="mx-auto mt-6 max-w-3xl leading-relaxed text-cloud">
-              The <span className="font-bold text-white">Exam Forecast</span>{" "}
-              locks in the highest-impact topics. The{" "}
-              <span className="font-bold text-white">Sure Questions Vault</span>{" "}
-              drills the must-know question types. The{" "}
-              <span className="font-bold text-white">Final Rehearsal</span> trains
-              exam execution under time, and the{" "}
-              <span className="font-bold text-white">Companion</span> banks the
-              marks most students under-rehearse.
+              On their own, each product does one job. Bought together, they
+              become a single revision sequence, from{" "}
+              <span className="font-bold text-white">knowing what to revise</span>{" "}
+              all the way to{" "}
+              <span className="font-bold text-white">walking in ready</span>:
             </p>
             <ul className="mx-auto mt-8 flex max-w-2xl flex-col gap-4 text-left">
               {STRATEGY_STEPS.map((step) => (

@@ -9,15 +9,22 @@ export function SocialProof() {
   return (
     <section aria-labelledby="voices-heading" className="border-y border-hairline bg-night-2 py-16">
       <div className="mx-auto max-w-6xl px-4">
-        <p className="text-center font-mono text-xs font-medium uppercase tracking-wide text-teal">
-          In their words
-        </p>
+        <div aria-hidden="true" className="flex justify-center gap-1 text-lg text-accent">
+          {"★★★★★".split("").map((s, i) => (
+            <span key={i}>{s}</span>
+          ))}
+        </div>
         <h2
           id="voices-heading"
-          className="mt-2 text-center font-display text-3xl font-black text-white sm:text-4xl"
+          className="mt-3 text-center font-display text-3xl font-black text-white sm:text-4xl"
         >
-          Students who stopped revising blind
+          Trusted by Singapore students and parents
         </h2>
+        <p className="mx-auto mt-3 max-w-2xl text-center text-cloud">
+          Every pack is built to the current Singapore-Cambridge{" "}
+          <span className="text-accent">(SEAB / MOE)</span> exam syllabus, the
+          same one your school teaches, then rigorously checked before it ships.
+        </p>
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {TESTIMONIALS.map((t, i) => (
             <figure
@@ -41,7 +48,9 @@ export function SocialProof() {
         </div>
         <p className="mt-8 text-center text-xs text-body/70">
           Shared with permission. Individual experiences; StudyLah&apos;s
-          forecasts are probabilistic and it makes no grade guarantees.
+          forecasts are probabilistic and it makes no grade guarantees. StudyLah
+          is an independent publisher, not affiliated with, endorsed by, or
+          connected to SEAB, MOE or Cambridge.
         </p>
       </div>
     </section>
