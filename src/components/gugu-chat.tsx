@@ -24,13 +24,20 @@ import { sgd } from "@/lib/catalogue";
 
 type Answer = string | ReactNode;
 
+// Passed into every scripted answer: the live "from" price, and a callback that
+// minimises the chat (so any link a visitor clicks reveals the page underneath).
+interface GuguCtx {
+  fromPrice: string;
+  closePanel: () => void;
+}
+
 interface Topic {
   id: string;
   // Short label shown as a tappable quick-reply chip.
   label: string;
   // Words that route a free-typed question to this topic (all lowercase).
   keywords: string[];
-  answer: (ctx: { fromPrice: string }) => Answer;
+  answer: (ctx: GuguCtx) => Answer;
 }
 
 // The scripted knowledge base — a curated, chat-sized version of /faq plus the
@@ -69,14 +76,14 @@ const TOPICS: Topic[] = [
     id: "guessing",
     label: "Isn't it just guessing?",
     keywords: ["guess", "guessing", "random", "accurate", "accuracy", "proof", "trust"],
-    answer: () => (
+    answer: ({ closePanel }) => (
       <>
         Guessing is revising everything and hoping. This is ten years of
         classified questions and setter patterns turned into a ranked probability
         for every topic. And we publish the receipts — after every sitting our{" "}
-        <Link href="/accuracy" className="font-medium text-accent underline">
+        <InlineLink href="/accuracy" onNavigate={closePanel}>
           accuracy scorecard
-        </Link>{" "}
+        </InlineLink>{" "}
         shows exactly what we called against what appeared. Hits and misses, in
         public.
       </>
@@ -99,15 +106,13 @@ const TOPICS: Topic[] = [
     id: "price",
     label: "How much does it cost?",
     keywords: ["cost", "price", "much", "cheap", "expensive", "pay", "worth", "bundle", "discount"],
-    answer: ({ fromPrice }) => (
+    answer: ({ fromPrice, closePanel }) => (
       <>
         A single subject starts from <strong>{fromPrice}</strong>, and taking
         three or more subjects unlocks bundle pricing automatically — the cart
-        always charges you the cheapest valid combination. Have a look:{" "}
-        <Link href="/subjects" className="font-medium text-accent underline">
-          browse subjects and prices
-        </Link>
-        .
+        always charges you the cheapest valid combination.
+        <br />
+        <CtaButton href="/subjects" label="Browse subjects & prices" onNavigate={closePanel} />
       </>
     ),
   },
@@ -127,16 +132,14 @@ const TOPICS: Topic[] = [
     id: "try",
     label: "Can I try before buying?",
     keywords: ["try", "free", "sample", "demo", "test", "before", "predict", "heatmap"],
-    answer: () => (
+    answer: ({ closePanel }) => (
       <>
         Yes. Every subject has a free <strong>Predict-your-mark</strong> check —
         ten questions drawn from the topics our forecast rates most likely,
         auto-marked in about seven minutes. It ends with a score and worked
-        solutions so you can judge us for yourself.{" "}
-        <Link href="/subjects" className="font-medium text-accent underline">
-          Pick a subject to try
-        </Link>
-        .
+        solutions so you can judge us for yourself.
+        <br />
+        <CtaButton href="/subjects" label="Pick a subject to try" onNavigate={closePanel} />
       </>
     ),
   },
@@ -166,6 +169,24 @@ const GREETING_RE =
 function isGreeting(text: string): boolean {
   return GREETING_RE.test(text) && text.trim().length <= 20;
 }
+
+// Floating-bubble copy that rotates to keep Gugu inviting. NEW = before the
+// visitor has chatted (openers); ENGAGED = after they've talked to Gugu (keep
+// them coming back to close the sale).
+const BUBBLE_NEW = [
+  "Got a question?",
+  "Ask me anything!",
+  "Not sure where to start?",
+  "Questions before you buy?",
+  "Need help choosing? 💡",
+];
+const BUBBLE_ENGAGED = [
+  "Feel free to ask me more! 💬",
+  "Still deciding? I can help.",
+  "Want me to recommend a pack?",
+  "Any more questions?",
+  "Here whenever you need me!",
+];
 
 function matchTopic(text: string): Topic | null {
   const q = text.toLowerCase();
@@ -220,13 +241,77 @@ function GuguSprite({
   );
 }
 
+// Inline underline link (used inside prose). Minimises the chat on click so the
+// destination page is visible underneath.
+function InlineLink({
+  href,
+  onNavigate,
+  children,
+}: {
+  href: string;
+  onNavigate?: () => void;
+  children: ReactNode;
+}) {
+  return (
+    <Link href={href} onClick={onNavigate} className="font-medium text-[#4ef3c9] underline">
+      {children}
+    </Link>
+  );
+}
+
+// A clear arcade call-to-action button (mint outline, fills on hover). This is
+// what a link Gugu offers renders as, so a visitor sees an obvious button
+// rather than "click here". Minimises the chat on click.
+function CtaButton({
+  href,
+  label,
+  onNavigate,
+}: {
+  href: string;
+  label: string;
+  onNavigate?: () => void;
+}) {
+  const cls =
+    "mt-1.5 inline-flex items-center gap-1 rounded-md border-2 border-[#4ef3c9] bg-[#4ef3c9]/10 px-3 py-1.5 text-xs font-bold text-[#4ef3c9] no-underline transition-colors hover:bg-[#4ef3c9] hover:text-[#12122b]";
+  if (/^https?:/i.test(href)) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={cls} onClick={onNavigate}>
+        {label} →
+      </a>
+    );
+  }
+  return (
+    <Link href={href} className={cls} onClick={onNavigate}>
+      {label} →
+    </Link>
+  );
+}
+
+// Friendly button label for a link Gugu shares, so visitors see the destination
+// in plain words rather than a raw path.
+const PATH_LABELS: Record<string, string> = {
+  "/subjects": "Browse subjects & prices",
+  "/bundles": "Build a bundle",
+  "/accuracy": "See our track record",
+  "/faq": "Read the FAQ",
+  "/free-heatmap": "Get the free heatmap",
+};
+
+function labelForPath(href: string): string {
+  if (/^https?:/i.test(href)) return "Open link";
+  const clean = href.replace(/\/$/, "");
+  if (PATH_LABELS[clean]) return PATH_LABELS[clean];
+  if (/^\/(o-level|na-level)\/[\w-]+/.test(clean)) return "View this subject";
+  return "Open page";
+}
+
 // Turns plain-text replies into rich content: full URLs and known site paths
-// (/subjects, /bundles, …) become clickable links, so Gugu can hand over a
-// purchase link that actually works. Everything else stays literal text.
+// (/subjects, /bundles, …) become CTA buttons, so Gugu can hand over a purchase
+// link that reads as an obvious button. Everything else stays literal text.
 const LINK_RE =
   /(https?:\/\/[^\s<]+|\/(?:subjects|bundles|accuracy|faq|free-heatmap|o-level|na-level)(?:\/[\w-]+)*\/?)/g;
 
-function renderWithLinks(text: string): ReactNode {
+function renderWithLinks(text: string, onNavigate?: () => void): ReactNode {
   const parts: ReactNode[] = [];
   const re = new RegExp(LINK_RE);
   let last = 0;
@@ -241,26 +326,17 @@ function renderWithLinks(text: string): ReactNode {
     if (tail) token = token.slice(0, -tail.length);
 
     if (start > last) parts.push(text.slice(last, start));
-    if (/^https?:/i.test(token)) {
-      parts.push(
-        <a
-          key={key++}
-          href={token}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-medium text-accent underline"
-        >
-          {token}
-        </a>
-      );
-    } else {
-      parts.push(
-        <Link key={key++} href={token} className="font-medium text-accent underline">
-          {token}
-        </Link>
-      );
-    }
-    if (tail) parts.push(tail);
+    parts.push(
+      <CtaButton
+        key={key++}
+        href={token}
+        label={labelForPath(token)}
+        onNavigate={onNavigate}
+      />
+    );
+    // Drop a lone trailing ":" that preceded the link (e.g. "here:") for
+    // tidiness; keep other punctuation.
+    if (tail && tail !== ":") parts.push(tail);
     last = start + m[0].length;
   }
   if (last < text.length) parts.push(text.slice(last));
@@ -275,16 +351,20 @@ function renderWithLinks(text: string): ReactNode {
 function TypewriterText({
   text,
   onType,
+  onNavigate,
 }: {
   text: string;
   onType?: () => void;
+  onNavigate?: () => void;
 }) {
   const [count, setCount] = useState(0);
   const doneRef = useRef(false);
 
   useEffect(() => {
     if (doneRef.current) return;
-    const step = Math.max(1, Math.ceil(text.length / 90));
+    // Slow, human-paced typing: reveal ~1 char at a time on shorter replies
+    // (longer ones step up a little so they don't drag past ~6s).
+    const step = Math.max(1, Math.ceil(text.length / 180));
     const id = setInterval(() => {
       setCount((c) => {
         const next = Math.min(text.length, c + step);
@@ -295,11 +375,12 @@ function TypewriterText({
         return next;
       });
       onType?.();
-    }, 20);
+    }, 34);
     return () => clearInterval(id);
   }, [text, onType]);
 
-  if (doneRef.current || count >= text.length) return <>{renderWithLinks(text)}</>;
+  if (doneRef.current || count >= text.length)
+    return <>{renderWithLinks(text, onNavigate)}</>;
   return <>{text.slice(0, count)}</>;
 }
 
@@ -315,6 +396,7 @@ export function GuguChat() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [thinking, setThinking] = useState(false);
+  const [quickOpen, setQuickOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const nextId = useRef(1);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -328,7 +410,10 @@ export function GuguChat() {
     return sgd(Math.min(...prices));
   }, [pricing]);
 
-  const ctx = useMemo(() => ({ fromPrice }), [fromPrice]);
+  // Minimise the chat — used when a visitor clicks any link Gugu offers, so the
+  // destination page is visible instead of hidden behind the panel.
+  const closePanel = useCallback(() => setOpen(false), []);
+  const ctx = useMemo(() => ({ fromPrice, closePanel }), [fromPrice, closePanel]);
 
   // Client-only island. Also skips the native game shell, which stamps
   // html[data-native] before paint and has its own UI.
@@ -336,6 +421,18 @@ export function GuguChat() {
     if (document.documentElement.dataset.native) return;
     setMounted(true);
   }, []);
+
+  // Rotating attract messages in the floating bubble. Before the visitor has
+  // chatted we tease with openers; once they've engaged we invite them back to
+  // keep the conversation (and the sale) going.
+  const bubblePool = messages.length > 0 ? BUBBLE_ENGAGED : BUBBLE_NEW;
+  const [bubbleIdx, setBubbleIdx] = useState(0);
+  useEffect(() => {
+    if (open) return;
+    const id = setInterval(() => setBubbleIdx((i) => i + 1), 6500);
+    return () => clearInterval(id);
+  }, [open]);
+  const bubbleText = bubblePool[bubbleIdx % bubblePool.length];
 
   // Keep the latest message in view — on new messages and on each typed char.
   const scrollToBottom = useCallback(() => {
@@ -353,7 +450,7 @@ export function GuguChat() {
     setOpen(true);
     if (messages.length === 0) {
       pushGugu(
-        "Hi! I'm Gugu 👻 Ask me anything about StudyLah — or tap a question below."
+        "Hi! I'm Gugu, your StudyLah helper. Ask me anything — or tap a question below."
       );
     }
   }
@@ -441,32 +538,31 @@ export function GuguChat() {
 
   return (
     <div className="fixed bottom-4 left-4 z-40 flex flex-col items-start gap-3 print:hidden">
-      {/* Chat panel */}
+      {/* Chat panel — StudyLah Legends arcade-HUD styling (mint #4ef3c9 frame,
+          pixel-font labels, pink user bubbles, gold pressable Ask button, faint
+          CRT scanlines). Answer text stays Inter for readability. */}
       {open && (
         <div
           role="dialog"
           aria-label="Chat with Gugu"
-          // Mint outline + soft mint glow (SG_ARCADE.mint #4ef3c9) + deep drop
-          // shadow so the panel lifts off the near-black page instead of
-          // blending in.
-          className="flex h-[70vh] max-h-[520px] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-2xl border border-[#4ef3c9]/50 bg-surface shadow-[0_0_28px_-4px_rgba(78,243,201,0.35),0_24px_50px_-12px_rgba(0,0,0,0.85)] sm:w-[360px]"
+          className="relative flex h-[70vh] max-h-[520px] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-2xl border-2 border-[#4ef3c9] bg-[#12122b] shadow-[0_0_28px_-4px_rgba(78,243,201,0.45),0_24px_50px_-12px_rgba(0,0,0,0.85)] sm:w-[360px]"
         >
-          {/* Header */}
-          <div className="flex items-center gap-2.5 border-b border-hairline bg-night px-4 py-3">
-            <GuguSprite size={32} />
+          {/* Header — arcade "PROFILE" style: sprite in a bordered chip + pixel name */}
+          <div className="flex items-center gap-2.5 border-b-2 border-[#4ef3c9]/40 bg-[#0d0d22] px-4 py-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-md border border-[#4ef3c9]/60 bg-[#1b1a38]">
+              <GuguSprite size={26} />
+            </div>
             <div className="min-w-0 flex-1">
-              <p className="font-display text-sm font-bold leading-tight text-white">
-                Gugu
-              </p>
-              <p className="text-[11px] leading-tight text-cloud">
-                StudyLah helper · usually instant
+              <p className="font-pixel text-[12px] leading-none text-[#4ef3c9]">GUGU</p>
+              <p className="mt-1.5 font-pixel text-[7px] leading-none tracking-wide text-[#ffd166]">
+                <span className="text-[#4ef3c9]">●</span> LIVE NOW
               </p>
             </div>
             <button
               type="button"
               onClick={() => setOpen(false)}
               aria-label="Close chat"
-              className="rounded-lg px-2 py-1 text-lg leading-none text-cloud hover:bg-night-2 hover:text-white"
+              className="rounded-md px-2 py-1 text-lg leading-none text-[#8b93c6] hover:text-[#ff2e88]"
             >
               ✕
             </button>
@@ -478,9 +574,13 @@ export function GuguChat() {
               msg.role === "gugu" ? (
                 <div key={msg.id} className="flex items-end gap-2">
                   <GuguSprite size={24} className="shrink-0" />
-                  <div className="max-w-[85%] rounded-2xl rounded-bl-sm bg-night-2/10 px-3.5 py-2.5 text-sm leading-relaxed text-ink">
+                  <div className="max-w-[85%] rounded-xl rounded-bl-sm border border-[#4ef3c9]/25 bg-[#1b1a38] px-3.5 py-2.5 text-sm leading-relaxed text-cloud">
                     {typeof msg.content === "string" ? (
-                      <TypewriterText text={msg.content} onType={scrollToBottom} />
+                      <TypewriterText
+                        text={msg.content}
+                        onType={scrollToBottom}
+                        onNavigate={closePanel}
+                      />
                     ) : (
                       msg.content
                     )}
@@ -488,7 +588,7 @@ export function GuguChat() {
                 </div>
               ) : (
                 <div key={msg.id} className="flex justify-end">
-                  <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-accent px-3.5 py-2.5 text-sm leading-relaxed text-night">
+                  <div className="max-w-[85%] rounded-xl rounded-br-sm bg-accent px-3.5 py-2.5 text-sm font-medium leading-relaxed text-night">
                     {msg.content}
                   </div>
                 </div>
@@ -497,84 +597,128 @@ export function GuguChat() {
             {thinking && (
               <div className="flex items-end gap-2">
                 <GuguSprite size={24} className="shrink-0" />
-                <div className="flex gap-1 rounded-2xl rounded-bl-sm bg-night-2/10 px-3.5 py-3">
-                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-body [animation-delay:-0.2s]" />
-                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-body [animation-delay:-0.1s]" />
-                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-body" />
+                <div className="flex gap-1 rounded-xl rounded-bl-sm border border-[#4ef3c9]/25 bg-[#1b1a38] px-3.5 py-3">
+                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#4ef3c9] [animation-delay:-0.2s]" />
+                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#4ef3c9] [animation-delay:-0.1s]" />
+                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#4ef3c9]" />
                 </div>
               </div>
             )}
           </div>
 
-          {/* Quick replies */}
-          <div className="flex flex-wrap gap-1.5 border-t border-hairline px-3 py-2.5">
-            {TOPICS.map((topic) => (
+          {/* Quick replies — collapsed by default behind a friendly prompt */}
+          <div className="border-t-2 border-[#4ef3c9]/30 px-3 pb-2.5 pt-2">
+            <button
+              type="button"
+              onClick={() => setQuickOpen((o) => !o)}
+              aria-expanded={quickOpen}
+              className="flex w-full items-center justify-between gap-2 text-left"
+            >
+              <span className="font-pixel text-[8px] tracking-wide text-[#4ef3c9]/80">
+                QUICK ASKS
+              </span>
+              <span aria-hidden="true" className="text-xs leading-none text-[#4ef3c9]">
+                {quickOpen ? "▾" : "▸"}
+              </span>
+            </button>
+            {quickOpen ? (
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {TOPICS.map((topic) => (
+                  <button
+                    key={topic.id}
+                    type="button"
+                    onClick={() => answerTopic(topic)}
+                    className="rounded-md border border-[#4ef3c9]/40 bg-[#1b1a38] px-2.5 py-1 text-xs font-medium text-cloud transition-colors hover:border-[#4ef3c9] hover:bg-[#4ef3c9] hover:text-[#12122b]"
+                  >
+                    {topic.label}
+                  </button>
+                ))}
+              </div>
+            ) : (
               <button
-                key={topic.id}
                 type="button"
-                onClick={() => answerTopic(topic)}
-                className="rounded-full border border-hairline bg-surface px-2.5 py-1 text-xs font-medium text-body transition-colors hover:border-accent hover:text-accent"
+                onClick={() => setQuickOpen(true)}
+                className="mt-1 text-left text-xs leading-snug text-cloud/70 hover:text-cloud"
               >
-                {topic.label}
+                Not sure what to ask? Here are some common questions to start.
               </button>
-            ))}
+            )}
           </div>
 
           {/* Input */}
           <form
             onSubmit={handleSubmit}
-            className="flex items-center gap-2 border-t border-hairline px-3 py-2.5"
+            className="flex items-center gap-2 border-t-2 border-[#4ef3c9]/30 bg-[#0d0d22] px-3 py-2.5"
           >
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type a question…"
               aria-label="Type a question"
-              // text-base = 16px: iOS Safari auto-zooms the page when a focused
-              // input is under 16px, so keep this at 16 to stop the zoom-in.
-              // Border = the Singapore minimap mint (SG_ARCADE.mint #4ef3c9).
-              className="min-w-0 flex-1 rounded-lg border-2 border-[#4ef3c9] bg-white px-3 py-2 text-base text-night outline-none placeholder:text-night/45 focus:border-[#4ef3c9] focus:ring-2 focus:ring-[#4ef3c9]/30"
+              // text-base = 16px: iOS Safari auto-zooms a focused sub-16px input.
+              // Dark navy field + mint frame keeps it on-theme and readable.
+              className="min-w-0 flex-1 rounded-md border-2 border-[#4ef3c9] bg-[#1b1a38] px-3 py-2 text-base text-white caret-[#4ef3c9] outline-none placeholder:text-[#8b93c6] focus:border-[#4ef3c9] focus:ring-2 focus:ring-[#4ef3c9]/30"
             />
             <button
               type="submit"
               aria-label="Send"
               disabled={thinking}
-              className="shrink-0 rounded-lg bg-accent px-3.5 py-2 text-sm font-bold text-night hover:opacity-90 disabled:opacity-50"
+              className="btn-pixel shrink-0 rounded-md bg-accent px-3.5 py-2 font-pixel text-[11px] uppercase leading-none text-night disabled:opacity-50"
             >
               Ask
             </button>
           </form>
+
+          {/* Faint CRT scanlines — sits above content, clicks pass through. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(0deg, rgba(0,0,0,0.12) 0px, rgba(0,0,0,0.12) 1px, transparent 1px, transparent 3px)",
+            }}
+          />
         </div>
       )}
 
-      {/* Persistent "Got a question?" bubble — only while the panel is closed */}
-      {!open && (
+      {/* Gugu + speech bubble in a row — RPG "character speaking" layout:
+          Gugu on the left, a rotating bubble to its right with a tail that
+          points back at him. */}
+      <div className="flex items-center gap-1.5">
+        {/* Floating Gugu — bare ghost bobbing above a soft drop shadow */}
         <button
           type="button"
-          onClick={openChat}
-          aria-hidden="true"
-          tabIndex={-1}
-          className="ml-1 rounded-2xl rounded-bl-sm bg-white px-3 py-1.5 text-sm font-semibold text-night shadow-lg"
+          onClick={() => (open ? setOpen(false) : openChat())}
+          aria-label={open ? "Close chat" : "Chat with Gugu"}
+          aria-expanded={open}
+          className="group flex shrink-0 flex-col items-center transition-transform hover:scale-105 active:scale-95"
         >
-          Got a question?
+          <GuguSprite size={60} className="ghost-bob drop-shadow-lg" />
+          {/* shadow ellipse the ghost floats over */}
+          <span
+            aria-hidden="true"
+            className="mt-1 h-1.5 w-8 rounded-[50%] bg-black/35 blur-[1.5px]"
+          />
         </button>
-      )}
 
-      {/* Floating Gugu — bare ghost bobbing above a soft drop shadow */}
-      <button
-        type="button"
-        onClick={() => (open ? setOpen(false) : openChat())}
-        aria-label={open ? "Close chat" : "Chat with Gugu"}
-        aria-expanded={open}
-        className="group flex flex-col items-center transition-transform hover:scale-105 active:scale-95"
-      >
-        <GuguSprite size={60} className="ghost-bob drop-shadow-lg" />
-        {/* shadow ellipse the ghost floats over */}
-        <span
-          aria-hidden="true"
-          className="mt-1 h-1.5 w-8 rounded-[50%] bg-black/35 blur-[1.5px]"
-        />
-      </button>
+        {/* Rotating speech bubble beside Gugu (closed state only) */}
+        {!open && (
+          <button
+            type="button"
+            onClick={openChat}
+            aria-hidden="true"
+            tabIndex={-1}
+            className="relative max-w-[190px] rounded-xl border-2 border-[#4ef3c9] bg-[#12122b] px-3 py-1.5 text-left text-sm font-semibold text-[#4ef3c9] shadow-[0_0_16px_-4px_rgba(78,243,201,0.5)]"
+          >
+            {/* tail pointing left, back at Gugu */}
+            <span
+              aria-hidden="true"
+              className="absolute -left-[7px] top-1/2 h-3 w-3 -translate-y-1/2 rotate-45 border-b-2 border-l-2 border-[#4ef3c9] bg-[#12122b]"
+            />
+            {bubbleText}
+          </button>
+        )}
+      </div>
     </div>
   );
 }
