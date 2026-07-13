@@ -341,12 +341,13 @@ Preserves all commerce (pricing, ForecastCard, EmailCapture, accuracy proof).
 
 ## Gugu — floating sales chatbot (`src/components/gugu-chat.tsx`)
 
-A floating helper (bottom-left, pixel-art Gugu from `/public/marketing/ghost_neutral.png`
-resting / `ghost_happy.png` on interaction) that answers buyer questions to
-clear pre-purchase doubts. Mounted in `SiteChrome` and gated to `!chromeless`
-routes (hidden on `/admin` + ad landings); self-hides inside the native game
-shell (returns null when `html[data-native]` is stamped). One-time greeting
-bubble gated by `localStorage` (`studylah_gugu_seen`).
+A floating helper (bottom-left, bare pixel-art Gugu from `/public/marketing/ghost_neutral.png`
+resting / `ghost_happy.png` on interaction — `.ghost-bob` bob over a soft drop-shadow
+ellipse, no circular chip) that answers buyer questions to clear pre-purchase
+doubts. A persistent white **"Got a question?"** bubble sits above the ghost while
+the panel is closed. Mounted in `SiteChrome` and gated to `!chromeless` routes
+(hidden on `/admin` + ad landings); self-hides inside the native game shell
+(returns null when `html[data-native]` is stamped).
 
 **TIER 1 — fully SCRIPTED, by owner decision.** Every answer is pre-written,
 vetted copy (a chat-sized version of `/faq` + the game-as-beta positioning); the

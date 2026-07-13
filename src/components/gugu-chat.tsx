@@ -15,8 +15,6 @@ import { sgd } from "@/lib/catalogue";
 // sure-win, and never promise a grade or exam result. Live pricing is pulled
 // from the pricing store (usePricing) so a quoted number is always the real one.
 
-const GREETING_SEEN_KEY = "studylah_gugu_seen";
-
 type Answer = string | ReactNode;
 
 interface Topic {
@@ -180,7 +178,6 @@ export function GuguChat() {
   const pricing = usePricing();
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
-  const [showGreeting, setShowGreeting] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const nextId = useRef(1);
@@ -202,14 +199,6 @@ export function GuguChat() {
   useEffect(() => {
     if (document.documentElement.dataset.native) return;
     setMounted(true);
-    try {
-      if (!localStorage.getItem(GREETING_SEEN_KEY)) {
-        const t = setTimeout(() => setShowGreeting(true), 1200);
-        return () => clearTimeout(t);
-      }
-    } catch {
-      /* localStorage blocked — just skip the one-time greeting */
-    }
   }, []);
 
   // Keep the latest message in view.
@@ -222,12 +211,6 @@ export function GuguChat() {
   }
 
   function openChat() {
-    setShowGreeting(false);
-    try {
-      localStorage.setItem(GREETING_SEEN_KEY, "1");
-    } catch {
-      /* ignore */
-    }
     setOpen(true);
     if (messages.length === 0) {
       pushGugu(
@@ -373,32 +356,39 @@ export function GuguChat() {
         </div>
       )}
 
-      {/* One-time greeting bubble */}
-      {!open && showGreeting && (
+      {/* Persistent "Got a question?" bubble — only while the panel is closed */}
+      {!open && (
         <button
           type="button"
           onClick={openChat}
-          className="max-w-[220px] rounded-2xl rounded-bl-sm border border-hairline bg-surface px-3.5 py-2.5 text-left text-sm leading-snug text-ink shadow-lg"
+          aria-hidden="true"
+          tabIndex={-1}
+          className="ml-1 rounded-2xl rounded-bl-sm bg-white px-3 py-1.5 text-sm font-semibold text-night shadow-lg"
         >
-          Hi! I&apos;m Gugu 👋 Got a question before you buy?
+          Got a question?
         </button>
       )}
 
-      {/* Floating Gugu button */}
+      {/* Floating Gugu — bare ghost bobbing above a soft drop shadow */}
       <button
         type="button"
         onClick={() => (open ? setOpen(false) : openChat())}
         aria-label={open ? "Close chat" : "Chat with Gugu"}
         aria-expanded={open}
-        className="group relative flex h-16 w-16 items-center justify-center rounded-full border border-hairline bg-surface shadow-xl transition-transform hover:scale-105 active:scale-95"
+        className="group flex flex-col items-center transition-transform hover:scale-105 active:scale-95"
       >
         <img
           src={open ? "/marketing/ghost_happy.png" : "/marketing/ghost_neutral.png"}
           alt=""
-          width={44}
-          height={44}
-          className="h-11 w-11 transition-transform group-hover:-translate-y-0.5"
-          style={{ imageRendering: "pixelated" }}
+          width={60}
+          height={60}
+          className="ghost-bob drop-shadow-lg"
+          style={{ imageRendering: "pixelated", height: 60, width: 60 }}
+        />
+        {/* shadow ellipse the ghost floats over */}
+        <span
+          aria-hidden="true"
+          className="mt-1 h-1.5 w-8 rounded-[50%] bg-black/35 blur-[1.5px]"
         />
       </button>
     </div>
