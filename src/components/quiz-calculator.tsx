@@ -257,22 +257,20 @@ export function QuizCalculator() {
 
   return (
     <>
-      {/* Up near the question header (not the bottom) so the phone keyboard
-          never hides it. Compact icon to keep it clear of the question text.
-          Tapping it blurs the answer field, dismissing the keyboard, so the
-          panel below has the full screen. */}
+      {/* Small yellow labelled button, rendered inline by the quiz (so it never
+          overlaps the timer). Tapping it blurs the answer field, dismissing the
+          keyboard, so the panel below has the full screen. */}
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        aria-label={open ? "Close calculator" : "Open calculator"}
-        className="fixed right-3 top-[19%] z-40 flex h-11 w-11 items-center justify-center rounded-full border border-hairline bg-surface text-lg shadow-lg transition-colors hover:border-accent print:hidden"
+        className="rounded-lg bg-accent px-3 py-1.5 text-xs font-bold text-night shadow transition-opacity hover:opacity-90 print:hidden"
       >
-        <span aria-hidden="true">{open ? "✕" : "🧮"}</span>
+        {open ? "Close" : "Calculator"}
       </button>
 
       {open && (
-        <div className="fixed right-3 top-[calc(19%+3.25rem)] z-40 w-[min(20rem,92vw)] rounded-2xl border border-hairline bg-night p-3 shadow-2xl print:hidden">
+        <div className="fixed left-1/2 top-16 z-40 w-[min(20rem,92vw)] -translate-x-1/2 rounded-2xl border border-hairline bg-night p-3 shadow-2xl print:hidden">
           {/* Display: the expression, with a live result preview underneath. */}
           <div className="mb-2 rounded-lg bg-surface px-3 py-2">
             <div className="min-h-[1.6rem] overflow-x-auto whitespace-nowrap text-right font-mono text-lg font-bold text-ink">

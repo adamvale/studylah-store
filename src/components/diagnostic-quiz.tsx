@@ -78,10 +78,13 @@ export function DiagnosticQuiz({
   }, [step, phase]);
 
   // The moment the check is marked, Gugu nudges toward the email gate, NEUTRAL,
-  // so the score isn't spoiled before the student unlocks it.
+  // so the score isn't spoiled before the student unlocks it. Also scroll to the
+  // top so the gate opens from its heading (not scrolled down from the last
+  // question, which was clipping the lock icon under the header).
   useEffect(() => {
     if (!result) return;
     completedRef.current = true;
+    window.scrollTo({ top: 0 });
     guguSay(GUGU_FINISH, { hold: false });
   }, [result]);
 
@@ -212,8 +215,11 @@ export function DiagnosticQuiz({
   if (result && step >= questions.length) {
     return (
       <div className="mx-auto max-w-md">
-        <div className="rounded-2xl border border-hairline bg-surface p-6 text-center">
-          <p className="font-mono text-xs text-body">
+        <form
+          onSubmit={unlock}
+          className="rounded-2xl border border-accent/40 bg-surface p-6"
+        >
+          <p className="text-center font-mono text-xs text-body">
             {subjectName} · {topicLabel}
           </p>
           <div className="mt-4 flex justify-center" aria-hidden="true">
@@ -224,37 +230,12 @@ export function DiagnosticQuiz({
           <h2
             ref={headingRef}
             tabIndex={-1}
-            className="mt-4 font-display text-2xl font-black text-ink outline-none"
+            className="mt-4 text-center font-display text-2xl font-black text-ink outline-none"
           >
-            Your result is ready
+            Enter email to reveal result
           </h2>
-          <p className="mt-2 text-sm text-body">
-            You&apos;ve finished all {questions.length} questions. Enter your
-            email below to reveal your score, indicative grade and full
-            breakdown.
-          </p>
-          {timeExpired && (
-            <p className="mt-3 rounded-lg bg-coral/15 px-3 py-2 text-xs text-ink">
-              Time&apos;s up, we marked what you&apos;d answered. Unanswered
-              questions scored 0.
-            </p>
-          )}
-        </div>
-
-        <form
-          onSubmit={unlock}
-          className="mt-4 rounded-2xl border border-accent/40 bg-surface p-6"
-        >
-          <h3 className="font-display text-lg font-bold text-ink">
-            Reveal your result, free
-          </h3>
-          <p className="mt-1 text-sm text-body">
-            Your score, indicative grade, every mark you dropped, the worked
-            solutions, and a fix plan. We&apos;ll <strong className="text-ink">email the full
-            diagnosis</strong> to you too, so use a real address you can open.
-          </p>
-          <label htmlFor="diag-email" className="mt-4 block text-xs font-medium text-body">
-            Email for your results (double-check it&apos;s valid)
+          <label htmlFor="diag-email" className="sr-only">
+            Email for your results
           </label>
           <input
             id="diag-email"
@@ -263,9 +244,18 @@ export function DiagnosticQuiz({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
-            className="mt-1 w-full rounded-lg border border-hairline bg-night px-4 py-2.5 text-base text-ink outline-none focus:border-accent"
+            className="mt-4 w-full rounded-lg border border-hairline bg-night px-4 py-3 text-base text-ink outline-none focus:border-accent"
           />
-          <label className="mt-3 flex items-start gap-2 text-xs text-body">
+          <p className="mt-3 text-sm text-body">
+            Your full worked solutions and diagnosis will be sent to your email.
+          </p>
+          {timeExpired && (
+            <p className="mt-3 rounded-lg bg-coral/15 px-3 py-2 text-xs text-ink">
+              Time&apos;s up, we marked what you&apos;d answered. Unanswered
+              questions scored 0.
+            </p>
+          )}
+          <label className="mt-4 flex items-start gap-2 text-xs text-body">
             <input
               type="checkbox"
               checked={isParent}
@@ -384,6 +374,12 @@ export function DiagnosticQuiz({
         {q.stem}
       </h2>
 
+      {/* Small yellow Calculator button, right-aligned under the question so it
+          never overlaps the timer. */}
+      <div className="mt-3 flex justify-end">
+        <QuizCalculator />
+      </div>
+
       {q.type === "mcq" && q.options ? (
         <div role="radiogroup" aria-label="Answer options" className="mt-5 space-y-2">
           {q.options.map((opt, i) => {
@@ -446,9 +442,6 @@ export function DiagnosticQuiz({
           {error}
         </p>
       )}
-
-      {/* Simple pop-up calculator for the arithmetic a mark check needs. */}
-      <QuizCalculator />
     </div>
   );
 }
