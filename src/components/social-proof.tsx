@@ -39,6 +39,10 @@ export function SocialProof() {
             </figure>
           ))}
         </div>
+        <p className="mt-8 text-center text-xs text-body/70">
+          Shared with permission. Individual experiences; StudyLah&apos;s
+          forecasts are probabilistic and it makes no grade guarantees.
+        </p>
       </div>
     </section>
   );

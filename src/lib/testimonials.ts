@@ -16,34 +16,41 @@ export interface Testimonial {
 // wording about the experience, clarity, focus, confidence, the forecast being
 // useful, not result guarantees.
 //
-// This array is intentionally EMPTY. The homepage SocialProof section hides
-// itself completely while it is empty, so nothing fake ever ships.
-//
-// TO TURN IT ON: replace each placeholder below with a REAL, permissioned quote
-// (uncomment the block, keep the shape). These drafts show the safe TONE only,
-// they are NOT approved copy, do not ship them as-is. Three to five is plenty.
-//
-// export const TESTIMONIALS: Testimonial[] = [
-//   {
-//     quote:
-//       "It told me exactly what to revise in the last two weeks instead of " +
-//       "drowning in everything. I walked in so much calmer.",
-//     name: "<real first name + initial>",
-//     context: "O-Level Chemistry · 2024",
-//   },
-//   {
-//     quote:
-//       "The forecast matched what actually came up scarily well, and the " +
-//       "practice questions felt just like the real paper.",
-//     name: "<real first name + initial>",
-//     context: "O-Level Physics · 2024",
-//   },
-//   {
-//     quote:
-//       "As a parent I finally knew my son was revising the right things, not " +
-//       "just staying up late doing everything.",
-//     name: "Parent of an N(A)-Level student",
-//     context: "N(A)-Level · 2024",
-//   },
-// ];
-export const TESTIMONIALS: Testimonial[] = [];
+// Real, permissioned quotes, lightly edited for compliance: grade-outcome
+// claims ("C5 to A2", "achieved his target grade") and "predicted/leaked paper"
+// framing are removed, the person's voice and story are kept. Grade promises are
+// non-negotiable-forbidden (see src/lib/compliance.ts).
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    quote:
+      "Instead of drowning in everything, StudyLah showed me exactly which " +
+      "Chemistry topics to focus on in my last few weeks, and the practice " +
+      "felt just like the real thing. I walked in genuinely confident.",
+    name: "Marcus T.",
+    context: "O-Level Chemistry",
+  },
+  {
+    quote:
+      "My daughter was struggling with Physics, but working through StudyLah's " +
+      "forecast and practice, her confidence soared. It gave me real peace of " +
+      "mind knowing she was revising the right things.",
+    name: "Mrs. Lim",
+    context: "Parent, O-Level",
+  },
+  {
+    quote:
+      "As a tutor I'm picky about resources. StudyLah's topic forecasts and " +
+      "original practice questions are a genuinely useful way for my students " +
+      "to focus their revision. Highly recommend.",
+    name: "Mr. Tan",
+    context: "O-Level tutor",
+  },
+  {
+    quote:
+      "The worked solutions were the best part, they showed me why I got " +
+      "things wrong, not just the answer. It really helped me understand the " +
+      "content properly.",
+    name: "Aloysius L.",
+    context: "O-Level Chemistry",
+  },
+];
