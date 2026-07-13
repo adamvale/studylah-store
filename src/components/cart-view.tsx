@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   LEVELS,
+  MAX_SUBJECTS,
   SUBJECTS,
   TIER_NAMES,
   TIER_ORDER,
@@ -260,6 +261,25 @@ export function CartView() {
             </div>
           );
         })}
+
+        {/* General savings nudge below the subjects: the more you add, the
+            cheaper each one gets. Hidden once a specific add-subject nudge is
+            already showing, or at the 8-subject cap. */}
+        {items.length < MAX_SUBJECTS &&
+          !nudges.some((n) => n.action?.type === "add-subject") && (
+            <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-accent/30 bg-accent/5 px-5 py-4">
+              <p className="text-sm text-ink">
+                The more subjects you add, the cheaper each one gets, up to{" "}
+                {MAX_SUBJECTS} subjects.
+              </p>
+              <Link
+                href="/bundles"
+                className="shrink-0 rounded-lg border border-accent px-4 py-2 text-sm font-medium text-accent hover:bg-accent/10"
+              >
+                Add a subject
+              </Link>
+            </div>
+          )}
 
         <button
           type="button"
