@@ -1,6 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import Link from "next/link";
 import { usePricing } from "@/lib/pricing-context";
 import { sgd } from "@/lib/catalogue";
@@ -213,6 +220,89 @@ function GuguSprite({
   );
 }
 
+// Turns plain-text replies into rich content: full URLs and known site paths
+// (/subjects, /bundles, …) become clickable links, so Gugu can hand over a
+// purchase link that actually works. Everything else stays literal text.
+const LINK_RE =
+  /(https?:\/\/[^\s<]+|\/(?:subjects|bundles|accuracy|faq|free-heatmap|o-level|na-level)(?:\/[\w-]+)*\/?)/g;
+
+function renderWithLinks(text: string): ReactNode {
+  const parts: ReactNode[] = [];
+  const re = new RegExp(LINK_RE);
+  let last = 0;
+  let key = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text)) !== null) {
+    const start = m.index;
+    let token = m[0];
+    // Don't swallow trailing sentence punctuation into the href.
+    const trail = token.match(/[.,;:!?)]+$/);
+    const tail = trail ? trail[0] : "";
+    if (tail) token = token.slice(0, -tail.length);
+
+    if (start > last) parts.push(text.slice(last, start));
+    if (/^https?:/i.test(token)) {
+      parts.push(
+        <a
+          key={key++}
+          href={token}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-accent underline"
+        >
+          {token}
+        </a>
+      );
+    } else {
+      parts.push(
+        <Link key={key++} href={token} className="font-medium text-accent underline">
+          {token}
+        </Link>
+      );
+    }
+    if (tail) parts.push(tail);
+    last = start + m[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts.length ? <>{parts}</> : text;
+}
+
+// Types a reply out character-by-character (feels like Gugu is writing, less
+// intimidating than a wall of text appearing at once), then swaps to the
+// link-rendered version. Types once on mount; keyed by message id in the list
+// so existing messages never re-type. Total reveal is ~1.8s regardless of
+// length (longer replies reveal more chars per tick).
+function TypewriterText({
+  text,
+  onType,
+}: {
+  text: string;
+  onType?: () => void;
+}) {
+  const [count, setCount] = useState(0);
+  const doneRef = useRef(false);
+
+  useEffect(() => {
+    if (doneRef.current) return;
+    const step = Math.max(1, Math.ceil(text.length / 90));
+    const id = setInterval(() => {
+      setCount((c) => {
+        const next = Math.min(text.length, c + step);
+        if (next >= text.length) {
+          clearInterval(id);
+          doneRef.current = true;
+        }
+        return next;
+      });
+      onType?.();
+    }, 20);
+    return () => clearInterval(id);
+  }, [text, onType]);
+
+  if (doneRef.current || count >= text.length) return <>{renderWithLinks(text)}</>;
+  return <>{text.slice(0, count)}</>;
+}
+
 interface ChatMessage {
   id: number;
   role: "gugu" | "user";
@@ -247,10 +337,13 @@ export function GuguChat() {
     setMounted(true);
   }, []);
 
-  // Keep the latest message in view.
-  useEffect(() => {
+  // Keep the latest message in view — on new messages and on each typed char.
+  const scrollToBottom = useCallback(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight });
-  }, [messages, open]);
+  }, []);
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, open, thinking, scrollToBottom]);
 
   function pushGugu(content: Answer) {
     setMessages((m) => [...m, { id: nextId.current++, role: "gugu", content }]);
@@ -353,7 +446,10 @@ export function GuguChat() {
         <div
           role="dialog"
           aria-label="Chat with Gugu"
-          className="flex h-[70vh] max-h-[520px] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-2xl border border-hairline bg-surface shadow-2xl sm:w-[360px]"
+          // Mint outline + soft mint glow (SG_ARCADE.mint #4ef3c9) + deep drop
+          // shadow so the panel lifts off the near-black page instead of
+          // blending in.
+          className="flex h-[70vh] max-h-[520px] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-2xl border border-[#4ef3c9]/50 bg-surface shadow-[0_0_28px_-4px_rgba(78,243,201,0.35),0_24px_50px_-12px_rgba(0,0,0,0.85)] sm:w-[360px]"
         >
           {/* Header */}
           <div className="flex items-center gap-2.5 border-b border-hairline bg-night px-4 py-3">
@@ -383,7 +479,11 @@ export function GuguChat() {
                 <div key={msg.id} className="flex items-end gap-2">
                   <GuguSprite size={24} className="shrink-0" />
                   <div className="max-w-[85%] rounded-2xl rounded-bl-sm bg-night-2/10 px-3.5 py-2.5 text-sm leading-relaxed text-ink">
-                    {msg.content}
+                    {typeof msg.content === "string" ? (
+                      <TypewriterText text={msg.content} onType={scrollToBottom} />
+                    ) : (
+                      msg.content
+                    )}
                   </div>
                 </div>
               ) : (
