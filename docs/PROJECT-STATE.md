@@ -341,11 +341,15 @@ Preserves all commerce (pricing, ForecastCard, EmailCapture, accuracy proof).
 
 ## Gugu — floating sales chatbot (`src/components/gugu-chat.tsx`)
 
-A floating helper (bottom-left, bare pixel-art Gugu from `/public/marketing/ghost_neutral.png`
-resting / `ghost_happy.png` on interaction — `.ghost-bob` bob over a soft drop-shadow
-ellipse, no circular chip) that answers buyer questions to clear pre-purchase
-doubts. A persistent white **"Got a question?"** bubble sits above the ghost while
-the panel is closed. Mounted in `SiteChrome` and gated to `!chromeless` routes
+A floating helper (bottom-left, bare front-facing Gugu — the `GuguSprite`
+component CSS-crops cell (0,0) of `/public/game/player_ghost.png` (240×96,
+16×24 cells) so header, message avatar, and the floating button all share the
+canonical both-eyes-forward ghost with no separate exported PNG; `.ghost-bob`
+bob over a soft drop-shadow ellipse, no circular chip) that answers buyer
+questions to clear pre-purchase doubts. A persistent white **"Got a question?"**
+bubble sits above the ghost while the panel is closed. Chat input is
+`text-night` on `bg-white` (the `text-ink` token is light in the dark theme —
+would be invisible on the white field). Mounted in `SiteChrome` and gated to `!chromeless` routes
 (hidden on `/admin` + ad landings); self-hides inside the native game shell
 (returns null when `html[data-native]` is stamped).
 

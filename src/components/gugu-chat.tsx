@@ -168,6 +168,42 @@ function matchTopic(text: string): Topic | null {
   return bestScore > 0 ? best : null;
 }
 
+// The canonical Gugu: the FIRST cell of the walker sheet — the plain white,
+// front-facing, both-eyes-forward ghost. player_ghost.png is 240×96, laid out
+// in 16×24 cells; cell (0,0) is Gugu facing down (toward the viewer). Rendered
+// as a CSS-cropped background so we don't need a separate exported PNG.
+const SHEET_W = 240;
+const SHEET_H = 96;
+const CELL_W = 16;
+const CELL_H = 24;
+
+function GuguSprite({
+  size,
+  className,
+}: {
+  // Target height in px; width follows the cell's 2:3 aspect.
+  size: number;
+  className?: string;
+}) {
+  const scale = size / CELL_H;
+  return (
+    <span
+      aria-hidden="true"
+      className={className}
+      style={{
+        display: "inline-block",
+        width: CELL_W * scale,
+        height: CELL_H * scale,
+        backgroundImage: "url(/game/player_ghost.png)",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "0 0",
+        backgroundSize: `${SHEET_W * scale}px ${SHEET_H * scale}px`,
+        imageRendering: "pixelated",
+      }}
+    />
+  );
+}
+
 interface ChatMessage {
   id: number;
   role: "gugu" | "user";
@@ -266,14 +302,7 @@ export function GuguChat() {
         >
           {/* Header */}
           <div className="flex items-center gap-2.5 border-b border-hairline bg-night px-4 py-3">
-            <img
-              src="/marketing/ghost_happy.png"
-              alt=""
-              width={32}
-              height={32}
-              className="h-8 w-8"
-              style={{ imageRendering: "pixelated" }}
-            />
+            <GuguSprite size={32} />
             <div className="min-w-0 flex-1">
               <p className="font-display text-sm font-bold leading-tight text-white">
                 Gugu
@@ -297,14 +326,7 @@ export function GuguChat() {
             {messages.map((msg) =>
               msg.role === "gugu" ? (
                 <div key={msg.id} className="flex items-end gap-2">
-                  <img
-                    src="/marketing/ghost_neutral.png"
-                    alt=""
-                    width={24}
-                    height={24}
-                    className="h-6 w-6 shrink-0"
-                    style={{ imageRendering: "pixelated" }}
-                  />
+                  <GuguSprite size={24} className="shrink-0" />
                   <div className="max-w-[85%] rounded-2xl rounded-bl-sm bg-night-2/10 px-3.5 py-2.5 text-sm leading-relaxed text-ink">
                     {msg.content}
                   </div>
@@ -343,7 +365,7 @@ export function GuguChat() {
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type a question…"
               aria-label="Type a question"
-              className="min-w-0 flex-1 rounded-lg border border-hairline bg-white px-3 py-2 text-sm text-ink outline-none placeholder:text-body/60 focus:border-accent"
+              className="min-w-0 flex-1 rounded-lg border border-hairline bg-white px-3 py-2 text-sm text-night outline-none placeholder:text-night/45 focus:border-accent"
             />
             <button
               type="submit"
@@ -377,14 +399,7 @@ export function GuguChat() {
         aria-expanded={open}
         className="group flex flex-col items-center transition-transform hover:scale-105 active:scale-95"
       >
-        <img
-          src={open ? "/marketing/ghost_happy.png" : "/marketing/ghost_neutral.png"}
-          alt=""
-          width={60}
-          height={60}
-          className="ghost-bob drop-shadow-lg"
-          style={{ imageRendering: "pixelated", height: 60, width: 60 }}
-        />
+        <GuguSprite size={60} className="ghost-bob drop-shadow-lg" />
         {/* shadow ellipse the ghost floats over */}
         <span
           aria-hidden="true"
