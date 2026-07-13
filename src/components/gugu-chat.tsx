@@ -11,8 +11,9 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { usePricing } from "@/lib/pricing-context";
-import { sgd } from "@/lib/catalogue";
-import { GUGU_SAY_EVENT, type GuguSayDetail } from "@/lib/gugu-bus";
+import { sgd, type Level } from "@/lib/catalogue";
+import { useCart } from "@/lib/cart-context";
+import { GUGU_SAY_EVENT, type GuguCta, type GuguSayDetail } from "@/lib/gugu-bus";
 
 // Gugu, the floating sales helper (bottom-left of the storefront).
 //
@@ -451,14 +452,16 @@ function BubbleText({ text }: { text: string }) {
   const [count, setCount] = useState(0);
   useEffect(() => {
     setCount(0);
-    const step = Math.max(1, Math.ceil(chars.length / 55));
+    // Slow, human-paced typing: ~1 char per tick on short lines (longer lines
+    // step up only a little), on a relaxed interval.
+    const step = Math.max(1, Math.ceil(chars.length / 130));
     const id = setInterval(() => {
       setCount((c) => {
         const next = Math.min(chars.length, c + step);
         if (next >= chars.length) clearInterval(id);
         return next;
       });
-    }, 45);
+    }, 62);
     return () => clearInterval(id);
   }, [chars]);
   return <>{chars.slice(0, count).join("")}</>;
@@ -518,15 +521,22 @@ export function GuguChat() {
     return () => clearInterval(id);
   }, [open]);
 
-  // A page (e.g. the diagnostic quiz) can push a message into the bubble via the
-  // gugu bus. `hold` pins it (no rotation) until replaced; otherwise it shows for
-  // a few seconds and the usual attract rotation resumes.
+  // A page (e.g. the diagnostic quiz / results) can push a message into the
+  // bubble via the gugu bus. `hold` pins it (no rotation) until replaced;
+  // otherwise it shows for a few seconds and the usual attract rotation resumes.
+  // A `cta` turns the bubble into a Yes/No add-to-cart offer.
+  const { addItem } = useCart();
   const [override, setOverride] = useState<{ text: string; hold: boolean } | null>(null);
+  const [resultCta, setResultCta] = useState<
+    (GuguCta & { stage: "offer" | "added" }) | null
+  >(null);
   useEffect(() => {
     const onSay = (e: Event) => {
       const detail = (e as CustomEvent<GuguSayDetail>).detail;
       if (!detail?.text) return;
-      setOverride({ text: detail.text, hold: !!detail.hold });
+      // A CTA offer is always pinned while the visitor decides.
+      setOverride({ text: detail.text, hold: detail.cta ? true : !!detail.hold });
+      setResultCta(detail.cta ? { ...detail.cta, stage: "offer" } : null);
     };
     window.addEventListener(GUGU_SAY_EVENT, onSay);
     return () => window.removeEventListener(GUGU_SAY_EVENT, onSay);
@@ -536,6 +546,20 @@ export function GuguChat() {
     const id = setTimeout(() => setOverride(null), 8000);
     return () => clearTimeout(id);
   }, [override]);
+
+  function acceptCta() {
+    if (!resultCta) return;
+    addItem({ level: resultCta.level as Level, subjectSlug: resultCta.slug, tier: "master" });
+    setResultCta({ ...resultCta, stage: "added" });
+    setOverride({
+      text: `Added ${resultCta.subjectName} Master to your cart! ✅ Taking more subjects? Each one gets cheaper in a bundle.`,
+      hold: true,
+    });
+  }
+  function declineCta() {
+    setResultCta(null);
+    setOverride(null);
+  }
 
   const bubbleText = override ? override.text : bubblePool[bubbleIdx % bubblePool.length];
 
@@ -814,22 +838,59 @@ export function GuguChat() {
           />
         </button>
 
-        {/* Rotating speech bubble beside Gugu (closed state only) */}
-        {!open && (
-          <button
-            type="button"
-            onClick={openChat}
-            aria-hidden="true"
-            tabIndex={-1}
-            className="pointer-events-auto relative max-w-[190px] rounded-xl border-2 border-[#4ef3c9] bg-[#12122b] px-3 py-1.5 text-left text-sm font-semibold text-[#4ef3c9] shadow-[0_0_16px_-4px_rgba(78,243,201,0.5)]"
-          >
-            {/* tail pointing left, back at Gugu */}
+        {/* Speech bubble beside Gugu (closed state only). With a result CTA it
+            becomes an add-to-cart offer; otherwise it's the rotating tease. */}
+        {!open && resultCta ? (
+          <div className="pointer-events-auto relative max-w-[230px] rounded-xl border-2 border-[#4ef3c9] bg-[#12122b] px-3 py-2 text-left text-sm font-semibold text-[#4ef3c9] shadow-[0_0_16px_-4px_rgba(78,243,201,0.5)]">
             <span
               aria-hidden="true"
-              className="absolute -left-[7px] top-1/2 h-3 w-3 -translate-y-1/2 rotate-45 border-b-2 border-l-2 border-[#4ef3c9] bg-[#12122b]"
+              className="absolute -left-[7px] top-6 h-3 w-3 rotate-45 border-b-2 border-l-2 border-[#4ef3c9] bg-[#12122b]"
             />
             <BubbleText text={bubbleText} />
-          </button>
+            {resultCta.stage === "offer" ? (
+              <div className="mt-2.5 flex gap-1.5">
+                <button
+                  type="button"
+                  onClick={acceptCta}
+                  className="rounded-md bg-accent px-2.5 py-1 text-xs font-bold text-night"
+                >
+                  Yes please 🛒
+                </button>
+                <button
+                  type="button"
+                  onClick={declineCta}
+                  className="rounded-md border border-[#4ef3c9]/40 px-2.5 py-1 text-xs font-medium text-cloud hover:bg-[#1b1a38]"
+                >
+                  Not now
+                </button>
+              </div>
+            ) : (
+              <Link
+                href="/bundles"
+                onClick={declineCta}
+                className="mt-2.5 inline-block rounded-md bg-accent px-2.5 py-1 text-xs font-bold text-night no-underline"
+              >
+                See bundle savings →
+              </Link>
+            )}
+          </div>
+        ) : (
+          !open && (
+            <button
+              type="button"
+              onClick={openChat}
+              aria-hidden="true"
+              tabIndex={-1}
+              className="pointer-events-auto relative max-w-[190px] rounded-xl border-2 border-[#4ef3c9] bg-[#12122b] px-3 py-1.5 text-left text-sm font-semibold text-[#4ef3c9] shadow-[0_0_16px_-4px_rgba(78,243,201,0.5)]"
+            >
+              {/* tail pointing left, back at Gugu */}
+              <span
+                aria-hidden="true"
+                className="absolute -left-[7px] top-1/2 h-3 w-3 -translate-y-1/2 rotate-45 border-b-2 border-l-2 border-[#4ef3c9] bg-[#12122b]"
+              />
+              <BubbleText text={bubbleText} />
+            </button>
+          )
         )}
       </div>
     </div>

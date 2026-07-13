@@ -152,18 +152,29 @@ export function ShareRow({
   );
 }
 
-// Once the student has revealed their result, Gugu carries on with the
-// performance-based line (the neutral "pop your email in" fired on the quiz).
-const BAND_CHEER: Record<"danger" | "warning" | "pass", string> = {
-  pass: "Sharp work! 🎯 You're on top of these. Keep that edge.",
-  warning: "So close! 💡 A few marks slipping, see exactly where below.",
-  danger: "Big marks to win back 💪 The fix plan below shows how.",
-};
-
-export function GuguResultCheer({ band }: { band: "danger" | "warning" | "pass" }) {
+// Once the student has revealed their result, Gugu carries on with a tailored,
+// sales-focused line and an offer to drop the subject's Master pack in the cart.
+// COMPLIANCE: never promise or imply a grade/result. We frame it as winnable
+// marks, highest-chance topics and protecting an edge, never "will improve your
+// grade".
+export function GuguResultCheer({
+  subjectName,
+  level,
+  slug,
+  topGrade,
+}: {
+  subjectName: string;
+  level: string;
+  slug: string;
+  // True only for the very top band (A1–A2 / N(A) Grade 1–2).
+  topGrade: boolean;
+}) {
   useEffect(() => {
-    guguSay(BAND_CHEER[band], { hold: false });
-  }, [band]);
+    const text = topGrade
+      ? `Sharp work! 🎯 Now the trick is keeping that edge, the paper only rewards the topics that actually turn up, and one careless slip can cost the top band. The ${subjectName} pack keeps you drilling the most-likely topics and rehearsing under time. Shall I add ${subjectName} Master to your cart?`
+      : `Those marks are winnable! 💪 The ${subjectName} Forecast pack points you straight at the highest-chance topics, so your last weeks land where the paper actually pays. Shall I add ${subjectName} Master to your cart?`;
+    guguSay(text, { cta: { level, slug, subjectName } });
+  }, [subjectName, level, slug, topGrade]);
   return null;
 }
 

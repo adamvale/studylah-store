@@ -60,6 +60,9 @@ export default async function DiagnosticResultsPage({
   const band = attempt.band as Band;
   const cta = ctaFor(band, (attempt.weakness as DiagnosticProduct | null) ?? null);
   const estimate = gradeEstimateFor(attempt.level, attempt.score, attempt.totalMarks);
+  // Top band = A1–A2 (O-Level) or Grade 1–2 (N(A)); everything else is "B3 and
+  // below" and gets the stronger buy-now nudge from Gugu.
+  const topGrade = /^A/.test(estimate) || /grade\s*1/i.test(estimate);
   const top = realTopCalls(attempt.level, attempt.slug, 1)[0];
 
   // Referral line: known buyers get their live link.
@@ -74,7 +77,12 @@ export default async function DiagnosticResultsPage({
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
       <ResultsViewedBeacon attemptId={attempt.id} />
-      <GuguResultCheer band={band} />
+      <GuguResultCheer
+        subjectName={subject.name}
+        level={attempt.level}
+        slug={attempt.slug}
+        topGrade={topGrade}
+      />
 
       <p className="font-mono text-xs text-body">
         {subject.name} · {attempt.topic}
