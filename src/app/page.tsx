@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 };
 import {
   COMING_SOON,
+  getSubject,
   JOURNEY_ORDER,
   LEVELS,
   PRODUCTS,
@@ -15,6 +16,7 @@ import {
   PUBLISHED_LEVELS,
   subjectsForLevel,
 } from "@/lib/catalogue";
+import { subjectCopy } from "@/lib/subject-copy";
 import type { Pricing } from "@/lib/pricing";
 import { getPricing } from "@/lib/server/pricing-store";
 import { ExamCountdown } from "@/components/exam-countdown";
@@ -142,7 +144,7 @@ function Hero({ pricing }: { pricing: Pricing }) {
               href="/subjects"
               className="rounded-lg border border-white/15 bg-white/5 px-5 py-3.5 text-center text-sm font-medium text-white backdrop-blur transition-colors hover:border-accent"
             >
-              Browse the forecasts →
+              Start preparing smarter →
             </Link>
           </div>
           <p className="mt-3 text-xs text-cloud/70">
@@ -192,6 +194,99 @@ function Hero({ pricing }: { pricing: Pricing }) {
             <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>
+      </div>
+    </section>
+  );
+}
+
+// Compliant reworking of the "three product packs" merchandising idea: real
+// subjects, real forecast framing (no "predicted papers", no "sure appear",
+// no invented scarcity), each pack a link into its subject page.
+const FEATURED_PACKS = [
+  { slug: "physics-pure", grad: "linear-gradient(155deg,#5b5bd6 0%,#191b52 100%)" },
+  { slug: "chemistry-pure", grad: "linear-gradient(155deg,#0fb5ae 0%,#0a3a36 100%)" },
+  { slug: "biology-pure", grad: "linear-gradient(155deg,#3fbf5f 0%,#0f3a1e 100%)" },
+] as const;
+
+function FeaturedPacks({ pricing }: { pricing: Pricing }) {
+  const { alacartePrice } = pricing;
+  const packs = FEATURED_PACKS.map((p) => ({
+    ...p,
+    name: getSubject("o-level", p.slug)?.name ?? p.slug,
+    code: subjectCopy("o-level", p.slug)?.syllabusCode ?? "",
+  }));
+  return (
+    <section aria-labelledby="packs-heading" className="reveal border-t border-white/5 py-20">
+      <div className="mx-auto max-w-5xl px-4 text-center">
+        <div className="flex justify-center">
+          <Badge>Study Less, Score More</Badge>
+        </div>
+        <h2
+          id="packs-heading"
+          className="mt-5 font-display text-3xl font-black text-white sm:text-4xl"
+        >
+          Smarter O-Level &amp; N(A)-Level{" "}
+          <span className="text-accent">final-exam prep</span>
+        </h2>
+        <p className="mx-auto mt-4 max-w-2xl text-cloud">
+          Stop guessing. Stop over-studying. Every pack ranks your 2026 topics
+          by how likely they are, then drills them with original questions, so
+          you walk in calm, confident and ready.
+        </p>
+
+        <div className="mt-10 grid grid-cols-3 gap-3 sm:gap-5">
+          {packs.map((p) => (
+            <Link key={p.slug} href={`/o-level/${p.slug}`} className="group">
+              <div
+                className="relative flex aspect-[3/4] flex-col overflow-hidden rounded-2xl border border-white/10 p-3 text-left shadow-xl transition-transform duration-300 group-hover:-translate-y-1.5 sm:p-5"
+                style={{ background: p.grad }}
+              >
+                {/* holographic sheen */}
+                <div className="pointer-events-none absolute -left-6 -top-16 h-28 w-[140%] rotate-12 bg-white/15 blur-2xl" />
+                <div className="relative flex items-center justify-between">
+                  <span className="font-display text-xs font-black tracking-tight text-white sm:text-sm">
+                    Study<span className="text-accent">Lah</span>
+                  </span>
+                  <span className="rounded-full bg-black/25 px-1.5 py-0.5 font-mono text-[9px] font-bold text-white/90 sm:text-[10px]">
+                    2026
+                  </span>
+                </div>
+                <div className="relative mt-3 sm:mt-6">
+                  <p className="font-mono text-[9px] font-medium uppercase tracking-widest text-white/70 sm:text-[11px]">
+                    O-Level · {p.code}
+                  </p>
+                  <h3 className="mt-1 font-display text-sm font-black leading-tight text-white sm:text-2xl">
+                    {p.name}
+                  </h3>
+                </div>
+                <div className="relative mt-auto pt-3">
+                  <div className="rounded-lg bg-black/30 px-2 py-1.5 backdrop-blur sm:px-3 sm:py-2">
+                    <p className="font-mono text-[9px] font-bold uppercase tracking-wide text-white sm:text-[11px]">
+                      <span className="sm:hidden">Exam Forecast</span>
+                      <span className="hidden sm:inline">Exam Forecast Pack</span>
+                    </p>
+                    <p className="mt-0.5 hidden text-[10px] text-white/70 sm:block">
+                      Forecast · practice · rehearsal
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <div className="mt-10 flex flex-col items-center gap-3">
+          <Link
+            href="/subjects"
+            className="btn-pixel cta-sheen glow-soft rounded bg-accent px-7 py-3.5 text-sm font-bold text-night"
+          >
+            See every subject →
+          </Link>
+          <p className="font-mono text-xs text-cloud">
+            Every subject: forecast, practice, rehearsal. From{" "}
+            {sgd(alacartePrice("o-level", "forecast"))} · money-back guarantee
+          </p>
+        </div>
       </div>
     </section>
   );
@@ -799,6 +894,7 @@ export default async function Home() {
   return (
     <div className="bg-night">
       <Hero pricing={pricing} />
+      <FeaturedPacks pricing={pricing} />
       <SocialProof />
       <WhyItWorks />
       <Journey pricing={pricing} />
