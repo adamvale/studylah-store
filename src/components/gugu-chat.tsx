@@ -151,6 +151,15 @@ const TOPICS: Topic[] = [
 // Routes the free-typed question to the best-matching topic by counting keyword
 // hits. Returns null when nothing matches, so we can give an honest fallback
 // instead of a wrong answer.
+// Small-talk greetings — handled warmly in scripted-fallback mode so "hi"
+// never gets the robotic no-match reply (live Claude handles this itself).
+const GREETING_RE =
+  /^\s*(hi+|hey+|hello+|holla|hallo|helo|yo|sup|heya|hiya|good\s?(morning|afternoon|evening)|greetings|wass?up|whats?\s?up)\b/i;
+
+function isGreeting(text: string): boolean {
+  return GREETING_RE.test(text) && text.trim().length <= 20;
+}
+
 function matchTopic(text: string): Topic | null {
   const q = text.toLowerCase();
   let best: Topic | null = null;
@@ -268,21 +277,29 @@ export function GuguChat() {
   // unavailable (no API key, error, rate-limited) or returns a non-compliant
   // reply. Routes to the closest topic, else an honest "email a human".
   function scriptedFallback(text: string) {
+    if (isGreeting(text)) {
+      pushGugu(
+        "Hey! 👋 I'm Gugu, StudyLah's helper. Are you looking at a particular subject, or want the quick version of how StudyLah works? Tap a question below or just tell me what you're studying."
+      );
+      return;
+    }
     const topic = matchTopic(text);
     if (topic) {
       pushGugu(topic.answer(ctx));
     } else {
       pushGugu(
         <>
-          Good question — I&apos;m not sure I can answer that one well. Tap a
-          question below, or email a human at{" "}
+          Happy to help with that! I&apos;m sharpest on StudyLah itself — the
+          forecasts, what&apos;s included, pricing, or how you get your PDFs. Tap
+          a question below, or if it&apos;s something specific, drop the team a
+          line at{" "}
           <a
             href="mailto:hello@studylah.education"
             className="font-medium text-accent underline"
           >
             hello@studylah.education
-          </a>{" "}
-          and we&apos;ll help.
+          </a>
+          .
         </>
       );
     }
@@ -415,7 +432,8 @@ export function GuguChat() {
               aria-label="Type a question"
               // text-base = 16px: iOS Safari auto-zooms the page when a focused
               // input is under 16px, so keep this at 16 to stop the zoom-in.
-              className="min-w-0 flex-1 rounded-lg border border-hairline bg-white px-3 py-2 text-base text-night outline-none placeholder:text-night/45 focus:border-accent"
+              // Border = the Singapore minimap mint (SG_ARCADE.mint #4ef3c9).
+              className="min-w-0 flex-1 rounded-lg border-2 border-[#4ef3c9] bg-white px-3 py-2 text-base text-night outline-none placeholder:text-night/45 focus:border-[#4ef3c9] focus:ring-2 focus:ring-[#4ef3c9]/30"
             />
             <button
               type="submit"
