@@ -402,3 +402,13 @@ html[data-native] .native-screen {
 body:has([data-bottom-cta]) .gugu-fab {
   bottom: 6.75rem;
 }
+
+/* Cap the chat panel's height to the space above the (possibly-lifted) widget
+   so its top — the GUGU header — never runs off-screen. Tighter when a bottom
+   sticky bar has pushed Gugu up. dvh tracks the real mobile viewport. */
+.gugu-panel {
+  max-height: min(520px, calc(100dvh - 9rem));
+}
+body:has([data-bottom-cta]) .gugu-panel {
+  max-height: calc(100dvh - 14rem);
+}

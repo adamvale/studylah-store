@@ -210,21 +210,40 @@ function matchTopic(text: string): Topic | null {
 // Reorder the quick-reply chips so the questions most relevant to the current
 // page surface first. Every topic still appears (page-relevant ones lead, the
 // rest keep their original order) — so Gugu feels aware of where you are.
-const PAGE_PRIORITY: { test: (p: string) => boolean; ids: string[] }[] = [
-  { test: (p) => p.startsWith("/bundles"), ids: ["price", "wrong", "delivery", "what"] },
+const DEFAULT_PROMPT = "Not sure what to ask? Here are some common questions to start.";
+const PAGE_PRIORITY: { test: (p: string) => boolean; ids: string[]; prompt: string }[] = [
+  {
+    test: (p) => p.startsWith("/bundles"),
+    ids: ["price", "wrong", "delivery", "what"],
+    prompt: "Questions about bundles or saving on more subjects?",
+  },
   {
     test: (p) => p.startsWith("/cart") || p.startsWith("/checkout"),
     ids: ["delivery", "wrong", "price", "try"],
+    prompt: "Questions before you check out?",
   },
-  { test: (p) => p.startsWith("/diagnostic"), ids: ["try", "guessing", "what", "cheating"] },
-  { test: (p) => p.startsWith("/accuracy"), ids: ["guessing", "wrong", "what"] },
+  {
+    test: (p) => p.startsWith("/diagnostic"),
+    ids: ["try", "guessing", "what", "cheating"],
+    prompt: "Questions about the free check?",
+  },
+  {
+    test: (p) => p.startsWith("/accuracy"),
+    ids: ["guessing", "wrong", "what"],
+    prompt: "Questions about our track record?",
+  },
   // Individual subject page (e.g. /o-level/chemistry-pure)
-  { test: (p) => /^\/(o-level|na-level)\/[\w-]+/.test(p), ids: ["price", "try", "wrong", "guessing"] },
+  {
+    test: (p) => /^\/(o-level|na-level)\/[\w-]+/.test(p),
+    ids: ["price", "try", "wrong", "guessing"],
+    prompt: "Questions about this subject or its pack?",
+  },
   // Level / subjects listing
   {
     test: (p) =>
       p.startsWith("/o-level") || p.startsWith("/na-level") || p.startsWith("/subjects"),
     ids: ["price", "what", "try", "wrong"],
+    prompt: "Not sure which subject? Ask me anything.",
   },
 ];
 
@@ -236,6 +255,10 @@ function topicsForPath(pathname: string): Topic[] {
     return i === -1 ? match.ids.length + TOPICS.findIndex((t) => t.id === id) : i;
   };
   return [...TOPICS].sort((a, b) => rank(a.id) - rank(b.id));
+}
+
+function promptForPath(pathname: string): string {
+  return PAGE_PRIORITY.find((r) => r.test(pathname))?.prompt ?? DEFAULT_PROMPT;
 }
 
 // The canonical Gugu: the FIRST cell of the walker sheet — the plain white,
@@ -430,6 +453,7 @@ export function GuguChat() {
   // Quick-reply chips reorder to the current page; the path is also sent to the
   // LLM so free-text answers know where the visitor is.
   const orderedTopics = useMemo(() => topicsForPath(pathname), [pathname]);
+  const quickPrompt = useMemo(() => promptForPath(pathname), [pathname]);
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
@@ -587,7 +611,7 @@ export function GuguChat() {
           role="dialog"
           aria-label="Chat with Gugu"
           aria-hidden={!open}
-          className={`relative flex h-[70vh] max-h-[520px] w-[calc(100vw-2rem)] origin-bottom-left flex-col overflow-hidden rounded-2xl border-2 border-[#4ef3c9] bg-[#12122b] shadow-[0_0_28px_-4px_rgba(78,243,201,0.45),0_24px_50px_-12px_rgba(0,0,0,0.85)] transition-all duration-200 ease-out sm:w-[360px] ${
+          className={`gugu-panel relative flex h-[70vh] w-[calc(100vw-2rem)] origin-bottom-left flex-col overflow-hidden rounded-2xl border-2 border-[#4ef3c9] bg-[#12122b] shadow-[0_0_28px_-4px_rgba(78,243,201,0.45),0_24px_50px_-12px_rgba(0,0,0,0.85)] transition-all duration-200 ease-out sm:w-[360px] ${
             open
               ? "pointer-events-auto scale-100 opacity-100 translate-y-0"
               : "pointer-events-none scale-90 opacity-0 translate-y-4"
@@ -686,7 +710,7 @@ export function GuguChat() {
                 onClick={() => setQuickOpen(true)}
                 className="mt-1 text-left text-xs leading-snug text-cloud/70 hover:text-cloud"
               >
-                Not sure what to ask? Here are some common questions to start.
+                {quickPrompt}
               </button>
             )}
           </div>
