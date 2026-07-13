@@ -103,6 +103,43 @@ export default async function DiagnosticResultsPage({
         <span className="mt-1 block text-xs text-body/80">{ESTIMATE_CAVEAT}</span>
       </p>
 
+      {/* Tailored fix plan, the sales close, sits right under the grade. Leads
+          with the loss frame (what these gaps would cost in November), then the
+          exact fix, made risk-free by the guarantee and anchored against tuition. */}
+      <section className="mt-6 rounded-2xl border border-accent/40 bg-surface p-6">
+        <p className="font-mono text-xs font-medium uppercase tracking-wide text-accent">
+          Your fix plan
+        </p>
+        {droppedMarks > 0 && (
+          <p className="mt-2 text-sm text-ink">
+            On this sample you dropped{" "}
+            <span className="font-display text-lg font-bold text-coral">
+              {droppedMarks} mark{droppedMarks === 1 ? "" : "s"}
+            </span>{" "}
+            on topics forecast most likely for your 2026 {subject.name} paper,
+            marks that are still recoverable now, not in the exam hall.
+          </p>
+        )}
+        <h2 className="mt-2 font-display text-2xl font-bold text-ink">{cta.headline}</h2>
+        <p className="mt-2 text-sm text-body">{cta.body}</p>
+        <div className="mt-4">
+          <CtaLink
+            attemptId={attempt.id}
+            product={cta.product}
+            href={`/${attempt.level}/${attempt.slug}`}
+          >
+            See {subject.name} packs →
+          </CtaLink>
+        </div>
+        <GuaranteeBadge variant="card" className="mt-4" />
+        <p className="mt-3 text-xs text-body">
+          One-time purchase, less than a single tuition session, and it works
+          right up to exam day. New here? Use{" "}
+          <span className="font-mono font-medium text-accent">STUDYLAH10</span>{" "}
+          for 10% off your first pack.
+        </p>
+      </section>
+
       {/* Per-question breakdown with worked solutions */}
       <div className="mt-8 space-y-3">
         {set.questions.map((q, i) => {
@@ -164,43 +201,6 @@ export default async function DiagnosticResultsPage({
         <p className="mt-4 border-t border-hairline pt-3 text-xs text-body">
           Every topic, Very High to Watch, is ranked in the full Exam Forecast,
           with a ten-year deep dive on each.
-        </p>
-      </section>
-
-      {/* Tailored fix plan, the sales close. Leads with the loss frame (what
-          these gaps would cost in November), then the exact fix, made risk-free
-          by the guarantee and anchored against the price of tuition. */}
-      <section className="mt-8 rounded-2xl border border-accent/40 bg-surface p-6">
-        <p className="font-mono text-xs font-medium uppercase tracking-wide text-accent">
-          Your fix plan
-        </p>
-        {droppedMarks > 0 && (
-          <p className="mt-2 text-sm text-ink">
-            On this sample you dropped{" "}
-            <span className="font-display text-lg font-bold text-coral">
-              {droppedMarks} mark{droppedMarks === 1 ? "" : "s"}
-            </span>{" "}
-            on topics forecast most likely for your 2026 {subject.name} paper, 
-            marks that are still recoverable now, not in the exam hall.
-          </p>
-        )}
-        <h2 className="mt-2 font-display text-2xl font-bold text-ink">{cta.headline}</h2>
-        <p className="mt-2 text-sm text-body">{cta.body}</p>
-        <div className="mt-4">
-          <CtaLink
-            attemptId={attempt.id}
-            product={cta.product}
-            href={`/${attempt.level}/${attempt.slug}`}
-          >
-            See {subject.name} packs →
-          </CtaLink>
-        </div>
-        <GuaranteeBadge variant="card" className="mt-4" />
-        <p className="mt-3 text-xs text-body">
-          One-time purchase, less than a single tuition session, and it works
-          right up to exam day. New here? Use{" "}
-          <span className="font-mono font-medium text-accent">STUDYLAH10</span>{" "}
-          for 10% off your first pack.
         </p>
       </section>
 
