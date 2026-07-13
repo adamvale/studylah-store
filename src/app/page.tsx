@@ -411,7 +411,7 @@ function PackRow() {
     };
   });
   return (
-    <div className="mx-auto grid max-w-4xl grid-cols-3 gap-1 sm:gap-2">
+    <div className="mx-auto grid max-w-4xl grid-cols-3 gap-0.5 sm:gap-1">
       {packs.map((p) =>
         p.img ? (
           <Link
@@ -420,12 +420,12 @@ function PackRow() {
             className="group block"
             aria-label={`${p.name}, 2026 pack`}
           >
-            <div className="relative aspect-square w-full transition-transform duration-300 group-hover:-translate-y-1.5">
+            <div className="relative aspect-[333/456] w-full transition-transform duration-300 group-hover:-translate-y-1.5">
               <Image
                 src={p.img}
                 alt={`${p.name}, StudyLah 2026 pack`}
                 fill
-                sizes="(max-width: 640px) 31vw, 220px"
+                sizes="(max-width: 640px) 33vw, 300px"
                 className="object-contain drop-shadow-2xl"
               />
             </div>
