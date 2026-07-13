@@ -64,6 +64,7 @@ export function DiagnosticQuiz({
   const [secondsLeft, setSecondsLeft] = useState(QUIZ_SECONDS);
   const [timeExpired, setTimeExpired] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const topRef = useRef<HTMLDivElement>(null);
   // Latest answers for the timer's auto-submit (interval closures go stale).
   const answersRef = useRef(answers);
   answersRef.current = answers;
@@ -72,10 +73,15 @@ export function DiagnosticQuiz({
   const startedRef = useRef(false);
   const completedRef = useRef(false);
 
-  // Move focus to the step heading on change, keeps screen readers oriented.
+  // On each question, move focus to the heading (WITHOUT scrolling — a scrolling
+  // focus buried the progress bar and timer under the sticky header) and bring
+  // the top of the card (progress bar) into view just below the header.
   useEffect(() => {
-    headingRef.current?.focus();
-  }, [step, phase]);
+    headingRef.current?.focus({ preventScroll: true });
+    if (phase === "quiz" && !result) {
+      topRef.current?.scrollIntoView({ block: "start" });
+    }
+  }, [step, phase, result]);
 
   // The moment the check is marked, Gugu nudges toward the email gate, NEUTRAL,
   // so the score isn't spoiled before the student unlocks it. Also scroll to the
@@ -336,12 +342,13 @@ export function DiagnosticQuiz({
   return (
     <div className="mx-auto max-w-md">
       <div
+        ref={topRef}
         role="progressbar"
         aria-valuenow={progressPct}
         aria-valuemin={0}
         aria-valuemax={100}
         aria-label="Quiz progress"
-        className="h-2 overflow-hidden rounded-full bg-surface"
+        className="h-2 scroll-mt-24 overflow-hidden rounded-full bg-surface"
       >
         <div
           className="h-full rounded-full bg-accent transition-[width] duration-300"

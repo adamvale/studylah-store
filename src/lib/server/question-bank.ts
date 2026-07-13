@@ -190,6 +190,55 @@ function pickHardDistinct(questions: DiagnosticQuestion[], n: number): Diagnosti
   return chosen.slice(0, n).sort((a, b) => ord(a) - ord(b));
 }
 
+// A "calculation" question is one whose ANSWER is a number: an MCQ whose options
+// are values, or a short-answer whose accepted keys are all numeric.
+const startsNumeric = (s: string) => /^\s*[-+]?\(?\d/.test(String(s));
+function isCalcQuestion(q: DiagnosticQuestion): boolean {
+  if (q.type === "mcq") {
+    const o = q.options ?? [];
+    return o.length > 0 && o.filter(startsNumeric).length >= Math.ceil(o.length * 0.75);
+  }
+  return q.correctKey.length > 0 && q.correctKey.every(startsNumeric);
+}
+
+// Chemistry & physics are calculation-heavy papers, so their check is 60%
+// calculation: 4 calculation MCQs + 2 calculation short-answers, then 4 others.
+// Calc questions naturally cluster in a few topics, so we prefer distinct topics
+// but allow repeats to hit the quota; the 4 non-calc slots restore topic variety.
+function pickCalcHeavy(
+  questions: DiagnosticQuestion[],
+  n: number,
+  calcMcq: number,
+  calcShort: number
+): DiagnosticQuestion[] {
+  const ranked = [...questions].sort(rankHardest);
+  const chosen: DiagnosticQuestion[] = [];
+  const usedIds = new Set<string>();
+  const usedTopics = new Set<string>();
+  const push = (q: DiagnosticQuestion) => {
+    chosen.push(q);
+    usedIds.add(q.id);
+    usedTopics.add(q.topic);
+  };
+  const take = (pred: (q: DiagnosticQuestion) => boolean, count: number) => {
+    let taken = 0;
+    // First distinct topics, then allow topic repeats to reach the quota.
+    for (const distinct of [true, false]) {
+      for (const q of ranked) {
+        if (taken >= count || chosen.length >= n) return;
+        if (usedIds.has(q.id) || (distinct && usedTopics.has(q.topic)) || !pred(q)) continue;
+        push(q);
+        taken += 1;
+      }
+    }
+  };
+  take((q) => q.type === "mcq" && isCalcQuestion(q), calcMcq);
+  take((q) => q.type === "short" && isCalcQuestion(q), calcShort);
+  take((q) => !isCalcQuestion(q), n - chosen.length); // non-calc, restores variety
+  take(() => true, n - chosen.length); // backfill anything to reach n
+  return chosen.slice(0, n).sort((a, b) => ord(a) - ord(b));
+}
+
 export async function getDiagnosticSet(
   level: string,
   slug: string
@@ -197,7 +246,10 @@ export async function getDiagnosticSet(
   const full = await getQuestionSet(level, slug);
   if (!full) return undefined;
   if (full.questions.length <= DIAGNOSTIC_COUNT) return full;
-  return { ...full, questions: pickHardDistinct(full.questions, DIAGNOSTIC_COUNT) };
+  const questions = /chemistry|physics/.test(slug)
+    ? pickCalcHeavy(full.questions, DIAGNOSTIC_COUNT, 4, 2)
+    : pickHardDistinct(full.questions, DIAGNOSTIC_COUNT);
+  return { ...full, questions };
 }
 
 // The subject's imported teaching cards (empty if none, the Guru then uses

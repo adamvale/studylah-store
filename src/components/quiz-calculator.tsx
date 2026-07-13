@@ -271,6 +271,20 @@ export function QuizCalculator() {
 
       {open && (
         <div className="fixed left-1/2 top-16 z-40 w-[min(20rem,92vw)] -translate-x-1/2 rounded-2xl border border-hairline bg-night p-3 shadow-2xl print:hidden">
+          {/* Header with an explicit close button. */}
+          <div className="mb-2 flex items-center justify-between">
+            <span className="font-pixel text-[9px] uppercase tracking-wide text-body">
+              Calculator
+            </span>
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              aria-label="Close calculator"
+              className="rounded-md px-2 py-1 text-base leading-none text-body hover:bg-surface hover:text-ink"
+            >
+              ✕
+            </button>
+          </div>
           {/* Display: the expression, with a live result preview underneath. */}
           <div className="mb-2 rounded-lg bg-surface px-3 py-2">
             <div className="min-h-[1.6rem] overflow-x-auto whitespace-nowrap text-right font-mono text-lg font-bold text-ink">

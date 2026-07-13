@@ -126,11 +126,16 @@ export function ShareRow({
       >
         {copied ? "Copied!" : "Copy link"}
       </button>
-      {/* Instagram Stories / TikTok have no web share intents, the card
-          image downloads for reposting, and native share covers mobile. */}
+      {/* Instagram Stories / TikTok have no web share intents, so we open the
+          share-card IMAGE (the route's opengraph-image). The og-image path must
+          be appended to the PATH, not after the query string, otherwise the
+          browser fetches the page HTML instead of the PNG. On mobile it opens
+          the image to long-press-save; on desktop `download` saves it. */}
       <a
-        href={`${shareUrl}/opengraph-image`}
-        download
+        href={`${shareUrl.split("?")[0]}/opengraph-image`}
+        target="_blank"
+        rel="noopener noreferrer"
+        download="studylah-result-card.png"
         onClick={() => beacon("result_shared", attemptId, "download-card")}
         className="rounded-lg border border-hairline px-4 py-2 text-sm font-medium text-ink hover:border-accent"
       >
