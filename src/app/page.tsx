@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -203,18 +205,25 @@ function Hero({ pricing }: { pricing: Pricing }) {
 // subjects, real forecast framing (no "predicted papers", no "sure appear",
 // no invented scarcity), each pack a link into its subject page.
 const FEATURED_PACKS = [
-  { slug: "physics-pure", grad: "linear-gradient(155deg,#5b5bd6 0%,#191b52 100%)" },
-  { slug: "chemistry-pure", grad: "linear-gradient(155deg,#0fb5ae 0%,#0a3a36 100%)" },
-  { slug: "biology-pure", grad: "linear-gradient(155deg,#3fbf5f 0%,#0f3a1e 100%)" },
+  { level: "o-level", slug: "chemistry-pure", grad: "linear-gradient(155deg,#0fb5ae 0%,#0a3a36 100%)" },
+  { level: "o-level", slug: "biology-science", grad: "linear-gradient(155deg,#3fbf5f 0%,#0f3a1e 100%)" },
+  { level: "na-level", slug: "biology", grad: "linear-gradient(155deg,#c9a227 0%,#3a2e0a 100%)" },
 ] as const;
 
 function FeaturedPacks({ pricing }: { pricing: Pricing }) {
   const { alacartePrice } = pricing;
-  const packs = FEATURED_PACKS.map((p) => ({
-    ...p,
-    name: getSubject("o-level", p.slug)?.name ?? p.slug,
-    code: subjectCopy("o-level", p.slug)?.syllabusCode ?? "",
-  }));
+  const packs = FEATURED_PACKS.map((p) => {
+    // Drop a real pack PNG at public/packs/<level>/<slug>.png and it takes over
+    // automatically; until then the styled card below is the fallback.
+    const rel = `/packs/${p.level}/${p.slug}.png`;
+    const hasImg = existsSync(join(process.cwd(), "public", "packs", p.level, `${p.slug}.png`));
+    return {
+      ...p,
+      name: getSubject(p.level, p.slug)?.name ?? p.slug,
+      code: subjectCopy(p.level, p.slug)?.syllabusCode ?? "",
+      img: hasImg ? rel : null,
+    };
+  });
   return (
     <section aria-labelledby="packs-heading" className="reveal border-t border-white/5 py-20">
       <div className="mx-auto max-w-5xl px-4 text-center">
@@ -235,8 +244,26 @@ function FeaturedPacks({ pricing }: { pricing: Pricing }) {
         </p>
 
         <div className="mt-10 grid grid-cols-3 gap-3 sm:gap-5">
-          {packs.map((p) => (
-            <Link key={p.slug} href={`/o-level/${p.slug}`} className="group">
+          {packs.map((p) =>
+            p.img ? (
+              <Link
+                key={p.slug}
+                href={`/${p.level}/${p.slug}`}
+                className="group block"
+                aria-label={`${p.name}, 2026 pack`}
+              >
+                <div className="relative aspect-square w-full transition-transform duration-300 group-hover:-translate-y-1.5">
+                  <Image
+                    src={p.img}
+                    alt={`${p.name}, StudyLah 2026 pack`}
+                    fill
+                    sizes="(max-width: 640px) 31vw, 220px"
+                    className="object-contain drop-shadow-2xl"
+                  />
+                </div>
+              </Link>
+            ) : (
+            <Link key={p.slug} href={`/${p.level}/${p.slug}`} className="group">
               <div
                 className="relative flex aspect-[3/4] flex-col overflow-hidden rounded-2xl border border-white/10 p-3 text-left shadow-xl transition-transform duration-300 group-hover:-translate-y-1.5 sm:p-5"
                 style={{ background: p.grad }}
@@ -253,7 +280,7 @@ function FeaturedPacks({ pricing }: { pricing: Pricing }) {
                 </div>
                 <div className="relative mt-3 sm:mt-6">
                   <p className="font-mono text-[9px] font-medium uppercase tracking-widest text-white/70 sm:text-[11px]">
-                    O-Level · {p.code}
+                    {LEVELS[p.level].shortName} · {p.code}
                   </p>
                   <h3 className="mt-1 font-display text-sm font-black leading-tight text-white sm:text-2xl">
                     {p.name}
@@ -272,7 +299,8 @@ function FeaturedPacks({ pricing }: { pricing: Pricing }) {
                 </div>
               </div>
             </Link>
-          ))}
+            )
+          )}
         </div>
 
         <div className="mt-10 flex flex-col items-center gap-3">
