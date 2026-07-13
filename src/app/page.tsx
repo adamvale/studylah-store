@@ -19,9 +19,7 @@ import type { Pricing } from "@/lib/pricing";
 import { getPricing } from "@/lib/server/pricing-store";
 import { ExamCountdown } from "@/components/exam-countdown";
 import { ForecastCard } from "@/components/forecast-card";
-import { GuaranteeBadge } from "@/components/guarantee-badge";
 import { HeroBackdrop } from "@/components/hero-backdrop";
-import { HeatTiles } from "@/components/heat";
 import { SocialProof } from "@/components/social-proof";
 
 /* Playful motifs, inline SVG so they need no external assets and pass CSP. */
@@ -93,91 +91,78 @@ function Badge({ children }: { children: React.ReactNode }) {
   );
 }
 
-// The receipts, right at the promise: same data source as /accuracy, so the
-// hero and the scorecard can never disagree.
-function HeroProof() {
-  const { perfect, total } = scorecardHeadline();
-  return (
-    <Link
-      href="/accuracy"
-      className="mt-4 inline-flex flex-wrap items-center gap-2 rounded-full border border-hairline bg-surface px-3.5 py-1.5 text-xs text-cloud transition-colors hover:border-accent"
-    >
-      <span className="font-display font-bold text-guarantee">
-        {perfect} of {total}
-      </span>
-      <span>
-        published scorecards called all five top-mark topics High or above, 
-        see every hit and miss →
-      </span>
-    </Link>
-  );
-}
-
 function Hero({ pricing }: { pricing: Pricing }) {
   const { alacartePrice } = pricing;
+  const { perfect, total } = scorecardHeadline();
   return (
     <section className="relative flex items-center overflow-hidden md:min-h-[calc(100svh-4.5rem)]">
       <HeroBackdrop />
       <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-4 pb-24 pt-14 lg:grid-cols-2 lg:pt-16">
         <div className="fade-up">
+          {/* Layer 1 — eyebrow */}
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs font-medium text-cloud backdrop-blur">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
-            <HeatTiles />
             Built from 10 years of real exam data
           </div>
-          <h1 className="mt-5 font-display text-5xl font-black leading-[1.02] tracking-tight text-white sm:text-6xl">
+
+          {/* Layer 2 — headline */}
+          <h1 className="mt-5 font-display text-[2.6rem] font-black leading-[1.05] tracking-tight text-white sm:text-6xl">
             Stop revising blind. Walk in knowing{" "}
             <span className="text-gradient">what&apos;s likely.</span>
           </h1>
-          <p className="mt-5 max-w-lg text-lg leading-relaxed text-cloud">
-            Most students revise everything and hope. StudyLah reads ten years of
-            your{" "}
+
+          {/* Layer 3 — one-sentence subhead */}
+          <p className="mt-4 max-w-md text-base leading-relaxed text-cloud sm:text-lg">
+            We rank every{" "}
             {PUBLISHED_LEVELS.map((l) => LEVELS[l].shortName).join(" and ")}{" "}
-            papers, ranks the topics most likely to appear in 2026, then runs
-            your revision around them: original practice, daily questions, a
-            self-keeping mistake notebook, and a plan that counts down to your
-            real paper dates.
+            topic by how likely it is on the 2026 paper, so your last weeks go to
+            what matters, not everything.
           </p>
-          <div className="mt-7 flex flex-wrap gap-3">
+
+          {/* Layer 4 — the two actions (full-width, stacked on mobile) */}
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/diagnostic"
-              className="btn-pixel cta-sheen glow-soft rounded bg-accent px-5 py-3 text-sm font-bold text-night"
+              className="btn-pixel cta-sheen glow-soft rounded bg-accent px-5 py-3.5 text-center text-sm font-bold text-night"
             >
               See the topics you&apos;ll lose marks on, free
             </Link>
             <Link
               href="/subjects"
-              className="rounded-lg border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white backdrop-blur transition-colors hover:border-accent"
+              className="rounded-lg border border-white/15 bg-white/5 px-5 py-3.5 text-center text-sm font-medium text-white backdrop-blur transition-colors hover:border-accent"
             >
               Browse the forecasts →
             </Link>
           </div>
-          <p className="mt-4 text-sm text-cloud">
-            10 questions · ~7 minutes · instant score, indicative grade &amp;
-            worked solutions. No card.
+          <p className="mt-3 text-xs text-cloud/70">
+            10 questions · ~7 min · instant score &amp; worked solutions · no card
           </p>
-          <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-cloud">
-            <GuaranteeBadge />
-            <span>
-              Instant PDFs + StudyLand · from{" "}
-              {sgd(alacartePrice("o-level", "forecast"))} per subject
+
+          {/* Layer 5 — one calm trust line (guarantee · price · proof) */}
+          <div className="mt-6 flex flex-wrap items-center gap-x-2.5 gap-y-1.5 border-t border-white/10 pt-5 text-sm text-cloud">
+            <span className="inline-flex items-center gap-1.5 font-medium text-guarantee">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M8 1.5l5 2v4c0 3-2.1 5.2-5 6.5C5.1 12.7 3 10.5 3 7.5v-4l5-2z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+                <path d="M5.8 8l1.6 1.6L10.4 6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Money-back guarantee
             </span>
-          </div>
-          <p className="mt-2 inline-flex items-center gap-2 text-sm text-cloud">
-            <Ghost size={24} />
-            Every purchase now unlocks{" "}
-            <Link href="#fog-frontier" className="font-medium text-accent hover:underline">
-              StudyLah Legends
+            <span aria-hidden="true" className="text-white/25">·</span>
+            <span>from {sgd(alacartePrice("o-level", "forecast"))}/subject</span>
+            <span aria-hidden="true" className="text-white/25">·</span>
+            <Link href="/accuracy" className="inline-flex items-center gap-1 transition-colors hover:text-accent">
+              <strong className="font-bold text-white">
+                {perfect}/{total}
+              </strong>{" "}
+              forecasts on target →
             </Link>
-            <span className="rounded bg-violet px-1.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wide text-white">
-              Beta
-            </span>
-          </p>
-          <HeroProof />
-          <ExamCountdown className="mt-4" variant="urgent" />
+          </div>
+
+          {/* Layer 6 — slim urgency cue */}
+          <ExamCountdown className="mt-4" />
         </div>
         <div className="fade-up relative" style={{ animationDelay: "150ms" }}>
           <div className="mascot-bob pointer-events-none absolute -right-2 -top-8 z-10 hidden sm:block">
