@@ -187,7 +187,7 @@ export default async function AccountOrdersPage({
             When you buy a forecast it&apos;ll appear here for re-download.
           </p>
           <Link
-            href="/o-level"
+            href="/subjects"
             className="mt-4 inline-block rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
           >
             Browse subjects

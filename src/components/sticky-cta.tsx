@@ -27,7 +27,7 @@ export function StickyCta({ label = "Find your subject's forecast" }: { label?: 
           Know what&apos;s likely before you sit the paper.
         </p>
         <Link
-          href="/o-level"
+          href="/subjects"
           className="w-full rounded-lg bg-accent px-5 py-3 text-center text-sm font-bold text-night transition-transform hover:-translate-y-0.5 sm:w-auto"
         >
           {label}

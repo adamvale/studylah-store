@@ -18,7 +18,7 @@ export default function NotFound() {
           Go home
         </Link>
         <Link
-          href="/o-level"
+          href="/subjects"
           className="rounded-lg border border-hairline bg-surface px-5 py-3 text-sm font-medium text-accent hover:border-hairline"
         >
           Browse subjects

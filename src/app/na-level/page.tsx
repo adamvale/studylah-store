@@ -1,17 +1,6 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { isLevelPublished } from "@/lib/catalogue";
-import { LevelCatalogue } from "@/components/level-catalogue";
+import { permanentRedirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/na-level" },
-  title: "N(A)-Level (G2) subjects",
-  description:
-    "AI exam forecasts, original practice questions, and timed rehearsals for N(A)-Level subjects.",
-};
-
+// The two level listings are now one page: /subjects with a level toggle.
 export default function NALevelPage() {
-  // Unpublished until real N(A) PDFs replace the seed placeholders.
-  if (!isLevelPublished("na-level")) notFound();
-  return <LevelCatalogue level="na-level" />;
+  permanentRedirect("/subjects?level=na-level");
 }

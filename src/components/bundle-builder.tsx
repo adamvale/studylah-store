@@ -197,7 +197,7 @@ export function BundleBuilder({
           {count === 0 && (
             <p className="mt-4 text-sm text-body">
               Not sure what to pick?{" "}
-              <Link href="/o-level" className="font-medium text-accent underline">
+              <Link href="/subjects" className="font-medium text-accent underline">
                 Browse subjects
               </Link>{" "}
               first.

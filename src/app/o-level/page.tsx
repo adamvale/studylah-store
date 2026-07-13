@@ -1,13 +1,6 @@
-import type { Metadata } from "next";
-import { LevelCatalogue } from "@/components/level-catalogue";
+import { permanentRedirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/o-level" },
-  title: "O-Level (G3) subjects",
-  description:
-    "AI exam forecasts, original practice questions, and timed rehearsals for all 14 O-Level subjects.",
-};
-
+// The two level listings are now one page: /subjects (O-Level default).
 export default function OLevelPage() {
-  return <LevelCatalogue level="o-level" />;
+  permanentRedirect("/subjects");
 }

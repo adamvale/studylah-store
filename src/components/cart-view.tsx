@@ -153,7 +153,7 @@ export function CartView() {
         </p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
           <Link
-            href="/o-level"
+            href="/subjects"
             className="rounded-lg bg-signal px-5 py-3 text-sm font-medium text-white hover:bg-signal-deep"
           >
             Browse O-Level subjects

@@ -25,7 +25,7 @@ function CTA({ children = "Find your subject's forecast" }: { children?: string 
   return (
     <div className="flex flex-wrap items-center gap-3">
       <Link
-        href="/o-level"
+        href="/subjects"
         className="rounded-lg bg-accent px-6 py-3.5 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
       >
         {children}

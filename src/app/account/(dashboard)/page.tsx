@@ -244,7 +244,7 @@ export default async function TodayPage() {
         </p>
         <div className="mt-4 flex flex-wrap justify-center gap-3">
           <Link
-            href="/o-level"
+            href="/subjects"
             className="rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
           >
             Browse subjects

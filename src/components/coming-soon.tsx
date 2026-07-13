@@ -26,7 +26,7 @@ export function ComingSoon({
       </div>
       <p className="mt-8 text-sm text-body">
         Sitting the O-Level or N(A)-Level in the meantime?{" "}
-        <Link href="/o-level" className="font-medium text-accent underline">
+        <Link href="/subjects" className="font-medium text-accent underline">
           Those forecasts are live now
         </Link>
         .

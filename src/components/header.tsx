@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
-import { LEVELS, PUBLISHED_LEVELS } from "@/lib/catalogue";
 import { useCart } from "@/lib/cart-context";
 import { useHideCommerce } from "@/lib/native";
 
@@ -19,10 +18,7 @@ function useSignedIn(): boolean {
 }
 
 const NAV = [
-  ...PUBLISHED_LEVELS.map((level) => ({
-    href: `/${level}`,
-    label: LEVELS[level].shortName,
-  })),
+  { href: "/subjects", label: "Subjects" },
   { href: "/bundles", label: "Bundles" },
   { href: "/accuracy", label: "Accuracy" },
   { href: "/faq", label: "FAQ" },

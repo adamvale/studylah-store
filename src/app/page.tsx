@@ -135,7 +135,7 @@ function Hero({ pricing }: { pricing: Pricing }) {
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Link
-            href="/o-level"
+            href="/subjects"
             className="btn-pixel rounded bg-accent px-5 py-3 text-sm font-bold text-night"
           >
             Find your subject&apos;s forecast
@@ -528,7 +528,7 @@ function FogFrontierBeta() {
 
         <div className="mt-12 text-center">
           <Link
-            href="/o-level"
+            href="/subjects"
             className="btn-pixel inline-block rounded bg-accent px-6 py-3 text-sm font-bold text-night"
           >
             Unlock StudyLah Legends with any subject →
