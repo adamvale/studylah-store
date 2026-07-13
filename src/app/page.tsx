@@ -42,7 +42,7 @@ function PlayIcons() {
   );
 }
 
-// Crisp pixel art from the Fog Frontier suite. next/image with unoptimized so
+// Crisp pixel art from StudyLah Legends suite. next/image with unoptimized so
 // the sprites are served 1:1 and scaled with nearest-neighbour.
 function Px({
   src,
@@ -155,7 +155,7 @@ function Hero({ pricing }: { pricing: Pricing }) {
           <Ghost size={24} />
           Every purchase now unlocks{" "}
           <Link href="#fog-frontier" className="font-medium text-accent hover:underline">
-            Fog Frontier
+            StudyLah Legends
           </Link>
           <span className="rounded bg-violet px-1.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wide text-white">
             Beta
@@ -445,7 +445,7 @@ const GURUS = [
 ] as const;
 
 // The game — framed exactly as the owner wants it: the prediction suite is the
-// product; Fog Frontier is a beta playground it unlocks, for purchasers only.
+// product; StudyLah Legends is a beta playground it unlocks, for purchasers only.
 function FogFrontierBeta() {
   return (
     <section id="fog-frontier" className="scroll-mt-20 bg-night-2 py-20">
@@ -469,7 +469,7 @@ function FogFrontierBeta() {
         </p>
         <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-cloud">
           <span className="font-semibold text-white">The prediction suite is the product you buy.</span>{" "}
-          Fog Frontier is the beta playground it unlocks — a bonus, not the pitch.
+          StudyLah Legends is the beta playground it unlocks — a bonus, not the pitch.
           It&apos;s in active development, so expect it to keep growing.
         </p>
 
@@ -531,7 +531,7 @@ function FogFrontierBeta() {
             href="/o-level"
             className="btn-pixel inline-block rounded bg-accent px-6 py-3 text-sm font-bold text-night"
           >
-            Unlock Fog Frontier with any subject →
+            Unlock StudyLah Legends with any subject →
           </Link>
           <p className="mt-3 text-xs text-cloud">
             No separate purchase, no subscription. Buy the forecast; the beta comes with it.

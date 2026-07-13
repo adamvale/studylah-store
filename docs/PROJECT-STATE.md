@@ -137,7 +137,7 @@ banned-words grep on new copy, and a real browser/API pass (log in as
 Clean up test rows from `prisma/dev.db` afterwards. An upload's HTTP 200
 proves nothing about persistence — snapshot ids/hashes, redeploy, re-compare.
 
-## Fog Frontier — the season pack (all 4 waves shipped)
+## StudyLah Legends — the season pack (all 4 waves shipped)
 
 The commissioned season design pack (owner's drive, `claude_code_handoff
 1.1/design_docs`) is implemented as data in `src/lib/game/season.ts`:
@@ -166,7 +166,7 @@ greetings. Deferred pending owner sign-off: keepsake poster (share-safety),
 festival (needs calendar anchor), companion chores beyond the Home Base
 line. Murk battle barks + Q4 moving marker downgraded per pack fallbacks.
 
-## Fog Frontier — the Lightbearer Saga (story + expansion zones)
+## StudyLah Legends — the Lightbearer Saga (story + expansion zones)
 
 `docs/STORY-CODEX.md` is the game's original, copyright-free narrative spine
 ("the Fog is the hush before a paper"), written to ABSORB every existing
@@ -192,7 +192,7 @@ Cells fully in-browser (zone, art, NPCs, minimap→Fort Canning); all 5 beats
 accepted server-side; Reading Room/Lantern Walk registered via the same
 proven portal mechanics — worth an on-device walkthrough.
 
-## Fog Frontier — the Academy (Subject Gurus, teach + check)
+## StudyLah Legends — the Academy (Subject Gurus, teach + check)
 
 `🎓 Sage of the Academy` (`guru` NPC, Haven Hollow (8,12), sprite
 `examiner_sage`) opens **The Academy** (`src/components/subject-guru.tsx`):
@@ -243,7 +243,7 @@ short-answer `accepted` ASCII, no banned words, essay subjects are MCQ/short
 recall). Verified E2E: battles/guru/grading read DB `<level>-<slug>-g*`.
 **To update content:** replace the `.md`, run `npm run db:seed`, restart.
 
-## Fog Frontier — Duel Hall + playable heroes
+## StudyLah Legends — Duel Hall + playable heroes
 
 Two additions on top of the season pack:
 
@@ -279,7 +279,7 @@ worked solutions are revealed only in the post-submit results. UI is
 sealed; a second real customer took the code → challenger graded 0/5 →
 duel complete → both sides got 20 XP → laurel to the higher score.
 
-## Fog Frontier — the full creature-collecting RPG (native game shell)
+## StudyLah Legends — the full creature-collecting RPG (native game shell)
 
 `/account/adventure` is a complete original-IP RPG (`adventure-game.tsx` +
 `src/lib/game/world2.ts`), portalled to `document.body` for a true full-screen
@@ -322,21 +322,21 @@ froze in her exam year, Commander Murk is Maple's burned-out first prodigy,
 and Examiner Sage's championship ends with the Clarity guardian + champion
 crest. The player ghost walks in the starter scarf; champions walk in gold.
 
-## Homepage — Fog Frontier identity + game-as-beta (`src/app/page.tsx`)
+## Homepage — StudyLah Legends identity + game-as-beta (`src/app/page.tsx`)
 
-The marketing homepage (`webdesign-updates` handoff) carries the Fog Frontier
+The marketing homepage (`webdesign-updates` handoff) carries StudyLah Legends
 pixel identity: pixel mascot (Gugu, `/public/marketing/mascot_*.png`) in the
 hero + brand marks, `.btn-pixel` hard-shadow "pressable" gold CTAs
 (globals.css), `.mascot-bob`. **Positioning (owner-mandated): the prediction
 suite is the product; the game is a purchaser-only beta bonus.** The hero pitch
 stays 100% on the forecast/PDFs; a `#fog-frontier` section (`FogFrontierBeta`)
 is explicitly badged **BETA · Included with any subject · purchasers only** and
-says verbatim "The prediction suite is the product you buy. Fog Frontier is the
+says verbatim "The prediction suite is the product you buy. StudyLah Legends is the
 beta playground it unlocks — a bonus, not the pitch." It showcases the three
 heroes (Jun/Mei/Agent X sprites), the Gugu companion + evolution line, and the
 six subject Gurus (Fen/Tor/Vale/Sum/Mere/Ash) — CTA "Unlock with any subject"
 → `/o-level` (no standalone game purchase). Assets in `/public/marketing/`
-(original Fog Frontier IP). Compliance clean (no banned words; effort-framed).
+(original StudyLah Legends IP). Compliance clean (no banned words; effort-framed).
 Preserves all commerce (pricing, ForecastCard, EmailCapture, accuracy proof).
 
 ## The game layer ("Clear the Fog") — SHIPPED, web-first
@@ -399,7 +399,7 @@ web deploy.
 **`DEPLOY-APP.md` is the complete store playbook** — Firebase, APNs key,
 listings, review notes, release runbook.
 
-## Fog Frontier — arcade UI + world polish (device-feedback pass)
+## StudyLah Legends — arcade UI + world polish (device-feedback pass)
 
 The overworld HUD and controls were reskinned to the **v3 arcade aesthetic**
 (neon panels, `.btn-pixel` hard-shadow buttons) in `adventure-game.tsx`:

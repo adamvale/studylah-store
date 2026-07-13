@@ -1,7 +1,7 @@
 import { TILE, isWalkable as baseWalkable, type WorldSubject } from "@/lib/game/world";
 import { loreFor, SALTWIND_TABLE, ENCOUNTER_RATE, type SpeciesRow } from "@/lib/game/season";
 
-// ── The Fog Frontier region ────────────────────────────────────────────────
+// ── StudyLah Legends region ────────────────────────────────────────────────
 // Pure data (no DOM): the whole game world generated from the subjects a
 // student owns. Haven Hollow (the hub town) links to one province per
 // subject (route + gym) and, once every gym is cleared, to the Summit of

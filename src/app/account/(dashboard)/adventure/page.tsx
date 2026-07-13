@@ -10,7 +10,7 @@ import { loreFor, isoWeekOf } from "@/lib/game/season";
 import { AdventureGame } from "@/components/adventure-game";
 import type { WorldSubject } from "@/lib/game/world2";
 
-export const metadata: Metadata = { title: "Fog Frontier" };
+export const metadata: Metadata = { title: "StudyLah Legends" };
 
 // Two-letter subject sigil for the gym signs.
 function sigil(name: string): string {
@@ -70,7 +70,7 @@ export default async function AdventurePage() {
     return (
       <div className="rounded-2xl border border-hairline bg-surface p-8 text-center">
         <p className="font-display text-lg font-bold text-ink">
-          The Fog Frontier unlocks with your first subject
+          StudyLah Legends unlocks with your first subject
         </p>
         <p className="mt-2 text-sm text-body">
           Each subject you own becomes a whole province — a route of wild

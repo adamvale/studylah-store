@@ -108,7 +108,7 @@ const GUARDIAN_BY_FAMILY: Record<string, GuardianName> = {
 const emblemFor = (family?: string) => EMBLEM_BY_FAMILY[family ?? ""] ?? "emblem_gear";
 const guardianFor = (family?: string): GuardianName => GUARDIAN_BY_FAMILY[family ?? ""] ?? "ruins_watcher";
 
-// ── Fog Frontier — the full game ───────────────────────────────────────────
+// ── StudyLah Legends — the full game ───────────────────────────────────────────
 // Immersive full-screen canvas RPG with PUBG-style overlay controls. Every
 // battle strike is a REAL exam question graded server-side; story beats,
 // gym emblems and dex captures persist as achievements. All content is
@@ -2073,11 +2073,11 @@ export function AdventureGame({
     center("STUDY HQ — studylah.education", 620, "bold 18px monospace", "#ffdc00");
     const blob: Blob | null = await new Promise((resolve) => cv.toBlob(resolve, "image/png"));
     if (!blob) return;
-    const file = new File([blob], "fog-frontier-report.png", { type: "image/png" });
+    const file = new File([blob], "studylah-legends-report.png", { type: "image/png" });
     const nav = navigator as Navigator & { canShare?: (d: ShareData) => boolean };
     if (nav.share && nav.canShare?.({ files: [file] })) {
       try {
-        await nav.share({ files: [file], title: "Fog Frontier expedition report" });
+        await nav.share({ files: [file], title: "StudyLah Legends expedition report" });
         return;
       } catch {
         // cancelled — fall through
@@ -2086,7 +2086,7 @@ export function AdventureGame({
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "fog-frontier-report.png";
+    a.download = "studylah-legends-report.png";
     a.click();
     URL.revokeObjectURL(url);
   }, [hudState, wins, starter]);
@@ -2104,7 +2104,7 @@ export function AdventureGame({
         height={viewRows * TS}
         className="h-full w-full touch-none object-cover"
         style={{ imageRendering: "pixelated" }}
-        aria-label="Fog Frontier overworld — walk with the D-pad, talk with A, grass hides wild battles"
+        aria-label="StudyLah Legends overworld — walk with the D-pad, talk with A, grass hides wild battles"
       />
 
       {/* atmosphere: drifting fog + vignette (pure CSS, zero assets) */}
@@ -2177,7 +2177,7 @@ export function AdventureGame({
             <button
               type="button"
               onClick={() => router.push("/account")}
-              aria-label="Leave the Fog Frontier"
+              aria-label="Leave StudyLah Legends"
               className="rounded-lg border border-coral/50 bg-night/70 px-2 py-1 font-pixel text-[8px] text-body backdrop-blur active:border-coral"
             >
               EXIT

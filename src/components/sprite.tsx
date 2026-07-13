@@ -12,7 +12,7 @@ import {
   type PortraitName,
 } from "@/lib/game/sheets";
 
-// DOM-side sprites from the original Fog Frontier sheets (background-position
+// DOM-side sprites from the original StudyLah Legends sheets (background-position
 // cropping, integer scale, pixelated). Canvas handles the overworld; these
 // cover dialogue portraits, battle monsters, hearts, emblems and FX.
 

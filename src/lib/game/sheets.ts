@@ -1,6 +1,6 @@
 "use client";
 
-// ── Fog Frontier sprite sheets ─────────────────────────────────────────────
+// ── StudyLah Legends sprite sheets ─────────────────────────────────────────────
 // Loader + lookups for the commissioned ORIGINAL asset pack (StudyLah IP)
 // in /public/game. Manifests are inlined from the pack's JSON files so a
 // tile can be addressed by name. Everything renders nearest-neighbour.

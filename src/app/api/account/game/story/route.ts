@@ -10,7 +10,7 @@ import {
   type GamePayload,
 } from "@/lib/server/xp";
 
-// Records a story beat in the Fog Frontier adventure. Every beat is earned
+// Records a story beat in StudyLah Legends adventure. Every beat is earned
 // by play the client can't fake cheaply (battles are graded server-side by
 // /game/answer before the client reports the beat), the XP here is small and
 // one-time (unique sourceKey), and beats are idempotent. Worst case for a

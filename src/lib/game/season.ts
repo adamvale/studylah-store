@@ -1,4 +1,4 @@
-// ── Fog Frontier: the season pack, as data ─────────────────────────────────
+// ── StudyLah Legends: the season pack, as data ─────────────────────────────────
 // Implements the commissioned season design pack (owner's drive,
 // claude_code_handoff 1.1/design_docs): province lore + d100 encounter
 // tables (08), quests (03/09), Fog Front + mini-bosses (04/10), balance

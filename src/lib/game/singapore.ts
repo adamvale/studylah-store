@@ -1,7 +1,7 @@
 import type { WorldSubject } from "@/lib/game/world2";
 
 // ── The map of Singapore ─────────────────────────────────────────────────────
-// The Fog Frontier is laid over Singapore: every game zone sits in a real
+// StudyLah Legends is laid over Singapore: every game zone sits in a real
 // district. The home hub is Toa Payoh (heartland centre), the Summit is Bukit
 // Timah (the island's true high point), the coastal Saltwind Steps is Marine
 // Parade, the restored Old Campus is one-north (the research belt), and each
