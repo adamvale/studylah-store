@@ -125,27 +125,55 @@ function rankHardest(a: DiagnosticQuestion, b: DiagnosticQuestion): number {
   return hardness(b) - hardness(a) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
 }
 
+// Natural bank order for the final set — the trailing "-g<n>" from the id — so
+// the ten don't come out grouped by type or difficulty.
+function ord(q: DiagnosticQuestion): number {
+  const m = /g(\d+)$/.exec(q.id);
+  return m ? Number(m[1]) : 0;
+}
+
+// Picks n hard questions from DISTINCT topics, but deliberately MIXES formats so
+// the check isn't all calculations: it guarantees a minimum of both MCQ
+// (recognition) and short-answer (recall/working) questions where the bank has
+// them, then fills the rest hardest-first. Deterministic.
+const MIN_PER_TYPE = 3;
+
 function pickHardDistinct(questions: DiagnosticQuestion[], n: number): DiagnosticQuestion[] {
-  // The hardest question within each distinct topic.
-  const byTopic = new Map<string, DiagnosticQuestion>();
-  for (const q of questions) {
-    const cur = byTopic.get(q.topic);
-    if (!cur || rankHardest(q, cur) < 0) byTopic.set(q.topic, q);
-  }
-  const chosen = [...byTopic.values()].sort(rankHardest).slice(0, n);
-  // If there aren't n distinct topics, backfill with the next-hardest unused
-  // questions so the check is always exactly n long.
-  if (chosen.length < n) {
-    const used = new Set(chosen.map((q) => q.id));
-    for (const q of [...questions].sort(rankHardest)) {
+  const ranked = [...questions].sort(rankHardest);
+  const chosen: DiagnosticQuestion[] = [];
+  const usedTopics = new Set<string>();
+  const usedIds = new Set<string>();
+  const typeCount: Record<string, number> = { mcq: 0, short: 0 };
+
+  const take = (pred: (q: DiagnosticQuestion) => boolean) => {
+    for (const q of ranked) {
       if (chosen.length >= n) break;
-      if (!used.has(q.id)) {
+      if (usedIds.has(q.id) || usedTopics.has(q.topic) || !pred(q)) continue;
+      chosen.push(q);
+      usedIds.add(q.id);
+      usedTopics.add(q.topic);
+      typeCount[q.type] = (typeCount[q.type] ?? 0) + 1;
+    }
+  };
+
+  // Reserve a floor for each format (hardest first), then fill with the hardest
+  // remaining of any format — all from still-unused topics.
+  take((q) => q.type === "mcq" && typeCount.mcq < MIN_PER_TYPE);
+  take((q) => q.type === "short" && typeCount.short < MIN_PER_TYPE);
+  take(() => true);
+
+  // Too few distinct topics to reach n → backfill hardest-first, topics repeat.
+  if (chosen.length < n) {
+    for (const q of ranked) {
+      if (chosen.length >= n) break;
+      if (!usedIds.has(q.id)) {
         chosen.push(q);
-        used.add(q.id);
+        usedIds.add(q.id);
       }
     }
   }
-  return chosen.slice(0, n);
+
+  return chosen.slice(0, n).sort((a, b) => ord(a) - ord(b));
 }
 
 export async function getDiagnosticSet(

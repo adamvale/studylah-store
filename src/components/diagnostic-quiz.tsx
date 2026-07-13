@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import type { PublicQuestion } from "@/lib/diagnostic-questions";
-import { TierPill, type ForecastTier } from "@/components/heat";
+import { type ForecastTier } from "@/components/heat";
 import { QuizCalculator } from "@/components/quiz-calculator";
 import { guguSay } from "@/lib/gugu-bus";
 
@@ -31,27 +31,6 @@ interface SubmitResult {
   gradeEstimate: string;
   topicTier: ForecastTier;
 }
-
-const ESTIMATE_CAVEAT =
-  "An estimate from this 10-question sample on the topics forecast most likely — not a promise or prediction of your actual result.";
-
-const BAND_UI: Record<SubmitResult["band"], { title: string; line: string; cls: string }> = {
-  danger: {
-    title: "Danger zone on these topics",
-    line: "These topics are forecast VERY HIGH for 2026 — and right now they would cost you marks. The full breakdown shows exactly which ones, and how to get them back.",
-    cls: "text-coral",
-  },
-  warning: {
-    title: "Warning — close, but marks are leaking",
-    line: "You know these topics — but a few marks slipped. The breakdown shows precisely where, with worked solutions.",
-    cls: "text-accent",
-  },
-  pass: {
-    title: "Pass territory — keep it sharp",
-    line: "Strong showing on the most-likely topics. See the worked solutions and how to keep the edge.",
-    cls: "text-guarantee",
-  },
-};
 
 // The exam clock: generous ceiling for a quick check — nobody should lose to
 // the timer, but it keeps the "sit it like the real thing" pressure honest.
@@ -206,6 +185,16 @@ export function DiagnosticQuiz({
   async function unlock(e: FormEvent) {
     e.preventDefault();
     if (!result) return;
+    // The full diagnosis is emailed, and the result unlocks here — so a real,
+    // valid address matters. Check before spending the request.
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      setError("Please enter a valid email — your full diagnosis is sent there, so double-check it.");
+      return;
+    }
+    if (!consent) {
+      setError("Please tick the consent box so we can email your results.");
+      return;
+    }
     setBusy(true);
     setError("");
     try {
@@ -225,36 +214,31 @@ export function DiagnosticQuiz({
     }
   }
 
-  // ---- Step: instant band (ungated hook) ----
+  // ---- Step: email gate — the result stays LOCKED until a valid email is in ----
   if (result && step >= questions.length) {
-    const ui = BAND_UI[result.band];
     return (
       <div className="mx-auto max-w-md">
         <div className="rounded-2xl border border-hairline bg-surface p-6 text-center">
           <p className="font-mono text-xs text-body">
             {subjectName} · {topicLabel}
           </p>
-          <p className={`mt-4 font-display text-5xl font-black ${ui.cls}`}>
-            {result.score}/{result.totalMarks}
-          </p>
-          <div className="mt-2 flex justify-center">
-            <TierPill tier={result.topicTier} />
+          <div className="mt-4 flex justify-center" aria-hidden="true">
+            <span className="grid h-16 w-16 place-items-center rounded-full border-2 border-accent/50 bg-night text-3xl">
+              🔒
+            </span>
           </div>
           <h2
             ref={headingRef}
             tabIndex={-1}
-            className="mt-4 font-display text-2xl font-bold text-ink outline-none"
+            className="mt-4 font-display text-2xl font-black text-ink outline-none"
           >
-            {ui.title}
+            Your result is ready
           </h2>
-          <p className="mt-3 rounded-xl border border-hairline bg-night px-4 py-3 text-sm text-ink">
-            Indicative grade on these topics:{" "}
-            <span className={`font-display text-lg font-bold ${ui.cls}`}>
-              {result.gradeEstimate}
-            </span>
-            <span className="mt-1 block text-xs text-body/80">{ESTIMATE_CAVEAT}</span>
+          <p className="mt-2 text-sm text-body">
+            You&apos;ve finished all {questions.length} questions. Enter your
+            email below to reveal your score, indicative grade and full
+            breakdown.
           </p>
-          <p className="mt-2 text-sm text-body">{ui.line}</p>
           {timeExpired && (
             <p className="mt-3 rounded-lg bg-coral/15 px-3 py-2 text-xs text-ink">
               Time&apos;s up — we marked what you&apos;d answered. Unanswered
@@ -268,14 +252,15 @@ export function DiagnosticQuiz({
           className="mt-4 rounded-2xl border border-accent/40 bg-surface p-6"
         >
           <h3 className="font-display text-lg font-bold text-ink">
-            Get your full breakdown — free
+            Reveal your result — free
           </h3>
           <p className="mt-1 text-sm text-body">
-            Which marks you dropped, the worked solutions, and a fix plan
-            matched to where you lost them.
+            Your score, indicative grade, every mark you dropped, the worked
+            solutions, and a fix plan. We&apos;ll <strong className="text-ink">email the full
+            diagnosis</strong> to you too — so use a real address you can open.
           </p>
           <label htmlFor="diag-email" className="mt-4 block text-xs font-medium text-body">
-            Email for your results
+            Email for your results (double-check it&apos;s valid)
           </label>
           <input
             id="diag-email"
@@ -313,7 +298,7 @@ export function DiagnosticQuiz({
             disabled={busy}
             className="mt-4 w-full rounded-lg bg-accent px-5 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5 disabled:opacity-60"
           >
-            {busy ? "Unlocking…" : "Unlock my breakdown"}
+            {busy ? "Revealing…" : "Reveal my result"}
           </button>
           {error && (
             <p className="mt-2 text-sm text-coral" role="alert">
