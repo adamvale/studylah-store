@@ -75,13 +75,32 @@ function normalise(s: string): string {
   return s.trim().toLowerCase().replace(/\s+/g, " ");
 }
 
+// Grades one short-answer question. Numeric answers (every accepted key starts
+// with a digit/sign, e.g. "30", "3.0 Ω") must match EXACTLY — "3" must not pass
+// "30". For "phrasing" answers (State/Explain/Describe style, accepted keys are
+// words) we grade like the game's "check my phrasing": the student is correct if
+// their answer CONTAINS an accepted key phrase, so wording can vary.
+function shortAnswerCorrect(correctKey: string[], given: string): boolean {
+  const g = normalise(given);
+  if (!g) return false;
+  const numeric = correctKey.every((k) => /^\s*[-+]?\d/.test(k.trim()));
+  if (numeric) return correctKey.some((k) => normalise(k) === g);
+  return correctKey.some((k) => {
+    const nk = normalise(k);
+    return nk.length >= 3 && g.includes(nk);
+  });
+}
+
 export function gradeAttempt(
   set: DiagnosticSet,
   answers: Record<string, string>
 ): { graded: GradedAnswer[]; score: number; totalMarks: number; weakness: DiagnosticProduct | null } {
   const graded: GradedAnswer[] = set.questions.map((q) => {
     const given = String(answers[q.id] ?? "");
-    const correct = q.correctKey.some((k) => normalise(k) === normalise(given));
+    const correct =
+      q.type === "mcq"
+        ? q.correctKey.some((k) => normalise(k) === normalise(given))
+        : shortAnswerCorrect(q.correctKey, given);
     return {
       questionId: q.id,
       given,

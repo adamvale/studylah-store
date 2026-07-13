@@ -92,8 +92,10 @@ export function emailLayout(bodyHtml: string): string {
 <html>
   <body style="margin:0;background:#f6f8fb;font-family:Helvetica,Arial,sans-serif;color:#101f33;">
     <div style="max-width:560px;margin:0 auto;padding:32px 20px;">
-      <p style="font-size:20px;font-weight:bold;color:#12335e;margin:0 0 4px;">StudyLah</p>
-      <p style="font-size:11px;color:#3d4e63;margin:0 0 24px;">studylah.education</p>
+      <div style="background:#101f33;border-radius:12px;padding:16px 20px;text-align:center;margin:0 0 18px;">
+        <img src="${serverConfig.siteUrl.replace(/\/$/, "")}/studylah-logo.png" alt="StudyLah" height="30" style="height:30px;width:auto;display:inline-block;border:0;" />
+        <div style="font-size:11px;color:#9fb0c8;margin-top:6px;">studylah.education</div>
+      </div>
       <div style="background:#ffffff;border-radius:12px;padding:28px 24px;">
         ${bodyHtml}
       </div>

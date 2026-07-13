@@ -418,7 +418,9 @@ export function DiagnosticQuiz({
           <input
             id={`ans-${q.id}`}
             type="text"
-            inputMode="decimal"
+            // Full keyboard (not the numeric pad): answers can be words, units
+            // or full phrases, not only numbers.
+            inputMode="text"
             value={answers[q.id] ?? ""}
             onChange={(e) => answer(q.id, e.target.value)}
             onKeyDown={(e) => {

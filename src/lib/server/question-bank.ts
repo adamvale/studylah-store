@@ -133,10 +133,21 @@ function ord(q: DiagnosticQuestion): number {
 }
 
 // Picks n hard questions from DISTINCT topics, but deliberately MIXES formats so
-// the check isn't all calculations: it guarantees a minimum of both MCQ
-// (recognition) and short-answer (recall/working) questions where the bank has
-// them, then fills the rest hardest-first. Deterministic.
+// the check isn't all calculations: it guarantees a minimum of MCQ (recognition),
+// short-answer (recall/working) AND "phrasing" questions (State/Explain/Describe
+// style, graded like the game's "check my phrasing") where the bank has them,
+// then fills the rest hardest-first. Deterministic.
 const MIN_PER_TYPE = 3;
+const MIN_PHRASING = 2;
+
+// A "phrasing" question: an open State/Explain/Describe style short-answer the
+// student writes out in words (vs. a numeric calculation).
+function isPhrasing(q: DiagnosticQuestion): boolean {
+  return (
+    q.type === "short" &&
+    /^\s*(state|explain|describe|define|outline|suggest|why|give|name|what)\b/i.test(q.stem)
+  );
+}
 
 function pickHardDistinct(questions: DiagnosticQuestion[], n: number): DiagnosticQuestion[] {
   const ranked = [...questions].sort(rankHardest);
@@ -144,6 +155,7 @@ function pickHardDistinct(questions: DiagnosticQuestion[], n: number): Diagnosti
   const usedTopics = new Set<string>();
   const usedIds = new Set<string>();
   const typeCount: Record<string, number> = { mcq: 0, short: 0 };
+  let phrasingCount = 0;
 
   const take = (pred: (q: DiagnosticQuestion) => boolean) => {
     for (const q of ranked) {
@@ -153,11 +165,13 @@ function pickHardDistinct(questions: DiagnosticQuestion[], n: number): Diagnosti
       usedIds.add(q.id);
       usedTopics.add(q.topic);
       typeCount[q.type] = (typeCount[q.type] ?? 0) + 1;
+      if (isPhrasing(q)) phrasingCount += 1;
     }
   };
 
-  // Reserve a floor for each format (hardest first), then fill with the hardest
-  // remaining of any format, all from still-unused topics.
+  // Reserve a floor for phrasing questions and for each format (hardest first),
+  // then fill with the hardest remaining of any format, all from unused topics.
+  take((q) => isPhrasing(q) && phrasingCount < MIN_PHRASING);
   take((q) => q.type === "mcq" && typeCount.mcq < MIN_PER_TYPE);
   take((q) => q.type === "short" && typeCount.short < MIN_PER_TYPE);
   take(() => true);
