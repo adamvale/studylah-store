@@ -234,7 +234,7 @@ export function BundleBuilder({
               <button
                 type="button"
                 onClick={addAllToCart}
-                className="mt-5 w-full rounded-lg bg-accent px-5 py-3 text-sm font-bold text-night transition-opacity hover:opacity-90"
+                className="cta-sheen glow-soft mt-5 w-full rounded-lg bg-accent px-5 py-3 text-sm font-bold text-night transition-opacity hover:opacity-90"
               >
                 Add {count} subject{count === 1 ? "" : "s"} to cart
               </button>
@@ -277,7 +277,7 @@ export function BundleBuilder({
             <button
               type="button"
               onClick={addAllToCart}
-              className="shrink-0 rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
+              className="cta-sheen shrink-0 rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
             >
               Add to cart
             </button>

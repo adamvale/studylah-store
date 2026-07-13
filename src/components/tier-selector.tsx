@@ -127,7 +127,7 @@ export function TierSelector({
         <button
           type="button"
           onClick={add}
-          className="rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
+          className="cta-sheen glow-soft rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
         >
           Get {TIER_NAMES[tier]} — {sgd(tierPrice(level, tier))}
         </button>

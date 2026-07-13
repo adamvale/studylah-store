@@ -412,3 +412,190 @@ body:has([data-bottom-cta]) .gugu-fab {
 body:has([data-bottom-cta]) .gugu-panel {
   max-height: calc(100dvh - 14rem);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MARKETING "WOW" LAYER — depth, motion and light for first impressions.
+   Pure CSS (no images, CSP-safe). Everything here degrades gracefully and
+   respects prefers-reduced-motion.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Aurora: big, soft, slowly-drifting colour clouds behind the hero. */
+@keyframes aurora-drift {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(7%, -5%) scale(1.12); }
+  66%  { transform: translate(-6%, 6%) scale(0.94); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(64px);
+  opacity: 0.75;
+  will-change: transform;
+  animation: aurora-drift 20s ease-in-out infinite;
+}
+
+/* Faint dot-grid — a subtle "data" texture, masked to fade at the edges. */
+.hero-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 25%, #000 35%, transparent 100%);
+  mask-image: radial-gradient(ellipse 85% 65% at 50% 25%, #000 35%, transparent 100%);
+}
+
+/* Film grain — inline SVG fractal noise, overlaid at low opacity. */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Pixel motes drifting up through the hero — the game identity, as ambience. */
+@keyframes mote-rise {
+  0%   { transform: translateY(30px); opacity: 0; }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { transform: translateY(-160px); opacity: 0; }
+}
+.mote {
+  position: absolute;
+  border-radius: 2px;
+  will-change: transform, opacity;
+  animation: mote-rise linear infinite;
+}
+
+/* Shimmering gradient headline text. */
+@keyframes text-shimmer {
+  to { background-position: 200% center; }
+}
+.text-gradient {
+  background: linear-gradient(100deg, #ffffff 0%, #ffe680 35%, #ffdc00 55%, #ffffff 90%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: text-shimmer 6s linear infinite;
+}
+
+/* Soft glow halo, for the accent word and the forecast card. */
+.glow-soft {
+  box-shadow: 0 0 70px -14px rgba(255, 220, 0, 0.4);
+}
+
+/* Bigger, richer halo for the hero's forecast card — a coloured double-glow
+   that lifts it off the aurora. */
+.glow-hero {
+  box-shadow:
+    0 0 120px -30px rgba(255, 220, 0, 0.5),
+    0 0 60px -20px rgba(124, 58, 237, 0.55),
+    0 30px 80px -30px rgba(0, 0, 0, 0.8);
+}
+
+/* Live "data" sheen travelling across a filled forecast bar — makes the
+   forecast card feel like a running instrument, not a static image. Rides on
+   top of the existing heat-grow fill. */
+.heat-fill {
+  position: relative;
+}
+.heat-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: translateX(-100%);
+  animation: heat-sheen 3.4s ease-in-out infinite;
+  animation-delay: inherit;
+}
+@keyframes heat-sheen {
+  0% { transform: translateX(-100%); }
+  55% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+/* The top call glows in its tier colour. */
+.heat-fill.bg-tier-veryhigh {
+  box-shadow: 0 0 14px -2px rgba(219, 34, 42, 0.7);
+}
+
+/* Slow float for hero decorative elements. */
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.hero-float {
+  animation: hero-float 6s ease-in-out infinite;
+}
+
+/* A gentle bounce for the scroll cue at the base of a full-height hero. */
+@keyframes scroll-cue {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+.scroll-cue {
+  animation: scroll-cue 1.8s ease-in-out infinite;
+}
+
+/* Card lift-and-glow on hover — turns flat panels into responsive objects. */
+.card-hover {
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.28s ease, border-color 0.28s ease;
+}
+.card-hover:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 220, 0, 0.5);
+  box-shadow:
+    0 22px 60px -24px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(255, 220, 0, 0.12);
+}
+
+/* CTA sheen — a light sweep travels across primary buttons on hover. */
+.cta-sheen {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.cta-sheen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%) skewX(-20deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transition: transform 0.7s ease;
+  z-index: -1;
+}
+.cta-sheen:hover::before {
+  transform: translateX(120%) skewX(-20deg);
+}
+
+/* Scroll-driven reveal where supported; a no-op elsewhere so content always
+   shows. Sections rise and fade in as they enter the viewport. */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(34px); }
+  to   { opacity: 1; transform: none; }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-up 0.9s both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 20%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob,
+  .mote,
+  .text-gradient,
+  .hero-float,
+  .scroll-cue {
+    animation: none;
+  }
+  .heat-fill::after {
+    animation: none;
+    display: none;
+  }
+}

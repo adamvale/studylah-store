@@ -181,7 +181,7 @@ export function CartView() {
         {priced.lines.map(({ item, listPrice, bundle }) => (
           <div
             key={`${item.level}-${item.subjectSlug}`}
-            className="flex items-center justify-between gap-3 rounded-xl border border-hairline bg-surface p-3.5"
+            className="card-hover flex items-center justify-between gap-3 rounded-xl border border-hairline bg-surface p-3.5"
           >
             <div className="min-w-0 flex-1">
               <p className="truncate font-display text-sm font-bold text-ink">
@@ -359,7 +359,7 @@ export function CartView() {
             type="button"
             onClick={checkout}
             disabled={submitting}
-            className="mt-3 hidden w-full flex-col items-center rounded-lg bg-signal px-5 py-2.5 text-white transition-colors hover:bg-signal-deep lg:flex"
+            className="cta-sheen glow-soft mt-3 hidden w-full flex-col items-center rounded-lg bg-signal px-5 py-2.5 text-white transition-colors hover:bg-signal-deep lg:flex"
           >
             {submitting ? (
               <span className="py-0.5 text-sm font-medium">Starting secure payment…</span>
@@ -414,7 +414,7 @@ export function CartView() {
             type="button"
             onClick={checkout}
             disabled={submitting}
-            className="shrink-0 rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night transition-opacity hover:opacity-90 disabled:opacity-60"
+            className="cta-sheen shrink-0 rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night transition-opacity hover:opacity-90 disabled:opacity-60"
           >
             {submitting ? "Starting…" : "Checkout"}
           </button>

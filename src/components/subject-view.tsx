@@ -137,7 +137,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
 
       <div className="mt-10 grid gap-8 lg:grid-cols-5">
         <div className="lg:col-span-2">
-          <div className="rounded-2xl border border-hairline bg-surface p-5">
+          <div className="card-hover rounded-2xl border border-hairline bg-surface p-5">
             <div className="flex items-center justify-between">
               <p className="font-display text-base font-bold text-ink">
                 Forecast preview
@@ -225,7 +225,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
             return (
               <div
                 key={key}
-                className="rounded-2xl border border-hairline bg-surface p-5"
+                className="card-hover rounded-2xl border border-hairline bg-surface p-5"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
@@ -289,7 +289,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
       </div>
 
       {/* The value stack: what a purchase actually is, in one glance. */}
-      <div className="mt-4 rounded-2xl border border-hairline bg-surface p-6">
+      <div className="card-hover reveal mt-4 rounded-2xl border border-hairline bg-surface p-6">
         <p className="font-display text-lg font-bold text-ink">
           What you&apos;re actually getting
         </p>
@@ -350,7 +350,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
         </p>
       )}
 
-      <div className="mt-12 flex flex-col gap-4 rounded-2xl bg-indigo p-6 text-white sm:flex-row sm:items-center sm:justify-between">
+      <div className="reveal glow-soft mt-12 flex flex-col gap-4 rounded-2xl bg-indigo p-6 text-white sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="font-display text-xl font-bold">
             Don&apos;t stop at {subject.name}.
@@ -365,7 +365,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
         </div>
         <Link
           href="/bundles"
-          className="shrink-0 rounded-lg bg-accent px-5 py-2.5 text-center text-sm font-bold text-night transition-opacity hover:opacity-90"
+          className="cta-sheen shrink-0 rounded-lg bg-accent px-5 py-2.5 text-center text-sm font-bold text-night transition-opacity hover:opacity-90"
         >
           Build your bundle →
         </Link>

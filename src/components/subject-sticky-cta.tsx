@@ -55,7 +55,7 @@ export function SubjectStickyCta({
         <button
           type="button"
           onClick={buyMaster}
-          className="w-full rounded-lg bg-accent px-5 py-3 text-center text-sm font-bold text-night transition-transform hover:-translate-y-0.5 sm:w-auto"
+          className="cta-sheen w-full rounded-lg bg-accent px-5 py-3 text-center text-sm font-bold text-night transition-transform hover:-translate-y-0.5 sm:w-auto"
         >
           Get Master — {sgd(tierPrice(level, "master"))}
         </button>

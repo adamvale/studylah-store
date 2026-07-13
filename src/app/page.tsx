@@ -20,6 +20,7 @@ import { getPricing } from "@/lib/server/pricing-store";
 import { ExamCountdown } from "@/components/exam-countdown";
 import { ForecastCard } from "@/components/forecast-card";
 import { GuaranteeBadge } from "@/components/guarantee-badge";
+import { HeroBackdrop } from "@/components/hero-backdrop";
 import { HeatTiles } from "@/components/heat";
 import { SocialProof } from "@/components/social-proof";
 
@@ -115,68 +116,87 @@ function HeroProof() {
 function Hero({ pricing }: { pricing: Pricing }) {
   const { alacartePrice } = pricing;
   return (
-    <section className="mx-auto grid max-w-6xl items-center gap-10 px-4 pb-16 pt-12 lg:grid-cols-2 lg:pt-20">
-      <div className="fade-up">
-        <span className="inline-flex items-center gap-2 rounded-full border border-hairline bg-surface px-3 py-1 font-mono text-xs font-medium text-cloud">
-          <HeatTiles />
-          Built from 10 years of real exam data
-        </span>
-        <h1 className="mt-5 font-display text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl">
-          Stop revising blind. Walk in knowing{" "}
-          <span className="text-accent">what&apos;s likely.</span>
-        </h1>
-        <p className="mt-4 max-w-lg text-lg text-cloud">
-          Most students revise everything and hope. StudyLah reads ten years of
-          your{" "}
-          {PUBLISHED_LEVELS.map((l) => LEVELS[l].shortName).join(" and ")} papers,
-          ranks the topics most likely to appear in 2026 — then runs your
-          revision around them: original practice, daily questions, a
-          self-keeping mistake notebook, and a plan that counts down to your
-          real paper dates.
-        </p>
-        <div className="mt-7 flex flex-wrap gap-3">
-          <Link
-            href="/diagnostic"
-            className="btn-pixel rounded bg-accent px-5 py-3 text-sm font-bold text-night"
-          >
-            See the topics you&apos;ll lose marks on — free
-          </Link>
-          <Link
-            href="/subjects"
-            className="rounded-lg border border-hairline bg-surface px-5 py-3 text-sm font-medium text-white transition-colors hover:border-accent"
-          >
-            Browse the forecasts →
-          </Link>
+    <section className="relative flex items-center overflow-hidden md:min-h-[calc(100svh-4.5rem)]">
+      <HeroBackdrop />
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-4 pb-24 pt-14 lg:grid-cols-2 lg:pt-16">
+        <div className="fade-up">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs font-medium text-cloud backdrop-blur">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+            </span>
+            <HeatTiles />
+            Built from 10 years of real exam data
+          </div>
+          <h1 className="mt-5 font-display text-5xl font-black leading-[1.02] tracking-tight text-white sm:text-6xl">
+            Stop revising blind. Walk in knowing{" "}
+            <span className="text-gradient">what&apos;s likely.</span>
+          </h1>
+          <p className="mt-5 max-w-lg text-lg leading-relaxed text-cloud">
+            Most students revise everything and hope. StudyLah reads ten years of
+            your{" "}
+            {PUBLISHED_LEVELS.map((l) => LEVELS[l].shortName).join(" and ")}{" "}
+            papers, ranks the topics most likely to appear in 2026 — then runs
+            your revision around them: original practice, daily questions, a
+            self-keeping mistake notebook, and a plan that counts down to your
+            real paper dates.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Link
+              href="/diagnostic"
+              className="btn-pixel cta-sheen glow-soft rounded bg-accent px-5 py-3 text-sm font-bold text-night"
+            >
+              See the topics you&apos;ll lose marks on — free
+            </Link>
+            <Link
+              href="/subjects"
+              className="rounded-lg border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white backdrop-blur transition-colors hover:border-accent"
+            >
+              Browse the forecasts →
+            </Link>
+          </div>
+          <p className="mt-4 text-sm text-cloud">
+            10 questions · ~7 minutes · instant score, indicative grade &amp;
+            worked solutions. No card.
+          </p>
+          <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-cloud">
+            <GuaranteeBadge />
+            <span>
+              Instant PDFs + StudyLand · from{" "}
+              {sgd(alacartePrice("o-level", "forecast"))} per subject
+            </span>
+          </div>
+          <p className="mt-2 inline-flex items-center gap-2 text-sm text-cloud">
+            <Ghost size={24} />
+            Every purchase now unlocks{" "}
+            <Link href="#fog-frontier" className="font-medium text-accent hover:underline">
+              StudyLah Legends
+            </Link>
+            <span className="rounded bg-violet px-1.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wide text-white">
+              Beta
+            </span>
+          </p>
+          <HeroProof />
+          <ExamCountdown className="mt-4" variant="urgent" />
         </div>
-        <p className="mt-4 text-sm text-cloud">
-          10 questions · ~7 minutes · instant score, indicative grade &amp;
-          worked solutions. No card.
-        </p>
-        <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-cloud">
-          <GuaranteeBadge />
-          <span>
-            Instant PDFs + StudyLand · from{" "}
-            {sgd(alacartePrice("o-level", "forecast"))} per subject
-          </span>
+        <div className="fade-up relative" style={{ animationDelay: "150ms" }}>
+          <div className="mascot-bob pointer-events-none absolute -right-2 -top-8 z-10 hidden sm:block">
+            <Ghost size={72} pose="victory" />
+          </div>
+          {/* Glow frame lifts the forecast card off the aurora and floats it. */}
+          <div className="glow-hero hero-float rounded-2xl">
+            <ForecastCard />
+          </div>
         </div>
-        <p className="mt-2 inline-flex items-center gap-2 text-sm text-cloud">
-          <Ghost size={24} />
-          Every purchase now unlocks{" "}
-          <Link href="#fog-frontier" className="font-medium text-accent hover:underline">
-            StudyLah Legends
-          </Link>
-          <span className="rounded bg-violet px-1.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wide text-white">
-            Beta
-          </span>
-        </p>
-        <HeroProof />
-        <ExamCountdown className="mt-4" variant="urgent" />
       </div>
-      <div className="fade-up relative" style={{ animationDelay: "150ms" }}>
-        <div className="mascot-bob pointer-events-none absolute -right-2 -top-8 z-10 hidden sm:block">
-          <Ghost size={72} pose="victory" />
-        </div>
-        <ForecastCard />
+
+      {/* Scroll cue — signals there's more below the full-height hero. */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-5 hidden justify-center md:flex">
+        <span className="scroll-cue text-cloud" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </span>
       </div>
     </section>
   );
@@ -199,7 +219,7 @@ const WHY = [
 
 function WhyItWorks() {
   return (
-    <section className="bg-night-2 py-20">
+    <section className="reveal bg-night-2 py-20">
       <div className="mx-auto max-w-5xl px-4 text-center">
         <div className="flex justify-center">
           <Ghost />
@@ -223,7 +243,7 @@ function WhyItWorks() {
           {WHY.map((card, i) => (
             <div
               key={card.title}
-              className="rounded-2xl border border-hairline bg-surface p-6"
+              className="card-hover rounded-2xl border border-hairline bg-surface p-6"
             >
               <p className="font-mono text-sm font-bold text-cloud">
                 No.{i + 1}
@@ -246,7 +266,7 @@ function Journey({ pricing }: { pricing: Pricing }) {
   const { alacartePrice, tierPrice, tierValue, tierSavings } = pricing;
   const prices = ["essential", "strategic", "master"] as const;
   return (
-    <section aria-labelledby="journey-heading" className="py-20">
+    <section aria-labelledby="journey-heading" className="reveal py-20">
       <div className="mx-auto max-w-6xl px-4">
         <p className="font-mono text-xs font-medium uppercase tracking-wide text-teal">
           The revision journey
@@ -268,7 +288,7 @@ function Journey({ pricing }: { pricing: Pricing }) {
             return (
               <div
                 key={key}
-                className="relative rounded-2xl border border-hairline bg-surface p-6"
+                className="card-hover relative rounded-2xl border border-hairline bg-surface p-6"
               >
                 <span className="inline-block rounded-full bg-violet px-3 py-1 font-mono text-xs font-bold text-white">
                   {product.day}
@@ -354,7 +374,7 @@ const STUDY_HQ_FEATURES = [
 
 function StudyHq() {
   return (
-    <section className="bg-night-2 py-20">
+    <section className="reveal bg-night-2 py-20">
       <div className="mx-auto max-w-6xl px-4">
         <p className="text-center font-mono text-xs font-medium uppercase tracking-wide text-teal">
           Included with every subject · no subscription
@@ -372,7 +392,7 @@ function StudyHq() {
           {STUDY_HQ_FEATURES.map((f) => (
             <div
               key={f.title}
-              className="rounded-2xl border border-hairline bg-surface p-6"
+              className="card-hover rounded-2xl border border-hairline bg-surface p-6"
             >
               <p aria-hidden="true" className="text-2xl">
                 {f.emoji}
@@ -456,7 +476,7 @@ const GURUS = [
 // product; StudyLah Legends is a beta playground it unlocks, for purchasers only.
 function FogFrontierBeta() {
   return (
-    <section id="fog-frontier" className="scroll-mt-20 bg-night-2 py-20">
+    <section id="fog-frontier" className="reveal scroll-mt-20 bg-night-2 py-20">
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex flex-wrap items-center justify-center gap-2">
           <span className="rounded bg-violet px-2.5 py-1 font-mono text-[11px] font-bold uppercase tracking-widest text-white">
@@ -516,7 +536,7 @@ function FogFrontierBeta() {
             {GURUS.map((g) => (
               <div
                 key={g.name}
-                className="flex items-start gap-4 rounded-2xl border border-hairline bg-surface p-5"
+                className="card-hover flex items-start gap-4 rounded-2xl border border-hairline bg-surface p-5"
               >
                 <Px src={g.sprite} size={56} alt={g.name} />
                 <div>
@@ -552,7 +572,7 @@ function FogFrontierBeta() {
 
 function Decision() {
   return (
-    <section className="bg-gradient-to-b from-[#12312b] to-night py-20">
+    <section className="reveal bg-gradient-to-b from-[#12312b] to-night py-20">
       <div className="mx-auto max-w-4xl px-4 text-center">
         <div className="flex justify-center">
           <Badge>Study Less, Score More</Badge>
@@ -602,7 +622,7 @@ function Decision() {
 function LevelEntry({ pricing }: { pricing: Pricing }) {
   const { tierPrice } = pricing;
   return (
-    <section aria-labelledby="levels-heading" className="mx-auto max-w-6xl px-4 py-20">
+    <section aria-labelledby="levels-heading" className="reveal mx-auto max-w-6xl px-4 py-20">
       <h2 id="levels-heading" className="font-display text-3xl font-black text-white">
         Find your papers
       </h2>
@@ -611,7 +631,7 @@ function LevelEntry({ pricing }: { pricing: Pricing }) {
           <Link
             key={level}
             href={`/${level}`}
-            className="group rounded-2xl border border-hairline bg-surface p-6 transition-colors hover:border-accent"
+            className="card-hover group rounded-2xl border border-hairline bg-surface p-6 transition-colors hover:border-accent"
           >
             <p className="font-mono text-xs font-medium text-cloud">
               {LEVELS[level].code}
@@ -645,7 +665,7 @@ function LevelEntry({ pricing }: { pricing: Pricing }) {
 function TrustStrip() {
   const { perfect, total } = scorecardHeadline();
   return (
-    <section aria-labelledby="trust-heading" className="bg-violet-2 py-16 text-white">
+    <section aria-labelledby="trust-heading" className="reveal bg-violet-2 py-16 text-white">
       <div className="mx-auto max-w-6xl px-4">
         <h2 id="trust-heading" className="sr-only">
           Why students trust StudyLah
@@ -709,7 +729,7 @@ const HOW_STEPS = [
 
 function HowItWorks() {
   return (
-    <section aria-labelledby="how-heading" className="mx-auto max-w-6xl px-4 py-20">
+    <section aria-labelledby="how-heading" className="reveal mx-auto max-w-6xl px-4 py-20">
       <h2 id="how-heading" className="font-display text-3xl font-black text-white">
         How the forecast works
       </h2>
@@ -720,7 +740,7 @@ function HowItWorks() {
         {HOW_STEPS.map((step, i) => (
           <div
             key={step.title}
-            className="rounded-2xl border border-hairline bg-surface p-6"
+            className="card-hover rounded-2xl border border-hairline bg-surface p-6"
           >
             <p className="font-mono text-sm font-bold text-teal">0{i + 1}</p>
             <h3 className="mt-2 font-display text-lg font-bold text-white">
