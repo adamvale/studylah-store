@@ -43,6 +43,7 @@ export function CartView() {
   const [checkoutError, setCheckoutError] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [pricedFor, setPricedFor] = useState(items);
+  const emailRef = useRef<HTMLInputElement>(null);
   const pricing = usePricing();
 
   const priced = useMemo(() => pricing.priceCart(items), [pricing, items]);
@@ -108,6 +109,10 @@ export function CartView() {
     setCheckoutError("");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setCheckoutError("Enter the email your PDFs should go to.");
+      // The mobile Checkout lives in a sticky bar; bring the email field into
+      // view so the shopper sees what's missing.
+      emailRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      emailRef.current?.focus({ preventScroll: true });
       return;
     }
     setSubmitting(true);
@@ -170,25 +175,27 @@ export function CartView() {
   }
 
   return (
-    <div className="grid gap-8 lg:grid-cols-3">
-      <div className="space-y-4 lg:col-span-2">
+    <div className="grid gap-8 pb-24 lg:grid-cols-3 lg:pb-0">
+      <div className="space-y-2.5 lg:col-span-2">
         {priced.lines.map(({ item, listPrice, bundle }) => (
           <div
             key={`${item.level}-${item.subjectSlug}`}
-            className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-hairline bg-surface p-5"
+            className="flex items-center justify-between gap-3 rounded-xl border border-hairline bg-surface p-3.5"
           >
-            <div className="min-w-0">
-              <p className="font-display font-bold text-ink">
+            <div className="min-w-0 flex-1">
+              <p className="truncate font-display text-sm font-bold text-ink">
                 {subjectName(item.level, item.subjectSlug)}
               </p>
-              <p className="text-xs text-body">{LEVELS[item.level].name}</p>
-              {bundle && (
-                <span className="mt-1.5 inline-block rounded-full bg-guarantee/10 px-2.5 py-0.5 text-xs font-medium text-guarantee">
-                  {BUNDLE_LABELS[bundle]} pricing applied
-                </span>
-              )}
+              <p className="mt-0.5 flex flex-wrap items-center gap-x-1.5 text-xs text-body">
+                <span>{LEVELS[item.level].name}</span>
+                {bundle && (
+                  <span className="font-medium text-guarantee">
+                    · {BUNDLE_LABELS[bundle]} applied
+                  </span>
+                )}
+              </p>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex shrink-0 items-center gap-2">
               <label>
                 <span className="sr-only">
                   Tier for {subjectName(item.level, item.subjectSlug)}
@@ -198,7 +205,7 @@ export function CartView() {
                   onChange={(e) =>
                     setTier(item.level, item.subjectSlug, e.target.value as Tier)
                   }
-                  className="rounded-lg border border-hairline bg-surface px-2.5 py-1.5 text-sm"
+                  className="rounded-lg border border-hairline bg-surface px-2 py-1 text-xs"
                 >
                   {TIER_ORDER.map((t) => (
                     <option key={t} value={t}>
@@ -207,16 +214,16 @@ export function CartView() {
                   ))}
                 </select>
               </label>
-              <span className="w-14 text-right font-mono text-sm font-medium text-ink">
+              <span className="w-12 text-right font-mono text-sm font-medium text-ink">
                 {sgd(listPrice)}
               </span>
               <button
                 type="button"
                 onClick={() => removeItem(item.level, item.subjectSlug)}
-                className="rounded-md p-1.5 text-body hover:bg-heat-5/10 hover:text-heat-5"
+                className="rounded-md p-1 text-body hover:bg-heat-5/10 hover:text-heat-5"
                 aria-label={`Remove ${subjectName(item.level, item.subjectSlug)}`}
               >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
                 </svg>
               </button>
@@ -332,6 +339,7 @@ export function CartView() {
               Email for your PDFs
             </span>
             <input
+              ref={emailRef}
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -341,11 +349,13 @@ export function CartView() {
             />
           </label>
 
+          {/* On mobile the Checkout lives in the sticky bottom bar; this
+              in-summary button is the desktop CTA. */}
           <button
             type="button"
             onClick={checkout}
             disabled={submitting}
-            className="mt-4 w-full rounded-lg bg-signal px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-signal-deep"
+            className="mt-4 hidden w-full rounded-lg bg-signal px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-signal-deep lg:block"
           >
             {submitting ? "Starting secure payment…" : `Checkout — ${sgdCents(payableCents)}`}
           </button>
@@ -366,6 +376,37 @@ export function CartView() {
           </p>
         </div>
       </aside>
+
+      {/* Sticky mobile checkout bar — same design as the bundle "add to cart"
+          bar (data-bottom-cta lifts the Gugu helper above it). */}
+      <div
+        data-bottom-cta=""
+        className="fixed inset-x-0 bottom-0 z-40 border-t border-hairline bg-night/95 backdrop-blur lg:hidden"
+      >
+        <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3">
+          <div className="min-w-0">
+            <p className="font-mono text-base font-bold text-ink">
+              {sgdCents(payableCents)}
+              {priced.savings > 0 && (
+                <span className="ml-2 text-xs font-medium text-guarantee">
+                  save {sgd(priced.savings)}
+                </span>
+              )}
+            </p>
+            <p className="truncate text-xs text-body">
+              {items.length} subject{items.length === 1 ? "" : "s"} · PDFs to your email
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={checkout}
+            disabled={submitting}
+            className="shrink-0 rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night transition-opacity hover:opacity-90 disabled:opacity-60"
+          >
+            {submitting ? "Starting…" : "Checkout"}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
