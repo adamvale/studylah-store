@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { usePricing } from "@/lib/pricing-context";
 import { sgd } from "@/lib/catalogue";
 
@@ -206,6 +207,37 @@ function matchTopic(text: string): Topic | null {
   return bestScore > 0 ? best : null;
 }
 
+// Reorder the quick-reply chips so the questions most relevant to the current
+// page surface first. Every topic still appears (page-relevant ones lead, the
+// rest keep their original order) — so Gugu feels aware of where you are.
+const PAGE_PRIORITY: { test: (p: string) => boolean; ids: string[] }[] = [
+  { test: (p) => p.startsWith("/bundles"), ids: ["price", "wrong", "delivery", "what"] },
+  {
+    test: (p) => p.startsWith("/cart") || p.startsWith("/checkout"),
+    ids: ["delivery", "wrong", "price", "try"],
+  },
+  { test: (p) => p.startsWith("/diagnostic"), ids: ["try", "guessing", "what", "cheating"] },
+  { test: (p) => p.startsWith("/accuracy"), ids: ["guessing", "wrong", "what"] },
+  // Individual subject page (e.g. /o-level/chemistry-pure)
+  { test: (p) => /^\/(o-level|na-level)\/[\w-]+/.test(p), ids: ["price", "try", "wrong", "guessing"] },
+  // Level / subjects listing
+  {
+    test: (p) =>
+      p.startsWith("/o-level") || p.startsWith("/na-level") || p.startsWith("/subjects"),
+    ids: ["price", "what", "try", "wrong"],
+  },
+];
+
+function topicsForPath(pathname: string): Topic[] {
+  const match = PAGE_PRIORITY.find((r) => r.test(pathname));
+  if (!match) return TOPICS;
+  const rank = (id: string) => {
+    const i = match.ids.indexOf(id);
+    return i === -1 ? match.ids.length + TOPICS.findIndex((t) => t.id === id) : i;
+  };
+  return [...TOPICS].sort((a, b) => rank(a.id) - rank(b.id));
+}
+
 // The canonical Gugu: the FIRST cell of the walker sheet — the plain white,
 // front-facing, both-eyes-forward ghost. player_ghost.png is 240×96, laid out
 // in 16×24 cells; cell (0,0) is Gugu facing down (toward the viewer). Rendered
@@ -394,6 +426,10 @@ interface ChatMessage {
 
 export function GuguChat() {
   const pricing = usePricing();
+  const pathname = usePathname() ?? "";
+  // Quick-reply chips reorder to the current page; the path is also sent to the
+  // LLM so free-text answers know where the visitor is.
+  const orderedTopics = useMemo(() => topicsForPath(pathname), [pathname]);
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
@@ -521,6 +557,7 @@ export function GuguChat() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           messages: [...priorHistory, { role: "user", content: text }],
+          page: pathname,
         }),
       });
       const data = (await res.json()) as { reply?: string; fallback?: boolean };
@@ -632,7 +669,7 @@ export function GuguChat() {
             </button>
             {quickOpen ? (
               <div className="mt-2 flex flex-wrap gap-1.5">
-                {TOPICS.map((topic) => (
+                {orderedTopics.map((topic) => (
                   <button
                     key={topic.id}
                     type="button"

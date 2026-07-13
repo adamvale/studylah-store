@@ -21,6 +21,7 @@ function rateLimited(ip: string): boolean {
 
 interface Body {
   messages?: { role?: unknown; content?: unknown }[];
+  page?: unknown;
 }
 
 export async function POST(request: Request) {
@@ -56,6 +57,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ fallback: true }, { status: 400 });
   }
 
-  const result = await askGugu(history);
+  const page =
+    typeof body.page === "string" ? body.page.slice(0, 120) : undefined;
+
+  const result = await askGugu(history, page);
   return NextResponse.json(result);
 }
