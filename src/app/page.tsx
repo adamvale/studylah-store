@@ -23,8 +23,6 @@ import type { Pricing } from "@/lib/pricing";
 import { getPricing } from "@/lib/server/pricing-store";
 import { ExamCountdown } from "@/components/exam-countdown";
 import { HeroBackdrop } from "@/components/hero-backdrop";
-import { PackPreview } from "@/components/pack-preview";
-import { packPreviewFor } from "@/lib/pack-previews";
 import { SocialProof } from "@/components/social-proof";
 
 /* Playful motifs, inline SVG so they need no external assets and pass CSP. */
@@ -99,13 +97,12 @@ function Badge({ children }: { children: React.ReactNode }) {
 function Hero({ pricing }: { pricing: Pricing }) {
   const { alacartePrice } = pricing;
   const { perfect, total } = scorecardHeadline();
-  const heroPreview = packPreviewFor("o-level", "chemistry-pure");
   return (
     <section className="relative flex items-center overflow-hidden md:min-h-[calc(100svh-4.5rem)]">
       <HeroBackdrop />
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-4 pb-24 pt-14 lg:grid-cols-2 lg:pt-16">
-        <div className="fade-up">
-          {/* Layer 1 — eyebrow */}
+      <div className="mx-auto flex w-full max-w-4xl flex-col items-center px-4 pb-24 pt-14 text-center lg:pt-16">
+        <div className="fade-up flex w-full flex-col items-center">
+          {/* Eyebrow */}
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs font-medium text-cloud backdrop-blur">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
@@ -114,19 +111,14 @@ function Hero({ pricing }: { pricing: Pricing }) {
             Built from 10 years of real exam data
           </div>
 
-          {/* Countdown, right under the eyebrow */}
-          <div className="mt-3">
-            <ExamCountdown />
-          </div>
-
-          {/* Layer 2 — headline */}
-          <h1 className="mt-5 font-display text-[2.6rem] font-black leading-[1.05] tracking-tight text-white sm:text-6xl">
+          {/* Headline */}
+          <h1 className="mt-5 max-w-3xl font-display text-[2.6rem] font-black leading-[1.05] tracking-tight text-white sm:text-6xl">
             Stop revising blind. Walk in knowing{" "}
             <span className="text-gradient">what&apos;s likely.</span>
           </h1>
 
-          {/* Layer 3 — one-sentence subhead */}
-          <p className="mt-4 max-w-md text-base leading-relaxed text-cloud sm:text-lg">
+          {/* One-sentence subhead */}
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-cloud sm:text-lg">
             We rank every{" "}
             {PUBLISHED_LEVELS.map((l) => LEVELS[l].shortName).join(" and ")}{" "}
             topic by how likely it is on the 2026 paper, and drill the questions
@@ -134,8 +126,25 @@ function Hero({ pricing }: { pricing: Pricing }) {
             everything.
           </p>
 
-          {/* Layer 4 — the two actions (full-width, stacked on mobile) */}
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+          {/* The three 2026 packs, larger and tight together, right under the
+              subhead. */}
+          <div className="mt-8 w-full">
+            <PackRow />
+          </div>
+          <Link
+            href="/subjects"
+            className="mt-4 inline-block text-sm font-medium text-accent hover:underline"
+          >
+            See every subject →
+          </Link>
+
+          {/* Countdown, right above the primary CTA */}
+          <div className="mt-8">
+            <ExamCountdown />
+          </div>
+
+          {/* The two actions (stacked on mobile) */}
+          <div className="mt-4 flex w-full max-w-xl flex-col gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/diagnostic"
               className="btn-pixel cta-sheen glow-soft rounded bg-accent px-5 py-3.5 text-center text-sm font-bold text-night"
@@ -153,8 +162,8 @@ function Hero({ pricing }: { pricing: Pricing }) {
             10 questions · ~7 min · instant score &amp; worked solutions · no card
           </p>
 
-          {/* Layer 5 — one calm trust line (guarantee · price · proof) */}
-          <div className="mt-6 flex flex-wrap items-center gap-x-2.5 gap-y-1.5 border-t border-white/10 pt-5 text-sm text-cloud">
+          {/* One calm trust line (guarantee · price · proof) */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1.5 border-t border-white/10 pt-5 text-sm text-cloud">
             <span className="inline-flex items-center gap-1.5 font-medium text-guarantee">
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M8 1.5l5 2v4c0 3-2.1 5.2-5 6.5C5.1 12.7 3 10.5 3 7.5v-4l5-2z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
@@ -173,29 +182,204 @@ function Hero({ pricing }: { pricing: Pricing }) {
             </Link>
           </div>
         </div>
-        <div className="fade-up relative" style={{ animationDelay: "150ms" }}>
-          <div className="mascot-bob pointer-events-none absolute -right-2 -top-8 z-10 hidden sm:block">
-            <Ghost size={72} pose="victory" />
-          </div>
-          {/* The flippable "see inside" preview of the real PDFs, floated off
-              the aurora. Replaces the old abstract forecast card. */}
-          {heroPreview && (
-            <PackPreview
-              preview={heroPreview}
-              subjectName="Chemistry (Pure)"
-              variant="hero"
+      </div>
+    </section>
+  );
+}
+
+// A small red circled glyph (?, !) used in "The Big Question".
+function ProblemGlyph({ char }: { char: string }) {
+  return (
+    <span
+      aria-hidden="true"
+      className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-coral text-xs font-black text-coral"
+    >
+      {char}
+    </span>
+  );
+}
+
+// "The Problem" agitation section: names the pain a parent feels before we show
+// the fix. Drop the 3D man-on-cloud art at public/marketing/parent-thinking.png
+// and it appears; until then the section renders cleanly without it.
+function TheProblem() {
+  const artPath = "/marketing/parent-thinking.png";
+  const hasArt = existsSync(
+    join(process.cwd(), "public", "marketing", "parent-thinking.png")
+  );
+  return (
+    <section aria-labelledby="problem-heading" className="reveal bg-night-2 py-20">
+      <div className="mx-auto max-w-3xl px-4 text-center">
+        <div className="flex justify-center">
+          <Ghost size={64} />
+        </div>
+        <div className="relative z-10 -mt-3 flex justify-center">
+          <Badge>The Problem</Badge>
+        </div>
+        <h2
+          id="problem-heading"
+          className="mt-4 font-display text-3xl font-black text-accent sm:text-4xl"
+        >
+          No One Talks About It
+        </h2>
+        <p className="mt-1 font-display text-xl font-bold text-cloud sm:text-2xl">
+          But Every Parent <span className="text-accent">Feels</span>.
+        </p>
+
+        {hasArt && (
+          <div className="mt-5 flex justify-center">
+            <Image
+              src={artPath}
+              alt="A parent sitting on a cloud, deep in thought"
+              width={300}
+              height={300}
+              className="h-auto w-44 sm:w-52"
             />
-          )}
+          </div>
+        )}
+
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-cloud">
+          Every year, <span className="text-accent">it&apos;s the same story</span>.
+          Your child studies hard. They do assessment books. They revise again
+          and again. Yet on exam day, they walk out saying:
+        </p>
+
+        <div className="mt-8 grid gap-5 text-left sm:grid-cols-2">
+          {[
+            "This didn't come out. I didn't expect that question.",
+            "I knew the topic, but I didn't know how to answer.",
+          ].map((quote) => (
+            <blockquote
+              key={quote}
+              className="rounded-2xl border border-hairline bg-surface p-6"
+            >
+              <span
+                aria-hidden="true"
+                className="font-display text-4xl font-black leading-none text-coral"
+              >
+                &ldquo;
+              </span>
+              <p className="mt-1 text-base font-medium italic leading-relaxed text-cloud">
+                {quote}
+              </p>
+            </blockquote>
+          ))}
+        </div>
+
+        <div className="mt-6 rounded-2xl border border-hairline bg-surface/60 p-8">
+          <p className="font-display text-2xl font-black text-coral">
+            The Big Question:
+          </p>
+          <ul className="mx-auto mt-5 flex max-w-md flex-col gap-3 text-lg">
+            <li className="flex items-center justify-center gap-3 text-cloud">
+              <ProblemGlyph char="?" />
+              Was it lack of effort?
+            </li>
+            <li className="flex items-center justify-center gap-3 text-cloud">
+              <ProblemGlyph char="?" />
+              Was it stress?
+            </li>
+            <li className="flex items-center justify-center gap-3 font-bold text-accent">
+              <ProblemGlyph char="!" />
+              Or was it simply... inefficient preparation?
+            </li>
+          </ul>
         </div>
       </div>
+    </section>
+  );
+}
 
-      {/* Scroll cue, signals there's more below the full-height hero. */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-5 hidden justify-center md:flex">
-        <span className="scroll-cue text-cloud" aria-hidden="true">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-            <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </span>
+// "The Cause" section: the three kinds of capable-but-stuck students StudyLah
+// is built for. Sits right after "The Problem" and shares its ghost + badge +
+// 3D-illustration language, inside a bordered panel.
+const CAUSE_TYPES: { label: string; body: React.ReactNode }[] = [
+  {
+    label: "Type 1",
+    body: (
+      <>Students knew the content, but still didn&apos;t recognise exam patterns.</>
+    ),
+  },
+  {
+    label: "Type 2",
+    body: (
+      <>
+        Students revised everything, instead of the{" "}
+        <span className="font-bold text-white">right things.</span>
+      </>
+    ),
+  },
+  {
+    label: "Type 3",
+    body: <>Students spent hours studying daily, yet barely passing tests.</>,
+  },
+];
+
+function TheCause() {
+  const artPath = "/marketing/cause-student.png";
+  const hasArt = existsSync(
+    join(process.cwd(), "public", "marketing", "cause-student.png")
+  );
+  return (
+    <section aria-labelledby="cause-heading" className="reveal py-12">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="rounded-3xl border border-hairline bg-night-2 px-4 py-16 text-center sm:px-10">
+          <div className="flex justify-center">
+            <Ghost size={64} />
+          </div>
+          <div className="relative z-10 -mt-3 flex justify-center">
+            <Badge>The Cause</Badge>
+          </div>
+          <h2
+            id="cause-heading"
+            className="mt-4 font-display text-3xl font-black text-accent sm:text-4xl lg:text-5xl"
+          >
+            Why StudyLah! Exists
+          </h2>
+
+          {hasArt && (
+            <div className="mt-6 flex justify-center">
+              <Image
+                src={artPath}
+                alt="A student at a desk, unsure between an A and an F"
+                width={320}
+                height={305}
+                className="h-auto w-48 sm:w-56 lg:w-64"
+              />
+            </div>
+          )}
+
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-cloud sm:text-xl">
+            We work with the following types of students who are{" "}
+            <span className="font-semibold text-accent">
+              capable and hardworking, yet stuck
+            </span>{" "}
+            in a system that rewards exam intelligence, not just knowledge.
+          </p>
+
+          <div className="mt-10 grid gap-5 text-left sm:grid-cols-3">
+            {CAUSE_TYPES.map((t) => (
+              <div
+                key={t.label}
+                className="rounded-2xl border border-hairline bg-surface p-6"
+              >
+                <p className="font-display text-lg font-bold text-accent">
+                  {t.label}
+                </p>
+                <div className="mt-3 flex gap-3">
+                  <span aria-hidden="true" className="mt-0.5 shrink-0 font-bold text-coral">
+                    ✕
+                  </span>
+                  <p className="leading-relaxed text-cloud">{t.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-10 font-display text-xl font-black text-accent sm:text-2xl">
+            StudyLah! focuses on patterns, probability, and strategy, not volume.
+          </p>
+        </div>
       </div>
     </section>
   );
@@ -210,13 +394,15 @@ const FEATURED_PACKS = [
   { level: "na-level", slug: "biology", grad: "linear-gradient(155deg,#c9a227 0%,#3a2e0a 100%)" },
 ] as const;
 
-function FeaturedPacks({ pricing }: { pricing: Pricing }) {
-  const { alacartePrice } = pricing;
+// The three 2026 packs, rendered as a plain 3-up row for use inside the hero.
+// A real PNG at public/packs/<level>/<slug>.png takes over automatically;
+// until then each pack falls back to the styled gradient card.
+function PackRow() {
   const packs = FEATURED_PACKS.map((p) => {
-    // Drop a real pack PNG at public/packs/<level>/<slug>.png and it takes over
-    // automatically; until then the styled card below is the fallback.
     const rel = `/packs/${p.level}/${p.slug}.png`;
-    const hasImg = existsSync(join(process.cwd(), "public", "packs", p.level, `${p.slug}.png`));
+    const hasImg = existsSync(
+      join(process.cwd(), "public", "packs", p.level, `${p.slug}.png`)
+    );
     return {
       ...p,
       name: getSubject(p.level, p.slug)?.name ?? p.slug,
@@ -225,98 +411,65 @@ function FeaturedPacks({ pricing }: { pricing: Pricing }) {
     };
   });
   return (
-    <section aria-labelledby="packs-heading" className="reveal border-t border-white/5 py-20">
-      <div className="mx-auto max-w-5xl px-4 text-center">
-        <div className="flex justify-center">
-          <Badge>Study Less, Score More</Badge>
-        </div>
-        <h2
-          id="packs-heading"
-          className="mt-5 font-display text-3xl font-black text-white sm:text-4xl"
-        >
-          Smarter O-Level &amp; N(A)-Level{" "}
-          <span className="text-accent">final-exam prep</span>
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-cloud">
-          Stop guessing. Stop over-studying. Every pack ranks your 2026 topics
-          by how likely they are, then drills them with original questions, so
-          you walk in calm, confident and ready.
-        </p>
-
-        <div className="mt-10 grid grid-cols-3 gap-3 sm:gap-5">
-          {packs.map((p) =>
-            p.img ? (
-              <Link
-                key={p.slug}
-                href={`/${p.level}/${p.slug}`}
-                className="group block"
-                aria-label={`${p.name}, 2026 pack`}
-              >
-                <div className="relative aspect-square w-full transition-transform duration-300 group-hover:-translate-y-1.5">
-                  <Image
-                    src={p.img}
-                    alt={`${p.name}, StudyLah 2026 pack`}
-                    fill
-                    sizes="(max-width: 640px) 31vw, 220px"
-                    className="object-contain drop-shadow-2xl"
-                  />
-                </div>
-              </Link>
-            ) : (
-            <Link key={p.slug} href={`/${p.level}/${p.slug}`} className="group">
-              <div
-                className="relative flex aspect-[3/4] flex-col overflow-hidden rounded-2xl border border-white/10 p-3 text-left shadow-xl transition-transform duration-300 group-hover:-translate-y-1.5 sm:p-5"
-                style={{ background: p.grad }}
-              >
-                {/* holographic sheen */}
-                <div className="pointer-events-none absolute -left-6 -top-16 h-28 w-[140%] rotate-12 bg-white/15 blur-2xl" />
-                <div className="relative flex items-center justify-between">
-                  <span className="font-display text-xs font-black tracking-tight text-white sm:text-sm">
-                    Study<span className="text-accent">Lah</span>
-                  </span>
-                  <span className="rounded-full bg-black/25 px-1.5 py-0.5 font-mono text-[9px] font-bold text-white/90 sm:text-[10px]">
-                    2026
-                  </span>
-                </div>
-                <div className="relative mt-3 sm:mt-6">
-                  <p className="font-mono text-[9px] font-medium uppercase tracking-widest text-white/70 sm:text-[11px]">
-                    {LEVELS[p.level].shortName} · {p.code}
+    <div className="mx-auto grid max-w-4xl grid-cols-3 gap-1 sm:gap-2">
+      {packs.map((p) =>
+        p.img ? (
+          <Link
+            key={p.slug}
+            href={`/${p.level}/${p.slug}`}
+            className="group block"
+            aria-label={`${p.name}, 2026 pack`}
+          >
+            <div className="relative aspect-square w-full transition-transform duration-300 group-hover:-translate-y-1.5">
+              <Image
+                src={p.img}
+                alt={`${p.name}, StudyLah 2026 pack`}
+                fill
+                sizes="(max-width: 640px) 31vw, 220px"
+                className="object-contain drop-shadow-2xl"
+              />
+            </div>
+          </Link>
+        ) : (
+          <Link key={p.slug} href={`/${p.level}/${p.slug}`} className="group">
+            <div
+              className="relative flex aspect-[3/4] flex-col overflow-hidden rounded-2xl border border-white/10 p-3 text-left shadow-xl transition-transform duration-300 group-hover:-translate-y-1.5 sm:p-5"
+              style={{ background: p.grad }}
+            >
+              {/* holographic sheen */}
+              <div className="pointer-events-none absolute -left-6 -top-16 h-28 w-[140%] rotate-12 bg-white/15 blur-2xl" />
+              <div className="relative flex items-center justify-between">
+                <span className="font-display text-xs font-black tracking-tight text-white sm:text-sm">
+                  Study<span className="text-accent">Lah</span>
+                </span>
+                <span className="rounded-full bg-black/25 px-1.5 py-0.5 font-mono text-[9px] font-bold text-white/90 sm:text-[10px]">
+                  2026
+                </span>
+              </div>
+              <div className="relative mt-3 sm:mt-6">
+                <p className="font-mono text-[9px] font-medium uppercase tracking-widest text-white/70 sm:text-[11px]">
+                  {LEVELS[p.level].shortName} · {p.code}
+                </p>
+                <h3 className="mt-1 font-display text-sm font-black leading-tight text-white sm:text-2xl">
+                  {p.name}
+                </h3>
+              </div>
+              <div className="relative mt-auto pt-3">
+                <div className="rounded-lg bg-black/30 px-2 py-1.5 backdrop-blur sm:px-3 sm:py-2">
+                  <p className="font-mono text-[9px] font-bold uppercase tracking-wide text-white sm:text-[11px]">
+                    <span className="sm:hidden">Exam Forecast</span>
+                    <span className="hidden sm:inline">Exam Forecast Pack</span>
                   </p>
-                  <h3 className="mt-1 font-display text-sm font-black leading-tight text-white sm:text-2xl">
-                    {p.name}
-                  </h3>
-                </div>
-                <div className="relative mt-auto pt-3">
-                  <div className="rounded-lg bg-black/30 px-2 py-1.5 backdrop-blur sm:px-3 sm:py-2">
-                    <p className="font-mono text-[9px] font-bold uppercase tracking-wide text-white sm:text-[11px]">
-                      <span className="sm:hidden">Exam Forecast</span>
-                      <span className="hidden sm:inline">Exam Forecast Pack</span>
-                    </p>
-                    <p className="mt-0.5 hidden text-[10px] text-white/70 sm:block">
-                      Forecast · practice · rehearsal
-                    </p>
-                  </div>
+                  <p className="mt-0.5 hidden text-[10px] text-white/70 sm:block">
+                    Forecast · practice · rehearsal
+                  </p>
                 </div>
               </div>
-            </Link>
-            )
-          )}
-        </div>
-
-        <div className="mt-10 flex flex-col items-center gap-3">
-          <Link
-            href="/subjects"
-            className="btn-pixel cta-sheen glow-soft rounded bg-accent px-7 py-3.5 text-sm font-bold text-night"
-          >
-            See every subject →
+            </div>
           </Link>
-          <p className="font-mono text-xs text-cloud">
-            Every subject: forecast, practice, rehearsal. From{" "}
-            {sgd(alacartePrice("o-level", "forecast"))} · money-back guarantee
-          </p>
-        </div>
-      </div>
-    </section>
+        )
+      )}
+    </div>
   );
 }
 
@@ -386,16 +539,16 @@ function Journey({ pricing }: { pricing: Pricing }) {
   return (
     <section aria-labelledby="journey-heading" className="reveal py-20">
       <div className="mx-auto max-w-6xl px-4">
-        <p className="font-mono text-xs font-medium uppercase tracking-wide text-teal">
+        <p className="text-center font-mono text-xs font-medium uppercase tracking-wide text-teal">
           The revision journey
         </p>
         <h2
           id="journey-heading"
-          className="mt-2 font-display text-3xl font-black text-white"
+          className="mt-2 text-center font-display text-3xl font-black text-white"
         >
           Your last 14 days, planned
         </h2>
-        <p className="mt-2 max-w-xl text-cloud">
+        <p className="mx-auto mt-2 max-w-xl text-center text-cloud">
           Three PDFs per subject, each built for a different moment in your
           countdown.
         </p>
@@ -741,7 +894,7 @@ function LevelEntry({ pricing }: { pricing: Pricing }) {
   const { tierPrice } = pricing;
   return (
     <section aria-labelledby="levels-heading" className="reveal mx-auto max-w-6xl px-4 py-20">
-      <h2 id="levels-heading" className="font-display text-3xl font-black text-white">
+      <h2 id="levels-heading" className="text-center font-display text-3xl font-black text-white">
         Find your papers
       </h2>
       <div className="mt-8 grid gap-6 sm:grid-cols-2">
@@ -848,10 +1001,10 @@ const HOW_STEPS = [
 function HowItWorks() {
   return (
     <section aria-labelledby="how-heading" className="reveal mx-auto max-w-6xl px-4 py-20">
-      <h2 id="how-heading" className="font-display text-3xl font-black text-white">
+      <h2 id="how-heading" className="text-center font-display text-3xl font-black text-white">
         How the forecast works
       </h2>
-      <p className="mt-2 max-w-xl text-cloud">
+      <p className="mx-auto mt-2 max-w-xl text-center text-cloud">
         Forecasts, not leaks. Probabilities, not promises.
       </p>
       <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -922,7 +1075,8 @@ export default async function Home() {
   return (
     <div className="bg-night">
       <Hero pricing={pricing} />
-      <FeaturedPacks pricing={pricing} />
+      <TheProblem />
+      <TheCause />
       <SocialProof />
       <WhyItWorks />
       <Journey pricing={pricing} />
