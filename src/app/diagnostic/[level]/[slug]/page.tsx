@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getSubject, LEVELS, PUBLISHED_LEVELS, type Level } from "@/lib/catalogue";
 import { sanitizeSet } from "@/lib/diagnostic-questions";
-import { getQuestionSet } from "@/lib/server/question-bank";
+import { getDiagnosticSet } from "@/lib/server/question-bank";
 import { realTopCalls } from "@/lib/forecast-tables";
 import { DiagnosticQuiz } from "@/components/diagnostic-quiz";
 import { TierPill } from "@/components/heat";
@@ -33,7 +33,7 @@ export default async function DiagnosticSubjectPage({
   const subject = getSubject(level as Level, slug);
   if (!subject) notFound();
 
-  const set = await getQuestionSet(level, slug);
+  const set = await getDiagnosticSet(level, slug);
   const top = realTopCalls(level, slug, 1)[0];
 
   // Subjects without a question set yet degrade gracefully.

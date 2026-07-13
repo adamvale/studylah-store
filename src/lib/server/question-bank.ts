@@ -95,6 +95,66 @@ export async function getQuestionSet(
   return fallback ?? undefined;
 }
 
+// ── The "Predict your mark" diagnostic set ───────────────────────────────────
+// The diagnostic is a fixed 10-question check — NOT the whole battle bank (which
+// can run to 100+ questions per subject). getQuestionSet returns the full bank
+// for the game; getDiagnosticSet trims it to exactly ten HARD questions from
+// DISTINCT topics, chosen deterministically so the quiz, the grader, the results
+// page and the results email all see the identical ten.
+const DIAGNOSTIC_COUNT = 10;
+
+// No difficulty column exists in the bank, so rank by signals that track
+// difficulty: short-answer (recall) over MCQ (recognition), higher marks,
+// longer/analytical stems, and numeric or command-word reasoning.
+function hardness(q: DiagnosticQuestion): number {
+  let s = q.marks * 2;
+  if (q.type === "short") s += 3;
+  s += Math.min(q.stem.length / 40, 3);
+  if (/\d/.test(q.stem)) s += 1;
+  if (/\b(calculate|how many|determine|deduce|explain why|work out|find the)\b/i.test(q.stem)) {
+    s += 1;
+  }
+  return s;
+}
+
+// Deterministic tie-break by id, so the same ten come back every call.
+function rankHardest(a: DiagnosticQuestion, b: DiagnosticQuestion): number {
+  return hardness(b) - hardness(a) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+}
+
+function pickHardDistinct(questions: DiagnosticQuestion[], n: number): DiagnosticQuestion[] {
+  // The hardest question within each distinct topic.
+  const byTopic = new Map<string, DiagnosticQuestion>();
+  for (const q of questions) {
+    const cur = byTopic.get(q.topic);
+    if (!cur || rankHardest(q, cur) < 0) byTopic.set(q.topic, q);
+  }
+  const chosen = [...byTopic.values()].sort(rankHardest).slice(0, n);
+  // If there aren't n distinct topics, backfill with the next-hardest unused
+  // questions so the check is always exactly n long.
+  if (chosen.length < n) {
+    const used = new Set(chosen.map((q) => q.id));
+    for (const q of [...questions].sort(rankHardest)) {
+      if (chosen.length >= n) break;
+      if (!used.has(q.id)) {
+        chosen.push(q);
+        used.add(q.id);
+      }
+    }
+  }
+  return chosen.slice(0, n);
+}
+
+export async function getDiagnosticSet(
+  level: string,
+  slug: string
+): Promise<DiagnosticSet | undefined> {
+  const full = await getQuestionSet(level, slug);
+  if (!full) return undefined;
+  if (full.questions.length <= DIAGNOSTIC_COUNT) return full;
+  return { ...full, questions: pickHardDistinct(full.questions, DIAGNOSTIC_COUNT) };
+}
+
 // The subject's imported teaching cards (empty if none — the Guru then uses
 // its family library).
 export async function getTeachingCards(level: string, slug: string): Promise<ImportedCard[]> {

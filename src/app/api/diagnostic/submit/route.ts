@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getSubject, type Level } from "@/lib/catalogue";
-import { getQuestionSet } from "@/lib/server/question-bank";
+import { getDiagnosticSet } from "@/lib/server/question-bank";
 import { realTopCalls } from "@/lib/forecast-tables";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { ownedSubjects, sgDay } from "@/lib/server/study";
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
 
   const level = body.level as Level;
   const slug = typeof body.slug === "string" ? body.slug : "";
-  const set = await getQuestionSet(level, slug);
+  const set = await getDiagnosticSet(level, slug);
   if (!set || !getSubject(level, slug)) {
     return NextResponse.json({ error: "No diagnostic for that subject yet." }, { status: 404 });
   }

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { getSubject, type Level } from "@/lib/catalogue";
-import { getQuestionSet } from "@/lib/server/question-bank";
+import { getDiagnosticSet } from "@/lib/server/question-bank";
 import { realTopCalls } from "@/lib/forecast-tables";
 import { STANDARD_DISCLAIMER } from "@/lib/compliance";
 import {
@@ -47,7 +47,7 @@ export default async function DiagnosticResultsPage({
   // The gate is server-enforced: no unlock, no solutions.
   if (!attempt.unlockedAt) redirect(`/diagnostic/${attempt.level}/${attempt.slug}`);
 
-  const set = await getQuestionSet(attempt.level, attempt.slug);
+  const set = await getDiagnosticSet(attempt.level, attempt.slug);
   const subject = getSubject(attempt.level as Level, attempt.slug);
   if (!set || !subject) notFound();
 

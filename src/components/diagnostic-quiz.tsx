@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import type { PublicQuestion } from "@/lib/diagnostic-questions";
 import { TierPill, type ForecastTier } from "@/components/heat";
+import { QuizCalculator } from "@/components/quiz-calculator";
 
 interface SubmitResult {
   attemptId: string;
@@ -424,6 +425,9 @@ export function DiagnosticQuiz({
           {error}
         </p>
       )}
+
+      {/* Simple pop-up calculator for the arithmetic a mark check needs. */}
+      <QuizCalculator />
     </div>
   );
 }
