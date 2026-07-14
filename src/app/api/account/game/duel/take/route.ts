@@ -73,6 +73,8 @@ export async function PUT(request: Request) {
 export async function POST(request: Request) {
   // submit answers for the caller's side
   const customerId = await getCustomerId();
+  const gate = await masterApiGate(customerId);
+  if (gate) return gate;
   if (!customerId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }

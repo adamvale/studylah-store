@@ -550,6 +550,7 @@ players are unaffected even with this shipped.
   Singapore map + `gugu_evolutions.png` showcase (asset shipped, not surfaced).
 - Biology (Science) companion PDF page 2 still shows Pure Biology's Paper 3
   spec; Vault covers vs site question counts mismatch (owner to confirm).
-- Referral terms + refund policy await real lawyer review.
+- Referral terms + refund policy: lawyer-reviewed (done). End-to-end paid
+  transaction verified live (card → webhook → order → download → receipt).
 - Homepage legacy "87%" figure decision; SEAB 2026 dates pre-fill when
   published; Google Search Console setup.

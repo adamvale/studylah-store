@@ -35,6 +35,15 @@ export function trackPurchase(valueSgd: number, orderId: string | number) {
   window.ttq?.track?.("CompletePayment", { value: valueSgd, currency: "SGD" });
 }
 
+// Top-of-funnel lead, fired once when a free diagnostic result is reached.
+// This is the signal paid social optimises against before anyone buys, so it
+// matters as much as Purchase for a campaign.
+export function trackLead() {
+  window.gtag?.("event", "generate_lead", { currency: "SGD" });
+  window.fbq?.("track", "Lead");
+  window.ttq?.track?.("SubmitForm");
+}
+
 export function Analytics() {
   const pathname = usePathname();
 

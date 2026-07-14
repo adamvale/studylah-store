@@ -46,6 +46,8 @@ export async function GET() {
 // PUT, begin a lesson: teaching beats + one SEALED check-question.
 export async function PUT(request: Request) {
   const customerId = await getCustomerId();
+  const gate = await masterApiGate(customerId);
+  if (gate) return gate;
   if (!customerId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }
@@ -89,6 +91,8 @@ export async function PUT(request: Request) {
 // POST, grade the check-question, award capped effort XP, reveal the solution.
 export async function POST(request: Request) {
   const customerId = await getCustomerId();
+  const gate = await masterApiGate(customerId);
+  if (gate) return gate;
   if (!customerId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }

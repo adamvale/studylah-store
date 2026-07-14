@@ -60,14 +60,15 @@ export const metadata: Metadata = {
     "AI exam forecasts, original practice questions, and full timed rehearsals for the Singapore-Cambridge O-Level and N(A)-Level. Built from 10 years of real exam data.",
   // Social share cards, referral links travel by WhatsApp/Telegram, and a
   // branded unfurl converts far better than a bare grey URL.
+  // Share card comes from the code-generated app/opengraph-image.tsx (which
+  // also populates twitter:image). Don't set images here too, or Next emits a
+  // duplicate og:image tag alongside the generated one.
   openGraph: {
     siteName: "StudyLah!",
     type: "website",
-    images: [{ url: "/og-card.png", width: 1200, height: 630, alt: "StudyLah, 2026 exam forecasts" }],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/og-card.png"],
   },
   icons: {
     apple: "/icons/apple-touch-icon.png",

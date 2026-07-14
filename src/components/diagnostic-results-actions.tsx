@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { guguSay } from "@/lib/gugu-bus";
+import { trackLead } from "@/components/analytics";
 
 function beacon(type: string, attemptId: string, meta?: string) {
   void fetch("/api/diagnostic/event", {
@@ -185,6 +186,7 @@ export function ResultsViewedBeacon({ attemptId }: { attemptId: string }) {
     if (!sessionStorage.getItem(key)) {
       sessionStorage.setItem(key, "1");
       beacon("results_viewed", attemptId);
+      trackLead(); // ad-pixel Lead conversion, deduped by the same session key
     }
   }
   return null;

@@ -89,6 +89,8 @@ export async function POST(request: Request) {
 // GET: the caller's recent duels (capped, a mailbox, not a ranking).
 export async function GET() {
   const customerId = await getCustomerId();
+  const gate = await masterApiGate(customerId);
+  if (gate) return gate;
   if (!customerId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }
