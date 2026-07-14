@@ -34,7 +34,6 @@ export function TierSelector({
   // Master's contents vary by subject, only the sciences include Paper 3.
   const subject = getSubject(level, subjectSlug);
   const productsFor = (t: Tier) => (subject ? tierProducts(t, subject) : []);
-  const masterValue = tierValue(level, "master", productsFor("master"));
 
   function add() {
     addItem({ level, subjectSlug, tier });
@@ -155,11 +154,6 @@ export function TierSelector({
         )}
       </div>
       <GuaranteeBadge variant="card" className="mt-4 max-w-2xl" />
-      <p className="mt-4 text-xs text-body">
-        Prefer a single PDF? The Essential tier is the Forecast alone. The
-        Vault and Rehearsal are sold within tiers, where they cost less than
-        their {sgd(masterValue)} combined value.
-      </p>
     </section>
   );
 }

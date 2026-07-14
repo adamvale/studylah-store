@@ -12,7 +12,6 @@ import {
 } from "@/lib/catalogue";
 import { getPricing } from "@/lib/server/pricing-store";
 import { subjectCopy } from "@/lib/subject-copy";
-import { getQuestionSet } from "@/lib/server/question-bank";
 import { packPreviewFor } from "@/lib/pack-previews";
 import { DisclaimerBox } from "./disclaimer";
 import { PackPreview } from "./pack-preview";
@@ -23,7 +22,6 @@ import { TierSelector } from "./tier-selector";
 export async function SubjectView({ subject }: { subject: Subject }) {
   const pricing = await getPricing();
   const { alacartePrice } = pricing;
-  const hasQuiz = Boolean(await getQuestionSet(subject.level, subject.slug));
   const copy = subjectCopy(subject.level, subject.slug);
   const products = productsForSubject(subject);
   const packPreview = packPreviewFor(subject.level, subject.slug);
@@ -138,12 +136,15 @@ export async function SubjectView({ subject }: { subject: Subject }) {
             Forecast.
           </p>
           <ul className="mt-5 grid gap-4 sm:grid-cols-2">
-            {copy.headlineCalls.map((call) => (
+            {copy.headlineCalls.map((call, i) => (
               <li
                 key={call.title}
                 className="rounded-xl border border-hairline bg-night-2/40 p-4"
               >
-                <p className="text-sm font-semibold text-ink">{call.title}</p>
+                <p className="font-mono text-xs font-bold text-accent">
+                  No.{i + 1}
+                </p>
+                <p className="mt-1 text-sm font-semibold text-ink">{call.title}</p>
                 <p className="mt-1 text-xs leading-relaxed text-body">
                   {call.body}
                 </p>
@@ -155,23 +156,23 @@ export async function SubjectView({ subject }: { subject: Subject }) {
 
       <div className="mt-10 grid gap-8 lg:grid-cols-5">
         <div className="lg:col-span-2">
-          {hasQuiz && (
-            <div className="mt-4 rounded-2xl border border-accent/40 bg-surface p-5">
-              <p className="font-display text-base font-bold text-ink">
-                You know it&apos;s likely, but can you score it?
-              </p>
-              <p className="mt-1 text-xs text-body">
-                Ten auto-marked questions across the top forecast calls, 
-                instant score and an indicative grade band.
-              </p>
-              <Link
-                href={`/diagnostic/${subject.level}/${subject.slug}`}
-                className="mt-3 inline-block rounded-lg bg-accent px-4 py-2 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
-              >
-                Predict your mark →
-              </Link>
-            </div>
-          )}
+          <div className="rounded-2xl border border-accent/40 bg-surface p-5">
+            <p className="font-display text-base font-bold text-ink">
+              The full picture is a 40+ page Exam Forecast.
+            </p>
+            <p className="mt-1 text-xs leading-relaxed text-body">
+              Every {subject.name} topic ranked by its 2026 probability, the
+              highest-chance sections mapped in detail, and 100s of original
+              practice questions built to train you on exactly those. Know
+              what&apos;s likely, then drill it.
+            </p>
+            <Link
+              href="#tiers"
+              className="mt-3 inline-block rounded-lg bg-accent px-4 py-2 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
+            >
+              See what&apos;s inside →
+            </Link>
+          </div>
         </div>
 
         <div className="space-y-4 lg:col-span-3">
