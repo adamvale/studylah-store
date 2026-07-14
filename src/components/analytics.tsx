@@ -35,6 +35,15 @@ export function trackPurchase(valueSgd: number, orderId: string | number) {
   window.ttq?.track?.("CompletePayment", { value: valueSgd, currency: "SGD" });
 }
 
+// Mid-funnel add-to-cart, a strong intent signal paid social can optimise
+// toward between Lead and Purchase.
+export function trackAddToCart(valueSgd?: number) {
+  const money = valueSgd ? { value: valueSgd, currency: "SGD" } : undefined;
+  window.gtag?.("event", "add_to_cart", { currency: "SGD", value: valueSgd });
+  window.fbq?.("track", "AddToCart", money);
+  window.ttq?.track?.("AddToCart", money);
+}
+
 // Top-of-funnel lead, fired once when a free diagnostic result is reached.
 // This is the signal paid social optimises against before anyone buys, so it
 // matters as much as Purchase for a campaign.

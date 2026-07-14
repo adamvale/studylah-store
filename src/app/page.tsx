@@ -184,15 +184,6 @@ function Hero({ pricing }: { pricing: Pricing }) {
             not last-minute panic.
           </p>
 
-          {/* Colourful subject pills, one per subject */}
-          <SubjectPills />
-          <Link
-            href="/subjects"
-            className="mt-4 inline-block text-sm font-medium text-accent hover:underline"
-          >
-            See every subject →
-          </Link>
-
           {/* Countdown, right above the primary CTA */}
           <div className="mt-8">
             <ExamCountdown />
@@ -234,6 +225,21 @@ function Hero({ pricing }: { pricing: Pricing }) {
                 {perfect}/{total}
               </strong>{" "}
               forecasts on target →
+            </Link>
+          </div>
+
+          {/* Browse-by-subject affordance, below the primary action so the CTA
+              is never buried under the (tall) subject list on mobile. */}
+          <div className="mt-8 w-full border-t border-white/10 pt-6">
+            <p className="mb-3 font-mono text-xs font-medium uppercase tracking-wide text-cloud/70">
+              Or jump straight to your subject
+            </p>
+            <SubjectPills />
+            <Link
+              href="/subjects"
+              className="mt-4 inline-block text-sm font-medium text-accent hover:underline"
+            >
+              See every subject →
             </Link>
           </div>
         </div>

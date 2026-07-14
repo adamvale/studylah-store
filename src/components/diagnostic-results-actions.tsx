@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { guguSay } from "@/lib/gugu-bus";
-import { trackLead } from "@/components/analytics";
+import { useCart } from "@/lib/cart-context";
+import type { Level } from "@/lib/catalogue";
+import { trackLead, trackAddToCart } from "@/components/analytics";
 
 function beacon(type: string, attemptId: string, meta?: string) {
   void fetch("/api/diagnostic/event", {
@@ -28,10 +31,50 @@ export function CtaLink({
     <a
       href={href}
       onClick={() => beacon("cta_clicked", attemptId, product)}
-      className="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
+      className="inline-block rounded-lg border border-hairline px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-accent"
     >
       {children}
     </a>
+  );
+}
+
+// One-tap path from the free result straight to a filled cart on the
+// recommended Master tier, no detour through the subject page to re-decide.
+// Master is the default/best-value tier; "compare tiers" stays as the escape
+// hatch for shoppers who want the full grid.
+export function AddMasterToCart({
+  attemptId,
+  level,
+  slug,
+  subjectName,
+  priceSgd,
+}: {
+  attemptId: string;
+  level: Level;
+  slug: string;
+  subjectName: string;
+  priceSgd: number;
+}) {
+  const { addItem } = useCart();
+  const router = useRouter();
+  const [busy, setBusy] = useState(false);
+  function go() {
+    if (busy) return;
+    setBusy(true);
+    addItem({ level, subjectSlug: slug, tier: "master" });
+    beacon("cta_clicked", attemptId, "add_master");
+    trackAddToCart(priceSgd);
+    router.push("/cart");
+  }
+  return (
+    <button
+      type="button"
+      onClick={go}
+      disabled={busy}
+      className="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5 disabled:opacity-70"
+    >
+      {busy ? "Adding…" : `Add ${subjectName} Master to cart →`}
+    </button>
   );
 }
 

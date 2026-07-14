@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import { GuguChat } from "./gugu-chat";
+import { StickyMobileCta } from "./sticky-mobile-cta";
 import { WelcomeOffer } from "./welcome-offer";
 
 // Hides the storefront header and footer on routes that manage their own
@@ -32,6 +33,9 @@ export function SiteChrome({
       {/* Floating sales helper, storefront only (hidden on chromeless ad
           landings + /admin, and self-hidden inside the native game shell). */}
       {!chromeless && <GuguChat />}
+      {/* Persistent mobile action bar (storefront only; self-hides on funnel
+          routes + native). Sits below the raised Gugu FAB. */}
+      {!chromeless && <StickyMobileCta />}
       {/* Exit-intent welcome offer, self-suppresses on cart/checkout/native
           and after one dismissal. */}
       {!chromeless && <WelcomeOffer />}

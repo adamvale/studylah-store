@@ -19,12 +19,14 @@ import { serverConfig } from "@/lib/server/config";
 import { HeatBar, TierPill } from "@/components/heat";
 import { GuaranteeBadge } from "@/components/guarantee-badge";
 import {
+  AddMasterToCart,
   CtaLink,
   GuguResultCheer,
   ResendButton,
   ResultsViewedBeacon,
   ShareRow,
 } from "@/components/diagnostic-results-actions";
+import { getPricing } from "@/lib/server/pricing-store";
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
@@ -51,6 +53,9 @@ export default async function DiagnosticResultsPage({
   const set = await getDiagnosticSet(attempt.level, attempt.slug);
   const subject = getSubject(attempt.level as Level, attempt.slug);
   if (!set || !subject) notFound();
+
+  const { tierPrice } = await getPricing();
+  const masterPrice = tierPrice(attempt.level as Level, "master");
 
   const graded = JSON.parse(attempt.answersJson) as GradedAnswer[];
   // Loss frame: how many marks slipped on the topics forecast most likely.
@@ -122,13 +127,20 @@ export default async function DiagnosticResultsPage({
         )}
         <h2 className="mt-2 font-display text-2xl font-bold text-ink">{cta.headline}</h2>
         <p className="mt-2 text-sm text-body">{cta.body}</p>
-        <div className="mt-4">
+        <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center">
+          <AddMasterToCart
+            attemptId={attempt.id}
+            level={attempt.level as Level}
+            slug={attempt.slug}
+            subjectName={subject.name}
+            priceSgd={masterPrice}
+          />
           <CtaLink
             attemptId={attempt.id}
             product={cta.product}
-            href={`/${attempt.level}/${attempt.slug}`}
+            href={`/${attempt.level}/${attempt.slug}#tiers`}
           >
-            See {subject.name} packs →
+            Or compare tiers →
           </CtaLink>
         </div>
         <GuaranteeBadge variant="card" className="mt-4" />
