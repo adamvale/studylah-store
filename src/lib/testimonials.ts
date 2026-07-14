@@ -39,14 +39,6 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "As a tutor I'm picky about resources. StudyLah's topic forecasts and " +
-      "original practice questions are a genuinely useful way for my students " +
-      "to focus their revision. Highly recommend.",
-    name: "Mr. Tan",
-    context: "O-Level tutor",
-  },
-  {
-    quote:
       "The worked solutions were the best part, they showed me why I got " +
       "things wrong, not just the answer. It really helped me understand the " +
       "content properly.",

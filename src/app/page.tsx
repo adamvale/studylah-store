@@ -947,8 +947,7 @@ function WhyItWorks() {
 }
 
 function Journey({ pricing }: { pricing: Pricing }) {
-  const { alacartePrice, tierPrice, tierValue, tierSavings } = pricing;
-  const prices = ["essential", "strategic", "master"] as const;
+  const { tierPrice, tierValue, tierSavings } = pricing;
   return (
     <section aria-labelledby="journey-heading" className="reveal py-20">
       <div className="mx-auto max-w-6xl px-4 text-center">
@@ -975,7 +974,6 @@ function Journey({ pricing }: { pricing: Pricing }) {
         <div className="mt-10 grid gap-6 text-left md:grid-cols-3">
           {JOURNEY_ORDER.map((key, i) => {
             const product = PRODUCTS[key];
-            const tier = prices[i];
             const dayLabel = ["Day 30", "Day 20", "Day 10"][i];
             return (
               <div
@@ -994,26 +992,21 @@ function Journey({ pricing }: { pricing: Pricing }) {
                 <p className="mt-3 text-sm leading-relaxed text-cloud">
                   {product.blurb}
                 </p>
-                <p className="mt-4 font-mono text-sm text-accent">
-                  {sgd(alacartePrice("o-level", key))} à la carte · in the{" "}
-                  {tier === "essential"
-                    ? "Essential"
-                    : tier === "strategic"
-                      ? "Strategic"
-                      : "Master"}{" "}
-                  tier from {sgd(tierPrice("o-level", tier))}
-                </p>
               </div>
             );
           })}
         </div>
         <p className="mt-6 rounded-xl border border-hairline bg-surface px-4 py-3 text-sm text-cloud">
-          Get all three with the Master tier, {" "}
-          <span className="text-accent">
-            {sgd(tierValue("o-level", "master"))}
+          Get all three with the Master tier,{" "}
+          {sgd(tierValue("o-level", "master"))} of material for{" "}
+          <span className="font-semibold text-accent">
+            {sgd(tierPrice("o-level", "master"))}
+          </span>
+          , a saving of{" "}
+          <span className="font-semibold text-accent">
+            {sgd(tierSavings("o-level", "master"))}
           </span>{" "}
-          of material for {sgd(tierPrice("o-level", "master"))}, a saving of{" "}
-          {sgd(tierSavings("o-level", "master"))} per subject.
+          per subject.
         </p>
       </div>
     </section>
@@ -1077,24 +1070,24 @@ function StudyHq() {
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-center text-lg text-cloud">
           Unlock the{" "}
-          <span className="font-semibold text-accent">Master tier</span> and your
-          dashboard wakes up: daily practice aimed by the forecast, a notebook
+          <span className="font-semibold text-accent">Master tier</span>{" "}
+          and your dashboard wakes up: daily practice aimed by the forecast, a notebook
           that hunts weak spots, and a live count of the marks still on the
           table. It&apos;s the{" "}
           <span className="font-semibold text-accent">cherry on top</span>, an
           early-access beta that lets your child run the whole study journey like
           never before.
         </p>
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
           {STUDY_HQ_FEATURES.map((f) => (
             <div
               key={f.title}
-              className="rounded-2xl border border-hairline bg-surface p-6"
+              className="rounded-2xl border border-hairline bg-surface p-4 sm:p-6"
             >
               <p aria-hidden="true" className="text-2xl">
                 {f.emoji}
               </p>
-              <h3 className="mt-3 font-display text-lg font-bold text-white">
+              <h3 className="mt-3 font-display text-base font-bold text-white sm:text-lg">
                 {f.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-cloud">{f.body}</p>
@@ -1109,8 +1102,9 @@ function StudyHq() {
             Start free: predict your mark →
           </Link>
           <p className="mt-3 text-xs text-cloud">
-            10 questions on your subject&apos;s most-likely topics · instant
-            marking · indicative grade band, never a promise
+            A short diagnostic quiz on the concepts most likely to appear in your
+            2026 paper, then an indicative prediction of your score, never a
+            promise.
           </p>
         </div>
       </div>
