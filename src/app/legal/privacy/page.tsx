@@ -8,7 +8,7 @@ export default function PrivacyPage() {
     <LegalPage title="Privacy policy" updated="6 July 2026">
       <h2>Who we are</h2>
       <p>
-        StudyLah ([legal entity name], UEN [number]) sells digital
+        StudyLah (Airmosphere Pte. Ltd., UEN 202000566D) sells digital
         exam-preparation materials at studylah.education. This policy explains
         how we handle personal data under Singapore&apos;s Personal Data
         Protection Act 2012 (PDPA).
