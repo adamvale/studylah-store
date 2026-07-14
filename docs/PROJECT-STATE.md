@@ -147,6 +147,29 @@ reward + the "thanks for your order" email), `listGrants`,
   and an access badge (StudyLand = Master, "PDFs only" = Essential/Strategic,
   "Comp" = has a grant, "—" = no orders). Handy for deciding who to grant.
 
+## Visitor journey analytics (`/admin/visitors`)
+
+First-party, anonymous, no-PII tracker, own-DB (same philosophy as the
+diagnostic funnel), so no third-party pixel needed for basic web analytics.
+
+- **Model** (`VisitorSession` + `VisitorEvent`, migration
+  `20260714040000_visitor_analytics`): a session per visit (random `visitorId`
+  in localStorage + `sessionId` in sessionStorage), with pageview/click events.
+  Stores landing path, UTM, device, referrer **hostname only**. No PII.
+- **Client** `src/components/visitor-tracker.tsx` (mounted in `layout.tsx`):
+  records a pageview on every route change and clicks via one delegated
+  capture-listener (label = `data-track` attr, else aria-label / text). Batches
+  and flushes to `/api/track` every 5s + on `pagehide` (`sendBeacon`).
+  **Self-excludes `/admin`** so the owner's own browsing isn't tracked.
+- **Ingest** `POST /api/track` (public, defensive: caps 50 events/batch + field
+  lengths, whitelists types) upserts the session and bulk-inserts events.
+- **Admin** `src/lib/server/visitor-metrics.ts` → `/admin/visitors`: overview
+  (visitors 24h/7d/all, pageviews, clicks, avg pages/visit, returning %,
+  mobile %), top pages / most-clicked / referrers / devices, and **Recent
+  journeys** (each visit expands to a click-by-click, timestamped replay).
+- Volume note: writes on every pageview/click. Fine at current scale; add
+  sampling / a retention prune if traffic gets large.
+
 ## Deployment gotchas (each cost real debugging, do not relearn)
 
 1. **Railway service variables override Dockerfile ENV**, and relative paths

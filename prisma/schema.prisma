@@ -377,6 +377,43 @@ model DiagnosticEvent {
   @@index([type])
 }
 
+// Visitor journey analytics (first-party, anonymous, no PII). One row per
+// visit (session); pageview/click events hang off it. Keyed by random client
+// ids; referrer is stored as bare hostname only.
+model VisitorSession {
+  id          String         @id
+  visitorId   String
+  startedAt   DateTime       @default(now())
+  lastSeenAt  DateTime       @default(now())
+  landingPath String
+  referrer    String?
+  utmSource   String?
+  utmMedium   String?
+  utmCampaign String?
+  device      String
+  isReturning Boolean        @default(false)
+  pageviews   Int            @default(0)
+  clicks      Int            @default(0)
+  events      VisitorEvent[]
+
+  @@index([startedAt])
+  @@index([visitorId])
+}
+
+model VisitorEvent {
+  id        String         @id @default(cuid())
+  session   VisitorSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  sessionId String
+  type      String // "pageview" | "click"
+  path      String
+  label     String?
+  createdAt DateTime       @default(now())
+
+  @@index([sessionId])
+  @@index([type])
+  @@index([createdAt])
+}
+
 // Game layer ("Clear the Fog") ---------------------------------------------
 
 // One row per XP award. Server-authoritative: XP is only ever granted inside

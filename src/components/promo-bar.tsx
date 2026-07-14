@@ -46,11 +46,11 @@ export function PromoBar() {
     <div className="relative z-40 bg-accent text-night print:hidden">
       <Link
         href="/subjects"
-        className="mx-auto flex max-w-6xl items-center justify-center px-9 py-2 text-center text-xs font-semibold hover:underline sm:text-sm"
+        className="mx-auto block max-w-3xl px-10 py-2 text-center text-xs font-semibold leading-snug hover:underline sm:text-sm"
       >
-        New here? Use code{" "}
-        <span className="mx-1 font-mono font-bold">STUDYLAH10</span> for 10% off
-        your first order &rarr;
+        New here? <span className="whitespace-nowrap">10% off your first order</span>{" "}
+        with code <span className="font-mono font-bold">STUDYLAH10</span>{" "}
+        <span aria-hidden="true">&rarr;</span>
       </Link>
       <button
         type="button"

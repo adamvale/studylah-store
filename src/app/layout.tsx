@@ -8,6 +8,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { SiteChrome } from "@/components/site-chrome";
 import { Analytics } from "@/components/analytics";
+import { VisitorTracker } from "@/components/visitor-tracker";
 import { RefCapture } from "@/components/ref-capture";
 import { SwRegister, NativePushBridge } from "@/components/pwa";
 
@@ -135,6 +136,7 @@ export default async function RootLayout({
         <SwRegister />
         <NativePushBridge />
         <Analytics />
+        <VisitorTracker />
         <PricingProvider table={table} earlyBird={earlyBird}>
           <CartProvider>
             <SiteChrome header={<Header />} footer={<Footer />}>
