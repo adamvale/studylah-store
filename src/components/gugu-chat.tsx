@@ -697,7 +697,10 @@ export function GuguChat() {
         <div
           role="dialog"
           aria-label="Chat with Gugu"
-          aria-hidden={!open}
+          // `inert` (not aria-hidden) when closed: removes the panel AND its
+          // buttons from the tab order + a11y tree, so no focusable descendants
+          // sit inside a hidden element (WCAG / Lighthouse aria-hidden-focus).
+          inert={!open || undefined}
           className={`gugu-panel relative flex h-[70vh] w-[calc(100vw-2rem)] origin-bottom-left flex-col overflow-hidden rounded-2xl border-2 border-[#4ef3c9] bg-[#12122b] shadow-[0_0_28px_-4px_rgba(78,243,201,0.45),0_24px_50px_-12px_rgba(0,0,0,0.85)] transition-all duration-200 ease-out sm:w-[360px] ${
             open
               ? "pointer-events-auto scale-100 opacity-100 translate-y-0"

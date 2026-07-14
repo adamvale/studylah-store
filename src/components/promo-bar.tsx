@@ -43,30 +43,34 @@ export function PromoBar() {
   }
 
   return (
-    <div className="relative z-40 bg-accent text-night print:hidden">
-      <Link
-        href="/subjects"
-        className="mx-auto block max-w-3xl px-10 py-2 text-center text-xs font-semibold leading-snug hover:underline sm:text-sm"
-      >
-        New here? <span className="whitespace-nowrap">10% off your first order</span>{" "}
-        with code <span className="font-mono font-bold">STUDYLAH10</span>{" "}
-        <span aria-hidden="true">&rarr;</span>
-      </Link>
-      <button
-        type="button"
-        onClick={close}
-        aria-label="Dismiss offer"
-        className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-night/70 transition-colors hover:text-night"
-      >
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path
-            d="M4 4l8 8M12 4l-8 8"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-          />
-        </svg>
-      </button>
+    <div className="z-40 bg-accent text-night print:hidden">
+      {/* Flex row (not absolute overlay) so the dismiss button is a real,
+          well-spaced 40px tap target next to the link. */}
+      <div className="mx-auto flex max-w-4xl items-center gap-1 px-2">
+        <Link
+          href="/subjects"
+          className="flex-1 py-2 text-center text-xs font-semibold leading-snug hover:underline sm:text-sm"
+        >
+          New here? <span className="whitespace-nowrap">10% off your first order</span>{" "}
+          with code <span className="font-mono font-bold">STUDYLAH10</span>{" "}
+          <span aria-hidden="true">&rarr;</span>
+        </Link>
+        <button
+          type="button"
+          onClick={close}
+          aria-label="Dismiss offer"
+          className="grid h-10 w-10 shrink-0 place-items-center rounded text-night/70 transition-colors hover:bg-black/5 hover:text-night"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path
+              d="M4 4l8 8M12 4l-8 8"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
   );
 }

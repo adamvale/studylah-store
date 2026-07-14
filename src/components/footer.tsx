@@ -99,7 +99,7 @@ export function Footer() {
           <p className="text-xs leading-relaxed text-white/60">
             {STANDARD_DISCLAIMER}
           </p>
-          <p className="mt-3 text-xs text-white/40">
+          <p className="mt-3 text-xs text-white/60">
             © {new Date().getFullYear()} StudyLah · studylah.education ·
             Singapore
           </p>

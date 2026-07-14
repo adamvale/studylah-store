@@ -114,11 +114,12 @@ const PILL_STYLES = [
   "bg-violet text-white",
   "bg-teal text-night",
   "bg-accent text-night",
-  "bg-coral text-white",
+  // coral + pink fail WCAG AA against white (2.8/3.0:1); dark text clears it.
+  "bg-coral text-night",
   "bg-mint text-night",
   "bg-[#5b5bd6] text-white",
   "bg-[#0fb5ae] text-night",
-  "bg-[#e0729b] text-white",
+  "bg-[#e0729b] text-night",
   "bg-[#3fbf5f] text-night",
 ];
 
