@@ -1,7 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   LEVELS,
-  PRODUCTS,
   productBlurbFor,
   productFilesFor,
   productNameFor,
@@ -154,43 +154,61 @@ export async function SubjectView({ subject }: { subject: Subject }) {
         </section>
       )}
 
-      <div className="mt-10 grid gap-8 lg:grid-cols-5">
-        <div className="lg:col-span-2">
-          <div className="rounded-2xl border border-accent/40 bg-surface p-5">
-            <p className="font-display text-base font-bold text-ink">
-              The full picture is a 40+ page Exam Forecast.
-            </p>
-            <p className="mt-1 text-xs leading-relaxed text-body">
-              Every {subject.name} topic ranked by its 2026 probability, the
-              highest-chance sections mapped in detail, and 100s of original
-              practice questions built to train you on exactly those. Know
-              what&apos;s likely, then drill it.
-            </p>
-            <Link
-              href="#tiers"
-              className="mt-3 inline-block rounded-lg bg-accent px-4 py-2 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
-            >
-              See what&apos;s inside →
-            </Link>
-          </div>
+      {/* Forecast Suite intro, in the homepage "The Problem" section format. */}
+      <section className="mt-14 text-center">
+        <div className="flex justify-center">
+          <Image
+            src="/marketing/gugu-head.png"
+            alt=""
+            aria-hidden="true"
+            width={484}
+            height={371}
+            className="h-auto w-16"
+          />
         </div>
+        <div className="relative z-10 -mt-[6px] flex justify-center">
+          <span className="inline-flex items-center rounded-full bg-violet px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
+            The Suite
+          </span>
+        </div>
+        <h2 className="mt-4 font-display text-3xl font-black text-accent sm:text-4xl">
+          What&apos;s in this Forecast Suite?
+        </h2>
+        <p className="mt-1 font-display text-xl font-bold text-cloud sm:text-2xl">
+          Total <span className="text-accent">4</span> solution packages
+        </p>
+        <div className="mt-5 flex justify-center">
+          <Image
+            src="/marketing/solution-target.webp"
+            alt="Darts hitting the centre of a target"
+            width={320}
+            height={298}
+            className="h-auto w-32 sm:w-40"
+          />
+        </div>
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-cloud">
+          Every {subject.name}{" "}topic ranked by its 2026 probability, the
+          highest-chance sections mapped in detail, and 100s of original practice
+          questions built to train you on exactly those. Know what&apos;s likely,
+          learn it, then drill it.
+        </p>
+      </section>
 
-        <div className="space-y-4 lg:col-span-3">
-          {products.map((key) => {
-            const product = PRODUCTS[key];
-            const pc = copy?.products[key];
-            const fileCount = productFilesFor(subject, key).length;
-            return (
-              <div
-                key={key}
-                className="card-hover rounded-2xl border border-hairline bg-surface p-5"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="font-mono text-xs font-medium text-teal">
-                      {product.day}
-                      {fileCount > 1 && ` · ${fileCount} PDFs`}
-                    </p>
+      <div className="mt-8 grid gap-4 md:grid-cols-2">
+        {products.map((key, i) => {
+          const pc = copy?.products[key];
+          const fileCount = productFilesFor(subject, key).length;
+          return (
+            <div
+              key={key}
+              className="card-hover rounded-2xl border border-hairline bg-surface p-5"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="font-mono text-xs font-bold text-accent">
+                    Solution No.{i + 1}
+                    {fileCount > 1 && ` · ${fileCount} PDFs`}
+                  </p>
                     <h2 className="mt-0.5 font-display text-lg font-bold text-ink">
                       {productNameFor(subject, key)}
                     </h2>
@@ -236,7 +254,6 @@ export async function SubjectView({ subject }: { subject: Subject }) {
             );
           })}
         </div>
-      </div>
 
       {packPreview && (
         <PackPreview preview={packPreview} subjectName={subject.name} />
