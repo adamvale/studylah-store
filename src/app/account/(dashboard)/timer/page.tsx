@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { requireMaster } from "@/lib/server/entitlements";
 import { RehearsalTimer } from "@/components/rehearsal-timer";
 import { PomodoroTimer } from "@/components/pomodoro-timer";
 
@@ -9,6 +10,7 @@ export const metadata: Metadata = { title: "Exam timer" };
 export default async function TimerPage() {
   const customerId = await getCustomerId();
   if (!customerId) redirect("/account/login");
+  await requireMaster(customerId);
 
   return (
     <div className="space-y-10">

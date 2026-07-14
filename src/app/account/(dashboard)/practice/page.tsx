@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import type { TopicFamily } from "@/lib/catalogue";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { requireMaster } from "@/lib/server/entitlements";
 import { ownedSubjects } from "@/lib/server/study";
 import {
   PRECISION,
@@ -18,6 +19,7 @@ export const metadata: Metadata = { title: "Practice" };
 export default async function PracticePage() {
   const customerId = await getCustomerId();
   if (!customerId) redirect("/account/login");
+  await requireMaster(customerId);
 
   const subjects = await ownedSubjects(customerId);
   const families = new Set<TopicFamily>(subjects.map((s) => s.family as TopicFamily));

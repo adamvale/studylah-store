@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { getCustomerId } from "@/lib/server/customer-session";
+import { requireMaster } from "@/lib/server/entitlements";
 
 export const metadata: Metadata = { title: "More" };
 
@@ -46,7 +49,10 @@ const ITEMS: Array<{ href: string; icon: string; title: string; blurb: string }>
   },
 ];
 
-export default function MorePage() {
+export default async function MorePage() {
+  const customerId = await getCustomerId();
+  if (!customerId) redirect("/account/login");
+  await requireMaster(customerId);
   return (
     <div className="space-y-6">
       <div className="grid gap-3 sm:grid-cols-2">

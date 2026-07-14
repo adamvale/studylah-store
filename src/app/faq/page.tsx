@@ -49,7 +49,7 @@ const FAQS: { q: string; a: React.ReactNode; plain?: string }[] = [
   },
   {
     q: "Is it worth the money?",
-    a: "One subject's forecast costs less than an hour of tuition and works across your whole final stretch of revision. If it doesn't deliver, it's free, that's what the guarantee is for. The expensive option is the weeks you'd spend revising the wrong things.",
+    a: "One subject's forecast costs less than an hour of tuition and works across your child's whole final stretch. Think about what it saves: the wasted evenings revising topics that never come up, the exam-morning dread of not knowing where to start, the guesswork. If it doesn't deliver, it's free, that's what the guarantee is for. The truly expensive option is the weeks spent studying the wrong things.",
   },
   {
     q: "How do I get my PDFs?",
@@ -65,7 +65,7 @@ const FAQS: { q: string; a: React.ReactNode; plain?: string }[] = [
   },
   {
     q: "What is StudyLand? Is it extra?",
-    a: "StudyLand is the study dashboard that comes with every purchase, no subscription, no extra cost. It turns your PDFs into a running system: a daily three-question practice drawn from your subjects' most-likely topics, a mistake notebook that saves every miss and re-tests you until you clear it, a Marks-at-Risk meter per subject, skill drills, exam timers, grade goals, and a printable rescue plan for when you're behind schedule. Sign in with the email you bought with, a magic link, no password.",
+    a: "StudyLand is the study dashboard that comes with the Master tier, an early-access beta, no subscription and no extra cost on top of Master. It turns your PDFs into a running system that manages the whole final stretch for you: a daily three-question practice drawn from your subjects' most-likely topics, a mistake notebook that saves every miss and re-tests you until you clear it, a Marks-at-Risk meter per subject, skill drills, exam timers, grade goals, and a printable rescue plan for when you're behind. Sign in with the email you bought with, a magic link, no password.",
   },
   {
     q: "What is \"Predict your mark\"?",
@@ -77,7 +77,7 @@ const FAQS: { q: string; a: React.ReactNode; plain?: string }[] = [
   },
   {
     q: "When should I buy?",
-    a: "Sooner is cheaper. The Forecast is built for your last two weeks, the Vault for your last week, the Rehearsal for the final days, and early-bird pricing runs when forecasts first drop. Take the free Predict-your-mark check, you'll be on the list and first to know the moment your forecast goes live.",
+    a: "Sooner is calmer, and cheaper. The Forecast anchors your final month, the Vault your last fortnight, the Rehearsal the closing days, and early-bird pricing runs when forecasts first drop. The earlier you start, the more the plan can do for you. Take the free Predict-your-mark check and you'll be first to know the moment your forecast goes live.",
   },
   {
     q: "What happens to my email address?",
@@ -133,10 +133,12 @@ export default function FaqPage() {
           If it doesn&apos;t deliver, it&apos;s free.
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-ink">
-          Forecasts are probabilities, not certainties, so we carry the risk,
-          not you. If fewer than three of our top-five forecast topics appear in
-          your paper, claim a full refund within 14 days of the exam. Email your
-          order ID, get your money back. No forms. No argument.
+          You should never have to gamble your child&apos;s revision on a
+          promise. So we carry the risk, not you: forecasts are probabilities,
+          not certainties, and if fewer than three of our top-five forecast
+          topics appear in your paper, you get every cent back. Email your order
+          ID within 14 days of the exam. No forms. No argument. Worst case,
+          you&apos;re out nothing; best case, your child walks in ready.
         </p>
         <p className="mt-2 text-xs text-body">
           Full terms are in the{" "}

@@ -111,8 +111,9 @@ export async function SubjectView({ subject }: { subject: Subject }) {
         </blockquote>
       ) : (
         <p className="mt-2 max-w-xl text-body">
-          Forecast, practice, and rehearsal for the {LEVELS[subject.level].name}{" "}
-          {subject.name} paper, the 2026 sitting.
+          Know what&apos;s likely, drill exactly that, and sit a full mock before
+          the real {LEVELS[subject.level].name} {subject.name} paper, so 2026 feels
+          familiar, not frightening.
         </p>
       )}
 
@@ -298,7 +299,8 @@ export async function SubjectView({ subject }: { subject: Subject }) {
       {/* The value stack: what a purchase actually is, in one glance. */}
       <div className="card-hover reveal mt-4 rounded-2xl border border-hairline bg-surface p-6">
         <p className="font-display text-lg font-bold text-ink">
-          What you&apos;re actually getting
+          This isn&apos;t just PDFs. It&apos;s your child&apos;s{" "}
+          <span className="text-accent">calmest month</span> before the paper.
         </p>
         <ul className="mt-3 space-y-2 text-sm">
           <li className="flex gap-3">
@@ -335,12 +337,12 @@ export async function SubjectView({ subject }: { subject: Subject }) {
             <span aria-hidden="true" className="text-accent">5.</span>
             <span className="text-body">
               <span className="font-medium text-ink">
-                And Study<span className="text-accent">Land</span> runs it daily
+                And with Master, Study<span className="text-accent">Land</span> runs it all daily
               </span>{" "}
 , three questions a day on your top-tier topics, a mistake notebook
               that re-tests you until you clear it, a live Marks-at-Risk meter,
-              skill drills, exam timers, and a printable rescue plan. Included,
-              no subscription.
+              skill drills, exam timers, and a printable rescue plan. An
+              early-access beta, no subscription.
             </span>
           </li>
         </ul>

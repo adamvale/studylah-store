@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { requireMaster } from "@/lib/server/entitlements";
 import {
   ownedSubjects,
   dailyPicks,
@@ -57,6 +58,7 @@ interface MissionItem {
 export default async function TodayPage() {
   const customerId = await getCustomerId();
   if (!customerId) redirect("/account/login");
+  await requireMaster(customerId);
 
   const customer = await prisma.customer.findUnique({
     where: { id: customerId },

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { requireMaster } from "@/lib/server/entitlements";
 import { computeRisk, buildRescuePlan, RISK_CAVEAT } from "@/lib/server/risk";
 import { TierPill } from "@/components/heat";
 import { PrintButton } from "@/components/print-button";
@@ -30,6 +31,7 @@ function daysUntilFirstPaper(examDates: { at: Date }[]): {
 export default async function RescuePage() {
   const customerId = await getCustomerId();
   if (!customerId) redirect("/account/login");
+  await requireMaster(customerId);
 
   const [risks, examDates, unresolvedMistakes] = await Promise.all([
     computeRisk(customerId),

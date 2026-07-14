@@ -38,14 +38,18 @@ export async function sendAbandonedCartEmail(cart: {
   const n = items.length;
 
   const html = emailLayout(`
-    <h1 style="font-size:20px;margin:0 0 12px;color:#101f33;">Your StudyLah bundle is still waiting</h1>
+    <h1 style="font-size:20px;margin:0 0 12px;color:#101f33;">Your revision plan is one tap from done</h1>
     <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 8px;">
       You left ${n} subject${n === 1 ? "" : "s"} in your cart:
     </p>
     <ul style="margin:0 0 14px;padding-left:18px;">${listHtml}</ul>
     <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 14px;">
-      It's one tap from done, and the more subjects you add, the cheaper each one gets.
-      New here? Use <strong style="color:#101f33;">STUDYLAH10</strong> for 10% off your first order.
+      Every week nearer the paper is a week that could be spent revising with a
+      plan instead of guessing. Finishing takes one tap, and the more subjects
+      you add, the cheaper each one gets. New here? Use
+      <strong style="color:#101f33;">STUDYLAH10</strong> for 10% off your first
+      order, and every pack is covered by the money-back guarantee, so there's
+      nothing to lose.
     </p>
     <p style="margin:0 0 8px;">
       <a href="${cartUrl}" style="display:inline-block;background:#f4552b;color:#ffffff;text-decoration:none;font-size:14px;font-weight:bold;padding:12px 20px;border-radius:8px;">
@@ -63,7 +67,7 @@ export async function sendAbandonedCartEmail(cart: {
 
   const res = await sendEmail({
     to: cart.email,
-    subject: "Your StudyLah bundle is still waiting",
+    subject: "Your revision plan is one tap from done",
     html,
     text,
   });

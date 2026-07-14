@@ -442,14 +442,14 @@ export function CartView() {
             </p>
           )}
           <p className="mt-4 text-xs text-body">
-            PayNow and cards via Stripe · Instant download after payment · PDFs
-            watermarked to your email
+            Secure PayNow &amp; card via Stripe · your PDFs open the instant you
+            pay · every page watermarked to you.
           </p>
           <p className="mt-2 text-xs text-body">
-            Every subject also unlocks{" "}
-            <span className="font-medium text-ink">StudyLand</span>, daily
-            practice, mistake notebook, study plan and exam timers. No
-            subscription.
+            Pick <span className="font-medium text-ink">Master</span> and you
+            also unlock <span className="font-medium text-ink">StudyLand</span>{" "}
+            (early-access beta), daily practice, a mistake notebook, a study plan
+            and exam timers. No subscription, ever.
           </p>
         </div>
       </aside>

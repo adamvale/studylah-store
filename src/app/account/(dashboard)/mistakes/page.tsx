@@ -5,6 +5,7 @@ import { getSubject, type Level } from "@/lib/catalogue";
 import { fullForecast } from "@/lib/topics";
 import { FORECAST_TABLES } from "@/lib/forecast-tables";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { requireMaster } from "@/lib/server/entitlements";
 import { ownedSubjects } from "@/lib/server/study";
 import { achievementSuffixes } from "@/lib/server/xp";
 import { MistakeNotebook, type MistakeItem } from "@/components/mistake-notebook";
@@ -15,6 +16,7 @@ export const metadata: Metadata = { title: "Mistakes" };
 export default async function MistakesPage() {
   const customerId = await getCustomerId();
   if (!customerId) redirect("/account/login");
+  await requireMaster(customerId);
 
   const [rows, subjects, wildCaptured] = await Promise.all([
     prisma.mistakeEntry.findMany({

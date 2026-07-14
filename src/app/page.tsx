@@ -9,7 +9,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 import {
-  COMING_SOON,
   getSubject,
   JOURNEY_ORDER,
   LEVELS,
@@ -181,7 +180,7 @@ function Hero({ pricing }: { pricing: Pricing }) {
             {PUBLISHED_LEVELS.map((l) => LEVELS[l].shortName).join(" and ")}{" "}
             topic by how likely it is on the 2026 paper, then hand your child the
             exact questions to drill, so their final weeks build{" "}
-            <span className="font-semibold text-white">calm, confident readiness</span>,
+            <span className="font-semibold text-accent">calm, confident readiness</span>,
             not last-minute panic.
           </p>
 
@@ -361,7 +360,7 @@ const CAUSE_TYPES: { label: string; body: React.ReactNode }[] = [
     body: (
       <>
         Students revised everything, instead of the{" "}
-        <span className="font-bold text-white">right things.</span>
+        <span className="font-bold text-accent">right things.</span>
       </>
     ),
   },
@@ -600,9 +599,9 @@ function TheSolution() {
             <p className="mx-auto mt-6 max-w-3xl leading-relaxed text-cloud">
               On their own, each product does one job. Bought together, they
               become a single revision sequence, from{" "}
-              <span className="font-bold text-white">knowing what to revise</span>{" "}
+              <span className="font-bold text-accent">knowing what to revise</span>{" "}
               all the way to{" "}
-              <span className="font-bold text-white">walking in ready</span>:
+              <span className="font-bold text-accent">walking in ready</span>:
             </p>
             <ul className="mx-auto mt-8 flex max-w-2xl flex-col gap-4 text-left">
               {STRATEGY_STEPS.map((step) => (
@@ -678,7 +677,7 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
         </h2>
         <p className="mx-auto mt-2 max-w-2xl text-center text-cloud">
           Most families choose{" "}
-          <span className="font-semibold text-white">Master</span>: the complete
+          <span className="font-semibold text-accent">Master</span>: the complete
           plan that turns ten years of exam data into a calm, focused final
           month, and the biggest saving. Start smaller only if you prefer.
         </p>
@@ -944,35 +943,39 @@ function Journey({ pricing }: { pricing: Pricing }) {
   const prices = ["essential", "strategic", "master"] as const;
   return (
     <section aria-labelledby="journey-heading" className="reveal py-20">
-      <div className="mx-auto max-w-6xl px-4">
-        <p className="text-center font-mono text-xs font-medium uppercase tracking-wide text-teal">
-          The revision journey
-        </p>
+      <div className="mx-auto max-w-6xl px-4 text-center">
+        <div className="flex justify-center">
+          <SectionGhost />
+        </div>
+        <div className="relative z-10 -mt-[6px] flex justify-center">
+          <Badge>The Revision Journey</Badge>
+        </div>
         <h2
           id="journey-heading"
-          className="mt-2 text-center font-display text-3xl font-black text-white"
+          className="mt-4 font-display text-3xl font-black text-accent sm:text-4xl lg:text-5xl"
         >
-          Your last 14 days, planned
+          Your last 30 days, planned
         </h2>
-        <p className="mx-auto mt-2 max-w-xl text-center text-cloud">
+        <p className="mx-auto mt-4 max-w-xl text-cloud">
           No more staring at a mountain of notes. Each subject arrives as a
           day-by-day plan, so the final fortnight has a{" "}
-          <span className="font-semibold text-white">
+          <span className="font-semibold text-accent">
             clear start, middle and calm finish
           </span>
           .
         </p>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 text-left md:grid-cols-3">
           {JOURNEY_ORDER.map((key, i) => {
             const product = PRODUCTS[key];
             const tier = prices[i];
+            const dayLabel = ["Day 30", "Day 20", "Day 10"][i];
             return (
               <div
                 key={key}
                 className="relative rounded-2xl border border-hairline bg-surface p-6"
               >
                 <span className="inline-block rounded-full bg-violet px-3 py-1 font-mono text-xs font-bold text-white">
-                  {product.day}
+                  {dayLabel}
                 </span>
                 <h3 className="mt-4 font-display text-xl font-bold text-white">
                   {product.name}
@@ -1058,16 +1061,21 @@ function StudyHq() {
     <section className="reveal py-20">
       <div className="mx-auto max-w-6xl px-4">
         <p className="text-center font-mono text-xs font-medium uppercase tracking-wide text-teal">
-          Included with every subject · no subscription
+          Master tier only · In beta · Early access
         </p>
         <h2 className="mt-2 text-center font-display text-4xl font-black text-white sm:text-5xl">
           The PDFs are the plan.{" "}
           <span className="text-accent">StudyLand runs it.</span>
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-center text-lg text-cloud">
-          Buy any subject and your dashboard wakes up: daily practice aimed by
-          the forecast, a notebook that hunts your weak spots, and a live count
-          of the marks still on the table.
+          Unlock the{" "}
+          <span className="font-semibold text-accent">Master tier</span> and your
+          dashboard wakes up: daily practice aimed by the forecast, a notebook
+          that hunts weak spots, and a live count of the marks still on the
+          table. It&apos;s the{" "}
+          <span className="font-semibold text-accent">cherry on top</span>, an
+          early-access beta that lets your child run the whole study journey like
+          never before.
         </p>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {STUDY_HQ_FEATURES.map((f) => (
@@ -1163,23 +1171,24 @@ function FogFrontierBeta() {
           <span className="rounded bg-violet px-2.5 py-1 font-mono text-[11px] font-bold uppercase tracking-widest text-white">
             Beta
           </span>
-          <span className="rounded-full border border-hairline bg-surface px-3 py-1 font-mono text-[11px] font-medium uppercase tracking-wide text-cloud">
-            Included with any subject · purchasers only
+          <span className="rounded-full border-2 border-violet bg-surface px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wide text-cloud">
+            Master tier only · early access
           </span>
         </div>
-        <h2 className="mx-auto mt-5 max-w-3xl text-center font-display text-4xl font-black text-white sm:text-5xl">
-          Revision that plays like an adventure, {" "}
-          <span className="text-accent">because combat is real exam questions.</span>
+        <h2 className="mx-auto mt-5 max-w-3xl text-center font-display text-4xl font-black uppercase tracking-tight text-white sm:text-5xl">
+          Play an <span className="text-accent">RPG game</span> to learn.
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-center text-lg text-cloud">
-          Every subject you own opens a province to explore. Wild monsters are the
-          questions you tend to miss; every answer builds a worked-solution you keep.
-          Fifteen minutes a day, aimed by your forecast at your actual weak topics.
+          The <span className="font-semibold text-accent">Master tier</span> unlocks
+          StudyLah Legends: every subject you own opens a province to explore. Wild
+          monsters are the questions you tend to miss; every answer builds a
+          worked-solution you keep. Fifteen minutes a day, aimed by your forecast
+          at your actual weak topics.
         </p>
         <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-cloud">
-          <span className="font-semibold text-white">The prediction suite is the product you buy.</span>{" "}
-          StudyLah Legends is the beta playground it unlocks, a bonus, not the pitch.
-          It&apos;s in active development, so expect it to keep growing.
+          <span className="font-semibold text-accent">The prediction suite is the product you buy.</span>{" "}
+          StudyLah Legends is the early-access beta that comes with Master, a bonus,
+          not the pitch, and it keeps growing.
         </p>
 
         {/* Pick your researcher + Gugu */}
@@ -1240,10 +1249,11 @@ function FogFrontierBeta() {
             href="/subjects"
             className="btn-pixel inline-block rounded bg-accent px-6 py-3 text-sm font-bold text-night"
           >
-            Unlock StudyLah Legends with any subject →
+            Unlock StudyLah Legends with the Master tier →
           </Link>
           <p className="mt-3 text-xs text-cloud">
-            No separate purchase, no subscription. Buy the forecast; the beta comes with it.
+            No separate purchase, no subscription. The Master tier includes the
+            early-access beta.
           </p>
         </div>
       </div>
@@ -1316,152 +1326,6 @@ function Decision() {
   );
 }
 
-function LevelEntry({ pricing }: { pricing: Pricing }) {
-  const { tierPrice } = pricing;
-  return (
-    <section aria-labelledby="levels-heading" className="reveal mx-auto max-w-6xl px-4 py-20">
-      <h2 id="levels-heading" className="text-center font-display text-3xl font-black text-white">
-        Find your papers
-      </h2>
-      <div className="mt-8 grid gap-6 sm:grid-cols-2">
-        {PUBLISHED_LEVELS.map((level) => (
-          <Link
-            key={level}
-            href={`/${level}`}
-            className="group rounded-2xl border border-hairline bg-surface p-6 transition-colors hover:border-accent"
-          >
-            <p className="font-mono text-xs font-medium text-cloud">
-              {LEVELS[level].code}
-            </p>
-            <h3 className="mt-1 font-display text-2xl font-bold text-accent">
-              {LEVELS[level].name}
-            </h3>
-            <p className="mt-2 text-sm text-cloud">
-              {subjectsForLevel(level).length} subjects · from{" "}
-              {sgd(tierPrice(level, "essential"))} per subject
-            </p>
-          </Link>
-        ))}
-      </div>
-      <div className="mt-6 flex flex-wrap items-center gap-2 text-sm text-cloud">
-        <span>Coming soon:</span>
-        {COMING_SOON.map((l) => (
-          <Link
-            key={l.slug}
-            href={`/${l.slug}`}
-            className="rounded-full border border-hairline bg-surface px-3 py-1 text-xs font-medium text-cloud hover:border-accent"
-          >
-            {l.name} · {l.eta}
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function TrustStrip() {
-  const { perfect, total } = scorecardHeadline();
-  return (
-    <section aria-labelledby="trust-heading" className="reveal bg-violet-2 py-16 text-white">
-      <div className="mx-auto max-w-6xl px-4">
-        <h2 id="trust-heading" className="sr-only">
-          Why students trust StudyLah
-        </h2>
-        <div className="grid gap-8 sm:grid-cols-3">
-          <div>
-            <p className="font-display text-5xl font-black text-accent">
-              {perfect} of {total}
-            </p>
-            <p className="mt-1 text-sm text-white/80">
-              2024-25 scorecards where all five highest-mark topics were
-              forecast High or above*
-            </p>
-            <Link
-              href="/accuracy"
-              className="mt-2 inline-block text-sm font-medium text-accent hover:underline"
-            >
-              See the full scorecard
-            </Link>
-          </div>
-          <div>
-            <p className="font-display text-5xl font-black text-accent">Zero</p>
-            <p className="mt-1 text-sm text-white/80">
-              recycled past-paper content, every question is written for
-              StudyLah
-            </p>
-          </div>
-          <div>
-            <p className="font-display text-5xl font-black text-accent">S$ back</p>
-            <p className="mt-1 text-sm text-white/80">
-              money-back guarantee if the forecast doesn&apos;t deliver.{" "}
-              <Link href="/faq" className="font-medium text-accent hover:underline">
-                How it works
-              </Link>
-            </p>
-          </div>
-        </div>
-        <p className="mt-8 text-xs text-white/50">
-          *Counted from the published per-subject scorecards, every hit and
-          miss is on the accuracy page.
-        </p>
-      </div>
-    </section>
-  );
-}
-
-const HOW_STEPS = [
-  {
-    title: "Ingest",
-    body: "Ten years of past papers, mark schemes, and every syllabus revision go into the model.",
-  },
-  {
-    title: "Model",
-    body: "Topic cycles, mark weightings, and setter patterns become a confidence tier for every topic in your syllabus.",
-  },
-  {
-    title: "Publish",
-    body: "You get the forecast. After the sitting, we publish what hit and what missed, in public, every year.",
-  },
-];
-
-function HowItWorks() {
-  return (
-    <section aria-labelledby="how-heading" className="reveal mx-auto max-w-6xl px-4 py-20">
-      <h2 id="how-heading" className="text-center font-display text-3xl font-black text-white">
-        How the forecast works
-      </h2>
-      <p className="mx-auto mt-2 max-w-xl text-center text-cloud">
-        Forecasts, not leaks. Probabilities, not promises.
-      </p>
-      <div className="mt-8 grid gap-6 md:grid-cols-3">
-        {HOW_STEPS.map((step, i) => (
-          <div
-            key={step.title}
-            className="rounded-2xl border border-hairline bg-surface p-6"
-          >
-            <p className="font-mono text-sm font-bold text-teal">0{i + 1}</p>
-            <h3 className="mt-2 font-display text-lg font-bold text-white">
-              {step.title}
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-cloud">{step.body}</p>
-          </div>
-        ))}
-      </div>
-      <p className="mt-6 text-sm text-cloud">
-        A forecast can be wrong, that&apos;s why the{" "}
-        <Link href="/accuracy" className="font-medium text-accent underline">
-          accuracy scorecard
-        </Link>{" "}
-        is public and the{" "}
-        <Link href="/faq" className="font-medium text-accent underline">
-          guarantee
-        </Link>{" "}
-        is real.
-      </p>
-    </section>
-  );
-}
-
 function FreeHeatmapBanner() {
   return (
     <section aria-labelledby="heatmap-heading" className="mx-auto max-w-6xl px-4 pb-16">
@@ -1511,9 +1375,6 @@ export default async function Home() {
       <StudyHq />
       <FogFrontierBeta />
       <Decision />
-      <LevelEntry pricing={pricing} />
-      <TrustStrip />
-      <HowItWorks />
       <FreeHeatmapBanner />
     </div>
   );

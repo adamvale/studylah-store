@@ -106,6 +106,25 @@ const TOPICS: Topic[] = [
     ),
   },
   {
+    id: "method",
+    label: "How does the forecast work?",
+    keywords: ["how", "work", "works", "method", "model", "forecast", "made", "built", "pattern", "ai"],
+    answer: ({ closePanel }) => (
+      <>
+        Three steps. We <strong>ingest</strong> ten years of past papers, mark
+        schemes and every syllabus revision. We <strong>model</strong> topic
+        cycles, mark weightings and setter patterns into a confidence tier for
+        every topic. Then we <strong>publish</strong>, and after each sitting we
+        post what hit and what missed on the{" "}
+        <InlineLink href="/accuracy" onNavigate={closePanel}>
+          accuracy page
+        </InlineLink>
+        . Forecasts, not leaks. Every question is written by us, zero recycled
+        past-paper content.
+      </>
+    ),
+  },
+  {
     id: "price",
     label: "How much does it cost?",
     keywords: ["cost", "price", "much", "cheap", "expensive", "pay", "worth", "bundle", "discount"],
@@ -153,10 +172,11 @@ const TOPICS: Topic[] = [
     keywords: ["game", "legends", "rpg", "play", "app", "adventure", "beta"],
     answer: () => (
       <>
-        <strong>StudyLah Legends</strong> is a free study-RPG where the battles
-        are real exam questions. It&apos;s a beta bonus, exclusive to purchasers, 
-        the prediction suite (forecasts, questions, rehearsals) is still the main
-        product. Buy any subject and the game comes with it.
+        <strong>StudyLah Legends</strong> is a study-RPG where the battles are
+        real exam questions, learning that feels like play. It&apos;s an
+        early-access <strong>beta included with the Master tier</strong>, a
+        cherry on top; the prediction suite (forecasts, questions, rehearsals) is
+        still the main product.
       </>
     ),
   },

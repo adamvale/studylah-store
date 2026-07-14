@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { requireMaster } from "@/lib/server/entitlements";
 import { ownedSubjects, sgDay } from "@/lib/server/study";
 import { computeRisk } from "@/lib/server/risk";
 import { clearedGyms, achievementSuffixes } from "@/lib/server/xp";
@@ -41,6 +42,7 @@ const EMOJI_BY_FAMILY: Record<string, string> = {
 export default async function AdventurePage() {
   const customerId = await getCustomerId();
   if (!customerId) redirect("/account/login");
+  await requireMaster(customerId);
 
   const today = sgDay();
   const [subjects, cleared, story, starters, heroes, beatenBosses, fronts, underCleared, campusCleared, questsDone] =

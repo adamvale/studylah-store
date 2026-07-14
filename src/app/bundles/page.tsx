@@ -20,12 +20,15 @@ export default function BundlesPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <h1 className="font-display text-3xl font-black text-ink sm:text-4xl">
-        The more subjects, the less each one costs.
+        One calm plan for every subject.{" "}
+        <span className="text-accent">The more you add, the less each costs.</span>
       </h1>
       <p className="mt-2 max-w-2xl text-sm text-body">
         Every subject is the full Master pack, Forecast, Companion, Vault and
-        Rehearsal. You&apos;re always charged the cheapest combination, so the
-        price per subject drops the more you add.
+        Rehearsal, so your child meets every paper with the same focused,
+        guesswork-free plan. Add all the subjects they&apos;re sitting and
+        you&apos;re always charged the cheapest combination, the price per
+        subject drops the more you add.
       </p>
 
       <div className="mt-4 flex flex-wrap gap-2">

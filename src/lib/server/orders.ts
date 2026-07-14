@@ -223,11 +223,14 @@ export async function sendOrderConfirmationEmail(order: OrderWithItems) {
   const total = `S$${(order.totalCents / 100).toFixed(2)}`;
 
   const html = emailLayout(`
-    <h1 style="font-size:20px;margin:0 0 12px;color:#101f33;">Your StudyLah PDFs are ready</h1>
+    <h1 style="font-size:20px;margin:0 0 12px;color:#101f33;">You're set. Now let's make these last weeks count.</h1>
     <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 16px;">
-      Thanks for your order (No. ${order.id}, ${total}). Your files are on your
-      personal download page for ${serverConfig.downloadExpiryDays} days, up to
-      ${serverConfig.downloadMaxUses} downloads each.
+      Thank you (order No. ${order.id}, ${total}). Everything your last weeks
+      need is on your personal download page, ready for the next
+      ${serverConfig.downloadExpiryDays} days, up to
+      ${serverConfig.downloadMaxUses} downloads each. Start with the Exam
+      Forecast, it shows you exactly where to aim, then let the practice do the
+      rest.
     </p>
     <p style="margin:0 0 20px;">
       <a href="${downloadUrl}" style="display:inline-block;background:#f4552b;color:#ffffff;text-decoration:none;font-size:14px;font-weight:bold;padding:12px 20px;border-radius:8px;">

@@ -7,6 +7,7 @@ import { fullForecast } from "@/lib/topics";
 import { FORECAST_TABLES } from "@/lib/forecast-tables";
 import { forecastTier } from "@/components/heat";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { requireMaster } from "@/lib/server/entitlements";
 import { getScoreHistory } from "@/lib/server/progress";
 import { StudyPlanBoard, type PlanSubject } from "@/components/study-plan-board";
 import { SubjectGoals, type GoalSubject } from "@/components/subject-goals";
@@ -40,6 +41,7 @@ export default async function StudyPage({
 }) {
   const customerId = await getCustomerId();
   if (!customerId) redirect("/account/login");
+  await requireMaster(customerId);
 
   const [orders, progressRows, examDates, goalRows, customer] = await Promise.all([
     prisma.order.findMany({

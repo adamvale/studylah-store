@@ -30,13 +30,14 @@ export default function DiagnosticIndexPage() {
         Free · 10 questions · 7:00 on the clock
       </p>
       <h1 className="mt-2 font-display text-4xl font-black text-ink">
-        Predict your mark on the topics most likely to show up
+        Predict your mark, free, before you spend a cent.
       </h1>
       <p className="mt-3 text-body">
-        Our forecast ranks every topic on your 2026 paper. This check mixes ten
-        quick questions across your subject&apos;s VERY HIGH and HIGH calls, 
-        marked instantly, with an indicative grade band for those topics and
-        worked solutions after.
+        Stop wondering whether the revision is working. Ten quick questions
+        across your subject&apos;s VERY HIGH and HIGH 2026 calls, marked
+        instantly, with an indicative grade band on those topics and full worked
+        solutions after. Seven minutes, and you&apos;ll know exactly where you
+        stand.
       </p>
 
       <h2 className="mt-8 font-display text-lg font-bold text-ink">
