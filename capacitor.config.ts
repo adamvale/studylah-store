@@ -5,7 +5,7 @@ import type { CapacitorConfig } from "@capacitor/cli";
 // require a new native build.
 const config: CapacitorConfig = {
   appId: "education.studylah.app",
-  appName: "Study HQ",
+  appName: "StudyLah",
   // webDir is required by the CLI but unused for a remote-URL shell; it holds
   // a single offline-fallback page.
   webDir: "native-shell",

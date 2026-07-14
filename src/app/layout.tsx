@@ -71,12 +71,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
   },
   icons: {
+    icon: "/icon.png",
     apple: "/icons/apple-touch-icon.png",
   },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "StudyLand",
+    title: "StudyLah",
   },
 };
 

@@ -4,8 +4,8 @@ import type { MetadataRoute } from "next";
 // install this are buyers, and Today is the page that runs their revision.
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "StudyLah StudyLand",
-    short_name: "StudyLand",
+    name: "StudyLah",
+    short_name: "StudyLah",
     description:
       "Your daily mission for the 2026 papers: three questions a day, a mistake notebook that re-tests you, marks-at-risk tracking, timers and plans.",
     id: "/account",
