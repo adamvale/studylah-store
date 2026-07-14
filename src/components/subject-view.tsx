@@ -103,8 +103,8 @@ export async function SubjectView({ subject }: { subject: Subject }) {
       ) : (
         <p className="mt-2 max-w-xl text-body">
           Know what&apos;s likely, drill exactly that, and sit a full mock before
-          the real {LEVELS[subject.level].name} {subject.name} paper, so 2026 feels
-          familiar, not frightening.
+          the real {LEVELS[subject.level].name}{" "}{subject.name}{" "}paper, so 2026
+          feels familiar, not frightening.
         </p>
       )}
 
@@ -131,7 +131,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
             2026 Exam Insight
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-body">
-            What the model is calling for the 2026 {subject.name} paper.
+            What the model is calling for the 2026 {subject.name}{" "}paper.
             Forecasts, not fixtures, every claim is charted inside the Exam
             Forecast.
           </p>
@@ -278,7 +278,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
             <span aria-hidden="true" className="text-accent">1.</span>
             <span className="text-body">
               <span className="font-medium text-ink">Know what&apos;s coming</span>{" "}
-, every {subject.name} topic ranked into four confidence tiers for 2026.
+, every {subject.name}{" "}topic ranked into four confidence tiers for 2026.
             </span>
           </li>
           <li className="flex gap-3">

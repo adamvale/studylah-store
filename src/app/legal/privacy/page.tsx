@@ -26,14 +26,14 @@ export default function PrivacyPage() {
         We record the timestamp of every consent you give. You can withdraw
         consent at any time via the unsubscribe link in any email or by
         writing to dpo@studylah.education, and we will stop the related
-        processing within [X] days.
+        processing within 30 days.
       </p>
       <h2>Retention and protection</h2>
       <p>
-        Order records are retained for [X] years to meet legal and accounting
+        Order records are retained for 5 years to meet legal and accounting
         obligations. Marketing lists are retained until you unsubscribe. Data
-        is stored on [hosting provider] with access limited to authorised
-        staff.
+        is stored with our third-party cloud hosting provider, with access
+        limited to authorised staff.
       </p>
       <h2>Your rights</h2>
       <p>

@@ -23,7 +23,8 @@ export default function ReferralTermsPage() {
       <h2>How rewards are paid</h2>
       <p>
         Rewards are paid in cash by PayNow to the payout contact you save in
-        your account, processed manually within [X] business days. Rewards are
+        your account, processed manually once the referred order has cleared
+        its refund window. Rewards are
         not credit, have no expiry once earned, and are not transferable. If
         you are under 18, provide a parent or guardian&apos;s PayNow details, 
         payouts to minors may require a parent or guardian&apos;s consent.

@@ -32,8 +32,7 @@ export default function TermsPage() {
       <p>
         To the maximum extent permitted by law, StudyLah&apos;s total
         liability for any claim is limited to the amount you paid for the
-        product concerned. [Standard limitation and governing-law clauses FOR
-        LAWYER REVIEW, governing law: Singapore.]
+        product concerned. These terms are governed by the laws of Singapore.
       </p>
     </LegalPage>
   );

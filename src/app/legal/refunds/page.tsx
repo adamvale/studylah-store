@@ -17,10 +17,10 @@ export default function RefundsPage() {
       </p>
       <h2>What counts as &quot;appeared&quot;</h2>
       <p>
-        A forecast topic counts as appeared when a question worth at least
-        [X] marks in Paper 1 or Paper 2 primarily assesses that topic, as
-        judged against the published syllabus topic list. Our post-sitting
-        scorecard applies the same standard in public.
+        A forecast topic counts as appeared when a question in Paper 1 or
+        Paper 2 primarily assesses that topic, as judged against the published
+        syllabus topic list. Our post-sitting scorecard applies the same
+        standard in public.
       </p>
       <h2>Digital goods</h2>
       <p>

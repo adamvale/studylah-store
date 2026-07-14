@@ -12,11 +12,3 @@ export function DisclaimerBox() {
     </div>
   );
 }
-
-export function PlaceholderBanner({ label }: { label: string }) {
-  return (
-    <p className="rounded-lg border border-heat-3 bg-heat-3/20 px-4 py-2.5 text-sm font-medium text-ink">
-      {label}
-    </p>
-  );
-}
