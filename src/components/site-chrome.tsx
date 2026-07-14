@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import { GuguChat } from "./gugu-chat";
+import { PromoBar } from "./promo-bar";
 import { StickyMobileCta } from "./sticky-mobile-cta";
 import { WelcomeOffer } from "./welcome-offer";
 
@@ -25,6 +26,7 @@ export function SiteChrome({
   const chromeless = CHROMELESS.some((p) => pathname.startsWith(p));
   return (
     <>
+      {!chromeless && <PromoBar />}
       {!chromeless && header}
       <main id="main-content" className="flex-1">
         {children}

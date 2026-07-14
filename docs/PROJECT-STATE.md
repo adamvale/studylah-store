@@ -116,6 +116,29 @@ Master-tier subject (`OrderItem.tier === "Master"`). Single source of truth:
   `/account/add-subjects`, `/account/referrals`, and auth. The promise is
   "your PDFs are always yours"; only the study/game layer is the Master perk.
 
+### Admin comp grants (`/admin/access`)
+
+Admins grant a customer pack access without a purchase from the **Access** tab.
+A grant is just a **S$0 order** whose `stripeSessionId` is prefixed `grant_`, so
+it reuses the entire order pipeline: entitlement (a Master grant flips
+`hasMasterAccess` → StudyLand + game unlock), the download page, and order
+history all work with zero extra plumbing. `src/lib/server/access-grants.ts`:
+`grantAccess({ email, items, notify })` (builds a comped `CheckoutQuote`
+directly, so the public 6-subject cart cap does NOT apply, and calls
+`createOrderFromCheckout` with the `comp: true` flag — which skips the referral
+reward + the "thanks for your order" email), `listGrants`, `revokeGrant`
+(deletes the grant order + items + download tokens in a txn; scoped to `grant_`
+orders so a real purchase can never be deleted). Admin-gated routes:
+`/api/admin/access/{grant,revoke}`.
+
+- **One subject or a bundle**: the Subject dropdown offers single subjects and
+  bundles (`all::<level>` for a whole level, `all::all` for every subject); a
+  bundle grant is one order holding all those subjects.
+- **Optional email**: a "notify" checkbox (default on) sends the customer a
+  "Your StudyLah access is ready" email with a one-time sign-in link
+  (`sendGrantEmail`, best-effort, never fails the grant). Untick it for a quiet
+  comp. Either way they sign in with that email to get their PDFs + dashboard.
+
 ## Deployment gotchas (each cost real debugging, do not relearn)
 
 1. **Railway service variables override Dockerfile ENV**, and relative paths

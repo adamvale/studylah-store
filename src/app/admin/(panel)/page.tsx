@@ -7,12 +7,16 @@ import { getEarlyBird } from "@/lib/server/pricing-store";
 export const dynamic = "force-dynamic";
 
 // "Am I Ready?" funnel, straight from DiagnosticEvent/Attempt, the same
-// own-DB analytics pattern as the rest of this dashboard.
+// own-DB analytics pattern as the rest of this dashboard. "Added to cart" is
+// the direct diagnostic->cart action (cta_clicked with meta "add_master").
 async function getDiagnosticFunnel() {
-  const [events, attempts, unlocked] = await Promise.all([
+  const [events, attempts, unlocked, addToCart] = await Promise.all([
     prisma.diagnosticEvent.groupBy({ by: ["type"], _count: { type: true } }),
     prisma.diagnosticAttempt.count(),
     prisma.diagnosticAttempt.count({ where: { unlockedAt: { not: null } } }),
+    prisma.diagnosticEvent.count({
+      where: { type: "cta_clicked", meta: "add_master" },
+    }),
   ]);
   const count = (type: string) =>
     events.find((e) => e.type === type)?._count.type ?? 0;
@@ -20,9 +24,24 @@ async function getDiagnosticFunnel() {
     starts: count("diagnostic_start"),
     completes: attempts,
     emails: unlocked,
+    addToCart,
     ctaClicks: count("cta_clicked"),
     shares: count("result_shared"),
   };
+}
+
+// Open abandoned carts (captured email, not yet recovered) = warm,
+// re-marketable demand. recoveredAt is set when they come back and pay.
+async function getAbandonedCarts() {
+  const [open, recovered] = await Promise.all([
+    prisma.abandonedCart.count({ where: { recoveredAt: null } }),
+    prisma.abandonedCart.count({ where: { recoveredAt: { not: null } } }),
+  ]);
+  return { open, recovered };
+}
+
+function pct(part: number, whole: number): string {
+  return whole > 0 ? `${Math.round((part / whole) * 100)}%` : "—";
 }
 
 function money(cents: number): string {
@@ -40,10 +59,11 @@ function Metric({ label, value, hint }: { label: string; value: string; hint?: s
 }
 
 export default async function AdminDashboardPage() {
-  const [m, earlyBird, funnel] = await Promise.all([
+  const [m, earlyBird, funnel, carts] = await Promise.all([
     getDashboardMetrics(),
     getEarlyBird(),
     getDiagnosticFunnel(),
+    getAbandonedCarts(),
   ]);
   const maxCount = Math.max(1, ...m.topSubjects.map((s) => s.count));
 
@@ -133,27 +153,57 @@ export default async function AdminDashboardPage() {
       </div>
 
       <div className="mt-6 rounded-2xl border border-hairline bg-surface p-5">
-        <p className="text-xs font-medium text-body">
-          &ldquo;Am I Ready?&rdquo; diagnostic funnel
-        </p>
-        <div className="mt-3 grid grid-cols-2 gap-3 text-center sm:grid-cols-5">
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <p className="text-xs font-medium text-body">
+            &ldquo;Am I Ready?&rdquo; diagnostic funnel
+          </p>
+          <p className="text-xs text-body">
+            Start &rarr; cart:{" "}
+            <span className="font-mono font-medium text-accent">
+              {pct(funnel.addToCart, funnel.starts)}
+            </span>
+          </p>
+        </div>
+        {/* Linear funnel with step-over-step conversion, so the biggest drop
+            is obvious at a glance. "Added to cart" is the diagnostic->cart
+            one-tap action. */}
+        <div className="mt-3 grid grid-cols-2 gap-3 text-center sm:grid-cols-4">
           {[
-            ["Starts", funnel.starts],
-            ["Completed", funnel.completes],
-            ["Emails", funnel.emails],
-            ["CTA clicks", funnel.ctaClicks],
-            ["Shares", funnel.shares],
-          ].map(([label, value]) => (
-            <div key={String(label)}>
-              <p className="font-display text-xl font-bold text-ink">{String(value)}</p>
-              <p className="text-xs text-body">{String(label)}</p>
+            { label: "Starts", value: funnel.starts, rate: null },
+            { label: "Completed", value: funnel.completes, rate: pct(funnel.completes, funnel.starts) },
+            { label: "Emails", value: funnel.emails, rate: pct(funnel.emails, funnel.completes) },
+            { label: "Added to cart", value: funnel.addToCart, rate: pct(funnel.addToCart, funnel.emails) },
+          ].map((step) => (
+            <div key={step.label} className="rounded-xl bg-night-2/40 p-3">
+              <p className="font-display text-xl font-bold text-ink">{step.value}</p>
+              <p className="text-xs text-body">{step.label}</p>
+              {step.rate && (
+                <p className="mt-0.5 font-mono text-[11px] text-guarantee">
+                  {step.rate} of prev
+                </p>
+              )}
             </div>
           ))}
         </div>
+        <div className="mt-3 flex flex-wrap gap-x-6 gap-y-1 border-t border-hairline pt-3 text-xs text-body">
+          <span>
+            CTA clicks (all):{" "}
+            <span className="font-mono text-ink">{funnel.ctaClicks}</span>
+          </span>
+          <span>
+            Result shares:{" "}
+            <span className="font-mono text-ink">{funnel.shares}</span>
+          </span>
+        </div>
       </div>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+      <div className="mt-6 grid gap-4 sm:grid-cols-3">
         <Metric label="Email leads" value={String(m.leadsAll)} hint={`${m.leadsWeek} this week`} />
+        <Metric
+          label="Open abandoned carts"
+          value={String(carts.open)}
+          hint={`${carts.recovered} recovered all-time`}
+        />
         <div className="rounded-2xl border border-hairline bg-surface p-5">
           <p className="text-xs font-medium text-body">Quick links</p>
           <div className="mt-2 flex flex-wrap gap-2">

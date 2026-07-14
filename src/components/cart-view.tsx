@@ -49,6 +49,28 @@ export function CartView() {
   const emailRef = useRef<HTMLInputElement>(null);
   const pricing = usePricing();
 
+  // Remember the buyer's email across visits (device-local) so an
+  // abandoned-cart return, or a repeat purchase, doesn't retype it. This is a
+  // real drop-off point: the recovery email sends people back here.
+  const emailLoaded = useRef(false);
+  useEffect(() => {
+    if (emailLoaded.current) return;
+    emailLoaded.current = true;
+    try {
+      const saved = localStorage.getItem("studylah-checkout-email");
+      if (saved) setEmail(saved);
+    } catch {
+      /* private mode */
+    }
+  }, []);
+  useEffect(() => {
+    try {
+      if (email) localStorage.setItem("studylah-checkout-email", email);
+    } catch {
+      /* private mode */
+    }
+  }, [email]);
+
   const priced = useMemo(() => pricing.priceCart(items), [pricing, items]);
   const nudges = useMemo(() => pricing.cartNudges(items), [pricing, items]);
 

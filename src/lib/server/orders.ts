@@ -47,8 +47,11 @@ export async function createOrderFromCheckout(options: {
   stripeSessionId: string;
   email: string;
   quote: CheckoutQuote;
+  // Admin comp grant: no money moved, so skip the referral reward (a free
+  // grant must not earn a referrer a payout) and the paid-order email.
+  comp?: boolean;
 }): Promise<CreateOrderResult> {
-  const { stripeSessionId, email, quote } = options;
+  const { stripeSessionId, email, quote, comp } = options;
 
   // findFirst, deliberately not findUnique: Prisma 7.8's query compiler
   // panics when concurrent identical findUnique calls get dataloader-batched
@@ -184,14 +187,20 @@ export async function createOrderFromCheckout(options: {
 
     const full = await loadFullOrder(order.id);
 
-    // Refer-a-friend bookkeeping, never throws, idempotent per order.
-    await processReferralReward(full);
+    // Refer-a-friend bookkeeping, never throws, idempotent per order. Skipped
+    // for admin comp grants (no purchase, so no referral reward).
+    if (!comp) {
+      await processReferralReward(full);
+    }
 
-    // Best-effort: a failed email must never lose a paid order.
-    try {
-      await sendOrderConfirmationEmail(full);
-    } catch (e) {
-      console.error(`Order ${order.id}: confirmation email failed`, e);
+    // Best-effort: a failed email must never lose a paid order. Comp grants
+    // don't send the "thanks for your order" email (admin tells them directly).
+    if (!comp) {
+      try {
+        await sendOrderConfirmationEmail(full);
+      } catch (e) {
+        console.error(`Order ${order.id}: confirmation email failed`, e);
+      }
     }
 
     // They bought: clear any abandoned-cart recovery for this email.
