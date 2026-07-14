@@ -42,7 +42,7 @@ const PHYSICS_PURE_6091: SubjectCopy = {
   syllabusChecker:
     "Not sure which syllabus your child takes? Physics as a single pure subject is 6091 (this pack); Physics inside combined Science is 5086 / 5087.",
   heroHook:
-    "Radioactivity was invisible for eight years. Then it anchored the data-based question two papers running.",
+    "Radioactivity, dynamics and light are forecast to carry the biggest blocks of your 2026 paper.",
   headlineCalls: [
     {
       title: "Radioactivity anchors the paper again.",
@@ -139,7 +139,7 @@ const CHEMISTRY_PURE_6092: SubjectCopy = {
   syllabusChecker:
     "Not sure which syllabus your child takes? Chemistry as a single pure subject is 6092 (this pack); Science (Chemistry) inside combined Science is 5086 / 5088.",
   heroHook:
-    "Qualitative analysis scored zero Paper 2 marks, two years running. It didn't vanish. It moved.",
+    "Chemical calculations and organic chemistry are forecast to carry the two biggest blocks of your 2026 paper.",
   headlineCalls: [
     {
       title: "Chemical Calculations is the spine of the paper.",
@@ -240,7 +240,7 @@ const CHEMISTRY_SCIENCE_5086: SubjectCopy = {
   syllabusChecker:
     "Not sure which syllabus your child takes? Check the school's subject posting or the exam entry form, Science (Chemistry) as part of combined Science is 5086 / 5088 (this pack); Chemistry as a single pure subject is 6092.",
   heroHook:
-    "Ten years of practicals. Not one acid-base titration.",
+    "Organic chemistry is the crown: 15 Paper 3 marks in 2024, 14 in 2025, the single biggest block on the paper.",
   headlineCalls: [
     {
       title: "Organic chemistry is the crown.",
@@ -804,7 +804,7 @@ const HISTORY_ELECTIVE_2261: SubjectCopy = {
   syllabusChecker:
     "Not sure which syllabus your child takes? History as the Combined Humanities elective is 2261 (this pack); History as a full subject is 2174.",
   heroHook:
-    "Origins of the Cold War in Europe is prescribed, and has never yet been the live case study.",
+    "Cold War origins and Nazi Germany are the forecast source case studies for 2026, and part (e) is always the assertion.",
   headlineCalls: [
     {
       title: "The 2024 revision quietly retired two heavyweights.",
@@ -894,7 +894,7 @@ const PHYSICS_SCIENCE_5086: SubjectCopy = {
   syllabusChecker:
     "Not sure which syllabus your child takes? Check the school's subject posting or the exam entry form, Science (Physics) as part of combined Science is 5086 / 5087 (this pack); Physics as a single pure subject is 6091.",
   heroHook:
-    "Absent for eight straight years. Then 8-9 marks, two years running.",
+    "Six topics are forecast to carry about half of your 2026 Paper 2, led by force & pressure and radioactivity.",
   headlineCalls: [
     {
       title: "Radioactivity was made a heavyweight the moment it arrived.",
@@ -1360,7 +1360,7 @@ const NA_PHYSICS_5105: SubjectCopy = {
   syllabusChecker:
     "Not sure which syllabus your child takes? N(A)-Level Science (Physics) is 5105 / 5106 (this pack). The O-Level papers, Science (Physics) 5086/5087 and Pure Physics 6091, are different exams with their own packs.",
   heroHook:
-    "Practical Electricity was worth about 34 Paper 2 marks, then scored zero in both new-era papers.",
+    "Radioactivity, D.C. circuits and practical electricity are forecast to carry the biggest blocks of your 2026 paper.",
   headlineCalls: [
     {
       title: "Radioactivity is the reform's new pillar, not a novelty.",
@@ -1455,7 +1455,7 @@ const NA_CHEMISTRY_5105: SubjectCopy = {
   syllabusChecker:
     "Not sure which syllabus your child takes? N(A)-Level Science (Chemistry) is 5105 / 5107 (this pack). The O-Level papers, Science (Chemistry) 5086/5088 and Pure Chemistry 6092, are different exams with their own packs.",
   heroHook:
-    "Electrolysis, salt preparation and reacting-mass stoichiometry have left the syllabus entirely. Your TYS hasn't noticed.",
+    "Organic chemistry and the Periodic Table are forecast to carry the crown of your 2026 paper.",
   headlineCalls: [
     {
       title: "Organic chemistry is the crown of the paper.",
@@ -1550,7 +1550,7 @@ const NA_BIOLOGY_5106: SubjectCopy = {
   syllabusChecker:
     "Not sure which syllabus your child takes? N(A)-Level Science (Biology) is 5106 / 5107 (this pack). The O-Level papers, Science (Biology) 5088 and Pure Biology 6093, are different exams with their own packs.",
   heroHook:
-    "The 2024 reform deleted the entire reproduction and genetics strand, about 60 marks a 2026 candidate will never see.",
+    "Flowering-plant biology is the crown of your 2026 paper, with respiration and human nutrition the rising stories.",
   headlineCalls: [
     {
       title: "Flowering-plant biology is the crown of the paper.",
@@ -1738,7 +1738,7 @@ const NA_HISTORY_2126: SubjectCopy = {
   syllabusChecker:
     "This pack covers N(A)-Level History (Elective) 2126. The O-Level papers, History (Elective) 2261 and History (Pure) 2174, are different exams with their own packs.",
   heroHook:
-    "Nazi Germany was the decade's workhorse, and has not been the case study since the 2024 reform.",
+    "Nazi Germany is the forecast Source-Based Case Study for 2026, with Cold War origins the strong second.",
   headlineCalls: [
     {
       title: "The 2024 revision reset the paper.",

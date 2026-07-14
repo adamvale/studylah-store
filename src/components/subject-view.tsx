@@ -12,20 +12,15 @@ import {
 } from "@/lib/catalogue";
 import { getPricing } from "@/lib/server/pricing-store";
 import { subjectCopy } from "@/lib/subject-copy";
-import { realTopCalls } from "@/lib/forecast-tables";
 import { getQuestionSet } from "@/lib/server/question-bank";
 import { packPreviewFor } from "@/lib/pack-previews";
 import { DisclaimerBox } from "./disclaimer";
 import { PackPreview } from "./pack-preview";
 import { ExamCountdown } from "./exam-countdown";
-import { HeatBar } from "./heat";
 import { SubjectStickyCta } from "./subject-sticky-cta";
 import { TierSelector } from "./tier-selector";
 
 export async function SubjectView({ subject }: { subject: Subject }) {
-  // The preview shows the subject's REAL top calls from its Forecast PDF's
-  // 2026 prediction table, No. 1 in the open, the rest masked.
-  const forecast = realTopCalls(subject.level, subject.slug, 4);
   const pricing = await getPricing();
   const { alacartePrice } = pricing;
   const hasQuiz = Boolean(await getQuestionSet(subject.level, subject.slug));
@@ -54,8 +49,6 @@ export async function SubjectView({ subject }: { subject: Subject }) {
       url: `https://www.studylah.education/${subject.level}/${subject.slug}`,
     },
   };
-  const accuracyAnchor = `${subject.level}-${subject.slug}`;
-
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -117,12 +110,6 @@ export async function SubjectView({ subject }: { subject: Subject }) {
         </p>
       )}
 
-      {copy && (
-        <p className="mt-3 max-w-2xl rounded-lg bg-trust-soft px-4 py-2.5 text-sm text-trust">
-          {copy.syllabusChecker}
-        </p>
-      )}
-
       {/* Bundle upsell right under the title, most students sit several
           subjects, and the per-subject price drops the more they add. */}
       <Link
@@ -139,43 +126,35 @@ export async function SubjectView({ subject }: { subject: Subject }) {
         </span>
       </Link>
 
+      {/* 2026 Exam Insight, a full-width section right below the bundle upsell. */}
+      {copy && copy.headlineCalls.length > 0 && (
+        <section className="mt-10 rounded-2xl border border-hairline bg-surface p-6">
+          <h2 className="font-display text-2xl font-black text-accent sm:text-3xl">
+            2026 Exam Insight
+          </h2>
+          <p className="mt-1 max-w-2xl text-sm text-body">
+            What the model is calling for the 2026 {subject.name} paper.
+            Forecasts, not fixtures, every claim is charted inside the Exam
+            Forecast.
+          </p>
+          <ul className="mt-5 grid gap-4 sm:grid-cols-2">
+            {copy.headlineCalls.map((call) => (
+              <li
+                key={call.title}
+                className="rounded-xl border border-hairline bg-night-2/40 p-4"
+              >
+                <p className="text-sm font-semibold text-ink">{call.title}</p>
+                <p className="mt-1 text-xs leading-relaxed text-body">
+                  {call.body}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       <div className="mt-10 grid gap-8 lg:grid-cols-5">
         <div className="lg:col-span-2">
-          <div className="card-hover rounded-2xl border border-hairline bg-surface p-5">
-            <div className="flex items-center justify-between">
-              <p className="font-display text-base font-bold text-ink">
-                Forecast preview
-              </p>
-              <span className="rounded-full bg-trust-soft px-2.5 py-1 font-mono text-xs font-medium text-accent">
-                2026
-              </span>
-            </div>
-            <div className="mt-4 space-y-3">
-              {forecast.slice(0, 1).map((row) => (
-                <HeatBar key={row.topic} topic={row.topic} tier={row.tier} />
-              ))}
-              {/* Masked rows carry NO real data, a topic key or prop would
-                  leak the call into the serialized RSC payload. */}
-              {forecast.slice(1, 4).map((_row, i) => (
-                <HeatBar
-                  key={`masked-${i}`}
-                  topic=""
-                  delayMs={(i + 1) * 120}
-                  masked
-                />
-              ))}
-            </div>
-            <p className="mt-4 border-t border-hairline pt-3 font-mono text-xs text-body">
-              Every topic tiered, Very High to Watch, in the Forecast PDF
-            </p>
-            <Link
-              href={`/accuracy?open=${accuracyAnchor}#${accuracyAnchor}`}
-              className="mt-2 inline-block text-xs font-medium text-accent hover:underline"
-            >
-              See how we scored on {subject.name} in 2025 →
-            </Link>
-          </div>
-
           {hasQuiz && (
             <div className="mt-4 rounded-2xl border border-accent/40 bg-surface p-5">
               <p className="font-display text-base font-bold text-ink">
@@ -193,32 +172,6 @@ export async function SubjectView({ subject }: { subject: Subject }) {
               </Link>
             </div>
           )}
-
-          {copy && copy.headlineCalls.length > 0 && (
-            <div className="mt-4 rounded-2xl border border-hairline bg-surface p-5">
-              <h2 className="font-display text-base font-bold text-ink">
-                What the model is calling for 2026
-              </h2>
-              <p className="mt-0.5 text-xs text-body">
-                Forecasts, not fixtures. Every claim is charted inside the Exam
-                Forecast.
-              </p>
-              <ul className="mt-3 space-y-3">
-                {copy.headlineCalls.map((call) => (
-                  <li key={call.title}>
-                    <p className="text-sm font-medium text-ink">{call.title}</p>
-                    <p className="mt-0.5 text-xs leading-relaxed text-body">
-                      {call.body}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          <div className="mt-4">
-            <DisclaimerBox />
-          </div>
         </div>
 
         <div className="space-y-4 lg:col-span-3">
@@ -378,6 +331,11 @@ export async function SubjectView({ subject }: { subject: Subject }) {
         >
           Build your bundle →
         </Link>
+      </div>
+
+      {/* Honesty-first disclaimer sits at the very bottom of the page. */}
+      <div className="mt-8">
+        <DisclaimerBox />
       </div>
 
       <SubjectStickyCta
