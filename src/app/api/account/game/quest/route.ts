@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { masterApiGate } from "@/lib/server/entitlements";
 import { sgDay } from "@/lib/server/study";
 import { questById, isoWeekOf } from "@/lib/game/season";
 import {
@@ -21,6 +22,8 @@ const ISO_WEEK = () => isoWeekOf(sgDay());
 
 export async function POST(request: Request) {
   const customerId = await getCustomerId();
+  const gate = await masterApiGate(customerId);
+  if (gate) return gate;
   if (!customerId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }

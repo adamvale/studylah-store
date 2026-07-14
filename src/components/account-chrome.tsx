@@ -174,6 +174,7 @@ function GameTabs() {
 
 export function AccountChrome({
   email,
+  isMaster,
   player,
   streak,
   todayDone,
@@ -181,6 +182,7 @@ export function AccountChrome({
   children,
 }: {
   email: string;
+  isMaster: boolean;
   player: PlayerHud;
   streak: number;
   todayDone: boolean;
@@ -195,7 +197,7 @@ export function AccountChrome({
     hud.init(player.level, player.intoLevel);
   }, [player.level, player.intoLevel]);
 
-  if (native) {
+  if (native && isMaster) {
     return (
       <div className="min-h-dvh">
         <GameHud player={player} streak={streak} todayDone={todayDone} shields={shields} />
@@ -243,7 +245,7 @@ export function AccountChrome({
       </div>
 
       <div className="print:hidden">
-        <AccountNav />
+        <AccountNav isMaster={isMaster} />
       </div>
 
       <div className="mt-6">

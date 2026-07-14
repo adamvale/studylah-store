@@ -84,6 +84,38 @@ change, streak push, parent digest). Key engines:
 - **Auth**: passwordless magic links, HMAC-signed stateless tokens
   (`customer-session.ts`), fail-closed without `CUSTOMER_AUTH_SECRET`.
 
+## Master-tier gating (StudyLand + StudyLah Legends are a Master perk)
+
+The whole site now sells StudyLand (the `/account` dashboard) and StudyLah
+Legends (the game) as **Master-tier-only** perks, so the app enforces it, no
+grandfathering. A customer "has access" once they own **at least one**
+Master-tier subject (`OrderItem.tier === "Master"`). Single source of truth:
+`src/lib/server/entitlements.ts`.
+
+- **`hasMasterAccess(customerId)`** — boolean, one Prisma lookup for any
+  Master order item.
+- **`requireMaster(customerId)`** — page guard; non-Master → `redirect("/account/unlock")`.
+  Applied after the login redirect in every StudyLand page under
+  `src/app/account/(dashboard)/`: page (Today), study, practice, progress,
+  mistakes, rescue, timer, adventure, more.
+- **`masterApiGate(customerId)`** — API guard; returns a `NextResponse`
+  (401 not signed in / 403 not Master) or `null` to proceed. Wired into every
+  StudyLand write/read route: `daily-quiz/submit`, `mistakes`, `goals`,
+  `topic-progress`, `xp/focus`, and all `game/*` routes (answer, quest, gym,
+  duel, duel/take, story, guru, questions).
+- **`/account/unlock`** — the upsell page non-Master buyers land on: "StudyLand
+  is a Master-tier perk", **Upgrade to Master** (→ `/subjects`) and
+  **Re-download my PDFs** (→ `/account/orders`).
+- **Nav** — `(dashboard)/layout.tsx` computes `isMaster` and passes it to
+  `AccountChrome`. Non-Master: the native game shell (HUD + tab bar) is
+  suppressed (`native && isMaster`) and they get the plain web shell;
+  `AccountNav` hides every locked tab (`MASTER_ONLY` set) and leads with an
+  **Unlock StudyLand** link.
+- **Always open to every buyer** (never gated): re-downloading PDFs
+  (`/account/orders`, the download routes), `/account/settings`,
+  `/account/add-subjects`, `/account/referrals`, and auth. The promise is
+  "your PDFs are always yours"; only the study/game layer is the Master perk.
+
 ## Deployment gotchas (each cost real debugging, do not relearn)
 
 1. **Railway service variables override Dockerfile ENV**, and relative paths

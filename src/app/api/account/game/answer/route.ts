@@ -3,6 +3,7 @@ import { prisma } from "@/lib/db";
 import { getSubject, type Level } from "@/lib/catalogue";
 import { getQuestionSet } from "@/lib/server/question-bank";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { masterApiGate } from "@/lib/server/entitlements";
 import { ownedSubjects, sgDay, isCorrect } from "@/lib/server/study";
 import { MONSTERS } from "@/lib/game";
 import { awardXp, totalXpFor, gamePayload, markAchievement, type GamePayload } from "@/lib/server/xp";
@@ -17,6 +18,8 @@ const WILD_CAP_PER_DAY = 150;
 
 export async function POST(request: Request) {
   const customerId = await getCustomerId();
+  const gate = await masterApiGate(customerId);
+  if (gate) return gate;
   if (!customerId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }

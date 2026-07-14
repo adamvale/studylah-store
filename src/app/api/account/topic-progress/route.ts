@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getSubject, type Level } from "@/lib/catalogue";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { masterApiGate } from "@/lib/server/entitlements";
 import { tierForTopic } from "@/lib/server/risk";
 import { XP } from "@/lib/game";
 import { awardXp, unlockBadge, totalXpFor, gamePayload, type GamePayload } from "@/lib/server/xp";
@@ -14,6 +15,8 @@ import { awardXp, unlockBadge, totalXpFor, gamePayload, type GamePayload } from 
 // a topic back and forth can never farm XP.
 export async function POST(request: Request) {
   const customerId = await getCustomerId();
+  const gate = await masterApiGate(customerId);
+  if (gate) return gate;
   if (!customerId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }

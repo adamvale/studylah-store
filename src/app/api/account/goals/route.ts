@@ -2,11 +2,14 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getSubject, type Level } from "@/lib/catalogue";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { masterApiGate } from "@/lib/server/entitlements";
 import { isValidGrade } from "@/lib/grades";
 
 // Set (or clear) a customer's target grade for one subject.
 export async function POST(request: Request) {
   const customerId = await getCustomerId();
+  const gate = await masterApiGate(customerId);
+  if (gate) return gate;
   if (!customerId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }

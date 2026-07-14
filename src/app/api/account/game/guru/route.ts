@@ -4,6 +4,7 @@ import { getSubject, type Level, type TopicFamily } from "@/lib/catalogue";
 import { type PublicQuestion } from "@/lib/diagnostic-questions";
 import { getQuestionSet, getTeachingCards } from "@/lib/server/question-bank";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { masterApiGate } from "@/lib/server/entitlements";
 import { ownedSubjects, sgDay, isCorrect } from "@/lib/server/study";
 import { awardXp, totalXpFor, gamePayload, type GamePayload } from "@/lib/server/xp";
 import { guruLesson, familyCanTeach } from "@/lib/game/guru";
@@ -22,6 +23,8 @@ const GURU_CAP_PER_DAY = 80;
 // GET, the Gurus available to this student (one per owned subject).
 export async function GET() {
   const customerId = await getCustomerId();
+  const gate = await masterApiGate(customerId);
+  if (gate) return gate;
   if (!customerId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }

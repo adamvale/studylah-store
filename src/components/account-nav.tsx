@@ -18,16 +18,36 @@ const LINKS = [
   { href: "/account/settings", label: "Settings" },
 ];
 
-export function AccountNav() {
+// StudyLand tabs that require the Master tier. Non-Master buyers only keep the
+// pages that stay open to every customer (orders, settings, commerce).
+const MASTER_ONLY = new Set([
+  "/account",
+  "/account/adventure",
+  "/account/study",
+  "/account/progress",
+  "/account/practice",
+  "/account/mistakes",
+  "/account/timer",
+]);
+
+export function AccountNav({ isMaster }: { isMaster: boolean }) {
   const pathname = usePathname();
   // Reader-app rule: no purchase surfaces (Add subjects) and no cash-reward
   // surfaces (Refer a friend) inside the native app.
   const hideCommerce = useHideCommerce();
-  const links = hideCommerce
+  let links = hideCommerce
     ? LINKS.filter(
         (l) => l.href !== "/account/add-subjects" && l.href !== "/account/referrals"
       )
     : LINKS;
+  // Non-Master buyers: hide every locked StudyLand tab and lead with the
+  // upgrade prompt instead. Their PDFs stay reachable via Orders.
+  if (!isMaster) {
+    links = [
+      { href: "/account/unlock", label: "Unlock StudyLand" },
+      ...links.filter((l) => !MASTER_ONLY.has(l.href)),
+    ];
+  }
   return (
     <nav
       aria-label="Account"

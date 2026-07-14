@@ -3,6 +3,7 @@ import { getSubject, type Level } from "@/lib/catalogue";
 import { type PublicQuestion } from "@/lib/diagnostic-questions";
 import { getQuestionSet } from "@/lib/server/question-bank";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { masterApiGate } from "@/lib/server/entitlements";
 import { ownedSubjects } from "@/lib/server/study";
 
 // Adventure mode: deal a hand of battle questions for a subject the player
@@ -10,6 +11,8 @@ import { ownedSubjects } from "@/lib/server/study";
 // never leave the server.
 export async function GET(request: Request) {
   const customerId = await getCustomerId();
+  const gate = await masterApiGate(customerId);
+  if (gate) return gate;
   if (!customerId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }

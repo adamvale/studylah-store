@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { masterApiGate } from "@/lib/server/entitlements";
 import { sgDay } from "@/lib/server/study";
 import { XP } from "@/lib/game";
 import { awardXp, totalXpFor, gamePayload } from "@/lib/server/xp";
@@ -13,6 +14,8 @@ const MAX_PER_DAY = 4;
 
 export async function POST(request: Request) {
   const customerId = await getCustomerId();
+  const gate = await masterApiGate(customerId);
+  if (gate) return gate;
   if (!customerId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }

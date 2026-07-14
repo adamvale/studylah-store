@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getQuestionSet } from "@/lib/server/question-bank";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { masterApiGate } from "@/lib/server/entitlements";
 import { ownedSubjects, isCorrect } from "@/lib/server/study";
 import { awardXp, totalXpFor, gamePayload, type GamePayload } from "@/lib/server/xp";
 import type { Level } from "@/lib/catalogue";
@@ -22,6 +23,8 @@ function role(duel: { creatorId: string; challengerId: string | null }, customer
 export async function PUT(request: Request) {
   // fetch-by-code: returns the sealed questions if the caller may take it
   const customerId = await getCustomerId();
+  const gate = await masterApiGate(customerId);
+  if (gate) return gate;
   if (!customerId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }

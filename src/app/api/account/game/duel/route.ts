@@ -3,6 +3,7 @@ import { prisma } from "@/lib/db";
 import { getSubject, type Level } from "@/lib/catalogue";
 import { getQuestionSet } from "@/lib/server/question-bank";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { masterApiGate } from "@/lib/server/entitlements";
 import { ownedSubjects } from "@/lib/server/study";
 
 // Study Duels, half 1: create + list. A duel is a server-dealt, SEALED set
@@ -24,6 +25,8 @@ function mintCode(): string {
 
 export async function POST(request: Request) {
   const customerId = await getCustomerId();
+  const gate = await masterApiGate(customerId);
+  if (gate) return gate;
   if (!customerId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }

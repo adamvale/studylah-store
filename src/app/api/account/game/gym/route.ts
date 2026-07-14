@@ -3,6 +3,7 @@ import { prisma } from "@/lib/db";
 import { getSubject, type Level } from "@/lib/catalogue";
 import { getQuestionSet } from "@/lib/server/question-bank";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { masterApiGate } from "@/lib/server/entitlements";
 import { ownedSubjects, isCorrect } from "@/lib/server/study";
 import { awardXp, totalXpFor, gamePayload, type GamePayload } from "@/lib/server/xp";
 
@@ -14,6 +15,8 @@ const GYM_XP = 25;
 
 export async function POST(request: Request) {
   const customerId = await getCustomerId();
+  const gate = await masterApiGate(customerId);
+  if (gate) return gate;
   if (!customerId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }

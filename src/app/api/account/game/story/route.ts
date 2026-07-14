@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { masterApiGate } from "@/lib/server/entitlements";
 import { STARTERS } from "@/lib/game";
 import {
   awardXp,
@@ -38,6 +39,8 @@ const BEATS: Record<string, number> = {
 
 export async function POST(request: Request) {
   const customerId = await getCustomerId();
+  const gate = await masterApiGate(customerId);
+  if (gate) return gate;
   if (!customerId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }

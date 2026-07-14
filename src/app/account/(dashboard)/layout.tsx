@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { getCustomerId } from "@/lib/server/customer-session";
+import { hasMasterAccess } from "@/lib/server/entitlements";
 import { sgDay, streakState } from "@/lib/server/study";
 import { getPlayer } from "@/lib/server/xp";
 import { AccountChrome } from "@/components/account-chrome";
@@ -33,10 +34,14 @@ export default async function AccountDashboardLayout({
   // auto-spends a shield if yesterday slipped.
   const streak = await streakState(customerId, sgDay());
   const player = await getPlayer(customerId);
+  // StudyLand + StudyLah Legends are Master-tier perks. Non-Master buyers keep
+  // a pared-back shell (no game tabs) so the nav never points at locked pages.
+  const isMaster = await hasMasterAccess(customerId);
 
   return (
     <AccountChrome
       email={customer.email}
+      isMaster={isMaster}
       streak={streak.current}
       todayDone={streak.doneToday}
       shields={streak.shields}
