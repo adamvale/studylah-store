@@ -23,14 +23,32 @@ export interface GuguSayDetail {
   cta?: GuguCta;
 }
 
+// Buffer the last message on `window` so a lazily-mounted Gugu (deferred for
+// performance) can replay a message fired before it hydrated — otherwise the
+// diagnostic-results cheer, dispatched on page load, would be lost.
+declare global {
+  interface Window {
+    __guguPending?: GuguSayDetail & { at: number };
+  }
+}
+
 export function guguSay(
   text: string,
   opts: { hold?: boolean; cta?: GuguCta } = {}
 ): void {
   if (typeof window === "undefined") return;
-  window.dispatchEvent(
-    new CustomEvent<GuguSayDetail>(GUGU_SAY_EVENT, {
-      detail: { text, hold: opts.hold ?? false, cta: opts.cta },
-    })
-  );
+  const detail: GuguSayDetail = { text, hold: opts.hold ?? false, cta: opts.cta };
+  window.__guguPending = { ...detail, at: Date.now() };
+  window.dispatchEvent(new CustomEvent<GuguSayDetail>(GUGU_SAY_EVENT, { detail }));
+}
+
+// Consume a message dispatched shortly before the listener mounted (once).
+export function consumePendingGuguSay(maxAgeMs = 10000): GuguSayDetail | null {
+  if (typeof window === "undefined") return null;
+  const p = window.__guguPending;
+  if (p && Date.now() - p.at <= maxAgeMs) {
+    window.__guguPending = undefined;
+    return { text: p.text, hold: p.hold, cta: p.cta };
+  }
+  return null;
 }

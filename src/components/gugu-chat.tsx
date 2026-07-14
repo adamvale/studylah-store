@@ -13,7 +13,7 @@ import { usePathname } from "next/navigation";
 import { usePricing } from "@/lib/pricing-context";
 import { sgd, type Level } from "@/lib/catalogue";
 import { useCart } from "@/lib/cart-context";
-import { GUGU_SAY_EVENT, type GuguCta, type GuguSayDetail } from "@/lib/gugu-bus";
+import { GUGU_SAY_EVENT, consumePendingGuguSay, type GuguCta, type GuguSayDetail } from "@/lib/gugu-bus";
 
 // Gugu, the floating sales helper (bottom-left of the storefront).
 //
@@ -559,6 +559,12 @@ export function GuguChat() {
       setResultCta(detail.cta ? { ...detail.cta, stage: "offer" } : null);
     };
     window.addEventListener(GUGU_SAY_EVENT, onSay);
+    // Replay a message fired just before this (possibly deferred) mount.
+    const pending = consumePendingGuguSay();
+    if (pending?.text) {
+      setOverride({ text: pending.text, hold: pending.cta ? true : !!pending.hold });
+      setResultCta(pending.cta ? { ...pending.cta, stage: "offer" } : null);
+    }
     return () => window.removeEventListener(GUGU_SAY_EVENT, onSay);
   }, []);
   useEffect(() => {
