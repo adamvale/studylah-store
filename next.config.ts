@@ -12,6 +12,23 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        // Security headers on every response (Lighthouse "best practices" +
+        // real hardening). No CSP here: the app relies on Next's inline
+        // bootstrap scripts, so a strict policy needs per-request nonces, more
+        // risk than reward for now. HSTS is safe, the site is HTTPS-only.
+        source: "/:path*",
+        headers: [
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
+          },
+        ],
+      },
+      {
         // The service worker must never be cached (a stale SW is unkillable)
         // and is pinned to same-origin scripts.
         source: "/sw.js",

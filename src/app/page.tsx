@@ -261,12 +261,12 @@ function ProblemGlyph({ char }: { char: string }) {
 }
 
 // "The Problem" agitation section: names the pain a parent feels before we show
-// the fix. Drop the 3D man-on-cloud art at public/marketing/parent-thinking.png
+// the fix. Drop the 3D man-on-cloud art at public/marketing/parent-thinking.webp
 // and it appears; until then the section renders cleanly without it.
 function TheProblem() {
-  const artPath = "/marketing/parent-thinking.png";
+  const artPath = "/marketing/parent-thinking.webp";
   const hasArt = existsSync(
-    join(process.cwd(), "public", "marketing", "parent-thinking.png")
+    join(process.cwd(), "public", "marketing", "parent-thinking.webp")
   );
   return (
     <section aria-labelledby="problem-heading" className="reveal py-20">
@@ -377,9 +377,9 @@ const CAUSE_TYPES: { label: string; body: React.ReactNode }[] = [
 ];
 
 function TheCause() {
-  const artPath = "/marketing/cause-student.png";
+  const artPath = "/marketing/cause-student.webp";
   const hasArt = existsSync(
-    join(process.cwd(), "public", "marketing", "cause-student.png")
+    join(process.cwd(), "public", "marketing", "cause-student.webp")
   );
   return (
     <section aria-labelledby="cause-heading" className="reveal py-12">
@@ -517,9 +517,9 @@ const STRATEGY_STEPS = [
 ];
 
 function TheSolution() {
-  const artPath = "/marketing/solution-target.png";
+  const artPath = "/marketing/solution-target.webp";
   const hasArt = existsSync(
-    join(process.cwd(), "public", "marketing", "solution-target.png")
+    join(process.cwd(), "public", "marketing", "solution-target.webp")
   );
   return (
     <section aria-labelledby="solution-heading" className="reveal py-12">
@@ -807,6 +807,7 @@ function PackRow() {
               src={p.img}
               alt={`${p.name}, StudyLah 2026 pack`}
               fill
+              priority
               sizes="(max-width: 640px) 33vw, 300px"
               className="object-contain drop-shadow-2xl"
             />
@@ -888,7 +889,7 @@ const WHY: { title: string; body: React.ReactNode }[] = [
 
 function WhyItWorks() {
   const hasArt = existsSync(
-    join(process.cwd(), "public", "marketing", "why-brain.png")
+    join(process.cwd(), "public", "marketing", "why-brain.webp")
   );
   return (
     <section className="reveal py-20">
@@ -905,7 +906,7 @@ function WhyItWorks() {
         {hasArt && (
           <div className="mt-6 flex justify-center">
             <Image
-              src="/marketing/why-brain.png"
+              src="/marketing/why-brain.webp"
               alt="A brain lit up with circuitry"
               width={320}
               height={280}
@@ -1281,11 +1282,11 @@ function Decision() {
           Your Moment of Decision
         </h2>
         {existsSync(
-          join(process.cwd(), "public", "marketing", "decision-summit.png")
+          join(process.cwd(), "public", "marketing", "decision-summit.webp")
         ) && (
           <div className="mt-6 flex justify-center">
             <Image
-              src="/marketing/decision-summit.png"
+              src="/marketing/decision-summit.webp"
               alt="A flag planted on a mountain summit"
               width={300}
               height={320}
