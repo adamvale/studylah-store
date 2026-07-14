@@ -110,29 +110,29 @@ export const PRODUCTS: Record<
   forecast: {
     name: "Exam Forecast",
     tagline: "See what's likely. Revise what matters.",
-    day: "Day 14",
+    day: "Day 30",
     blurb:
-      "Topic-by-topic probability analysis for your upcoming paper, so your last two weeks go where the marks are most likely to be.",
+      "Topic-by-topic probability analysis for your upcoming paper, so your final month goes where the marks are most likely to be.",
   },
   // Generic fallback. Real name/tagline come from the subject's spec below.
   companion: {
     name: "Companion Prediction",
     tagline: "The strand everyone under-rehearses.",
-    day: "Companion",
+    day: "Day 30",
     blurb:
       "A dedicated forecast for the paper or skill strand that decides the most marks, built from the same ten-year, question-level model as the Exam Forecast.",
   },
   vault: {
     name: "Sure Questions Vault",
     tagline: "Practise where the marks are.",
-    day: "Day 7",
+    day: "Day 20",
     blurb:
       "Original exam-style questions weighted to the forecast's tiers, each with a full answer key: worked answer, mark-scheme breakdown, technique, and the common mistake that loses the marks.",
   },
   rehearsal: {
     name: "Final Rehearsal",
     tagline: "Sit the exam before the exam.",
-    day: "Exam day",
+    day: "Day 10",
     // Never name specific papers here: subjects differ (N(A) Biology sits
     // Paper 5 and 6; O-Level Chemistry (Science) sits Paper 1 and 3).
     // `rehearsalBlurbFor` names the real ones.

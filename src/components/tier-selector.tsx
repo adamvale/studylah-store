@@ -53,7 +53,7 @@ export function TierSelector({
       </p>
       <fieldset className="mt-5">
         <legend className="sr-only">Tier for {subjectName}</legend>
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-5">
           {TIER_ORDER.map((t) => {
             const included = productsFor(t);
             const price = tierPrice(level, t);
@@ -75,42 +75,45 @@ export function TierSelector({
                   className="peer sr-only"
                 />
                 <span
-                  className={`flex h-full flex-col rounded-2xl border-2 bg-surface p-5 transition-all peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-trust ${
+                  className={`flex h-full flex-col rounded-2xl border-2 bg-surface p-3 transition-all peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-trust sm:p-5 ${
                     isMaster
                       ? "border-accent shadow-[0_0_0_1px_var(--color-accent),0_10px_30px_-14px_rgba(255,220,0,0.5)] peer-checked:border-accent"
                       : "border-hairline opacity-80 peer-checked:border-signal peer-checked:opacity-100"
                   }`}
                 >
                   {isMaster && (
-                    <span className="absolute -top-3 left-5 rounded-full bg-accent px-3 py-0.5 text-xs font-bold uppercase tracking-wide text-accent-deep">
-                      Most popular · best value
+                    <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent px-2 py-0.5 text-[8px] font-bold uppercase tracking-wide text-accent-deep sm:-top-3 sm:left-5 sm:translate-x-0 sm:px-3 sm:text-xs">
+                      <span className="sm:hidden">Best value</span>
+                      <span className="hidden sm:inline">
+                        Most popular · best value
+                      </span>
                     </span>
                   )}
-                  <span className="font-display text-lg font-bold text-ink">
+                  <span className="font-display text-base font-bold text-ink sm:text-lg">
                     {TIER_NAMES[t]}
                   </span>
-                  <span className="mt-1 font-mono text-2xl font-medium text-accent">
+                  <span className="mt-1 font-mono text-xl font-medium text-accent sm:text-2xl">
                     {sgd(price)}
                     {earlyBird && price !== regular && (
-                      <span className="ml-2 text-sm text-body line-through">
+                      <span className="mt-0.5 block text-xs text-body line-through sm:ml-2 sm:mt-0 sm:inline">
                         {sgd(regular)}
                       </span>
                     )}
                   </span>
                   {savings > 0 ? (
-                    <span className="mt-1 text-xs font-medium text-guarantee">
+                    <span className="mt-1 text-[10px] font-medium leading-tight text-guarantee sm:text-xs">
                       {sgd(value)} value, save {sgd(value - price)}
                     </span>
                   ) : (
-                    <span className="mt-1 text-xs text-body">
+                    <span className="mt-1 text-[10px] leading-tight text-body sm:text-xs">
                       The entry point
                     </span>
                   )}
-                  <span className="mt-4 space-y-1.5 text-sm text-body">
+                  <span className="mt-3 space-y-1 text-[11px] leading-tight text-body sm:mt-4 sm:space-y-1.5 sm:text-sm">
                     {included.map((p) => (
-                      <span key={p} className="flex items-center gap-2">
+                      <span key={p} className="flex items-start gap-1.5 sm:gap-2">
                         <span
-                          className="h-1.5 w-1.5 rounded-full bg-guarantee"
+                          className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-guarantee sm:mt-1.5"
                           aria-hidden="true"
                         />
                         {subject ? productNameFor(subject, p) : PRODUCTS[p].name}
