@@ -5,7 +5,7 @@ import {
   TIER_ORDER,
   subjectsForLevel,
 } from "@/lib/catalogue";
-import { listGrants } from "@/lib/server/access-grants";
+import { listCustomers, listGrants } from "@/lib/server/access-grants";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Access grants" };
@@ -19,7 +19,9 @@ export default async function AdminAccessPage({
   searchParams: Promise<{ granted?: string; revoked?: string; error?: string }>;
 }) {
   const sp = await searchParams;
-  const grants = await listGrants();
+  const [grants, customers] = await Promise.all([listGrants(), listCustomers()]);
+  const money = (cents: number) =>
+    `S$${(cents / 100).toLocaleString("en-SG", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
   const subjectOptions = PUBLISHED_LEVELS.flatMap((level) =>
     subjectsForLevel(level).map((s) => ({
       value: `${level}::${s.slug}`,
@@ -149,7 +151,7 @@ export default async function AdminAccessPage({
               </thead>
               <tbody>
                 {grants.map((g) => (
-                  <tr key={g.orderId} className="border-t border-hairline">
+                  <tr key={g.email} className="border-t border-hairline">
                     <td className="px-4 py-3 text-ink">{g.email}</td>
                     <td className="px-4 py-3 text-body">
                       {g.lines.map((l) => (
@@ -175,7 +177,7 @@ export default async function AdminAccessPage({
                     </td>
                     <td className="px-4 py-3 text-right">
                       <form action="/api/admin/access/revoke" method="post">
-                        <input type="hidden" name="orderId" value={g.orderId} />
+                        <input type="hidden" name="email" value={g.email} />
                         <button
                           type="submit"
                           className="rounded-lg border border-hairline px-3 py-1.5 text-xs font-medium text-coral hover:border-coral"
@@ -183,6 +185,88 @@ export default async function AdminAccessPage({
                           Revoke
                         </button>
                       </form>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+
+      {/* Customer directory: every account and what they own. */}
+      <div className="mt-10">
+        <h2 className="font-display text-lg font-bold text-ink">
+          All customers{" "}
+          <span className="text-sm font-normal text-body">({customers.length})</span>
+        </h2>
+        <p className="mt-1 text-sm text-body">
+          Everyone with an account and what they&apos;ve purchased. Comp grants
+          show a badge and don&apos;t count toward spend.
+        </p>
+        {customers.length === 0 ? (
+          <p className="mt-3 text-sm text-body">No customers yet.</p>
+        ) : (
+          <div className="mt-3 overflow-x-auto rounded-2xl border border-hairline">
+            <table className="w-full min-w-[640px] text-left text-sm">
+              <thead className="bg-night-2 text-xs text-body">
+                <tr>
+                  <th className="px-4 py-2 font-medium">Customer</th>
+                  <th className="px-4 py-2 font-medium">Purchases</th>
+                  <th className="px-4 py-2 font-medium">Spent</th>
+                  <th className="px-4 py-2 font-medium">Access</th>
+                </tr>
+              </thead>
+              <tbody>
+                {customers.map((c) => (
+                  <tr key={c.email} className="border-t border-hairline align-top">
+                    <td className="px-4 py-3 text-ink">
+                      {c.email}
+                      <span className="mt-0.5 block text-xs text-body">
+                        joined{" "}
+                        {c.createdAt.toLocaleDateString("en-SG", {
+                          day: "numeric",
+                          month: "short",
+                          year: "numeric",
+                        })}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3 text-body">
+                      {c.subjects.length === 0 ? (
+                        <span className="text-body/60">No purchases</span>
+                      ) : (
+                        c.subjects.map((s) => (
+                          <span
+                            key={`${s.subjectName}-${s.tier}`}
+                            className="mb-1 mr-1.5 inline-block rounded-full bg-night-2 px-2 py-0.5 text-xs text-ink"
+                          >
+                            {s.subjectName} · {s.tier}
+                          </span>
+                        ))
+                      )}
+                    </td>
+                    <td className="whitespace-nowrap px-4 py-3 text-ink">
+                      {money(c.spentCents)}
+                      <span className="mt-0.5 block text-xs text-body">
+                        {c.orders} order{c.orders === 1 ? "" : "s"}
+                      </span>
+                    </td>
+                    <td className="whitespace-nowrap px-4 py-3">
+                      {c.master && (
+                        <span className="mr-1 inline-block rounded-full bg-accent/15 px-2 py-0.5 text-xs font-medium text-accent">
+                          StudyLand
+                        </span>
+                      )}
+                      {c.comped && (
+                        <span className="inline-block rounded-full bg-signal/15 px-2 py-0.5 text-xs font-medium text-teal">
+                          Comp
+                        </span>
+                      )}
+                      {!c.master && !c.comped && (
+                        <span className="text-xs text-body/60">
+                          {c.orders > 0 ? "PDFs only" : "—"}
+                        </span>
+                      )}
                     </td>
                   </tr>
                 ))}

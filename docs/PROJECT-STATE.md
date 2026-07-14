@@ -126,18 +126,26 @@ history all work with zero extra plumbing. `src/lib/server/access-grants.ts`:
 `grantAccess({ email, items, notify })` (builds a comped `CheckoutQuote`
 directly, so the public 6-subject cart cap does NOT apply, and calls
 `createOrderFromCheckout` with the `comp: true` flag — which skips the referral
-reward + the "thanks for your order" email), `listGrants`, `revokeGrant`
-(deletes the grant order + items + download tokens in a txn; scoped to `grant_`
-orders so a real purchase can never be deleted). Admin-gated routes:
-`/api/admin/access/{grant,revoke}`.
+reward + the "thanks for your order" email), `listGrants`,
+`revokeGrantsForEmail`. Admin-gated routes: `/api/admin/access/{grant,revoke}`.
 
 - **One subject or a bundle**: the Subject dropdown offers single subjects and
   bundles (`all::<level>` for a whole level, `all::all` for every subject); a
   bundle grant is one order holding all those subjects.
+- **One row per customer**: each grant is its own `grant_` order, but
+  `listGrants` groups by email, so granting the same customer more subjects
+  adds to their existing row (deduped by subject+tier) instead of a new entry.
+  **Revoke is per-customer**: `revokeGrantsForEmail` deletes every `grant_`
+  order for that email (+ items + download tokens) in one txn, scoped to
+  `grant_` orders so a real purchase can never be deleted.
 - **Optional email**: a "notify" checkbox (default on) sends the customer a
   "Your StudyLah access is ready" email with a one-time sign-in link
   (`sendGrantEmail`, best-effort, never fails the grant). Untick it for a quiet
   comp. Either way they sign in with that email to get their PDFs + dashboard.
+- **Customer directory**: the Access page also lists every customer
+  (`listCustomers`) with their purchased subjects, total spend, order count,
+  and an access badge (StudyLand = Master, "PDFs only" = Essential/Strategic,
+  "Comp" = has a grant, "—" = no orders). Handy for deciding who to grant.
 
 ## Deployment gotchas (each cost real debugging, do not relearn)
 

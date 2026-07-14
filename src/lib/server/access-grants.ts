@@ -158,10 +158,11 @@ export async function grantAccess(input: {
 }
 
 export interface GrantRow {
-  orderId: number;
   email: string;
+  // Latest grant date for this customer.
   createdAt: Date;
-  // One line per distinct subject+tier on the grant (items are per-file).
+  // All distinct subject+tier granted to this customer, across every grant
+  // order, so a customer is one row no matter how many times they were granted.
   lines: { subjectName: string; tier: string }[];
   master: boolean;
 }
@@ -170,53 +171,133 @@ export async function listGrants(): Promise<GrantRow[]> {
   const orders = await prisma.order.findMany({
     where: { stripeSessionId: { startsWith: GRANT_PREFIX } },
     select: {
-      id: true,
       email: true,
       createdAt: true,
       items: { select: { subjectName: true, tier: true } },
     },
     orderBy: { createdAt: "desc" },
-    take: 200,
+    take: 500,
   });
-  return orders.map((o) => {
-    const seen = new Map<string, { subjectName: string; tier: string }>();
+  // Group by customer, folding every grant order into one row. Orders arrive
+  // newest-first, so the first time we see an email is its latest grant date.
+  const byEmail = new Map<
+    string,
+    { email: string; createdAt: Date; lines: Map<string, { subjectName: string; tier: string }> }
+  >();
+  for (const o of orders) {
+    const key = o.email.toLowerCase();
+    let row = byEmail.get(key);
+    if (!row) {
+      row = { email: o.email, createdAt: o.createdAt, lines: new Map() };
+      byEmail.set(key, row);
+    }
     for (const it of o.items) {
-      seen.set(`${it.subjectName}::${it.tier}`, {
+      row.lines.set(`${it.subjectName}::${it.tier}`, {
         subjectName: it.subjectName,
         tier: it.tier,
       });
     }
-    const lines = [...seen.values()];
+  }
+  return [...byEmail.values()].map((r) => {
+    const lines = [...r.lines.values()];
     return {
-      orderId: o.id,
-      email: o.email,
-      createdAt: o.createdAt,
+      email: r.email,
+      createdAt: r.createdAt,
       lines,
       master: lines.some((l) => l.tier === TIER_NAMES.master),
     };
   });
 }
 
-// Revoke a grant by deleting its order (and dependent items + download
-// tokens). Scoped to grant_ orders so a real purchase can never be deleted
-// through this path.
-export async function revokeGrant(orderId: number): Promise<GrantResult> {
-  const order = await prisma.order.findUnique({
-    where: { id: orderId },
-    select: { id: true, stripeSessionId: true },
+export interface CustomerRow {
+  email: string;
+  createdAt: Date;
+  orders: number; // paid (non-grant) orders
+  spentCents: number;
+  subjects: { subjectName: string; tier: string }[]; // purchased, deduped
+  master: boolean; // any Master entitlement (purchase OR comp grant)
+  comped: boolean; // has at least one admin grant
+}
+
+// Every customer and what they own, for the admin directory. Purchases exclude
+// comp grants (those show a separate "Comp" badge); `master` reflects real
+// access from either source.
+export async function listCustomers(): Promise<CustomerRow[]> {
+  const customers = await prisma.customer.findMany({
+    select: {
+      email: true,
+      createdAt: true,
+      orders: {
+        select: {
+          stripeSessionId: true,
+          totalCents: true,
+          items: { select: { subjectName: true, tier: true } },
+        },
+      },
+    },
+    orderBy: { createdAt: "desc" },
+    take: 500,
   });
-  if (!order || !order.stripeSessionId.startsWith(GRANT_PREFIX)) {
-    return { ok: false, error: "Not an admin grant." };
+  return customers.map((c) => {
+    let orders = 0;
+    let spentCents = 0;
+    let comped = false;
+    let master = false;
+    const subjects = new Map<string, { subjectName: string; tier: string }>();
+    for (const o of c.orders) {
+      const isGrant = o.stripeSessionId.startsWith(GRANT_PREFIX);
+      if (isGrant) {
+        comped = true;
+      } else {
+        orders += 1;
+        spentCents += o.totalCents;
+      }
+      for (const it of o.items) {
+        if (it.tier === TIER_NAMES.master) master = true;
+        if (!isGrant) {
+          subjects.set(`${it.subjectName}::${it.tier}`, {
+            subjectName: it.subjectName,
+            tier: it.tier,
+          });
+        }
+      }
+    }
+    return {
+      email: c.email,
+      createdAt: c.createdAt,
+      orders,
+      spentCents,
+      subjects: [...subjects.values()],
+      master,
+      comped,
+    };
+  });
+}
+
+// Revoke ALL comp access for a customer: delete every grant_ order for that
+// email (and its items + download tokens). Scoped to grant_ orders so a real
+// purchase can never be deleted through this path.
+export async function revokeGrantsForEmail(email: string): Promise<GrantResult> {
+  const norm = email.trim().toLowerCase();
+  const orders = await prisma.order.findMany({
+    where: { stripeSessionId: { startsWith: GRANT_PREFIX }, email: norm },
+    select: { id: true },
+  });
+  if (orders.length === 0) {
+    return { ok: false, error: "No grants for that customer." };
   }
+  const ids = orders.map((o) => o.id);
   try {
     await prisma.$transaction(async (tx) => {
-      await tx.downloadToken.deleteMany({ where: { orderItem: { orderId } } });
-      await tx.orderItem.deleteMany({ where: { orderId } });
-      await tx.order.delete({ where: { id: orderId } });
+      await tx.downloadToken.deleteMany({
+        where: { orderItem: { orderId: { in: ids } } },
+      });
+      await tx.orderItem.deleteMany({ where: { orderId: { in: ids } } });
+      await tx.order.deleteMany({ where: { id: { in: ids } } });
     });
-    return { ok: true, orderId };
+    return { ok: true, orderId: ids[0] };
   } catch (e) {
-    console.error("revokeGrant failed", e);
+    console.error("revokeGrantsForEmail failed", e);
     return { ok: false, error: "Revoke failed." };
   }
 }
