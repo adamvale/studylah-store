@@ -523,3 +523,17 @@ model GameTeachingCard {
 
   @@index([level, slug])
 }
+
+// One turn of a WhatsApp conversation with Gugu (via the Meta Cloud API
+// webhook). waId is the visitor's WhatsApp number; msgId is Meta's message id,
+// unique so redelivered webhooks can't double-process the same message.
+model WaMessage {
+  id        String   @id @default(cuid())
+  waId      String
+  role      String // "user" | "assistant"
+  content   String
+  msgId     String?  @unique
+  createdAt DateTime @default(now())
+
+  @@index([waId, createdAt])
+}

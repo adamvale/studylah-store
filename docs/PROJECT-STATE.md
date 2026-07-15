@@ -488,6 +488,22 @@ choice, one-line swap). Guardrails, all mandatory:
 free-text bot silently stays in scripted-fallback mode (quick replies still work).
 Cost is tiny (Haiku, ~$1/$5 per 1M tokens, ≤400 output tokens/reply).
 
+**WhatsApp channel (code complete, Meta setup pending owner).** The same brain
+answers WhatsApp: Meta Cloud API → `POST /api/webhooks/whatsapp`
+(`src/app/api/webhooks/whatsapp/route.ts`, HMAC-verified, msgId-deduped) →
+history from the `WaMessage` table (threads persist across days; consecutive
+same-role turns merged, Claude requires alternation) → `askGugu({ channel:
+"whatsapp" })` (same prompt with full `https://studylah.education/...` links
+instead of the site's bare-path buttons, same compliance filter) → reply via
+Graph API (`src/lib/server/whatsapp.ts`). With no `WHATSAPP_*` env vars it runs
+in stub mode, replies land in `data/outbox/*-whatsapp-*.json` (same pattern as
+the email stub). Fallbacks: compliance-tripped/errored replies send a scripted
+pointer to hello@studylah.education; non-text media gets a "text only" nudge;
+8/min per-number rate limit. **Owner setup steps (Meta app, permanent token,
+webhook subscribe, the 4 Railway env vars) are in `docs/WHATSAPP-SETUP.md`** —
+key caveat: the bot number becomes API-only (unusable in the phone app), so use
+a separate number, and visitor-initiated conversations cost Meta ~nothing.
+
 ## The game layer ("Clear the Fog"), SHIPPED, web-first
 
 XP ledger (`XpEvent`, unique per-action sourceKeys = farm-proof; levels/titles

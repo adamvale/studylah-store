@@ -60,6 +60,6 @@ export async function POST(request: Request) {
   const page =
     typeof body.page === "string" ? body.page.slice(0, 120) : undefined;
 
-  const result = await askGugu(history, page);
+  const result = await askGugu(history, { page });
   return NextResponse.json(result);
 }
