@@ -63,6 +63,19 @@ out of this.
 9. **Test** — WhatsApp the bot number "hi" from your own phone; Gugu should
    reply within a few seconds. Check Railway logs if not.
 
+## Reading and answering conversations yourself
+
+The bot number has no phone app, so the store's admin panel is the inbox:
+**/admin/whatsapp** shows every thread. Replying there sends as StudyLah (via
+the same API) and **pauses Gugu on that thread for 24 hours** — he hands back
+automatically. Two rules of the road:
+
+- Reply within 24h of the visitor's last message (free service window). After
+  24h of silence, the API can't deliver a plain reply at all (Meta would
+  require a paid, pre-approved template — not built).
+- The visitor sees one seamless conversation; there's no visible switch
+  between Gugu and you.
+
 ## Pricing notes
 
 - Visitor-initiated ("service") conversations are free on the Cloud API; Gugu

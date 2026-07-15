@@ -115,6 +115,19 @@ async function handleMessage(msg: WaTextMessage): Promise<void> {
 
   if (rateLimited(waId)) return;
 
+  // Human takeover: if the owner replied manually (admin inbox) in the last
+  // 24h, Gugu stands down on this thread. The inbound message is already
+  // stored above, so it shows up in the inbox for the owner to answer.
+  const takeover = await prisma.waMessage.findFirst({
+    where: {
+      waId,
+      manual: true,
+      createdAt: { gte: new Date(Date.now() - 24 * 60 * 60 * 1000) },
+    },
+    select: { id: true },
+  });
+  if (takeover) return;
+
   let reply: string;
   if (!text) {
     reply =

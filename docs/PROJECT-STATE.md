@@ -504,6 +504,16 @@ webhook subscribe, the 4 Railway env vars) are in `docs/WHATSAPP-SETUP.md`** —
 key caveat: the bot number becomes API-only (unusable in the phone app), so use
 a separate number, and visitor-initiated conversations cost Meta ~nothing.
 
+**Admin WhatsApp inbox (`/admin/whatsapp`).** Reads every thread from
+`WaMessage` (thread list + bubble view) and lets the owner reply as a human via
+`POST /api/admin/whatsapp/reply` (admin-gated, sends through the same
+`sendWhatsAppText`, stores `manual=true`). **Human takeover rule:** after a
+manual reply, the webhook auto-reply stands down on that thread for 24h (the
+inbound messages are still stored, so they appear in the inbox), then Gugu
+resumes automatically. Owner-initiated messages outside a visitor's 24h
+service window will NOT deliver (Meta requires paid template messages for
+that; deliberately not built — replies only).
+
 ## The game layer ("Clear the Fog"), SHIPPED, web-first
 
 XP ledger (`XpEvent`, unique per-action sourceKeys = farm-proof; levels/titles

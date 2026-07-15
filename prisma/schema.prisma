@@ -533,6 +533,9 @@ model WaMessage {
   role      String // "user" | "assistant"
   content   String
   msgId     String?  @unique
+  // true = sent by the owner from the admin inbox (human takeover). Gugu
+  // stays silent on a thread for 24h after the last manual reply.
+  manual    Boolean  @default(false)
   createdAt DateTime @default(now())
 
   @@index([waId, createdAt])
