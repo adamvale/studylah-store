@@ -611,6 +611,35 @@ sets `localStorage.studylah_unlock` → every zone/gate opens for that device
 only (`?unlock=0` clears it). Server ownership + gating are untouched, so real
 players are unaffected even with this shipped.
 
+## July 2026 feature batch (exam dates, nav dropdowns, rescue questionnaire, guru teach)
+
+- **Official 2026 exam dates + countdown** (`src/lib/exam-dates-2026.ts`,
+  `src/components/exam-schedule.tsx`): every subject's written/practical
+  papers transcribed from the official SEAB timetables (O-Level PDF
+  `file.go.gov.sg/2026-o-level-exam-cal.pdf`, N(A) `go.gov.sg/2026-n-level-exam-cal`,
+  both "Updated as at 13 Feb 2026"). Subject pages render a live ticking
+  countdown (days/hrs/min/sec) to the NEXT paper plus the full paper list;
+  falls back to the old generic `ExamCountdown` pill for subjects without
+  data. If SEAB revises the timetable, update the one data file.
+- **StudyLand nav dropdowns** (`src/components/account-nav.tsx`): the 11 flat
+  tabs became Today · Adventure · Study ▾ · Account ▾ (dropdowns with blurbs;
+  mobile panels centre-clamped to the viewport). **Rescue plan is now in the
+  Study menu.** Master gating + native hide-commerce rules preserved.
+- **Rescue plan questionnaire** (`/account/rescue`): three questions (feel:
+  behind/shaky/fine; hours/day → 2-6 blocks; subject focus) as a plain GET
+  form, answers re-shape `buildRescuePlan` (`src/lib/server/risk.ts`,
+  `RescueOptions`): "behind" sorts raw recoverable marks, "fine" skips
+  never-touched topics, hours set slots/day. Days-to-paper now defaults to
+  the official SEAB dates for owned subjects when the student hasn't entered
+  their own (priority: own dates → SEAB table → season start).
+- **Guru teach button** (`src/components/guru-teach.tsx`): after any daily-quiz
+  ("Today's three") or diagnostic-results answer is revealed, a "{emoji} Guru,
+  teach me" chip expands a step-by-step walkthrough of that exact question
+  (recap → the student's slip, with "sure = concept gap" framing → answer →
+  worked-solution beats → takeaway). Fully scripted from question data, zero
+  API cost. Guru name/emoji derived from the subject (Guru Wei ⚡ physics,
+  Guru Lim ⚗️ chemistry, ...).
+
 ## Next
 
 - **Store deployment (the live blocker)**: iOS TestFlight upload was failing

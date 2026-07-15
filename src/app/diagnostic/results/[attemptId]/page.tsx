@@ -18,6 +18,7 @@ import type { DiagnosticProduct } from "@/lib/diagnostic-questions";
 import { serverConfig } from "@/lib/server/config";
 import { HeatBar, TierPill } from "@/components/heat";
 import { GuaranteeBadge } from "@/components/guarantee-badge";
+import { GuruTeach } from "@/components/guru-teach";
 import {
   AddMasterToCart,
   CtaLink,
@@ -191,6 +192,27 @@ export default async function DiagnosticResultsPage({
                   <span className="font-medium text-guarantee">Worked solution: </span>
                   {q.workedSolution}
                 </p>
+                <div className="mt-3">
+                  <GuruTeach
+                    subjectName={subject.name}
+                    topic={q.topic}
+                    stem={q.stem}
+                    correctAnswer={
+                      q.type === "mcq" && q.options
+                        ? (q.options[Number(q.correctKey[0])] ?? q.correctKey[0])
+                        : q.correctKey.join(" / ")
+                    }
+                    given={
+                      g?.given
+                        ? q.type === "mcq" && q.options
+                          ? (q.options[Number(g.given)] ?? g.given)
+                          : g.given
+                        : undefined
+                    }
+                    correct={ok}
+                    workedSolution={q.workedSolution}
+                  />
+                </div>
               </div>
             </details>
           );

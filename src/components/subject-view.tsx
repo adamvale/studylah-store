@@ -13,9 +13,11 @@ import {
 import { getPricing } from "@/lib/server/pricing-store";
 import { subjectCopy } from "@/lib/subject-copy";
 import { packPreviewFor } from "@/lib/pack-previews";
+import { examPapersFor } from "@/lib/exam-dates-2026";
 import { DisclaimerBox } from "./disclaimer";
 import { PackPreview } from "./pack-preview";
 import { ExamCountdown } from "./exam-countdown";
+import { ExamSchedule } from "./exam-schedule";
 import { SubjectStickyCta } from "./subject-sticky-cta";
 import { TierSelector } from "./tier-selector";
 
@@ -92,7 +94,14 @@ export async function SubjectView({ subject }: { subject: Subject }) {
       <h1 className="mt-2 font-display text-4xl font-black tracking-tight text-ink">
         {title}
       </h1>
-      <ExamCountdown className="mt-3" />
+      {examPapersFor(subject.level, subject.slug).length > 0 ? (
+        <ExamSchedule
+          papers={examPapersFor(subject.level, subject.slug)}
+          className="mt-4 max-w-2xl"
+        />
+      ) : (
+        <ExamCountdown className="mt-3" />
+      )}
 
       {/* One quantified claim leads the page. A single claim reads as analysis;
           stacked claims read as advertising. */}

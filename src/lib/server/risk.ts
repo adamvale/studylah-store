@@ -219,15 +219,34 @@ const ACTION_BY_STATUS = [
 const SLOTS_PER_DAY = 3;
 const MAX_PLAN_DAYS = 14;
 
+// Questionnaire knobs (the /account/rescue form). "feel" widens or narrows
+// the topic pool: someone way behind needs foundations (include MEDIUM-tier
+// topics is wrong — they need the SAME high-payoff topics but more learning
+// slots), someone mostly-fine skips re-learning and drills under the clock.
+export interface RescueOptions {
+  slotsPerDay?: number; // from hours/day: 2..6
+  focusKeys?: Set<string>; // `${level}/${slug}` allowlist; empty/undefined = all
+  feel?: "behind" | "shaky" | "fine";
+}
+
 export function buildRescuePlan(
   risks: SubjectRisk[],
   daysUntilPaper: number,
-  unresolvedMistakes: number
+  unresolvedMistakes: number,
+  opts: RescueOptions = {}
 ): RescuePlan {
+  const slotsPerDay = Math.max(1, Math.min(opts.slotsPerDay ?? SLOTS_PER_DAY, 8));
   const pool: RescueItem[] = [];
   for (const r of risks) {
+    if (opts.focusKeys?.size && !opts.focusKeys.has(`${r.level}/${r.slug}`)) {
+      continue;
+    }
     for (const t of r.topics) {
       if (t.status >= 3) continue;
+      // "Mostly fine" students skip topics they have never opened (status 0
+      // would mean learning from scratch; their time is better spent sharpening
+      // what is already half-banked under exam conditions).
+      if (opts.feel === "fine" && t.status === 0) continue;
       if (t.tier !== "very-high" && t.tier !== "high") continue;
       const recoverable = t.atRisk - t.marks * STATUS_RISK[3];
       pool.push({
@@ -244,15 +263,18 @@ export function buildRescuePlan(
     }
   }
   // Highest marks recovered per step of effort first (a "revised" VERY HIGH
-  // topic beats an untouched HIGH one).
-  pool.sort(
-    (a, b) =>
-      b.recoverable / (3 - b.status) - a.recoverable / (3 - a.status) ||
-      b.recoverable - a.recoverable
+  // topic beats an untouched HIGH one). A "way behind" student instead takes
+  // raw marks first, effort be damned, because their meter has the most to
+  // claw back and half-measures won't move it.
+  pool.sort((a, b) =>
+    opts.feel === "behind"
+      ? b.recoverable - a.recoverable
+      : b.recoverable / (3 - b.status) - a.recoverable / (3 - a.status) ||
+        b.recoverable - a.recoverable
   );
 
   const days = Math.max(1, Math.min(daysUntilPaper, MAX_PLAN_DAYS));
-  const capacity = days * SLOTS_PER_DAY;
+  const capacity = days * slotsPerDay;
   const scheduled = pool.slice(0, capacity);
   const extras = pool.slice(capacity, capacity + 6);
 
@@ -275,7 +297,7 @@ export function buildRescuePlan(
 
   const planDays: RescueDay[] = [];
   for (let d = 0; d < days; d++) {
-    const items = interleaved.slice(d * SLOTS_PER_DAY, (d + 1) * SLOTS_PER_DAY);
+    const items = interleaved.slice(d * slotsPerDay, (d + 1) * slotsPerDay);
     if (items.length === 0) break;
     planDays.push({ dayNumber: d + 1, items });
   }

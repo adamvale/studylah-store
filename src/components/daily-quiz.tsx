@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import type { PublicDailyQuestion } from "@/lib/server/study";
 import { emitGame, emitFx } from "@/lib/game/fx";
+import { GuruTeach } from "./guru-teach";
 
 type Confidence = "sure" | "unsure" | "guess";
 
@@ -216,6 +217,16 @@ export function DailyQuiz({
                   {r.correct ? "Correct" : "Review"}
                 </span>
               </span>
+              <GuruTeach
+                subjectName={r.subjectName}
+                topic={r.topic}
+                stem={questions.find((q) => q.id === r.id)?.stem ?? ""}
+                correctAnswer={r.correctAnswer}
+                given={r.givenDisplay}
+                correct={r.correct}
+                wasSure={r.confidence === "sure"}
+                workedSolution={r.workedSolution}
+              />
             </div>
             {r.clearedNow && (
               <p className="mt-2 text-sm font-medium text-guarantee">
