@@ -116,3 +116,30 @@ export const EXAM_DATES_2026: Record<string, ExamPaper[]> = {
 export function examPapersFor(level: string, slug: string): ExamPaper[] {
   return EXAM_DATES_2026[`${level}::${slug}`] ?? [];
 }
+
+// ── The time gate ───────────────────────────────────────────────────────────
+// A subject's LEARNING surfaces (daily quiz, drills, plans, the game) retire
+// automatically once its 2026 exams are over: nothing left to prepare for.
+// Grace period: a few days past the final paper so students can do their
+// post-mortem. IMPORTANT: this gates study tools only. Orders, PDF downloads
+// and the money-back guarantee flow (open 14 days AFTER the exam) are never
+// touched by this gate.
+const ACCESS_GRACE_DAYS = 3;
+
+// When study access ends for a subject: final paper + grace. null = no dated
+// papers known (subject never expires automatically).
+export function subjectAccessEndsAt(level: string, slug: string): Date | null {
+  const papers = EXAM_DATES_2026[`${level}::${slug}`];
+  if (!papers || papers.length === 0) return null;
+  const last = Math.max(...papers.map((p) => new Date(p.at).getTime()));
+  return new Date(last + ACCESS_GRACE_DAYS * 24 * 60 * 60 * 1000);
+}
+
+export function subjectExamOver(
+  level: string,
+  slug: string,
+  now: Date = new Date()
+): boolean {
+  const ends = subjectAccessEndsAt(level, slug);
+  return ends !== null && now.getTime() > ends.getTime();
+}

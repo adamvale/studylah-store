@@ -22,7 +22,8 @@ export interface DrillCard {
   subjectName: string;
   topic: string;
   front: string; // the prompt side
-  back: string; // the answer side
+  back: string; // the answer side (for formulas: the formula in math notation)
+  symbols?: { sym: string; meaning: string; unit?: string }[]; // formula legend
   note?: string;
   due: boolean; // true = scheduled review, false = brand new
 }
@@ -128,7 +129,8 @@ export async function GET(request: Request) {
         subjectName: subj.name,
         topic: f.name,
         front: f.prompt,
-        back: f.answer,
+        back: f.formula,
+        symbols: f.symbols,
         note: f.note,
         due: true,
       });
@@ -145,7 +147,8 @@ export async function GET(request: Request) {
         subjectName: subj.name,
         topic: f.name,
         front: f.prompt,
-        back: f.answer,
+        back: f.formula,
+        symbols: f.symbols,
         note: f.note,
         due: false,
       });

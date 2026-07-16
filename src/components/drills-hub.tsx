@@ -31,6 +31,7 @@ interface DrillCard {
   topic: string;
   front: string;
   back: string;
+  symbols?: { sym: string; meaning: string; unit?: string }[];
   note?: string;
   due: boolean;
 }
@@ -44,8 +45,8 @@ interface DrillStats {
 const TABS = [
   { id: "definition", label: "📖 Definitions" },
   { id: "formula", label: "📐 Formulas" },
-  { id: "explain", label: "🗣 Explain it back" },
   { id: "structured", label: "✍️ Structured answers" },
+  { id: "explain", label: "🗣 Explain it back" },
 ] as const;
 type TabId = (typeof TABS)[number]["id"];
 
@@ -225,9 +226,38 @@ function CardDrill({ kind }: { kind: "definition" | "formula" }) {
         ) : (
           <>
             <div className="mt-4 rounded-xl border border-guarantee/30 bg-night p-4">
-              <p className="whitespace-pre-wrap text-sm leading-relaxed text-ink">
-                {card.back}
-              </p>
+              {kind === "formula" ? (
+                // The formula the way a textbook prints it, then the legend:
+                // every symbol, what it stands for, and its SI unit.
+                <>
+                  <p className="font-serif text-2xl italic leading-relaxed text-ink">
+                    {card.back}
+                  </p>
+                  {card.symbols && card.symbols.length > 0 && (
+                    <ul className="mt-4 space-y-1.5 border-t border-hairline pt-3">
+                      {card.symbols.map((s) => (
+                        <li key={s.sym} className="flex gap-2 text-sm text-body">
+                          <span className="shrink-0 font-serif italic text-ink">
+                            {s.sym}:
+                          </span>
+                          <span>
+                            {s.meaning}
+                            {s.unit ? (
+                              <span className="text-cloud">
+                                , measured in {s.unit}
+                              </span>
+                            ) : null}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              ) : (
+                <p className="whitespace-pre-wrap text-sm leading-relaxed text-ink">
+                  {card.back}
+                </p>
+              )}
               {card.note && (
                 <p className="mt-2 text-xs text-body">{card.note}</p>
               )}

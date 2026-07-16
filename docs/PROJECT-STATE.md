@@ -666,6 +666,20 @@ sentiment tap (love/okay/rough) + free text → `POST /api/account/game/feedback
 (master-gated) → `GameFeedback` table (migration 20260716040000). Read it in
 **/admin/feedback** (sentiment counts + latest 200 with customer emails).
 
+## Subject time gate (auto-retirement after the 2026 exams)
+
+Once a subject's FINAL 2026 paper is sat (+3 days grace, `ACCESS_GRACE_DAYS`
+in exam-dates-2026.ts), the subject automatically retires from every LEARNING
+surface for every user: `ownedSubjects()` filters via `subjectExamOver()`, and
+that helper feeds the daily quiz, drills, plans, risk meters, war room and the
+game. No data is deleted, it is a pure time filter, so it is reversible and
+subjects without dated papers never expire. **Deliberately untouched: Orders,
+PDF downloads and the money-back guarantee flow** (claims open 14 days after
+the exam), those query the order tables directly. The Today page shows a
+one-line "Exams done: X, retired from your daily tools, PDFs stay in Orders"
+note when it happens. First retirement: N(A) History (8 Oct 2026); last:
+subjects with 10 Nov papers (13 Nov 2026). Unit-tested date math (8 cases).
+
 ## The 10x learning batch (July 2026): SRS, drills, coach, war room
 
 Ten upgrades shipped in one pass. The spine is a **unified spaced-repetition

@@ -6,6 +6,7 @@ import { getCustomerId } from "@/lib/server/customer-session";
 import { requireMaster } from "@/lib/server/entitlements";
 import {
   ownedSubjects,
+  ownedSubjectsAll,
   dailyPicks,
   toPublicDaily,
   sgDay,
@@ -66,6 +67,12 @@ export default async function TodayPage() {
     select: { email: true },
   });
   const subjects = await ownedSubjects(customerId);
+  // Subjects whose 2026 exams are done retire from the study tools (the time
+  // gate); tell the student where their stuff went, once, quietly.
+  const allSubjects = await ownedSubjectsAll(customerId);
+  const retired = allSubjects.filter(
+    (a) => !subjects.some((s) => s.level === a.level && s.slug === a.slug)
+  );
   const today = sgDay();
 
   const [dayRows, unresolvedMistakes, examDates, orderCount, downloads, attempts, goals] =
@@ -289,6 +296,20 @@ export default async function TodayPage() {
         </p>
         {/* Which season of the campaign we're in, driven by real paper dates */}
         <PhaseBanner customerId={customerId} subjects={subjects} />
+        {retired.length > 0 && (
+          <div className="mt-3 rounded-2xl border border-hairline bg-surface px-4 py-3 text-sm text-body">
+            🎓 Exams done:{" "}
+            <span className="font-medium text-ink">
+              {retired.map((r) => r.name).join(", ")}
+            </span>
+            . {retired.length === 1 ? "That subject has" : "Those subjects have"}{" "}
+            retired from your daily tools. Your PDFs stay in{" "}
+            <Link href="/account/orders" className="font-medium text-accent hover:underline">
+              Orders
+            </Link>
+            , and the guarantee window stays open as published.
+          </div>
+        )}
       </div>
 
       <GettingStarted steps={steps} />

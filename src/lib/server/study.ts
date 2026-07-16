@@ -5,6 +5,7 @@ import {
 } from "@/lib/diagnostic-questions";
 import { getQuestionSet } from "@/lib/server/question-bank";
 import { LEVELS, type Level } from "@/lib/catalogue";
+import { subjectExamOver } from "@/lib/exam-dates-2026";
 
 // Shared server helpers for the study suite (daily retrieval, mistakes, goals,
 // pacing). Kept Prisma-aware but framework-free so routes and pages can share.
@@ -17,8 +18,18 @@ export interface OwnedSubject {
   levelShort: string;
 }
 
-// The distinct subjects a customer has paid for (refunded orders excluded).
+// The distinct subjects a customer has paid for (refunded orders excluded),
+// MINUS subjects whose 2026 exams are over (the time gate in
+// exam-dates-2026.ts): once the final paper is sat, the subject retires from
+// every learning surface. Orders and downloads are untouched, they query the
+// order tables directly. Use ownedSubjectsAll when you genuinely need the
+// unfiltered list.
 export async function ownedSubjects(customerId: string): Promise<OwnedSubject[]> {
+  const all = await ownedSubjectsAll(customerId);
+  return all.filter((s) => !subjectExamOver(s.level, s.slug));
+}
+
+export async function ownedSubjectsAll(customerId: string): Promise<OwnedSubject[]> {
   const orders = await prisma.order.findMany({
     where: { customerId, status: { not: "refunded" } },
     include: { items: { include: { product: { include: { subject: true } } } } },
