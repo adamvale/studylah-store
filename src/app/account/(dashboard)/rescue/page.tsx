@@ -164,23 +164,20 @@ export default async function RescuePage({
             </legend>
             <div className="mt-2 space-y-1.5">
               {feelChoices.map((c) => (
-                <label
-                  key={c.value}
-                  className={`flex cursor-pointer items-baseline gap-2 rounded-lg border px-3 py-2 text-sm ${
-                    feel === c.value
-                      ? "border-accent bg-accent/10 text-ink"
-                      : "border-hairline text-body hover:text-ink"
-                  }`}
-                >
+                <label key={c.value} className="block cursor-pointer">
+                  {/* peer-checked styling = the highlight moves the moment you
+                      tap, no waiting for the form to submit */}
                   <input
                     type="radio"
                     name="f"
                     value={c.value}
                     defaultChecked={feel === c.value}
-                    className="sr-only"
+                    className="peer sr-only"
                   />
-                  <span className="font-medium">{c.label}</span>
-                  <span className="text-xs">{c.blurb}</span>
+                  <span className="flex items-baseline gap-2 rounded-lg border border-hairline px-3 py-2 text-sm text-body hover:text-ink peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-ink">
+                    <span className="font-medium">{c.label}</span>
+                    <span className="text-xs">{c.blurb}</span>
+                  </span>
                 </label>
               ))}
             </div>
@@ -191,24 +188,19 @@ export default async function RescuePage({
             </legend>
             <div className="mt-2 space-y-1.5">
               {hourChoices.map((c) => (
-                <label
-                  key={c.value}
-                  className={`flex cursor-pointer items-baseline gap-2 rounded-lg border px-3 py-2 text-sm ${
-                    hours === c.value
-                      ? "border-accent bg-accent/10 text-ink"
-                      : "border-hairline text-body hover:text-ink"
-                  }`}
-                >
+                <label key={c.value} className="block cursor-pointer">
                   <input
                     type="radio"
                     name="h"
                     value={c.value}
                     defaultChecked={hours === c.value}
-                    className="sr-only"
+                    className="peer sr-only"
                   />
-                  <span className="font-medium">{c.label}</span>
-                  <span className="text-xs">
-                    {HOURS_TO_SLOTS[c.value]} blocks/day
+                  <span className="flex items-baseline gap-2 rounded-lg border border-hairline px-3 py-2 text-sm text-body hover:text-ink peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-ink">
+                    <span className="font-medium">{c.label}</span>
+                    <span className="text-xs">
+                      {HOURS_TO_SLOTS[c.value]} blocks/day
+                    </span>
                   </span>
                 </label>
               ))}
