@@ -688,7 +688,10 @@ to box 1) shared by three card kinds: question / definition / formula.
   `violatesCompliance` filter + fallback, 10/min rate limit) with 3 modes:
   `autopsy` (why each wrong MCQ option tempts, surfaced as a button on the
   final GuruTeach step), `explain` (grades explain-it-back), `structured`
-  (mark-scheme feedback: Earned / Dropped / Marker's tip).
+  (real marking: "Score: X/Y" where Y = marks stated in the question else the
+  model's crediting-point count, then one ✓/✗ line per crediting point, then a
+  Marker's tip; the client parses the score into a badge and colours ✓/✗
+  lines, `MarkedFeedback` in drills-hub.tsx).
 - **Today page**: `PhaseBanner` (build/consolidate/sharpen/war phases from
   own ExamDate rows else the SEAB table; war phase links the War Room) and
   `WeekReport` (quiz days, accuracy, monsters cleared, cards reviewed, week

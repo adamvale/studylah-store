@@ -376,6 +376,54 @@ function ExplainBack({ subjects }: { subjects: SubjectTopics[] }) {
   );
 }
 
+// Renders marker feedback with the score pulled out as a badge and each
+// crediting point coloured by its ✓/✗. Falls back to plain text when the
+// coach didn't use the format (or sent fallback copy).
+function MarkedFeedback({ text }: { text: string }) {
+  const lines = text.split("\n").filter((l) => l.trim() !== "");
+  const scoreMatch = lines[0]?.match(/^Score:\s*(\d+)\s*\/\s*(\d+)/i);
+  const body = scoreMatch ? lines.slice(1) : lines;
+  const earned = scoreMatch ? Number(scoreMatch[1]) : null;
+  const total = scoreMatch ? Number(scoreMatch[2]) : null;
+  const good = earned !== null && total !== null && earned >= total * 0.7;
+
+  return (
+    <div className="mt-4 rounded-xl border border-violet/40 bg-night p-4">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <p className="text-xs font-bold uppercase tracking-wide text-violet">
+          Marker's feedback
+        </p>
+        {earned !== null && (
+          <span
+            className={`rounded-lg px-3 py-1 font-display text-lg font-black ${
+              good ? "bg-guarantee/15 text-guarantee" : "bg-coral/15 text-coral"
+            }`}
+          >
+            {earned}/{total}
+          </span>
+        )}
+      </div>
+      <div className="mt-2 space-y-1.5">
+        {body.map((line, i) => {
+          const t = line.trim();
+          const cls = t.startsWith("✓")
+            ? "text-guarantee"
+            : t.startsWith("✗")
+              ? "text-coral"
+              : t.toLowerCase().startsWith("marker's tip")
+                ? "mt-2 text-ink"
+                : "text-cloud";
+          return (
+            <p key={i} className={`text-sm leading-relaxed ${cls}`}>
+              {t}
+            </p>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 // ── Structured answer trainer ───────────────────────────────────────────────
 
 function StructuredTrainer({ cards }: { cards: StructuredCard[] }) {
@@ -468,16 +516,7 @@ function StructuredTrainer({ cards }: { cards: StructuredCard[] }) {
           Next question
         </button>
       </div>
-      {feedback && (
-        <div className="mt-4 rounded-xl border border-violet/40 bg-night p-4">
-          <p className="text-xs font-bold uppercase tracking-wide text-violet">
-            Marker's feedback
-          </p>
-          <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-ink">
-            {feedback}
-          </p>
-        </div>
-      )}
+      {feedback && <MarkedFeedback text={feedback} />}
       {showModel && (
         <div className="mt-3 rounded-xl border border-guarantee/30 bg-night p-4">
           <p className="text-xs font-bold uppercase tracking-wide text-guarantee">

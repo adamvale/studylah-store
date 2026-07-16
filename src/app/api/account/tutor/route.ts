@@ -101,11 +101,18 @@ Student's explanation: """${text}"""`,
     if (!prompt || !model || answer.trim().length < 10) return null;
     return {
       system: `${BASE_RULES}
-Task: mark a structured exam answer against the model answer. The model answer marks its key crediting phrases in CAPITALS. Respond:
-Line 1: "Earned: <which crediting points their answer hits, using the model's key phrases>"
-Line 2: "Dropped: <which crediting points are missing or too vague to credit>"
-Line 3: "Marker's tip: <one concrete rewrite of their weakest sentence, in exam phrasing>"
-Judge only against the model answer. Max 6 lines.`,
+Task: mark a structured exam answer against the model answer, like a marker with a mark scheme.
+
+First, decide the marks available (Y): if the question states its marks (e.g. "(4 marks)"), use that number; otherwise count the distinct crediting points in the model answer (its CAPITALISED phrases are the anchors). Award one mark per crediting point the student's answer clearly earns (X).
+
+Respond in EXACTLY this format:
+Score: X/Y
+✓ <crediting point earned> (quote the student words that earned it)
+✗ <crediting point missed>: <exactly what is wrong or missing, quoting their vague phrase if there is one>
+(one line per crediting point, every point gets a ✓ or ✗ line, in the model answer's order)
+Marker's tip: <one concrete rewrite of their weakest line, in exam phrasing>
+
+Be strict the way a real marker is: vague wording does not score. Judge only against the model answer.`,
       user: `Question: ${prompt}
 Model answer (crediting phrases in CAPS): ${model}
 Student's answer: """${answer}"""`,
@@ -142,7 +149,7 @@ export async function POST(request: Request) {
     const client = new Anthropic({ apiKey });
     const res = await client.messages.create({
       model: GUGU_MODEL,
-      max_tokens: 400,
+      max_tokens: 600,
       system: req.system,
       messages: [{ role: "user", content: req.user }],
     });
