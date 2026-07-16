@@ -270,12 +270,43 @@ function buildHub(
   // the town notice board
   put(grid, 11, 5, TILE.SIGN);
 
-  // Province portals along the east edge, one per subject
+  // Province portals, one per subject. The town is a FIXED 21x17 grid, so
+  // portals live in a fixed slot list: east edge first (the classic layout),
+  // then the west edge once the coast is full. The old `y = 4 + i * 2` walked
+  // straight off the map for accounts with 8+ subjects (an all-subjects owner
+  // grant crashed the whole page: grid[y] undefined) and collided with the
+  // Saltwind portal at y=12 from 5 subjects up.
+  const EAST_X = 19;
+  const WEST_X = 1;
+  const PORTAL_SLOTS: { x: number; y: number }[] = [
+    // east edge: keep the original first-four positions, skip 12 (Saltwind)
+    ...[4, 6, 8, 10, 14, 3, 5, 7, 9, 11, 13, 15].map((y) => ({ x: EAST_X, y })),
+    // west edge overflow
+    ...[4, 6, 8, 10, 12, 14, 3, 5, 7, 9, 11, 13, 15].map((y) => ({ x: WEST_X, y })),
+  ];
   const portals: Portal[] = subjects.map((s, i) => {
-    const y = 4 + i * 2;
-    put(grid, 19, y, PORTAL);
-    for (let x = 10; x <= 18; x++) if (grid[y][x] === TILE.GRASS) put(grid, x, y, TILE.PATH);
-    return { x: 19, y, toZone: provId(s), toX: 7, toY: 23, label: `${s.emoji} ${s.name} Province` };
+    const slot = PORTAL_SLOTS[i % PORTAL_SLOTS.length];
+    put(grid, slot.x, slot.y, PORTAL);
+    // carve a walkable approach to the portal
+    if (slot.x === EAST_X) {
+      // east: straight corridor from the central spine
+      for (let x = 10; x <= 18; x++)
+        if (grid[slot.y]?.[x] === TILE.GRASS) put(grid, x, slot.y, TILE.PATH);
+    } else {
+      // west: the x=2 column is building-free, so run a vertical connector
+      // from the avenue (y=8) to the portal's row, portal sits one step west
+      const [lo, hi] = slot.y < 8 ? [slot.y, 8] : [8, slot.y];
+      for (let y2 = lo; y2 <= hi; y2++)
+        if (grid[y2]?.[2] === TILE.GRASS) put(grid, 2, y2, TILE.PATH);
+    }
+    return {
+      x: slot.x,
+      y: slot.y,
+      toZone: provId(s),
+      toX: 7,
+      toY: 23,
+      label: `${s.emoji} ${s.name} Province`,
+    };
   });
 
   // Saltwind Steps portal, south-east corner of the avenue
