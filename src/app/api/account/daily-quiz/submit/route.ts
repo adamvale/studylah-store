@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { masterApiGate } from "@/lib/server/entitlements";
+import { recordReview } from "@/lib/server/srs";
 import {
   ownedSubjects,
   dailyPicks,
@@ -76,7 +77,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "No questions available." }, { status: 400 });
   }
 
-  const results = picks.map(({ question: q, subject, mistakeId }) => {
+  const results = picks.map(({ question: q, subject, mistakeId, reviewKey }) => {
     const given = String(answers[q.id] ?? "");
     const correct = given !== "" && isCorrect(q, given);
     const rawConf = confidenceRaw[q.id];
@@ -108,6 +109,7 @@ export async function POST(request: Request) {
       confidence,
       resurrected: Boolean(mistakeId),
       mistakeId: mistakeId ?? null,
+      review: Boolean(reviewKey),
       clearedNow: false,
     };
   });
@@ -157,6 +159,18 @@ export async function POST(request: Request) {
           where: { id: entry.id },
           data: { clearStreak: 0, nextResurfaceAt: inDays(RESURFACE_RETRY_DAYS) },
         });
+      }
+    }
+
+    // 2b. Spaced repetition: correct answers advance their Leitner card (or
+    // create one at box 2), so today's wins come back for review in 3 days,
+    // then 7, 21, 60. Wrong answers ride the mistake notebook instead, but a
+    // lapse on an EXISTING card still knocks it back to box 1.
+    for (const r of results) {
+      if (r.correct) {
+        await recordReview(customerId, "question", r.id, r.level, r.slug, true);
+      } else if (r.review) {
+        await recordReview(customerId, "question", r.id, r.level, r.slug, false);
       }
     }
 

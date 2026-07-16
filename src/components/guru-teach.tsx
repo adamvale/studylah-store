@@ -49,6 +49,7 @@ export function GuruTeach({
   correct,
   wasSure,
   workedSolution,
+  options,
 }: {
   subjectName: string;
   topic: string;
@@ -58,10 +59,43 @@ export function GuruTeach({
   correct: boolean;
   wasSure?: boolean;
   workedSolution: string;
+  // MCQ options enable the distractor autopsy ("why are the others wrong?")
+  options?: string[];
 }) {
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(0);
+  const [autopsy, setAutopsy] = useState<string | null>(null);
+  const [autopsyBusy, setAutopsyBusy] = useState(false);
   const guru = guruFor(subjectName);
+
+  const correctIndex = options ? options.indexOf(correctAnswer) : -1;
+  const canAutopsy = Boolean(options && options.length >= 2 && correctIndex >= 0);
+
+  async function loadAutopsy() {
+    if (autopsyBusy || autopsy) return;
+    setAutopsyBusy(true);
+    try {
+      const res = await fetch("/api/account/tutor", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          mode: "autopsy",
+          stem,
+          options,
+          correctIndex,
+          given,
+          workedSolution,
+        }),
+      });
+      const data = (await res.json()) as { reply?: string; fallback?: string };
+      setAutopsy(data.reply ?? data.fallback ?? "The coach is busy, try again shortly.");
+    } catch {
+      setAutopsy("The coach is busy, try again shortly.");
+    } finally {
+      setAutopsyBusy(false);
+    }
+  }
 
   const steps: string[] = [
     correct
@@ -115,6 +149,28 @@ export function GuruTeach({
       <p className="mt-3 min-h-[3rem] text-sm leading-relaxed text-ink">
         {steps[step]}
       </p>
+      {/* Distractor autopsy: on the final step of an MCQ, offer to dissect
+          every wrong option (which slip produces it). */}
+      {canAutopsy && step >= steps.length - 1 && (
+        <div className="mt-3">
+          {!autopsy ? (
+            <button
+              type="button"
+              onClick={() => void loadAutopsy()}
+              disabled={autopsyBusy}
+              className="rounded-lg border border-violet/50 px-3 py-1.5 text-xs font-medium text-violet disabled:opacity-50"
+            >
+              {autopsyBusy ? "Dissecting the traps…" : "🔍 Why are the other options wrong?"}
+            </button>
+          ) : (
+            <div className="rounded-lg border border-hairline bg-night-2 p-3">
+              <p className="whitespace-pre-wrap text-xs leading-relaxed text-cloud">
+                {autopsy}
+              </p>
+            </div>
+          )}
+        </div>
+      )}
       <div className="mt-3 flex items-center justify-between gap-2">
         <span className="font-mono text-[10px] text-body">
           {step + 1}/{steps.length}

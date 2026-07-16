@@ -524,6 +524,28 @@ model GameTeachingCard {
   @@index([level, slug])
 }
 
+// Unified spaced-repetition state (Leitner boxes 1..5, intervals 1/3/7/21/60
+// days). kind: "question" (daily-quiz correct answers; wrong ones ride the
+// mistake notebook), "definition" (GameTeachingCard definition/precision ids),
+// "formula" (formula-bank ids).
+model ReviewCard {
+  id         String   @id @default(cuid())
+  customerId String
+  kind       String
+  itemKey    String
+  level      String
+  slug       String
+  box        Int      @default(1)
+  reps       Int      @default(0)
+  lapses     Int      @default(0)
+  dueAt      DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+
+  @@unique([customerId, kind, itemKey])
+  @@index([customerId, kind, dueAt])
+}
+
 // Beta feedback for StudyLah Legends: free text + a quick sentiment tap.
 model GameFeedback {
   id         String   @id @default(cuid())

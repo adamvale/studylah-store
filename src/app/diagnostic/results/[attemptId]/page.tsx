@@ -211,6 +211,7 @@ export default async function DiagnosticResultsPage({
                     }
                     correct={ok}
                     workedSolution={q.workedSolution}
+                    options={q.type === "mcq" ? q.options : undefined}
                   />
                 </div>
               </div>

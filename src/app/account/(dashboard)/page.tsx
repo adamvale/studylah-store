@@ -18,6 +18,7 @@ import { GettingStarted, type StartStep } from "@/components/getting-started";
 import { TierPill } from "@/components/heat";
 import { QuestBoard, type BossInfo } from "@/components/quest-board";
 import { HomeBase } from "@/components/home-base";
+import { PhaseBanner, WeekReport } from "@/components/today-pulse";
 
 export const metadata: Metadata = { title: "Today" };
 
@@ -286,6 +287,8 @@ export default async function TodayPage() {
             ? "Mission complete. Come back tomorrow, the system resets at midnight."
             : `Today's quests: ${openItems.length}, about ${totalMinutes} minutes. Do them in order, the XP is real.`}
         </p>
+        {/* Which season of the campaign we're in, driven by real paper dates */}
+        <PhaseBanner customerId={customerId} subjects={subjects} />
       </div>
 
       <GettingStarted steps={steps} />
@@ -306,6 +309,16 @@ export default async function TodayPage() {
           />
         )}
       </div>
+
+      {/* Honest momentum: the week in four numbers + the next lever */}
+      <WeekReport
+        customerId={customerId}
+        nextLever={
+          focusTopic
+            ? { topic: focusTopic.topic, subjectName: focusTopic.subjectName }
+            : null
+        }
+      />
 
       {/* Compact risk line, the full meters live on Progress */}
       {risks.length > 0 && (

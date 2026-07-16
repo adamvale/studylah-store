@@ -666,6 +666,41 @@ sentiment tap (love/okay/rough) + free text → `POST /api/account/game/feedback
 (master-gated) → `GameFeedback` table (migration 20260716040000). Read it in
 **/admin/feedback** (sentiment counts + latest 200 with customer emails).
 
+## The 10x learning batch (July 2026): SRS, drills, coach, war room
+
+Ten upgrades shipped in one pass. The spine is a **unified spaced-repetition
+engine** (`src/lib/server/srs.ts`, `ReviewCard` table, migration
+20260716060000: Leitner boxes 1..5, intervals 1/3/7/21/60 days, lapse resets
+to box 1) shared by three card kinds: question / definition / formula.
+
+- **Daily three is now spaced**: correct answers create/advance a Leitner card
+  (submit route), and `dailyPicks` inserts ONE due review per day ("🔁 memory
+  check" badge) alongside the existing mistake resurrections. Wrong answers
+  still ride the notebook's own resurrection system.
+- **Drills hub** (`/account/drills`, `drills-hub.tsx`, API
+  `/api/account/drill`): 4 tabs. Definitions (557 GameTeachingCard definition
+  cards, self-graded reveal), Formulas (`src/lib/formula-bank.ts`, ~57 authored
+  cards keyed by family: physics/chemistry/biology/emath/amath/poa),
+  Explain-it-back (student writes own-words explanation), Structured answers
+  (232 precision cards: prompt + model with crediting phrases in CAPS,
+  day-rotated set of 6).
+- **AI tutor endpoint** (`/api/account/tutor`, Master-gated, Haiku +
+  `violatesCompliance` filter + fallback, 10/min rate limit) with 3 modes:
+  `autopsy` (why each wrong MCQ option tempts, surfaced as a button on the
+  final GuruTeach step), `explain` (grades explain-it-back), `structured`
+  (mark-scheme feedback: Earned / Dropped / Marker's tip).
+- **Today page**: `PhaseBanner` (build/consolidate/sharpen/war phases from
+  own ExamDate rows else the SEAB table; war phase links the War Room) and
+  `WeekReport` (quiz days, accuracy, monsters cleared, cards reviewed, week
+  XP, next lever) in `src/components/today-pulse.tsx`.
+- **Mistake notebook Diagnosis** (in `mistake-notebook.tsx`): clusters open
+  entries by cause + repeat-offender topics with a prescription per cause;
+  needs 3+ open entries to render.
+- **War Room** (`/account/warroom`): per subject, opens 7 days before its
+  first SEAB paper (`?preview=1` to preview): top-5 forecast topics with tier
+  pills, drills/notebook/mini-mock checklist, night-before ritual. Locked
+  cards show the countdown + paper list.
+
 ## Next
 
 - **Store deployment (the live blocker)**: iOS TestFlight upload was failing

@@ -24,6 +24,7 @@ interface Result {
   workedSolution: string;
   confidence: Confidence | null;
   resurrected: boolean;
+  review?: boolean;
   clearedNow: boolean;
 }
 
@@ -226,6 +227,7 @@ export function DailyQuiz({
                 correct={r.correct}
                 wasSure={r.confidence === "sure"}
                 workedSolution={r.workedSolution}
+                options={questions.find((q) => q.id === r.id)?.options}
               />
             </div>
             {r.clearedNow && (
@@ -341,6 +343,11 @@ export function DailyQuiz({
               {q.resurrected && (
                 <span className="rounded-full bg-violet/15 px-2 py-0.5 text-xs font-medium text-violet">
                   ⚔️ a monster returns
+                </span>
+              )}
+              {q.review && (
+                <span className="rounded-full bg-teal/15 px-2 py-0.5 text-xs font-medium text-teal">
+                  🔁 memory check
                 </span>
               )}
               <span className="font-mono text-xs text-body">

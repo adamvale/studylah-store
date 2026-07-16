@@ -16,7 +16,9 @@ const STUDY_GROUP: NavGroup = {
   label: "Study",
   links: [
     { href: "/account/study", label: "Study plan", blurb: "Topic-by-topic plan to exam day" },
+    { href: "/account/drills", label: "Drills", blurb: "Definitions, formulas, answers" },
     { href: "/account/rescue", label: "Rescue plan", blurb: "Behind? Get a recovery plan" },
+    { href: "/account/warroom", label: "War Room", blurb: "Final-week plan per paper" },
     { href: "/account/practice", label: "Practice", blurb: "Daily questions and battles" },
     { href: "/account/mistakes", label: "Mistakes", blurb: "Your mistake notebook" },
     { href: "/account/progress", label: "Progress", blurb: "Stats, streaks and heatmaps" },

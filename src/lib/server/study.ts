@@ -145,6 +145,9 @@ export interface DailyPick {
   subject: OwnedSubject;
   // Set when this slot is a spaced re-test of a mistake-notebook entry.
   mistakeId?: string;
+  // Set when this slot is a scheduled spaced-repetition review of a question
+  // the student previously got RIGHT (Leitner card come due, see srs.ts).
+  reviewKey?: string;
 }
 
 export async function pickDailyQuestions(
@@ -233,15 +236,43 @@ export async function dailyPicks(
     }
   }
 
-  const exclude = new Set(resurrected.map((r) => r.question.id));
+  // Spaced-repetition slot: one due review of a previously-CORRECT question
+  // (Leitner card, srs.ts). Day-stable for the same reason as resurrections
+  // (due = before the end of today in SG, oldest debt first).
+  const reviews: DailyPick[] = [];
+  if (includeResurrections && subjects.length > 0 && resurrected.length < DAILY_COUNT - 1) {
+    const owned = new Set(subjects.map((s) => `${s.level}/${s.slug}`));
+    const taken = new Set(resurrected.map((r) => r.question.id));
+    const dueCards = await prisma.reviewCard.findMany({
+      where: { customerId, kind: "question", dueAt: { lt: endOfSgDay(day) } },
+      orderBy: { dueAt: "asc" },
+      take: 6,
+    });
+    for (const card of dueCards) {
+      if (reviews.length >= 1) break;
+      if (!owned.has(`${card.level}/${card.slug}`)) continue;
+      if (taken.has(card.itemKey)) continue;
+      const subject = subjects.find(
+        (s) => s.level === card.level && s.slug === card.slug
+      )!;
+      const set = await getQuestionSet(card.level, card.slug);
+      const question = set?.questions.find((q) => q.id === card.itemKey);
+      if (!question) continue;
+      reviews.push({ question, subject, reviewKey: card.itemKey });
+    }
+  }
+
+  const exclude = new Set(
+    [...resurrected, ...reviews].map((r) => r.question.id)
+  );
   const fresh = await pickDailyQuestions(
     subjects,
     customerId,
     day,
     exclude,
-    DAILY_COUNT - resurrected.length
+    DAILY_COUNT - resurrected.length - reviews.length
   );
-  return [...resurrected, ...fresh];
+  return [...resurrected, ...reviews, ...fresh];
 }
 
 // What the browser may see before answering, the sanitized question plus the
@@ -252,6 +283,7 @@ export interface PublicDailyQuestion extends PublicQuestion {
   slug: string;
   subjectName: string;
   resurrected: boolean;
+  review: boolean;
 }
 
 export function toPublicDaily(pick: DailyPick): PublicDailyQuestion {
@@ -267,6 +299,7 @@ export function toPublicDaily(pick: DailyPick): PublicDailyQuestion {
     slug: pick.subject.slug,
     subjectName: pick.subject.name,
     resurrected: Boolean(pick.mistakeId),
+    review: Boolean(pick.reviewKey),
   };
 }
 

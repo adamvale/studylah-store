@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { MISTAKE_REASONS, REASON_LABEL } from "@/lib/server/mistakes";
 import { MONSTERS, MONSTER_HP } from "@/lib/game";
@@ -107,6 +108,7 @@ export function MistakeNotebook({
           {xpToast}
         </p>
       )}
+      <Diagnosis items={items} />
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap gap-1">
           {(
@@ -445,5 +447,86 @@ function AddMistakeForm({
         {busy ? "Saving…" : "Save to notebook"}
       </button>
     </div>
+  );
+}
+
+// ── Diagnosis ────────────────────────────────────────────────────────────────
+// The notebook shouldn't just record mistakes, it should read them. Clusters
+// unresolved entries by cause and by topic and says what to do about it.
+
+const REASON_RX: Record<string, string> = {
+  careless:
+    "Slips, not gaps. Slow down on the final line: reread the question, check units and signs before moving on.",
+  concept:
+    "Concept gaps. These need a learning session with the Forecast notes, not more questions. Book one real session.",
+  method:
+    "Method breakdowns. You know the idea but the working collapses. Redo each of these writing EVERY line, no shortcuts.",
+  time:
+    "Time pressure. Practise these topics under the timer, speed is a skill you train separately from accuracy.",
+};
+
+function Diagnosis({ items }: { items: MistakeItem[] }) {
+  const open = items.filter((i) => !i.resolved);
+  if (open.length < 3) return null;
+
+  const byReason = new Map<string, number>();
+  const byTopic = new Map<string, { count: number; subjectName: string }>();
+  for (const m of open) {
+    byReason.set(m.reason, (byReason.get(m.reason) ?? 0) + 1);
+    const key = m.topic;
+    const t = byTopic.get(key) ?? { count: 0, subjectName: m.subjectName };
+    t.count += 1;
+    byTopic.set(key, t);
+  }
+  const classified = [...byReason.entries()].filter(([r]) => r !== "unset");
+  classified.sort((a, b) => b[1] - a[1]);
+  const topReason = classified[0];
+  const unclassified = byReason.get("unset") ?? 0;
+  const topTopics = [...byTopic.entries()]
+    .sort((a, b) => b[1].count - a[1].count)
+    .slice(0, 3)
+    .filter(([, t]) => t.count >= 2);
+
+  return (
+    <section className="rounded-2xl border border-violet/40 bg-surface p-5">
+      <h3 className="font-display text-lg font-bold text-ink">🩺 Diagnosis</h3>
+      <div className="mt-2 space-y-2 text-sm text-body">
+        {topReason && topReason[1] >= 2 && (
+          <p>
+            <span className="font-medium text-ink">
+              {topReason[1]} of your {open.length} open mistakes are{" "}
+              {(REASON_LABEL[topReason[0]] ?? topReason[0]).toLowerCase()}s.
+            </span>{" "}
+            {REASON_RX[topReason[0]] ?? ""}
+          </p>
+        )}
+        {topTopics.length > 0 && (
+          <p>
+            <span className="font-medium text-ink">Repeat offenders:</span>{" "}
+            {topTopics
+              .map(([topic, t]) => `${topic} (${t.count}x, ${t.subjectName})`)
+              .join(" · ")}
+            . Same topic twice is a pattern, not bad luck, that topic wants a
+            proper session.
+          </p>
+        )}
+        {unclassified >= 2 && (
+          <p>
+            {unclassified} entr{unclassified === 1 ? "y" : "ies"} still
+            unclassified. Tag the cause on each (one tap below), the diagnosis
+            gets sharper with every tag.
+          </p>
+        )}
+        <p className="text-xs">
+          Want these turned into a day-by-day plan?{" "}
+          <Link
+            href="/account/rescue"
+            className="font-medium text-accent hover:underline"
+          >
+            Rescue plan →
+          </Link>
+        </p>
+      </div>
+    </section>
   );
 }
