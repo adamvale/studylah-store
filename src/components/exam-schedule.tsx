@@ -69,38 +69,32 @@ export function ExamSchedule({
     <div
       className={`rounded-2xl border border-accent/30 bg-surface p-4 sm:p-5 ${className}`}
     >
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-        <div>
-          <p className="text-xs font-medium uppercase tracking-wide text-body">
-            Next paper: {next.paper} ({next.kind.toLowerCase()}) ·{" "}
-            {fmtDate(new Date(next.atMs))}, {fmtTime(new Date(next.atMs))}
-          </p>
-          <div className="mt-2 flex items-center gap-1.5 sm:gap-2" role="timer">
-            <Unit value={days} label="days" />
-            <Unit value={hours} label="hrs" />
-            <Unit value={mins} label="min" />
-            <Unit value={secs} label="sec" />
-          </div>
-        </div>
-        <ul className="min-w-0 flex-1 space-y-1">
+      <p className="text-xs font-medium uppercase tracking-wide text-body">
+        Next paper: {next.paper} · {fmtDate(new Date(next.atMs))},{" "}
+        {fmtTime(new Date(next.atMs))}
+      </p>
+      <div className="mt-2 flex items-center gap-1.5 sm:gap-2" role="timer">
+        <Unit value={days} label="days" />
+        <Unit value={hours} label="hrs" />
+        <Unit value={mins} label="min" />
+        <Unit value={secs} label="sec" />
+      </div>
+      {upcoming.length > 1 && (
+        <ul className="mt-4 divide-y divide-hairline border-t border-hairline">
           {upcoming.map((p) => {
             const past = p.atMs <= now;
             const d = new Date(p.atMs);
             return (
               <li
                 key={p.paper}
-                className={`flex items-baseline gap-2 text-xs sm:text-sm ${
-                  past ? "text-body/50 line-through" : "text-cloud"
+                className={`flex items-baseline justify-between gap-3 py-1.5 text-xs sm:text-sm ${
+                  past ? "text-body/50 line-through" : ""
                 }`}
               >
-                <span
-                  aria-hidden="true"
-                  className={`h-1.5 w-1.5 shrink-0 self-center rounded-full ${
-                    past ? "bg-body/40" : "bg-accent"
-                  }`}
-                />
-                <span className="font-medium text-ink">{p.paper}</span>
-                <span>
+                <span className={`font-medium ${past ? "" : "text-ink"}`}>
+                  {p.paper}
+                </span>
+                <span className={`text-right ${past ? "" : "text-body"}`}>
                   {fmtDate(d)} · {fmtTime(d)}
                   {p.note ? ` (${p.note})` : ""}
                 </span>
@@ -108,7 +102,7 @@ export function ExamSchedule({
             );
           })}
         </ul>
-      </div>
+      )}
       <p className="mt-3 text-[10px] text-body">
         Dates from the official {TIMETABLE_VERSION}. Always confirm with your
         school&apos;s exam timetable.

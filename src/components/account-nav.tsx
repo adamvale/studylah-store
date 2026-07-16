@@ -34,9 +34,15 @@ const ACCOUNT_GROUP: NavGroup = {
   ],
 };
 
-function useOutsideClose(close: () => void) {
+// Close-on-outside-tap, active ONLY while this dropdown is open. If the
+// listener stayed registered while closed, the OTHER (closed) dropdown would
+// see a tap on this menu's items as "outside", close the shared state, and
+// unmount the panel before the tap's click reached the link, making every
+// menu item dead. (Real bug, do not simplify this back.)
+function useOutsideClose(open: boolean, close: () => void) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    if (!open) return;
     function onDown(e: PointerEvent) {
       if (ref.current && !ref.current.contains(e.target as Node)) close();
     }
@@ -49,7 +55,7 @@ function useOutsideClose(close: () => void) {
       document.removeEventListener("pointerdown", onDown);
       document.removeEventListener("keydown", onKey);
     };
-  }, [close]);
+  }, [open, close]);
   return ref;
 }
 
@@ -66,7 +72,7 @@ function Dropdown({
   onToggle: () => void;
   onClose: () => void;
 }) {
-  const ref = useOutsideClose(onClose);
+  const ref = useOutsideClose(open, onClose);
   const active = group.links.some((l) => pathname.startsWith(l.href));
   return (
     <div ref={ref} className="relative">

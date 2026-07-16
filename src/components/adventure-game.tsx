@@ -1469,8 +1469,15 @@ export function AdventureGame({
 
   // ── main loop ────────────────────────────────────────────────────────────
   useEffect(() => {
+    // Hydration guard: the component renders null until `mounted` flips true
+    // (the SSR portal gate above), and React runs effects for that first
+    // commit too, when the canvas does NOT exist yet. Dereferencing the ref
+    // then crashed the whole page into Next's global-error screen ("This page
+    // couldn't load"). Wait for the mounted commit; deps rerun us once the
+    // canvas is real.
+    if (!mounted || !canvasRef.current) return;
     tilesetRef.current = [makeTileset(0), makeTileset(1)];
-    const canvas = canvasRef.current!;
+    const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d")!;
     ctx.imageSmoothingEnabled = false;
 
@@ -1707,7 +1714,7 @@ export function AdventureGame({
       window.removeEventListener("keydown", onDown);
       window.removeEventListener("keyup", onUp);
     };
-  }, [onArrive]);
+  }, [mounted, onArrive]);
 
   // locked-gate toasts come from inside the rAF loop via a window event
   useEffect(() => {
