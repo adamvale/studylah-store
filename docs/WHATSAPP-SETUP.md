@@ -102,3 +102,52 @@ curl -s -X POST http://localhost:3000/api/webhooks/whatsapp \
 Gugu's reply appears in `data/outbox/` as `*-whatsapp-to-6591234567.json`, and
 both turns are stored in the `WaMessage` table. Repeat with a new `id` and a
 follow-up question to see history-aware replies.
+
+---
+
+# Messenger + Instagram Gugu (same Meta app)
+
+Gugu also answers **Facebook Messenger** and **Instagram DMs**. Both arrive on
+the SAME Meta app and the SAME webhook (`/api/webhooks/messenger`, handling
+`object: "page"` for Messenger and `object: "instagram"` for Instagram), reply
+through one **Page access token**, and store history in the `SocialMessage`
+table. Same Gugu brain + compliance filter. Read/reply in **Admin → FB / IG**
+(human takeover works exactly like WhatsApp: your manual reply pauses Gugu on
+that thread for 24h).
+
+## Owner setup (after the WhatsApp steps above, in the same app)
+
+1. **Connect the Facebook Page** — in the app, add the **Messenger** product,
+   then link your **Studylah.education** Facebook Page.
+2. **Connect Instagram** — link an **Instagram Professional account** to that
+   same Page (do this in the Page/Business settings first if it isn't already;
+   earlier your Business Suite showed "Connect Instagram"). Then add the
+   **Instagram** product to the app.
+3. **Page access token** — via a System User assigned to the Page, generate a
+   permanent token with `pages_messaging` + `instagram_manage_messages` (plus
+   `pages_manage_metadata`). Set it in Railway as **`META_PAGE_ACCESS_TOKEN`**.
+   (The app secret and verify token are shared with WhatsApp, so
+   `META_APP_SECRET` / `MESSENGER_VERIFY_TOKEN` can stay blank.)
+4. **Subscribe the webhook** — for BOTH the Messenger and Instagram products:
+   - Callback URL: `https://www.studylah.education/api/webhooks/messenger`
+   - Verify token: your `WHATSAPP_VERIFY_TOKEN` value (shared)
+   - Subscribe to the **messages** field on each.
+5. **App review** — to message users who haven't opted in, Instagram/Messenger
+   need `instagram_manage_messages` / `pages_messaging` approved in App Review.
+   Replying to people who message you first works in dev/standard access.
+
+## Local testing (no Meta account needed)
+
+```bash
+# Messenger
+curl -s -X POST http://localhost:3000/api/webhooks/messenger \
+  -H 'Content-Type: application/json' \
+  -d '{"object":"page","entry":[{"messaging":[{"sender":{"id":"fb-1"},"message":{"mid":"m.1","text":"hi"}}]}]}'
+# Instagram
+curl -s -X POST http://localhost:3000/api/webhooks/messenger \
+  -H 'Content-Type: application/json' \
+  -d '{"object":"instagram","entry":[{"messaging":[{"sender":{"id":"ig-1"},"message":{"mid":"i.1","text":"hi"}}]}]}'
+```
+
+Replies appear in `data/outbox/` as `*-messenger-to-*.json` /
+`*-instagram-to-*.json`, and both turns land in the `SocialMessage` table.

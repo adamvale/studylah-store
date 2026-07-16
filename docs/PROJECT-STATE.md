@@ -640,6 +640,21 @@ players are unaffected even with this shipped.
   API cost. Guru name/emoji derived from the subject (Guru Wei ⚡ physics,
   Guru Lim ⚗️ chemistry, ...).
 
+## Gugu on Messenger + Instagram (code complete, Meta setup pending owner)
+
+Same brain answers Facebook Messenger and Instagram DMs. ONE webhook
+`/api/webhooks/messenger` handles both (`object: "page"` → messenger,
+`object: "instagram"` → instagram; HMAC-verified, echo-filtered, mid-deduped),
+one sender `src/lib/server/meta-messaging.ts` (`POST /me/messages` with a Page
+token, or data/outbox stub), history in the `SocialMessage` table (channel +
+contactId; migration 20260716050000). `askGugu({ channel: "messenger" |
+"instagram" })` uses full https URLs like WhatsApp. Credentials are shared with
+the WhatsApp app: only `META_PAGE_ACCESS_TOKEN` is new; `META_APP_SECRET` /
+`MESSENGER_VERIFY_TOKEN` fall back to the WhatsApp vars. Read/reply in
+**Admin → FB / IG** (`/admin/social`) with the same 24h human-takeover rule.
+Owner Meta setup (connect Page + IG Professional account, Page token, subscribe
+the messenger webhook on both products) is in `docs/WHATSAPP-SETUP.md`.
+
 ## StudyLah Legends is framed as BETA (feedback loop live)
 
 The game tab in StudyLand is now LAST in the nav and labelled **Beta** (with a

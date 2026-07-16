@@ -33,10 +33,19 @@ export function violatesCompliance(text: string): boolean {
 
 // Where Gugu is talking. The brain is identical across channels; only the
 // link format and a few situational lines differ (the site renders bare paths
-// as buttons, WhatsApp needs full tappable URLs).
-export type GuguChannel = "web" | "whatsapp";
+// as buttons; messaging channels need full tappable URLs).
+export type GuguChannel = "web" | "whatsapp" | "messenger" | "instagram";
 
 const SITE_ORIGIN = "https://studylah.education";
+
+const CHANNEL_VENUE: Record<Exclude<GuguChannel, "web">, string> = {
+  whatsapp:
+    "chatting with a visitor over WhatsApp (they messaged StudyLah's WhatsApp number, often from the website)",
+  messenger:
+    "chatting with a visitor in Facebook Messenger (they messaged StudyLah's Facebook page)",
+  instagram:
+    "chatting with a visitor in Instagram DMs (they messaged StudyLah's Instagram account)",
+};
 
 async function buildSystemPrompt(
   page?: string,
@@ -55,16 +64,24 @@ async function buildSystemPrompt(
     )}; the Master tier (all three PDFs for a subject) is ${sgd(master)}.`;
   });
 
-  const isWa = channel === "whatsapp";
-  const venue = isWa
-    ? "chatting with a visitor over WhatsApp (they messaged StudyLah's WhatsApp number, often from the website)"
+  // Any non-web channel is a persistent DM thread that needs full tappable
+  // URLs (it can't render the site's bare-path buttons).
+  const isChat = channel !== "web";
+  const channelName =
+    channel === "messenger"
+      ? "Messenger"
+      : channel === "instagram"
+        ? "Instagram"
+        : "WhatsApp";
+  const venue = isChat
+    ? CHANNEL_VENUE[channel]
     : "chatting in a small widget on the StudyLah website";
-  const linkStyle = isWa
-    ? `- When you share a link, write the FULL address on its own line at the END of your message, e.g. ${SITE_ORIGIN}/bundles — WhatsApp makes it tappable automatically. No markdown, no "click here".`
+  const linkStyle = isChat
+    ? `- When you share a link, write the FULL address on its own line at the END of your message, e.g. ${SITE_ORIGIN}/bundles — ${channelName} makes it tappable automatically. No markdown, no "click here".`
     : `- When you share a link, write it as a BARE PATH starting with "/" at the END of your message (e.g. finish with "/bundles"). The site automatically turns it into a labelled button. So do NOT write "click here", do not describe it as a link, and do not use markdown, just put the path on its own at the end.`;
-  const linkBase = isWa ? SITE_ORIGIN : "";
-  const waExtra = isWa
-    ? `\n\n# WhatsApp specifics\n- This thread persists: the person may reply hours or days later. Read the history and pick up naturally; don't re-greet mid-conversation.\n- Keep messages WhatsApp-sized: 1-3 short sentences, no walls of text.`
+  const linkBase = isChat ? SITE_ORIGIN : "";
+  const waExtra = isChat
+    ? `\n\n# ${channelName} specifics\n- This thread persists: the person may reply hours or days later. Read the history and pick up naturally; don't re-greet mid-conversation.\n- Keep messages ${channelName}-sized: 1-3 short sentences, no walls of text.`
     : "";
 
   return `You are Gugu, StudyLah's friendly ghost mascot and an expert, warm, human-sounding sales assistant, ${venue}. Behave like a genuinely helpful salesperson in a good shop, not a scripted FAQ.

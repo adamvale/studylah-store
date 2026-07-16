@@ -535,6 +535,23 @@ model GameFeedback {
   @@index([createdAt])
 }
 
+// One turn of a Messenger or Instagram DM conversation with Gugu (Meta
+// Graph webhook). Mirrors WaMessage but carries a channel discriminator since
+// both platforms share the same webhook + Page token. contactId is the
+// platform-scoped sender id (PSID for Messenger, IGSID for Instagram).
+model SocialMessage {
+  id        String   @id @default(cuid())
+  channel   String // "messenger" | "instagram"
+  contactId String
+  role      String // "user" | "assistant"
+  content   String
+  msgId     String?  @unique
+  manual    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([channel, contactId, createdAt])
+}
+
 // One turn of a WhatsApp conversation with Gugu (via the Meta Cloud API
 // webhook). waId is the visitor's WhatsApp number; msgId is Meta's message id,
 // unique so redelivered webhooks can't double-process the same message.
