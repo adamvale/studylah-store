@@ -640,6 +640,17 @@ players are unaffected even with this shipped.
   API cost. Guru name/emoji derived from the subject (Guru Wei ⚡ physics,
   Guru Lim ⚗️ chemistry, ...).
 
+## StudyLah Legends is framed as BETA (feedback loop live)
+
+The game tab in StudyLand is now LAST in the nav and labelled **Beta** (with a
+"new" pill); the study system leads, the game is the bonus. On every visit a
+work-in-progress notice greets the player ("feel free to leave us feedback")
+with Play on / Leave feedback buttons; a 💬 HUD button (next to EXIT) opens the
+same form any time. The form (`BetaFeedback` in adventure-game.tsx) takes one
+sentiment tap (love/okay/rough) + free text → `POST /api/account/game/feedback`
+(master-gated) → `GameFeedback` table (migration 20260716040000). Read it in
+**/admin/feedback** (sentiment counts + latest 200 with customer emails).
+
 ## Next
 
 - **Store deployment (the live blocker)**: iOS TestFlight upload was failing

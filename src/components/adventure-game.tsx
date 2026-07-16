@@ -789,6 +789,10 @@ export function AdventureGame({
   const [duelHallOpen, setDuelHallOpen] = useState(false);
   const [guruOpen, setGuruOpen] = useState(false);
   const [mapOpen, setMapOpen] = useState(false);
+  // Beta framing: a work-in-progress notice greets every visit, and the
+  // feedback form is one tap away (notice, HUD button).
+  const [betaNotice, setBetaNotice] = useState(true);
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
   const [wipeLetter, setWipeLetter] = useState<{ stem: string; solution: string } | null>(null);
   const rungRef = useRef<Record<string, string[]>>({});
   const [stonesOpen, setStonesOpen] = useState<Set<string>>(new Set());
@@ -911,7 +915,7 @@ export function AdventureGame({
       sheetsRef.current = sh;
     });
   }, []);
-  const uiOpen = Boolean(dialogue || battle || trainer || gym || onboard || duelHallOpen || guruOpen || questLogOpen || mapOpen);
+  const uiOpen = Boolean(dialogue || battle || trainer || gym || onboard || duelHallOpen || guruOpen || questLogOpen || mapOpen || betaNotice || feedbackOpen);
   useEffect(() => {
     modeRef.current = uiOpen ? "ui" : "walk";
     if (uiOpen) dirRef.current = null;
@@ -2183,6 +2187,14 @@ export function AdventureGame({
             )}
             <button
               type="button"
+              onClick={() => setFeedbackOpen(true)}
+              aria-label="Leave beta feedback"
+              className="rounded-lg border border-violet/60 bg-night/70 px-2 py-1 text-xs backdrop-blur active:border-violet"
+            >
+              💬
+            </button>
+            <button
+              type="button"
               onClick={() => router.push("/account")}
               aria-label="Leave StudyLah Legends"
               className="rounded-lg border border-coral/50 bg-night/70 px-2 py-1 font-pixel text-[8px] text-body backdrop-blur active:border-coral"
@@ -2202,6 +2214,46 @@ export function AdventureGame({
           {toast}
         </p>
       )}
+
+      {/* beta notice, greets every visit */}
+      {betaNotice && (
+        <div className="absolute inset-0 z-[70] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
+          <div className="w-full max-w-sm rounded-2xl border-2 border-violet/60 bg-night p-5 text-center shadow-[0_0_30px_rgba(139,92,246,0.25)]">
+            <p className="font-pixel text-[10px] tracking-widest text-violet">
+              BETA
+            </p>
+            <h2 className="mt-2 font-display text-xl font-black text-ink">
+              StudyLah Legends
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-body">
+              This feature is still a work in progress. Feel free to leave us
+              feedback on your experience, it goes straight to the builders.
+            </p>
+            <div className="mt-5 flex flex-col gap-2">
+              <button
+                type="button"
+                onClick={() => setBetaNotice(false)}
+                className="rounded-lg bg-accent px-4 py-2.5 text-sm font-bold text-night"
+              >
+                Play on
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setBetaNotice(false);
+                  setFeedbackOpen(true);
+                }}
+                className="rounded-lg border border-violet/60 px-4 py-2.5 text-sm font-medium text-violet"
+              >
+                💬 Leave feedback
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* beta feedback form (also via the 💬 HUD button) */}
+      {feedbackOpen && <BetaFeedback onClose={() => setFeedbackOpen(false)} />}
 
       {/* PUBG-style overlay controls */}
       <div className="absolute bottom-0 left-0 touch-none p-4 pb-[max(env(safe-area-inset-bottom),16px)]">
@@ -2848,6 +2900,118 @@ function SoftTimer({ onExpire }: { onExpire: () => void }) {
         />
       </span>
       <span className="font-pixel text-[7px] text-body">NO COST</span>
+    </div>
+  );
+}
+
+// Beta feedback form: one sentiment tap + free text, posted to
+// /api/account/game/feedback and read in /admin/feedback.
+const SENTIMENTS = [
+  { id: "love", label: "😍 Love it" },
+  { id: "okay", label: "🙂 It's okay" },
+  { id: "rough", label: "😖 Rough" },
+] as const;
+
+function BetaFeedback({ onClose }: { onClose: () => void }) {
+  const [sentiment, setSentiment] = useState<string | null>(null);
+  const [message, setMessage] = useState("");
+  const [state, setState] = useState<"idle" | "busy" | "sent" | "error">("idle");
+
+  async function submit() {
+    if (state === "busy") return;
+    setState("busy");
+    try {
+      const res = await fetch("/api/account/game/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ sentiment, message }),
+      });
+      setState(res.ok ? "sent" : "error");
+    } catch {
+      setState("error");
+    }
+  }
+
+  return (
+    <div className="absolute inset-0 z-[70] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
+      <div className="w-full max-w-sm rounded-2xl border-2 border-violet/60 bg-night p-5">
+        {state === "sent" ? (
+          <div className="text-center">
+            <p className="text-3xl">🙏</p>
+            <h2 className="mt-2 font-display text-lg font-black text-ink">
+              Thank you, Lightbearer
+            </h2>
+            <p className="mt-2 text-sm text-body">
+              Your feedback went straight to the builders. It genuinely shapes
+              what gets fixed next.
+            </p>
+            <button
+              type="button"
+              onClick={onClose}
+              className="mt-4 rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
+            >
+              Back to the game
+            </button>
+          </div>
+        ) : (
+          <>
+            <div className="flex items-center justify-between gap-2">
+              <p className="font-pixel text-[10px] tracking-widest text-violet">
+                BETA FEEDBACK
+              </p>
+              <button
+                type="button"
+                onClick={onClose}
+                aria-label="Close feedback"
+                className="rounded px-1.5 text-body hover:text-ink"
+              >
+                ✕
+              </button>
+            </div>
+            <p className="mt-2 text-sm text-body">
+              How is StudyLah Legends treating you?
+            </p>
+            <div className="mt-3 flex gap-2">
+              {SENTIMENTS.map((s) => (
+                <button
+                  key={s.id}
+                  type="button"
+                  onClick={() => setSentiment((cur) => (cur === s.id ? null : s.id))}
+                  className={`flex-1 rounded-lg border px-2 py-2 text-xs font-medium transition-colors ${
+                    sentiment === s.id
+                      ? "border-violet bg-violet/15 text-ink"
+                      : "border-hairline text-body hover:text-ink"
+                  }`}
+                >
+                  {s.label}
+                </button>
+              ))}
+            </div>
+            <textarea
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              maxLength={2000}
+              rows={4}
+              placeholder="What's fun? What's broken? What's missing?"
+              className="mt-3 w-full rounded-lg border border-hairline bg-night-2 px-3 py-2 text-sm text-ink outline-none focus:border-violet"
+            />
+            {state === "error" && (
+              <p className="mt-2 text-xs text-coral">
+                That didn&apos;t send, give it another go.
+              </p>
+            )}
+            <button
+              type="button"
+              onClick={() => void submit()}
+              disabled={state === "busy" || (!sentiment && !message.trim())}
+              className="mt-3 w-full rounded-lg bg-violet px-4 py-2.5 text-sm font-bold text-white disabled:opacity-50"
+            >
+              {state === "busy" ? "Sending..." : "Send feedback"}
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 }
