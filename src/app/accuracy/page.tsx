@@ -6,7 +6,7 @@ import { TierPill } from "@/components/heat";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/accuracy" },
-  title: "Accuracy scorecard",
+  title: "Forecast Accuracy: O Level & N Level Predictions vs the Real Papers",
   description:
     "The five highest-mark topics in each real O-Level and N(A)-Level paper, and the confidence tier StudyLah forecast for each. Hits and misses, per subject.",
 };

@@ -7,6 +7,26 @@ import { scorecardHeadline } from "@/lib/accuracy-data";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
+  // Absolute title so the homepage carries the money keywords, not just the
+  // brand slogan (the template still brands every inner page).
+  title: {
+    absolute: "O Level & N Level Exam Prep 2026: Predicted Topics & Practice | StudyLah",
+  },
+  description:
+    "Data-driven 2026 exam preparation for Singapore O-Level and N-Level students: Chemistry, Physics, Biology, Maths and more. Every topic ranked by likelihood, original practice questions, and full timed mock papers. Independent publisher, accuracy published.",
+  keywords: [
+    "O Level exam prep Singapore",
+    "N Level exam prep Singapore",
+    "O Level Chemistry 2026",
+    "O Level Physics 2026",
+    "O Level Biology 2026",
+    "N Level Chemistry 2026",
+    "N Level Physics 2026",
+    "N Level Biology 2026",
+    "O Level predicted topics",
+    "O Level practice questions",
+    "Singapore Cambridge GCE O Level",
+  ],
 };
 import {
   getSubject,

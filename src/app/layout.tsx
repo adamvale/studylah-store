@@ -106,6 +106,17 @@ const ORG_SCHEMA = {
         "Independent Singapore publisher of data-driven exam forecasts, original practice questions and timed rehearsals for the Singapore-Cambridge O-Level and N(A)-Level. Not affiliated with SEAB, MOE, or Cambridge (UCLES).",
       email: "hello@studylah.education",
       areaServed: "SG",
+      knowsAbout: [
+        "Singapore-Cambridge GCE O-Level",
+        "Singapore-Cambridge GCE N(A)-Level",
+        "O Level Chemistry (6092)",
+        "O Level Physics (6091)",
+        "O Level Biology (6093)",
+        "O Level Combined Science (5086, 5087, 5088)",
+        "N Level Science Chemistry, Physics, Biology (5105, 5106, 5107)",
+        "exam topic forecasting",
+        "answering technique and mark schemes",
+      ],
     },
     {
       "@type": "WebSite",

@@ -12,6 +12,7 @@ import {
 } from "@/lib/catalogue";
 import { getPricing } from "@/lib/server/pricing-store";
 import { subjectCopy } from "@/lib/subject-copy";
+import { subjectFaqEntries, subjectFaqSchema } from "@/lib/subject-seo";
 import { packPreviewFor } from "@/lib/pack-previews";
 import { examPapersFor } from "@/lib/exam-dates-2026";
 import { PackPreview } from "./pack-preview";
@@ -337,6 +338,60 @@ export async function SubjectView({ subject }: { subject: Subject }) {
           {copy.completePack}
         </p>
       )}
+
+      {/* Search-facing FAQ: the questions students and parents actually type,
+          answered honestly. Rendered AND mirrored as FAQPage JSON-LD so both
+          Google rich results and AI answer engines can quote it. */}
+      <section className="mt-12" aria-labelledby="subject-faq-heading">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(subjectFaqSchema(subject)) }}
+        />
+        <h2
+          id="subject-faq-heading"
+          className="font-display text-2xl font-black text-ink sm:text-3xl"
+        >
+          {LEVELS[subject.level].shortName} {subject.name}: common questions
+        </h2>
+        <div className="mt-4 space-y-3">
+          {subjectFaqEntries(subject).map((e) => (
+            <details
+              key={e.q}
+              className="group rounded-2xl border border-hairline bg-surface p-4"
+            >
+              <summary className="cursor-pointer list-none font-display text-sm font-bold text-ink [&::-webkit-details-marker]:hidden">
+                {e.q}
+                <span
+                  aria-hidden="true"
+                  className="float-right text-body transition-transform group-open:rotate-180"
+                >
+                  ▾
+                </span>
+              </summary>
+              <p className="mt-2 max-w-3xl text-sm leading-relaxed text-body">{e.a}</p>
+            </details>
+          ))}
+        </div>
+        <p className="mt-4 max-w-3xl text-sm text-body">
+          Keep exploring:{" "}
+          <Link href="/diagnostic" className="font-medium text-accent hover:underline">
+            predict your {subject.name} mark free
+          </Link>
+          ,{" "}
+          <Link href="/fasttrack" className="font-medium text-accent hover:underline">
+            learn the FastTrack answering method
+          </Link>
+          ,{" "}
+          <Link href="/accuracy" className="font-medium text-accent hover:underline">
+            see the published accuracy scorecard
+          </Link>
+          , or browse all{" "}
+          <Link href={`/${subject.level}`} className="font-medium text-accent hover:underline">
+            {LEVELS[subject.level].name} subjects
+          </Link>
+          .
+        </p>
+      </section>
 
       <div className="reveal glow-soft mt-12 flex flex-col gap-4 rounded-2xl bg-indigo p-6 text-white sm:flex-row sm:items-center sm:justify-between">
         <div>

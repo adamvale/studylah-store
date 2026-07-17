@@ -6,39 +6,64 @@
 > (every syllabus topic ranked into VERY HIGH / HIGH / MODERATE / WATCH
 > confidence tiers, built from ten years of past papers), a subject-specific
 > companion, original practice questions (Sure Questions Vault), and a full
-> timed rehearsal paper with mark scheme. Every purchase also unlocks Study
-> HQ — a study dashboard with daily retrieval practice, a self-maintaining
-> mistake notebook, a Marks-at-Risk meter, subject skill drills, exam timers,
-> a printable rescue plan, and an opt-in weekly parent progress email.
-> Forecasts are probabilistic predictions, not leaked or actual exam content;
-> accuracy scorecards with hits AND misses are published after every sitting,
-> and purchases carry a conditional money-back guarantee. StudyLah is not
+> timed rehearsal paper with mark scheme. Every purchase also unlocks
+> StudyLand, a daily study system: three targeted questions a day, a
+> self-maintaining mistake notebook, a Marks-at-Risk meter, FastTrack
+> answering-technique training, skill drills, exam timers, a printable rescue
+> plan, and an opt-in weekly parent progress email. Forecasts are
+> probabilistic predictions, not leaked or actual exam content; accuracy
+> scorecards with hits AND misses are published after every sitting, and
+> purchases carry a conditional money-back guarantee. StudyLah is not
 > affiliated with, endorsed by, or connected to SEAB, MOE, or Cambridge
 > (UCLES).
 
 Key facts:
 - Coverage: 14 O-Level subjects and 8 N(A)-Level subjects (sciences, maths,
   humanities, POA, Nutrition & Food Science).
+- Sciences and syllabus codes: O-Level Chemistry 6092, Physics 6091, Biology
+  6093, Combined Science 5086/5087/5088; N(A)-Level Science Chemistry,
+  Physics, Biology 5105/5106/5107.
+- FastTrack: answering-technique system for O-Level and N-Level Chemistry,
+  Physics and Biology. Marks are awarded for matching the mark scheme, and
+  most students leak marks four ways: missing keywords, vague phrasing,
+  wrong format, incomplete logic. FastTrack teaches examiner keywords, a
+  3 to 4 step answer structure, instant question recognition, then drills
+  each play with auto-marking.
 - Pricing (SGD): per-subject tiers Essential / Strategic / Master; multi-
   subject Mega-Bundle (3+) and All-In (5-6) discounts; S$15/S$15 refer-a-
   friend programme.
-- Delivery: instant PDF download, watermarked to the buyer, plus Study HQ
-  access (daily practice, mistake notebook, study planner, timers).
-- Free tools: "Predict your mark" — a 10-question auto-marked readiness check
-  per subject with an indicative (never promised) grade band — and a free
+- Delivery: instant PDF download, watermarked to the buyer, plus StudyLand
+  access. iOS and Android app coming.
+- Free tools: "Predict your mark", a 10-question auto-marked readiness check
+  per subject with an indicative (never promised) grade band, and a free
   sample heatmap.
 - Payments: PayNow, cards, Alipay, WeChat Pay (via Stripe).
 
 Important pages:
 - [Home](https://www.studylah.education/)
 - [How it works / sales page](https://www.studylah.education/exam-forecast)
-- [O-Level subjects](https://www.studylah.education/o-level)
-- [N(A)-Level subjects](https://www.studylah.education/na-level)
-- [Accuracy scorecard — published hits and misses](https://www.studylah.education/accuracy)
-- [FastTrack — answering technique for O-Level & N-Level Chemistry, Physics, Biology](https://www.studylah.education/fasttrack)
-- [Predict your mark — free readiness check](https://www.studylah.education/diagnostic)
-- [Blog — methodology and study science](https://www.studylah.education/blog)
+- [All subjects, O-Level and N(A)-Level](https://www.studylah.education/subjects)
+- [Accuracy scorecard, published hits and misses](https://www.studylah.education/accuracy)
+- [FastTrack, answering technique for O-Level & N-Level Chemistry, Physics, Biology](https://www.studylah.education/fasttrack)
+- [Predict your mark, free readiness check](https://www.studylah.education/diagnostic)
+- [Blog, methodology and study science](https://www.studylah.education/blog)
 - [FAQ and money-back guarantee](https://www.studylah.education/faq)
 - [Free sample heatmap](https://www.studylah.education/free-heatmap)
+
+Science subject pages (2026 forecasts):
+- [O-Level Chemistry Pure, 6092](https://www.studylah.education/o-level/chemistry-pure)
+- [O-Level Chemistry, Combined Science 5086/5088](https://www.studylah.education/o-level/chemistry-science)
+- [O-Level Physics Pure, 6091](https://www.studylah.education/o-level/physics-pure)
+- [O-Level Physics, Combined Science 5086/5087](https://www.studylah.education/o-level/physics-science)
+- [O-Level Biology Pure, 6093](https://www.studylah.education/o-level/biology-pure)
+- [O-Level Biology, Combined Science 5088](https://www.studylah.education/o-level/biology-science)
+- [N(A)-Level Chemistry, 5105/5107](https://www.studylah.education/na-level/chemistry)
+- [N(A)-Level Physics, 5105/5106](https://www.studylah.education/na-level/physics)
+- [N(A)-Level Biology, 5106/5107](https://www.studylah.education/na-level/biology)
+
+Guides:
+- [O-Level Chemistry 2026 (6092): the topic map](https://www.studylah.education/blog/o-level-chemistry-2026-topic-guide)
+- [O-Level Physics 2026 (6091): final-weeks revision plan](https://www.studylah.education/blog/o-level-physics-2026-revision-plan)
+- [O-Level & N-Level Biology 2026: how marks are awarded](https://www.studylah.education/blog/o-n-level-biology-marks-guide)
 
 Contact: hello@studylah.education

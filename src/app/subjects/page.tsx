@@ -1,13 +1,25 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { LEVELS, PUBLISHED_LEVELS, type Level } from "@/lib/catalogue";
+import { LEVELS, PUBLISHED_LEVELS, subjectsForLevel, type Level } from "@/lib/catalogue";
 import { LevelCatalogue } from "@/components/level-catalogue";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/subjects" },
-  title: "Subjects, O-Level (G3) & N(A)-Level (G2)",
+  title: "O Level & N Level Subjects 2026: Chemistry, Physics, Biology & More",
   description:
-    "AI exam forecasts, original practice questions, and timed rehearsals. Switch between O-Level (G3) and N(A)-Level (G2) subjects.",
+    "2026 exam preparation for every Singapore-Cambridge O-Level (G3) and N(A)-Level (G2) subject: Chemistry, Physics, Biology, Maths, humanities and POA. Topic predictions, practice questions and timed mock papers.",
+  keywords: [
+    "O Level subjects Singapore",
+    "N Level subjects Singapore",
+    "O Level Chemistry 2026",
+    "O Level Physics 2026",
+    "O Level Biology 2026",
+    "N Level Chemistry",
+    "N Level Physics",
+    "N Level Biology",
+    "O Level revision Singapore",
+    "predicted topics 2026",
+  ],
 };
 
 export default async function SubjectsPage({
@@ -21,9 +33,31 @@ export default async function SubjectsPage({
       ? (requested as Level)
       : "o-level";
 
+  // Every subject page as an ItemList so search engines see the full
+  // catalogue from the hub in one hop.
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "StudyLah 2026 exam preparation subjects",
+    itemListElement: PUBLISHED_LEVELS.flatMap((level) =>
+      subjectsForLevel(level).map((s, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: `${LEVELS[level].shortName} ${s.name}`,
+        url: `https://www.studylah.education/${level}/${s.slug}`,
+      }))
+    ).map((item, i) => ({ ...item, position: i + 1 })),
+  };
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
-      <h1 className="font-display text-4xl font-bold text-ink">Subjects</h1>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
+      <h1 className="font-display text-4xl font-bold text-ink">
+        O-Level &amp; N(A)-Level subjects, 2026
+      </h1>
 
       {/* Level switcher, O-Level (G3) | N(A)-Level (G2), default O-Level */}
       <div

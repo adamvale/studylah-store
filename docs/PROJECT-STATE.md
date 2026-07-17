@@ -124,6 +124,32 @@ here now; the plan is to fold each Play into the game later as a trainable
   stable = mastery keys). Adding families later means adding to `PLAYBOOKS`,
   `FAMILY_META`, and `familyForSubject`.
 
+## SEO / AI-search layer (v2.16)
+
+Focused on "O Level / N Level Chemistry Physics Biology" queries. When
+touching public pages, keep this layer intact:
+
+- `src/lib/subject-seo.ts` is the single source for subject-page search copy:
+  `subjectSeoMeta()` (keyword titles like "O Level Chemistry Pure (6092)
+  2026: Predicted Topics & Practice", descriptions, keywords, OG) and
+  `subjectFaqEntries()`/`subjectFaqSchema()` (the on-page FAQ + FAQPage
+  JSON-LD in `subject-view.tsx`; sciences get extra revision/marking Qs).
+  All answers are compliance-audited: probabilistic language, "never leaked",
+  no banned words, no dashes.
+- Home has an ABSOLUTE keyword title; /subjects carries the catalogue
+  ItemList JSON-LD + keyword metadata; FAQ/diagnostic/accuracy titles are
+  keyword-front-loaded. ORG_SCHEMA in layout.tsx lists knowsAbout (syllabus
+  codes 6091/6092/6093, 5086-5088, 5105-5107).
+- Sitemap: /o-level and /na-level 301 to /subjects so the map lists
+  /subjects + subject detail pages, never the redirects.
+- Three evergreen blog guides target the science keywords (slugs
+  o-level-chemistry-2026-topic-guide, o-level-physics-2026-revision-plan,
+  o-n-level-biology-marks-guide). Blog posts are typed modules in
+  src/lib/blog.ts; slugs are permanent.
+- public/llms.txt is the AI-search manifest (StudyLand naming, FastTrack,
+  per-science deep links with codes, the guides). Update it when products,
+  pricing, or naming change. robots.ts deliberately welcomes AI crawlers.
+
 ## Site-wide theme (v2.15): the purple glass design IS the site theme
 
 As of v2.15 the StudyLand palette is the WHOLE site's theme, not a scoped

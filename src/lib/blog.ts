@@ -26,6 +26,160 @@ export interface BlogPost {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: "o-level-chemistry-2026-topic-guide",
+    title: "O-Level Chemistry 2026 (6092): the topic map, and where the marks actually live",
+    description:
+      "Every O-Level Chemistry topic area, which question types carry the marks, and how to revise 6092 by likelihood instead of syllabus order.",
+    date: "2026-07-18",
+    readMinutes: 6,
+    tag: "Chemistry",
+    blocks: [
+      {
+        kind: "p",
+        text: "Search \"O Level Chemistry 2026 topics\" and you get the syllabus document: accurate, official, and useless for deciding what to revise tonight. The 6092 syllabus is wide, your remaining weeks are not, so the real question is never \"what is in the syllabus\", it is \"which topics are likeliest to pay marks on my paper\".",
+      },
+      { kind: "h2", text: "The 6092 territory in one look" },
+      {
+        kind: "p",
+        text: "O-Level Pure Chemistry groups into a few big neighbourhoods: experimental chemistry and QA, atomic structure and bonding, the mole and stoichiometry, acids, bases and salts, redox, metals and reactivity, energy changes and rates, organic chemistry, and air and environment. Combined Science Chemistry (5086/5088) walks the same streets with a lighter load.",
+      },
+      {
+        kind: "ul",
+        items: [
+          "Calculation chains (the mole, concentration, titration) reward practised method, marks survive small slips if the working is shown.",
+          "Explain questions (bonding, electrolysis, rates) are keyword paid: name the particles, the forces, and the change.",
+          "QA and practical planning reward familiarity with the standard tests, they are close to free marks for the rehearsed.",
+          "Organic chemistry rotates heavily between sittings, which is exactly what a ten-year classification picks up.",
+        ],
+      },
+      { kind: "h2", text: "Revise by likelihood, not by chapter order" },
+      {
+        kind: "p",
+        text: "Nobody outside the exam board knows the 2026 paper, and anyone who claims to should worry you. What ten years of past 6092 papers can give you honestly is a probability ranking: which topics the setters have returned to relentlessly, which rotate, and which have gone quiet. StudyLah classifies every question from a decade of papers and ranks each topic into four confidence tiers, VERY HIGH to WATCH, then publishes the hits and misses after every sitting.",
+      },
+      {
+        kind: "callout",
+        text: "A tier is a probability, not a promise. The tiers exist so your fixed hours land on the highest-expected-value topics first, that is the whole trick.",
+      },
+      { kind: "h2", text: "The second leak: right chemistry, wrong words" },
+      {
+        kind: "p",
+        text: "Chemistry mark schemes award specific words. \"The bonds are strong\" scores nothing when the scheme wants \"strong electrostatic forces of attraction between oppositely charged ions\". If your marks are stuck below 60 percent, answering technique is usually the cheaper fix than more content, that is what FastTrack trains: the examiner keywords, a 3 to 4 step answer shape, and reading what a question tests in the first few seconds.",
+      },
+      {
+        kind: "cta",
+        label: "See the O-Level Chemistry 2026 forecast",
+        href: "/o-level/chemistry-pure",
+        note: "Every 6092 topic tiered · original practice · full timed mock.",
+      },
+      {
+        kind: "cta",
+        label: "Learn the FastTrack answering method",
+        href: "/fasttrack",
+        note: "For O-Level and N-Level Chemistry, Physics and Biology.",
+      },
+    ],
+  },
+  {
+    slug: "o-level-physics-2026-revision-plan",
+    title: "O-Level Physics 2026 (6091): a final-weeks plan that respects the mark scheme",
+    description:
+      "How to revise O-Level Physics by topic likelihood, bank method marks on calculations, and stop losing explain-question marks to vague phrasing.",
+    date: "2026-07-18",
+    readMinutes: 6,
+    tag: "Physics",
+    blocks: [
+      {
+        kind: "p",
+        text: "O-Level Physics (6091) punishes two habits: revising the syllabus front to back like a novel, and writing final answers with no working. Both feel productive. Both leak marks. Here is a final-weeks plan built around how the paper actually pays.",
+      },
+      { kind: "h2", text: "Know the two currencies: method marks and keyword marks" },
+      {
+        kind: "ul",
+        items: [
+          "Calculation topics (kinematics, forces, energy, electricity) pay in METHOD marks: state the formula, substitute with units, then solve. A wrong final answer over correct working still collects.",
+          "Explain topics (waves, thermal physics, electromagnetism) pay in KEYWORD marks: the scheme wants precise physics vocabulary, not a paraphrase that a friendly reader would accept.",
+          "Graph and data questions pay for reading the axes before the question, most dropped marks there are reading errors, not physics errors.",
+        ],
+      },
+      { kind: "h2", text: "Order the topics by likelihood, then timetable backwards" },
+      {
+        kind: "p",
+        text: "Ten years of 6091 papers, classified question by question, show clear patterns: some topics anchor the paper almost every sitting, others rotate in and out. StudyLah's forecast ranks every topic into four confidence tiers for 2026. Start at VERY HIGH and work down, and if time runs out, it runs out on the topics least likely to cost you.",
+      },
+      {
+        kind: "p",
+        text: "Then timetable backwards from your paper dates: one topic block a day beats a heroic weekend, and the last week belongs to a full timed mock in the real 2026 format, sat in one sitting, marked against a scheme. The first full mock is always humbling. Better at your desk than in the hall.",
+      },
+      {
+        kind: "callout",
+        text: "These are probabilistic forecasts built from public past papers, never inside information. The accuracy scorecard, including the misses, is published after every sitting.",
+      },
+      {
+        kind: "cta",
+        label: "See the O-Level Physics 2026 forecast",
+        href: "/o-level/physics-pure",
+        note: "Every 6091 topic tiered · practice weighted to the forecast · timed mock.",
+      },
+      {
+        kind: "cta",
+        label: "Predict your Physics mark, free",
+        href: "/diagnostic",
+        note: "10 questions · instant marking · an honest baseline.",
+      },
+    ],
+  },
+  {
+    slug: "o-n-level-biology-marks-guide",
+    title: "O-Level and N-Level Biology 2026: why right ideas score zero, and the fix",
+    description:
+      "Biology mark schemes are keyword driven. How O-Level (6093) and N-Level Biology students lose marks on things they understood, and how to stop.",
+    date: "2026-07-18",
+    readMinutes: 5,
+    tag: "Biology",
+    blocks: [
+      {
+        kind: "p",
+        text: "Biology has the cruellest failure mode of the three sciences: students who genuinely understood the process score zero on the question. Not because the idea was wrong, because the words were. O-Level Biology (6093), Combined Science Biology and N-Level Biology all mark the same way: against a scheme of specific crediting points.",
+      },
+      { kind: "h2", text: "What the scheme is actually looking for" },
+      {
+        kind: "ul",
+        items: [
+          "Name the exact structure: \"the cell\" scores nothing when the scheme wants \"the root hair cell\".",
+          "Name the exact process: \"it moves\" versus \"water moves by osmosis down a water potential gradient\".",
+          "Complete the logic: many 3-mark answers are step chains, cause, mechanism, consequence, and a missing middle step drops the mark even when the ends are right.",
+          "Match the format: \"describe\" wants observations, \"explain\" wants mechanism, answering the wrong verb is a silent zero.",
+        ],
+      },
+      { kind: "h2", text: "The process topics do the heavy lifting" },
+      {
+        kind: "p",
+        text: "Across a decade of papers, the process questions, enzymes, transport in plants and humans, respiration, photosynthesis, homeostasis, carry a large share of the structured marks, and they reward rehearsed keyword answers more than any other question type. That is where forecast-first revision pays fastest: rank the topics by 2026 likelihood, then drill the top tiers with answers written the examiner's way.",
+      },
+      {
+        kind: "p",
+        text: "This is exactly the gap FastTrack was built for: for each high-frequency question family it teaches the trigger words, the 3 to 4 step answer skeleton, the exact keywords versus the vague phrases that score zero, then drills you with instant marking. Chemistry, Physics and Biology, O-Level and N-Level.",
+      },
+      {
+        kind: "callout",
+        text: "Honesty first: forecasts are probabilities from public past papers, not predictions of certainty and never leaked content. Every claim gets audited on the public accuracy scorecard after results.",
+      },
+      {
+        kind: "cta",
+        label: "See the O-Level Biology 2026 forecast",
+        href: "/o-level/biology-pure",
+        note: "Every 6093 topic tiered · keyword-graded practice · timed mock.",
+      },
+      {
+        kind: "cta",
+        label: "FastTrack: answer the way examiners award marks",
+        href: "/fasttrack",
+        note: "The four mark leaks, and the drills that close them.",
+      },
+    ],
+  },
+  {
     slug: "how-the-2026-forecast-is-built",
     title: "How the 2026 forecast is actually built (and how to read the tiers)",
     description:

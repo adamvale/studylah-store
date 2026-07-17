@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/faq" },
-  title: "FAQ and guarantee",
+  title: "O Level & N Level Exam Prep FAQ, and the Money-Back Guarantee",
   description:
     "How StudyLah forecasts work, what the money-back guarantee covers, and answers to common questions.",
 };

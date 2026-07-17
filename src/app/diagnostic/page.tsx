@@ -5,7 +5,7 @@ import { listDiagnosticSets } from "@/lib/diagnostic-questions";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/diagnostic" },
-  title: "Predict your mark, the exam-readiness check",
+  title: "Predict Your O Level / N Level Mark Free: 10-Question Readiness Check",
   description:
     "Ten auto-marked questions across the most-likely topics for your 2026 paper. Instant score, an indicative grade band, worked solutions, and a fix plan.",
 };
