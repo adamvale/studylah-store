@@ -208,7 +208,17 @@ function MasteryPip({ state }: { state?: PlayState }) {
   );
 }
 
-// ── a single Play: the 5 parts ──────────────────────────────────────────────
+// ── a single Play as a STEP WIZARD ──────────────────────────────────────────
+// One part per screen, Duolingo-style: Recognise → Shape → Keywords → Model →
+// Drill. Bite-sized on a phone; Next/Back at the thumb, progress dots on top.
+const STEP_TITLES = [
+  "Recognise it in 5 seconds",
+  "The answer shape",
+  "Say it the examiner's way",
+  "A full-mark answer",
+  "Now you write one",
+];
+
 function PlayDetail({
   play,
   state,
@@ -220,124 +230,146 @@ function PlayDetail({
   onBack: () => void;
   onDrillGraded: (s: PlayState) => void;
 }) {
+  const [step, setStep] = useState(0);
   const [showModel, setShowModel] = useState(false);
+  const last = STEP_TITLES.length - 1;
 
   return (
-    <div className="mt-4 space-y-4">
-      <button type="button" onClick={onBack} className="text-sm text-body hover:text-ink">
-        ← All plays
-      </button>
-
-      <div className="rounded-2xl border border-hairline bg-surface p-5">
-        <div className="flex flex-wrap items-start justify-between gap-2">
-          <h2 className="font-display text-xl font-black text-ink">{play.name}</h2>
-          <MasteryPip state={state} />
-        </div>
-        <p className="mt-1 text-sm text-body">{play.cue}</p>
+    <div className="mt-4">
+      <div className="flex items-center justify-between gap-3">
+        <button type="button" onClick={onBack} className="chip">
+          ← All plays
+        </button>
+        <MasteryPip state={state} />
       </div>
 
-      {/* 1. RECOGNISE */}
-      <Section num={1} title="Recognise it in 5 seconds">
-        <p className="text-sm text-body">
-          <span className="font-medium text-ink">Trigger words:</span>{" "}
-          {play.triggers.map((t, i) => (
-            <span key={t}>
-              {i > 0 && ", "}
-              <span className="rounded bg-night px-1.5 py-0.5 font-mono text-xs text-accent">{t}</span>
-            </span>
-          ))}
+      <div className="mt-3 rounded-3xl glass p-5">
+        <p className="text-xs font-bold uppercase tracking-wide text-accent">
+          Play · {play.name}
         </p>
-        <p className="mt-2 text-sm text-body">
-          <span className="font-medium text-ink">What it tests:</span> {play.tests}
-        </p>
-        <p className="mt-2 text-sm text-body">
-          <span className="font-medium text-ink">Marks to points:</span> {play.marksHint}
-        </p>
-      </Section>
 
-      {/* 2. SKELETON */}
-      <Section num={2} title="The answer shape (examiners recognise it instantly)">
-        <ol className="space-y-2">
-          {play.skeleton.map((step, i) => (
-            <li key={i} className="flex gap-3 text-sm text-ink">
-              <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/15 font-mono text-xs font-bold text-accent">
-                {i + 1}
-              </span>
-              <span>{step}</span>
-            </li>
-          ))}
-        </ol>
-      </Section>
-
-      {/* 3. KEYWORDS */}
-      <Section num={3} title="Say it the examiner's way">
-        <div className="space-y-2">
-          {play.keywords.map((k, i) => (
-            <div key={i} className="rounded-xl border border-hairline bg-night p-3">
-              <p className="text-sm text-coral line-through decoration-coral/40">{k.vague}</p>
-              <p className="mt-1 text-sm font-medium text-guarantee">→ {k.exact}</p>
-            </div>
+        {/* progress dots */}
+        <div className="mt-3 flex items-center gap-1.5" aria-label={`Step ${step + 1} of ${STEP_TITLES.length}`}>
+          {STEP_TITLES.map((t, i) => (
+            <button
+              key={t}
+              type="button"
+              onClick={() => setStep(i)}
+              aria-label={`Step ${i + 1}: ${t}`}
+              className={`h-1.5 flex-1 rounded-full transition-colors ${
+                i < step ? "bg-guarantee/70" : i === step ? "bg-accent" : "bg-white/12"
+              }`}
+            />
           ))}
         </div>
-      </Section>
 
-      {/* 4. MODEL */}
-      <Section num={4} title="A full-mark answer">
-        <p className="rounded-lg bg-night px-3 py-2 text-sm font-medium text-ink">
-          {play.model.prompt}
-        </p>
-        <button
-          type="button"
-          onClick={() => setShowModel((v) => !v)}
-          className="mt-2 text-sm font-bold text-accent hover:underline"
-        >
-          {showModel ? "Hide the model answer" : "Reveal the model answer"}
-        </button>
-        {showModel && (
-          <div className="mt-2 space-y-2">
-            <p className="rounded-xl border border-guarantee/30 bg-guarantee/5 p-3 text-sm leading-relaxed text-ink">
-              {play.model.answer}
-            </p>
+        <h2 className="mt-4 font-display text-xl font-extrabold text-ink">
+          <span className="mr-2 inline-flex h-7 w-7 items-center justify-center rounded-full bg-accent/15 font-mono text-sm font-black text-accent">
+            {step + 1}
+          </span>
+          {STEP_TITLES[step]}
+        </h2>
+
+        <div className="mt-4 min-h-[16rem]">
+          {step === 0 && (
             <div>
-              <p className="text-xs font-bold uppercase tracking-wide text-body">
-                Crediting points ({play.model.marks} marks)
-              </p>
-              <ul className="mt-1 space-y-0.5">
-                {play.model.credit.map((c, i) => (
-                  <li key={i} className="text-sm text-guarantee">✓ {c}</li>
+              <p className="text-sm text-body">
+                <span className="font-semibold text-ink">Trigger words:</span>{" "}
+                {play.triggers.map((t, i) => (
+                  <span key={t}>
+                    {i > 0 && " "}
+                    <span className="chip !px-2 !py-0.5 font-mono text-xs !text-accent">{t}</span>
+                  </span>
                 ))}
-              </ul>
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-body">
+                <span className="font-semibold text-ink">What it tests:</span> {play.tests}
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-body">
+                <span className="font-semibold text-ink">Marks to points:</span> {play.marksHint}
+              </p>
             </div>
-          </div>
-        )}
-      </Section>
+          )}
 
-      {/* 5. DRILL */}
-      <Section num={5} title="Now you write one">
-        <DrillBox play={play} onGraded={onDrillGraded} />
-      </Section>
-    </div>
-  );
-}
+          {step === 1 && (
+            <ol className="space-y-3">
+              {play.skeleton.map((st, i) => (
+                <li key={i} className="flex gap-3 rounded-2xl bg-white/5 p-3 text-sm text-ink">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15 font-mono text-xs font-bold text-accent">
+                    {i + 1}
+                  </span>
+                  <span className="leading-relaxed">{st}</span>
+                </li>
+              ))}
+            </ol>
+          )}
 
-function Section({
-  num,
-  title,
-  children,
-}: {
-  num: number;
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="rounded-2xl border border-hairline bg-surface p-5">
-      <p className="flex items-center gap-2 font-display text-base font-bold text-ink">
-        <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-accent/15 font-mono text-sm font-black text-accent">
-          {num}
-        </span>
-        {title}
-      </p>
-      <div className="mt-3">{children}</div>
+          {step === 2 && (
+            <div className="space-y-2.5">
+              {play.keywords.map((k, i) => (
+                <div key={i} className="rounded-2xl bg-white/5 p-3.5">
+                  <p className="text-sm text-coral line-through decoration-coral/40">{k.vague}</p>
+                  <p className="mt-1 text-sm font-semibold text-guarantee">→ {k.exact}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {step === 3 && (
+            <div>
+              <p className="rounded-2xl bg-white/5 px-3.5 py-2.5 text-sm font-medium text-ink">
+                {play.model.prompt}
+              </p>
+              {!showModel ? (
+                <button type="button" onClick={() => setShowModel(true)} className="sl-btn mt-4 w-full">
+                  Reveal the model answer
+                </button>
+              ) : (
+                <div className="mt-3 space-y-3">
+                  <p className="rounded-2xl border border-guarantee/30 bg-guarantee/10 p-3.5 text-sm leading-relaxed text-ink">
+                    {play.model.answer}
+                  </p>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wide text-body">
+                      Crediting points ({play.model.marks} marks)
+                    </p>
+                    <ul className="mt-1 space-y-1">
+                      {play.model.credit.map((c, i) => (
+                        <li key={i} className="text-sm text-guarantee">✓ {c}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {step === 4 && <DrillBox play={play} onGraded={onDrillGraded} />}
+        </div>
+
+        {/* wizard controls */}
+        <div className="mt-5 flex items-center justify-between gap-3 border-t border-hairline pt-4">
+          <button
+            type="button"
+            onClick={() => (step === 0 ? onBack() : setStep(step - 1))}
+            className="chip"
+          >
+            ← {step === 0 ? "Plays" : "Back"}
+          </button>
+          <span className="text-xs font-semibold text-body">
+            {step + 1} / {STEP_TITLES.length}
+          </span>
+          {step < last ? (
+            <button type="button" onClick={() => setStep(step + 1)} className="sl-btn !px-6 !py-2.5">
+              Next →
+            </button>
+          ) : (
+            <button type="button" onClick={onBack} className="chip">
+              Done, all plays →
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

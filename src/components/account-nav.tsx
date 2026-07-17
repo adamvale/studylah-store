@@ -12,20 +12,10 @@ import { useHideCommerce } from "@/lib/native";
 type NavLink = { href: string; label: string; blurb?: string };
 type NavGroup = { label: string; links: NavLink[] };
 
-const STUDY_GROUP: NavGroup = {
-  label: "Study",
-  links: [
-    { href: "/account/study", label: "Study plan", blurb: "Topic-by-topic plan to exam day" },
-    { href: "/account/fasttrack", label: "FastTrack", blurb: "Answer the way examiners want" },
-    { href: "/account/drills", label: "Drills", blurb: "Definitions, formulas, answers" },
-    { href: "/account/rescue", label: "Rescue plan", blurb: "Behind? Get a recovery plan" },
-    { href: "/account/warroom", label: "War Room", blurb: "Final-week plan per paper" },
-    { href: "/account/practice", label: "Practice", blurb: "Daily questions and battles" },
-    { href: "/account/mistakes", label: "Mistakes", blurb: "Your mistake notebook" },
-    { href: "/account/progress", label: "Progress", blurb: "Stats, streaks and heatmaps" },
-    { href: "/account/timer", label: "Timer", blurb: "Focus and rehearsal timers" },
-  ],
-};
+// The old 10-item Study dropdown outgrew itself; Learn is now a HUB PAGE
+// (/account/learn) with a card per tool, like an app's explore screen. The
+// top nav keeps only the five destinations that matter.
+
 
 const ACCOUNT_GROUP: NavGroup = {
   label: "Account",
@@ -160,11 +150,13 @@ export function AccountNav({ isMaster }: { isMaster: boolean }) {
   // Non-Master buyers: every StudyLand surface is locked, lead with the
   // upgrade prompt and keep only the open pages (orders, settings, commerce).
   const standalone: NavLink[] = isMaster
-    ? [{ href: "/account", label: "Today" }]
+    ? [
+        { href: "/account", label: "Today" },
+        { href: "/account/learn", label: "Learn" },
+        { href: "/account/progress", label: "Progress" },
+      ]
     : [{ href: "/account/unlock", label: "Unlock StudyLand" }];
-  const groups: NavGroup[] = isMaster
-    ? [STUDY_GROUP, accountGroup]
-    : [accountGroup];
+  const groups: NavGroup[] = [accountGroup];
   // The game sits LAST as "Beta": it's the bonus, the study system is the
   // product, and the tab order should say so.
   const trailing: NavLink[] = isMaster

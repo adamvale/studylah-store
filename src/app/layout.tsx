@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Inter, Press_Start_2P } from "next/font/google";
+import { Archivo, Inter, Plus_Jakarta_Sans, Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import { PricingProvider } from "@/lib/pricing-context";
@@ -35,6 +35,14 @@ const NATIVE_STAMP = `(function(){try{var q=new URLSearchParams(location.search)
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+});
+
+// Plus Jakarta Sans powers the StudyLand app theme (the reference design's
+// rounded humanist look); scoped via the .studyland wrapper class.
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const archivo = Archivo({
@@ -118,7 +126,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${archivo.variable} ${pressStart.variable} h-full antialiased`}
+      className={`${inter.variable} ${archivo.variable} ${jakarta.variable} ${pressStart.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
         <script dangerouslySetInnerHTML={{ __html: NATIVE_STAMP }} />

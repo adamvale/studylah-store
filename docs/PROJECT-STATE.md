@@ -124,6 +124,45 @@ here now; the plan is to fold each Play into the game later as a trainable
   stable = mastery keys). Adding families later means adding to `PLAYBOOKS`,
   `FAMILY_META`, and `familyForSubject`.
 
+## StudyLand app redesign (purple glass theme, mobile-app-first)
+
+StudyLand was re-skinned + partially restructured to an app-reference design
+(owner-supplied mockups: purple gradients, glassmorphism, Plus Jakarta Sans,
+pill chips, icon orbs, bottom tab bar). Key facts:
+
+- **Theme system**: `.studyland` wrapper class (set in `account-chrome.tsx`)
+  scopes CSS-variable OVERRIDES of the site tokens (surface/hairline/body/
+  night...), so every existing dashboard component re-themes without edits.
+  Utilities in `globals.css`: `.sl-bg` (fixed gradient backdrop + grid),
+  `.glass` / `.glass-deep`, `.chip`, `.icon-orb`, `.sl-btn`, `.sl-grad-text`,
+  `.sl-strip` (horizontal snap strip). Font: Plus Jakarta Sans
+  (`--font-jakarta`, root layout), applied by `.studyland`.
+- **Chrome** (`account-chrome.tsx` web branch): glass header (ghost orb +
+  email + Sign out chip), PlayerHeader, and a **phone bottom tab bar**
+  (Today / Learn / Progress / Legends / Account; non-Master collapses to
+  Account + Unlock), hidden from md up where the top nav pills show. Native
+  shell branch untouched.
+- **Nav IA**: the 10-item Study dropdown is gone. Top nav = Today, Learn,
+  Progress, Account(dropdown), Beta. **/account/learn** is the hub page: a
+  2/3-col grid of tinted glass tool cards (FastTrack, Drills, Practice,
+  Study plan, Mistakes, Timer, Rescue, War Room, Legends).
+- **Today dashboard** (reference layout): "Hey {name}!" gradient greeting,
+  week XP glass card (7 gradient bars from XpEvent aggregated per SG day) +
+  2 stat tiles (quests done, reviews due), Priority tasks checklist card
+  (replaced QuestBoard on web; quest-board.tsx still exists for native),
+  subject strip of ring gauges (replaced the old bottom risk list).
+- **Bite-sized rule** (owner): learning activities show ONE part per screen.
+  FastTrack's play detail is now a 5-step wizard (Recognise → Shape →
+  Keywords → Model → Drill) with progress segments + Next/Back
+  (`fasttrack-hub.tsx`). Apply the same pattern when reworking Practice/
+  study surfaces later.
+- **Progress**: `RiskMeterSection` is a worst-first 2-col grid of compact
+  ring-gauge cards with ONE next action each (was five stacked red bars).
+- Not yet restructured (theme-only for now): Practice, Study plan day list,
+  Mistakes cards, Rescue questionnaire, campaign hex maps. The owner wants
+  these de-stacked in the same style; screenshots + reference in the
+  2026-07-17 session.
+
 ## Master-tier gating (StudyLand + StudyLah Legends are a Master perk)
 
 The whole site now sells StudyLand (the `/account` dashboard) and StudyLah

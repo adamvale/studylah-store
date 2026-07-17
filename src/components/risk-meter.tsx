@@ -6,93 +6,88 @@ import type { CalibrationBucket } from "@/lib/server/study";
 // Server-rendered. The meter is a ranking device: it must always suggest the
 // next action that shrinks it.
 
-function meterColour(marks: number): string {
-  if (marks >= 60) return "bg-coral";
-  if (marks >= 30) return "bg-accent";
-  return "bg-guarantee";
+// Ring gauge for one subject; the number and colour do the talking.
+function RiskRing({ pct }: { pct: number }) {
+  const tone = pct >= 60 ? "#ff6b6b" : pct >= 30 ? "#ffdc00" : "#3ddc84";
+  const C = 2 * Math.PI * 24;
+  return (
+    <svg viewBox="0 0 56 56" className="h-16 w-16 shrink-0" aria-hidden>
+      <circle cx="28" cy="28" r="24" fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="5" />
+      <circle
+        cx="28" cy="28" r="24" fill="none" stroke={tone} strokeWidth="5"
+        strokeLinecap="round" strokeDasharray={`${(pct / 100) * C} ${C}`}
+        transform="rotate(-90 28 28)"
+      />
+      <text x="28" y="33" textAnchor="middle" fontSize="14" fontWeight="800" fill="#f3f1ff">
+        {pct}
+      </text>
+    </svg>
+  );
 }
 
 export function RiskMeterSection({ risks }: { risks: SubjectRisk[] }) {
   if (risks.length === 0) return null;
 
+  // Sorted worst-first so the eye lands on the real problem, not the list.
+  const sorted = [...risks].sort((a, b) => b.marksAtRisk - a.marksAtRisk);
+
   return (
-    <section className="space-y-4">
+    <section>
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h3 className="font-display text-lg font-bold text-ink">Marks at risk</h3>
+        <h3 className="font-display text-lg font-extrabold text-ink">Marks at risk</h3>
         <Link
           href="/account/rescue"
-          className="text-xs font-medium text-accent hover:underline"
+          className="text-xs font-bold text-accent hover:underline"
         >
           Behind? Build my rescue plan →
         </Link>
       </div>
 
-      {risks.map((r) => (
-        <div
-          key={`${r.level}/${r.slug}`}
-          className="rounded-2xl border border-hairline bg-surface p-5"
-        >
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <p className="font-display font-bold text-ink">
-              {r.name}
-              <span className="ml-2 font-mono text-xs font-normal text-body">
-                {r.levelShort}
-              </span>
-            </p>
-            <p className="font-display text-2xl font-black text-ink">
-              ~{r.marksAtRisk}
-              <span className="text-sm font-bold text-body"> / 100 at risk</span>
-            </p>
-          </div>
-
-          <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-night">
-            <div
-              className={`h-full rounded-full ${meterColour(r.marksAtRisk)}`}
-              style={{ width: `${Math.min(r.marksAtRisk, 100)}%` }}
-            />
-          </div>
-
-          <ul className="mt-3 space-y-1 text-xs text-body">
-            {r.fromVeryHigh > 0 && (
-              <li>
-                • ~{r.fromVeryHigh} on{" "}
-                <span className="font-medium text-tier-veryhigh">VERY HIGH</span> topics
-                not yet confident
-                {r.untouchedVeryHigh.length > 0 && (
-                  <> ({r.untouchedVeryHigh.length} not even started)</>
-                )}{" "}
-, {" "}
-                <Link href="/account/study" className="font-medium text-accent hover:underline">
-                  work the plan →
+      <div className="mt-3 grid gap-3 sm:grid-cols-2">
+        {sorted.map((r) => {
+          const pct = Math.min(r.marksAtRisk, 100);
+          // ONE next action per subject, the biggest leak first.
+          const action =
+            r.fromVeryHigh > 0
+              ? {
+                  text: `~${r.fromVeryHigh} on VERY HIGH topics${
+                    r.untouchedVeryHigh.length > 0 ? ` (${r.untouchedVeryHigh.length} untouched)` : ""
+                  }`,
+                  href: "/account/study",
+                  cta: "Work the plan",
+                }
+              : r.fromMistakes > 0
+                ? {
+                    text: `~${r.fromMistakes} from ${r.unresolvedMistakes} unresolved mistake${
+                      r.unresolvedMistakes === 1 ? "" : "s"
+                    }`,
+                    href: "/account/mistakes",
+                    cta: "Clear them",
+                  }
+                : {
+                    text: "Fully worked, keep it warm with the daily three",
+                    href: "/account",
+                    cta: "Daily three",
+                  };
+          return (
+            <div key={`${r.level}/${r.slug}`} className="glass flex items-center gap-4 p-4">
+              <RiskRing pct={pct} />
+              <div className="min-w-0 flex-1">
+                <p className="truncate font-display text-sm font-bold text-ink" title={r.name}>
+                  {r.name}
+                  <span className="ml-1.5 text-[11px] font-medium text-body">{r.levelShort}</span>
+                </p>
+                <p className="mt-0.5 text-xs leading-relaxed text-body">{action.text}</p>
+                <Link href={action.href} className="mt-1 inline-block text-xs font-bold text-accent hover:underline">
+                  {action.cta} →
                 </Link>
-              </li>
-            )}
-            {r.fromHigh > 0 && (
-              <li>
-                • ~{r.fromHigh} on <span className="font-medium text-tier-high">HIGH</span>{" "}
-                topics not yet confident
-              </li>
-            )}
-            {r.fromMistakes > 0 && (
-              <li>
-                • ~{r.fromMistakes} added by {r.unresolvedMistakes} unresolved mistake
-                {r.unresolvedMistakes === 1 ? "" : "s"}, {" "}
-                <Link href="/account/mistakes" className="font-medium text-accent hover:underline">
-                  clear them →
-                </Link>
-              </li>
-            )}
-            {r.marksAtRisk <= 12 && (
-              <li className="text-guarantee">
-                • Fully worked, the residual is retention: keep topics warm with the
-                daily three and a timed Rehearsal.
-              </li>
-            )}
-          </ul>
-        </div>
-      ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
 
-      <p className="text-xs text-body/70">{RISK_CAVEAT}</p>
+      <p className="mt-3 text-xs text-body/70">{RISK_CAVEAT}</p>
     </section>
   );
 }

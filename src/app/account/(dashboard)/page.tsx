@@ -17,7 +17,7 @@ import { getScoreHistory } from "@/lib/server/progress";
 import { DailyQuiz, type NextUpItem } from "@/components/daily-quiz";
 import { GettingStarted, type StartStep } from "@/components/getting-started";
 import { TierPill } from "@/components/heat";
-import { QuestBoard, type BossInfo } from "@/components/quest-board";
+import { type BossInfo } from "@/components/quest-board";
 import { HomeBase } from "@/components/home-base";
 import { PhaseBanner, WeekReport } from "@/components/today-pulse";
 
@@ -34,6 +34,25 @@ function staleAttemptSubject(
   const stale = history.find((h) => new Date(h.latest.at).getTime() < cutoff);
   return stale ? { subjectName: stale.subjectName, level: stale.level, slug: stale.slug } : null;
 }
+
+// "Hey Daniel!" from the email's local part, best-effort.
+function firstNameFrom(email: string): string {
+  const raw = email.split("@")[0] ?? "";
+  const word = raw.split(/[._\-+]/)[0] ?? "";
+  if (!word) return "there";
+  return word.charAt(0).toUpperCase() + word.slice(1, 12);
+}
+
+const SG_DAYKEY = new Intl.DateTimeFormat("en-CA", {
+  timeZone: "Asia/Singapore",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+});
+const SG_DOW = new Intl.DateTimeFormat("en-SG", {
+  timeZone: "Asia/Singapore",
+  weekday: "narrow",
+});
 
 function todayLabel(): string {
   return new Date().toLocaleDateString("en-SG", {
@@ -75,7 +94,7 @@ export default async function TodayPage() {
   );
   const today = sgDay();
 
-  const [dayRows, unresolvedMistakes, examDates, orderCount, downloads, attempts, goals] =
+  const [dayRows, unresolvedMistakes, examDates, orderCount, downloads, attempts, goals, weekXpRows, reviewsDue] =
     await Promise.all([
       prisma.dailyQuizDay.findMany({ where: { customerId }, orderBy: { day: "desc" } }),
       prisma.mistakeEntry.count({ where: { customerId, resolved: false } }),
@@ -84,7 +103,29 @@ export default async function TodayPage() {
       prisma.downloadEvent.count({ where: { orderItem: { order: { customerId } } } }),
       prisma.diagnosticAttempt.count({ where: { customerId } }),
       prisma.subjectGoal.count({ where: { customerId } }),
+      prisma.xpEvent.findMany({
+        where: { customerId, createdAt: { gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) } },
+        select: { createdAt: true, amount: true },
+      }),
+      prisma.reviewCard.count({ where: { customerId, dueAt: { lte: new Date() } } }),
     ]);
+
+  // The hero chart: XP earned per Singapore day, the week at a glance.
+  const weekDays: { key: string; dow: string; xp: number }[] = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(Date.now() - i * 24 * 60 * 60 * 1000);
+    weekDays.push({ key: SG_DAYKEY.format(d), dow: SG_DOW.format(d), xp: 0 });
+  }
+  let weekXp = 0;
+  for (const ev of weekXpRows) {
+    const key = SG_DAYKEY.format(ev.createdAt);
+    const slot = weekDays.find((w) => w.key === key);
+    if (slot) {
+      slot.xp += ev.amount;
+      weekXp += ev.amount;
+    }
+  }
+  const maxDayXp = Math.max(1, ...weekDays.map((w) => w.xp));
 
   const streak = await streakState(customerId, today);
   const todayRow = dayRows.find((r) => r.day === today) ?? null;
@@ -279,21 +320,76 @@ export default async function TodayPage() {
         shields={streak.shields}
       />
 
-      {/* Mission brief */}
+      {/* ── Hero: the greeting + the week, app-dashboard style ─────────── */}
       <div>
-        <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <h2 className="font-display text-2xl font-bold text-ink">{todayLabel()}</h2>
+        <div className="flex flex-wrap items-end justify-between gap-2">
+          <div>
+            <p className="text-sm font-medium text-body">{todayLabel()}</p>
+            <h2 className="mt-0.5 font-display text-3xl font-extrabold tracking-tight text-ink">
+              Hey <span className="sl-grad-text">{firstNameFrom(customer?.email ?? "")}</span>!
+            </h2>
+          </div>
           {streak.current > 0 && (
-            <span className="rounded-full bg-accent/10 px-3 py-1 font-mono text-xs font-medium text-accent">
-              🔥 {streak.current}-day streak{streak.doneToday ? "" : ", today keeps it"}
+            <span className="chip">
+              🔥 {streak.current}-day streak{streak.doneToday ? "" : " · today keeps it"}
             </span>
           )}
         </div>
-        <p className="mt-1 text-sm text-body">
+        <p className="mt-1.5 text-sm text-body">
           {openItems.length === 0
             ? "Mission complete. Come back tomorrow, the system resets at midnight."
-            : `Today's quests: ${openItems.length}, about ${totalMinutes} minutes. Do them in order, the XP is real.`}
+            : `${openItems.length} quest${openItems.length === 1 ? "" : "s"} today, about ${totalMinutes} minutes. The XP is real.`}
         </p>
+
+        {/* The week card + stat tiles (the reference's Learn Time layout) */}
+        <div className="mt-4 grid gap-3 sm:grid-cols-5">
+          <div className="glass-deep p-5 sm:col-span-3">
+            <div className="flex items-baseline justify-between">
+              <p className="text-sm font-semibold text-body">This week</p>
+              <Link href="/account/progress" className="text-xs font-bold text-accent hover:underline">
+                Details →
+              </Link>
+            </div>
+            <p className="mt-1 font-display text-4xl font-extrabold text-ink">
+              {weekXp}
+              <span className="ml-1.5 text-base font-bold text-body">XP</span>
+            </p>
+            <div className="mt-3 flex h-16 items-end gap-1.5" aria-hidden>
+              {weekDays.map((w, i) => (
+                <div key={w.key} className="flex flex-1 flex-col items-center gap-1">
+                  <div
+                    className={`w-full rounded-full ${
+                      w.xp > 0 ? "bg-gradient-to-t from-violet-500 to-fuchsia-300" : "bg-white/10"
+                    }`}
+                    style={{ height: `${Math.max(8, Math.round((w.xp / maxDayXp) * 56))}px` }}
+                  />
+                  <span className={`text-[10px] ${i === 6 ? "font-bold text-ink" : "text-body/70"}`}>
+                    {w.dow}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="grid grid-rows-2 gap-3 sm:col-span-2">
+            <div className="glass flex items-center gap-3 p-4">
+              <span className="icon-orb text-lg" aria-hidden>✅</span>
+              <div>
+                <p className="font-display text-xl font-extrabold text-ink">
+                  {mission.filter((m) => m.done).length}/{mission.length}
+                </p>
+                <p className="text-xs text-body">quests done today</p>
+              </div>
+            </div>
+            <Link href="/account/drills" className="glass flex items-center gap-3 p-4 transition-transform hover:-translate-y-0.5">
+              <span className="icon-orb text-lg" aria-hidden>🔁</span>
+              <div>
+                <p className="font-display text-xl font-extrabold text-ink">{reviewsDue}</p>
+                <p className="text-xs text-body">reviews due, keep them won</p>
+              </div>
+            </Link>
+          </div>
+        </div>
+
         {/* Which season of the campaign we're in, driven by real paper dates */}
         <PhaseBanner customerId={customerId} subjects={subjects} />
         {retired.length > 0 && (
@@ -314,8 +410,55 @@ export default async function TodayPage() {
 
       <GettingStarted steps={steps} />
 
-      {/* The mission list, quest board in the app, checklist on the web */}
-      {openItems.length > 0 && <QuestBoard mission={mission} boss={boss} />}
+      {/* Priority tasks, the reference's checklist card */}
+      {openItems.length > 0 && (
+        <section className="glass p-5">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 className="font-display text-lg font-extrabold text-ink">
+              Priority tasks <span className="chip ml-1 !px-2 !py-0.5 text-[10px]">Today</span>
+            </h3>
+            <span className="text-xs text-body">~{totalMinutes} min total</span>
+          </div>
+          <ul className="mt-3 space-y-1">
+            {mission.map((m) => (
+              <li key={m.title}>
+                <Link
+                  href={m.href}
+                  className={`group flex items-start gap-3 rounded-2xl px-2 py-2.5 transition-colors hover:bg-white/5 ${
+                    m.done ? "opacity-55" : ""
+                  }`}
+                >
+                  <span
+                    className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border text-[11px] ${
+                      m.done
+                        ? "border-guarantee/60 bg-guarantee/20 text-guarantee"
+                        : "border-hairline text-transparent group-hover:border-accent/60"
+                    }`}
+                    aria-hidden
+                  >
+                    ✓
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className={`block text-sm font-semibold text-ink ${m.done ? "line-through decoration-body/50" : ""}`}>
+                      {m.title}
+                    </span>
+                    <span className="mt-0.5 block text-xs leading-relaxed text-body">{m.detail}</span>
+                  </span>
+                  <span className="shrink-0 text-right">
+                    <span className="block text-[11px] font-bold text-accent">{m.xp}</span>
+                    <span className="block text-[11px] text-body">~{m.minutes} min</span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          {boss && (
+            <p className="mt-2 border-t border-hairline pt-2.5 text-xs text-body">
+              👑 Weekly boss: <span className="font-semibold text-ink">{boss.topic}</span> ({boss.subjectName}), {boss.hpPct}% HP left. Every study step lands a hit.
+            </p>
+          )}
+        </section>
+      )}
 
       {/* The daily three, in place */}
       <div id="daily" className="scroll-mt-20">
@@ -341,47 +484,52 @@ export default async function TodayPage() {
         }
       />
 
-      {/* Compact risk line, the full meters live on Progress */}
+      {/* Your subjects, a swipeable strip of ring gauges */}
       {risks.length > 0 && (
-        <section className="rounded-2xl border border-hairline bg-surface p-5">
+        <section>
           <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 className="font-display text-lg font-bold text-ink">Marks at risk</h3>
+            <h3 className="font-display text-lg font-extrabold text-ink">Your subjects</h3>
             <span className="flex items-center gap-4 text-xs">
-              <Link href="/account/progress" className="font-medium text-accent hover:underline">
+              <Link href="/account/progress" className="font-bold text-accent hover:underline">
                 Full breakdown →
               </Link>
               <Link href="/account/rescue" className="font-medium text-body hover:text-ink">
-                Behind? Rescue plan →
+                Behind? Rescue →
               </Link>
             </span>
           </div>
-          <ul className="mt-3 space-y-2">
-            {risks.map((r) => (
-              <li key={`${r.level}/${r.slug}`} className="flex items-center gap-3">
-                <span className="w-40 shrink-0 truncate text-sm text-ink">{r.name}</span>
-                <span className="h-2 flex-1 overflow-hidden rounded-full bg-night">
-                  <span
-                    className={`block h-full rounded-full ${
-                      r.marksAtRisk >= 60 ? "bg-coral" : r.marksAtRisk >= 30 ? "bg-accent" : "bg-guarantee"
-                    }`}
-                    style={{ width: `${Math.min(r.marksAtRisk, 100)}%` }}
-                  />
-                </span>
-                <span className="w-14 shrink-0 text-right font-mono text-xs text-body">
-                  ~{r.marksAtRisk}/100
-                </span>
-              </li>
-            ))}
-          </ul>
-          {focusTopic && (
-            <p className="mt-3 text-xs text-body">
-              Biggest single lever right now:{" "}
-              <span className="text-ink">{focusTopic.topic}</span> ({focusTopic.subjectName}){" "}
-              <TierPill tier={focusTopic.tier} />
-            </p>
-          )}
+          <div className="sl-strip mt-3">
+            {risks.map((r) => {
+              const pct = Math.min(r.marksAtRisk, 100);
+              const tone = pct >= 60 ? "#ff6b6b" : pct >= 30 ? "#ffdc00" : "#3ddc84";
+              const C = 2 * Math.PI * 17;
+              return (
+                <Link
+                  key={`${r.level}/${r.slug}`}
+                  href="/account/study"
+                  className="glass w-40 p-4 transition-transform hover:-translate-y-0.5"
+                >
+                  <svg viewBox="0 0 40 40" className="h-12 w-12" aria-hidden>
+                    <circle cx="20" cy="20" r="17" fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="4" />
+                    <circle
+                      cx="20" cy="20" r="17" fill="none" stroke={tone} strokeWidth="4"
+                      strokeLinecap="round" strokeDasharray={`${(pct / 100) * C} ${C}`}
+                      transform="rotate(-90 20 20)"
+                    />
+                    <text x="20" y="24" textAnchor="middle" fontSize="10" fontWeight="700" fill="#f3f1ff">
+                      {pct}
+                    </text>
+                  </svg>
+                  <p className="mt-2 truncate text-sm font-bold text-ink" title={r.name}>{r.name}</p>
+                  <p className="text-[11px] text-body">~{pct}/100 marks at risk</p>
+                </Link>
+              );
+            })}
+          </div>
         </section>
       )}
+
+
     </div>
   );
 }
