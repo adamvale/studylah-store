@@ -84,6 +84,46 @@ change, streak push, parent digest). Key engines:
 - **Auth**: passwordless magic links, HMAC-signed stateless tokens
   (`customer-session.ts`), fail-closed without `CUSTOMER_AUTH_SECRET`.
 
+## FastTrack (StudyLand, `/account/fasttrack`) — answer like the examiner
+
+The technique layer for students stuck below ~60%: they usually KNOW the
+material but lose marks at the point of writing (missing keywords, vague
+phrasing, wrong format, incomplete logic). FastTrack teaches the writing per
+QUESTION ARCHETYPE (a "Play"), for Chemistry, Physics, Biology first (parks
+here now; the plan is to fold each Play into the game later as a trainable
+"technique"). Master-gated, in the Study nav after Study plan.
+
+- **Content**: `src/lib/fasttrack.ts` (client-safe, no imports). ~10 Plays per
+  family (30 total). Each Play has the 5 parts that map 1:1 to the four leaks:
+  RECOGNISE (trigger words, what it tests, marks→points), SKELETON (the 3-4
+  step answer shape), KEYWORDS (vague ✗ → exact ✓ contrast pairs), MODEL
+  (full-mark answer + crediting points), DRILL (a fresh question). Authored by
+  FAMILY so Pure + Science + N(A) rows share one playbook
+  (`familyForSubject` maps catalogue family → Play family). Compliance: no
+  banned words, no em/en dashes, molecules in real Unicode.
+- **Marking**: the drill reuses the existing AI marker (`/api/account/tutor`
+  mode `structured`, which returns `Score: X/Y` + per-point ✓/✗). No new AI
+  surface. The client parses the score and posts the pct to FastTrack.
+- **Progress/mastery**: rides the shared SRS engine, `kind: "fasttrack"`
+  (`src/lib/server/srs.ts` ReviewKind extended). A good drill (≥60% of marks)
+  advances the box; two consecutive good drills reach box 3 = MASTERED; a
+  poor drill lapses to box 1. itemKey = the Play id. Small once-per-SG-day XP
+  through the farm-proof ledger. Server module
+  `src/lib/server/fasttrack.ts`; API `GET/POST /api/account/fasttrack`
+  (Master-gated; the pct is bounded so a dishonest client gains only a few
+  daily XP, never a grade).
+- **UI**: `src/components/fasttrack-hub.tsx` — family tabs with
+  "N/M plays mastered", the four-leaks framing, the Play list, the 5-part Play
+  detail, the AI-marked drill, and the **Classifier game** ("The 5-second
+  read": flash a real stem, tap its archetype, 10 rounds, scored) which trains
+  recognition under time pressure.
+- **Discovery**: the Mistakes-page Diagnosis panel surfaces a FastTrack nudge
+  when ≥2 open concept/method mistakes are in a FastTrack subject (those are
+  writing leaks). See `mistake-notebook.tsx` `showFastTrack`.
+- **To extend**: add Plays to the family arrays in `fasttrack.ts` (ids are
+  stable = mastery keys). Adding families later means adding to `PLAYBOOKS`,
+  `FAMILY_META`, and `familyForSubject`.
+
 ## Master-tier gating (StudyLand + StudyLah Legends are a Master perk)
 
 The whole site now sells StudyLand (the `/account` dashboard) and StudyLah

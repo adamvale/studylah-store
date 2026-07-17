@@ -16,6 +16,7 @@ const STUDY_GROUP: NavGroup = {
   label: "Study",
   links: [
     { href: "/account/study", label: "Study plan", blurb: "Topic-by-topic plan to exam day" },
+    { href: "/account/fasttrack", label: "FastTrack", blurb: "Answer the way examiners want" },
     { href: "/account/drills", label: "Drills", blurb: "Definitions, formulas, answers" },
     { href: "/account/rescue", label: "Rescue plan", blurb: "Behind? Get a recovery plan" },
     { href: "/account/warroom", label: "War Room", blurb: "Final-week plan per paper" },

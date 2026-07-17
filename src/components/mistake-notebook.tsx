@@ -481,6 +481,15 @@ function Diagnosis({ items }: { items: MistakeItem[] }) {
   const classified = [...byReason.entries()].filter(([r]) => r !== "unset");
   classified.sort((a, b) => b[1] - a[1]);
   const topReason = classified[0];
+
+  // FastTrack nudge: concept + method mistakes in Chem/Phys/Bio are usually
+  // WRITING leaks (missing keywords, wrong format), the exact thing FastTrack
+  // trains. Only surface it when those causes cluster in a FastTrack subject.
+  const isFastTrackSubject = (slug: string) => /^(chemistry|physics|biology)/.test(slug);
+  const writingLeaks = open.filter(
+    (m) => (m.reason === "concept" || m.reason === "method") && isFastTrackSubject(m.slug)
+  ).length;
+  const showFastTrack = writingLeaks >= 2;
   const unclassified = byReason.get("unset") ?? 0;
   const topTopics = [...byTopic.entries()]
     .sort((a, b) => b[1].count - a[1].count)
@@ -515,6 +524,18 @@ function Diagnosis({ items }: { items: MistakeItem[] }) {
             {unclassified} entr{unclassified === 1 ? "y" : "ies"} still
             unclassified. Tag the cause on each (one tap below), the diagnosis
             gets sharper with every tag.
+          </p>
+        )}
+        {showFastTrack && (
+          <p>
+            <span className="font-medium text-ink">
+              {writingLeaks} of these are Chemistry, Physics or Biology answers
+              losing marks on wording, not on knowing.
+            </span>{" "}
+            That is trainable.{" "}
+            <Link href="/account/fasttrack" className="font-medium text-accent hover:underline">
+              FastTrack the answer types →
+            </Link>
           </p>
         )}
         <p className="text-xs">

@@ -8,7 +8,7 @@ import { prisma } from "@/lib/db";
 // card back to box 1. Box 5 cards are "banked" but still resurface at 60 days
 // so nothing is ever truly forgotten before exam day.
 
-export type ReviewKind = "question" | "definition" | "formula";
+export type ReviewKind = "question" | "definition" | "formula" | "fasttrack";
 
 export const BOX_INTERVAL_DAYS = [0, 1, 3, 7, 21, 60] as const; // index = box
 export const MAX_BOX = 5;
