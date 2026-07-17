@@ -62,17 +62,46 @@ export function PracticeTools({ data }: { data: PracticeData }) {
   );
 }
 
+
+// ── Deck: the one-at-a-time pattern every drill uses ────────────────────────
+// One card on screen, Previous/Next at the thumb, "i / N" in the middle.
+function Deck({
+  length,
+  render,
+}: {
+  length: number;
+  render: (i: number) => React.ReactNode;
+}) {
+  const [i, setI] = useState(0);
+  if (length === 0) return null;
+  const go = (delta: number) => setI((n) => (n + delta + length) % length);
+  return (
+    <div>
+      <div key={i}>{render(i)}</div>
+      <div className="mt-3 flex items-center justify-between">
+        <button type="button" onClick={() => go(-1)} className="chip">
+          ← Previous
+        </button>
+        <span className="text-xs font-semibold text-body">
+          {i + 1} / {length}
+        </span>
+        <button type="button" onClick={() => go(1)} className="sl-btn !px-5 !py-2">
+          Next →
+        </button>
+      </div>
+    </div>
+  );
+}
+
 // ── Keyword precision: type an answer, see which marker words you hit ────────
 function Precision({ cards }: { cards: PrecisionCard[] }) {
   return (
     <div className="space-y-4">
       <p className="text-sm text-body">
         Marks in science are phrase-exact. Write your answer, then reveal the
-        marker words a marker actually looks for.
+        marker words a marker actually looks for. One question at a time.
       </p>
-      {cards.map((c, i) => (
-        <PrecisionRow key={i} card={c} />
-      ))}
+      <Deck length={cards.length} render={(i) => <PrecisionRow card={cards[i]} />} />
     </div>
   );
 }
@@ -262,17 +291,20 @@ function SourceSkills() {
       <div>
         <h4 className="font-display font-bold text-ink">The source-question ladder</h4>
         <p className="mt-1 text-sm text-body">Each rung is a different skill. Know which one the question is testing.</p>
-        <ol className="mt-3 space-y-2">
-          {SBQ_LADDER.map((r, i) => (
-            <li key={i} className="rounded-2xl border border-hairline bg-surface p-4">
-              <p className="font-display font-bold text-ink">
-                {i + 1}. {r.rung}
-              </p>
-              <p className="mt-1 text-sm text-body">{r.what}</p>
-              <p className="mt-1 text-sm text-accent">{r.how}</p>
-            </li>
-          ))}
-        </ol>
+        <div className="mt-3">
+          <Deck
+            length={SBQ_LADDER.length}
+            render={(i) => (
+              <div className="rounded-2xl border border-hairline bg-surface p-5">
+                <p className="font-display font-bold text-ink">
+                  Rung {i + 1} of {SBQ_LADDER.length}: {SBQ_LADDER[i].rung}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-body">{SBQ_LADDER[i].what}</p>
+                <p className="mt-2 text-sm leading-relaxed text-accent">{SBQ_LADDER[i].how}</p>
+              </div>
+            )}
+          />
+        </div>
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2">
@@ -312,19 +344,25 @@ function PoaFormats() {
         Format marks are free marks. Rehearse the skeleton until the headings
         and order are automatic.
       </p>
-      {POA_TEMPLATES.map((t) => (
-        <div key={t.name} className="rounded-2xl border border-hairline bg-surface p-5">
-          <h4 className="font-display font-bold text-ink">{t.name}</h4>
-          <ul className="mt-3 space-y-1">
-            {t.lines.map((line, i) => (
-              <li key={i} className="border-l-2 border-hairline pl-3 font-mono text-sm text-body">
-                {line}
-              </li>
-            ))}
-          </ul>
-          {t.note && <p className="mt-3 text-xs text-accent">{t.note}</p>}
-        </div>
-      ))}
+      <Deck
+        length={POA_TEMPLATES.length}
+        render={(idx) => {
+          const t = POA_TEMPLATES[idx];
+          return (
+            <div className="rounded-2xl border border-hairline bg-surface p-5">
+              <h4 className="font-display font-bold text-ink">{t.name}</h4>
+              <ul className="mt-3 space-y-1">
+                {t.lines.map((line, i) => (
+                  <li key={i} className="border-l-2 border-hairline pl-3 font-mono text-sm text-body">
+                    {line}
+                  </li>
+                ))}
+              </ul>
+              {t.note && <p className="mt-3 text-xs text-accent">{t.note}</p>}
+            </div>
+          );
+        }}
+      />
     </div>
   );
 }

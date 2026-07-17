@@ -176,12 +176,6 @@ export function CampaignMap({
           );
         })}
       </svg>
-      <p className="mt-2 text-center text-[11px] text-body/80">
-        <span className="text-body/50">●</span> fogged ·{" "}
-        <span className="text-accent">●</span> revised/practised ·{" "}
-        <span className="text-guarantee">✓</span> cleared, tap a territory to
-        advance it. Border colour = forecast tier.
-      </p>
     </div>
   );
 }

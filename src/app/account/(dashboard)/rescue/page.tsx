@@ -153,95 +153,91 @@ export default async function RescuePage({
 
       {/* The questionnaire. Plain GET form: answers live in the URL, so the
           plan is shareable, printable, and needs no client JS. */}
-      <form
-        method="get"
-        className="rounded-2xl border border-hairline bg-surface p-5"
-      >
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <fieldset>
-            <legend className="text-xs font-medium uppercase tracking-wide text-body">
-              1 · How do you feel about your prep?
-            </legend>
-            <div className="mt-2 space-y-1.5">
-              {feelChoices.map((c) => (
-                <label key={c.value} className="block cursor-pointer">
-                  {/* peer-checked styling = the highlight moves the moment you
-                      tap, no waiting for the form to submit */}
+      {/* Three questions as three step bands, not three lopsided columns.
+          Still a plain GET form: answers live in the URL, shareable and
+          printable with no client JS. */}
+      <form method="get" className="glass space-y-5 p-5">
+        <fieldset>
+          <legend className="flex items-center gap-2 text-sm font-bold text-ink">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-accent/15 font-mono text-xs font-black text-accent">1</span>
+            How do you feel about your prep?
+          </legend>
+          <div className="mt-2.5 flex flex-wrap gap-2">
+            {feelChoices.map((c) => (
+              <label key={c.value} className="cursor-pointer">
+                {/* peer-checked styling = the highlight moves the moment you
+                    tap, no waiting for the form to submit */}
+                <input
+                  type="radio"
+                  name="f"
+                  value={c.value}
+                  defaultChecked={feel === c.value}
+                  className="peer sr-only"
+                />
+                <span className="chip block" title={c.blurb}>
+                  {c.label}
+                </span>
+              </label>
+            ))}
+          </div>
+          <p className="mt-1.5 text-xs text-body">
+            {feelChoices.find((c) => c.value === feel)?.blurb}
+          </p>
+        </fieldset>
+
+        <fieldset className="border-t border-hairline pt-4">
+          <legend className="flex items-center gap-2 pt-4 text-sm font-bold text-ink">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-accent/15 font-mono text-xs font-black text-accent">2</span>
+            Study time you can really give each day?
+          </legend>
+          <div className="mt-2.5 flex flex-wrap gap-2">
+            {hourChoices.map((c) => (
+              <label key={c.value} className="cursor-pointer">
+                <input
+                  type="radio"
+                  name="h"
+                  value={c.value}
+                  defaultChecked={hours === c.value}
+                  className="peer sr-only"
+                />
+                <span className="chip block">
+                  {c.label}
+                  <span className="text-[10px] opacity-75">{HOURS_TO_SLOTS[c.value]} blocks</span>
+                </span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset className="border-t border-hairline pt-4">
+          <legend className="flex items-center gap-2 pt-4 text-sm font-bold text-ink">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-accent/15 font-mono text-xs font-black text-accent">3</span>
+            Rescue which subjects? <span className="text-xs font-normal text-body">(none ticked = all)</span>
+          </legend>
+          <div className="mt-2.5 grid grid-cols-2 gap-1.5 sm:grid-cols-3">
+            {risks.map((r) => {
+              const key = `${r.level}/${r.slug}`;
+              const on = picked.has(key);
+              return (
+                <label key={key} className="cursor-pointer">
                   <input
-                    type="radio"
-                    name="f"
-                    value={c.value}
-                    defaultChecked={feel === c.value}
+                    type="checkbox"
+                    name="s"
+                    value={key}
+                    defaultChecked={on}
                     className="peer sr-only"
                   />
-                  <span className="flex items-baseline gap-2 rounded-lg border border-hairline px-3 py-2 text-sm text-body hover:text-ink peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-ink">
-                    <span className="font-medium">{c.label}</span>
-                    <span className="text-xs">{c.blurb}</span>
+                  <span className="flex items-center gap-1.5 rounded-xl border border-hairline px-2.5 py-2 text-xs text-body transition-colors hover:text-ink peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-ink">
+                    <span className="truncate font-medium">{r.name}</span>
+                    <span className="shrink-0 text-[10px] opacity-70">{r.levelShort}</span>
                   </span>
                 </label>
-              ))}
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend className="text-xs font-medium uppercase tracking-wide text-body">
-              2 · Study time you can really give each day?
-            </legend>
-            <div className="mt-2 space-y-1.5">
-              {hourChoices.map((c) => (
-                <label key={c.value} className="block cursor-pointer">
-                  <input
-                    type="radio"
-                    name="h"
-                    value={c.value}
-                    defaultChecked={hours === c.value}
-                    className="peer sr-only"
-                  />
-                  <span className="flex items-baseline gap-2 rounded-lg border border-hairline px-3 py-2 text-sm text-body hover:text-ink peer-checked:border-accent peer-checked:bg-accent/10 peer-checked:text-ink">
-                    <span className="font-medium">{c.label}</span>
-                    <span className="text-xs">
-                      {HOURS_TO_SLOTS[c.value]} blocks/day
-                    </span>
-                  </span>
-                </label>
-              ))}
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend className="text-xs font-medium uppercase tracking-wide text-body">
-              3 · Rescue which subjects? (blank = all)
-            </legend>
-            <div className="mt-2 space-y-1.5">
-              {risks.map((r) => {
-                const key = `${r.level}/${r.slug}`;
-                const on = picked.has(key);
-                return (
-                  <label
-                    key={key}
-                    className={`flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-sm ${
-                      on
-                        ? "border-accent bg-accent/10 text-ink"
-                        : "border-hairline text-body hover:text-ink"
-                    }`}
-                  >
-                    <input
-                      type="checkbox"
-                      name="s"
-                      value={key}
-                      defaultChecked={on}
-                      className="h-3.5 w-3.5 accent-[var(--color-accent)]"
-                    />
-                    <span className="font-medium">{r.name}</span>
-                    <span className="text-xs">{r.levelShort}</span>
-                  </label>
-                );
-              })}
-            </div>
-          </fieldset>
-        </div>
-        <button
-          type="submit"
-          className="mt-4 rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
-        >
+              );
+            })}
+          </div>
+        </fieldset>
+
+        <button type="submit" className="sl-btn w-full sm:w-auto">
           Rebuild my rescue plan
         </button>
       </form>
@@ -297,32 +293,55 @@ export default async function RescuePage({
         )}
       </div>
 
-      <ol className="space-y-4">
-        {plan.planDays.map((day) => (
-          <li key={day.dayNumber} className="rounded-2xl border border-hairline bg-surface p-5">
-            <p className="font-display font-bold text-ink">
+      {(() => {
+        const DayCard = ({ day }: { day: (typeof plan.planDays)[number] }) => (
+          <div className="glass p-4">
+            <p className="font-display text-sm font-extrabold text-ink">
               Day {day.dayNumber}
-              {day.dayNumber === 1 && <span className="ml-2 text-xs font-normal text-accent">start today</span>}
+              {day.dayNumber === 1 && (
+                <span className="ml-2 text-xs font-normal text-accent">start today</span>
+              )}
             </p>
-            <ul className="mt-3 space-y-2">
+            <ul className="mt-2 divide-y divide-white/5">
               {day.items.map((item, i) => (
-                <li
-                  key={i}
-                  className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-hairline bg-night px-4 py-2.5"
-                >
-                  <span className="min-w-0">
-                    <span className="block text-sm text-ink">{item.topic}</span>
-                    <span className="text-xs text-body">
+                <li key={i} className="flex items-center gap-2.5 py-2">
+                  <TierPill tier={item.tier} />
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-sm text-ink">{item.topic}</span>
+                    <span className="block truncate text-[11px] text-body">
                       {item.subjectName} · {item.levelShort} · {item.action}
                     </span>
                   </span>
-                  <TierPill tier={item.tier} />
                 </li>
               ))}
             </ul>
-          </li>
-        ))}
-      </ol>
+          </div>
+        );
+        const firstDays = plan.planDays.slice(0, 3);
+        const restDays = plan.planDays.slice(3);
+        return (
+          <div className="space-y-3">
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {firstDays.map((day) => (
+                <DayCard key={day.dayNumber} day={day} />
+              ))}
+            </div>
+            {restDays.length > 0 && (
+              <details className="group">
+                <summary className="chip cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                  <span className="group-open:hidden">Show the remaining {restDays.length} days ▾</span>
+                  <span className="hidden group-open:inline">Hide the later days ▴</span>
+                </summary>
+                <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {restDays.map((day) => (
+                    <DayCard key={day.dayNumber} day={day} />
+                  ))}
+                </div>
+              </details>
+            )}
+          </div>
+        );
+      })()}
 
       {plan.extras.length > 0 && (
         <div className="rounded-2xl border border-hairline bg-surface p-5">

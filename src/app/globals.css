@@ -756,3 +756,11 @@ body:has([data-bottom-cta]) .gugu-panel {
 }
 .sl-strip::-webkit-scrollbar { display: none; }
 .sl-strip > * { scroll-snap-align: start; flex-shrink: 0; }
+
+/* Radio/checkbox pills: the chip lights up the moment its hidden peer input
+   is checked (used by the rescue questionnaire, no client JS needed). */
+.peer:checked + .chip {
+  border-color: rgba(196, 181, 253, 0.65);
+  background: rgba(139, 92, 246, 0.28);
+  color: #ffffff;
+}

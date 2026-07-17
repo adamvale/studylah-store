@@ -39,6 +39,10 @@ export function StudyPlanBoard({
 }) {
   const [progress, setProgress] = useState<Record<string, number>>(initialProgress);
   const [xpToast, setXpToast] = useState<string | null>(null);
+  // which subject's campaign map is on screen (chips above the map)
+  const [activeMapKey, setActiveMapKey] = useState<string>(
+    subjects[0] ? `${subjects[0].level}/${subjects[0].slug}` : ""
+  );
 
   async function cycle(subject: PlanSubject, topic: string) {
     const k = keyOf(subject, topic);
@@ -133,48 +137,76 @@ export function StudyPlanBoard({
           {xpToast}
         </p>
       )}
-      {/* The campaign, always visible, one map per subject */}
+      {/* The campaign: ONE map on screen, subjects as swipeable chips.
+          Eight stacked honeycombs with eight legends was a wall; this is a
+          hand of cards. */}
       {subjects.length > 0 && (
-        <section className="rounded-2xl border border-hairline bg-surface p-5">
+        <section className="glass p-5">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 className="font-display text-lg font-bold text-ink">
+            <h3 className="font-display text-lg font-extrabold text-ink">
               🗺️ The campaign
             </h3>
-            <p className="font-mono text-xs text-body">
-              clear the fog before exam day
-            </p>
+            <p className="text-xs text-body">clear the fog before exam day</p>
           </div>
-          <div className={`mt-4 grid gap-8 ${subjects.length > 1 ? "sm:grid-cols-2" : ""}`}>
+          <div className="sl-strip mt-3">
             {subjects.map((subject) => {
+              const k = `${subject.level}/${subject.slug}`;
               const total = subject.topics.length;
-              const cleared = subject.topics.filter(
+              const clearedN = subject.topics.filter(
                 (t) => (progress[keyOf(subject, t.topic)] ?? 0) >= 3
               ).length;
-              const pct = total === 0 ? 0 : Math.round((cleared / total) * 100);
+              const on = k === activeMapKey;
               return (
-                <div key={`map-${subject.level}/${subject.slug}`}>
-                  <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <p className="text-sm font-medium text-ink">
-                      {subject.name}{" "}
-                      <span className="font-mono text-xs font-normal text-body">
-                        {subject.levelShort}
-                      </span>
-                    </p>
-                    <span className="font-mono text-xs text-body">
-                      {cleared}/{total} · {pct}% clear
-                    </span>
-                  </div>
-                  <div className="mt-2">
-                    <CampaignMap
-                      topics={subject.topics}
-                      statusFor={(t) => progress[keyOf(subject, t)] ?? 0}
-                      onSelect={(t) => void cycle(subject, t)}
-                    />
-                  </div>
-                </div>
+                <button
+                  key={`chip-${k}`}
+                  type="button"
+                  onClick={() => setActiveMapKey(k)}
+                  className={`chip ${on ? "chip-active" : ""}`}
+                >
+                  {subject.name}
+                  <span className="text-[10px] opacity-80">
+                    {clearedN}/{total}
+                  </span>
+                </button>
               );
             })}
           </div>
+          {(() => {
+            const subject =
+              subjects.find((su) => `${su.level}/${su.slug}` === activeMapKey) ??
+              subjects[0];
+            const total = subject.topics.length;
+            const clearedN = subject.topics.filter(
+              (t) => (progress[keyOf(subject, t.topic)] ?? 0) >= 3
+            ).length;
+            const pct = total === 0 ? 0 : Math.round((clearedN / total) * 100);
+            return (
+              <div className="mt-4">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <p className="text-sm font-semibold text-ink">
+                    {subject.name}{" "}
+                    <span className="text-xs font-normal text-body">{subject.levelShort}</span>
+                  </p>
+                  <span className="text-xs text-body">
+                    {clearedN}/{total} · {pct}% clear
+                  </span>
+                </div>
+                <div className="mt-2">
+                  <CampaignMap
+                    topics={subject.topics}
+                    statusFor={(t) => progress[keyOf(subject, t)] ?? 0}
+                    onSelect={(t) => void cycle(subject, t)}
+                  />
+                </div>
+              </div>
+            );
+          })()}
+          <p className="mt-3 text-center text-[11px] text-body/80">
+            <span className="text-body/50">●</span> fogged ·{" "}
+            <span className="text-accent">●</span> revised/practised ·{" "}
+            <span className="text-guarantee">✓</span> cleared · tap a territory
+            to advance it · border colour = forecast tier
+          </p>
         </section>
       )}
 

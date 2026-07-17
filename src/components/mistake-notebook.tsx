@@ -164,125 +164,127 @@ export function MistakeNotebook({
           </p>
         </div>
       ) : (
-        <ul className="space-y-4">
-          {visible.map((item) => (
-            <li
-              key={item.id}
-              className={`rounded-2xl border bg-surface p-5 ${
-                item.resolved ? "border-hairline opacity-70" : "border-hairline"
-              }`}
-            >
-              <div className="flex items-start justify-between gap-3">
-                <p className="font-mono text-xs text-accent">
-                  {item.subjectName} · {item.topic}
-                </p>
-                <span className="shrink-0 font-mono text-[10px] uppercase tracking-wide text-body">
-                  {item.source === "daily"
-                    ? "from daily"
-                    : item.source === "diagnostic"
-                    ? "from check"
-                    : "added"}
-                </span>
-              </div>
-              {(() => {
-                const monster = MONSTERS[item.reason] ?? MONSTERS.unset;
-                const hpLeft = Math.max(MONSTER_HP - item.clearStreak, 0);
-                const respawn = item.nextResurfaceAt
-                  ? Math.ceil(
-                      (new Date(item.nextResurfaceAt).getTime() - Date.now()) /
-                        (24 * 60 * 60 * 1000)
-                    )
-                  : null;
-                return (
-                  <div className="mt-3 flex flex-wrap items-center gap-3 rounded-xl border border-hairline bg-night px-4 py-2.5">
-                    <span aria-hidden="true" className="text-2xl">
+        <ul className="space-y-2">
+          {visible.map((item) => {
+            const monster = MONSTERS[item.reason] ?? MONSTERS.unset;
+            const hpLeft = Math.max(MONSTER_HP - item.clearStreak, 0);
+            const respawn = item.nextResurfaceAt
+              ? Math.ceil(
+                  (new Date(item.nextResurfaceAt).getTime() - Date.now()) /
+                    (24 * 60 * 60 * 1000)
+                )
+              : null;
+            return (
+              <li key={item.id}>
+                {/* One compact row per monster; the question and actions
+                    live behind the tap. A wall of open case-files became a
+                    scannable bestiary index. */}
+                <details className={`glass group !rounded-2xl ${item.resolved ? "opacity-60" : ""}`}>
+                  <summary className="flex cursor-pointer items-center gap-3 px-4 py-3 [&::-webkit-details-marker]:hidden">
+                    <span className="icon-orb !h-10 !w-10 shrink-0 text-lg" aria-hidden>
                       {item.resolved ? "🏆" : monster.emoji}
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className="block text-sm font-medium text-ink">
+                      <span className="block truncate text-sm font-bold text-ink">
                         {item.resolved ? `${monster.name}, banished` : monster.name}
                       </span>
-                      <span className="block text-xs text-body">
-                        {item.resolved ? "Beaten twice. It doesn't come back." : monster.tag}
+                      <span className="block truncate text-xs text-body">
+                        {item.subjectName} · {item.topic}
                       </span>
                     </span>
                     {!item.resolved && item.canRetest && (
                       <span className="shrink-0 text-right">
-                        <span aria-label={`${hpLeft} of ${MONSTER_HP} HP left`} className="block text-sm">
+                        <span className="block text-xs" aria-label={`${hpLeft} of ${MONSTER_HP} HP left`}>
                           {"❤️".repeat(hpLeft)}
                           {"🖤".repeat(MONSTER_HP - hpLeft)}
                         </span>
                         <span className="block text-[10px] text-body">
                           {respawn !== null && respawn <= 0
-                            ? "prowling your daily three"
+                            ? "in your daily three"
                             : respawn !== null
-                            ? `returns in ~${respawn} day${respawn === 1 ? "" : "s"}`
+                            ? `~${respawn}d`
                             : "waiting"}
                         </span>
                       </span>
                     )}
+                    <span
+                      aria-hidden
+                      className="shrink-0 text-body transition-transform group-open:rotate-180"
+                    >
+                      ▾
+                    </span>
+                  </summary>
+
+                  <div className="border-t border-hairline px-4 py-3">
+                    <div className="flex items-start justify-between gap-3">
+                      <p className="text-sm leading-relaxed text-ink">{item.stem}</p>
+                      <span className="shrink-0 font-mono text-[10px] uppercase tracking-wide text-body">
+                        {item.source === "daily"
+                          ? "from daily"
+                          : item.source === "diagnostic"
+                          ? "from check"
+                          : "added"}
+                      </span>
+                    </div>
+
+                    {(item.myAnswer || item.correctAnswer) && (
+                      <div className="mt-2 space-y-0.5 text-sm">
+                        {item.myAnswer && (
+                          <p className="text-body">
+                            You: <span className="text-coral">{item.myAnswer}</span>
+                          </p>
+                        )}
+                        {item.correctAnswer && (
+                          <p className="text-body">
+                            Correct:{" "}
+                            <span className="font-medium text-guarantee">{item.correctAnswer}</span>
+                          </p>
+                        )}
+                      </div>
+                    )}
+
+                    {item.note && <p className="mt-2 text-sm italic text-body">{item.note}</p>}
+
+                    <div className="mt-3 flex flex-wrap items-center gap-2">
+                      {item.reason === "unset" && !item.resolved && (
+                        <span className="text-xs font-medium text-ink">Identify it:</span>
+                      )}
+                      {MISTAKE_REASONS.map((r) => (
+                        <button
+                          key={r}
+                          type="button"
+                          title={REASON_LABEL[r]}
+                          onClick={() => void patch(item.id, { reason: r })}
+                          className={`chip !px-2.5 !py-1 !text-xs ${
+                            item.reason === r ? "chip-active" : ""
+                          }`}
+                        >
+                          {MONSTERS[r].emoji} {MONSTERS[r].name}
+                        </button>
+                      ))}
+                      <span className="ml-auto flex items-center gap-3">
+                        <button
+                          type="button"
+                          onClick={() => void patch(item.id, { resolved: !item.resolved })}
+                          className="text-xs font-medium text-accent hover:underline"
+                        >
+                          {item.resolved ? "Revive it" : "Banish by hand"}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => void remove(item.id)}
+                          aria-label="Delete mistake"
+                          className="text-xs text-body hover:text-coral"
+                        >
+                          Delete
+                        </button>
+                      </span>
+                    </div>
                   </div>
-                );
-              })()}
-              <p className="mt-2 text-sm text-ink">{item.stem}</p>
-
-              {(item.myAnswer || item.correctAnswer) && (
-                <div className="mt-2 space-y-0.5 text-sm">
-                  {item.myAnswer && (
-                    <p className="text-body">
-                      You: <span className="text-coral">{item.myAnswer}</span>
-                    </p>
-                  )}
-                  {item.correctAnswer && (
-                    <p className="text-body">
-                      Correct:{" "}
-                      <span className="font-medium text-guarantee">{item.correctAnswer}</span>
-                    </p>
-                  )}
-                </div>
-              )}
-
-              {item.note && <p className="mt-2 text-sm italic text-body">{item.note}</p>}
-
-              <div className="mt-4 flex flex-wrap items-center gap-2">
-                {item.reason === "unset" && !item.resolved && (
-                  <span className="text-xs font-medium text-ink">Identify it:</span>
-                )}
-                {MISTAKE_REASONS.map((r) => (
-                  <button
-                    key={r}
-                    type="button"
-                    title={REASON_LABEL[r]}
-                    onClick={() => void patch(item.id, { reason: r })}
-                    className={`rounded-full border px-2.5 py-1 text-xs transition-colors ${
-                      item.reason === r
-                        ? "border-accent text-accent"
-                        : "border-hairline text-body hover:text-ink"
-                    }`}
-                  >
-                    {MONSTERS[r].emoji} {MONSTERS[r].name}
-                  </button>
-                ))}
-                <span className="ml-auto flex items-center gap-3">
-                  <button
-                    type="button"
-                    onClick={() => void patch(item.id, { resolved: !item.resolved })}
-                    className="text-xs font-medium text-accent hover:underline"
-                  >
-                    {item.resolved ? "Revive it" : "Banish by hand"}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => void remove(item.id)}
-                    aria-label="Delete mistake"
-                    className="text-xs text-body hover:text-coral"
-                  >
-                    Delete
-                  </button>
-                </span>
-              </div>
-            </li>
-          ))}
+                </details>
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>

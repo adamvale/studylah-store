@@ -158,10 +158,16 @@ pill chips, icon orbs, bottom tab bar). Key facts:
   study surfaces later.
 - **Progress**: `RiskMeterSection` is a worst-first 2-col grid of compact
   ring-gauge cards with ONE next action each (was five stacked red bars).
-- Not yet restructured (theme-only for now): Practice, Study plan day list,
-  Mistakes cards, Rescue questionnaire, campaign hex maps. The owner wants
-  these de-stacked in the same style; screenshots + reference in the
-  2026-07-17 session.
+- **De-stack pass complete** (all ten problem pages restructured):
+  Practice's stacked drills use a shared one-at-a-time `Deck`
+  (`practice-tools.tsx`: keyword precision, SBQ ladder, POA formats; the
+  flashcard/QA decks already were). Mistakes entries are compact expandable
+  `<details>` rows (monster orb summary, question + actions behind the tap).
+  The Rescue questionnaire is three balanced step bands with chip choices
+  and a subject chip grid (still a plain GET form, answers in the URL), and
+  its day list is a dense 2/3-col grid with days 4+ folded behind a
+  disclosure. The study-plan campaign shows ONE hex map with subject chips
+  above it and a single legend (was one map + legend per subject).
 
 ## Master-tier gating (StudyLand + StudyLah Legends are a Master perk)
 
