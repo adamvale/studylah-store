@@ -258,7 +258,12 @@ export function BattleStage({
   const sv = SV_BY_HERO[heroId] ?? SV_BY_HERO.jun;
 
   return (
-    <div className="relative -mx-5 -mt-5 mb-3 h-44 overflow-hidden rounded-t-2xl sm:h-52">
+    // Full-bleed to the panel's side padding only; NEVER into the title row
+    // above. All positioning is flex layout, all animation is translateY/
+    // scale only: Tailwind v4 translate utilities use the CSS `translate`
+    // property, so keyframes must not carry their own positioning transform
+    // (the two would stack and throw sprites off screen, seen on iOS).
+    <div className="relative -mx-5 mb-3 mt-1 h-44 overflow-hidden sm:h-52">
       {/* battleback pair: ground + backdrop */}
       <div
         className="absolute inset-0"
@@ -271,52 +276,53 @@ export function BattleStage({
       />
       <div className="absolute inset-0 bg-gradient-to-t from-night/70 via-transparent to-night/30" aria-hidden />
 
-      {/* the enemy, a painted MZ battler */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={`/game/mz/enemies/${battler}.png`}
-        alt=""
-        aria-hidden
-        className={`absolute left-1/2 top-1/2 max-h-[78%] max-w-[45%] -translate-x-1/2 -translate-y-1/2 object-contain bs-enemy-idle ${enemyAnim} ${
-          defeated ? "bs-enemy-down" : ""
-        } ${shiny ? "drop-shadow-[0_0_14px_rgba(255,220,0,0.9)]" : "drop-shadow-[0_6px_10px_rgba(0,0,0,0.45)]"}`}
-      />
+      {/* the enemy, a painted MZ battler, flex-centred (slightly left) */}
+      <div className="absolute inset-0 flex items-center justify-center pr-[22%]" aria-hidden>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`/game/mz/enemies/${battler}.png`}
+          alt=""
+          className={`max-h-[80%] max-w-[50%] object-contain bs-enemy-idle ${enemyAnim} ${
+            defeated ? "bs-enemy-down" : ""
+          } ${shiny ? "drop-shadow-[0_0_14px_rgba(255,220,0,0.9)]" : "drop-shadow-[0_6px_10px_rgba(0,0,0,0.45)]"}`}
+        />
+      </div>
 
       {/* the hero, side-view battler, bottom-right facing in */}
       <div className="absolute bottom-1 right-3" aria-hidden>
         <span className="block" style={svFrameStyle(sv, heroMotion, svFrame, 1.6)} />
       </div>
 
-      {/* damage floats */}
-      {floats.map((f) => (
-        <span
-          key={f.id}
-          className={`bs-float absolute left-1/2 top-1/3 -translate-x-1/2 font-pixel text-xl ${
-            f.good ? "text-accent" : "text-coral"
-          }`}
-        >
-          {f.text}
-        </span>
-      ))}
+      {/* damage floats, centred by the wrapper, animated by translateY only */}
+      <div className="pointer-events-none absolute inset-x-0 top-1/4 flex justify-center" aria-hidden>
+        {floats.map((f) => (
+          <span
+            key={f.id}
+            className={`bs-float absolute font-pixel text-xl ${f.good ? "text-accent" : "text-coral"}`}
+          >
+            {f.text}
+          </span>
+        ))}
+      </div>
 
       {/* Effekseer particle overlay */}
       <canvas ref={canvasRef} width={480} height={280} className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden />
 
       <style>{`
         .bs-enemy-idle { animation: bsBob 2.4s ease-in-out infinite; }
-        @keyframes bsBob { 0%,100% { transform: translate(-50%,-50%) translateY(0); } 50% { transform: translate(-50%,-50%) translateY(-5px); } }
+        @keyframes bsBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
         .bs-enemy-hit { animation: bsHit 0.45s linear; }
         @keyframes bsHit {
-          0%, 100% { filter: none; transform: translate(-50%,-50%); }
-          20% { filter: brightness(2.2); transform: translate(-52%,-50%); }
-          40% { transform: translate(-47%,-50%); }
-          60% { filter: brightness(1.8); transform: translate(-52%,-50%); }
-          80% { transform: translate(-49%,-50%); }
+          0%, 100% { filter: none; transform: translateX(0); }
+          20% { filter: brightness(2.2); transform: translateX(-7px); }
+          40% { transform: translateX(6px); }
+          60% { filter: brightness(1.8); transform: translateX(-6px); }
+          80% { transform: translateX(3px); }
         }
         .bs-enemy-down { animation: bsDown 0.9s ease-in forwards; }
-        @keyframes bsDown { to { opacity: 0; transform: translate(-50%,-30%) scale(0.85); filter: saturate(0.2); } }
+        @keyframes bsDown { to { opacity: 0; transform: translateY(28px) scale(0.85); filter: saturate(0.2); } }
         .bs-float { animation: bsFloat 1.05s ease-out forwards; }
-        @keyframes bsFloat { 0% { opacity: 0; transform: translate(-50%, 8px); } 15% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -34px); } }
+        @keyframes bsFloat { 0% { opacity: 0; transform: translateY(8px); } 15% { opacity: 1; } 100% { opacity: 0; transform: translateY(-34px); } }
       `}</style>
     </div>
   );
