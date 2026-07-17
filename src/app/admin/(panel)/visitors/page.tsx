@@ -147,7 +147,7 @@ export default async function AdminVisitorsPage() {
               >
                 <summary className="flex cursor-pointer flex-wrap items-center gap-x-3 gap-y-1 px-5 py-3">
                   <span className="rounded-full bg-night-2 px-2 py-0.5 text-xs font-medium text-ink">
-                    {j.device === "mobile" ? "📱 Mobile" : "🖥 Desktop"}
+                    {j.device === "mobile" ? "Mobile" : "Desktop"}
                   </span>
                   <span className="text-sm text-ink">{j.referrer ?? "Direct"}</span>
                   <span className="text-xs text-body">landed {j.landingPath}</span>

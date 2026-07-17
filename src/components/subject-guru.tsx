@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { emitGame, emitFx, type FxGame } from "@/lib/game/fx";
+import { NamedIcon, type IconName } from "@/components/icons";
 
 // ── The Academy: Subject Gurus ───────────────────────────────────────────────
 // One Guru per subject the student is ENROLLED in. A Guru teaches a short,
@@ -56,16 +57,16 @@ type Screen =
     };
 
 const EMOJI: Record<string, string> = {
-  chemistry: "🧪",
-  physics: "⚡",
-  biology: "🧬",
-  geography: "🌏",
-  history: "📜",
-  "social-studies": "🏛️",
-  poa: "📊",
-  emath: "➗",
-  amath: "📐",
-  fnn: "🍳",
+  chemistry: "flask",
+  physics: "bolt",
+  biology: "leaf",
+  geography: "compass",
+  history: "scroll",
+  "social-studies": "castle",
+  poa: "chart",
+  emath: "calculator",
+  amath: "pencil",
+  fnn: "heart",
 };
 
 export function SubjectGuru({ onClose }: { onClose: () => void }) {
@@ -183,7 +184,7 @@ export function SubjectGuru({ onClose }: { onClose: () => void }) {
   return (
     <div className="absolute inset-0 z-[60] flex items-end justify-center bg-black/60 p-4 pb-[max(env(safe-area-inset-bottom),16px)] sm:items-center">
       <div className="max-h-[85vh] w-full max-w-md overflow-y-auto rounded-2xl border border-accent/40 bg-surface p-5 shadow-2xl">
-        <p className="font-display text-lg font-bold text-ink">🎓 The Academy</p>
+        <p className="font-display text-lg font-bold text-ink">The Academy</p>
         {note && <p className="mt-2 rounded-lg bg-night/70 px-3 py-1.5 text-xs text-accent">{note}</p>}
 
         {screen.kind === "menu" && (
@@ -208,7 +209,7 @@ export function SubjectGuru({ onClose }: { onClose: () => void }) {
               >
                 <span className="flex items-center justify-between">
                   <span>
-                    {EMOJI[g.family] ?? "📘"} {g.name}
+                    <NamedIcon name={(EMOJI[g.family] ?? "book") as IconName} size={14} className="inline text-accent" /> {g.name}
                   </span>
                   <span className="font-pixel text-[8px] text-body">
                     {g.level === "o-level" ? "O-LEVEL" : "N(A)-LEVEL"}
@@ -302,9 +303,9 @@ export function SubjectGuru({ onClose }: { onClose: () => void }) {
             >
               <p className="font-display text-lg font-bold text-ink">
                 {screen.correctAnswer === ""
-                  ? "🎓 Lesson complete"
+                  ? "Lesson complete"
                   : screen.correct
-                  ? "✅ Spot on!"
+                  ? "Spot on!"
                   : "Not quite, now you'll remember it"}
               </p>
               {screen.correctAnswer !== "" && !screen.correct && (

@@ -6,6 +6,7 @@ import type { PublicQuestion } from "@/lib/diagnostic-questions";
 import { type ForecastTier } from "@/components/heat";
 import { QuizCalculator } from "@/components/quiz-calculator";
 import { guguSay } from "@/lib/gugu-bus";
+import { IconLock } from "@/components/icons";
 
 // Gugu's floating-bubble reactions to the quiz. Compliant: encouragement about
 // effort and next steps, never a grade promise. On finish Gugu stays NEUTRAL
@@ -13,8 +14,8 @@ import { guguSay } from "@/lib/gugu-bus";
 // results page after the student reveals it (see GuguResultCheer).
 const GUGU_START = "Shh… focus mode, you've got this.";
 const GUGU_QUIT =
-  "Don't quit, I believe in you! 💪 Come back any time and we'll close the gap together.";
-const GUGU_FINISH = "All done! 🎉 Pop your email in to see how you did.";
+  "Don't quit, I believe in you! Come back any time and we'll close the gap together.";
+const GUGU_FINISH = "All done! Pop your email in to see how you did.";
 
 interface SubmitResult {
   attemptId: string;
@@ -230,7 +231,7 @@ export function DiagnosticQuiz({
           </p>
           <div className="mt-4 flex justify-center" aria-hidden="true">
             <span className="grid h-16 w-16 place-items-center rounded-full border-2 border-accent/50 bg-night text-3xl">
-              🔒
+              <IconLock size={28} className="text-accent" />
             </span>
           </div>
           <h2

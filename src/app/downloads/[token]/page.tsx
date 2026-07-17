@@ -138,7 +138,7 @@ export default async function DownloadsPage({
         Your downloads
       </h1>
       <p className="mt-2 max-w-xl text-body">
-        Each file is watermarked to your email address. Links work for{" "}
+        Links work for{" "}
         {serverConfig.downloadExpiryDays} days from purchase, up to{" "}
         {serverConfig.downloadMaxUses} downloads per file, save them somewhere
         safe.

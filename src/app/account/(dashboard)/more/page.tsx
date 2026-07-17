@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { requireMaster } from "@/lib/server/entitlements";
+import { NamedIcon, type IconName } from "@/components/icons";
 
 export const metadata: Metadata = { title: "More" };
 
@@ -13,37 +14,37 @@ export const metadata: Metadata = { title: "More" };
 const ITEMS: Array<{ href: string; icon: string; title: string; blurb: string }> = [
   {
     href: "/account/study",
-    icon: "🏰",
+    icon: "castle",
     title: "Campaign",
     blurb: "Your study plan, clear the fog, topic by topic",
   },
   {
     href: "/account/progress",
-    icon: "📊",
+    icon: "chart",
     title: "Stats",
     blurb: "Marks at risk, score history, badges",
   },
   {
     href: "/account/timer",
-    icon: "⏱️",
+    icon: "timer",
     title: "Focus timer",
     blurb: "Timed rehearsals and pomodoro sprints",
   },
   {
     href: "/account/orders",
-    icon: "🎁",
+    icon: "trophy",
     title: "Loot",
     blurb: "Your packs, every PDF you own",
   },
   {
     href: "/account/settings",
-    icon: "⚙️",
+    icon: "gear",
     title: "Settings",
     blurb: "Reminders, parent digest, email",
   },
   {
     href: "/blog",
-    icon: "📜",
+    icon: "scroll",
     title: "The Signal",
     blurb: "Exam-season intel from the StudyLah desk",
   },
@@ -63,7 +64,7 @@ export default async function MorePage() {
             className="flex items-center gap-4 rounded-2xl border border-hairline bg-surface p-4 transition-colors hover:border-accent/50"
           >
             <span className="text-3xl" aria-hidden>
-              {item.icon}
+              <NamedIcon name={item.icon as IconName} size={22} />
             </span>
             <span className="min-w-0">
               <span className="block font-display text-base font-bold text-ink">

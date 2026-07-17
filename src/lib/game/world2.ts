@@ -305,7 +305,7 @@ function buildHub(
       toZone: provId(s),
       toX: 7,
       toY: 23,
-      label: `${s.emoji} ${s.name} Province`,
+      label: `${s.name} Province`,
     };
   });
 

@@ -90,7 +90,7 @@ export default async function WarRoomPage({
     <div className="space-y-5">
       <div>
         <h2 className="font-display text-2xl font-bold text-ink">
-          ⚔️ The War Room
+          The War Room
         </h2>
         <p className="mt-1 max-w-2xl text-sm text-body">
           Each subject&apos;s war room opens {UNLOCK_DAYS} days before its
@@ -145,7 +145,7 @@ export default async function WarRoomPage({
 
             {!armed ? (
               <p className="mt-2 text-xs text-body">
-                🔒 Opens {UNLOCK_DAYS} days before the paper. Papers:{" "}
+                Opens {UNLOCK_DAYS} days before the paper. Papers:{" "}
                 {papers.map((p) => `${p.paper} ${fmtDate(p.at)}`).join(" · ") || "none"}
               </p>
             ) : (
@@ -176,14 +176,14 @@ export default async function WarRoomPage({
                   </p>
                   <ul className="mt-2 space-y-1.5 text-sm text-ink">
                     <li>
-                      🔁{" "}
+                      Reviews:{" "}
                       <Link href="/account/drills" className="font-medium text-accent hover:underline">
                         Formulas + definitions sweep
                       </Link>{" "}
                       (Drills, both decks, until "due" hits zero)
                     </li>
                     <li>
-                      👾{" "}
+                      Monsters:{" "}
                       <Link href="/account/mistakes" className="font-medium text-accent hover:underline">
                         Clear your mistake notebook
                       </Link>{" "}

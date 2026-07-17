@@ -27,16 +27,16 @@ function examWindow(): { from: Date; to: Date } {
 }
 
 const EMOJI_BY_FAMILY: Record<string, string> = {
-  chemistry: "🧪",
-  physics: "⚡",
-  biology: "🧬",
-  geography: "🌏",
-  history: "📜",
-  "social-studies": "🏛️",
-  poa: "📊",
-  emath: "➗",
-  amath: "📐",
-  fnn: "🍳",
+  chemistry: "flask",
+  physics: "bolt",
+  biology: "leaf",
+  geography: "compass",
+  history: "scroll",
+  "social-studies": "castle",
+  poa: "chart",
+  emath: "calculator",
+  amath: "pencil",
+  fnn: "heart",
 };
 
 export default async function AdventurePage() {
@@ -64,7 +64,7 @@ export default async function AdventurePage() {
     slug: s.slug,
     name: s.name,
     short: sigil(s.name),
-    emoji: EMOJI_BY_FAMILY[s.family] ?? "🏛️",
+    emoji: EMOJI_BY_FAMILY[s.family] ?? "book",
     family: s.family,
   }));
 

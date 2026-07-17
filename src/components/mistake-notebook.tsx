@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { MISTAKE_REASONS, REASON_LABEL } from "@/lib/server/mistakes";
 import { MONSTERS, MONSTER_HP } from "@/lib/game";
+import { NamedIcon, IconTrophy, IconHeart, type IconName } from "@/components/icons";
 
 export interface MistakeItem {
   id: string;
@@ -77,7 +78,7 @@ export function MistakeNotebook({
       if (data.game && data.game.xpGained > 0) {
         setXpToast(
           data.game.leveledUp
-            ? `+${data.game.xpGained} XP · ⬆️ Level ${data.game.level}!`
+            ? `+${data.game.xpGained} XP · Level ${data.game.level}!`
             : `+${data.game.xpGained} XP, monster identified`
         );
         setTimeout(() => setXpToast(null), 3000);
@@ -182,7 +183,7 @@ export function MistakeNotebook({
                 <details className={`glass group !rounded-2xl ${item.resolved ? "opacity-60" : ""}`}>
                   <summary className="flex cursor-pointer items-center gap-3 px-4 py-3 [&::-webkit-details-marker]:hidden">
                     <span className="icon-orb !h-10 !w-10 shrink-0 text-lg" aria-hidden>
-                      {item.resolved ? "🏆" : monster.emoji}
+                      {item.resolved ? <IconTrophy size={20} className="text-accent" /> : <NamedIcon name={monster.emoji as IconName} size={20} className="text-coral" />}
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="block truncate text-sm font-bold text-ink">
@@ -195,8 +196,9 @@ export function MistakeNotebook({
                     {!item.resolved && item.canRetest && (
                       <span className="shrink-0 text-right">
                         <span className="block text-xs" aria-label={`${hpLeft} of ${MONSTER_HP} HP left`}>
-                          {"❤️".repeat(hpLeft)}
-                          {"🖤".repeat(MONSTER_HP - hpLeft)}
+                          {Array.from({ length: MONSTER_HP }, (_, hi) => (
+                            <IconHeart key={hi} size={12} className={hi < hpLeft ? "inline text-coral" : "inline text-body opacity-30"} />
+                          ))}
                         </span>
                         <span className="block text-[10px] text-body">
                           {respawn !== null && respawn <= 0
@@ -259,7 +261,7 @@ export function MistakeNotebook({
                             item.reason === r ? "chip-active" : ""
                           }`}
                         >
-                          {MONSTERS[r].emoji} {MONSTERS[r].name}
+                          <NamedIcon name={MONSTERS[r].emoji as IconName} size={14} className="inline" /> {MONSTERS[r].name}
                         </button>
                       ))}
                       <span className="ml-auto flex items-center gap-3">
@@ -500,7 +502,7 @@ function Diagnosis({ items }: { items: MistakeItem[] }) {
 
   return (
     <section className="rounded-2xl border border-violet/40 bg-surface p-5">
-      <h3 className="font-display text-lg font-bold text-ink">🩺 Diagnosis</h3>
+      <h3 className="font-display text-lg font-bold text-ink">Diagnosis</h3>
       <div className="mt-2 space-y-2 text-sm text-body">
         {topReason && topReason[1] >= 2 && (
           <p>

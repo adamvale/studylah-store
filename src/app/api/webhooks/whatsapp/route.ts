@@ -131,7 +131,7 @@ async function handleMessage(msg: WaTextMessage): Promise<void> {
   let reply: string;
   if (!text) {
     reply =
-      "I can only read text messages for now! Type your question and I'll help you out. 👻";
+      "I can only read text messages for now! Type your question and I'll help you out.";
   } else {
     // Last few turns for this number, oldest first. Consecutive same-role rows
     // (e.g. two quick messages before Gugu replied) are merged, the Claude

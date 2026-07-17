@@ -6,13 +6,13 @@
      / `bg-paper` classes render correctly on a dark background without touching
      every component. `text-ink` on a yellow button is the one exception, those
      few spots use `text-night` explicitly. */
-  --color-ink: #eef2f7;         /* was dark; now light, default heading text */
+  --color-ink: #f3f1ff;         /* was dark; now light, default heading text */
   --color-trust: #6ea0ff;       /* link/accent blue, lightened for dark bg */
   --color-trust-deep: #9dbcff;
-  --color-trust-soft: #232e40;  /* was light-blue; now a dark tint for pills */
+  --color-trust-soft: rgba(148, 120, 255, 0.14);  /* was light-blue; now a dark tint for pills */
   --color-indigo: #5028ff;
   --color-indigo-deep: #3f1fd6;
-  --color-paper: #161c26;       /* was near-white; now the page background */
+  --color-paper: #0c0920;       /* deep indigo night, the page background */
   --color-accent: #ffdc00;
   --color-accent-deep: #8a6d00;
   /* Probability "heat" ramp, re-mapped to the brand: cool light-blue for
@@ -25,13 +25,13 @@
   --color-signal: #6ea0ff;
   --color-signal-deep: #9dbcff;
   --color-guarantee: #3ddc84;
-  --color-body: #aeb8c6;        /* was gray-on-white; now light-gray on dark */
+  --color-body: #b8b2dc;        /* lavender-gray body text on the night bg */
   /* --- Dark / playful theme (park.studylah.education aesthetic) --- */
-  --color-night: #161c26;       /* page background */
-  --color-night-2: #1b2330;     /* alternating band */
-  --color-surface: #212b3a;     /* raised card */
-  --color-hairline: #2f3a4d;    /* card borders on dark */
-  --color-cloud: #aeb8c6;       /* body text on dark */
+  --color-night: #0c0920;       /* page background */
+  --color-night-2: #140f31;     /* alternating band */
+  --color-surface: rgba(148, 120, 255, 0.09); /* raised card */
+  --color-hairline: rgba(196, 181, 253, 0.18); /* card borders on dark */
+  --color-cloud: #b8b2dc;       /* body text on dark */
   --color-violet: #7c3aed;      /* purple badge */
   --color-violet-2: #6d28d9;
   --color-teal: #45c8cf;
@@ -43,8 +43,8 @@
   --color-tier-high: #8224e3;
   --color-tier-moderate: #dd9933;
   --color-tier-watch: #64748b;
-  --font-display: var(--font-archivo);
-  --font-sans: var(--font-inter);
+  --font-display: var(--font-jakarta);
+  --font-sans: var(--font-jakarta);
   --font-pixel: var(--font-press-start), monospace;
   --font-mono: var(--font-inter);
 }
@@ -52,6 +52,20 @@
 body {
   background-color: var(--color-paper);
   color: var(--color-ink);
+}
+
+/* The ambient backdrop, everywhere: deep indigo night with a violet bloom
+   and a teal dawn, fixed so content scrolls over it. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(120% 90% at 85% -10%, rgba(34, 211, 238, 0.16), transparent 55%),
+    radial-gradient(130% 100% at 10% 15%, rgba(168, 85, 247, 0.32), transparent 60%),
+    radial-gradient(120% 120% at 50% 115%, rgba(109, 40, 217, 0.4), transparent 62%),
+    linear-gradient(170deg, #0d0a24 0%, #1a1140 48%, #0c0920 100%);
 }
 
 /* Inter for numeric data (prices, probabilities): keep figures aligned and
@@ -648,20 +662,12 @@ body:has([data-bottom-cta]) .gugu-panel {
 
 /* The ambient backdrop: deep indigo night with a violet bloom and a teal
    dawn, plus a faint blueprint grid, fixed so content scrolls over it. */
+/* The gradient itself lives on body::before site-wide; .sl-bg adds the
+   faint blueprint grid accent inside StudyLand only. */
 .sl-bg {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background:
-    radial-gradient(120% 90% at 85% -10%, rgba(34, 211, 238, 0.16), transparent 55%),
-    radial-gradient(130% 100% at 10% 15%, rgba(168, 85, 247, 0.32), transparent 60%),
-    radial-gradient(120% 120% at 50% 115%, rgba(109, 40, 217, 0.4), transparent 62%),
-    linear-gradient(170deg, #0d0a24 0%, #1a1140 48%, #0c0920 100%);
-}
-.sl-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);

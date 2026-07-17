@@ -173,7 +173,7 @@ export function SingaporeMapOverlay({
                 fontSize={3.6}
                 style={{ pointerEvents: "none" }}
               >
-                {l.emoji}
+                {"◆"}
               </text>
             ))}
           </svg>
@@ -187,7 +187,7 @@ export function SingaporeMapOverlay({
             <span className="inline-block h-2 w-2 rounded-full" style={{ background: SG_ARCADE.gold }} /> Your provinces
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="text-xs">🦁</span> Famous landmarks
+            <span aria-hidden>◆</span> Famous landmarks
           </span>
         </div>
         <p className="mt-2 text-xs" style={{ color: SG_ARCADE.dim }}>

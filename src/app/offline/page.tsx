@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { IconPhone } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "Offline",
@@ -10,8 +11,8 @@ export const metadata: Metadata = {
 export default function OfflinePage() {
   return (
     <div className="mx-auto max-w-md px-4 py-24 text-center">
-      <p aria-hidden="true" className="text-5xl">
-        📡
+      <p aria-hidden="true" className="flex justify-center text-body">
+        <IconPhone size={48} />
       </p>
       <h1 className="mt-4 font-display text-3xl font-black text-ink">
         No connection
@@ -23,7 +24,7 @@ export default function OfflinePage() {
       </p>
       <p className="mt-6 text-sm text-body">
         Meanwhile: your downloaded PDFs still work. The forecast doesn&apos;t
-        need wifi. 📚
+        need wifi.
       </p>
     </div>
   );

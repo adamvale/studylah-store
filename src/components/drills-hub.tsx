@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { IconCheckCircle } from "@/components/icons";
 
 // The Drills hub: four micro-trainers on one page.
 //   Definitions - spaced-repetition flashcards from the definition bank
@@ -43,10 +44,10 @@ interface DrillStats {
 }
 
 const TABS = [
-  { id: "definition", label: "📖 Definitions" },
-  { id: "formula", label: "📐 Formulas" },
-  { id: "structured", label: "✍️ Structured answers" },
-  { id: "explain", label: "🗣 Explain it back" },
+  { id: "definition", label: "Definitions" },
+  { id: "formula", label: "Formulas" },
+  { id: "structured", label: "Structured answers" },
+  { id: "explain", label: "Explain it back" },
 ] as const;
 type TabId = (typeof TABS)[number]["id"];
 
@@ -167,7 +168,7 @@ function CardDrill({ kind }: { kind: "definition" | "formula" }) {
   if (!card) {
     return (
       <div className="rounded-2xl border border-guarantee/40 bg-surface p-6 text-center">
-        <p className="text-3xl">🏁</p>
+        <p className="flex justify-center text-guarantee"><IconCheckCircle size={36} /></p>
         <p className="mt-2 font-display text-lg font-bold text-ink">
           Session done: {done.knew} known, {done.missed} to resee
         </p>
@@ -193,7 +194,7 @@ function CardDrill({ kind }: { kind: "definition" | "formula" }) {
           Card {idx + 1} of {cards.length}
           {card.due && (
             <span className="ml-2 rounded-full bg-teal/15 px-2 py-0.5 font-medium text-teal">
-              🔁 scheduled review
+              scheduled review
             </span>
           )}
         </span>

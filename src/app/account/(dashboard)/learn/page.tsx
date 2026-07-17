@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { requireMaster } from "@/lib/server/entitlements";
+import { NamedIcon, type IconName } from "@/components/icons";
 
 export const metadata: Metadata = { title: "Learn" };
 
@@ -20,7 +21,7 @@ const TOOLS: {
 }[] = [
   {
     href: "/account/fasttrack",
-    emoji: "🎯",
+    emoji: "target",
     name: "FastTrack",
     blurb: "Answer the way examiners award marks",
     tint: "from-fuchsia-500/25 to-violet-600/10",
@@ -28,56 +29,56 @@ const TOOLS: {
   },
   {
     href: "/account/drills",
-    emoji: "⚡",
+    emoji: "bolt",
     name: "Drills",
     blurb: "Definitions, formulas, structured answers",
     tint: "from-amber-400/20 to-violet-600/10",
   },
   {
     href: "/account/practice",
-    emoji: "⚔️",
+    emoji: "swords",
     name: "Practice",
     blurb: "Daily questions and battles",
     tint: "from-sky-400/20 to-violet-600/10",
   },
   {
     href: "/account/study",
-    emoji: "🗺️",
+    emoji: "map",
     name: "Study plan",
     blurb: "Topic-by-topic to exam day",
     tint: "from-emerald-400/20 to-violet-600/10",
   },
   {
     href: "/account/mistakes",
-    emoji: "👾",
+    emoji: "ghost",
     name: "Mistakes",
     blurb: "The bestiary of marks to win back",
     tint: "from-rose-400/25 to-violet-600/10",
   },
   {
     href: "/account/timer",
-    emoji: "⏱️",
+    emoji: "timer",
     name: "Timer",
     blurb: "Focus sessions and rehearsals",
     tint: "from-cyan-400/20 to-violet-600/10",
   },
   {
     href: "/account/rescue",
-    emoji: "🛟",
+    emoji: "lifebuoy",
     name: "Rescue plan",
     blurb: "Behind? A day-by-day recovery",
     tint: "from-orange-400/20 to-violet-600/10",
   },
   {
     href: "/account/warroom",
-    emoji: "🏰",
+    emoji: "castle",
     name: "War Room",
     blurb: "The final week, paper by paper",
     tint: "from-indigo-400/25 to-violet-600/10",
   },
   {
     href: "/account/adventure",
-    emoji: "🕹️",
+    emoji: "gamepad",
     name: "Legends",
     blurb: "The RPG where battles are real questions",
     tint: "from-violet-400/25 to-fuchsia-600/10",
@@ -111,8 +112,8 @@ export default async function LearnHubPage() {
                 {t.badge}
               </span>
             )}
-            <span className="icon-orb text-xl" aria-hidden>
-              {t.emoji}
+            <span className="icon-orb text-accent" aria-hidden>
+              <NamedIcon name={t.emoji as IconName} size={20} />
             </span>
             <p className="mt-3 font-display text-base font-bold text-ink">{t.name}</p>
             <p className="mt-0.5 text-xs leading-relaxed text-body">{t.blurb}</p>

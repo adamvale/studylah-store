@@ -116,7 +116,7 @@ export function QuestBoard({ mission, boss }: { mission: QuestItem[]; boss: Boss
               onClick={() => emitFx({ type: "blip" })}
               className="flex-1 rounded-lg bg-coral/15 px-3 py-2 text-center text-xs font-bold text-coral"
             >
-              ⚔️ Deal damage
+              Deal damage
             </Link>
             <Link
               href="/account/practice"

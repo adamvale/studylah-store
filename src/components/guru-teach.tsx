@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { NamedIcon, type IconName } from "@/components/icons";
 
 // "Guru, teach me": a small button beside a revealed answer that expands into
 // a step-by-step walkthrough of that exact question, delivered in the Subject
@@ -8,20 +9,20 @@ import { useState } from "react";
 // (stem, answer, worked solution, the student's slip), zero API cost.
 
 const GURU_BY_SUBJECT: Array<{ match: RegExp; emoji: string; name: string }> = [
-  { match: /chem/i, emoji: "⚗️", name: "Guru Lim" },
-  { match: /physic/i, emoji: "⚡", name: "Guru Wei" },
-  { match: /bio/i, emoji: "🧬", name: "Guru Siti" },
-  { match: /math/i, emoji: "📐", name: "Guru Rajan" },
-  { match: /geog/i, emoji: "🌏", name: "Guru Chen" },
-  { match: /hist|social/i, emoji: "📜", name: "Guru Mei" },
-  { match: /account/i, emoji: "🧾", name: "Guru Faiz" },
-  { match: /food|nutrition/i, emoji: "🍎", name: "Guru Devi" },
+  { match: /chem/i, emoji: "flask", name: "Guru Lim" },
+  { match: /physic/i, emoji: "bolt", name: "Guru Wei" },
+  { match: /bio/i, emoji: "leaf", name: "Guru Siti" },
+  { match: /math/i, emoji: "calculator", name: "Guru Rajan" },
+  { match: /geog/i, emoji: "compass", name: "Guru Chen" },
+  { match: /hist|social/i, emoji: "scroll", name: "Guru Mei" },
+  { match: /account/i, emoji: "chart", name: "Guru Faiz" },
+  { match: /food|nutrition/i, emoji: "heart", name: "Guru Devi" },
 ];
 
 function guruFor(subjectName: string) {
   return (
     GURU_BY_SUBJECT.find((g) => g.match.test(subjectName)) ?? {
-      emoji: "🎓",
+      emoji: "cap",
       name: "The Guru",
     }
   );
@@ -125,7 +126,7 @@ export function GuruTeach({
         }}
         className="inline-flex items-center gap-1.5 rounded-full border border-violet/40 bg-violet/10 px-2.5 py-0.5 text-xs font-medium text-violet transition-colors hover:bg-violet/20"
       >
-        {guru.emoji} Guru, teach me
+        <NamedIcon name={guru.emoji as IconName} size={14} className="inline" /> Guru, teach me
       </button>
     );
   }
@@ -135,7 +136,7 @@ export function GuruTeach({
     <div className="mt-3 w-full rounded-xl border border-violet/40 bg-night p-4">
       <div className="flex items-center justify-between gap-2">
         <p className="text-xs font-bold uppercase tracking-wide text-violet">
-          {guru.emoji} {guru.name} · {subjectName}
+          <NamedIcon name={guru.emoji as IconName} size={14} className="inline" /> {guru.name} · {subjectName}
         </p>
         <button
           type="button"
@@ -160,7 +161,7 @@ export function GuruTeach({
               disabled={autopsyBusy}
               className="rounded-lg border border-violet/50 px-3 py-1.5 text-xs font-medium text-violet disabled:opacity-50"
             >
-              {autopsyBusy ? "Dissecting the traps…" : "🔍 Why are the other options wrong?"}
+              {autopsyBusy ? "Dissecting the traps…" : "Why are the other options wrong?"}
             </button>
           ) : (
             <div className="rounded-lg border border-hairline bg-night-2 p-3">

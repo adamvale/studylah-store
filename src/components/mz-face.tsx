@@ -3,6 +3,7 @@
 // A dialogue face from the MZ face sheets (4x2 grid of 144px portraits).
 // Falls back to the emoji if the role has no casting entry.
 import { MZ_FACES } from "@/lib/game/mz";
+import { IconGhost } from "@/components/icons";
 
 export function MzFace({
   role,
@@ -16,10 +17,11 @@ export function MzFace({
   className?: string;
 }) {
   const face = role ? MZ_FACES[role] : undefined;
+  void emoji; // legacy prop, portraits without a casting entry get the ghost
   if (!face) {
     return (
-      <span className={`flex items-center justify-center text-3xl ${className}`} style={{ width: size, height: size }} aria-hidden>
-        {emoji ?? "🙂"}
+      <span className={`flex items-center justify-center text-body ${className}`} style={{ width: size, height: size }} aria-hidden>
+        <IconGhost size={Math.round(size * 0.5)} />
       </span>
     );
   }

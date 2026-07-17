@@ -124,6 +124,36 @@ here now; the plan is to fold each Play into the game later as a trainable
   stable = mastery keys). Adding families later means adding to `PLAYBOOKS`,
   `FAMILY_META`, and `familyForSubject`.
 
+## Site-wide theme (v2.15): the purple glass design IS the site theme
+
+As of v2.15 the StudyLand palette is the WHOLE site's theme, not a scoped
+skin. Facts that matter when editing:
+
+- `globals.css` `@theme` tokens are the purple palette (night `#0c0920`,
+  night-2 `#140f31`, translucent surface/hairline, lavender ink/body) and
+  `--font-display` / `--font-sans` are BOTH Plus Jakarta Sans. The gradient
+  backdrop is painted globally by `body::before`; `.sl-bg` now adds only the
+  blueprint grid accent inside StudyLand. The `.studyland` wrapper class
+  still exists (same values) but is no longer what makes things purple.
+- **No emoji anywhere** (owner rule, alongside the no-dashes rule). Every
+  glyph is a stroke SVG from `src/components/icons.tsx` (`NamedIcon` +
+  `NAMED_ICONS` for data-driven cards). Data files that used `emoji:` fields
+  (game badges/starters/monsters, Learn/More/feature cards, FastTrack
+  families, subject-family maps) now hold ICON NAMES in those fields and
+  every render site draws `<NamedIcon/>`. Do not add emoji to copy, data,
+  or chat strings.
+- **One chrome for web + native** (`account-chrome.tsx`): the old pixel
+  GameHud/GameTabs native branch is deleted; the Capacitor shell renders the
+  same glass header, PlayerHeader and Today/Learn/Progress/Legends/Account
+  bottom bar as the web app (FxLayer stays mounted for XP fly-ups).
+  `home-base.tsx` is deleted. The "Every PDF is watermarked" footer is gone
+  everywhere; the dashboard footer now says "iOS and Android app coming".
+- **Gugu is storefront-only**: `gugu-chat.tsx` returns null on `/account*`
+  (checked at render, so client-side nav toggles it correctly) and on native.
+- Today page: HomeBase card removed; the week XP chart and the two stat
+  tiles were merged into ONE `glass-deep` card (counters inline under the
+  bars).
+
 ## StudyLand app redesign (purple glass theme, mobile-app-first)
 
 StudyLand was re-skinned + partially restructured to an app-reference design
@@ -141,7 +171,7 @@ pill chips, icon orbs, bottom tab bar). Key facts:
   email + Sign out chip), PlayerHeader, and a **phone bottom tab bar**
   (Today / Learn / Progress / Legends / Account; non-Master collapses to
   Account + Unlock), hidden from md up where the top nav pills show. Native
-  shell branch untouched.
+  shell renders the same chrome (see v2.15 section above).
 - **Nav IA**: the 10-item Study dropdown is gone. Top nav = Today, Learn,
   Progress, Account(dropdown), Beta. **/account/learn** is the hub page: a
   2/3-col grid of tinted glass tool cards (FastTrack, Drills, Practice,

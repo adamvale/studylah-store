@@ -142,7 +142,7 @@ export function InstallPrompt() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="min-w-0">
           <p className="font-display font-bold text-ink">
-            📲 Put StudyLand on your home screen
+            Put StudyLand on your home screen
           </p>
           <p className="mt-0.5 text-xs text-body">
             {deferred
@@ -384,7 +384,7 @@ export function NotificationToggle() {
           disabled={busy}
           className="rounded-lg bg-accent px-4 py-2 text-sm font-bold text-night disabled:opacity-50"
         >
-          {busy ? "Setting up…" : "🔔 Remind me"}
+          {busy ? "Setting up…" : "Remind me"}
         </button>
       )}
     </div>

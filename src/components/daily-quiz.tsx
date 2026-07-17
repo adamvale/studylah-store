@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { PublicDailyQuestion } from "@/lib/server/study";
 import { emitGame, emitFx } from "@/lib/game/fx";
 import { GuruTeach } from "./guru-teach";
+import { NamedIcon, IconFlame, type IconName } from "@/components/icons";
 
 type Confidence = "sure" | "unsure" | "guess";
 
@@ -123,7 +124,7 @@ export function DailyQuiz({
             Today&apos;s three
           </p>
           <p className="mt-1 font-display text-5xl font-black text-ink">
-            {result.score === result.total && "🎉 "}
+            
             {result.score}/{result.total}
           </p>
           {result.score === result.total && (
@@ -132,7 +133,7 @@ export function DailyQuiz({
             </p>
           )}
           <p className="mt-2 text-sm text-body">
-            🔥 {result.streak}-day streak
+            <IconFlame size={14} className="inline text-accent" /> {result.streak}-day streak
             {result.seededMistakes > 0 && (
               <>
                 {" · "}
@@ -146,14 +147,14 @@ export function DailyQuiz({
               <>
                 {" · "}
                 <span className="font-medium text-guarantee">
-                  {result.clearedMistakes} monster{result.clearedMistakes === 1 ? "" : "s"} banished 🏆
+                  {result.clearedMistakes} monster{result.clearedMistakes === 1 ? "" : "s"} banished
                 </span>
               </>
             )}
           </p>
           {result.shieldEarned && (
             <p className="mt-3 text-sm font-medium text-trust">
-              🛡️ Streak shield earned, one missed day is now covered, automatically.
+              Streak shield earned, one missed day is now covered, automatically.
             </p>
           )}
           {result.game && result.game.xpGained > 0 && (
@@ -166,13 +167,13 @@ export function DailyQuiz({
         {result.game?.leveledUp && (
           <div className="rounded-2xl border border-accent bg-surface p-5 text-center">
             <p className="font-display text-2xl font-black text-accent">
-              ⬆️ Level {result.game.level}
+              Level {result.game.level}
             </p>
             <p className="mt-1 font-display text-lg font-bold text-ink">
               {result.game.title}
             </p>
             <p className="mt-1 text-xs text-body">
-              Your companion grew a little. Check the header. 👻
+              Your companion grew a little. Check the header.
             </p>
           </div>
         )}
@@ -186,7 +187,7 @@ export function DailyQuiz({
                   key={b.id}
                   className="inline-flex items-center gap-2 rounded-full border border-accent/50 bg-night px-3.5 py-1.5 text-sm text-ink"
                 >
-                  <span aria-hidden="true">{b.emoji}</span> {b.name}
+                  <NamedIcon name={b.emoji as IconName} size={15} className="text-accent" /> {b.name}
                 </span>
               ))}
             </div>
@@ -207,7 +208,7 @@ export function DailyQuiz({
               <span className="flex items-center gap-2">
                 {r.resurrected && (
                   <span className="rounded-full bg-violet/15 px-2 py-0.5 text-xs font-medium text-violet">
-                    ⚔️ monster attack
+                    monster attack
                   </span>
                 )}
                 <span
@@ -232,12 +233,12 @@ export function DailyQuiz({
             </div>
             {r.clearedNow && (
               <p className="mt-2 text-sm font-medium text-guarantee">
-                🏆 Banished, beaten twice. It doesn&apos;t come back.
+                Banished, beaten twice. It doesn&apos;t come back.
               </p>
             )}
             {r.resurrected && r.correct && !r.clearedNow && (
               <p className="mt-2 text-sm text-body">
-                ⚔️ Wounded! One more correct hit and it&apos;s banished for good.
+                Wounded! One more correct hit and it&apos;s banished for good.
               </p>
             )}
             {!r.correct && (
@@ -325,7 +326,7 @@ export function DailyQuiz({
         <p className="text-sm text-body">
           {doneToday ? "Bonus practice" : "3 quick questions · marked instantly"}
         </p>
-        <p className="font-mono text-xs text-body">🔥 {streak}-day streak</p>
+        <p className="flex items-center gap-1 font-mono text-xs text-body"><IconFlame size={13} className="text-accent" /> {streak}-day streak</p>
       </div>
 
       {questions.map((q, i) => (
@@ -342,12 +343,12 @@ export function DailyQuiz({
             <span className="flex items-center gap-2">
               {q.resurrected && (
                 <span className="rounded-full bg-violet/15 px-2 py-0.5 text-xs font-medium text-violet">
-                  ⚔️ a monster returns
+                  a monster returns
                 </span>
               )}
               {q.review && (
                 <span className="rounded-full bg-teal/15 px-2 py-0.5 text-xs font-medium text-teal">
-                  🔁 memory check
+                  memory check
                 </span>
               )}
               <span className="font-mono text-xs text-body">

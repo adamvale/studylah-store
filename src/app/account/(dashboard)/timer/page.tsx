@@ -16,7 +16,7 @@ export default async function TimerPage() {
     <div className="space-y-10">
       <section>
         <h2 className="font-display text-lg font-bold text-ink">
-          🐉 Boss battle: the Final Rehearsal
+          Boss battle: the Final Rehearsal
         </h2>
         <p className="mt-1 text-sm text-body">
           The paper is the boss, sit it before you meet it. The Final

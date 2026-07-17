@@ -202,10 +202,10 @@ const BUBBLE_NEW = [
   "Ask me anything!",
   "Not sure where to start?",
   "Questions before you buy?",
-  "Need help choosing? 💡",
+  "Need help choosing?",
 ];
 const BUBBLE_ENGAGED = [
-  "Feel free to ask me more! 💬",
+  "Feel free to ask me more!",
   "Still deciding? I can help.",
   "Want me to recommend a pack?",
   "Any more questions?",
@@ -465,7 +465,7 @@ function TypewriterText({
 
 // Types the floating bubble out character-by-character and RE-types whenever the
 // message changes, so every new bubble (a rotated attract line, or a
-// quiz-driven message like "Shh… 🙊") looks like Gugu is speaking it. Splits by
+// quiz-driven message like "Shh… ") looks like Gugu is speaking it. Splits by
 // code point (Array.from) so emoji are never sliced mid-surrogate.
 function BubbleText({ text }: { text: string }) {
   const chars = useMemo(() => Array.from(text), [text]);
@@ -578,7 +578,7 @@ export function GuguChat() {
     addItem({ level: resultCta.level as Level, subjectSlug: resultCta.slug, tier: "master" });
     setResultCta({ ...resultCta, stage: "added" });
     setOverride({
-      text: `Added ${resultCta.subjectName} Master to your cart! ✅ Taking more subjects? Each one gets cheaper in a bundle.`,
+      text: `Added ${resultCta.subjectName} Master to your cart! Taking more subjects? Each one gets cheaper in a bundle.`,
       hold: true,
     });
   }
@@ -624,7 +624,7 @@ export function GuguChat() {
   function scriptedFallback(text: string) {
     if (isGreeting(text)) {
       pushGugu(
-        "Hey! 👋 I'm Gugu, StudyLah's helper. Are you looking at a particular subject, or want the quick version of how StudyLah works? Tap a question below or just tell me what you're studying."
+        "Hey! I'm Gugu, StudyLah's helper. Are you looking at a particular subject, or want the quick version of how StudyLah works? Tap a question below or just tell me what you're studying."
       );
       return;
     }
@@ -690,7 +690,10 @@ export function GuguChat() {
     }
   }
 
-  if (!mounted) return null;
+  // Owner rule: no sales chatbot inside StudyLand, the dashboard is for
+  // studying, not selling. Storefront pages keep Gugu. Checked at render so
+  // client-side navigation in and out of /account toggles it correctly.
+  if (!mounted || pathname.startsWith("/account")) return null;
 
   return (
     <div className="gugu-fab pointer-events-none fixed bottom-20 left-4 z-40 flex flex-col items-start gap-3 transition-[bottom] duration-200 sm:bottom-8 print:hidden">
@@ -883,7 +886,7 @@ export function GuguChat() {
                   onClick={acceptCta}
                   className="rounded-md bg-accent px-2.5 py-1 text-xs font-bold text-night"
                 >
-                  Yes please 🛒
+                  Yes please
                 </button>
                 <button
                   type="button"

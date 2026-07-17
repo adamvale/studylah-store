@@ -96,6 +96,7 @@ import { DuelHall } from "@/components/duel-hall";
 import { SubjectGuru } from "@/components/subject-guru";
 import { SingaporeMinimap, SingaporeMapOverlay } from "@/components/singapore-map";
 import { districtForZone } from "@/lib/game/singapore";
+import { NamedIcon, IconCap, IconScroll, IconEye, IconBell, IconChat, type IconName } from "@/components/icons";
 
 // Subject family → gym emblem + province guardian (original sheet art).
 const EMBLEM_BY_FAMILY: Record<string, string> = {
@@ -181,8 +182,8 @@ function subscribeView(cb: () => void): () => void {
 
 // ── Strikes v3 (balance pass): stakes and rhythm, not raw difficulty ───────
 const STRIKES = [
-  { id: "jab", name: "Quick Jab", desc: "1 dmg · miss costs 1 ❤", dmg: 1 },
-  { id: "power", name: "Power Strike", desc: "2 dmg · miss: −1 ❤ and it heals", dmg: 2 },
+  { id: "jab", name: "Quick Jab", desc: "1 dmg · miss costs 1 HP", dmg: 1 },
+  { id: "power", name: "Power Strike", desc: "2 dmg · miss: −1 HP and it heals", dmg: 2 },
   { id: "guard", name: "Take a Breath", desc: "shield the next miss · once", dmg: 0 },
 ] as const;
 type StrikeId = (typeof STRIKES)[number]["id"];
@@ -497,7 +498,7 @@ interface WildBattle {
   captured: boolean;
   boss?: MiniBoss;
   bark?: string; // the boss speaks between rounds, never over a question
-  keystoneKey?: string; // Undercroft keystone: wrong answers cost +1 ❤
+  keystoneKey?: string; // Undercroft keystone: wrong answers cost +1 HP
   isFront?: boolean; // the weekly Fog Front
   tileKey?: string; // Old Campus: clearing converts this tile for good
 }
@@ -899,7 +900,7 @@ export function AdventureGame({
     player.current.moving = false;
     trailRef.current = [];
     SFX.collapse();
-    showToast(`💫 ${COPY.wipe}`);
+    showToast(`${COPY.wipe}`);
   }, [region, showToast]);
 
   const openWild = useCallback(
@@ -1103,7 +1104,7 @@ export function AdventureGame({
           active: { ...prev.active, signs: prev.active.signs + 1 },
         };
       });
-      setDialogue({ name: "Signpost", emoji: "🪧", lines: [sign.text], idx: 0 });
+      setDialogue({ name: "Signpost", emoji: "", lines: [sign.text], idx: 0 });
       return;
     }
 
@@ -1117,7 +1118,7 @@ export function AdventureGame({
           setQuestStore((prev) => ({ ...prev, active: { ...prev.active, guardianround: 1 } }));
           setDialogue({
             name: "The Guardian",
-            emoji: "🦌",
+            emoji: "",
             lines: ["(It looks at the beacon. Then at you. Then walks on, satisfied about something.)"],
             idx: 0,
           });
@@ -1142,9 +1143,9 @@ export function AdventureGame({
       emitFx({ type: "blip" });
       if (next.length >= order.length) {
         setStonesOpen((prev) => new Set(prev).add(z.id));
-        showToast("🎵 The third note lands, the keystone door grinds open.");
+        showToast("The third note lands, the keystone door grinds open.");
       } else {
-        showToast(`🎵 The ${npc.stone} stone sings. ${next.length}/${order.length}.`);
+        showToast(`The ${npc.stone} stone sings. ${next.length}/${order.length}.`);
       }
       return;
     }
@@ -1220,7 +1221,7 @@ export function AdventureGame({
         idx: 0,
         onDone: () => {
           void postBeat("cells");
-          showToast("🕯 The names are yours to light now.");
+          showToast("The names are yours to light now.");
         },
       });
       return;
@@ -1247,7 +1248,7 @@ export function AdventureGame({
         setHearts(MAX_HEARTS);
         emitFx({ type: "correct" });
         SFX.heal();
-        showToast("❤️ Hearts restored!");
+        showToast("Hearts restored!");
         // Nurse Fern's errand: reaching a camp keeper is the whole point
         if (npc.id.startsWith("heal:")) {
           setQuestStore((prev) =>
@@ -1267,7 +1268,7 @@ export function AdventureGame({
         const inner = onDone;
         onDone = () => {
           acceptQuest(quest);
-          showToast(`📜 Quest accepted: ${quest.name}`);
+          showToast(`Quest accepted: ${quest.name}`);
           inner?.();
         };
       } else if (progress >= quest.target) {
@@ -1288,7 +1289,7 @@ export function AdventureGame({
         idx: 0,
         onDone: () => {
           void postBeat("ninth");
-          showToast("🔦 The ninth lamp takes the flame. Everyone in Haven can see it.");
+          showToast("The ninth lamp takes the flame. Everyone in Haven can see it.");
         },
       });
       return;
@@ -1447,7 +1448,7 @@ export function AdventureGame({
               if (z.gym && z.gym.x === tx && z.gym.y === ty) {
                 ctx.font = "22px sans-serif";
                 ctx.textAlign = "center";
-                ctx.fillText(z.gym.emoji, sx + TP / 2, sy - 4);
+                ctx.fillText("◆", sx + TP / 2, sy - 4);
               }
             } else if (tile === PORTAL) {
               const pt = z.portals.find((pp) => pp.x === tx && pp.y === ty);
@@ -1479,7 +1480,7 @@ export function AdventureGame({
             if (tile === TILE.DOOR && z.gym && z.gym.x === tx && z.gym.y === ty) {
               ctx.font = "22px sans-serif";
               ctx.textAlign = "center";
-              ctx.fillText(z.gym.emoji, sx + TP / 2, sy - 4);
+              ctx.fillText("◆", sx + TP / 2, sy - 4);
             }
           }
         }
@@ -1527,7 +1528,7 @@ export function AdventureGame({
               sy
             );
         if (!drawn) {
-          ctx.fillText(n.emoji, sx + TP / 2, sy + TP - 6);
+          ctx.fillText("✦", sx + TP / 2, sy + TP - 6);
         }
       }
       // ── Gugu, the companion, smooth path-follow, half size ──────────────
@@ -1654,7 +1655,7 @@ export function AdventureGame({
   useEffect(() => {
     const onLocked = (e: Event) => {
       SFX.cancel();
-      showToast(`🔒 ${(e as CustomEvent<string>).detail}`);
+      showToast(`${(e as CustomEvent<string>).detail}`);
     };
     window.addEventListener("ff:locked", onLocked);
     return () => window.removeEventListener("ff:locked", onLocked);
@@ -1752,7 +1753,7 @@ export function AdventureGame({
           if (r.ok) emitGame(((await r.json()) as { game: FxGame | null }).game);
         });
         setUnderCleared((prev) => new Set(prev).add(b.keystoneKey!));
-        showToast("🔦 An under-beacon glows, the fog on the route above thins.");
+        showToast("An under-beacon glows, the fog on the route above thins.");
       }
       if (b.tileKey) {
         void fetch("/api/account/game/quest", {
@@ -1825,7 +1826,7 @@ export function AdventureGame({
           });
         } else {
           setBattle({ ...battle, hp, round, phase: "strike", result: res, breatherBonus: false, fogCleared: false, bark });
-          showToast(`💥 Hit! ${dmg} damage.`);
+          showToast(`Hit! ${dmg} damage.`);
         }
       } else {
         bumpStage("hurt");
@@ -2025,9 +2026,9 @@ export function AdventureGame({
     center("FOG FRONTIER", 250, "bold 30px monospace", "#ffdc00");
     center("EXPEDITION REPORT", 282, "bold 18px monospace", "#aeb8c6");
     if (hudState) center(`LV ${hudState.level} · ${hudState.title.toUpperCase()}`, 330, "bold 20px monospace", "#eef2f7");
-    center(`⚔️ Battles won today: ${wins}`, 400, "22px monospace", "#eef2f7");
+    center(`Battles won today: ${wins}`, 400, "22px monospace", "#eef2f7");
     center(
-      `🗓 ${new Date().toLocaleDateString("en-SG", { day: "numeric", month: "short", year: "numeric" })}`,
+      `${new Date().toLocaleDateString("en-SG", { day: "numeric", month: "short", year: "numeric" })}`,
       440,
       "18px monospace",
       "#aeb8c6"
@@ -2117,7 +2118,7 @@ export function AdventureGame({
               aria-label="The Academy, study with your subject Gurus"
               className="rounded-lg border border-accent/60 bg-night/70 px-2 py-1 text-xs backdrop-blur active:border-accent"
             >
-              🎓
+              <IconCap size={16} />
             </button>
             <button
               type="button"
@@ -2125,7 +2126,7 @@ export function AdventureGame({
               aria-label="Quest log"
               className="rounded-lg border border-mint/50 bg-night/70 px-2 py-1 text-xs backdrop-blur active:border-mint"
             >
-              📜
+              <IconScroll size={16} />
             </button>
             {wins > 0 && (
               <button
@@ -2134,7 +2135,7 @@ export function AdventureGame({
                 aria-label="Share expedition report"
                 className="rounded-lg border border-mint/50 bg-night/70 px-2 py-1 text-xs backdrop-blur active:border-mint"
               >
-                📸
+                <IconEye size={16} />
               </button>
             )}
             <button
@@ -2143,7 +2144,7 @@ export function AdventureGame({
               aria-label={audioMuted ? "Unmute music and sound" : "Mute music and sound"}
               className="rounded-lg border border-mint/50 bg-night/70 px-2 py-1 text-xs backdrop-blur active:border-mint"
             >
-              {audioMuted ? "🔇" : "🔊"}
+              {audioMuted ? <IconBell size={16} className="opacity-40" /> : <IconBell size={16} />}
             </button>
             <button
               type="button"
@@ -2151,7 +2152,7 @@ export function AdventureGame({
               aria-label="Leave beta feedback"
               className="rounded-lg border border-violet/60 bg-night/70 px-2 py-1 text-xs backdrop-blur active:border-violet"
             >
-              💬
+              <IconChat size={16} />
             </button>
             <button
               type="button"
@@ -2205,14 +2206,14 @@ export function AdventureGame({
                 }}
                 className="rounded-lg border border-violet/60 px-4 py-2.5 text-sm font-medium text-violet"
               >
-                💬 Leave feedback
+                Leave feedback
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* beta feedback form (also via the 💬 HUD button) */}
+      {/* beta feedback form (also via the chat HUD button) */}
       {feedbackOpen && <BetaFeedback onClose={() => setFeedbackOpen(false)} />}
 
       {/* PUBG-style overlay controls */}
@@ -2284,16 +2285,16 @@ export function AdventureGame({
         <Panel
           title={
             battle.boss
-              ? `🌫 ${battle.boss.name}, ${battle.boss.epithet}`
+              ? `${battle.boss.name}, ${battle.boss.epithet}`
               : battle.isFront
-              ? "🌫 The Fog Front holds this ground"
+              ? "The Fog Front holds this ground"
               : battle.keystoneKey
-              ? "🗿 The Keystone stirs"
+              ? "The Keystone stirs"
               : battle.echo
-              ? "🌫 A notebook echo takes shape!"
+              ? "A notebook echo takes shape!"
               : battle.shiny
-              ? "✨ A SHINY monster appears!"
-              : "⚔️ A wild monster appears!"
+              ? "A SHINY monster appears!"
+              : "A wild monster appears!"
           }
         >
           <BattleStage
@@ -2315,7 +2316,7 @@ export function AdventureGame({
           <div className="flex items-center gap-3">
             <div className="min-w-0 flex-1">
               <p className="font-display font-bold text-ink">
-                {battle.shiny && <span className="text-accent">✨ Shiny </span>}
+                {battle.shiny && <span className="text-accent">Shiny </span>}
                 {m.name}
               </p>
               <p className="text-xs text-body">{battle.subject.name}</p>
@@ -2336,7 +2337,7 @@ export function AdventureGame({
                   : "CHOOSE YOUR STRIKE"}
               </p>
               {battle.keystoneKey && (
-                <p className="text-[10px] text-coral">Undercroft rule: a miss here costs 2 ❤</p>
+                <p className="text-[10px] text-coral">Undercroft rule: a miss here costs 2 HP</p>
               )}
               {STRIKES.map((s) => {
                 const locked =
@@ -2408,7 +2409,7 @@ export function AdventureGame({
 
           {battle.phase === "reveal" && battle.result && (
             <div className="mt-4 space-y-3">
-              <p className="font-display text-lg font-bold text-coral">💥 It strikes back!</p>
+              <p className="font-display text-lg font-bold text-coral">It strikes back!</p>
               <p className="text-sm text-body">
                 Correct answer: <span className="font-medium text-ink">{battle.result.correctAnswer}</span>
               </p>
@@ -2429,12 +2430,12 @@ export function AdventureGame({
             <div className="mt-4 space-y-3">
               <p className="font-display text-lg font-bold text-guarantee">
                 {battle.boss
-                  ? `🕊 ${battle.boss.defeated[0]}`
+                  ? `${battle.boss.defeated[0]}`
                   : battle.isFront
-                  ? "🌤 The fog lifts off the landmark!"
+                  ? "The fog lifts off the landmark!"
                   : battle.tileKey
-                  ? "🌤 The memory settles, this ground stays clear."
-                  : "🏆 It's defeated!"}
+                  ? "The memory settles, this ground stays clear."
+                  : "It's defeated!"}
               </p>
               {battle.captured && (
                 <p className="fx-hero flex items-center justify-center gap-2 rounded-xl border border-accent/50 bg-accent/10 p-3 text-center font-pixel text-[10px] text-accent">
@@ -2497,7 +2498,7 @@ export function AdventureGame({
           {trainer.phase === "reveal" && trainer.result && (
             <div className="space-y-3">
               <p className={`font-display text-lg font-bold ${trainer.result.correct ? "text-guarantee" : "text-coral"}`}>
-                {trainer.result.correct ? "✅ Clean hit!" : "❌ Blocked!"}
+                {trainer.result.correct ? "✓ Clean hit!" : "✗ Blocked!"}
               </p>
               {!trainer.result.correct && (
                 <>
@@ -2530,8 +2531,8 @@ export function AdventureGame({
               <p className={`fx-hero font-display text-2xl font-black ${trainer.won ? "text-guarantee" : "text-coral"}`}>
                 {trainer.won
                   ? trainer.battle.beat === "championship"
-                    ? "🏆 REGIONAL CHAMPION!"
-                    : "🏆 VICTORY!"
+                    ? "REGIONAL CHAMPION!"
+                    : "VICTORY!"
                   : "Defeated…"}
               </p>
               <p className="text-sm text-body">
@@ -2593,7 +2594,7 @@ export function AdventureGame({
                 </div>
               )}
               <p className={`fx-hero font-display text-2xl font-black ${gymState.outcome.cleared ? "text-guarantee" : "text-coral"}`}>
-                {gymState.outcome.cleared ? "🔦 Beacon lit!" : "Not this time"}
+                {gymState.outcome.cleared ? "Beacon lit!" : "Not this time"}
               </p>
               <p className="text-sm text-body">
                 {gymState.outcome.correct}/5 correct.{" "}
@@ -2645,7 +2646,7 @@ export function AdventureGame({
 
       {/* the saga: acts, group gate, daily study, errands */}
       {questLogOpen && (
-        <Panel title="📖 The Lightbearer Saga">
+        <Panel title="The Lightbearer Saga">
           {(() => {
             const ctx: ActContext = {
               story,
@@ -2701,7 +2702,7 @@ export function AdventureGame({
                 {/* the group gate, the door Phase 4 opens */}
                 <div className={`rounded-xl border px-3 py-2 ${unlocked ? "border-mint/60" : "border-hairline"}`}>
                   <p className="text-sm font-bold text-ink">
-                    {unlocked ? "🤝 Group challenges: UNLOCKED" : "🔒 Group challenges"}
+                    {unlocked ? "Group challenges: UNLOCKED" : "Group challenges (locked)"}
                   </p>
                   <p className="mt-0.5 text-xs text-body">
                     {unlocked
@@ -2715,7 +2716,7 @@ export function AdventureGame({
                 {/* today's real study, in saga clothes */}
                 {standing && (
                   <div className="rounded-xl border border-hairline px-3 py-2">
-                    <p className="text-sm font-bold text-ink">🕯 Today&apos;s light</p>
+                    <p className="text-sm font-bold text-ink">Today&apos;s light</p>
                     <p className="mt-0.5 text-xs text-body">
                       {standing.dailyDone ? "✓ Daily three done, the beacons hold." : "• The daily three waits, three questions keep the Fog off Haven."}
                       {standing.dueReviews > 0 &&
@@ -2771,7 +2772,7 @@ export function AdventureGame({
 
       {/* wipe letter, the session ends on a plan, not a loss */}
       {wipeLetter && (
-        <Panel title="📬 A letter in the mailbox">
+        <Panel title="A letter in the mailbox">
           <p className="text-sm text-body">{COPY.wipeLetterIntro}</p>
           <p className="mt-2 rounded-xl border border-hairline bg-night p-3 text-xs text-body">
             {wipeLetter.stem}
@@ -2796,7 +2797,7 @@ export function AdventureGame({
           {onboard === "intro" && (
             <>
               <span className="fx-hero" aria-hidden>
-                <MzFace role="elder_maple" emoji="🧓" size={96} className="rounded-xl border border-hairline bg-night-2" />
+                <MzFace role="elder_maple" size={96} className="rounded-xl border border-hairline bg-night-2" />
               </span>
               <p className="font-pixel text-[10px] tracking-widest text-accent">ELDER MAPLE</p>
               <div className="max-w-sm space-y-3 text-sm leading-relaxed text-ink">
@@ -2840,7 +2841,7 @@ export function AdventureGame({
                   >
                     <p className="flex items-center gap-2">
                       <span className="text-2xl" aria-hidden>
-                        {h.emoji}
+                        <NamedIcon name={h.emoji as IconName} size={24} className="text-accent" />
                       </span>
                       <span className="font-display text-base font-bold text-ink">{h.name}</span>
                       <HeroPreview heroId={h.id} />
@@ -2867,7 +2868,7 @@ export function AdventureGame({
                   >
                     <p className="flex items-center gap-2">
                       <span className="text-2xl" aria-hidden>
-                        {s.emoji}
+                        <NamedIcon name={s.emoji as IconName} size={24} className="text-accent" />
                       </span>
                       <span className="font-display text-base font-bold text-ink">{s.name}</span>
                       <span
@@ -2888,7 +2889,7 @@ export function AdventureGame({
           {onboard === "done" && (
             <>
               <span className="fx-hero text-6xl" aria-hidden>
-                {starter ? starterById(starter)?.emoji : "👻"}
+                <NamedIcon name={(starterById(starter ?? "")?.emoji ?? "ghost") as IconName} size={56} className="text-accent" />
               </span>
               <p className="font-pixel text-[10px] tracking-widest text-accent">
                 {starter ? starterById(starter)?.name.toUpperCase() : ""} JOINS YOU
@@ -2957,9 +2958,9 @@ function SoftTimer({ onExpire }: { onExpire: () => void }) {
 // Beta feedback form: one sentiment tap + free text, posted to
 // /api/account/game/feedback and read in /admin/feedback.
 const SENTIMENTS = [
-  { id: "love", label: "😍 Love it" },
-  { id: "okay", label: "🙂 It's okay" },
-  { id: "rough", label: "😖 Rough" },
+  { id: "love", label: "Love it" },
+  { id: "okay", label: "It's okay" },
+  { id: "rough", label: "Rough" },
 ] as const;
 
 function BetaFeedback({ onClose }: { onClose: () => void }) {
@@ -2988,7 +2989,7 @@ function BetaFeedback({ onClose }: { onClose: () => void }) {
       <div className="w-full max-w-sm rounded-2xl border-2 border-violet/60 bg-night p-5">
         {state === "sent" ? (
           <div className="text-center">
-            <p className="text-3xl">🙏</p>
+            <p className="font-display text-lg font-bold text-ink">Thank you</p>
             <h2 className="mt-2 font-display text-lg font-black text-ink">
               Thank you, Lightbearer
             </h2>

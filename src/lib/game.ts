@@ -64,19 +64,19 @@ export interface BadgeDef {
 }
 
 export const BADGES: BadgeDef[] = [
-  { id: "first-steps", name: "First Steps", emoji: "🎯", hint: "Complete your first daily three", xp: 10 },
-  { id: "early-bird", name: "Early Bird", emoji: "🌅", hint: "Finish the daily three before 8am", xp: 10 },
-  { id: "streak-3", name: "Kindling", emoji: "🔥", hint: "Reach a 3-day streak", xp: 10 },
-  { id: "streak-7", name: "On Fire", emoji: "🔥", hint: "Reach a 7-day streak", xp: 25 },
-  { id: "streak-14", name: "Unstoppable", emoji: "⚡", hint: "Reach a 14-day streak", xp: 50 },
-  { id: "streak-30", name: "Eruption", emoji: "🌋", hint: "Reach a 30-day streak", xp: 100 },
-  { id: "slayer-1", name: "First Blood", emoji: "⚔️", hint: "Banish your first mistake (beat it twice)", xp: 10 },
-  { id: "slayer-10", name: "Monster Hunter", emoji: "🗡️", hint: "Banish 10 mistakes for good", xp: 25 },
-  { id: "fog-10", name: "Fog Lifter", emoji: "🌤️", hint: "Get 10 topics to Confident", xp: 25 },
-  { id: "fog-25", name: "Sky Clearer", emoji: "☀️", hint: "Get 25 topics to Confident", xp: 50 },
-  { id: "calibrated", name: "Straight Shooter", emoji: "🎯", hint: "Be right on 85% of your \"Sure\" answers (20+ taps)", xp: 25 },
-  { id: "full-recon", name: "Full Recon", emoji: "🧭", hint: "Predict your mark in every subject you own", xp: 25 },
-  { id: "champion", name: "Regional Champion", emoji: "🏆", hint: "Clear the Championship gauntlet at the Summit of Clarity", xp: 100 },
+  { id: "first-steps", name: "First Steps", emoji: "target", hint: "Complete your first daily three", xp: 10 },
+  { id: "early-bird", name: "Early Bird", emoji: "clock", hint: "Finish the daily three before 8am", xp: 10 },
+  { id: "streak-3", name: "Kindling", emoji: "flame", hint: "Reach a 3-day streak", xp: 10 },
+  { id: "streak-7", name: "On Fire", emoji: "flame", hint: "Reach a 7-day streak", xp: 25 },
+  { id: "streak-14", name: "Unstoppable", emoji: "bolt", hint: "Reach a 14-day streak", xp: 50 },
+  { id: "streak-30", name: "Eruption", emoji: "flame", hint: "Reach a 30-day streak", xp: 100 },
+  { id: "slayer-1", name: "First Blood", emoji: "swords", hint: "Banish your first mistake (beat it twice)", xp: 10 },
+  { id: "slayer-10", name: "Monster Hunter", emoji: "swords", hint: "Banish 10 mistakes for good", xp: 25 },
+  { id: "fog-10", name: "Fog Lifter", emoji: "sparkle", hint: "Get 10 topics to Confident", xp: 25 },
+  { id: "fog-25", name: "Sky Clearer", emoji: "star", hint: "Get 25 topics to Confident", xp: 50 },
+  { id: "calibrated", name: "Straight Shooter", emoji: "target", hint: "Be right on 85% of your \"Sure\" answers (20+ taps)", xp: 25 },
+  { id: "full-recon", name: "Full Recon", emoji: "compass", hint: "Predict your mark in every subject you own", xp: 25 },
+  { id: "champion", name: "Regional Champion", emoji: "trophy", hint: "Clear the Championship gauntlet at the Summit of Clarity", xp: 100 },
 ];
 
 export function badgeById(id: string): BadgeDef | undefined {
@@ -111,21 +111,21 @@ export const STARTERS: StarterDef[] = [
   {
     id: "ember",
     name: "Emberkin",
-    emoji: "🔥",
+    emoji: "flame",
     colour: "#ff7a45",
     philosophy: "Powerful and direct, charges the hard questions head-on.",
   },
   {
     id: "tide",
     name: "Tidekin",
-    emoji: "🌊",
+    emoji: "drop",
     colour: "#6ea0ff",
     philosophy: "Fast and technical, picks battles apart step by step.",
   },
   {
     id: "grove",
     name: "Grovekin",
-    emoji: "🌿",
+    emoji: "leaf",
     colour: "#3ddc84",
     philosophy: "Patient and durable, outlasts anything the Fog sends.",
   },
@@ -151,19 +151,19 @@ export const HEROES: HeroDef[] = [
   {
     id: "jun",
     name: "Jun",
-    emoji: "🧭",
+    emoji: "compass",
     blurb: "A steady all-rounder. First out the door every morning, maps the routes so others don't get lost.",
   },
   {
     id: "mei",
     name: "Mei",
-    emoji: "🔖",
+    emoji: "book",
     blurb: "Quick and curious. Keeps the neatest notebook in Haven, the Fog hates a good index.",
   },
   {
     id: "agent",
     name: "Agent X",
-    emoji: "🕶️",
+    emoji: "eye",
     blurb: "A mysterious transfer student. Nobody knows who sent them; their mission folder just says 'pass'.",
   },
 ];
@@ -187,31 +187,31 @@ export interface MonsterDef {
 export const MONSTERS: Record<string, MonsterDef> = {
   unset: {
     name: "Unknown Spirit",
-    emoji: "❓",
+    emoji: "eye",
     tag: "Unidentified, you can't fight what you haven't named.",
     beat: "Classify why you lost the mark and it takes its true form.",
   },
   careless: {
     name: "Careless Imp",
-    emoji: "😈",
+    emoji: "skull",
     tag: "Steals marks you already own.",
     beat: "Slow down on the final step. Re-read the question before answering.",
   },
   concept: {
     name: "Concept Wraith",
-    emoji: "👻",
+    emoji: "ghost",
     tag: "The dangerous one, it wears carelessness as a disguise.",
     beat: "Re-learn the idea from your notes, then let the re-test come to you.",
   },
   method: {
     name: "Method Golem",
-    emoji: "🗿",
+    emoji: "shield",
     tag: "Heavy and slow, it blocks the working, not the idea.",
     beat: "Drill the working structure until the steps are automatic.",
   },
   time: {
     name: "Time Vampire",
-    emoji: "🧛",
+    emoji: "moon",
     tag: "Feeds on your final ten minutes.",
     beat: "Timed practice. The rehearsal clock is garlic.",
   },

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { examPapersFor } from "@/lib/exam-dates-2026";
 import type { OwnedSubject } from "@/lib/server/study";
+import { NamedIcon, type IconName } from "@/components/icons";
 
 // Two server-rendered cards for the Today page:
 //   PhaseBanner - what season of the campaign we're in, driven by real SEAB
@@ -26,7 +27,7 @@ function phaseFor(days: number | null): Phase {
   if (days === null) {
     return {
       key: "build",
-      emoji: "🌱",
+      emoji: "leaf",
       title: "Build phase",
       line: "No paper on the horizon yet, so the job is coverage: learn new topics and bank the daily three.",
       border: "border-hairline",
@@ -35,7 +36,7 @@ function phaseFor(days: number | null): Phase {
   if (days <= 7) {
     return {
       key: "war",
-      emoji: "⚔️",
+      emoji: "swords",
       title: `War week: first paper in ${days} day${days === 1 ? "" : "s"}`,
       line: "No new content now. Sharpen what you have: drills to zero, notebook cleared, one timed mock.",
       href: "/account/warroom",
@@ -46,7 +47,7 @@ function phaseFor(days: number | null): Phase {
   if (days <= 30) {
     return {
       key: "sharpen",
-      emoji: "🔪",
+      emoji: "target",
       title: `Sharpen phase: ${days} days to your first paper`,
       line: "Weak topics and timed practice beat new material from here. Let the rescue plan pick your battles.",
       href: "/account/rescue",
@@ -57,7 +58,7 @@ function phaseFor(days: number | null): Phase {
   if (days <= 60) {
     return {
       key: "consolidate",
-      emoji: "🧱",
+      emoji: "shield",
       title: `Consolidate phase: ${days} days to your first paper`,
       line: "Close the gaps: finish remaining topics, keep the daily three streak, start the drills habit now.",
       href: "/account/drills",
@@ -67,7 +68,7 @@ function phaseFor(days: number | null): Phase {
   }
   return {
     key: "build",
-    emoji: "🌱",
+    emoji: "leaf",
     title: `Build phase: ${days} days to your first paper`,
     line: "Time is on your side. Cover new topics steadily, the daily three plus one real session a day compounds.",
     href: "/account/study",
@@ -107,7 +108,7 @@ export async function PhaseBanner({
     >
       <p className="min-w-0 text-sm text-body">
         <span className="font-display font-bold text-ink">
-          {phase.emoji} {phase.title}.
+          <NamedIcon name={phase.emoji as IconName} size={16} className="mr-1 inline text-accent" /> {phase.title}.
         </span>{" "}
         {phase.line}
       </p>
@@ -169,7 +170,7 @@ export async function WeekReport({
     <section className="mt-6 rounded-2xl border border-hairline bg-surface p-5">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h2 className="font-display text-lg font-bold text-ink">
-          📈 Your week
+          Your week
         </h2>
         <span className="text-xs text-body">
           last 7 days{weekXp > 0 ? ` · +${weekXp} XP` : ""}

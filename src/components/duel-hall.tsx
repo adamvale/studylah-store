@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { emitGame, emitFx, type FxGame } from "@/lib/game/fx";
 import type { WorldSubject } from "@/lib/game/world2";
+import { NamedIcon, type IconName } from "@/components/icons";
 
 // ── The Duel Hall ──────────────────────────────────────────────────────────
 // Asynchronous friend-vs-friend duels: a sealed, server-dealt set of 5
@@ -204,7 +205,7 @@ export function DuelHall({
   return (
     <div className="absolute inset-0 z-[60] flex items-end justify-center bg-black/60 p-4 pb-[max(env(safe-area-inset-bottom),16px)] sm:items-center">
       <div className="max-h-[85vh] w-full max-w-md overflow-y-auto rounded-2xl border border-accent/40 bg-surface p-5 shadow-2xl">
-        <p className="font-display text-lg font-bold text-ink">⚔️ The Duel Hall</p>
+        <p className="font-display text-lg font-bold text-ink">The Duel Hall</p>
         {note && <p className="mt-2 rounded-lg bg-night/70 px-3 py-1.5 text-xs text-accent">{note}</p>}
 
         {screen.kind === "menu" && (
@@ -219,7 +220,7 @@ export function DuelHall({
               onClick={() => setScreen({ kind: "pickSubject" })}
               className="block w-full rounded-xl border border-hairline bg-night px-4 py-3 text-left text-sm font-bold text-ink hover:border-accent"
             >
-              🗡 Start a duel <span className="block text-xs font-normal text-body">Answer your side, get a code to share</span>
+              Start a duel <span className="block text-xs font-normal text-body">Answer your side, get a code to share</span>
             </button>
             <button
               type="button"
@@ -227,7 +228,7 @@ export function DuelHall({
               onClick={() => setScreen({ kind: "enterCode" })}
               className="block w-full rounded-xl border border-hairline bg-night px-4 py-3 text-left text-sm font-bold text-ink hover:border-accent"
             >
-              🎟 Enter a code <span className="block text-xs font-normal text-body">Answer a friend&apos;s challenge</span>
+              Enter a code <span className="block text-xs font-normal text-body">Answer a friend&apos;s challenge</span>
             </button>
             <button
               type="button"
@@ -235,7 +236,7 @@ export function DuelHall({
               onClick={() => void loadList()}
               className="block w-full rounded-xl border border-hairline bg-night px-4 py-3 text-left text-sm font-bold text-ink hover:border-accent"
             >
-              📜 My duels <span className="block text-xs font-normal text-body">Recent challenges and results</span>
+              My duels <span className="block text-xs font-normal text-body">Recent challenges and results</span>
             </button>
             <p className="text-[10px] text-body">
               Both sides earn the same XP for finishing, win or lose. The laurel is for
@@ -255,7 +256,7 @@ export function DuelHall({
                 onClick={() => void createDuel(s)}
                 className="block w-full rounded-xl border border-hairline bg-night px-4 py-2.5 text-left text-sm text-ink hover:border-accent disabled:opacity-50"
               >
-                {s.emoji} {s.name}
+                <NamedIcon name={s.emoji as IconName} size={14} className="inline text-accent" /> {s.name}
               </button>
             ))}
           </div>
@@ -340,7 +341,7 @@ export function DuelHall({
                   Your side is sealed. Hand the code over, the duel completes when they answer.
                 </p>
               ) : screen.score > screen.rivalScore ? (
-                <p className="fx-hero mt-2 font-pixel text-[10px] text-accent">🏵 THE LAUREL IS YOURS</p>
+                <p className="fx-hero mt-2 font-pixel text-[10px] text-accent">THE LAUREL IS YOURS</p>
               ) : screen.score < screen.rivalScore ? (
                 <p className="mt-2 text-sm text-body">
                   The laurel travels, and the worked solutions below are how it comes back.
@@ -355,7 +356,7 @@ export function DuelHall({
                 onClick={() => void copyCode(screen.code)}
                 className="flex-1 rounded-lg border border-hairline px-4 py-2.5 text-sm font-medium text-body hover:text-ink"
               >
-                {copied ? "✓ Copied" : "📋 Copy code"}
+                {copied ? "✓ Copied" : "Copy code"}
               </button>
               {screen.results.length > 0 && (
                 <button
@@ -374,7 +375,7 @@ export function DuelHall({
                   className={`rounded-xl border p-3 text-xs ${r.correct ? "border-guarantee/40" : "border-coral/40"}`}
                 >
                   <p className="font-bold text-ink">
-                    Q{i + 1}, {r.correct ? "✅ yours" : `❌ answer: ${r.correctAnswer}`}
+                    Q{i + 1}, {r.correct ? "✓ yours" : `✗ answer: ${r.correctAnswer}`}
                   </p>
                   <p className="mt-1 text-body">{r.workedSolution}</p>
                 </div>

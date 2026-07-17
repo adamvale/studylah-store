@@ -86,7 +86,7 @@ export function PackPreview({
       {/* Lock chip on blurred pages */}
       {spread.locked && (
         <span className="absolute left-3 top-3 z-10 rounded-full bg-night/80 px-2.5 py-1 font-mono text-[11px] font-medium text-white backdrop-blur">
-          🔒 Blurred, unlock to read
+          Blurred, unlock to read
         </span>
       )}
 

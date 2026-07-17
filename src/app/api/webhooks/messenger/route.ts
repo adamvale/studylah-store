@@ -133,7 +133,7 @@ async function handleEvent(channel: SocialChannel, ev: MessagingEvent) {
   let reply: string;
   if (!text) {
     reply =
-      "I can only read text messages for now! Type your question and I'll help you out. 👻";
+      "I can only read text messages for now! Type your question and I'll help you out.";
   } else {
     const rows = await prisma.socialMessage.findMany({
       where: { channel, contactId },

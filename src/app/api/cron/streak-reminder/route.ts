@@ -80,7 +80,7 @@ export async function GET(request: Request) {
         today
       );
       const payload = {
-        title: `🔥 Your ${streak.current}-day streak ends at midnight`,
+        title: `Your ${streak.current}-day streak ends at midnight`,
         body: "Three questions keeps it alive, two minutes, marked instantly.",
         url: "/account",
       };

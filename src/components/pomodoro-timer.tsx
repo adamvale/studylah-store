@@ -100,7 +100,7 @@ export function PomodoroTimer() {
         if (data.game && data.game.xpGained > 0) {
           setXpToast(
             data.game.leveledUp
-              ? `+${data.game.xpGained} XP · ⬆️ Level ${data.game.level}!`
+              ? `+${data.game.xpGained} XP · Level ${data.game.level}!`
               : `+${data.game.xpGained} XP, focus block banked`
           );
           setTimeout(() => setXpToast(null), 4000);

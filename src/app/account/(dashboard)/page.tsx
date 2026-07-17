@@ -18,8 +18,8 @@ import { DailyQuiz, type NextUpItem } from "@/components/daily-quiz";
 import { GettingStarted, type StartStep } from "@/components/getting-started";
 import { TierPill } from "@/components/heat";
 import { type BossInfo } from "@/components/quest-board";
-import { HomeBase } from "@/components/home-base";
 import { PhaseBanner, WeekReport } from "@/components/today-pulse";
+import { IconFlame, IconCheckCircle, IconRepeat, IconCrown, IconCap } from "@/components/icons";
 
 export const metadata: Metadata = { title: "Today" };
 
@@ -313,13 +313,6 @@ export default async function TodayPage() {
 
   return (
     <div className="space-y-8">
-      <HomeBase
-        todayDone={streak.doneToday}
-        streak={streak.current}
-        dueMistakes={unresolvedMistakes}
-        shields={streak.shields}
-      />
-
       {/* ── Hero: the greeting + the week, app-dashboard style ─────────── */}
       <div>
         <div className="flex flex-wrap items-end justify-between gap-2">
@@ -331,7 +324,8 @@ export default async function TodayPage() {
           </div>
           {streak.current > 0 && (
             <span className="chip">
-              🔥 {streak.current}-day streak{streak.doneToday ? "" : " · today keeps it"}
+              <IconFlame size={14} className="text-accent" />
+              {streak.current}-day streak{streak.doneToday ? "" : " · today keeps it"}
             </span>
           )}
         </div>
@@ -341,27 +335,27 @@ export default async function TodayPage() {
             : `${openItems.length} quest${openItems.length === 1 ? "" : "s"} today, about ${totalMinutes} minutes. The XP is real.`}
         </p>
 
-        {/* The week card + stat tiles (the reference's Learn Time layout) */}
-        <div className="mt-4 grid gap-3 sm:grid-cols-5">
-          <div className="glass-deep p-5 sm:col-span-3">
-            <div className="flex items-baseline justify-between">
-              <p className="text-sm font-semibold text-body">This week</p>
-              <Link href="/account/progress" className="text-xs font-bold text-accent hover:underline">
-                Details →
-              </Link>
-            </div>
-            <p className="mt-1 font-display text-4xl font-extrabold text-ink">
+        {/* One compact card: the week's XP + today's counters, no tile sprawl */}
+        <div className="glass-deep mt-4 p-5">
+          <div className="flex items-baseline justify-between">
+            <p className="text-sm font-semibold text-body">This week</p>
+            <Link href="/account/progress" className="text-xs font-bold text-accent hover:underline">
+              Details →
+            </Link>
+          </div>
+          <div className="mt-1 flex items-end justify-between gap-4">
+            <p className="font-display text-4xl font-extrabold text-ink">
               {weekXp}
               <span className="ml-1.5 text-base font-bold text-body">XP</span>
             </p>
-            <div className="mt-3 flex h-16 items-end gap-1.5" aria-hidden>
+            <div className="flex h-14 flex-1 items-end justify-end gap-1.5" aria-hidden>
               {weekDays.map((w, i) => (
-                <div key={w.key} className="flex flex-1 flex-col items-center gap-1">
+                <div key={w.key} className="flex w-6 flex-col items-center gap-1 sm:w-8">
                   <div
                     className={`w-full rounded-full ${
                       w.xp > 0 ? "bg-gradient-to-t from-violet-500 to-fuchsia-300" : "bg-white/10"
                     }`}
-                    style={{ height: `${Math.max(8, Math.round((w.xp / maxDayXp) * 56))}px` }}
+                    style={{ height: `${Math.max(6, Math.round((w.xp / maxDayXp) * 40))}px` }}
                   />
                   <span className={`text-[10px] ${i === 6 ? "font-bold text-ink" : "text-body/70"}`}>
                     {w.dow}
@@ -370,22 +364,18 @@ export default async function TodayPage() {
               ))}
             </div>
           </div>
-          <div className="grid grid-rows-2 gap-3 sm:col-span-2">
-            <div className="glass flex items-center gap-3 p-4">
-              <span className="icon-orb text-lg" aria-hidden>✅</span>
-              <div>
-                <p className="font-display text-xl font-extrabold text-ink">
-                  {mission.filter((m) => m.done).length}/{mission.length}
-                </p>
-                <p className="text-xs text-body">quests done today</p>
-              </div>
-            </div>
-            <Link href="/account/drills" className="glass flex items-center gap-3 p-4 transition-transform hover:-translate-y-0.5">
-              <span className="icon-orb text-lg" aria-hidden>🔁</span>
-              <div>
-                <p className="font-display text-xl font-extrabold text-ink">{reviewsDue}</p>
-                <p className="text-xs text-body">reviews due, keep them won</p>
-              </div>
+          <div className="mt-4 flex items-center gap-6 border-t border-white/10 pt-3 text-sm">
+            <span className="flex items-center gap-2 text-body">
+              <IconCheckCircle size={16} className="text-guarantee" />
+              <span className="font-display font-extrabold text-ink">
+                {mission.filter((m) => m.done).length}/{mission.length}
+              </span>
+              quests today
+            </span>
+            <Link href="/account/drills" className="flex items-center gap-2 text-body hover:text-ink">
+              <IconRepeat size={16} className="text-accent" />
+              <span className="font-display font-extrabold text-ink">{reviewsDue}</span>
+              reviews due
             </Link>
           </div>
         </div>
@@ -394,7 +384,7 @@ export default async function TodayPage() {
         <PhaseBanner customerId={customerId} subjects={subjects} />
         {retired.length > 0 && (
           <div className="mt-3 rounded-2xl border border-hairline bg-surface px-4 py-3 text-sm text-body">
-            🎓 Exams done:{" "}
+            <IconCap size={14} className="mr-1 inline text-body" aria-hidden /> Exams done:{" "}
             <span className="font-medium text-ink">
               {retired.map((r) => r.name).join(", ")}
             </span>
@@ -454,7 +444,8 @@ export default async function TodayPage() {
           </ul>
           {boss && (
             <p className="mt-2 border-t border-hairline pt-2.5 text-xs text-body">
-              👑 Weekly boss: <span className="font-semibold text-ink">{boss.topic}</span> ({boss.subjectName}), {boss.hpPct}% HP left. Every study step lands a hit.
+              <IconCrown size={14} className="mr-1 inline text-accent" aria-hidden /> Weekly boss:{" "}
+              <span className="font-semibold text-ink">{boss.topic}</span> ({boss.subjectName}), {boss.hpPct}% HP left. Every study step lands a hit.
             </p>
           )}
         </section>

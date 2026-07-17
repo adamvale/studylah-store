@@ -4,9 +4,9 @@ export const dynamic = "force-dynamic";
 export const metadata = { title: "Beta feedback" };
 
 const SENTIMENT_UI: Record<string, string> = {
-  love: "😍 Love it",
-  okay: "🙂 It's okay",
-  rough: "😖 Rough",
+  love: "Love it",
+  okay: "It's okay",
+  rough: "Rough",
 };
 
 export default async function AdminFeedbackPage() {

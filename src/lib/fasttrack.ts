@@ -1215,17 +1215,17 @@ export const PLAYBOOKS: Record<Family, Play[]> = {
 export const FAMILY_META: Record<Family, { label: string; emoji: string; blurb: string }> = {
   chemistry: {
     label: "Chemistry",
-    emoji: "🧪",
+    emoji: "flask",
     blurb: "Bonding, moles, tests, rates and equations, phrased the way the mark scheme wants.",
   },
   physics: {
     label: "Physics",
-    emoji: "⚡",
+    emoji: "bolt",
     blurb: "Calculations, forces, energy and experiments, structured so no method marks leak.",
   },
   biology: {
     label: "Biology",
-    emoji: "🧬",
+    emoji: "leaf",
     blurb: "Structure and function, processes and data response, with the examiner's exact terms.",
   },
 };

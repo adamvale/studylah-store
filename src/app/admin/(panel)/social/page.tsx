@@ -7,8 +7,8 @@ export const metadata = { title: "Messenger & Instagram inbox" };
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const CHANNEL_UI: Record<string, { label: string; emoji: string }> = {
-  messenger: { label: "Messenger", emoji: "💬" },
-  instagram: { label: "Instagram", emoji: "📷" },
+  messenger: { label: "Messenger", emoji: "" },
+  instagram: { label: "Instagram", emoji: "" },
 };
 
 function fmt(d: Date): string {
@@ -111,7 +111,7 @@ export default async function AdminSocialPage({
             {[...threads.entries()].map(([key, t]) => {
               const ui = CHANNEL_UI[t.channel] ?? {
                 label: t.channel,
-                emoji: "💬",
+                emoji: "",
               };
               return (
                 <li key={key}>
@@ -123,7 +123,7 @@ export default async function AdminSocialPage({
                   >
                     <span className="flex items-center justify-between gap-2">
                       <span className="truncate text-sm text-ink">
-                        {ui.emoji} {ui.label}
+                        {ui.label}
                       </span>
                       <span className="shrink-0 text-[10px] text-body">
                         {fmt(t.last.createdAt)}
@@ -156,7 +156,7 @@ export default async function AdminSocialPage({
             <>
               <div className="flex items-center justify-between gap-3 border-b border-hairline pb-3">
                 <p className="text-sm font-medium text-ink">
-                  {selUi?.emoji} {selUi?.label}
+                  {selUi?.label}
                 </p>
                 <p className="text-xs text-body">
                   {takeoverActive

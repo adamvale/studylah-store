@@ -15,7 +15,7 @@ import { SwRegister, NativePushBridge } from "@/components/pwa";
 // PWA chrome: the browser UI matches the night theme, and the installed app
 // gets a proper title + status bar on iOS.
 export const viewport: Viewport = {
-  themeColor: "#161c26",
+  themeColor: "#0c0920",
   // Let content extend under the iPhone notch/home bar; the native game
   // shell pads with env(safe-area-inset-*) itself.
   viewportFit: "cover",

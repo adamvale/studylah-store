@@ -10,6 +10,7 @@ import {
   type Play,
 } from "@/lib/fasttrack";
 import type { FamilyProgress, PlayState } from "@/lib/server/fasttrack";
+import { NamedIcon, type IconName } from "@/components/icons";
 
 // ── FastTrack hub ────────────────────────────────────────────────────────────
 // StudyLand's "answer like the examiner" trainer. A tab per subject family,
@@ -96,7 +97,7 @@ export function FastTrackHub({ progress }: { progress: FamilyProgress[] }) {
               }`}
             >
               <span className="flex items-center gap-2 font-display text-sm font-bold text-ink">
-                <span aria-hidden>{meta.emoji}</span> {meta.label}
+                <NamedIcon name={meta.emoji as IconName} size={16} className="inline text-accent" /> {meta.label}
               </span>
               <span className="mt-0.5 block font-mono text-[11px] text-body">
                 {p.mastered}/{p.total} plays mastered
@@ -153,7 +154,7 @@ function PlayList({
       >
         <span>
           <span className="font-display text-base font-bold text-ink">
-            ⚡ The 5-second read
+            The 5-second read
           </span>
           <span className="mt-0.5 block text-sm text-body">
             Flash-read real stems and name what each is testing, before the clock

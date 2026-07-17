@@ -215,8 +215,8 @@ export function GuguResultCheer({
 }) {
   useEffect(() => {
     const text = topGrade
-      ? `Sharp work! 🎯 Now the trick is keeping that edge, the paper only rewards the topics that actually turn up, and one careless slip can cost the top band. The ${subjectName} pack keeps you drilling the most-likely topics and rehearsing under time. Shall I add ${subjectName} Master to your cart?`
-      : `Those marks are winnable! 💪 The ${subjectName} Forecast pack points you straight at the highest-chance topics, so your last weeks land where the paper actually pays. Shall I add ${subjectName} Master to your cart?`;
+      ? `Sharp work! Now the trick is keeping that edge, the paper only rewards the topics that actually turn up, and one careless slip can cost the top band. The ${subjectName} pack keeps you drilling the most-likely topics and rehearsing under time. Shall I add ${subjectName} Master to your cart?`
+      : `Those marks are winnable! The ${subjectName} Forecast pack points you straight at the highest-chance topics, so your last weeks land where the paper actually pays. Shall I add ${subjectName} Master to your cart?`;
     guguSay(text, { cta: { level, slug, subjectName } });
   }, [subjectName, level, slug, topGrade]);
   return null;

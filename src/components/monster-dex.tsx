@@ -2,6 +2,7 @@
 
 import { useNativePlatform } from "@/lib/native";
 import { MONSTERS, MONSTER_HP } from "@/lib/game";
+import { NamedIcon, type IconName } from "@/components/icons";
 
 // ── The monster-dex ────────────────────────────────────────────────────────
 // Collection pride, native shell only (the web keeps the notebook's own
@@ -45,7 +46,7 @@ export function MonsterDex({ counts, wildCaptured = [] }: { counts: DexCounts[];
               title={seen ? `${m.name}, ${m.tag}` : "Not yet encountered"}
             >
               <span className={`text-2xl ${seen ? "" : "grayscale"}`} aria-hidden>
-                {seen ? m.emoji : "❔"}
+                {seen ? <NamedIcon name={m.emoji as IconName} size={22} className="text-coral" /> : <span aria-hidden>?</span>}
               </span>
               {seen ? (
                 <>
@@ -53,7 +54,7 @@ export function MonsterDex({ counts, wildCaptured = [] }: { counts: DexCounts[];
                     <span className="font-pixel text-[7px] text-coral">×{c?.atLarge}</span>
                   )}
                   {(c?.banished ?? 0) > 0 && (
-                    <span className="font-pixel text-[7px] text-guarantee">🏆{c?.banished}</span>
+                    <span className="font-pixel text-[7px] text-guarantee">★{c?.banished}</span>
                   )}
                   {wild.has(key) && (
                     <span className="font-pixel text-[7px] text-trust">WILD✓</span>

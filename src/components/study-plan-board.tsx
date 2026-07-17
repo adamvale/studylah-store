@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { TierPill, type ForecastTier } from "@/components/heat";
 import { CampaignMap } from "@/components/campaign-map";
+import { IconMap } from "@/components/icons";
 
 export interface PlanTopic {
   topic: string;
@@ -70,8 +71,8 @@ export function StudyPlanBoard({
       };
       if (data.game && (data.game.xpGained > 0 || data.game.newBadges.length > 0)) {
         const bits = [`+${data.game.xpGained} XP`];
-        if (data.game.leveledUp) bits.push(`⬆️ Level ${data.game.level}!`);
-        for (const b of data.game.newBadges) bits.push(`${b.emoji} ${b.name}`);
+        if (data.game.leveledUp) bits.push(`Level ${data.game.level}!`);
+        for (const b of data.game.newBadges) bits.push(`${b.name}`);
         setXpToast(bits.join(" · "));
         setTimeout(() => setXpToast(null), 3500);
       }
@@ -144,7 +145,7 @@ export function StudyPlanBoard({
         <section className="glass p-5">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <h3 className="font-display text-lg font-extrabold text-ink">
-              🗺️ The campaign
+              <IconMap size={18} className="inline text-accent" /> The campaign
             </h3>
             <p className="text-xs text-body">clear the fog before exam day</p>
           </div>

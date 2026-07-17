@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ghostStage, BADGES } from "@/lib/game";
+import { NamedIcon, IconFlame, type IconName } from "@/components/icons";
 
 // Server-renderable game UI: the evolving ghost companion, the player header
 // (level · title · XP bar), and the badge case. No client state, award
@@ -82,7 +83,7 @@ export function PlayerHeader({
           </span>
           <span className="font-display text-sm font-bold text-ink">{title}</span>
           {streak > 0 && (
-            <span className="font-mono text-xs text-accent">🔥 {streak}</span>
+            <span className="flex items-center gap-0.5 font-mono text-xs text-accent"><IconFlame size={13} /> {streak}</span>
           )}
         </p>
         <div className="mt-1.5 flex items-center gap-2">
@@ -122,8 +123,8 @@ export function BadgeCase({ unlocked }: { unlocked: Set<string> }) {
               }`}
               title={b.hint}
             >
-              <p aria-hidden="true" className={`text-2xl ${got ? "" : "grayscale"}`}>
-                {b.emoji}
+              <p aria-hidden="true" className={`flex justify-center text-accent ${got ? "" : "opacity-40"}`}>
+                <NamedIcon name={b.emoji as IconName} size={24} />
               </p>
               <p className={`mt-1 text-xs font-medium ${got ? "text-ink" : "text-body"}`}>
                 {b.name}

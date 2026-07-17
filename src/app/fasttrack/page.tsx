@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getPricing } from "@/lib/server/pricing-store";
 import { sgd } from "@/lib/catalogue";
 import { PLAYBOOKS, LEAKS, FAMILY_META, type Family } from "@/lib/fasttrack";
+import { NamedIcon, type IconName } from "@/components/icons";
 
 // Public marketing + SEO page for FastTrack. Distinct route from the
 // Master-gated tool at /account/fasttrack. Targets the high-intent searches
@@ -245,7 +246,7 @@ export default async function FastTrackMarketingPage() {
             className="mt-12 scroll-mt-24 rounded-2xl border border-hairline bg-surface p-6"
           >
             <h2 className="flex items-center gap-2 font-display text-2xl font-black text-ink">
-              <span aria-hidden>{meta.emoji}</span> FastTrack for {meta.label}
+              <NamedIcon name={meta.emoji as IconName} size={20} className="inline text-accent" /> FastTrack for {meta.label}
             </h2>
             <p className="mt-1 text-sm font-medium text-accent">{seo.levels}</p>
             <p className="mt-3 max-w-3xl leading-relaxed text-body">{seo.intent}</p>

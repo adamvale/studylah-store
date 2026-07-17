@@ -218,7 +218,7 @@ export function BundleBuilder({
                       {code && (
                         <span className="ml-1.5 font-mono text-xs opacity-70">{code}</span>
                       )}
-                      {locked && <span className="ml-1.5 text-xs font-bold">🔒 in cart</span>}
+                      {locked && <span className="ml-1.5 text-xs font-bold">in cart</span>}
                     </button>
                   );
                 })}

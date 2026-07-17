@@ -5,6 +5,7 @@ import { onFx, type FxEvent } from "@/lib/game/fx";
 import { sfx } from "@/lib/game/sound";
 import { nextUnlock } from "@/lib/game";
 import { GhostCompanion } from "@/components/game";
+import { NamedIcon, type IconName } from "@/components/icons";
 
 // ── The juice layer ────────────────────────────────────────────────────────
 // One fixed overlay listening to the fx bus: "+N XP" fly-ups, confetti, and
@@ -172,7 +173,7 @@ export function FxLayer() {
             </>
           ) : (
             <>
-              <span className="fx-hero block text-7xl">{current.emoji}</span>
+              <span className="fx-hero block text-accent"><NamedIcon name={current.emoji as IconName} size={72} /></span>
               <span className="font-pixel text-xs tracking-widest text-accent">BADGE UNLOCKED</span>
               <span className="font-display text-2xl font-bold text-ink">{current.name}</span>
               <span className="mt-2 text-xs text-body">tap to continue</span>

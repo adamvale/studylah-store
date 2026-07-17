@@ -24,6 +24,7 @@ import { getPricing } from "@/lib/server/pricing-store";
 import { ExamCountdown } from "@/components/exam-countdown";
 import { HeroBackdrop } from "@/components/hero-backdrop";
 import { SocialProof } from "@/components/social-proof";
+import { NamedIcon } from "@/components/icons";
 
 /* Playful motifs, inline SVG so they need no external assets and pass CSP. */
 
@@ -1026,32 +1027,32 @@ const NEW_WAY = [
 
 const STUDY_HQ_FEATURES = [
   {
-    emoji: "🎯",
+    emoji: "target",
     title: "Marks at Risk",
     body: "One honest number per subject: how much of a typical paper is still in play. Tick topics, clear mistakes, watch it fall.",
   },
   {
-    emoji: "🔥",
+    emoji: "flame",
     title: "The Daily Three",
     body: "Three questions a day on your VERY HIGH and HIGH topics, marked instantly. Ten minutes that beat three-hour cramming.",
   },
   {
-    emoji: "📓",
+    emoji: "pencil",
     title: "Mistake notebook",
     body: "Every miss saved automatically. Missed questions come back until you beat them twice, then they clear for good.",
   },
   {
-    emoji: "🧰",
+    emoji: "calculator",
     title: "Skill drills",
     body: "Keyword-precision for sciences, definitions decks, QA drillers, careless-error checklists, source-skills ladders, POA formats.",
   },
   {
-    emoji: "🚨",
+    emoji: "lifebuoy",
     title: "The rescue plan",
     body: "Behind? One tap ranks what's left by marks recovered per hour and lays it out day by day to your first paper. Printable.",
   },
   {
-    emoji: "⏱",
+    emoji: "timer",
     title: "Exam timers & pacing",
     body: "A rehearsal clock with invigilator chimes, a focus timer with weekly totals, and a pace target from your real paper dates.",
   },
@@ -1085,7 +1086,7 @@ function StudyHq() {
               className="rounded-2xl border border-hairline bg-surface p-4 sm:p-6"
             >
               <p aria-hidden="true" className="text-2xl">
-                {f.emoji}
+                <NamedIcon name={f.emoji} size={26} />
               </p>
               <h3 className="mt-3 font-display text-base font-bold text-white sm:text-lg">
                 {f.title}
