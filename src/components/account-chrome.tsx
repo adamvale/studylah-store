@@ -79,7 +79,7 @@ function GameHud({
   const flameAtRisk = streak > 0 && !todayDone;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-40 border-b border-hairline bg-night/95 pt-[env(safe-area-inset-top)] backdrop-blur">
+    <header className="fixed inset-x-0 top-0 z-40 border-b border-hairline bg-night-2/75 pt-[env(safe-area-inset-top)] backdrop-blur-xl">
       <div className="flex h-14 items-center gap-3 px-4">
         <Link href="/account/progress" aria-label="Your stats" className="ghost-bob shrink-0">
           <GhostCompanion level={level} size={38} />
@@ -140,7 +140,7 @@ function GameTabs() {
     <nav
       aria-label="Game"
       data-bottom-cta=""
-      className="fixed inset-x-0 bottom-0 z-40 border-t border-hairline bg-night/95 pb-[env(safe-area-inset-bottom)] backdrop-blur"
+      className="fixed inset-x-0 bottom-0 z-40 border-t border-hairline bg-night-2/75 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl"
     >
       <div className="grid grid-cols-5">
         {TABS.map(({ href, label, Icon }) => {
@@ -198,8 +198,12 @@ export function AccountChrome({
   }, [player.level, player.intoLevel]);
 
   if (native && isMaster) {
+    // The native game shell shares the StudyLand app theme: same gradient
+    // backdrop, same token overrides, so the phone app and the web app are
+    // one design. The pixel HUD/tab identity stays, on glass.
     return (
-      <div className="min-h-dvh">
+      <div className="studyland min-h-dvh">
+        <div className="sl-bg" aria-hidden />
         <GameHud player={player} streak={streak} todayDone={todayDone} shields={shields} />
         <main className="px-4 pb-[calc(84px+env(safe-area-inset-bottom))] pt-[calc(76px+env(safe-area-inset-top))]">
           <div className="mx-auto max-w-3xl">{children}</div>
