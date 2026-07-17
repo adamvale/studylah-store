@@ -477,6 +477,9 @@ devDep `ffmpeg-static`) to re-curate; it copies ~46MB into
   Epilogue with goals computed from persisted beats/gyms/bosses; the 📜
   panel is now "The Lightbearer Saga" (act progress, active-act goals,
   errands below, "Today's light" daily-three/reviews card).
+- **Phases 4-6 (class groups, school vs school, international) are PAUSED
+  by the owner to a later stage (2026-07-17); do not start them without a
+  fresh green light. The gate below is their ready-made foundation.**
 - **Group gate (Phase 4 foundation)**: `groupEligibleFrom` = Act I complete
   + first beacon lit; LEVEL_BANDS (Spark 1-9 / Flame 10-19 / Beacon 20+),
   `bandForLevel`. Server-enforced in `src/lib/server/group-gate.ts`
