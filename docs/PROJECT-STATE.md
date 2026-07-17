@@ -666,6 +666,18 @@ sentiment tap (love/okay/rough) + free text → `POST /api/account/game/feedback
 (master-gated) → `GameFeedback` table (migration 20260716040000). Read it in
 **/admin/feedback** (sentiment counts + latest 200 with customer emails).
 
+## /studyland, the public StudyLand showcase page
+
+Marketing page walking the full workflow through one persona (Wei Jie, Sec 4,
+behind in Physics, 62 days out): free diagnostic → forecast/marks-at-risk →
+daily three + spaced repetition → mistake notebook + diagnosis → drills with
+real marking → rescue plan → war room → the game. Compliance-first copy: "It
+will not promise a grade, nobody honest can", every claim is about the WORK;
+standard DisclaimerBox at the bottom; live Master "from" price
+(force-dynamic). Linked from the main nav (between Bundles and Accuracy), the
+footer Trust list ("Inside StudyLand") and the sitemap. The header's
+right-side StudyLand/Account button still goes to /account for sign-in.
+
 ## Subject time gate (auto-retirement after the 2026 exams)
 
 Once a subject's FINAL 2026 paper is sat (+3 days grace, `ACCESS_GRACE_DAYS`

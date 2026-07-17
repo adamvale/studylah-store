@@ -20,6 +20,7 @@ function useSignedIn(): boolean {
 const NAV = [
   { href: "/subjects", label: "Subjects" },
   { href: "/bundles", label: "Bundles" },
+  { href: "/studyland", label: "StudyLand" },
   { href: "/accuracy", label: "Accuracy" },
   { href: "/faq", label: "FAQ" },
 ];

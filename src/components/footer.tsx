@@ -15,6 +15,7 @@ const SHOP = [
 const TRUST = [
   { href: "/accuracy", label: "Accuracy scorecard" },
   { href: "/diagnostic", label: "Predict your mark, free" },
+  { href: "/studyland", label: "Inside StudyLand" },
   { href: "/blog", label: "Blog" },
   { href: "/faq", label: "FAQ and guarantee" },
 ];
