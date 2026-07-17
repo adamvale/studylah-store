@@ -156,11 +156,18 @@ final-boss beat and a warm New Game+ hub.
 | Singapore minimap + landmarks | The true island you're relighting |
 
 ## NEW CONTENT THIS SAGA ADDS (build waves)
-1. **Richer Act I-II lore copy**, reframe intro/grunt/gym lines around the Fog-as-hush myth (data-only, low risk). ← *this session*
-2. **The Reading Room / New Game+ hub**, a calm interior with the six Gurus and a campfire, reachable post-championship. ← *this session (new procedural pixel art: shelves, campfire, lantern glow)*
-3. **The Sunken Cells (Fort Canning)**, Act III dungeon: descend, read names, the Murk reveal. (next wave, new zone + tiles)
-4. **The Lantern Walk (Southern Islands)**, islet-hop breather with the Whisper. (next wave)
-5. **The silent Examiner final paper**, post-game "…" boss. (next wave)
+1. **Richer Act I-II lore copy**, reframe intro/grunt/gym lines around the Fog-as-hush myth. ← *shipped*
+2. **The Reading Room / New Game+ hub**. ← *shipped*
+3. **The Sunken Cells (Fort Canning)**, Act III dungeon. ← *shipped*
+4. **The Lantern Walk (Southern Islands)**. ← *shipped*
+5. **The silent Examiner final paper**, post-game "…" boss. ← *shipped*
+6. **The MZ art era** (Jul 2026): the whole saga now renders in the owner's
+   licensed RPG Maker MZ art (48px autotiled world, painted battlers,
+   sv-actor heroes, battlebacks, BGM/SE, Effekseer spell effects), and the
+   saga is formalised as ACTS with visible goals (`src/lib/game/acts.ts`,
+   the in-game Saga panel). Finishing Act I + the first beacon flips the
+   server-side GROUP GATE (`groupEligibleFrom` + level bands), the door the
+   class-battle era (Phase 4) opens through. ← *shipped*
 
 ## HARD RULES (unchanged, enforced)
 - No currencies/loot/gambling; randomness cosmetic-only (shiny 1/16).

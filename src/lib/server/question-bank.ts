@@ -252,6 +252,35 @@ export async function getDiagnosticSet(
   return { ...full, questions };
 }
 
+// ── The content contract ─────────────────────────────────────────────────────
+// Every game encounter asks for questions declaratively: "N questions for this
+// subject, optionally at this difficulty / matching these topics". Nothing in
+// the game hardcodes question ids, so markdown content injected later flows
+// into every mode (battles, gyms, story quests, group challenges) untouched.
+export interface DrawSpec {
+  count: number;
+  difficulty?: 1 | 2 | 3; // exact tier; omit for any
+  minDifficulty?: 1 | 2 | 3;
+  topicRx?: RegExp; // e.g. /^A1/ to scope a story quest to a syllabus area
+  mcqOnly?: boolean; // battles need tappable options
+}
+
+export async function drawFromBank(
+  level: string,
+  slug: string,
+  spec: DrawSpec
+): Promise<DiagnosticQuestion[]> {
+  const set = await getQuestionSet(level, slug);
+  if (!set) return [];
+  let pool = set.questions;
+  if (spec.mcqOnly) pool = pool.filter((q) => q.type === "mcq" && q.options?.length);
+  if (spec.difficulty) pool = pool.filter((q) => (q.difficulty ?? 2) === spec.difficulty);
+  if (spec.minDifficulty) pool = pool.filter((q) => (q.difficulty ?? 2) >= spec.minDifficulty!);
+  if (spec.topicRx) pool = pool.filter((q) => spec.topicRx!.test(q.topic));
+  // Server-side shuffle so each hand differs; keys never leave the server.
+  return [...pool].sort(() => Math.random() - 0.5).slice(0, spec.count);
+}
+
 // The subject's imported teaching cards (empty if none, the Guru then uses
 // its family library).
 export async function getTeachingCards(level: string, slug: string): Promise<ImportedCard[]> {

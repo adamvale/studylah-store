@@ -11,6 +11,25 @@ const yaml = require("js-yaml");
 
 const VALID_KINDS = new Set(["definition", "precision", "qa", "careless", "sbq", "poa"]);
 
+// ── compliance gate ──────────────────────────────────────────────────────────
+// Every word of authored content ships to minors on a live store. Two rules
+// are non-negotiable and enforced at parse time so bad copy can never seed:
+//   1. banned marketing words (never promise grades or leaks)
+//   2. no em/en dashes in copy (owner style rule; the Unicode minus U+2212
+//      and hyphens inside words/codes are fine)
+const BANNED_WORDS = /\b(guaranteed|sure[- ]win|leaked|insider)\b|\b100%\s*(pass|score|correct answer)/i;
+const BAD_DASHES = /[–—]/; // en dash, em dash
+
+function complianceErrors(id, fields) {
+  const errs = [];
+  for (const [name, value] of Object.entries(fields)) {
+    const text = Array.isArray(value) ? value.join(" ") : String(value ?? "");
+    if (BANNED_WORDS.test(text)) errs.push(`${id}: banned word in ${name} ("${text.match(BANNED_WORDS)?.[0]}")`);
+    if (BAD_DASHES.test(text)) errs.push(`${id}: em/en dash in ${name}, use a comma/colon instead`);
+  }
+  return errs;
+}
+
 const DIFFICULTY_WORDS = { easy: 1, medium: 2, hard: 3 };
 
 // Difficulty tier for a question (1 easy / 2 medium / 3 hard). An explicit
@@ -105,6 +124,14 @@ export function parseGameBankFile(md, file = "?") {
         }
         correctKey = accepted;
       }
+      errors.push(
+        ...complianceErrors(`${file} ${id}`, {
+          stem: doc.stem,
+          options: doc.options,
+          worked: doc.worked,
+          topic: doc.topic,
+        })
+      );
       questions.push({
         id,
         ord: qn,
@@ -127,6 +154,14 @@ export function parseGameBankFile(md, file = "?") {
         continue;
       }
       tn += 1;
+      errors.push(
+        ...complianceErrors(`${file} card ${tn} (${doc.kind})`, {
+          body: doc.body,
+          prompt: doc.prompt,
+          model: doc.model,
+          term: doc.term,
+        })
+      );
       teaching.push({ ord: tn, kind: doc.kind, data: doc });
       continue;
     }

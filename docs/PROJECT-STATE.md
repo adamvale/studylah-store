@@ -418,8 +418,10 @@ dialogue, scripts, copy deck) lives in the owner's drive under
 `claude_code_handoff 1.1/design_docs`, implement in waves, honour its
 flagged risks.
 **Sprite suite**: `/public/game/*.png` are COMMISSIONED ORIGINAL sheets
-(StudyLah IP, see the design_handoff README on the owner's drive; never
-substitute third-party/RPG-Maker assets, whose EULAs are engine-locked).
+(StudyLah IP, see the design_handoff README on the owner's drive). RPG Maker
+MZ assets ARE now licensed for use here: the owner bought MZ (Jul 2026) and
+its EULA permits using bundled assets outside the engine, see the MZ art
+section below. The old 16px sheets remain as DOM sprites + fallback art.
 `src/lib/game/sheets.ts` holds the inlined manifests + loader;
 `src/components/sprite.tsx` renders DOM sprites (portraits, monsters,
 guardians, emblems, hearts, capture swirl). The canvas draws sheet tiles/
@@ -429,6 +431,73 @@ beacon (hub NPC lines react to the lit count), Kai races because his sister
 froze in her exam year, Commander Murk is Maple's burned-out first prodigy,
 and Examiner Sage's championship ends with the Clarity guardian + champion
 crest. The player ghost walks in the starter scarf; champions walk in gold.
+
+## StudyLah Legends, the MZ art overhaul + acts + group gate (Phases 0-3)
+
+The world-art scale-up built against the owner's RPG Maker MZ library
+(licence resolved: owner bought MZ; EULA permits its assets outside the
+engine). Source volume: `/Volumes/FortisLearn/@2026 StudyLah AI/Claude
+Website Code/Game Assets (Update)/` (full MZ project). Run
+`node scripts/sync-game-assets.mjs --audio` (needs the volume mounted +
+devDep `ffmpeg-static`) to re-curate; it copies ~46MB into
+`public/game/{mz,audio,fx}` and writes `src/lib/game/mz-manifest.json`.
+
+- **Renderer** (`src/lib/game/mz.ts`): 48px grid (TP=48; procedural 16px art
+  stays as the pre-load fallback, drawn 3x). Full MZ AUTOTILE compositor:
+  floor autotiles (A1 animated water 3 frames, A2 grounds/bushes, A4 wall
+  tops) via the quarter-tile neighbour algorithm; wall-type (A3 buildings/
+  roofs, A4 wall faces) 2x2 blocks. Zones pre-render to 3 offscreen canvases
+  (`zoneCanvases`, WeakMap-cached) + a void pattern tile (forest outside,
+  darkness for interiors); the loop blits and draws dynamic tiles (doors
+  from `!Door1` open on approach, portals = `!Crystal` + glow, lanterns,
+  fog wisps, hearth flames). Per-zone THEMES with per-family BIOMES
+  (grounds, trees, accents, battlebacks, BGM) in `mz.ts`.
+- **Casting** (`mz.ts` MZ_HEROES/MZ_NPCS/MZ_SPECIES/MZ_GUARDIANS/MZ_GUGU +
+  MZ_FACES): heroes/students are SF (School Fantasy) actors, fog grunts are
+  Evil hooded monks, Gugu is the Nature spirit hue-rotated per starter
+  (GUGU_HUES; champion gold). Dialogue portraits are MZ faces
+  (`src/components/mz-face.tsx`).
+- **Audio** (`src/lib/game/audio.ts`): m4a (converted from ogg, iOS-safe).
+  BGM per zone/battle with crossfade (`bgmForZone`, BATTLE_BGM), ME jingles
+  duck the BGM (victory/fanfare), SE one-shots (SFX map). Autoplay-safe:
+  unlocks on first gesture; own mute key `studylah_game_audio` (🔊 HUD
+  toggle), separate from the site chiptune toggle.
+- **Battle stage** (`src/components/battle-scene.tsx`): battleback pair per
+  biome/zone, painted enemy battler (MZ_SPECIES/BOSS_BATTLERS; bosses:
+  Whisper=SF_Shadow, Hurry=SF_Kamaitachi, Blank=Plasma), animated sv-actor
+  hero (18-motion MZ sheet: wait/swing/skill/guard/damage/victory), damage
+  floats, hit-flash/shake/collapse CSS. **Effekseer overlay**: lazy loads
+  `/game/fx/effekseer.min.js` + wasm (MUST `initRuntime` before
+  `createContext`), transparent WebGL canvas, per-family strike effects
+  (STRIKE_FX_BY_FAMILY), Powerup on breather, LightPillar on victory; every
+  failure path degrades to no-particles silently. Effects live in
+  `/game/fx/effects` with only the textures the chosen .efkefc reference
+  (the sync script scans their UTF-16LE resource strings).
+- **Acts** (`src/lib/game/acts.ts`): the saga formalised as Act I-IV +
+  Epilogue with goals computed from persisted beats/gyms/bosses; the 📜
+  panel is now "The Lightbearer Saga" (act progress, active-act goals,
+  errands below, "Today's light" daily-three/reviews card).
+- **Group gate (Phase 4 foundation)**: `groupEligibleFrom` = Act I complete
+  + first beacon lit; LEVEL_BANDS (Spark 1-9 / Flame 10-19 / Beacon 20+),
+  `bandForLevel`. Server-enforced in `src/lib/server/group-gate.ts`
+  (`groupStanding`) surfaced by GET `/api/account/game/progress`. Class
+  battles must check BOTH rules server-side.
+- **Content contract**: `drawFromBank(level, slug, {count, difficulty,
+  minDifficulty, topicRx, mcqOnly})` in `question-bank.ts`; the questions
+  API accepts `&difficulty=` + `&topic=` (prefix). Boss stage 3 + keystones
+  draw minDifficulty 2 with graceful fallback. Markdown authoring guide:
+  `docs/CONTENT-AUTHORING.md` (inject question banks by dropping
+  `content/game-bank/*.md` + `npm run db:seed`; parser now enforces the
+  compliance gate: banned words + no em/en dashes fail the seed loudly).
+- **Test aids** (device-local, harmless): `?unlock=1` opens every gate,
+  `?zone=<id>` spawns in a zone (requires unlock flag), e.g.
+  `?zone=prov%3Ao-level%2Fphysics-pure`, `int%3Astudy`, `cells`.
+- Gotchas learned: MZ B/C-sheet object coordinates were verified by
+  rendering labelled contact sheets in the browser (see `OB`/`IB`/`OC`
+  consts, they are CORRECT now, re-verify visually if changed); the browser
+  preview pane freezes rAF when unfocused, so in-preview walking needs held
+  synthetic keydown + screenshots to advance time; Effekseer without
+  `initRuntime` throws `createContext(...).init` null errors.
 
 ## Homepage, StudyLah Legends identity + game-as-beta (`src/app/page.tsx`)
 

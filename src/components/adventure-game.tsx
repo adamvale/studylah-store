@@ -48,33 +48,50 @@ import {
 } from "@/lib/game/season";
 import { MONSTERS, STARTERS, HEROES, starterById } from "@/lib/game";
 import { emitGame, emitFx, useHud, type FxGame } from "@/lib/game/fx";
-import {
-  loadSheets,
-  terrainXY,
-  buildingXY,
-  ghostBlockX,
-  npcBlockX,
-  heroBlockX,
-  monsterBlockX,
-  fxXY,
-  accessoryBlockX,
-  guardianWalkerRect,
-  buildingAnimXY,
-  drawWalker,
-  type AccessoryName,
-  type Sheets,
-  type NpcSprite,
-  type GuardianName,
-  type PortraitName,
-} from "@/lib/game/sheets";
+import { type GuardianName } from "@/lib/game/sheets";
 import {
   MonsterSprite,
   GuardianSprite,
-  PortraitSprite,
   UiSprite,
   HeartRow,
   CaptureSwirl,
 } from "@/components/sprite";
+import {
+  MZ,
+  loadMz,
+  zoneCanvases,
+  drawMzChar,
+  drawMzDoor,
+  drawMzPortal,
+  drawMzLantern,
+  MZ_HEROES,
+  MZ_NPCS,
+  MZ_SPECIES,
+  MZ_GUARDIANS,
+  MZ_GUGU,
+  GUGU_HUES,
+} from "@/lib/game/mz";
+import { MzFace } from "@/components/mz-face";
+import { actProgress, groupEligibleFrom, type ActContext } from "@/lib/game/acts";
+import {
+  BattleStage,
+  battlebackForZone,
+  BOSS_BATTLERS,
+  type StageEvent,
+} from "@/components/battle-scene";
+import {
+  unlockAudio,
+  playBgm,
+  stopBgm,
+  playMe,
+  bgmForZone,
+  BATTLE_BGM,
+  SFX,
+  gameAudioMuted,
+  setGameAudioMuted,
+  subscribeGameAudio,
+} from "@/lib/game/audio";
+import { biomeFor } from "@/lib/game/mz";
 import { DuelHall } from "@/components/duel-hall";
 import { SubjectGuru } from "@/components/subject-guru";
 import { SingaporeMinimap, SingaporeMapOverlay } from "@/components/singapore-map";
@@ -124,7 +141,8 @@ interface PublicQuestion {
   fogIndex?: number; // Whisper's fog: one WRONG option the server marked
 }
 
-const TS = 16;
+const TS = 16; // the procedural fallback art is authored at 16px
+const TP = MZ; // the world renders at the MZ 48px grid
 const MOVE_MS = 150;
 const ENCOUNTER = 0.14;
 const WILD = ["careless", "concept", "method", "time"] as const;
@@ -326,31 +344,6 @@ function drawShadow(ctx: CanvasRenderingContext2D, x: number, y: number, scale =
   ctx.fill();
 }
 
-// Level accessories from ghost_accessories.png, cell-for-cell aligned with
-// the player walker (bob offsets baked into the art), drawn straight over.
-// Thresholds mirror ghostStage() in src/lib/game.ts.
-const ACCESSORY_LEVELS: [number, AccessoryName][] = [
-  [7, "cape"],
-  [3, "headband"],
-  [12, "glasses"],
-  [16, "crown"],
-  [20, "glow"],
-];
-
-function drawAccessories(
-  ctx: CanvasRenderingContext2D,
-  sheet: HTMLImageElement,
-  level: number,
-  dir: string,
-  frame: number,
-  x: number,
-  y: number
-) {
-  for (const [min, name] of ACCESSORY_LEVELS) {
-    if (level >= min) drawWalker(ctx, sheet, accessoryBlockX(name), dir, frame, x, y);
-  }
-}
-
 // ── The playable researchers ───────────────────────────────────────────────
 // Heroes render from the commissioned heroes.png sheet (jun / mei / agent).
 // This painter is the PROCEDURAL FALLBACK only, used when the sheet fails to
@@ -473,191 +466,6 @@ function drawGhost(
   px(9 + ex, 6 + ey, 1, 1, "#8fa3c0");
 }
 
-// Draw one tile from the original terrain/buildings sheets. Grass always
-// underlays transparent props; the hub's pool renders as a fountain; gym
-// buildings get the gold-emblem facade.
-function drawSheetTile(
-  ctx: CanvasRenderingContext2D,
-  sh: Sheets,
-  z: { id: string; gym?: { x: number; y: number } },
-  tile: number,
-  tx: number,
-  ty: number,
-  sx: number,
-  sy: number,
-  f2: number,
-  f4: number,
-  ptx: number,
-  pty: number
-) {
-  const anim = (row: "door" | "fountain" | "campfire", frame: number) => {
-    const [ax, ay] = buildingAnimXY(row, frame);
-    ctx.drawImage(sh.buildingsAnim, ax, ay, 16, 16, sx, sy, 16, 16);
-  };
-  const t = (name: string) => {
-    const [ux, uy] = terrainXY(name);
-    ctx.drawImage(sh.terrain, ux, uy, 16, 16, sx, sy, 16, 16);
-  };
-  const b = (name: string) => {
-    const [ux, uy] = buildingXY(name);
-    ctx.drawImage(sh.buildings, ux, uy, 16, 16, sx, sy, 16, 16);
-  };
-  const grassBase = () => t((tx * 7 + ty * 13) % 5 === 0 ? "grass2" : "grass1");
-
-  switch (tile) {
-    case TILE.GRASS:
-      grassBase();
-      break;
-    case TILE.TALL:
-      grassBase();
-      t(f2 ? "tallgrass_f2" : "tallgrass_f1");
-      break;
-    case TILE.TREE:
-      grassBase();
-      t((tx * 31 + ty * 17) % 7 === 0 ? "pine" : "tree");
-      break;
-    case TILE.WATER:
-      if (z.id === "hub") anim("fountain", f4);
-      else t(f2 ? "water_f2" : "water_f1");
-      break;
-    case TILE.PATH:
-      t("path");
-      break;
-    case TILE.WALL:
-      b(z.gym ? "gym_facade" : (tx + ty) % 2 === 0 ? "window_lit" : "wall_plaster");
-      break;
-    case ROOF_RIDGE:
-      b("terracotta_ridge");
-      break;
-    case ROOF:
-      b("terracotta_slope");
-      break;
-    case TILE.DOOR: {
-      // the door opens as you approach, pure delight, zero cost
-      const dist = Math.abs(tx - ptx) + Math.abs(ty - pty);
-      anim("door", dist <= 1 ? 3 : dist === 2 ? 1 : 0);
-      break;
-    }
-    case TILE.FLOWER:
-      grassBase();
-      t(f2 ? "flowers_f2" : "flowers_f1");
-      break;
-    case TILE.SIGN:
-      if (z.id === "cells") t("cave_floor");
-      else if (z.id === "lantern") t("sand");
-      else grassBase();
-      t("sign");
-      break;
-    case PORTAL:
-      grassBase();
-      t(f2 ? "portal_f2" : "portal_f1");
-      break;
-    case STAIRS:
-      grassBase();
-      t("stairs");
-      break;
-    case CAVE_FLOOR:
-      t("cave_floor");
-      break;
-    case CAVE_WALL:
-      t("cave_wall");
-      break;
-    case FOGBANK: {
-      t("ruins_brick");
-      const [fxx, fxy] = fxXY(f2 ? "fog2" : "fog1");
-      ctx.drawImage(sh.fx, fxx, fxy, 16, 16, sx, sy, 16, 16);
-      break;
-    }
-    case SAND:
-      t("sand");
-      break;
-    case RUINS:
-      t("ruins_brick");
-      break;
-    case FENCE:
-      grassBase();
-      t("fence_h");
-      break;
-    case BRIDGE:
-      t(f2 ? "water_f2" : "water_f1");
-      t("bridge_h");
-      break;
-    // ── building interiors ──────────────────────────────────────────────
-    case INT_FLOOR:
-      intFloor(ctx, sx, sy, tx, ty);
-      break;
-    case INT_WALL:
-      b((tx + ty) % 4 === 0 ? "window_dark" : "wall_timber");
-      break;
-    case BOOKSHELF:
-      intFloor(ctx, sx, sy, tx, ty);
-      b("prop_bookshelf");
-      break;
-    case DESK:
-      intFloor(ctx, sx, sy, tx, ty);
-      b("prop_desk");
-      break;
-    case TELESCOPE:
-      intFloor(ctx, sx, sy, tx, ty);
-      b("prop_telescope");
-      break;
-    case HEARTH:
-      intFloor(ctx, sx, sy, tx, ty);
-      anim("campfire", f4);
-      break;
-    case STALL:
-      intFloor(ctx, sx, sy, tx, ty);
-      b("market_stall");
-      break;
-    case RUG:
-      intFloor(ctx, sx, sy, tx, ty);
-      ctx.fillStyle = "rgba(219, 34, 42, 0.55)";
-      ctx.fillRect(sx + 1, sy + 1, 14, 14);
-      ctx.fillStyle = "rgba(255, 220, 0, 0.5)";
-      ctx.fillRect(sx + 3, sy + 3, 10, 10);
-      ctx.fillStyle = "rgba(219, 34, 42, 0.55)";
-      ctx.fillRect(sx + 5, sy + 5, 6, 6);
-      break;
-    case MAT:
-      intFloor(ctx, sx, sy, tx, ty);
-      ctx.fillStyle = "#6b4423";
-      ctx.fillRect(sx + 2, sy + 9, 12, 6);
-      ctx.fillStyle = "#8a6d3b";
-      ctx.fillRect(sx + 3, sy + 10, 10, 4);
-      break;
-    case LANTERN: {
-      if (z.id === "cells") t("cave_floor");
-      else if (z.id === "lantern") t("sand");
-      else intFloor(ctx, sx, sy, tx, ty);
-      // a lit beacon-lamp, the Lightbearer motif. Soft glow, gold flame that
-      // flickers on the 2-frame terrain clock.
-      ctx.fillStyle = "rgba(255, 220, 0, 0.14)";
-      ctx.beginPath();
-      ctx.arc(sx + 8, sy + 8, 8, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.fillStyle = "#3a2f4a"; // post
-      ctx.fillRect(sx + 7, sy + 9, 2, 5);
-      ctx.fillStyle = "#1a2230"; // lamp housing
-      ctx.fillRect(sx + 5, sy + 3, 6, 6);
-      ctx.fillStyle = f2 ? "#ffdc00" : "#ffb703"; // flame flicker
-      ctx.fillRect(sx + 7, sy + 4, 2, 4);
-      ctx.fillStyle = "#fff3b0";
-      ctx.fillRect(sx + 7, sy + 5, 1, 2);
-      break;
-    }
-    default:
-      grassBase();
-  }
-}
-
-// A warm wooden interior floor with a subtle plank grain, drawn per tile.
-function intFloor(ctx: CanvasRenderingContext2D, sx: number, sy: number, tx: number, ty: number) {
-  ctx.fillStyle = (tx + ty) % 2 === 0 ? "#b98a4e" : "#a97e45";
-  ctx.fillRect(sx, sy, 16, 16);
-  ctx.fillStyle = "rgba(107, 68, 35, 0.35)";
-  ctx.fillRect(sx, sy + (ty % 2 === 0 ? 0 : 8), 16, 1);
-}
-
 type Dir = "up" | "down" | "left" | "right";
 
 interface DialogueState {
@@ -753,6 +561,7 @@ export function AdventureGame({
   const hudState = useHud();
   const mounted = useSyncExternalStore(noopSub, clientTrue, serverFalse);
   const viewStr = useSyncExternalStore(subscribeView, viewSnapshot, viewServer);
+  const audioMuted = useSyncExternalStore(subscribeGameAudio, gameAudioMuted, serverFalse);
   const [viewCols, viewRows] = viewStr.split("x").map(Number);
 
   const [story, setStory] = useState<Set<string>>(new Set(initialStory));
@@ -761,10 +570,21 @@ export function AdventureGame({
   const [heroId, setHeroId] = useState<string | null>(initialHero);
   const [hearts, setHearts] = useState(MAX_HEARTS);
   const [wins, setWins] = useState(0);
-  const [zoneId, setZoneId] = useState("hub");
+  // Device-local test aid (pairs with ?unlock=1): ?zone=<id> spawns in that
+  // zone so the whole world can be checked without walking. Unknown ids fall
+  // back to the hub; server-side progression is untouched.
+  const [zoneId, setZoneId] = useState(() => {
+    if (typeof window === "undefined") return "hub";
+    if (localStorage.getItem("studylah_unlock") !== "1") return "hub";
+    return new URLSearchParams(window.location.search).get("zone") ?? "hub";
+  });
   const [toast, setToast] = useState<string | null>(null);
   const [dialogue, setDialogue] = useState<DialogueState | null>(null);
   const [battle, setBattle] = useState<WildBattle | null>(null);
+  const [stageEvent, setStageEvent] = useState<StageEvent | null>(null);
+  const bumpStage = useCallback((kind: StageEvent["kind"], dmg?: number) => {
+    setStageEvent((prev) => ({ n: (prev?.n ?? 0) + 1, kind, dmg }));
+  }, []);
   const [trainer, setTrainer] = useState<TrainerBattle | null>(null);
   const [gym, setGym] = useState<WorldSubject | null>(null);
   const [gymState, setGymState] = useState<{
@@ -786,6 +606,15 @@ export function AdventureGame({
   const [questsDone, setQuestsDone] = useState<Set<string>>(new Set(initialQuests));
   const [questStore, setQuestStore] = useState<QuestProgressStore>(loadQuestStore);
   const [questLogOpen, setQuestLogOpen] = useState(false);
+  const [standing, setStanding] = useState<{
+    eligible: boolean;
+    actIDone: boolean;
+    gymsLit: number;
+    level: number;
+    band: { id: string; name: string; min: number; max: number };
+    dailyDone: boolean;
+    dueReviews: number;
+  } | null>(null);
   const [duelHallOpen, setDuelHallOpen] = useState(false);
   const [guruOpen, setGuruOpen] = useState(false);
   const [mapOpen, setMapOpen] = useState(false);
@@ -835,7 +664,7 @@ export function AdventureGame({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const zoneRef = useRef<Zone>(zone);
   const tilesetRef = useRef<Record<number, HTMLCanvasElement>[] | null>(null);
-  const sheetsRef = useRef<Sheets | null>(null);
+  const mzRef = useRef<boolean>(false);
   const ghostVariantRef = useRef<string>("none");
   const heroRef = useRef<string>("jun");
   // Gugu trails the hero smoothly: a breadcrumb of the hero's recent SUB-TILE
@@ -878,6 +707,8 @@ export function AdventureGame({
     return () => document.removeEventListener("contextmenu", onCtx);
   }, []);
 
+  useEffect(() => () => stopBgm(), []);
+
   // The game owns the screen: freeze the page behind it (no webpage scroll).
   useEffect(() => {
     const html = document.documentElement;
@@ -909,12 +740,35 @@ export function AdventureGame({
   useEffect(() => {
     storyRef.current = story;
   }, [story]);
-  // the original sprite sheets load once; until then the procedural art draws
+  // the MZ sheets load once; until then the procedural art draws. Audio
+  // unlocks on the first user gesture (autoplay policy), then the zone's
+  // BGM starts right there.
   useEffect(() => {
-    void loadSheets().then((sh) => {
-      sheetsRef.current = sh;
+    void loadMz().then((ok) => {
+      mzRef.current = ok;
     });
+    const unlock = () => unlockAudio();
+    window.addEventListener("pointerdown", unlock, { once: true });
+    window.addEventListener("keydown", unlock, { once: true });
+    return () => {
+      window.removeEventListener("pointerdown", unlock);
+      window.removeEventListener("keydown", unlock);
+    };
   }, []);
+
+  // ── the score: zone themes, battle themes, one crossfading channel ──────
+  useEffect(() => {
+    let track: string;
+    if (trainer) {
+      track = trainer.battle.beat === "championship" ? BATTLE_BGM.championship : BATTLE_BGM.trainer;
+    } else if (battle) {
+      track = battle.boss || battle.isFront || battle.keystoneKey ? BATTLE_BGM.boss : BATTLE_BGM.wild;
+    } else {
+      const fam = zone.gym?.family ?? zone.encounter?.family;
+      track = bgmForZone(zoneId, fam ? biomeFor(fam).bgm : undefined);
+    }
+    playBgm(track);
+  }, [zoneId, zone, battle, trainer]);
   const uiOpen = Boolean(dialogue || battle || trainer || gym || onboard || duelHallOpen || guruOpen || questLogOpen || mapOpen || betaNotice || feedbackOpen);
   useEffect(() => {
     modeRef.current = uiOpen ? "ui" : "walk";
@@ -937,12 +791,12 @@ export function AdventureGame({
 
   // ── question supply ──────────────────────────────────────────────────────
   const fetchQueue = useCallback(
-    async (s: WorldSubject, hint = false): Promise<PublicQuestion[]> => {
-      const key = `${s.level}/${s.slug}${hint ? ":hint" : ""}`;
+    async (s: WorldSubject, hint = false, minDifficulty = 0): Promise<PublicQuestion[]> => {
+      const key = `${s.level}/${s.slug}${hint ? ":hint" : ""}${minDifficulty ? `:d${minDifficulty}` : ""}`;
       if (queues.current[key]?.length) return queues.current[key];
       try {
         const res = await fetch(
-          `/api/account/game/questions?level=${s.level}&slug=${s.slug}&count=10${hint ? "&hint=1" : ""}`,
+          `/api/account/game/questions?level=${s.level}&slug=${s.slug}&count=10${hint ? "&hint=1" : ""}${minDifficulty ? `&difficulty=${minDifficulty}` : ""}`,
           { credentials: "include" }
         );
         if (!res.ok) return [];
@@ -1044,6 +898,7 @@ export function AdventureGame({
     player.current.fromY = hub.start.y;
     player.current.moving = false;
     trailRef.current = [];
+    SFX.collapse();
     showToast(`💫 ${COPY.wipe}`);
   }, [region, showToast]);
 
@@ -1061,10 +916,14 @@ export function AdventureGame({
         tileKey?: string;
       } = {}
     ) => {
-      const q = await fetchQueue(s, opts.boss?.modifier === "fog_option");
+      const hard = opts.boss?.stage === 3 || Boolean(opts.keystoneKey);
+      let q = await fetchQueue(s, opts.boss?.modifier === "fog_option", hard ? 2 : 0);
+      if (!q.length && hard) q = await fetchQueue(s, opts.boss?.modifier === "fog_option");
       if (!q.length) return;
       const shiny = !opts.boss && !opts.isFront && Math.random() < 1 / 16;
       emitFx({ type: shiny ? "shiny" : "encounter" });
+      if (shiny) SFX.shine();
+      else SFX.monster();
       if (shiny) showToast(COPY.shiny);
       if (opts.echo) showToast(COPY.echoSpawn);
       const stage = opts.stage ?? stageForLevel(levelRef.current);
@@ -1125,12 +984,14 @@ export function AdventureGame({
             trailRef.current = []; // don't streak Gugu across the new zone
             showToast(`, ${to.name}, `);
             emitFx({ type: "blip" });
+            SFX.teleport();
           }
         }
         return;
       }
       if (tile === TILE.DOOR && z.gym) {
         if (z.gym.x === tx && z.gym.y === ty) {
+          SFX.door();
           setGym({ level: z.gym.level, slug: z.gym.slug, name: z.gym.name, short: z.gym.short, emoji: z.gym.emoji, family: z.gym.family });
           setGymState(null);
           setQuestStore((prev) =>
@@ -1188,6 +1049,7 @@ export function AdventureGame({
           showToast(data.hint ?? quest.progress);
           return;
         }
+        SFX.chime();
         emitGame(data.game ?? null, { x: window.innerWidth / 2, y: window.innerHeight * 0.3 });
         setQuestsDone((prev) => new Set(prev).add(quest.id));
         setQuestStore((prev) => {
@@ -1213,6 +1075,7 @@ export function AdventureGame({
   // A button: advance dialogue, or interact with what you're facing.
   const handleA = useCallback(() => {
     emitFx({ type: "blip" });
+    SFX.cursor();
     if (dialogue) {
       setDialogue((d) => {
         if (!d) return null;
@@ -1383,6 +1246,7 @@ export function AdventureGame({
       if (npc.heal) {
         setHearts(MAX_HEARTS);
         emitFx({ type: "correct" });
+        SFX.heal();
         showToast("❤️ Hearts restored!");
         // Nurse Fern's errand: reaching a camp keeper is the whole point
         if (npc.id.startsWith("heal:")) {
@@ -1529,9 +1393,9 @@ export function AdventureGame({
       }
 
       const { cols, rows } = viewRef.current;
-      if (canvas.width !== cols * TS || canvas.height !== rows * TS) {
-        canvas.width = cols * TS;
-        canvas.height = rows * TS;
+      if (canvas.width !== cols * TP || canvas.height !== rows * TP) {
+        canvas.width = cols * TP;
+        canvas.height = rows * TP;
         ctx.imageSmoothingEnabled = false;
       }
 
@@ -1547,34 +1411,82 @@ export function AdventureGame({
           ? (z.height - rows) / 2
           : Math.max(0, Math.min(ry - rows / 2 + 0.5, z.height - rows));
 
-      const f2 = Math.floor(now / 550) % 2; // 2-frame terrain animation
-      const f4 = Math.floor(now / 170) % 4; // 4-frame building animation
-      const ts = tilesetRef.current![f2];
-      const sh = sheetsRef.current;
+      const f2 = Math.floor(now / 550) % 2; // slow 2-frame flicker clock
+      const f3 = Math.floor(now / 380) % 3; // MZ water / crystal animation
+      const mz = mzRef.current;
       const x0 = Math.floor(camX);
       const y0 = Math.floor(camY);
-      for (let vy = -1; vy <= rows; vy++) {
-        for (let vx = -1; vx <= cols; vx++) {
-          const tx = x0 + vx;
-          const ty = y0 + vy;
-          // outside the map = forest, so the screen is always fully drawn
-          const tile = z.grid[ty]?.[tx] ?? TILE.TREE;
-          const sx = Math.round((tx - camX) * TS);
-          const sy = Math.round((ty - camY) * TS);
-          if (sh) {
-            drawSheetTile(ctx, sh, z, tile, tx, ty, sx, sy, f2, f4, p.tx, p.ty);
-          } else {
-            ctx.drawImage(ts[tile] ?? ts[TILE.GRASS], sx, sy);
+
+      if (mz) {
+        // ── MZ render: blit the pre-composed zone, then dynamic tiles ─────
+        const fam = z.gym?.family ?? z.encounter?.family;
+        const zr = zoneCanvases(z, fam);
+        const ox = Math.round(-camX * TP);
+        const oy = Math.round(-camY * TP);
+        ctx.save();
+        ctx.translate(ox, oy);
+        const pat = ctx.createPattern(zr.voidTile, "repeat");
+        if (pat) {
+          ctx.fillStyle = pat;
+          ctx.fillRect(-ox - TP, -oy - TP, canvas.width + 2 * TP, canvas.height + 2 * TP);
+        }
+        ctx.drawImage(zr.frames[f3], 0, 0);
+        ctx.restore();
+
+        for (let vy = -1; vy <= rows; vy++) {
+          for (let vx = -1; vx <= cols; vx++) {
+            const tx = x0 + vx;
+            const ty = y0 + vy;
+            const tile = z.grid[ty]?.[tx];
+            if (tile === undefined) continue;
+            const sx = Math.round((tx - camX) * TP);
+            const sy = Math.round((ty - camY) * TP);
+            if (tile === TILE.DOOR) {
+              const dist = Math.abs(tx - p.tx) + Math.abs(ty - p.ty);
+              drawMzDoor(ctx, sx, sy, dist <= 1 ? 3 : dist === 2 ? 1 : 0, z.id === "campus");
+              if (z.gym && z.gym.x === tx && z.gym.y === ty) {
+                ctx.font = "22px sans-serif";
+                ctx.textAlign = "center";
+                ctx.fillText(z.gym.emoji, sx + TP / 2, sy - 4);
+              }
+            } else if (tile === PORTAL) {
+              const pt = z.portals.find((pp) => pp.x === tx && pp.y === ty);
+              drawMzPortal(ctx, sx, sy, f3, Boolean(pt?.locked));
+            } else if (tile === LANTERN) {
+              drawMzLantern(ctx, sx, sy, f2);
+            } else if (tile === HEARTH) {
+              drawMzChar(ctx, { sheet: "!Flame", index: 0 }, "down", f3, sx, sy - 14, 0.8);
+            } else if (tile === FOGBANK) {
+              // drifting hush over the unfaced memory
+              ctx.fillStyle = `rgba(190, 200, 220, ${0.34 + 0.08 * Math.sin(now / 600 + tx * 2 + ty)})`;
+              ctx.beginPath();
+              ctx.ellipse(sx + TP / 2, sy + TP / 2, 25, 16, 0, 0, Math.PI * 2);
+              ctx.fill();
+            }
           }
-          if (tile === TILE.DOOR && z.gym && z.gym.x === tx && z.gym.y === ty) {
-            ctx.font = "9px sans-serif";
-            ctx.textAlign = "center";
-            ctx.fillText(z.gym.emoji, sx + TS / 2, sy - 1);
+        }
+      } else {
+        // ── fallback: the original procedural 16px art, upscaled ──────────
+        const ts = tilesetRef.current![f2];
+        for (let vy = -1; vy <= rows; vy++) {
+          for (let vx = -1; vx <= cols; vx++) {
+            const tx = x0 + vx;
+            const ty = y0 + vy;
+            const tile = z.grid[ty]?.[tx] ?? TILE.TREE;
+            const sx = Math.round((tx - camX) * TP);
+            const sy = Math.round((ty - camY) * TP);
+            ctx.drawImage(ts[tile] ?? ts[TILE.GRASS], 0, 0, TS, TS, sx, sy, TP, TP);
+            if (tile === TILE.DOOR && z.gym && z.gym.x === tx && z.gym.y === ty) {
+              ctx.font = "22px sans-serif";
+              ctx.textAlign = "center";
+              ctx.fillText(z.gym.emoji, sx + TP / 2, sy - 4);
+            }
           }
         }
       }
+
       // Guardians roam beside conquered gyms; Clarity keeps the Summit.
-      if (sh) {
+      {
         const guardianSpot =
           z.gym && clearedRef.current.has(`${z.gym.level}/${z.gym.slug}`)
             ? { name: guardianFor(z.gym.family), x: z.gym.x + 2, y: z.gym.y + 1 }
@@ -1582,33 +1494,40 @@ export function AdventureGame({
             ? { name: "clarity" as GuardianName, x: 5, y: 3 }
             : null;
         if (guardianSpot) {
-          const gsx = Math.round((guardianSpot.x - camX) * TS);
-          const gsy = Math.round((guardianSpot.y - camY) * TS);
-          if (gsx > -32 && gsy > -32 && gsx < canvas.width && gsy < canvas.height) {
-            drawShadow(ctx, gsx, gsy);
+          const gsx = Math.round((guardianSpot.x - camX) * TP);
+          const gsy = Math.round((guardianSpot.y - camY) * TP);
+          if (gsx > -TP && gsy > -TP && gsx < canvas.width && gsy < canvas.height) {
+            drawShadow(ctx, gsx, gsy, 3);
             const gseq = [0, 1, 2, 1] as const;
-            const gcell = gseq[Math.floor(now / 300) % 4] as 0 | 1 | 2;
-            const [gwx, gwy] = guardianWalkerRect(guardianSpot.name, gcell);
-            ctx.drawImage(sh.guardianWalkers, gwx, gwy, 16, 16, gsx, gsy, 16, 16);
+            const gcell = gseq[Math.floor(now / 300) % 4];
+            drawMzChar(ctx, MZ_GUARDIANS[guardianSpot.name].char, "down", gcell, gsx, gsy);
           }
         }
       }
-      // NPCs, real walker sprites once the sheets are in
-      ctx.font = "12px sans-serif";
+      // NPCs
+      ctx.font = "30px sans-serif";
       ctx.textAlign = "center";
       for (const n of z.npcs) {
-        const sx = Math.round((n.x - camX) * TS);
-        const sy = Math.round((n.y - camY) * TS);
-        if (sx < -TS || sy < -TS * 2 || sx > canvas.width || sy > canvas.height) continue;
-        drawShadow(ctx, sx, sy);
-        if (sh && n.monster) {
-          const mseq = [0, 1, 2, 1] as const;
-          const mcell = mseq[Math.floor(now / 320) % 4];
-          ctx.drawImage(sh.monsters, monsterBlockX(n.monster) + mcell * 16, 48, 16, 16, sx, sy, 16, 16);
-        } else if (sh) {
-          drawWalker(ctx, sh.npcs, npcBlockX(n.sprite as NpcSprite), npcFacingRef.current[n.id] ?? "down", 1, sx, sy);
-        } else {
-          ctx.fillText(n.emoji, sx + TS / 2, sy + TS - 3);
+        const sx = Math.round((n.x - camX) * TP);
+        const sy = Math.round((n.y - camY) * TP);
+        if (sx < -TP || sy < -TP * 2 || sx > canvas.width || sy > canvas.height) continue;
+        drawShadow(ctx, sx, sy, 3);
+        const mseq = [0, 1, 2, 1] as const;
+        const mcell = mseq[Math.floor(now / 320) % 4];
+        const drawn = n.stone
+          ? drawMzChar(ctx, { sheet: "!Crystal", index: 1 }, "down", 1, sx, sy)
+          : n.monster
+          ? drawMzChar(ctx, (MZ_SPECIES[n.monster] ?? MZ_SPECIES.unset).char, "down", mcell, sx, sy)
+          : drawMzChar(
+              ctx,
+              MZ_NPCS[n.sprite] ?? { sheet: "People2", index: 0 },
+              npcFacingRef.current[n.id] ?? "down",
+              1,
+              sx,
+              sy
+            );
+        if (!drawn) {
+          ctx.fillText(n.emoji, sx + TP / 2, sy + TP - 6);
         }
       }
       // ── Gugu, the companion, smooth path-follow, half size ──────────────
@@ -1649,41 +1568,37 @@ export function AdventureGame({
         }
       }
       {
-        const gx2 = (gx - camX) * TS;
-        const gy2 = (gy - camY) * TS;
-        drawShadow(ctx, Math.round(gx2 + 4), Math.round(gy2 + 8), 0.5);
+        const gx2 = Math.round((gx - camX) * TP);
+        const gy2 = Math.round((gy - camY) * TP);
+        drawShadow(ctx, gx2 + 12, gy2 + 20, 1.6);
         const gseq = [0, 1, 2, 1];
         const moving = trail.length > 1 && (Math.abs(gx - rx) > 0.03 || Math.abs(gy - ry) > 0.03);
         const gwf = moving ? gseq[Math.floor(animClock / 140) % 4] : 1;
-        if (sh) {
-          // Half scale (50% smaller), centred on the tile with feet on the ground.
+        const hue = GUGU_HUES[ghostVariantRef.current] ?? 0;
+        const drawn = drawMzChar(ctx, { ...MZ_GUGU, hue }, gFacing, gwf, gx2, gy2 - 6, 0.7);
+        if (!drawn) {
           ctx.save();
-          ctx.imageSmoothingEnabled = false;
-          ctx.translate(Math.round(gx2) + 4, Math.round(gy2) + 8);
-          ctx.scale(0.5, 0.5);
-          drawWalker(ctx, sh.player, ghostBlockX(ghostVariantRef.current), gFacing, gwf, 0, 0);
-          drawAccessories(ctx, sh.accessories, levelRef.current, gFacing, gwf, 0, 0);
-          ctx.restore();
-        } else {
-          ctx.save();
-          ctx.translate(Math.round(gx2) + 4, Math.round(gy2) + 4);
-          ctx.scale(0.5, 0.5);
+          ctx.translate(gx2 + 8, gy2 + 8);
+          ctx.scale(1.5, 1.5);
           drawGhost(ctx, 0, 0, gFacing, 0, scarfRef.current);
           ctx.restore();
         }
       }
 
       // the researcher, the student's own hero, leads
-      const pfx = Math.round((rx - camX) * TS);
-      const pfy = Math.round((ry - camY) * TS);
-      drawShadow(ctx, pfx, pfy);
+      const pfx = Math.round((rx - camX) * TP);
+      const pfy = Math.round((ry - camY) * TP);
+      drawShadow(ctx, pfx, pfy, 3);
       {
         const seq = [0, 1, 2, 1];
         const wf = p.moving ? seq[Math.floor(animClock / 140) % 4] : 1;
-        if (sh) {
-          drawWalker(ctx, sh.heroes, heroBlockX(heroRef.current), p.facing, wf, pfx, pfy);
-        } else {
-          drawHero(ctx, pfx, pfy, p.facing, wf, heroRef.current);
+        const drawn = drawMzChar(ctx, MZ_HEROES[heroRef.current] ?? MZ_HEROES.jun, p.facing, wf, pfx, pfy);
+        if (!drawn) {
+          ctx.save();
+          ctx.translate(pfx, pfy);
+          ctx.scale(3, 3);
+          drawHero(ctx, 0, 0, p.facing, wf, heroRef.current);
+          ctx.restore();
         }
       }
 
@@ -1720,9 +1635,27 @@ export function AdventureGame({
     };
   }, [mounted, onArrive]);
 
+  // the story panel's server truths load when it opens
+  useEffect(() => {
+    if (!questLogOpen) return;
+    let dead = false;
+    void fetch("/api/account/game/progress", { credentials: "include" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (!dead && d) setStanding(d as typeof standing);
+      })
+      .catch(() => {});
+    return () => {
+      dead = true;
+    };
+  }, [questLogOpen]);
+
   // locked-gate toasts come from inside the rAF loop via a window event
   useEffect(() => {
-    const onLocked = (e: Event) => showToast(`🔒 ${(e as CustomEvent<string>).detail}`);
+    const onLocked = (e: Event) => {
+      SFX.cancel();
+      showToast(`🔒 ${(e as CustomEvent<string>).detail}`);
+    };
     window.addEventListener("ff:locked", onLocked);
     return () => window.removeEventListener("ff:locked", onLocked);
   }, [showToast]);
@@ -1757,6 +1690,8 @@ export function AdventureGame({
       const boss = battle.boss;
       if (id === "guard") {
         if (battle.guarded) return;
+        SFX.powerup();
+        bumpStage("guard");
         setBattle({
           ...battle,
           guarded: true,
@@ -1768,7 +1703,10 @@ export function AdventureGame({
         return;
       }
       setBusy(true);
-      const q = (await fetchQueue(battle.subject, boss?.modifier === "fog_option")).shift();
+      const hard = boss?.stage === 3 || Boolean(battle.keystoneKey);
+      let pool = await fetchQueue(battle.subject, boss?.modifier === "fog_option", hard ? 2 : 0);
+      if (!pool.length && hard) pool = await fetchQueue(battle.subject, boss?.modifier === "fog_option");
+      const q = pool.shift();
       setBusy(false);
       if (!q) {
         setBattle(null);
@@ -1777,7 +1715,7 @@ export function AdventureGame({
       }
       setBattle((b) => (b ? { ...b, phase: "question", strike: id, question: q } : b));
     },
-    [battle, busy, fetchQueue, showToast]
+    [battle, busy, fetchQueue, showToast, bumpStage]
   );
 
   const finishSpecialBattle = useCallback(
@@ -1855,6 +1793,8 @@ export function AdventureGame({
       const strike = STRIKES.find((s) => s.id === battle.strike)!;
       const boss = battle.boss;
       emitFx({ type: res.correct ? "correct" : "wrong" });
+      if (res.correct) SFX.hit();
+      else SFX.damage();
       emitGame(res.game, { x: window.innerWidth / 2, y: window.innerHeight * 0.3 });
       if ((res as { capped?: boolean }).capped && !capToastRef.current) {
         capToastRef.current = true;
@@ -1865,8 +1805,12 @@ export function AdventureGame({
         const dmg = strike.dmg + (battle.breatherBonus ? 1 : 0);
         const hp = battle.hp - dmg;
         const bark = boss ? boss.onCorrect[round % boss.onCorrect.length] : undefined;
+        if (hp <= 0) bumpStage("victory");
+        else bumpStage(battle.strike === "power" ? "power" : "hit", dmg);
         if (hp <= 0) {
           setWins((w) => w + 1);
+          if (battle.boss || battle.isFront || battle.keystoneKey) playMe("Victory1");
+          else SFX.collapse();
           bumpBattleQuests(zoneRef.current.id);
           finishSpecialBattle(battle);
           setBattle({
@@ -1884,6 +1828,7 @@ export function AdventureGame({
           showToast(`💥 Hit! ${dmg} damage.`);
         }
       } else {
+        bumpStage("hurt");
         const bark = boss ? boss.onWrong[round % boss.onWrong.length] : undefined;
         if (battle.guarded) {
           setBattle({ ...battle, round, phase: "reveal", result: res, guarded: false, fogCleared: false, bark });
@@ -1903,7 +1848,7 @@ export function AdventureGame({
         }
       }
     },
-    [battle, busy, hearts, gradeAnswer, blackout, showToast, finishSpecialBattle, bumpBattleQuests]
+    [battle, busy, hearts, gradeAnswer, blackout, showToast, finishSpecialBattle, bumpBattleQuests, bumpStage]
   );
 
   // ── trainer battle actions ───────────────────────────────────────────────
@@ -1920,6 +1865,8 @@ export function AdventureGame({
         return;
       }
       emitFx({ type: res.correct ? "correct" : "wrong" });
+      if (res.correct) SFX.hit();
+      else SFX.damage();
       emitGame(res.game, { x: window.innerWidth / 2, y: window.innerHeight * 0.3 });
       const correct = trainer.correct + (res.correct ? 1 : 0);
       setTrainer({ ...trainer, correct, phase: "reveal", result: res });
@@ -1938,6 +1885,7 @@ export function AdventureGame({
     const won = trainer.correct >= trainer.battle.threshold;
     setTrainer({ ...trainer, phase: "end", won });
     if (won) {
+      playMe(trainer.battle.beat === "championship" ? "Fanfare3" : "Victory1");
       setWins((w) => w + 1);
       setBeatenNpcs((prev) => new Set(prev).add(trainer.npc.id));
       if (trainer.battle.beat) void postBeat(trainer.battle.beat);
@@ -2003,6 +1951,8 @@ export function AdventureGame({
           game: FxGame | null;
         };
         emitFx({ type: data.cleared ? "correct" : "wrong" });
+        if (data.cleared) playMe("Fanfare1");
+        else SFX.buzzer();
         emitGame(data.game, { x: window.innerWidth / 2, y: window.innerHeight * 0.3 });
         setGymState({ ...gymState, answers, outcome: { correct: data.correct, cleared: data.cleared } });
         if (data.cleared) {
@@ -2020,6 +1970,7 @@ export function AdventureGame({
   const pickHero = useCallback(
     async (id: string) => {
       emitFx({ type: "correct" });
+      SFX.confirm();
       setHeroId(id);
       // fresh onboarding continues to the spirit; returning players are done
       setOnboard((o) => (o === "hero" && story.has("starter") ? null : "pick"));
@@ -2031,6 +1982,7 @@ export function AdventureGame({
   const pickStarter = useCallback(
     async (id: string) => {
       emitFx({ type: "correct" });
+      SFX.confirm();
       setStarter(id);
       setOnboard("done");
       await postBeat("starter", id);
@@ -2111,8 +2063,8 @@ export function AdventureGame({
       {/* the world */}
       <canvas
         ref={canvasRef}
-        width={viewCols * TS}
-        height={viewRows * TS}
+        width={viewCols * TP}
+        height={viewRows * TP}
         className="h-full w-full touch-none object-cover"
         style={{ imageRendering: "pixelated" }}
         aria-label="StudyLah Legends overworld, walk with the D-pad, talk with A, grass hides wild battles"
@@ -2185,6 +2137,14 @@ export function AdventureGame({
                 📸
               </button>
             )}
+            <button
+              type="button"
+              onClick={() => setGameAudioMuted(!audioMuted)}
+              aria-label={audioMuted ? "Unmute music and sound" : "Mute music and sound"}
+              className="rounded-lg border border-mint/50 bg-night/70 px-2 py-1 text-xs backdrop-blur active:border-mint"
+            >
+              {audioMuted ? "🔇" : "🔊"}
+            </button>
             <button
               type="button"
               onClick={() => setFeedbackOpen(true)}
@@ -2302,11 +2262,11 @@ export function AdventureGame({
           className="absolute inset-x-3 bottom-28 z-[58] flex items-start gap-3 rounded-2xl border border-violet/40 bg-night/95 p-4 text-left backdrop-blur"
         >
           {dialogue.sprite && (
-            <PortraitSprite
-              name={dialogue.sprite as PortraitName}
-              emotive={dialogue.emotive}
-              scale={1.5}
-              className="rounded-lg border border-hairline bg-night-2"
+            <MzFace
+              role={dialogue.sprite}
+              emoji={dialogue.emoji}
+              size={72}
+              className="shrink-0 rounded-lg border border-hairline bg-night-2"
             />
           )}
           <span className="min-w-0 flex-1">
@@ -2336,15 +2296,23 @@ export function AdventureGame({
               : "⚔️ A wild monster appears!"
           }
         >
+          <BattleStage
+            battleback={battlebackForZone(
+              zoneId,
+              biomeFor(battle.subject.family).battleback
+            )}
+            battler={
+              battle.boss
+                ? BOSS_BATTLERS[battle.boss.id] ?? MZ_SPECIES[battle.monster]?.battler ?? "Petitdevil"
+                : MZ_SPECIES[battle.monster]?.battler ?? "Petitdevil"
+            }
+            shiny={battle.shiny}
+            family={battle.subject.family}
+            heroId={heroId ?? "jun"}
+            event={stageEvent}
+            defeated={battle.phase === "victory"}
+          />
           <div className="flex items-center gap-3">
-            <MonsterSprite
-              species={battle.monster}
-              shiny={battle.shiny}
-              stage={battle.stage}
-              scale={2.5}
-              className={`fx-hero rounded-xl ${battle.shiny ? "drop-shadow-[0_0_12px_rgba(255,220,0,0.8)]" : ""}`}
-              label={m.name}
-            />
             <div className="min-w-0 flex-1">
               <p className="font-display font-bold text-ink">
                 {battle.shiny && <span className="text-accent">✨ Shiny </span>}
@@ -2497,7 +2465,7 @@ export function AdventureGame({
         <Panel
           title={
             <span className="flex items-center gap-2">
-              <PortraitSprite name={trainer.npc.sprite as PortraitName} scale={1} className="rounded border border-hairline" />
+              <MzFace role={trainer.npc.sprite} emoji={trainer.npc.emoji} size={40} className="shrink-0 rounded border border-hairline" />
               {trainer.npc.name}, {Math.min(trainer.idx + 1, trainer.questions.length)}/{trainer.questions.length}
             </span>
           }
@@ -2675,10 +2643,92 @@ export function AdventureGame({
         <SingaporeMapOverlay zoneId={zoneId} subjects={subjects} onClose={() => setMapOpen(false)} />
       )}
 
-      {/* quest log */}
+      {/* the saga: acts, group gate, daily study, errands */}
       {questLogOpen && (
-        <Panel title="📜 Errands & Quests">
-          <div className="space-y-2">
+        <Panel title="📖 The Lightbearer Saga">
+          {(() => {
+            const ctx: ActContext = {
+              story,
+              gymsLit: cleared.size,
+              gymsTotal: subjects.length,
+              beaten,
+              underCleared: underCleared.size,
+              questsDone,
+            };
+            const acts = actProgress(ctx);
+            const activeAct = acts.find((a) => !a.complete) ?? acts[acts.length - 1];
+            const unlocked = groupEligibleFrom(ctx);
+            return (
+              <div className="space-y-2">
+                {acts.map((a) => {
+                  const isActive = a.id === activeAct.id;
+                  return (
+                    <div
+                      key={a.id}
+                      className={`rounded-xl border px-3 py-2 ${
+                        a.complete
+                          ? "border-guarantee/40 opacity-70"
+                          : isActive
+                          ? "border-accent/60"
+                          : "border-hairline opacity-60"
+                      }`}
+                    >
+                      <p className="flex items-baseline justify-between gap-2 text-sm font-bold text-ink">
+                        <span>
+                          {a.complete ? "✓ " : ""}
+                          {a.num}: {a.title}
+                        </span>
+                        <span className="font-pixel text-[8px] text-body">{a.pct}%</span>
+                      </p>
+                      <p className="text-[10px] text-body">{a.place}</p>
+                      {isActive && (
+                        <>
+                          <p className="mt-1 text-xs text-body">{a.blurb}</p>
+                          <ul className="mt-1.5 space-y-0.5">
+                            {a.goals.map((gl) => (
+                              <li key={gl.id} className={`text-xs ${gl.done ? "text-guarantee" : "text-ink"}`}>
+                                {gl.done ? "✓" : "•"} {gl.label}
+                                {gl.target !== undefined && gl.target > 1 ? ` (${gl.current}/${gl.target})` : ""}
+                              </li>
+                            ))}
+                          </ul>
+                        </>
+                      )}
+                    </div>
+                  );
+                })}
+
+                {/* the group gate, the door Phase 4 opens */}
+                <div className={`rounded-xl border px-3 py-2 ${unlocked ? "border-mint/60" : "border-hairline"}`}>
+                  <p className="text-sm font-bold text-ink">
+                    {unlocked ? "🤝 Group challenges: UNLOCKED" : "🔒 Group challenges"}
+                  </p>
+                  <p className="mt-0.5 text-xs text-body">
+                    {unlocked
+                      ? `Class battles are coming to StudyLah Legends. You qualify${
+                          standing ? `, ${standing.band.name} (Lv ${standing.band.min}-${standing.band.max})` : ""
+                        }. Teams match within their own level band.`
+                      : "Finish Act I and light your first beacon to qualify for class battles when they arrive. Teams match within their own level band, so every journey starts solo."}
+                  </p>
+                </div>
+
+                {/* today's real study, in saga clothes */}
+                {standing && (
+                  <div className="rounded-xl border border-hairline px-3 py-2">
+                    <p className="text-sm font-bold text-ink">🕯 Today&apos;s light</p>
+                    <p className="mt-0.5 text-xs text-body">
+                      {standing.dailyDone ? "✓ Daily three done, the beacons hold." : "• The daily three waits, three questions keep the Fog off Haven."}
+                      {standing.dueReviews > 0 &&
+                        ` ${standing.dueReviews} old ${standing.dueReviews === 1 ? "victory wants" : "victories want"} re-proving (reviews due).`}
+                    </p>
+                  </div>
+                )}
+              </div>
+            );
+          })()}
+
+          <p className="mt-3 font-pixel text-[9px] tracking-widest text-body">ERRANDS</p>
+          <div className="mt-1 space-y-2">
             {QUESTS.filter((q) => questsDone.has(q.id) || questStore.active[q.id] !== undefined).map(
               (q) => {
                 const done = questsDone.has(q.id);
@@ -2746,7 +2796,7 @@ export function AdventureGame({
           {onboard === "intro" && (
             <>
               <span className="fx-hero" aria-hidden>
-                <PortraitSprite name="elder_maple" scale={2} className="rounded-xl border border-hairline bg-night-2" />
+                <MzFace role="elder_maple" emoji="🧓" size={96} className="rounded-xl border border-hairline bg-night-2" />
               </span>
               <p className="font-pixel text-[10px] tracking-widest text-accent">ELDER MAPLE</p>
               <div className="max-w-sm space-y-3 text-sm leading-relaxed text-ink">
@@ -3016,8 +3066,8 @@ function BetaFeedback({ onClose }: { onClose: () => void }) {
   );
 }
 
-// Little live preview of a hero walker for the onboarding cards. Draws from
-// the commissioned heroes.png when it has loaded; procedural fallback until.
+// Little live preview of a hero walker for the onboarding cards, from the
+// MZ actor sheets; the procedural painter covers the pre-load flash.
 function HeroPreview({ heroId }: { heroId: string }) {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -3026,18 +3076,17 @@ function HeroPreview({ heroId }: { heroId: string }) {
     const c = cv.getContext("2d");
     if (!c) return;
     let cancelled = false;
-    const paint = () => {
-      if (cancelled || !ref.current) return;
-      c.imageSmoothingEnabled = false;
+    c.imageSmoothingEnabled = false;
+    c.clearRect(0, 0, cv.width, cv.height);
+    c.save();
+    c.scale(1.5, 1.5);
+    drawHero(c, 8, 8, "down", 1, heroId); // fallback first paint
+    c.restore();
+    void loadMz().then((ok) => {
+      if (cancelled || !ok || !ref.current) return;
       c.clearRect(0, 0, cv.width, cv.height);
-      drawHero(c, 0, 8, "down", 1, heroId); // fallback first paint
-      void loadSheets().then((sh) => {
-        if (cancelled || !sh) return;
-        c.clearRect(0, 0, cv.width, cv.height);
-        drawWalker(c, sh.heroes, heroBlockX(heroId), "down", 1, 0, 8);
-      });
-    };
-    paint();
+      drawMzChar(c, MZ_HEROES[heroId] ?? MZ_HEROES.jun, "down", 1, 0, 0);
+    });
     return () => {
       cancelled = true;
     };
@@ -3045,10 +3094,10 @@ function HeroPreview({ heroId }: { heroId: string }) {
   return (
     <canvas
       ref={ref}
-      width={16}
-      height={24}
+      width={48}
+      height={48}
       className="ml-auto"
-      style={{ width: 32, height: 48, imageRendering: "pixelated" }}
+      style={{ width: 48, height: 48, imageRendering: "pixelated" }}
       aria-hidden
     />
   );

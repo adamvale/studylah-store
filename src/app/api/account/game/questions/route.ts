@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getSubject, type Level } from "@/lib/catalogue";
 import { type PublicQuestion } from "@/lib/diagnostic-questions";
-import { getQuestionSet } from "@/lib/server/question-bank";
+import { drawFromBank } from "@/lib/server/question-bank";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { masterApiGate } from "@/lib/server/entitlements";
 import { ownedSubjects } from "@/lib/server/study";
@@ -30,14 +30,22 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Own this subject to battle here." }, { status: 403 });
   }
 
-  const set = await getQuestionSet(level, slug);
-  if (!set) {
+  // The content contract: declarative draw, optionally scoped by difficulty
+  // (story bosses ramp up) or topic prefix (topic-gated story quests).
+  const diffParam = Number(url.searchParams.get("difficulty"));
+  const topicParam = url.searchParams.get("topic") ?? "";
+  const shuffled = await drawFromBank(level, slug, {
+    count,
+    mcqOnly: true,
+    minDifficulty: diffParam >= 1 && diffParam <= 3 ? (diffParam as 1 | 2 | 3) : undefined,
+    // literal prefix match, escaped: topics are syllabus codes like "A1 ..."
+    topicRx: topicParam
+      ? new RegExp(`^${topicParam.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`, "i")
+      : undefined,
+  });
+  if (shuffled.length === 0) {
     return NextResponse.json({ error: "No questions for this subject yet." }, { status: 404 });
   }
-
-  const mcqs = set.questions.filter((q) => q.type === "mcq" && q.options?.length);
-  // Shuffle server-side so each hand differs.
-  const shuffled = [...mcqs].sort(() => Math.random() - 0.5).slice(0, count);
   // The Whisper's "fog on the page": hint=1 marks ONE WRONG option per
   // question so the client can hide it. Safe by construction, it reveals
   // an option that is NOT the answer, never the answer itself.
