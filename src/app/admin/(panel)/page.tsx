@@ -86,13 +86,76 @@ export default async function AdminDashboardPage() {
           value={money(m.revenueWeekCents)}
           hint={`${m.ordersWeek} order${m.ordersWeek === 1 ? "" : "s"}`}
         />
-        <Metric label="Revenue all time" value={money(m.revenueAllCents)} hint={`${m.ordersAll} orders`} />
-        <Metric label="Average order value" value={money(m.aovCents)} hint="all-time AOV" />
+        <Metric
+          label={m.resetAt ? "Revenue since reset" : "Revenue all time"}
+          value={money(m.revenueAllCents)}
+          hint={`${m.ordersAll} orders${
+            m.resetAt
+              ? ` · since ${m.resetAt.toLocaleDateString("en-SG", { day: "numeric", month: "short" })}`
+              : ""
+          }`}
+        />
+        <Metric
+          label="Average order value"
+          value={money(m.aovCents)}
+          hint={m.resetAt ? "AOV since reset" : "all-time AOV"}
+        />
         <Metric
           label="Master attach-rate"
           value={`${m.masterAttachRate}%`}
           hint="of subject selections"
         />
+      </div>
+
+      {/* Revenue counter controls. Non-destructive: only moves the counting
+          baseline; orders and downloads are never touched. */}
+      <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-body">
+        {m.resetAt ? (
+          <>
+            <span>
+              Counters started fresh on{" "}
+              {m.resetAt.toLocaleString("en-SG", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+              . Orders history is untouched.
+            </span>
+            <form method="post" action="/api/admin/metrics/reset">
+              <input type="hidden" name="action" value="clear" />
+              <button
+                type="submit"
+                className="rounded-lg border border-hairline px-3 py-1.5 font-medium text-ink hover:border-accent"
+              >
+                Show all-time again
+              </button>
+            </form>
+          </>
+        ) : (
+          <details className="group">
+            <summary className="cursor-pointer list-none rounded-lg border border-hairline px-3 py-1.5 font-medium text-body hover:border-accent hover:text-ink">
+              Reset revenue counters…
+            </summary>
+            <div className="mt-2 flex flex-wrap items-center gap-3 rounded-xl border border-hairline bg-surface p-3">
+              <span>
+                Start the dashboard numbers from zero, from this moment. No
+                order is deleted, buyers keep every download, and you can
+                switch back to all-time any time.
+              </span>
+              <form method="post" action="/api/admin/metrics/reset">
+                <input type="hidden" name="action" value="reset" />
+                <button
+                  type="submit"
+                  className="rounded-lg bg-coral/15 px-3 py-1.5 font-bold text-coral hover:bg-coral/25"
+                >
+                  Reset from now
+                </button>
+              </form>
+            </div>
+          </details>
+        )}
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">

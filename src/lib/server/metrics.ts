@@ -44,13 +44,47 @@ export interface DashboardMetrics {
   topSubjects: SubjectSales[];
   leadsAll: number;
   leadsWeek: number;
+  resetAt: Date | null; // counters start here when set (orders are untouched)
+}
+
+// ── Revenue counter reset ───────────────────────────────────────────────────
+// NON-DESTRUCTIVE: never deletes an order (buyers keep their downloads and
+// history). A Setting stores a baseline timestamp; the dashboard simply counts
+// from there. Clearing the setting restores the all-time view.
+const REVENUE_RESET_KEY = "revenueResetAt";
+
+export async function getRevenueResetAt(): Promise<Date | null> {
+  try {
+    const row = await prisma.setting.findFirst({ where: { key: REVENUE_RESET_KEY } });
+    if (!row?.value) return null;
+    const d = new Date(row.value);
+    return Number.isNaN(d.getTime()) ? null : d;
+  } catch {
+    return null;
+  }
+}
+
+export async function setRevenueResetAt(at: Date | null): Promise<void> {
+  if (at === null) {
+    await prisma.setting.deleteMany({ where: { key: REVENUE_RESET_KEY } });
+    return;
+  }
+  await prisma.setting.upsert({
+    where: { key: REVENUE_RESET_KEY },
+    create: { key: REVENUE_RESET_KEY, value: at.toISOString() },
+    update: { value: at.toISOString() },
+  });
 }
 
 export async function getDashboardMetrics(): Promise<DashboardMetrics> {
   const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+  const resetAt = await getRevenueResetAt();
 
   const orders = await prisma.order.findMany({
-    where: { status: "paid" },
+    where: {
+      status: "paid",
+      ...(resetAt ? { createdAt: { gte: resetAt } } : {}),
+    },
     select: { totalCents: true, createdAt: true, pricingJson: true },
   });
 
@@ -106,5 +140,6 @@ export async function getDashboardMetrics(): Promise<DashboardMetrics> {
     topSubjects: [...bySubject.values()].sort((a, b) => b.count - a.count),
     leadsAll,
     leadsWeek,
+    resetAt,
   };
 }

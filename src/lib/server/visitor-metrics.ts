@@ -132,3 +132,61 @@ export async function getRecentJourneys(limit = 25): Promise<Journey[]> {
     events: s.events,
   }));
 }
+
+// ── Daily visitors ──────────────────────────────────────────────────────────
+// Day-by-day growth view: sessions, unique visitors and pageviews per
+// Singapore calendar day, oldest → newest, with zero-filled gaps so the
+// chart reads as a continuous timeline.
+export interface DailyVisitors {
+  day: string; // YYYY-MM-DD (Asia/Singapore)
+  label: string; // "17 Jul"
+  sessions: number;
+  unique: number;
+  pageviews: number;
+}
+
+const SG_DAY = new Intl.DateTimeFormat("en-CA", {
+  timeZone: "Asia/Singapore",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+});
+const SG_LABEL = new Intl.DateTimeFormat("en-SG", {
+  timeZone: "Asia/Singapore",
+  day: "numeric",
+  month: "short",
+});
+
+export async function getDailyVisitors(days = 30): Promise<DailyVisitors[]> {
+  const since = new Date(Date.now() - days * DAY_MS);
+  const sessions = await prisma.visitorSession.findMany({
+    where: { startedAt: { gte: since } },
+    select: { startedAt: true, visitorId: true, pageviews: true },
+  });
+
+  const byDay = new Map<string, { sessions: number; visitors: Set<string>; pageviews: number }>();
+  for (const s of sessions) {
+    const key = SG_DAY.format(s.startedAt);
+    const row = byDay.get(key) ?? { sessions: 0, visitors: new Set<string>(), pageviews: 0 };
+    row.sessions += 1;
+    row.visitors.add(s.visitorId);
+    row.pageviews += s.pageviews;
+    byDay.set(key, row);
+  }
+
+  // zero-fill every SG day in the window, oldest first
+  const out: DailyVisitors[] = [];
+  for (let i = days - 1; i >= 0; i--) {
+    const d = new Date(Date.now() - i * DAY_MS);
+    const key = SG_DAY.format(d);
+    const row = byDay.get(key);
+    out.push({
+      day: key,
+      label: SG_LABEL.format(d),
+      sessions: row?.sessions ?? 0,
+      unique: row?.visitors.size ?? 0,
+      pageviews: row?.pageviews ?? 0,
+    });
+  }
+  return out;
+}
