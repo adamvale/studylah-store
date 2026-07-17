@@ -58,7 +58,7 @@ export function Header() {
   if (hideCommerce && pathname.startsWith("/account")) return null;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-hairline bg-night/95 backdrop-blur print:hidden">
+    <header className="sticky top-0 z-40 border-b border-hairline bg-night-2/70 backdrop-blur-xl print:hidden">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4">
         <Logo href={hideCommerce ? "/account" : "/"} />
         <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
@@ -124,7 +124,7 @@ export function Header() {
         <nav
           id="mobile-nav"
           aria-label="Main"
-          className="border-t border-hairline bg-night px-4 py-2 md:hidden"
+          className="border-t border-hairline bg-night-2/80 px-4 py-2 backdrop-blur-xl md:hidden"
         >
           {(hideCommerce
             ? [{ href: "/account", label: accountLabel }]

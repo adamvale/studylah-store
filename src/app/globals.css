@@ -62,10 +62,25 @@ body::before {
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(120% 90% at 85% -10%, rgba(34, 211, 238, 0.16), transparent 55%),
-    radial-gradient(130% 100% at 10% 15%, rgba(168, 85, 247, 0.32), transparent 60%),
-    radial-gradient(120% 120% at 50% 115%, rgba(109, 40, 217, 0.4), transparent 62%),
-    linear-gradient(170deg, #0d0a24 0%, #1a1140 48%, #0c0920 100%);
+    radial-gradient(120% 90% at 85% -10%, rgba(34, 211, 238, 0.2), transparent 55%),
+    radial-gradient(130% 100% at 10% 15%, rgba(168, 85, 247, 0.45), transparent 60%),
+    radial-gradient(90% 60% at 55% 30%, rgba(124, 58, 237, 0.22), transparent 65%),
+    radial-gradient(120% 120% at 50% 115%, rgba(109, 40, 217, 0.5), transparent 62%),
+    linear-gradient(170deg, #1a1245 0%, #221856 48%, #140f31 100%);
+}
+
+/* The faint blueprint grid, also global (the StudyLand accent). */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(90% 60% at 50% 0%, black, transparent 90%);
 }
 
 /* Inter for numeric data (prices, probabilities): keep figures aligned and
@@ -662,17 +677,10 @@ body:has([data-bottom-cta]) .gugu-panel {
 
 /* The ambient backdrop: deep indigo night with a violet bloom and a teal
    dawn, plus a faint blueprint grid, fixed so content scrolls over it. */
-/* The gradient itself lives on body::before site-wide; .sl-bg adds the
-   faint blueprint grid accent inside StudyLand only. */
+/* Gradient + grid both live on body::before/::after site-wide now; .sl-bg
+   is kept as a harmless no-op for any stragglers. */
 .sl-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: radial-gradient(90% 60% at 50% 0%, black, transparent 90%);
+  display: none;
 }
 
 /* Frosted glass card */
@@ -769,4 +777,17 @@ body:has([data-bottom-cta]) .gugu-panel {
   border-color: rgba(196, 181, 253, 0.65);
   background: rgba(139, 92, 246, 0.28);
   color: #ffffff;
+}
+
+
+/* ── Storefront glass pass (v2.15.1) ────────────────────────────────────────
+   The marketing pages were authored on solid night surfaces; the app theme
+   wants the gradient glowing through everything. Scoped to #main-content so
+   page bands and cards go translucent-glass site-wide without editing each
+   section. Text colours (text-night on yellow) are untouched. */
+#main-content .bg-night {
+  background-color: rgba(13, 10, 36, 0.55);
+}
+#main-content .bg-night-2 {
+  background-color: rgba(148, 120, 255, 0.08);
 }

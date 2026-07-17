@@ -129,6 +129,12 @@ here now; the plan is to fold each Play into the game later as a trainable
 As of v2.15 the StudyLand palette is the WHOLE site's theme, not a scoped
 skin. Facts that matter when editing:
 
+- v2.15.1 storefront glass pass: the gradient (body::before) and blueprint
+  grid (body::after) are global; `.sl-bg` is a display:none no-op. Scoped
+  overrides under `#main-content` make `bg-night` / `bg-night-2` translucent
+  so marketing bands read as glass (no backdrop-filter there, it caused
+  compositing artifacts on page-height wrappers). Header/footer/mobile menu
+  are translucent blur chrome.
 - `globals.css` `@theme` tokens are the purple palette (night `#0c0920`,
   night-2 `#140f31`, translucent surface/hairline, lavender ink/body) and
   `--font-display` / `--font-sans` are BOTH Plus Jakarta Sans. The gradient

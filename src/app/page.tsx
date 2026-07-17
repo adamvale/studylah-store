@@ -1266,7 +1266,7 @@ function FogFrontierBeta() {
 
 function Decision() {
   return (
-    <section className="reveal bg-gradient-to-b from-[#12312b] to-night py-20">
+    <section className="reveal bg-gradient-to-b from-teal/10 to-transparent py-20">
       <div className="mx-auto max-w-4xl px-4 text-center">
         <div className="flex justify-center">
           <SectionGhost />

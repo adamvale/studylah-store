@@ -50,7 +50,6 @@ export function AccountChrome({
   // tab bar on phones (hidden from md up, where the top nav pills take over).
   return (
     <div className="studyland min-h-dvh">
-      <div className="sl-bg" aria-hidden />
       <div className="mx-auto max-w-3xl px-4 pb-24 pt-8 md:pb-12 md:pt-12">
         {/* print:hidden, printed pages (e.g. the rescue plan) keep content only */}
         <div className="flex items-center justify-between gap-3 print:hidden">

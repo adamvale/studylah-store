@@ -29,7 +29,7 @@ const LEGAL = [
 
 export function Footer() {
   return (
-    <footer className="native-hide border-t border-hairline bg-night-2 text-white print:hidden">
+    <footer className="native-hide border-t border-hairline bg-night-2/50 text-white backdrop-blur-xl print:hidden">
       <div className="mx-auto max-w-6xl px-4 pt-12 pb-28 sm:pb-12">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
