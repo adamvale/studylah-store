@@ -1,16 +1,24 @@
 "use client";
 
+import Link from "next/link";
 import { type FormEvent, useEffect, useState } from "react";
 
 // Mirrors the server's 60s per-email throttle so "Resend" only lights up when
 // a resend would actually go out.
 const RESEND_COOLDOWN_S = 60;
 
+interface WelcomeOffer {
+  code: string;
+  expiresAt: string; // ISO
+  pct: number;
+}
+
 export function LoginForm({ error }: { error?: string }) {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
   const [busy, setBusy] = useState(false);
   const [cooldown, setCooldown] = useState(0);
+  const [offer, setOffer] = useState<WelcomeOffer | null>(null);
 
   useEffect(() => {
     if (cooldown <= 0) return;
@@ -21,24 +29,49 @@ export function LoginForm({ error }: { error?: string }) {
   async function requestLink() {
     setBusy(true);
     try {
-      await fetch("/api/account/request-link", {
+      const res = await fetch("/api/account/request-link", {
         method: "POST",
         body: new URLSearchParams({ email }),
       });
+      const data = (await res.json().catch(() => null)) as
+        | ({ noAccount?: boolean } & Partial<WelcomeOffer>)
+        | null;
+      if (data?.noAccount && data.code && data.expiresAt) {
+        // No account on this email: show the welcome offer instead of the
+        // check-your-inbox card, and let the cart auto-apply the code.
+        const secondsLeft = Math.max(
+          0,
+          Math.floor((new Date(data.expiresAt).getTime() - Date.now()) / 1000)
+        );
+        document.cookie = `studylah_welcome=${encodeURIComponent(
+          data.code
+        )}; path=/; max-age=${secondsLeft}; samesite=lax`;
+        setOffer({ code: data.code, expiresAt: data.expiresAt, pct: data.pct ?? 20 });
+        setBusy(false);
+        return;
+      }
     } catch {
-      // Deliberately ignored, we show the same confirmation either way so the
-      // page never reveals whether an email has an account.
-    } finally {
-      setBusy(false);
-      setSent(true);
-      setCooldown(RESEND_COOLDOWN_S);
+      // Network hiccup: fall through to the standard confirmation.
     }
+    setBusy(false);
+    setSent(true);
+    setCooldown(RESEND_COOLDOWN_S);
   }
 
   async function submit(e: FormEvent) {
     e.preventDefault();
     if (!email.trim()) return;
     await requestLink();
+  }
+
+  if (offer) {
+    return (
+      <WelcomeOfferCard
+        email={email}
+        offer={offer}
+        onBack={() => setOffer(null)}
+      />
+    );
   }
 
   if (sent) {
@@ -157,5 +190,101 @@ export function LoginForm({ error }: { error?: string }) {
         your order.
       </p>
     </form>
+  );
+}
+
+
+// ── The no-account welcome offer ────────────────────────────────────────────
+// Honest + useful: say there is no account on that email, then make starting
+// easy with a personal, short-lived discount. The code is already validated
+// server-side (expiry + single use); the cart auto-applies it via the
+// studylah_welcome cookie set above.
+function WelcomeOfferCard({
+  email,
+  offer,
+  onBack,
+}: {
+  email: string;
+  offer: { code: string; expiresAt: string; pct: number };
+  onBack: () => void;
+}) {
+  const [left, setLeft] = useState(() =>
+    Math.max(0, Math.floor((new Date(offer.expiresAt).getTime() - Date.now()) / 1000))
+  );
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setLeft(Math.max(0, Math.floor((new Date(offer.expiresAt).getTime() - Date.now()) / 1000)));
+    }, 1000);
+    return () => clearInterval(t);
+  }, [offer.expiresAt]);
+
+  const mm = Math.floor(left / 60);
+  const ss = String(left % 60).padStart(2, "0");
+  const expired = left <= 0;
+
+  return (
+    <div className="rounded-2xl border border-accent/50 bg-surface p-6">
+      <p className="font-display text-lg font-bold text-ink">
+        No account on this email yet
+      </p>
+      <p className="mt-2 text-sm text-body">
+        <span className="font-medium text-ink">{email}</span>
+        {" hasn't ordered from us before, so there's nothing to sign in to. Accounts are created with your first order."}
+      </p>
+
+      {expired ? (
+        <p className="mt-4 rounded-xl border border-hairline bg-night p-4 text-sm text-body">
+          Your welcome code has expired. Enter your email again for a fresh
+          one, or browse the packs any time.
+        </p>
+      ) : (
+        <div className="mt-4 rounded-xl border border-accent/40 bg-accent/5 p-4">
+          <p className="text-sm font-bold text-ink">
+            Here&apos;s {offer.pct}% off your first pack, just for you
+          </p>
+          <div className="mt-2 flex flex-wrap items-center gap-2">
+            <span className="rounded-lg bg-night px-3 py-2 font-mono text-lg font-bold tracking-wider text-accent">
+              {offer.code}
+            </span>
+            <button
+              type="button"
+              onClick={() => {
+                void navigator.clipboard?.writeText(offer.code);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+              }}
+              className="rounded-lg border border-hairline px-3 py-2 text-sm font-medium text-ink hover:border-accent"
+            >
+              {copied ? "Copied ✓" : "Copy"}
+            </button>
+            <span className="font-mono text-sm font-bold text-coral">
+              ⏱ {mm}:{ss} left
+            </span>
+          </div>
+          <p className="mt-2 text-xs text-body">
+            Valid for 10 minutes, one use. It applies automatically at the
+            cart, no need to type it.
+          </p>
+        </div>
+      )}
+
+      <div className="mt-4 flex flex-wrap items-center gap-3">
+        <Link
+          href="/subjects"
+          className="rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
+        >
+          Browse subjects →
+        </Link>
+        <button
+          type="button"
+          onClick={onBack}
+          className="text-sm font-medium text-accent underline"
+        >
+          Try a different email
+        </button>
+      </div>
+    </div>
   );
 }

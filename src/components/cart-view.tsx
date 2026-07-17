@@ -116,10 +116,11 @@ export function CartView() {
   useEffect(() => {
     if (refAutoTried.current) return;
     if (items.length === 0 || discount || codeInput !== "") return;
-    const raw = document.cookie
-      .split("; ")
-      .find((c) => c.startsWith("studylah_ref="))
-      ?.split("=")[1];
+    // Referral cookie first; else the login page's 10-minute welcome code.
+    const cookies = document.cookie.split("; ");
+    const raw =
+      cookies.find((c) => c.startsWith("studylah_ref="))?.split("=")[1] ??
+      cookies.find((c) => c.startsWith("studylah_welcome="))?.split("=")[1];
     refAutoTried.current = true;
     if (!raw) return;
     const code = decodeURIComponent(raw).toUpperCase();

@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { serverConfig } from "@/lib/server/config";
@@ -8,6 +9,55 @@ import { customerAuthEnabled, signLoginToken, currentLoginCode } from "@/lib/ser
 // stop the endpoint being used to spam an inbox.
 const lastSent = new Map<string, number>();
 const MIN_INTERVAL_MS = 60_000;
+
+// ── Welcome offer for emails with no account ────────────────────────────────
+// Owner's call: when the email has never ordered, say so and turn the moment
+// into a first purchase: a personal 20% code valid for 10 minutes. The code is
+// a real DiscountCode row (checkout already enforces expiresAt +
+// maxRedemptions), deduped per email so repeat clicks reuse the same code
+// instead of minting new rows.
+const WELCOME_PCT = 20;
+const WELCOME_TTL_MS = 10 * 60 * 1000;
+const WELCOME_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
+
+// One code per email, derived deterministically, so repeat clicks reuse the
+// same row and the description stays customer-facing (it shows in the cart).
+function welcomeCode(email: string): string {
+  const digest = createHash("sha256").update(`welcome:${email}`).digest();
+  let suffix = "";
+  for (let i = 0; i < 4; i++) suffix += WELCOME_ALPHABET[digest[i] % WELCOME_ALPHABET.length];
+  return `WELCOME20-${suffix}`;
+}
+
+async function welcomeCodeFor(email: string): Promise<{ code: string; expiresAt: Date }> {
+  const code = welcomeCode(email);
+  const existing = await prisma.discountCode.findUnique({ where: { code } });
+  const now = new Date();
+  if (
+    existing?.expiresAt &&
+    existing.active &&
+    existing.expiresAt > now &&
+    existing.redemptions === 0
+  ) {
+    return { code, expiresAt: existing.expiresAt };
+  }
+  // Fresh 10 minutes (also revives an expired, unredeemed earlier offer).
+  const expiresAt = new Date(Date.now() + WELCOME_TTL_MS);
+  await prisma.discountCode.upsert({
+    where: { code },
+    create: {
+      code,
+      kind: "percent",
+      value: WELCOME_PCT,
+      description: "20% welcome offer, first order",
+      active: true,
+      expiresAt,
+      maxRedemptions: 1,
+    },
+    update: { expiresAt, active: true, redemptions: 0 },
+  });
+  return { code, expiresAt };
+}
 
 export async function POST(request: Request) {
   // Always answer the same way, whether or not the email has an account, never
@@ -21,17 +71,34 @@ export async function POST(request: Request) {
 
   if (!customerAuthEnabled() || !email || !email.includes("@")) return generic;
 
-  const now = Date.now();
-  const prev = lastSent.get(email);
-  if (prev && now - prev < MIN_INTERVAL_MS) return generic;
-  lastSent.set(email, now);
-
   // Case-insensitive match: order emails come from Stripe and may be mixed-case.
   const rows = await prisma.$queryRaw<Array<{ id: string; email: string }>>`
     SELECT id, email FROM "Customer" WHERE email = ${email} COLLATE NOCASE LIMIT 1
   `;
   const customer = rows[0];
-  if (!customer) return generic;
+
+  // No account: no email to send. Tell them honestly and hand over the
+  // 10-minute welcome code (idempotent per email, so retries reuse it).
+  if (!customer) {
+    try {
+      const offer = await welcomeCodeFor(email);
+      return NextResponse.json({
+        ok: true,
+        noAccount: true,
+        code: offer.code,
+        expiresAt: offer.expiresAt.toISOString(),
+        pct: WELCOME_PCT,
+      });
+    } catch (e) {
+      console.error("Welcome code failed", e);
+      return generic;
+    }
+  }
+
+  const now = Date.now();
+  const prev = lastSent.get(email);
+  if (prev && now - prev < MIN_INTERVAL_MS) return generic;
+  lastSent.set(email, now);
 
   const url = `${serverConfig.siteUrl}/api/account/callback?token=${encodeURIComponent(
     signLoginToken(customer.id)
