@@ -21,6 +21,7 @@ const NAV = [
   { href: "/subjects", label: "Subjects" },
   { href: "/bundles", label: "Bundles" },
   { href: "/studyland", label: "StudyLand" },
+  { href: "/fasttrack", label: "FastTrack" },
   { href: "/accuracy", label: "Accuracy" },
   { href: "/faq", label: "FAQ" },
 ];
