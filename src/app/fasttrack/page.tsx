@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getPricing } from "@/lib/server/pricing-store";
 import { sgd } from "@/lib/catalogue";
-import { DisclaimerBox } from "@/components/disclaimer";
 import { PLAYBOOKS, LEAKS, FAMILY_META, type Family } from "@/lib/fasttrack";
 
 // Public marketing + SEO page for FastTrack. Distinct route from the
@@ -351,10 +350,6 @@ export default async function FastTrackMarketingPage() {
           </Link>
         </div>
       </section>
-
-      <div className="mt-12">
-        <DisclaimerBox />
-      </div>
     </div>
   );
 }

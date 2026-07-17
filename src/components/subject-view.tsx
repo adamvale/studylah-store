@@ -14,7 +14,6 @@ import { getPricing } from "@/lib/server/pricing-store";
 import { subjectCopy } from "@/lib/subject-copy";
 import { packPreviewFor } from "@/lib/pack-previews";
 import { examPapersFor } from "@/lib/exam-dates-2026";
-import { DisclaimerBox } from "./disclaimer";
 import { PackPreview } from "./pack-preview";
 import { ExamCountdown } from "./exam-countdown";
 import { ExamSchedule } from "./exam-schedule";
@@ -358,11 +357,6 @@ export async function SubjectView({ subject }: { subject: Subject }) {
         >
           Build your bundle →
         </Link>
-      </div>
-
-      {/* Honesty-first disclaimer sits at the very bottom of the page. */}
-      <div className="mt-8">
-        <DisclaimerBox />
       </div>
 
       <SubjectStickyCta

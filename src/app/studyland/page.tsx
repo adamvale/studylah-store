@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getPricing } from "@/lib/server/pricing-store";
 import { sgd } from "@/lib/catalogue";
-import { DisclaimerBox } from "@/components/disclaimer";
 
 // Live pricing (the Master "from" price) must never go stale.
 export const dynamic = "force-dynamic";
@@ -255,10 +254,6 @@ export default async function StudyLandPage() {
           </Link>
         </div>
       </section>
-
-      <div className="mt-12">
-        <DisclaimerBox />
-      </div>
     </div>
   );
 }
