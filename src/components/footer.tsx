@@ -16,6 +16,7 @@ const TRUST = [
   { href: "/accuracy", label: "Accuracy scorecard" },
   { href: "/diagnostic", label: "Predict your mark, free" },
   { href: "/studyland", label: "Inside StudyLand" },
+  { href: "/fasttrack", label: "FastTrack answering technique" },
   { href: "/blog", label: "Blog" },
   { href: "/faq", label: "FAQ and guarantee" },
 ];
