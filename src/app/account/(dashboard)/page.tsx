@@ -19,7 +19,17 @@ import { GettingStarted, type StartStep } from "@/components/getting-started";
 import { TierPill } from "@/components/heat";
 import { type BossInfo } from "@/components/quest-board";
 import { PhaseBanner, WeekReport } from "@/components/today-pulse";
-import { IconFlame, IconCheckCircle, IconRepeat, IconCrown, IconCap } from "@/components/icons";
+import {
+  IconFlame,
+  IconCheckCircle,
+  IconRepeat,
+  IconCrown,
+  IconCap,
+  IconSparkle,
+  IconBolt,
+  IconGhost,
+  IconBook,
+} from "@/components/icons";
 
 export const metadata: Metadata = { title: "Today" };
 
@@ -313,9 +323,17 @@ export default async function TodayPage() {
 
   return (
     <div className="space-y-8">
-      {/* ── Hero: the greeting + the week, app-dashboard style ─────────── */}
-      <div>
-        <div className="flex flex-wrap items-end justify-between gap-2">
+      {/* ── Hero: the greeting + the week, app-dashboard style. The layout
+          follows the Query reference: soft-glow bloom behind the greeting,
+          a small agent chip, the gradient name, then exactly TWO primary
+          action cards so the screen asks for one decision, not ten. ── */}
+      <div className="relative">
+        <div className="sl-bloom" aria-hidden />
+        <span className="chip !py-1 text-[11px]">
+          <IconSparkle size={13} className="text-accent" />
+          StudyLand
+        </span>
+        <div className="mt-3 flex flex-wrap items-end justify-between gap-2">
           <div>
             <p className="text-sm font-medium text-body">{todayLabel()}</p>
             <h2 className="mt-0.5 font-display text-3xl font-extrabold tracking-tight text-ink">
@@ -334,6 +352,54 @@ export default async function TodayPage() {
             ? "Mission complete. Come back tomorrow, the system resets at midnight."
             : `${openItems.length} quest${openItems.length === 1 ? "" : "s"} today, about ${totalMinutes} minutes. The XP is real.`}
         </p>
+
+        {/* The two primary actions (the reference's Scan/Ask pair): the daily
+            three, and whichever repair surface currently matters most. */}
+        <div className="mt-4 grid grid-cols-2 gap-3">
+          <Link
+            href="#daily"
+            className="glass group p-4 transition-transform hover:-translate-y-0.5"
+          >
+            <span className="icon-orb text-accent" aria-hidden>
+              <IconBolt size={20} />
+            </span>
+            <p className="mt-3 font-display text-sm font-bold leading-snug text-ink">
+              The daily three
+            </p>
+            <p className="mt-0.5 text-xs text-body">
+              {streak.doneToday ? "Done today, review below" : "3 questions · ~2 min"}
+            </p>
+          </Link>
+          {unresolvedMistakes > 0 ? (
+            <Link
+              href="/account/mistakes"
+              className="glass group p-4 transition-transform hover:-translate-y-0.5"
+            >
+              <span className="icon-orb text-coral" aria-hidden>
+                <IconGhost size={20} />
+              </span>
+              <p className="mt-3 font-display text-sm font-bold leading-snug text-ink">
+                Clear mistakes
+              </p>
+              <p className="mt-0.5 text-xs text-body">
+                {unresolvedMistakes} waiting · +25 XP each
+              </p>
+            </Link>
+          ) : (
+            <Link
+              href="/account/learn"
+              className="glass group p-4 transition-transform hover:-translate-y-0.5"
+            >
+              <span className="icon-orb text-accent" aria-hidden>
+                <IconBook size={20} />
+              </span>
+              <p className="mt-3 font-display text-sm font-bold leading-snug text-ink">
+                Learn your way
+              </p>
+              <p className="mt-0.5 text-xs text-body">FastTrack, drills, practice</p>
+            </Link>
+          )}
+        </div>
 
         {/* One compact card: the week's XP + today's counters, no tile sprawl */}
         <div className="glass-deep mt-4 p-5">

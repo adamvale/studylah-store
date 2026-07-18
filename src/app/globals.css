@@ -791,3 +791,19 @@ body:has([data-bottom-cta]) .gugu-panel {
 #main-content .bg-night-2 {
   background-color: rgba(148, 120, 255, 0.08);
 }
+
+
+/* Query-style hero bloom: a soft teal-to-violet glow behind the dashboard
+   greeting (the reference's "soft-glow visual system"). Positioned by a
+   relative parent; purely decorative. */
+.sl-bloom {
+  position: absolute;
+  inset: -3rem -1.5rem auto -1.5rem;
+  height: 16rem;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 80% at 18% 35%, rgba(34, 211, 238, 0.16), transparent 70%),
+    radial-gradient(70% 90% at 72% 18%, rgba(139, 92, 246, 0.26), transparent 70%);
+  filter: blur(28px);
+}

@@ -213,6 +213,12 @@ pill chips, icon orbs, bottom tab bar). Key facts:
   2 stat tiles (quests done, reviews due), Priority tasks checklist card
   (replaced QuestBoard on web; quest-board.tsx still exists for native),
   subject strip of ring gauges (replaced the old bottom risk list).
+- **Today hero (Query reference, v2.16.1)**: the dashboard greeting follows
+  Panze UX Studio's "Query" AI-companion layout the owner picked: `.sl-bloom`
+  soft glow behind the hero, a small "StudyLand" sparkle chip, the gradient
+  name, then exactly TWO primary glass action cards (daily three + either
+  Clear mistakes or the Learn hub, whichever matters). Keep the two-action
+  rule: the home screen asks for one decision, it is not a menu.
 - **Bite-sized rule** (owner): learning activities show ONE part per screen.
   FastTrack's play detail is now a 5-step wizard (Recognise → Shape →
   Keywords → Model → Drill) with progress segments + Next/Back
