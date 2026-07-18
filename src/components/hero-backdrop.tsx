@@ -22,18 +22,12 @@ export function HeroBackdrop() {
       aria-hidden="true"
       className="grain pointer-events-none absolute inset-0 -z-10 overflow-hidden"
     >
-      {/* Base wash, a deep radial that adds depth even before the blobs. */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(120% 90% at 15% 0%, rgba(80,40,255,0.28), transparent 55%)," +
-            "radial-gradient(110% 90% at 100% 10%, rgba(69,200,207,0.22), transparent 55%)," +
-            "radial-gradient(120% 100% at 60% 120%, rgba(255,220,0,0.14), transparent 60%)",
-        }}
-      />
+      {/* No base wash: the site-wide gradient (body::before) IS the hero's
+          background, so the landing page reads as the same surface as every
+          other page. Everything below is purely additive motion on top. */}
 
-      {/* Aurora colour clouds */}
+      {/* Aurora colour clouds, gentle, tuned to sit ON the shared gradient
+          rather than repaint it. */}
       <div
         className="aurora-blob"
         style={{
@@ -41,7 +35,7 @@ export function HeroBackdrop() {
           left: "-8%",
           width: "50%",
           height: "62%",
-          background: "radial-gradient(circle, rgba(124,58,237,0.85), transparent 70%)",
+          background: "radial-gradient(circle, rgba(139,92,246,0.30), transparent 70%)",
           animationDelay: "0s",
         }}
       />
@@ -52,7 +46,7 @@ export function HeroBackdrop() {
           right: "-10%",
           width: "52%",
           height: "65%",
-          background: "radial-gradient(circle, rgba(69,200,207,0.6), transparent 70%)",
+          background: "radial-gradient(circle, rgba(34,211,238,0.18), transparent 70%)",
           animationDelay: "-6s",
         }}
       />
@@ -63,7 +57,7 @@ export function HeroBackdrop() {
           left: "22%",
           width: "58%",
           height: "62%",
-          background: "radial-gradient(circle, rgba(255,220,0,0.45), transparent 70%)",
+          background: "radial-gradient(circle, rgba(255,220,0,0.10), transparent 70%)",
           animationDelay: "-12s",
         }}
       />
@@ -89,8 +83,9 @@ export function HeroBackdrop() {
         />
       ))}
 
-      {/* Bottom fade into the page */}
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-night" />
+      {/* No bottom fade: fading to solid `night` used to paint a dark band
+          where the hero met the (now translucent) page below it. The shared
+          gradient carries straight through instead. */}
     </div>
   );
 }

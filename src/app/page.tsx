@@ -1386,7 +1386,10 @@ function FreeHeatmapBanner() {
 export default async function Home() {
   const pricing = await getPricing();
   return (
-    <div className="bg-night">
+    // No page-level background: the landing page sits on the same site-wide
+    // gradient as every other page. A `bg-night` wrapper here used to veil the
+    // whole page and made the hero look like a different surface.
+    <div>
       <Hero pricing={pricing} />
       <TheProblem />
       <TheCause />
