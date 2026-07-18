@@ -8,6 +8,7 @@ import {
   productTaglineFor,
   productsForSubject,
   sgd,
+  TIER_ORDER,
   type Subject,
 } from "@/lib/catalogue";
 import { getPricing } from "@/lib/server/pricing-store";
@@ -45,6 +46,11 @@ export async function SubjectView({ subject }: { subject: Subject }) {
       priceCurrency: "SGD",
       lowPrice: pricing.tierPrice(subject.level, "essential"),
       highPrice: pricing.tierPrice(subject.level, "master"),
+      // The three real purchase tiers (Essential / Strategic / Master). We
+      // deliberately do NOT add aggregateRating or review here: there is no
+      // genuine per-product rating on the page, and faking that markup is a
+      // Google policy violation and against the honesty-first brand.
+      offerCount: TIER_ORDER.length,
       availability: "https://schema.org/InStock",
       url: `https://www.studylah.education/${subject.level}/${subject.slug}`,
     },
