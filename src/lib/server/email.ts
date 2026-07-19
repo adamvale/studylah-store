@@ -15,6 +15,10 @@ export interface EmailMessage {
   html: string;
   text: string;
   attachments?: EmailAttachment[];
+  // Optional overrides for the admin Mail tab: reply as hello@ with proper
+  // threading headers. Transactional mail keeps the defaults.
+  from?: string;
+  headers?: Record<string, string>;
 }
 
 export interface SendResult {
@@ -31,11 +35,12 @@ async function sendViaResend(message: EmailMessage): Promise<SendResult> {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: serverConfig.emailFrom,
+      from: message.from ?? serverConfig.emailFrom,
       to: [message.to],
       subject: message.subject,
       html: message.html,
       text: message.text,
+      headers: message.headers,
       attachments: message.attachments?.map((a) => ({
         filename: a.filename,
         content: Buffer.from(a.content).toString("base64"),
@@ -60,10 +65,11 @@ async function sendViaOutboxStub(message: EmailMessage): Promise<SendResult> {
     `${base}.json`,
     JSON.stringify(
       {
-        from: serverConfig.emailFrom,
+        from: message.from ?? serverConfig.emailFrom,
         to: message.to,
         subject: message.subject,
         text: message.text,
+        headers: message.headers,
         attachments: message.attachments?.map((a) => `${path.basename(base)}-${a.filename}`) ?? [],
         sentAt: new Date().toISOString(),
       },

@@ -9,6 +9,7 @@ const LINKS = [
   { href: "/admin/orders", label: "Orders" },
   { href: "/admin/visitors", label: "Visitors" },
   { href: "/admin/access", label: "Access" },
+  { href: "/admin/mail", label: "Mail" },
   { href: "/admin/whatsapp", label: "WhatsApp" },
   { href: "/admin/social", label: "FB / IG" },
   { href: "/admin/feedback", label: "Feedback" },

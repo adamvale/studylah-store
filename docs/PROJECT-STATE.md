@@ -124,6 +124,31 @@ here now; the plan is to fold each Play into the game later as a trainable
   stable = mastery keys). Adding families later means adding to `PLAYBOOKS`,
   `FAMILY_META`, and `familyForSubject`.
 
+## Admin Mail tab (v2.18): hello@ inside the panel
+
+/admin/mail mirrors the hello@studylah.education mailbox (hosted on
+SiteGround) and replies from the panel. Facts:
+
+- `src/lib/server/mail.ts`: IMAP sync via imapflow/mailparser into the
+  EmailMessage table. READ-ONLY against the host, nothing is deleted or
+  flagged there, webmail stays the backup and source of truth. Sync runs on
+  page load (throttled to every 2 min) plus a "Check mail now" button.
+  Cursor = Setting keys mail.lastUid / mail.uidValidity / mail.lastSyncAt.
+  HTML bodies are converted to text server-side and NEVER rendered raw (XSS).
+- Replies send via the existing Resend pipeline as MAIL_FROM (default
+  "StudyLah <hello@studylah.education>") with In-Reply-To/References headers,
+  and are stored direction="out" in the thread. Local dev = data/outbox stub.
+- Env: MAIL_IMAP_HOST / MAIL_IMAP_PORT / MAIL_IMAP_USER / MAIL_IMAP_PASSWORD
+  (+ optional MAIL_FROM). Unset = the tab shows setup instructions.
+- Threads group by counterpart address, unread badges, archive/unarchive.
+  UI follows the WhatsApp inbox pattern.
+- Local gotcha discovered here: `prisma migrate dev`/`deploy` hang or error
+  while ANY server holds the SQLite file, and the local Prisma 7.8 schema
+  engine errored on this DB; migrations in this repo are hand-written SQL
+  (see prisma/migrations naming) applied with sqlite3 + a matching-checksum
+  row in _prisma_migrations, so Railway's `migrate deploy` still applies them
+  cleanly in prod.
+
 ## Deploy awareness (v2.17): updates never eat a student's quiz
 
 Reality on Railway with the SQLite volume: while a push BUILDS, the old app

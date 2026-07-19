@@ -577,6 +577,30 @@ model SocialMessage {
 // One turn of a WhatsApp conversation with Gugu (via the Meta Cloud API
 // webhook). waId is the visitor's WhatsApp number; msgId is Meta's message id,
 // unique so redelivered webhooks can't double-process the same message.
+// A mirrored copy of the hello@ mailbox (IMAP sync from the mail host) plus
+// replies sent from the admin panel. The mail host stays the source of truth;
+// this table exists so the owner can read and reply without leaving /admin.
+model EmailMessage {
+  id        String   @id @default(cuid())
+  // RFC Message-ID, unique so re-syncs never duplicate.
+  messageId String   @unique
+  // The other party's address (sender for inbound, recipient for outbound).
+  counterpart String
+  fromName  String   @default("")
+  subject   String
+  // Plain text body (HTML emails are converted server-side, never rendered raw).
+  body      String
+  direction String // "in" | "out"
+  inReplyTo String?
+  sentAt    DateTime
+  seen      Boolean  @default(false)
+  archived  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([counterpart, sentAt])
+  @@index([archived, sentAt])
+}
+
 model WaMessage {
   id        String   @id @default(cuid())
   waId      String
