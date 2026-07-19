@@ -43,6 +43,7 @@ import type { Pricing } from "@/lib/pricing";
 import { getPricing } from "@/lib/server/pricing-store";
 import { ExamCountdown } from "@/components/exam-countdown";
 import { HeroBackdrop } from "@/components/hero-backdrop";
+import { PackCarousel } from "@/components/pack-carousel";
 import { SocialProof } from "@/components/social-proof";
 import { NamedIcon } from "@/components/icons";
 
@@ -795,18 +796,24 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
   );
 }
 
-// Compliant reworking of the "three product packs" merchandising idea: real
+// Compliant reworking of the "product packs" merchandising idea: real
 // subjects, real forecast framing (no "predicted papers", no "sure appear",
 // no invented scarcity), each pack a link into its subject page.
+// Sequence matters: the wheel shows [0,1,2] at rest, so Chemistry (index 1)
+// starts as the large centre box, and scrolling turns the wheel through
+// Social Studies, Geography and History.
 const FEATURED_PACKS = [
-  { level: "o-level", slug: "chemistry-pure", grad: "linear-gradient(155deg,#7c1fff 0%,#3d007a 100%)" },
   { level: "o-level", slug: "physics-pure", grad: "linear-gradient(155deg,#0066ff 0%,#002e7a 100%)" },
+  { level: "o-level", slug: "chemistry-pure", grad: "linear-gradient(155deg,#7c1fff 0%,#3d007a 100%)" },
   { level: "o-level", slug: "biology-pure", grad: "linear-gradient(155deg,#00b34a 0%,#00521f 100%)" },
+  { level: "o-level", slug: "social-studies", grad: "linear-gradient(155deg,#ff00a8 0%,#b80079 100%)" },
+  { level: "o-level", slug: "geography-pure", grad: "linear-gradient(155deg,#00b3c8 0%,#004e5c 100%)" },
+  { level: "o-level", slug: "history-pure", grad: "linear-gradient(155deg,#ff1f4c 0%,#5e0519 100%)" },
 ] as const;
 
-// The three 2026 packs, rendered as a plain 3-up row for use inside the hero.
-// A real PNG at public/packs/<level>/<slug>.png takes over automatically;
-// until then each pack falls back to the styled gradient card.
+// The 2026 packs inside the hero. With the box renders present this is the
+// scroll-driven wheel (three visible, centre largest); if renders are
+// missing it falls back to a static 3-up of styled gradient cards.
 function PackRow() {
   const packs = FEATURED_PACKS.map((p) => {
     const rel = `/packs/${p.level}/${p.slug}.png`;
@@ -820,22 +827,30 @@ function PackRow() {
       img: hasImg ? rel : null,
     };
   });
+
+  const withImg = packs.filter(
+    (p): p is (typeof packs)[number] & { img: string } => p.img !== null
+  );
+  if (withImg.length >= 3) {
+    return (
+      <div className="sm:-mx-8 md:-mx-16 lg:-mx-24">
+        <PackCarousel
+          packs={withImg.map((p) => ({
+            slug: p.slug,
+            level: p.level,
+            name: p.name,
+            img: p.img,
+          }))}
+        />
+      </div>
+    );
+  }
+
   return (
-    <div className="mx-auto flex max-w-4xl items-end justify-center sm:-mx-8 md:-mx-16 lg:-mx-24">
-      {packs.map((p, i) =>
+    <div className="mx-auto grid max-w-4xl grid-cols-3 gap-1">
+      {packs.slice(0, 3).map((p) =>
         p.img ? (
-          // Fanned trio: the centre pack is largest and forward, the two
-          // sides tuck slightly behind it and tilt outward.
-          <div
-            key={p.slug}
-            className={`relative aspect-[333/456] ${
-              i === 1
-                ? "z-20 w-[46%]"
-                : i === 0
-                  ? "z-10 w-[40%] origin-bottom-right -rotate-[6deg] -mr-[5%]"
-                  : "z-10 w-[40%] origin-bottom-left rotate-[6deg] -ml-[5%]"
-            }`}
-          >
+          <div key={p.slug} className="relative aspect-[333/456] w-full">
             <Image
               src={p.img}
               alt={`${p.name}, StudyLah 2026 pack`}
