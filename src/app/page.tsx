@@ -187,12 +187,12 @@ function Hero({ pricing }: { pricing: Pricing }) {
           </div>
 
           {/* Headline, sized to land the eye on the key words. */}
-          <h1 className="mt-5 flex max-w-4xl flex-col font-display font-black leading-[1.02] tracking-tight text-white">
-            <span className="text-4xl sm:text-6xl">Stop revising blind.</span>
-            <span className="mt-1 text-3xl font-extrabold text-cloud sm:text-5xl">
+          <h1 className="mt-5 flex max-w-5xl flex-col font-display font-black leading-[1.02] tracking-tight text-white">
+            <span className="text-5xl sm:text-7xl">Stop revising blind.</span>
+            <span className="mt-1 text-4xl font-extrabold text-cloud sm:text-6xl">
               Walk in knowing
             </span>
-            <span className="mt-1 text-5xl text-accent sm:text-7xl">
+            <span className="mt-1 text-6xl text-accent sm:text-8xl">
               what&apos;s likely.
             </span>
           </h1>

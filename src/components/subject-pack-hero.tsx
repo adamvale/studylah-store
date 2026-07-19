@@ -1,0 +1,75 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+
+// The subject page's box render. Starts as a big product shot right under
+// the title, filling most of the viewport height. As the visitor scrolls it
+// shrinks smoothly into a small floating icon pinned under the site header,
+// and stays floating there for the rest of the page.
+//
+// IMPORTANT: this component must be a DIRECT child of the page's root
+// column. A sticky element can only travel within its parent, so nesting it
+// in a small wrapper would un-pin it as soon as the wrapper scrolls past.
+// The whole component is the sticky element; its layout box keeps the page
+// flow stable while the visual shrinks via transform. pointer-events-none
+// so the (mostly empty) scaled region never blocks clicks on content.
+
+const SHRINK_OVER_PX = 380; // scroll distance for full-size -> icon
+const MIN_SCALE = 0.16;
+
+export function SubjectPackHero({ img, alt }: { img: string; alt: string }) {
+  const [p, setP] = useState(0); // 0 = full size, 1 = floating icon
+  const [reduced, setReduced] = useState(false);
+  const raf = useRef(0);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(mq.matches);
+    if (mq.matches) return;
+    const onScroll = () => {
+      cancelAnimationFrame(raf.current);
+      raf.current = requestAnimationFrame(() => {
+        setP(Math.min(1, Math.max(0, window.scrollY / SHRINK_OVER_PX)));
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf.current);
+    };
+  }, []);
+
+  if (reduced) {
+    return (
+      <div className="relative mx-auto mt-6 h-56 w-full sm:h-72">
+        <Image src={img} alt={alt} fill priority sizes="300px" className="object-contain drop-shadow-2xl" />
+      </div>
+    );
+  }
+
+  const scale = 1 - (1 - MIN_SCALE) * p;
+
+  return (
+    <div className="pointer-events-none sticky top-[68px] z-30 mt-4 flex h-[46svh] min-h-[260px] justify-center sm:h-[52svh]">
+      <div
+        className="relative h-full will-change-transform"
+        style={{
+          aspectRatio: "2 / 3",
+          transform: `scale(${scale})`,
+          transformOrigin: "top center",
+        }}
+      >
+        <Image
+          src={img}
+          alt={alt}
+          fill
+          priority
+          sizes="(max-width: 640px) 70vw, 420px"
+          className="object-contain drop-shadow-2xl"
+        />
+      </div>
+    </div>
+  );
+}

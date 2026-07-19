@@ -68,7 +68,7 @@ export function PackCarousel({ packs }: { packs: CarouselPack[] }) {
     <div ref={outerRef} className="relative w-full">
       <div
         ref={stageRef}
-        className="sticky top-[calc(50svh-150px)] mx-auto h-[300px] w-full max-w-4xl sm:top-[calc(50svh-190px)] sm:h-[380px] md:top-[calc(50svh-220px)] md:h-[440px]"
+        className="sticky top-[calc(50svh-175px)] mx-auto h-[350px] w-full max-w-5xl sm:top-[calc(50svh-235px)] sm:h-[470px] md:top-[calc(50svh-280px)] md:h-[560px]"
       >
         {packs.map((p, i) => {
           const rel = i - centre; // 0 = centre, -1 = left slot, +1 = right slot
