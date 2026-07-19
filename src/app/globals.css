@@ -456,7 +456,10 @@ html[data-native] .native-screen {
    The bars carry data-bottom-cta only while actually visible, so Gugu drops
    back to its normal position when no bar is showing. */
 body:has([data-bottom-cta]) .gugu-fab {
-  bottom: 5.5rem;
+  /* Locked so the ghost's shadow overlaps the very top of the bottom bar's
+     yellow button (button top sits ~53px + safe-area above the viewport
+     bottom on the sticky bars). */
+  bottom: calc(2.75rem + env(safe-area-inset-bottom, 0px));
 }
 
 /* Cap the chat panel's height to the space above the (possibly-lifted) widget

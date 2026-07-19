@@ -49,7 +49,7 @@ export function PackCarousel({ packs }: { packs: CarouselPack[] }) {
         const rel = i - centre; // 0 = centre, -1 = left slot, +1 = right slot
         const abs = Math.abs(rel);
         if (abs > 2.2) return null; // far off-stage, skip entirely
-        const scale = 1.12 - 0.22 * Math.min(abs, 1.2);
+        const scale = 1.22 - 0.36 * Math.min(abs, 1.2); // centre 1.22, sides 0.86
         const opacity = Math.min(1, Math.max(0, 1.9 - abs));
         return (
           <div
