@@ -9,6 +9,17 @@ import { NamedIcon, IconFlame, type IconName } from "@/components/icons";
 
 type Confidence = "sure" | "unsure" | "guess";
 
+// Start-screen lines, rotated by day. Original, honest, no grade promises.
+const QUOTES = [
+  "Ten focused minutes today beat three panicked hours in October.",
+  "The paper rewards the topics you practised, not the hours you worried.",
+  "Small daily reps are how strangers become easy marks.",
+  "You do not rise to the exam, you fall to your practice. Build the floor.",
+  "Every question you fix today is a mark you keep in November.",
+  "Consistency is quiet. So is confidence on exam day.",
+  "One page a day turns into a syllabus by September.",
+];
+
 const CONFIDENCE_UI: { key: Confidence; label: string }[] = [
   { key: "sure", label: "Sure" },
   { key: "unsure", label: "Think so" },
@@ -75,6 +86,8 @@ export function DailyQuiz({
   nextUp?: NextUpItem[];
 }) {
   const [open, setOpen] = useState(!doneToday);
+  // Wizard: "start" screen (the day's quote), then one question per screen.
+  const [stage, setStage] = useState<"start" | number>("start");
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [confidence, setConfidence] = useState<Record<string, Confidence>>({});
   const [submitting, setSubmitting] = useState(false);
@@ -330,117 +343,192 @@ export function DailyQuiz({
     );
   }
 
-  // --- Active quiz ---
+  // --- Active quiz, one screen at a time ---
+  const quote = QUOTES[new Date().getDate() % QUOTES.length];
+  const mcqCount = questions.filter((q) => q.type === "mcq").length;
+  const writtenCount = questions.length - mcqCount;
+
+  if (stage === "start") {
+    return (
+      <div className="glass-deep p-6 text-center sm:p-8">
+        <p className="flex items-center justify-center gap-2 font-mono text-xs text-body">
+          <IconFlame size={13} className="text-accent" /> {streak}-day streak
+        </p>
+        <p className="mx-auto mt-4 max-w-md font-display text-xl font-bold leading-snug text-ink sm:text-2xl">
+          &ldquo;{quote}&rdquo;
+        </p>
+        <p className="mt-4 text-sm text-body">
+          Today&apos;s three: {mcqCount} multiple choice
+          {writtenCount > 0 ? ` and ${writtenCount} written` : ""}, marked
+          instantly. About two minutes.
+        </p>
+        <button
+          type="button"
+          onClick={() => setStage(0)}
+          className="sl-btn mt-5 px-8"
+        >
+          Start
+        </button>
+      </div>
+    );
+  }
+
+  const qi = Math.min(stage, questions.length - 1);
+  const q = questions[qi];
+  const qAnswered = (answers[q.id] ?? "") !== "" && Boolean(confidence[q.id]);
+  const isLast = qi === questions.length - 1;
+
   return (
-    <div className="space-y-5">
+    <div className="space-y-4">
       <div className="flex items-center justify-between">
         <p className="text-sm text-body">
           {doneToday ? "Bonus practice" : "3 quick questions · marked instantly"}
         </p>
-        <p className="flex items-center gap-1 font-mono text-xs text-body"><IconFlame size={13} className="text-accent" /> {streak}-day streak</p>
+        <p className="flex items-center gap-1 font-mono text-xs text-body">
+          <IconFlame size={13} className="text-accent" /> {streak}-day streak
+        </p>
       </div>
 
-      {questions.map((q, i) => (
-        <div
-          key={q.id}
-          className={`rounded-2xl border bg-surface p-5 ${
-            q.resurrected ? "border-violet/50" : "border-hairline"
-          }`}
-        >
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <p className="font-mono text-xs text-accent">
-              {q.subjectName} · {q.topic}
-            </p>
-            <span className="flex items-center gap-2">
-              {q.resurrected && (
-                <span className="rounded-full bg-violet/15 px-2 py-0.5 text-xs font-medium text-violet">
-                  a monster returns
-                </span>
-              )}
-              {q.review && (
-                <span className="rounded-full bg-teal/15 px-2 py-0.5 text-xs font-medium text-teal">
-                  memory check
-                </span>
-              )}
-              <span className="font-mono text-xs text-body">
-                {i + 1} of {questions.length}
-              </span>
-            </span>
-          </div>
-          <p className="mt-2 font-medium text-ink">{q.stem}</p>
+      {/* progress segments */}
+      <div className="flex gap-1.5" aria-hidden>
+        {questions.map((qq, i) => (
+          <span
+            key={qq.id}
+            className={`h-1.5 flex-1 rounded-full ${
+              i < qi
+                ? "bg-accent"
+                : i === qi
+                  ? "bg-accent/70"
+                  : "bg-white/10"
+            }`}
+          />
+        ))}
+      </div>
 
-          {q.type === "mcq" && q.options ? (
-            <div className="mt-3 space-y-2">
-              {q.options.map((opt, oi) => {
-                const selected = answers[q.id] === String(oi);
-                return (
-                  <label
-                    key={oi}
-                    className={`flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-2.5 text-sm transition-colors ${
-                      selected
-                        ? "border-accent bg-night text-ink"
-                        : "border-hairline bg-night text-body hover:border-accent/60"
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      name={q.id}
-                      checked={selected}
-                      onChange={() => setAnswers((a) => ({ ...a, [q.id]: String(oi) }))}
-                      className="accent-accent"
-                    />
-                    {opt}
-                  </label>
-                );
-              })}
-            </div>
-          ) : (
+      <div
+        key={q.id}
+        className={`rounded-2xl border bg-surface p-5 ${
+          q.resurrected ? "border-violet/50" : "border-hairline"
+        }`}
+      >
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <p className="font-mono text-xs text-accent">
+            {q.subjectName} · {q.topic}
+          </p>
+          <span className="flex items-center gap-2">
+            {q.resurrected && (
+              <span className="rounded-full bg-violet/15 px-2 py-0.5 text-xs font-medium text-violet">
+                a monster returns
+              </span>
+            )}
+            {q.review && (
+              <span className="rounded-full bg-teal/15 px-2 py-0.5 text-xs font-medium text-teal">
+                memory check
+              </span>
+            )}
+            <span className="font-mono text-xs text-body">
+              {qi + 1} of {questions.length}
+            </span>
+          </span>
+        </div>
+        <p className="mt-2 font-medium text-ink">{q.stem}</p>
+
+        {q.type === "mcq" && q.options ? (
+          <div className="mt-3 space-y-2">
+            {q.options.map((opt, oi) => {
+              const selected = answers[q.id] === String(oi);
+              return (
+                <label
+                  key={oi}
+                  className={`flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-2.5 text-sm transition-colors ${
+                    selected
+                      ? "border-accent bg-night text-ink"
+                      : "border-hairline bg-night text-body hover:border-accent/60"
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name={q.id}
+                    checked={selected}
+                    onChange={() => setAnswers((a) => ({ ...a, [q.id]: String(oi) }))}
+                    className="accent-accent"
+                  />
+                  {opt}
+                </label>
+              );
+            })}
+          </div>
+        ) : (
+          <>
+            <p className="mt-2 text-xs text-body">
+              Written answer, type it the way you would on the paper.
+            </p>
             <input
               type="text"
               value={answers[q.id] ?? ""}
               onChange={(e) => setAnswers((a) => ({ ...a, [q.id]: e.target.value }))}
               placeholder="Your answer"
-              className="mt-3 w-full rounded-xl border border-hairline bg-night px-4 py-2.5 text-sm text-ink outline-none focus:border-accent"
+              className="mt-2 w-full rounded-xl border border-hairline bg-night px-4 py-2.5 text-sm text-ink outline-none focus:border-accent"
             />
-          )}
+          </>
+        )}
 
-          {/* Calibration tap, how sure are you? */}
-          {(answers[q.id] ?? "") !== "" && (
-            <div className="mt-3 flex flex-wrap items-center gap-2">
-              <span className="text-xs text-body">How sure?</span>
-              {CONFIDENCE_UI.map(({ key, label }) => (
-                <button
-                  key={key}
-                  type="button"
-                  onClick={() => setConfidence((c) => ({ ...c, [q.id]: key }))}
-                  className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
-                    confidence[q.id] === key
-                      ? "border-accent text-accent"
-                      : "border-hairline text-body hover:text-ink"
-                  }`}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
+        {/* Calibration tap, how sure are you? */}
+        {(answers[q.id] ?? "") !== "" && (
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <span className="text-xs text-body">How sure?</span>
+            {CONFIDENCE_UI.map(({ key, label }) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => setConfidence((c) => ({ ...c, [q.id]: key }))}
+                className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+                  confidence[q.id] === key
+                    ? "border-accent text-accent"
+                    : "border-hairline text-body hover:text-ink"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
 
       {error && <p className="text-sm text-coral">{error}</p>}
 
-      <button
-        type="button"
-        onClick={() => void submit()}
-        disabled={submitting || answeredCount === 0 || missingConfidence > 0}
-        className="w-full rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5 disabled:opacity-50"
-      >
-        {submitting
-          ? "Marking…"
-          : missingConfidence > 0
-          ? `Tap "How sure?" on ${missingConfidence} more`
-          : "Mark my answers"}
-      </button>
+      <div className="flex items-center justify-between gap-3">
+        <button
+          type="button"
+          onClick={() => setStage(qi === 0 ? "start" : qi - 1)}
+          className="chip hover:border-accent/60"
+        >
+          Back
+        </button>
+        {isLast ? (
+          <button
+            type="button"
+            onClick={() => void submit()}
+            disabled={submitting || answeredCount === 0 || missingConfidence > 0}
+            className="sl-btn flex-1 disabled:opacity-50"
+          >
+            {submitting
+              ? "Marking…"
+              : missingConfidence > 0
+                ? `Tap "How sure?" first`
+                : "Mark my answers"}
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={() => setStage(qi + 1)}
+            disabled={!qAnswered}
+            className="sl-btn flex-1 disabled:opacity-50"
+          >
+            Next
+          </button>
+        )}
+      </div>
     </div>
   );
 }

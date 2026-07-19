@@ -15,8 +15,7 @@ import Image from "next/image";
 // flow stable while the visual shrinks via transform. pointer-events-none
 // so the (mostly empty) scaled region never blocks clicks on content.
 
-const SHRINK_OVER_PX = 380; // scroll distance for full-size -> icon
-const MIN_SCALE = 0.16;
+const SHRINK_OVER_PX = 700; // scroll distance for full-size -> icon (gentle)
 
 export function SubjectPackHero({ img, alt }: { img: string; alt: string }) {
   const [p, setP] = useState(0); // 0 = full size, 1 = floating icon
@@ -49,18 +48,18 @@ export function SubjectPackHero({ img, alt }: { img: string; alt: string }) {
     );
   }
 
-  const scale = 1 - (1 - MIN_SCALE) * p;
+  // The element's real HEIGHT interpolates from hero size down to icon
+  // size, so the page flow collapses with the image and no empty band is
+  // left between the image and the content below it. The image simply
+  // fills the shrinking box, no transform needed.
+  const heightSvh = 58 - 46 * p; // 58svh -> 12svh
 
   return (
-    <div className="pointer-events-none sticky top-[68px] z-30 mt-2 flex h-[58svh] min-h-[320px] justify-center sm:h-[54svh]">
-      <div
-        className="relative h-full will-change-transform"
-        style={{
-          aspectRatio: "2 / 3",
-          transform: `scale(${scale})`,
-          transformOrigin: "top center",
-        }}
-      >
+    <div
+      className="pointer-events-none sticky top-[68px] z-30 mt-2 flex justify-center"
+      style={{ height: `${heightSvh}svh`, minHeight: 90 }}
+    >
+      <div className="relative h-full" style={{ aspectRatio: "2 / 3" }}>
         <Image
           src={img}
           alt={alt}

@@ -81,8 +81,8 @@ export function FastTrackHub({ progress }: { progress: FamilyProgress[] }) {
         </div>
       </div>
 
-      {/* family tabs */}
-      <div className="mt-4 flex flex-wrap gap-2">
+      {/* family tabs, always one row of three (compact on phones) */}
+      <div className="mt-4 grid grid-cols-3 gap-2">
         {progress.map((fam) => {
           const meta = FAMILY_META[fam.family];
           const p = famProgress[fam.family];
@@ -92,15 +92,16 @@ export function FastTrackHub({ progress }: { progress: FamilyProgress[] }) {
               key={fam.family}
               type="button"
               onClick={() => setView({ family: fam.family })}
-              className={`rounded-xl border px-4 py-2 text-left transition-colors ${
+              className={`rounded-xl border px-2 py-2 text-left transition-colors sm:px-4 ${
                 active ? "border-accent bg-accent/10" : "border-hairline bg-surface hover:border-accent/50"
               }`}
             >
-              <span className="flex items-center gap-2 font-display text-sm font-bold text-ink">
-                <NamedIcon name={meta.emoji as IconName} size={16} className="inline text-accent" /> {meta.label}
+              <span className="flex items-center gap-1.5 font-display text-xs font-bold text-ink sm:gap-2 sm:text-sm">
+                <NamedIcon name={meta.emoji as IconName} size={14} className="inline shrink-0 text-accent" /> {meta.label}
               </span>
-              <span className="mt-0.5 block font-mono text-[11px] text-body">
-                {p.mastered}/{p.total} plays mastered
+              <span className="mt-0.5 block font-mono text-[10px] text-body sm:text-[11px]">
+                {p.mastered}/{p.total}
+                <span className="hidden sm:inline"> plays mastered</span>
               </span>
             </button>
           );

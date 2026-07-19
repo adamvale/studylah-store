@@ -166,7 +166,10 @@ export async function pickDailyQuestions(
   customerId: string,
   day: string,
   excludeQuestionIds: Set<string> = new Set(),
-  count: number = DAILY_COUNT
+  count: number = DAILY_COUNT,
+  // Format mix: how many of the picks should be typed short-answer
+  // ("structured") questions. The daily three targets 2 MCQ + 1 written.
+  targetShort: number = 0
 ): Promise<DailyPick[]> {
   const pool: DailyPick[] = [];
   for (const s of subjects) {
@@ -186,17 +189,37 @@ export async function pickDailyQuestions(
     [idx[i], idx[j]] = [idx[j], idx[i]];
   }
 
-  // Pass 1: at most one question per subject, for variety. Pass 2: fill the
-  // rest from whatever's left (covers customers who own only one subject).
+  // Type quotas first (2 MCQ + 1 written when the bank allows), subject
+  // variety second, then a final fill so thin banks still get 3 questions.
+  const shortQuota = Math.min(targetShort, count);
   const chosen: number[] = [];
   const usedSubjects = new Set<string>();
+  const counts = { short: 0, mcq: 0 };
+  const typeOf = (i: number) => (pool[i].question.type === "short" ? "short" : "mcq");
+  const quotaLeft = (t: "short" | "mcq") =>
+    t === "short" ? counts.short < shortQuota : counts.mcq < count - shortQuota;
+
+  // Pass 1: quotas + one question per subject.
   for (const i of idx) {
     if (chosen.length >= count) break;
     const key = `${pool[i].subject.level}/${pool[i].subject.slug}`;
     if (usedSubjects.has(key)) continue;
+    const t = typeOf(i);
+    if (!quotaLeft(t)) continue;
     chosen.push(i);
     usedSubjects.add(key);
+    counts[t] += 1;
   }
+  // Pass 2: quotas, subjects may repeat.
+  for (const i of idx) {
+    if (chosen.length >= count) break;
+    if (chosen.includes(i)) continue;
+    const t = typeOf(i);
+    if (!quotaLeft(t)) continue;
+    chosen.push(i);
+    counts[t] += 1;
+  }
+  // Pass 3: fill regardless of type (bank too thin for the target mix).
   for (const i of idx) {
     if (chosen.length >= count) break;
     if (!chosen.includes(i)) chosen.push(i);
@@ -276,12 +299,18 @@ export async function dailyPicks(
   const exclude = new Set(
     [...resurrected, ...reviews].map((r) => r.question.id)
   );
+  // The day's mix targets 2 MCQ + 1 written; resurrections/reviews count
+  // toward it with whatever type they happen to be.
+  const shortAlready = [...resurrected, ...reviews].filter(
+    (r) => r.question.type === "short"
+  ).length;
   const fresh = await pickDailyQuestions(
     subjects,
     customerId,
     day,
     exclude,
-    DAILY_COUNT - resurrected.length - reviews.length
+    DAILY_COUNT - resurrected.length - reviews.length,
+    Math.max(0, 1 - shortAlready)
   );
   return [...resurrected, ...reviews, ...fresh];
 }
