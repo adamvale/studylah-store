@@ -70,7 +70,12 @@ export function UpdateWatcher() {
       role="status"
       className="fixed inset-x-3 bottom-20 z-50 md:inset-x-auto md:bottom-6 md:right-6 md:max-w-sm print:hidden"
     >
-      <div className="glass flex items-start gap-3 !rounded-2xl border-accent/40 p-4">
+      {/* Solid surface, not .glass: a floating toast over arbitrary content
+          must be readable, translucency let the page text bleed through. */}
+      <div
+        className="flex items-start gap-3 rounded-2xl border border-accent/40 p-4 shadow-[0_12px_40px_rgba(5,2,20,0.7)]"
+        style={{ backgroundColor: "#191238" }}
+      >
         <span className="icon-orb shrink-0 text-accent" aria-hidden>
           {phase === "updating" ? <IconRepeat size={18} /> : <IconSparkle size={18} />}
         </span>
