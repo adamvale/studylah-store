@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-// The hero pack wheel. Six boxes in a fixed sequence, three visible at a
-// time with the centre one largest. Scrolling the page turns the wheel
-// anti-clockwise: boxes glide left, tilt as they go, and exit on the left
-// while the next one enters from the right. Pure transform/opacity work on
-// a rAF-throttled scroll listener, no layout thrash.
+// The hero pack conveyor. Six boxes in a fixed sequence, three visible at a
+// time with the centre one largest, all standing perfectly upright with a
+// gap between them. Scrolling the page slides the row horizontally: boxes
+// glide left, fade out at the left edge, and the next enters from the
+// right. Pure transform/opacity work on a rAF-throttled scroll listener.
 
 export interface CarouselPack {
   slug: string;
@@ -52,18 +52,18 @@ export function PackCarousel({ packs }: { packs: CarouselPack[] }) {
         const rel = i - centre; // 0 = centre, -1 = left slot, +1 = right slot
         const abs = Math.abs(rel);
         if (abs > 2.2) return null; // far off-stage, skip entirely
-        const scale = 1.16 - 0.26 * Math.min(abs, 1.2);
-        const rotate = rel * 9; // travels right→centre→left = anti-clockwise
+        const scale = 1.12 - 0.22 * Math.min(abs, 1.2);
         const opacity = Math.min(1, Math.max(0, 1.9 - abs));
         return (
           <Link
             key={p.slug}
             href={`/${p.level}/${p.slug}`}
             aria-label={`${p.name}, 2026 pack`}
-            className="absolute left-1/2 top-1/2 block h-[92%] will-change-transform"
+            className="absolute left-1/2 top-1/2 block h-[88%] will-change-transform"
             style={{
               aspectRatio: "2 / 3",
-              transform: `translate(-50%, -50%) translateX(${rel * 78}%) rotate(${rotate}deg) scale(${scale})`,
+              // 112% spacing = a clear breathing gap between upright boxes.
+              transform: `translate(-50%, -50%) translateX(${rel * 112}%) scale(${scale})`,
               opacity,
               zIndex: 30 - Math.round(abs * 10),
               pointerEvents: abs > 1.3 ? "none" : "auto",
