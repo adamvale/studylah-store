@@ -696,7 +696,7 @@ export function GuguChat() {
   if (!mounted || pathname.startsWith("/account")) return null;
 
   return (
-    <div className="gugu-fab pointer-events-none fixed bottom-20 left-4 z-40 flex flex-col items-start gap-3 transition-[bottom] duration-200 sm:bottom-8 print:hidden">
+    <div className="gugu-fab pointer-events-none fixed bottom-4 left-4 z-40 flex flex-col items-start gap-3 transition-[bottom] duration-200 sm:bottom-8 print:hidden">
       {/* Chat panel, StudyLah Legends arcade-HUD styling (mint #4ef3c9 frame,
           pixel-font labels, pink user bubbles, gold pressable Ask button, faint
           CRT scanlines). Answer text stays Inter for readability.

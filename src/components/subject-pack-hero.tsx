@@ -52,7 +52,7 @@ export function SubjectPackHero({ img, alt }: { img: string; alt: string }) {
   const scale = 1 - (1 - MIN_SCALE) * p;
 
   return (
-    <div className="pointer-events-none sticky top-[68px] z-30 mt-4 flex h-[46svh] min-h-[260px] justify-center sm:h-[52svh]">
+    <div className="pointer-events-none sticky top-[68px] z-30 mt-2 flex h-[58svh] min-h-[320px] justify-center sm:h-[54svh]">
       <div
         className="relative h-full will-change-transform"
         style={{
