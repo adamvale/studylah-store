@@ -821,16 +821,16 @@ function PackRow() {
     };
   });
   return (
-    <div className="mx-auto grid max-w-4xl grid-cols-3 gap-0.5 sm:gap-1">
+    <div className="mx-auto grid max-w-4xl grid-cols-3 gap-0 sm:-mx-8 md:-mx-16 lg:-mx-24">
       {packs.map((p) =>
         p.img ? (
-          <div key={p.slug} className="relative aspect-[333/456] w-full">
+          <div key={p.slug} className="relative aspect-[333/456] w-full scale-110 sm:scale-[1.18]">
             <Image
               src={p.img}
               alt={`${p.name}, StudyLah 2026 pack`}
               fill
               priority
-              sizes="(max-width: 640px) 33vw, 300px"
+              sizes="(max-width: 640px) 40vw, 360px"
               className="object-contain drop-shadow-2xl"
             />
           </div>
