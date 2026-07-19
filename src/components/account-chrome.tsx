@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { AccountNav } from "@/components/account-nav";
 import { GhostCompanion, PlayerHeader } from "@/components/game";
 import { FxLayer } from "@/components/game-fx";
+import { UpdateWatcher } from "@/components/update-watcher";
 import { hud } from "@/lib/game/fx";
 
 // One StudyLand shell for every surface. The web dashboard and the Capacitor
@@ -106,6 +107,9 @@ export function AccountChrome({
       </div>
       <WebTabBar isMaster={isMaster} />
       <FxLayer />
+      {/* Deploy awareness: quiet toast when a Railway swap is in progress or
+          an update landed mid-session. Never blocks, never auto-refreshes. */}
+      <UpdateWatcher />
     </div>
   );
 }

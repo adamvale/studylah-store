@@ -93,12 +93,23 @@ export function DailyQuiz({
     setSubmitting(true);
     setError(null);
     try {
-      const res = await fetch("/api/account/daily-quiz/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ answers, confidence }),
-      });
-      if (!res.ok) throw new Error();
+      // Up to 3 attempts, 4s apart: a submit that lands during the ~1 minute
+      // Railway deploy swap succeeds on retry instead of losing the quiz.
+      let res: Response | null = null;
+      for (let attempt = 0; attempt < 3; attempt++) {
+        try {
+          res = await fetch("/api/account/daily-quiz/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ answers, confidence }),
+          });
+          if (res.ok || (res.status < 500 && res.status !== 0)) break;
+        } catch {
+          res = null; // network refused: server mid-restart, wait and retry
+        }
+        if (attempt < 2) await new Promise((r) => setTimeout(r, 4000));
+      }
+      if (!res || !res.ok) throw new Error();
       const data = (await res.json()) as SubmitResponse;
       setResult(data);
       // The juice: fly-up + HUD bar + ceremonies + sounds (native shell).

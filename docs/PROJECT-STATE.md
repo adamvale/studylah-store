@@ -124,6 +124,29 @@ here now; the plan is to fold each Play into the game later as a trainable
   stable = mastery keys). Adding families later means adding to `PLAYBOOKS`,
   `FAMILY_META`, and `familyForSubject`.
 
+## Deploy awareness (v2.17): updates never eat a student's quiz
+
+Reality on Railway with the SQLite volume: while a push BUILDS, the old app
+serves normally (no downtime, so do NOT turn on maintenance mode for routine
+deploys); the visible gap is the container swap, about a minute, and the app
+cannot serve its own maintenance page during it. The system that handles it:
+
+- `/api/version` beacon (returns the commit sha / deployment id, no-store).
+  Also the Railway healthcheckPath (railway.json), so traffic only switches
+  once the new container actually serves.
+- `UpdateWatcher` (mounted in AccountChrome): polls the beacon every 45s and
+  on tab focus. Two failed polls in a row = swap in progress, shows a quiet
+  glass toast "System and content updating" (non-blocking). A successful
+  poll with a NEW version = "StudyLand just got an update, finish your quiz,
+  then refresh" with a Refresh button. Never auto-refreshes.
+- Daily-quiz submit retries up to 3 times, 4s apart, on network failure/5xx,
+  so an answer sent during the swap lands instead of erroring.
+- The manual maintenance mode (flag file + proxy rewrite, /admin) stays for
+  BIG jobs only: schema migrations, content restructures, anything where the
+  site must actually close.
+
+Owner workflow for normal updates: just push. No maintenance toggle needed.
+
 ## SEO / AI-search layer (v2.16)
 
 Focused on "O Level / N Level Chemistry Physics Biology" queries. When
