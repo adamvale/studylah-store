@@ -799,9 +799,9 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
 // subjects, real forecast framing (no "predicted papers", no "sure appear",
 // no invented scarcity), each pack a link into its subject page.
 const FEATURED_PACKS = [
-  { level: "o-level", slug: "chemistry-pure", grad: "linear-gradient(155deg,#0fb5ae 0%,#0a3a36 100%)" },
-  { level: "o-level", slug: "biology-science", grad: "linear-gradient(155deg,#3fbf5f 0%,#0f3a1e 100%)" },
-  { level: "na-level", slug: "biology", grad: "linear-gradient(155deg,#c9a227 0%,#3a2e0a 100%)" },
+  { level: "o-level", slug: "chemistry-pure", grad: "linear-gradient(155deg,#7c1fff 0%,#3d007a 100%)" },
+  { level: "o-level", slug: "physics-pure", grad: "linear-gradient(155deg,#0066ff 0%,#002e7a 100%)" },
+  { level: "o-level", slug: "biology-pure", grad: "linear-gradient(155deg,#00b34a 0%,#00521f 100%)" },
 ] as const;
 
 // The three 2026 packs, rendered as a plain 3-up row for use inside the hero.
