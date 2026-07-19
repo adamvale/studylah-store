@@ -3147,8 +3147,13 @@ function PadBtn({
 
 function Panel({ title, children }: { title: React.ReactNode; children: React.ReactNode }) {
   return (
-    <div className="absolute inset-0 z-[60] flex items-end justify-center bg-black/60 p-4 pb-[max(env(safe-area-inset-bottom),16px)] sm:items-center">
-      <div className="max-h-[80vh] w-full max-w-md overflow-y-auto rounded-2xl border border-accent/40 bg-surface p-5 shadow-2xl">
+    <div className="absolute inset-0 z-[60] flex items-end justify-center bg-black/70 p-4 pb-[max(env(safe-area-inset-bottom),16px)] sm:items-center">
+      {/* Solid panel body (bg-surface is a 9% tint and let the world bleed
+          through the text): the game menus follow the floating-panel rule. */}
+      <div
+        className="max-h-[80vh] w-full max-w-md overflow-y-auto rounded-2xl border border-accent/40 p-5 shadow-2xl"
+        style={{ backgroundColor: "#191238" }}
+      >
         <p className="font-display text-lg font-bold text-ink">{title}</p>
         <div className="mt-2">{children}</div>
       </div>
