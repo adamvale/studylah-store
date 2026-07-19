@@ -1,3 +1,5 @@
+import { existsSync } from "fs";
+import { join } from "path";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -28,6 +30,12 @@ export async function SubjectView({ subject }: { subject: Subject }) {
   const copy = subjectCopy(subject.level, subject.slug);
   const products = productsForSubject(subject);
   const packPreview = packPreviewFor(subject.level, subject.slug);
+  // The 3D box render, if one exists for this subject (public/packs/...).
+  const packImg = existsSync(
+    join(process.cwd(), "public", "packs", subject.level, `${subject.slug}.png`)
+  )
+    ? `/packs/${subject.level}/${subject.slug}.png`
+    : null;
 
   const title = copy
     ? `${subject.name} ${copy.syllabusCode}`
@@ -90,38 +98,59 @@ export async function SubjectView({ subject }: { subject: Subject }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <nav aria-label="Breadcrumb" className="text-sm text-body">
-        <Link href={`/${subject.level}`} className="hover:underline">
-          {LEVELS[subject.level].name}
-        </Link>{" "}
-        <span aria-hidden="true">/</span>{" "}
-        <span className="text-ink">{subject.name}</span>
-      </nav>
-      <h1 className="mt-2 font-display text-4xl font-black tracking-tight text-ink">
-        {title}
-      </h1>
-      {examPapersFor(subject.level, subject.slug).length > 0 ? (
-        <ExamSchedule
-          papers={examPapersFor(subject.level, subject.slug)}
-          className="mt-4 max-w-2xl"
-        />
-      ) : (
-        <ExamCountdown className="mt-3" />
-      )}
+      <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-start lg:gap-10">
+        <div className="min-w-0">
+          <nav aria-label="Breadcrumb" className="text-sm text-body">
+            <Link href={`/${subject.level}`} className="hover:underline">
+              {LEVELS[subject.level].name}
+            </Link>{" "}
+            <span aria-hidden="true">/</span>{" "}
+            <span className="text-ink">{subject.name}</span>
+          </nav>
+          <h1 className="mt-2 font-display text-4xl font-black tracking-tight text-ink">
+            {title}
+          </h1>
+          {examPapersFor(subject.level, subject.slug).length > 0 ? (
+            <ExamSchedule
+              papers={examPapersFor(subject.level, subject.slug)}
+              className="mt-4 max-w-2xl"
+            />
+          ) : (
+            <ExamCountdown className="mt-3" />
+          )}
 
-      {/* One quantified claim leads the page. A single claim reads as analysis;
-          stacked claims read as advertising. */}
-      {copy ? (
-        <blockquote className="mt-4 max-w-2xl border-l-4 border-accent pl-4 font-display text-xl font-bold leading-snug text-ink">
-          &ldquo;{copy.heroHook}&rdquo;
-        </blockquote>
-      ) : (
-        <p className="mt-2 max-w-xl text-body">
-          Know what&apos;s likely, drill exactly that, and sit a full mock before
-          the real {LEVELS[subject.level].name}{" "}{subject.name}{" "}paper, so 2026
-          feels familiar, not frightening.
-        </p>
-      )}
+          {/* One quantified claim leads the page. A single claim reads as
+              analysis; stacked claims read as advertising. */}
+          {copy ? (
+            <blockquote className="mt-4 max-w-2xl border-l-4 border-accent pl-4 font-display text-xl font-bold leading-snug text-ink">
+              &ldquo;{copy.heroHook}&rdquo;
+            </blockquote>
+          ) : (
+            <p className="mt-2 max-w-xl text-body">
+              Know what&apos;s likely, drill exactly that, and sit a full mock
+              before the real {LEVELS[subject.level].name}{" "}{subject.name}{" "}
+              paper, so 2026 feels familiar, not frightening.
+            </p>
+          )}
+        </div>
+
+        {/* The 2026 pack render, product-shot style, beside the intro on
+            desktop and above the fold on mobile. */}
+        {packImg && (
+          <div className="row-start-1 mx-auto w-44 shrink-0 sm:w-52 lg:col-start-2 lg:w-60">
+            <div className="relative aspect-[333/456] w-full">
+              <Image
+                src={packImg}
+                alt={`${subject.name} 2026 Exam Forecast pack, StudyLah`}
+                fill
+                priority
+                sizes="(max-width: 640px) 176px, 240px"
+                className="object-contain drop-shadow-2xl"
+              />
+            </div>
+          </div>
+        )}
+      </div>
 
       {/* Bundle upsell right under the title, most students sit several
           subjects, and the per-subject price drops the more they add. */}

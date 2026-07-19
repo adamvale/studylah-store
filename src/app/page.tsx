@@ -821,16 +821,27 @@ function PackRow() {
     };
   });
   return (
-    <div className="mx-auto grid max-w-4xl grid-cols-3 gap-0 sm:-mx-8 md:-mx-16 lg:-mx-24">
-      {packs.map((p) =>
+    <div className="mx-auto flex max-w-4xl items-end justify-center sm:-mx-8 md:-mx-16 lg:-mx-24">
+      {packs.map((p, i) =>
         p.img ? (
-          <div key={p.slug} className="relative aspect-[333/456] w-full scale-110 sm:scale-[1.18]">
+          // Fanned trio: the centre pack is largest and forward, the two
+          // sides tuck slightly behind it and tilt outward.
+          <div
+            key={p.slug}
+            className={`relative aspect-[333/456] ${
+              i === 1
+                ? "z-20 w-[46%]"
+                : i === 0
+                  ? "z-10 w-[40%] origin-bottom-right -rotate-[6deg] -mr-[5%]"
+                  : "z-10 w-[40%] origin-bottom-left rotate-[6deg] -ml-[5%]"
+            }`}
+          >
             <Image
               src={p.img}
               alt={`${p.name}, StudyLah 2026 pack`}
               fill
               priority
-              sizes="(max-width: 640px) 40vw, 360px"
+              sizes="(max-width: 640px) 45vw, 400px"
               className="object-contain drop-shadow-2xl"
             />
           </div>
