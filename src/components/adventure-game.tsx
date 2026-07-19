@@ -2060,7 +2060,7 @@ export function AdventureGame({
 
   if (!mounted) return null;
   return createPortal(
-    <div className="fixed inset-0 z-[55] bg-night" data-testid="fog-frontier">
+    <div className="fixed inset-0 z-[55]" style={{ backgroundColor: "#0c0920" }} data-testid="fog-frontier">
       {/* the world */}
       <canvas
         ref={canvasRef}

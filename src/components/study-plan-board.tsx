@@ -133,7 +133,7 @@ export function StudyPlanBoard({
       {xpToast && (
         <p
           role="status"
-          className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full border border-accent/50 bg-night px-5 py-2.5 font-mono text-sm font-bold text-accent shadow-lg"
+          className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full border border-accent/50 px-5 py-2.5 font-mono text-sm font-bold text-accent shadow-lg" style={{ backgroundColor: "#191238" }}
         >
           {xpToast}
         </p>

@@ -94,7 +94,10 @@ function Dropdown({
           role="menu"
           // Mobile: centred on the button and clamped to the viewport so it
           // never clips off-screen; sm+: standard left-anchored dropdown.
-          className="absolute left-1/2 top-full z-30 mt-1 w-56 max-w-[calc(100vw-2rem)] -translate-x-1/2 rounded-xl border border-hairline bg-night-2 p-1.5 shadow-xl sm:left-0 sm:w-64 sm:translate-x-0"
+          // Solid surface (not the translucent bg-night-2): a menu floating
+          // over page content must be readable, same rule as the update toast.
+          className="absolute left-1/2 top-full z-30 mt-1 w-56 max-w-[calc(100vw-2rem)] -translate-x-1/2 rounded-xl border border-hairline p-1.5 shadow-[0_12px_40px_rgba(5,2,20,0.7)] sm:left-0 sm:w-64 sm:translate-x-0"
+          style={{ backgroundColor: "#191238" }}
         >
           {group.links.map((l) => {
             const current = pathname.startsWith(l.href);

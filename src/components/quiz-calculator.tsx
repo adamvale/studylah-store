@@ -270,7 +270,7 @@ export function QuizCalculator() {
       </button>
 
       {open && (
-        <div className="fixed left-1/2 top-16 z-40 w-[min(20rem,92vw)] -translate-x-1/2 rounded-2xl border border-hairline bg-night p-3 shadow-2xl print:hidden">
+        <div className="fixed left-1/2 top-16 z-40 w-[min(20rem,92vw)] -translate-x-1/2 rounded-2xl border border-hairline p-3 shadow-2xl print:hidden" style={{ backgroundColor: "#191238" }}>
           {/* Header with an explicit close button. */}
           <div className="mb-2 flex items-center justify-between">
             <span className="font-pixel text-[9px] uppercase tracking-wide text-body">
