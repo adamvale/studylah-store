@@ -168,7 +168,12 @@ function Hero({ pricing }: { pricing: Pricing }) {
   const { alacartePrice } = pricing;
   const { perfect, total } = scorecardHeadline();
   return (
-    <section className="relative flex items-center overflow-hidden md:min-h-[calc(100svh-4.5rem)]">
+    <section
+      // overflow-x-clip, not overflow-hidden: hidden would break the pack
+      // carousel's position:sticky pinning; clip still contains horizontal
+      // bleed from the breakout row (the backdrop clips itself).
+      className="relative flex items-center overflow-x-clip md:min-h-[calc(100svh-4.5rem)]"
+    >
       <HeroBackdrop />
       <div className="mx-auto flex w-full max-w-4xl flex-col items-center px-4 pb-24 pt-14 text-center lg:pt-16">
         <div className="fade-up flex w-full flex-col items-center">
