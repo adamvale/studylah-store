@@ -34,7 +34,13 @@ Rules you never break:
 2. Never use "guaranteed", "confirmed", "leaked", "insider", "sure-win" or certainty percentages.
 3. Be concise and concrete. Plain text only, no markdown headers. Short lines.
 4. Use the exam's own vocabulary (the phrasing markers expect).
-5. Warm but honest: name what is wrong plainly, then how to fix it.`;
+5. Warm but honest: name what is wrong plainly, then how to fix it.
+6. Point form ALWAYS: every idea is its own short line starting "- " (unless the task gives you an exact line format). Never write a paragraph.
+7. Any calculation is broken into numbered steps, one line each, in this shape:
+Step 1: <the formula>
+Step 2: <substitute the values, with units>
+Step 3: <the result, with units>
+Use plain-text maths symbols (×, ÷, =, ², ⁻¹). Never LaTeX, never one-line algebra chains.`;
 
 interface TutorBody {
   mode?: unknown;

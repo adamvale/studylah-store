@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AccountNav } from "@/components/account-nav";
-import { GhostCompanion, PlayerHeader } from "@/components/game";
+import { GhostCompanion } from "@/components/game";
 import { FxLayer } from "@/components/game-fx";
 import { UpdateWatcher } from "@/components/update-watcher";
 import { hud } from "@/lib/game/fx";
@@ -46,23 +46,49 @@ export function AccountChrome({
   }, [player.level, player.intoLevel]);
   void todayDone;
   void shields;
+  // Streak now lives where it has context (the Today hero chip), not in the
+  // chrome, one less repeated element at the top of every screen.
+  void streak;
 
   // Mobile-app-first: ambient gradient backdrop, glass chrome, and a bottom
   // tab bar on phones (hidden from md up, where the top nav pills take over).
   return (
     <div className="studyland min-h-dvh">
       <div className="mx-auto max-w-3xl px-4 pb-24 pt-8 md:pb-12 md:pt-12">
-        {/* print:hidden, printed pages (e.g. the rescue plan) keep content only */}
+        {/* One compact header: a single ghost, a single wordmark, and the
+            level/XP strip folded underneath. (The old chrome stacked a brand
+            row, an email row AND a separate player bar, the top of every
+            screen repeated itself.) print:hidden keeps printed pages clean. */}
         <div className="flex items-center justify-between gap-3 print:hidden">
           <div className="flex min-w-0 items-center gap-3">
             <span className="icon-orb shrink-0" aria-hidden>
               <GhostCompanion level={player.level} size={30} />
             </span>
             <div className="min-w-0">
-              <p className="truncate font-display text-xl font-extrabold tracking-tight text-ink">
-                Study<span className="text-accent">Land</span>
+              <p className="flex min-w-0 items-center gap-2">
+                <span className="truncate font-display text-xl font-extrabold tracking-tight text-ink">
+                  Study<span className="text-accent">Land</span>
+                </span>
+                <span className="shrink-0 rounded-full bg-accent/15 px-2 py-0.5 font-mono text-[11px] font-bold text-accent">
+                  Lv {player.level}
+                </span>
               </p>
-              <p className="truncate text-xs text-body">{email}</p>
+              {/* Title never truncates (it IS the reward); the bar flexes and
+                  the raw numbers only join from sm up. */}
+              <div className="mt-1 flex items-center gap-2">
+                <span className="shrink-0 text-xs font-semibold text-body">
+                  {player.title}
+                </span>
+                <span className="h-1 min-w-8 max-w-24 flex-1 overflow-hidden rounded-full bg-night">
+                  <span
+                    className="block h-full rounded-full bg-accent"
+                    style={{ width: `${player.progressPct}%` }}
+                  />
+                </span>
+                <span className="hidden shrink-0 font-mono text-[10px] text-body sm:inline">
+                  {player.intoLevel}/{player.needed} XP
+                </span>
+              </div>
             </div>
           </div>
           <form action="/api/account/logout" method="post" className="shrink-0">
@@ -70,21 +96,11 @@ export function AccountChrome({
               type="submit"
               className="chip hover:border-accent/60"
               aria-label="Sign out"
+              title={email}
             >
               Sign out
             </button>
           </form>
-        </div>
-
-        <div className="mt-4 print:hidden">
-          <PlayerHeader
-            level={player.level}
-            title={player.title}
-            intoLevel={player.intoLevel}
-            needed={player.needed}
-            progressPct={player.progressPct}
-            streak={streak}
-          />
         </div>
 
         {/* Top nav pills, desktop + tablet; phones use the bottom bar */}

@@ -446,9 +446,32 @@ html[data-native] .native-screen {
 .mascot-bob {
   animation: mascot-bob 3.2s ease-in-out infinite;
 }
+
+/* Hero eyebrow pill: drops in once, then keeps a gentle float + a slow glow
+   breath so it reads alive without stealing focus from the headline. */
+@keyframes hero-pill-in {
+  from { opacity: 0; transform: translateY(-14px) scale(0.94); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes hero-pill-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes hero-pill-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 214, 10, 0); }
+  50% { box-shadow: 0 0 18px 2px rgba(255, 214, 10, 0.18); }
+}
+.hero-pill {
+  animation:
+    hero-pill-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both,
+    hero-pill-float 5s ease-in-out 0.9s infinite,
+    hero-pill-glow 5s ease-in-out 0.9s infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .btn-pixel, .btn-pixel-green { transition: none; }
   .mascot-bob { animation: none; }
+  .hero-pill { animation: none; }
 }
 
 /* Lift the floating Gugu helper above any bottom sticky CTA bar (bundle

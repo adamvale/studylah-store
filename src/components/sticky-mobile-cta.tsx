@@ -24,7 +24,12 @@ export function StickyMobileCta() {
   if (SUBJECT_DETAIL.test(pathname)) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-30 border-t border-white/10 bg-night-2/95 px-3 pb-[calc(0.55rem+env(safe-area-inset-bottom))] pt-2.5 backdrop-blur sm:hidden print:hidden">
+    <div
+      // data-bottom-cta lifts the Gugu ghost so it sits right above the yellow
+      // button instead of covering it (see globals.css).
+      data-bottom-cta=""
+      className="fixed inset-x-0 bottom-0 z-30 border-t border-white/10 bg-night-2/95 px-3 pb-[calc(0.55rem+env(safe-area-inset-bottom))] pt-2.5 backdrop-blur sm:hidden print:hidden"
+    >
       <div className="mx-auto flex max-w-md gap-2">
         <Link
           href="/diagnostic"

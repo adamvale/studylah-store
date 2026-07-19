@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { emitGame, emitFx, type FxGame } from "@/lib/game/fx";
 import { NamedIcon, type IconName } from "@/components/icons";
+import { TeachText } from "@/components/teach-text";
 
 // ── The Academy: Subject Gurus ───────────────────────────────────────────────
 // One Guru per subject the student is ENROLLED in. A Guru teaches a short,
@@ -240,9 +241,10 @@ export function SubjectGuru({ onClose }: { onClose: () => void }) {
                 {screen.beats[screen.idx].tag}
               </p>
               <p className="mt-2 font-bold text-ink">{screen.beats[screen.idx].title}</p>
-              <p className="mt-1 whitespace-pre-line text-sm text-body">
-                {screen.beats[screen.idx].body}
-              </p>
+              <TeachText
+                text={screen.beats[screen.idx].body}
+                className="mt-1 text-sm text-body"
+              />
             </div>
             <button
               type="button"
@@ -312,9 +314,10 @@ export function SubjectGuru({ onClose }: { onClose: () => void }) {
                 <p className="mt-1 text-sm text-body">Answer: {screen.correctAnswer}</p>
               )}
               {screen.workedSolution && (
-                <p className="mt-2 whitespace-pre-line text-left text-xs text-body">
-                  {screen.workedSolution}
-                </p>
+                <TeachText
+                  text={screen.workedSolution}
+                  className="mt-2 text-left text-xs text-body"
+                />
               )}
             </div>
             <button

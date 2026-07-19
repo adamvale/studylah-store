@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { emitGame, emitFx, type FxGame } from "@/lib/game/fx";
 import type { WorldSubject } from "@/lib/game/world2";
 import { NamedIcon, type IconName } from "@/components/icons";
+import { TeachText } from "@/components/teach-text";
 
 // ── The Duel Hall ──────────────────────────────────────────────────────────
 // Asynchronous friend-vs-friend duels: a sealed, server-dealt set of 5
@@ -377,7 +378,7 @@ export function DuelHall({
                   <p className="font-bold text-ink">
                     Q{i + 1}, {r.correct ? "✓ yours" : `✗ answer: ${r.correctAnswer}`}
                   </p>
-                  <p className="mt-1 text-body">{r.workedSolution}</p>
+                  <TeachText text={r.workedSolution} className="mt-1 text-body" />
                 </div>
               ))}
             <button

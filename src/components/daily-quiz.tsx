@@ -6,6 +6,7 @@ import type { PublicDailyQuestion } from "@/lib/server/study";
 import { emitGame, emitFx } from "@/lib/game/fx";
 import { GuruTeach } from "./guru-teach";
 import { NamedIcon, IconFlame, type IconName } from "@/components/icons";
+import { TeachText } from "@/components/teach-text";
 
 type Confidence = "sure" | "unsure" | "guess";
 
@@ -278,7 +279,7 @@ export function DailyQuiz({
                 )}
               </p>
             )}
-            <p className="mt-2 text-sm text-body">{r.workedSolution}</p>
+            <TeachText text={r.workedSolution} className="mt-2 text-sm text-body" />
           </div>
         ))}
 

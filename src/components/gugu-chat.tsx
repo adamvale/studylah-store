@@ -695,8 +695,11 @@ export function GuguChat() {
   // client-side navigation in and out of /account toggles it correctly.
   if (!mounted || pathname.startsWith("/account")) return null;
 
+  // No transition on `bottom`: on iOS the safe-area inset shifts while the
+  // toolbar collapses mid-scroll, and an eased bottom made Gugu lag behind
+  // the (instantly repositioned) bottom bar. Rigid = always locked to it.
   return (
-    <div className="gugu-fab pointer-events-none fixed bottom-4 left-4 z-40 flex flex-col items-start gap-3 transition-[bottom] duration-200 sm:bottom-8 print:hidden">
+    <div className="gugu-fab pointer-events-none fixed bottom-4 left-4 z-40 flex flex-col items-start gap-3 sm:bottom-8 print:hidden">
       {/* Chat panel, StudyLah Legends arcade-HUD styling (mint #4ef3c9 frame,
           pixel-font labels, pink user bubbles, gold pressable Ask button, faint
           CRT scanlines). Answer text stays Inter for readability.

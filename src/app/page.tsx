@@ -175,10 +175,10 @@ function Hero({ pricing }: { pricing: Pricing }) {
       className="relative flex items-center overflow-x-clip md:min-h-[calc(100svh-4.5rem)]"
     >
       <HeroBackdrop />
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center px-4 pb-24 pt-14 text-center lg:pt-16">
+      <div className="mx-auto flex w-full max-w-4xl flex-col items-center px-4 pb-12 pt-7 text-center lg:pt-8">
         <div className="fade-up flex w-full flex-col items-center">
-          {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs font-medium text-cloud backdrop-blur">
+          {/* Eyebrow, animated: drops in, then floats gently */}
+          <div className="hero-pill inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs font-medium text-cloud backdrop-blur">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
@@ -288,16 +288,17 @@ function ProblemGlyph({ char }: { char: string }) {
   );
 }
 
-// "The Problem" agitation section: names the pain a parent feels before we show
-// the fix. Drop the 3D man-on-cloud art at public/marketing/parent-thinking.webp
-// and it appears; until then the section renders cleanly without it.
+// "The Problem" agitation section: names the pain a parent feels before we
+// show the fix. Two overheard-after-the-paper speech bubbles (chat style,
+// alternating sides) and a verdict card that dims the wrong explanations and
+// lights up the real one.
 function TheProblem() {
   const artPath = "/marketing/parent-thinking.webp";
   const hasArt = existsSync(
     join(process.cwd(), "public", "marketing", "parent-thinking.webp")
   );
   return (
-    <section aria-labelledby="problem-heading" className="reveal py-20">
+    <section aria-labelledby="problem-heading" className="reveal pb-16 pt-8">
       <div className="mx-auto max-w-3xl px-4 text-center">
         <div className="flex justify-center">
           <SectionGhost />
@@ -333,43 +334,65 @@ function TheProblem() {
           and again. Yet on exam day, they walk out saying:
         </p>
 
-        <div className="mt-8 grid gap-5 text-left sm:grid-cols-2">
+        {/* Overheard after the paper: chat-style bubbles, tail toward the
+            speaker's side, so the pain reads as a real voice, not a card. */}
+        <div className="mx-auto mt-8 flex max-w-xl flex-col gap-4 text-left">
           {[
-            "This didn't come out. I didn't expect that question.",
-            "I knew the topic, but I didn't know how to answer.",
-          ].map((quote) => (
-            <blockquote
-              key={quote}
-              className="rounded-2xl border border-hairline bg-surface p-6"
+            {
+              quote: "This didn't come out. I didn't expect that question.",
+              where: "Outside the exam hall",
+              side: "left" as const,
+            },
+            {
+              quote: "I knew the topic, but I didn't know how to answer.",
+              where: "At the dinner table",
+              side: "right" as const,
+            },
+          ].map((q) => (
+            <div
+              key={q.quote}
+              className={`flex ${q.side === "right" ? "justify-end" : "justify-start"}`}
             >
-              <span
-                aria-hidden="true"
-                className="font-display text-4xl font-black leading-none text-coral"
+              <blockquote
+                className={`relative max-w-[88%] rounded-2xl border border-coral/30 bg-surface px-5 py-4 sm:max-w-md ${
+                  q.side === "right" ? "rounded-br-md" : "rounded-bl-md"
+                }`}
               >
-                &ldquo;
-              </span>
-              <p className="mt-1 text-base font-medium italic leading-relaxed text-cloud">
-                {quote}
-              </p>
-            </blockquote>
+                <p className="text-base font-semibold leading-snug text-white">
+                  &ldquo;{q.quote}&rdquo;
+                </p>
+                <p className="mt-2 flex items-center gap-1.5 font-mono text-[10px] font-medium uppercase tracking-wide text-coral/80">
+                  <span aria-hidden="true" className="h-1 w-1 rounded-full bg-coral" />
+                  {q.where}
+                </p>
+              </blockquote>
+            </div>
           ))}
         </div>
 
-        <div className="mt-6 rounded-2xl border border-hairline bg-surface/60 p-8">
-          <p className="font-display text-2xl font-black text-coral">
-            The Big Question:
-          </p>
-          <ul className="mx-auto mt-5 flex max-w-md flex-col gap-3 text-lg">
-            <li className="flex items-center justify-center gap-3 text-cloud">
+        {/* The verdict: two dimmed wrong explanations, then the real one lit. */}
+        <div className="mx-auto mt-6 max-w-xl overflow-hidden rounded-2xl border border-hairline text-left">
+          <div className="border-b border-hairline bg-surface px-5 py-3.5">
+            <p className="font-display text-lg font-black text-coral">
+              The Big Question:
+            </p>
+          </div>
+          <ul className="divide-y divide-hairline">
+            <li className="flex items-center gap-3 bg-surface/50 px-5 py-3.5 text-base text-cloud/70">
               <ProblemGlyph char="?" />
               Was it lack of effort?
             </li>
-            <li className="flex items-center justify-center gap-3 text-cloud">
+            <li className="flex items-center gap-3 bg-surface/50 px-5 py-3.5 text-base text-cloud/70">
               <ProblemGlyph char="?" />
               Was it stress?
             </li>
-            <li className="flex items-center justify-center gap-3 font-bold text-accent">
-              <ProblemGlyph char="!" />
+            <li className="flex items-center gap-3 bg-accent/10 px-5 py-4 text-base font-bold text-accent">
+              <span
+                aria-hidden="true"
+                className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-xs font-black text-night"
+              >
+                !
+              </span>
               Or was it simply... inefficient preparation?
             </li>
           </ul>

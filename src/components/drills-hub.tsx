@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { IconCheckCircle } from "@/components/icons";
+import { TeachText } from "@/components/teach-text";
 
 // The Drills hub: four micro-trainers on one page.
 //   Definitions - spaced-repetition flashcards from the definition bank
@@ -255,9 +256,10 @@ function CardDrill({ kind }: { kind: "definition" | "formula" }) {
                   )}
                 </>
               ) : (
-                <p className="whitespace-pre-wrap text-sm leading-relaxed text-ink">
-                  {card.back}
-                </p>
+                <TeachText
+                  text={card.back}
+                  className="text-sm leading-relaxed text-ink"
+                />
               )}
               {card.note && (
                 <p className="mt-2 text-xs text-body">{card.note}</p>
@@ -394,9 +396,10 @@ function ExplainBack({ subjects }: { subjects: SubjectTopics[] }) {
           <p className="text-xs font-bold uppercase tracking-wide text-violet">
             Coach's feedback
           </p>
-          <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-ink">
-            {feedback}
-          </p>
+          <TeachText
+            text={feedback}
+            className="mt-2 text-sm leading-relaxed text-ink"
+          />
           <p className="mt-2 text-[10px] text-body">
             AI coach feedback, always cross-check against your notes and
             syllabus.
@@ -553,9 +556,10 @@ function StructuredTrainer({ cards }: { cards: StructuredCard[] }) {
           <p className="text-xs font-bold uppercase tracking-wide text-guarantee">
             Model answer (crediting phrases in caps)
           </p>
-          <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-ink">
-            {card.model}
-          </p>
+          <TeachText
+            text={card.model}
+            className="mt-2 text-sm leading-relaxed text-ink"
+          />
         </div>
       )}
     </div>

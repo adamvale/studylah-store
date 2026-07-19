@@ -222,10 +222,22 @@ skin. Facts that matter when editing:
   families, subject-family maps) now hold ICON NAMES in those fields and
   every render site draws `<NamedIcon/>`. Do not add emoji to copy, data,
   or chat strings.
+- **Point form for all answers and teachings** (owner rule). Every teaching,
+  feedback, or worked-solution surface in StudyLand and StudyLah Legends
+  renders through `src/components/teach-text.tsx` (`TeachText`): "- " lines
+  become bulleted points, "Step 1:" / "1." lines become numbered calculation
+  steps, ✓/✗ lines tint, "Label:" lead-ins bold, and unstructured prose is
+  sentence-split into points (abbreviation-guarded, display-only, source text
+  never mutated). The AI tutor prompts (`api/account/tutor`) mandate point
+  form and Step 1/2/3 calculation layout with plain-text maths symbols. New
+  answer/teaching surfaces must render via TeachText, not raw `<p>`.
 - **One chrome for web + native** (`account-chrome.tsx`): the old pixel
   GameHud/GameTabs native branch is deleted; the Capacitor shell renders the
-  same glass header, PlayerHeader and Today/Learn/Progress/Legends/Account
-  bottom bar as the web app (FxLayer stays mounted for XP fly-ups).
+  same glass header and Today/Learn/Progress/Legends/Account bottom bar as
+  the web app (FxLayer stays mounted for XP fly-ups). The header is ONE
+  merged row (ghost + StudyLand wordmark + Lv chip + title + XP bar + Sign
+  out); the separate email row, PlayerHeader block and dashboard
+  "StudyLand" chip were removed as redundant repeats.
   `home-base.tsx` is deleted. The "Every PDF is watermarked" footer is gone
   everywhere; the dashboard footer now says "iOS and Android app coming".
 - **Gugu is storefront-only**: `gugu-chat.tsx` returns null on `/account*`

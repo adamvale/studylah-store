@@ -8,7 +8,7 @@ export function SocialProof() {
   if (TESTIMONIALS.length === 0) return null;
 
   return (
-    <section aria-labelledby="voices-heading" className="border-y border-hairline py-16">
+    <section aria-labelledby="voices-heading" className="py-16">
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex justify-center">
           <Image

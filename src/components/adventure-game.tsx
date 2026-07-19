@@ -72,6 +72,7 @@ import {
   GUGU_HUES,
 } from "@/lib/game/mz";
 import { MzFace } from "@/components/mz-face";
+import { TeachText } from "@/components/teach-text";
 import { actProgress, groupEligibleFrom, type ActContext } from "@/lib/game/acts";
 import {
   BattleStage,
@@ -2413,9 +2414,10 @@ export function AdventureGame({
               <p className="text-sm text-body">
                 Correct answer: <span className="font-medium text-ink">{battle.result.correctAnswer}</span>
               </p>
-              <p className="rounded-xl border border-hairline bg-night p-3 text-sm text-body">
-                {battle.result.workedSolution}
-              </p>
+              <TeachText
+                text={battle.result.workedSolution}
+                className="rounded-xl border border-hairline bg-night p-3 text-sm text-body"
+              />
               <button
                 type="button"
                 onClick={() => setBattle((b) => (b ? { ...b, phase: "strike", result: undefined } : b))}
@@ -2445,9 +2447,10 @@ export function AdventureGame({
                 </p>
               )}
               {battle.result && (
-                <p className="rounded-xl border border-hairline bg-night p-3 text-sm text-body">
-                  {battle.result.workedSolution}
-                </p>
+                <TeachText
+                  text={battle.result.workedSolution}
+                  className="rounded-xl border border-hairline bg-night p-3 text-sm text-body"
+                />
               )}
               <button
                 type="button"
@@ -2505,9 +2508,10 @@ export function AdventureGame({
                   <p className="text-sm text-body">
                     Correct answer: <span className="font-medium text-ink">{trainer.result.correctAnswer}</span>
                   </p>
-                  <p className="rounded-xl border border-hairline bg-night p-3 text-sm text-body">
-                    {trainer.result.workedSolution}
-                  </p>
+                  <TeachText
+                    text={trainer.result.workedSolution}
+                    className="rounded-xl border border-hairline bg-night p-3 text-sm text-body"
+                  />
                 </>
               )}
               <button
@@ -2777,9 +2781,10 @@ export function AdventureGame({
           <p className="mt-2 rounded-xl border border-hairline bg-night p-3 text-xs text-body">
             {wipeLetter.stem}
           </p>
-          <p className="mt-2 rounded-xl border border-hairline bg-night p-3 text-sm text-body">
-            {wipeLetter.solution}
-          </p>
+          <TeachText
+            text={wipeLetter.solution}
+            className="mt-2 rounded-xl border border-hairline bg-night p-3 text-sm text-body"
+          />
           <p className="mt-2 text-xs italic text-body">{COPY.wipeLetterOutro}</p>
           <button
             type="button"

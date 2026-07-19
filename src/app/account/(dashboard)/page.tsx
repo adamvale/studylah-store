@@ -25,7 +25,6 @@ import {
   IconRepeat,
   IconCrown,
   IconCap,
-  IconSparkle,
   IconBolt,
   IconGhost,
   IconBook,
@@ -325,15 +324,12 @@ export default async function TodayPage() {
     <div className="space-y-8">
       {/* ── Hero: the greeting + the week, app-dashboard style. The layout
           follows the Query reference: soft-glow bloom behind the greeting,
-          a small agent chip, the gradient name, then exactly TWO primary
-          action cards so the screen asks for one decision, not ten. ── */}
+          the gradient name, then exactly TWO primary action cards so the
+          screen asks for one decision, not ten. (No "StudyLand" chip here,
+          the chrome header directly above already carries the wordmark.) ── */}
       <div className="relative">
         <div className="sl-bloom" aria-hidden />
-        <span className="chip !py-1 text-[11px]">
-          <IconSparkle size={13} className="text-accent" />
-          StudyLand
-        </span>
-        <div className="mt-3 flex flex-wrap items-end justify-between gap-2">
+        <div className="flex flex-wrap items-end justify-between gap-2">
           <div>
             <p className="text-sm font-medium text-body">{todayLabel()}</p>
             <h2 className="mt-0.5 font-display text-3xl font-extrabold tracking-tight text-ink">

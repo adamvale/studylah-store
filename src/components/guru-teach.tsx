@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { NamedIcon, type IconName } from "@/components/icons";
+import { TeachText } from "@/components/teach-text";
 
 // "Guru, teach me": a small button beside a revealed answer that expands into
 // a step-by-step walkthrough of that exact question, delivered in the Subject
@@ -147,9 +148,10 @@ export function GuruTeach({
           ✕
         </button>
       </div>
-      <p className="mt-3 min-h-[3rem] text-sm leading-relaxed text-ink">
-        {steps[step]}
-      </p>
+      <TeachText
+        text={steps[step]}
+        className="mt-3 min-h-[3rem] text-sm leading-relaxed text-ink"
+      />
       {/* Distractor autopsy: on the final step of an MCQ, offer to dissect
           every wrong option (which slip produces it). */}
       {canAutopsy && step >= steps.length - 1 && (
@@ -165,9 +167,10 @@ export function GuruTeach({
             </button>
           ) : (
             <div className="rounded-lg border border-hairline bg-night-2 p-3">
-              <p className="whitespace-pre-wrap text-xs leading-relaxed text-cloud">
-                {autopsy}
-              </p>
+              <TeachText
+                text={autopsy}
+                className="text-xs leading-relaxed text-cloud"
+              />
             </div>
           )}
         </div>
