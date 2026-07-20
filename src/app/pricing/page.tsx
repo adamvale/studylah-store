@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getSubject, sgd, tierProducts, ALLIN_EXTRA, ALLIN_FLAT, MEGA_RATIO } from "@/lib/catalogue";
+import { getSubject, sgd, tierProducts } from "@/lib/catalogue";
 import type { Pricing } from "@/lib/pricing";
+import { bundleLadder } from "@/lib/bundle-ladder";
 import { getPricing } from "@/lib/server/pricing-store";
 import { ExamCountdown } from "@/components/exam-countdown";
 
@@ -200,49 +201,10 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
   );
 }
 
-// The bundle ladder: 3, 6 and 8 Ultra subjects. Savings and the discount
-// chip measure against the FULL per-subject parts value (what all four
-// products cost a la carte, S$116 for O-Level), not just the Ultra price,
-// so the struck number is the true value of what the buyer receives.
+// The bundle ladder: 3, 6 and 8 Ultra subjects. The maths lives in
+// lib/bundle-ladder.ts so this page and /bundles can never disagree.
 function BundleTiers({ pricing }: { pricing: Pricing }) {
-  const master = pricing.tierPrice("o-level", "master");
-  const refSubject = getSubject("o-level", "chemistry-pure");
-  const masterValue = pricing.tierValue(
-    "o-level",
-    "master",
-    refSubject ? tierProducts("master", refSubject) : undefined
-  );
-  const bundles = [
-    {
-      key: "mega",
-      count: 3,
-      name: "3 subjects",
-      tag: "Mega Bundle",
-      price: Math.round(3 * master * MEGA_RATIO),
-      popular: false,
-    },
-    {
-      key: "allin6",
-      count: 6,
-      name: "6 subjects",
-      tag: "All-In",
-      price: ALLIN_FLAT["o-level"],
-      popular: true,
-    },
-    {
-      key: "allin8",
-      count: 8,
-      name: "8 subjects",
-      tag: "All-In +2",
-      price: ALLIN_FLAT["o-level"] + 2 * ALLIN_EXTRA["o-level"],
-      popular: false,
-    },
-  ].map((b) => ({
-    ...b,
-    value: b.count * masterValue,
-    savings: b.count * masterValue - b.price,
-    perSubject: b.price / b.count,
-  }));
+  const bundles = bundleLadder(pricing);
 
   return (
     <section id="bundles" className="reveal scroll-mt-24 py-12">
