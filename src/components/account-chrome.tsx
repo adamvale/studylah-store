@@ -153,7 +153,10 @@ function WebTabBar({ isMaster }: { isMaster: boolean }) {
     <nav
       aria-label="StudyLand"
       data-bottom-cta=""
-      className="fixed inset-x-3 bottom-3 z-40 rounded-3xl border border-hairline bg-night-2/80 backdrop-blur-xl md:hidden print:hidden"
+      // Flush to the screen's bottom edge (rounded top corners only): the old
+      // floating bottom-3 pill showed a dead strip beneath it whenever the
+      // browser chrome collapsed mid-scroll.
+      className="fixed inset-x-3 bottom-0 z-40 rounded-t-3xl border border-b-0 border-hairline bg-night-2/80 backdrop-blur-xl md:hidden print:hidden"
       style={{ paddingBottom: "max(env(safe-area-inset-bottom) - 0.5rem, 0px)" }}
     >
       <div className={`grid ${tabs.length === 2 ? "grid-cols-2" : "grid-cols-5"}`}>

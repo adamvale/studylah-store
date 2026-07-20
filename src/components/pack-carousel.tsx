@@ -16,7 +16,7 @@ export interface CarouselPack {
   img: string;
 }
 
-const STEP_PX = 300; // scroll distance per one-box advance
+const STEP_PX = 180; // scroll distance per one-box advance (quick turns)
 
 export function PackCarousel({ packs }: { packs: CarouselPack[] }) {
   const [progress, setProgress] = useState(0);
@@ -49,12 +49,14 @@ export function PackCarousel({ packs }: { packs: CarouselPack[] }) {
         const rel = i - centre; // 0 = centre, -1 = left slot, +1 = right slot
         const abs = Math.abs(rel);
         if (abs > 2.2) return null; // far off-stage, skip entirely
-        const scale = 1.22 - 0.36 * Math.min(abs, 1.2); // centre 1.22, sides 0.86
+        // Centre 1.16 on an 82% box = 95% of the stage, so the full folder
+        // (top flap to bottom edge) is always in view on phones.
+        const scale = 1.16 - 0.34 * Math.min(abs, 1.2); // centre 1.16, sides 0.82
         const opacity = Math.min(1, Math.max(0, 1.9 - abs));
         return (
           <div
             key={p.slug}
-            className="absolute left-1/2 top-1/2 h-[88%] will-change-transform"
+            className="absolute left-1/2 top-1/2 h-[82%] will-change-transform"
             style={{
               aspectRatio: "2 / 3",
               // 112% spacing = a clear breathing gap between upright boxes.
