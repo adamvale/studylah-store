@@ -885,7 +885,7 @@ function PackRow() {
               fill
               priority
               sizes="(max-width: 640px) 45vw, 400px"
-              className="object-contain drop-shadow-2xl"
+              className="rotate-1 object-contain drop-shadow-2xl"
             />
           </div>
         ) : (

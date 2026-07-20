@@ -15,7 +15,7 @@ import Image from "next/image";
 // flow stable while the visual shrinks via transform. pointer-events-none
 // so the (mostly empty) scaled region never blocks clicks on content.
 
-const SHRINK_OVER_PX = 700; // scroll distance for full-size -> icon (gentle)
+const SHRINK_OVER_PX = 550; // scroll distance for full-size -> icon (gentle)
 
 export function SubjectPackHero({ img, alt }: { img: string; alt: string }) {
   const [p, setP] = useState(0); // 0 = full size, 1 = floating icon
@@ -43,7 +43,7 @@ export function SubjectPackHero({ img, alt }: { img: string; alt: string }) {
   if (reduced) {
     return (
       <div className="relative mx-auto mt-6 h-56 w-full sm:h-72">
-        <Image src={img} alt={alt} fill priority sizes="300px" className="object-contain drop-shadow-2xl" />
+        <Image src={img} alt={alt} fill priority sizes="300px" className="rotate-1 object-contain drop-shadow-2xl" />
       </div>
     );
   }
@@ -60,13 +60,14 @@ export function SubjectPackHero({ img, alt }: { img: string; alt: string }) {
       style={{ height: `${heightSvh}svh`, minHeight: 90 }}
     >
       <div className="relative h-full" style={{ aspectRatio: "2 / 3" }}>
+        {/* rotate-1: the box renders lean slightly left, +1deg squares them up */}
         <Image
           src={img}
           alt={alt}
           fill
           priority
           sizes="(max-width: 640px) 70vw, 420px"
-          className="object-contain drop-shadow-2xl"
+          className="rotate-1 object-contain drop-shadow-2xl"
         />
       </div>
     </div>

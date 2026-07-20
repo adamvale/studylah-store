@@ -63,13 +63,15 @@ export function PackCarousel({ packs }: { packs: CarouselPack[] }) {
               zIndex: 30 - Math.round(abs * 10),
             }}
           >
+            {/* rotate-1: the box renders lean slightly left, +1deg squares
+                them up. Applies to every current and future pack image. */}
             <Image
               src={p.img}
               alt={`${p.name}, StudyLah 2026 pack`}
               fill
               priority={i <= 2}
               sizes="(max-width: 640px) 45vw, 340px"
-              className="object-contain drop-shadow-2xl"
+              className="rotate-1 object-contain drop-shadow-2xl"
             />
           </div>
         );
