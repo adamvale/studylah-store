@@ -29,10 +29,17 @@ COPY . .
 # Next.js inlines NEXT_PUBLIC_* values into the client bundle AT BUILD TIME.
 # On Railway (Dockerfile builds), service variables only reach the build when
 # declared as ARGs — Railway auto-populates build args with matching names.
-# Without this, the web-push public key ships as an empty string and the
-# "Remind me" toggle is dead.
+# EVERY NEXT_PUBLIC_* the app reads must be listed here, or it ships as an
+# empty string no matter what the Railway service variable says.
 ARG NEXT_PUBLIC_VAPID_PUBLIC_KEY
 ENV NEXT_PUBLIC_VAPID_PUBLIC_KEY=$NEXT_PUBLIC_VAPID_PUBLIC_KEY
+# Ad / analytics pixels (analytics.tsx). Each loads only when its id is set.
+ARG NEXT_PUBLIC_GA_ID
+ENV NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID
+ARG NEXT_PUBLIC_META_PIXEL_ID
+ENV NEXT_PUBLIC_META_PIXEL_ID=$NEXT_PUBLIC_META_PIXEL_ID
+ARG NEXT_PUBLIC_TIKTOK_PIXEL_ID
+ENV NEXT_PUBLIC_TIKTOK_PIXEL_ID=$NEXT_PUBLIC_TIKTOK_PIXEL_ID
 
 RUN npx prisma generate && npm run build
 

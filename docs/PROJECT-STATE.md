@@ -26,6 +26,13 @@ dashboards (Railway/Stripe/store accounts) and content review.
   volume at `/data` (`DATABASE_URL=file:/data/prod.db`,
   `PDF_STORAGE_DIR=/data/pdfs`). GitHub repo `adamvale/studylah-store`; the
   owner pushes via GitHub Desktop (agents have no push credentials).
+  GOTCHA: because we build via Dockerfile, EVERY `NEXT_PUBLIC_*` var the app
+  reads must be declared as an `ARG`+`ENV` in the Dockerfile, or it ships as
+  an empty string no matter what the Railway service variable says (they are
+  inlined at BUILD time, and Docker only sees build args that are declared).
+  Setting the Railway variable alone does nothing. The pixel/GA ids
+  (`NEXT_PUBLIC_META_PIXEL_ID`, `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_TIKTOK_PIXEL_ID`)
+  and `NEXT_PUBLIC_VAPID_PUBLIC_KEY` are declared there; add new ones the same way.
 - **Email**: Resend (falls back to a `data/outbox/` file stub in dev).
 - **Payments**: Stripe LIVE (PayNow + cards + Alipay/WeChat Pay). Mock mode
   when no `sk_` key, full flows testable without payment.
