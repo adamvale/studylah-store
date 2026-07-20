@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getSubject, sgd, tierProducts, ALLIN_EXTRA, ALLIN_FLAT, MEGA_RATIO } from "@/lib/catalogue";
 import type { Pricing } from "@/lib/pricing";
 import { getPricing } from "@/lib/server/pricing-store";
+import { ExamCountdown } from "@/components/exam-countdown";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/pricing" },
@@ -114,6 +115,10 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
           plan that turns ten years of exam data into a calm, focused final
           month, and the biggest saving. Start smaller only if you prefer.
         </p>
+        {/* Honest urgency: the real paper dates, nothing invented. */}
+        <div className="mt-5 flex justify-center">
+          <ExamCountdown variant="urgent" />
+        </div>
 
         <div className="mt-10 grid grid-cols-3 gap-2 sm:gap-4 md:gap-5">
           {TIERS.map((t) => {
@@ -316,6 +321,13 @@ function BundleTiers({ pricing }: { pricing: Pricing }) {
               How it works
             </Link>
           </div>
+          {/* The receipt: proof beats promises, and we keep ours public. */}
+          <p className="text-center text-xs text-body">
+            We publish every forecast hit and miss after each sitting.{" "}
+            <Link href="/accuracy" className="font-medium text-accent hover:underline">
+              Judge us on the record →
+            </Link>
+          </p>
         </div>
       </div>
     </section>

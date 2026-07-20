@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { useNativePlatform } from "@/lib/native";
 
 // Slim, dismissible new-visitor promo strip above the header. Surfaces the
@@ -10,11 +10,23 @@ import { useNativePlatform } from "@/lib/native";
 // direct lever for turning cold ad clicks into first purchases. Scrolls away
 // above the sticky header; self-hides in the native app, at checkout/account,
 // and once dismissed (device-local).
+// It also carries the live days-to-paper count: the exam calendar is the one
+// piece of urgency that is always true, so it rides the most-seen pixel row
+// on the site (war plan weapon 2, the real countdown).
 const HIDE_ON = ["/checkout", "/account", "/admin"];
+
+// First written papers open the season around 1 Oct 2026 (SEAB timetable).
+const SEASON_START = Date.UTC(2026, 9, 1);
+const DAY_MS = 24 * 60 * 60 * 1000;
+const noopSubscribe = () => () => {};
+const daysLeft = () => Math.ceil((SEASON_START - Date.now()) / DAY_MS);
 
 export function PromoBar() {
   const pathname = usePathname() ?? "";
   const native = useNativePlatform();
+  // Computed in the browser so statically generated pages never bake in a
+  // stale number; the server snapshot renders the promo line alone.
+  const days = useSyncExternalStore(noopSubscribe, daysLeft, () => null);
   // Shown by default so SSR and first client render match; an effect hides it
   // for visitors who already dismissed it.
   const [dismissed, setDismissed] = useState(false);
@@ -51,7 +63,14 @@ export function PromoBar() {
           href="/subjects"
           className="flex-1 py-2 text-center text-xs font-semibold leading-snug hover:underline sm:text-sm"
         >
-          New here? <span className="whitespace-nowrap">10% off your first order</span>{" "}
+          {days !== null && days > 0 && (
+            <span className="whitespace-nowrap">
+              <span className="font-mono font-bold">{days}</span> days to the
+              first 2026 paper
+              <span aria-hidden="true" className="mx-1.5 opacity-50">·</span>
+            </span>
+          )}
+          <span className="whitespace-nowrap">10% off your first order</span>{" "}
           with code <span className="font-mono font-bold">STUDYLAH10</span>{" "}
           <span aria-hidden="true">&rarr;</span>
         </Link>
