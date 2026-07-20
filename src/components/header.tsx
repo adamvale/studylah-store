@@ -17,12 +17,21 @@ function useSignedIn(): boolean {
   return useSyncExternalStore(noopSubscribe, hasAccountCookie, () => false);
 }
 
-const NAV = [
+interface NavItem {
+  href: string;
+  label: string;
+  children?: { href: string; label: string }[];
+}
+
+const NAV: NavItem[] = [
   { href: "/subjects", label: "Subjects" },
-  { href: "/pricing", label: "Pricing" },
   { href: "/bundles", label: "Bundles" },
-  { href: "/studyland", label: "StudyLand" },
-  { href: "/fasttrack", label: "FastTrack" },
+  {
+    href: "/studyland",
+    label: "StudyLand",
+    children: [{ href: "/fasttrack", label: "FastTrack" }],
+  },
+  { href: "/pricing", label: "Pricing" },
   { href: "/accuracy", label: "Accuracy" },
   { href: "/faq", label: "FAQ" },
 ];
@@ -63,17 +72,59 @@ export function Header() {
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4">
         <Logo href={hideCommerce ? "/account" : "/"} />
         <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
-          {(hideCommerce ? [] : NAV).map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors hover:bg-surface ${
-                pathname.startsWith(item.href) ? "text-accent" : "text-cloud"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {(hideCommerce ? [] : NAV).map((item) => {
+            const active =
+              pathname.startsWith(item.href) ||
+              (item.children?.some((c) => pathname.startsWith(c.href)) ?? false);
+            if (!item.children) {
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors hover:bg-surface ${
+                    active ? "text-accent" : "text-cloud"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            }
+            // Parent with a submenu: the link itself still navigates; hover or
+            // keyboard focus reveals the dropdown (solid panel, house rule).
+            return (
+              <div key={item.href} className="group relative">
+                <Link
+                  href={item.href}
+                  className={`flex items-center gap-1 rounded-md px-3 py-1.5 text-sm font-medium transition-colors hover:bg-surface ${
+                    active ? "text-accent" : "text-cloud"
+                  }`}
+                >
+                  {item.label}
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                    <path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+                <div className="invisible absolute left-0 top-full z-50 pt-1 opacity-0 transition-opacity duration-150 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                  <div
+                    className="min-w-40 rounded-xl border border-hairline p-1 shadow-2xl"
+                    style={{ backgroundColor: "#191238" }}
+                  >
+                    {item.children.map((c) => (
+                      <Link
+                        key={c.href}
+                        href={c.href}
+                        className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-surface ${
+                          pathname.startsWith(c.href) ? "text-accent" : "text-cloud"
+                        }`}
+                      >
+                        {c.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </nav>
         <div className="flex items-center gap-2">
           {!hideCommerce && (
@@ -128,19 +179,26 @@ export function Header() {
           className="border-t border-hairline bg-night-2/80 px-4 py-2 backdrop-blur-xl md:hidden"
         >
           {(hideCommerce
-            ? [{ href: "/account", label: accountLabel }]
+            ? [{ href: "/account", label: accountLabel, sub: false }]
             : [
-                ...NAV,
-                { href: "/diagnostic", label: "Predict your mark" },
-                { href: "/account", label: accountLabel },
+                // Children render indented directly under their parent.
+                ...NAV.flatMap((item) => [
+                  { href: item.href, label: item.label, sub: false },
+                  ...(item.children?.map((c) => ({ ...c, sub: true })) ?? []),
+                ]),
+                { href: "/diagnostic", label: "Predict your mark", sub: false },
+                { href: "/account", label: accountLabel, sub: false },
               ]
           ).map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="block rounded-md px-2 py-2.5 text-sm font-medium text-white hover:bg-surface"
+              className={`block rounded-md py-2.5 text-sm font-medium hover:bg-surface ${
+                item.sub ? "pl-7 pr-2 text-cloud" : "px-2 text-white"
+              }`}
             >
+              {item.sub ? <span aria-hidden="true" className="mr-1.5 text-body">·</span> : null}
               {item.label}
             </Link>
           ))}

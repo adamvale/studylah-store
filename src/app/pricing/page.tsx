@@ -47,6 +47,17 @@ const TIERS: {
   },
 ];
 
+// The Higgsfield style discount chip that sits beside a tier name.
+function PctChip({ price, value }: { price: number; value: number }) {
+  const pct = Math.round((1 - price / value) * 100);
+  if (pct <= 0) return null;
+  return (
+    <span className="shrink-0 rounded-full bg-coral px-1.5 py-0.5 font-mono text-[8px] font-bold uppercase tracking-wide text-night sm:px-2.5 sm:text-[11px]">
+      {pct}% off
+    </span>
+  );
+}
+
 function SaveHero({ amount, tone }: { amount: number; tone?: "accent" | "mint" }) {
   return (
     <p
@@ -105,8 +116,9 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
                     </span>
                   </span>
                 )}
-                <p className="font-display text-base font-bold text-white sm:text-2xl">
+                <p className="flex flex-wrap items-center gap-1.5 font-display text-base font-bold text-white sm:gap-2 sm:text-2xl">
                   {t.name}
+                  <PctChip price={price} value={value} />
                 </p>
 
                 {t.key === "essential" ? (
@@ -169,9 +181,18 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
   );
 }
 
-// The bundle ladder: 3, 6 and 8 Master subjects, savings as the hero number.
+// The bundle ladder: 3, 6 and 8 Master subjects. Savings and the discount
+// chip measure against the FULL per-subject parts value (what all four
+// products cost a la carte, S$116 for O-Level), not just the Master price,
+// so the struck number is the true value of what the buyer receives.
 function BundleTiers({ pricing }: { pricing: Pricing }) {
   const master = pricing.tierPrice("o-level", "master");
+  const refSubject = getSubject("o-level", "chemistry-pure");
+  const masterValue = pricing.tierValue(
+    "o-level",
+    "master",
+    refSubject ? tierProducts("master", refSubject) : undefined
+  );
   const bundles = [
     {
       key: "mega",
@@ -199,8 +220,8 @@ function BundleTiers({ pricing }: { pricing: Pricing }) {
     },
   ].map((b) => ({
     ...b,
-    value: b.count * master,
-    savings: b.count * master - b.price,
+    value: b.count * masterValue,
+    savings: b.count * masterValue - b.price,
     perSubject: b.price / b.count,
   }));
 
@@ -228,8 +249,9 @@ function BundleTiers({ pricing }: { pricing: Pricing }) {
                   Most popular
                 </span>
               )}
-              <p className="font-display text-base font-bold text-white sm:text-2xl">
+              <p className="flex flex-wrap items-center gap-1.5 font-display text-base font-bold text-white sm:gap-2 sm:text-2xl">
                 {b.name}
+                <PctChip price={b.price} value={b.value} />
               </p>
               <p className="font-mono text-[9px] font-bold uppercase tracking-wide text-teal sm:text-[11px]">
                 {b.tag}
