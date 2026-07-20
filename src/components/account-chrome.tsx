@@ -53,7 +53,10 @@ export function AccountChrome({
   // Mobile-app-first: ambient gradient backdrop, glass chrome, and a bottom
   // tab bar on phones (hidden from md up, where the top nav pills take over).
   return (
-    <div className="studyland min-h-dvh">
+    // overflow-x-clip (not hidden, which would break any sticky descendant):
+    // decorative blooms/glows bleed past the viewport edge and let iOS pan
+    // the whole page sideways without it.
+    <div className="studyland min-h-dvh overflow-x-clip">
       <div className="mx-auto max-w-3xl px-4 pb-24 pt-8 md:pb-12 md:pt-12">
         {/* One compact header: a single ghost, a single wordmark, and the
             level/XP strip folded underneath. (The old chrome stacked a brand
