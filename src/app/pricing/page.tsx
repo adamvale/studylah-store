@@ -8,11 +8,12 @@ export const metadata: Metadata = {
   alternates: { canonical: "/pricing" },
   title: "Pricing: 2026 O Level & N Level Prediction Packs and Bundles",
   description:
-    "StudyLah pricing for 2026 O-Level and N(A)-Level exam preparation: Essential, Strategic and Master tiers per subject, plus 3, 6 and 8 subject Master bundles. Instant PDF download, money-back guarantee.",
+    "StudyLah pricing for 2026 O-Level and N(A)-Level exam preparation: Starter, Plus and Ultra tiers per subject, plus 3, 6 and 8 subject Ultra bundles. Instant PDF download, money-back guarantee.",
 };
 
-// The tier ladder, savings-first: the amount SAVED is the hero number on
-// every card that has one, the price rides underneath it.
+// The tier ladder, styled after the reference: struck original price in neon
+// red, the real price slightly bigger in white beside it, and a small bold
+// grey "Save S$X" line underneath. Display names: STARTER / PLUS / ULTRA.
 const TIERS: {
   key: "essential" | "strategic" | "master";
   name: string;
@@ -22,19 +23,19 @@ const TIERS: {
 }[] = [
   {
     key: "essential",
-    name: "Essential",
+    name: "STARTER",
     note: "The entry point",
     products: ["Exam Forecast"],
   },
   {
     key: "strategic",
-    name: "Strategic",
+    name: "PLUS",
     note: "",
     products: ["Exam Forecast", "Sure Questions Vault"],
   },
   {
     key: "master",
-    name: "Master",
+    name: "ULTRA",
     note: "",
     popular: true,
     products: [
@@ -58,23 +59,33 @@ function PctChip({ price, value }: { price: number; value: number }) {
   );
 }
 
-function SaveHero({ amount, tone }: { amount: number; tone?: "accent" | "mint" }) {
+// Reference-style price row: struck original in bold neon red, the actual
+// price slightly bigger in white, then a small bold grey "Save S$X" line.
+function PriceRow({ price, value }: { price: number; value?: number }) {
+  const discounted = value !== undefined && value > price;
   return (
-    <p
-      className={`mt-2 font-display text-3xl font-black leading-none sm:text-5xl ${
-        tone === "accent" ? "text-accent" : "text-guarantee"
-      }`}
-    >
-      <span className="block font-mono text-[10px] font-bold uppercase tracking-widest opacity-80 sm:text-xs">
-        You save
-      </span>
-      {sgd(amount)}
-    </p>
+    <div className="mt-2">
+      <p className="flex flex-wrap items-baseline gap-1.5 sm:gap-2">
+        {discounted && (
+          <span className="font-display text-sm font-black text-[#ff2056] line-through sm:text-2xl">
+            {sgd(value)}
+          </span>
+        )}
+        <span className="font-display text-lg font-black text-white sm:text-3xl">
+          {sgd(price)}
+        </span>
+      </p>
+      {discounted && (
+        <p className="mt-1 text-[10px] font-bold text-body sm:text-xs">
+          Save {sgd(value - price)}
+        </p>
+      )}
+    </div>
   );
 }
 
 function PricingTiers({ pricing }: { pricing: Pricing }) {
-  const { tierPrice, tierValue, tierSavings } = pricing;
+  const { tierPrice, tierValue } = pricing;
   // Value/savings reflect a full four-product (science) suite, so Master reads
   // its true bundle value rather than the 3-product default.
   const refSubject = getSubject("o-level", "chemistry-pure");
@@ -86,7 +97,7 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
         </h1>
         <p className="mx-auto mt-3 max-w-2xl text-center text-cloud">
           Most families choose{" "}
-          <span className="font-semibold text-accent">Master</span>: the complete
+          <span className="font-semibold text-accent">Ultra</span>: the complete
           plan that turns ten years of exam data into a calm, focused final
           month, and the biggest saving. Start smaller only if you prefer.
         </p>
@@ -98,7 +109,6 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
               : undefined;
             const price = tierPrice("o-level", t.key);
             const value = tierValue("o-level", t.key, products);
-            const savings = tierSavings("o-level", t.key, products);
             return (
               <div
                 key={t.key}
@@ -123,21 +133,11 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
 
                 {t.key === "essential" ? (
                   <>
-                    <p className="mt-2 font-display text-3xl font-black leading-none text-white sm:text-5xl">
-                      {sgd(price)}
-                    </p>
+                    <PriceRow price={price} />
                     <p className="mt-2 text-[10px] text-body sm:text-sm">{t.note}</p>
                   </>
                 ) : (
-                  <>
-                    <SaveHero amount={savings} tone={t.popular ? "accent" : "mint"} />
-                    <p className="mt-2 text-[11px] font-medium text-cloud sm:text-base">
-                      <span className="font-display text-base font-black text-white sm:text-2xl">
-                        {sgd(price)}
-                      </span>{" "}
-                      <span className="text-body line-through">{sgd(value)}</span>
-                    </p>
-                  </>
+                  <PriceRow price={price} value={value} />
                 )}
 
                 <ul className="mt-3 space-y-1.5 sm:mt-5 sm:space-y-2">
@@ -159,8 +159,8 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
         </div>
 
         <p className="mt-4 text-center font-mono text-xs text-body">
-          N(A)-Level: Essential {sgd(pricing.tierPrice("na-level", "essential"))} ·
-          Strategic {sgd(pricing.tierPrice("na-level", "strategic"))} · Master{" "}
+          N(A)-Level: Starter {sgd(pricing.tierPrice("na-level", "essential"))} ·
+          Plus {sgd(pricing.tierPrice("na-level", "strategic"))} · Ultra{" "}
           {sgd(pricing.tierPrice("na-level", "master"))}
         </p>
 
@@ -232,7 +232,7 @@ function BundleTiers({ pricing }: { pricing: Pricing }) {
           Choose your bundle
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-cloud">
-          Every bundle is full <span className="font-semibold text-accent">Master tier</span> for
+          Every bundle is full <span className="font-semibold text-accent">Ultra tier</span> for
           every subject in it. The more subjects you stack, the more you keep.
         </p>
 
@@ -257,19 +257,12 @@ function BundleTiers({ pricing }: { pricing: Pricing }) {
                 {b.tag}
               </p>
 
-              <SaveHero amount={b.savings} tone={b.popular ? "accent" : "mint"} />
-
-              <p className="mt-2 text-[11px] font-medium text-cloud sm:text-base">
-                <span className="font-display text-base font-black text-white sm:text-2xl">
-                  {sgd(b.price)}
-                </span>{" "}
-                <span className="text-body line-through">{sgd(b.value)}</span>
-              </p>
+              <PriceRow price={b.price} value={b.value} />
 
               <ul className="mt-3 space-y-1.5 sm:mt-5 sm:space-y-2">
                 <li className="flex gap-1.5 text-[11px] leading-tight text-cloud sm:gap-2 sm:text-sm">
                   <span aria-hidden="true" className="text-guarantee">•</span>
-                  {b.count} Master subjects, your pick
+                  {b.count} Ultra subjects, your pick
                 </li>
                 <li className="flex gap-1.5 text-[11px] leading-tight text-cloud sm:gap-2 sm:text-sm">
                   <span aria-hidden="true" className="text-guarantee">•</span>
