@@ -5,6 +5,8 @@ import {
   EARLY_BIRD_ACTIVE,
   MEGA_RATIO,
   PRICING,
+  getSubject,
+  tierProducts,
   type Level,
   type LevelPricing,
   type ProductKey,
@@ -40,8 +42,13 @@ export interface PricedLine {
 
 export interface PricedCart {
   lines: PricedLine[];
+  /** The official original price: the a la carte PARTS value of every line
+   *  (Ultra = the sum of its four products, S$116 at O-Level). Display this
+   *  as the struck-through figure everywhere; it matches /pricing and
+   *  /bundles. Never used for charging. */
   baseline: number;
   total: number;
+  /** baseline - total: permanent pack discount + any bundle discount. */
   savings: number;
   bundles: AppliedBundle[];
 }
@@ -140,11 +147,25 @@ export function createPricing(
   // Always charges the cheapest valid composition: bundles only ever group
   // Ultra-tier subjects, and a bundle is applied only when it beats the
   // straight tier prices.
+  //
+  // Two baselines live here and must not be confused:
+  //   listSum       — the sum of tier PRICES; internal input to the cheapest-
+  //                   composition maths. Never displayed.
+  //   valueBaseline — the sum of each line's a la carte PARTS value (Ultra is
+  //                   S$116 of products permanently discounted to S$68). This
+  //                   is the official "original price" narrative, and it is
+  //                   what PricedCart.baseline/savings report, matching the
+  //                   /pricing and /bundles cards.
   function priceCart(items: CartItem[]): PricedCart {
-    const baseline = items.reduce(
+    const listSum = items.reduce(
       (sum, item) => sum + tierPrice(item.level, item.tier),
       0
     );
+    const valueBaseline = items.reduce((sum, item) => {
+      const subject = getSubject(item.level, item.subjectSlug);
+      const products = subject ? tierProducts(item.tier, subject) : undefined;
+      return sum + tierValue(item.level, item.tier, products);
+    }, 0);
 
     const masters = [...items]
       .filter((item) => item.tier === "master")
@@ -157,11 +178,11 @@ export function createPricing(
     const regularSumOf = (group: CartItem[]) =>
       group.reduce((sum, item) => sum + regularTierPrice(item.level, "master"), 0);
 
-    const compositions: Composition[] = [{ total: baseline, bundles: [] }];
+    const compositions: Composition[] = [{ total: listSum, bundles: [] }];
 
     const withBundles = (bundles: AppliedBundle[]): Composition => {
       const replaced = bundles.reduce((sum, b) => sum + b.listTotal - b.price, 0);
-      return { total: baseline - replaced, bundles };
+      return { total: listSum - replaced, bundles };
     };
 
     if (masters.length >= 3) {
@@ -213,9 +234,9 @@ export function createPricing(
         listPrice: tierPrice(item.level, item.tier),
         bundle: bundleOf(item),
       })),
-      baseline,
+      baseline: valueBaseline,
       total: best.total,
-      savings: baseline - best.total,
+      savings: valueBaseline - best.total,
       bundles: best.bundles,
     };
   }

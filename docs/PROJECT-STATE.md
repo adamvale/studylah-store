@@ -54,6 +54,16 @@ hold "Master" forever; every stored-string entitlement check must use
 literal current name. Mega-Bundle (3 subjects), All-In (5-6). Slugs are
 FROZEN (they live in URLs and in every `ProductFile.filePath`).
 
+**Pricing narrative (owner decision, v2.20):** a tier's OFFICIAL original
+price is its a la carte parts value (Ultra = the sum of its products, S$116
+for O-Level sciences), permanently discounted to the tier price (S$68);
+bundles discount further. Every savings display (`PricedCart.baseline` /
+`.savings`, /pricing, /bundles, cart, builder) measures against parts value
+via `tierValue` / `bundleLadder`, NEVER against the sum of tier prices, and
+the cart summary itemises "Pack discount" + bundle discount so the column
+sums to the total. Charging maths (`priceCart` internals) still composes
+from tier prices and is unchanged.
+
 **"See inside" pack preview** (`src/components/pack-preview.tsx`, wired into
 `SubjectView` above the tier selector). A flippable, image-only viewer showing a
 few real pages of each of the 4 products, with the sellable content (2026 calls,

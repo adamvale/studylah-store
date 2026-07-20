@@ -342,12 +342,26 @@ export function CartView() {
           <dl className="mt-4 space-y-2 text-sm">
             <div className="flex justify-between text-body">
               <dt>
-                {items.length} subject{items.length === 1 ? "" : "s"}
+                {items.length} subject{items.length === 1 ? "" : "s"}, full value
               </dt>
               <dd className={`font-mono ${priced.savings > 0 ? "line-through" : "text-ink"}`}>
                 {sgd(priced.baseline)}
               </dd>
             </div>
+            {/* The permanent pack discount: parts value down to tier price
+                (Ultra is S$116 of products sold at S$68). Bundle rows then
+                stack on top, so the column sums exactly to the total. */}
+            {(() => {
+              const listSum = priced.lines.reduce((s, l) => s + l.listPrice, 0);
+              const packDiscount = priced.baseline - listSum;
+              if (packDiscount <= 0) return null;
+              return (
+                <div className="flex justify-between text-guarantee">
+                  <dt>Pack discount (vs the parts)</dt>
+                  <dd className="font-mono">−{sgd(packDiscount)}</dd>
+                </div>
+              );
+            })()}
             {priced.bundles.map((b, i) => (
               <div key={i} className="flex justify-between text-guarantee">
                 <dt>
