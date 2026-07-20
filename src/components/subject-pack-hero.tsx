@@ -15,7 +15,7 @@ import Image from "next/image";
 // flow stable while the visual shrinks via transform. pointer-events-none
 // so the (mostly empty) scaled region never blocks clicks on content.
 
-const SHRINK_OVER_PX = 450; // scroll distance for full-size -> icon
+const SHRINK_OVER_PX = 250; // scroll distance for full-size -> icon
 
 export function SubjectPackHero({ img, alt }: { img: string; alt: string }) {
   const [p, setP] = useState(0); // 0 = full size, 1 = floating icon
