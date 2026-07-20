@@ -301,7 +301,7 @@ export function CartView() {
                   onClick={() => setTier(action.level, action.subjectSlug, action.toTier)}
                   className="shrink-0 rounded-lg border border-signal px-4 py-2 text-sm font-medium text-teal hover:bg-signal/10"
                 >
-                  Upgrade to Master
+                  Upgrade to Ultra
                 </button>
               )}
             </div>
@@ -469,7 +469,7 @@ export function CartView() {
             pay · every page watermarked to you.
           </p>
           <p className="mt-2 text-xs text-body">
-            Pick <span className="font-medium text-ink">Master</span> and you
+            Pick <span className="font-medium text-ink">Ultra</span> and you
             also unlock <span className="font-medium text-ink">StudyLand</span>{" "}
             (early-access beta), daily practice, a mistake notebook, a study plan
             and exam timers. No subscription, ever.

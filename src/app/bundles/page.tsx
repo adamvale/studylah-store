@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/bundles" },
   title: "Bundle builder, Mega-Bundle and All-In pricing",
   description:
-    "Pick up to 8 subjects and watch Mega-Bundle and All-In pricing apply live. Master tier across every subject you take.",
+    "Pick up to 8 subjects and watch Mega-Bundle and All-In pricing apply live. Ultra tier across every subject you take.",
 };
 
 // The savings ladder, as scannable badge-pills instead of a paragraph, the
@@ -24,7 +24,7 @@ export default function BundlesPage() {
         <span className="text-accent">The more you add, the less each costs.</span>
       </h1>
       <p className="mt-2 max-w-2xl text-sm text-body">
-        Every subject is the full Master pack, Forecast, Companion, Vault and
+        Every subject is the full Ultra pack, Forecast, Companion, Vault and
         Rehearsal, so your child meets every paper with the same focused,
         guesswork-free plan. Add all the subjects they&apos;re sitting and
         you&apos;re always charged the cheapest combination, the price per

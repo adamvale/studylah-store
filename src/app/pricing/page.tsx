@@ -59,15 +59,28 @@ function PctChip({ price, value }: { price: number; value: number }) {
   );
 }
 
-// Reference-style price row: struck original in bold neon red, the actual
-// price slightly bigger in white, then a small bold grey "Save S$X" line.
+// The per-card top-lit gradient washes, mirroring the reference: neutral for
+// STARTER, lime for PLUS, crimson for ULTRA (bundles reuse them in order).
+const CARD_TINTS = {
+  grey: "linear-gradient(165deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 40%, rgba(255,255,255,0) 75%)",
+  lime: "linear-gradient(165deg, rgba(190,242,0,0.20) 0%, rgba(190,242,0,0.05) 40%, rgba(190,242,0,0) 75%)",
+  crimson: "linear-gradient(165deg, rgba(255,32,86,0.26) 0%, rgba(255,32,86,0.07) 40%, rgba(255,32,86,0) 75%)",
+} as const;
+
+function cardStyle(tint: keyof typeof CARD_TINTS) {
+  return { backgroundImage: CARD_TINTS[tint], backgroundColor: "#1d1545" };
+}
+
+// Reference-style price row: struck original in bold neon red (thick strike),
+// the actual price slightly bigger in white, then a small bold grey save line.
+// Sits at the BOTTOM of each card, below the included list.
 function PriceRow({ price, value }: { price: number; value?: number }) {
   const discounted = value !== undefined && value > price;
   return (
-    <div className="mt-2">
+    <div className="mt-auto pt-4">
       <p className="flex flex-wrap items-baseline gap-1.5 sm:gap-2">
         {discounted && (
-          <span className="font-display text-sm font-black text-[#ff2056] line-through sm:text-2xl">
+          <span className="font-display text-sm font-black text-[#ff2056] line-through decoration-[3px] sm:text-2xl">
             {sgd(value)}
           </span>
         )}
@@ -86,7 +99,7 @@ function PriceRow({ price, value }: { price: number; value?: number }) {
 
 function PricingTiers({ pricing }: { pricing: Pricing }) {
   const { tierPrice, tierValue } = pricing;
-  // Value/savings reflect a full four-product (science) suite, so Master reads
+  // Value/savings reflect a full four-product (science) suite, so Ultra reads
   // its true bundle value rather than the 3-product default.
   const refSubject = getSubject("o-level", "chemistry-pure");
   return (
@@ -109,14 +122,15 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
               : undefined;
             const price = tierPrice("o-level", t.key);
             const value = tierValue("o-level", t.key, products);
+            const tint =
+              t.key === "essential" ? "grey" : t.key === "strategic" ? "lime" : "crimson";
             return (
               <div
                 key={t.key}
                 className={`relative flex flex-col rounded-2xl border p-3 sm:p-6 ${
-                  t.popular
-                    ? "border-accent bg-night-2"
-                    : "border-hairline bg-surface"
+                  t.popular ? "border-accent" : "border-hairline"
                 }`}
+                style={cardStyle(tint)}
               >
                 {t.popular && (
                   <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent px-2 py-0.5 font-mono text-[8px] font-bold uppercase tracking-wide text-night sm:-top-3 sm:px-3 sm:py-1 sm:text-[11px]">
@@ -130,17 +144,11 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
                   {t.name}
                   <PctChip price={price} value={value} />
                 </p>
-
-                {t.key === "essential" ? (
-                  <>
-                    <PriceRow price={price} />
-                    <p className="mt-2 text-[10px] text-body sm:text-sm">{t.note}</p>
-                  </>
-                ) : (
-                  <PriceRow price={price} value={value} />
+                {t.key === "essential" && (
+                  <p className="mt-1 text-[10px] text-body sm:text-sm">{t.note}</p>
                 )}
 
-                <ul className="mt-3 space-y-1.5 sm:mt-5 sm:space-y-2">
+                <ul className="mt-3 space-y-1.5 sm:mt-4 sm:space-y-2">
                   {t.products.map((p) => (
                     <li
                       key={p}
@@ -153,6 +161,12 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
                     </li>
                   ))}
                 </ul>
+
+                {t.key === "essential" ? (
+                  <PriceRow price={price} />
+                ) : (
+                  <PriceRow price={price} value={value} />
+                )}
               </div>
             );
           })}
@@ -181,9 +195,9 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
   );
 }
 
-// The bundle ladder: 3, 6 and 8 Master subjects. Savings and the discount
+// The bundle ladder: 3, 6 and 8 Ultra subjects. Savings and the discount
 // chip measure against the FULL per-subject parts value (what all four
-// products cost a la carte, S$116 for O-Level), not just the Master price,
+// products cost a la carte, S$116 for O-Level), not just the Ultra price,
 // so the struck number is the true value of what the buyer receives.
 function BundleTiers({ pricing }: { pricing: Pricing }) {
   const master = pricing.tierPrice("o-level", "master");
@@ -241,8 +255,11 @@ function BundleTiers({ pricing }: { pricing: Pricing }) {
             <div
               key={b.key}
               className={`relative flex flex-col rounded-2xl border p-3 sm:p-6 ${
-                b.popular ? "border-accent bg-night-2" : "border-hairline bg-surface"
+                b.popular ? "border-accent" : "border-hairline"
               }`}
+              style={cardStyle(
+                b.key === "mega" ? "grey" : b.key === "allin6" ? "lime" : "crimson"
+              )}
             >
               {b.popular && (
                 <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent px-2 py-0.5 font-mono text-[8px] font-bold uppercase tracking-wide text-night sm:-top-3 sm:px-3 sm:py-1 sm:text-[11px]">
@@ -257,9 +274,7 @@ function BundleTiers({ pricing }: { pricing: Pricing }) {
                 {b.tag}
               </p>
 
-              <PriceRow price={b.price} value={b.value} />
-
-              <ul className="mt-3 space-y-1.5 sm:mt-5 sm:space-y-2">
+              <ul className="mt-3 space-y-1.5 sm:mt-4 sm:space-y-2">
                 <li className="flex gap-1.5 text-[11px] leading-tight text-cloud sm:gap-2 sm:text-sm">
                   <span aria-hidden="true" className="text-guarantee">•</span>
                   {b.count} Ultra subjects, your pick
@@ -273,6 +288,8 @@ function BundleTiers({ pricing }: { pricing: Pricing }) {
                   StudyLand + Legends for every subject
                 </li>
               </ul>
+
+              <PriceRow price={b.price} value={b.value} />
             </div>
           ))}
         </div>

@@ -103,17 +103,17 @@ export default async function ExamForecastPage() {
   const from = sgd(alacartePrice("o-level", "forecast"));
   const tiers = [
     {
-      name: "Essential",
+      name: "Starter",
       price: sgd(tierPrice("o-level", "essential")),
       line: "The Exam Forecast, the map of your paper.",
     },
     {
-      name: "Strategic",
+      name: "Plus",
       price: sgd(tierPrice("o-level", "strategic")),
       line: "Forecast + the Sure Questions Vault to drill it.",
     },
     {
-      name: "Master",
+      name: "Ultra",
       price: sgd(tierPrice("o-level", "master")),
       line: `All four products. ${sgd(tierValue("o-level", "master"))} of material, save ${sgd(tierSavings("o-level", "master"))}.`,
       best: true,

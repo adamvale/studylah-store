@@ -65,7 +65,7 @@ const FAQS: { q: string; a: React.ReactNode; plain?: string }[] = [
   },
   {
     q: "What is StudyLand? Is it extra?",
-    a: "StudyLand is the study dashboard that comes with the Master tier, an early-access beta, no subscription and no extra cost on top of Master. It turns your PDFs into a running system that manages the whole final stretch for you: a daily three-question practice drawn from your subjects' most-likely topics, a mistake notebook that saves every miss and re-tests you until you clear it, a Marks-at-Risk meter per subject, skill drills, exam timers, grade goals, and a printable rescue plan for when you're behind. Sign in with the email you bought with, a magic link, no password.",
+    a: "StudyLand is the study dashboard that comes with the Ultra tier, an early-access beta, no subscription and no extra cost on top of Ultra. It turns your PDFs into a running system that manages the whole final stretch for you: a daily three-question practice drawn from your subjects' most-likely topics, a mistake notebook that saves every miss and re-tests you until you clear it, a Marks-at-Risk meter per subject, skill drills, exam timers, grade goals, and a printable rescue plan for when you're behind. Sign in with the email you bought with, a magic link, no password.",
   },
   {
     q: "What is \"Predict your mark\"?",

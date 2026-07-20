@@ -38,10 +38,10 @@ export function BundleBuilder({
   const router = useRouter();
   const pricing = usePricing();
 
-  // Master-tier subjects already in the cart (e.g. added by Gugu after a result)
+  // Ultra-tier subjects already in the cart (e.g. added by Gugu after a result)
   // are auto-selected in the builder and LOCKED, so a subject can't be added
-  // twice: to drop one, remove it from the cart. Matched on Master because the
-  // builder's bundle is Master-only.
+  // twice: to drop one, remove it from the cart. Matched on Ultra because the
+  // builder's bundle is Ultra-only.
   const inCart = useMemo(
     () =>
       new Set<SelectionKey>(
@@ -130,7 +130,7 @@ export function BundleBuilder({
     : levels[0]?.level;
   const stepMessage =
     count === 0
-      ? "Pick your subjects, each comes as the full Master pack: forecast, practice and a full rehearsal."
+      ? "Pick your subjects, each comes as the full Ultra pack: forecast, practice and a full rehearsal."
       : count < 3
         ? `Add ${3 - count} more subject${3 - count === 1 ? "" : "s"} to unlock Mega-Bundle pricing, you'll save on every one.`
         : count < 5
@@ -264,7 +264,7 @@ export function BundleBuilder({
                         </span>
                       </span>
                       <span className={`font-mono ${locked ? "text-guarantee" : "text-ink"}`}>
-                        {locked ? "in cart ✓" : "Master"}
+                        {locked ? "in cart ✓" : "Ultra"}
                       </span>
                     </li>
                   );

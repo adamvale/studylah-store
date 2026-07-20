@@ -42,7 +42,7 @@ export default async function AdminAccessPage({
       <p className="mt-1 max-w-2xl text-sm text-body">
         Give a customer pack access without a purchase, comps, support fixes,
         influencers. Grant one subject or a whole level / all subjects in one
-        action. A <span className="font-medium text-ink">Master</span> grant also
+        action. A <span className="font-medium text-ink">Ultra</span> grant also
         unlocks StudyLand and the game. Grants are free (S$0); tick the box to
         email the customer a sign-in link, or tell them directly. They sign in
         with this email to get their PDFs and dashboard.

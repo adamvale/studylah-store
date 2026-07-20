@@ -7,7 +7,7 @@ export const GUGU_SAY_EVENT = "gugu:say";
 
 // An optional add-to-cart offer attached to a Gugu message (used after a
 // diagnostic result reveal): Gugu shows Yes/No buttons and can drop the
-// subject's Master pack straight into the cart.
+// subject's Ultra pack straight into the cart.
 export interface GuguCta {
   level: string;
   slug: string;

@@ -11,7 +11,7 @@ export const runtime = "nodejs";
 //   explain    - grades a student's own-words explanation of a topic
 //   structured - mark-scheme feedback on a structured answer vs the model
 // Same guardrails as Gugu: Haiku, compliance filter on output, graceful
-// fallback text, per-customer rate limit. Master-gated (it's a StudyLand
+// fallback text, per-customer rate limit. Ultra-gated (it's a StudyLand
 // surface). Never promises grades; it coaches.
 
 const WINDOW_MS = 60_000;

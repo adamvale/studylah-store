@@ -8,7 +8,7 @@ import { getCustomerId } from "@/lib/server/customer-session";
 import { watermarkPdf } from "@/lib/server/watermark";
 
 // One click, whole order: every file watermarked and zipped. Session +
-// ownership gated like the single-file route; a Master pack is ~6 PDFs so the
+// ownership gated like the single-file route; a Ultra pack is ~6 PDFs so the
 // on-the-fly work stays modest.
 export async function GET(
   _request: Request,

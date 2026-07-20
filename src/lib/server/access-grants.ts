@@ -5,9 +5,14 @@ import {
   getSubject,
   LEVELS,
   TIER_NAMES,
+  ULTRA_DB_TIERS,
   type Level,
   type Tier,
 } from "@/lib/catalogue";
+
+// Stored tier strings from any era ("Ultra" now, "Master" pre-rename).
+const isUltraTier = (tier: string) =>
+  (ULTRA_DB_TIERS as readonly string[]).includes(tier);
 import type { CartItem } from "@/lib/pricing";
 import { getEarlyBird, getPricing } from "@/lib/server/pricing-store";
 import type { CheckoutQuote } from "@/lib/server/checkout";
@@ -17,7 +22,7 @@ import { emailLayout, sendEmail } from "@/lib/server/email";
 
 // Admin comp grants reuse the ordinary order pipeline: a grant is just a
 // S$0 order whose stripeSessionId is prefixed "grant_". That means every
-// existing system, entitlement checks (Master gating / StudyLand), the
+// existing system, entitlement checks (Ultra gating / StudyLand), the
 // download page, order history, works with zero extra plumbing, and revoking
 // is simply deleting that order. Grants can cover one subject or a whole
 // level / all subjects in a single order (the public 6-subject cart cap does
@@ -79,7 +84,7 @@ async function sendGrantEmail(email: string, items: CartItem[]): Promise<void> {
     ${
       master
         ? `<p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 14px;">
-             Your <strong style="color:#101f33;">Master</strong> access also unlocks
+             Your <strong style="color:#101f33;">Ultra</strong> access also unlocks
              StudyLand, your day-by-day dashboard for the run-in to the paper, and StudyLah Legends.
            </p>`
         : ""
@@ -204,7 +209,7 @@ export async function listGrants(): Promise<GrantRow[]> {
       email: r.email,
       createdAt: r.createdAt,
       lines,
-      master: lines.some((l) => l.tier === TIER_NAMES.master),
+      master: lines.some((l) => isUltraTier(l.tier)),
     };
   });
 }
@@ -215,7 +220,7 @@ export interface CustomerRow {
   orders: number; // paid (non-grant) orders
   spentCents: number;
   subjects: { subjectName: string; tier: string }[]; // purchased, deduped
-  master: boolean; // any Master entitlement (purchase OR comp grant)
+  master: boolean; // any Ultra entitlement (purchase OR comp grant)
   comped: boolean; // has at least one admin grant
 }
 
@@ -253,7 +258,7 @@ export async function listCustomers(): Promise<CustomerRow[]> {
         spentCents += o.totalCents;
       }
       for (const it of o.items) {
-        if (it.tier === TIER_NAMES.master) master = true;
+        if (isUltraTier(it.tier)) master = true;
         if (!isGrant) {
           subjects.set(`${it.subjectName}::${it.tier}`, {
             subjectName: it.subjectName,

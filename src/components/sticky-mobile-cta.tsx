@@ -12,7 +12,7 @@ import { useNativePlatform } from "@/lib/native";
 // /bundles has its own sticky price bar, stacking the global bar on top of
 // it buried the page under two bars plus the chat ghost.
 const HIDE_ON = ["/cart", "/checkout", "/account", "/diagnostic", "/downloads", "/bundles"];
-// Subject detail pages carry their own "Get Master" sticky bar, so the global
+// Subject detail pages carry their own "Get Ultra" sticky bar, so the global
 // bar must stand down there to avoid two stacked bottom bars.
 const SUBJECT_DETAIL = /^\/(o-level|na-level|nt-level)\/[^/]+$/;
 

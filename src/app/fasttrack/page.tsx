@@ -6,7 +6,7 @@ import { PLAYBOOKS, LEAKS, FAMILY_META, type Family } from "@/lib/fasttrack";
 import { NamedIcon, type IconName } from "@/components/icons";
 
 // Public marketing + SEO page for FastTrack. Distinct route from the
-// Master-gated tool at /account/fasttrack. Targets the high-intent searches
+// Ultra-gated tool at /account/fasttrack. Targets the high-intent searches
 // "O-Level / N-Level Chemistry / Physics / Biology answering technique,
 // structured answers, exam keywords, how to score higher". Content is drawn
 // from the real playbook so the page is substantive and unique (good for SEO
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "FastTrack: answer O-Level & N-Level science the way examiners award marks",
     description:
-      "Chemistry, Physics and Biology answers trained per question type: exact examiner keywords, the right structure, instant mark-scheme feedback. Included with StudyLah Master.",
+      "Chemistry, Physics and Biology answers trained per question type: exact examiner keywords, the right structure, instant mark-scheme feedback. Included with StudyLah Ultra.",
     type: "website",
   },
 };
@@ -102,7 +102,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "How do I get FastTrack?",
-    a: "FastTrack is included with any StudyLah Master pack for Chemistry, Physics or Biology, alongside the exam forecast, original practice and the full study system. There is no separate purchase.",
+    a: "FastTrack is included with any StudyLah Ultra pack for Chemistry, Physics or Biology, alongside the exam forecast, original practice and the full study system. There is no separate purchase.",
   },
 ];
 
@@ -156,7 +156,7 @@ export default async function FastTrackMarketingPage() {
 
       {/* Hero */}
       <p className="font-mono text-xs font-medium uppercase tracking-wide text-accent">
-        Included with every Master pack
+        Included with every Ultra pack
       </p>
       <h1 className="mt-2 font-display text-4xl font-black tracking-tight text-ink sm:text-5xl">
         Study<span className="text-accent">Lah</span> FastTrack
@@ -173,7 +173,7 @@ export default async function FastTrackMarketingPage() {
           href="/subjects"
           className="cta-sheen glow-soft rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
         >
-          Get Master, from {sgd(masterFrom)}
+          Get Ultra, from {sgd(masterFrom)}
         </Link>
         <Link
           href="/diagnostic"
@@ -332,7 +332,7 @@ export default async function FastTrackMarketingPage() {
           Stop leaking the marks you already deserve
         </h2>
         <p className="mx-auto mt-2 max-w-xl text-sm text-body">
-          FastTrack comes free with any Chemistry, Physics or Biology Master
+          FastTrack comes free with any Chemistry, Physics or Biology Ultra
           pack, alongside the exam forecast, original practice and the full
           study system.
         </p>
@@ -341,7 +341,7 @@ export default async function FastTrackMarketingPage() {
             href="/subjects"
             className="cta-sheen glow-soft rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5"
           >
-            Get Master, from {sgd(masterFrom)}
+            Get Ultra, from {sgd(masterFrom)}
           </Link>
           <Link
             href="/studyland"

@@ -31,7 +31,7 @@ export function TierSelector({
   const { addItem } = useCart();
   const { earlyBird, tierPrice, regularTierPrice, tierValue, tierSavings } = usePricing();
 
-  // Master's contents vary by subject, only the sciences include Paper 3.
+  // Ultra's contents vary by subject, only the sciences include Paper 3.
   const subject = getSubject(level, subjectSlug);
   const productsFor = (t: Tier) => (subject ? tierProducts(t, subject) : []);
 
@@ -46,7 +46,7 @@ export function TierSelector({
         Choose your tier
       </h2>
       <p className="mt-1 max-w-2xl text-sm text-body">
-        Most students take Master, the full plan (forecast, practice and a
+        Most students take Ultra, the full plan (forecast, practice and a
         full rehearsal) at the biggest saving. It&apos;s selected for you below;
         start smaller only if you prefer.
       </p>

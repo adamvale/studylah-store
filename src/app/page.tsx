@@ -529,7 +529,7 @@ const SOLUTIONS: {
         students should not risk skipping.
       </>
     ),
-    tier: "Strategic & up",
+    tier: "Plus & up",
   },
   {
     no: "Solution No.3",
@@ -542,7 +542,7 @@ const SOLUTIONS: {
         and how to start confidently.
       </>
     ),
-    tier: "Master tier",
+    tier: "Ultra tier",
   },
   {
     no: "Solution No.4",
@@ -555,7 +555,7 @@ const SOLUTIONS: {
         marks, with model full-credit exhibits.
       </>
     ),
-    tier: "Master tier",
+    tier: "Ultra tier",
   },
 ];
 
@@ -677,7 +677,7 @@ function TheSolution() {
                 href="/pricing"
                 className="btn-pixel cta-sheen glow-soft inline-block rounded bg-accent px-6 py-3 text-sm font-bold text-night"
               >
-                Get all four with Master →
+                Get all four with Ultra →
               </Link>
             </div>
           </div>
@@ -699,7 +699,7 @@ function PricingHandoff({ pricing }: { pricing: Pricing }) {
             One subject from {sgd(tierPrice("o-level", "essential"))}.
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-cloud">
-            Master is {sgd(tierPrice("o-level", "master"))} per subject and most
+            Ultra is {sgd(tierPrice("o-level", "master"))} per subject and most
             families bundle: stack subjects and save up to{" "}
             <span className="font-bold text-guarantee">S$188</span>. Every tier
             is covered by the{" "}
@@ -720,7 +720,7 @@ function PricingHandoff({ pricing }: { pricing: Pricing }) {
             </Link>
           </div>
           <p className="mt-4 font-mono text-xs text-body">
-            Master saves {sgd(tierSavings("o-level", "master"))} per subject vs
+            Ultra saves {sgd(tierSavings("o-level", "master"))} per subject vs
             buying the parts · instant PDF download
           </p>
         </div>
@@ -977,7 +977,7 @@ function Journey({ pricing }: { pricing: Pricing }) {
           })}
         </div>
         <p className="mt-6 rounded-xl border border-hairline bg-surface px-4 py-3 text-sm text-cloud">
-          Get all three with the Master tier,{" "}
+          Get all three with the Ultra tier,{" "}
           {sgd(tierValue("o-level", "master"))} of material for{" "}
           <span className="font-semibold text-accent">
             {sgd(tierPrice("o-level", "master"))}
@@ -1042,7 +1042,7 @@ function StudyHq() {
     <section className="reveal py-20">
       <div className="mx-auto max-w-6xl px-4">
         <p className="text-center font-mono text-xs font-medium uppercase tracking-wide text-teal">
-          Master tier only · In beta · Early access
+          Ultra tier only · In beta · Early access
         </p>
         <h2 className="mt-2 text-center font-display text-4xl font-black text-white sm:text-5xl">
           The PDFs are the plan.{" "}
@@ -1050,7 +1050,7 @@ function StudyHq() {
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-center text-lg text-cloud">
           Unlock the{" "}
-          <span className="font-semibold text-accent">Master tier</span>{" "}
+          <span className="font-semibold text-accent">Ultra tier</span>{" "}
           and your dashboard wakes up: daily practice aimed by the forecast, a notebook
           that hunts weak spots, and a live count of the marks still on the
           table. It&apos;s the{" "}
@@ -1154,14 +1154,14 @@ function FogFrontierBeta() {
             Beta
           </span>
           <span className="rounded-full border-2 border-violet bg-surface px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wide text-cloud">
-            Master tier only · early access
+            Ultra tier only · early access
           </span>
         </div>
         <h2 className="mx-auto mt-5 max-w-3xl text-center font-display text-4xl font-black uppercase tracking-tight text-white sm:text-5xl">
           Play an <span className="text-accent">RPG game</span> to learn.
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-center text-lg text-cloud">
-          The <span className="font-semibold text-accent">Master tier</span> unlocks
+          The <span className="font-semibold text-accent">Ultra tier</span> unlocks
           StudyLah Legends: every subject you own opens a province to explore. Wild
           monsters are the questions you tend to miss; every answer builds a
           worked-solution you keep. Fifteen minutes a day, aimed by your forecast
@@ -1169,7 +1169,7 @@ function FogFrontierBeta() {
         </p>
         <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-cloud">
           <span className="font-semibold text-accent">The prediction suite is the product you buy.</span>{" "}
-          StudyLah Legends is the early-access beta that comes with Master, a bonus,
+          StudyLah Legends is the early-access beta that comes with Ultra, a bonus,
           not the pitch, and it keeps growing.
         </p>
 
@@ -1231,10 +1231,10 @@ function FogFrontierBeta() {
             href="/subjects"
             className="btn-pixel inline-block rounded bg-accent px-6 py-3 text-sm font-bold text-night"
           >
-            Unlock StudyLah Legends with the Master tier →
+            Unlock StudyLah Legends with the Ultra tier →
           </Link>
           <p className="mt-3 text-xs text-cloud">
-            No separate purchase, no subscription. The Master tier includes the
+            No separate purchase, no subscription. The Ultra tier includes the
             early-access beta.
           </p>
         </div>

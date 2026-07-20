@@ -30,7 +30,7 @@ function hasUpdate(item: ItemRow, orderCreatedAt: Date): boolean {
 }
 
 // One order groups by subject (each a dropdown for multi-subject orders), and
-// within a subject by product (a subject's Master pack ships several products).
+// within a subject by product (a subject's Ultra pack ships several products).
 function groupBySubject(items: ItemRow[]) {
   const groups = new Map<
     string,

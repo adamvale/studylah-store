@@ -34,7 +34,7 @@ export default async function AccountDashboardLayout({
   // auto-spends a shield if yesterday slipped.
   const streak = await streakState(customerId, sgDay());
   const player = await getPlayer(customerId);
-  // StudyLand + StudyLah Legends are Master-tier perks. Non-Master buyers keep
+  // StudyLand + StudyLah Legends are Ultra-tier perks. Non-Ultra buyers keep
   // a pared-back shell (no game tabs) so the nav never points at locked pages.
   const isMaster = await hasMasterAccess(customerId);
 

@@ -31,7 +31,7 @@ export interface SubjectCopy {
   heroHook: string;
   /** The model's headline calls for the year, analysis, not advertising. */
   headlineCalls: HeadlineCall[];
-  /** Copy for the Master tier / complete pack. */
+  /** Copy for the Ultra tier / complete pack. */
   completePack: string;
   products: Partial<Record<ProductKey, ProductCopy>>;
 }
@@ -338,7 +338,7 @@ const BIOLOGY_PURE_6093: SubjectCopy = {
   syllabusChecker:
     "Not sure which syllabus your child takes? Biology as a single pure subject is 6093 (this pack); Science (Biology) inside combined Science is 5088.",
   heroHook:
-    "One skill, the genetic diagram, decides a sixth of Paper 1. Master it first.",
+    "One skill, the genetic diagram, decides a sixth of Paper 1. Ultra it first.",
   headlineCalls: [
     {
       title: "Inheritance is the single biggest scoring block.",
@@ -726,7 +726,7 @@ const HISTORY_PURE_2174: SubjectCopy = {
     },
     {
       title: "British Malaya is the two-way banker.",
-      body: "Compulsory in both papers: the most-examined Paper 1 essay theme (nine of ten years) and the most-examined Paper 2 case study (five of ten). Master Perak, the FMS, the Malayan Union and Merdeka and you bank marks in both sittings.",
+      body: "Compulsory in both papers: the most-examined Paper 1 essay theme (nine of ten years) and the most-examined Paper 2 case study (five of ten). Ultra Perak, the FMS, the Malayan Union and Merdeka and you bank marks in both sittings.",
     },
     {
       title: "Part (e) is always the assertion, the most predictable question.",

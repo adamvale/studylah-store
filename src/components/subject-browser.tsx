@@ -66,7 +66,7 @@ export function SubjectBrowser({
               </p>
             )}
             <p className="mt-3 font-mono text-sm text-ink">
-              Master {masterPrice}{" "}
+              Ultra {masterPrice}{" "}
               <span className="text-guarantee">· save {savings}</span>
             </p>
             <Link

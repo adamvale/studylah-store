@@ -55,7 +55,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
       priceCurrency: "SGD",
       lowPrice: pricing.tierPrice(subject.level, "essential"),
       highPrice: pricing.tierPrice(subject.level, "master"),
-      // The three real purchase tiers (Essential / Strategic / Master). We
+      // The three real purchase tiers (Starter / Plus / Ultra). We
       // deliberately do NOT add aggregateRating or review here: there is no
       // genuine per-product rating on the page, and faking that markup is a
       // Google policy violation and against the honesty-first brand.
@@ -342,7 +342,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
             <span aria-hidden="true" className="text-accent">5.</span>
             <span className="text-body">
               <span className="font-medium text-ink">
-                And with Master, Study<span className="text-accent">Land</span> runs it all daily
+                And with Ultra, Study<span className="text-accent">Land</span> runs it all daily
               </span>{" "}
 , three questions a day on your top-tier topics, a mistake notebook
               that re-tests you until you clear it, a live Marks-at-Risk meter,
@@ -426,7 +426,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
           <p className="mt-1 text-sm text-white/80">
             The more subjects you bundle, the cheaper each one gets, {" "}
             {subject.level === "o-level"
-              ? "any 3 Master subjects for S$168 (save S$36), up to S$188 off a full stack"
+              ? "any 3 Ultra subjects for S$168 (save S$36), up to S$188 off a full stack"
               : "a ~17% discount on any 3, scaling up the more you add"}
             . Every subject also feeds one combined StudyLand plan.
           </p>

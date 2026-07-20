@@ -39,7 +39,7 @@ export interface DashboardMetrics {
   ordersWeek: number;
   ordersAll: number;
   aovCents: number;
-  masterAttachRate: number; // 0-100, share of subject selections at Master
+  masterAttachRate: number; // 0-100, share of subject selections at Ultra
   tierBreakdown: Record<Tier, number>;
   topSubjects: SubjectSales[];
   leadsAll: number;

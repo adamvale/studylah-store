@@ -71,7 +71,7 @@ function megaPrice(regularMasterSum: number): number {
   return Math.round(regularMasterSum * MEGA_RATIO);
 }
 
-// All-In covers up to 6 Master subjects at a flat price, then each subject
+// All-In covers up to 6 Ultra subjects at a flat price, then each subject
 // beyond the 6th is added at the per-subject extra rate. For mixed-level carts
 // both the flat and the extra are the mean of each subject's level value, which
 // reduces to exactly S$268 (O) / S$213 (N(A)) for single-level carts of 5-6,
@@ -117,7 +117,7 @@ export function createPricing(
 
   // Sum of the à-la-carte prices of everything a tier includes. Pass the
   // subject's real product list (from `tierProducts`) when you have it, 
-  // Master's contents vary by subject, since only the sciences include Paper 3.
+  // Ultra's contents vary by subject, since only the sciences include Paper 3.
   function tierValue(
     level: Level,
     tier: Tier,
@@ -138,7 +138,7 @@ export function createPricing(
   }
 
   // Always charges the cheapest valid composition: bundles only ever group
-  // Master-tier subjects, and a bundle is applied only when it beats the
+  // Ultra-tier subjects, and a bundle is applied only when it beats the
   // straight tier prices.
   function priceCart(items: CartItem[]): PricedCart {
     const baseline = items.reduce(
@@ -242,14 +242,14 @@ export function createPricing(
         const saving = regularTierPrice(level, "master") - extra;
         nudges.push({
           id: "mega",
-          message: `Add 1 more subject at Master to unlock Mega-Bundle pricing, save S$${saving}.`,
+          message: `Add 1 more subject at Ultra to unlock Mega-Bundle pricing, save S$${saving}.`,
           action: { type: "add-subject" },
         });
       } else if (masters.length === 4) {
         const extra = simulateExtraMaster();
         nudges.push({
           id: "all-in",
-          message: `Add your 5th subject at Master for S$${extra}, All-In covers every subject you take, up to 6.`,
+          message: `Add your 5th subject at Ultra for S$${extra}, All-In covers every subject you take, up to 6.`,
           action: { type: "add-subject" },
         });
       } else if (masters.length === 5) {
@@ -271,7 +271,7 @@ export function createPricing(
         const value = alacartePrice(item.level, "rehearsal");
         nudges.push({
           id: `upgrade-${item.level}-${item.subjectSlug}`,
-          message: `Upgrade to Master for S$${delta} more and get Final Rehearsal (S$${value} value).`,
+          message: `Upgrade to Ultra for S$${delta} more and get Final Rehearsal (S$${value} value).`,
           action: {
             type: "upgrade",
             level: item.level,

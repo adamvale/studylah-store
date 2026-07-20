@@ -4,7 +4,7 @@ import { masterApiGate } from "@/lib/server/entitlements";
 import { fastTrackProgress, recordFastTrackDrill } from "@/lib/server/fasttrack";
 
 // FastTrack progress: GET the per-family play states, POST a graded drill
-// result. Master-gated (a StudyLand surface). The drill score is computed
+// result. Ultra-gated (a StudyLand surface). The drill score is computed
 // from the AI marker's server-graded "Score: X/Y", so the client reports a
 // bounded pct only; the worst a dishonest client gets is a few once-per-day XP.
 export async function GET() {

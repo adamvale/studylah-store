@@ -53,7 +53,7 @@ export async function LevelCatalogue({
         Every subject is <span className="font-semibold text-ink">4 PDFs</span>:
         40+ pages of exam intelligence, 100s of original high-probability
         practice questions, full worked answers and a timed rehearsal. The{" "}
-        <span className="font-semibold text-ink">Master</span> tier bundles all
+        <span className="font-semibold text-ink">Ultra</span> tier bundles all
         four for {sgd(masterPrice)},{" "}
         <span className="text-guarantee">{sgd(savings)} less</span> than buying
         them apart.

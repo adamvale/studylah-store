@@ -127,7 +127,7 @@ export function subjectFaqEntries(subject: Subject): SubjectFaqEntry[] {
 
   entries.push({
     q: `What do I get when I buy the ${subject.name} pack?`,
-    a: `Instant PDF downloads: the 2026 Exam Forecast with every topic tiered, a subject companion for the paper or skill strand most students under-rehearse, original practice questions with full answers, and a complete timed mock paper with mark scheme. The Master tier also unlocks StudyLand, a daily study system with three targeted questions a day, a self-maintaining mistake notebook, drills and exam timers.`,
+    a: `Instant PDF downloads: the 2026 Exam Forecast with every topic tiered, a subject companion for the paper or skill strand most students under-rehearse, original practice questions with full answers, and a complete timed mock paper with mark scheme. The Ultra tier also unlocks StudyLand, a daily study system with three targeted questions a day, a self-maintaining mistake notebook, drills and exam timers.`,
   });
 
   return entries;

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getPricing } from "@/lib/server/pricing-store";
 import { sgd } from "@/lib/catalogue";
 
-// Live pricing (the Master "from" price) must never go stale.
+// Live pricing (the Ultra "from" price) must never go stale.
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
@@ -119,7 +119,7 @@ export default async function StudyLandPage() {
     <div className="mx-auto max-w-5xl px-4 py-12">
       {/* Hero */}
       <p className="font-mono text-xs font-medium uppercase tracking-wide text-accent">
-        Included with every Master pack
+        Included with every Ultra pack
       </p>
       <h1 className="mt-2 font-display text-4xl font-black tracking-tight text-ink sm:text-5xl">
         Study<span className="text-accent">Land</span>
@@ -141,7 +141,7 @@ export default async function StudyLandPage() {
           href="/subjects"
           className="rounded-lg border border-hairline px-6 py-3 text-sm font-bold text-ink transition-colors hover:border-accent"
         >
-          Get Master, from {sgd(masterFrom)}
+          Get Ultra, from {sgd(masterFrom)}
         </Link>
         <Link href="/account" className="text-sm text-body underline hover:text-ink">
           Already a member? Open StudyLand
@@ -235,7 +235,7 @@ export default async function StudyLandPage() {
           62 days is enough. Unfocused, it is nothing.
         </h2>
         <p className="mx-auto mt-2 max-w-xl text-sm text-body">
-          StudyLand comes free with any subject&apos;s Master pack: the
+          StudyLand comes free with any subject&apos;s Ultra pack: the
           forecast, the practice, the rehearsal, and the system that makes a
           student actually use them.
         </p>

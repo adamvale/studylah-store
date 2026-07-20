@@ -139,7 +139,7 @@ export function ctaFor(band: Band, weakness: DiagnosticProduct | null): {
   if (band === "danger") {
     return {
       product: "master",
-      headline: "Close the gap with the full Master pack",
+      headline: "Close the gap with the full Ultra pack",
       body: "Forecast, Companion, Vault and a timed Final Rehearsal, the complete route from 'danger zone' to walking in prepared. Covered by the conditional 14-day money-back guarantee.",
     };
   }

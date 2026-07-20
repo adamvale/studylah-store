@@ -313,17 +313,23 @@ export const BASE_TIER_PRODUCTS: Record<Tier, ProductKey[]> = {
   master: ["forecast", "vault", "rehearsal"],
 };
 
-/** What a tier unlocks. Master is the complete pack: everything the subject has. */
+/** What a tier unlocks. Ultra is the complete pack: everything the subject has. */
 export function tierProducts(tier: Tier, subject: Subject): ProductKey[] {
   if (tier === "master") return productsForSubject(subject);
   return BASE_TIER_PRODUCTS[tier];
 }
 
 export const TIER_NAMES: Record<Tier, string> = {
-  essential: "Essential",
-  strategic: "Strategic",
-  master: "Master",
+  essential: "Starter",
+  strategic: "Plus",
+  master: "Ultra",
 };
+
+// OrderItem.tier stores the DISPLAY name at checkout time. Orders placed
+// before the v2.20 rename (Essential/Strategic/Master -> Starter/Plus/Ultra)
+// hold the old names forever, so every entitlement check that matches the
+// top tier by its stored string must accept BOTH.
+export const ULTRA_DB_TIERS = ["Ultra", "Master"] as const;
 
 export const TIER_ORDER: Tier[] = ["essential", "strategic", "master"];
 
@@ -350,13 +356,13 @@ export const PRICING: Record<Level, LevelPricing> = {
 // pricing site-wide.
 export const EARLY_BIRD_ACTIVE = false;
 
-// Mega-Bundle: any 3 Master subjects. Ratio chosen so 3 O-Level Masters price
+// Mega-Bundle: any 3 Ultra subjects. Ratio chosen so 3 O-Level Ultras price
 // at exactly S$168 (brief). Applied to each subject's own level pricing, so
 // N(A) and mixed-level carts derive naturally.
 export const MEGA_RATIO = 168 / 204;
 
-// All-In: flat price covering up to 6 Master subjects. N(A) flat derived at the
-// same discount depth as O-Level's S$268 (268/408 of six Masters).
+// All-In: flat price covering up to 6 Ultra subjects. N(A) flat derived at the
+// same discount depth as O-Level's S$268 (268/408 of six Ultras).
 export const ALLIN_FLAT: Record<Level, number> = {
   "o-level": 268,
   "na-level": 213,

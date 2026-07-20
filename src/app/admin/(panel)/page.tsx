@@ -101,7 +101,7 @@ export default async function AdminDashboardPage() {
           hint={m.resetAt ? "AOV since reset" : "all-time AOV"}
         />
         <Metric
-          label="Master attach-rate"
+          label="Ultra attach-rate"
           value={`${m.masterAttachRate}%`}
           hint="of subject selections"
         />

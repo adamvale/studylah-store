@@ -135,8 +135,8 @@ export function AccountChrome({
 
 // ── The phone bottom tab bar (app-style) ────────────────────────────────────
 // Five thumb-reach destinations, exactly like the reference app: Today,
-// Learn (the tool hub), Progress, the game, and Account. Master-gated pages
-// collapse for non-Master buyers.
+// Learn (the tool hub), Progress, the game, and Account. Ultra-gated pages
+// collapse for non-Ultra buyers.
 const WEB_TABS = [
   { href: "/account", label: "Today", d: "M4 11.5 12 4l8 7.5M6 10v9h4v-5h4v5h4v-9" },
   { href: "/account/learn", label: "Learn", d: "M4 6.5C6.5 5 9.5 5 12 6.5c2.5-1.5 5.5-1.5 8 0V18c-2.5-1.5-5.5-1.5-8 0-2.5-1.5-5.5-1.5-8 0V6.5ZM12 6.5V18" },

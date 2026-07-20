@@ -24,7 +24,7 @@ export default async function LoginPage({
         Pick up where you left off.
       </h1>
       <p className="mt-2 text-body">
-        Sign in to re-download every PDF you&apos;ve bought and, on the Master
+        Sign in to re-download every PDF you&apos;ve bought and, on the Ultra
         tier, open your StudyLand dashboard, your plan for the run-in to the
         paper. No password, we just email you a one-time link.
       </p>

@@ -174,7 +174,7 @@ const TOPICS: Topic[] = [
       <>
         <strong>StudyLah Legends</strong> is a study-RPG where the battles are
         real exam questions, learning that feels like play. It&apos;s an
-        early-access <strong>beta included with the Master tier</strong>, a
+        early-access <strong>beta included with the Ultra tier</strong>, a
         cherry on top; the prediction suite (forecasts, questions, rehearsals) is
         still the main product.
       </>
@@ -578,7 +578,7 @@ export function GuguChat() {
     addItem({ level: resultCta.level as Level, subjectSlug: resultCta.slug, tier: "master" });
     setResultCta({ ...resultCta, stage: "added" });
     setOverride({
-      text: `Added ${resultCta.subjectName} Master to your cart! Taking more subjects? Each one gets cheaper in a bundle.`,
+      text: `Added ${resultCta.subjectName} Ultra to your cart! Taking more subjects? Each one gets cheaper in a bundle.`,
       hold: true,
     });
   }

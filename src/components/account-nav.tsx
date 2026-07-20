@@ -150,7 +150,7 @@ export function AccountNav({ isMaster }: { isMaster: boolean }) {
       : ACCOUNT_GROUP.links,
   };
 
-  // Non-Master buyers: every StudyLand surface is locked, lead with the
+  // Non-Ultra buyers: every StudyLand surface is locked, lead with the
   // upgrade prompt and keep only the open pages (orders, settings, commerce).
   const standalone: NavLink[] = isMaster
     ? [

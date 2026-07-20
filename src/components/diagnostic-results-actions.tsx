@@ -39,8 +39,8 @@ export function CtaLink({
 }
 
 // One-tap path from the free result straight to a filled cart on the
-// recommended Master tier, no detour through the subject page to re-decide.
-// Master is the default/best-value tier; "compare tiers" stays as the escape
+// recommended Ultra tier, no detour through the subject page to re-decide.
+// Ultra is the default/best-value tier; "compare tiers" stays as the escape
 // hatch for shoppers who want the full grid.
 export function AddMasterToCart({
   attemptId,
@@ -73,7 +73,7 @@ export function AddMasterToCart({
       disabled={busy}
       className="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-night transition-transform hover:-translate-y-0.5 disabled:opacity-70"
     >
-      {busy ? "Adding…" : `Add ${subjectName} Master to cart →`}
+      {busy ? "Adding…" : `Add ${subjectName} Ultra to cart →`}
     </button>
   );
 }
@@ -197,7 +197,7 @@ export function ShareRow({
 }
 
 // Once the student has revealed their result, Gugu carries on with a tailored,
-// sales-focused line and an offer to drop the subject's Master pack in the cart.
+// sales-focused line and an offer to drop the subject's Ultra pack in the cart.
 // COMPLIANCE: never promise or imply a grade/result. We frame it as winnable
 // marks, highest-chance topics and protecting an edge, never "will improve your
 // grade".
@@ -215,8 +215,8 @@ export function GuguResultCheer({
 }) {
   useEffect(() => {
     const text = topGrade
-      ? `Sharp work! Now the trick is keeping that edge, the paper only rewards the topics that actually turn up, and one careless slip can cost the top band. The ${subjectName} pack keeps you drilling the most-likely topics and rehearsing under time. Shall I add ${subjectName} Master to your cart?`
-      : `Those marks are winnable! The ${subjectName} Forecast pack points you straight at the highest-chance topics, so your last weeks land where the paper actually pays. Shall I add ${subjectName} Master to your cart?`;
+      ? `Sharp work! Now the trick is keeping that edge, the paper only rewards the topics that actually turn up, and one careless slip can cost the top band. The ${subjectName} pack keeps you drilling the most-likely topics and rehearsing under time. Shall I add ${subjectName} Ultra to your cart?`
+      : `Those marks are winnable! The ${subjectName} Forecast pack points you straight at the highest-chance topics, so your last weeks land where the paper actually pays. Shall I add ${subjectName} Ultra to your cart?`;
     guguSay(text, { cta: { level, slug, subjectName } });
   }, [subjectName, level, slug, topGrade]);
   return null;

@@ -45,8 +45,13 @@ dashboards (Railway/Stripe/store accounts) and content review.
 22 subjects (14 O-Level, 8 N(A)) × 4 products each: Exam Forecast, a
 subject-specific **companion** (name varies per subject, see
 `SUBJECT_SPECS` in `src/lib/catalogue.ts`), Sure Questions Vault, Final
-Rehearsal (2-3 PDFs; paper numbers vary by subject). Tiers
-Essential/Strategic/Master; Mega-Bundle (3 subjects), All-In (5-6). Slugs are
+Rehearsal (2-3 PDFs; paper numbers vary by subject). Tiers display as
+**Starter/Plus/Ultra** since v2.20 (renamed from Essential/Strategic/Master;
+internal `Tier` keys stay `essential/strategic/master`). CRITICAL:
+`OrderItem.tier` stores the DISPLAY name at checkout, so pre-rename orders
+hold "Master" forever; every stored-string entitlement check must use
+`ULTRA_DB_TIERS` from catalogue.ts (matches "Ultra" AND "Master"), never the
+literal current name. Mega-Bundle (3 subjects), All-In (5-6). Slugs are
 FROZEN (they live in URLs and in every `ProductFile.filePath`).
 
 **"See inside" pack preview** (`src/components/pack-preview.tsx`, wired into
