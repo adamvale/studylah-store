@@ -135,10 +135,10 @@ export function BundleBuilder({
         ? `Add ${3 - count} more subject${3 - count === 1 ? "" : "s"} to unlock Mega-Bundle pricing, you'll save on every one.`
         : count < 5
           ? count === 4
-            ? "One more subject unlocks All-In, the lowest price per subject there is."
+            ? "Every subject you add now costs less than the last, and the 6th is nearly free."
             : "Mega-Bundle applied. Add more subjects and the saving grows."
           : count === 5
-            ? "All-In applied, add your 6th and it's effectively free."
+            ? "Your 6th subject costs almost nothing, All-In caps the whole set."
             : count === 6
               ? "All-In applied, you can still add up to 2 more subjects."
               : "All-In applied, every subject you take, at the lowest price per subject.";

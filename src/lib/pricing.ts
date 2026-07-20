@@ -186,25 +186,22 @@ export function createPricing(
     };
 
     if (masters.length >= 3) {
+      // Mega covers the top 3; every FURTHER Ultra subject rides the bundle
+      // at its level's All-In extra rate (S$44 / S$36) instead of full tier
+      // price. This keeps price-per-subject falling at 4 and 5 subjects
+      // (168 -> 212 -> 256 for O-Level) instead of bouncing up at the 4th;
+      // from 6 the All-In flat undercuts this composition and wins anyway.
       const top3 = masters.slice(0, 3);
+      const rest = masters.slice(3);
       const mega: AppliedBundle = {
         kind: "mega",
-        subjectSlugs: top3.map((m) => m.subjectSlug),
-        listTotal: listTotalOf(top3),
-        price: megaPrice(regularSumOf(top3)),
+        subjectSlugs: masters.map((m) => m.subjectSlug),
+        listTotal: listTotalOf(masters),
+        price:
+          megaPrice(regularSumOf(top3)) +
+          rest.reduce((sum, m) => sum + ALLIN_EXTRA[m.level], 0),
       };
       compositions.push(withBundles([mega]));
-
-      if (masters.length === 6) {
-        const rest = masters.slice(3, 6);
-        const mega2: AppliedBundle = {
-          kind: "mega",
-          subjectSlugs: rest.map((m) => m.subjectSlug),
-          listTotal: listTotalOf(rest),
-          price: megaPrice(regularSumOf(rest)),
-        };
-        compositions.push(withBundles([mega, mega2]));
-      }
     }
 
     if (masters.length >= 5) {
@@ -270,7 +267,7 @@ export function createPricing(
         const extra = simulateExtraMaster();
         nudges.push({
           id: "all-in",
-          message: `Add your 5th subject at Ultra for S$${extra}, All-In covers every subject you take, up to 6.`,
+          message: `Add your 5th subject at Ultra for S$${extra}, every subject you add costs less than the last.`,
           action: { type: "add-subject" },
         });
       } else if (masters.length === 5) {
