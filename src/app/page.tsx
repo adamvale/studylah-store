@@ -36,7 +36,6 @@ import {
   sgd,
   PUBLISHED_LEVELS,
   subjectsForLevel,
-  tierProducts,
 } from "@/lib/catalogue";
 import { subjectCopy } from "@/lib/subject-copy";
 import type { Pricing } from "@/lib/pricing";
@@ -675,7 +674,7 @@ function TheSolution() {
             </ul>
             <div className="mt-8">
               <Link
-                href="#tiers"
+                href="/pricing"
                 className="btn-pixel cta-sheen glow-soft inline-block rounded bg-accent px-6 py-3 text-sm font-bold text-night"
               >
                 Get all four with Master →
@@ -688,136 +687,42 @@ function TheSolution() {
   );
 }
 
-const TIERS: {
-  key: "essential" | "strategic" | "master";
-  name: string;
-  note: string;
-  popular?: boolean;
-  products: string[];
-}[] = [
-  {
-    key: "essential",
-    name: "Essential",
-    note: "The entry point",
-    products: ["Exam Forecast"],
-  },
-  {
-    key: "strategic",
-    name: "Strategic",
-    note: "",
-    products: ["Exam Forecast", "Sure Questions Vault"],
-  },
-  {
-    key: "master",
-    name: "Master",
-    note: "",
-    popular: true,
-    products: [
-      "Exam Forecast",
-      "Sure Questions Vault",
-      "Final Rehearsal",
-      "Subject Companion",
-    ],
-  },
-];
-
-function PricingTiers({ pricing }: { pricing: Pricing }) {
-  const { tierPrice, tierValue, tierSavings } = pricing;
-  // Value/savings reflect a full four-product (science) suite, so Master reads
-  // its true bundle value rather than the 3-product default.
-  const refSubject = getSubject("o-level", "chemistry-pure");
+// The full tier + bundle ladder now lives on /pricing; the home page keeps a
+// slim hand-off band so the flow (Solution -> price question) still resolves.
+function PricingHandoff({ pricing }: { pricing: Pricing }) {
+  const { tierPrice, tierSavings } = pricing;
   return (
     <section id="tiers" className="reveal scroll-mt-24 py-12">
-      <div className="mx-auto max-w-6xl px-4">
-        <h2 className="text-center font-display text-3xl font-black text-white sm:text-4xl">
-          Choose your tier
-        </h2>
-        <p className="mx-auto mt-2 max-w-2xl text-center text-cloud">
-          Most families choose{" "}
-          <span className="font-semibold text-accent">Master</span>: the complete
-          plan that turns ten years of exam data into a calm, focused final
-          month, and the biggest saving. Start smaller only if you prefer.
-        </p>
-
-        <div className="mt-10 grid grid-cols-3 gap-2 sm:gap-4 md:gap-5">
-          {TIERS.map((t) => {
-            const products = refSubject
-              ? tierProducts(t.key, refSubject)
-              : undefined;
-            const price = tierPrice("o-level", t.key);
-            const value = tierValue("o-level", t.key, products);
-            const savings = tierSavings("o-level", t.key, products);
-            return (
-              <div
-                key={t.key}
-                className={`relative flex flex-col rounded-2xl border p-3 sm:p-6 ${
-                  t.popular
-                    ? "border-accent bg-night-2"
-                    : "border-hairline bg-surface"
-                }`}
-              >
-                {t.popular && (
-                  <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent px-2 py-0.5 font-mono text-[8px] font-bold uppercase tracking-wide text-night sm:-top-3 sm:px-3 sm:py-1 sm:text-[11px]">
-                    <span className="sm:hidden">Best value</span>
-                    <span className="hidden sm:inline">
-                      Most popular · Best value
-                    </span>
-                  </span>
-                )}
-                <p className="font-display text-base font-bold text-white sm:text-2xl">
-                  {t.name}
-                </p>
-                <p className="mt-1 font-display text-xl font-black text-accent sm:text-4xl">
-                  {sgd(price)}
-                </p>
-                {t.key === "essential" ? (
-                  <p className="mt-1 text-[10px] text-body sm:text-sm">
-                    {t.note}
-                  </p>
-                ) : (
-                  <p className="mt-1 text-[10px] font-medium leading-tight text-guarantee sm:text-sm">
-                    {sgd(value)} value, save {sgd(savings)}
-                  </p>
-                )}
-                <ul className="mt-3 space-y-1.5 sm:mt-5 sm:space-y-2">
-                  {t.products.map((p) => (
-                    <li
-                      key={p}
-                      className="flex gap-1.5 text-[11px] leading-tight text-cloud sm:gap-2 sm:text-sm"
-                    >
-                      <span aria-hidden="true" className="text-guarantee">
-                        •
-                      </span>
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="mt-8 flex flex-col items-center gap-4">
-          <Link
-            href="/subjects"
-            className="btn-pixel cta-sheen glow-soft rounded bg-accent px-7 py-3.5 text-sm font-bold text-night"
-          >
-            Choose your subject →
-          </Link>
-          <p className="text-center font-mono text-xs text-body">
-            Instant PDF download · works right up to exam day · watermarked to
-            you
+      <div className="mx-auto max-w-4xl px-4">
+        <div className="rounded-3xl border border-hairline bg-surface p-8 text-center sm:p-10">
+          <h2 className="font-display text-3xl font-black text-white sm:text-4xl">
+            One subject from {sgd(tierPrice("o-level", "essential"))}.
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-cloud">
+            Master is {sgd(tierPrice("o-level", "master"))} per subject and most
+            families bundle: stack subjects and save up to{" "}
+            <span className="font-bold text-guarantee">S$188</span>. Every tier
+            is covered by the{" "}
+            <span className="font-medium text-guarantee">money-back guarantee</span>.
           </p>
-          <div className="mx-auto max-w-2xl rounded-xl border border-hairline bg-surface px-4 py-3 text-center text-sm text-cloud">
-            <span className="font-medium text-guarantee">
-              Money-back guarantee.
-            </span>{" "}
-            Full refund if fewer than 3 of our top-5 forecast topics appear in
-            the paper, email your order ID within 14 days of the exam.{" "}
-            <Link href="/faq" className="font-medium text-accent hover:underline">
-              How it works
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/pricing"
+              className="btn-pixel cta-sheen glow-soft rounded bg-accent px-7 py-3.5 text-sm font-bold text-night"
+            >
+              See pricing and bundles →
+            </Link>
+            <Link
+              href="/subjects"
+              className="rounded-lg border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-medium text-white transition-colors hover:border-accent"
+            >
+              Browse subjects
             </Link>
           </div>
+          <p className="mt-4 font-mono text-xs text-body">
+            Master saves {sgd(tierSavings("o-level", "master"))} per subject vs
+            buying the parts · instant PDF download
+          </p>
         </div>
       </div>
     </section>
@@ -1449,7 +1354,7 @@ export default async function Home() {
       <TheCause />
       <SocialProof />
       <TheSolution />
-      <PricingTiers pricing={pricing} />
+      <PricingHandoff pricing={pricing} />
       <WhyItWorks />
       <Journey pricing={pricing} />
       <StudyHq />

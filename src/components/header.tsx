@@ -19,6 +19,7 @@ function useSignedIn(): boolean {
 
 const NAV = [
   { href: "/subjects", label: "Subjects" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/bundles", label: "Bundles" },
   { href: "/studyland", label: "StudyLand" },
   { href: "/fasttrack", label: "FastTrack" },

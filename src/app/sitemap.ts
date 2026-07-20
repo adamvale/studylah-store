@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/free-heatmap`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/exam-forecast`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/bundles`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/pricing`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/studyland`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/fasttrack`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/accuracy`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
