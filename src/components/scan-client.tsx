@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { useNativePlatform } from "@/lib/native";
 import { NamedIcon } from "@/components/icons";
+import { compressImage } from "@/lib/image-compress";
 
 // Project Sightseeing UI: snap a question, Guru teaches it step by step.
 // Native app only (the camera + this whole tool is gated to the shell). The
@@ -18,22 +19,6 @@ interface Teaching {
   steps: string[];
   answer: string;
   misconception: string | null;
-}
-
-// Compress client-side so uploads stay small on mobile data: longest edge to
-// 1600px, JPEG q0.8. Returns bare base64 (no data: prefix).
-async function compress(file: File): Promise<{ base64: string; media: string }> {
-  const bitmap = await createImageBitmap(file);
-  const max = 1600;
-  const scale = Math.min(1, max / Math.max(bitmap.width, bitmap.height));
-  const w = Math.round(bitmap.width * scale);
-  const h = Math.round(bitmap.height * scale);
-  const canvas = document.createElement("canvas");
-  canvas.width = w;
-  canvas.height = h;
-  canvas.getContext("2d")!.drawImage(bitmap, 0, 0, w, h);
-  const dataUrl = canvas.toDataURL("image/jpeg", 0.8);
-  return { base64: dataUrl.split(",")[1], media: "image/jpeg" };
 }
 
 export function ScanClient() {
@@ -55,7 +40,7 @@ export function ScanClient() {
     setSaved(false);
     setBusy(true);
     try {
-      const { base64, media } = await compress(file);
+      const { base64, media } = await compressImage(file);
       const res = await fetch("/api/account/game/scan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -115,11 +100,13 @@ export function ScanClient() {
 
   return (
     <div>
+      {/* No forced capture: iOS then offers Camera OR Photo Library, which is
+          more reliable in the web view and still works if the camera is
+          declined. */}
       <input
         ref={fileRef}
         type="file"
         accept="image/*"
-        capture="environment"
         onChange={onPick}
         className="hidden"
       />

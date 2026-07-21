@@ -33,7 +33,7 @@ export async function GET() {
         key: l.key,
         title: l.title,
         minutes: l.minutes,
-        cards: l.cards,
+        steps: l.steps,
         talkPrompt: l.talkPrompt ?? null,
       })),
     })),

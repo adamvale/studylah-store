@@ -49,5 +49,16 @@
 	<true/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<!-- Required or iOS terminates the app the moment the web view touches the
+	     camera, photo library or microphone (Snap & Teach, Guru Tutor photo
+	     marking, and the Speak & Score oral trainer). -->
+	<key>NSCameraUsageDescription</key>
+	<string>StudyLah uses your camera so Guru can read a photo of your question or your working and teach it.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>StudyLah lets you choose a photo of a question so Guru can teach it.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>StudyLah may save images you create in the app.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>StudyLah uses your microphone so you can practise your oral and get pronunciation feedback.</string>
 </dict>
 </plist>

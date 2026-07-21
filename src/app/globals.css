@@ -180,6 +180,14 @@ html[data-native] textarea {
   -webkit-user-select: text;
 }
 
+/* iOS auto-zooms the whole screen when you focus a control smaller than 16px.
+   Force every form control to 16px in the app so typing never zooms. */
+html[data-native] input,
+html[data-native] textarea,
+html[data-native] select {
+  font-size: 16px;
+}
+
 /* Screen-to-screen transition, the account template remounts per
    navigation, so this retriggers like a game screen swap. */
 @keyframes native-screen-in {

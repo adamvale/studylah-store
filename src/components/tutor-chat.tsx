@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { NamedIcon } from "@/components/icons";
+import { compressImage } from "@/lib/image-compress";
 
 // The Guru Tutor chat surface. Auto-starts a session from `start`, then runs a
 // normal chat loop with quick-action chips (explain simpler, give me a
@@ -18,18 +19,6 @@ export interface TutorStart {
 interface Msg {
   role: "user" | "guru";
   content: string;
-}
-
-async function compress(file: File): Promise<{ base64: string; media: string }> {
-  const bitmap = await createImageBitmap(file);
-  const scale = Math.min(1, 1600 / Math.max(bitmap.width, bitmap.height));
-  const w = Math.round(bitmap.width * scale);
-  const h = Math.round(bitmap.height * scale);
-  const c = document.createElement("canvas");
-  c.width = w;
-  c.height = h;
-  c.getContext("2d")!.drawImage(bitmap, 0, 0, w, h);
-  return { base64: c.toDataURL("image/jpeg", 0.8).split(",")[1], media: "image/jpeg" };
 }
 
 const CHIPS = [
@@ -97,8 +86,12 @@ export function TutorChat({ start, onClose }: { start: TutorStart; onClose?: () 
     const file = e.target.files?.[0];
     e.target.value = "";
     if (!file) return;
-    const img = await compress(file);
-    void send(input || "Mark my working, please.", img);
+    try {
+      const img = await compressImage(file);
+      void send(input || "Mark my working, please.", img);
+    } catch {
+      setError("Could not read that photo. Try another one.");
+    }
   }
 
   return (
@@ -151,7 +144,7 @@ export function TutorChat({ start, onClose }: { start: TutorStart; onClose?: () 
       </div>
 
       <div className="flex items-end gap-2">
-        <input ref={fileRef} type="file" accept="image/*" capture="environment" onChange={onPickPhoto} className="hidden" />
+        <input ref={fileRef} type="file" accept="image/*" onChange={onPickPhoto} className="hidden" />
         <button
           type="button"
           onClick={() => fileRef.current?.click()}
@@ -172,7 +165,8 @@ export function TutorChat({ start, onClose }: { start: TutorStart; onClose?: () 
           }}
           rows={1}
           placeholder="Ask Guru anything..."
-          className="max-h-24 flex-1 resize-none rounded-2xl border border-hairline bg-surface px-4 py-2.5 text-sm text-ink outline-none focus:border-accent"
+          // text-base (16px): anything smaller makes iOS auto-zoom on focus.
+          className="max-h-24 flex-1 resize-none rounded-2xl border border-hairline bg-surface px-4 py-2.5 text-base text-ink outline-none focus:border-accent"
         />
         <button
           type="button"

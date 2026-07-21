@@ -8,6 +8,7 @@ import { GhostCompanion } from "@/components/game";
 import { FxLayer } from "@/components/game-fx";
 import { UpdateWatcher } from "@/components/update-watcher";
 import { hud } from "@/lib/game/fx";
+import { useNativePlatform } from "@/lib/native";
 
 // One StudyLand shell for every surface. The web dashboard and the Capacitor
 // app render the exact same chrome: gradient backdrop, glass header, player
@@ -46,6 +47,7 @@ export function AccountChrome({
   }, [player.level, player.intoLevel]);
   void todayDone;
   void shields;
+  const native = useNativePlatform();
   // Streak now lives where it has context (the Today hero chip), not in the
   // chrome, one less repeated element at the top of every screen.
   void streak;
@@ -113,16 +115,19 @@ export function AccountChrome({
 
         <div className="mt-6">{children}</div>
 
-        <p className="mt-10 text-xs text-body print:hidden">
-          iOS and Android app coming. Trouble with anything?{" "}
-          <a
-            href="mailto:hello@studylah.education"
-            className="font-medium text-accent underline"
-          >
-            hello@studylah.education
-          </a>
-          .
-        </p>
+        {/* Web only: pointless (and a bit odd) to advertise the app inside the app. */}
+        {native === null && (
+          <p className="mt-10 text-xs text-body print:hidden">
+            iOS and Android app coming. Trouble with anything?{" "}
+            <a
+              href="mailto:hello@studylah.education"
+              className="font-medium text-accent underline"
+            >
+              hello@studylah.education
+            </a>
+            .
+          </p>
+        )}
       </div>
       <WebTabBar isMaster={isMaster} />
       <FxLayer />

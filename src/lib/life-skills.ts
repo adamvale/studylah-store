@@ -1,23 +1,21 @@
 import type { IconName } from "@/components/icons";
+import type { LessonStep } from "@/lib/lesson-steps";
 
 // The Life Skills wing: ten non-academic tracks that make StudyLah more than a
-// tutor. One engine (this content contract + the lesson player + the Guru
-// role-play chat + SRS/XP). Seed content here is deliberately compact and real;
-// Coddy mass-produces the full library under this same shape, the owner curates.
+// tutor. Lessons are now INTERACTIVE (Brilliant-style): a short sequence of
+// steps shown one at a time, mixing a beat of teaching with active recall
+// (answer a question, tap to reveal, land an insight). Seed content is real and
+// compact; Coddy expands the library under this same shape.
 //
-// House rules baked in: no emojis, no em/en dashes, minors-safe, and hard
-// guardrails per track (Money = education not investment advice; Calm =
-// coping skills not therapy, signpost help).
+// House rules: no emojis, no em/en dashes, minors-safe, and hard guardrails per
+// track (Money = education not investment advice; Calm = coping-skills-not-
+// therapy + SG helpline).
 
-export interface LifeCard {
-  heading: string;
-  body: string;
-}
 export interface LifeLesson {
   key: string; // globally unique
   title: string;
   minutes: number;
-  cards: LifeCard[];
+  steps: LessonStep[];
   // Opens a Guru role-play / coaching chat seeded with this line.
   talkPrompt?: string;
 }
@@ -27,7 +25,6 @@ export interface LifeTrack {
   blurb: string;
   icon: IconName;
   tint: string;
-  // A one-line safety framing passed to Guru for any chat in this track.
   guardrail: string;
   lessons: LifeLesson[];
 }
@@ -45,22 +42,24 @@ export const LIFE_TRACKS: LifeTrack[] = [
       {
         key: "money-1",
         title: "Where your money actually goes",
-        minutes: 5,
-        cards: [
-          { heading: "The leak test", body: "Most money vanishes in small taps: bubble tea, in-game skins, delivery fees. Add up one week honestly. The number is usually a shock, and that is the lesson." },
-          { heading: "The 50-30-20 idea", body: "A simple split for any allowance: about half for needs, some for wants, and a fixed slice saved first, before you spend the rest. Pay your savings like a bill." },
-          { heading: "Save first, not last", body: "Move your savings the day you get money, not whatever is left at month end. What is left is almost always nothing." },
+        minutes: 4,
+        steps: [
+          { kind: "concept", heading: "The leak test", body: "Most money does not vanish in one big splurge. It leaks in small taps: bubble tea, game skins, delivery fees. Add one honest week up, and the total usually surprises people." },
+          { kind: "choice", question: "You get S$60 a week and want to save some. When should you move the savings?", options: ["At the end of the week, whatever is left", "The moment you get the money", "Only in the weeks you feel rich"], correct: 1, explain: "Pay your savings first, like a bill. Whatever is left at the end of the week is almost always nothing." },
+          { kind: "reveal", prompt: "If you set aside just S$10 of that S$60 every week, roughly how much is that in a year?", answer: "About S$520, and that is before any interest. Small and steady quietly beats big and never." },
+          { kind: "insight", body: "Save first, not last. Move it the day the money arrives." },
         ],
         talkPrompt: "I want to build a simple weekly budget from my allowance. Ask me what I get and what I spend on, then help me make a plan.",
       },
       {
         key: "money-2",
         title: "Traps that eat teens",
-        minutes: 5,
-        cards: [
-          { heading: "Buy now, pay later", body: "Splitting a purchase into instalments makes a S$120 thing feel like S$30. It is still S$120, plus fees if you miss. If you cannot buy it once, you cannot afford it four times." },
-          { heading: "Compound interest, your side", body: "Money saved grows on itself. Small amounts started young beat big amounts started late, because time does the heavy lifting." },
-          { heading: "The 24-hour rule", body: "Want something over S$30? Wait a day. Half the time the urge is gone. That pause is a real skill, not weakness." },
+        minutes: 4,
+        steps: [
+          { kind: "concept", heading: "Buy now, pay later", body: "Splitting a S$120 thing into four payments makes it feel like S$30. It is still S$120, plus fees if you miss one." },
+          { kind: "choice", question: "Which is the safer rule of thumb?", options: ["If I can pay it in four parts, I can afford it", "If I cannot buy it once, I cannot afford it four times"], correct: 1, explain: "Instalments hide the real price. If the full amount is out of reach today, splitting it just spreads the problem." },
+          { kind: "concept", heading: "The 24-hour rule", body: "Want something over S$30? Wait a day. Half the time the urge is gone. That pause is a real skill, not weakness." },
+          { kind: "insight", body: "Time is the quiet superpower of money. Saved early, it grows on itself." },
         ],
         talkPrompt: "Show me, with real numbers, how saving a small amount each month from now could grow by the time I am 26.",
       },
@@ -77,11 +76,12 @@ export const LIFE_TRACKS: LifeTrack[] = [
       {
         key: "founder-1",
         title: "From idea to first dollar",
-        minutes: 6,
-        cards: [
-          { heading: "Sell a painkiller, not a vitamin", body: "The best small business fixes an annoying problem people already have. Ask around: what do classmates complain about and would pay a little to solve?" },
-          { heading: "Cost, price, margin", body: "If a thing costs you S$3 to make and you sell it at S$5, your margin is S$2. Know this before you sell one, or you can be busy and still broke." },
-          { heading: "Start absurdly small", body: "Sell to five people first, by hand. You learn more from five real customers than from a perfect plan for five hundred." },
+        minutes: 5,
+        steps: [
+          { kind: "concept", heading: "Painkiller beats vitamin", body: "The best small business fixes an annoying problem people already have, not a nice-to-have they might want one day." },
+          { kind: "choice", question: "It costs you S$3 to make something and you sell it for S$5. What is your margin per sale?", options: ["S$5", "S$3", "S$2"], correct: 2, explain: "Margin is price minus cost: S$5 minus S$3 is S$2. Know this before you sell one, or you can be busy and still broke." },
+          { kind: "concept", heading: "Start absurdly small", body: "Sell to five people by hand first. You learn more from five real customers than from a perfect plan for five hundred." },
+          { kind: "insight", body: "A real business is not the idea. It is the first person who pays you." },
         ],
         talkPrompt: "I have a small business idea. Play a friendly but sharp mentor: ask me about it, then help me work out the cost, price, and first five customers.",
       },
@@ -98,11 +98,12 @@ export const LIFE_TRACKS: LifeTrack[] = [
       {
         key: "confidence-1",
         title: "Confidence is a muscle",
-        minutes: 4,
-        cards: [
-          { heading: "Reps, not a switch", body: "Confidence is not something you have or lack. It grows from small brave actions repeated. Each rep makes the next one easier." },
-          { heading: "Today's rep", body: "Pick one tiny challenge: ask one question in class, say hello first, order your food in Mandarin. Small on purpose. Done beats big." },
-          { heading: "Reframe the voice", body: "The thought is not I am bad at this. The truer thought is I have not practised this yet. One word, yet, changes everything." },
+        minutes: 3,
+        steps: [
+          { kind: "concept", heading: "Reps, not a switch", body: "Confidence is not something you have or lack. It grows from small brave actions repeated. Each rep makes the next one easier." },
+          { kind: "choice", question: "You think: I am just bad at speaking up. Which reframe is more useful?", options: ["I am bad at this, so I should avoid it", "I have not practised this yet, so I can grow it"], correct: 1, explain: "One word, yet, turns a dead end into a starting line. The skill is trainable, and you just have not trained it." },
+          { kind: "reveal", prompt: "What is a tiny confidence rep you could do TODAY?", answer: "Something small on purpose: ask one question in class, say hello first, order your food in Mandarin. Done beats big." },
+          { kind: "insight", body: "Courage is not a feeling you wait for. It is a small action you take first." },
         ],
         talkPrompt: "Give me one small confidence challenge I can do today, then check in with me on how it went and what I learned.",
       },
@@ -119,11 +120,12 @@ export const LIFE_TRACKS: LifeTrack[] = [
       {
         key: "calm-1",
         title: "The night before a paper",
-        minutes: 5,
-        cards: [
-          { heading: "Stop cramming at a set time", body: "Late cramming trades a few facts for worse sleep and a foggy morning. Pick a stop time, pack your bag, then rest. Your prepared brain needs recovery, not more input." },
-          { heading: "The 3-minute reset", body: "If panic rises, breathe in for 4, hold for 4, out for 6, a few rounds. A slower out-breath tells your body the threat has passed." },
-          { heading: "Plan for a bad patch", body: "Decide now: if a question stumps you, you circle it and move on. Marks are everywhere else on the paper. One hard question is not the paper." },
+        minutes: 4,
+        steps: [
+          { kind: "concept", heading: "Stop cramming at a set time", body: "Late cramming trades a few facts for worse sleep and a foggy morning. Your prepared brain needs recovery, not more input." },
+          { kind: "choice", question: "A question in the exam completely stumps you. Best move?", options: ["Stay on it until you crack it", "Circle it, move on, come back if there is time"], correct: 1, explain: "Marks are spread across the whole paper. One hard question is not the paper. Bank the easy marks first." },
+          { kind: "reveal", prompt: "Panic is rising before the paper. What is a 20-second reset you can do?", answer: "Breathe in for 4, hold for 4, out for 6, a few rounds. A slower out-breath tells your body the threat has passed." },
+          { kind: "insight", body: "You cannot control the paper. You can control your plan for a bad patch, and that is enough." },
         ],
         talkPrompt: "I get nervous before exams. Walk me through a calm plan for the night before and the morning of a paper.",
       },
@@ -140,11 +142,12 @@ export const LIFE_TRACKS: LifeTrack[] = [
       {
         key: "lifeos-1",
         title: "Start when you don't feel like it",
-        minutes: 5,
-        cards: [
-          { heading: "Motivation follows action", body: "You do not wait to feel ready. You start for 2 minutes, and the feeling of doing usually arrives after you begin, not before." },
-          { heading: "Energy beats time", body: "One focused hour when you are fresh beats three tired ones. Put your hardest subject in your best hour, not the leftover late-night slot." },
-          { heading: "Park the phone", body: "Willpower loses to a phone in the room. Put it in another room, face down, on silent. Distance, not discipline, is the trick." },
+        minutes: 4,
+        steps: [
+          { kind: "concept", heading: "Motivation follows action", body: "You do not wait to feel ready. You start for 2 minutes, and the feeling of doing usually arrives after you begin, not before." },
+          { kind: "choice", question: "You have one fresh hour and one tired hour. Where should your hardest subject go?", options: ["The tired hour, save energy for fun first", "The fresh hour, spend your best focus on the hard thing"], correct: 1, explain: "One focused hour when you are fresh beats three tired ones. Protect your best hour for your hardest work." },
+          { kind: "concept", heading: "Distance beats willpower", body: "Willpower loses to a phone in the room. Put it in another room, face down, on silent. Do not rely on resisting it." },
+          { kind: "insight", body: "You do not need more discipline. You need fewer things fighting for your attention." },
         ],
         talkPrompt: "Help me plan tomorrow: my energy is best in the morning and I keep getting distracted by my phone. Build me a realistic day.",
       },
@@ -162,10 +165,11 @@ export const LIFE_TRACKS: LifeTrack[] = [
         key: "comm-1",
         title: "Email a teacher properly",
         minutes: 4,
-        cards: [
-          { heading: "Clear subject, clear ask", body: "A good subject line says what you need: Absent on Friday, work to catch up. The teacher knows the point before opening it." },
-          { heading: "Greeting, point, thanks", body: "Dear Mr Tan. Say the one thing you need in a sentence or two. Thank you, your name, your class. Short and polite wins." },
-          { heading: "Read it once, out loud", body: "Reading aloud catches the rude-sounding line and the missing word. Ten seconds that saves an awkward reply." },
+        steps: [
+          { kind: "concept", heading: "The point goes first", body: "A busy teacher should know what you need before they finish the first line. Lead with it." },
+          { kind: "choice", question: "Which is the better subject line?", options: ["Hi", "Question", "Absent Friday, work to catch up"], correct: 2, explain: "A specific subject line tells the reader the point instantly and gets a faster reply." },
+          { kind: "reveal", prompt: "What are the three parts of a clean, polite email?", answer: "A greeting (Dear Mr Tan), the one thing you need in a sentence or two, then thanks with your name and class. Short and polite wins." },
+          { kind: "insight", body: "Read it once out loud before sending. It catches the rude-sounding line and the missing word." },
         ],
         talkPrompt: "Play my teacher. I will write you an email asking for help, and you tell me kindly how to make it better.",
       },
@@ -182,11 +186,12 @@ export const LIFE_TRACKS: LifeTrack[] = [
       {
         key: "digital-1",
         title: "Use AI to learn, not to cheat",
-        minutes: 5,
-        cards: [
-          { heading: "Ask it to teach, not to do", body: "Do not ask AI for the answer to copy. Ask it to explain the method, then do the work yourself. Copying skips the learning, and the exam is you alone." },
-          { heading: "Always verify", body: "AI can sound sure and be wrong. Check a fact against a second source, especially numbers, dates, and formulas." },
-          { heading: "Your footprint is forever", body: "What you post at 15 can be found at 25. Before you send, ask if you would be fine with a future boss seeing it." },
+        minutes: 4,
+        steps: [
+          { kind: "concept", heading: "Ask it to teach, not to do", body: "The exam is you, alone, with no AI. Copying an answer skips the learning that the exam actually tests." },
+          { kind: "choice", question: "Best way to use an AI tutor on a hard question?", options: ["Ask for the answer and copy it down", "Ask it to explain the method, then solve it yourself"], correct: 1, explain: "Learning happens when you do the work. Let the AI teach the method, then prove you can do it without it." },
+          { kind: "concept", heading: "Always verify", body: "AI can sound completely sure and still be wrong. Check any fact, number, date or formula against a second source." },
+          { kind: "insight", body: "What you post at 15 can be found at 25. Before you send, picture a future boss reading it." },
         ],
         talkPrompt: "Show me a smart way to use an AI tutor to actually learn a hard topic, instead of just copying answers.",
       },
@@ -203,11 +208,12 @@ export const LIFE_TRACKS: LifeTrack[] = [
       {
         key: "paycheck-1",
         title: "The interview, without the fear",
-        minutes: 6,
-        cards: [
-          { heading: "They just want three things", body: "Will you turn up, can you learn, are you easy to work with. Every answer you give can quietly show one of these." },
-          { heading: "A resume with no experience", body: "No job yet is fine. List school roles, a project, anything that shows reliability. One clean page. Real over impressive." },
-          { heading: "Have two questions ready", body: "At the end they ask if you have questions. Yes always wins. Ask what a good first month looks like. It shows you plan to be good." },
+        minutes: 5,
+        steps: [
+          { kind: "concept", heading: "They want three things", body: "Under every interview question sits the same worry: will you turn up, can you learn, are you easy to work with." },
+          { kind: "choice", question: "At the end they ask: do you have any questions? Best answer?", options: ["No, I think you covered everything", "Yes, what does a good first month look like here?"], correct: 1, explain: "A thoughtful question shows you plan to be good at the job, not just get it. Have two ready." },
+          { kind: "reveal", prompt: "You have zero work experience. What goes on the resume?", answer: "School roles, a project, a responsibility, anything that shows you are reliable. One clean page. Real over impressive." },
+          { kind: "insight", body: "You are not proving you are amazing. You are proving you are reliable and coachable." },
         ],
         talkPrompt: "Be a friendly hiring manager for a part-time job. Interview me with a few questions, then give me honest, kind feedback.",
       },
@@ -224,11 +230,12 @@ export const LIFE_TRACKS: LifeTrack[] = [
       {
         key: "pathfinder-1",
         title: "There is no single best path",
-        minutes: 6,
-        cards: [
-          { heading: "Different roads, not better and worse", body: "JC leans academic and fast toward university. Poly is hands-on with a diploma and a portfolio. ITE builds a practical skill quickly. Each opens doors, none closes them forever." },
-          { heading: "Match it to you", body: "Do you like exams and theory, or projects and making things? Be honest about how you actually learn, not what sounds prestigious." },
-          { heading: "You can change lanes", body: "Poly to university, ITE to poly, paths connect. The first choice is important, not permanent. Fewer decisions are final than they feel at 16." },
+        minutes: 5,
+        steps: [
+          { kind: "concept", heading: "Different roads, not better and worse", body: "JC leans academic and fast toward university. Poly is hands-on with a diploma and a portfolio. ITE builds a practical skill quickly. Each opens doors." },
+          { kind: "choice", question: "Which question actually helps you choose?", options: ["Which one sounds most prestigious?", "Do I learn better through exams and theory, or projects and making things?"], correct: 1, explain: "Fit beats prestige. The right path matches how you actually learn and what you enjoy, not what impresses others." },
+          { kind: "reveal", prompt: "You pick Poly. Is university now off the table forever?", answer: "No. Poly to university, ITE to Poly, the paths connect. The first choice matters, but far fewer decisions are final than they feel at 16." },
+          { kind: "insight", body: "Choose for the person you are, not the label you think you should want." },
         ],
         talkPrompt: "Interview me about what I enjoy and how I learn, then help me think through JC, Poly and ITE for someone like me. Do not push one.",
       },
@@ -245,11 +252,12 @@ export const LIFE_TRACKS: LifeTrack[] = [
       {
         key: "adulting-1",
         title: "Money words adults assume you know",
-        minutes: 5,
-        cards: [
-          { heading: "CPF in one line", body: "A national savings scheme: part of a working person's pay is set aside for retirement, housing, and healthcare. You will meet it the day you earn." },
-          { heading: "Read before you sign", body: "A contract is a promise with rules. If you do not understand a line, ask before signing, not after. Signing means you agreed to all of it." },
-          { heading: "Needs before wants, always", body: "Rent, food, transport, phone bill come first. Wants come from what is left. This one order keeps adults out of most money trouble." },
+        minutes: 4,
+        steps: [
+          { kind: "concept", heading: "CPF in one line", body: "A national savings scheme: part of a working person's pay is set aside for retirement, housing and healthcare. You will meet it the day you earn." },
+          { kind: "choice", question: "A friend asks you to sign something you do not fully understand. Best move?", options: ["Sign it, you can sort out the details later", "Ask what each unclear line means before you sign"], correct: 1, explain: "A signature means you agreed to all of it. Understanding comes before signing, never after." },
+          { kind: "reveal", prompt: "In what order should money go: wants or needs first?", answer: "Needs first, always: rent, food, transport, phone bill. Wants come from what is left. This one order keeps adults out of most money trouble." },
+          { kind: "insight", body: "Nobody is born knowing this. Learning it early is the whole advantage." },
         ],
         talkPrompt: "Explain CPF and MediSave to me like I am 15 and have never heard of them, with a simple example.",
       },

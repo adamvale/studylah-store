@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 import { useNativePlatform } from "@/lib/native";
 import { NamedIcon, type IconName } from "@/components/icons";
 import { TutorChat, type TutorStart } from "@/components/tutor-chat";
+import { LessonPlayer } from "@/components/lesson-player";
+import type { LessonStep } from "@/lib/lesson-steps";
 
 // The Life Skills wing: ten tracks on one lesson player. Cards to read, a
 // "mark done" that earns XP, and "talk it through" that opens a Guru role-play
 // chat seeded with the lesson. Native app only.
 
-interface Card { heading: string; body: string }
-interface Lesson { key: string; title: string; minutes: number; cards: Card[]; talkPrompt: string | null }
+interface Lesson { key: string; title: string; minutes: number; steps: LessonStep[]; talkPrompt: string | null }
 interface Track { key: string; name: string; blurb: string; icon: IconName; tint: string; lessons: Lesson[] }
 
 export function LifeClient() {
@@ -19,6 +20,7 @@ export function LifeClient() {
   const [done, setDone] = useState<Set<string>>(new Set());
   const [track, setTrack] = useState<Track | null>(null);
   const [lesson, setLesson] = useState<Lesson | null>(null);
+  const [finished, setFinished] = useState(false);
   const [chat, setChat] = useState<TutorStart | null>(null);
 
   useEffect(() => {
@@ -65,9 +67,8 @@ export function LifeClient() {
     );
   }
 
-  // Lesson player
+  // Interactive lesson player
   if (lesson && track) {
-    const complete = done.has(lesson.key);
     return (
       <div className="mt-4">
         <button type="button" onClick={() => setLesson(null)} className="text-xs font-bold text-accent">
@@ -75,33 +76,45 @@ export function LifeClient() {
         </button>
         <h2 className="mt-2 font-display text-2xl font-black text-ink">{lesson.title}</h2>
         <p className="text-xs text-body">About {lesson.minutes} min</p>
-        <div className="mt-4 space-y-3">
-          {lesson.cards.map((c, i) => (
-            <div key={i} className="glass bg-gradient-to-br from-white/5 to-transparent p-4">
-              <p className="font-display text-base font-bold text-ink">{c.heading}</p>
-              <p className="mt-1 text-sm leading-relaxed text-body">{c.body}</p>
+        {finished ? (
+          <div className="mt-6 space-y-4">
+            <div className="glass bg-gradient-to-br from-guarantee/15 to-transparent p-5 text-center">
+              <span className="icon-orb mx-auto text-guarantee" aria-hidden>
+                <NamedIcon name="check" size={22} />
+              </span>
+              <p className="mt-3 font-display text-lg font-bold text-ink">Lesson complete</p>
+              <p className="mt-1 text-sm text-body">Nice work. Want to take it further with Guru?</p>
             </div>
-          ))}
-        </div>
-        <div className="mt-4 flex gap-2">
-          {lesson.talkPrompt && (
-            <button
-              type="button"
-              onClick={() => setChat({ kind: "life", topicKey: track.key, seed: lesson.talkPrompt!, title: track.name })}
-              className="flex-1 rounded-xl bg-accent py-3 text-sm font-bold text-night"
-            >
-              Talk it through with Guru
-            </button>
-          )}
-          <button
-            type="button"
-            onClick={() => markDone(lesson)}
-            disabled={complete}
-            className="flex-1 rounded-xl border border-hairline py-3 text-sm font-bold text-ink disabled:opacity-60"
-          >
-            {complete ? "Done" : "Mark done"}
-          </button>
-        </div>
+            <div className="flex gap-2">
+              {lesson.talkPrompt && (
+                <button
+                  type="button"
+                  onClick={() => setChat({ kind: "life", topicKey: track.key, seed: lesson.talkPrompt!, title: track.name })}
+                  className="flex-1 rounded-xl bg-accent py-3 text-sm font-bold text-night"
+                >
+                  Talk it through with Guru
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={() => { setLesson(null); setFinished(false); }}
+                className="flex-1 rounded-xl border border-hairline py-3 text-sm font-bold text-ink"
+              >
+                Back to {track.name}
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="mt-4">
+            <LessonPlayer
+              steps={lesson.steps}
+              onComplete={() => {
+                void markDone(lesson);
+                setFinished(true);
+              }}
+            />
+          </div>
+        )}
       </div>
     );
   }
@@ -120,7 +133,7 @@ export function LifeClient() {
             <button
               key={l.key}
               type="button"
-              onClick={() => setLesson(l)}
+              onClick={() => { setLesson(l); setFinished(false); }}
               className="glass flex w-full items-center gap-3 bg-gradient-to-br from-white/5 to-transparent p-3 text-left"
             >
               <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold ${done.has(l.key) ? "bg-guarantee/20 text-guarantee" : "bg-white/10 text-body"}`}>

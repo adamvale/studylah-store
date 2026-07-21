@@ -4,10 +4,17 @@ import { LIFE_TRACKS, lifeTrack, lifeLesson } from "@/lib/life-skills";
 
 // The Life Skills wing ships to minors, so lock the content invariants.
 
+function stepText(s: (typeof LIFE_TRACKS)[number]["lessons"][number]["steps"][number]): string[] {
+  if (s.kind === "concept") return [s.heading ?? "", s.body];
+  if (s.kind === "insight") return [s.body];
+  if (s.kind === "reveal") return [s.prompt, s.answer];
+  return [s.question, ...s.options, s.explain];
+}
+
 const allText = LIFE_TRACKS.flatMap((t) => [
   t.name,
   t.blurb,
-  ...t.lessons.flatMap((l) => [l.title, l.talkPrompt ?? "", ...l.cards.flatMap((c) => [c.heading, c.body])]),
+  ...t.lessons.flatMap((l) => [l.title, l.talkPrompt ?? "", ...l.steps.flatMap(stepText)]),
 ]);
 
 test("there are ten Life Skills tracks", () => {
@@ -41,11 +48,25 @@ test("the sensitive tracks carry their safety guardrails", () => {
   assert.match(calm.guardrail, /therapy|helpline|trusted adult/i);
 });
 
-test("every track has at least one lesson with cards", () => {
+test("every lesson has steps and at least one interactive one", () => {
   for (const t of LIFE_TRACKS) {
     assert.ok(t.lessons.length > 0, `${t.key} has no lessons`);
-    for (const l of t.lessons) assert.ok(l.cards.length > 0, `${l.key} has no cards`);
+    for (const l of t.lessons) {
+      assert.ok(l.steps.length > 0, `${l.key} has no steps`);
+      assert.ok(
+        l.steps.some((s) => s.kind === "choice" || s.kind === "reveal"),
+        `${l.key} is not interactive`
+      );
+    }
   }
+});
+
+test("every choice step has a correct index inside its options", () => {
+  for (const t of LIFE_TRACKS)
+    for (const l of t.lessons)
+      for (const s of l.steps)
+        if (s.kind === "choice")
+          assert.ok(s.correct >= 0 && s.correct < s.options.length, `${l.key} bad correct index`);
 });
 
 test("lookups work and miss cleanly", () => {

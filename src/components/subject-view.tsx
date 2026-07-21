@@ -126,19 +126,11 @@ export async function SubjectView({ subject }: { subject: Subject }) {
         <ExamCountdown className="mt-3" />
       )}
 
-      {/* One quantified claim leads the page. A single claim reads as
-          analysis; stacked claims read as advertising. */}
-      {copy ? (
-        <blockquote className="mt-4 max-w-2xl border-l-4 border-accent pl-4 font-display text-xl font-bold leading-snug text-ink">
-          &ldquo;{copy.heroHook}&rdquo;
-        </blockquote>
-      ) : (
-        <p className="mt-2 max-w-xl text-body">
-          Know what&apos;s likely, drill exactly that, and sit a full mock
-          before the real {LEVELS[subject.level].name}{" "}{subject.name}{" "}
-          paper, so 2026 feels familiar, not frightening.
-        </p>
-      )}
+      <p className="mt-4 max-w-xl text-body">
+        Know what&apos;s likely, drill exactly that, and sit a full mock
+        before the real {LEVELS[subject.level].name}{" "}{subject.name}{" "}
+        paper, so 2026 feels familiar, not frightening.
+      </p>
 
       {/* Bundle upsell right under the title, most students sit several
           subjects, and the per-subject price drops the more they add. */}
@@ -155,36 +147,6 @@ export async function SubjectView({ subject }: { subject: Subject }) {
           →
         </span>
       </Link>
-
-      {/* 2026 Exam Insight, a full-width section right below the bundle upsell. */}
-      {copy && copy.headlineCalls.length > 0 && (
-        <section className="mt-10 rounded-2xl border border-hairline bg-surface p-6">
-          <h2 className="font-display text-2xl font-black text-accent sm:text-3xl">
-            2026 Exam Insight
-          </h2>
-          <p className="mt-1 max-w-2xl text-sm text-body">
-            What the model is calling for the 2026 {subject.name}{" "}paper.
-            Forecasts, not fixtures, every claim is charted inside the Exam
-            Forecast.
-          </p>
-          <ul className="mt-5 grid gap-4 sm:grid-cols-2">
-            {copy.headlineCalls.map((call, i) => (
-              <li
-                key={call.title}
-                className="rounded-xl border border-hairline bg-night-2/40 p-4"
-              >
-                <p className="font-mono text-xs font-bold text-accent">
-                  No.{i + 1}
-                </p>
-                <p className="mt-1 text-sm font-semibold text-ink">{call.title}</p>
-                <p className="mt-1 text-xs leading-relaxed text-body">
-                  {call.body}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
 
       {/* Forecast Suite intro, in the homepage "The Problem" section format. */}
       <section className="mt-14 text-center">
