@@ -299,47 +299,182 @@ export async function sendResultsEmail(attemptId: string): Promise<boolean> {
   return res.delivered;
 }
 
-export async function sendFollowUpEmail(attemptId: string): Promise<boolean> {
+// ── The 7-day nurture ladder ────────────────────────────────────────────────
+// Day 0 is the immediate result email (sendResultsEmail). The SEQUENCE below is
+// the six follow-ups on days 1-6, each carrying one persuasion weapon from the
+// war plan Section 14: open loop, authority, narrative, product, risk reversal,
+// countdown+anchor. All compliance-bound: probabilistic language, no grade
+// promises, real numbers only, and the money-back guarantee is a real feature.
+// The DiagnosticAttempt.followUpStep cursor tracks progress; followUpAt holds
+// when the next step is due (set to unlockedAt + STEP_DAYS[step]).
+
+const STEP_DAYS = [1, 2, 3, 4, 5, 6]; // days after unlock for steps 0..5
+const DAY_MS = 24 * 60 * 60 * 1000;
+const FIRST_PAPER_UTC = Date.UTC(2026, 8, 30); // 30 Sep 2026, matches the promo bar
+function daysToFirstPaper(): number {
+  return Math.max(0, Math.ceil((FIRST_PAPER_UTC - Date.now()) / DAY_MS));
+}
+
+type AttemptRow = NonNullable<
+  Awaited<ReturnType<typeof prisma.diagnosticAttempt.findUnique>>
+>;
+
+function btn(href: string, label: string): string {
+  return `<p style="margin:0 0 4px;"><a href="${href}" style="display:inline-block;background:#f4552b;color:#ffffff;text-decoration:none;font-size:14px;font-weight:bold;padding:12px 20px;border-radius:8px;">${label}</a></p>`;
+}
+
+interface Built {
+  subject: string;
+  html: string;
+  text: string;
+}
+
+// Each builder returns the email for one step. subjName is the subject's
+// display name; refHtml is the pre-rendered referral line.
+type StepBuilder = (a: AttemptRow, subjName: string, refHtml: string) => Built;
+
+const SEQUENCE: StepBuilder[] = [
+  // Step 0, Day 1: the open loop, their single leakiest topic still waiting.
+  (a, subjName) => {
+    const url = productUrl(a.level, a.slug);
+    const who = a.isParent ? "your child" : "you";
+    const opener = `Yesterday ${who} scored ${a.score}/${a.totalMarks} across the highest-confidence topics for the 2026 ${subjName} paper. The topics that leaked marks have not gotten any less likely since.`;
+    return {
+      subject: `${subjName}: the topic most likely to ambush you`,
+      html: emailLayout(`
+        <h1 style="font-size:20px;margin:0 0 12px;color:#101f33;">The topic most likely to ambush you</h1>
+        <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 12px;">${opener}</p>
+        <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 14px;">One focused week on the topics you dropped fixes most of the gap, and the ranked Forecast shows exactly which question styles they arrive as. That is a far better use of the next few weeks than revising everything evenly.</p>
+        ${btn(url, "See the topics you're set to lose marks on")}
+        ${DISCLAIMER_HTML}${UNSUB_HTML}`),
+      text: `Yesterday ${who} scored ${a.score}/${a.totalMarks} on the most-likely ${subjName} topics. Fix the gap: ${url}\n\nReply "unsubscribe" to stop these emails.`,
+    };
+  },
+  // Step 1, Day 2: authority. How we forecast, and how we mark ourselves.
+  (a, subjName) => {
+    const acc = `${serverConfig.siteUrl}/accuracy`;
+    return {
+      subject: "How we forecast, and how we mark ourselves",
+      html: emailLayout(`
+        <h1 style="font-size:20px;margin:0 0 12px;color:#101f33;">A fair question: how would we know?</h1>
+        <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 12px;">Ten years of Singapore-Cambridge ${subjName} papers, every question tracked, every pattern ranked. That is the whole method. It is a probability, not a promise.</p>
+        <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 14px;">And every year we publish our hits AND our misses, in public. A forecast you cannot check is just marketing. Judge us on the record.</p>
+        ${btn(acc, "See the published scorecard")}
+        ${DISCLAIMER_HTML}${UNSUB_HTML}`),
+      text: `How we forecast ${subjName}: ten years of past papers, ranked. We publish every hit and miss at ${acc}\n\nReply "unsubscribe" to stop these emails.`,
+    };
+  },
+  // Step 2, Day 3: narrative. Studied everything except what came out.
+  (a, subjName) => {
+    const url = productUrl(a.level, a.slug);
+    return {
+      subject: "She studied everything except what came out",
+      html: emailLayout(`
+        <h1 style="font-size:20px;margin:0 0 12px;color:#101f33;">She revised everything, evenly</h1>
+        <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 12px;">One student we worked with revised her subjects evenly, as if fairness matters to an exam. It does not. Papers reward depth on the likely topics.</p>
+        <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 14px;">Her second run was different: forecast order, the highest-ranked topics first. The remaining weeks are enough to change your order too, and ${subjName} is where your diagnostic said the marks are leaking.</p>
+        ${btn(url, "Revise in the order that pays")}
+        ${DISCLAIMER_HTML}${UNSUB_HTML}`),
+      text: `Revising everything evenly is the most expensive way to feel safe. Revise ${subjName} in forecast order: ${url}\n\nReply "unsubscribe" to stop these emails.`,
+    };
+  },
+  // Step 3, Day 4: the product. What is inside Ultra + StudyLand.
+  (a, subjName) => {
+    const band = a.band as Band;
+    const cta = ctaFor(band, (a.weakness as DiagnosticProduct | null) ?? null);
+    const url = productUrl(a.level, a.slug);
+    const pricing = `${serverConfig.siteUrl}/pricing`;
+    return {
+      subject: `What is inside the Ultra pack for ${subjName}`,
+      html: emailLayout(`
+        <h1 style="font-size:20px;margin:0 0 12px;color:#101f33;">${cta.headline}</h1>
+        <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 12px;">${cta.body}</p>
+        <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 14px;">The Ultra pack for ${subjName} is the ranked Forecast, the Sure Questions Vault, a full timed Final Rehearsal and the Companion, plus StudyLand: three aimed questions a day, a mistake notebook that hunts your weak spots, and StudyLah Legends where the battles are real exam questions. Taking more than one subject? Bundles save up to S$188.</p>
+        ${btn(url, "See the pack")}
+        <p style="font-size:12px;color:#8894a3;margin:8px 0 0;">Or compare bundles at <a href="${pricing}" style="color:#f4552b;">the pricing page</a>.</p>
+        ${DISCLAIMER_HTML}${UNSUB_HTML}`),
+      text: `The Ultra pack for ${subjName}: Forecast, Vault, Final Rehearsal, Companion, plus StudyLand and StudyLah Legends. ${url}\nBundles: ${pricing}\n\nReply "unsubscribe" to stop these emails.`,
+    };
+  },
+  // Step 4, Day 5: risk reversal, the money-back rule in plain words.
+  () => {
+    const faq = `${serverConfig.siteUrl}/faq`;
+    return {
+      subject: "Our money-back rule, in plain words",
+      html: emailLayout(`
+        <h1 style="font-size:20px;margin:0 0 12px;color:#101f33;">The risk is ours, not yours</h1>
+        <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 14px;">If fewer than three of our top-five forecast topics for your subject appear in the 2026 paper, email your order ID within 14 days of the exam and we refund you in full. That is the whole rule. We put the risk on our forecast, not on your wallet.</p>
+        ${btn(faq, "How the guarantee works")}
+        ${DISCLAIMER_HTML}${UNSUB_HTML}`),
+      text: `Money-back guarantee: if fewer than three of our top-five forecast topics appear in your paper, email your order ID within 14 days for a full refund. Details: ${faq}\n\nReply "unsubscribe" to stop these emails.`,
+    };
+  },
+  // Step 5, Day 6: countdown + bundle anchor + first-order code.
+  (a, subjName) => {
+    const days = daysToFirstPaper();
+    const url = productUrl(a.level, a.slug);
+    const pricing = `${serverConfig.siteUrl}/pricing`;
+    const clock = days > 0 ? `${days} days to the first 2026 paper. ` : "";
+    return {
+      subject: `${clock}The maths of the next move`,
+      html: emailLayout(`
+        <h1 style="font-size:20px;margin:0 0 12px;color:#101f33;">${clock}The maths of the next move</h1>
+        <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 12px;">From here, every week is worth marks. One ${subjName} Ultra pack is S$68. Three subjects together are S$168, six are S$268, and the more you stack the cheaper each one gets.</p>
+        <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 14px;">First order: the code <strong style="color:#101f33;">STUDYLAH10</strong> takes 10 percent off, and every pack is covered by the money-back guarantee. Whatever you choose, choose an order for the weeks you have left.</p>
+        ${btn(url, "Aim my final weeks")}
+        <p style="font-size:12px;color:#8894a3;margin:8px 0 0;">Compare bundles at <a href="${pricing}" style="color:#f4552b;">the pricing page</a>.</p>
+        ${DISCLAIMER_HTML}${UNSUB_HTML}`),
+      text: `${clock}One ${subjName} Ultra pack is S$68; three subjects S$168; six S$268. Code STUDYLAH10 for 10% off your first order. ${url}\nBundles: ${pricing}\n\nReply "unsubscribe" to stop these emails.`,
+    };
+  },
+];
+
+// Sends the attempt's CURRENT ladder step, then advances the cursor and
+// schedules the next step (or ends the ladder at step 6). Idempotent per step:
+// the cron only calls this when followUpAt is due and followUpStep < 6.
+export async function sendNextFollowUp(attemptId: string): Promise<boolean> {
   const attempt = await prisma.diagnosticAttempt.findUnique({ where: { id: attemptId } });
-  if (!attempt?.email || !attempt.unlockedAt || attempt.followUpSentAt) return false;
+  if (!attempt?.email || !attempt.unlockedAt) return false;
+  const step = attempt.followUpStep;
+  if (step < 0 || step >= SEQUENCE.length) return false;
   const subject = getSubject(attempt.level as Level, attempt.slug);
   if (!subject) return false;
-  const band = attempt.band as Band;
-  const cta = ctaFor(band, (attempt.weakness as DiagnosticProduct | null) ?? null);
-  const isParent = attempt.isParent;
 
-  const proofLine = `We publish our accuracy after every sitting, hits AND misses, at <a href="${serverConfig.siteUrl}/accuracy" style="color:#f4552b;">the public scorecard</a>. A forecast you can't check is just marketing.`;
-  const opener = isParent
-    ? `Two days ago your child scored ${attempt.score}/${attempt.totalMarks} across <strong>the VERY HIGH-tier topics</strong>, the highest-confidence calls for the 2026 ${subject.name} paper.`
-    : `Two days ago you scored ${attempt.score}/${attempt.totalMarks} across <strong>the VERY HIGH-tier topics</strong>, the highest-confidence calls for your 2026 ${subject.name} paper.`;
-
-  const html = emailLayout(`
-    <h1 style="font-size:20px;margin:0 0 12px;color:#101f33;">That topic hasn't gotten less likely</h1>
-    <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 12px;">${opener}</p>
-    <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 12px;">${proofLine}</p>
-    <p style="font-size:14px;color:#101f33;margin:0 0 6px;"><strong>${cta.headline}</strong></p>
-    <p style="font-size:13px;color:#3d4e63;line-height:1.6;margin:0 0 14px;">${cta.body} Early-bird pricing applies while it's on.</p>
-    <p style="margin:0;">
-      <a href="${productUrl(attempt.level, attempt.slug)}" style="display:inline-block;background:#f4552b;color:#ffffff;text-decoration:none;font-size:14px;font-weight:bold;padding:12px 20px;border-radius:8px;">
-        Fix it before the paper does
-      </a>
-    </p>
-    ${referralLineHtml(await referralCodeFor(attempt.email))}
-    ${DISCLAIMER_HTML}
-    ${UNSUB_HTML}
-  `);
-
-  const res = await sendEmail({
-    to: attempt.email,
-    subject: `${subject.name}: the most-likely topics are still waiting`,
-    html,
-    text: `You scored ${attempt.score}/${attempt.totalMarks} across the most-likely ${subject.name} topics. Proof of our track record: ${serverConfig.siteUrl}/accuracy\n\n${cta.headline}: ${productUrl(attempt.level, attempt.slug)}\n\nReply "unsubscribe" to stop these emails.`,
-  });
-  if (res.delivered) {
+  // Do not keep nurturing someone who has already bought.
+  const order = await prisma.order.findFirst({ where: { email: attempt.email } });
+  if (order) {
     await prisma.diagnosticAttempt.update({
       where: { id: attempt.id },
-      data: { followUpSentAt: new Date() },
+      data: { followUpStep: SEQUENCE.length },
     });
+    return false;
   }
-  return res.delivered;
+
+  const refHtml = referralLineHtml(await referralCodeFor(attempt.email));
+  const built = SEQUENCE[step](attempt, subject.name, refHtml);
+  const res = await sendEmail({
+    to: attempt.email,
+    subject: built.subject,
+    html: built.html,
+    text: built.text,
+  });
+  if (!res.delivered) return false;
+
+  const nextStep = step + 1;
+  const nextDue =
+    nextStep < SEQUENCE.length
+      ? new Date(attempt.unlockedAt.getTime() + STEP_DAYS[nextStep] * DAY_MS)
+      : null;
+  await prisma.diagnosticAttempt.update({
+    where: { id: attempt.id },
+    data: {
+      followUpStep: nextStep,
+      followUpAt: nextDue,
+      followUpSentAt: new Date(), // last-sent marker, kept for observability
+    },
+  });
+  return true;
 }
+
+// Back-compat alias: the cron used to call sendFollowUpEmail for a single send.
+export const sendFollowUpEmail = sendNextFollowUp;

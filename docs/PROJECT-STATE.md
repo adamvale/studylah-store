@@ -43,6 +43,15 @@ dashboards (Railway/Stripe/store accounts) and content review.
   hourly `/api/cron/diagnostic-followup`, hourly `/api/cron/streak-reminder`
   (only acts 19:00-22:59 SG), daily `/api/cron/parent-digest`, daily
   `/api/cron/backup-db`.
+- **Diagnostic nurture ladder** (`diagnostic.ts` `SEQUENCE` + the hourly
+  `diagnostic-followup` cron): Day 0 is the immediate result email; Days 1-6
+  are six follow-ups (open loop, authority, narrative, product, risk
+  reversal, countdown+anchor). `DiagnosticAttempt.followUpStep` is the cursor
+  (0-6), `followUpAt` holds the next step's due time. The cron sends every due
+  step and advances; a paid order for that email ends the ladder immediately.
+  Copy is compliance-bound (probabilistic, no grade promises, real numbers).
+  The v2.20 migration backfilled pre-existing follow-ups to step 6 so the
+  switch never re-emailed an already-contacted lead.
 - **Mobile**: PWA is live (manifest, `public/sw.js`, web push). Native
   Capacitor shell for App Store/Play is the current roadmap (built via
   Codemagic cloud CI, this repo is connected; local Mac cannot build iOS).

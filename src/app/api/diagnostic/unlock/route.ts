@@ -3,7 +3,8 @@ import { prisma } from "@/lib/db";
 import { logDiagnosticEvent, sendResultsEmail } from "@/lib/server/diagnostic";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const FOLLOW_UP_MS = 48 * 60 * 60 * 1000;
+// Day 1 of the 7-day nurture ladder; the result email is Day 0 (sent now).
+const FOLLOW_UP_MS = 24 * 60 * 60 * 1000;
 
 // The email gate. Same PDPA pattern as the heatmap: explicit consent
 // (unticked by default in the UI), consent timestamp stored on the Lead.

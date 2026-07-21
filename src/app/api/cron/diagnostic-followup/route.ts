@@ -1,11 +1,14 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { serverConfig } from "@/lib/server/config";
-import { sendFollowUpEmail } from "@/lib/server/diagnostic";
+import { sendNextFollowUp } from "@/lib/server/diagnostic";
 
-// The ~48h follow-up sender. Idempotent (followUpSentAt guards re-sends), so
-// any scheduler works: Railway cron, cron-job.org, or a manual visit. Fails
-// closed without CRON_SECRET.
+// Advances the 7-day nurture ladder. Each run sends every attempt whose next
+// step is due (followUpAt <= now) and not yet complete (followUpStep < 6),
+// then the sender schedules the following step. Idempotent per step, so any
+// cadence works: run this every few hours. Fails closed without CRON_SECRET.
+const TOTAL_STEPS = 6;
+
 export async function GET(request: Request) {
   const key = new URL(request.url).searchParams.get("key");
   if (!serverConfig.cronSecret || key !== serverConfig.cronSecret) {
@@ -16,17 +19,17 @@ export async function GET(request: Request) {
     where: {
       unlockedAt: { not: null },
       followUpAt: { lte: new Date() },
-      followUpSentAt: null,
+      followUpStep: { lt: TOTAL_STEPS },
       email: { not: null },
     },
-    take: 50,
+    take: 100,
     orderBy: { followUpAt: "asc" },
   });
 
   let sent = 0;
   for (const attempt of due) {
     try {
-      if (await sendFollowUpEmail(attempt.id)) sent++;
+      if (await sendNextFollowUp(attempt.id)) sent++;
     } catch (e) {
       console.error(`Diagnostic follow-up failed for ${attempt.id}`, e);
     }

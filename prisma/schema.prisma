@@ -361,6 +361,10 @@ model DiagnosticAttempt {
   resultEmailSentAt DateTime?
   followUpAt        DateTime?
   followUpSentAt    DateTime?
+  // The 7-day nurture ladder. 0 = no follow-up sent yet; increments as each
+  // of the 6 sequence emails goes out (day 0 is the immediate result email).
+  // followUpAt holds when the NEXT step is due; the ladder ends at step 6.
+  followUpStep      Int       @default(0)
   createdAt         DateTime  @default(now())
 
   @@index([followUpAt])
