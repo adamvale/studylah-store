@@ -1,5 +1,3 @@
-import { existsSync } from "fs";
-import { join } from "path";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -21,7 +19,6 @@ import { examPapersFor } from "@/lib/exam-dates-2026";
 import { PackPreview } from "./pack-preview";
 import { ExamCountdown } from "./exam-countdown";
 import { ExamSchedule } from "./exam-schedule";
-import { SubjectPackHero } from "./subject-pack-hero";
 import { SubjectStickyCta } from "./subject-sticky-cta";
 import { TierSelector } from "./tier-selector";
 
@@ -31,12 +28,6 @@ export async function SubjectView({ subject }: { subject: Subject }) {
   const copy = subjectCopy(subject.level, subject.slug);
   const products = productsForSubject(subject);
   const packPreview = packPreviewFor(subject.level, subject.slug);
-  // The 3D box render, if one exists for this subject (public/packs/...).
-  const packImg = existsSync(
-    join(process.cwd(), "public", "packs", subject.level, `${subject.slug}.png`)
-  )
-    ? `/packs/${subject.level}/${subject.slug}.png`
-    : null;
 
   const title = copy
     ? `${subject.name} ${copy.syllabusCode}`
@@ -109,15 +100,6 @@ export async function SubjectView({ subject }: { subject: Subject }) {
       <h1 className="mt-2 font-display text-4xl font-black tracking-tight text-ink">
         {title}
       </h1>
-
-      {/* The 2026 pack render: a big product shot right under the title that
-          shrinks into a floating icon at the top as the visitor scrolls. */}
-      {packImg && (
-        <SubjectPackHero
-          img={packImg}
-          alt={`${subject.name} 2026 Exam Forecast pack, StudyLah`}
-        />
-      )}
 
       {examPapersFor(subject.level, subject.slug).length > 0 ? (
         <ExamSchedule
