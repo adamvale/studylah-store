@@ -41,8 +41,9 @@ dashboards (Railway/Stripe/store accounts) and content review.
   `product-pdfs/`. Client lib: `src/lib/server/r2.ts`.
 - **Scheduled jobs** (cron-job.org hits these; all gated by `CRON_SECRET`):
   hourly `/api/cron/diagnostic-followup`, hourly `/api/cron/streak-reminder`
-  (only acts 19:00-22:59 SG), daily `/api/cron/parent-digest`, daily
-  `/api/cron/backup-db`.
+  (only acts 19:00-22:59 SG), hourly `/api/cron/tutor-sessions` (Guru's
+  standing weekly tuition-slot reminders, OWNER: add this one), daily
+  `/api/cron/parent-digest`, daily `/api/cron/backup-db`.
 - **Diagnostic nurture ladder** (`diagnostic.ts` `SEQUENCE` + the hourly
   `diagnostic-followup` cron): Day 0 is the immediate result email; Days 1-6
   are six follow-ups (open loop, authority, narrative, product, risk
@@ -986,6 +987,47 @@ Migration `20260721020000_sightseeing_loudspeaker` (ScannedQuestion +
 OralAttempt). `ANTHROPIC_API_KEY` now documented in `.env.example` (also powers
 Gugu + scan). Both features are code-complete; needs the native shell rebuilt
 to surface the cards, and Azure keys for scoring.
+
+## Guru Tutor + Life Skills (native-app-only, the tuition-replacement wing)
+
+The leap from study tools to an actual tutor + tuition center in the app. Both
+native-shell-only (via `NativeToolCards`), owner-gated (`requireMaster`), pure
+Anthropic (no Azure). All 20 requested features land as three shared engines,
+because a real tutor does teaching/practice/marking/planning/mocks in ONE
+conversation, not ten screens.
+
+**Guru Tutor** (`/account/tutor`): one conversational session that teaches,
+re-explains simpler, sets practice, marks a typed answer OR a photo of working
+(Claude vision), plans a week, and runs a mock. `tutor-chat.ts` holds the
+persona system prompts (`subjectTutorSystem`, `lifeCoachSystem`) sharing the
+house rules (point form, step-by-step math, no grade promises, no dashes/emojis,
+minors-safe), model `TUTOR_MODEL` (Haiku, swappable). `/api/account/game/tutor`
+(start | reply) persists to `TutorSession` + `TutorMessage`; daily cap 60
+messages; graceful fallback text when `ANTHROPIC_API_KEY` is unset. UI:
+`tutor-chat.tsx` (chat + quick chips + photo marking) inside `tutor-hub.tsx`
+(subject picker from owned subjects + a weekly-slot scheduler). This covers
+Tutor features 1,3,4,5,6,8,9.
+
+**Scheduled sessions + nudges** (Tutor 2, 10): `TutorSchedule`
+(`/api/account/game/tutor-schedule`) is a standing "tuition slot" (subject,
+weekday, SG hour). Hourly `/api/cron/tutor-sessions` pushes a native reminder
+that deep-links `/account/tutor?start=subject:slug:level` (TutorHub reads the
+param and auto-opens). **Owner must register this cron on cron-job.org.** Tutor
+7 (parent reports) already exists as the parent-digest system.
+
+**Life Skills** (`/account/life`): ten non-academic tracks on one lesson engine,
+"school teaches subjects, this builds you". Content in `src/lib/life-skills.ts`
+(Money School, Founder Track, Confidence Gym, Calm Room, Life OS, Say It Right,
+AI & Street Smarts, First Paycheck, Pathfinder, Adulting 101), each with per-
+track safety guardrails baked into the Guru chat (money = education not
+investment advice; calm = coping-skills-not-therapy + SG helpline). Seed content
+is compact and REAL; Coddy mass-produces the full library under this contract.
+`/api/account/game/life` tracks completion (`LifeProgress`, 8 XP/lesson);
+`life-client.tsx` is hub > track > lesson cards > "Talk it through with Guru"
+(reuses the tutor chat with the track's guardrail). Migration
+`20260721030000_tutor_lifeskills`. 43 tests green (money-math + grading +
+oral + life-skills content compliance). Verified in the simulated shell:
+4 native cards, subject picker, session persists, Life Skills 10 tracks render.
 
 ## July 2026 feature batch (exam dates, nav dropdowns, rescue questionnaire, guru teach)
 

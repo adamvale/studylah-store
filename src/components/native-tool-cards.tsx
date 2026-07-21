@@ -16,6 +16,22 @@ const NATIVE_TOOLS: {
   badge?: string;
 }[] = [
   {
+    href: "/account/tutor",
+    icon: "chat",
+    name: "Guru Tutor",
+    blurb: "Your 1-to-1 tutor: teach, practise, mark, plan",
+    tint: "from-sky-500/25 to-violet-600/10",
+    badge: "NEW",
+  },
+  {
+    href: "/account/life",
+    icon: "sparkle",
+    name: "Life Skills",
+    blurb: "Money, confidence, and the stuff school skips",
+    tint: "from-emerald-500/25 to-violet-600/10",
+    badge: "NEW",
+  },
+  {
     href: "/account/scan",
     icon: "camera",
     name: "Snap & Teach",

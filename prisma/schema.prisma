@@ -601,6 +601,67 @@ model OralAttempt {
   @@index([customerId, createdAt])
 }
 
+// Guru Tutor: a conversational teaching session. kind "subject" (topicKey = a
+// subject slug the student owns) or "life" (topicKey = a Life Skills track).
+// The whole tutor loop (teach, re-explain, practise, mark, plan, mock) is one
+// chat; messages carry the transcript.
+model TutorSession {
+  id         String         @id @default(cuid())
+  customerId String
+  kind       String // "subject" | "life"
+  topicKey   String // subject slug, or life-skills track key
+  level      String? // "o-level" | "na-level" for subject sessions
+  title      String
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @default(now()) @updatedAt
+  messages   TutorMessage[]
+
+  @@index([customerId, updatedAt])
+}
+
+model TutorMessage {
+  id        String       @id @default(cuid())
+  sessionId String
+  role      String // "user" | "guru"
+  content   String
+  createdAt DateTime     @default(now())
+  session   TutorSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId, createdAt])
+}
+
+// A standing "tuition slot": Guru pushes a reminder to start a session at this
+// weekday + Singapore hour (e.g. Chemistry, Friday 20:00). The nudge cron reads
+// these.
+model TutorSchedule {
+  id         String   @id @default(cuid())
+  customerId String
+  kind       String // "subject" | "life"
+  topicKey   String
+  level      String?
+  label      String
+  weekday    Int // 0 = Sunday .. 6 = Saturday (Singapore)
+  hourSg     Int // 0..23, Singapore time
+  active     Boolean  @default(true)
+  lastPushed String? // SG day the reminder last fired, dedupe per day
+  createdAt  DateTime @default(now())
+
+  @@index([customerId])
+  @@index([weekday, hourSg, active])
+}
+
+// Life Skills lesson completion (drives progress + XP). One row per finished
+// lesson.
+model LifeProgress {
+  id          String   @id @default(cuid())
+  customerId  String
+  lessonKey   String
+  completedAt DateTime @default(now())
+
+  @@unique([customerId, lessonKey])
+  @@index([customerId])
+}
+
 // Beta feedback for StudyLah Legends: free text + a quick sentiment tap.
 model GameFeedback {
   id         String   @id @default(cuid())
