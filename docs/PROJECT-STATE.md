@@ -180,6 +180,17 @@ SiteGround) and replies from the panel. Facts:
   row in _prisma_migrations, so Railway's `migrate deploy` still applies them
   cleanly in prod.
 
+## Tests (`npm test`)
+
+Zero-dependency unit tests via Node's built-in runner + the existing `tsx`
+loader (`node --import tsx --test "src/**/*.test.ts"`). Coverage is deliberately
+on the pure, high-blast-radius logic where a silent regression costs money or
+makes a false claim to parents: the bundle ladder (3/6/8 prices, savings,
+percents, per-subject monotonicity), tier price points and cart invariants
+(`pricing`), tier config (`catalogue`), and compliance-copy invariants (no
+em/en dashes, no result guarantees). Prisma-bound modules are not covered (they
+can't import standalone here). Run before pushing pricing or compliance edits.
+
 ## Deploy awareness (v2.17): updates never eat a student's quiz
 
 Reality on Railway with the SQLite volume: while a push BUILDS, the old app
