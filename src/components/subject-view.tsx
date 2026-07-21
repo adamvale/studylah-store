@@ -1,3 +1,5 @@
+import { existsSync } from "fs";
+import { join } from "path";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -28,6 +30,14 @@ export async function SubjectView({ subject }: { subject: Subject }) {
   const copy = subjectCopy(subject.level, subject.slug);
   const products = productsForSubject(subject);
   const packPreview = packPreviewFor(subject.level, subject.slug);
+  // The subject's own 3D box render, if one exists (public/packs/...). Shown in
+  // the Forecast Suite section; subjects without a render fall back to the
+  // generic target graphic.
+  const packImg = existsSync(
+    join(process.cwd(), "public", "packs", subject.level, `${subject.slug}.png`)
+  )
+    ? `/packs/${subject.level}/${subject.slug}.png`
+    : null;
 
   const title = copy
     ? `${subject.name} ${copy.syllabusCode}`
@@ -194,13 +204,23 @@ export async function SubjectView({ subject }: { subject: Subject }) {
           Total <span className="text-accent">4</span> solution packages
         </p>
         <div className="mt-5 flex justify-center">
-          <Image
-            src="/marketing/solution-target.webp"
-            alt="Darts hitting the centre of a target"
-            width={320}
-            height={298}
-            className="h-auto w-32 sm:w-40"
-          />
+          {packImg ? (
+            <Image
+              src={packImg}
+              alt={`${subject.name} 2026 Exam Forecast pack, StudyLah`}
+              width={280}
+              height={420}
+              className="h-auto w-40 rotate-1 drop-shadow-2xl sm:w-48"
+            />
+          ) : (
+            <Image
+              src="/marketing/solution-target.webp"
+              alt="Darts hitting the centre of a target"
+              width={320}
+              height={298}
+              className="h-auto w-32 sm:w-40"
+            />
+          )}
         </div>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-cloud">
           Every {subject.name}{" "}topic ranked by its 2026 probability, the
