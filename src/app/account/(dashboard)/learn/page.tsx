@@ -36,6 +36,14 @@ const TOOLS: {
     tint: "from-amber-400/20 to-violet-600/10",
   },
   {
+    href: "/account/practical",
+    emoji: "flask",
+    name: "Practical Lab",
+    blurb: "Train the science practical paper",
+    tint: "from-teal-400/20 to-violet-600/10",
+    badge: "NEW",
+  },
+  {
     href: "/account/practice",
     emoji: "swords",
     name: "Practice",

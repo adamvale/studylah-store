@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { useNativePlatform } from "@/lib/native";
 import { NamedIcon } from "@/components/icons";
-import { compressImage } from "@/lib/image-compress";
+import { ImageCropper } from "@/components/image-cropper";
 
 // Project Sightseeing UI: snap a question, Guru teaches it step by step.
 // Native app only (the camera + this whole tool is gated to the shell). The
@@ -30,17 +30,22 @@ export function ScanClient() {
   const [revealed, setRevealed] = useState(0); // steps shown so far
   const [showAnswer, setShowAnswer] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [pending, setPending] = useState<File | null>(null); // photo awaiting crop
 
-  async function onPick(e: React.ChangeEvent<HTMLInputElement>) {
+  function onPick(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     e.target.value = ""; // allow re-picking the same file
     if (!file) return;
     setError("");
     setTeaching(null);
     setSaved(false);
+    setPending(file); // go to the crop step first
+  }
+
+  async function submitCropped({ base64, media }: { base64: string; media: string }) {
+    setPending(null);
     setBusy(true);
     try {
-      const { base64, media } = await compressImage(file);
       const res = await fetch("/api/account/game/scan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -111,7 +116,11 @@ export function ScanClient() {
         className="hidden"
       />
 
-      {!teaching && (
+      {pending && (
+        <ImageCropper file={pending} onCropped={submitCropped} onCancel={() => setPending(null)} />
+      )}
+
+      {!teaching && !pending && (
         <button
           type="button"
           onClick={() => fileRef.current?.click()}

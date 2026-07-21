@@ -37,6 +37,27 @@ function blobToBase64(blob: Blob): Promise<string> {
   });
 }
 
+// Speak the passage back with the correct pronunciation, via the device's
+// built-in text-to-speech (Web Speech API, works offline in the app, no Azure).
+// Slowed a touch so learners can follow. Chinese uses a zh-CN voice, English
+// an en-GB voice when the device has one.
+function speak(text: string, lang: "chinese" | "english") {
+  try {
+    const synth = window.speechSynthesis;
+    if (!synth) return;
+    synth.cancel();
+    const code = lang === "chinese" ? "zh-CN" : "en-GB";
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = code;
+    u.rate = lang === "chinese" ? 0.82 : 0.92;
+    const voice = synth.getVoices().find((v) => v.lang?.toLowerCase().startsWith(code.toLowerCase()));
+    if (voice) u.voice = voice;
+    synth.speak(u);
+  } catch {
+    /* TTS unavailable, silently skip */
+  }
+}
+
 function scoreColor(v: number): string {
   if (v >= 80) return "text-guarantee";
   if (v >= 60) return "text-accent";
@@ -124,7 +145,7 @@ export function OralClient() {
         </span>
         <p className="mt-3 font-display text-lg font-bold text-ink">Open the StudyLah app</p>
         <p className="mt-1 text-sm text-body">
-          Speak and Score uses your microphone, so it lives in the StudyLah app. Open StudyLand
+          Oral Skills uses your microphone, so it lives in the StudyLah app. Open StudyLand
           there to practise your oral.
         </p>
       </div>
@@ -190,9 +211,20 @@ export function OralClient() {
           </button>
 
           <div className="glass bg-gradient-to-br from-white/5 to-transparent p-4">
-            <p className="text-xs font-bold uppercase tracking-wide text-body">
-              {active.mode === "read-aloud" ? "Read this aloud" : "Answer aloud"}
-            </p>
+            <div className="flex items-center justify-between gap-2">
+              <p className="text-xs font-bold uppercase tracking-wide text-body">
+                {active.mode === "read-aloud" ? "Read this aloud" : "Answer aloud"}
+              </p>
+              {active.mode === "read-aloud" && (
+                <button
+                  type="button"
+                  onClick={() => speak(active.text, active.lang)}
+                  className="flex items-center gap-1.5 rounded-full bg-accent/15 px-3 py-1 text-xs font-bold text-accent"
+                >
+                  <NamedIcon name="mic" size={13} /> Hear it
+                </button>
+              )}
+            </div>
             <p className="mt-2 whitespace-pre-wrap text-base leading-relaxed text-ink">{active.text}</p>
             {active.hint && <p className="mt-2 text-xs text-body">Tip: {active.hint}</p>}
           </div>
@@ -238,6 +270,15 @@ export function OralClient() {
                   <p className="text-xs font-bold uppercase tracking-wide text-accent">Guru says</p>
                   <p className="mt-1 whitespace-pre-wrap text-sm leading-relaxed text-ink">{result.coaching}</p>
                 </div>
+              )}
+              {active.mode === "read-aloud" && (
+                <button
+                  type="button"
+                  onClick={() => speak(active.text, active.lang)}
+                  className="flex w-full items-center justify-center gap-2 rounded-xl border border-hairline py-3 text-sm font-bold text-ink"
+                >
+                  <NamedIcon name="mic" size={15} /> Hear the model reading
+                </button>
               )}
             </div>
           )}

@@ -42,8 +42,8 @@ const NATIVE_TOOLS: {
   {
     href: "/account/oral",
     icon: "mic",
-    name: "Speak & Score",
-    blurb: "Practise your oral, get your pronunciation scored",
+    name: "Oral Skills",
+    blurb: "Hear it, read it aloud, get your pronunciation scored",
     tint: "from-rose-500/25 to-violet-600/10",
     badge: "NEW",
   },

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { NamedIcon } from "@/components/icons";
-import { compressImage } from "@/lib/image-compress";
+import { ImageCropper } from "@/components/image-cropper";
 
 // The Guru Tutor chat surface. Auto-starts a session from `start`, then runs a
 // normal chat loop with quick-action chips (explain simpler, give me a
@@ -33,6 +33,7 @@ export function TutorChat({ start, onClose }: { start: TutorStart; onClose?: () 
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [pendingPhoto, setPendingPhoto] = useState<File | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
 
@@ -82,16 +83,23 @@ export function TutorChat({ start, onClose }: { start: TutorStart; onClose?: () 
     }
   }
 
-  async function onPickPhoto(e: React.ChangeEvent<HTMLInputElement>) {
+  function onPickPhoto(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     e.target.value = "";
-    if (!file) return;
-    try {
-      const img = await compressImage(file);
-      void send(input || "Mark my working, please.", img);
-    } catch {
-      setError("Could not read that photo. Try another one.");
-    }
+    if (file) setPendingPhoto(file); // crop first, then send
+  }
+
+  if (pendingPhoto) {
+    return (
+      <ImageCropper
+        file={pendingPhoto}
+        onCropped={(img) => {
+          setPendingPhoto(null);
+          void send(input || "Mark my working, please.", img);
+        }}
+        onCancel={() => setPendingPhoto(null)}
+      />
+    );
   }
 
   return (

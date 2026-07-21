@@ -188,6 +188,19 @@ html[data-native] select {
   font-size: 16px;
 }
 
+/* No scrollbar in the app: it should feel like a native screen, not a web
+   page with a slider on the right edge. Scrolling still works. */
+html[data-native],
+html[data-native] * {
+  scrollbar-width: none; /* Firefox/standards */
+  -ms-overflow-style: none; /* old Edge */
+}
+html[data-native] ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
 /* Screen-to-screen transition, the account template remounts per
    navigation, so this retriggers like a game screen swap. */
 @keyframes native-screen-in {
