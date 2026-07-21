@@ -16,6 +16,7 @@ import {
 import { useCart } from "@/lib/cart-context";
 import { usePricing } from "@/lib/pricing-context";
 import { GuaranteeBadge } from "./guarantee-badge";
+import { PctChip, PriceRow, cardStyle, TIER_TINT } from "./tier-price-display";
 
 export function TierSelector({
   level,
@@ -29,7 +30,7 @@ export function TierSelector({
   const [tier, setTier] = useState<Tier>("master");
   const [added, setAdded] = useState(false);
   const { addItem } = useCart();
-  const { earlyBird, tierPrice, regularTierPrice, tierValue, tierSavings } = usePricing();
+  const { tierPrice, tierValue } = usePricing();
 
   // Ultra's contents vary by subject, only the sciences include Paper 3.
   const subject = getSubject(level, subjectSlug);
@@ -56,10 +57,9 @@ export function TierSelector({
           {TIER_ORDER.map((t) => {
             const included = productsFor(t);
             const price = tierPrice(level, t);
-            const regular = regularTierPrice(level, t);
             const value = tierValue(level, t, included);
-            const savings = tierSavings(level, t, included);
             const isMaster = t === "master";
+            const isStarter = t === "essential";
             return (
               <label key={t} className="relative cursor-pointer">
                 <input
@@ -74,11 +74,12 @@ export function TierSelector({
                   className="peer sr-only"
                 />
                 <span
-                  className={`flex h-full flex-col rounded-2xl border-2 bg-surface p-3 transition-all peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-trust sm:p-5 ${
+                  className={`flex h-full flex-col rounded-2xl border-2 p-3 transition-all peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-trust sm:p-5 ${
                     isMaster
                       ? "border-accent shadow-[0_0_0_1px_var(--color-accent),0_10px_30px_-14px_rgba(255,220,0,0.5)] peer-checked:border-accent"
                       : "border-hairline opacity-80 peer-checked:border-signal peer-checked:opacity-100"
                   }`}
+                  style={cardStyle(TIER_TINT[t])}
                 >
                   {isMaster && (
                     <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent px-2 py-0.5 text-[8px] font-bold uppercase tracking-wide text-accent-deep sm:-top-3 sm:left-5 sm:translate-x-0 sm:px-3 sm:text-xs">
@@ -88,27 +89,16 @@ export function TierSelector({
                       </span>
                     </span>
                   )}
-                  <span className="font-display text-base font-bold text-ink sm:text-lg">
+                  <span className="flex flex-wrap items-center gap-1.5 font-display text-base font-bold text-white sm:gap-2 sm:text-lg">
                     {TIER_NAMES[t]}
+                    <PctChip price={price} value={value} />
                   </span>
-                  <span className="mt-1 font-mono text-xl font-medium text-accent sm:text-2xl">
-                    {sgd(price)}
-                    {earlyBird && price !== regular && (
-                      <span className="mt-0.5 block text-xs text-body line-through sm:ml-2 sm:mt-0 sm:inline">
-                        {sgd(regular)}
-                      </span>
-                    )}
-                  </span>
-                  {savings > 0 ? (
-                    <span className="mt-1 text-[10px] font-medium leading-tight text-guarantee sm:text-xs">
-                      {sgd(value)} value, save {sgd(value - price)}
-                    </span>
-                  ) : (
+                  {isStarter && (
                     <span className="mt-1 text-[10px] leading-tight text-body sm:text-xs">
                       The entry point
                     </span>
                   )}
-                  <span className="mt-3 space-y-1 text-[11px] leading-tight text-body sm:mt-4 sm:space-y-1.5 sm:text-sm">
+                  <span className="mt-3 block space-y-1 text-[11px] leading-tight text-cloud sm:mt-4 sm:space-y-1.5 sm:text-sm">
                     {included.map((p) => (
                       <span key={p} className="flex items-start gap-1.5 sm:gap-2">
                         <span
@@ -119,6 +109,11 @@ export function TierSelector({
                       </span>
                     ))}
                   </span>
+                  <PriceRow
+                    price={price}
+                    value={isStarter ? undefined : value}
+                    className="mt-auto pt-4"
+                  />
                 </span>
               </label>
             );

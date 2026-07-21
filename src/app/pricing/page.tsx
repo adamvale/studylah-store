@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getSubject, sgd, tierProducts } from "@/lib/catalogue";
 import type { Pricing } from "@/lib/pricing";
 import { bundleLadder } from "@/lib/bundle-ladder";
+import { PctChip, PriceRow, cardStyle } from "@/components/tier-price-display";
 import { getPricing } from "@/lib/server/pricing-store";
 import { ExamCountdown } from "@/components/exam-countdown";
 
@@ -49,55 +50,6 @@ const TIERS: {
     ],
   },
 ];
-
-// The Higgsfield style discount chip that sits beside a tier name.
-function PctChip({ price, value }: { price: number; value: number }) {
-  const pct = Math.round((1 - price / value) * 100);
-  if (pct <= 0) return null;
-  return (
-    <span className="shrink-0 rounded-full bg-coral px-1.5 py-0.5 font-mono text-[8px] font-bold uppercase tracking-wide text-night sm:px-2.5 sm:text-[11px]">
-      {pct}% off
-    </span>
-  );
-}
-
-// The per-card top-lit gradient washes, mirroring the reference: neutral for
-// STARTER, lime for PLUS, crimson for ULTRA (bundles reuse them in order).
-const CARD_TINTS = {
-  grey: "linear-gradient(165deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 40%, rgba(255,255,255,0) 75%)",
-  lime: "linear-gradient(165deg, rgba(190,242,0,0.20) 0%, rgba(190,242,0,0.05) 40%, rgba(190,242,0,0) 75%)",
-  crimson: "linear-gradient(165deg, rgba(255,32,86,0.26) 0%, rgba(255,32,86,0.07) 40%, rgba(255,32,86,0) 75%)",
-} as const;
-
-function cardStyle(tint: keyof typeof CARD_TINTS) {
-  return { backgroundImage: CARD_TINTS[tint], backgroundColor: "#1d1545" };
-}
-
-// Reference-style price row: struck original in bold neon red (thick strike),
-// the actual price slightly bigger in white, then a small bold grey save line.
-// Sits at the BOTTOM of each card, below the included list.
-function PriceRow({ price, value }: { price: number; value?: number }) {
-  const discounted = value !== undefined && value > price;
-  return (
-    <div className="mt-auto pt-4">
-      <p className="flex flex-wrap items-baseline gap-1.5 sm:gap-2">
-        {discounted && (
-          <span className="font-display text-sm font-black text-[#ff2056] line-through decoration-[3px] sm:text-2xl">
-            {sgd(value)}
-          </span>
-        )}
-        <span className="font-display text-lg font-black text-white sm:text-3xl">
-          {sgd(price)}
-        </span>
-      </p>
-      {discounted && (
-        <p className="mt-1 text-[10px] font-bold text-body sm:text-xs">
-          Save {sgd(value - price)}
-        </p>
-      )}
-    </div>
-  );
-}
 
 function PricingTiers({ pricing }: { pricing: Pricing }) {
   const { tierPrice, tierValue } = pricing;
@@ -169,9 +121,9 @@ function PricingTiers({ pricing }: { pricing: Pricing }) {
                 </ul>
 
                 {t.key === "essential" ? (
-                  <PriceRow price={price} />
+                  <PriceRow price={price} className="mt-auto pt-4" />
                 ) : (
-                  <PriceRow price={price} value={value} />
+                  <PriceRow price={price} value={value} className="mt-auto pt-4" />
                 )}
               </div>
             );
@@ -256,7 +208,7 @@ function BundleTiers({ pricing }: { pricing: Pricing }) {
                 </li>
               </ul>
 
-              <PriceRow price={b.price} value={b.value} />
+              <PriceRow price={b.price} value={b.value} className="mt-auto pt-4" />
             </div>
           ))}
         </div>
