@@ -36,8 +36,8 @@ export const PRACTICAL_SUBJECTS: PracticalSubject[] = [
         minutes: 5,
         steps: [
           { kind: "concept", heading: "Observe, then deduce", body: "In qualitative analysis you write what you SEE first (colour, precipitate, gas, heat), then what it TELLS you. Markers award the observation and the deduction separately." },
-          { kind: "choice", question: "You add sodium hydroxide to a solution and a light blue precipitate forms. Which ion is most likely present?", options: ["Iron(II), Fe2+", "Copper(II), Cu2+", "Zinc, Zn2+"], correct: 1, explain: "A blue precipitate with NaOH points to copper(II). Iron(II) gives a green precipitate; zinc gives a white one that dissolves in excess." },
-          { kind: "reveal", prompt: "A white precipitate forms with NaOH and it DISSOLVES in excess NaOH. Which two common ions fit?", answer: "Zinc (Zn2+) and aluminium (Al3+). Both give a white precipitate soluble in excess. You then use the ammonia test to tell them apart." },
+          { kind: "choice", question: "You add sodium hydroxide to a solution and a light blue precipitate forms. Which ion is most likely present?", options: ["Iron(II), Fe^{2+}", "Copper(II), Cu^{2+}", "Zinc, Zn^{2+}"], correct: 1, explain: "A blue precipitate with NaOH points to copper(II). Iron(II) gives a green precipitate; zinc gives a white one that dissolves in excess." },
+          { kind: "reveal", prompt: "A white precipitate forms with NaOH and it DISSOLVES in excess NaOH. Which two common ions fit?", answer: "Zinc (Zn^{2+}) and aluminium (Al^{3+}). Both give a white precipitate soluble in excess. You then use the ammonia test to tell them apart." },
           { kind: "insight", body: "Write the colour AND whether it dissolves in excess. Half the marks live in that second detail." },
         ],
         talkPrompt: "Quiz me on qualitative analysis cation and anion tests, one at a time, and correct my observations and deductions.",
@@ -47,8 +47,8 @@ export const PRACTICAL_SUBJECTS: PracticalSubject[] = [
         title: "Titration: the marks in the technique",
         minutes: 5,
         steps: [
-          { kind: "concept", heading: "Read the burette properly", body: "Read the burette at eye level, from the bottom of the meniscus, to the nearest 0.05 cm3. A parallax error here quietly costs accuracy marks." },
-          { kind: "choice", question: "Your titres are 24.60, 25.10 and 24.55 cm3. Which should you average for the final answer?", options: ["All three", "24.60 and 24.55 (the concordant pair)", "Only the smallest"], correct: 1, explain: "Use concordant titres, within about 0.10 cm3 of each other. The 25.10 is an outlier, so average 24.60 and 24.55." },
+          { kind: "concept", heading: "Read the burette properly", body: "Read the burette at eye level, from the bottom of the meniscus, to the nearest 0.05 cm^3. A parallax error here quietly costs accuracy marks." },
+          { kind: "choice", question: "Your titres are 24.60, 25.10 and 24.55 cm^3. Which should you average for the final answer?", options: ["All three", "24.60 and 24.55 (the concordant pair)", "Only the smallest"], correct: 1, explain: "Use concordant titres, within about 0.10 cm^3 of each other. The 25.10 is an outlier, so average 24.60 and 24.55." },
           { kind: "insight", body: "Record every titre to 2 decimal places ending in 0 or 5. Consistency of recording is itself a marked skill." },
         ],
         talkPrompt: "Give me a titration results table with an outlier and ask me which titres to average and why.",

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { LessonStep } from "@/lib/lesson-steps";
 import { NamedIcon } from "@/components/icons";
+import { Sci } from "@/components/sci-text";
 
 // The interactive lesson player: Brilliant-style, one step at a time, with
 // active recall and immediate feedback. Reusable across any StudyLand surface,
@@ -67,17 +68,17 @@ export function LessonPlayer({
               <p className="font-display text-xl font-bold text-ink">{step.heading}</p>
             )}
             <p className={`${step.kind === "concept" && step.heading ? "mt-2" : ""} text-base leading-relaxed text-ink`}>
-              {step.body}
+              <Sci>{step.body}</Sci>
             </p>
           </div>
         )}
 
         {step.kind === "reveal" && (
           <div className="glass bg-gradient-to-br from-white/5 to-transparent p-5">
-            <p className="font-display text-lg font-bold text-ink">{step.prompt}</p>
+            <p className="font-display text-lg font-bold text-ink"><Sci>{step.prompt}</Sci></p>
             {revealed ? (
               <p className="mt-3 border-t border-white/10 pt-3 text-base leading-relaxed text-ink">
-                {step.answer}
+                <Sci>{step.answer}</Sci>
               </p>
             ) : (
               <button
@@ -93,7 +94,7 @@ export function LessonPlayer({
 
         {step.kind === "choice" && (
           <div>
-            <p className="font-display text-lg font-bold text-ink">{step.question}</p>
+            <p className="font-display text-lg font-bold text-ink"><Sci>{step.question}</Sci></p>
             <div className="mt-3 space-y-2">
               {step.options.map((opt, oi) => {
                 const chosen = picked === oi;
@@ -114,7 +115,7 @@ export function LessonPlayer({
                     onClick={() => setPicked(oi)}
                     className={`flex w-full items-center gap-3 rounded-xl border-2 px-4 py-3 text-left text-sm text-ink transition-colors ${tone}`}
                   >
-                    <span className="flex-1">{opt}</span>
+                    <span className="flex-1"><Sci>{opt}</Sci></span>
                     {show && isCorrect && <NamedIcon name="check" size={16} />}
                   </button>
                 );
@@ -125,7 +126,7 @@ export function LessonPlayer({
                 <p className={`text-xs font-bold uppercase tracking-wide ${picked === step.correct ? "text-guarantee" : "text-accent"}`}>
                   {picked === step.correct ? "Correct" : "Not quite"}
                 </p>
-                <p className="mt-1 text-sm leading-relaxed text-body">{step.explain}</p>
+                <p className="mt-1 text-sm leading-relaxed text-body"><Sci>{step.explain}</Sci></p>
               </div>
             )}
           </div>

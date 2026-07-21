@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { useNativePlatform } from "@/lib/native";
 import { NamedIcon } from "@/components/icons";
 import { ImageCropper } from "@/components/image-cropper";
+import { Sci } from "@/components/sci-text";
 
 // Project Sightseeing UI: snap a question, Guru teaches it step by step.
 // Native app only (the camera + this whole tool is gated to the shell). The
@@ -168,7 +169,7 @@ export function ScanClient() {
 
           <div className="glass bg-gradient-to-br from-white/5 to-transparent p-4">
             <p className="text-xs font-bold uppercase tracking-wide text-body">The question</p>
-            <p className="mt-1 whitespace-pre-wrap text-sm text-ink">{teaching.questionText}</p>
+            <p className="mt-1 whitespace-pre-wrap text-sm text-ink"><Sci>{teaching.questionText}</Sci></p>
           </div>
 
           <ol className="space-y-2">
@@ -177,7 +178,7 @@ export function ScanClient() {
                 <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/20 text-xs font-bold text-accent">
                   {i + 1}
                 </span>
-                <span className="whitespace-pre-wrap text-sm leading-relaxed text-ink">{s}</span>
+                <span className="whitespace-pre-wrap text-sm leading-relaxed text-ink"><Sci>{s}</Sci></span>
               </li>
             ))}
           </ol>
@@ -201,11 +202,11 @@ export function ScanClient() {
           ) : (
             <div className="glass bg-gradient-to-br from-accent/15 to-transparent p-4">
               <p className="text-xs font-bold uppercase tracking-wide text-accent">Answer</p>
-              <p className="mt-1 whitespace-pre-wrap text-sm font-medium text-ink">{teaching.answer}</p>
+              <p className="mt-1 whitespace-pre-wrap text-sm font-medium text-ink"><Sci>{teaching.answer}</Sci></p>
               {teaching.misconception && (
                 <p className="mt-3 border-t border-white/10 pt-3 text-xs text-body">
                   <span className="font-bold text-ink">Watch out: </span>
-                  {teaching.misconception}
+                  <Sci>{teaching.misconception}</Sci>
                 </p>
               )}
             </div>

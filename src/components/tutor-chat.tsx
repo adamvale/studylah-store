@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { NamedIcon } from "@/components/icons";
 import { ImageCropper } from "@/components/image-cropper";
+import { Sci } from "@/components/sci-text";
 
 // The Guru Tutor chat surface. Auto-starts a session from `start`, then runs a
 // normal chat loop with quick-action chips (explain simpler, give me a
@@ -121,7 +122,7 @@ export function TutorChat({ start, onClose }: { start: TutorStart; onClose?: () 
                 m.role === "user" ? "bg-accent text-night" : "glass bg-gradient-to-br from-white/5 to-transparent text-ink"
               }`}
             >
-              {m.content}
+              <Sci>{m.content}</Sci>
             </div>
           </div>
         ))}
