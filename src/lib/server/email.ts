@@ -18,6 +18,7 @@ export interface EmailMessage {
   // Optional overrides for the admin Mail tab: reply as hello@ with proper
   // threading headers. Transactional mail keeps the defaults.
   from?: string;
+  replyTo?: string;
   headers?: Record<string, string>;
 }
 
@@ -37,6 +38,7 @@ async function sendViaResend(message: EmailMessage): Promise<SendResult> {
     body: JSON.stringify({
       from: message.from ?? serverConfig.emailFrom,
       to: [message.to],
+      reply_to: message.replyTo ?? serverConfig.emailReplyTo,
       subject: message.subject,
       html: message.html,
       text: message.text,

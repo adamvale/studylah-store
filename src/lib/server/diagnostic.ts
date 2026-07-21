@@ -205,6 +205,13 @@ function referralLineHtml(referralCode: string | null): string {
 }
 
 const UNSUB_HTML = `<p style="font-size:11px;color:#8894a3;line-height:1.6;margin:12px 0 0;">Don't want these emails? Reply "unsubscribe" and we'll remove you right away (PDPA).</p>`;
+// List-Unsubscribe header for the nurture stream: Gmail and Microsoft weight
+// its presence for inbox placement, and it matches the in-body "reply
+// unsubscribe" flow (hello@ is a monitored mailbox). A mailto target needs no
+// endpoint; an HTTPS one-click could be added later.
+const NURTURE_HEADERS = {
+  "List-Unsubscribe": "<mailto:hello@studylah.education?subject=unsubscribe>",
+};
 
 // The spec requires the independence disclaimer VERBATIM in these emails
 // (emailLayout's generic footer is a paraphrase).
@@ -289,6 +296,7 @@ export async function sendResultsEmail(attemptId: string): Promise<boolean> {
     subject: `Your ${subject.name} readiness results + worked solutions`,
     html,
     text,
+    headers: NURTURE_HEADERS,
   });
   if (res.delivered) {
     await prisma.diagnosticAttempt.update({
@@ -457,6 +465,7 @@ export async function sendNextFollowUp(attemptId: string): Promise<boolean> {
     subject: built.subject,
     html: built.html,
     text: built.text,
+    headers: NURTURE_HEADERS,
   });
   if (!res.delivered) return false;
 

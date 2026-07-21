@@ -15,6 +15,9 @@ export const serverConfig = {
   ),
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   emailFrom: process.env.EMAIL_FROM ?? "StudyLah <orders@studylah.education>",
+  // Replies land in a real, monitored mailbox (helps deliverability and lets
+  // recipients actually reply). Defaults to the hello@ inbox on SiteGround.
+  emailReplyTo: process.env.EMAIL_REPLY_TO ?? "hello@studylah.education",
   resendApiKey: process.env.RESEND_API_KEY ?? "",
   // Secret that signs customer magic-links and session cookies. Independent of
   // ADMIN_PASSWORD so rotating one never affects the other. MUST be set in
