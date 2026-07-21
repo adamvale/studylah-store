@@ -44,6 +44,10 @@ function Block({ block }: { block: BlogBlock }) {
       return (
         <h2 className="mt-9 font-display text-2xl font-bold text-ink">{block.text}</h2>
       );
+    case "h3":
+      return (
+        <h3 className="mt-7 font-display text-lg font-bold text-ink">{block.text}</h3>
+      );
     case "ul":
       return (
         <ul className="mt-5 space-y-2.5">
@@ -87,8 +91,7 @@ export default async function BlogPostPage({
   const post = getPost(slug);
   if (!post) notFound();
 
-  const jsonLd = {
-    "@context": "https://schema.org",
+  const blogPosting = {
     "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
@@ -99,6 +102,22 @@ export default async function BlogPostPage({
     ...(post.heroImage
       ? { image: `https://www.studylah.education${post.heroImage}` }
       : {}),
+  };
+  // FAQPage schema when the post carries FAQs: this is the AEO payload that
+  // surfaces the post in AI answers and Google's FAQ rich results.
+  const faqPage = post.faq?.length
+    ? {
+        "@type": "FAQPage",
+        mainEntity: post.faq.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }
+    : null;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": faqPage ? [blogPosting, faqPage] : [blogPosting],
   };
 
   const others = allPosts().filter((p) => p.slug !== post.slug).slice(0, 3);
@@ -144,6 +163,22 @@ export default async function BlogPostPage({
           <Block key={i} block={block} />
         ))}
       </article>
+
+      {post.faq && post.faq.length > 0 && (
+        <section className="mt-12">
+          <h2 className="font-display text-2xl font-bold text-ink">
+            Frequently asked questions
+          </h2>
+          <div className="mt-5 space-y-5">
+            {post.faq.map((f, i) => (
+              <div key={i}>
+                <h3 className="font-display text-base font-bold text-ink">{f.q}</h3>
+                <p className="mt-2 leading-relaxed text-body">{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <hr className="mt-12 border-hairline" />
 

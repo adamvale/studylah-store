@@ -10,9 +10,18 @@
 export type BlogBlock =
   | { kind: "p"; text: string }
   | { kind: "h2"; text: string }
+  | { kind: "h3"; text: string }
   | { kind: "ul"; items: string[] }
   | { kind: "callout"; text: string }
   | { kind: "cta"; label: string; href: string; note?: string };
+
+// An FAQ entry. When a post carries these, they render as a visible FAQ
+// section AND emit FAQPage JSON-LD, which is what lands the post in AI
+// answers and Google's FAQ rich results (the AEO win).
+export interface BlogFaq {
+  q: string;
+  a: string;
+}
 
 export interface BlogPost {
   slug: string;
@@ -28,6 +37,7 @@ export interface BlogPost {
   heroImage?: string;
   heroAlt?: string;
   blocks: BlogBlock[];
+  faq?: BlogFaq[];
 }
 
 export const POSTS: BlogPost[] = [
@@ -385,6 +395,246 @@ export const POSTS: BlogPost[] = [
         label: "Predict your mark, free",
         href: "/diagnostic",
         note: "All 22 subjects · 10 questions · instant marking.",
+      },
+    ],
+  },
+  {
+    slug: "o-level-chemistry-2026-predicted-topics",
+    title:
+      "O-Level Chemistry 2026: predicted topics most likely to appear, and how to revise them",
+    description:
+      "The three Chemistry 6092 topics ranked most likely for 2026, from ten years of past papers, plus a ten-week revision plan. Free mark predictor, no card.",
+    date: "2026-07-21",
+    readMinutes: 6,
+    tag: "Chemistry",
+    blocks: [
+      {
+        kind: "callout",
+        text: "Quick answer. For O-Level Chemistry 6092 in 2026, the three predicted topics ranked most likely, based on ten years of past papers, are chemical calculations, organic chemistry, and the 12-mark data-based question. The fastest way to use that is to revise by topic rather than by whole paper, split each topic into recall, application and the trap, and keep a mistake notebook. This is a probability drawn from past papers, not a promise about the 2026 paper, and our accuracy record is published at /accuracy.",
+      },
+      {
+        kind: "p",
+        text: "Most Sec 4 students revise Chemistry in the order the textbook is printed. That order was decided by a publisher, not by the papers. So the student who is strong at mole calculations does more mole calculations, and the topics that quietly cost the most marks stay untouched until October. There is a better order. It comes from the papers themselves.",
+      },
+      { kind: "h2", text: "How we decide what is likely" },
+      {
+        kind: "p",
+        text: "We read the last ten years of Singapore-Cambridge Chemistry papers, question by question, and tag every question to a syllabus topic. Then we count. Some topics appear in almost every sitting. Some rotate. Some have not been examined heavily in years, which changes their likelihood rather than removing it. That gives every 6092 topic a ranking for 2026, from very high down to low.",
+      },
+      {
+        kind: "p",
+        text: "Two things this is not. We have no access to any real 2026 paper, and we never will. It is also not a promise about what will appear. It is a probability, built from public past papers, and we publish how well it did after every sitting at /accuracy, hits and misses both.",
+      },
+      { kind: "h2", text: "The predicted topics at the top of the 2026 Chemistry list" },
+      {
+        kind: "p",
+        text: "These are the three topics that have carried the most marks across the recent 6092 papers, and they sit at the top of our 2026 ranking. Ranks 4 and below stay inside the Forecast.",
+      },
+      {
+        kind: "ul",
+        items: [
+          "Chemical calculations, the spine of the paper. Around 20 marks of Paper 2 in both new-format years, threaded through organic, acids, redox and both data-based questions. The mole chain is the single highest-paying skill in the subject.",
+          "Organic chemistry, the largest block, and still growing. Around 20 marks in 2025 plus five to seven MCQs every year. The pure syllabus keeps esters, condensation polymers and isomerism, and the newer sustainability outcomes were examined within a year of arriving.",
+          "The 12-mark data-based question, a fixture of the paper. The same slot and the same recipe in both new-format years: an industrial or environmental passage, one tonne-scale calculation, and one unfamiliar equation to build.",
+        ],
+      },
+      {
+        kind: "p",
+        text: "If you only have a few clean hours a week between now and September, these are the hours worth spending first.",
+      },
+      { kind: "h2", text: "How to revise Chemistry so the ranking actually helps" },
+      { kind: "h3", text: "1. Revise by topic, not by paper" },
+      {
+        kind: "p",
+        text: "Doing whole past papers feels productive because it feels like the real thing. It is a poor use of July. A whole paper spreads your attention across twenty topics and tells you almost nothing precise. Instead, pull every question on one topic from ten years of papers and do them back to back. You will see the same four or five question shapes repeat. That repetition is the real syllabus. Save whole timed papers for September, when the point is stamina and timing rather than learning.",
+      },
+      { kind: "h3", text: "2. Split each topic into recall, application and the trap" },
+      {
+        kind: "p",
+        text: "Chemistry marks are lost in three different ways. Recall is definitions, tests, colours, the reactivity series; fix it with short daily repetition, ten minutes, not an hour. Application is the working: mole calculations, ionic equations, energy-profile reasoning; fix it by doing problems with a pen, never by reading solutions. The trap is the part of a topic that the paper reliably punishes: electrolysis that hinges on concentration, salt preparation that depends on solubility, organic questions that want the reaction conditions. Write your own trap list as you go.",
+      },
+      { kind: "h3", text: "3. Keep a mistake notebook, and revisit it" },
+      {
+        kind: "p",
+        text: "One page per topic. Every question you got wrong, in one line: what you did, and what the mark scheme wanted. Reread the page before you start that topic again. Most students who slip in the real paper slip on something they already got wrong in July and never looked at again.",
+      },
+      { kind: "h3", text: "4. Write answers in exam language early" },
+      {
+        kind: "p",
+        text: "Chemistry papers reward precise phrasing. \"It gets bigger\" scores nothing where \"the rate increases because there are more frequent effective collisions\" scores. Practise writing the sentence, not just knowing the idea. Compare against the mark-scheme wording and steal it.",
+      },
+      { kind: "h3", text: "5. Draw the diagrams by hand" },
+      {
+        kind: "p",
+        text: "Apparatus setups, energy profiles, electrolysis cells. Redraw them from blank paper until you can do it without checking. These are cheap marks and they are lost every year for the same reason: the diagram was read, not drawn.",
+      },
+      { kind: "h3", text: "6. Give the practical paper real time" },
+      {
+        kind: "p",
+        text: "Practical marks are a large share of the grade and they are the most trainable part of the subject. Qualitative analysis in particular is a small, closed set of tests and observations. Learn it as a table, drill it, and it stops being a gamble.",
+      },
+      { kind: "h2", text: "A ten-week shape for Chemistry" },
+      {
+        kind: "ul",
+        items: [
+          "Weeks 1 to 3: the top-ranked topics, one at a time, ten years of questions each.",
+          "Weeks 4 to 6: the middle of the ranking, plus your own weak topics from the mistake notebook.",
+          "Weeks 7 and 8: practical and qualitative analysis, plus a rebuild of anything still red.",
+          "Weeks 9 and 10: timed full papers, then back to the mistake notebook after each one.",
+        ],
+      },
+      { kind: "h2", text: "Taking more than one science" },
+      {
+        kind: "p",
+        text: "The same method works across subjects. If you take Physics as well, the 2026 predicted topics and revision plan for 6091 are at /blog/o-level-physics-2026-predicted-topics. Students preparing several subjects can see the full ranked forecasts together on the pricing page.",
+      },
+      {
+        kind: "cta",
+        label: "Predict your mark, free",
+        href: "/diagnostic",
+        note: "10 questions · about 7 minutes · a predicted band, your 3 leakiest topics, and worked solutions. No card.",
+      },
+    ],
+    faq: [
+      {
+        q: "What topics are most likely to appear in O-Level Chemistry 2026?",
+        a: "The three highest-ranked topics for 6092 are chemical calculations, organic chemistry, and the 12-mark data-based question, based on ten years of past papers. This is a forecast, a probability rather than a promise, and the ranks below the top three sit inside the paid Forecast.",
+      },
+      {
+        q: "How should I revise for O-Level Chemistry 2026?",
+        a: "Revise by topic instead of whole papers until September. Pull ten years of questions on one topic at a time, split each topic into recall, application and the trap, keep a mistake notebook, write answers in mark-scheme language, and give the practical paper real time.",
+      },
+      {
+        q: "Are these the real 2026 Chemistry exam questions?",
+        a: "No. We have no access to any real 2026 paper and never will. All our practice questions are original, and the forecast is built only from public past papers.",
+      },
+      {
+        q: "How accurate is the StudyLah forecast?",
+        a: "We publish our record after every sitting, hits and misses, at /accuracy. There is also a money-back guarantee: if fewer than three of our top-five forecast topics for a subject appear in that paper, you can claim a full refund within 14 days of the exam with your order ID.",
+      },
+      {
+        q: "When is the first O-Level paper in 2026?",
+        a: "The papers start on 30 September 2026.",
+      },
+    ],
+  },
+  {
+    slug: "o-level-physics-2026-predicted-topics",
+    title:
+      "O-Level Physics 2026: predicted topics most likely to appear, and how to revise them",
+    description:
+      "The three Physics 6091 topics ranked most likely for 2026, from ten years of past papers, plus a ten-week revision plan. Free mark predictor, no card.",
+    date: "2026-07-21",
+    readMinutes: 6,
+    tag: "Physics",
+    blocks: [
+      {
+        kind: "callout",
+        text: "Quick answer. For O-Level Physics 6091 in 2026, the three predicted topics ranked most likely, based on ten years of past papers, are radioactivity, dynamics, and light. The fastest way to use that is to revise by topic rather than by whole paper, split each topic into recall, application and the trap, and show your working the way the mark scheme rewards it. This is a probability drawn from past papers, not a promise about the 2026 paper, and our accuracy record is published at /accuracy.",
+      },
+      {
+        kind: "p",
+        text: "Most Sec 4 students revise Physics in the order the textbook is printed. That order was decided by a publisher, not by the papers. So the student who is comfortable with kinematics does more kinematics, and the topics that quietly carry the biggest blocks of marks stay untouched until October. There is a better order. It comes from the papers themselves.",
+      },
+      { kind: "h2", text: "How we decide what is likely" },
+      {
+        kind: "p",
+        text: "We read the last ten years of Singapore-Cambridge Physics papers, question by question, and tag every question to a syllabus topic. Then we count. Some topics appear in almost every sitting. Some rotate. Some go quiet for years and then return with weight, which changes their likelihood rather than removing it. That gives every 6091 topic a ranking for 2026, from very high down to low.",
+      },
+      {
+        kind: "p",
+        text: "Two things this is not. We have no access to any real 2026 paper, and we never will. It is also not a promise about what will appear. It is a probability, built from public past papers, and we publish how well it did after every sitting at /accuracy, hits and misses both.",
+      },
+      { kind: "h2", text: "The predicted topics at the top of the 2026 Physics list" },
+      {
+        kind: "p",
+        text: "These are the three topics that have carried the biggest blocks of marks across the recent 6091 papers, and they sit at the top of our 2026 ranking. Ranks 4 and below stay inside the Forecast.",
+      },
+      {
+        kind: "ul",
+        items: [
+          "Radioactivity anchors the paper again. Near-invisible for eight years, it took the 10-to-11-mark data-based question in both 2024 and 2025, and opened a four-question Paper 1 block in 2025. Its new weight is structural.",
+          "Dynamics returns to full weight after a light 2025. It scored 8 to 9 marks in 2023 and 2024, then only 4 in 2025, the kind of dip that has preceded every rebound of the decade. A full F = ma question is the strongest single structured-question call.",
+          "Light stays the decade's banker. It holds the highest Paper 2 total of any topic, 87 marks across the decade, and scored 10 marks in 2025. Ray diagrams, n = sin i / sin r, and the conditions for total internal reflection fund more marks than any other single skill set.",
+        ],
+      },
+      {
+        kind: "p",
+        text: "If you only have a few clean hours a week between now and September, these are the hours worth spending first.",
+      },
+      { kind: "h2", text: "How to revise Physics so the ranking actually helps" },
+      { kind: "h3", text: "1. Revise by topic, not by paper" },
+      {
+        kind: "p",
+        text: "Doing whole past papers feels productive because it feels like the real thing. It is a poor use of July. A whole paper spreads your attention across twenty topics and tells you almost nothing precise. Instead, pull every question on one topic from ten years of papers and do them back to back. You will see the same four or five question shapes repeat. That repetition is the real syllabus. Save whole timed papers for September, when the point is stamina and timing rather than learning.",
+      },
+      { kind: "h3", text: "2. Split each topic into recall, application and the trap" },
+      {
+        kind: "p",
+        text: "Physics marks are lost in three different ways. Recall is definitions, units, laws and the formulae you are not given; fix it with short daily repetition. Application is the working: choosing the right equation, substituting cleanly, and carrying the unit all the way to the answer; fix it by doing problems with a pen. The trap is the part of a topic that the paper reliably punishes: direction and sign in dynamics, unit conversions in electricity, the exact conditions for total internal reflection, the half-life read that needs the graph and not the formula. Write your own trap list as you go.",
+      },
+      { kind: "h3", text: "3. Keep a mistake notebook, and revisit it" },
+      {
+        kind: "p",
+        text: "One page per topic. Every question you got wrong, in one line: what you did, and what the mark scheme wanted. Reread the page before you start that topic again. Most students who slip in the real paper slip on something they already got wrong in July and never looked at again.",
+      },
+      { kind: "h3", text: "4. Show the working the way the mark scheme rewards it" },
+      {
+        kind: "p",
+        text: "Physics gives marks for method, not just the final number. Write the formula, show the substitution, then the answer with its unit. A wrong final answer with correct working still scores. A right answer with no working can lose marks it did not need to. Compare your layout against the mark scheme and copy its habits.",
+      },
+      { kind: "h3", text: "5. Draw the diagrams by hand" },
+      {
+        kind: "p",
+        text: "Ray diagrams, circuit diagrams, free-body force diagrams, field lines. Redraw them from blank paper until you can do it without checking. These are cheap marks and they are lost every year for the same reason: the diagram was read, not drawn.",
+      },
+      { kind: "h3", text: "6. Give the practical paper real time" },
+      {
+        kind: "p",
+        text: "Practical marks are a large share of the grade and they are the most trainable part of the subject. Reading instruments, plotting a clean graph, drawing the best-fit line and handling uncertainty are a small, closed set of skills. Drill them and they stop being a gamble.",
+      },
+      { kind: "h2", text: "A ten-week shape for Physics" },
+      {
+        kind: "ul",
+        items: [
+          "Weeks 1 to 3: the top-ranked topics, one at a time, ten years of questions each.",
+          "Weeks 4 to 6: the middle of the ranking, plus your own weak topics from the mistake notebook.",
+          "Weeks 7 and 8: practical skills and graph work, plus a rebuild of anything still red.",
+          "Weeks 9 and 10: timed full papers, then back to the mistake notebook after each one.",
+        ],
+      },
+      { kind: "h2", text: "Taking more than one science" },
+      {
+        kind: "p",
+        text: "The same method works across subjects. If you take Chemistry as well, the 2026 predicted topics and revision plan for 6092 are at /blog/o-level-chemistry-2026-predicted-topics. Students preparing several subjects can see the full ranked forecasts together on the pricing page.",
+      },
+      {
+        kind: "cta",
+        label: "Predict your mark, free",
+        href: "/diagnostic",
+        note: "10 questions · about 7 minutes · a predicted band, your 3 leakiest topics, and worked solutions. No card.",
+      },
+    ],
+    faq: [
+      {
+        q: "What topics are most likely to appear in O-Level Physics 2026?",
+        a: "The three highest-ranked topics for 6091 are radioactivity, dynamics, and light, based on ten years of past papers. This is a forecast, a probability rather than a promise, and the ranks below the top three sit inside the paid Forecast.",
+      },
+      {
+        q: "How should I revise for O-Level Physics 2026?",
+        a: "Revise by topic instead of whole papers until September. Pull ten years of questions on one topic at a time, split each topic into recall, application and the trap, keep a mistake notebook, show your working with units, and give the practical paper real time.",
+      },
+      {
+        q: "Are these the real 2026 Physics exam questions?",
+        a: "No. We have no access to any real 2026 paper and never will. All our practice questions are original, and the forecast is built only from public past papers.",
+      },
+      {
+        q: "How accurate is the StudyLah forecast?",
+        a: "We publish our record after every sitting, hits and misses, at /accuracy. There is also a money-back guarantee: if fewer than three of our top-five forecast topics for a subject appear in that paper, you can claim a full refund within 14 days of the exam with your order ID.",
+      },
+      {
+        q: "When is the first O-Level paper in 2026?",
+        a: "The papers start on 30 September 2026.",
       },
     ],
   },
