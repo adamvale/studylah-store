@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { allPosts } from "@/lib/blog";
 
@@ -41,17 +40,6 @@ export default function BlogIndexPage() {
             href={`/blog/${post.slug}`}
             className="block overflow-hidden rounded-2xl border border-hairline bg-surface transition-colors hover:border-accent"
           >
-            {post.heroImage && (
-              <div className="relative aspect-[16/9] w-full">
-                <Image
-                  src={post.heroImage}
-                  alt={post.heroAlt ?? post.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 768px"
-                  className="object-cover"
-                />
-              </div>
-            )}
             <div className="p-6">
               <div className="flex flex-wrap items-center gap-2 text-xs text-body">
                 <span className="rounded-full bg-accent/10 px-2.5 py-0.5 font-medium text-accent">

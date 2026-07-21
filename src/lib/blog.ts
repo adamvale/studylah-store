@@ -30,12 +30,6 @@ export interface BlogPost {
   date: string; // YYYY-MM-DD
   readMinutes: number;
   tag: string;
-  // Optional hero image, served from /public (e.g. "/blog/chemistry-2026.jpg").
-  // Ultra-realistic, brand-aligned, editorial scenes only, no identifiable
-  // minors, no exam-board logos, no real papers (see the Cowork image spec).
-  // Posts without one still render; the template degrades gracefully.
-  heroImage?: string;
-  heroAlt?: string;
   blocks: BlogBlock[];
   faq?: BlogFaq[];
 }
