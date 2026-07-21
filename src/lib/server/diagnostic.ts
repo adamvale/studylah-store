@@ -12,6 +12,7 @@ import { getDiagnosticSet } from "./question-bank";
 import { STANDARD_DISCLAIMER } from "../compliance";
 import { serverConfig } from "./config";
 import { emailLayout, sendEmail } from "./email";
+import { signNurtureUnsubToken } from "./customer-session";
 
 export type Band = "danger" | "warning" | "pass";
 
@@ -205,13 +206,19 @@ function referralLineHtml(referralCode: string | null): string {
 }
 
 const UNSUB_HTML = `<p style="font-size:11px;color:#8894a3;line-height:1.6;margin:12px 0 0;">Don't want these emails? Reply "unsubscribe" and we'll remove you right away (PDPA).</p>`;
-// List-Unsubscribe header for the nurture stream: Gmail and Microsoft weight
-// its presence for inbox placement, and it matches the in-body "reply
-// unsubscribe" flow (hello@ is a monitored mailbox). A mailto target needs no
-// endpoint; an HTTPS one-click could be added later.
-const NURTURE_HEADERS = {
-  "List-Unsubscribe": "<mailto:hello@studylah.education?subject=unsubscribe>",
-};
+// List-Unsubscribe headers for the nurture stream. Gmail and Microsoft turn
+// these into the one-click "Unsubscribe" button and weight their presence for
+// inbox placement. Per-recipient because the HTTPS target carries a signed
+// token for that email; the mailto keeps the reply-to-hello flow as a fallback.
+function nurtureHeaders(email: string): Record<string, string> {
+  const url = `${serverConfig.siteUrl}/api/unsubscribe?token=${encodeURIComponent(
+    signNurtureUnsubToken(email)
+  )}`;
+  return {
+    "List-Unsubscribe": `<${url}>, <mailto:hello@studylah.education?subject=unsubscribe>`,
+    "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+  };
+}
 
 // The spec requires the independence disclaimer VERBATIM in these emails
 // (emailLayout's generic footer is a paraphrase).
@@ -296,7 +303,7 @@ export async function sendResultsEmail(attemptId: string): Promise<boolean> {
     subject: `Your ${subject.name} readiness results + worked solutions`,
     html,
     text,
-    headers: NURTURE_HEADERS,
+    headers: nurtureHeaders(attempt.email),
   });
   if (res.delivered) {
     await prisma.diagnosticAttempt.update({
@@ -448,9 +455,14 @@ export async function sendNextFollowUp(attemptId: string): Promise<boolean> {
   const subject = getSubject(attempt.level as Level, attempt.slug);
   if (!subject) return false;
 
-  // Do not keep nurturing someone who has already bought.
-  const order = await prisma.order.findFirst({ where: { email: attempt.email } });
-  if (order) {
+  // Do not keep nurturing someone who has already bought, or who unsubscribed.
+  const [order, suppressed] = await Promise.all([
+    prisma.order.findFirst({ where: { email: attempt.email } }),
+    prisma.emailSuppression.findUnique({
+      where: { email: attempt.email.toLowerCase() },
+    }),
+  ]);
+  if (order || suppressed) {
     await prisma.diagnosticAttempt.update({
       where: { id: attempt.id },
       data: { followUpStep: SEQUENCE.length },
@@ -465,7 +477,7 @@ export async function sendNextFollowUp(attemptId: string): Promise<boolean> {
     subject: built.subject,
     html: built.html,
     text: built.text,
-    headers: NURTURE_HEADERS,
+    headers: nurtureHeaders(attempt.email),
   });
   if (!res.delivered) return false;
 

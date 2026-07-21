@@ -167,6 +167,48 @@ export function verifyParentUnsubToken(token: string | undefined | null): string
   return customerId;
 }
 
+// --- Nurture / diagnostic list unsubscribe (one-click) ---
+// Keyed on the lowercased email so any nurture email carries a stable,
+// login-free unsubscribe link. Signed like the parent token; the email is the
+// payload the /api/unsubscribe endpoint suppresses.
+const NURTURE_UNSUB_TTL_MS = 365 * 24 * 60 * 60 * 1000; // 1 year
+
+export function signNurtureUnsubToken(email: string): string {
+  const body = Buffer.from(
+    `nurtureunsub:${email.toLowerCase()}:${Date.now() + NURTURE_UNSUB_TTL_MS}`
+  ).toString("base64url");
+  const sig = createHmac("sha256", secret()).update(body).digest("base64url");
+  return `${body}.${sig}`;
+}
+
+export function verifyNurtureUnsubToken(
+  token: string | undefined | null
+): string | null {
+  const key = secret();
+  if (!key || !token) return null;
+  const [body, sig] = token.split(".");
+  if (!body || !sig) return null;
+  const expected = createHmac("sha256", key).update(body).digest("base64url");
+  if (!timingEqual(sig, expected)) return null;
+  let decoded: string;
+  try {
+    decoded = Buffer.from(body, "base64url").toString();
+  } catch {
+    return null;
+  }
+  // email can contain ":" only in exotic cases; split off kind and exp at the
+  // ends so the middle stays intact.
+  const parts = decoded.split(":");
+  const kind = parts.shift();
+  const expStr = parts.pop();
+  const email = parts.join(":");
+  const exp = Number(expStr);
+  if (kind !== "nurtureunsub" || !email || !Number.isFinite(exp) || exp < Date.now()) {
+    return null;
+  }
+  return email;
+}
+
 // --- Session cookie ---
 export function signSessionToken(customerId: string): string {
   return signToken("session", customerId, SESSION_TTL_MS);

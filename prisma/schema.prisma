@@ -319,6 +319,14 @@ model Lead {
   createdAt   DateTime @default(now())
 }
 
+// Emails that have opted out of the nurture stream (one-click List-Unsubscribe,
+// reply "unsubscribe", or a hard bounce). Checked before any nurture send.
+model EmailSuppression {
+  email     String   @id
+  reason    String? // "one-click" | "reply" | "bounce"
+  createdAt DateTime @default(now())
+}
+
 // Carts where the shopper entered an email but didn't check out. A cron sends
 // one recovery email after a delay, then leaves it alone. Cleared on purchase.
 model AbandonedCart {
