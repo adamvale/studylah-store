@@ -143,7 +143,18 @@ export function DiagnosticQuiz({
     setBusy(true);
     setError("");
     try {
-      const params = new URLSearchParams(window.location.search);
+      let params = new URLSearchParams(window.location.search);
+      // Fall back to the session's first-touch UTM (saved by the visitor
+      // tracker on landing): bio-link visitors navigate here without the
+      // query string, and would otherwise submit unattributed.
+      if (!params.get("utm_source")) {
+        try {
+          const stored = sessionStorage.getItem("sl_utm");
+          if (stored) params = new URLSearchParams(stored);
+        } catch {
+          /* ignore */
+        }
+      }
       const ref = document.cookie
         .split("; ")
         .find((c) => c.startsWith("studylah_ref="))

@@ -118,6 +118,21 @@ export function VisitorTracker() {
         device: window.matchMedia("(max-width: 640px)").matches ? "mobile" : "desktop",
         isReturning,
       };
+      // Persist first-touch UTM for the session: the diagnostic quiz reads it
+      // back at submit time, so bio-link attribution survives in-site
+      // navigation (the query string is gone by the time they reach a quiz).
+      if (url.searchParams.get("utm_source")) {
+        const utm = new URLSearchParams();
+        for (const k of ["utm_source", "utm_medium", "utm_campaign"]) {
+          const v = url.searchParams.get(k);
+          if (v) utm.set(k, v);
+        }
+        try {
+          sessionStorage.setItem("sl_utm", utm.toString());
+        } catch {
+          /* ignore */
+        }
+      }
     }
     ids.current = { visitorId, sessionId };
     // Seed the first pageview here (the pathname effect only fires on change).

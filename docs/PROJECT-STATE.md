@@ -411,6 +411,15 @@ diagnostic funnel), so no third-party pixel needed for basic web analytics.
   (visitors 24h/7d/all, pageviews, clicks, avg pages/visit, returning %,
   mobile %), top pages / most-clicked / referrers / devices, and **Recent
   journeys** (each visit expands to a click-by-click, timestamped replay).
+- **Link-in-bio + UTM attribution** (`/start`, noindex): the single link behind
+  every social bio. Reads `utm_source/medium/campaign` from its own URL and
+  forwards them onto its outgoing links; the tracker also persists first-touch
+  UTM to `sessionStorage("sl_utm")` on session start, and the diagnostic quiz
+  falls back to it at submit when the URL has no UTM, so bio-link attribution
+  survives in-site navigation. UTM convention: `utm_source` =
+  tiktok|instagram|facebook, `utm_medium` = organic|paid|bio,
+  `utm_campaign` = free-form (e.g. `launch`). Bio URLs:
+  `/start?utm_source=tiktok&utm_medium=bio` etc.
 - Volume note: writes on every pageview/click. Fine at current scale; add
   sampling / a retention prune if traffic gets large.
 
