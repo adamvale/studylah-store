@@ -14,6 +14,7 @@ import {
 } from "@/lib/catalogue";
 import { useCart } from "@/lib/cart-context";
 import { usePricing } from "@/lib/pricing-context";
+import { trackInitiateCheckout } from "@/components/analytics";
 import { GuaranteeBadge } from "./guarantee-badge";
 
 function subjectName(level: Level, slug: string): string {
@@ -163,6 +164,7 @@ export function CartView() {
       return;
     }
     setSubmitting(true);
+    trackInitiateCheckout(priced.total); // pre-redirect intent signal for paid social
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",

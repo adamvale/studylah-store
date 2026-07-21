@@ -47,6 +47,15 @@ export function trackAddToCart(valueSgd?: number) {
   window.ttq?.track?.("AddToCart", money);
 }
 
+// Checkout started, the strongest pre-purchase intent signal. Fired when the
+// shopper submits the cart to Stripe, so paid social can optimise toward it.
+export function trackInitiateCheckout(valueSgd?: number) {
+  const money = valueSgd ? { value: valueSgd, currency: "SGD" } : undefined;
+  window.gtag?.("event", "begin_checkout", { currency: "SGD", value: valueSgd });
+  window.fbq?.("track", "InitiateCheckout", money);
+  window.ttq?.track?.("InitiateCheckout", money);
+}
+
 // Top-of-funnel lead, fired once when a free diagnostic result is reached.
 // This is the signal paid social optimises against before anyone buys, so it
 // matters as much as Purchase for a campaign.

@@ -10,6 +10,7 @@ import {
 } from "react";
 import { getSubject, PUBLISHED_LEVELS, type Level, type Tier } from "./catalogue";
 import type { CartItem } from "./pricing";
+import { trackAddToCart } from "@/components/analytics";
 
 const STORAGE_KEY = "studylah-cart-v1";
 
@@ -82,6 +83,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
       );
       return [...rest, item];
     });
+    // Fire the ad-pixel AddToCart from the ONE place every add flows through
+    // (tier selector, sticky CTA, bundle builder, diagnostic, Gugu), so no
+    // add-to-cart is ever missed and none is double-counted.
+    trackAddToCart();
   }, []);
 
   const removeItem = useCallback((level: Level, subjectSlug: string) => {

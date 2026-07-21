@@ -55,8 +55,6 @@ export default async function DiagnosticResultsPage({
   const subject = getSubject(attempt.level as Level, attempt.slug);
   if (!set || !subject) notFound();
 
-  const { tierPrice } = await getPricing();
-  const masterPrice = tierPrice(attempt.level as Level, "master");
 
   const graded = JSON.parse(attempt.answersJson) as GradedAnswer[];
   // Loss frame: how many marks slipped on the topics forecast most likely.
@@ -134,7 +132,6 @@ export default async function DiagnosticResultsPage({
             level={attempt.level as Level}
             slug={attempt.slug}
             subjectName={subject.name}
-            priceSgd={masterPrice}
           />
           <CtaLink
             attemptId={attempt.id}

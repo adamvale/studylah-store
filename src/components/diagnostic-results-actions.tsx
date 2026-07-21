@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { guguSay } from "@/lib/gugu-bus";
 import { useCart } from "@/lib/cart-context";
 import type { Level } from "@/lib/catalogue";
-import { trackLead, trackAddToCart } from "@/components/analytics";
+import { trackLead } from "@/components/analytics";
 
 function beacon(type: string, attemptId: string, meta?: string) {
   void fetch("/api/diagnostic/event", {
@@ -47,13 +47,11 @@ export function AddMasterToCart({
   level,
   slug,
   subjectName,
-  priceSgd,
 }: {
   attemptId: string;
   level: Level;
   slug: string;
   subjectName: string;
-  priceSgd: number;
 }) {
   const { addItem } = useCart();
   const router = useRouter();
@@ -63,7 +61,7 @@ export function AddMasterToCart({
     setBusy(true);
     addItem({ level, subjectSlug: slug, tier: "master" });
     beacon("cta_clicked", attemptId, "add_master");
-    trackAddToCart(priceSgd);
+    // AddToCart now fires centrally in the cart context (see addItem).
     router.push("/cart");
   }
   return (
