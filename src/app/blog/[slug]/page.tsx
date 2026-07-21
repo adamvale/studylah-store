@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { allPosts, getPost, type BlogBlock } from "@/lib/blog";
@@ -95,6 +96,9 @@ export default async function BlogPostPage({
     author: { "@type": "Organization", name: "StudyLah Education" },
     publisher: { "@type": "Organization", name: "StudyLah Education" },
     mainEntityOfPage: `https://www.studylah.education/blog/${post.slug}`,
+    ...(post.heroImage
+      ? { image: `https://www.studylah.education${post.heroImage}` }
+      : {}),
   };
 
   const others = allPosts().filter((p) => p.slug !== post.slug).slice(0, 3);
@@ -121,6 +125,19 @@ export default async function BlogPostPage({
       <h1 className="mt-3 font-display text-3xl font-black leading-tight text-ink sm:text-4xl">
         {post.title}
       </h1>
+
+      {post.heroImage && (
+        <div className="relative mt-6 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-hairline">
+          <Image
+            src={post.heroImage}
+            alt={post.heroAlt ?? post.title}
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 672px"
+            className="object-cover"
+          />
+        </div>
+      )}
 
       <article>
         {post.blocks.map((block, i) => (

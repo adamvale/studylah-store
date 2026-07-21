@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { allPosts } from "@/lib/blog";
 
@@ -38,21 +39,34 @@ export default function BlogIndexPage() {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="block rounded-2xl border border-hairline bg-surface p-6 transition-colors hover:border-accent"
+            className="block overflow-hidden rounded-2xl border border-hairline bg-surface transition-colors hover:border-accent"
           >
-            <div className="flex flex-wrap items-center gap-2 text-xs text-body">
-              <span className="rounded-full bg-accent/10 px-2.5 py-0.5 font-medium text-accent">
-                {post.tag}
-              </span>
-              <span>
-                {fmtDate(post.date)} · {post.readMinutes} min read
-              </span>
+            {post.heroImage && (
+              <div className="relative aspect-[16/9] w-full">
+                <Image
+                  src={post.heroImage}
+                  alt={post.heroAlt ?? post.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 768px"
+                  className="object-cover"
+                />
+              </div>
+            )}
+            <div className="p-6">
+              <div className="flex flex-wrap items-center gap-2 text-xs text-body">
+                <span className="rounded-full bg-accent/10 px-2.5 py-0.5 font-medium text-accent">
+                  {post.tag}
+                </span>
+                <span>
+                  {fmtDate(post.date)} · {post.readMinutes} min read
+                </span>
+              </div>
+              <h2 className="mt-3 font-display text-xl font-bold text-ink">
+                {post.title}
+              </h2>
+              <p className="mt-2 text-sm text-body">{post.description}</p>
+              <p className="mt-3 text-sm font-medium text-accent">Read it →</p>
             </div>
-            <h2 className="mt-3 font-display text-xl font-bold text-ink">
-              {post.title}
-            </h2>
-            <p className="mt-2 text-sm text-body">{post.description}</p>
-            <p className="mt-3 text-sm font-medium text-accent">Read it →</p>
           </Link>
         ))}
       </div>
