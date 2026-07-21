@@ -17,11 +17,11 @@ export type Band = "danger" | "warning" | "pass";
 
 export const BAND_COPY: Record<Band, { title: string; line: string }> = {
   danger: {
-    title: "Danger zone on these topics",
+    title: "These topics are costing you marks right now",
     line: "These topics are forecast VERY HIGH for 2026, and right now they would cost you marks. The good news: it's exactly the kind of gap two focused weeks can close.",
   },
   warning: {
-    title: "Warning, close, but marks are leaking",
+    title: "So close, a few marks are leaking",
     line: "You know these topics, but the paper pays for precision, and a few marks slipped. Tighten the working and they become bankers.",
   },
   pass: {

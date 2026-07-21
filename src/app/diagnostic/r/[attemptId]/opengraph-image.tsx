@@ -8,8 +8,8 @@ export const contentType = "image/png";
 export const alt = "My StudyLah readiness score";
 
 const BAND_TITLE: Record<Band, string> = {
-  danger: "Danger zone on these topics",
-  warning: "Warning, marks are leaking",
+  danger: "These topics are costing you marks",
+  warning: "So close, a few marks are leaking",
   pass: "Pass territory, keep it sharp",
 };
 const BAND_COLOR: Record<Band, string> = {
