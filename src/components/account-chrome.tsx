@@ -48,6 +48,11 @@ export function AccountChrome({
   void todayDone;
   void shields;
   const native = useNativePlatform();
+  // The StudyLand HUD (ghost, wordmark, level bar, sign out) lives ONLY on the
+  // Today home screen. Every other screen opens straight into its own content,
+  // less repeated chrome at the top of each page.
+  const pathname = usePathname() ?? "";
+  const isToday = pathname === "/account";
   // Streak now lives where it has context (the Today hero chip), not in the
   // chrome, one less repeated element at the top of every screen.
   void streak;
@@ -61,9 +66,10 @@ export function AccountChrome({
     <div className="studyland min-h-dvh overflow-x-clip">
       <div className="mx-auto max-w-3xl px-4 pb-24 pt-8 md:pb-12 md:pt-12">
         {/* One compact header: a single ghost, a single wordmark, and the
-            level/XP strip folded underneath. (The old chrome stacked a brand
-            row, an email row AND a separate player bar, the top of every
-            screen repeated itself.) print:hidden keeps printed pages clean. */}
+            level/XP strip folded underneath. Shown ONLY on the Today home
+            screen; other screens open straight into their content.
+            print:hidden keeps printed pages clean. */}
+        {isToday && (
         <div className="flex items-center justify-between gap-3 print:hidden">
           <div className="flex min-w-0 items-center gap-3">
             <span className="icon-orb shrink-0" aria-hidden>
@@ -107,6 +113,7 @@ export function AccountChrome({
             </button>
           </form>
         </div>
+        )}
 
         {/* Top nav pills, desktop + tablet; phones use the bottom bar */}
         <div className="hidden print:hidden md:block">
