@@ -39,6 +39,7 @@ import {
 } from "@/lib/catalogue";
 import { subjectCopy } from "@/lib/subject-copy";
 import type { Pricing } from "@/lib/pricing";
+import { bundleLadder } from "@/lib/bundle-ladder";
 import { getPricing } from "@/lib/server/pricing-store";
 import { ExamCountdown } from "@/components/exam-countdown";
 import { HeroBackdrop } from "@/components/hero-backdrop";
@@ -691,6 +692,7 @@ function TheSolution() {
 // slim hand-off band so the flow (Solution -> price question) still resolves.
 function PricingHandoff({ pricing }: { pricing: Pricing }) {
   const { tierPrice, tierSavings } = pricing;
+  const maxBundleSavings = Math.max(...bundleLadder(pricing).map((b) => b.savings));
   return (
     <section id="tiers" className="reveal scroll-mt-24 py-12">
       <div className="mx-auto max-w-4xl px-4">
@@ -701,7 +703,7 @@ function PricingHandoff({ pricing }: { pricing: Pricing }) {
           <p className="mx-auto mt-3 max-w-2xl text-cloud">
             Ultra is {sgd(tierPrice("o-level", "master"))} per subject and most
             families bundle: stack subjects and save up to{" "}
-            <span className="font-bold text-guarantee">S$188</span>. Every tier
+            <span className="font-bold text-guarantee">{sgd(maxBundleSavings)}</span>. Every tier
             is covered by the{" "}
             <span className="font-medium text-guarantee">money-back guarantee</span>.
           </p>

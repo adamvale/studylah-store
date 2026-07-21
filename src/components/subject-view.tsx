@@ -14,6 +14,7 @@ import {
   type Subject,
 } from "@/lib/catalogue";
 import { getPricing } from "@/lib/server/pricing-store";
+import { bundleLadder } from "@/lib/bundle-ladder";
 import { subjectCopy } from "@/lib/subject-copy";
 import { subjectFaqEntries, subjectFaqSchema } from "@/lib/subject-seo";
 import { packPreviewFor } from "@/lib/pack-previews";
@@ -27,6 +28,11 @@ import { TierSelector } from "./tier-selector";
 export async function SubjectView({ subject }: { subject: Subject }) {
   const pricing = await getPricing();
   const { alacartePrice } = pricing;
+  // Bundle savings, computed from the pricing config so the copy can never
+  // drift from the real ladder on /pricing (O-Level reference numbers).
+  const ladder = bundleLadder(pricing);
+  const megaBundle = ladder[0];
+  const maxBundleSavings = Math.max(...ladder.map((b) => b.savings));
   const copy = subjectCopy(subject.level, subject.slug);
   const products = productsForSubject(subject);
   const packPreview = packPreviewFor(subject.level, subject.slug);
@@ -143,7 +149,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
         <span className="text-ink">
           Sitting more than one subject?{" "}
           <span className="font-bold text-accent">Build a bundle</span>, the more
-          you pick, the cheaper each one gets (save up to S$188).
+          you pick, the cheaper each one gets (save up to {sgd(maxBundleSavings)}).
         </span>
         <span aria-hidden="true" className="ml-auto shrink-0 font-bold text-accent">
           →
@@ -428,7 +434,7 @@ export async function SubjectView({ subject }: { subject: Subject }) {
           <p className="mt-1 text-sm text-white/80">
             The more subjects you bundle, the cheaper each one gets, {" "}
             {subject.level === "o-level"
-              ? "any 3 Ultra subjects for S$168 (save S$36), up to S$188 off a full stack"
+              ? `any 3 Ultra subjects for ${sgd(megaBundle.price)} (save ${sgd(megaBundle.savings)}), up to ${sgd(maxBundleSavings)} off a full stack`
               : "a ~17% discount on any 3, scaling up the more you add"}
             . Every subject also feeds one combined StudyLand plan.
           </p>

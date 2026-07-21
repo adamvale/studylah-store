@@ -6,6 +6,7 @@ import {
   type Level,
 } from "@/lib/catalogue";
 import { getPricing } from "@/lib/server/pricing-store";
+import { bundleLadder } from "@/lib/bundle-ladder";
 import { realTopCalls } from "@/lib/forecast-tables";
 import { SubjectBrowser, type SubjectCard } from "./subject-browser";
 
@@ -28,9 +29,13 @@ export async function LevelCatalogue({
 }) {
   const subjects = subjectsForLevel(level);
   const other: Level = level === "o-level" ? "na-level" : "o-level";
-  const { earlyBird, tierPrice, tierSavings } = await getPricing();
+  const pricing = await getPricing();
+  const { earlyBird, tierPrice, tierSavings } = pricing;
   const masterPrice = tierPrice(level, "master");
   const savings = tierSavings(level, "master");
+  const maxBundleSavings = Math.max(
+    ...bundleLadder(pricing).map((b) => b.savings)
+  );
 
   const cards: SubjectCard[] = subjects.map((subject) => ({
     name: subject.name,
@@ -73,7 +78,7 @@ export async function LevelCatalogue({
           </p>
           <p className="mt-1 text-sm text-white/80">
             Bundle 3+ and the per-subject price drops automatically, Mega-Bundle
-            and All-In pricing save up to S$188.
+            and All-In pricing save up to {sgd(maxBundleSavings)}.
           </p>
         </div>
         <Link

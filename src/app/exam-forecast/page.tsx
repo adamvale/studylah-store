@@ -328,8 +328,8 @@ export default async function ExamForecastPage() {
           <p className="mx-auto mt-4 max-w-xl text-lg text-white">
             Forecasts are probabilities, not certainties, so we carry the risk,
             not you. If fewer than three of our top-five forecast topics appear
-            in your paper, email your order ID within 14 days and get a full
-            refund. No forms. No argument.
+            in your paper, email your order ID within 14 days of the exam and
+            get a full refund. No forms. No argument.
           </p>
           <p className="mt-4 text-sm text-cloud">
             <Link href="/faq" className="font-medium text-accent underline">
