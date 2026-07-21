@@ -558,6 +558,49 @@ model ReviewCard {
   @@index([customerId, kind, dueAt])
 }
 
+// Project Sightseeing: every question a student photographs and Guru teaches.
+// The raw photo is NEVER stored (processed then discarded, PDPA); we keep the
+// EXTRACTED text + Guru's structured teaching, so each scan becomes a reusable
+// StudyLah asset: a growing corpus of the real questions students struggle
+// with (demand signal for future Vault content, and an admin review queue).
+model ScannedQuestion {
+  id           String   @id @default(cuid())
+  customerId   String
+  level        String? // best-guess level from the photo
+  slug         String? // best-guess subject slug
+  subjectLabel String? // human label when slug is uncertain
+  topic        String? // Guru's topic classification
+  forecastRank String? // e.g. "VERY HIGH" when the topic maps to the 2026 forecast
+  questionText String // the extracted question, the asset
+  teachingJson String // JSON: { steps: string[], answer, misconception }
+  reviewed     Boolean  @default(false) // admin curated into the official bank
+  createdAt    DateTime @default(now())
+
+  @@index([customerId, createdAt])
+  @@index([level, slug])
+}
+
+// Project Loudspeaker: one spoken-practice attempt (reading aloud or a
+// conversation turn) for O/N Level Chinese and English oral prep. Stores the
+// scores + transcript, never the raw audio (discarded after Azure scores it).
+model OralAttempt {
+  id            String   @id @default(cuid())
+  customerId    String
+  lang          String // "chinese" | "english"
+  level         String // "o-level" | "na-level"
+  mode          String // "read-aloud" | "conversation"
+  itemKey       String // the prompt/passage id
+  transcript    String? // what Azure heard
+  accuracy      Float? // Azure pronunciation accuracy 0-100
+  fluency       Float? // Azure fluency 0-100
+  completeness  Float? // Azure completeness 0-100
+  overall       Float? // blended pronunciation score 0-100
+  coaching      String? // Guru's plain-language fix, house voice
+  createdAt     DateTime @default(now())
+
+  @@index([customerId, createdAt])
+}
+
 // Beta feedback for StudyLah Legends: free text + a quick sentiment tap.
 model GameFeedback {
   id         String   @id @default(cuid())

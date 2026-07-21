@@ -947,6 +947,46 @@ sets `localStorage.studylah_unlock` → every zone/gate opens for that device
 only (`?unlock=0` clears it). Server ownership + gating are untouched, so real
 players are unaffected even with this shipped.
 
+## Project Sightseeing + Loudspeaker (native-app-only study tools)
+
+Two StudyLand tools that live ONLY in the native shell (they use the camera /
+mic). Entry cards render via `NativeToolCards` (`useNativePlatform() !== null`)
+in the Learn hub; the pages themselves show an "open the app" note on web. Both
+are owner-gated (`requireMaster`) like the rest of the app, so within the shell
+every user is a buyer, no free-tier metering needed (just per-day abuse caps).
+
+**Project Sightseeing** (`/account/scan`): snap a question, Guru teaches it step
+by step. `scan-client.tsx` compresses the photo client-side (longest edge
+1600px, JPEG q0.8) and posts base64 to `POST /api/account/game/scan`
+(action `teach`). `src/lib/server/scan.ts` sends it to Claude vision
+(`SCAN_MODEL = claude-haiku-4-5`, swappable) with a house-format teaching prompt
+(point form, step-by-step, JSON out), sanitises dashes, runs the compliance
+banned-word filter, and maps the topic to the 2026 forecast tier
+(`forecastRankFor`). The **raw photo is never stored**; the extracted question +
+teaching is logged as a `ScannedQuestion` (the "own asset": a corpus of the real
+questions students struggle with, a demand signal + future-Vault source +
+`reviewed` flag for admin curation). Action `save` drops a taught scan into the
+mistake notebook (`MistakeEntry` source `scan`). Cap 20 scans/day; 5 XP each.
+UI reveals one step at a time, then the answer (coach, don't dump).
+
+**Project Loudspeaker** (`/account/oral`): oral-exam practice for O/N-Level
+Chinese + English (reading aloud + conversation), mapped to Paper 4. Claude
+cannot hear audio, so pronunciation is scored by **Azure Speech Pronunciation
+Assessment** (`src/lib/server/speech.ts`, en-GB + zh-CN, phoneme/tone level);
+Guru (`coachPronunciation`, Haiku) turns the scores into house-voice coaching.
+`oral-client.tsx` records via MediaRecorder (30s cap), posts base64 to
+`POST /api/account/game/oral`; the raw audio is never stored, only scores +
+transcript + coaching (`OralAttempt`). Content seed in `src/lib/oral-lessons.ts`
+(Coddy expands). **Owner setup to go live: set `AZURE_SPEECH_KEY` +
+`AZURE_SPEECH_REGION`.** Unset = practice-only mode (records, no score) rather
+than an error. Cap 40 recordings/day; 6 XP each. NOT live-tested against real
+Azure (no key at build time); built to the documented REST contract.
+
+Migration `20260721020000_sightseeing_loudspeaker` (ScannedQuestion +
+OralAttempt). `ANTHROPIC_API_KEY` now documented in `.env.example` (also powers
+Gugu + scan). Both features are code-complete; needs the native shell rebuilt
+to surface the cards, and Azure keys for scoring.
+
 ## July 2026 feature batch (exam dates, nav dropdowns, rescue questionnaire, guru teach)
 
 - **Official 2026 exam dates + countdown** (`src/lib/exam-dates-2026.ts`,

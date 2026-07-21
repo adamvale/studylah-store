@@ -152,6 +152,14 @@ export const IconWarning = make(
   "IconWarning",
   "M12 4 2.5 20h19L12 4Zm0 6v4.5m0 3v.01"
 );
+export const IconCamera = make(
+  "IconCamera",
+  "M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Zm8 3.5a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"
+);
+export const IconMic = make(
+  "IconMic",
+  "M12 3a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3ZM6 11a6 6 0 0 0 12 0M12 17v4m-3 0h6"
+);
 export const IconInfo = make(
   "IconInfo",
   "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0-13v.01M12 11v6"
@@ -276,6 +284,8 @@ export const NAMED_ICONS = {
   moon: IconMoon,
   gear: IconGear,
   drop: IconDrop,
+  camera: IconCamera,
+  mic: IconMic,
 } as const;
 
 export type IconName = keyof typeof NAMED_ICONS;

@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { requireMaster } from "@/lib/server/entitlements";
 import { NamedIcon, type IconName } from "@/components/icons";
+import { NativeToolCards } from "@/components/native-tool-cards";
 
 export const metadata: Metadata = { title: "Learn" };
 
@@ -101,6 +102,7 @@ export default async function LearnHubPage() {
       </p>
 
       <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-3">
+        <NativeToolCards />
         {TOOLS.map((t) => (
           <Link
             key={t.href}
