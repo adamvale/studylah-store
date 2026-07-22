@@ -59,6 +59,19 @@ export function PracticalClient({ owned }: { owned: OwnedSubject[] }) {
 
   if (lesson && subject) {
     const match = ownedFor(subject.slug);
+    // Active lesson: hand the whole viewport to the focused player so every
+    // step is one screenload with Continue pinned to the bottom.
+    if (!finished) {
+      return (
+        <LessonPlayer
+          steps={lesson.steps}
+          title={lesson.title}
+          subtitle={subject.name}
+          onExit={() => setLesson(null)}
+          onComplete={() => { void markDone(lesson); setFinished(true); }}
+        />
+      );
+    }
     return (
       <div className="mt-4">
         <button type="button" onClick={() => setLesson(null)} className="text-xs font-bold text-accent">
@@ -66,8 +79,7 @@ export function PracticalClient({ owned }: { owned: OwnedSubject[] }) {
         </button>
         <h2 className="mt-2 font-display text-2xl font-black text-ink">{lesson.title}</h2>
         <p className="text-xs text-body">About {lesson.minutes} min</p>
-        {finished ? (
-          <div className="mt-6 space-y-4">
+        <div className="mt-6 space-y-4">
             <div className="glass bg-gradient-to-br from-guarantee/15 to-transparent p-5 text-center">
               <span className="icon-orb mx-auto text-guarantee" aria-hidden>
                 <NamedIcon name="check" size={22} />
@@ -93,12 +105,7 @@ export function PracticalClient({ owned }: { owned: OwnedSubject[] }) {
                 Back to {subject.name}
               </button>
             </div>
-          </div>
-        ) : (
-          <div className="mt-4">
-            <LessonPlayer steps={lesson.steps} onComplete={() => { void markDone(lesson); setFinished(true); }} />
-          </div>
-        )}
+        </div>
       </div>
     );
   }
