@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Sci } from "@/components/sci-text";
 import { NamedIcon } from "@/components/icons";
 import { LessonPlayer } from "@/components/lesson-player";
+import { MisconceptionQuiz } from "@/components/misconception-quiz";
+import { teachingPackFor, type TeachingPack } from "@/lib/teaching";
 import type { LessonStep } from "@/lib/lesson-steps";
 
 // A subject's page: the full topic list. Topics with an interactive lesson are
@@ -27,7 +29,23 @@ export function SubjectTopics({
   rows: TopicRow[];
 }) {
   const [active, setActive] = useState<TopicRow["lesson"]>(null);
+  const [teach, setTeach] = useState<TeachingPack | null>(null);
   const [done, setDone] = useState<Set<string>>(new Set());
+
+  if (teach) {
+    return (
+      <MisconceptionQuiz
+        pack={teach}
+        title={subjectName}
+        subtitle="Teach me with Gugu"
+        onExit={() => setTeach(null)}
+        onComplete={() => {
+          setDone((s) => new Set(s).add(teach.topicKey));
+          setTeach(null);
+        }}
+      />
+    );
+  }
 
   if (active) {
     return (
@@ -44,7 +62,9 @@ export function SubjectTopics({
     );
   }
 
-  const practisable = rows.filter((r) => r.lesson).length;
+  // A topic is practisable if it has an interactive lesson or a teaching pack
+  // (the misconception-aware tutor). The teaching pack takes priority.
+  const practisable = rows.filter((r) => r.lesson || teachingPackFor(r.key)).length;
 
   return (
     <div>
@@ -62,14 +82,15 @@ export function SubjectTopics({
 
       <div className="mt-4 glass-deep divide-y divide-white/10 overflow-hidden p-0">
         {rows.map((r, i) => {
-          const playable = Boolean(r.lesson);
-          const isDone = r.lesson ? done.has(r.lesson.key) : false;
+          const pack = teachingPackFor(r.key);
+          const playable = Boolean(r.lesson) || Boolean(pack);
+          const isDone = pack ? done.has(pack.topicKey) : r.lesson ? done.has(r.lesson.key) : false;
           return (
             <button
               key={r.key}
               type="button"
               disabled={!playable}
-              onClick={() => r.lesson && setActive(r.lesson)}
+              onClick={() => (pack ? setTeach(pack) : r.lesson ? setActive(r.lesson) : undefined)}
               className={`flex w-full items-center gap-3 px-4 py-3 text-left ${playable ? "" : "opacity-60"}`}
             >
               <span
@@ -83,8 +104,8 @@ export function SubjectTopics({
                 <Sci>{r.topic}</Sci>
               </span>
               {playable ? (
-                <span className="flex shrink-0 items-center gap-1 text-xs font-bold text-accent">
-                  Practise
+                <span className={`flex shrink-0 items-center gap-1 text-xs font-bold ${pack ? "text-guarantee" : "text-accent"}`}>
+                  {pack ? "Teach me" : "Practise"}
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                     <path d="M9 6l6 6-6 6" />
                   </svg>
