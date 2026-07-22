@@ -6,8 +6,10 @@ import { usePathname } from "next/navigation";
 import { AccountNav } from "@/components/account-nav";
 import { GhostCompanion } from "@/components/game";
 import { FxLayer } from "@/components/game-fx";
+import { GuguGuide } from "@/components/gugu-guide";
 import { UpdateWatcher } from "@/components/update-watcher";
 import { hud } from "@/lib/game/fx";
+import { guguLineFor, firstNameFrom } from "@/lib/gugu-lines";
 import { useNativePlatform } from "@/lib/native";
 
 // One StudyLand shell for every surface. The web dashboard and the Capacitor
@@ -45,7 +47,6 @@ export function AccountChrome({
   useEffect(() => {
     hud.init(player.level, player.intoLevel);
   }, [player.level, player.intoLevel]);
-  void todayDone;
   void shields;
   const native = useNativePlatform();
   // The StudyLand HUD (ghost, wordmark, level bar, sign out) lives ONLY on the
@@ -53,9 +54,12 @@ export function AccountChrome({
   // less repeated chrome at the top of each page.
   const pathname = usePathname() ?? "";
   const isToday = pathname === "/account";
-  // Streak now lives where it has context (the Today hero chip), not in the
-  // chrome, one less repeated element at the top of every screen.
-  void streak;
+  // Gugu's scripted, per-page voice guidance, spoken on demand (no AI).
+  const guguLine = guguLineFor(pathname, {
+    name: firstNameFrom(email),
+    streak,
+    todayDone,
+  });
 
   // Mobile-app-first: ambient gradient backdrop, glass chrome, and a bottom
   // tab bar on phones (hidden from md up, where the top nav pills take over).
@@ -137,6 +141,7 @@ export function AccountChrome({
         )}
       </div>
       <WebTabBar isMaster={isMaster} />
+      <GuguGuide line={guguLine} />
       <FxLayer />
       {/* Deploy awareness: quiet toast when a Railway swap is in progress or
           an update landed mid-session. Never blocks, never auto-refreshes. */}
