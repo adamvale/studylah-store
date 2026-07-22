@@ -19,7 +19,6 @@ import { GettingStarted, type StartStep } from "@/components/getting-started";
 import { TierPill } from "@/components/heat";
 import { type BossInfo } from "@/components/quest-board";
 import { PhaseBanner, WeekReport } from "@/components/today-pulse";
-import { MySubjects, type MySubject } from "@/components/my-subjects";
 import {
   IconFlame,
   IconCheckCircle,
@@ -96,12 +95,6 @@ export default async function TodayPage() {
     select: { email: true },
   });
   const subjects = await ownedSubjects(customerId);
-  // "My Subjects": every owned subject as a square that opens its subject page.
-  const mySubjects: MySubject[] = subjects.map((s) => ({
-    level: s.level,
-    slug: s.slug,
-    name: s.name,
-  }));
   // Subjects whose 2026 exams are done retire from the study tools (the time
   // gate); tell the student where their stuff went, once, quietly.
   const allSubjects = await ownedSubjectsAll(customerId);
@@ -403,9 +396,6 @@ export default async function TodayPage() {
             </Link>
           )}
         </div>
-
-        {/* My Subjects: tap a subject to unfold its full topic list */}
-        <MySubjects subjects={mySubjects} />
 
         {/* One compact card: the week's XP + today's counters, no tile sprawl */}
         <div className="glass-deep mt-4 p-5">

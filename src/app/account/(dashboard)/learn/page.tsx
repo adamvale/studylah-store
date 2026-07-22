@@ -22,6 +22,14 @@ const TOOLS: {
   badge?: string;
 }[] = [
   {
+    href: "/account/learn/tuition",
+    emoji: "book",
+    name: "Tuition",
+    blurb: "Your subjects, taught topic by topic",
+    tint: "from-indigo-400/25 to-violet-600/10",
+    badge: "NEW",
+  },
+  {
     href: "/account/fasttrack",
     emoji: "target",
     name: "FastTrack",
