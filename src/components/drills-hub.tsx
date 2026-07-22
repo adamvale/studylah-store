@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { IconCheckCircle } from "@/components/icons";
 import { TeachText } from "@/components/teach-text";
+import { ImmersiveShell } from "@/components/immersive-shell";
 
 // The Drills hub: four micro-trainers on one page.
 //   Definitions - spaced-repetition flashcards from the definition bank
@@ -45,10 +46,10 @@ interface DrillStats {
 }
 
 const TABS = [
-  { id: "definition", label: "Definitions" },
-  { id: "formula", label: "Formulas" },
-  { id: "structured", label: "Structured answers" },
-  { id: "explain", label: "Explain it back" },
+  { id: "definition", label: "Definitions", blurb: "Spaced-repetition flashcards. Recall the exact wording, then flip to check." },
+  { id: "formula", label: "Formulas", blurb: "Recall each formula and what every symbol stands for, on a spacing ladder." },
+  { id: "structured", label: "Structured answers", blurb: "Write a full answer and the marker scores it against the mark scheme." },
+  { id: "explain", label: "Explain it back", blurb: "Teach a topic in your own words, the coach checks it against the syllabus." },
 ] as const;
 type TabId = (typeof TABS)[number]["id"];
 
@@ -61,7 +62,10 @@ export function DrillsHub({
   structured: StructuredCard[];
   hasFormulas: boolean;
 }) {
-  const [tab, setTab] = useState<TabId>("definition");
+  // null = the launch menu; a value = that drill runs full-screen (immersive).
+  const [tab, setTab] = useState<TabId | null>(null);
+
+  const active = tab === null ? null : TABS.find((t) => t.id === tab);
 
   return (
     <div>
@@ -72,30 +76,30 @@ export function DrillsHub({
         wording wins marks, that is the whole game here.
       </p>
 
-      <div className="mt-5 flex flex-wrap gap-1 border-b border-hairline">
+      {/* Launch menu: pick a drill, it opens full-screen. */}
+      <div className="mt-5 grid gap-3 sm:grid-cols-2">
         {TABS.filter((t) => t.id !== "formula" || hasFormulas).map((t) => (
           <button
             key={t.id}
             type="button"
             onClick={() => setTab(t.id)}
-            className={`-mb-px border-b-2 px-3 py-2 text-sm font-medium transition-colors ${
-              tab === t.id
-                ? "border-accent text-ink"
-                : "border-transparent text-body hover:text-ink"
-            }`}
+            className="glass bg-gradient-to-br from-white/5 to-transparent p-4 text-left transition-transform hover:-translate-y-0.5"
           >
-            {t.label}
+            <p className="font-display text-base font-bold text-ink">{t.label}</p>
+            <p className="mt-1 text-sm leading-relaxed text-body">{t.blurb}</p>
           </button>
         ))}
       </div>
 
-      <div className="mt-5">
-        {(tab === "definition" || tab === "formula") && (
-          <CardDrill key={tab} kind={tab} />
-        )}
-        {tab === "explain" && <ExplainBack subjects={subjects} />}
-        {tab === "structured" && <StructuredTrainer cards={structured} />}
-      </div>
+      {active && (
+        <ImmersiveShell onExit={() => setTab(null)} subtitle="Drills" title={active.label}>
+          {(tab === "definition" || tab === "formula") && (
+            <CardDrill key={tab} kind={tab} />
+          )}
+          {tab === "explain" && <ExplainBack subjects={subjects} />}
+          {tab === "structured" && <StructuredTrainer cards={structured} />}
+        </ImmersiveShell>
+      )}
     </div>
   );
 }

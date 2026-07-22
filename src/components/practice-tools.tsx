@@ -12,6 +12,7 @@ import {
   type CarelessItem,
   type PracticeTool,
 } from "@/lib/study/practice-content";
+import { ImmersiveShell } from "@/components/immersive-shell";
 
 const TOOL_LABEL: Record<PracticeTool, string> = {
   precision: "Keyword precision",
@@ -20,6 +21,15 @@ const TOOL_LABEL: Record<PracticeTool, string> = {
   careless: "Careless checklist",
   sbq: "Source skills",
   poa: "POA formats",
+};
+
+const TOOL_BLURB: Record<PracticeTool, string> = {
+  precision: "Write an answer, then reveal the marker words a marker looks for.",
+  definitions: "Flip-card recall of the definitions markers pay for, word for word.",
+  qa: "Read the test and observation, name the ion or gas, then reveal.",
+  careless: "The method marks that leak. Run the list before you move on.",
+  sbq: "The source-question ladder, command words and the PEEL paragraph.",
+  poa: "Rehearse the statement skeletons until the headings are automatic.",
 };
 
 export interface PracticeData {
@@ -31,33 +41,36 @@ export interface PracticeData {
 }
 
 export function PracticeTools({ data }: { data: PracticeData }) {
-  const [active, setActive] = useState<PracticeTool>(data.tools[0]);
+  // null = the launch menu; a value = that tool runs full-screen (immersive).
+  const [active, setActive] = useState<PracticeTool | null>(null);
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap gap-1">
+      {/* Launch menu: pick a tool, it opens full-screen. */}
+      <div className="grid gap-3 sm:grid-cols-2">
         {data.tools.map((t) => (
           <button
             key={t}
             type="button"
             onClick={() => setActive(t)}
-            className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors ${
-              active === t
-                ? "border-accent text-accent"
-                : "border-hairline text-body hover:text-ink"
-            }`}
+            className="glass bg-gradient-to-br from-white/5 to-transparent p-4 text-left transition-transform hover:-translate-y-0.5"
           >
-            {TOOL_LABEL[t]}
+            <p className="font-display text-base font-bold text-ink">{TOOL_LABEL[t]}</p>
+            <p className="mt-1 text-sm leading-relaxed text-body">{TOOL_BLURB[t]}</p>
           </button>
         ))}
       </div>
 
-      {active === "precision" && <Precision cards={data.precision} />}
-      {active === "definitions" && <Flashcards cards={data.definitions} />}
-      {active === "qa" && <QaDriller drills={data.qa} />}
-      {active === "careless" && <Careless items={data.careless} />}
-      {active === "sbq" && <SourceSkills />}
-      {active === "poa" && <PoaFormats />}
+      {active && (
+        <ImmersiveShell onExit={() => setActive(null)} subtitle="Practice" title={TOOL_LABEL[active]}>
+          {active === "precision" && <Precision cards={data.precision} />}
+          {active === "definitions" && <Flashcards cards={data.definitions} />}
+          {active === "qa" && <QaDriller drills={data.qa} />}
+          {active === "careless" && <Careless items={data.careless} />}
+          {active === "sbq" && <SourceSkills />}
+          {active === "poa" && <PoaFormats />}
+        </ImmersiveShell>
+      )}
     </div>
   );
 }
