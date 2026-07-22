@@ -28,6 +28,41 @@ const CHIPS = [
   "Plan my week",
 ];
 
+// Reveals Guru's text one character at a time, like a real tutor typing.
+// Slow on purpose so it reads calmly. Each Guru bubble types once when it first
+// appears; older bubbles (stable text) never re-type.
+function Typewriter({
+  text,
+  onTick,
+  speed = 45,
+}: {
+  text: string;
+  onTick?: () => void;
+  speed?: number;
+}) {
+  const [shown, setShown] = useState(0);
+  useEffect(() => {
+    setShown(0);
+    if (!text) return;
+    let i = 0;
+    const id = setInterval(() => {
+      i += 1;
+      setShown(i);
+      onTick?.();
+      if (i >= text.length) clearInterval(id);
+    }, speed);
+    return () => clearInterval(id);
+    // onTick is intentionally excluded so the interval isn't restarted mid-type.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [text, speed]);
+  return (
+    <>
+      <Sci>{text.slice(0, shown)}</Sci>
+      {shown < text.length && <span className="ml-0.5 inline-block animate-pulse">▍</span>}
+    </>
+  );
+}
+
 export function TutorChat({ start, onClose }: { start: TutorStart; onClose?: () => void }) {
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [messages, setMessages] = useState<Msg[]>([]);
@@ -122,7 +157,14 @@ export function TutorChat({ start, onClose }: { start: TutorStart; onClose?: () 
                 m.role === "user" ? "bg-accent text-night" : "glass bg-gradient-to-br from-white/5 to-transparent text-ink"
               }`}
             >
-              <Sci>{m.content}</Sci>
+              {m.role === "guru" ? (
+                <Typewriter
+                  text={m.content}
+                  onTick={() => endRef.current?.scrollIntoView({ block: "end" })}
+                />
+              ) : (
+                <Sci>{m.content}</Sci>
+              )}
             </div>
           </div>
         ))}

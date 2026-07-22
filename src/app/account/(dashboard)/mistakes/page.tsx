@@ -7,9 +7,7 @@ import { FORECAST_TABLES } from "@/lib/forecast-tables";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { requireMaster } from "@/lib/server/entitlements";
 import { ownedSubjects } from "@/lib/server/study";
-import { achievementSuffixes } from "@/lib/server/xp";
 import { MistakeNotebook, type MistakeItem } from "@/components/mistake-notebook";
-import { MonsterDex, type DexCounts } from "@/components/monster-dex";
 import { PageHeading } from "@/components/page-heading";
 
 export const metadata: Metadata = { title: "Mistakes" };
@@ -19,13 +17,12 @@ export default async function MistakesPage() {
   if (!customerId) redirect("/account/login");
   await requireMaster(customerId);
 
-  const [rows, subjects, wildCaptured] = await Promise.all([
+  const [rows, subjects] = await Promise.all([
     prisma.mistakeEntry.findMany({
       where: { customerId },
       orderBy: [{ resolved: "asc" }, { createdAt: "desc" }],
     }),
     ownedSubjects(customerId),
-    achievementSuffixes(customerId, "dex:"),
   ]);
 
   const nameFor = (level: string, slug: string) =>
@@ -64,19 +61,8 @@ export default async function MistakesPage() {
         ).map((t) => t.topic);
   }
 
-  // Dex counts: species (the WHY) × at-large / banished.
-  const dexMap = new Map<string, DexCounts>();
-  for (const r of rows) {
-    const entry = dexMap.get(r.reason) ?? { reason: r.reason, atLarge: 0, banished: 0 };
-    if (r.resolved) entry.banished++;
-    else entry.atLarge++;
-    dexMap.set(r.reason, entry);
-  }
-  const dexCounts = [...dexMap.values()];
-
   return (
     <div className="space-y-6">
-      <MonsterDex counts={dexCounts} wildCaptured={[...wildCaptured]} />
       <PageHeading
         size="sm"
         description="Every mistake is a monster, and its species is WHY you lost the mark. Identify each one, then beat it twice in your daily three to banish it for good. Auto-captured from your daily practice and readiness checks, add your own from school papers."

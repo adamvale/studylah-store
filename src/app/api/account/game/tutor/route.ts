@@ -114,8 +114,8 @@ export async function POST(request: Request) {
       typeof body.seed === "string" && body.seed.trim()
         ? body.seed.trim().slice(0, 500)
         : kind === "life"
-          ? "Start this session. Introduce it warmly in a line or two, then begin."
-          : `Start a short tutoring session on ${title}. Greet me in one line, teach the first small idea, then ask what I would like to focus on.`;
+          ? "Start this session. Say hello warmly in one short line, then ask your first question."
+          : `Start tutoring ${title}. Say hello in one short line, then ask what I want to work on today. Keep it to two or three short lines, no lesson yet.`;
 
     const guruOpening = await tutorReply({ system, history: [], userText: seed });
 
