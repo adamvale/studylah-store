@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   PLAYBOOKS,
   FAMILY_META,
@@ -13,6 +13,7 @@ import type { FamilyProgress, PlayState } from "@/lib/server/fasttrack";
 import { NamedIcon, type IconName } from "@/components/icons";
 import { ImmersiveShell } from "@/components/immersive-shell";
 import { PageHeading } from "@/components/page-heading";
+import { speak, stopSpeaking, isMuted } from "@/lib/speak";
 
 // ── FastTrack hub ────────────────────────────────────────────────────────────
 // StudyLand's "answer like the examiner" trainer. A tab per subject family,
@@ -349,6 +350,14 @@ function DrillBox({ play, onGraded }: { play: Play; onGraded: (s: PlayState) => 
   const [busy, setBusy] = useState(false);
   const [feedback, setFeedback] = useState<string | null>(null);
   const [result, setResult] = useState<{ earned: number; total: number; xp?: number } | null>(null);
+
+  // Gugu introduces the drill question as it opens (device voice; honours mute).
+  useEffect(() => {
+    if (isMuted()) return;
+    speak(`Now you write one. ${play.drill.prompt}`);
+    return () => stopSpeaking();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [play.id]);
 
   async function submit() {
     if (busy || answer.trim().length < 10) return;

@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { PublicDailyQuestion } from "@/lib/server/study";
+import { speak, isMuted } from "@/lib/speak";
+import { questionIntro } from "@/lib/gugu-lines";
 import { emitGame, emitFx } from "@/lib/game/fx";
 import { GuruTeach } from "./guru-teach";
 import { NamedIcon, IconFlame, type IconName } from "@/components/icons";
@@ -95,6 +97,15 @@ export function DailyQuiz({
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<SubmitResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  // Gugu speaks about each question as it opens (subject/topic aware), like a
+  // tutor leaning over. Dynamic text, so it uses the device voice; honours mute.
+  const activeQ = typeof stage === "number" ? questions[Math.min(stage, questions.length - 1)] : null;
+  useEffect(() => {
+    if (!activeQ || isMuted()) return;
+    speak(questionIntro(activeQ.subjectName, activeQ.topic));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeQ?.id]);
 
   const answeredIds = Object.entries(answers)
     .filter(([, v]) => v !== "")
@@ -443,6 +454,13 @@ export function DailyQuiz({
           </span>
         </div>
         <p className="mt-2 font-medium text-ink">{q.stem}</p>
+        <button
+          type="button"
+          onClick={() => speak(`${questionIntro(q.subjectName, q.topic)} ${q.stem}`)}
+          className="mt-2 inline-flex items-center gap-1 rounded-full border border-hairline px-3 py-1 text-xs font-bold text-accent"
+        >
+          Hear the question
+        </button>
 
         {q.type === "mcq" && q.options ? (
           <div className="mt-3 space-y-2">

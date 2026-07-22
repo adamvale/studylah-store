@@ -60,3 +60,16 @@ export function guguLineFor(pathname: string, ctx: GuguContext): string {
   }
   return `I am right here if you need a hand, ${ctx.name}.`;
 }
+
+// The fixed (non-personalised) page lines, for the audio pre-generator.
+export function fixedGuguLines(): string[] {
+  return Object.values(PAGE_LINES);
+}
+
+// Gugu's line when a question opens. Subject/topic aware, so it changes per
+// question, dynamic, so it speaks with the device voice (not pre-generated).
+export function questionIntro(subjectName?: string, topic?: string): string {
+  const lead = subjectName ? `This is a ${subjectName} question` : "Here is your question";
+  const on = topic ? ` on ${topic}` : "";
+  return `${lead}${on}. Read it carefully. What do you think the answer is?`;
+}
