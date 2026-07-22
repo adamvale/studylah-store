@@ -180,6 +180,13 @@ html[data-native] textarea {
   -webkit-user-select: text;
 }
 
+/* Clear the notch / Dynamic Island: in the app the first content (the page
+   title) sat under the status bar. Push the shell down past the safe area.
+   Web is untouched (this only applies under data-native). */
+html[data-native] .sl-shell-top {
+  padding-top: calc(env(safe-area-inset-top) + 0.75rem);
+}
+
 /* iOS auto-zooms the whole screen when you focus a control smaller than 16px.
    Force every form control to 16px in the app so typing never zooms. */
 html[data-native] input,
@@ -728,6 +735,20 @@ body:has([data-bottom-cta]) .gugu-panel {
    is kept as a harmless no-op for any stragglers. */
 .sl-bg {
   display: none;
+}
+
+/* Immersive full-screen surface (lessons, practices, any multi-step activity).
+   Same ambient backdrop as the standard app background (body::before) but
+   painted ONTO the element itself, so a fixed/portaled overlay matches the
+   rest of the app instead of showing a flat near-black. The linear base is
+   opaque, so nothing behind bleeds through. */
+.sl-screen-bg {
+  background:
+    radial-gradient(120% 90% at 85% -10%, rgba(34, 211, 238, 0.2), transparent 55%),
+    radial-gradient(130% 100% at 10% 15%, rgba(168, 85, 247, 0.45), transparent 60%),
+    radial-gradient(90% 60% at 55% 30%, rgba(124, 58, 237, 0.22), transparent 65%),
+    radial-gradient(120% 120% at 50% 115%, rgba(109, 40, 217, 0.5), transparent 62%),
+    linear-gradient(170deg, #1a1245 0%, #221856 48%, #140f31 100%);
 }
 
 /* Frosted glass card */

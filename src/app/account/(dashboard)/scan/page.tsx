@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { requireMaster } from "@/lib/server/entitlements";
 import { ScanClient } from "@/components/scan-client";
+import { PageHeading } from "@/components/page-heading";
 
 export const metadata: Metadata = { title: "Snap & Teach" };
 
@@ -15,12 +16,9 @@ export default async function ScanPage() {
 
   return (
     <div>
-      <h1 className="font-display text-3xl font-extrabold tracking-tight text-ink">
+      <PageHeading description="Stuck on a question? Photograph it and Guru walks you through it, one step at a time.">
         Snap <span className="sl-grad-text">&amp; Teach</span>
-      </h1>
-      <p className="mt-1 max-w-md text-sm text-body">
-        Stuck on a question? Photograph it and Guru walks you through it, one step at a time.
-      </p>
+      </PageHeading>
       <ScanClient />
     </div>
   );

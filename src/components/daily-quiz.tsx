@@ -7,6 +7,7 @@ import { emitGame, emitFx } from "@/lib/game/fx";
 import { GuruTeach } from "./guru-teach";
 import { NamedIcon, IconFlame, type IconName } from "@/components/icons";
 import { TeachText } from "@/components/teach-text";
+import { ImmersiveShell } from "@/components/immersive-shell";
 
 type Confidence = "sure" | "unsure" | "guess";
 
@@ -379,33 +380,42 @@ export function DailyQuiz({
   const qAnswered = (answers[q.id] ?? "") !== "" && Boolean(confidence[q.id]);
   const isLast = qi === questions.length - 1;
 
+  // Active quiz runs immersively (full screen, action pinned to the bottom).
+  // The top-left arrow steps back a question, or back to the start card.
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <p className="text-sm text-body">
-          {doneToday ? "Bonus practice" : "3 quick questions · marked instantly"}
-        </p>
-        <p className="flex items-center gap-1 font-mono text-xs text-body">
-          <IconFlame size={13} className="text-accent" /> {streak}-day streak
-        </p>
-      </div>
-
-      {/* progress segments */}
-      <div className="flex gap-1.5" aria-hidden>
-        {questions.map((qq, i) => (
-          <span
-            key={qq.id}
-            className={`h-1.5 flex-1 rounded-full ${
-              i < qi
-                ? "bg-accent"
-                : i === qi
-                  ? "bg-accent/70"
-                  : "bg-white/10"
-            }`}
-          />
-        ))}
-      </div>
-
+    <ImmersiveShell
+      onExit={() => setStage(qi === 0 ? "start" : qi - 1)}
+      subtitle={doneToday ? "Bonus practice" : "Today's three"}
+      progress={{ current: qi + 1, total: questions.length }}
+      footer={
+        <>
+          {error && <p className="mb-2 text-sm text-coral">{error}</p>}
+          {isLast ? (
+            <button
+              type="button"
+              onClick={() => void submit()}
+              disabled={submitting || answeredCount === 0 || missingConfidence > 0}
+              className="sl-btn w-full disabled:opacity-50"
+            >
+              {submitting
+                ? "Marking…"
+                : missingConfidence > 0
+                  ? `Tap "How sure?" first`
+                  : "Mark my answers"}
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setStage(qi + 1)}
+              disabled={!qAnswered}
+              className="sl-btn w-full disabled:opacity-50"
+            >
+              Next
+            </button>
+          )}
+        </>
+      }
+    >
       <div
         key={q.id}
         className={`rounded-2xl border bg-surface p-5 ${
@@ -495,41 +505,6 @@ export function DailyQuiz({
           </div>
         )}
       </div>
-
-      {error && <p className="text-sm text-coral">{error}</p>}
-
-      <div className="flex items-center justify-between gap-3">
-        <button
-          type="button"
-          onClick={() => setStage(qi === 0 ? "start" : qi - 1)}
-          className="chip hover:border-accent/60"
-        >
-          Back
-        </button>
-        {isLast ? (
-          <button
-            type="button"
-            onClick={() => void submit()}
-            disabled={submitting || answeredCount === 0 || missingConfidence > 0}
-            className="sl-btn flex-1 disabled:opacity-50"
-          >
-            {submitting
-              ? "Marking…"
-              : missingConfidence > 0
-                ? `Tap "How sure?" first`
-                : "Mark my answers"}
-          </button>
-        ) : (
-          <button
-            type="button"
-            onClick={() => setStage(qi + 1)}
-            disabled={!qAnswered}
-            className="sl-btn flex-1 disabled:opacity-50"
-          >
-            Next
-          </button>
-        )}
-      </div>
-    </div>
+    </ImmersiveShell>
   );
 }

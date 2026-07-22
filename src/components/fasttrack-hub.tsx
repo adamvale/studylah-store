@@ -11,6 +11,7 @@ import {
 } from "@/lib/fasttrack";
 import type { FamilyProgress, PlayState } from "@/lib/server/fasttrack";
 import { NamedIcon, type IconName } from "@/components/icons";
+import { ImmersiveShell } from "@/components/immersive-shell";
 
 // ── FastTrack hub ────────────────────────────────────────────────────────────
 // StudyLand's "answer like the examiner" trainer. A tab per subject family,
@@ -237,42 +238,32 @@ function PlayDetail({
   const last = STEP_TITLES.length - 1;
 
   return (
-    <div className="mt-4">
-      <div className="flex items-center justify-between gap-3">
-        <button type="button" onClick={onBack} className="chip">
-          ← All plays
-        </button>
-        <MasteryPip state={state} />
-      </div>
-
-      <div className="mt-3 rounded-3xl glass p-5">
-        <p className="text-xs font-bold uppercase tracking-wide text-accent">
-          Play · {play.name}
-        </p>
-
-        {/* progress dots */}
-        <div className="mt-3 flex items-center gap-1.5" aria-label={`Step ${step + 1} of ${STEP_TITLES.length}`}>
-          {STEP_TITLES.map((t, i) => (
-            <button
-              key={t}
-              type="button"
-              onClick={() => setStep(i)}
-              aria-label={`Step ${i + 1}: ${t}`}
-              className={`h-1.5 flex-1 rounded-full transition-colors ${
-                i < step ? "bg-guarantee/70" : i === step ? "bg-accent" : "bg-white/12"
-              }`}
-            />
-          ))}
-        </div>
-
-        <h2 className="mt-4 font-display text-xl font-extrabold text-ink">
+    <ImmersiveShell
+      onExit={() => (step === 0 ? onBack() : setStep(step - 1))}
+      subtitle={`Play · ${play.name}`}
+      progress={{ current: step + 1, total: STEP_TITLES.length }}
+      headerRight={<MasteryPip state={state} />}
+      footer={
+        step < last ? (
+          <button type="button" onClick={() => setStep(step + 1)} className="sl-btn w-full">
+            Next →
+          </button>
+        ) : (
+          <button type="button" onClick={onBack} className="sl-btn w-full">
+            Done, all plays →
+          </button>
+        )
+      }
+    >
+      <div>
+        <h2 className="font-display text-xl font-extrabold text-ink">
           <span className="mr-2 inline-flex h-7 w-7 items-center justify-center rounded-full bg-accent/15 font-mono text-sm font-black text-accent">
             {step + 1}
           </span>
           {STEP_TITLES[step]}
         </h2>
 
-        <div className="mt-4 min-h-[16rem]">
+        <div className="mt-4">
           {step === 0 && (
             <div>
               <p className="text-sm text-body">
@@ -348,31 +339,8 @@ function PlayDetail({
 
           {step === 4 && <DrillBox play={play} onGraded={onDrillGraded} />}
         </div>
-
-        {/* wizard controls */}
-        <div className="mt-5 flex items-center justify-between gap-3 border-t border-hairline pt-4">
-          <button
-            type="button"
-            onClick={() => (step === 0 ? onBack() : setStep(step - 1))}
-            className="chip"
-          >
-            ← {step === 0 ? "Plays" : "Back"}
-          </button>
-          <span className="text-xs font-semibold text-body">
-            {step + 1} / {STEP_TITLES.length}
-          </span>
-          {step < last ? (
-            <button type="button" onClick={() => setStep(step + 1)} className="sl-btn !px-6 !py-2.5">
-              Next →
-            </button>
-          ) : (
-            <button type="button" onClick={onBack} className="chip">
-              Done, all plays →
-            </button>
-          )}
-        </div>
       </div>
-    </div>
+    </ImmersiveShell>
   );
 }
 
@@ -554,54 +522,65 @@ function ClassifierGame({ family, onBack }: { family: Family; onBack: () => void
 
   if (done) {
     return (
-      <div className="mt-4 rounded-2xl border border-hairline bg-surface p-6 text-center">
-        <p className="font-display text-2xl font-black text-ink">
-          {score}/{rounds.length} recognised
-        </p>
-        <p className="mx-auto mt-2 max-w-md text-sm text-body">
-          {score >= rounds.length * 0.8
-            ? "Sharp. You are reading the question before the clock does, that is where marks are won."
-            : "Keep drilling this. The faster you name the question type, the more time you have to answer it well."}
-        </p>
-        <div className="mt-4 flex justify-center gap-2">
-          <button
-            type="button"
-            onClick={() => {
-              setIdx(0);
-              setScore(0);
-              setPicked(null);
-            }}
-            className="rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
-          >
-            Go again
-          </button>
-          <button
-            type="button"
-            onClick={onBack}
-            className="rounded-lg border border-hairline px-5 py-2.5 text-sm text-body"
-          >
-            Back to plays
-          </button>
+      <ImmersiveShell
+        onExit={onBack}
+        subtitle="The 5-second read"
+        footer={
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => {
+                setIdx(0);
+                setScore(0);
+                setPicked(null);
+              }}
+              className="sl-btn flex-1"
+            >
+              Go again
+            </button>
+            <button
+              type="button"
+              onClick={onBack}
+              className="flex-1 rounded-xl border border-hairline py-3 text-sm font-bold text-ink"
+            >
+              Back to plays
+            </button>
+          </div>
+        }
+      >
+        <div className="text-center">
+          <p className="font-display text-4xl font-black text-ink">
+            {score}/{rounds.length}
+          </p>
+          <p className="mt-1 font-pixel text-xs tracking-widest text-violet">RECOGNISED</p>
+          <p className="mx-auto mt-3 max-w-md text-sm text-body">
+            {score >= rounds.length * 0.8
+              ? "Sharp. You are reading the question before the clock does, that is where marks are won."
+              : "Keep drilling this. The faster you name the question type, the more time you have to answer it well."}
+          </p>
         </div>
-      </div>
+      </ImmersiveShell>
     );
   }
 
   return (
-    <div className="mt-4 space-y-4">
-      <button type="button" onClick={onBack} className="text-sm text-body hover:text-ink">
-        ← All plays
-      </button>
-      <div className="rounded-2xl border border-violet/40 bg-surface p-5">
-        <div className="flex items-center justify-between">
-          <p className="font-pixel text-[9px] tracking-widest text-violet">
-            THE 5-SECOND READ · {idx + 1}/{rounds.length}
-          </p>
-          <p className="font-mono text-xs text-body">Score {score}</p>
-        </div>
-        <p className="mt-3 text-lg font-medium leading-relaxed text-ink">{round.stem}</p>
+    <ImmersiveShell
+      onExit={onBack}
+      subtitle="The 5-second read"
+      progress={{ current: idx + 1, total: rounds.length }}
+      headerRight={<span className="shrink-0 font-mono text-xs text-body">Score {score}</span>}
+      footer={
+        picked ? (
+          <button type="button" onClick={next} className="sl-btn w-full">
+            {idx + 1 < rounds.length ? "Next" : "See the result"}
+          </button>
+        ) : null
+      }
+    >
+      <div>
+        <p className="text-lg font-medium leading-relaxed text-ink">{round.stem}</p>
         <p className="mt-2 text-sm text-body">Which question type is this?</p>
-        <div className="mt-3 space-y-2">
+        <div className="mt-4 space-y-2">
           {round.options.map((o) => {
             const isAnswer = o.id === round.answerId;
             const isPicked = o.id === picked;
@@ -618,7 +597,7 @@ function ClassifierGame({ family, onBack }: { family: Family; onBack: () => void
                 type="button"
                 disabled={Boolean(picked)}
                 onClick={() => pick(o.id)}
-                className={`block w-full rounded-xl border px-4 py-2.5 text-left text-sm text-ink transition-colors ${cls}`}
+                className={`block w-full rounded-xl border px-4 py-3 text-left text-sm text-ink transition-colors ${cls}`}
               >
                 {picked && isAnswer ? "✓ " : picked && isPicked ? "✗ " : ""}
                 {o.name}
@@ -626,16 +605,7 @@ function ClassifierGame({ family, onBack }: { family: Family; onBack: () => void
             );
           })}
         </div>
-        {picked && (
-          <button
-            type="button"
-            onClick={next}
-            className="mt-3 w-full rounded-lg bg-accent px-5 py-2.5 text-sm font-bold text-night"
-          >
-            {idx + 1 < rounds.length ? "Next" : "See the result"}
-          </button>
-        )}
       </div>
-    </div>
+    </ImmersiveShell>
   );
 }

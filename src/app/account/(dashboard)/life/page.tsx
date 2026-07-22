@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { requireMaster } from "@/lib/server/entitlements";
 import { LifeClient } from "@/components/life-client";
+import { PageHeading } from "@/components/page-heading";
 
 export const metadata: Metadata = { title: "Life Skills" };
 
@@ -14,13 +15,9 @@ export default async function LifePage() {
 
   return (
     <div>
-      <h1 className="font-display text-3xl font-extrabold tracking-tight text-ink">
+      <PageHeading description="Money, confidence, starting up, staying calm, and how Singapore actually works. The things school never taught, coached by Guru.">
         Life <span className="sl-grad-text">Skills</span>
-      </h1>
-      <p className="mt-1 max-w-md text-sm text-body">
-        Money, confidence, starting up, staying calm, and how Singapore actually works. The things
-        school never taught, coached by Guru.
-      </p>
+      </PageHeading>
       <LifeClient />
     </div>
   );

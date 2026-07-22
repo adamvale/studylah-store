@@ -4,6 +4,7 @@ import { getCustomerId } from "@/lib/server/customer-session";
 import { requireMaster } from "@/lib/server/entitlements";
 import { ownedSubjects } from "@/lib/server/study";
 import { TutorHub } from "@/components/tutor-hub";
+import { PageHeading } from "@/components/page-heading";
 
 export const metadata: Metadata = { title: "Guru Tutor" };
 
@@ -21,13 +22,9 @@ export default async function TutorPage() {
 
   return (
     <div>
-      <h1 className="font-display text-3xl font-extrabold tracking-tight text-ink">
+      <PageHeading description="A patient one-to-one tutor. Guru teaches, sets practice, marks your work, and can hold a standing weekly session, like tuition, in your pocket.">
         Guru <span className="sl-grad-text">Tutor</span>
-      </h1>
-      <p className="mt-1 max-w-md text-sm text-body">
-        A patient one-to-one tutor. Guru teaches, sets practice, marks your work, and can hold a
-        standing weekly session, like tuition, in your pocket.
-      </p>
+      </PageHeading>
       <TutorHub subjects={subjects} />
     </div>
   );

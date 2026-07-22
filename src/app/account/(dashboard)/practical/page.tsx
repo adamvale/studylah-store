@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { requireMaster } from "@/lib/server/entitlements";
 import { ownedSubjects } from "@/lib/server/study";
+import { PageHeading } from "@/components/page-heading";
 import { PracticalClient } from "@/components/practical-client";
 
 export const metadata: Metadata = { title: "Practical Lab" };
@@ -22,13 +23,9 @@ export default async function PracticalPage() {
 
   return (
     <div>
-      <h1 className="font-display text-3xl font-extrabold tracking-tight text-ink">
+      <PageHeading description="The practical paper rewards technique: apparatus, measurement, observations, and spotting the source of error. Train it here, one skill at a time, for Chemistry, Physics and Biology.">
         Practical <span className="sl-grad-text">Lab</span>
-      </h1>
-      <p className="mt-1 max-w-md text-sm text-body">
-        The practical paper rewards technique: apparatus, measurement, observations, and spotting
-        the source of error. Train it here, one skill at a time, for Chemistry, Physics and Biology.
-      </p>
+      </PageHeading>
       <PracticalClient owned={owned} />
     </div>
   );

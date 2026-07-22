@@ -64,7 +64,7 @@ export function AccountChrome({
     // decorative blooms/glows bleed past the viewport edge and let iOS pan
     // the whole page sideways without it.
     <div className="studyland min-h-dvh overflow-x-clip">
-      <div className="mx-auto max-w-3xl px-4 pb-24 pt-8 md:pb-12 md:pt-12">
+      <div className="sl-shell-top mx-auto max-w-3xl px-4 pb-24 pt-8 md:pb-12 md:pt-12">
         {/* One compact header: a single ghost, a single wordmark, and the
             level/XP strip folded underneath. Shown ONLY on the Today home
             screen; other screens open straight into their content.

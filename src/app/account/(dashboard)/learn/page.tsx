@@ -5,6 +5,7 @@ import { getCustomerId } from "@/lib/server/customer-session";
 import { requireMaster } from "@/lib/server/entitlements";
 import { NamedIcon, type IconName } from "@/components/icons";
 import { NativeToolCards } from "@/components/native-tool-cards";
+import { PageHeading } from "@/components/page-heading";
 
 export const metadata: Metadata = { title: "Learn" };
 
@@ -102,12 +103,9 @@ export default async function LearnHubPage() {
 
   return (
     <div>
-      <h1 className="font-display text-3xl font-extrabold tracking-tight text-ink">
+      <PageHeading description="Every tool does one job. Pick one, do one bite, come back tomorrow.">
         Learn <span className="sl-grad-text">your way</span>
-      </h1>
-      <p className="mt-1 max-w-md text-sm text-body">
-        Every tool does one job. Pick one, do one bite, come back tomorrow.
-      </p>
+      </PageHeading>
 
       <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-3">
         <NativeToolCards />
