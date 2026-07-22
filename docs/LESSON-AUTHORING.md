@@ -83,6 +83,30 @@ when solved or revealed).
 { kind: "circuit", prompt: "...",
   switches: [{ id: "s1", label: "Switch A" }, { id: "s2", label: "Switch B" }],
   needed: ["s1","s2"], explain: "..." }
+
+// Fill the blanks from a word bank (distractors allowed). N segments = N-1
+// blanks, filled left to right; `answer` is the correct word per blank in order.
+{ kind: "cloze", prompt: "...",
+  segments: ["Distance is a ", " quantity, but displacement is a ", " quantity."],
+  bank: ["scalar","vector","negative"], answer: ["scalar","vector"], explain: "..." }
+
+// Tap the ONE line in a worked solution that has the mistake (0-based errorLine).
+// The teaching-native step: finding your own slip is how it sticks.
+{ kind: "spoterror", prompt: "Find the mistake.",
+  lines: ["a = (v - u) / t", "a = (8 - 20) / 6", "a = 12 / 6", "a = 2 m/s^2"],
+  errorLine: 2, explain: "..." }
+
+// Sort each item into its correct bin (2 to 3 bins). `bin` is a 0-based index.
+{ kind: "classify", prompt: "Scalar or vector?",
+  bins: ["Scalar","Vector"],
+  items: [{ text: "speed", bin: 0 }, { text: "velocity", bin: 1 }], explain: "..." }
+
+// Pick which graph matches. Each option is a mini line chart from its `points`
+// (x,y pairs on a shared 0..max scale). `correct` is the 0-based option index.
+{ kind: "graphpick", prompt: "Which shows uniform acceleration from rest?",
+  xLabel: "time", yLabel: "velocity",
+  options: [{ points: [[0,0],[10,10]] }, { points: [[0,8],[10,8]] }],
+  correct: 0, explain: "..." }
 ```
 
 ## Gugu's scripted voice (zero cost)

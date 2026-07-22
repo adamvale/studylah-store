@@ -61,7 +61,19 @@ export type LessonStep =
     } & Guided)
   // Toggle switches; solved when exactly the `needed` switches are closed and
   // the lamp lights.
-  | ({ kind: "circuit"; prompt: string; switches: { id: string; label: string; shortsLamp?: boolean }[]; needed: string[]; explain: string } & Guided);
+  | ({ kind: "circuit"; prompt: string; switches: { id: string; label: string; shortsLamp?: boolean }[]; needed: string[]; explain: string } & Guided)
+  // Fill each blank in a sentence from a word bank (which may hold distractors).
+  // `segments` are the text between blanks: N segments means N-1 blanks, filled
+  // left to right; `answer` is the correct word for each blank, in order.
+  | ({ kind: "cloze"; prompt: string; segments: string[]; bank: string[]; answer: string[]; explain: string } & Guided)
+  // Tap the one line in a worked solution that contains the mistake. This is the
+  // teaching-native step: finding your own error is how a tutor makes it stick.
+  | ({ kind: "spoterror"; prompt: string; lines: string[]; errorLine: number; explain: string } & Guided)
+  // Sort every item into its correct bin (2 to 3 labelled bins).
+  | ({ kind: "classify"; prompt: string; bins: string[]; items: { text: string; bin: number }[]; explain: string } & Guided)
+  // Pick which graph matches the description. Each option is a small line chart
+  // drawn from its `points` (x,y pairs on a shared 0..max scale).
+  | ({ kind: "graphpick"; prompt: string; xLabel?: string; yLabel?: string; options: { points: [number, number][]; caption?: string }[]; correct: number; explain: string } & Guided);
 
 // Every human-facing string in a step, for compliance scanning and search.
 export function stepText(step: LessonStep): string[] {
@@ -87,6 +99,14 @@ export function stepText(step: LessonStep): string[] {
       return [step.prompt, step.xLabel ?? "", step.yLabel ?? "", step.explain, ...guided];
     case "circuit":
       return [step.prompt, ...step.switches.map((s) => s.label), step.explain, ...guided];
+    case "cloze":
+      return [step.prompt, ...step.segments, ...step.bank, ...step.answer, step.explain, ...guided];
+    case "spoterror":
+      return [step.prompt, ...step.lines, step.explain, ...guided];
+    case "classify":
+      return [step.prompt, ...step.bins, ...step.items.map((it) => it.text), step.explain, ...guided];
+    case "graphpick":
+      return [step.prompt, step.xLabel ?? "", step.yLabel ?? "", ...step.options.map((o) => o.caption ?? ""), step.explain, ...guided];
   }
 }
 
@@ -99,6 +119,10 @@ export function isInteractive(step: LessonStep): boolean {
     step.kind === "match" ||
     step.kind === "tiles" ||
     step.kind === "plot" ||
-    step.kind === "circuit"
+    step.kind === "circuit" ||
+    step.kind === "cloze" ||
+    step.kind === "spoterror" ||
+    step.kind === "classify" ||
+    step.kind === "graphpick"
   );
 }

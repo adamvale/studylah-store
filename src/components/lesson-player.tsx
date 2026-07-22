@@ -12,7 +12,7 @@ import { speak, stopSpeaking } from "@/lib/speak";
 // gives escalating `hints` on Help, and reads the teaching summary at the end,
 // all on-device speech (no AI, no cost). Runs inside the ImmersiveShell.
 
-const PROBLEM_KINDS = ["slider", "order", "match", "tiles", "plot", "circuit"] as const;
+const PROBLEM_KINDS = ["slider", "order", "match", "tiles", "plot", "circuit", "cloze", "spoterror", "classify", "graphpick"] as const;
 function isProblem(kind: LessonStep["kind"]): boolean {
   return (PROBLEM_KINDS as readonly string[]).includes(kind);
 }
@@ -189,6 +189,10 @@ export function LessonPlayer({
       {step.kind === "tiles" && <TilesStep key={i} step={step} onSolved={setSolved} reveal={gaveUp} />}
       {step.kind === "plot" && <PlotStep key={i} step={step} onSolved={setSolved} reveal={gaveUp} />}
       {step.kind === "circuit" && <CircuitStep key={i} step={step} onSolved={setSolved} reveal={gaveUp} />}
+      {step.kind === "cloze" && <ClozeStep key={i} step={step} onSolved={setSolved} reveal={gaveUp} />}
+      {step.kind === "spoterror" && <SpotErrorStep key={i} step={step} onSolved={setSolved} reveal={gaveUp} />}
+      {step.kind === "classify" && <ClassifyStep key={i} step={step} onSolved={setSolved} reveal={gaveUp} />}
+      {step.kind === "graphpick" && <GraphPickStep key={i} step={step} onSolved={setSolved} reveal={gaveUp} />}
 
       {/* Help ladder: escalating scripted hints, then reveal the answer. */}
       {(step.kind === "choice" || isProblem(step.kind)) && !showSummary && (
@@ -723,6 +727,254 @@ function CircuitStep({ step, onSolved, reveal }: { step: CircuitStepT; onSolved:
           );
         })}
       </div>
+    </div>
+  );
+}
+
+type ClozeStepT = Extract<LessonStep, { kind: "cloze" }>;
+function ClozeStep({ step, onSolved, reveal }: { step: ClozeStepT; onSolved: (b: boolean) => void; reveal: boolean }) {
+  const blanks = Math.max(0, step.segments.length - 1);
+  const bank = useMemo(() => shuffleIdx(step.bank.length).map((k) => ({ idx: k, text: step.bank[k] })), [step]);
+  const [filled, setFilled] = useState<(number | null)[]>(() => Array(blanks).fill(null));
+
+  useEffect(() => {
+    if (!reveal) return;
+    const used = new Set<number>();
+    const next: (number | null)[] = [];
+    for (const word of step.answer) {
+      const bi = bank.findIndex((b, k) => b.text === word && !used.has(k));
+      if (bi >= 0) used.add(bi);
+      next.push(bi >= 0 ? bi : null);
+    }
+    setFilled(next);
+  }, [reveal, bank, step.answer]);
+
+  const correct = filled.length === blanks && filled.every((bi, k) => bi != null && bank[bi].text === step.answer[k]);
+  useEffect(() => onSolved(correct), [correct, onSolved]);
+  const usedBank = new Set(filled.filter((v): v is number => v != null));
+
+  function placeWord(bi: number) {
+    const pos = filled.findIndex((v) => v == null);
+    if (pos < 0) return;
+    setFilled((cur) => cur.map((v, k) => (k === pos ? bi : v)));
+  }
+  const clearBlank = (pos: number) => setFilled((cur) => cur.map((v, k) => (k === pos ? null : v)));
+
+  return (
+    <div>
+      <p className="font-display text-lg font-bold text-ink"><Sci>{step.prompt}</Sci></p>
+      <div className={`mt-4 rounded-xl border-2 p-4 text-base leading-loose text-ink ${correct ? "border-guarantee bg-guarantee/10" : "border-hairline"}`}>
+        {step.segments.map((seg, k) => (
+          <span key={k}>
+            <Sci>{seg}</Sci>
+            {k < blanks && (
+              <button
+                type="button"
+                onClick={() => filled[k] != null && clearBlank(k)}
+                className={`mx-1 inline-flex min-w-[3.5rem] items-center justify-center rounded-md border-2 px-2 py-0.5 align-middle text-sm font-bold ${
+                  filled[k] != null ? "border-accent/60 bg-accent/15 text-ink" : "border-dashed border-hairline text-body"
+                }`}
+              >
+                {filled[k] != null ? <Sci>{bank[filled[k] as number].text}</Sci> : "   "}
+              </button>
+            )}
+          </span>
+        ))}
+      </div>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {bank.map((b, bi) =>
+          usedBank.has(bi) ? null : (
+            <button
+              key={bi}
+              type="button"
+              onClick={() => placeWord(bi)}
+              className="rounded-lg border border-hairline bg-surface px-3 py-1.5 text-sm text-ink"
+            >
+              <Sci>{b.text}</Sci>
+            </button>
+          )
+        )}
+      </div>
+    </div>
+  );
+}
+
+type SpotErrorStepT = Extract<LessonStep, { kind: "spoterror" }>;
+function SpotErrorStep({ step, onSolved, reveal }: { step: SpotErrorStepT; onSolved: (b: boolean) => void; reveal: boolean }) {
+  const [tapped, setTapped] = useState<number | null>(null);
+  const [wrong, setWrong] = useState<number | null>(null);
+  useEffect(() => {
+    if (reveal) setTapped(step.errorLine);
+  }, [reveal, step.errorLine]);
+  const correct = tapped === step.errorLine;
+  useEffect(() => onSolved(correct), [correct, onSolved]);
+
+  function tap(k: number) {
+    if (correct) return;
+    if (k === step.errorLine) {
+      setTapped(k);
+    } else {
+      setTapped(k);
+      setWrong(k);
+      setTimeout(() => setWrong(null), 500);
+    }
+  }
+
+  return (
+    <div>
+      <p className="font-display text-lg font-bold text-ink"><Sci>{step.prompt}</Sci></p>
+      <p className="mt-1 text-xs text-body">Tap the line where the mistake is.</p>
+      <div className="mt-3 space-y-1.5">
+        {step.lines.map((line, k) => {
+          const isError = k === step.errorLine;
+          const tone = correct && isError
+            ? "border-signal bg-signal/10"
+            : wrong === k
+              ? "border-signal bg-signal/10"
+              : tapped === k
+                ? "border-accent bg-accent/10"
+                : "border-hairline";
+          return (
+            <button
+              key={k}
+              type="button"
+              onClick={() => tap(k)}
+              className={`flex w-full items-start gap-3 rounded-xl border-2 px-3 py-2.5 text-left font-mono text-sm text-ink transition-colors ${tone}`}
+            >
+              <span className="shrink-0 text-xs font-bold text-body">{k + 1}</span>
+              <span className="flex-1"><Sci>{line}</Sci></span>
+              {correct && isError && <NamedIcon name="check" size={15} className="shrink-0 text-signal" />}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+type ClassifyStepT = Extract<LessonStep, { kind: "classify" }>;
+function ClassifyStep({ step, onSolved, reveal }: { step: ClassifyStepT; onSolved: (b: boolean) => void; reveal: boolean }) {
+  const order = useMemo(() => shuffleIdx(step.items.length), [step]);
+  const [placed, setPlaced] = useState<(number | null)[]>(() => Array(step.items.length).fill(null));
+  const [sel, setSel] = useState<number | null>(null);
+  useEffect(() => {
+    if (reveal) setPlaced(step.items.map((it) => it.bin));
+  }, [reveal, step.items]);
+  const done = placed.every((b, k) => b === step.items[k].bin);
+  useEffect(() => onSolved(done), [done, onSolved]);
+
+  function placeInBin(bin: number) {
+    if (sel == null) return;
+    setPlaced((cur) => cur.map((v, k) => (k === sel ? bin : v)));
+    setSel(null);
+  }
+  const toTray = (k: number) => setPlaced((cur) => cur.map((v, j) => (j === k ? null : v)));
+
+  return (
+    <div>
+      <p className="font-display text-lg font-bold text-ink"><Sci>{step.prompt}</Sci></p>
+      <p className="mt-1 text-xs text-body">Tap an item, then the bin it belongs in.</p>
+      <div className="mt-3 grid gap-2" style={{ gridTemplateColumns: `repeat(${step.bins.length}, minmax(0, 1fr))` }}>
+        {step.bins.map((binLabel, bi) => (
+          <button
+            key={bi}
+            type="button"
+            onClick={() => placeInBin(bi)}
+            className={`min-h-[5.5rem] rounded-xl border-2 p-2 text-left align-top transition-colors ${
+              sel != null ? "border-accent bg-accent/10" : done ? "border-guarantee bg-guarantee/5" : "border-hairline"
+            }`}
+          >
+            <span className="block text-xs font-bold uppercase tracking-wide text-accent"><Sci>{binLabel}</Sci></span>
+            <span className="mt-1 flex flex-wrap gap-1">
+              {placed.map((b, k) =>
+                b === bi ? (
+                  <span
+                    key={k}
+                    role="button"
+                    onClick={(e) => { e.stopPropagation(); toTray(k); }}
+                    className={`rounded-md border px-2 py-0.5 text-xs text-ink ${
+                      done ? "border-guarantee/60 bg-guarantee/10" : "border-accent/50 bg-accent/15"
+                    }`}
+                  >
+                    <Sci>{step.items[k].text}</Sci>
+                  </span>
+                ) : null
+              )}
+            </span>
+          </button>
+        ))}
+      </div>
+      <div className="mt-3 flex min-h-[2.5rem] flex-wrap gap-2 rounded-xl border border-dashed border-hairline p-2">
+        {order.every((k) => placed[k] != null) && <span className="text-xs text-body">All sorted. Tap a bin item to move it back.</span>}
+        {order.map((k) =>
+          placed[k] == null ? (
+            <button
+              key={k}
+              type="button"
+              onClick={() => setSel(sel === k ? null : k)}
+              className={`rounded-lg border-2 px-3 py-1.5 text-sm text-ink ${sel === k ? "border-accent bg-accent/15" : "border-hairline bg-surface"}`}
+            >
+              <Sci>{step.items[k].text}</Sci>
+            </button>
+          ) : null
+        )}
+      </div>
+    </div>
+  );
+}
+
+type GraphPickStepT = Extract<LessonStep, { kind: "graphpick" }>;
+function GraphPickStep({ step, onSolved, reveal }: { step: GraphPickStepT; onSolved: (b: boolean) => void; reveal: boolean }) {
+  const [picked, setPicked] = useState<number | null>(null);
+  useEffect(() => {
+    if (reveal) setPicked(step.correct);
+  }, [reveal, step.correct]);
+  const correct = picked === step.correct;
+  useEffect(() => onSolved(correct), [correct, onSolved]);
+
+  const maxX = Math.max(1, ...step.options.flatMap((o) => o.points.map((p) => p[0])));
+  const maxY = Math.max(1, ...step.options.flatMap((o) => o.points.map((p) => p[1])));
+  const W = 150, H = 110, pad = 16;
+  const sx = (x: number) => pad + (x / maxX) * (W - pad - 6);
+  const sy = (y: number) => H - pad - (y / maxY) * (H - pad - 6);
+
+  const show = picked !== null;
+  return (
+    <div>
+      <p className="font-display text-lg font-bold text-ink"><Sci>{step.prompt}</Sci></p>
+      <div className="mt-3 grid grid-cols-2 gap-2">
+        {step.options.map((opt, oi) => {
+          const isCorrect = oi === step.correct;
+          const chosen = picked === oi;
+          const tone = !show
+            ? "border-hairline"
+            : isCorrect
+              ? "border-guarantee bg-guarantee/10"
+              : chosen
+                ? "border-signal bg-signal/10"
+                : "border-hairline opacity-50";
+          const pts = opt.points.map((p) => `${sx(p[0])},${sy(p[1])}`).join(" ");
+          return (
+            <button key={oi} type="button" disabled={show} onClick={() => setPicked(oi)} className={`rounded-xl border-2 p-2 transition-colors ${tone}`}>
+              <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img" aria-label={opt.caption ?? `Graph ${oi + 1}`}>
+                <line x1={pad} y1={H - pad} x2={W - 4} y2={H - pad} stroke="rgba(196,181,253,0.5)" strokeWidth="1.5" />
+                <line x1={pad} y1={H - pad} x2={pad} y2={4} stroke="rgba(196,181,253,0.5)" strokeWidth="1.5" />
+                <polyline points={pts} fill="none" stroke={show && isCorrect ? "var(--color-guarantee)" : "#c4b5fd"} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <div className="mt-1 flex items-center justify-between px-1">
+                <span className="text-xs font-bold text-body">{String.fromCharCode(65 + oi)}</span>
+                {opt.caption && <span className="text-[10px] text-body"><Sci>{opt.caption}</Sci></span>}
+                {show && isCorrect && <NamedIcon name="check" size={13} className="text-guarantee" />}
+              </div>
+            </button>
+          );
+        })}
+      </div>
+      {(step.xLabel || step.yLabel) && (
+        <p className="mt-1 text-center text-[10px] text-body">
+          {step.yLabel && <><Sci>{step.yLabel}</Sci> against </>}{step.xLabel && <Sci>{step.xLabel}</Sci>}
+        </p>
+      )}
     </div>
   );
 }
