@@ -14,7 +14,13 @@ interface Lesson { key: string; title: string; minutes: number; steps: LessonSte
 interface Subject { slug: string; name: string; icon: IconName; tint: string; lessons: Lesson[] }
 interface OwnedSubject { slug: string; level: "o-level" | "na-level"; family: string; name: string }
 
-export function PracticalClient({ owned }: { owned: OwnedSubject[] }) {
+export function PracticalClient({
+  owned,
+  coverage,
+}: {
+  owned: OwnedSubject[];
+  coverage?: Record<string, { covered: number; total: number }>;
+}) {
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [done, setDone] = useState<Set<string>>(new Set());
   const [subject, setSubject] = useState<Subject | null>(null);
@@ -162,6 +168,11 @@ export function PracticalClient({ owned }: { owned: OwnedSubject[] }) {
               <p className="mt-2 text-[10px] font-bold uppercase tracking-wide text-accent">
                 {sdone}/{s.lessons.length} done
               </p>
+              {coverage?.[s.slug] && (
+                <p className="mt-0.5 text-[10px] text-body">
+                  {coverage[s.slug].covered} of {coverage[s.slug].total} topics have a lesson
+                </p>
+              )}
             </button>
           );
         })}

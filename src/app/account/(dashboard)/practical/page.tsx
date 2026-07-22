@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { requireMaster } from "@/lib/server/entitlements";
 import { ownedSubjects } from "@/lib/server/study";
+import { coverageCount } from "@/lib/topic-coverage";
 import { PageHeading } from "@/components/page-heading";
 import { PracticalClient } from "@/components/practical-client";
 
@@ -21,12 +22,20 @@ export default async function PracticalPage() {
     family: s.family,
   }));
 
+  // Topic coverage per science (how many syllabus topics have a lesson), from
+  // the O-Level pure tables where the lessons target.
+  const coverage: Record<string, { covered: number; total: number }> = {
+    chemistry: coverageCount("o-level", "chemistry-pure"),
+    physics: coverageCount("o-level", "physics-pure"),
+    biology: coverageCount("o-level", "biology-pure"),
+  };
+
   return (
     <div>
       <PageHeading description="The practical paper rewards technique: apparatus, measurement, observations, and spotting the source of error. Train it here, one skill at a time, for Chemistry, Physics and Biology.">
         Practical <span className="sl-grad-text">Lab</span>
       </PageHeading>
-      <PracticalClient owned={owned} />
+      <PracticalClient owned={owned} coverage={coverage} />
     </div>
   );
 }
