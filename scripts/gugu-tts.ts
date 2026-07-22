@@ -4,6 +4,7 @@ import path from "node:path";
 import { fixedGuguLines } from "@/lib/gugu-lines";
 import { LIFE_TRACKS } from "@/lib/life-skills";
 import { PRACTICAL_SUBJECTS } from "@/lib/practical-lab";
+import { PLAYGROUND_MATHS } from "@/lib/playground-maths";
 import { hashLine, normalizeLine } from "@/lib/speak";
 import type { LessonStep } from "@/lib/lesson-steps";
 
@@ -38,6 +39,9 @@ function collectLines(): string[] {
       for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(normalizeLine(x));
   for (const subject of PRACTICAL_SUBJECTS)
     for (const lesson of subject.lessons)
+      for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(normalizeLine(x));
+  for (const arr of Object.values(PLAYGROUND_MATHS))
+    for (const lesson of arr)
       for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(normalizeLine(x));
   return [...set].filter((x) => x.length > 0 && !x.includes("{"));
 }

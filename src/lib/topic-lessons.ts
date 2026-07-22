@@ -1,30 +1,50 @@
 import type { PlaygroundLesson } from "@/lib/playground-lessons";
-import { PLAYGROUND_SCIENCE } from "@/lib/playground-lessons";
-import { SCIENCE_EXPANSION } from "@/lib/playground-science-expansion";
+import type { LessonStep } from "@/lib/lesson-steps";
 import { PLAYGROUND_MATHS } from "@/lib/playground-maths";
+import { PRACTICAL_SUBJECTS } from "@/lib/practical-lab";
+import { lessonTopic } from "@/lib/topic-coverage";
 
 // Which subject topics have an interactive Playground lesson, and the lesson to
-// open, for the per-subject topic pages. Science lessons target the O-Level pure
-// sciences; maths targets O-Level E-Math and A-Math. A topic is "practisable"
-// when a lesson is tagged with its topicKey.
+// open, for the per-subject topic pages. Science lessons come from the Practical
+// Lab (which already carries round 1 + the enrichment batch) and target the
+// O-Level pure sciences; maths targets O-Level E-Math and A-Math. A topic is
+// "practisable" when a lesson is tagged with its topicKey (inline, or via the
+// LESSON_TOPIC map for the older lessons).
 
-// `${level}/${slug}` -> topicKey -> lesson.
-const BY_SUBJECT: Record<string, Record<string, PlaygroundLesson>> = {};
-
-function add(level: string, slug: string, lessons: PlaygroundLesson[]) {
-  const key = `${level}/${slug}`;
-  const bucket = (BY_SUBJECT[key] ??= {});
-  for (const l of lessons) if (l.topic) bucket[l.topic] = l;
+interface Openable {
+  key: string;
+  title: string;
+  steps: LessonStep[];
 }
 
-add("o-level", "chemistry-pure", [...PLAYGROUND_SCIENCE.chemistry, ...SCIENCE_EXPANSION.chemistry]);
-add("o-level", "physics-pure", [...PLAYGROUND_SCIENCE.physics, ...SCIENCE_EXPANSION.physics]);
-add("o-level", "biology-pure", [...PLAYGROUND_SCIENCE.biology, ...SCIENCE_EXPANSION.biology]);
-add("o-level", "e-math", PLAYGROUND_MATHS["e-math"]);
-add("o-level", "a-math", PLAYGROUND_MATHS["a-math"]);
+// `${level}/${slug}` -> topicKey -> lesson.
+const BY_SUBJECT: Record<string, Record<string, Openable>> = {};
+
+function put(level: string, slug: string, topicKey: string | undefined, lesson: Openable) {
+  if (!topicKey) return;
+  const key = `${level}/${slug}`;
+  const bucket = (BY_SUBJECT[key] ??= {});
+  // Keep the first lesson seen for a topic (foundational before enrichment).
+  if (!bucket[topicKey]) bucket[topicKey] = lesson;
+}
+
+// Sciences: the Practical Lab subjects (slugs chemistry/physics/biology) target
+// the O-Level pure syllabus, so index them under "<family>-pure".
+for (const subject of PRACTICAL_SUBJECTS) {
+  for (const lesson of subject.lessons) {
+    put("o-level", `${subject.slug}-pure`, lessonTopic(lesson), lesson);
+  }
+}
+
+// Maths: lessons carry an inline topicKey.
+function addMaths(slug: string, lessons: PlaygroundLesson[]) {
+  for (const l of lessons) put("o-level", slug, l.topic, l);
+}
+addMaths("e-math", PLAYGROUND_MATHS["e-math"]);
+addMaths("a-math", PLAYGROUND_MATHS["a-math"]);
 
 // The lesson for a subject topic, or undefined if none exists yet.
-export function lessonForTopic(level: string, slug: string, topicKey: string): PlaygroundLesson | undefined {
+export function lessonForTopic(level: string, slug: string, topicKey: string): Openable | undefined {
   return BY_SUBJECT[`${level}/${slug}`]?.[topicKey];
 }
 
