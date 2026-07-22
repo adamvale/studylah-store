@@ -42,28 +42,40 @@ const PAGE_LINES: Record<string, string> = {
   "/account/orders": "This is your account. Your orders and settings live here.",
 };
 
+// The Today greeting, spoken by Gugu. These are FIXED (no name, no streak
+// number) so they are pre-generated in Gugu's premium voice and never fall
+// back to the robotic device voice. The on-screen hero still greets the
+// student by name; only the spoken line is generic.
+const TODAY_FIRST =
+  "Welcome to StudyLand. I am Gugu, your guide. Let us start small with your daily three, three quick questions to warm up.";
+const TODAY_DONE =
+  "Welcome back. Your streak is safe for today. If you have a few minutes, we can clear a mistake or try some bonus practice.";
+const TODAY_RETURN =
+  "Welcome back. Let us keep your streak going with your daily three, then look at what needs work.";
+// Spoken when no page-specific line matches. Also fixed, so it uses the
+// premium voice.
+const DEFAULT_LINE = "I am right here if you need a hand.";
+
 function todayLine(ctx: GuguContext): string {
-  if (ctx.streak <= 0 && !ctx.todayDone) {
-    return `Welcome to StudyLand, ${ctx.name}. I am Gugu, your guide. Let us start small with your daily three, three quick questions to warm up.`;
-  }
-  if (ctx.todayDone) {
-    return `Welcome back, ${ctx.name}. Today is done and your ${ctx.streak} day streak is safe. If you have a few minutes, we can clear a mistake or try some bonus practice.`;
-  }
-  return `Welcome back, ${ctx.name}. You are on a ${ctx.streak} day streak. Let us keep it going with your daily three, then look at what needs work.`;
+  if (ctx.streak <= 0 && !ctx.todayDone) return TODAY_FIRST;
+  if (ctx.todayDone) return TODAY_DONE;
+  return TODAY_RETURN;
 }
 
 export function guguLineFor(pathname: string, ctx: GuguContext): string {
-  if (pathname === "/account") return todayLine(ctx);
+  // The Today home lives at /account and /studyland (the app dashboard).
+  if (pathname === "/account" || pathname === "/studyland") return todayLine(ctx);
   const keys = Object.keys(PAGE_LINES).sort((a, b) => b.length - a.length);
   for (const k of keys) {
     if (pathname === k || pathname.startsWith(`${k}/`)) return PAGE_LINES[k];
   }
-  return `I am right here if you need a hand, ${ctx.name}.`;
+  return DEFAULT_LINE;
 }
 
-// The fixed (non-personalised) page lines, for the audio pre-generator.
+// Every fixed (non-personalised) spoken line, for the audio pre-generator, so
+// each one plays in Gugu's premium voice.
 export function fixedGuguLines(): string[] {
-  return Object.values(PAGE_LINES);
+  return [...Object.values(PAGE_LINES), TODAY_FIRST, TODAY_DONE, TODAY_RETURN, DEFAULT_LINE];
 }
 
 // Gugu's line when a question opens. Subject/topic aware, so it changes per

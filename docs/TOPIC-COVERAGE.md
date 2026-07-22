@@ -27,12 +27,13 @@ _12 of 12 topics covered_
 - None. Every syllabus topic has a lesson.
 
 ## Physics (Pure), O-Level 6091
-_14 of 20 topics covered_
+_20 of 20 topics covered_
 
-### Covered (14)
+### Covered (20)
 - T20 Radioactivity  `t20-radioactivity`
 - T12 Light  `t12-light`
 - T3 Dynamics  `t3-dynamics`
+- T19 Electromagnetic Induction  `t19-electromagnetic-induction`
 - T16 Practical Electricity  `t16-practical-electricity`
 - T15 D.C. Circuits  `t15-d-c-circuits`
 - T6 Energy Stores & Transfers  `t6-energy-stores-and-transfers`
@@ -40,36 +41,37 @@ _14 of 20 topics covered_
 - T9 Thermal Properties of Matter  `t9-thermal-properties-of-matter`
 - T10 General Wave Properties  `t10-general-wave-properties`
 - T14 Current of Electricity  `t14-current-of-electricity`
-- T4 Turning Effect of Forces  `t4-turning-effect-of-forces`
-- T5 Pressure  `t5-pressure`
-- T7 Kinetic Particle Model of Matter  `t7-kinetic-particle-model-of-matter`
-- T1 Physical Quantities & Measurement  `t1-physical-quantities-and-measurement`
-
-### Gaps (6)
-- T19 Electromagnetic Induction  `t19-electromagnetic-induction`
 - T17 Magnetism  `t17-magnetism`
 - T18 Electromagnetism  `t18-electromagnetism`
+- T4 Turning Effect of Forces  `t4-turning-effect-of-forces`
 - T13 Static Electricity  `t13-static-electricity`
+- T5 Pressure  `t5-pressure`
+- T7 Kinetic Particle Model of Matter  `t7-kinetic-particle-model-of-matter`
 - T11 Electromagnetic Spectrum  `t11-electromagnetic-spectrum`
+- T1 Physical Quantities & Measurement  `t1-physical-quantities-and-measurement`
 - T8 Thermal Processes  `t8-thermal-processes`
 
-## Biology (Pure), O-Level 6093
-_12 of 14 topics covered_
+### Gaps (0)
+- None. Every syllabus topic has a lesson.
 
-### Covered (12)
+## Biology (Pure), O-Level 6093
+_14 of 14 topics covered_
+
+### Covered (14)
 - T14 Inheritance  `t14-inheritance`
 - T8 Homeostasis, Co-ordination & Response  `t8-homeostasis-co-ordination-and-response`
+- T11 Organisms & their Environment  `t11-organisms-and-their-environment`
 - T5 Transport in Humans  `t5-transport-in-humans`
 - T10 Nutrition & Transport in Plants  `t10-nutrition-and-transport-in-plants`
 - T7 Excretion in Humans  `t7-excretion-in-humans`
 - T13 Reproduction  `t13-reproduction`
 - T3 Biological Molecules & Enzymes  `t3-biological-molecules-and-enzymes`
 - T6 Respiration in Humans  `t6-respiration-in-humans`
+- T9 Infectious Diseases in Humans  `t9-infectious-diseases-in-humans`
 - T1 Cell Structure & Organisation  `t1-cell-structure-and-organisation`
 - T4 Nutrition in Humans  `t4-nutrition-in-humans`
 - T2 Movement of Substances  `t2-movement-of-substances`
 - T12 Molecular Genetics  `t12-molecular-genetics`
 
-### Gaps (2)
-- T11 Organisms & their Environment  `t11-organisms-and-their-environment`
-- T9 Infectious Diseases in Humans  `t9-infectious-diseases-in-humans`
+### Gaps (0)
+- None. Every syllabus topic has a lesson.
