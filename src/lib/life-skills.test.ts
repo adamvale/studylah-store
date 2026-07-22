@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { LIFE_TRACKS, lifeTrack, lifeLesson } from "@/lib/life-skills";
-import { stepText } from "@/lib/lesson-steps";
+import { stepText, isInteractive } from "@/lib/lesson-steps";
 
 // The Life Skills wing ships to minors, so lock the content invariants.
 
@@ -47,10 +47,7 @@ test("every lesson has steps and at least one interactive one", () => {
     assert.ok(t.lessons.length > 0, `${t.key} has no lessons`);
     for (const l of t.lessons) {
       assert.ok(l.steps.length > 0, `${l.key} has no steps`);
-      assert.ok(
-        l.steps.some((s) => s.kind === "choice" || s.kind === "reveal"),
-        `${l.key} is not interactive`
-      );
+      assert.ok(l.steps.some(isInteractive), `${l.key} is not interactive`);
     }
   }
 });

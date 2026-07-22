@@ -1,5 +1,6 @@
 import type { IconName } from "@/components/icons";
 import type { LessonStep } from "@/lib/lesson-steps";
+import { PLAYGROUND_SCIENCE } from "@/lib/playground-lessons";
 
 // Practical Lab: trains the PRACTICAL paper for the sciences (the skills a lab
 // exam tests, which are the hardest to self-study: apparatus, measurement,
@@ -197,6 +198,12 @@ export const PRACTICAL_SUBJECTS: PracticalSubject[] = [
     ],
   },
 ];
+
+// Append Project Playground lessons (Coddy-authored, validated) to each subject.
+for (const subject of PRACTICAL_SUBJECTS) {
+  const extra = PLAYGROUND_SCIENCE[subject.slug as keyof typeof PLAYGROUND_SCIENCE];
+  if (extra) subject.lessons.push(...extra);
+}
 
 export function practicalSubject(slug: string): PracticalSubject | undefined {
   return PRACTICAL_SUBJECTS.find((s) => s.slug === slug);
