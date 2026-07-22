@@ -1,6 +1,7 @@
 import type { IconName } from "@/components/icons";
 import type { LessonStep } from "@/lib/lesson-steps";
 import { PLAYGROUND_LIFE } from "@/lib/playground-lessons";
+import { LIFE_EXPANSION } from "@/lib/playground-life-expansion";
 
 // The Life Skills wing: ten non-academic tracks that make StudyLah more than a
 // tutor. Lessons are now INTERACTIVE (Brilliant-style): a short sequence of
@@ -266,10 +267,13 @@ export const LIFE_TRACKS: LifeTrack[] = [
   },
 ];
 
-// Append Project Playground life lessons (Coddy-authored, validated) to tracks.
+// Append Project Playground life lessons (Coddy-authored, validated) to tracks:
+// round 1 (PLAYGROUND_LIFE) plus the enrichment batch (LIFE_EXPANSION, 40 more).
 for (const track of LIFE_TRACKS) {
   const extra = PLAYGROUND_LIFE[track.key];
   if (extra) track.lessons.push(...extra);
+  const more = LIFE_EXPANSION[track.key];
+  if (more) track.lessons.push(...more);
 }
 
 export function lifeTrack(key: string): LifeTrack | undefined {

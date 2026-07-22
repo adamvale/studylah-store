@@ -1,6 +1,7 @@
 import type { IconName } from "@/components/icons";
 import type { LessonStep } from "@/lib/lesson-steps";
 import { PLAYGROUND_SCIENCE } from "@/lib/playground-lessons";
+import { SCIENCE_EXPANSION } from "@/lib/playground-science-expansion";
 
 // Practical Lab: trains the PRACTICAL paper for the sciences (the skills a lab
 // exam tests, which are the hardest to self-study: apparatus, measurement,
@@ -202,10 +203,13 @@ export const PRACTICAL_SUBJECTS: PracticalSubject[] = [
   },
 ];
 
-// Append Project Playground lessons (Coddy-authored, validated) to each subject.
+// Append Project Playground lessons to each subject: round 1 (PLAYGROUND_SCIENCE)
+// plus the enrichment batch (SCIENCE_EXPANSION, 21 more filling uncovered topics).
 for (const subject of PRACTICAL_SUBJECTS) {
   const extra = PLAYGROUND_SCIENCE[subject.slug as keyof typeof PLAYGROUND_SCIENCE];
   if (extra) subject.lessons.push(...extra);
+  const more = SCIENCE_EXPANSION[subject.slug as keyof typeof SCIENCE_EXPANSION];
+  if (more) subject.lessons.push(...more);
 }
 
 export function practicalSubject(slug: string): PracticalSubject | undefined {
