@@ -1,4 +1,5 @@
 import type { Level } from "@/lib/catalogue";
+import { ORAL_EXPANSION } from "@/lib/oral-expansion";
 
 // Project Loudspeaker content: starter oral-practice items for O-Level (G3) and
 // N(A)-Level (G2) Chinese and English, mapped to the real Paper 4 oral tasks
@@ -86,6 +87,8 @@ export const ORAL_ITEMS: OralItem[] = [
     langCode: "en-GB",
     hint: "State your view, give one reason with an example, then a personal habit.",
   },
+  // Project Loudspeaker expansion (Coddy-authored, validated).
+  ...ORAL_EXPANSION,
 ];
 
 export function oralItemsFor(lang: OralLang, level: Level): OralItem[] {
