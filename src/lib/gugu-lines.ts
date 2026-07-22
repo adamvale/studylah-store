@@ -39,6 +39,7 @@ const PAGE_LINES: Record<string, string> = {
   "/account/warroom": "The War Room is your final week plan. Let us sharpen what you already know.",
   "/account/adventure": "Welcome to StudyLah Legends. Learn by playing. Every battle is a real question.",
   "/account/study": "Here is your study checklist. Pick a topic, and let us close the gaps together.",
+  "/account/subjects": "Here are your topics. Pick one, and we will practise it together, one question at a time.",
   "/account/orders": "This is your account. Your orders and settings live here.",
 };
 

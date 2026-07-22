@@ -20,8 +20,6 @@ import { TierPill } from "@/components/heat";
 import { type BossInfo } from "@/components/quest-board";
 import { PhaseBanner, WeekReport } from "@/components/today-pulse";
 import { MySubjects, type MySubject } from "@/components/my-subjects";
-import { subjectCode, type Level } from "@/lib/catalogue";
-import { SUBJECT_TOPICS } from "@/lib/subject-topics";
 import {
   IconFlame,
   IconCheckCircle,
@@ -98,14 +96,11 @@ export default async function TodayPage() {
     select: { email: true },
   });
   const subjects = await ownedSubjects(customerId);
-  // "My Subjects": every owned subject with its full topic map, for the
-  // tappable list on the dashboard.
+  // "My Subjects": every owned subject as a square that opens its subject page.
   const mySubjects: MySubject[] = subjects.map((s) => ({
     level: s.level,
     slug: s.slug,
     name: s.name,
-    code: subjectCode(s.level as Level, s.slug) ?? null,
-    topics: SUBJECT_TOPICS[`${s.level}/${s.slug}`] ?? [],
   }));
   // Subjects whose 2026 exams are done retire from the study tools (the time
   // gate); tell the student where their stuff went, once, quietly.
