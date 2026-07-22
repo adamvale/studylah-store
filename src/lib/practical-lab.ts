@@ -152,9 +152,9 @@ export const PRACTICAL_SUBJECTS: PracticalSubject[] = [
             hints: ["The lamp only lights when the loop from the cell is complete.", "Both switches in the main loop must be closed. The branch that bypasses the lamp must stay open."],
             prompt: "Close the right switches to light the lamp.",
             switches: [
-              { id: "s1", label: "Switch A (main loop)" },
-              { id: "s2", label: "Switch B (main loop)" },
-              { id: "s3", label: "Switch C (short across the lamp)" },
+              { id: "s1", label: "Switch A, in the main loop" },
+              { id: "s2", label: "Switch B, in the main loop" },
+              { id: "s3", label: "Switch C, shorts across the lamp", shortsLamp: true },
             ],
             needed: ["s1", "s2"],
             explain: "Close A and B to complete the loop through the lamp. Closing C would short the lamp and it would not light.",

@@ -61,7 +61,7 @@ export type LessonStep =
     } & Guided)
   // Toggle switches; solved when exactly the `needed` switches are closed and
   // the lamp lights.
-  | ({ kind: "circuit"; prompt: string; switches: { id: string; label: string }[]; needed: string[]; explain: string } & Guided);
+  | ({ kind: "circuit"; prompt: string; switches: { id: string; label: string; shortsLamp?: boolean }[]; needed: string[]; explain: string } & Guided);
 
 // Every human-facing string in a step, for compliance scanning and search.
 export function stepText(step: LessonStep): string[] {

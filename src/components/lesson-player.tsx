@@ -615,25 +615,91 @@ function CircuitStep({ step, onSolved, reveal }: { step: CircuitStepT; onSolved:
   const lit = step.switches.every((s) => Boolean(closed[s.id]) === need.has(s.id));
   useEffect(() => onSolved(lit), [lit, onSolved]);
 
+  const toggle = (id: string) => setClosed((c) => ({ ...c, [id]: !c[id] }));
+  const letter = (id: string) => String.fromCharCode(65 + step.switches.findIndex((s) => s.id === id));
+
+  // ── Schematic geometry (viewBox 320 x 196) ──
+  const L = 34, Rt = 286, T = 50, Bm = 150;
+  const midY = (T + Bm) / 2, lampR = 15;
+  const wire = lit ? "#ffdc00" : "rgba(214,202,255,0.55)";
+  const GAP = 14;
+  const series = step.switches.filter((s) => !s.shortsLamp);
+  const shorts = step.switches.filter((s) => s.shortsLamp);
+  const seriesX = series.map((_, i) => L + ((i + 1) * (Rt - L)) / (series.length + 1));
+  const shortX = Rt - 48;
+
+  // Top wire drawn as segments, leaving a gap at each series switch.
+  const cuts = seriesX.map((x) => [x - GAP, x + GAP] as [number, number]).sort((a, b) => a[0] - b[0]);
+  const topSegs: [number, number][] = [];
+  let cur = L;
+  for (const [a, b] of cuts) {
+    if (a > cur) topSegs.push([cur, a]);
+    cur = Math.max(cur, b);
+  }
+  if (cur < Rt) topSegs.push([cur, Rt]);
+
   return (
     <div>
       <p className="font-display text-lg font-bold text-ink"><Sci>{step.prompt}</Sci></p>
 
-      {/* the lamp */}
-      <div className="mt-4 flex flex-col items-center">
-        <span
-          className={`icon-orb !h-16 !w-16 ${lit ? "text-accent" : "text-body opacity-50"}`}
-          style={lit ? { boxShadow: "0 0 28px rgba(255,220,0,0.6)" } : undefined}
-          aria-label={lit ? "Lamp on" : "Lamp off"}
-        >
-          <NamedIcon name="bolt" size={30} />
-        </span>
-        <span className={`mt-1 text-xs font-bold ${lit ? "text-accent" : "text-body"}`}>
-          {lit ? "Lamp lit" : "Lamp off"}
-        </span>
-      </div>
+      {/* the circuit schematic */}
+      <svg viewBox="0 0 320 196" className="mx-auto mt-4 w-full max-w-[320px] touch-none select-none" role="img" aria-label="Circuit diagram">
+        {/* left, bottom, right (with a gap for the lamp) wires */}
+        <line x1={L} y1={T} x2={L} y2={midY - 9} stroke={wire} strokeWidth="2" />
+        <line x1={L} y1={midY + 9} x2={L} y2={Bm} stroke={wire} strokeWidth="2" />
+        <line x1={L} y1={Bm} x2={Rt} y2={Bm} stroke={wire} strokeWidth="2" />
+        <line x1={Rt} y1={T} x2={Rt} y2={midY - lampR} stroke={wire} strokeWidth="2" />
+        <line x1={Rt} y1={midY + lampR} x2={Rt} y2={Bm} stroke={wire} strokeWidth="2" />
+        {topSegs.map(([a, b], k) => (
+          <line key={k} x1={a} y1={T} x2={b} y2={T} stroke={wire} strokeWidth="2" />
+        ))}
 
-      {/* switches */}
+        {/* cell (battery) on the left wire */}
+        <line x1={L - 11} y1={midY - 6} x2={L + 11} y2={midY - 6} stroke={wire} strokeWidth="2" />
+        <line x1={L - 6} y1={midY + 6} x2={L + 6} y2={midY + 6} stroke={wire} strokeWidth="4" />
+
+        {/* the lamp (circle with a cross), glowing when lit */}
+        {lit && <circle cx={Rt} cy={midY} r={lampR + 8} fill="rgba(255,220,0,0.35)" />}
+        <circle cx={Rt} cy={midY} r={lampR} fill="none" stroke={wire} strokeWidth="2" />
+        <line x1={Rt - 10} y1={midY - 10} x2={Rt + 10} y2={midY + 10} stroke={wire} strokeWidth="2" />
+        <line x1={Rt - 10} y1={midY + 10} x2={Rt + 10} y2={midY - 10} stroke={wire} strokeWidth="2" />
+
+        {/* series switches, on the top wire */}
+        {series.map((s) => {
+          const x = seriesX[series.indexOf(s)];
+          const on = Boolean(closed[s.id]);
+          return (
+            <g key={s.id} onClick={() => toggle(s.id)} className="cursor-pointer">
+              <circle cx={x - GAP} cy={T} r="3" fill={wire} />
+              <circle cx={x + GAP} cy={T} r="3" fill={wire} />
+              <line x1={x - GAP} y1={T} x2={on ? x + GAP : x + GAP - 4} y2={on ? T : T - 14} stroke={on ? "#ffdc00" : "rgba(214,202,255,0.85)"} strokeWidth="2.5" strokeLinecap="round" />
+              <text x={x} y={T - 20} textAnchor="middle" className="fill-current text-body" fontSize="11" fontWeight="700">{letter(s.id)}</text>
+              <rect x={x - GAP - 6} y={T - 26} width={GAP * 2 + 12} height="34" fill="transparent" />
+            </g>
+          );
+        })}
+
+        {/* short switch, a branch in parallel across the lamp */}
+        {shorts.map((s) => {
+          const on = Boolean(closed[s.id]);
+          return (
+            <g key={s.id} onClick={() => toggle(s.id)} className="cursor-pointer">
+              <line x1={shortX} y1={T} x2={shortX} y2={midY - GAP} stroke={wire} strokeWidth="2" />
+              <line x1={shortX} y1={midY + GAP} x2={shortX} y2={Bm} stroke={wire} strokeWidth="2" />
+              <circle cx={shortX} cy={T} r="3" fill={wire} />
+              <circle cx={shortX} cy={Bm} r="3" fill={wire} />
+              <circle cx={shortX} cy={midY - GAP} r="3" fill={wire} />
+              <circle cx={shortX} cy={midY + GAP} r="3" fill={wire} />
+              <line x1={shortX} y1={midY - GAP} x2={on ? shortX : shortX + 13} y2={on ? midY + GAP : midY - GAP + 5} stroke={on ? "#ffdc00" : "rgba(214,202,255,0.85)"} strokeWidth="2.5" strokeLinecap="round" />
+              <text x={shortX + 12} y={midY + 4} className="fill-current text-body" fontSize="11" fontWeight="700">{letter(s.id)}</text>
+              <rect x={shortX - 8} y={midY - GAP - 6} width="28" height={GAP * 2 + 12} fill="transparent" />
+            </g>
+          );
+        })}
+      </svg>
+      <p className={`text-center text-xs font-bold ${lit ? "text-accent" : "text-body"}`}>{lit ? "Lamp lit" : "Lamp off"}</p>
+
+      {/* switch toggles */}
       <div className="mt-4 space-y-2">
         {step.switches.map((s) => {
           const on = Boolean(closed[s.id]);
@@ -641,12 +707,15 @@ function CircuitStep({ step, onSolved, reveal }: { step: CircuitStepT; onSolved:
             <button
               key={s.id}
               type="button"
-              onClick={() => setClosed((c) => ({ ...c, [s.id]: !c[s.id] }))}
+              onClick={() => toggle(s.id)}
               className={`flex w-full items-center justify-between rounded-xl border-2 px-4 py-3 text-sm text-ink transition-colors ${
                 on ? "border-accent bg-accent/10" : "border-hairline"
               }`}
             >
-              <span><Sci>{s.label}</Sci></span>
+              <span className="flex items-center gap-2">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-accent/15 font-mono text-xs font-bold text-accent">{letter(s.id)}</span>
+                <Sci>{s.label}</Sci>
+              </span>
               <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${on ? "bg-accent/20 text-accent" : "bg-white/10 text-body"}`}>
                 {on ? "CLOSED" : "OPEN"}
               </span>
