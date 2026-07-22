@@ -40,6 +40,11 @@ export const PRACTICAL_SUBJECTS: PracticalSubject[] = [
           { kind: "reveal", prompt: "A white precipitate forms with NaOH and it DISSOLVES in excess NaOH. Which two common ions fit?", answer: "Zinc (Zn^{2+}) and aluminium (Al^{3+}). Both give a white precipitate soluble in excess. You then use the ammonia test to tell them apart." },
           {
             kind: "match",
+            ask: "This is a qualitative analysis question. Look at each ion, and think what colour it turns with sodium hydroxide. Tap one on the left, then its partner. What do you think?",
+            hints: [
+              "Start with copper. Copper solutions are blue, and the precipitate is blue too.",
+              "Iron(II) is green and iron(III) is red-brown. Zinc is white and dissolves in excess.",
+            ],
             prompt: "Match each ion to what you see when you add sodium hydroxide.",
             pairs: [
               { left: "Copper(II), Cu^{2+}", right: "Blue precipitate" },
@@ -62,6 +67,11 @@ export const PRACTICAL_SUBJECTS: PracticalSubject[] = [
           { kind: "choice", question: "Your titres are 24.60, 25.10 and 24.55 cm^3. Which should you average for the final answer?", options: ["All three", "24.60 and 24.55 (the concordant pair)", "Only the smallest"], correct: 1, explain: "Use concordant titres, within about 0.10 cm^3 of each other. The 25.10 is an outlier, so average 24.60 and 24.55." },
           {
             kind: "order",
+            ask: "Let us think about a titration from start to finish. What do you do first? Put the steps in order.",
+            hints: [
+              "Before anything, the burette is rinsed with the very solution it will hold.",
+              "You take a reading to 2 decimal places at the start, and again at the end.",
+            ],
             prompt: "Put a titration in the right order.",
             items: [
               "Rinse the burette with the solution it will hold",
@@ -91,7 +101,7 @@ export const PRACTICAL_SUBJECTS: PracticalSubject[] = [
         steps: [
           { kind: "concept", heading: "Match the tool to the precision", body: "A metre rule reads to 0.1 cm, a vernier caliper to 0.01 cm, a micrometer to 0.01 mm. Choosing the right instrument is a marked decision, not a detail." },
           { kind: "choice", question: "You need the diameter of a thin copper wire. Best instrument?", options: ["Metre rule", "Vernier caliper", "Micrometer screw gauge"], correct: 2, explain: "A thin wire needs the micrometer (0.01 mm). A metre rule is far too coarse for a fraction of a millimetre." },
-          { kind: "slider", prompt: "A thin wire is 0.24 mm across. Drag the micrometer to read it.", min: 0, max: 1, step: 0.01, unit: " mm", start: 0.61, targetMin: 0.23, targetMax: 0.25, explain: "A micrometer reads to 0.01 mm, so 0.24 mm carries the right precision for a thin wire." },
+          { kind: "slider", ask: "A thin wire is 0.24 millimetres across. Drag the micrometer until it reads that. What number do you set it to?", hints: ["A micrometer reads to two decimal places of a millimetre.", "Slide until the reading shows 0.24 mm and turns green."], prompt: "A thin wire is 0.24 mm across. Drag the micrometer to read it.", min: 0, max: 1, step: 0.01, unit: " mm", start: 0.61, targetMin: 0.23, targetMax: 0.25, explain: "A micrometer reads to 0.01 mm, so 0.24 mm carries the right precision for a thin wire." },
           { kind: "reveal", prompt: "How do you reduce the error when measuring the thickness of one sheet of paper?", answer: "Measure many sheets together (say 100), then divide by the number. Measuring a repeated stack and dividing shrinks the error per sheet." },
           { kind: "insight", body: "When one thing is too small to measure well, measure many and divide. This one trick appears across the whole practical paper." },
         ],
@@ -104,9 +114,54 @@ export const PRACTICAL_SUBJECTS: PracticalSubject[] = [
         steps: [
           { kind: "concept", heading: "The table earns marks before the graph", body: "Every column needs a quantity and a unit in the heading, and every reading to a consistent number of decimal places. Sloppy tables lose marks the graph cannot win back." },
           { kind: "choice", question: "Plotting your points, one sits far off the straight trend. What do you do?", options: ["Force the line through it", "Draw the best-fit line through the trend and ignore the anomaly", "Connect the dots point to point"], correct: 1, explain: "A best-fit straight line follows the trend of the majority. An anomaly is left off the line, not forced through, and never a dot-to-dot zigzag." },
+          {
+            kind: "plot",
+            ask: "An object travels 6 metres in 3 seconds. Where does that point go on the graph? Tap to plot it.",
+            hints: ["Time is along the bottom, so go to 3 on the horizontal axis.", "Distance is up the side, so go up to 6, then tap where they meet."],
+            prompt: "Plot the point for a time of 3 s and a distance of 6 m.",
+            xLabel: "t / s",
+            yLabel: "d / m",
+            xMax: 6,
+            yMax: 8,
+            targetX: 3,
+            targetY: 6,
+            explain: "Read the pair as (time, distance): across to 3 s, then up to 6 m. Every point on a graph is read in that order.",
+          },
+          {
+            kind: "tiles",
+            ask: "How do we work out the gradient of a straight-line graph? Build the formula from the tiles.",
+            hints: ["Gradient compares how much you go up against how much you go across.", "It is the rise divided by the run."],
+            prompt: "Build the formula for the gradient of a line.",
+            tiles: ["gradient", "=", "rise", "run", "÷", "×"],
+            answer: ["gradient", "=", "rise", "÷", "run"],
+            explain: "Gradient equals rise divided by run, read from the best-fit line using a large triangle, with units.",
+          },
           { kind: "insight", body: "Gradient uses a large triangle read off the LINE, not two raw data points. Big triangle, read from the line, with units." },
         ],
         talkPrompt: "Describe a set of readings and coach me through building the table and finding the gradient with units.",
+      },
+      {
+        key: "phys-circuit-1",
+        title: "Circuits: make the lamp light",
+        minutes: 4,
+        steps: [
+          { kind: "concept", heading: "A circuit needs a complete loop", body: "Current only flows when there is an unbroken path from the cell, through the lamp, and back. An open switch anywhere breaks the loop and the lamp stays off." },
+          {
+            kind: "circuit",
+            ask: "Here is a simple circuit. Which switches must you close to light the lamp? Tap them and watch the lamp.",
+            hints: ["The lamp only lights when the loop from the cell is complete.", "Both switches in the main loop must be closed. The branch that bypasses the lamp must stay open."],
+            prompt: "Close the right switches to light the lamp.",
+            switches: [
+              { id: "s1", label: "Switch A (main loop)" },
+              { id: "s2", label: "Switch B (main loop)" },
+              { id: "s3", label: "Switch C (short across the lamp)" },
+            ],
+            needed: ["s1", "s2"],
+            explain: "Close A and B to complete the loop through the lamp. Closing C would short the lamp and it would not light.",
+          },
+          { kind: "insight", body: "Trace the loop with your finger: cell, through every component you want working, and back. A break anywhere means no current." },
+        ],
+        talkPrompt: "Give me a circuit in words and ask me which switches to close to light the lamp, then check my reasoning.",
       },
     ],
   },

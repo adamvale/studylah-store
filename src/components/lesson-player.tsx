@@ -1,15 +1,21 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { LessonStep } from "@/lib/lesson-steps";
 import { NamedIcon } from "@/components/icons";
 import { Sci } from "@/components/sci-text";
 import { ImmersiveShell } from "@/components/immersive-shell";
+import { speak, stopSpeaking } from "@/lib/speak";
 
-// The interactive lesson player: Brilliant-style, one step at a time, with
-// active recall and immediate feedback. Runs inside the shared ImmersiveShell
-// (full-screen, Continue pinned to the bottom). Reusable across any StudyLand
-// surface: pass a sequence of LessonSteps and a completion handler.
+// The interactive lesson player: Brilliant-style, one step at a time, hands-on,
+// with Gugu's scripted voice guiding the way. Gugu opens a problem with `ask`,
+// gives escalating `hints` on Help, and reads the teaching summary at the end,
+// all on-device speech (no AI, no cost). Runs inside the ImmersiveShell.
+
+const PROBLEM_KINDS = ["slider", "order", "match", "tiles", "plot", "circuit"] as const;
+function isProblem(kind: LessonStep["kind"]): boolean {
+  return (PROBLEM_KINDS as readonly string[]).includes(kind);
+}
 
 export function LessonPlayer({
   steps,
@@ -26,22 +32,35 @@ export function LessonPlayer({
 }) {
   const [i, setI] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
-  const [revealed, setRevealed] = useState(false);
-  // Interactive steps (slider/order/match) report when they are solved.
-  const [solved, setSolved] = useState(false);
+  const [revealed, setRevealed] = useState(false); // "reveal" kind
+  const [solved, setSolved] = useState(false); // interactive widgets report up
+  const [hintsShown, setHintsShown] = useState(0);
+  const [gaveUp, setGaveUp] = useState(false); // "reveal the answer" on a problem
 
   const step = steps[i];
   const last = i === steps.length - 1;
+  const ask = "ask" in step ? step.ask : undefined;
+  const hints = ("hints" in step ? step.hints : undefined) ?? [];
+  const explain = "explain" in step ? step.explain : undefined;
+
   const canContinue =
     step.kind === "choice"
       ? picked !== null
       : step.kind === "reveal"
         ? revealed
-        : step.kind === "slider" || step.kind === "order" || step.kind === "match"
-          ? solved
+        : isProblem(step.kind)
+          ? solved || gaveUp
           : true;
 
+  // Gugu greets each problem out loud (best-effort; the "Hear it" button always
+  // replays). speak() cancels any prior line, so double effects are harmless.
+  useEffect(() => {
+    if (ask) speak(ask);
+    return () => stopSpeaking();
+  }, [ask]);
+
   function next() {
+    stopSpeaking();
     if (last) {
       onComplete();
       return;
@@ -50,7 +69,12 @@ export function LessonPlayer({
     setPicked(null);
     setRevealed(false);
     setSolved(false);
+    setHintsShown(0);
+    setGaveUp(false);
   }
+
+  const showSummary =
+    (step.kind === "choice" && picked !== null) || (isProblem(step.kind) && (solved || gaveUp));
 
   return (
     <ImmersiveShell
@@ -69,6 +93,23 @@ export function LessonPlayer({
         </button>
       }
     >
+      {/* Gugu's opening line, with a tap-to-hear replay. */}
+      {ask && (
+        <div className="mb-4 flex items-start gap-3 rounded-2xl border border-hairline bg-white/5 p-3">
+          <span className="icon-orb shrink-0 !h-9 !w-9 text-accent" aria-hidden>
+            <NamedIcon name="ghost" size={18} />
+          </span>
+          <p className="flex-1 text-sm leading-relaxed text-ink"><Sci>{ask}</Sci></p>
+          <button
+            type="button"
+            onClick={() => speak(ask)}
+            className="shrink-0 rounded-full border border-hairline px-3 py-1 text-xs font-bold text-accent"
+          >
+            Hear it
+          </button>
+        </div>
+      )}
+
       {(step.kind === "concept" || step.kind === "insight") && (
         <div
           className={
@@ -139,60 +180,136 @@ export function LessonPlayer({
               );
             })}
           </div>
-          {picked !== null && (
-            <div className="glass mt-3 bg-gradient-to-br from-white/5 to-transparent p-4">
-              <p className={`text-xs font-bold uppercase tracking-wide ${picked === step.correct ? "text-guarantee" : "text-accent"}`}>
-                {picked === step.correct ? "Correct" : "Not quite"}
-              </p>
-              <p className="mt-1 text-sm leading-relaxed text-body"><Sci>{step.explain}</Sci></p>
-            </div>
-          )}
         </div>
       )}
 
-      {step.kind === "slider" && <SliderStep key={i} step={step} onSolved={setSolved} />}
-      {step.kind === "order" && <OrderStep key={i} step={step} onSolved={setSolved} />}
-      {step.kind === "match" && <MatchStep key={i} step={step} onSolved={setSolved} />}
+      {step.kind === "slider" && <SliderStep key={i} step={step} onSolved={setSolved} reveal={gaveUp} />}
+      {step.kind === "order" && <OrderStep key={i} step={step} onSolved={setSolved} reveal={gaveUp} />}
+      {step.kind === "match" && <MatchStep key={i} step={step} onSolved={setSolved} reveal={gaveUp} />}
+      {step.kind === "tiles" && <TilesStep key={i} step={step} onSolved={setSolved} reveal={gaveUp} />}
+      {step.kind === "plot" && <PlotStep key={i} step={step} onSolved={setSolved} reveal={gaveUp} />}
+      {step.kind === "circuit" && <CircuitStep key={i} step={step} onSolved={setSolved} reveal={gaveUp} />}
+
+      {/* Help ladder: escalating scripted hints, then reveal the answer. */}
+      {(step.kind === "choice" || isProblem(step.kind)) && !showSummary && (
+        <div className="mt-4">
+          {hintsShown > 0 && (
+            <div className="space-y-2">
+              {hints.slice(0, hintsShown).map((h, hi) => (
+                <div key={hi} className="flex items-start gap-2 rounded-xl border border-accent/30 bg-accent/5 p-3">
+                  <NamedIcon name="sparkle" size={13} className="mt-0.5 shrink-0 text-accent" />
+                  <p className="flex-1 text-sm leading-relaxed text-body"><Sci>{h}</Sci></p>
+                </div>
+              ))}
+            </div>
+          )}
+          <div className="mt-2 flex gap-2">
+            {hintsShown < hints.length && (
+              <button
+                type="button"
+                onClick={() => {
+                  const nextHint = hints[hintsShown];
+                  setHintsShown((n) => n + 1);
+                  if (nextHint) speak(nextHint);
+                }}
+                className="rounded-full border border-hairline px-4 py-1.5 text-xs font-bold text-accent"
+              >
+                {hintsShown === 0 ? "Help" : `Another hint (${hintsShown}/${hints.length})`}
+              </button>
+            )}
+            {isProblem(step.kind) && hintsShown >= hints.length && (
+              <button
+                type="button"
+                onClick={() => {
+                  setGaveUp(true);
+                  if (explain) speak(explain);
+                }}
+                className="rounded-full border border-hairline px-4 py-1.5 text-xs font-bold text-body"
+              >
+                Reveal the answer
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Teaching summary, shown once solved, answered, or revealed. Speakable. */}
+      {showSummary && explain && (
+        <div className="glass mt-4 bg-gradient-to-br from-white/5 to-transparent p-4">
+          <div className="flex items-center justify-between gap-2">
+            <p
+              className={`text-xs font-bold uppercase tracking-wide ${
+                step.kind === "choice"
+                  ? picked === step.correct
+                    ? "text-guarantee"
+                    : "text-accent"
+                  : gaveUp
+                    ? "text-accent"
+                    : "text-guarantee"
+              }`}
+            >
+              {step.kind === "choice"
+                ? picked === step.correct
+                  ? "Correct"
+                  : "Not quite"
+                : gaveUp
+                  ? "The answer"
+                  : "Nice work"}
+            </p>
+            <button
+              type="button"
+              onClick={() => explain && speak(explain)}
+              className="shrink-0 rounded-full border border-hairline px-3 py-1 text-[11px] font-bold text-accent"
+            >
+              Hear it
+            </button>
+          </div>
+          <p className="mt-1 text-sm leading-relaxed text-body"><Sci>{explain}</Sci></p>
+        </div>
+      )}
     </ImmersiveShell>
   );
 }
 
-// ── Interactive step renderers ──────────────────────────────────────────────
-// Each manages its own state and reports up when the learner has solved it, so
-// the player unlocks Continue. Touch-first: real drag (slider) and taps.
+// ── Interactive widgets ─────────────────────────────────────────────────────
+// Each manages its own state, reports "solved" up (which unlocks Continue), and
+// snaps to the correct answer when `reveal` turns true. Touch-first.
+
+function shuffleIdx(n: number): number[] {
+  const idx = Array.from({ length: n }, (_, k) => k);
+  for (let k = idx.length - 1; k > 0; k--) {
+    const j = Math.floor(Math.random() * (k + 1));
+    [idx[k], idx[j]] = [idx[j], idx[k]];
+  }
+  return idx;
+}
 
 type SliderStepT = Extract<LessonStep, { kind: "slider" }>;
-function SliderStep({ step, onSolved }: { step: SliderStepT; onSolved: (b: boolean) => void }) {
+function SliderStep({ step, onSolved, reveal }: { step: SliderStepT; onSolved: (b: boolean) => void; reveal: boolean }) {
   const [val, setVal] = useState(step.start);
+  useEffect(() => {
+    if (reveal) setVal(Math.round(((step.targetMin + step.targetMax) / 2) / (step.step ?? 1)) * (step.step ?? 1));
+  }, [reveal, step]);
   const inRange = val >= step.targetMin && val <= step.targetMax;
   useEffect(() => onSolved(inRange), [inRange, onSolved]);
 
-  // Show the reading at the slider's own precision (no float noise).
   const decimals = (String(step.step ?? 1).split(".")[1] ?? "").length;
   const display = val.toFixed(decimals);
   const span = step.max - step.min || 1;
   const pct = (v: number) => ((v - step.min) / span) * 100;
-  const zoneLeft = pct(step.targetMin);
-  const zoneWidth = pct(step.targetMax) - pct(step.targetMin);
 
   return (
     <div>
       <p className="font-display text-lg font-bold text-ink"><Sci>{step.prompt}</Sci></p>
-
-      {/* live readout */}
       <p className="mt-4 text-center">
-        <span className={`font-mono text-3xl font-black ${inRange ? "text-guarantee" : "text-ink"}`}>
-          {display}
-        </span>
+        <span className={`font-mono text-3xl font-black ${inRange ? "text-guarantee" : "text-ink"}`}>{display}</span>
         {step.unit && <span className="ml-1 text-sm text-body"><Sci>{step.unit}</Sci></span>}
       </p>
-
-      {/* track with the target band highlighted, and the draggable handle below */}
       <div className="mt-3">
         <div className="relative h-2 w-full rounded-full bg-white/10">
           <span
             className="absolute top-0 h-full rounded-full bg-guarantee/40"
-            style={{ left: `${zoneLeft}%`, width: `${zoneWidth}%` }}
+            style={{ left: `${pct(step.targetMin)}%`, width: `${pct(step.targetMax) - pct(step.targetMin)}%` }}
           />
           <span
             className={`absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full ${inRange ? "bg-guarantee" : "bg-accent"}`}
@@ -215,30 +332,20 @@ function SliderStep({ step, onSolved }: { step: SliderStepT; onSolved: (b: boole
           <span>{step.max}</span>
         </div>
       </div>
-
-      {inRange && (
-        <div className="glass mt-4 bg-gradient-to-br from-guarantee/15 to-transparent p-4">
-          <p className="text-xs font-bold uppercase tracking-wide text-guarantee">In the band</p>
-          <p className="mt-1 text-sm leading-relaxed text-body"><Sci>{step.explain}</Sci></p>
-        </div>
-      )}
     </div>
   );
 }
 
 type OrderStepT = Extract<LessonStep, { kind: "order" }>;
-function OrderStep({ step, onSolved }: { step: OrderStepT; onSolved: (b: boolean) => void }) {
-  // `order` holds indices into step.items (the correct sequence). Start shuffled.
+function OrderStep({ step, onSolved, reveal }: { step: OrderStepT; onSolved: (b: boolean) => void; reveal: boolean }) {
   const [order, setOrder] = useState<number[]>(() => {
-    const idx = step.items.map((_, k) => k);
-    for (let k = idx.length - 1; k > 0; k--) {
-      const j = Math.floor(Math.random() * (k + 1));
-      [idx[k], idx[j]] = [idx[j], idx[k]];
-    }
-    // Avoid handing them an already-correct list.
+    const idx = shuffleIdx(step.items.length);
     if (idx.every((v, k) => v === k) && idx.length > 1) [idx[0], idx[1]] = [idx[1], idx[0]];
     return idx;
   });
+  useEffect(() => {
+    if (reveal) setOrder(step.items.map((_, k) => k));
+  }, [reveal, step]);
   const correct = order.every((v, k) => v === k);
   useEffect(() => onSolved(correct), [correct, onSolved]);
 
@@ -246,9 +353,9 @@ function OrderStep({ step, onSolved }: { step: OrderStepT; onSolved: (b: boolean
     const to = pos + dir;
     if (to < 0 || to >= order.length) return;
     setOrder((cur) => {
-      const nextOrder = [...cur];
-      [nextOrder[pos], nextOrder[to]] = [nextOrder[to], nextOrder[pos]];
-      return nextOrder;
+      const nx = [...cur];
+      [nx[pos], nx[to]] = [nx[to], nx[pos]];
+      return nx;
     });
   }
 
@@ -269,59 +376,37 @@ function OrderStep({ step, onSolved }: { step: OrderStepT; onSolved: (b: boolean
             <span className="flex-1"><Sci>{step.items[itemIdx]}</Sci></span>
             {!correct && (
               <span className="flex shrink-0 flex-col">
-                <button
-                  type="button"
-                  onClick={() => move(pos, -1)}
-                  disabled={pos === 0}
-                  aria-label="Move up"
-                  className="px-2 text-body disabled:opacity-30"
-                >
-                  ▲
-                </button>
-                <button
-                  type="button"
-                  onClick={() => move(pos, 1)}
-                  disabled={pos === order.length - 1}
-                  aria-label="Move down"
-                  className="px-2 text-body disabled:opacity-30"
-                >
-                  ▼
-                </button>
+                <button type="button" onClick={() => move(pos, -1)} disabled={pos === 0} aria-label="Move up" className="px-2 text-body disabled:opacity-30">▲</button>
+                <button type="button" onClick={() => move(pos, 1)} disabled={pos === order.length - 1} aria-label="Move down" className="px-2 text-body disabled:opacity-30">▼</button>
               </span>
             )}
           </div>
         ))}
       </div>
-      {correct && (
-        <div className="glass mt-4 bg-gradient-to-br from-guarantee/15 to-transparent p-4">
-          <p className="text-xs font-bold uppercase tracking-wide text-guarantee">In order</p>
-          <p className="mt-1 text-sm leading-relaxed text-body"><Sci>{step.explain}</Sci></p>
-        </div>
-      )}
     </div>
   );
 }
 
 type MatchStepT = Extract<LessonStep, { kind: "match" }>;
-function MatchStep({ step, onSolved }: { step: MatchStepT; onSolved: (b: boolean) => void }) {
-  // Right column shuffled; each entry remembers which left index it belongs to.
+function MatchStep({ step, onSolved, reveal }: { step: MatchStepT; onSolved: (b: boolean) => void; reveal: boolean }) {
   const rights = useMemo(() => {
     const arr = step.pairs.map((p, k) => ({ text: p.right, correctLeft: k }));
-    for (let k = arr.length - 1; k > 0; k--) {
-      const j = Math.floor(Math.random() * (k + 1));
-      [arr[k], arr[j]] = [arr[j], arr[k]];
-    }
-    return arr;
+    const order = shuffleIdx(arr.length);
+    return order.map((k) => arr[k]);
   }, [step]);
-
   const [selLeft, setSelLeft] = useState<number | null>(null);
-  const [done, setDone] = useState<Record<number, number>>({}); // leftIndex -> rightPos
-  const [wrong, setWrong] = useState<number | null>(null); // rightPos flashing wrong
+  const [done, setDone] = useState<Record<number, number>>({});
+  const [wrong, setWrong] = useState<number | null>(null);
+  useEffect(() => {
+    if (reveal) {
+      const all: Record<number, number> = {};
+      rights.forEach((r, ri) => (all[r.correctLeft] = ri));
+      setDone(all);
+    }
+  }, [reveal, rights]);
 
-  const doneLefts = Object.keys(done).length;
-  const solved = doneLefts === step.pairs.length;
+  const solved = Object.keys(done).length === step.pairs.length;
   useEffect(() => onSolved(solved), [solved, onSolved]);
-
   const usedRight = new Set(Object.values(done));
 
   function tapRight(rightPos: number) {
@@ -351,11 +436,7 @@ function MatchStep({ step, onSolved }: { step: MatchStepT; onSolved: (b: boolean
                 disabled={isDone}
                 onClick={() => setSelLeft(li)}
                 className={`flex w-full items-center rounded-xl border-2 px-3 py-3 text-left text-sm text-ink transition-colors ${
-                  isDone
-                    ? "border-guarantee bg-guarantee/10 opacity-70"
-                    : isSel
-                      ? "border-accent bg-accent/10"
-                      : "border-hairline"
+                  isDone ? "border-guarantee bg-guarantee/10 opacity-70" : isSel ? "border-accent bg-accent/10" : "border-hairline"
                 }`}
               >
                 <Sci>{p.left}</Sci>
@@ -374,11 +455,7 @@ function MatchStep({ step, onSolved }: { step: MatchStepT; onSolved: (b: boolean
                 disabled={isDone}
                 onClick={() => tapRight(ri)}
                 className={`flex w-full items-center rounded-xl border-2 px-3 py-3 text-left text-sm text-ink transition-colors ${
-                  isDone
-                    ? "border-guarantee bg-guarantee/10 opacity-70"
-                    : isWrong
-                      ? "border-signal bg-signal/10"
-                      : "border-hairline"
+                  isDone ? "border-guarantee bg-guarantee/10 opacity-70" : isWrong ? "border-signal bg-signal/10" : "border-hairline"
                 }`}
               >
                 <Sci>{r.text}</Sci>
@@ -387,12 +464,196 @@ function MatchStep({ step, onSolved }: { step: MatchStepT; onSolved: (b: boolean
           })}
         </div>
       </div>
-      {solved && (
-        <div className="glass mt-4 bg-gradient-to-br from-guarantee/15 to-transparent p-4">
-          <p className="text-xs font-bold uppercase tracking-wide text-guarantee">All matched</p>
-          <p className="mt-1 text-sm leading-relaxed text-body"><Sci>{step.explain}</Sci></p>
-        </div>
+    </div>
+  );
+}
+
+type TilesStepT = Extract<LessonStep, { kind: "tiles" }>;
+function TilesStep({ step, onSolved, reveal }: { step: TilesStepT; onSolved: (b: boolean) => void; reveal: boolean }) {
+  // The bank is the tiles, shuffled once. `built` holds bank indices in order.
+  const bank = useMemo(() => shuffleIdx(step.tiles.length).map((k) => ({ idx: k, text: step.tiles[k] })), [step]);
+  const [built, setBuilt] = useState<number[]>([]); // indices into bank
+
+  useEffect(() => {
+    if (!reveal) return;
+    // Choose bank tiles whose text spells out the answer, in order.
+    const used = new Set<number>();
+    const seq: number[] = [];
+    for (const word of step.answer) {
+      const found = bank.findIndex((b, bi) => b.text === word && !used.has(bi));
+      if (found >= 0) {
+        used.add(found);
+        seq.push(found);
+      }
+    }
+    setBuilt(seq);
+  }, [reveal, bank, step.answer]);
+
+  const builtWords = built.map((bi) => bank[bi].text);
+  const correct = builtWords.length === step.answer.length && builtWords.every((w, k) => w === step.answer[k]);
+  useEffect(() => onSolved(correct), [correct, onSolved]);
+  const usedBank = new Set(built);
+
+  return (
+    <div>
+      <p className="font-display text-lg font-bold text-ink"><Sci>{step.prompt}</Sci></p>
+
+      {/* the line being built */}
+      <div
+        className={`mt-4 flex min-h-[3rem] flex-wrap items-center gap-2 rounded-xl border-2 border-dashed p-3 ${
+          correct ? "border-guarantee bg-guarantee/10" : "border-hairline"
+        }`}
+      >
+        {built.length === 0 && <span className="text-xs text-body">Tap tiles below to build your answer</span>}
+        {built.map((bi, pos) => (
+          <button
+            key={pos}
+            type="button"
+            onClick={() => setBuilt((cur) => cur.filter((_, k) => k !== pos))}
+            className="rounded-lg border border-accent/50 bg-accent/15 px-3 py-1.5 text-sm font-medium text-ink"
+          >
+            <Sci>{bank[bi].text}</Sci>
+          </button>
+        ))}
+      </div>
+
+      {/* the bank */}
+      <div className="mt-3 flex flex-wrap gap-2">
+        {bank.map((b, bi) =>
+          usedBank.has(bi) ? null : (
+            <button
+              key={bi}
+              type="button"
+              onClick={() => setBuilt((cur) => [...cur, bi])}
+              className="rounded-lg border border-hairline bg-surface px-3 py-1.5 text-sm text-ink"
+            >
+              <Sci>{b.text}</Sci>
+            </button>
+          )
+        )}
+      </div>
+    </div>
+  );
+}
+
+type PlotStepT = Extract<LessonStep, { kind: "plot" }>;
+function PlotStep({ step, onSolved, reveal }: { step: PlotStepT; onSolved: (b: boolean) => void; reveal: boolean }) {
+  const [pt, setPt] = useState<{ x: number; y: number } | null>(null);
+  useEffect(() => {
+    if (reveal) setPt({ x: step.targetX, y: step.targetY });
+  }, [reveal, step.targetX, step.targetY]);
+  const tol = step.tolerance ?? 0;
+  const correct = pt != null && Math.abs(pt.x - step.targetX) <= tol && Math.abs(pt.y - step.targetY) <= tol;
+  useEffect(() => onSolved(correct), [correct, onSolved]);
+
+  const svgRef = useRef<SVGSVGElement | null>(null);
+  const W = 280, H = 220, padL = 34, padB = 30, padT = 10, padR = 12;
+  const plotW = W - padL - padR, plotH = H - padT - padB, originY = H - padB;
+  const sx = (x: number) => padL + (x / step.xMax) * plotW;
+  const sy = (y: number) => originY - (y / step.yMax) * plotH;
+
+  function place(e: React.MouseEvent<SVGSVGElement>) {
+    const svg = svgRef.current;
+    if (!svg) return;
+    const r = svg.getBoundingClientRect();
+    const relX = ((e.clientX - r.left) / r.width) * W;
+    const relY = ((e.clientY - r.top) / r.height) * H;
+    const dx = Math.round(((relX - padL) / plotW) * step.xMax);
+    const dy = Math.round(((originY - relY) / plotH) * step.yMax);
+    setPt({ x: Math.max(0, Math.min(step.xMax, dx)), y: Math.max(0, Math.min(step.yMax, dy)) });
+  }
+
+  const gridX = Array.from({ length: step.xMax + 1 }, (_, k) => k);
+  const gridY = Array.from({ length: step.yMax + 1 }, (_, k) => k);
+
+  return (
+    <div>
+      <p className="font-display text-lg font-bold text-ink"><Sci>{step.prompt}</Sci></p>
+      <p className="mt-1 text-xs text-body">Tap the grid to place your point.</p>
+      <svg
+        ref={svgRef}
+        viewBox={`0 0 ${W} ${H}`}
+        className="mt-3 w-full touch-none select-none"
+        onClick={place}
+        role="img"
+        aria-label="Coordinate grid"
+      >
+        {gridX.map((x) => (
+          <line key={`gx${x}`} x1={sx(x)} y1={sy(0)} x2={sx(x)} y2={sy(step.yMax)} stroke="rgba(196,181,253,0.14)" strokeWidth="1" />
+        ))}
+        {gridY.map((y) => (
+          <line key={`gy${y}`} x1={sx(0)} y1={sy(y)} x2={sx(step.xMax)} y2={sy(y)} stroke="rgba(196,181,253,0.14)" strokeWidth="1" />
+        ))}
+        {/* axes */}
+        <line x1={sx(0)} y1={sy(0)} x2={sx(step.xMax)} y2={sy(0)} stroke="rgba(196,181,253,0.5)" strokeWidth="1.5" />
+        <line x1={sx(0)} y1={sy(0)} x2={sx(0)} y2={sy(step.yMax)} stroke="rgba(196,181,253,0.5)" strokeWidth="1.5" />
+        {step.xLabel && <text x={sx(step.xMax)} y={originY + 20} textAnchor="end" className="fill-current text-body" fontSize="9">{step.xLabel}</text>}
+        {step.yLabel && <text x={4} y={sy(step.yMax) + 2} className="fill-current text-body" fontSize="9">{step.yLabel}</text>}
+        {reveal && <circle cx={sx(step.targetX)} cy={sy(step.targetY)} r="5" fill="none" stroke="#6ea0ff" strokeWidth="2" strokeDasharray="3 2" />}
+        {pt && <circle cx={sx(pt.x)} cy={sy(pt.y)} r="5" fill={correct ? "var(--color-guarantee)" : "#ffdc00"} />}
+      </svg>
+      {pt && (
+        <p className="text-center font-mono text-xs text-body">
+          ({pt.x}, {pt.y})
+        </p>
       )}
+    </div>
+  );
+}
+
+type CircuitStepT = Extract<LessonStep, { kind: "circuit" }>;
+function CircuitStep({ step, onSolved, reveal }: { step: CircuitStepT; onSolved: (b: boolean) => void; reveal: boolean }) {
+  const [closed, setClosed] = useState<Record<string, boolean>>({});
+  useEffect(() => {
+    if (reveal) {
+      const on: Record<string, boolean> = {};
+      step.needed.forEach((id) => (on[id] = true));
+      setClosed(on);
+    }
+  }, [reveal, step.needed]);
+  const need = new Set(step.needed);
+  const lit = step.switches.every((s) => Boolean(closed[s.id]) === need.has(s.id));
+  useEffect(() => onSolved(lit), [lit, onSolved]);
+
+  return (
+    <div>
+      <p className="font-display text-lg font-bold text-ink"><Sci>{step.prompt}</Sci></p>
+
+      {/* the lamp */}
+      <div className="mt-4 flex flex-col items-center">
+        <span
+          className={`icon-orb !h-16 !w-16 ${lit ? "text-accent" : "text-body opacity-50"}`}
+          style={lit ? { boxShadow: "0 0 28px rgba(255,220,0,0.6)" } : undefined}
+          aria-label={lit ? "Lamp on" : "Lamp off"}
+        >
+          <NamedIcon name="bolt" size={30} />
+        </span>
+        <span className={`mt-1 text-xs font-bold ${lit ? "text-accent" : "text-body"}`}>
+          {lit ? "Lamp lit" : "Lamp off"}
+        </span>
+      </div>
+
+      {/* switches */}
+      <div className="mt-4 space-y-2">
+        {step.switches.map((s) => {
+          const on = Boolean(closed[s.id]);
+          return (
+            <button
+              key={s.id}
+              type="button"
+              onClick={() => setClosed((c) => ({ ...c, [s.id]: !c[s.id] }))}
+              className={`flex w-full items-center justify-between rounded-xl border-2 px-4 py-3 text-sm text-ink transition-colors ${
+                on ? "border-accent bg-accent/10" : "border-hairline"
+              }`}
+            >
+              <span><Sci>{s.label}</Sci></span>
+              <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${on ? "bg-accent/20 text-accent" : "bg-white/10 text-body"}`}>
+                {on ? "CLOSED" : "OPEN"}
+              </span>
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }

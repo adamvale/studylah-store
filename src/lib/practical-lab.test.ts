@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { PRACTICAL_SUBJECTS, practicalSubject, practicalLesson } from "@/lib/practical-lab";
-import { stepText } from "@/lib/lesson-steps";
+import { stepText, isInteractive } from "@/lib/lesson-steps";
 
 const allText = PRACTICAL_SUBJECTS.flatMap((s) => [
   s.name,
@@ -32,7 +32,7 @@ test("no practical content has dashes or emojis", () => {
 test("every practical lesson is interactive with valid choices", () => {
   for (const subj of PRACTICAL_SUBJECTS)
     for (const l of subj.lessons) {
-      assert.ok(l.steps.some((s) => s.kind === "choice" || s.kind === "reveal"), `${l.key} not interactive`);
+      assert.ok(l.steps.some(isInteractive), `${l.key} not interactive`);
       for (const s of l.steps)
         if (s.kind === "choice")
           assert.ok(s.correct >= 0 && s.correct < s.options.length, `${l.key} bad correct index`);
