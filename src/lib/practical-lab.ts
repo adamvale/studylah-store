@@ -15,6 +15,9 @@ export interface PracticalLesson {
   steps: LessonStep[];
   // Optional Guru "lab coach" chat seed.
   talkPrompt?: string;
+  // Optional topicKey from the topical system (src/lib/subject-topics), so the
+  // lesson counts toward that subject topic's coverage.
+  topic?: string;
 }
 export interface PracticalSubject {
   slug: string; // matches a science subject family

@@ -9,6 +9,7 @@ export interface PlaygroundLesson {
   minutes: number;
   steps: LessonStep[];
   talkPrompt?: string;
+  topic?: string; // topicKey from src/lib/subject-topics (coverage tagging)
 }
 
 export const PLAYGROUND_SCIENCE: Record<"chemistry" | "physics" | "biology", PlaygroundLesson[]> = {
