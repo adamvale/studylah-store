@@ -11,6 +11,7 @@ import { unlockedBadgeIds } from "@/lib/server/xp";
 import { RiskMeterSection, CalibrationCard } from "@/components/risk-meter";
 import { BadgeCase } from "@/components/game";
 import { ScoreHistorySection, type ProgressCard } from "@/components/score-history";
+import { PageHeading } from "@/components/page-heading";
 
 export const metadata: Metadata = { title: "Progress" };
 
@@ -93,18 +94,12 @@ export default async function ProgressPage() {
 
   return (
     <div className="space-y-8">
-      <div>
-        <h2 className="font-display text-2xl font-bold text-ink">Is it working?</h2>
-        <p className="mt-1 text-sm text-body">
-          The honest read-out: how many marks are still in play, how reliable
-          your &ldquo;sure&rdquo; is, and whether your readiness scores are
-          moving. Do the work on{" "}
-          <Link href="/account" className="font-medium text-accent hover:underline">
-            Today
-          </Link>{" "}
-, watch it land here.
-        </p>
-      </div>
+      <PageHeading
+        size="sm"
+        description="The honest read-out: how many marks are still in play, how reliable your &quot;sure&quot; is, and whether your readiness scores are moving. Do the work on Today, watch it land here."
+      >
+        Is it working?
+      </PageHeading>
 
       <RiskMeterSection risks={risks} />
 

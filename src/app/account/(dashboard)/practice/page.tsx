@@ -13,6 +13,7 @@ import {
   toolsForFamilies,
 } from "@/lib/study/practice-content";
 import { PracticeTools } from "@/components/practice-tools";
+import { PageHeading } from "@/components/page-heading";
 
 export const metadata: Metadata = { title: "Practice" };
 
@@ -38,13 +39,12 @@ export default async function PracticePage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="font-display text-2xl font-bold text-ink">Practice drills</h2>
-        <p className="mt-1 text-sm text-body">
-          Skill drills tuned to your subjects, the phrasing, definitions and
-          formats that decide marks beyond just knowing the content.
-        </p>
-      </div>
+      <PageHeading
+        size="sm"
+        description="Skill drills tuned to your subjects, the phrasing, definitions and formats that decide marks beyond just knowing the content."
+      >
+        Practice drills
+      </PageHeading>
 
       {subjects.length === 0 ? (
         <div className="rounded-2xl border border-hairline bg-surface p-8 text-center">

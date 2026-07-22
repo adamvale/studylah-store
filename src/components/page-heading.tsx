@@ -22,7 +22,7 @@ export function PageHeading({
   const titleClass =
     size === "lg"
       ? "font-display text-3xl font-extrabold tracking-tight text-ink"
-      : "font-display text-2xl font-black text-ink";
+      : "font-display text-2xl font-bold text-ink";
 
   return (
     <div className="relative">

@@ -751,6 +751,18 @@ body:has([data-bottom-cta]) .gugu-panel {
     linear-gradient(170deg, #1a1245 0%, #221856 48%, #140f31 100%);
 }
 
+/* The faint blueprint grid, same as the site-wide body::after, so immersive
+   surfaces match the standard app background exactly. Sits over the gradient,
+   under the content. */
+.sl-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(90% 60% at 50% 0%, black, transparent 90%);
+  mask-image: radial-gradient(90% 60% at 50% 0%, black, transparent 90%);
+}
+
 /* Frosted glass card */
 .glass {
   background: linear-gradient(150deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.035));

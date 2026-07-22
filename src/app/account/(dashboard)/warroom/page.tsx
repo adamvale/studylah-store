@@ -8,6 +8,7 @@ import { ownedSubjects } from "@/lib/server/study";
 import { computeRisk } from "@/lib/server/risk";
 import { examPapersFor, type ExamPaper } from "@/lib/exam-dates-2026";
 import { TierPill } from "@/components/heat";
+import { PageHeading } from "@/components/page-heading";
 
 export const metadata: Metadata = { title: "War Room" };
 export const dynamic = "force-dynamic";
@@ -88,16 +89,12 @@ export default async function WarRoomPage({
 
   return (
     <div className="space-y-5">
-      <div>
-        <h2 className="font-display text-2xl font-bold text-ink">
-          The War Room
-        </h2>
-        <p className="mt-1 max-w-2xl text-sm text-body">
-          Each subject&apos;s war room opens {UNLOCK_DAYS} days before its
-          first paper: a tight final-week plan built from your own weak spots.
-          No new content in the last week, only sharpening what you have.
-        </p>
-      </div>
+      <PageHeading
+        size="sm"
+        description={`Each subject's war room opens ${UNLOCK_DAYS} days before its first paper: a tight final-week plan built from your own weak spots. No new content in the last week, only sharpening what you have.`}
+      >
+        The War Room
+      </PageHeading>
 
       {!anyArmed && !preview && (
         <div className="rounded-2xl border border-accent/30 bg-surface p-5 text-sm text-body">

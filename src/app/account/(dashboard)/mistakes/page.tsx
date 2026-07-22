@@ -10,6 +10,7 @@ import { ownedSubjects } from "@/lib/server/study";
 import { achievementSuffixes } from "@/lib/server/xp";
 import { MistakeNotebook, type MistakeItem } from "@/components/mistake-notebook";
 import { MonsterDex, type DexCounts } from "@/components/monster-dex";
+import { PageHeading } from "@/components/page-heading";
 
 export const metadata: Metadata = { title: "Mistakes" };
 
@@ -76,17 +77,12 @@ export default async function MistakesPage() {
   return (
     <div className="space-y-6">
       <MonsterDex counts={dexCounts} wildCaptured={[...wildCaptured]} />
-      <div>
-        <h2 className="font-display text-2xl font-bold text-ink">
-          The bestiary
-        </h2>
-        <p className="mt-1 text-sm text-body">
-          Every mistake is a monster, and its species is WHY you lost the mark.
-          Identify each one, then beat it twice in your daily three to banish it
-          for good. Auto-captured from your daily practice and readiness checks
-, add your own from school papers.
-        </p>
-      </div>
+      <PageHeading
+        size="sm"
+        description="Every mistake is a monster, and its species is WHY you lost the mark. Identify each one, then beat it twice in your daily three to banish it for good. Auto-captured from your daily practice and readiness checks, add your own from school papers."
+      >
+        The bestiary
+      </PageHeading>
 
       <MistakeNotebook
         initial={initial}

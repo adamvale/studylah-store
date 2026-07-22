@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { IconCheckCircle } from "@/components/icons";
 import { TeachText } from "@/components/teach-text";
 import { ImmersiveShell } from "@/components/immersive-shell";
+import { PageHeading } from "@/components/page-heading";
 
 // The Drills hub: four micro-trainers on one page.
 //   Definitions - spaced-repetition flashcards from the definition bank
@@ -69,12 +70,12 @@ export function DrillsHub({
 
   return (
     <div>
-      <h2 className="font-display text-2xl font-bold text-ink">Drills</h2>
-      <p className="mt-1 max-w-2xl text-sm text-body">
-        Five focused minutes a day. Cards you know come back on a schedule
-        (1, 3, 7, 21, 60 days), cards you miss come back tomorrow. Precise
-        wording wins marks, that is the whole game here.
-      </p>
+      <PageHeading
+        size="sm"
+        description="Five focused minutes a day. Cards you know come back on a schedule (1, 3, 7, 21, 60 days), cards you miss come back tomorrow. Precise wording wins marks, that is the whole game here."
+      >
+        Drills
+      </PageHeading>
 
       {/* Launch menu: pick a drill, it opens full-screen. */}
       <div className="mt-5 grid gap-3 sm:grid-cols-2">

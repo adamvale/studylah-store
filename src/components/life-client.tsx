@@ -5,6 +5,7 @@ import { useNativePlatform } from "@/lib/native";
 import { NamedIcon, type IconName } from "@/components/icons";
 import { TutorChat, type TutorStart } from "@/components/tutor-chat";
 import { LessonPlayer } from "@/components/lesson-player";
+import { PageHeading } from "@/components/page-heading";
 import type { LessonStep } from "@/lib/lesson-steps";
 
 // The Life Skills wing: ten tracks on one lesson player. Cards to read, a
@@ -127,8 +128,9 @@ export function LifeClient() {
         <button type="button" onClick={() => setTrack(null)} className="text-xs font-bold text-accent">
           ← All Life Skills
         </button>
-        <h2 className="mt-2 font-display text-2xl font-black text-ink">{track.name}</h2>
-        <p className="text-sm text-body">{track.blurb}</p>
+        <div className="mt-2">
+          <PageHeading size="sm" description={track.blurb}>{track.name}</PageHeading>
+        </div>
         <div className="mt-4 space-y-2">
           {track.lessons.map((l) => (
             <button

@@ -14,6 +14,7 @@ import {
 import { examPapersFor } from "@/lib/exam-dates-2026";
 import { TierPill } from "@/components/heat";
 import { PrintButton } from "@/components/print-button";
+import { PageHeading } from "@/components/page-heading";
 
 export const metadata: Metadata = { title: "Rescue plan" };
 
@@ -137,17 +138,12 @@ export default async function RescuePage({
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <h2 className="font-display text-2xl font-bold text-ink">
-            The rescue plan
-          </h2>
-          <p className="mt-1 text-sm text-body">
-            Behind is a position, not a verdict. Answer three questions and this
-            page spends your remaining days only where the forecast says the
-            marks concentrate, VERY HIGH and HIGH topics you haven&apos;t banked
-            yet, highest payoff first.
-          </p>
-        </div>
+        <PageHeading
+          size="sm"
+          description="Behind is a position, not a verdict. Answer three questions and this page spends your remaining days only where the forecast says the marks concentrate, VERY HIGH and HIGH topics you haven't banked yet, highest payoff first."
+        >
+          The rescue plan
+        </PageHeading>
         <PrintButton />
       </div>
 

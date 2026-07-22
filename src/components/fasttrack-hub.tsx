@@ -12,6 +12,7 @@ import {
 import type { FamilyProgress, PlayState } from "@/lib/server/fasttrack";
 import { NamedIcon, type IconName } from "@/components/icons";
 import { ImmersiveShell } from "@/components/immersive-shell";
+import { PageHeading } from "@/components/page-heading";
 
 // ── FastTrack hub ────────────────────────────────────────────────────────────
 // StudyLand's "answer like the examiner" trainer. A tab per subject family,
@@ -62,14 +63,12 @@ export function FastTrackHub({ progress }: { progress: FamilyProgress[] }) {
         <p className="font-mono text-xs font-bold uppercase tracking-wide text-accent">
           FastTrack
         </p>
-        <h1 className="mt-1 font-display text-2xl font-black text-ink">
+        <PageHeading
+          size="sm"
+          description="Marks are not given for understanding. They are given for answers that match the mark scheme. Most marks slip through four gaps, FastTrack closes each one, per question type."
+        >
           Answer the way examiners award marks
-        </h1>
-        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-body">
-          Marks are not given for understanding. They are given for answers that
-          match the mark scheme. Most marks slip through four gaps, FastTrack
-          closes each one, per question type.
-        </p>
+        </PageHeading>
         <div className="mt-4 grid gap-2 sm:grid-cols-2">
           {LEAKS.map((l) => (
             <div key={l.id} className="rounded-xl border border-hairline bg-night p-3">

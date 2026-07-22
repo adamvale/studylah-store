@@ -38,7 +38,12 @@ export function ImmersiveShell({
   if (!mounted) return null;
 
   return createPortal(
-    <div className="studyland sl-screen-bg fixed inset-0 z-[60] flex flex-col">
+    <div className="studyland sl-screen-bg fixed inset-0 z-[60]">
+      {/* Blueprint grid over the gradient, matching the standard app
+          background. Absolute so it sits under the content wrapper. */}
+      <div className="sl-grid pointer-events-none absolute inset-0" aria-hidden />
+
+      <div className="relative flex h-full flex-col">
       {/* Compact top bar: exit + progress/count (or headerRight). Clears the
           notch on iOS. */}
       <div
@@ -100,6 +105,7 @@ export function ImmersiveShell({
           {footer}
         </div>
       )}
+      </div>
     </div>,
     document.body,
   );
