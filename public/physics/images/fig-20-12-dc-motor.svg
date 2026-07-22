@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 460" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .pole { fill:#9AA0A6; fill-opacity:0.22; stroke:#EAEAEA; stroke-width:1.6; }
+    .plbl { fill:#EAEAEA; font-size:16px; font-weight:bold; text-anchor:middle; }
+    .coil { stroke:#6FB7E0; stroke-width:2.4; fill:none; }
+    .axle { stroke:#9AA0A6; stroke-width:1.6; stroke-dasharray:6 4; fill:none; }
+    .wire { stroke:#EAEAEA; stroke-width:1.8; fill:none; }
+    .force{ stroke:#E58F8F; stroke-width:2.6; fill:none; }
+    .ring { stroke:#E8B65A; stroke-width:5; fill:none; }
+    .brush{ fill:#86C98B; fill-opacity:0.4; stroke:#86C98B; stroke-width:1.4; }
+    .lbl  { fill:#E8B65A; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+    .cur  { fill:#6FB7E0; font-size:12px; }
+  </style>
+  <defs>
+    <marker id="mfr" markerWidth="12" markerHeight="12" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#E58F8F"/></marker>
+    <marker id="mc" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6FB7E0"/></marker>
+  </defs>
+
+  <!-- poles -->
+  <rect class="pole" x="40" y="150" width="70" height="90"/>
+  <rect class="pole" x="550" y="150" width="70" height="90"/>
+  <text class="plbl" x="75" y="200">N</text>
+  <text class="plbl" x="585" y="200">S</text>
+
+  <!-- rectangular coil (perspective parallelogram) A B C D -->
+  <polygon class="coil" points="230,250 285,190 445,190 390,250"/>
+  <text x="222" y="266">A</text>
+  <text x="278" y="184">B</text>
+  <text x="450" y="184">C</text>
+  <text x="392" y="266">D</text>
+  <text class="lbl" x="360" y="176">coil (wound on a soft-iron cylinder)</text>
+  <path class="lead" d="M358,180 L365,192"/>
+
+  <!-- current direction arrows on the coil sides -->
+  <line x1="252" y1="222" x2="230" y2="248" stroke="#6FB7E0" stroke-width="2" marker-end="url(#mc)"/>
+  <line x1="410" y1="222" x2="432" y2="196" stroke="#6FB7E0" stroke-width="2" marker-end="url(#mc)"/>
+  <text class="cur" x="470" y="215">current, I</text>
+
+  <!-- forces: up on back side BC, down on front side AD -->
+  <line class="force" x1="365" y1="190" x2="365" y2="120" marker-end="url(#mfr)"/>
+  <text fill="#E58F8F" x="372" y="128" font-weight="bold">F</text>
+  <line class="force" x1="310" y1="250" x2="310" y2="320" marker-end="url(#mfr)"/>
+  <text fill="#E58F8F" x="288" y="320" font-weight="bold">F</text>
+
+  <!-- axle from coil to commutator -->
+  <line class="axle" x1="285" y1="220" x2="445" y2="220"/>
+  <line class="axle" x1="230" y1="250" x2="200" y2="330"/>
+  <text class="lbl" x="455" y="224">axle</text>
+
+  <!-- split-ring commutator: two half-rings with gaps at top & bottom -->
+  <path class="ring" d="M200,302 A28,28 0 0 0 200,358"/>
+  <path class="ring" d="M200,302 A28,28 0 0 1 200,358"/>
+  <line x1="200" y1="298" x2="200" y2="306" stroke="#0d0d0d" stroke-width="4"/>
+  <line x1="200" y1="354" x2="200" y2="362" stroke="#0d0d0d" stroke-width="4"/>
+  <text class="lbl" x="60" y="330">split-ring</text>
+  <text class="lbl" x="60" y="346">commutator</text>
+  <path class="lead" d="M118,338 L170,332"/>
+  <text class="lbl" x="120" y="392" fill="#E8B65A">split / gap</text>
+  <path class="lead" d="M150,388 L196,360"/>
+
+  <!-- carbon brushes -->
+  <rect class="brush" x="150" y="322" width="18" height="16"/>
+  <rect class="brush" x="232" y="322" width="18" height="16"/>
+  <text class="lbl" x="270" y="334">carbon brush</text>
+  <path class="lead" d="M268,330 L251,330"/>
+
+  <!-- wires to battery -->
+  <line class="wire" x1="159" y1="338" x2="159" y2="415"/>
+  <line class="wire" x1="241" y1="338" x2="241" y2="415"/>
+  <line class="wire" x1="159" y1="415" x2="185" y2="415"/>
+  <line class="wire" x1="215" y1="415" x2="241" y2="415"/>
+  <!-- battery symbol -->
+  <line class="wire" x1="185" y1="402" x2="185" y2="428"/>
+  <line class="wire" x1="200" y1="408" x2="200" y2="422"/>
+  <line class="wire" x1="215" y1="402" x2="215" y2="428"/>
+  <text x="248" y="418">battery</text>
+</svg>

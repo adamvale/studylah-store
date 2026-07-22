@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 200" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
+    </marker>
+    <marker id="arwG" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#86C98B"/>
+    </marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .box { fill:#6FB7E0; opacity:0.26; stroke:#6FB7E0; stroke-width:1.6; }
+    .f { stroke:#EAEAEA; stroke-width:2.2; }
+    .ground { stroke:#9AA0A6; stroke-width:1.4; }
+    .res { stroke:#86C98B; stroke-width:2.4; }
+  </style>
+  <line class="ground" x1="40" y1="130" x2="420" y2="130"/>
+  <rect class="box" x="185" y="80" width="90" height="50"/>
+  <text x="230" y="110" text-anchor="middle" font-size="13">object</text>
+  <line class="f" x1="90" y1="105" x2="180" y2="105" marker-end="url(#arw)"/>
+  <text x="115" y="95" text-anchor="middle" font-size="13">12 N</text>
+  <line class="f" x1="360" y1="105" x2="280" y2="105" marker-end="url(#arw)"/>
+  <text x="340" y="95" text-anchor="middle" font-size="13">8 N</text>
+  <!-- resultant -->
+  <line class="res" x1="200" y1="158" x2="255" y2="158" marker-end="url(#arwG)"/>
+  <text x="230" y="185" text-anchor="middle" font-size="12.5" fill="#86C98B">Resultant force = 12 N + (&#8722;8 N) = 4 N to the right</text>
+</svg>

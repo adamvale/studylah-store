@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .wire { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .coil { fill:none; stroke:#6FB7E0; stroke-width:1.6; }
+    .mag { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .magS { fill:#6FB7E0; opacity:0.28; }
+    .magN { fill:#E58F8F; opacity:0.28; }
+    .mot { stroke:#E8B65A; stroke-width:1.8; fill:none; marker-end:url(#ar); }
+    .flux { stroke:#86C98B; stroke-width:1.3; fill:none; stroke-dasharray:4 3; }
+    .ndl { stroke:#E8B65A; stroke-width:2.2; fill:none; }
+    .cap { font-size:13px; text-anchor:middle; fill:#E8B65A; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#E8B65A"/>
+    </marker>
+  </defs>
+
+  <!-- Panel: increasing flux (towards) -->
+  <g>
+    <text x="150" y="40" font-size="12" text-anchor="middle" fill="#86C98B">increasing magnetic flux</text>
+    <path class="mot" d="M55,70 L130,70"/>
+    <text x="70" y="62" font-size="12">towards</text>
+    <rect class="mag magS" x="30" y="84" width="45" height="34"/>
+    <rect class="mag magN" x="75" y="84" width="45" height="34"/>
+    <rect class="mag" x="30" y="84" width="90" height="34"/>
+    <text x="46" y="106" font-size="14">S</text><text x="92" y="106" font-size="14">N</text>
+    <!-- flux lines entering coil -->
+    <path class="flux" d="M124,101 L150,101"/>
+    <path class="flux" d="M124,92 L150,96"/>
+    <path class="flux" d="M124,110 L150,106"/>
+    <g class="coil">
+      <ellipse cx="160" cy="101" rx="7" ry="20"/><ellipse cx="176" cy="101" rx="7" ry="20"/>
+      <ellipse cx="192" cy="101" rx="7" ry="20"/><ellipse cx="208" cy="101" rx="7" ry="20"/>
+      <ellipse cx="224" cy="101" rx="7" ry="20"/><ellipse cx="240" cy="101" rx="7" ry="20"/>
+    </g>
+    <path class="wire" d="M153,101 L145,101 L145,205 L185,205"/>
+    <path class="wire" d="M247,101 L255,101 L255,205 L215,205"/>
+    <circle cx="200" cy="205" r="15" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
+    <line class="ndl" x1="200" y1="205" x2="210" y2="195"/>
+    <text class="cap" x="150" y="250">flux rises &#8594; e.m.f. induced</text>
+  </g>
+
+  <!-- Panel: decreasing flux (away) -->
+  <g transform="translate(360,0)">
+    <text x="150" y="40" font-size="12" text-anchor="middle" fill="#86C98B">decreasing magnetic flux</text>
+    <path class="mot" d="M130,70 L55,70"/>
+    <text x="70" y="62" font-size="12">away</text>
+    <rect class="mag magS" x="30" y="84" width="45" height="34"/>
+    <rect class="mag magN" x="75" y="84" width="45" height="34"/>
+    <rect class="mag" x="30" y="84" width="90" height="34"/>
+    <text x="46" y="106" font-size="14">S</text><text x="92" y="106" font-size="14">N</text>
+    <path class="flux" d="M124,101 L150,101"/>
+    <path class="flux" d="M124,92 L150,96"/>
+    <path class="flux" d="M124,110 L150,106"/>
+    <g class="coil">
+      <ellipse cx="160" cy="101" rx="7" ry="20"/><ellipse cx="176" cy="101" rx="7" ry="20"/>
+      <ellipse cx="192" cy="101" rx="7" ry="20"/><ellipse cx="208" cy="101" rx="7" ry="20"/>
+      <ellipse cx="224" cy="101" rx="7" ry="20"/><ellipse cx="240" cy="101" rx="7" ry="20"/>
+    </g>
+    <path class="wire" d="M153,101 L145,101 L145,205 L185,205"/>
+    <path class="wire" d="M247,101 L255,101 L255,205 L215,205"/>
+    <circle cx="200" cy="205" r="15" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
+    <line class="ndl" x1="200" y1="205" x2="190" y2="195"/>
+    <text class="cap" x="150" y="250">flux falls &#8594; e.m.f. reverses</text>
+  </g>
+</svg>

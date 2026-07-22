@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .wire { stroke:#EAEAEA; stroke-width:1.8; fill:none; }
+    .res { fill:#6FB7E0; opacity:0.18; stroke:#6FB7E0; stroke-width:1.6; }
+    .amber { fill:#E8B65A; }
+    .cur { stroke:#E8B65A; stroke-width:1.6; fill:none; }
+  </style>
+  <!-- battery top -->
+  <line class="wire" x1="60" y1="60" x2="200" y2="60"/>
+  <line class="wire" x1="240" y1="60" x2="420" y2="60"/>
+  <line class="wire" x1="210" y1="45" x2="210" y2="75"/>
+  <line class="wire" x1="228" y1="52" x2="228" y2="68"/>
+  <text x="219" y="35" text-anchor="middle" font-size="13">12 V</text>
+
+  <!-- left side down -->
+  <line class="wire" x1="60" y1="60" x2="60" y2="240"/>
+  <line class="wire" x1="420" y1="60" x2="420" y2="150"/>
+
+  <!-- P resistor (series, bottom left) -->
+  <line class="wire" x1="60" y1="240" x2="110" y2="240"/>
+  <rect class="res" x="110" y="228" width="70" height="24" rx="3"/>
+  <text x="145" y="222" text-anchor="middle" font-size="12">P</text>
+  <text x="145" y="245" text-anchor="middle" font-size="11">2 &#937;</text>
+  <line class="wire" x1="180" y1="240" x2="230" y2="240"/>
+  <!-- current arrow near P -->
+  <path class="cur" d="M78,240 l14,-6 M78,240 l14,6"/>
+  <text x="70" y="222" text-anchor="middle" font-size="11" class="amber">2 A</text>
+
+  <!-- node splits to Q (upper) and R (lower) -->
+  <line class="wire" x1="230" y1="240" x2="230" y2="150"/>
+  <!-- Q branch -->
+  <line class="wire" x1="230" y1="150" x2="270" y2="150"/>
+  <rect class="res" x="270" y="138" width="70" height="24" rx="3"/>
+  <text x="305" y="132" text-anchor="middle" font-size="12">Q</text>
+  <text x="305" y="155" text-anchor="middle" font-size="11">8 &#937;</text>
+  <line class="wire" x1="340" y1="150" x2="420" y2="150"/>
+  <!-- R branch -->
+  <line class="wire" x1="230" y1="240" x2="270" y2="240"/>
+  <rect class="res" x="270" y="228" width="70" height="24" rx="3"/>
+  <text x="305" y="222" text-anchor="middle" font-size="12">R</text>
+  <text x="305" y="245" text-anchor="middle" font-size="11">8 &#937;</text>
+  <line class="wire" x1="340" y1="240" x2="420" y2="240"/>
+  <line class="wire" x1="420" y1="150" x2="420" y2="240"/>
+</svg>

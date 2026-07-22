@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 240" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arwG" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#86C98B"/></marker>
+    <marker id="arwR" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#E58F8F"/></marker>
+    <marker id="arwA" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/></marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .box { fill:none; stroke:#EAEAEA; stroke-width:1.8; }
+    .n { stroke:#86C98B; stroke-width:2.2; }
+    .w { stroke:#E58F8F; stroke-width:2.2; }
+    .t { stroke:#E8B65A; stroke-width:2.2; }
+  </style>
+  <!-- 8 kg block on table -->
+  <text x="120" y="26" text-anchor="middle" font-size="12" font-weight="bold">8 kg block</text>
+  <rect class="box" x="90" y="95" width="60" height="45"/>
+  <text x="120" y="122" text-anchor="middle" font-size="11">8 kg</text>
+  <line class="n" x1="120" y1="95" x2="120" y2="45" marker-end="url(#arwG)"/>
+  <text x="128" y="60" font-size="11" fill="#86C98B">normal</text>
+  <line class="w" x1="120" y1="140" x2="120" y2="190" marker-end="url(#arwR)"/>
+  <text x="128" y="180" font-size="11" fill="#E58F8F">weight</text>
+  <line class="t" x1="150" y1="117" x2="215" y2="117" marker-end="url(#arwA)"/>
+  <text x="165" y="107" font-size="11" fill="#E8B65A">tension T</text>
+  <!-- 2 kg hanging block -->
+  <text x="345" y="26" text-anchor="middle" font-size="12" font-weight="bold">2 kg block</text>
+  <rect class="box" x="315" y="95" width="60" height="45"/>
+  <text x="345" y="122" text-anchor="middle" font-size="11">2 kg</text>
+  <line class="t" x1="345" y1="95" x2="345" y2="45" marker-end="url(#arwA)"/>
+  <text x="353" y="60" font-size="11" fill="#E8B65A">tension T</text>
+  <line class="w" x1="345" y1="140" x2="345" y2="200" marker-end="url(#arwR)"/>
+  <text x="353" y="185" font-size="11" fill="#E58F8F">weight 20 N</text>
+</svg>

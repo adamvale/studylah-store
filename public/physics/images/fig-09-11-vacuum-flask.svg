@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 360" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .body { fill:none; stroke:#EAEAEA; stroke-width:1.8; }
+    .liquid { fill:#E58F8F; opacity:0.16; }
+    .stopper { fill:#E8B65A; opacity:0.35; stroke:#E8B65A; stroke-width:1.4; }
+    .air { fill:#86C98B; opacity:0.18; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+    .lbl { fill:#E8B65A; }
+    .wall { stroke:#6FB7E0; stroke-width:2; fill:none; }
+    .vac { fill:#9AA0A6; opacity:0.12; }
+  </style>
+  <!-- flask outline -->
+  <path class="body" d="M120,70 L120,300 Q120,320 140,320 L200,320 Q220,320 220,300 L220,70"/>
+  <!-- inner liquid chamber -->
+  <path class="liquid" d="M138,110 L138,295 Q138,305 148,305 L192,305 Q202,305 202,295 L202,110 Z"/>
+  <!-- double silvered walls (outer + inner lines) -->
+  <path class="wall" d="M128,80 L128,300 Q128,312 138,312"/>
+  <path class="wall" d="M132,95 L132,298"/>
+  <path class="wall" d="M212,80 L212,300 Q212,312 202,312"/>
+  <path class="wall" d="M208,95 L208,298"/>
+  <!-- vacuum gap shading between walls -->
+  <rect class="vac" x="128" y="95" width="4" height="205"/>
+  <rect class="vac" x="208" y="95" width="4" height="205"/>
+  <!-- stopper + trapped air -->
+  <rect class="stopper" x="130" y="55" width="80" height="30" rx="4"/>
+  <rect class="air" x="138" y="85" width="64" height="25"/>
+  <!-- magnified circle showing wall structure -->
+  <circle cx="380" cy="185" r="80" fill="none" stroke="#9AA0A6" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <line class="lead" x1="205" y1="180" x2="302" y2="150"/>
+  <line class="lead" x1="205" y1="210" x2="302" y2="220"/>
+  <!-- inside magnifier: two silvered walls with vacuum between -->
+  <rect x="360" y="120" width="10" height="130" fill="#6FB7E0" opacity="0.35" stroke="#6FB7E0"/>
+  <rect x="390" y="120" width="10" height="130" fill="#6FB7E0" opacity="0.35" stroke="#6FB7E0"/>
+  <rect x="370" y="120" width="20" height="130" fill="#9AA0A6" opacity="0.12"/>
+  <!-- labels -->
+  <text class="lbl" x="180" y="45" text-anchor="middle">stopper</text>
+  <path class="lead" d="M170,50 L165,58"/>
+  <text class="lbl" x="55" y="100">trapped air</text>
+  <path class="lead" d="M105,96 L138,100"/>
+  <text class="lbl" x="55" y="200">hot liquid</text>
+  <path class="lead" d="M100,196 L155,200"/>
+  <text class="lbl" x="430" y="118">silvered glass walls</text>
+  <path class="lead" d="M428,122 L400,140"/>
+  <text class="lbl" x="440" y="255">vacuum</text>
+  <path class="lead" d="M438,251 L382,230"/>
+</svg>

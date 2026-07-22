@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .wire { stroke:#EAEAEA; stroke-width:1.8; fill:none; }
+    .brown { stroke:#E8B65A; stroke-width:2.2; fill:none; }
+    .blue { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
+    .gy { stroke:#86C98B; stroke-width:2.2; fill:none; }
+    .case { fill:#6FB7E0; opacity:0.12; stroke:#EAEAEA; stroke-width:1.6; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; }
+    .pt { fill:#E8B65A; }
+    .amber { fill:#E8B65A; }
+  </style>
+  <!-- socket on left -->
+  <rect class="wire" x="60" y="120" width="60" height="70" rx="4"/>
+  <rect class="wire" x="72" y="140" width="8" height="18"/>
+  <rect class="wire" x="100" y="140" width="8" height="18"/>
+  <text x="90" y="210" text-anchor="middle" font-size="10">socket</text>
+
+  <!-- metal casing (appliance) on right -->
+  <rect class="case" x="430" y="95" width="90" height="110" rx="4"/>
+  <text x="475" y="120" text-anchor="middle" font-size="10">metal casing</text>
+
+  <!-- green/yellow (earth) top wire A -->
+  <path class="gy" d="M120,135 L300,110 L430,110"/>
+  <text x="300" y="90" text-anchor="middle" font-size="11" style="fill:#86C98B">green and yellow wire</text>
+  <circle cx="300" cy="110" r="3.5" class="pt"/>
+  <text x="300" y="128" text-anchor="middle" font-size="12" class="amber">A</text>
+
+  <!-- brown (live) middle wire, points B, C, D -->
+  <path class="brown" d="M120,160 L200,160 L300,180 L430,180"/>
+  <circle cx="200" cy="160" r="3.5" class="pt"/>
+  <text x="200" y="150" text-anchor="middle" font-size="12" class="amber">B</text>
+  <circle cx="300" cy="180" r="3.5" class="pt"/>
+  <text x="300" y="200" text-anchor="middle" font-size="12" class="amber">C</text>
+  <circle cx="430" cy="180" r="3.5" class="pt"/>
+  <text x="446" y="184" text-anchor="middle" font-size="12" class="amber">D</text>
+  <text x="300" y="240" text-anchor="middle" font-size="11" style="fill:#E8B65A">brown wire (live)</text>
+
+  <!-- blue (neutral) lower wire -->
+  <path class="blue" d="M120,180 L150,180 L150,255 L475,255 L475,205"/>
+  <text x="150" y="275" text-anchor="middle" font-size="11" style="fill:#6FB7E0">blue wire (neutral)</text>
+</svg>

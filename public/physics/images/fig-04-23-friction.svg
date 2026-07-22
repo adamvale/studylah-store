@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 220" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#6FB7E0"/></marker>
+    <marker id="arwR" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#E58F8F"/></marker>
+    <marker id="arwm" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#9AA0A6"/></marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .box { fill:#6FB7E0; opacity:0.24; stroke:#6FB7E0; stroke-width:1.6; }
+    .surface { stroke:#9AA0A6; stroke-width:1.6; }
+    .app { stroke:#6FB7E0; stroke-width:2.4; }
+    .fr { stroke:#E58F8F; stroke-width:2.4; }
+    .mot { stroke:#9AA0A6; stroke-width:1.8; }
+  </style>
+  <line class="surface" x1="60" y1="150" x2="440" y2="150"/>
+  <text x="80" y="168" font-size="11">surface</text>
+  <rect class="box" x="200" y="105" width="90" height="45"/>
+  <text x="245" y="132" text-anchor="middle" font-size="12">object</text>
+  <!-- direction of motion -->
+  <line class="mot" x1="300" y1="75" x2="380" y2="75" marker-end="url(#arwm)"/>
+  <text x="340" y="65" text-anchor="middle" font-size="11" fill="#9AA0A6">direction of motion</text>
+  <!-- applied force to the right -->
+  <line class="app" x1="290" y1="127" x2="375" y2="127" marker-end="url(#arw)"/>
+  <text x="335" y="145" text-anchor="middle" font-size="11.5" fill="#6FB7E0">applied force</text>
+  <!-- friction to the left, along contact surface -->
+  <line class="fr" x1="200" y1="150" x2="110" y2="150" marker-end="url(#arwR)"/>
+  <text x="150" y="142" text-anchor="middle" font-size="11.5" fill="#E58F8F">friction</text>
+  <text x="250" y="200" text-anchor="middle" font-size="11.5">Friction acts along the surfaces, opposite to the motion.</text>
+</svg>

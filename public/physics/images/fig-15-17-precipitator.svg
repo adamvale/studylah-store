@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="ah17" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
+    </marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .chimney { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .plate { fill:#E58F8F; opacity:0.14; stroke:#E58F8F; stroke-width:1.6; }
+    .grid  { stroke:#6FB7E0; stroke-width:2; }
+    .pos { fill:#E58F8F; font-size:12px; text-anchor:middle; }
+    .particle { fill:#9AA0A6; }
+    .particleN { fill:#6FB7E0; }
+    .arrow { stroke:#EAEAEA; stroke-width:2; fill:none; }
+    .num { fill:#E8B65A; font-size:12px; font-weight:bold; text-anchor:middle; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; }
+  </style>
+  <!-- chimney walls -->
+  <line class="chimney" x1="180" y1="60" x2="180" y2="360"/>
+  <line class="chimney" x1="380" y1="60" x2="380" y2="360"/>
+  <!-- positively charged collecting plates on inner walls -->
+  <rect class="plate" x="182" y="90" width="14" height="180"/>
+  <rect class="plate" x="364" y="90" width="14" height="180"/>
+  <g class="pos">
+    <text x="189" y="115">+</text><text x="189" y="155">+</text><text x="189" y="195">+</text><text x="189" y="235">+</text>
+    <text x="371" y="115">+</text><text x="371" y="155">+</text><text x="371" y="195">+</text><text x="371" y="235">+</text>
+  </g>
+  <!-- negatively charged metal grid near bottom -->
+  <line class="grid" x1="210" y1="300" x2="350" y2="300"/>
+  <g class="particleN"><circle cx="230" cy="300" r="2.5"/><circle cx="280" cy="300" r="2.5"/><circle cx="330" cy="300" r="2.5"/></g>
+  <!-- dirty gas rising -->
+  <line class="arrow" x1="280" y1="360" x2="280" y2="315" marker-end="url(#ah17)"/>
+  <g class="particle">
+    <circle cx="260" cy="345" r="4"/><circle cx="300" cy="350" r="4"/><circle cx="280" cy="335" r="4"/>
+  </g>
+  <!-- negatively charged particles moving to + plates -->
+  <g class="particleN">
+    <circle cx="240" cy="250" r="4"/><circle cx="320" cy="240" r="4"/><circle cx="270" cy="210" r="4"/><circle cx="330" cy="200" r="4"/>
+  </g>
+  <line class="arrow" x1="255" y1="240" x2="205" y2="200" marker-end="url(#ah17)"/>
+  <line class="arrow" x1="325" y1="230" x2="360" y2="200" marker-end="url(#ah17)"/>
+  <!-- clean gas out top -->
+  <line class="arrow" x1="280" y1="120" x2="280" y2="70" marker-end="url(#ah17)"/>
+  <!-- collecting bin -->
+  <path class="chimney" d="M215,335 L235,355 L325,355 L345,335" fill="none"/>
+  <!-- labels -->
+  <text x="280" y="45" text-anchor="middle" font-size="11">clean gas out (no pollutants)</text>
+  <text x="30" y="360" font-size="11">dirty waste gas in</text>
+  <line class="lead" x1="180" y1="180" x2="120" y2="180"/>
+  <text x="20" y="184" font-size="11">chimney</text>
+  <line class="lead" x1="196" y1="150" x2="430" y2="130"/>
+  <text x="435" y="134" font-size="11" fill="#E58F8F">+ collecting plate</text>
+  <line class="lead" x1="330" y1="300" x2="430" y2="300"/>
+  <text x="435" y="304" font-size="11" fill="#6FB7E0">&#8722; metal grid</text>
+  <text x="435" y="322" font-size="11" fill="#9AA0A6">(charges the dust)</text>
+  <line class="lead" x1="280" y1="355" x2="430" y2="370"/>
+  <text x="435" y="374" font-size="11">collecting bin</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .mass { fill:#6FB7E0; opacity:0.28; stroke:#6FB7E0; stroke-width:1.8; }
+    .force { stroke:#86C98B; stroke-width:2.4; fill:none; }
+  </style>
+  <defs>
+    <marker id="ah-m" markerWidth="10" markerHeight="10" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#86C98B"/>
+    </marker>
+  </defs>
+  <!-- small mass -->
+  <circle class="mass" cx="120" cy="120" r="42"/>
+  <line x1="120" y1="120" x2="162" y2="120" stroke="#6FB7E0" stroke-width="1.2"/>
+  <!-- large mass -->
+  <circle class="mass" cx="410" cy="120" r="70"/>
+  <line x1="410" y1="120" x2="340" y2="120" stroke="#6FB7E0" stroke-width="1.2"/>
+  <!-- attractive forces pointing toward each other -->
+  <path class="force" d="M175,120 L245,120" marker-end="url(#ah-m)"/>
+  <path class="force" d="M355,120 L285,120" marker-end="url(#ah-m)"/>
+  <!-- central label -->
+  <text x="265" y="82" text-anchor="middle" font-size="13" fill="#86C98B">gravitational force</text>
+  <text x="265" y="100" text-anchor="middle" font-size="12" fill="#86C98B">(force due to gravity)</text>
+  <!-- object labels -->
+  <text x="120" y="192" text-anchor="middle" font-size="12">object with mass</text>
+  <text x="410" y="215" text-anchor="middle" font-size="12">object with mass</text>
+</svg>

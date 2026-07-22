@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .fillg { fill:#EAEAEA; opacity:0.10; stroke:#EAEAEA; stroke-width:1.6; }
+    .frame { fill:none; stroke:#EAEAEA; stroke-width:2.4; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .lbl { fill:#6FB7E0; font-size:13px; }
+    .disp { fill:#86C98B; font-size:15px; font-family:monospace; }
+  </style>
+  <!-- C-frame -->
+  <path class="frame" d="M170,110 a95,95 0 0 0 0,120"/>
+  <!-- anvil -->
+  <rect class="fillg" x="170" y="160" width="40" height="20"/>
+  <!-- spindle gap -->
+  <rect class="fillg" x="250" y="162" width="55" height="16"/>
+  <!-- barrel with display -->
+  <rect class="fillg" x="305" y="130" width="120" height="80" rx="6"/>
+  <rect x="315" y="145" width="100" height="26" rx="3" fill="#0d1b12" stroke="#86C98B" stroke-width="1.2"/>
+  <text x="408" y="164" text-anchor="end" class="disp">0.000</text>
+  <!-- thimble -->
+  <rect class="fillg" x="425" y="140" width="90" height="60" rx="8"/>
+  <!-- ratchet -->
+  <rect class="fillg" x="515" y="152" width="40" height="36" rx="8"/>
+  <!-- labels -->
+  <text class="lbl" x="190" y="90" text-anchor="middle">anvil</text>
+  <path class="lead" d="M190,96 L190,160"/>
+  <text class="lbl" x="278" y="112" text-anchor="middle">spindle</text>
+  <path class="lead" d="M278,118 L278,162"/>
+  <text class="lbl" x="365" y="112" text-anchor="middle">lock</text>
+  <path class="lead" d="M365,118 L365,130"/>
+  <text class="lbl" x="470" y="112" text-anchor="middle">thimble</text>
+  <path class="lead" d="M470,118 L470,140"/>
+  <text class="lbl" x="555" y="128" text-anchor="middle">ratchet</text>
+  <path class="lead" d="M555,134 L540,152"/>
+  <text class="lbl" x="365" y="250" text-anchor="middle">digital display</text>
+  <path class="lead" d="M365,240 L365,171"/>
+</svg>

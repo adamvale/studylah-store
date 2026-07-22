@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .view { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .dust { fill:#6FB7E0; opacity:0.6; stroke:#6FB7E0; stroke-width:1.2; }
+    .lbl { font-size:12px; }
+  </style>
+  <circle class="view" cx="160" cy="150" r="120"/>
+  <!-- three dust specks suspended -->
+  <circle class="dust" cx="120" cy="110" r="6"/>
+  <circle class="dust" cx="200" cy="160" r="6"/>
+  <circle class="dust" cx="150" cy="205" r="6"/>
+  <text class="lbl" x="160" y="292" text-anchor="middle" fill="#9AA0A6" font-style="italic">dust specks suspended in still air (magnified)</text>
+</svg>

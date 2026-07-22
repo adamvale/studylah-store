@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 230" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .beam { fill:#6FB7E0; opacity:0.30; stroke:#6FB7E0; stroke-width:1.6; }
+    .pivot { fill:#E8B65A; opacity:0.35; stroke:#E8B65A; stroke-width:1.6; }
+    .force { stroke:#E58F8F; stroke-width:2.4; fill:none; }
+    .dim { stroke:#9AA0A6; stroke-width:1.3; fill:none; }
+    .lbl { font-size:13px; }
+    .ang { stroke:#86C98B; stroke-width:1.6; fill:none; }
+  </style>
+  <!-- beam -->
+  <rect class="beam" x="70" y="120" width="320" height="12"/>
+  <!-- pivot at left -->
+  <polygon class="pivot" points="82,158 106,158 94,132"/>
+  <text class="lbl" x="94" y="178" text-anchor="middle">pivot (fulcrum)</text>
+  <!-- perpendicular distance arrow -->
+  <line class="dim" x1="94" y1="92" x2="340" y2="92"/>
+  <path class="dim" d="M94,92 l8,-4 M94,92 l8,4"/>
+  <path class="dim" d="M340,92 l-8,-4 M340,92 l-8,4"/>
+  <text class="lbl" x="217" y="84" text-anchor="middle">perpendicular distance, d</text>
+  <!-- vertical guides -->
+  <line class="dim" x1="94" y1="92" x2="94" y2="130" stroke-dasharray="4 3"/>
+  <line class="dim" x1="340" y1="92" x2="340" y2="120" stroke-dasharray="4 3"/>
+  <!-- force arrow downward at 340 -->
+  <line class="force" x1="340" y1="40" x2="340" y2="118"/>
+  <path class="force" d="M340,118 l-5,-10 M340,118 l5,-10"/>
+  <text class="lbl" x="350" y="70" fill="#E58F8F">force, F</text>
+  <!-- 90 degree marker at beam -->
+  <path class="ang" d="M340,110 h-12 v-12"/>
+  <text class="lbl" x="320" y="106" fill="#86C98B" font-size="11">90°</text>
+</svg>

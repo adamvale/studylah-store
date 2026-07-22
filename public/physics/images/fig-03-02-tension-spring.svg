@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .obj { fill:#6FB7E0; opacity:0.30; stroke:#6FB7E0; stroke-width:1.6; }
+    .sup { stroke:#EAEAEA; stroke-width:2; fill:none; }
+    .hatch { stroke:#9AA0A6; stroke-width:1.2; }
+    .spring { stroke:#E8B65A; stroke-width:2; fill:none; }
+    .force { stroke:#86C98B; stroke-width:2.4; fill:none; }
+  </style>
+  <defs>
+    <marker id="ah-t" markerWidth="9" markerHeight="9" refX="6.5" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#86C98B"/>
+    </marker>
+  </defs>
+  <!-- support / ceiling -->
+  <line class="sup" x1="70" y1="30" x2="230" y2="30"/>
+  <g class="hatch">
+    <line x1="82" y1="30" x2="70" y2="18"/>
+    <line x1="110" y1="30" x2="98" y2="18"/>
+    <line x1="138" y1="30" x2="126" y2="18"/>
+    <line x1="166" y1="30" x2="154" y2="18"/>
+    <line x1="194" y1="30" x2="182" y2="18"/>
+    <line x1="222" y1="30" x2="210" y2="18"/>
+  </g>
+  <!-- spring -->
+  <path class="spring" d="M150,30 L150,50
+    L172,58 L128,72 L172,86 L128,100 L172,114 L128,128 L172,142 L128,156 L150,164 L150,182"/>
+  <!-- object -->
+  <rect class="obj" x="112" y="182" width="76" height="60"/>
+  <text x="150" y="217" text-anchor="middle" font-size="13">object</text>
+  <!-- tension arrow (spring pulls object up) -->
+  <path class="force" d="M210,182 L210,120" marker-end="url(#ah-t)"/>
+  <path class="lead" d="M210,182 L188,196"/>
+  <text x="222" y="150" font-size="13" fill="#86C98B">tension</text>
+  <!-- spring label -->
+  <path class="lead" d="M128,100 L96,100"/>
+  <text x="90" y="104" text-anchor="end" font-size="13" fill="#E8B65A">spring</text>
+</svg>

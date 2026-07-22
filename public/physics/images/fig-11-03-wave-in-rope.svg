@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 210" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .axis { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
+    .wave { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
+    .wave2 { stroke:#E8B65A; stroke-width:2.2; fill:none; stroke-dasharray:6 4; }
+    .rest { stroke:#9AA0A6; stroke-width:1.2; stroke-dasharray:5 4; fill:none; }
+    .guide { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:3 3; fill:none; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .dim { stroke:#E8B65A; stroke-width:1.4; fill:none; }
+    .lbl { fill:#E8B65A; font-size:13px; }
+    .lblb { fill:#6FB7E0; font-size:13px; }
+    .tick { stroke:#EAEAEA; stroke-width:1.2; }
+    .sm { font-size:12px; }
+  </style>
+
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
+    </marker>
+    <marker id="ahb" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6FB7E0"/>
+    </marker>
+    <marker id="aha" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/>
+    </marker>
+    <marker id="ahm" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#9AA0A6"/>
+    </marker>
+  </defs>
+  <line x1="120" y1="45" x2="360" y2="45" class="axis" marker-end="url(#ah)"/>
+  <text x="240" y="37" text-anchor="middle" font-size="12">wave motion</text>
+  <path class="wave" d="M 90.00,110.00 L 92.00,106.04 L 94.00,102.16 L 96.00,98.41 L 98.00,94.86 L 100.00,91.57 L 102.00,88.61 L 104.00,86.02 L 106.00,83.86 L 108.00,82.14 L 110.00,80.92 L 112.00,80.20 L 114.00,80.00 L 116.00,80.33 L 118.00,81.18 L 120.00,82.53 L 122.00,84.36 L 124.00,86.63 L 126.00,89.32 L 128.00,92.37 L 130.00,95.72 L 132.00,99.33 L 134.00,103.12 L 136.00,107.03 L 138.00,110.99 L 140.00,114.94 L 142.00,118.80 L 144.00,122.50 L 146.00,125.99 L 148.00,129.20 L 150.00,132.07 L 152.00,134.56 L 154.00,136.62 L 156.00,138.21 L 158.00,139.31 L 160.00,139.90 L 162.00,139.96 L 164.00,139.51 L 166.00,138.53 L 168.00,137.06 L 170.00,135.11 L 172.00,132.73 L 174.00,129.95 L 176.00,126.82 L 178.00,123.40 L 180.00,119.74 L 182.00,115.91 L 184.00,111.98 L 186.00,108.02 L 188.00,104.09 L 190.00,100.26 L 192.00,96.60 L 194.00,93.18 L 196.00,90.05 L 198.00,87.27 L 200.00,84.89 L 202.00,82.94 L 204.00,81.47 L 206.00,80.49 L 208.00,80.04 L 210.00,80.10 L 212.00,80.69 L 214.00,81.79 L 216.00,83.38 L 218.00,85.44 L 220.00,87.93 L 222.00,90.80 L 224.00,94.01 L 226.00,97.50 L 228.00,101.20 L 230.00,105.06 L 232.00,109.01 L 234.00,112.97 L 236.00,116.88 L 238.00,120.67 L 240.00,124.28 L 242.00,127.63 L 244.00,130.68 L 246.00,133.37 L 248.00,135.64 L 250.00,137.47 L 252.00,138.82 L 254.00,139.67 L 256.00,140.00 L 258.00,139.80 L 260.00,139.08 L 262.00,137.86 L 264.00,136.14 L 266.00,133.98 L 268.00,131.39 L 270.00,128.43 L 272.00,125.14 L 274.00,121.59 L 276.00,117.84 L 278.00,113.96 L 280.00,110.00 L 282.00,106.04 L 284.00,102.16 L 286.00,98.41 L 288.00,94.86 L 290.00,91.57 L 292.00,88.61 L 294.00,86.02 L 296.00,83.86 L 298.00,82.14 L 300.00,80.92 L 302.00,80.20 L 304.00,80.00 L 306.00,80.33 L 308.00,81.18 L 310.00,82.53 L 312.00,84.36 L 314.00,86.63 L 316.00,89.32 L 318.00,92.37 L 320.00,95.72 L 322.00,99.33 L 324.00,103.12 L 326.00,107.03 L 328.00,110.99 L 330.00,114.94 L 332.00,118.80 L 334.00,122.50 L 336.00,125.99 L 338.00,129.20 L 340.00,132.07 L 342.00,134.56 L 344.00,136.62 L 346.00,138.21 L 348.00,139.31 L 350.00,139.90 L 352.00,139.96 L 354.00,139.51 L 356.00,138.53 L 358.00,137.06 L 360.00,135.11 L 362.00,132.73 L 364.00,129.95 L 366.00,126.82 L 368.00,123.40 L 370.00,119.74 L 372.00,115.91 L 374.00,111.98 L 376.00,108.02 L 378.00,104.09 L 380.00,100.26 L 382.00,96.60 L 384.00,93.18 L 386.00,90.05 L 388.00,87.27 L 390.00,84.89 L 392.00,82.94 L 394.00,81.47 L 396.00,80.49 L 398.00,80.04"/>
+  <circle cx="80" cy="110" r="12" fill="#E8B65A" opacity="0.32" stroke="#E8B65A" stroke-width="1.4"/>
+  <line x1="60" y1="82" x2="60" y2="138" class="dim" marker-start="url(#aha)" marker-end="url(#aha)"/>
+  <text x="52" y="165" text-anchor="end" class="lbl">move the</text>
+  <text x="52" y="181" text-anchor="end" class="lbl">rope up</text>
+  <text x="52" y="197" text-anchor="end" class="lbl">and down</text>
+  <line x1="400" y1="70" x2="400" y2="150" stroke="#EAEAEA" stroke-width="2.5"/>
+  <line x1="400" y1="72" x2="412" y2="64" stroke="#9AA0A6" stroke-width="1.3"/>
+  <line x1="400" y1="82" x2="412" y2="74" stroke="#9AA0A6" stroke-width="1.3"/>
+  <line x1="400" y1="92" x2="412" y2="84" stroke="#9AA0A6" stroke-width="1.3"/>
+  <line x1="400" y1="102" x2="412" y2="94" stroke="#9AA0A6" stroke-width="1.3"/>
+  <line x1="400" y1="112" x2="412" y2="104" stroke="#9AA0A6" stroke-width="1.3"/>
+  <line x1="400" y1="122" x2="412" y2="114" stroke="#9AA0A6" stroke-width="1.3"/>
+  <line x1="400" y1="132" x2="412" y2="124" stroke="#9AA0A6" stroke-width="1.3"/>
+  <line x1="400" y1="142" x2="412" y2="134" stroke="#9AA0A6" stroke-width="1.3"/>
+  <text x="405" y="168" text-anchor="middle" font-size="11.5" fill="#9AA0A6">fixed end</text>
+
+</svg>

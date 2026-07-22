@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 280" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .wire { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .res { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .cellL { stroke:#EAEAEA; stroke-width:2; }
+    .cellS { stroke:#EAEAEA; stroke-width:5; }
+    .meter { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .lbl { fill:#6FB7E0; font-style:italic; }
+    .accent { fill:#E8B65A; }
+  </style>
+  <!-- supply on left (cell on a vertical rail: horizontal plates) -->
+  <text x="55" y="132" text-anchor="middle" font-size="12" class="lbl">V<tspan font-size="9">in</tspan></text>
+  <path class="wire" d="M94,60 L94,120"/>
+  <path class="wire" d="M94,136 L94,220"/>
+  <line class="cellL" x1="76" y1="122" x2="112" y2="122"/>
+  <line class="cellS" x1="86" y1="134" x2="102" y2="134"/>
+  <path class="wire" d="M94,60 L250,60"/>
+  <path class="wire" d="M94,220 L250,220"/>
+  <!-- R1 top (vertical) -->
+  <rect class="res" x="236" y="70" width="28" height="55"/>
+  <text x="278" y="100" font-size="13" class="lbl">R₁</text>
+  <!-- R2 bottom (vertical) -->
+  <rect class="res" x="236" y="150" width="28" height="55"/>
+  <text x="278" y="182" font-size="13" class="lbl">R₂</text>
+  <path class="wire" d="M250,125 L250,150"/>
+  <!-- tap between R1 and R2 to output -->
+  <path class="wire" d="M250,137 L340,137"/>
+  <circle cx="250" cy="137" r="3" fill="#EAEAEA"/>
+  <!-- voltmeter across R2 (output) -->
+  <circle class="meter" cx="360" cy="137" r="16"/>
+  <text x="360" y="142" text-anchor="middle" font-size="13">V</text>
+  <path class="wire" d="M376,137 L410,137 L410,220 L250,220"/>
+  <text x="430" y="141" font-size="12" class="lbl">V<tspan font-size="9">out</tspan></text>
+  <!-- formula box -->
+  <rect x="360" y="40" width="180" height="46" rx="4" fill="none" stroke="#9AA0A6" stroke-width="1.2"/>
+  <text x="450" y="70" text-anchor="middle" font-size="13" class="accent">V_out = R₂/(R₁+R₁) × V_in</text>
+</svg>

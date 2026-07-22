@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 230" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
+    </marker>
+    <marker id="arwB" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6FB7E0"/>
+    </marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .ball { fill:#6FB7E0; opacity:0.28; stroke:#6FB7E0; stroke-width:1.6; }
+    .ground { stroke:#9AA0A6; stroke-width:1.6; }
+    .f { stroke:#86C98B; stroke-width:2.4; }
+    .fr { stroke:#E58F8F; stroke-width:2.4; }
+    .vel { stroke:#6FB7E0; stroke-width:2; }
+  </style>
+  <line class="ground" x1="40" y1="150" x2="420" y2="150"/>
+  <text x="360" y="170" font-size="12">surface</text>
+  <circle class="ball" cx="230" cy="122" r="28"/>
+  <text x="230" y="126" text-anchor="middle" font-size="12">ball</text>
+  <!-- applied force F to the right -->
+  <line class="f" x1="260" y1="122" x2="345" y2="122" marker-end="url(#arw)"/>
+  <text x="305" y="112" text-anchor="middle" font-size="13" fill="#86C98B">F</text>
+  <!-- friction f to the left -->
+  <line class="fr" x1="200" y1="122" x2="115" y2="122" marker-end="url(#arw)"/>
+  <text x="155" y="112" text-anchor="middle" font-size="13" fill="#E58F8F">f</text>
+  <!-- constant velocity arrow -->
+  <line class="vel" x1="230" y1="70" x2="320" y2="70" marker-end="url(#arwB)"/>
+  <text x="275" y="60" text-anchor="middle" font-size="12" fill="#6FB7E0">constant velocity</text>
+  <text x="230" y="205" text-anchor="middle" font-size="12">F = f, resultant force is zero &#8212; the ball keeps the same speed and direction</text>
+</svg>

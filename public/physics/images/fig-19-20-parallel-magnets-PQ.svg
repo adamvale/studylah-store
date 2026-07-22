@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 220" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
+    .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
+    .pole { font-size:14px; font-weight:bold; fill:#EAEAEA; }
+    .lbl { fill:#E8B65A; font-size:13px; }
+  </style>
+  <!-- magnet P (top): N left, S right -->
+  <g transform="translate(60,50)">
+    <rect class="magN" x="0" y="0" width="150" height="32" rx="2"/>
+    <rect class="magS" x="150" y="0" width="150" height="32" rx="2"/>
+    <text class="pole" x="14" y="22">N</text>
+    <text class="pole" x="288" y="22">S</text>
+  </g>
+  <text x="375" y="72" class="lbl">magnet P</text>
+
+  <!-- magnet Q (bottom): N left, S right (parallel, same orientation) -->
+  <g transform="translate(60,130)">
+    <rect class="magN" x="0" y="0" width="150" height="32" rx="2"/>
+    <rect class="magS" x="150" y="0" width="150" height="32" rx="2"/>
+    <text class="pole" x="14" y="22">N</text>
+    <text class="pole" x="288" y="22">S</text>
+  </g>
+  <text x="375" y="152" class="lbl">magnet Q</text>
+</svg>

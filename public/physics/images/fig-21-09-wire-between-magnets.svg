@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .mag { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .magN { fill:#E58F8F; opacity:0.22; }
+    .magS { fill:#6FB7E0; opacity:0.22; }
+    .wire { fill:none; stroke:#E8B65A; stroke-width:2.4; }
+    .lead { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .mot { stroke:#86C98B; stroke-width:2.2; fill:none; marker-end:url(#ag); }
+    .lbl { font-size:12px; }
+  </style>
+  <defs>
+    <marker id="ag" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#86C98B"/></marker>
+  </defs>
+
+  <!-- N magnet (block) -->
+  <rect class="mag magN" x="50" y="110" width="90" height="90"/>
+  <rect class="mag" x="50" y="110" width="90" height="90"/>
+  <text x="95" y="162" font-size="18" text-anchor="middle">N</text>
+
+  <!-- S magnet (block) -->
+  <rect class="mag magS" x="320" y="110" width="90" height="90"/>
+  <rect class="mag" x="320" y="110" width="90" height="90"/>
+  <text x="365" y="162" font-size="18" text-anchor="middle">S</text>
+
+  <!-- copper wire (conductor in the field) -->
+  <line class="wire" x1="140" y1="155" x2="320" y2="155"/>
+  <text class="lbl" x="230" y="120" text-anchor="middle" fill="#E8B65A">copper wire</text>
+
+  <!-- downward motion -->
+  <line class="mot" x1="230" y1="140" x2="230" y2="205"/>
+  <text class="lbl" x="244" y="200" fill="#86C98B">moved down</text>
+
+  <!-- leads to galvanometer -->
+  <path class="lead" d="M140,155 L120,220 L205,262"/>
+  <path class="lead" d="M320,155 L340,220 L255,262"/>
+  <circle cx="230" cy="262" r="16" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
+  <text x="230" y="267" font-size="13" text-anchor="middle" fill="#E8B65A">G</text>
+  <text x="230" y="300" font-size="12" text-anchor="middle">galvanometer</text>
+</svg>

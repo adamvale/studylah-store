@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.5; }
+    .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.5; }
+    .pole { font-size:14px; font-weight:bold; fill:#EAEAEA; }
+    .force { stroke:#86C98B; stroke-width:2.4; fill:none; }
+    .fhead { fill:#86C98B; }
+    .title { font-size:14px; font-weight:bold; }
+    .sub { font-size:12.5px; fill:#9AA0A6; }
+  </style>
+
+  <!-- ===== Case 1: unlike poles attract ===== -->
+  <text x="30" y="40" class="title">Unlike poles — attraction</text>
+  <!-- left magnet N | S  -->
+  <g transform="translate(30,60)">
+    <rect class="magN" x="0" y="0" width="90" height="34" rx="2"/>
+    <rect class="magS" x="90" y="0" width="90" height="34" rx="2"/>
+    <text class="pole" x="14" y="22">N</text>
+    <text class="pole" x="168" y="22">S</text>
+  </g>
+  <!-- right magnet N | S  (its N faces the left S) -->
+  <g transform="translate(430,60)">
+    <rect class="magN" x="0" y="0" width="90" height="34" rx="2"/>
+    <rect class="magS" x="90" y="0" width="90" height="34" rx="2"/>
+    <text class="pole" x="14" y="22">N</text>
+    <text class="pole" x="168" y="22">S</text>
+  </g>
+  <!-- forces point toward each other -->
+  <g class="force">
+    <line x1="220" y1="77" x2="290" y2="77"/><polygon class="fhead" points="290,72 302,77 290,82"/>
+    <line x1="420" y1="77" x2="350" y2="77"/><polygon class="fhead" points="350,72 338,77 350,82"/>
+  </g>
+  <text x="320" y="110" text-anchor="middle" class="sub">forces pull the magnets together</text>
+
+  <!-- ===== Case 2: like poles (N-N) repel ===== -->
+  <text x="30" y="185" class="title">Like poles — repulsion</text>
+  <g transform="translate(30,205)">
+    <rect class="magN" x="0" y="0" width="90" height="34" rx="2"/>
+    <rect class="magS" x="90" y="0" width="90" height="34" rx="2"/>
+    <text class="pole" x="14" y="22">S</text>
+    <text class="pole" x="168" y="22">N</text>
+  </g>
+  <g transform="translate(430,205)">
+    <rect class="magN" x="0" y="0" width="90" height="34" rx="2"/>
+    <rect class="magS" x="90" y="0" width="90" height="34" rx="2"/>
+    <text class="pole" x="14" y="22">N</text>
+    <text class="pole" x="168" y="22">S</text>
+  </g>
+  <!-- forces point away from each other -->
+  <g class="force">
+    <line x1="290" y1="222" x2="220" y2="222"/><polygon class="fhead" points="220,217 208,222 220,227"/>
+    <line x1="350" y1="222" x2="420" y2="222"/><polygon class="fhead" points="420,217 432,222 420,227"/>
+  </g>
+  <text x="320" y="255" text-anchor="middle" class="sub">forces push the magnets apart</text>
+
+  <!-- ===== Case 3: like poles (S-S) repel ===== -->
+  <text x="30" y="315" class="title">Like poles — repulsion (S facing S)</text>
+  <g transform="translate(30,330)">
+    <rect class="magN" x="0" y="0" width="90" height="34" rx="2"/>
+    <rect class="magS" x="90" y="0" width="90" height="34" rx="2"/>
+    <text class="pole" x="14" y="22">N</text>
+    <text class="pole" x="168" y="22">S</text>
+  </g>
+  <g transform="translate(430,330)">
+    <rect class="magN" x="0" y="0" width="90" height="34" rx="2"/>
+    <rect class="magS" x="90" y="0" width="90" height="34" rx="2"/>
+    <text class="pole" x="14" y="22">S</text>
+    <text class="pole" x="168" y="22">N</text>
+  </g>
+  <g class="force">
+    <line x1="290" y1="347" x2="220" y2="347"/><polygon class="fhead" points="220,342 208,347 220,352"/>
+    <line x1="350" y1="347" x2="420" y2="347"/><polygon class="fhead" points="420,342 432,347 420,352"/>
+  </g>
+</svg>

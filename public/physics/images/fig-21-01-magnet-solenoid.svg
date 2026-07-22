@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .wire { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .coil { fill:none; stroke:#6FB7E0; stroke-width:1.6; }
+    .mag { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .magS { fill:#6FB7E0; opacity:0.28; }
+    .magN { fill:#E58F8F; opacity:0.28; }
+    .mot { stroke:#E8B65A; stroke-width:1.8; fill:none; marker-end:url(#ar); }
+    .ndl { stroke:#E8B65A; stroke-width:2.2; fill:none; }
+    .lbl { font-size:12px; }
+    .cap { font-size:13px; text-anchor:middle; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#E8B65A"/>
+    </marker>
+  </defs>
+
+  <!-- ===== Panel (a): moving towards ===== -->
+  <g>
+    <text class="lbl" x="60" y="60">moving towards</text>
+    <path class="mot" d="M60,72 L140,72"/>
+    <!-- bar magnet S | N -->
+    <rect class="mag magS" x="30" y="86" width="45" height="34"/>
+    <rect class="mag magN" x="75" y="86" width="45" height="34"/>
+    <rect class="mag" x="30" y="86" width="90" height="34"/>
+    <text x="46" y="108" font-size="14">S</text>
+    <text x="92" y="108" font-size="14">N</text>
+    <!-- solenoid -->
+    <g class="coil">
+      <ellipse cx="160" cy="103" rx="7" ry="20"/>
+      <ellipse cx="176" cy="103" rx="7" ry="20"/>
+      <ellipse cx="192" cy="103" rx="7" ry="20"/>
+      <ellipse cx="208" cy="103" rx="7" ry="20"/>
+      <ellipse cx="224" cy="103" rx="7" ry="20"/>
+      <ellipse cx="240" cy="103" rx="7" ry="20"/>
+    </g>
+    <!-- circuit to galvanometer -->
+    <path class="wire" d="M153,103 L145,103 L145,210 L185,210"/>
+    <path class="wire" d="M247,103 L255,103 L255,210 L215,210"/>
+    <circle cx="200" cy="210" r="16" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
+    <line class="ndl" x1="200" y1="210" x2="210" y2="199"/>
+    <text class="cap" x="150" y="255">(a) needle deflects one way</text>
+  </g>
+
+  <!-- ===== Panel (b): moving away ===== -->
+  <g transform="translate(300,0)">
+    <text class="lbl" x="60" y="60">moving away</text>
+    <path class="mot" d="M140,72 L60,72"/>
+    <rect class="mag magS" x="30" y="86" width="45" height="34"/>
+    <rect class="mag magN" x="75" y="86" width="45" height="34"/>
+    <rect class="mag" x="30" y="86" width="90" height="34"/>
+    <text x="46" y="108" font-size="14">S</text>
+    <text x="92" y="108" font-size="14">N</text>
+    <g class="coil">
+      <ellipse cx="160" cy="103" rx="7" ry="20"/>
+      <ellipse cx="176" cy="103" rx="7" ry="20"/>
+      <ellipse cx="192" cy="103" rx="7" ry="20"/>
+      <ellipse cx="208" cy="103" rx="7" ry="20"/>
+      <ellipse cx="224" cy="103" rx="7" ry="20"/>
+      <ellipse cx="240" cy="103" rx="7" ry="20"/>
+    </g>
+    <path class="wire" d="M153,103 L145,103 L145,210 L185,210"/>
+    <path class="wire" d="M247,103 L255,103 L255,210 L215,210"/>
+    <circle cx="200" cy="210" r="16" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
+    <line class="ndl" x1="200" y1="210" x2="190" y2="199"/>
+    <text class="cap" x="150" y="255">(b) needle deflects the other way</text>
+  </g>
+
+  <!-- ===== Panel (c): stationary ===== -->
+  <g transform="translate(600,0)">
+    <text class="lbl" x="60" y="60">stationary</text>
+    <rect class="mag magS" x="30" y="86" width="45" height="34"/>
+    <rect class="mag magN" x="75" y="86" width="45" height="34"/>
+    <rect class="mag" x="30" y="86" width="90" height="34"/>
+    <text x="46" y="108" font-size="14">S</text>
+    <text x="92" y="108" font-size="14">N</text>
+    <g class="coil">
+      <ellipse cx="160" cy="103" rx="7" ry="20"/>
+      <ellipse cx="176" cy="103" rx="7" ry="20"/>
+      <ellipse cx="192" cy="103" rx="7" ry="20"/>
+      <ellipse cx="208" cy="103" rx="7" ry="20"/>
+      <ellipse cx="224" cy="103" rx="7" ry="20"/>
+      <ellipse cx="240" cy="103" rx="7" ry="20"/>
+    </g>
+    <path class="wire" d="M153,103 L145,103 L145,210 L185,210"/>
+    <path class="wire" d="M247,103 L255,103 L255,210 L215,210"/>
+    <circle cx="200" cy="210" r="16" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
+    <line class="ndl" x1="200" y1="210" x2="200" y2="196"/>
+    <text class="cap" x="150" y="255">(c) no deflection</text>
+  </g>
+</svg>

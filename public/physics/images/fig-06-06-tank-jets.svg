@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 260" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .tank { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .liq { fill:#6FB7E0; opacity:0.18; }
+    .jet { fill:none; stroke:#6FB7E0; stroke-width:1.8; }
+    .lbl { font-size:11px; }
+    .lead { stroke:#9AA0A6; stroke-width:1; }
+    .amber { fill:#E8B65A; }
+  </style>
+  <rect class="liq" x="70" y="45" width="90" height="180"/>
+  <path class="tank" d="M70,30 L70,225 L160,225"/>
+  <line x1="70" y1="45" x2="160" y2="45" stroke="#6FB7E0" stroke-width="1.4"/>
+  <text x="115" y="24" text-anchor="middle" class="lbl">water tank</text>
+  <line x1="160" y1="30" x2="160" y2="225" stroke="#EAEAEA" stroke-width="2"/>
+
+  <!-- three holes at different depths, jets travel different distances -->
+  <!-- top hole A -->
+  <circle cx="160" cy="90" r="3" class="amber"/>
+  <path class="jet" d="M162,92 Q210,118 245,225"/>
+  <text x="170" y="86" class="lbl amber">A</text>
+  <!-- middle hole B -->
+  <circle cx="160" cy="140" r="3" class="amber"/>
+  <path class="jet" d="M162,142 Q240,165 320,225"/>
+  <text x="170" y="136" class="lbl amber">B</text>
+  <!-- bottom hole C -->
+  <circle cx="160" cy="195" r="3" class="amber"/>
+  <path class="jet" d="M162,197 Q290,210 410,225"/>
+  <text x="170" y="191" class="lbl amber">C</text>
+
+  <line x1="70" y1="225" x2="430" y2="225" stroke="#9AA0A6" stroke-width="1.5"/>
+  <text x="115" y="252" class="lbl">A: shallow &#8594; least pressure, shortest jet</text>
+  <text x="300" y="252" class="lbl">C: deepest &#8594; greatest pressure, longest jet</text>
+</svg>

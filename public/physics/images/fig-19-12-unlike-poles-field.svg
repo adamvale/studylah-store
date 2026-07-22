@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
+    .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
+    .pole { font-size:15px; font-weight:bold; fill:#EAEAEA; }
+    .fl { stroke:#6FB7E0; stroke-width:1.5; fill:none; }
+    .fhead { fill:#6FB7E0; }
+    .lbl { fill:#E8B65A; font-size:12.5px; }
+  </style>
+
+  <!-- Field lines run from the N pole (left) across the gap into the S pole (right): ATTRACTION -->
+  <!-- straight axial lines across the gap -->
+  <g class="fl">
+    <line x1="270" y1="170" x2="370" y2="170"/>
+    <path d="M270,158 C305,150 335,150 370,158"/>
+    <path d="M270,182 C305,190 335,190 370,182"/>
+    <path d="M270,145 C305,120 335,120 370,145"/>
+    <path d="M270,195 C305,220 335,220 370,195"/>
+  </g>
+  <!-- outer looping lines that leave far end N, sweep around, into far end S -->
+  <path class="fl" d="M270,150 C210,90 430,90 370,150"/>
+  <path class="fl" d="M270,190 C210,250 430,250 370,190"/>
+
+  <!-- arrowheads: N(left) -> S(right), pointing right across the gap -->
+  <g class="fhead">
+    <polygon points="315,165 315,175 328,170"/>
+    <polygon points="315,150 315,160 328,152"/>
+    <polygon points="315,183 315,193 328,190"/>
+    <polygon points="315,124 316,134 329,128"/>
+    <polygon points="315,206 316,196 329,202"/>
+  </g>
+
+  <!-- magnets -->
+  <g transform="translate(90,155)">
+    <rect class="magS" x="0" y="0" width="90" height="30" rx="2"/>
+    <rect class="magN" x="90" y="0" width="90" height="30" rx="2"/>
+    <text class="pole" x="14" y="21">S</text>
+    <text class="pole" x="168" y="21">N</text>
+  </g>
+  <g transform="translate(370,155)">
+    <rect class="magS" x="0" y="0" width="90" height="30" rx="2"/>
+    <rect class="magN" x="90" y="0" width="90" height="30" rx="2"/>
+    <text class="pole" x="14" y="21">S</text>
+    <text class="pole" x="168" y="21">N</text>
+  </g>
+
+  <text x="320" y="40" text-anchor="middle" class="lbl">Unlike poles facing — attraction</text>
+  <text x="320" y="300" text-anchor="middle" font-size="12.5">Field lines run straight across the gap from N into S,</text>
+  <text x="320" y="318" text-anchor="middle" font-size="12.5">pulling the two magnets together.</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.4; }
+    .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.4; }
+    .bar { fill:#9AA0A6; opacity:0.20; stroke:#EAEAEA; stroke-width:1.5; }
+    .pole { font-size:12px; font-weight:bold; fill:#EAEAEA; }
+    .path { stroke:#9AA0A6; stroke-width:1.3; stroke-dasharray:5 4; fill:none; }
+    .mv { stroke:#86C98B; stroke-width:2; fill:none; }
+    .mhead { fill:#86C98B; }
+    .lbl { fill:#E8B65A; font-size:12px; }
+    .title { font-size:13px; font-weight:bold; }
+  </style>
+
+  <!-- ===== Single touch ===== -->
+  <text x="30" y="30" class="title">Single-touch method</text>
+  <!-- steel bar -->
+  <g transform="translate(30,150)">
+    <rect class="bar" x="0" y="0" width="220" height="30" rx="2"/>
+    <text class="pole" x="10" y="20">N</text>
+    <text class="pole" x="200" y="20">S</text>
+  </g>
+  <text x="30" y="205" class="lbl">steel bar to be magnetised</text>
+  <!-- stroking magnet tilted, moving left-to-right, S pole down -->
+  <g transform="translate(150,70) rotate(20)">
+    <rect class="magN" x="0" y="0" width="45" height="24" rx="2"/>
+    <rect class="magS" x="45" y="0" width="45" height="24" rx="2"/>
+    <text class="pole" x="12" y="17">N</text>
+    <text class="pole" x="72" y="17">S</text>
+  </g>
+  <!-- motion path arrow -->
+  <path class="mv" d="M70,60 C140,30 190,30 250,60"/>
+  <polygon class="mhead" points="250,60 240,53 242,64"/>
+  <text x="120" y="35" class="lbl">stroke one way only, same pole down</text>
+
+  <!-- ===== Double touch ===== -->
+  <text x="360" y="30" class="title">Double-touch method</text>
+  <g transform="translate(370,150)">
+    <rect class="bar" x="0" y="0" width="220" height="30" rx="2"/>
+    <text class="pole" x="10" y="20">N</text>
+    <text class="pole" x="200" y="20">S</text>
+  </g>
+  <text x="370" y="205" class="lbl">steel bar to be magnetised</text>
+  <!-- two magnets, opposite poles down, stroke outward from centre -->
+  <g transform="translate(420,80) rotate(-20)">
+    <rect class="magS" x="0" y="0" width="40" height="22" rx="2"/>
+    <rect class="magN" x="40" y="0" width="40" height="22" rx="2"/>
+    <text class="pole" x="10" y="16">S</text>
+    <text class="pole" x="62" y="16">N</text>
+  </g>
+  <g transform="translate(500,80) rotate(20)">
+    <rect class="magN" x="0" y="0" width="40" height="22" rx="2"/>
+    <rect class="magS" x="40" y="0" width="40" height="22" rx="2"/>
+    <text class="pole" x="10" y="16">N</text>
+    <text class="pole" x="62" y="16">S</text>
+  </g>
+  <path class="mv" d="M470,55 C440,40 410,45 390,60"/>
+  <polygon class="mhead" points="390,60 402,56 397,66"/>
+  <path class="mv" d="M510,55 C540,40 570,45 585,60"/>
+  <polygon class="mhead" points="585,60 573,56 578,66"/>
+  <text x="400" y="255" class="lbl">two magnets stroke outward from the centre</text>
+</svg>

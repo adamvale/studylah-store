@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .wire { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .lbl { font-size:12px; }
+    .node { font-size:14px; fill:#6FB7E0; font-weight:bold; }
+    .flow { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
+  </style>
+  <!-- cell on top -->
+  <path class="wire" d="M70,45 L205,45 M221,45 L350,45"/>
+  <line class="wire" x1="205" y1="29" x2="205" y2="61" stroke-width="2.4"/>
+  <line class="wire" x1="221" y1="37" x2="221" y2="53" stroke-width="5"/>
+  <text x="213" y="22" class="lbl" text-anchor="middle">12 V</text>
+  <!-- rails down to nodes P (left) and R (right) -->
+  <path class="wire" d="M70,45 L70,150"/>
+  <path class="wire" d="M350,45 L350,150"/>
+  <text x="52" y="155" class="node">P</text>
+  <text x="356" y="155" class="node">R</text>
+  <!-- top path P - Q - R -->
+  <path class="wire" d="M70,150 L70,110 L110,110"/>
+  <rect class="wire" x="110" y="98" width="46" height="24"/>
+  <path class="wire" d="M156,110 L200,110"/>
+  <circle cx="210" cy="110" r="3" fill="#6FB7E0"/>
+  <text x="210" y="98" class="node" text-anchor="middle">Q</text>
+  <path class="wire" d="M220,110 L264,110"/>
+  <rect class="wire" x="264" y="98" width="46" height="24"/>
+  <path class="wire" d="M310,110 L350,110 L350,150"/>
+  <text x="133" y="92" class="lbl" text-anchor="middle">2 &#8486;</text>
+  <text x="287" y="92" class="lbl" text-anchor="middle">2 &#8486;</text>
+  <!-- bottom path P - S - R -->
+  <path class="wire" d="M70,150 L70,200 L110,200"/>
+  <rect class="wire" x="110" y="188" width="46" height="24"/>
+  <path class="wire" d="M156,200 L200,200"/>
+  <circle cx="210" cy="200" r="3" fill="#6FB7E0"/>
+  <text x="210" y="224" class="node" text-anchor="middle">S</text>
+  <path class="wire" d="M220,200 L264,200"/>
+  <rect class="wire" x="264" y="188" width="46" height="24"/>
+  <path class="wire" d="M310,200 L350,200 L350,150"/>
+  <text x="133" y="182" class="lbl" text-anchor="middle">2 &#8486;</text>
+  <text x="287" y="182" class="lbl" text-anchor="middle">2 &#8486;</text>
+  <!-- current label -->
+  <path class="flow" d="M350,90 l0,-22"/>
+  <path class="flow" d="M350,68 l-4,10 M350,68 l4,10"/>
+  <text x="360" y="88" class="lbl" fill="#6FB7E0">I</text>
+</svg>

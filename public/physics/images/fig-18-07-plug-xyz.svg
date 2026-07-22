@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 380" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .body { fill:#6FB7E0; opacity:0.10; stroke:#EAEAEA; stroke-width:2; }
+    .pin { fill:#9AA0A6; opacity:0.35; stroke:#EAEAEA; stroke-width:1.4; }
+    .wire { stroke:#EAEAEA; stroke-width:2.4; fill:none; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; }
+    .term { fill:none; stroke:#EAEAEA; stroke-width:1.4; }
+    .fuse { fill:#E8B65A; opacity:0.20; stroke:#E8B65A; stroke-width:1.6; }
+    .amber { fill:#E8B65A; }
+  </style>
+  <path class="body" d="M110,50 Q110,35 135,35 L345,35 Q370,35 370,50 L370,290 Q370,320 320,320 L160,320 Q110,320 110,290 Z"/>
+  <!-- pins -->
+  <rect class="pin" x="232" y="48" width="16" height="46" rx="2"/>
+  <rect class="pin" x="300" y="140" width="16" height="44" rx="2"/>
+  <rect class="pin" x="165" y="140" width="16" height="44" rx="2"/>
+  <!-- earth wire (X) -->
+  <circle class="term" cx="240" cy="105" r="6"/>
+  <path class="wire" d="M240,111 Q222,140 210,170 Q204,205 218,240"/>
+  <!-- neutral wire (Y) -->
+  <circle class="term" cx="173" cy="195" r="6"/>
+  <path class="wire" d="M173,201 Q170,230 200,248"/>
+  <!-- fuse M + live wire (Z) -->
+  <rect class="fuse" x="290" y="194" width="46" height="18" rx="3"/>
+  <circle class="term" cx="308" cy="230" r="6"/>
+  <path class="wire" d="M290,203 L278,203 L278,225 Q278,245 260,252"/>
+  <!-- cord grip -->
+  <rect class="term" x="210" y="245" width="60" height="18" rx="3"/>
+  <path class="body" d="M222,263 L222,305 Q222,320 240,320 Q258,320 258,305 L258,263 Z"/>
+  <!-- labels X Y Z M -->
+  <line class="lead" x1="210" y1="170" x2="90" y2="145"/>
+  <text x="85" y="149" text-anchor="end" font-size="14" class="amber">X</text>
+  <line class="lead" x1="173" y1="201" x2="90" y2="225"/>
+  <text x="85" y="229" text-anchor="end" font-size="14" class="amber">Y</text>
+  <line class="lead" x1="313" y1="203" x2="410" y2="180"/>
+  <text x="418" y="184" font-size="14" class="amber">M</text>
+  <line class="lead" x1="290" y1="225" x2="410" y2="240"/>
+  <text x="418" y="244" font-size="14" class="amber">Z</text>
+</svg>

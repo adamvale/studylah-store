@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .tube { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .dense { fill:#6FB7E0; opacity:0.40; }
+    .light { fill:#E8B65A; opacity:0.35; }
+    .level { stroke:#9AA0A6; stroke-width:1.2; stroke-dasharray:5 3; }
+    .height { stroke:#E8B65A; stroke-width:1.5; }
+    .lbl { font-size:11px; }
+  </style>
+  <!-- U-tube outline -->
+  <path class="tube" d="M110,50 L110,210 Q110,245 145,245 L235,245 Q270,245 270,210 L270,50"/>
+  <path class="tube" d="M140,50 L140,210 Q140,215 145,215 L235,215 Q240,215 240,210 L240,50"/>
+
+  <!-- denser liquid at bottom (both limbs) -->
+  <path class="dense" d="M110,150 L110,210 Q110,245 145,245 L235,245 Q270,245 270,210 L270,150 L240,150 L240,210 Q240,215 235,215 L145,215 Q140,215 140,210 L140,150 Z"/>
+  <!-- lighter liquid on left limb above -->
+  <rect class="light" x="110" y="90" width="30" height="60"/>
+  <!-- denser liquid a bit higher on right limb -->
+  <rect class="dense" x="240" y="118" width="30" height="32"/>
+
+  <!-- labels -->
+  <text x="60" y="115" class="lbl" fill="#E8B65A">less dense</text>
+  <text x="60" y="128" class="lbl" fill="#E8B65A">liquid (h&#8321;)</text>
+  <text x="278" y="130" class="lbl" fill="#6FB7E0">denser</text>
+  <text x="278" y="143" class="lbl" fill="#6FB7E0">liquid (h&#8322;)</text>
+
+  <!-- interface level A and B -->
+  <line class="level" x1="110" y1="150" x2="270" y2="150"/>
+  <circle cx="125" cy="150" r="3.5" fill="#EAEAEA"/>
+  <circle cx="255" cy="150" r="3.5" fill="#EAEAEA"/>
+  <text x="118" y="167" class="lbl">A</text>
+  <text x="258" y="167" class="lbl">B</text>
+
+  <!-- heights -->
+  <line class="height" x1="95" y1="90" x2="95" y2="150"/>
+  <line class="height" x1="90" y1="90" x2="100" y2="90"/><line class="height" x1="90" y1="150" x2="100" y2="150"/>
+  <text x="82" y="122" class="lbl" fill="#E8B65A">h&#8321;</text>
+  <line class="height" x1="288" y1="118" x2="288" y2="150"/>
+  <line class="height" x1="283" y1="118" x2="293" y2="118"/><line class="height" x1="283" y1="150" x2="293" y2="150"/>
+  <text x="295" y="137" class="lbl" fill="#E8B65A">h&#8322;</text>
+
+  <text x="200" y="272" text-anchor="middle" class="lbl">Same level A, B &#8594; h&#8321;&#961;&#8321; = h&#8322;&#961;&#8322;</text>
+</svg>

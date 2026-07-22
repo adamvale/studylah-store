@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 260" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .beaker { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .liq { fill:#6FB7E0; opacity:0.28; stroke:#6FB7E0; stroke-width:1.2; }
+    .p { fill:#6FB7E0; stroke:#EAEAEA; stroke-width:1; }
+    .esc { fill:#86C98B; stroke:#EAEAEA; stroke-width:1; }
+    .arr { stroke:#86C98B; stroke-width:1.4; fill:none; }
+    .tag { fill:#E8B65A; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+  </style>
+  <defs>
+    <marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#86C98B"/>
+    </marker>
+  </defs>
+  <!-- container -->
+  <path class="beaker" d="M90,90 L90,215 Q90,230 110,230 L300,230 Q320,230 320,215 L320,90"/>
+  <rect class="liq" x="92" y="150" width="226" height="80"/>
+  <line x1="92" y1="150" x2="318" y2="150" stroke="#6FB7E0" stroke-width="1.4"/>
+  <!-- particles in liquid -->
+  <g class="p">
+    <circle cx="130" cy="185" r="7"/><circle cx="160" cy="200" r="7"/><circle cx="195" cy="180" r="7"/>
+    <circle cx="230" cy="200" r="7"/><circle cx="265" cy="185" r="7"/><circle cx="150" cy="215" r="7"/>
+    <circle cx="220" cy="215" r="7"/><circle cx="285" cy="210" r="7"/>
+  </g>
+  <!-- escaping high-KE surface particles -->
+  <g class="esc">
+    <circle cx="170" cy="120" r="7"/><circle cx="240" cy="105" r="7"/><circle cx="290" cy="130" r="7"/>
+  </g>
+  <g class="arr" marker-end="url(#a2)">
+    <path d="M172,148 C168,138 170,130 170,128"/>
+    <path d="M238,148 C232,130 240,118 240,113"/>
+    <path d="M288,148 C286,142 290,138 290,138"/>
+  </g>
+  <text class="tag" x="255" y="70">fast particles escape from the surface</text>
+  <path class="lead" d="M258,74 L240,100"/>
+  <text class="tag" x="20" y="205">liquid</text>
+  <path class="lead" d="M52,201 L92,195"/>
+</svg>

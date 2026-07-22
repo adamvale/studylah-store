@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 380" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .body { fill:#6FB7E0; opacity:0.10; stroke:#EAEAEA; stroke-width:2; }
+    .pin { fill:#9AA0A6; opacity:0.35; stroke:#EAEAEA; stroke-width:1.4; }
+    .wire { stroke:#EAEAEA; stroke-width:2.4; fill:none; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; }
+    .term { fill:none; stroke:#EAEAEA; stroke-width:1.4; }
+    .fuse { fill:#E8B65A; opacity:0.20; stroke:#E8B65A; stroke-width:1.6; }
+    .amber { fill:#E8B65A; }
+  </style>
+  <path class="body" d="M120,55 Q120,40 145,40 L355,40 Q380,40 380,55 L380,300 Q380,330 330,330 L170,330 Q120,330 120,300 Z"/>
+  <!-- pins -->
+  <rect class="pin" x="242" y="53" width="16" height="46" rx="2"/>
+  <rect class="pin" x="310" y="150" width="16" height="44" rx="2"/>
+  <rect class="pin" x="175" y="150" width="16" height="44" rx="2"/>
+  <!-- earth E wire and terminal -->
+  <circle class="term" cx="250" cy="112" r="6"/>
+  <path class="wire" d="M250,118 Q232,150 220,180 Q214,215 228,250"/>
+  <!-- neutral B (left) -->
+  <circle class="term" cx="183" cy="205" r="6"/>
+  <path class="wire" d="M183,211 Q180,240 210,258"/>
+  <!-- fuse D + live A (right) -->
+  <rect class="fuse" x="298" y="204" width="46" height="18" rx="3"/>
+  <circle class="term" cx="318" cy="240" r="6"/>
+  <path class="wire" d="M298,213 L286,213 L286,235 Q286,255 268,262"/>
+  <!-- cord grip C -->
+  <rect class="term" x="220" y="255" width="60" height="18" rx="3"/>
+  <path class="body" d="M232,273 L232,315 Q232,330 250,330 Q268,330 268,315 L268,273 Z"/>
+  <!-- labels A(live) B(earth-pin top) C D E -->
+  <line class="lead" x1="318" y1="222" x2="420" y2="200"/>
+  <text x="428" y="204" font-size="14" class="amber">A</text>
+  <line class="lead" x1="250" y1="60" x2="330" y2="30"/>
+  <text x="338" y="30" font-size="14" class="amber">B</text>
+  <line class="lead" x1="280" y1="263" x2="410" y2="290"/>
+  <text x="418" y="294" font-size="14" class="amber">C</text>
+  <line class="lead" x1="321" y1="213" x2="330" y2="360"/>
+  <text x="330" y="372" font-size="14" class="amber">D</text>
+  <line class="lead" x1="183" y1="211" x2="90" y2="185"/>
+  <text x="85" y="189" text-anchor="end" font-size="14" class="amber">E</text>
+</svg>

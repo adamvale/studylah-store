@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:11px; }
+    .sphere { fill:#9AA0A6; opacity:0.2; stroke:#EAEAEA; stroke-width:1.5; }
+    .stand { fill:none; stroke:#9AA0A6; stroke-width:1.5; }
+    .rodn { fill:#6FB7E0; opacity:0.18; stroke:#6FB7E0; stroke-width:1.4; }
+    .pos { fill:#E58F8F; font-size:12px; text-anchor:middle; }
+    .neg { fill:#6FB7E0; font-size:13px; text-anchor:middle; }
+    .hd { font-size:12px; font-weight:bold; }
+  </style>
+  <!-- generic stand -->
+  <!-- STEP 1: two touching neutral spheres -->
+  <text x="90" y="28" class="hd">1. Two spheres touching</text>
+  <circle class="sphere" cx="75" cy="90" r="30"/>
+  <circle class="sphere" cx="135" cy="90" r="30"/>
+  <text class="pos" x="70" y="88">+</text><text class="neg" x="90" y="88">&#8722;</text>
+  <text class="neg" x="120" y="88">&#8722;</text><text class="pos" x="140" y="94">+</text>
+  <line class="stand" x1="75" y1="120" x2="75" y2="150"/><rect x="63" y="150" width="24" height="7" fill="#9AA0A6" opacity="0.4"/>
+  <line class="stand" x1="135" y1="120" x2="135" y2="150"/><rect x="123" y="150" width="24" height="7" fill="#9AA0A6" opacity="0.4"/>
+  <text x="105" y="185" text-anchor="middle">neutral, on insulating stands</text>
+
+  <!-- STEP 2: negative rod near left; charges migrate -->
+  <text x="430" y="28" class="hd">2. Negative rod brought near</text>
+  <rect class="rodn" x="300" y="55" width="70" height="16" rx="5" transform="rotate(-18 335 63)"/>
+  <text class="neg" x="315" y="60">&#8722;</text><text class="neg" x="340" y="52">&#8722;</text>
+  <circle class="sphere" cx="420" cy="95" r="30"/>
+  <circle class="sphere" cx="480" cy="95" r="30"/>
+  <text class="pos" x="412" y="93">+</text><text class="pos" x="420" y="105">+</text><text class="pos" x="405" y="100">+</text>
+  <text class="neg" x="472" y="93">&#8722;</text><text class="neg" x="488" y="93">&#8722;</text><text class="neg" x="490" y="105">&#8722;</text>
+  <line class="stand" x1="420" y1="125" x2="420" y2="155"/><rect x="408" y="155" width="24" height="7" fill="#9AA0A6" opacity="0.4"/>
+  <line class="stand" x1="480" y1="125" x2="480" y2="155"/><rect x="468" y="155" width="24" height="7" fill="#9AA0A6" opacity="0.4"/>
+  <text x="450" y="185" text-anchor="middle">electrons pushed to far sphere</text>
+
+  <!-- STEP 3: separate then remove rod -> equal & opposite -->
+  <text x="230" y="222" class="hd">3. Separate spheres, then remove rod &#8594; equal but opposite charges</text>
+  <circle class="sphere" cx="210" cy="255" r="26"/>
+  <text class="pos" x="202" y="252">+</text><text class="pos" x="218" y="252">+</text><text class="pos" x="210" y="268">+</text>
+  <line class="stand" x1="210" y1="281" x2="210" y2="290"/>
+  <circle class="sphere" cx="330" cy="255" r="26"/>
+  <text class="neg" x="322" y="253">&#8722;</text><text class="neg" x="338" y="253">&#8722;</text><text class="neg" x="330" y="268">&#8722;</text>
+  <line class="stand" x1="330" y1="281" x2="330" y2="290"/>
+  <text x="210" y="252" fill="#E58F8F"></text>
+</svg>

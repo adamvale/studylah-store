@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
+    .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
+    .pole { font-size:15px; font-weight:bold; fill:#EAEAEA; }
+    .fl { stroke:#6FB7E0; stroke-width:1.5; fill:none; }
+    .fhead { fill:#6FB7E0; }
+    .lbl { fill:#E8B65A; font-size:12.5px; }
+    .np { fill:#E8B65A; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+  </style>
+
+  <!-- Two N poles face each other. Field lines from each N sweep away up & down;
+       they do NOT meet in the middle -> neutral point X between them. -->
+  <!-- lines from LEFT N pole (at x=270) curving up-left and down-left, plus splaying away from gap -->
+  <g class="fl">
+    <!-- left magnet's own loops going back to its S end -->
+    <path d="M270,165 C260,110 150,110 90,150"/>
+    <path d="M270,195 C260,250 150,250 90,210"/>
+    <!-- lines leaving left N, deflected up & down away from centre -->
+    <path d="M270,168 C300,150 305,100 300,60"/>
+    <path d="M270,192 C300,210 305,260 300,300"/>
+    <!-- right magnet mirror -->
+    <path d="M370,165 C380,110 490,110 550,150"/>
+    <path d="M370,195 C380,250 490,250 550,210"/>
+    <path d="M370,168 C340,150 335,100 340,60"/>
+    <path d="M370,192 C340,210 335,260 340,300"/>
+  </g>
+
+  <!-- arrowheads leaving each N pole -->
+  <g class="fhead">
+    <polygon points="299,90 293,98 303,99"/>
+    <polygon points="299,270 293,262 303,261"/>
+    <polygon points="341,90 347,98 337,99"/>
+    <polygon points="341,270 347,262 337,261"/>
+    <polygon points="180,110 172,113 178,121"/>
+    <polygon points="180,250 172,247 178,239"/>
+    <polygon points="460,110 468,113 462,121"/>
+    <polygon points="460,250 468,247 462,239"/>
+  </g>
+
+  <!-- neutral point X in the middle of the gap -->
+  <circle cx="320" cy="180" r="3.5" class="np"/>
+  <text x="320" y="150" text-anchor="middle" class="lbl">X</text>
+  <text x="320" y="332" text-anchor="middle" class="lbl">neutral point X: the two fields cancel — no net force</text>
+  <path class="lead" d="M320,158 L320,176"/>
+
+  <!-- magnets: both N facing the gap -->
+  <g transform="translate(90,165)">
+    <rect class="magS" x="0" y="0" width="90" height="30" rx="2"/>
+    <rect class="magN" x="90" y="0" width="90" height="30" rx="2"/>
+    <text class="pole" x="14" y="21">S</text>
+    <text class="pole" x="168" y="21">N</text>
+  </g>
+  <g transform="translate(370,165)">
+    <rect class="magN" x="0" y="0" width="90" height="30" rx="2"/>
+    <rect class="magS" x="90" y="0" width="90" height="30" rx="2"/>
+    <text class="pole" x="14" y="21">N</text>
+    <text class="pole" x="168" y="21">S</text>
+  </g>
+
+  <text x="320" y="40" text-anchor="middle" class="lbl">Like poles facing — repulsion</text>
+</svg>

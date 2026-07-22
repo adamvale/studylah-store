@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 260" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .fl { stroke:#6FB7E0; stroke-width:1.8; fill:none; }
+    .fhead { fill:#6FB7E0; }
+    .title { font-size:13px; font-weight:bold; }
+    .note { font-size:12px; fill:#9AA0A6; }
+  </style>
+
+  <!-- uniform: parallel, equally spaced -->
+  <text x="30" y="30" class="title">Uniform field</text>
+  <g class="fl">
+    <line x1="30" y1="60" x2="230" y2="60"/>
+    <line x1="30" y1="85" x2="230" y2="85"/>
+    <line x1="30" y1="110" x2="230" y2="110"/>
+    <line x1="30" y1="135" x2="230" y2="135"/>
+    <line x1="30" y1="160" x2="230" y2="160"/>
+  </g>
+  <g class="fhead">
+    <polygon points="150,55 150,65 163,60"/>
+    <polygon points="150,80 150,90 163,85"/>
+    <polygon points="150,105 150,115 163,110"/>
+    <polygon points="150,130 150,140 163,135"/>
+    <polygon points="150,155 150,165 163,160"/>
+  </g>
+  <text x="30" y="195" class="note">equally spaced and parallel —</text>
+  <text x="30" y="211" class="note">the same force everywhere</text>
+
+  <!-- non-uniform: fanning out, unequal spacing -->
+  <text x="360" y="30" class="title">Non-uniform field</text>
+  <g class="fl">
+    <path d="M360,110 C430,70 500,55 580,45"/>
+    <path d="M360,110 C430,88 500,80 580,74"/>
+    <path d="M360,110 C440,110 500,110 580,110"/>
+    <path d="M360,110 C430,132 500,140 580,146"/>
+    <path d="M360,110 C430,150 500,165 580,175"/>
+  </g>
+  <g class="fhead">
+    <polygon points="500,52 508,58 509,48"/>
+    <polygon points="500,79 508,83 507,73"/>
+    <polygon points="500,105 500,115 513,110"/>
+    <polygon points="500,138 508,137 507,147"/>
+    <polygon points="500,162 508,159 511,169"/>
+  </g>
+  <text x="360" y="210" class="note">unequally spaced and not parallel —</text>
+  <text x="360" y="226" class="note">the force varies from point to point</text>
+</svg>

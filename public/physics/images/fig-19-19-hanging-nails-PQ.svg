@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 340" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
+    .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
+    .pole { font-size:14px; font-weight:bold; fill:#EAEAEA; }
+    .nail { stroke:#EAEAEA; stroke-width:2.2; fill:none; }
+    .lbl { fill:#E8B65A; font-size:12.5px; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+    .pt { font-size:12px; fill:#EAEAEA; }
+  </style>
+
+  <!-- horizontal permanent magnet, S left, N right; nails hang from N pole -->
+  <g transform="translate(120,60)">
+    <rect class="magS" x="0" y="0" width="90" height="30" rx="2"/>
+    <rect class="magN" x="90" y="0" width="90" height="30" rx="2"/>
+    <text class="pole" x="14" y="21">S</text>
+    <text class="pole" x="168" y="21">N</text>
+  </g>
+  <text x="80" y="55" text-anchor="end" class="lbl">permanent magnet</text>
+
+  <!-- first nail (hangs from N pole) -->
+  <line class="nail" x1="285" y1="90" x2="285" y2="150"/>
+  <text class="pt" x="292" y="105">1st nail</text>
+  <!-- second nail below, with points P and Q -->
+  <line class="nail" x1="285" y1="152" x2="285" y2="220"/>
+  <circle cx="285" cy="158" r="2.5" fill="#E8B65A"/>
+  <circle cx="285" cy="214" r="2.5" fill="#E8B65A"/>
+  <text class="pt" x="294" y="162">P</text>
+  <text class="pt" x="294" y="218">Q</text>
+  <text x="330" y="190" class="lbl">2nd iron nail</text>
+  <path class="lead" d="M328,186 L288,186"/>
+
+  <text x="230" y="270" text-anchor="middle" class="lbl">the nails become induced magnets</text>
+  <text x="230" y="286" text-anchor="middle" class="lbl">and hang end to end</text>
+</svg>

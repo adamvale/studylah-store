@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .slope { stroke:#EAEAEA; stroke-width:2; fill:none; }
+    .fill { fill:#9AA0A6; opacity:0.12; stroke:none; }
+    .block { fill:#6FB7E0; opacity:0.30; stroke:#6FB7E0; stroke-width:1.6; }
+    .force { stroke:#86C98B; stroke-width:2.4; fill:none; }
+    .dim { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .lbl { fill:#E8B65A; font-size:12px; }
+  </style>
+  <defs>
+    <marker id="fm3" markerWidth="12" markerHeight="12" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#86C98B"/></marker>
+    <marker id="w1" markerWidth="10" markerHeight="10" refX="4" refY="1" orient="auto"><path d="M0,7 L4,0 L8,7 Z" fill="#9AA0A6"/></marker>
+    <marker id="w2" markerWidth="10" markerHeight="10" refX="4" refY="6" orient="auto"><path d="M0,0 L4,7 L8,0 Z" fill="#9AA0A6"/></marker>
+  </defs>
+  <!-- incline: P bottom-left, top-right; vertical right side -->
+  <polygon class="fill" points="55,205 330,205 330,70"/>
+  <polyline class="slope" points="55,205 330,70"/>
+  <line class="slope" x1="55" y1="205" x2="330" y2="205"/>
+  <line class="slope" x1="330" y1="205" x2="330" y2="70"/>
+  <!-- block on slope -->
+  <g transform="translate(150,157) rotate(-26)">
+    <rect class="block" x="-22" y="-16" width="44" height="30"/>
+  </g>
+  <!-- push force up slope -->
+  <line class="force" x1="118" y1="187" x2="168" y2="163" marker-end="url(#fm3)"/>
+  <text class="lbl" x="120" y="145"><tspan font-style="italic">F</tspan></text>
+  <!-- P label -->
+  <text x="45" y="222" fill="#EAEAEA">P</text>
+  <!-- slope length 6 m -->
+  <text class="lbl" x="215" y="118" transform="rotate(-26 215 118)">6 m</text>
+  <!-- height 3 m -->
+  <line class="dim" x1="360" y1="70" x2="360" y2="205" marker-start="url(#w1)" marker-end="url(#w2)"/>
+  <text class="lbl" x="370" y="142">3 m</text>
+  <line class="dim" x1="330" y1="70" x2="365" y2="70" stroke-dasharray="3 3"/>
+</svg>

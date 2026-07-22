@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .box { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .p { fill:#6FB7E0; opacity:0.55; stroke:#6FB7E0; stroke-width:1.4; }
+    .in { stroke:#86C98B; stroke-width:1.6; fill:none; }
+    .out { stroke:#E58F8F; stroke-width:1.6; fill:none; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .lbl { font-size:12px; }
+    .amber { fill:#E8B65A; }
+  </style>
+
+  <!-- container -->
+  <rect class="box" x="40" y="50" width="230" height="200"/>
+
+  <!-- particles bouncing around -->
+  <g class="p">
+    <circle cx="90" cy="90" r="9"/>
+    <circle cx="150" cy="130" r="9"/>
+    <circle cx="110" cy="200" r="9"/>
+    <circle cx="200" cy="170" r="9"/>
+    <circle cx="180" cy="80" r="9"/>
+  </g>
+
+  <!-- a particle approaching the right wall and rebounding -->
+  <path class="in" d="M150,130 L258,110" marker-end="url(#gi)"/>
+  <path class="out" d="M258,110 L170,90" marker-end="url(#go)"/>
+  <circle class="p" cx="258" cy="110" r="9"/>
+
+  <!-- reaction force from wall on particle -->
+  <path class="out" d="M268,130 L235,130" marker-end="url(#go)"/>
+  <path class="in" d="M235,150 L268,150" marker-end="url(#gi)"/>
+
+  <!-- labels -->
+  <text class="lbl amber" x="300" y="70">inner wall of container</text>
+  <path class="lead" d="M295,66 L270,80"/>
+
+  <text class="lbl amber" x="300" y="112">particle hits wall</text>
+  <path class="lead" d="M295,108 L262,110"/>
+
+  <text class="lbl in" x="300" y="150" style="fill:#86C98B">force on wall</text>
+  <path class="lead" d="M296,146 L272,150"/>
+
+  <text class="lbl out" x="300" y="130" style="fill:#E58F8F">reaction force on particle</text>
+  <path class="lead" d="M296,126 L272,130"/>
+
+  <text class="lbl" x="155" y="278" text-anchor="middle" fill="#9AA0A6" font-style="italic">particles collide with and rebound off the walls</text>
+
+  <defs>
+    <marker id="gi" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6" fill="none" stroke="#86C98B" stroke-width="1.6"/>
+    </marker>
+    <marker id="go" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6" fill="none" stroke="#E58F8F" stroke-width="1.6"/>
+    </marker>
+  </defs>
+</svg>

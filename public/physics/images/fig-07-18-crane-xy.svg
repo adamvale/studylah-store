@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .beam { stroke:#EAEAEA; stroke-width:2.4; fill:none; }
+    .cable { stroke:#9AA0A6; stroke-width:1.3; }
+    .load { fill:#6FB7E0; opacity:0.30; stroke:#6FB7E0; stroke-width:1.6; }
+    .ghost { fill:none; stroke:#9AA0A6; stroke-width:1.3; stroke-dasharray:4 4; }
+    .dim { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .lbl { fill:#E8B65A; font-size:12px; }
+  </style>
+  <defs>
+    <marker id="c1" markerWidth="10" markerHeight="10" refX="4" refY="1" orient="auto"><path d="M0,7 L4,0 L8,7 Z" fill="#9AA0A6"/></marker>
+    <marker id="c2" markerWidth="10" markerHeight="10" refX="4" refY="6" orient="auto"><path d="M0,0 L4,7 L8,0 Z" fill="#9AA0A6"/></marker>
+  </defs>
+  <!-- vertical mast -->
+  <line class="beam" x1="60" y1="40" x2="60" y2="270"/>
+  <!-- horizontal jib -->
+  <line class="beam" x1="60" y1="60" x2="360" y2="60"/>
+  <!-- truss zig-zag -->
+  <polyline class="cable" points="70,60 90,72 110,60 130,72 150,60 170,72 190,60 210,72 230,60 250,72 270,60 290,72 310,60 330,72 350,60"/>
+  <!-- lifted load at Y (top right) -->
+  <line class="cable" x1="320" y1="72" x2="320" y2="120"/>
+  <rect class="load" x="305" y="120" width="30" height="26"/>
+  <text x="345" y="138" fill="#EAEAEA">Y</text>
+  <!-- load at X (bottom, ghost) -->
+  <line class="cable" x1="120" y1="72" x2="120" y2="235"/>
+  <rect class="ghost" x="105" y="235" width="30" height="26"/>
+  <text x="88" y="253" fill="#EAEAEA">X</text>
+  <!-- height 6 m between X level and Y level -->
+  <line class="dim" x1="380" y1="133" x2="380" y2="248" marker-start="url(#c1)" marker-end="url(#c2)"/>
+  <text class="lbl" x="388" y="195">6 m</text>
+  <line class="dim" x1="335" y1="133" x2="385" y2="133" stroke-dasharray="3 3"/>
+  <line class="dim" x1="135" y1="248" x2="385" y2="248" stroke-dasharray="3 3"/>
+</svg>

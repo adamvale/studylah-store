@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 170" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
+    .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
+    .pole { font-size:15px; font-weight:bold; fill:#EAEAEA; }
+    .comp { fill:none; stroke:#9AA0A6; stroke-width:1.4; }
+  </style>
+  <rect class="magN" x="60" y="70" width="100" height="32" rx="2"/>
+  <rect class="magS" x="160" y="70" width="100" height="32" rx="2"/>
+  <text class="pole" x="74" y="92">N</text>
+  <text class="pole" x="235" y="92">S</text>
+  <!-- empty compass placed just beyond the S pole -->
+  <circle class="comp" cx="330" cy="86" r="22"/>
+</svg>

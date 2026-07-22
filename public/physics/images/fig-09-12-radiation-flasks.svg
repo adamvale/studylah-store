@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .glass { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .black { fill:#3a3a3a; stroke:#EAEAEA; stroke-width:1.4; }
+    .white { fill:#EAEAEA; opacity:0.85; stroke:#EAEAEA; stroke-width:1.4; }
+    .thermo { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
+    .merc { stroke:#E58F8F; stroke-width:2.6; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+    .lbl { fill:#E8B65A; }
+    .cap { text-anchor:middle; font-size:12px; }
+  </style>
+  <!-- black-surface flask -->
+  <circle class="black" cx="120" cy="200" r="45"/>
+  <path class="glass" d="M110,158 L110,120 L130,120 L130,158"/>
+  <!-- thermometer -->
+  <line class="thermo" x1="120" y1="120" x2="120" y2="55"/>
+  <circle class="black" cx="120" cy="120" r="6"/>
+  <line class="merc" x1="120" y1="118" x2="120" y2="75"/>
+  <text class="cap" x="120" y="270">black surface</text>
+  <!-- white-surface flask -->
+  <circle class="white" cx="300" cy="200" r="45"/>
+  <path class="glass" d="M290,158 L290,120 L310,120 L310,158"/>
+  <line class="thermo" x1="300" y1="120" x2="300" y2="55"/>
+  <circle class="white" cx="300" cy="120" r="6"/>
+  <line class="merc" x1="300" y1="118" x2="300" y2="90"/>
+  <text class="cap" x="300" y="270">white surface</text>
+  <!-- labels -->
+  <text class="lbl" x="210" y="45" text-anchor="middle">thermometers</text>
+  <path class="lead" d="M180,50 L122,58"/>
+  <path class="lead" d="M240,50 L298,58"/>
+  <text class="cap" x="210" y="295" fill="#9AA0A6">both flasks contain water, placed in the sun</text>
+</svg>

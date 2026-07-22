@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 320" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.5; }
+    .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.5; }
+    .keeper { fill:#9AA0A6; opacity:0.22; stroke:#EAEAEA; stroke-width:1.5; }
+    .pole { font-size:13px; font-weight:bold; fill:#EAEAEA; }
+    .lbl { fill:#E8B65A; font-size:12.5px; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+  </style>
+
+  <!-- two bar magnets placed side by side, antiparallel -->
+  <!-- top magnet: N right, S left -->
+  <g transform="translate(150,90)">
+    <rect class="magS" x="0" y="0" width="80" height="30" rx="2"/>
+    <rect class="magN" x="80" y="0" width="80" height="30" rx="2"/>
+    <text class="pole" x="12" y="21">S</text>
+    <text class="pole" x="148" y="21">N</text>
+  </g>
+  <!-- bottom magnet: N left, S right (antiparallel) -->
+  <g transform="translate(150,200)">
+    <rect class="magN" x="0" y="0" width="80" height="30" rx="2"/>
+    <rect class="magS" x="80" y="0" width="80" height="30" rx="2"/>
+    <text class="pole" x="12" y="21">N</text>
+    <text class="pole" x="148" y="21">S</text>
+  </g>
+
+  <!-- keepers (soft iron) across the ends -->
+  <rect class="keeper" x="120" y="90" width="26" height="140" rx="2"/>
+  <rect class="keeper" x="314" y="90" width="26" height="140" rx="2"/>
+
+  <text x="60" y="80" class="lbl">soft iron keeper</text>
+  <path class="lead" d="M120,95 L133,120"/>
+  <text x="350" y="80" class="lbl">soft iron keeper</text>
+  <path class="lead" d="M340,95 L327,120"/>
+  <text x="240" y="160" text-anchor="middle" class="lbl">permanent bar magnets</text>
+
+  <text x="230" y="270" text-anchor="middle" font-size="12.5">The keepers become induced magnets and</text>
+  <text x="230" y="288" text-anchor="middle" font-size="12.5">complete a closed loop of poles (N–S–N–S),</text>
+  <text x="230" y="306" text-anchor="middle" font-size="12.5">so the magnets keep their strength.</text>
+</svg>

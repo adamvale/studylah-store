@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .track { stroke:#EAEAEA; stroke-width:1.6; }
+    .pt { fill:#EAEAEA; }
+    .arr { fill:none; stroke:#6FB7E0; stroke-width:1.8; }
+    .arr2 { fill:none; stroke:#E8B65A; stroke-width:1.8; }
+    .lbl { font-size:12px; }
+  </style>
+  <defs>
+    <marker id="b1" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#6FB7E0"/></marker>
+    <marker id="b2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/></marker>
+  </defs>
+  <line class="track" x1="60" y1="120" x2="440" y2="120"/>
+  <!-- points A (left), C (middle), B (right) -->
+  <circle class="pt" cx="60" cy="120" r="5"/>
+  <circle class="pt" cx="300" cy="120" r="5"/>
+  <circle class="pt" cx="420" cy="120" r="5"/>
+  <text x="52" y="145">A</text>
+  <text x="292" y="145">C</text>
+  <text x="418" y="145">B</text>
+  <!-- forward arrow A to B (600 m) -->
+  <line class="arr" x1="60" y1="80" x2="415" y2="80" marker-end="url(#b1)"/>
+  <text class="lbl" x="235" y="70" text-anchor="middle" fill="#6FB7E0">A to B = 600 m</text>
+  <!-- back arrow B to C (240 m) -->
+  <line class="arr" x1="420" y1="160" x2="305" y2="160" marker-end="url(#b1)"/>
+  <text class="lbl" x="360" y="180" text-anchor="middle" fill="#6FB7E0">B to C = 240 m</text>
+  <!-- displacement A to C -->
+  <line class="arr2" x1="60" y1="120" x2="296" y2="120" marker-end="url(#b2)"/>
+  <text class="lbl" x="180" y="112" text-anchor="middle" fill="#E8B65A">displacement A to C = 360 m</text>
+</svg>

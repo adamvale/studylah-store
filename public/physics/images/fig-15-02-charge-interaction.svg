@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="ah2" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
+    </marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .pos { fill:#E58F8F; opacity:0.18; stroke:#E58F8F; stroke-width:1.8; }
+    .neg { fill:#6FB7E0; opacity:0.18; stroke:#6FB7E0; stroke-width:1.8; }
+    .sym { font-size:22px; text-anchor:middle; }
+    .frc { stroke:#EAEAEA; stroke-width:2; }
+    .hd { font-size:14px; font-weight:bold; }
+  </style>
+  <!-- Row 1: unlike charges attract -->
+  <text x="30" y="60" class="hd">Unlike charges</text>
+  <text x="30" y="80" font-size="12" fill="#9AA0A6">attract each other</text>
+  <circle cx="250" cy="70" r="24" class="pos"/><text x="250" y="78" class="sym" fill="#E58F8F">+</text>
+  <circle cx="420" cy="70" r="24" class="neg"/><text x="420" y="78" class="sym" fill="#6FB7E0">&#8722;</text>
+  <line class="frc" x1="282" y1="70" x2="340" y2="70" marker-end="url(#ah2)"/>
+  <line class="frc" x1="388" y1="70" x2="330" y2="70" marker-end="url(#ah2)"/>
+
+  <!-- Row 2: like (+ +) repel -->
+  <text x="30" y="185" class="hd">Like charges</text>
+  <text x="30" y="205" font-size="12" fill="#9AA0A6">repel each other</text>
+  <circle cx="250" cy="180" r="24" class="pos"/><text x="250" y="188" class="sym" fill="#E58F8F">+</text>
+  <circle cx="420" cy="180" r="24" class="pos"/><text x="420" y="188" class="sym" fill="#E58F8F">+</text>
+  <line class="frc" x1="218" y1="180" x2="160" y2="180" marker-end="url(#ah2)"/>
+  <line class="frc" x1="452" y1="180" x2="510" y2="180" marker-end="url(#ah2)"/>
+
+  <!-- Row 3: like (- -) repel -->
+  <circle cx="250" cy="290" r="24" class="neg"/><text x="250" y="298" class="sym" fill="#6FB7E0">&#8722;</text>
+  <circle cx="420" cy="290" r="24" class="neg"/><text x="420" y="298" class="sym" fill="#6FB7E0">&#8722;</text>
+  <line class="frc" x1="218" y1="290" x2="160" y2="290" marker-end="url(#ah2)"/>
+  <line class="frc" x1="452" y1="290" x2="510" y2="290" marker-end="url(#ah2)"/>
+</svg>

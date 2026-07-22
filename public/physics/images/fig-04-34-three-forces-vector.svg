@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 260" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/></marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .box { fill:#6FB7E0; opacity:0.24; stroke:#6FB7E0; stroke-width:1.6; }
+    .f { stroke:#EAEAEA; stroke-width:2.2; }
+    .guide { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:4 3; }
+  </style>
+  <rect class="box" x="205" y="110" width="50" height="40"/>
+  <!-- 40 N to the left -->
+  <line class="f" x1="200" y1="130" x2="90" y2="130" marker-end="url(#arw)"/>
+  <text x="130" y="120" text-anchor="middle" font-size="12">40 N</text>
+  <!-- 20 N up-right at 55 deg -->
+  <line class="f" x1="255" y1="120" x2="345" y2="55" marker-end="url(#arw)"/>
+  <text x="350" y="55" font-size="12">20 N</text>
+  <line class="guide" x1="255" y1="120" x2="345" y2="120"/>
+  <path d="M300,120 A45,45 0 0 0 315,98" fill="none" stroke="#9AA0A6" stroke-width="1"/>
+  <text x="312" y="115" font-size="10.5">55&#176;</text>
+  <!-- 30 N down-right at 20 deg -->
+  <line class="f" x1="255" y1="140" x2="360" y2="185" marker-end="url(#arw)"/>
+  <text x="365" y="190" font-size="12">30 N</text>
+  <line class="guide" x1="255" y1="140" x2="360" y2="140"/>
+  <path d="M310,140 A55,55 0 0 1 318,152" fill="none" stroke="#9AA0A6" stroke-width="1"/>
+  <text x="315" y="158" font-size="10.5">20&#176;</text>
+  <text x="230" y="240" text-anchor="middle" font-size="11">Three forces on an object (not to scale).</text>
+</svg>

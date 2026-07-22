@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 250" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .wire { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .res { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .cellL { stroke:#EAEAEA; stroke-width:2; }
+    .cellS { stroke:#EAEAEA; stroke-width:5; }
+    .lbl { fill:#6FB7E0; font-style:italic; }
+    .accent { fill:#E8B65A; }
+  </style>
+  <!-- top wire with cell -->
+  <path class="wire" d="M70,55 L235,55"/>
+  <path class="wire" d="M285,55 L400,55"/>
+  <line class="cellL" x1="248" y1="37" x2="248" y2="73"/>
+  <line class="cellS" x1="262" y1="47" x2="262" y2="63"/>
+  <text x="255" y="30" text-anchor="middle" font-size="14" class="lbl">V</text>
+  <!-- rails -->
+  <path class="wire" d="M70,55 L70,190"/>
+  <path class="wire" d="M400,55 L400,190"/>
+  <!-- branch 1 -->
+  <path class="wire" d="M70,110 L175,110"/>
+  <path class="wire" d="M235,110 L400,110"/>
+  <rect class="res" x="175" y="96" width="60" height="28"/>
+  <text x="205" y="90" text-anchor="middle" font-size="13" class="lbl">V₁</text>
+  <!-- branch 2 -->
+  <path class="wire" d="M70,190 L175,190"/>
+  <path class="wire" d="M235,190 L400,190"/>
+  <rect class="res" x="175" y="176" width="60" height="28"/>
+  <text x="205" y="228" text-anchor="middle" font-size="13" class="lbl">V₂</text>
+  <!-- identity box -->
+  <rect x="430" y="105" width="110" height="40" rx="4" fill="none" stroke="#9AA0A6" stroke-width="1.2"/>
+  <text x="485" y="130" text-anchor="middle" font-size="14" class="accent">V = V₁ = V₂</text>
+</svg>

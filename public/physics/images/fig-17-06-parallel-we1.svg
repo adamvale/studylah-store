@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 250" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .wire { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .res { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .cellL { stroke:#EAEAEA; stroke-width:2; }
+    .cellS { stroke:#EAEAEA; stroke-width:5; }
+    .meter { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .val { fill:#E8B65A; }
+    .lbl { fill:#6FB7E0; font-style:italic; }
+  </style>
+  <!-- top with cell -->
+  <path class="wire" d="M110,55 L285,55"/>
+  <path class="wire" d="M335,55 L440,55"/>
+  <line class="cellL" x1="298" y1="37" x2="298" y2="73"/>
+  <line class="cellS" x1="312" y1="47" x2="312" y2="63"/>
+  <text x="305" y="30" text-anchor="middle" font-size="12" class="val">12 V</text>
+  <!-- rails -->
+  <path class="wire" d="M110,55 L110,190"/>
+  <path class="wire" d="M440,55 L440,190"/>
+  <!-- ammeter on left rail -->
+  <circle class="meter" cx="110" cy="120" r="15"/>
+  <text x="110" y="125" text-anchor="middle" font-size="13">A</text>
+  <!-- branch P -->
+  <path class="wire" d="M155,110 L215,110"/>
+  <path class="wire" d="M275,110 L440,110"/>
+  <path class="wire" d="M125,110 L155,110"/>
+  <rect class="res" x="215" y="96" width="60" height="28"/>
+  <text x="245" y="90" text-anchor="middle" font-size="12">P</text>
+  <text x="245" y="140" text-anchor="middle" font-size="12" class="val">4 Ω</text>
+  <!-- branch Q -->
+  <path class="wire" d="M110,190 L215,190"/>
+  <path class="wire" d="M275,190 L440,190"/>
+  <rect class="res" x="215" y="176" width="60" height="28"/>
+  <text x="245" y="228" text-anchor="middle" font-size="12" class="val">Q  12 Ω</text>
+</svg>

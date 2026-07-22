@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 180" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .rule { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .tick { stroke:#EAEAEA; stroke-width:1.1; }
+    .brace { stroke:#6FB7E0; stroke-width:1.6; fill:none; }
+    .amber { fill:#E8B65A; }
+    .blue { fill:#6FB7E0; }
+  </style>
+  <rect class="rule" x="60" y="90" width="300" height="30" rx="3"/>
+  <!-- major ticks at 4 and 5 (x=90 and x=330), 10 minor divisions between -->
+  <g class="tick">
+    <line x1="90" y1="90" x2="90" y2="118"/>
+    <line x1="330" y1="90" x2="330" y2="118"/>
+  </g>
+  <g class="tick">
+    <line x1="114" y1="90" x2="114" y2="106"/>
+    <line x1="138" y1="90" x2="138" y2="106"/>
+    <line x1="162" y1="90" x2="162" y2="106"/>
+    <line x1="186" y1="90" x2="186" y2="106"/>
+    <line x1="210" y1="90" x2="210" y2="106"/>
+    <line x1="234" y1="90" x2="234" y2="106"/>
+    <line x1="258" y1="90" x2="258" y2="106"/>
+    <line x1="282" y1="90" x2="282" y2="106"/>
+    <line x1="306" y1="90" x2="306" y2="106"/>
+  </g>
+  <text x="90" y="140" text-anchor="middle" font-size="12">4</text>
+  <text x="330" y="140" text-anchor="middle" font-size="12">5</text>
+  <text x="378" y="112" font-size="12">cm</text>
+  <!-- brace over 1 cm -->
+  <path class="brace" d="M90,80 Q90,70 100,70 L200,70 Q210,70 210,60 Q210,70 220,70 L320,70 Q330,70 330,80"/>
+  <text x="210" y="52" text-anchor="middle" font-size="13" class="blue">1 cm = 10 divisions</text>
+  <!-- one small division -->
+  <path class="brace" d="M90,124 L90,132 L114,132 L114,124" stroke="#E8B65A"/>
+  <text x="150" y="168" text-anchor="middle" font-size="12" class="amber">smallest division = 0.1 cm (precision)</text>
+</svg>

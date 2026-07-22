@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 320" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .rule { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .tick { stroke:#EAEAEA; stroke-width:1.2; }
+    .sight { stroke:#9AA0A6; stroke-width:1.4; stroke-dasharray:5 4; fill:none; }
+    .good { fill:#86C98B; }
+    .bad { fill:#E58F8F; }
+  </style>
+  <!-- eye positions -->
+  <text x="180" y="40" text-anchor="middle" font-size="22" class="bad">&#10007;</text>
+  <text x="280" y="34" text-anchor="middle" font-size="22" class="good">&#10003;</text>
+  <text x="380" y="40" text-anchor="middle" font-size="22" class="bad">&#10007;</text>
+  <!-- lines of sight converge at 2.5 cm mark (x=280,y=250) -->
+  <path class="sight" d="M180,48 L280,246"/>
+  <path class="sight" d="M280,44 L280,246"/>
+  <path class="sight" d="M380,48 L280,246"/>
+  <text x="120" y="150" font-size="13">line of sight</text>
+  <!-- ruler -->
+  <rect class="rule" x="120" y="250" width="320" height="34" rx="3"/>
+  <!-- ticks -->
+  <g class="tick">
+    <line x1="150" y1="250" x2="150" y2="270"/>
+    <line x1="215" y1="250" x2="215" y2="270"/>
+    <line x1="280" y1="250" x2="280" y2="272"/>
+    <line x1="345" y1="250" x2="345" y2="270"/>
+    <line x1="410" y1="250" x2="410" y2="270"/>
+  </g>
+  <g font-size="12" text-anchor="middle">
+    <text x="150" y="300">0</text>
+    <text x="215" y="300">1</text>
+    <text x="280" y="300">2</text>
+    <text x="345" y="300">3</text>
+    <text x="410" y="300">4</text>
+  </g>
+  <text x="470" y="272" font-size="12">cm</text>
+  <!-- legend -->
+  <text x="450" y="60" font-size="13"><tspan class="good">&#10003;</tspan> correct (directly above)</text>
+  <text x="450" y="82" font-size="13"><tspan class="bad">&#10007;</tspan> incorrect (at an angle)</text>
+</svg>

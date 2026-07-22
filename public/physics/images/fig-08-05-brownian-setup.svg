@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 280" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .stroke { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .cell { fill:#6FB7E0; opacity:0.18; stroke:#6FB7E0; stroke-width:1.6; }
+    .ray { stroke:#E8B65A; stroke-width:1.4; fill:none; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .lbl { font-size:12px; }
+    .amber { fill:#E8B65A; }
+    .glow { fill:#E8B65A; opacity:0.25; }
+  </style>
+
+  <!-- microscope (vertical tube with eyepiece) above the cell -->
+  <line class="stroke" x1="250" y1="30" x2="250" y2="120"/>
+  <rect class="stroke" x="238" y="30" width="24" height="14"/>
+  <polygon class="stroke" points="240,120 260,120 254,135 246,135"/>
+  <text class="lbl amber" x="300" y="70">microscope</text>
+  <path class="lead" d="M296,66 L262,60"/>
+
+  <!-- glass cell containing smoke -->
+  <rect class="cell" x="180" y="150" width="150" height="34" rx="3"/>
+  <!-- smoke specks -->
+  <g fill="#EAEAEA">
+    <circle cx="205" cy="167" r="2.2"/><circle cx="230" cy="160" r="2.2"/><circle cx="255" cy="172" r="2.2"/>
+    <circle cx="278" cy="163" r="2.2"/><circle cx="300" cy="170" r="2.2"/><circle cx="220" cy="176" r="2.2"/>
+    <circle cx="265" cy="158" r="2.2"/>
+  </g>
+  <text class="lbl amber" x="345" y="165">glass cell with</text>
+  <text class="lbl amber" x="345" y="181">smoke particles</text>
+  <path class="lead" d="M340,172 L332,168"/>
+
+  <!-- lamp / bulb on the left -->
+  <circle class="stroke" cx="70" cy="167" r="16"/>
+  <circle class="glow" cx="70" cy="167" r="24"/>
+  <line class="stroke" x1="70" y1="183" x2="70" y2="200"/>
+  <text class="lbl amber" x="40" y="228">lamp</text>
+  <path class="lead" d="M62,220 L70,190"/>
+
+  <!-- light rays from lamp to cell -->
+  <line class="ray" x1="90" y1="167" x2="176" y2="167" marker-end="url(#r)"/>
+
+  <defs>
+    <marker id="r" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6" fill="none" stroke="#E8B65A" stroke-width="1.4"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 250" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .wire { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .lbl { font-size:12px; }
+    .q { fill:#E8B65A; fill-opacity:0.30; stroke:#E8B65A; stroke-width:1.4; }
+    .flow { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+  </style>
+  <!-- partial circuit with a component on top -->
+  <path class="wire" d="M80,180 L80,60 L180,60"/>
+  <path class="wire" d="M260,60 L360,60 L360,180"/>
+  <rect class="wire" x="180" y="48" width="80" height="24"/>
+  <text x="220" y="40" class="lbl" text-anchor="middle">component</text>
+
+  <!-- unit charge moving across the component -->
+  <circle class="q" cx="130" cy="120" r="11"/>
+  <text x="130" y="124" class="lbl" text-anchor="middle" fill="#E8B65A">+</text>
+  <text x="130" y="152" class="lbl" text-anchor="middle">a unit charge</text>
+
+  <path class="flow" d="M150,120 C190,120 210,90 232,72"/>
+  <path class="flow" d="M232,72 l-12,3 5,7"/>
+  <text x="300" y="120" class="lbl" text-anchor="middle">moving across</text>
+  <text x="300" y="135" class="lbl" text-anchor="middle">the component</text>
+
+  <text x="220" y="220" font-size="12.5" text-anchor="middle" fill="#9AA0A6">Energy is transferred to the component as the charge passes through it.</text>
+</svg>

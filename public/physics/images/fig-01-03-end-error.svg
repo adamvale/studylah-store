@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 170" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .rule { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .tick { stroke:#EAEAEA; stroke-width:1.2; }
+    .worn { fill:#E58F8F; opacity:0.85; }
+    .bad { fill:#E58F8F; }
+  </style>
+  <!-- ruler with worn left end -->
+  <rect class="rule" x="80" y="70" width="300" height="36" rx="3"/>
+  <!-- worn/damaged left end -->
+  <path class="worn" d="M80,70 q-14,4 -18,18 q6,14 18,18 Z"/>
+  <path d="M80,70 l-6,4 l6,3 l-7,4 l7,4 l-6,4 l6,7" fill="none" stroke="#E58F8F" stroke-width="1.4"/>
+  <g class="tick">
+    <line x1="120" y1="70" x2="120" y2="90"/>
+    <line x1="185" y1="70" x2="185" y2="90"/>
+    <line x1="250" y1="70" x2="250" y2="90"/>
+    <line x1="315" y1="70" x2="315" y2="90"/>
+  </g>
+  <g font-size="12" text-anchor="middle">
+    <text x="120" y="124">1</text>
+    <text x="185" y="124">2</text>
+    <text x="250" y="124">3</text>
+    <text x="315" y="124">4</text>
+  </g>
+  <text x="405" y="92" font-size="12">cm</text>
+  <text x="70" y="40" text-anchor="middle" font-size="13" class="bad">end error</text>
+  <path d="M70,46 L64,68" fill="none" stroke="#9AA0A6" stroke-width="1.3"/>
+  <text x="300" y="150" text-anchor="middle" font-size="12">The end of the rule is worn / damaged</text>
+</svg>

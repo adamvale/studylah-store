@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .proton { fill:#E58F8F; opacity:0.9; stroke:#EAEAEA; stroke-width:0.7; }
+    .neutron { fill:#9AA0A6; opacity:0.9; stroke:#EAEAEA; stroke-width:0.7; }
+    .arrow { stroke:#EAEAEA; stroke-width:1.6; fill:none; marker-end:url(#ah3); }
+    .wave { stroke:#E8B65A; stroke-width:1.6; fill:none; }
+    .cap { fill:#9AA0A6; }
+    .amber { fill:#E8B65A; }
+  </style>
+  <defs>
+    <marker id="ah3" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
+    </marker>
+  </defs>
+
+  <!-- deuterium: 1p + 1n -->
+  <g>
+    <circle class="proton" cx="60" cy="80" r="11"/>
+    <circle class="neutron" cx="78" cy="88" r="11"/>
+    <text x="65" y="45" text-anchor="middle" class="cap">deuterium</text>
+    <text x="65" y="120" text-anchor="middle" font-style="italic">²₁H</text>
+  </g>
+  <!-- tritium: 1p + 2n -->
+  <g>
+    <circle class="proton" cx="55" cy="215" r="11"/>
+    <circle class="neutron" cx="74" cy="207" r="11"/>
+    <circle class="neutron" cx="74" cy="228" r="11"/>
+    <text x="65" y="180" text-anchor="middle" class="cap">tritium</text>
+    <text x="65" y="262" text-anchor="middle" font-style="italic">³₁H</text>
+  </g>
+
+  <!-- collide arrows -->
+  <path class="arrow" d="M100,90 L250,150"/>
+  <path class="arrow" d="M95,215 L250,160"/>
+  <text x="175" y="130" text-anchor="middle" class="amber">high speed</text>
+
+  <!-- fusion point -->
+  <circle cx="285" cy="155" r="4" fill="#EAEAEA"/>
+  <text x="285" y="200" text-anchor="middle" class="cap">fusion</text>
+
+  <!-- products arrows -->
+  <path class="arrow" d="M310,140 L430,80"/>
+  <path class="arrow" d="M310,175 L430,235"/>
+
+  <!-- helium nucleus: 2p + 2n -->
+  <g>
+    <circle class="proton" cx="470" cy="65" r="11"/>
+    <circle class="proton" cx="490" cy="75" r="11"/>
+    <circle class="neutron" cx="470" cy="86" r="11"/>
+    <circle class="neutron" cx="490" cy="55" r="11"/>
+    <text x="525" y="72" class="cap">helium ⁴₂He</text>
+  </g>
+
+  <!-- released neutron -->
+  <circle class="neutron" cx="470" cy="235" r="11"/>
+  <text x="490" y="240" class="cap">neutron ¹₀n</text>
+
+  <!-- energy waves -->
+  <path class="wave" d="M320,155 q9,-9 18,0 q9,9 18,0 q9,-9 18,0"/>
+  <text x="390" y="150" class="amber">energy (γ)</text>
+
+  <text x="300" y="300" text-anchor="middle" class="amber" font-size="13">Two light nuclei join to form a heavier nucleus, releasing energy.</text>
+</svg>

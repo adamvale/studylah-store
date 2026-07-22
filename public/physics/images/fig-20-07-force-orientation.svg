@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .cond { fill:#6FB7E0; fill-opacity:0.32; stroke:#6FB7E0; stroke-width:1.6; }
+    .fld  { stroke:#9AA0A6; stroke-width:1.5; fill:none; }
+    .cur  { stroke:#EAEAEA; stroke-width:2; fill:none; }
+    .lbl  { fill:#E8B65A; }
+    .ttl  { fill:#EAEAEA; font-size:13px; font-weight:bold; text-anchor:middle; }
+    .max  { fill:#86C98B; font-weight:bold; }
+    .zero { fill:#E58F8F; font-weight:bold; }
+  </style>
+  <defs>
+    <marker id="fa" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L7,4 L0,8 z" fill="#9AA0A6"/>
+    </marker>
+    <marker id="ca" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#EAEAEA"/>
+    </marker>
+  </defs>
+
+  <!-- LEFT: perpendicular -> maximum force -->
+  <text class="ttl" x="165" y="26">Conductor perpendicular to field</text>
+  <line class="fld" x1="70" y1="80"  x2="240" y2="80"  marker-end="url(#fa)"/>
+  <line class="fld" x1="70" y1="115" x2="240" y2="115" marker-end="url(#fa)"/>
+  <line class="fld" x1="70" y1="150" x2="240" y2="150" marker-end="url(#fa)"/>
+  <line class="fld" x1="70" y1="185" x2="240" y2="185" marker-end="url(#fa)"/>
+  <line class="fld" x1="70" y1="220" x2="240" y2="220" marker-end="url(#fa)"/>
+  <rect class="cond" x="158" y="60" width="14" height="180" rx="4"/>
+  <line class="cur" x1="165" y1="60" x2="165" y2="248" marker-end="url(#ca)"/>
+  <text class="lbl" x="180" y="255">current</text>
+  <text x="250" y="150" fill="#9AA0A6">field</text>
+  <text class="max" x="165" y="282" text-anchor="middle">force is MAXIMUM</text>
+
+  <!-- divider -->
+  <line x1="330" y1="30" x2="330" y2="270" stroke="#9AA0A6" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <!-- RIGHT: parallel -> zero force -->
+  <text class="ttl" x="495" y="26">Conductor parallel to field</text>
+  <line class="fld" x1="390" y1="110" x2="600" y2="110" marker-end="url(#fa)"/>
+  <line class="fld" x1="390" y1="190" x2="600" y2="190" marker-end="url(#fa)"/>
+  <rect class="cond" x="410" y="143" width="160" height="14" rx="4"/>
+  <line class="cur" x1="404" y1="150" x2="588" y2="150" marker-end="url(#ca)"/>
+  <text class="lbl" x="596" y="150">current</text>
+  <text x="410" y="102" fill="#9AA0A6">field</text>
+  <text class="zero" x="495" y="240" text-anchor="middle">force is ZERO</text>
+</svg>

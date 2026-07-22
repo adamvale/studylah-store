@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="a1" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#E8B65A"/></marker>
+    <marker id="a2" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#6FB7E0"/></marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .inc { stroke:#E8B65A; stroke-width:2; fill:none; }
+    .out { stroke:#6FB7E0; stroke-width:2; fill:none; }
+    .opaque { fill:#EAEAEA; opacity:0.85; }
+    .glass { fill:#6FB7E0; opacity:0.22; stroke:#6FB7E0; stroke-width:1.4; }
+    .norm { stroke:#9AA0A6; stroke-width:1.2; stroke-dasharray:5 4; }
+  </style>
+  <!-- Panel 1: reflection off opaque surface -->
+  <rect class="opaque" x="60" y="170" width="220" height="14" rx="2"/>
+  <path class="inc" marker-end="url(#a1)" d="M80,70 L168,168"/>
+  <path class="out" marker-end="url(#a2)" d="M172,168 L260,70"/>
+  <text x="170" y="215" text-anchor="middle" font-size="13">Light is <tspan fill="#6FB7E0">reflected</tspan> at an</text>
+  <text x="170" y="233" text-anchor="middle" font-size="13">opaque surface.</text>
+  <!-- Panel 2: refraction into transparent medium -->
+  <rect class="glass" x="380" y="95" width="200" height="115"/>
+  <path class="norm" d="M470,60 L470,150"/>
+  <path class="inc" marker-end="url(#a1)" d="M410,60 L468,95"/>
+  <path class="out" marker-end="url(#a2)" d="M470,95 L512,185"/>
+  <text x="480" y="235" text-anchor="middle" font-size="13">Light is <tspan fill="#6FB7E0">refracted</tspan> entering</text>
+  <text x="480" y="253" text-anchor="middle" font-size="13">a transparent medium.</text>
+</svg>

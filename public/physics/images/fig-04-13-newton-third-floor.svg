@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arwG" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#86C98B"/>
+    </marker>
+    <marker id="arwR" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#E58F8F"/>
+    </marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .ball { fill:#6FB7E0; opacity:0.26; stroke:#6FB7E0; stroke-width:1.6; }
+    .floor { stroke:#EAEAEA; stroke-width:2; }
+    .up { stroke:#86C98B; stroke-width:2.4; }
+    .down { stroke:#E58F8F; stroke-width:2.4; }
+  </style>
+  <line class="floor" x1="60" y1="150" x2="360" y2="150"/>
+  <g stroke="#9AA0A6" stroke-width="1">
+    <line x1="80" y1="150" x2="70" y2="162"/><line x1="120" y1="150" x2="110" y2="162"/>
+    <line x1="160" y1="150" x2="150" y2="162"/><line x1="200" y1="150" x2="190" y2="162"/>
+    <line x1="240" y1="150" x2="230" y2="162"/><line x1="280" y1="150" x2="270" y2="162"/>
+    <line x1="320" y1="150" x2="310" y2="162"/>
+  </g>
+  <circle class="ball" cx="200" cy="120" r="30"/>
+  <text x="150" y="112" font-size="12">ball</text>
+  <text x="60" y="185" font-size="12">floor</text>
+  <!-- normal force floor on ball (up) -->
+  <line class="up" x1="200" y1="120" x2="200" y2="55" marker-end="url(#arwG)"/>
+  <text x="210" y="70" font-size="13" fill="#86C98B">F&#8321; (floor on ball)</text>
+  <!-- ball on floor (down) into floor -->
+  <line class="down" x1="200" y1="150" x2="200" y2="215" marker-end="url(#arwR)"/>
+  <text x="210" y="205" font-size="13" fill="#E58F8F">F&#8322; (ball on floor)</text>
+  <text x="210" y="260" text-anchor="middle" font-size="11.5">F&#8321; and F&#8322; are equal and opposite, but act on different bodies.</text>
+</svg>

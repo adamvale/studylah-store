@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 300" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arwG" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#86C98B"/>
+    </marker>
+    <marker id="arwR" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#E58F8F"/>
+    </marker>
+    <marker id="arwB" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6FB7E0"/>
+    </marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .book { fill:#E8B65A; opacity:0.22; stroke:#E8B65A; stroke-width:1.6; }
+    .apple { fill:#E58F8F; opacity:0.30; stroke:#E58F8F; stroke-width:1.6; }
+    .up { stroke:#86C98B; stroke-width:2.2; }
+    .dn { stroke:#E58F8F; stroke-width:2.2; }
+    .bl { stroke:#6FB7E0; stroke-width:2.2; }
+    .cap { font-size:12.5; font-weight:bold; }
+  </style>
+  <!-- Panel A: Newton's First Law (two forces on apple) -->
+  <text x="150" y="26" text-anchor="middle" class="cap">Two forces on the apple &#8594; 1st Law</text>
+  <rect class="book" x="90" y="175" width="130" height="16"/>
+  <text x="228" y="188" font-size="11">book</text>
+  <circle class="apple" cx="150" cy="150" r="24"/>
+  <text x="180" y="150" font-size="11">apple</text>
+  <line class="up" x1="150" y1="150" x2="150" y2="80" marker-end="url(#arwG)"/>
+  <text x="158" y="95" font-size="11.5" fill="#86C98B">normal force</text>
+  <line class="dn" x1="150" y1="150" x2="150" y2="240" marker-end="url(#arwR)"/>
+  <text x="158" y="230" font-size="11.5" fill="#E58F8F">weight</text>
+  <text x="150" y="272" text-anchor="middle" font-size="11">They balance &#8594; apple stays at rest.</text>
+  <line x1="310" y1="20" x2="310" y2="285" stroke="#9AA0A6" stroke-width="1" stroke-dasharray="4 4"/>
+  <!-- Panel B: Newton's Third Law (action-reaction pairs on different bodies) -->
+  <text x="470" y="26" text-anchor="middle" class="cap">Action&#8211;reaction pairs &#8594; 3rd Law</text>
+  <rect class="book" x="410" y="175" width="130" height="16"/>
+  <text x="548" y="188" font-size="11">book</text>
+  <circle class="apple" cx="470" cy="150" r="24"/>
+  <line class="up" x1="470" y1="150" x2="470" y2="80" marker-end="url(#arwG)"/>
+  <text x="478" y="92" font-size="11" fill="#86C98B">book on apple</text>
+  <line class="bl" x1="470" y1="191" x2="470" y2="240" marker-end="url(#arwB)"/>
+  <text x="478" y="228" font-size="11" fill="#6FB7E0">apple on book</text>
+  <text x="470" y="272" text-anchor="middle" font-size="11">Equal, opposite, on two different bodies.</text>
+</svg>

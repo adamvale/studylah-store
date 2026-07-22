@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 250" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .slope { stroke:#EAEAEA; stroke-width:2; fill:none; }
+    .fill { fill:#9AA0A6; opacity:0.12; stroke:none; }
+    .block { fill:#6FB7E0; opacity:0.30; stroke:#6FB7E0; stroke-width:1.6; }
+    .dim { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .lbl { fill:#E8B65A; font-size:12px; }
+  </style>
+  <defs>
+    <marker id="q1" markerWidth="10" markerHeight="10" refX="4" refY="1" orient="auto"><path d="M0,7 L4,0 L8,7 Z" fill="#9AA0A6"/></marker>
+    <marker id="q2" markerWidth="10" markerHeight="10" refX="4" refY="6" orient="auto"><path d="M0,0 L4,7 L8,0 Z" fill="#9AA0A6"/></marker>
+  </defs>
+  <!-- P bottom-left, Q top-right; base and right vertical -->
+  <polygon class="fill" points="60,195 330,195 330,75"/>
+  <polyline class="slope" points="60,195 330,75"/>
+  <line class="slope" x1="60" y1="195" x2="330" y2="195"/>
+  <line class="slope" x1="330" y1="195" x2="330" y2="75"/>
+  <!-- block near top (at Q) -->
+  <g transform="translate(275,102) rotate(-24)">
+    <rect class="block" x="-22" y="-16" width="44" height="30"/>
+  </g>
+  <!-- labels -->
+  <text x="48" y="212" fill="#EAEAEA">P</text>
+  <text x="336" y="74" fill="#EAEAEA">Q</text>
+  <!-- slope length 8 m -->
+  <text class="lbl" x="185" y="120" transform="rotate(-24 185 120)">8 m</text>
+  <!-- height 4 m -->
+  <line class="dim" x1="360" y1="75" x2="360" y2="195" marker-start="url(#q1)" marker-end="url(#q2)"/>
+  <text class="lbl" x="368" y="140">4 m</text>
+  <line class="dim" x1="330" y1="75" x2="365" y2="75" stroke-dasharray="3 3"/>
+</svg>

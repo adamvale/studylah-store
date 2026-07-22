@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 210" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .rule { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .tick { stroke:#EAEAEA; stroke-width:1.2; }
+    .obj { fill:#6FB7E0; opacity:0.35; stroke:#6FB7E0; stroke-width:1.5; }
+    .amber { fill:#E8B65A; }
+  </style>
+  <!-- LEFT: positive zero error (object starts after 0) -->
+  <g>
+    <rect class="obj" x="105" y="40" width="120" height="26"/>
+    <rect class="rule" x="70" y="70" width="220" height="34" rx="3"/>
+    <g class="tick">
+      <line x1="90" y1="70" x2="90" y2="88"/>
+      <line x1="130" y1="70" x2="130" y2="88"/>
+      <line x1="170" y1="70" x2="170" y2="88"/>
+      <line x1="210" y1="70" x2="210" y2="88"/>
+      <line x1="250" y1="70" x2="250" y2="88"/>
+    </g>
+    <g font-size="11" text-anchor="middle">
+      <text x="90" y="120">0</text><text x="130" y="120">1</text><text x="170" y="120">2</text><text x="210" y="120">3</text><text x="250" y="120">4</text>
+    </g>
+    <text x="180" y="150" text-anchor="middle" font-size="13" class="amber">positive zero error</text>
+    <text x="180" y="170" text-anchor="middle" font-size="11">object edge starts after 0 &#8594; reads too large</text>
+  </g>
+  <!-- RIGHT: negative zero error (object before 0) -->
+  <g>
+    <rect class="obj" x="360" y="40" width="120" height="26"/>
+    <rect class="rule" x="360" y="70" width="220" height="34" rx="3"/>
+    <g class="tick">
+      <line x1="380" y1="70" x2="380" y2="88"/>
+      <line x1="420" y1="70" x2="420" y2="88"/>
+      <line x1="460" y1="70" x2="460" y2="88"/>
+      <line x1="500" y1="70" x2="500" y2="88"/>
+      <line x1="540" y1="70" x2="540" y2="88"/>
+    </g>
+    <g font-size="11" text-anchor="middle">
+      <text x="380" y="120">0</text><text x="420" y="120">1</text><text x="460" y="120">2</text><text x="500" y="120">3</text><text x="540" y="120">4</text>
+    </g>
+    <text x="470" y="150" text-anchor="middle" font-size="13" class="amber">negative zero error</text>
+    <text x="470" y="170" text-anchor="middle" font-size="11">object edge starts before 0 &#8594; reads too small</text>
+  </g>
+</svg>

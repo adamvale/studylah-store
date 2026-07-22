@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .view { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .path { stroke:#E8B65A; stroke-width:1.6; fill:none; }
+    .smoke { fill:#EAEAEA; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .lbl { font-size:12px; }
+    .amber { fill:#E8B65A; }
+  </style>
+  <!-- microscope field of view -->
+  <circle class="view" cx="180" cy="150" r="120"/>
+
+  <!-- a zigzag path with a smoke particle at each vertex -->
+  <path class="path" d="M110,110 L150,95 L135,140 L185,130 L165,180 L215,160 L200,205 L250,185"
+        marker-end="url(#arw)"/>
+  <g class="smoke">
+    <circle cx="110" cy="110" r="3.5"/>
+    <circle cx="150" cy="95" r="3.5"/>
+    <circle cx="135" cy="140" r="3.5"/>
+    <circle cx="185" cy="130" r="3.5"/>
+    <circle cx="165" cy="180" r="3.5"/>
+    <circle cx="215" cy="160" r="3.5"/>
+    <circle cx="200" cy="205" r="3.5"/>
+    <circle cx="250" cy="185" r="3.5"/>
+  </g>
+
+  <!-- a couple more scattered smoke dots -->
+  <circle class="smoke" cx="130" cy="220" r="3.5"/>
+  <circle class="smoke" cx="235" cy="105" r="3.5"/>
+
+  <!-- labels -->
+  <text class="lbl amber" x="20" y="240">smoke particle</text>
+  <path class="lead" d="M70,236 L127,220"/>
+
+  <text class="lbl amber" x="320" y="120">bright specks move</text>
+  <text class="lbl amber" x="320" y="138">in a jerky, zigzag path</text>
+  <path class="lead" d="M315,128 L252,160"/>
+
+  <defs>
+    <marker id="arw" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6" fill="none" stroke="#E8B65A" stroke-width="1.6"/>
+    </marker>
+  </defs>
+</svg>

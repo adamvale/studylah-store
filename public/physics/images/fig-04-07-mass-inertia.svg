@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/>
+    </marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .small { fill:#6FB7E0; opacity:0.26; stroke:#6FB7E0; stroke-width:1.6; }
+    .big { fill:#6FB7E0; opacity:0.26; stroke:#6FB7E0; stroke-width:1.6; }
+    .f { stroke:#E8B65A; stroke-width:2.4; }
+    .ground { stroke:#9AA0A6; stroke-width:1.6; }
+  </style>
+  <line class="ground" x1="30" y1="180" x2="490" y2="180"/>
+  <!-- small 2 kg block -->
+  <rect class="small" x="120" y="130" width="50" height="50"/>
+  <text x="145" y="205" text-anchor="middle" font-size="12">2 kg block</text>
+  <line class="f" x1="55" y1="150" x2="115" y2="150" marker-end="url(#arw)"/>
+  <text x="80" y="140" text-anchor="middle" font-size="11.5" fill="#E8B65A">smaller effort</text>
+  <!-- big 10 kg block -->
+  <rect class="big" x="330" y="95" width="90" height="85"/>
+  <text x="375" y="205" text-anchor="middle" font-size="12">10 kg block</text>
+  <line class="f" x1="245" y1="120" x2="325" y2="120" marker-end="url(#arw)"/>
+  <text x="278" y="110" text-anchor="middle" font-size="11.5" fill="#E8B65A">greater effort</text>
+  <text x="260" y="232" text-anchor="middle" font-size="12">More mass &#8594; more inertia &#8594; a larger force is needed to start it moving</text>
+</svg>

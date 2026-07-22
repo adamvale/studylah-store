@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .can { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .water { fill:#6FB7E0; opacity:0.30; stroke:#6FB7E0; stroke-width:1.4; }
+    .flame { fill:#E8B65A; opacity:0.35; stroke:#E8B65A; stroke-width:1.4; }
+    .flameoff { fill:none; stroke:#9AA0A6; stroke-width:1.2; stroke-dasharray:3 3; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .arrow { stroke:#E58F8F; stroke-width:2; fill:none; }
+    .title { fill:#EAEAEA; font-size:12px; font-weight:bold; }
+  </style>
+  <defs><marker id="r" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#E58F8F"/></marker></defs>
+  <!-- LEFT: burner not lit -->
+  <text class="title" x="130" y="30" text-anchor="middle">burner not lit — no change</text>
+  <path class="can" d="M90,60 L90,130 L170,130 L170,60"/>
+  <rect class="water" x="92" y="92" width="76" height="38"/>
+  <rect class="can" x="123" y="180" width="14" height="35"/>
+  <ellipse cx="130" cy="217" rx="26" ry="6" fill="none" stroke="#EAEAEA" stroke-width="2"/>
+  <path class="flameoff" d="M123,180 Q130,163 137,180 Z"/>
+  <text x="130" y="255" text-anchor="middle" font-size="11" fill="#9AA0A6">no energy transferred</text>
+
+  <!-- RIGHT: burner lit -->
+  <text class="title" x="420" y="30" text-anchor="middle">burner lit — system changes</text>
+  <path class="can" d="M380,60 L380,130 L460,130 L460,60"/>
+  <rect class="water" x="382" y="92" width="76" height="38"/>
+  <rect class="can" x="413" y="180" width="14" height="35"/>
+  <ellipse cx="420" cy="217" rx="26" ry="6" fill="none" stroke="#EAEAEA" stroke-width="2"/>
+  <path class="flame" d="M413,180 Q420,150 427,180 Z"/>
+  <!-- energy arrow up -->
+  <path class="arrow" d="M420,175 L420,133" marker-end="url(#r)"/>
+  <text x="475" y="158" font-size="11" fill="#E58F8F">energy transfer</text>
+  <text x="420" y="255" text-anchor="middle" font-size="11" fill="#86C98B">chemical store → internal store</text>
+</svg>

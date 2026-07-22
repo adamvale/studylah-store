@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 260" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
+    .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
+    .pole { font-size:15px; font-weight:bold; fill:#EAEAEA; }
+    .comp { fill:none; stroke:#9AA0A6; stroke-width:1.4; }
+    .lbl { fill:#E8B65A; font-size:12.5px; }
+  </style>
+  <!-- five empty compass circles around the magnet -->
+  <circle class="comp" cx="130" cy="150" r="17"/>
+  <circle class="comp" cx="185" cy="95"  r="17"/>
+  <circle class="comp" cx="330" cy="70"  r="17"/>
+  <circle class="comp" cx="380" cy="150" r="17"/>
+  <circle class="comp" cx="260" cy="200" r="17"/>
+
+  <rect class="magN" x="160" y="135" width="95" height="30" rx="2"/>
+  <rect class="magS" x="255" y="135" width="95" height="30" rx="2"/>
+  <text class="pole" x="175" y="156">N</text>
+  <text class="pole" x="330" y="156">S</text>
+
+  <text x="255" y="35" text-anchor="middle" class="lbl">The circles are plotting compasses. Draw the needle in each.</text>
+</svg>

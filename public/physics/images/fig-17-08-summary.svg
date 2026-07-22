@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 250" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .wire { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .res { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .cellL { stroke:#EAEAEA; stroke-width:2; }
+    .cellS { stroke:#EAEAEA; stroke-width:5; }
+    .head { fill:#6FB7E0; }
+    .lbl { fill:#9AA0A6; font-style:italic; font-size:11px; }
+    .div { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:4 4; }
+  </style>
+  <line class="div" x1="310" y1="20" x2="310" y2="230"/>
+  <!-- SERIES (left) -->
+  <text x="150" y="30" text-anchor="middle" font-size="14" class="head">Series</text>
+  <path class="wire" d="M60,55 L120,55"/>
+  <path class="wire" d="M150,55 L240,55 L240,150"/>
+  <path class="wire" d="M60,55 L60,150 L240,150"/>
+  <line class="cellL" x1="130" y1="42" x2="130" y2="68"/>
+  <line class="cellS" x1="140" y1="48" x2="140" y2="62"/>
+  <rect class="res" x="226" y="85" width="28" height="40"/>
+  <text x="270" y="108" class="lbl">R₂</text>
+  <rect class="res" x="110" y="136" width="46" height="28"/>
+  <text x="133" y="182" text-anchor="middle" class="lbl">R₁</text>
+  <text x="150" y="210" text-anchor="middle" font-size="11">Rₑ = R₁ + R₂ + …</text>
+  <!-- PARALLEL (right) -->
+  <text x="460" y="30" text-anchor="middle" font-size="14" class="head">Parallel</text>
+  <path class="wire" d="M360,55 L410,55"/>
+  <path class="wire" d="M440,55 L560,55"/>
+  <line class="cellL" x1="420" y1="42" x2="420" y2="68"/>
+  <line class="cellS" x1="432" y1="48" x2="432" y2="62"/>
+  <path class="wire" d="M360,55 L360,150 L560,150 L560,55"/>
+  <rect class="res" x="446" y="80" width="28" height="45"/>
+  <text x="440" y="105" text-anchor="end" class="lbl">R₁</text>
+  <rect class="res" x="516" y="80" width="28" height="45"/>
+  <text x="512" y="105" text-anchor="end" class="lbl">R₂</text>
+  <path class="wire" d="M460,55 L460,80"/>
+  <path class="wire" d="M460,125 L460,150"/>
+  <path class="wire" d="M530,55 L530,80"/>
+  <path class="wire" d="M530,125 L530,150"/>
+  <text x="460" y="210" text-anchor="middle" font-size="11">1/Rₑ = 1/R₁ + 1/R₂ + …</text>
+</svg>

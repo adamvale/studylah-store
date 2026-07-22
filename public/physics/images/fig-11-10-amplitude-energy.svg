@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 200" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .axis { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
+    .wave { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
+    .wave2 { stroke:#E8B65A; stroke-width:2.2; fill:none; stroke-dasharray:6 4; }
+    .rest { stroke:#9AA0A6; stroke-width:1.2; stroke-dasharray:5 4; fill:none; }
+    .guide { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:3 3; fill:none; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .dim { stroke:#E8B65A; stroke-width:1.4; fill:none; }
+    .lbl { fill:#E8B65A; font-size:13px; }
+    .lblb { fill:#6FB7E0; font-size:13px; }
+    .tick { stroke:#EAEAEA; stroke-width:1.2; }
+    .sm { font-size:12px; }
+  </style>
+
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
+    </marker>
+    <marker id="ahb" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6FB7E0"/>
+    </marker>
+    <marker id="aha" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/>
+    </marker>
+    <marker id="ahm" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#9AA0A6"/>
+    </marker>
+  </defs>
+  <line x1="70" y1="163" x2="70" y2="17" class="axis" marker-end="url(#ah)"/>
+  <line x1="56" y1="90" x2="300" y2="90" class="axis" marker-end="url(#ah)"/>
+  <text x="64" y="13" text-anchor="end" font-size="12">displacement</text>
+  <text x="300" y="108" text-anchor="end" font-size="12">distance</text>
+  <text x="64" y="105" text-anchor="end" font-size="12">0</text>
+  <text x="64" y="39" text-anchor="end" font-size="12" font-style="italic">A</text>
+  <line x1="67" y1="35" x2="73" y2="35" class="tick"/>
+  <text x="64" y="149" text-anchor="end" font-size="12" font-style="italic">-A</text>
+  <line x1="67" y1="145" x2="73" y2="145" class="tick"/>
+  <path class="wave" d="M 70.00,90.00 L 72.00,87.10 L 74.00,84.25 L 76.00,81.50 L 78.00,78.90 L 80.00,76.49 L 82.00,74.32 L 84.00,72.42 L 86.00,70.83 L 88.00,69.57 L 90.00,68.67 L 92.00,68.15 L 94.00,68.00 L 96.00,68.24 L 98.00,68.86 L 100.00,69.85 L 102.00,71.19 L 104.00,72.86 L 106.00,74.83 L 108.00,77.07 L 110.00,79.53 L 112.00,82.17 L 114.00,84.95 L 116.00,87.82 L 118.00,90.73 L 120.00,93.62 L 122.00,96.45 L 124.00,99.17 L 126.00,101.73 L 128.00,104.08 L 130.00,106.19 L 132.00,108.01 L 134.00,109.52 L 136.00,110.69 L 138.00,111.49 L 140.00,111.92 L 142.00,111.97 L 144.00,111.64 L 146.00,110.92 L 148.00,109.84 L 150.00,108.42 L 152.00,106.67 L 154.00,104.63 L 156.00,102.34 L 158.00,99.83 L 160.00,97.14 L 162.00,94.34 L 164.00,91.45 L 166.00,88.55 L 168.00,85.66 L 170.00,82.86 L 172.00,80.17 L 174.00,77.66 L 176.00,75.37 L 178.00,73.33 L 180.00,71.58 L 182.00,70.16 L 184.00,69.08 L 186.00,68.36 L 188.00,68.03 L 190.00,68.08 L 192.00,68.51 L 194.00,69.31 L 196.00,70.48 L 198.00,71.99 L 200.00,73.81 L 202.00,75.92 L 204.00,78.27 L 206.00,80.83 L 208.00,83.55 L 210.00,86.38 L 212.00,89.27 L 214.00,92.18 L 216.00,95.05 L 218.00,97.83 L 220.00,100.47 L 222.00,102.93 L 224.00,105.17 L 226.00,107.14 L 228.00,108.81 L 230.00,110.15 L 232.00,111.14 L 234.00,111.76 L 236.00,112.00 L 238.00,111.85 L 240.00,111.33 L 242.00,110.43 L 244.00,109.17 L 246.00,107.58 L 248.00,105.68 L 250.00,103.51 L 252.00,101.10 L 254.00,98.50 L 256.00,95.75 L 258.00,92.90 L 260.00,90.00 L 262.00,87.10 L 264.00,84.25 L 266.00,81.50 L 268.00,78.90 L 270.00,76.49 L 272.00,74.32 L 274.00,72.42 L 276.00,70.83 L 278.00,69.57 L 280.00,68.67 L 282.00,68.15 L 284.00,68.00"/>
+  <text x="180" y="165" text-anchor="middle" font-size="12" fill="#6FB7E0">lower amplitude</text>
+  <text x="180" y="181" text-anchor="middle" font-size="11.5" fill="#9AA0A6">wave carries less energy</text>
+  <line x1="360" y1="163" x2="360" y2="17" class="axis" marker-end="url(#ah)"/>
+  <line x1="346" y1="90" x2="590" y2="90" class="axis" marker-end="url(#ah)"/>
+  <text x="354" y="13" text-anchor="end" font-size="12">displacement</text>
+  <text x="590" y="108" text-anchor="end" font-size="12">distance</text>
+  <text x="354" y="105" text-anchor="end" font-size="12">0</text>
+  <text x="354" y="39" text-anchor="end" font-size="12" font-style="italic">A</text>
+  <line x1="357" y1="35" x2="363" y2="35" class="tick"/>
+  <text x="354" y="149" text-anchor="end" font-size="12" font-style="italic">-A</text>
+  <line x1="357" y1="145" x2="363" y2="145" class="tick"/>
+  <path class="wave" d="M 360.00,90.00 L 362.00,83.41 L 364.00,76.93 L 366.00,70.68 L 368.00,64.76 L 370.00,59.29 L 372.00,54.35 L 374.00,50.04 L 376.00,46.43 L 378.00,43.57 L 380.00,41.53 L 382.00,40.33 L 384.00,40.01 L 386.00,40.55 L 388.00,41.96 L 390.00,44.21 L 392.00,47.26 L 394.00,51.06 L 396.00,55.53 L 398.00,60.61 L 400.00,66.20 L 402.00,72.21 L 404.00,78.53 L 406.00,85.05 L 408.00,91.65 L 410.00,98.23 L 412.00,104.66 L 414.00,110.84 L 416.00,116.65 L 418.00,122.00 L 420.00,126.79 L 422.00,130.93 L 424.00,134.36 L 426.00,137.02 L 428.00,138.85 L 430.00,139.83 L 432.00,139.94 L 434.00,139.18 L 436.00,137.55 L 438.00,135.10 L 440.00,131.86 L 442.00,127.89 L 444.00,123.25 L 446.00,118.04 L 448.00,112.33 L 450.00,106.23 L 452.00,99.86 L 454.00,93.30 L 456.00,86.70 L 458.00,80.14 L 460.00,73.77 L 462.00,67.67 L 464.00,61.96 L 466.00,56.75 L 468.00,52.11 L 470.00,48.14 L 472.00,44.90 L 474.00,42.45 L 476.00,40.82 L 478.00,40.06 L 480.00,40.17 L 482.00,41.15 L 484.00,42.98 L 486.00,45.64 L 488.00,49.07 L 490.00,53.21 L 492.00,58.00 L 494.00,63.35 L 496.00,69.16 L 498.00,75.34 L 500.00,81.77 L 502.00,88.35 L 504.00,94.95 L 506.00,101.47 L 508.00,107.79 L 510.00,113.80 L 512.00,119.39 L 514.00,124.47 L 516.00,128.94 L 518.00,132.74 L 520.00,135.79 L 522.00,138.04 L 524.00,139.45 L 526.00,139.99 L 528.00,139.67 L 530.00,138.47 L 532.00,136.43 L 534.00,133.57 L 536.00,129.96 L 538.00,125.65 L 540.00,120.71 L 542.00,115.24 L 544.00,109.32 L 546.00,103.07 L 548.00,96.59 L 550.00,90.00 L 552.00,83.41 L 554.00,76.93 L 556.00,70.68 L 558.00,64.76 L 560.00,59.29 L 562.00,54.35 L 564.00,50.04 L 566.00,46.43 L 568.00,43.57 L 570.00,41.53 L 572.00,40.33 L 574.00,40.01"/>
+  <text x="470" y="165" text-anchor="middle" font-size="12" fill="#E8B65A">higher amplitude</text>
+  <text x="470" y="181" text-anchor="middle" font-size="11.5" fill="#9AA0A6">wave carries more energy</text>
+
+</svg>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 320" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .box { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .chimney { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .smoke { stroke:#9AA0A6; stroke-width:2; fill:none; stroke-dasharray:5 4; }
+    .flame { fill:#E8B65A; opacity:0.55; stroke:#E8B65A; stroke-width:1.2; }
+    .candle { fill:none; stroke:#EAEAEA; stroke-width:1.4; }
+    .down { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
+    .up { stroke:#E58F8F; stroke-width:2.2; fill:none; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+    .lbl { fill:#E8B65A; }
+  </style>
+  <!-- glass box -->
+  <rect class="box" x="90" y="150" width="260" height="110"/>
+  <!-- two chimneys -->
+  <rect class="chimney" x="130" y="110" width="30" height="40"/>
+  <rect class="chimney" x="280" y="110" width="30" height="40"/>
+  <!-- candle under left chimney -->
+  <rect class="candle" x="140" y="200" width="10" height="45"/>
+  <path class="flame" d="M145,200 C140,190 150,186 145,176 C140,186 138,194 145,200 Z"/>
+  <!-- smouldering paper above right chimney -->
+  <rect x="286" y="82" width="34" height="9" rx="2" fill="#9AA0A6" opacity="0.4" stroke="#9AA0A6"/>
+  <path class="smoke" d="M295,82 q-6,-14 4,-24 q8,-8 2,-20"/>
+  <!-- smoke path: down right chimney, across, up left chimney -->
+  <path class="down" d="M295,95 L295,150"/>
+  <path class="down" d="M288,138 L295,152 L302,138"/>
+  <path class="smoke" d="M295,175 C250,195 190,195 145,175"/>
+  <path class="up" d="M145,150 L145,110"/>
+  <path class="up" d="M138,124 L145,108 L152,124"/>
+  <!-- labels -->
+  <text class="lbl" x="360" y="80">smouldering paper</text>
+  <path class="lead" d="M358,84 L322,86"/>
+  <text class="lbl" x="360" y="130">smoke drawn down</text>
+  <path class="lead" d="M358,134 L300,140"/>
+  <text class="lbl" x="35" y="190">warm air &amp;</text>
+  <text class="lbl" x="35" y="205">smoke rise</text>
+  <path class="lead" d="M85,198 L138,175"/>
+  <text x="145" y="270" text-anchor="middle">candle</text>
+</svg>

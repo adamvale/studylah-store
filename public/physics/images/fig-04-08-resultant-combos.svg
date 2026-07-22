@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
+    </marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .box { fill:#6FB7E0; opacity:0.24; stroke:#6FB7E0; stroke-width:1.5; }
+    .f { stroke:#EAEAEA; stroke-width:2.2; }
+    .res { fill:#86C98B; font-size:12.5; }
+  </style>
+  <!-- Row 1: same direction -->
+  <rect class="box" x="150" y="30" width="70" height="44"/>
+  <line class="f" x1="80" y1="52" x2="146" y2="52" marker-end="url(#arw)"/>
+  <text x="105" y="42" text-anchor="middle" font-size="12">10 N</text>
+  <line class="f" x1="224" y1="52" x2="300" y2="52" marker-end="url(#arw)"/>
+  <text x="255" y="42" text-anchor="middle" font-size="12">10 N</text>
+  <text x="330" y="56" font-size="12.5" class="res">Resultant = 10 N + 10 N = 20 N to the right</text>
+  <!-- Row 2: opposite equal -->
+  <rect class="box" x="150" y="130" width="70" height="44"/>
+  <line class="f" x1="80" y1="152" x2="146" y2="152" marker-end="url(#arw)"/>
+  <text x="105" y="142" text-anchor="middle" font-size="12">10 N</text>
+  <line class="f" x1="300" y1="152" x2="224" y2="152" marker-end="url(#arw)"/>
+  <text x="265" y="142" text-anchor="middle" font-size="12">10 N</text>
+  <text x="330" y="156" font-size="12.5" class="res">Resultant = 10 N + (&#8722;10 N) = 0 N</text>
+  <!-- Row 3: opposite unequal -->
+  <rect class="box" x="150" y="230" width="70" height="44"/>
+  <line class="f" x1="80" y1="252" x2="146" y2="252" marker-end="url(#arw)"/>
+  <text x="105" y="242" text-anchor="middle" font-size="12">10 N</text>
+  <line class="f" x1="285" y1="252" x2="224" y2="252" marker-end="url(#arw)"/>
+  <text x="258" y="242" text-anchor="middle" font-size="12">6 N</text>
+  <text x="330" y="256" font-size="12.5" class="res">Resultant = 10 N + (&#8722;6 N) = 4 N to the right</text>
+  <text x="280" y="330" text-anchor="middle" font-size="12">The + and &#8722; signs record the two opposite directions of the forces.</text>
+</svg>

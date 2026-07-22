@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 240" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
+    </marker>
+    <marker id="arwG" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#86C98B"/>
+    </marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .box { fill:#6FB7E0; opacity:0.26; stroke:#6FB7E0; stroke-width:1.6; }
+    .f { stroke:#EAEAEA; stroke-width:2.2; }
+    .res { stroke:#86C98B; stroke-width:2.6; }
+  </style>
+  <!-- resultant on top -->
+  <line class="res" x1="175" y1="55" x2="255" y2="55" marker-end="url(#arwG)"/>
+  <text x="215" y="40" text-anchor="middle" font-size="12.5" fill="#86C98B">resultant force 3 N</text>
+  <text x="215" y="72" text-anchor="middle" font-size="11.5" fill="#86C98B">acceleration</text>
+  <!-- box -->
+  <rect class="box" x="180" y="110" width="80" height="50"/>
+  <!-- 8 N right -->
+  <line class="f" x1="100" y1="135" x2="176" y2="135" marker-end="url(#arw)"/>
+  <text x="125" y="125" text-anchor="middle" font-size="13">8 N</text>
+  <!-- 5 N left -->
+  <line class="f" x1="340" y1="135" x2="264" y2="135" marker-end="url(#arw)"/>
+  <text x="315" y="125" text-anchor="middle" font-size="13">5 N</text>
+  <text x="220" y="200" text-anchor="middle" font-size="12.5">Resultant = 8 N + (&#8722;5 N) = 3 N</text>
+  <text x="220" y="220" text-anchor="middle" font-size="12.5">The box accelerates in the direction of the 3 N resultant.</text>
+</svg>

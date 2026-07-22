@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 220" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .axis { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
+    .wave { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
+    .wave2 { stroke:#E8B65A; stroke-width:2.2; fill:none; stroke-dasharray:6 4; }
+    .rest { stroke:#9AA0A6; stroke-width:1.2; stroke-dasharray:5 4; fill:none; }
+    .guide { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:3 3; fill:none; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .dim { stroke:#E8B65A; stroke-width:1.4; fill:none; }
+    .lbl { fill:#E8B65A; font-size:13px; }
+    .lblb { fill:#6FB7E0; font-size:13px; }
+    .tick { stroke:#EAEAEA; stroke-width:1.2; }
+    .sm { font-size:12px; }
+  </style>
+
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
+    </marker>
+    <marker id="ahb" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6FB7E0"/>
+    </marker>
+    <marker id="aha" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/>
+    </marker>
+    <marker id="ahm" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#9AA0A6"/>
+    </marker>
+  </defs>
+  <line x1="90" y1="30" x2="400" y2="30" class="axis" marker-end="url(#ah)"/>
+  <text x="245" y="22" text-anchor="middle" font-size="12.5">direction of wave travel</text>
+  <line x1="96.0" y1="70" x2="96.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="110.0" y1="70" x2="110.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="124.0" y1="70" x2="124.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="157.0" y1="70" x2="157.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="161.5" y1="70" x2="161.5" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="166.0" y1="70" x2="166.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="170.5" y1="70" x2="170.5" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="175.0" y1="70" x2="175.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="179.5" y1="70" x2="179.5" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="184.0" y1="70" x2="184.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="188.5" y1="70" x2="188.5" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="193.0" y1="70" x2="193.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="226.0" y1="70" x2="226.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="240.0" y1="70" x2="240.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="254.0" y1="70" x2="254.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="287.0" y1="70" x2="287.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="291.5" y1="70" x2="291.5" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="296.0" y1="70" x2="296.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="300.5" y1="70" x2="300.5" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="305.0" y1="70" x2="305.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="309.5" y1="70" x2="309.5" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="314.0" y1="70" x2="314.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="318.5" y1="70" x2="318.5" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="323.0" y1="70" x2="323.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="356.0" y1="70" x2="356.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="370.0" y1="70" x2="370.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="384.0" y1="70" x2="384.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="412.0" y1="70" x2="412.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="416.5" y1="70" x2="416.5" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="421.0" y1="70" x2="421.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="425.5" y1="70" x2="425.5" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="430.0" y1="70" x2="430.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="434.5" y1="70" x2="434.5" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="439.0" y1="70" x2="439.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="443.5" y1="70" x2="443.5" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <line x1="448.0" y1="70" x2="448.0" y2="120" stroke="#86C98B" stroke-width="1.5"/>
+  <text x="175" y="150" text-anchor="middle" class="lbl">compression</text>
+  <path class="lead" d="M175,138 L175,124"/>
+  <text x="110" y="150" text-anchor="middle" font-size="12" fill="#9AA0A6">rarefaction</text>
+  <path class="lead" d="M110,138 L110,124"/>
+  <line x1="230" y1="185" x2="270" y2="185" class="dim" marker-start="url(#aha)" marker-end="url(#aha)"/>
+  <text x="250" y="205" text-anchor="middle" class="lbl">direction of vibration</text>
+
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 360" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .hand { stroke:#E8B65A; stroke-width:2; fill:#E8B65A; fill-opacity:0.12; }
+    .fF { stroke:#E58F8F; stroke-width:3; fill:none; }
+    .fB { stroke:#6FB7E0; stroke-width:3; fill:none; }
+    .fI { stroke:#86C98B; stroke-width:3; fill:none; }
+    .tF { fill:#E58F8F; font-size:14px; font-weight:bold; }
+    .tB { fill:#6FB7E0; font-size:14px; font-weight:bold; }
+    .tI { fill:#86C98B; font-size:14px; font-weight:bold; }
+    .note { fill:#9AA0A6; font-size:12px; }
+  </style>
+  <defs>
+    <marker id="mF" markerWidth="12" markerHeight="12" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#E58F8F"/></marker>
+    <marker id="mB" markerWidth="12" markerHeight="12" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#6FB7E0"/></marker>
+    <marker id="mI" markerWidth="12" markerHeight="12" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#86C98B"/></marker>
+  </defs>
+
+  <!-- stylised left palm -->
+  <path class="hand" d="M170,300 q-10,-70 4,-120 l14,-2 q4,-40 12,-40 q10,0 10,26 l-2,52
+     q30,-6 40,4 q10,10 -6,20 l-30,14 q6,30 -6,60 q-24,20 -50,-14 z"/>
+
+  <!-- Force (thumb) up -->
+  <line class="fF" x1="200" y1="180" x2="200" y2="70" marker-end="url(#mF)"/>
+  <text class="tF" x="208" y="66">Force / thrust, F (thumb)</text>
+
+  <!-- Field (first finger) to upper right -->
+  <line class="fB" x1="200" y1="180" x2="330" y2="120" marker-end="url(#mB)"/>
+  <text class="tB" x="336" y="118">Field, B (first finger)</text>
+
+  <!-- Current (second finger) to the right/down -->
+  <line class="fI" x1="200" y1="180" x2="345" y2="205" marker-end="url(#mI)"/>
+  <text class="tI" x="352" y="208">Current, I (second finger)</text>
+
+  <text class="note" x="40" y="330">Fleming's left-hand rule: hold the thumb and first two fingers of the</text>
+  <text class="note" x="40" y="348">left hand at right angles. thuMb = Motion/force, First = Field, seCond = Current.</text>
+</svg>

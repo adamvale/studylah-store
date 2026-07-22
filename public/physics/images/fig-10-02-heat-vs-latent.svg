@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 230" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .b { fill:#6FB7E0; stroke:#EAEAEA; stroke-width:1.2; }
+    .head { fill:#E8B65A; font-size:14px; font-weight:bold; }
+    .t { font-size:12px; }
+    .div { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:5 4; }
+  </style>
+  <line class="div" x1="280" y1="20" x2="280" y2="210"/>
+
+  <!-- LEFT: heat capacity -> affects KE -> temp changes -->
+  <text class="head" x="20" y="40">Heat capacity</text>
+  <g>
+    <circle class="b" cx="55" cy="80" r="11"/>
+    <circle class="b" cx="110" cy="80" r="11"/>
+    <!-- motion arrows (KE) -->
+    <g stroke="#E58F8F" stroke-width="1.3" fill="none">
+      <path d="M55,64 l0,-9"/><path d="M55,96 l0,9"/>
+      <path d="M110,64 l0,-9"/><path d="M110,96 l0,9"/>
+    </g>
+  </g>
+  <text class="t" x="20" y="130">Energy transfer changes the <tspan fill="#6FB7E0">average kinetic</tspan></text>
+  <text class="t" x="20" y="148"><tspan fill="#6FB7E0">energy</tspan> of the particles.</text>
+  <text class="t" x="20" y="174">&#8594; the temperature <tspan fill="#E8B65A">changes</tspan>.</text>
+
+  <!-- RIGHT: latent heat -> affects PE -> no temp change -->
+  <text class="head" x="300" y="40">Latent heat</text>
+  <g>
+    <circle class="b" cx="335" cy="80" r="11"/>
+    <circle class="b" cx="420" cy="80" r="11"/>
+    <!-- separation arrows (PE) -->
+    <line x1="346" y1="80" x2="409" y2="80" stroke="#86C98B" stroke-width="1.3" stroke-dasharray="4 3"/>
+    <path d="M360,80 l-9,-5 M360,80 l-9,5" stroke="#86C98B" stroke-width="1.3" fill="none"/>
+    <path d="M395,80 l9,-5 M395,80 l9,5" stroke="#86C98B" stroke-width="1.3" fill="none"/>
+  </g>
+  <text class="t" x="300" y="130">Energy transfer changes the <tspan fill="#86C98B">potential</tspan></text>
+  <text class="t" x="300" y="148"><tspan fill="#86C98B">energy</tspan> (separation) of the particles.</text>
+  <text class="t" x="300" y="174">&#8594; the temperature stays <tspan fill="#E8B65A">constant</tspan>.</text>
+</svg>

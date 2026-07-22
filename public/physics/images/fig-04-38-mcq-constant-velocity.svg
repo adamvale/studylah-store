@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 180" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arwB" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#6FB7E0"/></marker>
+    <marker id="arwR" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#E58F8F"/></marker>
+    <marker id="arwm" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#9AA0A6"/></marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .box { fill:#6FB7E0; opacity:0.24; stroke:#6FB7E0; stroke-width:1.6; }
+    .ground { stroke:#9AA0A6; stroke-width:1.6; }
+    .app { stroke:#6FB7E0; stroke-width:2.4; }
+    .fr { stroke:#E58F8F; stroke-width:2.4; }
+    .v { stroke:#9AA0A6; stroke-width:1.8; }
+  </style>
+  <line class="ground" x1="40" y1="120" x2="420" y2="120"/>
+  <text x="70" y="138" font-size="11">floor</text>
+  <rect class="box" x="190" y="78" width="80" height="42"/>
+  <text x="230" y="104" text-anchor="middle" font-size="12">3 kg</text>
+  <line class="v" x1="280" y1="58" x2="360" y2="58" marker-end="url(#arwm)"/>
+  <text x="320" y="48" text-anchor="middle" font-size="11" fill="#9AA0A6">constant speed 4 m/s</text>
+  <line class="app" x1="120" y1="99" x2="186" y2="99" marker-end="url(#arwB)"/>
+  <text x="130" y="90" font-size="11" fill="#6FB7E0">external force</text>
+  <line class="fr" x1="340" y1="99" x2="274" y2="99" marker-end="url(#arwR)"/>
+  <text x="345" y="103" font-size="11" fill="#E58F8F">friction</text>
+</svg>

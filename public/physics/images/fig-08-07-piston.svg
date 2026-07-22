@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 240" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .cyl { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .gas { fill:#6FB7E0; opacity:0.15; }
+    .p { fill:#6FB7E0; opacity:0.6; stroke:#6FB7E0; stroke-width:1.2; }
+    .piston { fill:#9AA0A6; opacity:0.4; stroke:#EAEAEA; stroke-width:1.6; }
+    .force { stroke:#E58F8F; stroke-width:5; fill:none; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .lbl { font-size:12px; }
+    .amber { fill:#E8B65A; }
+  </style>
+
+  <!-- cylinder body (horizontal, open left for rod) -->
+  <path class="cyl" d="M150,70 L400,70 A16,55 0 0 1 400,180 L150,180"/>
+  <ellipse class="gas" cx="300" cy="125" rx="105" ry="55"/>
+  <!-- right end cap ellipse -->
+  <ellipse class="cyl" cx="400" cy="125" rx="16" ry="55"/>
+
+  <!-- confined gas particles -->
+  <g class="p">
+    <circle cx="270" cy="100" r="7"/><circle cx="320" cy="120" r="7"/>
+    <circle cx="290" cy="150" r="7"/><circle cx="350" cy="105" r="7"/>
+    <circle cx="360" cy="150" r="7"/><circle cx="310" cy="90" r="7"/>
+  </g>
+
+  <!-- piston disc -->
+  <rect class="piston" x="230" y="72" width="14" height="106" rx="2"/>
+  <!-- piston rod extending left -->
+  <rect class="piston" x="120" y="118" width="110" height="14" rx="2"/>
+
+  <!-- applied force arrow -->
+  <line class="force" x1="60" y1="125" x2="115" y2="125" marker-end="url(#f)"/>
+  <text class="lbl amber" x="55" y="110">force applied</text>
+
+  <!-- labels -->
+  <text class="lbl amber" x="215" y="45">piston</text>
+  <path class="lead" d="M225,48 L237,72"/>
+
+  <text class="lbl amber" x="420" y="120">confined air</text>
+  <path class="lead" d="M416,124 L352,125"/>
+
+  <text class="lbl amber" x="350" y="205">container</text>
+  <path class="lead" d="M360,198 L390,150"/>
+
+  <defs>
+    <marker id="f" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6" fill="#E58F8F"/>
+    </marker>
+  </defs>
+</svg>

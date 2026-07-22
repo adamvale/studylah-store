@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .axis { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
+    .wave { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
+    .wave2 { stroke:#E8B65A; stroke-width:2.2; fill:none; stroke-dasharray:6 4; }
+    .rest { stroke:#9AA0A6; stroke-width:1.2; stroke-dasharray:5 4; fill:none; }
+    .guide { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:3 3; fill:none; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .dim { stroke:#E8B65A; stroke-width:1.4; fill:none; }
+    .lbl { fill:#E8B65A; font-size:13px; }
+    .lblb { fill:#6FB7E0; font-size:13px; }
+    .tick { stroke:#EAEAEA; stroke-width:1.2; }
+    .sm { font-size:12px; }
+  </style>
+
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
+    </marker>
+    <marker id="ahb" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6FB7E0"/>
+    </marker>
+    <marker id="aha" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/>
+    </marker>
+    <marker id="ahm" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#9AA0A6"/>
+    </marker>
+  </defs>
+  <line x1="90" y1="35" x2="380" y2="35" class="axis" marker-end="url(#ah)"/>
+  <text x="235" y="27" text-anchor="middle" font-size="12.5">direction of wave travel</text>
+  <line x1="65" y1="115" x2="440" y2="115" class="rest"/>
+  <path class="wave" d="M 80.00,115.00 L 82.00,111.24 L 84.00,107.50 L 86.00,103.83 L 88.00,100.24 L 90.00,96.78 L 92.00,93.46 L 94.00,90.31 L 96.00,87.37 L 98.00,84.64 L 100.00,82.16 L 102.00,79.95 L 104.00,78.01 L 106.00,76.38 L 108.00,75.06 L 110.00,74.05 L 112.00,73.38 L 114.00,73.04 L 116.00,73.04 L 118.00,73.38 L 120.00,74.05 L 122.00,75.06 L 124.00,76.38 L 126.00,78.01 L 128.00,79.95 L 130.00,82.16 L 132.00,84.64 L 134.00,87.37 L 136.00,90.31 L 138.00,93.46 L 140.00,96.78 L 142.00,100.24 L 144.00,103.83 L 146.00,107.50 L 148.00,111.24 L 150.00,115.00 L 152.00,118.76 L 154.00,122.50 L 156.00,126.17 L 158.00,129.76 L 160.00,133.22 L 162.00,136.54 L 164.00,139.69 L 166.00,142.63 L 168.00,145.36 L 170.00,147.84 L 172.00,150.05 L 174.00,151.99 L 176.00,153.62 L 178.00,154.94 L 180.00,155.95 L 182.00,156.62 L 184.00,156.96 L 186.00,156.96 L 188.00,156.62 L 190.00,155.95 L 192.00,154.94 L 194.00,153.62 L 196.00,151.99 L 198.00,150.05 L 200.00,147.84 L 202.00,145.36 L 204.00,142.63 L 206.00,139.69 L 208.00,136.54 L 210.00,133.22 L 212.00,129.76 L 214.00,126.17 L 216.00,122.50 L 218.00,118.76 L 220.00,115.00 L 222.00,111.24 L 224.00,107.50 L 226.00,103.83 L 228.00,100.24 L 230.00,96.78 L 232.00,93.46 L 234.00,90.31 L 236.00,87.37 L 238.00,84.64 L 240.00,82.16 L 242.00,79.95 L 244.00,78.01 L 246.00,76.38 L 248.00,75.06 L 250.00,74.05 L 252.00,73.38 L 254.00,73.04 L 256.00,73.04 L 258.00,73.38 L 260.00,74.05 L 262.00,75.06 L 264.00,76.38 L 266.00,78.01 L 268.00,79.95 L 270.00,82.16 L 272.00,84.64 L 274.00,87.37 L 276.00,90.31 L 278.00,93.46 L 280.00,96.78 L 282.00,100.24 L 284.00,103.83 L 286.00,107.50 L 288.00,111.24 L 290.00,115.00 L 292.00,118.76 L 294.00,122.50 L 296.00,126.17 L 298.00,129.76 L 300.00,133.22 L 302.00,136.54 L 304.00,139.69 L 306.00,142.63 L 308.00,145.36 L 310.00,147.84 L 312.00,150.05 L 314.00,151.99 L 316.00,153.62 L 318.00,154.94 L 320.00,155.95 L 322.00,156.62 L 324.00,156.96 L 326.00,156.96 L 328.00,156.62 L 330.00,155.95 L 332.00,154.94 L 334.00,153.62 L 336.00,151.99 L 338.00,150.05 L 340.00,147.84 L 342.00,145.36 L 344.00,142.63 L 346.00,139.69 L 348.00,136.54 L 350.00,133.22 L 352.00,129.76 L 354.00,126.17 L 356.00,122.50 L 358.00,118.76 L 360.00,115.00 L 362.00,111.24 L 364.00,107.50 L 366.00,103.83 L 368.00,100.24 L 370.00,96.78 L 372.00,93.46 L 374.00,90.31 L 376.00,87.37 L 378.00,84.64 L 380.00,82.16 L 382.00,79.95 L 384.00,78.01 L 386.00,76.38 L 388.00,75.06 L 390.00,74.05 L 392.00,73.38 L 394.00,73.04 L 396.00,73.04 L 398.00,73.38 L 400.00,74.05 L 402.00,75.06 L 404.00,76.38 L 406.00,78.01 L 408.00,79.95 L 410.00,82.16 L 412.00,84.64 L 414.00,87.37 L 416.00,90.31 L 418.00,93.46 L 420.00,96.78 L 422.00,100.24 L 424.00,103.83 L 426.00,107.50 L 428.00,111.24 L 430.00,115.00"/>
+  <line x1="70" y1="75" x2="70" y2="155" class="dim" marker-start="url(#aha)" marker-end="url(#aha)"/>
+  <text x="60" y="118" text-anchor="end" class="lbl">direction</text>
+  <text x="60" y="134" text-anchor="end" class="lbl">of vibration</text>
+  <text x="235" y="185" text-anchor="middle" font-size="11.5" fill="#9AA0A6">vibration is perpendicular to the direction of travel</text>
+
+</svg>

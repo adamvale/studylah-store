@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .jar { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .liq { fill:#6FB7E0; opacity:0.20; }
+    .obj { fill:#E8B65A; opacity:0.35; stroke:#E8B65A; stroke-width:1.4; }
+    .lbl { font-size:11px; fill:#EAEAEA; }
+    .lead { stroke:#9AA0A6; stroke-width:1; }
+  </style>
+  <!-- container -->
+  <rect class="liq" x="60" y="55" width="120" height="180"/>
+  <path class="jar" d="M60,40 L60,235 L180,235 L180,40"/>
+  <line x1="60" y1="150" x2="180" y2="150" stroke="#9AA0A6" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="120" y="48" text-anchor="middle" class="lbl">liquid L</text>
+
+  <!-- object P floats on top -->
+  <rect class="obj" x="95" y="48" width="26" height="16"/>
+  <text x="108" y="60" text-anchor="middle" class="lbl">P</text>
+
+  <!-- object Q suspended (mid) -->
+  <rect class="obj" x="130" y="140" width="26" height="16"/>
+  <text x="143" y="152" text-anchor="middle" class="lbl">Q</text>
+
+  <!-- object R sinks to bottom -->
+  <rect class="obj" x="95" y="216" width="26" height="16"/>
+  <text x="108" y="228" text-anchor="middle" class="lbl">R</text>
+
+  <!-- annotations -->
+  <line class="lead" x1="121" y1="56" x2="220" y2="56"/>
+  <text x="225" y="60" class="lbl">P floats: density &lt; liquid</text>
+  <line class="lead" x1="156" y1="148" x2="220" y2="148"/>
+  <text x="225" y="152" class="lbl">Q suspends: density = liquid</text>
+  <line class="lead" x1="121" y1="224" x2="220" y2="224"/>
+  <text x="225" y="228" class="lbl">R sinks: density &gt; liquid</text>
+</svg>

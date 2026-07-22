@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 190" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .floor { stroke:#EAEAEA; stroke-width:2; fill:none; }
+    .pool { fill:#6FB7E0; opacity:0.32; stroke:#6FB7E0; stroke-width:1.4; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+    .tag { fill:#E8B65A; }
+    .arr { stroke:#86C98B; stroke-width:1.3; fill:none; }
+  </style>
+  <defs>
+    <marker id="a3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#86C98B"/>
+    </marker>
+  </defs>
+  <text class="tag" x="220" y="30" text-anchor="middle">cold room at 10&#176;C</text>
+  <!-- floor line -->
+  <path class="floor" d="M60,140 L380,140"/>
+  <path class="floor" d="M75,140 L75,150 M365,140 L365,150"/>
+  <!-- pool of water (thin lens) -->
+  <path class="pool" d="M150,140 Q220,110 290,140 Z"/>
+  <!-- evaporation arrows -->
+  <g class="arr" marker-end="url(#a3)">
+    <path d="M190,120 C188,105 190,95 190,90"/>
+    <path d="M250,120 C252,105 250,95 250,90"/>
+  </g>
+  <text class="tag" x="220" y="75" text-anchor="middle">slow evaporation</text>
+  <text class="tag" x="110" y="115">pool of water</text>
+  <path class="lead" d="M150,118 L200,132"/>
+  <text x="70" y="165">floor</text>
+</svg>

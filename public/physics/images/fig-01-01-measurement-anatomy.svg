@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 240" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .lead { stroke:#9AA0A6; stroke-width:1.4; fill:none; }
+    .blue { fill:#6FB7E0; }
+    .amber { fill:#E8B65A; }
+    .green { fill:#86C98B; }
+  </style>
+  <!-- central expression -->
+  <text x="280" y="70" text-anchor="middle" font-size="26" font-weight="700">
+    Mass of copper = <tspan class="amber">10</tspan> <tspan class="blue">kg</tspan>
+  </text>
+  <!-- leader to physical quantity -->
+  <path class="lead" d="M150,84 L120,150"/>
+  <text x="120" y="172" text-anchor="middle" font-size="14" class="green">physical quantity</text>
+  <text x="120" y="190" text-anchor="middle" font-size="12">(what is measured)</text>
+  <!-- leader to numerical magnitude -->
+  <path class="lead" d="M268,84 L268,150"/>
+  <text x="268" y="172" text-anchor="middle" font-size="14" class="amber">numerical magnitude</text>
+  <text x="268" y="190" text-anchor="middle" font-size="12">(the size of the value)</text>
+  <!-- leader to unit -->
+  <path class="lead" d="M320,84 L430,150"/>
+  <text x="450" y="172" text-anchor="middle" font-size="14" class="blue">unit</text>
+  <text x="450" y="190" text-anchor="middle" font-size="12">(the standard used)</text>
+</svg>

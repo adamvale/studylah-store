@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .ground { stroke:#EAEAEA; stroke-width:2; }
+    .body { fill:#6FB7E0; opacity:0.20; stroke:#EAEAEA; stroke-width:1.6; }
+    .wheel { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .rope { stroke:#E8B65A; stroke-width:1.6; }
+    .fbd { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .force { stroke:#86C98B; stroke-width:2.2; fill:none; }
+    .lbl { fill:#E8B65A; font-size:11px; }
+  </style>
+  <defs><marker id="ff" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#86C98B"/></marker></defs>
+  <!-- ground -->
+  <line class="ground" x1="20" y1="150" x2="540" y2="150"/>
+  <!-- load (left) -->
+  <rect class="body" x="55" y="105" width="90" height="40"/>
+  <text x="100" y="130" text-anchor="middle" font-size="12">600 kg</text>
+  <circle class="wheel" cx="80" cy="150" r="9"/>
+  <circle class="wheel" cx="120" cy="150" r="9"/>
+  <!-- rope -->
+  <line class="rope" x1="145" y1="125" x2="300" y2="125"/>
+  <text class="lbl" x="215" y="118">rope</text>
+  <!-- truck (right) -->
+  <path class="body" d="M300,145 L300,110 L400,110 L420,85 L470,85 L490,110 L500,110 L500,145 Z"/>
+  <rect class="body" x="428" y="90" width="34" height="20"/>
+  <circle class="wheel" cx="335" cy="150" r="11"/>
+  <circle class="wheel" cx="470" cy="150" r="11"/>
+  <!-- free body diagram -->
+  <text x="120" y="205" text-anchor="middle" font-size="12" fill="#9AA0A6">free-body diagram of the load</text>
+  <rect class="fbd" x="95" y="235" width="40" height="30"/>
+  <line class="force" x1="115" y1="235" x2="115" y2="205" marker-end="url(#ff)"/>
+  <text class="lbl" x="122" y="212">normal</text>
+  <line class="force" x1="115" y1="265" x2="115" y2="292" marker-end="url(#ff)"/>
+  <text class="lbl" x="122" y="288">weight</text>
+  <line class="force" x1="135" y1="250" x2="180" y2="250" marker-end="url(#ff)"/>
+  <text class="lbl" x="150" y="243">tension</text>
+  <line class="force" x1="95" y1="250" x2="50" y2="250" marker-end="url(#ff)"/>
+  <text class="lbl" x="18" y="243">friction</text>
+</svg>

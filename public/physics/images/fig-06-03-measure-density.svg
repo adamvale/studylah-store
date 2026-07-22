@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .cyl { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .liq { fill:#6FB7E0; opacity:0.22; }
+    .obj { fill:#E8B65A; opacity:0.40; stroke:#E8B65A; stroke-width:1.4; }
+    .tick { stroke:#9AA0A6; stroke-width:1; }
+    .lbl { font-size:11px; }
+    .lead { stroke:#9AA0A6; stroke-width:1; }
+    .disp { fill:#0d1b12; }
+    .read { fill:#86C98B; font-family:monospace; font-size:13px; }
+  </style>
+  <!-- initial cylinder -->
+  <text x="90" y="30" text-anchor="middle">Initial reading</text>
+  <path class="cyl" d="M60,50 L60,240 L120,240 L120,50"/>
+  <rect class="liq" x="60" y="150" width="60" height="90"/>
+  <g class="tick">
+    <line x1="60" y1="90" x2="72" y2="90"/><line x1="60" y1="130" x2="72" y2="130"/>
+    <line x1="60" y1="170" x2="72" y2="170"/><line x1="60" y1="210" x2="72" y2="210"/>
+  </g>
+  <line class="lead" x1="120" y1="150" x2="150" y2="150"/>
+  <text x="153" y="154" class="lbl">initial volume V&#8321;</text>
+
+  <!-- final cylinder with object -->
+  <text x="300" y="30" text-anchor="middle">Final reading</text>
+  <path class="cyl" d="M270,50 L270,240 L330,240 L330,50"/>
+  <rect class="liq" x="270" y="115" width="60" height="125"/>
+  <rect class="obj" x="284" y="205" width="32" height="26"/>
+  <g class="tick">
+    <line x1="270" y1="90" x2="282" y2="90"/><line x1="270" y1="130" x2="282" y2="130"/>
+    <line x1="270" y1="170" x2="282" y2="170"/><line x1="270" y1="210" x2="282" y2="210"/>
+  </g>
+  <line class="lead" x1="330" y1="115" x2="360" y2="115"/>
+  <text x="363" y="119" class="lbl">final volume V&#8322;</text>
+  <line class="lead" x1="316" y1="218" x2="360" y2="218"/>
+  <text x="363" y="222" class="lbl">submerged solid</text>
+
+  <text x="250" y="272" text-anchor="middle">Volume of solid = V&#8322; &#8722; V&#8321;   (measure mass on a balance, then &#961; = m / V)</text>
+  <!-- small balance display -->
+  <rect class="disp" x="120" y="258" width="70" height="22" rx="3"/>
+  <text x="155" y="273" text-anchor="middle" class="read">125.0 g</text>
+</svg>

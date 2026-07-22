@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 150" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/></marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .box { fill:#6FB7E0; opacity:0.22; stroke:#6FB7E0; stroke-width:1.6; }
+    .ground { stroke:#9AA0A6; stroke-width:1.6; }
+    .f { stroke:#EAEAEA; stroke-width:2.4; }
+  </style>
+  <line class="ground" x1="40" y1="110" x2="430" y2="110"/>
+  <line class="f" x1="45" y1="88" x2="120" y2="88" marker-end="url(#arw)"/>
+  <text x="72" y="78" text-anchor="middle" font-size="12">60 N</text>
+  <rect class="box" x="122" y="68" width="50" height="42"/>
+  <text x="147" y="86" text-anchor="middle" font-size="11">A</text>
+  <text x="147" y="100" text-anchor="middle" font-size="9">2 kg</text>
+  <rect class="box" x="172" y="68" width="80" height="42"/>
+  <text x="212" y="86" text-anchor="middle" font-size="11">B</text>
+  <text x="212" y="100" text-anchor="middle" font-size="9">6 kg</text>
+  <rect class="box" x="252" y="68" width="60" height="42"/>
+  <text x="282" y="86" text-anchor="middle" font-size="11">C</text>
+  <text x="282" y="100" text-anchor="middle" font-size="9">4 kg</text>
+  <line class="f" x1="390" y1="88" x2="315" y2="88" marker-end="url(#arw)"/>
+  <text x="368" y="78" text-anchor="middle" font-size="12">24 N</text>
+  <text x="230" y="140" text-anchor="middle" font-size="11">Three blocks in contact on a frictionless surface.</text>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .ax { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
+    .A { stroke:#6FB7E0; stroke-width:2; fill:none; }
+    .B { stroke:#E8B65A; stroke-width:2; fill:none; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+    .s { font-size:12px; }
+  </style>
+  <!-- axes -->
+  <path class="ax" d="M70,40 L70,250 L390,250"/>
+  <text class="s" x="70" y="30" text-anchor="middle">temperature</text>
+  <text class="s" x="360" y="270">time</text>
+  <!-- start temperature dashed -->
+  <line x1="70" y1="70" x2="90" y2="70" stroke="#9AA0A6" stroke-width="1" stroke-dasharray="4 3"/>
+  <text class="s" x="42" y="74">T</text>
+  <!-- curve A: gentler (higher c) -->
+  <path class="A" d="M90,70 C170,120 260,150 380,165"/>
+  <!-- curve B: steeper (lower c) -->
+  <path class="B" d="M90,70 C140,150 210,195 360,215"/>
+  <!-- labels -->
+  <text class="s" fill="#6FB7E0" x="300" y="150">A — less steep (higher c)</text>
+  <path class="lead" d="M298,154 L270,158"/>
+  <text class="s" fill="#E8B65A" x="250" y="230">B — steeper (lower c)</text>
+  <path class="lead" d="M248,226 L235,214"/>
+  <text class="s" x="120" y="285" text-anchor="middle">Same mass, cooled under the same conditions</text>
+</svg>

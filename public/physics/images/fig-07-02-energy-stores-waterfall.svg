@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 340" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .cliff { fill:#9AA0A6; opacity:0.18; stroke:#9AA0A6; stroke-width:1.4; }
+    .water { stroke:#6FB7E0; stroke-width:2; fill:none; }
+    .drop { stroke:#6FB7E0; stroke-width:1.4; fill:none; opacity:0.8; }
+    .wheel { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .lbl { fill:#E8B65A; font-size:12px; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .store { fill:#86C98B; font-size:11px; }
+  </style>
+  <!-- cliff body -->
+  <path class="cliff" d="M120,90 L250,90 L250,300 L120,300 Z"/>
+  <!-- top water surface -->
+  <path class="water" d="M120,90 Q185,80 250,90"/>
+  <!-- water going over edge and falling -->
+  <path class="drop" d="M250,90 Q262,150 258,230"/>
+  <path class="drop" d="M250,100 Q272,160 266,230"/>
+  <path class="drop" d="M250,110 Q282,170 276,230"/>
+  <!-- spinning wheel -->
+  <circle class="wheel" cx="268" cy="255" r="22"/>
+  <line class="wheel" x1="268" y1="233" x2="268" y2="277"/>
+  <line class="wheel" x1="246" y1="255" x2="290" y2="255"/>
+  <line class="wheel" x1="252" y1="239" x2="284" y2="271"/>
+  <line class="wheel" x1="252" y1="271" x2="284" y2="239"/>
+  <path d="M292,262 a10,10 0 0 1 -6,10" fill="none" stroke="#EAEAEA" stroke-width="1.4" marker-end="url(#a)"/>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#EAEAEA"/></marker></defs>
+  <!-- labels -->
+  <text class="lbl" x="150" y="60">water at the top</text>
+  <text class="store" x="150" y="74">gravitational potential store</text>
+  <path class="lead" d="M180,78 L200,88"/>
+  <text class="lbl" x="330" y="150">falling water</text>
+  <text class="store" x="330" y="164">kinetic store</text>
+  <path class="lead" d="M328,158 L280,170"/>
+  <text class="lbl" x="330" y="250">spinning wheel</text>
+  <text class="store" x="330" y="264">kinetic store</text>
+  <path class="lead" d="M328,258 L292,256"/>
+</svg>

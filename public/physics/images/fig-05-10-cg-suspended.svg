@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .shape { fill:#6FB7E0; opacity:0.16; stroke:#EAEAEA; stroke-width:1.6; }
+    .support { stroke:#EAEAEA; stroke-width:2.4; fill:none; }
+    .plumb { stroke:#9AA0A6; stroke-width:1.3; stroke-dasharray:5 3; fill:none; }
+    .cg { fill:#E8B65A; stroke:#E8B65A; }
+    .pin { fill:#EAEAEA; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .lbl { font-size:12px; }
+  </style>
+  <!-- ceiling / support -->
+  <line class="support" x1="60" y1="40" x2="200" y2="40"/>
+  <g stroke="#EAEAEA" stroke-width="1">
+    <line x1="70" y1="40" x2="62" y2="50"/><line x1="90" y1="40" x2="82" y2="50"/>
+    <line x1="110" y1="40" x2="102" y2="50"/><line x1="130" y1="40" x2="122" y2="50"/>
+    <line x1="150" y1="40" x2="142" y2="50"/><line x1="170" y1="40" x2="162" y2="50"/>
+    <line x1="190" y1="40" x2="182" y2="50"/>
+  </g>
+  <!-- pivot pin -->
+  <circle class="pin" cx="130" cy="40" r="4"/>
+  <text class="lbl" x="145" y="38">pivot</text>
+  <!-- string -->
+  <line class="support" x1="130" y1="44" x2="130" y2="90"/>
+  <!-- square lamina hanging, CG vertically below pivot -->
+  <rect class="shape" x="90" y="90" width="80" height="80"/>
+  <line class="plumb" x1="130" y1="90" x2="130" y2="90"/>
+  <!-- vertical line through pivot and CG -->
+  <line class="plumb" x1="130" y1="44" x2="130" y2="230"/>
+  <circle class="cg" cx="130" cy="130" r="3.6"/>
+  <text class="lbl" x="150" y="134" fill="#E8B65A">CG</text>
+  <!-- annotation -->
+  <text class="lbl" x="250" y="120">The centre of gravity hangs</text>
+  <text class="lbl" x="250" y="138">vertically below the pivot.</text>
+  <text class="lbl" x="250" y="170">Perpendicular distance from</text>
+  <text class="lbl" x="250" y="188">the weight's line of action to</text>
+  <text class="lbl" x="250" y="206">the pivot = 0, so the resultant</text>
+  <text class="lbl" x="250" y="224">moment = 0 → equilibrium.</text>
+  <path class="lead" d="M245,180 L134,150"/>
+  <text class="lbl" x="130" y="248" text-anchor="middle">line of action of weight</text>
+</svg>

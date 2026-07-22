@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .axis { stroke:#EAEAEA; stroke-width:1.6; }
+    .curve { fill:none; stroke:#6FB7E0; stroke-width:2.4; }
+    .guide { stroke:#9AA0A6; stroke-width:1.1; stroke-dasharray:5 4; }
+    .lbl { font-size:12px; }
+    .amber { fill:#E8B65A; font-size:12px; }
+  </style>
+  <!-- axes -->
+  <line class="axis" x1="70" y1="40" x2="70" y2="300"/>
+  <line class="axis" x1="70" y1="300" x2="575" y2="300"/>
+  <text x="70" y="30" text-anchor="middle" class="lbl">number of nuclei</text>
+  <text x="70" y="18" text-anchor="middle" class="lbl">(or count rate / mass)</text>
+  <text x="585" y="304" class="lbl">time</text>
+
+  <!-- decay curve (accurate exponential, halving every 75 px) -->
+  <path class="curve" d="M70.0,60.0 L80,81.2 L90,100.5 L100,118.1 L110,134.2 L120,148.8 L130,162.2 L140,174.3 L145,180 L160,195.5 L175,209.1 L190,220.8 L205,231.1 L220,240 L235,247.8 L250,254.5 L265,260.4 L280,265.5 L295,270 L310,273.9 L325,277.3 L340,280.2 L355,282.8 L370,285 L385,286.9 L400,288.6 L415,290.1 L430,291.4 L445,292.5 L460,293.5 L475,294.3 L490,295.1 L505,295.7 L520,296.2 L535,296.7 L550,297.2"/>
+
+  <!-- y ticks: n, n/2, n/4, n/8 -->
+  <g class="guide">
+    <line x1="70" y1="60" x2="145" y2="60"/>
+    <line x1="70" y1="180" x2="145" y2="180"/>
+    <line x1="145" y1="180" x2="145" y2="300"/>
+    <line x1="70" y1="240" x2="220" y2="240"/>
+    <line x1="220" y1="240" x2="220" y2="300"/>
+    <line x1="70" y1="270" x2="295" y2="270"/>
+    <line x1="295" y1="270" x2="295" y2="300"/>
+  </g>
+  <g text-anchor="end" font-style="italic">
+    <text x="64" y="64">n</text>
+    <text x="64" y="184">n/2</text>
+    <text x="64" y="244">n/4</text>
+    <text x="64" y="274">n/8</text>
+  </g>
+
+  <!-- x ticks at half-lives -->
+  <g text-anchor="middle" class="amber" font-style="italic">
+    <text x="145" y="318">t</text>
+    <text x="220" y="318">2t</text>
+    <text x="295" y="318">3t</text>
+    <text x="370" y="318">4t</text>
+  </g>
+  <g text-anchor="middle" class="lbl" fill="#9AA0A6">
+    <text x="145" y="334">1st</text>
+    <text x="220" y="334">2nd</text>
+    <text x="295" y="334">3rd</text>
+    <text x="370" y="334">4th</text>
+  </g>
+  <text x="257" y="352" text-anchor="middle" fill="#9AA0A6" class="lbl">half-lives</text>
+
+  <!-- annotation -->
+  <text x="420" y="150" class="amber">each half-life halves</text>
+  <text x="420" y="167" class="amber">the amount remaining</text>
+</svg>

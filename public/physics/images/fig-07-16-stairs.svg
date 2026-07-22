@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 280" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .stair { stroke:#EAEAEA; stroke-width:2; fill:#6FB7E0; opacity:0.14; }
+    .edge { stroke:#EAEAEA; stroke-width:2; fill:none; }
+    .dim { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .lbl { fill:#E8B65A; font-size:12px; }
+  </style>
+  <defs>
+    <marker id="s1" markerWidth="10" markerHeight="10" refX="4" refY="1" orient="auto"><path d="M0,7 L4,0 L8,7 Z" fill="#9AA0A6"/></marker>
+    <marker id="s2" markerWidth="10" markerHeight="10" refX="4" refY="6" orient="auto"><path d="M0,0 L4,7 L8,0 Z" fill="#9AA0A6"/></marker>
+  </defs>
+  <!-- staircase steps -->
+  <polygon class="stair" points="40,230 40,190 90,190 90,150 140,150 140,110 190,110 190,70 240,70 240,230"/>
+  <!-- base line -->
+  <line class="edge" x1="40" y1="230" x2="290" y2="230"/>
+  <!-- point X top -->
+  <text x="248" y="62" fill="#EAEAEA">X</text>
+  <circle cx="240" cy="70" r="3.5" fill="#E8B65A"/>
+  <!-- height 4 m -->
+  <line class="dim" x1="290" y1="70" x2="290" y2="230" marker-start="url(#s1)" marker-end="url(#s2)"/>
+  <text class="lbl" x="300" y="155">4 m</text>
+  <line class="dim" x1="240" y1="70" x2="295" y2="70" stroke-dasharray="3 3"/>
+</svg>

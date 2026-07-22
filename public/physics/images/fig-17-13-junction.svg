@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 260" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="ahj" markerWidth="10" markerHeight="10" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#6FB7E0"/>
+    </marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .cur { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
+    .un  { stroke:#9AA0A6; stroke-width:2.2; stroke-dasharray:5 4; fill:none; }
+    .val { fill:#E8B65A; }
+  </style>
+  <!-- junction node -->
+  <circle cx="220" cy="140" r="4" fill="#EAEAEA"/>
+  <text x="234" y="158" font-size="14">P</text>
+  <!-- current in: 5 A from left, into P -->
+  <line class="cur" x1="90" y1="120" x2="205" y2="135" marker-end="url(#ahj)"/>
+  <text x="130" y="118" font-size="13" class="val">5 A</text>
+  <!-- current in: 4 A from bottom-left, into P -->
+  <line class="cur" x1="120" y1="235" x2="208" y2="152" marker-end="url(#ahj)"/>
+  <text x="120" y="230" font-size="13" class="val">4 A</text>
+  <!-- current out: 6 A to right, away from P -->
+  <line class="cur" x1="235" y1="150" x2="350" y2="180" marker-end="url(#ahj)"/>
+  <text x="320" y="200" font-size="13" class="val">6 A</text>
+  <!-- unknown current Y going up -->
+  <line class="un" x1="228" y1="128" x2="290" y2="40" marker-end="url(#ahj)"/>
+  <text x="300" y="40" font-size="14" class="val">Y</text>
+</svg>

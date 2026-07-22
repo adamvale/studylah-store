@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .solid { fill:#6FB7E0; opacity:0.20; stroke:#EAEAEA; stroke-width:1.5; }
+    .edge { fill:none; stroke:#EAEAEA; stroke-width:1.5; }
+    .dim { fill:#9AA0A6; font-size:11px; }
+    .val { fill:#E8B65A; font-size:12px; text-anchor:middle; }
+    .cap { font-size:13px; text-anchor:middle; }
+  </style>
+  <!-- Object A: cube 4x4x4 -->
+  <text class="cap" x="130" y="30">Object A</text>
+  <!-- front face -->
+  <rect class="solid" x="85" y="70" width="90" height="90"/>
+  <!-- top face -->
+  <path class="solid" d="M85,70 L115,45 L205,45 L175,70 Z"/>
+  <!-- right face -->
+  <path class="solid" d="M175,70 L205,45 L205,135 L175,160 Z"/>
+  <text class="dim" x="70" y="120" text-anchor="end">4 cm</text>
+  <text class="dim" x="130" y="180" text-anchor="middle">4 cm</text>
+  <text class="dim" x="200" y="105">4 cm</text>
+  <text class="val" x="130" y="215">Volume = 4&#215;4&#215;4 = 64 cm&#179;</text>
+  <text class="val" x="130" y="235">Surface area = 6&#215;(4&#215;4) = 96 cm&#178;</text>
+  <!-- Object B: long thin bar 1x1x64 -->
+  <text class="cap" x="390" y="30">Object B</text>
+  <path class="solid" d="M300,120 L470,60 L482,66 L312,126 Z"/>
+  <path class="edge" d="M300,120 L300,138 L312,144 L312,126"/>
+  <path class="edge" d="M312,144 L482,84 L482,66"/>
+  <text class="dim" x="285" y="130" text-anchor="end">1 cm</text>
+  <text class="dim" x="430" y="105">64 cm</text>
+  <text class="val" x="390" y="215">Volume = 1&#215;1&#215;64 = 64 cm&#179;</text>
+  <text class="val" x="390" y="235">Surface area = 4&#215;(1&#215;64) + 2&#215;(1&#215;1)</text>
+  <text class="val" x="390" y="253">= 258 cm&#178;</text>
+  <!-- note -->
+  <text x="260" y="288" text-anchor="middle" fill="#86C98B" font-size="12">Same volume, but B has the larger surface area &#8594; radiates faster</text>
+</svg>

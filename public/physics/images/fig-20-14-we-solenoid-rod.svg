@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 260" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .core { fill:#9AA0A6; fill-opacity:0.28; stroke:#9AA0A6; stroke-width:1.4; }
+    .coil { stroke:#EAEAEA; stroke-width:2; fill:none; }
+    .cur  { stroke:#6FB7E0; stroke-width:2; fill:none; }
+    .lbl  { fill:#E8B65A; font-size:13px; }
+    .end  { fill:#EAEAEA; font-size:15px; font-weight:bold; }
+  </style>
+  <defs>
+    <marker id="cs" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 z" fill="#6FB7E0"/></marker>
+    <marker id="ls" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 z" fill="#EAEAEA"/></marker>
+  </defs>
+
+  <!-- iron rod -->
+  <rect class="core" x="120" y="100" width="280" height="34" rx="4"/>
+  <text class="lbl" x="60" y="122">iron</text>
+  <line stroke="#9AA0A6" stroke-width="1.1" x1="92" y1="118" x2="118" y2="116"/>
+
+  <!-- coil: far-side arcs (behind) and near-side vertical strands (front) with up-arrows -->
+  <g class="coil">
+    <path d="M140,100 q13,-22 26,0"/>
+    <path d="M170,100 q13,-22 26,0"/>
+    <path d="M200,100 q13,-22 26,0"/>
+    <path d="M230,100 q13,-22 26,0"/>
+    <path d="M260,100 q13,-22 26,0"/>
+    <path d="M290,100 q13,-22 26,0"/>
+    <path d="M320,100 q13,-22 26,0"/>
+  </g>
+  <!-- near-side strands carry current upward -->
+  <g class="cur">
+    <line x1="153" y1="150" x2="153" y2="112" marker-end="url(#cs)"/>
+    <line x1="183" y1="150" x2="183" y2="112" marker-end="url(#cs)"/>
+    <line x1="213" y1="150" x2="213" y2="112" marker-end="url(#cs)"/>
+    <line x1="243" y1="150" x2="243" y2="112" marker-end="url(#cs)"/>
+    <line x1="273" y1="150" x2="273" y2="112" marker-end="url(#cs)"/>
+    <line x1="303" y1="150" x2="303" y2="112" marker-end="url(#cs)"/>
+    <line x1="333" y1="150" x2="333" y2="112" marker-end="url(#cs)"/>
+  </g>
+  <text fill="#6FB7E0" x="360" y="152">current flows up on the near side</text>
+
+  <!-- ends -->
+  <text class="end" x="128" y="90">A</text>
+  <text class="end" x="388" y="90">B</text>
+
+  <!-- leads -->
+  <line class="coil" x1="140" y1="112" x2="110" y2="112"/>
+  <line class="coil" x1="346" y1="122" x2="376" y2="122"/>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 250" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .tank { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .liq { fill:#6FB7E0; opacity:0.18; }
+    .obj { fill:#E8B65A; opacity:0.40; stroke:#E8B65A; stroke-width:1.4; }
+    .arrow { stroke:#E58F8F; stroke-width:2; }
+    .depth { stroke:#E8B65A; stroke-width:1.5; }
+    .lbl { font-size:11px; }
+    .lead { stroke:#9AA0A6; stroke-width:1; }
+  </style>
+  <!-- air region -->
+  <text x="80" y="40" class="lbl">air</text>
+  <g class="arrow">
+    <line x1="150" y1="20" x2="150" y2="60" marker-end="url(#a2)"/>
+    <line x1="185" y1="20" x2="185" y2="60" marker-end="url(#a2)"/>
+    <line x1="220" y1="20" x2="220" y2="60" marker-end="url(#a2)"/>
+  </g>
+  <text x="240" y="38" class="lbl">atmospheric pressure P_atm</text>
+
+  <!-- liquid -->
+  <rect class="liq" x="60" y="60" width="200" height="160"/>
+  <path class="tank" d="M60,60 L60,220 L260,220 L260,60"/>
+  <line x1="60" y1="60" x2="260" y2="60" stroke="#6FB7E0" stroke-width="1.4"/>
+  <text x="70" y="80" class="lbl">liquid</text>
+
+  <!-- depth h to object -->
+  <line class="depth" x1="120" y1="60" x2="120" y2="175"/>
+  <line class="depth" x1="115" y1="60" x2="125" y2="60"/>
+  <line class="depth" x1="115" y1="175" x2="125" y2="175"/>
+  <text x="128" y="120" class="lbl" fill="#E8B65A">h</text>
+
+  <rect class="obj" x="150" y="170" width="50" height="14"/>
+  <text x="205" y="181" class="lbl">object X</text>
+
+  <text x="300" y="120" class="lbl">Total pressure on X</text>
+  <text x="300" y="140" class="lbl" fill="#E8B65A">= P_atm + h&#961;g</text>
+  <defs>
+    <marker id="a2" markerWidth="7" markerHeight="7" refX="3.5" refY="6" orient="auto">
+      <path d="M0,0 L3.5,7 L7,0 Z" fill="#E58F8F"/>
+    </marker>
+  </defs>
+</svg>

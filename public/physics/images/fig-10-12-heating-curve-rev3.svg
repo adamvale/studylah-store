@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 320" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .ax { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
+    .curve { stroke:#6FB7E0; stroke-width:2.4; fill:none; }
+    .g { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:5 4; }
+    .pt { fill:#EAEAEA; font-weight:bold; }
+  </style>
+  <path class="ax" d="M70,30 L70,275 L430,275"/>
+  <text x="70" y="20" text-anchor="middle">temperature/&#176;C</text>
+  <text x="400" y="295">time</text>
+  <!-- guide values -->
+  <line class="g" x1="70" y1="90" x2="360" y2="90"/>
+  <line class="g" x1="70" y1="205" x2="180" y2="205"/>
+  <text x="40" y="94" text-anchor="end">135</text>
+  <text x="40" y="209" text-anchor="end">20</text>
+  <!-- curve A B C D E F -->
+  <path class="curve" d="M75,250 L110,205 L175,205 L245,90 L355,90 L385,55"/>
+  <circle cx="110" cy="205" r="3" fill="#EAEAEA"/><circle cx="175" cy="205" r="3" fill="#EAEAEA"/>
+  <circle cx="245" cy="90" r="3" fill="#EAEAEA"/><circle cx="355" cy="90" r="3" fill="#EAEAEA"/>
+  <text class="pt" x="80" y="240">A</text>
+  <text class="pt" x="102" y="223">B</text>
+  <text class="pt" x="172" y="223">C</text>
+  <text class="pt" x="240" y="82">D</text>
+  <text class="pt" x="352" y="82">E</text>
+  <text class="pt" x="390" y="58">F</text>
+</svg>

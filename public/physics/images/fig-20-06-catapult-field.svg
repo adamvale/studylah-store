@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .pole { fill:#9AA0A6; fill-opacity:0.22; stroke:#EAEAEA; stroke-width:1.6; }
+    .plbl { fill:#EAEAEA; font-size:16px; font-weight:bold; text-anchor:middle; }
+    .fld  { stroke:#6FB7E0; stroke-width:1.5; fill:none; }
+    .force{ stroke:#E58F8F; stroke-width:2.6; fill:none; }
+    .lbl  { fill:#E8B65A; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+  </style>
+  <defs>
+    <marker id="f6" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#6FB7E0"/>
+    </marker>
+    <marker id="ff" markerWidth="12" markerHeight="12" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#E58F8F"/>
+    </marker>
+  </defs>
+
+  <!-- poles -->
+  <rect class="pole" x="40" y="70" width="46" height="200"/>
+  <rect class="pole" x="554" y="70" width="46" height="200"/>
+  <text class="plbl" x="63" y="178">N</text>
+  <text class="plbl" x="577" y="178">S</text>
+
+  <!-- resultant catapult field: bunched below the wire, sparse above -->
+  <!-- top (weak / spread) -->
+  <path class="fld" d="M86,110 C240,102 440,102 554,110" marker-end="url(#f6)"/>
+  <path class="fld" d="M86,140 C240,132 300,150 320,150" marker-end="url(#f6)"/>
+  <path class="fld" d="M340,150 C360,150 440,132 554,140" marker-end="url(#f6)"/>
+  <!-- bottom (strong / bunched, curving around wire) -->
+  <path class="fld" d="M86,200 C240,210 300,196 320,192" marker-end="url(#f6)"/>
+  <path class="fld" d="M340,192 C360,196 440,210 554,200" marker-end="url(#f6)"/>
+  <path class="fld" d="M86,225 C240,235 440,235 554,225" marker-end="url(#f6)"/>
+  <path class="fld" d="M86,250 C240,258 440,258 554,250" marker-end="url(#f6)"/>
+
+  <!-- wire, current out of page -->
+  <circle cx="330" cy="180" r="11" fill="none" stroke="#EAEAEA" stroke-width="1.8"/>
+  <circle cx="330" cy="180" r="3" fill="#EAEAEA"/>
+  <text class="lbl" x="330" y="300" text-anchor="middle">current out of page (&#8857;)</text>
+  <path class="lead" d="M330,288 L330,193"/>
+
+  <!-- force up -->
+  <line class="force" x1="330" y1="168" x2="330" y2="112" marker-end="url(#ff)"/>
+  <text fill="#E58F8F" x="340" y="120" font-weight="bold">force, F</text>
+
+  <!-- neutral point -->
+  <line x1="345" y1="145" x2="357" y2="133" stroke="#E8B65A" stroke-width="1.6"/>
+  <line x1="357" y1="145" x2="345" y2="133" stroke="#E8B65A" stroke-width="1.6"/>
+  <text class="lbl" x="366" y="143">neutral point (field cancels)</text>
+
+  <text class="lbl" x="120" y="60">magnet field: N &#8594; S</text>
+  <text fill="#86C98B" x="90" y="235" font-size="12">strong (field reinforced)</text>
+</svg>

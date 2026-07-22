@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 360" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/></marker>
+    <marker id="arwG" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#86C98B"/></marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .box { fill:#6FB7E0; opacity:0.22; stroke:#6FB7E0; stroke-width:1.5; }
+    .ground { stroke:#9AA0A6; stroke-width:1.5; }
+    .f { stroke:#EAEAEA; stroke-width:2.2; }
+    .n { stroke:#86C98B; stroke-width:2.2; }
+    .cap { font-size:12.5; font-weight:bold; }
+  </style>
+  <!-- normal force on flat surface -->
+  <text x="120" y="30" text-anchor="middle" class="cap">Normal force (flat)</text>
+  <line class="ground" x1="50" y1="120" x2="200" y2="120"/>
+  <rect class="box" x="95" y="90" width="50" height="30"/>
+  <line class="n" x1="120" y1="90" x2="120" y2="45" marker-end="url(#arwG)"/>
+  <text x="128" y="60" font-size="11" fill="#86C98B">normal</text>
+  <!-- normal force on slope -->
+  <text x="430" y="30" text-anchor="middle" class="cap">Normal force (slope)</text>
+  <line class="ground" x1="330" y1="130" x2="520" y2="70"/>
+  <g transform="translate(415,88) rotate(-18)">
+    <rect class="box" x="-25" y="-18" width="50" height="30"/>
+    <line class="n" x1="0" y1="-18" x2="0" y2="-60" marker-end="url(#arwG)"/>
+  </g>
+  <text x="445" y="55" font-size="11" fill="#86C98B">normal (90&#176; to surface)</text>
+  <!-- Tension -->
+  <text x="120" y="210" text-anchor="middle" class="cap">Tension</text>
+  <rect class="box" x="60" y="250" width="55" height="35"/>
+  <line class="f" x1="115" y1="267" x2="210" y2="267" marker-end="url(#arw)"/>
+  <text x="150" y="257" font-size="11">tension</text>
+  <line x1="115" y1="267" x2="150" y2="267" stroke="#9AA0A6" stroke-width="3"/>
+  <!-- Thrust -->
+  <text x="430" y="210" text-anchor="middle" class="cap">Thrust / Upthrust</text>
+  <rect class="box" x="350" y="250" width="55" height="35"/>
+  <line class="f" x1="405" y1="267" x2="490" y2="267" marker-end="url(#arw)"/>
+  <text x="435" y="257" font-size="11">thrust</text>
+  <line class="f" x1="530" y1="285" x2="530" y2="230" marker-end="url(#arw)"/>
+  <text x="540" y="255" font-size="11">upthrust</text>
+  <text x="310" y="335" text-anchor="middle" font-size="11.5">Applied force, weight, friction, air resistance and drag are the other common forces.</text>
+</svg>

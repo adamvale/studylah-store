@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 220" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .rule { fill:#EAEAEA; opacity:0.22; stroke:#EAEAEA; stroke-width:1.6; }
+    .pivot { fill:#E8B65A; stroke:#E8B65A; }
+    .load { fill:#6FB7E0; opacity:0.3; stroke:#6FB7E0; stroke-width:1.4; }
+    .force { stroke:#E58F8F; stroke-width:2.4; fill:none; }
+    .spring { stroke:#86C98B; stroke-width:1.6; fill:none; }
+    .dim { stroke:#9AA0A6; stroke-width:1.3; fill:none; }
+    .lbl { font-size:12px; }
+  </style>
+  <!-- rule -->
+  <rect class="rule" x="70" y="120" width="340" height="10"/>
+  <!-- pivot at left end -->
+  <circle class="pivot" cx="80" cy="125" r="5"/>
+  <text class="lbl" x="72" y="150">pivot</text>
+  <!-- 80 N block at 75 cm from pivot -->
+  <rect class="load" x="255" y="130" width="26" height="22"/>
+  <line class="force" x1="268" y1="152" x2="268" y2="190"/>
+  <path class="force" d="M268,190 l-5,-10 M268,190 l5,-10"/>
+  <text class="lbl" x="268" y="206" text-anchor="middle" fill="#E58F8F">80 N</text>
+  <!-- spring balance at right end pulling up -->
+  <g class="spring">
+    <path d="M400,120 l8,-6 -16,-6 16,-6 -16,-6 16,-6 -8,-6"/>
+  </g>
+  <line class="spring" x1="400" y1="78" x2="400" y2="60"/>
+  <text class="lbl" x="412" y="95" fill="#86C98B">spring balance</text>
+  <!-- distance -->
+  <line class="dim" x1="80" y1="95" x2="268" y2="95"/>
+  <path class="dim" d="M80,95 l8,-4 M80,95 l8,4"/>
+  <path class="dim" d="M268,95 l-8,-4 M268,95 l-8,4"/>
+  <text class="lbl" x="174" y="89" text-anchor="middle">75 cm</text>
+  <line class="dim" x1="80" y1="95" x2="80" y2="120" stroke-dasharray="3 3"/>
+  <line class="dim" x1="268" y1="95" x2="268" y2="130" stroke-dasharray="3 3"/>
+  <line class="dim" x1="80" y1="175" x2="400" y2="175"/>
+  <path class="dim" d="M80,175 l8,-4 M80,175 l8,4"/>
+  <path class="dim" d="M400,175 l-8,-4 M400,175 l-8,4"/>
+  <text class="lbl" x="340" y="169" text-anchor="middle">100 cm</text>
+  <line class="dim" x1="400" y1="120" x2="400" y2="175" stroke-dasharray="3 3"/>
+</svg>

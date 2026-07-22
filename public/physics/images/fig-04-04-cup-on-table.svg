@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
+    </marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .table { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .cup { fill:#E8B65A; opacity:0.28; stroke:#E8B65A; stroke-width:1.6; }
+    .f { stroke:#86C98B; stroke-width:2.4; }
+    .w { stroke:#E58F8F; stroke-width:2.4; }
+  </style>
+  <!-- table top -->
+  <line class="table" x1="80" y1="170" x2="320" y2="170"/>
+  <line class="table" x1="110" y1="170" x2="110" y2="240"/>
+  <line class="table" x1="290" y1="170" x2="290" y2="240"/>
+  <!-- cup -->
+  <path class="cup" d="M175,150 L225,150 L221,170 L179,170 Z"/>
+  <text x="252" y="145" font-size="13">cup</text>
+  <text x="330" y="200" font-size="13">table</text>
+  <!-- normal force up -->
+  <line class="f" x1="200" y1="150" x2="200" y2="80" marker-end="url(#arw)"/>
+  <text x="210" y="90" font-size="14" fill="#86C98B">F (normal force)</text>
+  <!-- weight down -->
+  <line class="w" x1="200" y1="170" x2="200" y2="240" marker-end="url(#arw)"/>
+  <text x="210" y="225" font-size="14" fill="#E58F8F">W (weight)</text>
+  <text x="200" y="270" text-anchor="middle" font-size="12">F = W, so the resultant force is zero &#8212; the cup stays at rest</text>
+</svg>

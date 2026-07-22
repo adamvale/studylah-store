@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .nuc { fill:#6FB7E0; opacity:0.30; stroke:#6FB7E0; stroke-width:1.6; }
+    .daughter { fill:#86C98B; opacity:0.30; stroke:#86C98B; stroke-width:1.6; }
+    .neutron { fill:#9AA0A6; stroke:#EAEAEA; stroke-width:0.8; }
+    .arrow { stroke:#EAEAEA; stroke-width:1.6; fill:none; marker-end:url(#ah2); }
+    .wave { stroke:#E8B65A; stroke-width:1.6; fill:none; }
+    .cap { fill:#9AA0A6; }
+    .amber { fill:#E8B65A; }
+  </style>
+  <defs>
+    <marker id="ah2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
+    </marker>
+  </defs>
+
+  <!-- incoming neutron -->
+  <circle class="neutron" cx="40" cy="170" r="8"/>
+  <path class="arrow" d="M52,170 L120,170"/>
+  <text x="40" y="195" text-anchor="middle" class="cap">neutron</text>
+
+  <!-- parent nucleus U-235 -->
+  <circle class="nuc" cx="175" cy="170" r="42"/>
+  <text x="175" y="235" text-anchor="middle" class="cap">uranium-235</text>
+  <text x="175" y="249" text-anchor="middle" class="cap">(parent nucleus)</text>
+
+  <!-- split arrows -->
+  <path class="arrow" d="M222,150 L300,105"/>
+  <path class="arrow" d="M222,190 L300,235"/>
+
+  <!-- daughter nuclei -->
+  <circle class="daughter" cx="335" cy="95" r="30"/>
+  <text x="335" y="55" text-anchor="middle" class="cap">daughter</text>
+  <text x="335" y="245" text-anchor="middle" class="cap">daughter</text>
+  <circle class="daughter" cx="335" cy="245" r="30"/>
+
+  <!-- released neutrons -->
+  <circle class="neutron" cx="430" cy="70" r="8"/>
+  <circle class="neutron" cx="450" cy="105" r="8"/>
+  <circle class="neutron" cx="430" cy="140" r="8"/>
+  <path class="arrow" d="M365,88 L418,72"/>
+  <path class="arrow" d="M365,100 L438,105"/>
+  <path class="arrow" d="M365,112 L418,138"/>
+  <text x="500" y="108" class="cap">more neutrons</text>
+  <text x="500" y="123" class="cap">released</text>
+
+  <!-- energy waves -->
+  <path class="wave" d="M368,230 q8,-8 16,0 q8,8 16,0 q8,-8 16,0"/>
+  <path class="wave" d="M368,250 q8,-8 16,0 q8,8 16,0 q8,-8 16,0"/>
+  <text x="500" y="245" class="amber">energy released</text>
+  <path class="arrow" d="M420,240 L490,240" stroke="#E8B65A"/>
+
+  <text x="300" y="315" text-anchor="middle" class="amber" font-size="13">A heavy nucleus splits into two lighter nuclei, releasing neutrons and energy.</text>
+</svg>

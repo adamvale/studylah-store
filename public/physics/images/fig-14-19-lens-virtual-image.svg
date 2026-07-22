@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 220" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="ao" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#E8B65A"/></marker>
+    <marker id="ar" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#6FB7E0"/></marker>
+    <marker id="ai" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#86C98B"/></marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .axis { stroke:#9AA0A6; stroke-width:1; }
+    .lens { fill:#6FB7E0; fill-opacity:0.18; stroke:#6FB7E0; stroke-width:1.5; }
+    .obj { stroke:#E8B65A; stroke-width:2; fill:none; }
+    .img { stroke:#86C98B; stroke-width:2; fill:none; stroke-dasharray:6 4; }
+    .r1 { stroke:#6FB7E0; stroke-width:1.5; fill:none; }
+    .r2 { stroke:#E8B65A; stroke-width:1.5; fill:none; }
+    .virt { stroke:#9AA0A6; stroke-width:1.3; stroke-dasharray:5 4; fill:none; }
+    .pf { fill:#EAEAEA; }
+  </style>
+  <text x="220" y="20" text-anchor="middle" font-size="12">Object between F and lens &#8594; virtual, upright, enlarged</text>
+  <line class="axis" x1="40" y1="120" x2="410" y2="120"/>
+  <path class="lens" d="M250,58 Q276,120 250,182 Q224,120 250,58 Z"/>
+  <!-- object -->
+  <path class="obj" marker-end="url(#ao)" d="M215,120 L215,83"/>
+  <!-- ray 1: parallel -> through F_right -->
+  <path class="r1" d="M215,80 L250,80"/>
+  <path class="r1" marker-end="url(#ar)" d="M250,80 L365,146"/>
+  <!-- ray 2: through optical centre -->
+  <path class="r2" marker-end="url(#ao)" d="M215,80 L360,246"/>
+  <!-- virtual backward extensions -->
+  <path class="virt" d="M250,80 L180,40"/>
+  <path class="virt" d="M250,120 L180,40"/>
+  <!-- virtual image (upright, enlarged) -->
+  <path class="img" marker-end="url(#ai)" d="M180,120 L180,44"/>
+  <text x="168" y="55" text-anchor="end" font-size="11" fill="#86C98B">image</text>
+  <circle class="pf" cx="320" cy="120" r="2.6"/><text x="320" y="138" text-anchor="middle" font-size="11" font-style="italic">F</text>
+  <circle class="pf" cx="250" cy="120" r="2.6"/><text x="252" y="138" font-size="10">C</text>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 260" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .big { fill:#EAEAEA; font-size:96px; font-family:Georgia, 'Times New Roman', serif; }
+    .num { font-size:34px; font-family:Georgia, 'Times New Roman', serif; }
+    .amber { fill:#E8B65A; }
+    .blue { fill:#6FB7E0; }
+    .green { fill:#86C98B; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .note { font-size:13px; }
+  </style>
+  <!-- notation A/Z X -->
+  <text class="num amber" x="150" y="105" text-anchor="end">A</text>
+  <text class="num blue" x="150" y="175" text-anchor="end">Z</text>
+  <text class="big" x="160" y="165">X</text>
+
+  <!-- A leader -->
+  <path class="lead" d="M158,95 L300,70"/>
+  <text class="amber note" x="305" y="66">A = nucleon (mass) number</text>
+  <text class="note" x="305" y="86">= number of protons + neutrons</text>
+
+  <!-- Z leader -->
+  <path class="lead" d="M158,168 L300,190"/>
+  <text class="blue note" x="305" y="186">Z = proton (atomic) number</text>
+  <text class="note" x="305" y="206">= number of protons</text>
+
+  <!-- X leader -->
+  <path class="lead" d="M225,150 L300,130"/>
+  <text class="green note" x="305" y="134">X = chemical symbol of the element</text>
+
+  <text class="note" x="60" y="235">Number of neutrons = A − Z</text>
+</svg>

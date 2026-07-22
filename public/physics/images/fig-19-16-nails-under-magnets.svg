@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .mag { fill:#E58F8F; opacity:0.26; stroke:#EAEAEA; stroke-width:1.5; }
+    .iron { fill:#9AA0A6; opacity:0.28; stroke:#EAEAEA; stroke-width:1.5; }
+    .plastic { fill:#E8B65A; opacity:0.22; stroke:#EAEAEA; stroke-width:1.5; }
+    .nail { stroke:#EAEAEA; stroke-width:2; }
+    .lbl { fill:#E8B65A; font-size:12px; }
+    .cap { font-size:14px; font-weight:bold; }
+  </style>
+
+  <!-- X: magnet alone -->
+  <text x="90" y="30" text-anchor="middle" class="cap">X</text>
+  <rect class="mag" x="70" y="45" width="40" height="120" rx="3"/>
+  <g class="nail">
+    <line x1="90" y1="165" x2="72" y2="220"/>
+    <line x1="90" y1="165" x2="82" y2="230"/>
+    <line x1="90" y1="165" x2="90" y2="235"/>
+    <line x1="90" y1="165" x2="98" y2="230"/>
+    <line x1="90" y1="165" x2="108" y2="220"/>
+  </g>
+  <text x="90" y="260" text-anchor="middle" class="lbl">bar magnet</text>
+  <text x="90" y="276" text-anchor="middle" class="lbl">only</text>
+
+  <!-- Y: magnet + iron block -->
+  <text x="300" y="30" text-anchor="middle" class="cap">Y</text>
+  <rect class="mag" x="280" y="45" width="40" height="90" rx="3"/>
+  <rect class="iron" x="280" y="135" width="40" height="34" rx="2"/>
+  <g class="nail">
+    <line x1="300" y1="169" x2="282" y2="222"/>
+    <line x1="300" y1="169" x2="292" y2="232"/>
+    <line x1="300" y1="169" x2="300" y2="236"/>
+    <line x1="300" y1="169" x2="308" y2="232"/>
+    <line x1="300" y1="169" x2="318" y2="222"/>
+  </g>
+  <text x="360" y="155" class="lbl">iron block</text>
+  <path d="M355,151 L322,151" stroke="#9AA0A6" stroke-width="1.1" fill="none"/>
+  <text x="300" y="272" text-anchor="middle" class="lbl">magnet + iron</text>
+
+  <!-- Z: magnet + plastic block -->
+  <text x="500" y="30" text-anchor="middle" class="cap">Z</text>
+  <rect class="mag" x="480" y="45" width="40" height="90" rx="3"/>
+  <rect class="plastic" x="480" y="135" width="40" height="34" rx="2"/>
+  <g class="nail">
+    <line x1="500" y1="169" x2="488" y2="215"/>
+    <line x1="500" y1="169" x2="512" y2="215"/>
+  </g>
+  <text x="560" y="155" class="lbl">plastic block</text>
+  <path d="M555,151 L522,151" stroke="#9AA0A6" stroke-width="1.1" fill="none"/>
+  <text x="500" y="272" text-anchor="middle" class="lbl">magnet + plastic</text>
+
+  <text x="300" y="315" text-anchor="middle" font-size="12.5">Each magnet is held vertically; iron nails are collected at the lower end.</text>
+</svg>

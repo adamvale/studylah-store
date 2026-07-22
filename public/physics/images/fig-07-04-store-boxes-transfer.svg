@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .box { fill:#6FB7E0; opacity:0.14; stroke:#EAEAEA; stroke-width:1.6; }
+    .arrow { stroke:#E8B65A; stroke-width:2.2; fill:none; }
+    .lbl { fill:#9AA0A6; font-size:11px; }
+  </style>
+  <defs><marker id="am" markerWidth="12" markerHeight="12" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#E8B65A"/></marker></defs>
+  <!-- box A -->
+  <rect class="box" x="30" y="55" width="150" height="70" rx="4"/>
+  <text x="105" y="85" text-anchor="middle">apple on</text>
+  <text x="105" y="103" text-anchor="middle">the branch</text>
+  <text x="105" y="150" text-anchor="middle" fill="#E8B65A" font-size="12">store A</text>
+  <!-- arrow -->
+  <line class="arrow" x1="190" y1="90" x2="310" y2="90" marker-end="url(#am)"/>
+  <text x="250" y="80" text-anchor="middle" class="lbl">energy transferred</text>
+  <text x="250" y="112" text-anchor="middle" class="lbl">as apple falls</text>
+  <!-- box B -->
+  <rect class="box" x="320" y="55" width="150" height="70" rx="4"/>
+  <text x="395" y="85" text-anchor="middle">apple just above</text>
+  <text x="395" y="103" text-anchor="middle">the ground</text>
+  <text x="395" y="150" text-anchor="middle" fill="#E8B65A" font-size="12">store B</text>
+</svg>

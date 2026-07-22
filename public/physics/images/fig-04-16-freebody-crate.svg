@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arwG" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#86C98B"/></marker>
+    <marker id="arwR" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#E58F8F"/></marker>
+    <marker id="arwB" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#6FB7E0"/></marker>
+    <marker id="arwA" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/></marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .box { fill:none; stroke:#EAEAEA; stroke-width:1.8; }
+    .norm { stroke:#86C98B; stroke-width:2.4; }
+    .weight { stroke:#E58F8F; stroke-width:2.4; }
+    .app { stroke:#6FB7E0; stroke-width:2.4; }
+    .fric { stroke:#E8B65A; stroke-width:2.4; }
+  </style>
+  <rect class="box" x="175" y="130" width="70" height="55"/>
+  <!-- normal up -->
+  <line class="norm" x1="210" y1="130" x2="210" y2="55" marker-end="url(#arwG)"/>
+  <text x="218" y="72" font-size="12.5" fill="#86C98B">F(normal)</text>
+  <!-- weight down -->
+  <line class="weight" x1="210" y1="185" x2="210" y2="260" marker-end="url(#arwR)"/>
+  <text x="218" y="245" font-size="12.5" fill="#E58F8F">W (weight)</text>
+  <!-- applied right -->
+  <line class="app" x1="245" y1="157" x2="345" y2="157" marker-end="url(#arwB)"/>
+  <text x="270" y="147" font-size="12.5" fill="#6FB7E0">F(applied)</text>
+  <!-- friction left -->
+  <line class="fric" x1="175" y1="157" x2="75" y2="157" marker-end="url(#arwA)"/>
+  <text x="95" y="147" font-size="12.5" fill="#E8B65A">F(friction)</text>
+  <text x="210" y="290" text-anchor="middle" font-size="11.5">Free-body diagram of a crate pulled across the floor.</text>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .edge { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .face { fill:#6FB7E0; opacity:0.16; }
+    .dim { stroke:#E8B65A; stroke-width:1.4; }
+    .lbl { font-size:11px; }
+  </style>
+  <!-- small cube -->
+  <g>
+    <rect class="face" x="60" y="120" width="45" height="45"/>
+    <path class="edge" d="M60,120 L60,165 L105,165 L105,120 Z"/>
+    <path class="edge" d="M60,120 L75,105 L120,105 L105,120"/>
+    <path class="edge" d="M105,120 L120,105 L120,150 L105,165"/>
+    <line class="dim" x1="60" y1="180" x2="105" y2="180"/>
+    <line class="dim" x1="60" y1="176" x2="60" y2="184"/><line class="dim" x1="105" y1="176" x2="105" y2="184"/>
+    <text x="80" y="197" text-anchor="middle" class="lbl" fill="#E8B65A">a</text>
+    <text x="82" y="98" text-anchor="middle" class="lbl">small cube (weight w)</text>
+  </g>
+  <!-- large cube, edges 2a -->
+  <g>
+    <rect class="face" x="240" y="80" width="90" height="90"/>
+    <path class="edge" d="M240,80 L240,170 L330,170 L330,80 Z"/>
+    <path class="edge" d="M240,80 L270,50 L360,50 L330,80"/>
+    <path class="edge" d="M330,80 L360,50 L360,140 L330,170"/>
+    <line class="dim" x1="240" y1="185" x2="330" y2="185"/>
+    <line class="dim" x1="240" y1="181" x2="240" y2="189"/><line class="dim" x1="330" y1="181" x2="330" y2="189"/>
+    <text x="285" y="202" text-anchor="middle" class="lbl" fill="#E8B65A">2a</text>
+    <text x="300" y="42" text-anchor="middle" class="lbl">large cube (same material)</text>
+  </g>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .body { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .fillg { fill:#EAEAEA; opacity:0.10; stroke:#EAEAEA; stroke-width:1.6; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .lbl { fill:#6FB7E0; font-size:13px; }
+    .disp { fill:#86C98B; font-size:16px; font-family:monospace; }
+  </style>
+  <!-- main beam -->
+  <rect class="fillg" x="150" y="150" width="360" height="20"/>
+  <!-- fixed jaw (left) -->
+  <path class="fillg" d="M150,150 v-70 h18 v70 Z"/>
+  <path class="fillg" d="M150,170 v55 h18 v-55 Z"/>
+  <!-- sliding head with display -->
+  <rect class="fillg" x="250" y="120" width="120" height="80" rx="4"/>
+  <rect x="262" y="132" width="96" height="30" rx="3" fill="#0d1b12" stroke="#86C98B" stroke-width="1.2"/>
+  <text x="352" y="154" text-anchor="end" class="disp">0.00</text>
+  <!-- moving jaws attached to head -->
+  <path class="fillg" d="M250,150 v-70 h16 v70 Z"/>
+  <path class="fillg" d="M250,170 v55 h16 v-55 Z"/>
+  <!-- depth tail (right) -->
+  <rect class="fillg" x="510" y="156" width="70" height="8"/>
+  <!-- thumb roller -->
+  <circle class="fillg" cx="300" cy="210" r="10"/>
+  <!-- labels -->
+  <text class="lbl" x="120" y="60" text-anchor="middle">outside jaws</text>
+  <path class="lead" d="M120,66 L159,120"/>
+  <text class="lbl" x="120" y="270" text-anchor="middle">inside jaws</text>
+  <path class="lead" d="M120,258 L158,210"/>
+  <text class="lbl" x="310" y="105" text-anchor="middle">digital display</text>
+  <path class="lead" d="M310,110 L310,130"/>
+  <text class="lbl" x="450" y="120" text-anchor="middle">locking screw</text>
+  <path class="lead" d="M450,126 L360,150"/>
+  <text class="lbl" x="560" y="140" text-anchor="middle">tail (depth)</text>
+  <path class="lead" d="M560,146 L560,155"/>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 290" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .axis { stroke:#EAEAEA; stroke-width:1.6; }
+    .line { stroke:#6FB7E0; stroke-width:2; fill:none; }
+    .area { fill:#6FB7E0; opacity:0.16; }
+    .grid { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:3 3; }
+  </style>
+  <!-- axes -->
+  <line class="axis" x1="60" y1="240" x2="370" y2="240"/>
+  <line class="axis" x1="60" y1="240" x2="60" y2="40"/>
+  <text x="30" y="45" font-size="11">force/N</text>
+  <text x="330" y="262">distance/m</text>
+  <!-- points: (0,12)->(15,12)->(20,0). scale: x: 60 + d*13 ; y: 240 - F*13.3 -->
+  <!-- 12 N -> y = 240 - 160 = 80 ; 15 m -> x = 60 + 195 = 255 ; 20 m -> x=60+260=320 -->
+  <polygon class="area" points="60,240 60,80 255,80 320,240"/>
+  <polyline class="line" points="60,80 255,80 320,240"/>
+  <!-- gridlines -->
+  <line class="grid" x1="60" y1="80" x2="255" y2="80"/>
+  <line class="grid" x1="255" y1="80" x2="255" y2="240"/>
+  <text x="50" y="84" text-anchor="end">12</text>
+  <text x="60" y="257" text-anchor="middle">0</text>
+  <text x="255" y="257" text-anchor="middle">15</text>
+  <text x="320" y="257" text-anchor="middle">20</text>
+</svg>

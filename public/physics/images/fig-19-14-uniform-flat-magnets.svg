@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
+    .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
+    .pole { font-size:15px; font-weight:bold; fill:#EAEAEA; }
+    .fl { stroke:#6FB7E0; stroke-width:1.6; fill:none; }
+    .fhead { fill:#6FB7E0; }
+    .lbl { fill:#E8B65A; font-size:12.5px; }
+  </style>
+
+  <!-- N pole slab (left) facing S pole slab (right), small gap -->
+  <rect class="magN" x="60" y="70" width="34" height="150" rx="2"/>
+  <rect class="magS" x="426" y="70" width="34" height="150" rx="2"/>
+  <text class="pole" x="70" y="150">N</text>
+  <text class="pole" x="436" y="150">S</text>
+
+  <!-- parallel field lines across the gap, N -> S -->
+  <g class="fl">
+    <line x1="94" y1="90"  x2="426" y2="90"/>
+    <line x1="94" y1="115" x2="426" y2="115"/>
+    <line x1="94" y1="140" x2="426" y2="140"/>
+    <line x1="94" y1="165" x2="426" y2="165"/>
+    <line x1="94" y1="190" x2="426" y2="190"/>
+  </g>
+  <g class="fhead">
+    <polygon points="255,85 255,95 268,90"/>
+    <polygon points="255,110 255,120 268,115"/>
+    <polygon points="255,135 255,145 268,140"/>
+    <polygon points="255,160 255,170 268,165"/>
+    <polygon points="255,185 255,195 268,190"/>
+  </g>
+  <!-- slight curving (arcing) only at the edges -->
+  <path class="fl" d="M94,90 C70,75 70,70 78,64"/>
+  <path class="fl" d="M94,190 C70,205 70,210 78,216"/>
+  <path class="fl" d="M426,90 C450,75 450,70 442,64"/>
+  <path class="fl" d="M426,190 C450,205 450,210 442,216"/>
+
+  <text x="260" y="40" text-anchor="middle" class="lbl">Two flat opposite poles, close but not touching</text>
+  <text x="260" y="255" text-anchor="middle" font-size="12.5">Between the poles the lines are parallel and evenly spaced</text>
+  <text x="260" y="273" text-anchor="middle" font-size="12.5">— a uniform field. Arcing appears only at the edges.</text>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 180" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .ball { fill:#6FB7E0; opacity:0.85; stroke:#EAEAEA; stroke-width:1.2; }
+    .vel { fill:none; stroke:#E8B65A; stroke-width:1.8; }
+    .lbl { fill:#E8B65A; font-size:12px; }
+    .t { font-size:12px; }
+  </style>
+  <defs>
+    <marker id="d1" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/></marker>
+  </defs>
+  <!-- first ball, horizontal velocity -->
+  <circle class="ball" cx="70" cy="130" r="9"/>
+  <line class="vel" x1="82" y1="130" x2="140" y2="130" marker-end="url(#d1)"/>
+  <text class="lbl" x="90" y="122">4 m/s</text>
+  <text class="t" x="70" y="158" text-anchor="middle">t = 0</text>
+  <!-- second ball, same speed but turned -->
+  <circle class="ball" cx="180" cy="130" r="9"/>
+  <line class="vel" x1="188" y1="122" x2="240" y2="70" marker-end="url(#d1)"/>
+  <text class="lbl" x="196" y="95">4 m/s</text>
+  <text class="t" x="180" y="158" text-anchor="middle">t = 1 s</text>
+  <circle class="ball" cx="250" cy="60" r="9"/>
+  <text class="t" x="278" y="60">t = 2 s</text>
+</svg>

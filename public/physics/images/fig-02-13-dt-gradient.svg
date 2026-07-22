@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 250" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .axis { stroke:#EAEAEA; stroke-width:1.6; }
+    .line { fill:none; stroke:#6FB7E0; stroke-width:2.2; }
+    .guide { stroke:#9AA0A6; stroke-width:1.1; stroke-dasharray:4 3; }
+    .lbl { font-size:11px; fill:#E8B65A; }
+    .ax { font-size:11px; }
+  </style>
+  <defs>
+    <marker id="da" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#EAEAEA"/></marker>
+  </defs>
+  <line class="axis" x1="55" y1="210" x2="55" y2="30" marker-end="url(#da)"/>
+  <line class="axis" x1="55" y1="210" x2="310" y2="210" marker-end="url(#da)"/>
+  <text x="20" y="35">displacement</text>
+  <text x="285" y="230">time</text>
+  <!-- sloped line -->
+  <line class="line" x1="55" y1="200" x2="250" y2="60"/>
+  <!-- rise/run triangle -->
+  <line class="guide" x1="150" y1="128" x2="250" y2="128"/>
+  <line class="guide" x1="250" y1="128" x2="250" y2="60"/>
+  <line class="guide" x1="55" y1="60" x2="250" y2="60"/>
+  <line class="guide" x1="55" y1="128" x2="150" y2="128"/>
+  <line class="guide" x1="150" y1="210" x2="150" y2="128"/>
+  <line class="guide" x1="250" y1="210" x2="250" y2="128"/>
+  <text x="45" y="64" text-anchor="end" class="ax">d₂</text>
+  <text x="45" y="132" text-anchor="end" class="ax">d₁</text>
+  <text x="150" y="225" text-anchor="middle" class="ax">t₁</text>
+  <text x="250" y="225" text-anchor="middle" class="ax">t₂</text>
+  <text x="258" y="98" class="lbl">d₂ − d₁</text>
+  <text x="185" y="145" class="lbl">t₂ − t₁</text>
+  <text x="47" y="207" text-anchor="end" class="ax">O</text>
+</svg>

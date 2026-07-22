@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 260" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .tube { fill:#6FB7E0; opacity:0.12; stroke:#EAEAEA; stroke-width:1.8; }
+    .gauze { stroke:#9AA0A6; stroke-width:1.4; }
+    .ice { fill:#6FB7E0; opacity:0.35; stroke:#6FB7E0; stroke-width:1.2; }
+    .steam { stroke:#9AA0A6; stroke-width:2; fill:none; stroke-dasharray:5 4; }
+    .flame { fill:#E8B65A; opacity:0.55; stroke:#E8B65A; stroke-width:1.2; }
+    .heat { stroke:#E8B65A; stroke-width:2.2; fill:none; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+    .lbl { fill:#E8B65A; }
+  </style>
+  <!-- inclined test tube -->
+  <g transform="rotate(-22 230 130)">
+    <rect class="tube" x="120" y="110" width="230" height="42" rx="21"/>
+    <!-- ice at closed (lower/left) end held by gauze -->
+    <circle class="ice" cx="150" cy="131" r="9"/>
+    <circle class="ice" cx="168" cy="131" r="9"/>
+    <!-- wire gauze holding ice down -->
+    <line class="gauze" x1="182" y1="112" x2="182" y2="150"/>
+    <line class="gauze" x1="178" y1="112" x2="186" y2="150"/>
+    <!-- boiling water region (upper/right) -->
+    <g stroke="#E58F8F" stroke-width="1.4" opacity="0.7">
+      <circle cx="270" cy="128" r="2.5" fill="none"/><circle cx="290" cy="136" r="2.5" fill="none"/>
+      <circle cx="310" cy="126" r="2.5" fill="none"/><circle cx="330" cy="134" r="2.5" fill="none"/>
+    </g>
+  </g>
+  <!-- steam from open end (top right) -->
+  <path class="steam" d="M360,70 q10,-16 -2,-30"/>
+  <path class="steam" d="M375,74 q12,-16 0,-32"/>
+  <!-- flame under the boiling-water (upper) part -->
+  <path class="flame" d="M300,175 C293,163 307,158 300,146 C293,158 290,166 300,175 Z"/>
+  <path class="heat" d="M300,200 L300,178"/>
+  <path class="heat" d="M293,188 L300,176 L307,188"/>
+  <text x="300" y="218" text-anchor="middle">heat</text>
+  <!-- labels -->
+  <text class="lbl" x="405" y="55">steam</text>
+  <path class="lead" d="M400,58 L378,52"/>
+  <text class="lbl" x="405" y="120">boiling water</text>
+  <path class="lead" d="M400,116 L330,108"/>
+  <text class="lbl" x="70" y="150">ice held by</text>
+  <text class="lbl" x="70" y="165">wire gauze</text>
+  <path class="lead" d="M118,152 L165,158"/>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 280" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .tube { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .liq { fill:#6FB7E0; opacity:0.30; }
+    .box { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .level { stroke:#9AA0A6; stroke-width:1.2; stroke-dasharray:5 3; }
+    .height { stroke:#E8B65A; stroke-width:1.6; }
+    .arrow { stroke:#E58F8F; stroke-width:2; }
+    .lbl { font-size:11px; }
+  </style>
+  <!-- gas supply box -->
+  <rect class="box" x="30" y="90" width="80" height="45"/>
+  <text x="70" y="110" text-anchor="middle" class="lbl">gas</text>
+  <text x="70" y="124" text-anchor="middle" class="lbl">supply</text>
+
+  <!-- U-tube: left limb (from gas), right limb (open, higher) -->
+  <path class="liq" d="M150,112 L150,230 Q150,255 175,255 L245,255 Q270,255 270,230 L270,150 L300,150 L300,230 Q300,258 270,258 L175,258 Q145,258 145,230 L145,112 Z"/>
+  <path class="tube" d="M145,112 L145,230 Q145,258 175,258 L270,258 Q300,258 300,230 L300,120"/>
+  <path class="tube" d="M150,112 L150,230 Q150,253 175,253 L270,253 Q295,253 295,230 L295,120"/>
+  <!-- connect gas to left limb top -->
+  <line class="tube" x1="110" y1="112" x2="150" y2="112"/>
+  <line class="tube" x1="110" y1="106" x2="150" y2="106"/>
+  <line class="tube" x1="110" y1="106" x2="110" y2="112"/>
+
+  <!-- open top of right limb, atmosphere -->
+  <line class="arrow" x1="298" y1="95" x2="298" y2="118" marker-end="url(#ma)"/>
+  <text x="308" y="105" class="lbl">P_atm</text>
+
+  <!-- X and Y at same level -->
+  <line class="level" x1="150" y1="180" x2="300" y2="180"/>
+  <circle cx="170" cy="180" r="3.5" fill="#E8B65A"/>
+  <circle cx="285" cy="180" r="3.5" fill="#E8B65A"/>
+  <text x="160" y="196" class="lbl">X</text>
+  <text x="288" y="196" class="lbl">Y</text>
+  <text x="150" y="150" class="lbl">P_gas</text>
+
+  <!-- height difference h -->
+  <line class="height" x1="330" y1="150" x2="330" y2="180"/>
+  <line class="height" x1="325" y1="150" x2="335" y2="150"/>
+  <line class="height" x1="325" y1="180" x2="335" y2="180"/>
+  <text x="338" y="169" class="lbl" fill="#E8B65A">h</text>
+
+  <text x="230" y="277" text-anchor="middle" class="lbl">Same level X, Y &#8594; same pressure.  P_gas = P_atm + h&#961;g</text>
+  <defs>
+    <marker id="ma" markerWidth="7" markerHeight="7" refX="3.5" refY="6" orient="auto"><path d="M0,0 L3.5,7 L7,0 Z" fill="#E58F8F"/></marker>
+  </defs>
+</svg>

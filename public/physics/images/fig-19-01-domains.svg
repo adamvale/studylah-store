@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .box { fill:#6FB7E0; opacity:0.12; stroke:#EAEAEA; stroke-width:1.6; }
+    .arrow { stroke:#6FB7E0; stroke-width:2; fill:none; }
+    .head { fill:#6FB7E0; }
+    .lbl { fill:#E8B65A; font-size:13px; }
+    .cap { font-size:13px; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+  </style>
+
+  <!-- ALIGNED (magnet) -->
+  <text x="40" y="30" class="cap" font-weight="bold">Magnetised material — a magnet</text>
+  <rect class="box" x="40" y="45" width="360" height="90" rx="4"/>
+  <g class="arrow">
+    <!-- 3 rows x 6 arrows, all pointing right -->
+    <g>
+      <line x1="60" y1="63" x2="110" y2="63"/><polygon class="head" points="110,59 120,63 110,67"/>
+      <line x1="130" y1="63" x2="180" y2="63"/><polygon class="head" points="180,59 190,63 180,67"/>
+      <line x1="200" y1="63" x2="250" y2="63"/><polygon class="head" points="250,59 260,63 250,67"/>
+      <line x1="270" y1="63" x2="320" y2="63"/><polygon class="head" points="320,59 330,63 320,67"/>
+    </g>
+    <g transform="translate(0,27)">
+      <line x1="60" y1="63" x2="110" y2="63"/><polygon class="head" points="110,59 120,63 110,67"/>
+      <line x1="130" y1="63" x2="180" y2="63"/><polygon class="head" points="180,59 190,63 180,67"/>
+      <line x1="200" y1="63" x2="250" y2="63"/><polygon class="head" points="250,59 260,63 250,67"/>
+      <line x1="270" y1="63" x2="320" y2="63"/><polygon class="head" points="320,59 330,63 320,67"/>
+    </g>
+    <g transform="translate(0,54)">
+      <line x1="60" y1="63" x2="110" y2="63"/><polygon class="head" points="110,59 120,63 110,67"/>
+      <line x1="130" y1="63" x2="180" y2="63"/><polygon class="head" points="180,59 190,63 180,67"/>
+      <line x1="200" y1="63" x2="250" y2="63"/><polygon class="head" points="250,59 260,63 250,67"/>
+      <line x1="270" y1="63" x2="320" y2="63"/><polygon class="head" points="320,59 330,63 320,67"/>
+    </g>
+  </g>
+  <text x="220" y="160" text-anchor="middle" class="cap">Domains all point the same way, so</text>
+  <text x="220" y="178" text-anchor="middle" class="cap">their fields add up to a strong field.</text>
+  <text x="430" y="55" class="lbl">domain</text>
+  <path class="lead" d="M428,60 L330,72"/>
+
+  <!-- RANDOM (non-magnet) -->
+  <text x="40" y="228" class="cap" font-weight="bold">Unmagnetised material — not a magnet</text>
+  <g stroke="#9AA0A6" stroke-width="2" fill="none">
+    <g transform="translate(40,245)">
+      <line x1="20" y1="20" x2="55" y2="8"/><polygon fill="#9AA0A6" points="55,8 45,7 52,15"/>
+      <line x1="75" y1="10" x2="110" y2="30"/><polygon fill="#9AA0A6" points="110,30 100,30 106,22"/>
+      <line x1="130" y1="30" x2="165" y2="12"/><polygon fill="#9AA0A6" points="165,12 155,12 162,20"/>
+      <line x1="185" y1="15" x2="220" y2="35"/><polygon fill="#9AA0A6" points="220,35 210,34 216,27"/>
+      <line x1="245" y1="35" x2="280" y2="12"/><polygon fill="#9AA0A6" points="280,12 270,13 277,20"/>
+      <line x1="300" y1="12" x2="335" y2="32"/><polygon fill="#9AA0A6" points="335,32 325,31 331,24"/>
+    </g>
+    <g transform="translate(40,278)">
+      <line x1="20" y1="10" x2="55" y2="30"/><polygon fill="#9AA0A6" points="55,30 45,29 51,22"/>
+      <line x1="75" y1="30" x2="110" y2="12"/><polygon fill="#9AA0A6" points="110,12 100,13 107,20"/>
+      <line x1="130" y1="12" x2="165" y2="30"/><polygon fill="#9AA0A6" points="165,30 155,29 161,22"/>
+      <line x1="190" y1="30" x2="225" y2="10"/><polygon fill="#9AA0A6" points="225,10 215,11 222,18"/>
+      <line x1="245" y1="12" x2="280" y2="32"/><polygon fill="#9AA0A6" points="280,32 270,31 276,24"/>
+      <line x1="300" y1="30" x2="335" y2="12"/><polygon fill="#9AA0A6" points="335,12 325,13 332,20"/>
+    </g>
+  </g>
+  <rect x="40" y="243" width="360" height="72" rx="4" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
+  <text x="430" y="290" class="cap">Domains point in all</text>
+  <text x="430" y="308" class="cap">directions, so their</text>
+  <text x="430" y="326" class="cap">fields cancel out.</text>
+</svg>

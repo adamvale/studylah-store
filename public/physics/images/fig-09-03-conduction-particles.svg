@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .particle { fill:#6FB7E0; opacity:0.30; stroke:#6FB7E0; stroke-width:1.6; }
+    .bond { stroke:#9AA0A6; stroke-width:1.2; stroke-dasharray:4 3; }
+    .vib { stroke:#E8B65A; stroke-width:1.6; fill:none; }
+    .electron { fill:#86C98B; }
+    .flow { stroke:#E58F8F; stroke-width:2.2; fill:none; }
+    .lbl { fill:#E8B65A; font-size:12px; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+    .heat { stroke:#E58F8F; stroke-width:2.4; fill:none; }
+  </style>
+  <!-- grid of particles 3 cols x 2 rows -->
+  <g>
+    <!-- bonds -->
+    <line class="bond" x1="140" y1="90"  x2="240" y2="90"/>
+    <line class="bond" x1="240" y1="90"  x2="340" y2="90"/>
+    <line class="bond" x1="140" y1="180" x2="240" y2="180"/>
+    <line class="bond" x1="240" y1="180" x2="340" y2="180"/>
+    <line class="bond" x1="140" y1="90"  x2="140" y2="180"/>
+    <line class="bond" x1="240" y1="90"  x2="240" y2="180"/>
+    <line class="bond" x1="340" y1="90"  x2="340" y2="180"/>
+  </g>
+  <!-- particles -->
+  <circle class="particle" cx="140" cy="90"  r="16"/>
+  <circle class="particle" cx="240" cy="90"  r="16"/>
+  <circle class="particle" cx="340" cy="90"  r="16"/>
+  <circle class="particle" cx="140" cy="180" r="16"/>
+  <circle class="particle" cx="240" cy="180" r="16"/>
+  <circle class="particle" cx="340" cy="180" r="16"/>
+  <!-- strong vibration marks on hot (left) particles -->
+  <path class="vib" d="M112,90 q-8,0 -8,0"/>
+  <path class="vib" d="M108,80 L100,74 M108,100 L100,106 M108,90 L98,90"/>
+  <path class="vib" d="M108,170 L100,164 M108,190 L100,196 M108,180 L98,180"/>
+  <!-- free electrons (small green dots) moving right -->
+  <circle class="electron" cx="175" cy="70" r="3"/>
+  <circle class="electron" cx="205" cy="110" r="3"/>
+  <circle class="electron" cx="270" cy="80" r="3"/>
+  <circle class="electron" cx="300" cy="120" r="3"/>
+  <circle class="electron" cx="190" cy="160" r="3"/>
+  <circle class="electron" cx="285" cy="165" r="3"/>
+  <circle class="electron" cx="230" cy="135" r="3"/>
+  <!-- energy flow direction -->
+  <path class="flow" d="M150,235 L360,235"/>
+  <path class="flow" d="M350,228 L362,235 L350,242"/>
+  <text x="255" y="258" text-anchor="middle" fill="#E58F8F">energy passed to cooler particles</text>
+  <!-- heat source arrow bottom-left -->
+  <path class="heat" d="M140,245 L140,205"/>
+  <path class="heat" d="M133,215 L140,203 L147,215"/>
+  <text x="140" y="278" text-anchor="middle">heat source</text>
+  <!-- labels -->
+  <text class="lbl" x="30" y="60">stronger vibration</text>
+  <text class="lbl" x="30" y="75">when heated</text>
+  <path class="lead" d="M95,72 L120,86"/>
+  <text class="lbl" x="400" y="92">particle</text>
+  <path class="lead" d="M398,88 L358,90"/>
+  <text class="lbl" x="400" y="150">free electron</text>
+  <path class="lead" d="M398,146 L305,122"/>
+</svg>

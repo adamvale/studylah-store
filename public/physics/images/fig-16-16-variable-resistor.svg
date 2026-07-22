@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 260" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .wire { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .rod { fill:#9AA0A6; fill-opacity:0.22; stroke:#EAEAEA; stroke-width:2; }
+    .coil { stroke:#6FB7E0; stroke-width:1.8; fill:none; }
+    .slide { fill:#E8B65A; fill-opacity:0.35; stroke:#E8B65A; stroke-width:1.6; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .lbl { font-size:12px; }
+  </style>
+  <!-- metal rod carrying the resistance coil -->
+  <rect class="rod" x="90" y="150" width="260" height="26"/>
+  <!-- coil of resistance wire -->
+  <path class="coil" d="M110,176 q10,-22 20,0 q10,-22 20,0 q10,-22 20,0 q10,-22 20,0 q10,-22 20,0 q10,-22 20,0 q10,-22 20,0 q10,-22 20,0"/>
+  <!-- sliding contact -->
+  <rect class="slide" x="205" y="96" width="30" height="30"/>
+  <line class="wire" x1="220" y1="126" x2="220" y2="150"/>
+  <line class="wire" x1="220" y1="96" x2="220" y2="70"/>
+  <line class="wire" x1="180" y1="70" x2="260" y2="70"/>
+
+  <!-- current terminals -->
+  <line class="wire" x1="50" y1="163" x2="90" y2="163"/>
+  <line class="wire" x1="350" y1="163" x2="390" y2="163"/>
+
+  <text x="70" y="200" class="lbl" text-anchor="middle">current in</text>
+  <text x="370" y="200" class="lbl" text-anchor="middle">current out</text>
+  <line class="lead" x1="220" y1="96" x2="270" y2="50"/>
+  <text x="275" y="48" class="lbl">sliding contact</text>
+  <line class="lead" x1="150" y1="150" x2="120" y2="120"/>
+  <text x="55" y="116" class="lbl">resistance wire</text>
+</svg>

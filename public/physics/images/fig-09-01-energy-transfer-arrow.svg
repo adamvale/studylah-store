@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 190" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .hot { fill:#E58F8F; opacity:0.30; stroke:#E58F8F; stroke-width:1.6; }
+    .cold { fill:#6FB7E0; opacity:0.30; stroke:#6FB7E0; stroke-width:1.6; }
+    .arrow { stroke:#E8B65A; stroke-width:2.4; fill:none; }
+    .lbl { font-size:13px; text-anchor:middle; }
+    .small { font-size:11px; text-anchor:middle; fill:#9AA0A6; }
+  </style>
+  <!-- hot block -->
+  <rect class="hot" x="30" y="55" width="130" height="80" rx="6"/>
+  <text class="lbl" x="95" y="95">higher</text>
+  <text class="lbl" x="95" y="112">temperature</text>
+  <!-- cold block -->
+  <rect class="cold" x="320" y="55" width="130" height="80" rx="6"/>
+  <text class="lbl" x="385" y="95">lower</text>
+  <text class="lbl" x="385" y="112">temperature</text>
+  <!-- arrow -->
+  <path class="arrow" d="M170,95 L300,95"/>
+  <path class="arrow" d="M290,88 L302,95 L290,102"/>
+  <text class="small" x="235" y="70">energy transfer</text>
+  <text class="small" x="235" y="84">by heating</text>
+</svg>

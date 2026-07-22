@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 175" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .axis { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
+    .wave { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
+    .wave2 { stroke:#E8B65A; stroke-width:2.2; fill:none; stroke-dasharray:6 4; }
+    .rest { stroke:#9AA0A6; stroke-width:1.2; stroke-dasharray:5 4; fill:none; }
+    .guide { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:3 3; fill:none; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .dim { stroke:#E8B65A; stroke-width:1.4; fill:none; }
+    .lbl { fill:#E8B65A; font-size:13px; }
+    .lblb { fill:#6FB7E0; font-size:13px; }
+    .tick { stroke:#EAEAEA; stroke-width:1.2; }
+    .sm { font-size:12px; }
+  </style>
+
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
+    </marker>
+    <marker id="ahb" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6FB7E0"/>
+    </marker>
+    <marker id="aha" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/>
+    </marker>
+    <marker id="ahm" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#9AA0A6"/>
+    </marker>
+  </defs>
+  <text x="250" y="22" text-anchor="middle" font-size="13" fill="#E8B65A">energy travels along the rope, the rope itself does not</text>
+  <path class="wave" d="M 90.00,80.00 L 92.00,77.24 L 94.00,74.53 L 96.00,71.90 L 98.00,69.40 L 100.00,67.07 L 102.00,64.94 L 104.00,63.05 L 106.00,61.42 L 108.00,60.09 L 110.00,59.08 L 112.00,58.39 L 114.00,58.04 L 116.00,58.04 L 118.00,58.39 L 120.00,59.08 L 122.00,60.09 L 124.00,61.42 L 126.00,63.05 L 128.00,64.94 L 130.00,67.07 L 132.00,69.40 L 134.00,71.90 L 136.00,74.53 L 138.00,77.24 L 140.00,80.00 L 142.00,82.76 L 144.00,85.47 L 146.00,88.10 L 148.00,90.60 L 150.00,92.93 L 152.00,95.06 L 154.00,96.95 L 156.00,98.58 L 158.00,99.91 L 160.00,100.92 L 162.00,101.61 L 164.00,101.96 L 166.00,101.96 L 168.00,101.61 L 170.00,100.92 L 172.00,99.91 L 174.00,98.58 L 176.00,96.95 L 178.00,95.06 L 180.00,92.93 L 182.00,90.60 L 184.00,88.10 L 186.00,85.47 L 188.00,82.76 L 190.00,80.00 L 192.00,77.24 L 194.00,74.53 L 196.00,71.90 L 198.00,69.40 L 200.00,67.07 L 202.00,64.94 L 204.00,63.05 L 206.00,61.42 L 208.00,60.09 L 210.00,59.08 L 212.00,58.39 L 214.00,58.04 L 216.00,58.04 L 218.00,58.39 L 220.00,59.08 L 222.00,60.09 L 224.00,61.42 L 226.00,63.05 L 228.00,64.94 L 230.00,67.07 L 232.00,69.40 L 234.00,71.90 L 236.00,74.53 L 238.00,77.24 L 240.00,80.00 L 242.00,82.76 L 244.00,85.47 L 246.00,88.10 L 248.00,90.60 L 250.00,92.93 L 252.00,95.06 L 254.00,96.95 L 256.00,98.58 L 258.00,99.91 L 260.00,100.92 L 262.00,101.61 L 264.00,101.96 L 266.00,101.96 L 268.00,101.61 L 270.00,100.92 L 272.00,99.91 L 274.00,98.58 L 276.00,96.95 L 278.00,95.06 L 280.00,92.93 L 282.00,90.60 L 284.00,88.10 L 286.00,85.47 L 288.00,82.76 L 290.00,80.00 L 292.00,77.24 L 294.00,74.53 L 296.00,71.90 L 298.00,69.40 L 300.00,67.07 L 302.00,64.94 L 304.00,63.05 L 306.00,61.42 L 308.00,60.09 L 310.00,59.08 L 312.00,58.39 L 314.00,58.04 L 316.00,58.04 L 318.00,58.39 L 320.00,59.08 L 322.00,60.09 L 324.00,61.42 L 326.00,63.05 L 328.00,64.94 L 330.00,67.07 L 332.00,69.40 L 334.00,71.90 L 336.00,74.53 L 338.00,77.24 L 340.00,80.00 L 342.00,82.76 L 344.00,85.47 L 346.00,88.10 L 348.00,90.60 L 350.00,92.93 L 352.00,95.06 L 354.00,96.95 L 356.00,98.58 L 358.00,99.91 L 360.00,100.92 L 362.00,101.61 L 364.00,101.96 L 366.00,101.96 L 368.00,101.61 L 370.00,100.92 L 372.00,99.91 L 374.00,98.58 L 376.00,96.95 L 378.00,95.06 L 380.00,92.93 L 382.00,90.60 L 384.00,88.10 L 386.00,85.47 L 388.00,82.76 L 390.00,80.00 L 392.00,77.24 L 394.00,74.53 L 396.00,71.90 L 398.00,69.40 L 400.00,67.07 L 402.00,64.94 L 404.00,63.05 L 406.00,61.42 L 408.00,60.09 L 410.00,59.08"/>
+  <circle cx="80" cy="80" r="11" fill="#6FB7E0" opacity="0.32" stroke="#6FB7E0" stroke-width="1.4"/>
+  <text x="80" y="112" text-anchor="middle" font-size="12">person A</text>
+  <circle cx="420" cy="80" r="11" fill="#6FB7E0" opacity="0.32" stroke="#6FB7E0" stroke-width="1.4"/>
+  <text x="420" y="112" text-anchor="middle" font-size="12">person B</text>
+  <line x1="180" y1="52" x2="320" y2="52" class="axis" marker-end="url(#ah)"/>
+  <text x="250" y="45" text-anchor="middle" font-size="12">wave (energy) moves</text>
+  <text x="80" y="145" text-anchor="middle" font-size="11.5" fill="#9AA0A6">A puts energy in</text>
+  <text x="80" y="160" text-anchor="middle" font-size="11.5" fill="#9AA0A6">by shaking one end</text>
+  <text x="420" y="145" text-anchor="middle" font-size="11.5" fill="#9AA0A6">B receives the energy;</text>
+  <text x="420" y="160" text-anchor="middle" font-size="11.5" fill="#9AA0A6">no rope is transferred</text>
+
+</svg>

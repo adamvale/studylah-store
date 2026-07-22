@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 340" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .cell { stroke:#EAEAEA; stroke-width:1.4; }
+    .axis { stroke:#9AA0A6; stroke-width:1.6; fill:none; }
+    .head { fill:#EAEAEA; font-size:12px; text-anchor:middle; }
+    .good { fill:#86C98B; font-weight:bold; }
+    .poor { fill:#E58F8F; font-weight:bold; }
+  </style>
+  <!-- top axis: absorber & emitter -->
+  <text class="head" x="250" y="30">absorber and emitter of radiation</text>
+  <text class="good" x="120" y="52" text-anchor="middle">Good</text>
+  <text class="poor" x="380" y="52" text-anchor="middle">Poor</text>
+  <path class="axis" d="M95,58 L405,58"/>
+  <!-- left column: dark / dull / rough (good absorber+emitter) -->
+  <rect class="cell" x="95"  y="75"  width="110" height="55" fill="#3a3a3a"/>
+  <rect class="cell" x="95"  y="140" width="110" height="55" fill="#6a6a6a" opacity="0.7"/>
+  <rect class="cell" x="95"  y="205" width="110" height="55" fill="#5a5a5a" opacity="0.6"/>
+  <!-- rough texture hatch -->
+  <g stroke="#9AA0A6" stroke-width="0.8" opacity="0.7">
+    <line x1="100" y1="215" x2="115" y2="205"/><line x1="120" y1="230" x2="140" y2="212"/>
+    <line x1="150" y1="248" x2="175" y2="225"/><line x1="110" y1="252" x2="130" y2="238"/>
+    <line x1="160" y1="255" x2="180" y2="240"/>
+  </g>
+  <text x="90" y="107" text-anchor="end">dark</text>
+  <text x="90" y="172" text-anchor="end">dull (matt)</text>
+  <text x="90" y="237" text-anchor="end">rough</text>
+  <!-- right column: light / shiny / smooth (poor absorber+emitter) -->
+  <rect class="cell" x="295" y="75"  width="110" height="55" fill="#EAEAEA" opacity="0.85"/>
+  <rect class="cell" x="295" y="140" width="110" height="55" fill="#c9d4dc" opacity="0.5"/>
+  <rect class="cell" x="295" y="205" width="110" height="55" fill="#dfe6ea" opacity="0.5"/>
+  <!-- shiny highlight -->
+  <path d="M305,148 L330,148 L318,187 L293,187 Z" fill="#ffffff" opacity="0.25"/>
+  <!-- smooth diagonal streaks -->
+  <g stroke="#6FB7E0" stroke-width="1.2" opacity="0.6">
+    <line x1="305" y1="250" x2="330" y2="215"/><line x1="325" y1="252" x2="352" y2="216"/>
+    <line x1="348" y1="252" x2="375" y2="216"/>
+  </g>
+  <text x="410" y="107" text-anchor="start">light-coloured</text>
+  <text x="410" y="172" text-anchor="start">shiny</text>
+  <text x="410" y="237" text-anchor="start">smooth</text>
+  <!-- bottom axis: reflector -->
+  <path class="axis" d="M95,285 L405,285"/>
+  <text class="poor" x="120" y="305" text-anchor="middle">Poor</text>
+  <text class="good" x="380" y="305" text-anchor="middle">Good</text>
+  <text class="head" x="250" y="325">reflector of radiation</text>
+</svg>

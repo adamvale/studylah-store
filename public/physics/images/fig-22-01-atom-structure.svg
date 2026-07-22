@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 360" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .shell { fill:none; stroke:#9AA0A6; stroke-width:1.3; stroke-dasharray:4 4; }
+    .proton { fill:#E58F8F; opacity:0.9; stroke:#EAEAEA; stroke-width:0.8; }
+    .neutron { fill:#9AA0A6; opacity:0.9; stroke:#EAEAEA; stroke-width:0.8; }
+    .electron { fill:#6FB7E0; stroke:#EAEAEA; stroke-width:0.8; }
+    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .lbl { fill:#E8B65A; font-size:13px; }
+    .sym { fill:#EAEAEA; font-size:11px; }
+  </style>
+  <!-- electron shells -->
+  <ellipse class="shell" cx="230" cy="180" rx="130" ry="130"/>
+  <ellipse class="shell" cx="230" cy="180" rx="85" ry="85"/>
+  <!-- nucleus: protons + neutrons clustered -->
+  <g>
+    <circle class="proton" cx="222" cy="172" r="12"/>
+    <circle class="neutron" cx="240" cy="176" r="12"/>
+    <circle class="proton" cx="228" cy="192" r="12"/>
+    <circle class="neutron" cx="212" cy="188" r="12"/>
+  </g>
+  <!-- electrons on shells -->
+  <circle class="electron" cx="230" cy="50" r="8"/>
+  <circle class="electron" cx="360" cy="180" r="8"/>
+  <circle class="electron" cx="230" cy="95" r="8"/>
+  <circle class="electron" cx="145" cy="180" r="8"/>
+  <!-- labels with leaders -->
+  <text class="lbl" x="395" y="55">electron</text>
+  <path class="lead" d="M393,50 L238,50"/>
+
+  <text class="lbl" x="395" y="185">electron shell (energy level)</text>
+  <path class="lead" d="M392,181 L360,180"/>
+
+  <text class="lbl" x="40" y="120" text-anchor="end">nucleus</text>
+  <path class="lead" d="M45,116 L215,178"/>
+
+  <text class="lbl" x="40" y="250" text-anchor="end">proton (+)</text>
+  <path class="lead" d="M45,246 L211,190"/>
+  <circle class="proton" cx="70" cy="272" r="8"/>
+  <text class="sym" x="86" y="276">+</text>
+
+  <text class="lbl" x="300" y="330">neutron (0)</text>
+  <path class="lead" d="M298,326 L240,188"/>
+  <circle class="neutron" cx="70" cy="300" r="8"/>
+  <text class="sym" x="86" y="304">0</text>
+</svg>

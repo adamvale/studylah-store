@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 320" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .cross{ fill:#9AA0A6; font-size:13px; text-anchor:middle; }
+    .path { stroke:#E8B65A; stroke-width:2; fill:none; stroke-dasharray:4 3; }
+    .vel  { stroke:#EAEAEA; stroke-width:2; fill:none; }
+    .force{ stroke:#E58F8F; stroke-width:2.4; fill:none; }
+    .ttl  { fill:#EAEAEA; font-size:13px; font-weight:bold; text-anchor:middle; }
+    .pos  { fill:#6FB7E0; font-size:15px; font-weight:bold; }
+    .neg  { fill:#E58F8F; font-size:15px; font-weight:bold; }
+    .box  { fill:none; stroke:#9AA0A6; stroke-width:1; stroke-dasharray:3 3; }
+  </style>
+  <defs>
+    <marker id="mv" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#EAEAEA"/></marker>
+    <marker id="mf" markerWidth="12" markerHeight="12" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#E58F8F"/></marker>
+    <marker id="mp" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#E8B65A"/></marker>
+  </defs>
+
+  <text x="340" y="20" text-anchor="middle" fill="#9AA0A6">magnetic field into the page (&#8855;)</text>
+
+  <!-- PANEL A: positive charge deflects up -->
+  <text class="ttl" x="175" y="46">Positive charge</text>
+  <rect class="box" x="55" y="60" width="240" height="200"/>
+  <g class="cross">
+    <text x="90" y="95">&#215;</text><text x="150" y="95">&#215;</text><text x="210" y="95">&#215;</text><text x="265" y="95">&#215;</text>
+    <text x="90" y="150">&#215;</text><text x="150" y="150">&#215;</text><text x="210" y="150">&#215;</text><text x="265" y="150">&#215;</text>
+    <text x="90" y="205">&#215;</text><text x="150" y="205">&#215;</text><text x="210" y="205">&#215;</text><text x="265" y="205">&#215;</text>
+    <text x="120" y="248">&#215;</text><text x="180" y="248">&#215;</text><text x="240" y="248">&#215;</text>
+  </g>
+  <!-- enters from left moving right, curves up -->
+  <path class="path" d="M55,210 Q170,210 235,110"/>
+  <line class="vel" x1="60" y1="210" x2="120" y2="210" marker-end="url(#mv)"/>
+  <text class="pos" x="60" y="228">&#8853;</text>
+  <text x="126" y="226">velocity</text>
+  <line class="force" x1="175" y1="200" x2="175" y2="150" marker-end="url(#mf)"/>
+  <text fill="#E58F8F" x="182" y="176">F</text>
+
+  <!-- PANEL B: electron deflects down -->
+  <text class="ttl" x="505" y="46">Electron (negative)</text>
+  <rect class="box" x="385" y="60" width="240" height="200"/>
+  <g class="cross">
+    <text x="420" y="95">&#215;</text><text x="480" y="95">&#215;</text><text x="540" y="95">&#215;</text><text x="595" y="95">&#215;</text>
+    <text x="420" y="150">&#215;</text><text x="480" y="150">&#215;</text><text x="540" y="150">&#215;</text><text x="595" y="150">&#215;</text>
+    <text x="420" y="205">&#215;</text><text x="480" y="205">&#215;</text><text x="540" y="205">&#215;</text><text x="595" y="205">&#215;</text>
+    <text x="450" y="248">&#215;</text><text x="510" y="248">&#215;</text><text x="570" y="248">&#215;</text>
+  </g>
+  <path class="path" d="M385,110 Q500,110 565,210"/>
+  <line class="vel" x1="390" y1="110" x2="450" y2="110" marker-end="url(#mv)"/>
+  <text class="neg" x="390" y="128">&#8854;</text>
+  <text x="456" y="126">velocity</text>
+  <line class="force" x1="505" y1="120" x2="505" y2="170" marker-end="url(#mf)"/>
+  <text fill="#E58F8F" x="512" y="150">F</text>
+
+  <text x="340" y="300" text-anchor="middle" fill="#9AA0A6">Opposite charges deflect in opposite directions in the same field.</text>
+</svg>

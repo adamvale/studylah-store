@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 300" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#6FB7E0"/></marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .ceiling { stroke:#EAEAEA; stroke-width:2.5; }
+    .string { stroke:#E8B65A; stroke-width:2; }
+    .box { fill:#6FB7E0; opacity:0.26; stroke:#6FB7E0; stroke-width:1.6; }
+    .f { stroke:#6FB7E0; stroke-width:2.4; }
+    .guide { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:4 3; }
+  </style>
+  <line class="ceiling" x1="120" y1="40" x2="300" y2="40"/>
+  <g stroke="#9AA0A6" stroke-width="1">
+    <line x1="130" y1="40" x2="122" y2="50"/><line x1="150" y1="40" x2="142" y2="50"/>
+    <line x1="170" y1="40" x2="162" y2="50"/><line x1="190" y1="40" x2="182" y2="50"/>
+    <line x1="210" y1="40" x2="202" y2="50"/><line x1="230" y1="40" x2="222" y2="50"/>
+    <line x1="250" y1="40" x2="242" y2="50"/><line x1="270" y1="40" x2="262" y2="50"/>
+  </g>
+  <!-- vertical reference and string at angle -->
+  <line class="guide" x1="200" y1="40" x2="200" y2="180"/>
+  <line class="string" x1="200" y1="40" x2="245" y2="175"/>
+  <path d="M200,90 A50,50 0 0 0 215,105" fill="none" stroke="#9AA0A6" stroke-width="1"/>
+  <text x="207" y="88" font-size="11">20&#176;</text>
+  <text x="255" y="120" font-size="12" fill="#E8B65A">T = 160 N</text>
+  <!-- mass -->
+  <rect class="box" x="220" y="175" width="50" height="45"/>
+  <text x="245" y="202" text-anchor="middle" font-size="11">15 kg</text>
+  <!-- horizontal force F -->
+  <line class="f" x1="245" y1="197" x2="335" y2="197" marker-end="url(#arw)"/>
+  <text x="300" y="188" font-size="12.5" fill="#6FB7E0">F</text>
+  <text x="190" y="270" text-anchor="middle" font-size="11">Resultant force is zero (not drawn to scale).</text>
+</svg>

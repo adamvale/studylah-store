@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .coil { stroke:#EAEAEA; stroke-width:2; fill:none; }
+    .fld  { stroke:#6FB7E0; stroke-width:1.5; fill:none; }
+    .core { stroke:#9AA0A6; stroke-width:1; fill:none; }
+    .lbl  { fill:#E8B65A; font-size:12px; }
+    .pole { fill:#EAEAEA; font-size:15px; font-weight:bold; text-anchor:middle; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+  </style>
+  <defs>
+    <marker id="f3" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#6FB7E0"/>
+    </marker>
+    <marker id="c3" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#EAEAEA"/>
+    </marker>
+  </defs>
+
+  <!-- solenoid coils (loops drawn as ellipses spanning the barrel) -->
+  <g class="coil">
+    <ellipse cx="220" cy="180" rx="12" ry="42"/>
+    <ellipse cx="260" cy="180" rx="12" ry="42"/>
+    <ellipse cx="300" cy="180" rx="12" ry="42"/>
+    <ellipse cx="340" cy="180" rx="12" ry="42"/>
+    <ellipse cx="380" cy="180" rx="12" ry="42"/>
+    <ellipse cx="420" cy="180" rx="12" ry="42"/>
+  </g>
+  <!-- leads / current direction -->
+  <line class="coil" x1="208" y1="222" x2="208" y2="270" marker-end="url(#c3)"/>
+  <line class="coil" x1="432" y1="138" x2="432" y2="90"  marker-end="url(#c3)"/>
+  <text class="lbl" x="190" y="286" text-anchor="end">current in</text>
+  <text class="lbl" x="446" y="86">current out</text>
+
+  <!-- inside field: straight, left(S) to right(N) -->
+  <line class="fld" x1="240" y1="180" x2="410" y2="180" marker-end="url(#f3)"/>
+
+  <!-- outside field lines: emerge from N (right) loop to S (left) -->
+  <path class="fld" d="M420,150 C500,90 520,120 500,180 C520,240 500,270 420,210" marker-end="url(#f3)"/>
+  <path class="fld" d="M420,120 C560,40 600,140 500,180 C600,220 560,320 420,240" marker-end="url(#f3)"/>
+  <path class="fld" d="M220,150 C140,90 120,120 140,180 C120,240 140,270 220,210" marker-end="url(#f3)"/>
+  <path class="fld" d="M220,120 C80,40 40,140 140,180 C40,220 80,320 220,240" marker-end="url(#f3)"/>
+
+  <!-- poles -->
+  <text class="pole" x="200" y="185">S</text>
+  <text class="pole" x="440" y="185">N</text>
+
+  <!-- labels -->
+  <text class="lbl" x="470" y="176">field line</text>
+  <path class="lead" d="M468,172 L505,150"/>
+  <text class="lbl" x="315" y="118" text-anchor="middle">inside: straight, parallel, strong &amp; uniform</text>
+  <path class="lead" d="M315,122 L320,168"/>
+  <text class="lbl" x="315" y="256" text-anchor="middle">outside: spread out &amp; curved (weaker)</text>
+  <path class="lead" d="M470,252 L505,215"/>
+</svg>

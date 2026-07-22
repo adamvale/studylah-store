@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 320" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .ground { stroke:#EAEAEA; stroke-width:2; }
+    .crate { fill:#6FB7E0; opacity:0.30; stroke:#6FB7E0; stroke-width:1.6; }
+    .ghost { fill:none; stroke:#9AA0A6; stroke-width:1.3; stroke-dasharray:4 4; }
+    .force { stroke:#86C98B; stroke-width:2.4; fill:none; }
+    .dim { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .lbl { fill:#E8B65A; font-size:12px; }
+  </style>
+  <defs>
+    <marker id="up" markerWidth="12" markerHeight="12" refX="4" refY="1" orient="auto"><path d="M0,8 L4,0 L8,8 Z" fill="#86C98B"/></marker>
+    <marker id="d1" markerWidth="10" markerHeight="10" refX="4" refY="1" orient="auto"><path d="M0,7 L4,0 L8,7 Z" fill="#9AA0A6"/></marker>
+    <marker id="d2" markerWidth="10" markerHeight="10" refX="4" refY="6" orient="auto"><path d="M0,0 L4,7 L8,0 Z" fill="#9AA0A6"/></marker>
+  </defs>
+  <!-- ground -->
+  <line class="ground" x1="60" y1="290" x2="320" y2="290"/>
+  <!-- crate at ground (ghost) -->
+  <rect class="ghost" x="120" y="250" width="60" height="40"/>
+  <!-- crate raised -->
+  <rect class="crate" x="120" y="90" width="60" height="40"/>
+  <!-- lift force arrow -->
+  <line class="force" x1="150" y1="88" x2="150" y2="40" marker-end="url(#up)"/>
+  <text class="lbl" x="160" y="55">lifting force</text>
+  <!-- height dimension -->
+  <line class="dim" x1="250" y1="110" x2="250" y2="270" marker-start="url(#d1)" marker-end="url(#d2)"/>
+  <text class="lbl" x="262" y="195">height <tspan font-style="italic">h</tspan></text>
+  <line class="dim" x1="180" y1="110" x2="255" y2="110" stroke-dasharray="3 3"/>
+  <line class="dim" x1="180" y1="270" x2="255" y2="270" stroke-dasharray="3 3"/>
+  <text x="150" y="315" text-anchor="middle" font-size="11" fill="#9AA0A6">work done on the crate → gravitational potential store</text>
+</svg>

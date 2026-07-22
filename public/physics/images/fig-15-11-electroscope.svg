@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 340" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .metal { fill:#9AA0A6; opacity:0.22; stroke:#EAEAEA; stroke-width:1.6; }
+    .leaf { fill:#E8B65A; opacity:0.25; stroke:#E8B65A; stroke-width:1.4; }
+    .case { fill:none; stroke:#9AA0A6; stroke-width:1.4; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; }
+    .rodn { fill:#6FB7E0; opacity:0.18; stroke:#6FB7E0; stroke-width:1.5; }
+    .neg { fill:#6FB7E0; font-size:13px; text-anchor:middle; }
+  </style>
+  <!-- Neutral (left) -->
+  <text x="120" y="30" text-anchor="middle" font-size="13">Neutral: leaf hangs down</text>
+  <rect class="metal" x="70" y="55" width="100" height="14" rx="3"/>
+  <rect class="metal" x="115" y="69" width="10" height="90"/>
+  <rect class="case" x="80" y="150" width="80" height="120" rx="4"/>
+  <line stroke="#E8B65A" stroke-width="2" x1="120" y1="159" x2="120" y2="255"/>
+  <path class="leaf" d="M120,159 L124,255 L118,255 Z"/>
+  <text x="185" y="63">metal plate</text>
+  <text x="185" y="115">metal stem</text>
+  <text x="185" y="220">gold leaf</text>
+  <line class="lead" x1="150" y1="112" x2="125" y2="112"/>
+  <line class="lead" x1="180" y1="216" x2="128" y2="235"/>
+
+  <!-- Charged rod nearby (right): leaf rises -->
+  <text x="400" y="30" text-anchor="middle" font-size="13">Charged rod near: leaf rises</text>
+  <!-- negatively charged rod above plate: electrons repelled down to leaf -->
+  <rect class="rodn" x="330" y="42" width="140" height="20" rx="6"/>
+  <text class="neg" x="355" y="57">&#8722;</text><text class="neg" x="385" y="57">&#8722;</text><text class="neg" x="415" y="57">&#8722;</text><text class="neg" x="445" y="57">&#8722;</text>
+  <text x="335" y="80" font-size="11" fill="#6FB7E0">negatively charged rod</text>
+  <rect class="metal" x="350" y="92" width="100" height="14" rx="3"/>
+  <rect class="metal" x="395" y="106" width="10" height="70"/>
+  <rect class="case" x="355" y="176" width="90" height="120" rx="4"/>
+  <!-- two leaves diverging -->
+  <line stroke="#E8B65A" stroke-width="2" x1="400" y1="185" x2="378" y2="278"/>
+  <line stroke="#E8B65A" stroke-width="2" x1="400" y1="185" x2="422" y2="278"/>
+  <text class="neg" x="372" y="250">&#8722;</text>
+  <text class="neg" x="428" y="250">&#8722;</text>
+  <text x="400" y="320" text-anchor="middle" font-size="11" fill="#9AA0A6">like charges on stem &amp; leaf repel</text>
+</svg>

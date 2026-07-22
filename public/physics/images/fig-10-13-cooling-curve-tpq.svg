@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 320" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .ax { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
+    .curve { stroke:#E8B65A; stroke-width:2.4; fill:none; }
+    .g { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:5 4; }
+    .pt { fill:#EAEAEA; font-weight:bold; }
+  </style>
+  <path class="ax" d="M70,30 L70,275 L430,275"/>
+  <text x="70" y="20" text-anchor="middle">temperature/&#176;C</text>
+  <text x="400" y="295">time</text>
+  <line class="g" x1="70" y1="95" x2="250" y2="95"/>
+  <line class="g" x1="70" y1="205" x2="360" y2="205"/>
+  <text x="40" y="99" text-anchor="end">120</text>
+  <text x="40" y="209" text-anchor="end">10</text>
+  <!-- gas fall, A plateau, liquid fall, B plateau, C fall -->
+  <path class="curve" d="M80,50 L120,95 L215,95 L280,205 L360,205 L400,245"/>
+  <circle cx="120" cy="95" r="3" fill="#EAEAEA"/><circle cx="215" cy="95" r="3" fill="#EAEAEA"/>
+  <circle cx="280" cy="205" r="3" fill="#EAEAEA"/><circle cx="360" cy="205" r="3" fill="#EAEAEA"/>
+  <text class="pt" x="150" y="88">A</text>
+  <text class="pt" x="300" y="198">B</text>
+  <text class="pt" x="378" y="238">C</text>
+</svg>

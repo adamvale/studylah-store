@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 360" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .envelope { fill:#E8B65A; opacity:0.14; stroke:#EAEAEA; stroke-width:1.8; }
+    .rise { stroke:#E58F8F; stroke-width:2.2; fill:none; }
+    .sink { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
+    .flame { fill:#E8B65A; opacity:0.55; stroke:#E8B65A; stroke-width:1.2; }
+    .basket { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+    .lbl { fill:#E8B65A; }
+  </style>
+  <!-- balloon envelope -->
+  <path class="envelope" d="M170,40 C90,40 55,110 70,190 C80,240 130,270 170,275 C210,270 260,240 270,190 C285,110 250,40 170,40 Z"/>
+  <!-- rising hot air (centre, up) -->
+  <path class="rise" d="M155,255 C150,190 152,130 160,90"/>
+  <path class="rise" d="M153,108 L160,86 L168,107"/>
+  <!-- sinking cool air (sides, down) -->
+  <path class="sink" d="M120,95 C108,150 110,210 135,258"/>
+  <path class="sink" d="M128,240 L136,262 L145,241"/>
+  <path class="sink" d="M220,95 C232,150 230,210 205,258"/>
+  <path class="sink" d="M196,241 L205,262 L213,240"/>
+  <!-- basket + burner -->
+  <line class="basket" x1="150" y1="275" x2="140" y2="315"/>
+  <line class="basket" x1="190" y1="275" x2="200" y2="315"/>
+  <rect class="basket" x="140" y="315" width="60" height="30"/>
+  <path class="flame" d="M170,300 C163,288 177,282 170,270 C163,282 160,292 170,300 Z"/>
+  <!-- labels -->
+  <text class="lbl" x="290" y="150" >convection</text>
+  <text class="lbl" x="290" y="165">current</text>
+  <path class="lead" d="M288,160 L232,175"/>
+  <text class="lbl" x="215" y="308">burner</text>
+  <path class="lead" d="M213,304 L182,292"/>
+</svg>

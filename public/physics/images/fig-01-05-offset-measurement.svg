@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; }
+    .rule { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .tick { stroke:#EAEAEA; stroke-width:1.2; }
+    .obj { fill:#6FB7E0; opacity:0.35; stroke:#6FB7E0; stroke-width:1.5; }
+    .green { fill:#86C98B; }
+  </style>
+  <rect class="obj" x="150" y="46" width="150" height="26"/>
+  <text x="225" y="64" text-anchor="middle" font-size="12">object</text>
+  <rect class="rule" x="60" y="80" width="360" height="34" rx="3"/>
+  <g class="tick">
+    <line x1="90" y1="80" x2="90" y2="98"/>
+    <line x1="150" y1="80" x2="150" y2="100"/>
+    <line x1="210" y1="80" x2="210" y2="98"/>
+    <line x1="270" y1="80" x2="270" y2="98"/>
+    <line x1="300" y1="80" x2="300" y2="100"/>
+    <line x1="360" y1="80" x2="360" y2="98"/>
+  </g>
+  <g font-size="12" text-anchor="middle">
+    <text x="90" y="130">1</text><text x="150" y="130">2</text><text x="210" y="130">3</text><text x="270" y="130">4</text><text x="330" y="130">5</text>
+  </g>
+  <text x="435" y="102" font-size="12">cm</text>
+  <text x="150" y="165" font-size="12" class="green">initial reading = 2.0 cm</text>
+  <text x="150" y="184" font-size="12" class="green">final reading = 4.6 cm</text>
+  <text x="300" y="184" font-size="12">length = 4.6 &#8722; 2.0 = 2.6 cm</text>
+</svg>
