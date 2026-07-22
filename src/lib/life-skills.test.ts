@@ -1,15 +1,9 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { LIFE_TRACKS, lifeTrack, lifeLesson } from "@/lib/life-skills";
+import { stepText } from "@/lib/lesson-steps";
 
 // The Life Skills wing ships to minors, so lock the content invariants.
-
-function stepText(s: (typeof LIFE_TRACKS)[number]["lessons"][number]["steps"][number]): string[] {
-  if (s.kind === "concept") return [s.heading ?? "", s.body];
-  if (s.kind === "insight") return [s.body];
-  if (s.kind === "reveal") return [s.prompt, s.answer];
-  return [s.question, ...s.options, s.explain];
-}
 
 const allText = LIFE_TRACKS.flatMap((t) => [
   t.name,

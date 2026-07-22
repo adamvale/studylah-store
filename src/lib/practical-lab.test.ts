@@ -1,21 +1,14 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { PRACTICAL_SUBJECTS, practicalSubject, practicalLesson } from "@/lib/practical-lab";
+import { stepText } from "@/lib/lesson-steps";
 
 const allText = PRACTICAL_SUBJECTS.flatMap((s) => [
   s.name,
   ...s.lessons.flatMap((l) => [
     l.title,
     l.talkPrompt ?? "",
-    ...l.steps.flatMap((st) =>
-      st.kind === "concept"
-        ? [st.heading ?? "", st.body]
-        : st.kind === "insight"
-          ? [st.body]
-          : st.kind === "reveal"
-            ? [st.prompt, st.answer]
-            : [st.question, ...st.options, st.explain]
-    ),
+    ...l.steps.flatMap(stepText),
   ]),
 ]);
 
