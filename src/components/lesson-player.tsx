@@ -388,20 +388,8 @@ export function LessonPlayer({
         </button>
       }
     >
-      {/* Gugu's opening nudge is spoken aloud, never shown on screen. The repeat
-          icon replays it. Actual guidance stays behind Help until asked. */}
-      {opener && (
-        <div className="mb-3 flex justify-end">
-          <button
-            type="button"
-            onClick={() => speak(opener)}
-            aria-label="Repeat Gugu"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-hairline text-accent"
-          >
-            <NamedIcon name="repeat" size={16} />
-          </button>
-        </div>
-      )}
+      {/* Gugu's opening nudge is spoken aloud once as the question appears; no
+          repeat control, since each question just moves the student on. */}
 
       {(step.kind === "concept" || step.kind === "insight") && (
         <div
