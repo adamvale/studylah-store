@@ -1174,6 +1174,13 @@ the shared `LessonPlayer`.
   `src/lib/teaching/kinematics/*.ts`, composed in order. Validate with
   `npx tsx scripts/validate-kinematics.mjs`. Authoring contract:
   `docs/LESSON-AUTHORING.md`.
+- **T3 Dynamics** (Coddy Cowork, KB Ch03 Mass and Weight + Ch04 Forces) is wired
+  the same way: 16 boxes (12 lessons t3.1-t3.12, 3 revisions, 1 quiz) in
+  `src/lib/teaching/dynamics/s3-*.ts`, keyed `t3-dynamics`/`t4-dynamics`/`dynamics`.
+  The validator now takes a topicKey: `npx tsx scripts/validate-kinematics.mjs t3-dynamics`.
+  Coddy Code owns the figure colour key (yellow applied force, green normal/upthrust/
+  resultant, pink weight/reaction, blue friction/motion, white object, grey ground);
+  narration describes figures in those colour words.
 - **Physics diagrams** are dark-background SVGs in `public/physics/images/`
   (`fig-NN-xx.svg`). Coddy has a brief to regenerate them for vertical mobile
   viewing (transparent/dark, no frame, large labels) and to author the remaining
