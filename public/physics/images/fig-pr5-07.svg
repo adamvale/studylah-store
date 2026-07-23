@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 270" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; font-size:13px; }
     .lens { fill:#6FB7E0; fill-opacity:0.22; stroke:#6FB7E0; stroke-width:1.6; }
@@ -18,16 +18,16 @@
   </defs>
 
   <path class="axisline" d="M40,140 H390"/>
-  <path class="lens" d="M200,70 C238,108 238,172 200,210 C162,172 162,108 200,70 Z"/>
+  <path class="lens" d="M200,70 C221,108 221,172 200,210 C179,172 179,108 200,70 Z"/>
 
-  <path class="ray" d="M45,95 H130" marker-end="url(#ab)"/>
-  <path class="ray" d="M130,95 H200 L300,140 L380,176"/>
-  <path class="ray" d="M45,120 H130" marker-end="url(#ab)"/>
-  <path class="ray" d="M130,120 H200 L300,140 L380,156"/>
-  <path class="ray" d="M45,160 H130" marker-end="url(#ab)"/>
-  <path class="ray" d="M130,160 H200 L300,140 L380,124"/>
-  <path class="ray" d="M45,185 H130" marker-end="url(#ab)"/>
-  <path class="ray" d="M130,185 H200 L300,140 L380,104"/>
+  <path class="ray" d="M45,88 H130" marker-end="url(#ab)"/>
+  <path class="ray" d="M130,88 H200 L300,140 L380,181.6"/>
+  <path class="ray" d="M45,113 H130" marker-end="url(#ab)"/>
+  <path class="ray" d="M130,113 H200 L300,140 L380,161.6"/>
+  <path class="ray" d="M45,167 H130" marker-end="url(#ab)"/>
+  <path class="ray" d="M130,167 H200 L300,140 L380,118.4"/>
+  <path class="ray" d="M45,192 H130" marker-end="url(#ab)"/>
+  <path class="ray" d="M130,192 H200 L300,140 L380,98.4"/>
 
   <path class="focus" d="M294,134 L306,146 M294,146 L306,134"/>
   <text class="sym" x="300" y="166" text-anchor="middle">F</text>
@@ -40,6 +40,6 @@
   <text class="lbl" x="250" y="252" text-anchor="middle">focal length</text>
 
   <text x="200" y="58" text-anchor="middle">converging lens</text>
-  <text class="blue" x="45" y="80">parallel rays</text>
-  <text class="grey" x="48" y="136">principal axis</text>
+  <text class="blue" x="45" y="76">parallel rays</text>
+  <text class="grey" x="30" y="155">principal axis</text>
 </svg>

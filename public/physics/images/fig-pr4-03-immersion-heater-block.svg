@@ -5,7 +5,7 @@
     .blocklbl { fill:#A8D3EC; }
     .lagging { fill:none; stroke:#E8B65A; stroke-width:2.4; stroke-dasharray:8 5; }
     .lagginglbl { fill:#E8B65A; }
-    .hole { fill:none; stroke:#9AA0A6; stroke-width:1.3; }
+    .hole { fill:none; stroke:#9AA0A6; stroke-width:1.6; }
     .heater { fill:none; stroke:#E58F8F; stroke-width:3; }
     .heaterlbl { fill:#E58F8F; }
     .glass { fill:none; stroke:#EAEAEA; stroke-width:2; }
@@ -21,12 +21,12 @@
   <rect class="block" x="118" y="108" width="160" height="156" rx="4"/>
 
   <!-- 2 drilled holes -->
-  <path class="hole" d="M160,108 V248 H180 V108"/>
-  <path class="hole" d="M216,108 V218 H232 V108"/>
+  <path class="hole" d="M158,108 V250 H182 V108"/>
+  <path class="hole" d="M214,108 V220 H234 V108"/>
 
   <!-- immersion heater down inside the first hole -->
-  <path class="heater" d="M170,50 V222"/>
-  <path class="heater" d="M170,222 l-9,7 l18,9 l-18,9 l18,9 l-9,7"/>
+  <path class="heater" d="M170,50 V200"/>
+  <path class="heater" d="M170,200 l-8,7 l16,9 l-16,9 l16,9 l-8,7"/>
 
   <!-- thermometer in the second hole -->
   <path class="glass" d="M224,44 V214"/>

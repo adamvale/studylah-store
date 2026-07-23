@@ -20,14 +20,13 @@
   <text x="300" y="88">uniform rule</text>
   <path class="pivot" d="M210,107 L196,131 L224,131 Z"/>
   <path class="base" d="M168,131 L252,131"/>
-  <path class="guide-dash" d="M210,107 L210,138"/>
+  <path class="guide-dash" d="M210,107 L210,134"/>
   <path class="force-weight" d="M210,40 L210,92" marker-end="url(#c4red)"/>
   <circle cx="210" cy="101" r="3" fill="#EAEAEA"/>
   <text class="lbl-weight" x="218" y="58">weight W</text>
   <text class="lbl-guide" x="236" y="126">d = 0</text>
-  <path class="guide" d="M154,138 L194,132"/>
-  <text class="lbl-guide" x="150" y="142" text-anchor="end">pivot</text>
-  <text x="210" y="168" text-anchor="middle">weight acts through the pivot, so the moment is zero</text>
+  <text class="lbl-guide" x="210" y="152" text-anchor="middle">pivot</text>
+  <text x="210" y="178" text-anchor="middle">weight acts through the pivot, so the moment is zero</text>
 
   <!-- BOTTOM: pivot away from the centre of gravity -->
   <rect class="rule" x="70" y="265" width="280" height="12"/>

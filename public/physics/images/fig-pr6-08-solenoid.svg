@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 360" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .coil { fill:none; stroke:#E8B65A; stroke-width:2; }
+    .cur  { fill:none; stroke:#E8B65A; stroke-width:2.6; }
+    .curl { fill:#E8B65A; font-size:12px; }
+    .fieldline { fill:none; stroke:#6FB7E0; stroke-width:1.8; stroke-dasharray:6 4; }
+    .fl   { fill:#6FB7E0; font-size:12px; }
+    .pole { fill:#EAEAEA; font-size:16px; font-weight:bold; text-anchor:middle; }
+    .note { fill:#EAEAEA; font-size:12px; }
+  </style>
+  <defs>
+    <marker id="f8" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#6FB7E0"/></marker>
+    <marker id="c8" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="#E8B65A"/></marker>
+  </defs>
+
+  <!-- ===== side view: solenoid and its field ===== -->
+  <!-- field outside: leaves the N end (right), returns to the S end (left) -->
+  <path class="fieldline" d="M348,110 L404,110" marker-end="url(#f8)"/>
+  <path class="fieldline" d="M344,88 Q382,70 410,58" marker-end="url(#f8)"/>
+  <path class="fieldline" d="M344,132 Q382,152 410,166" marker-end="url(#f8)"/>
+  <path class="fieldline" d="M56,110 L134,110" marker-end="url(#f8)"/>
+  <path class="fieldline" d="M62,54 Q100,80 132,98" marker-end="url(#f8)"/>
+  <path class="fieldline" d="M62,166 Q100,140 132,122" marker-end="url(#f8)"/>
+  <!-- field inside: straight, from S towards N -->
+  <path class="fieldline" d="M164,110 L318,110" marker-end="url(#f8)"/>
+
+  <!-- amber coil -->
+  <g class="coil">
+    <ellipse cx="150" cy="110" rx="11" ry="34"/>
+    <ellipse cx="186" cy="110" rx="11" ry="34"/>
+    <ellipse cx="222" cy="110" rx="11" ry="34"/>
+    <ellipse cx="258" cy="110" rx="11" ry="34"/>
+    <ellipse cx="294" cy="110" rx="11" ry="34"/>
+    <ellipse cx="330" cy="110" rx="11" ry="34"/>
+  </g>
+
+  <!-- leads: current in at the left end, out at the right end -->
+  <path class="coil" d="M150,144 L150,182"/>
+  <path class="cur" d="M150,180 L150,150" marker-end="url(#c8)"/>
+  <text class="curl" x="138" y="196" text-anchor="end">current in</text>
+  <path class="coil" d="M330,76 L330,44"/>
+  <path class="cur" d="M330,74 L330,46" marker-end="url(#c8)"/>
+  <text class="curl" x="342" y="36">current out</text>
+
+  <!-- poles -->
+  <text class="pole" x="126" y="166">S</text>
+  <text class="pole" x="330" y="166">N</text>
+  <text class="fl" x="240" y="196" text-anchor="middle">field runs N round to S</text>
+
+  <!-- ===== end view: the anticlockwise test ===== -->
+  <circle class="coil" cx="140" cy="300" r="34"/>
+  <path class="cur" d="M157,270.6 A34,34 0 0 0 113.96,278.14" marker-end="url(#c8)"/>
+  <text class="note" x="196" y="290">looking at the N end</text>
+  <text class="note" x="196" y="310">the current is anticlockwise</text>
+  <text class="note" x="196" y="330">so that end is north</text>
+</svg>

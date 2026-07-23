@@ -7,7 +7,7 @@
     .block { fill:#A8D3EC; fill-opacity:0.55; stroke:#6FB7E0; stroke-width:2; }
     .thread { fill:none; stroke:#9AA0A6; stroke-width:1.4; }
     .stand { fill:none; stroke:#9AA0A6; stroke-width:2.2; }
-    .flame { fill:none; stroke:#E58F8F; stroke-width:2.2; }
+    .flame { fill:#E58F8F; fill-opacity:0.25; stroke:#E58F8F; stroke-width:2; }
     .move { fill:none; stroke:#EAEAEA; stroke-width:2; }
     .head { font-size:12px; fill:#EAEAEA; }
     .eq { font-size:13px; fill:#EAEAEA; }
@@ -37,7 +37,7 @@
   <path class="stand" d="M36,258 H180"/>
   <path class="stand" d="M52,258 L44,292"/>
   <path class="stand" d="M164,258 L172,292"/>
-  <path class="flame" d="M96,294 Q108,262 120,294 Q108,282 96,294"/>
+  <path class="flame" d="M108,264 C122,280 120,292 108,296 C96,292 94,280 108,264 Z"/>
 
   <!-- RIGHT: block lowered into cool water in a calorimeter -->
   <path class="stand" d="M298,52 H358"/>

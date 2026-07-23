@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 350" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .wire { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .meter{ fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .plate{ stroke:#EAEAEA; }
+    .node { fill:#EAEAEA; }
+    .cur  { fill:none; stroke:#E8B65A; stroke-width:2.6; }
+    .curl { fill:#E8B65A; font-size:13px; }
+    .note { fill:#EAEAEA; font-size:12px; }
+    .eq   { fill:#EAEAEA; font-size:14px; }
+  </style>
+  <defs>
+    <marker id="c9" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="#E8B65A"/></marker>
+  </defs>
+
+  <!-- cell on the left -->
+  <path class="wire" d="M60,70 L60,142 M60,154 L60,230"/>
+  <line class="plate" x1="46" y1="142" x2="74" y2="142" stroke-width="2"/>
+  <line class="plate" x1="53" y1="154" x2="67" y2="154" stroke-width="5"/>
+
+  <!-- top line with the ammeter IN SERIES -->
+  <path class="wire" d="M60,70 L182,70 M218,70 L340,70"/>
+  <circle class="meter" cx="200" cy="70" r="18"/>
+  <text x="200" y="76" text-anchor="middle">A</text>
+  <text class="note" x="200" y="42" text-anchor="middle">ammeter (series)</text>
+
+  <!-- right side and the lamp on the bottom line -->
+  <path class="wire" d="M340,70 L340,230"/>
+  <path class="wire" d="M340,230 L218,230 M182,230 L60,230"/>
+  <circle class="meter" cx="200" cy="230" r="18"/>
+  <path class="wire" d="M187.3,217.3 L212.7,242.7 M212.7,217.3 L187.3,242.7"/>
+  <text class="note" x="150" y="206" text-anchor="end">lamp</text>
+
+  <!-- points A and B, with the voltmeter IN PARALLEL across the lamp -->
+  <circle class="node" cx="160" cy="230" r="3"/>
+  <circle class="node" cx="240" cy="230" r="3"/>
+  <text x="150" y="248" text-anchor="end">A</text>
+  <text x="250" y="248">B</text>
+  <path class="wire" d="M160,230 L160,290 L182,290 M240,230 L240,290 L218,290"/>
+  <circle class="meter" cx="200" cy="290" r="18"/>
+  <text x="200" y="296" text-anchor="middle">V</text>
+  <text class="note" x="200" y="332" text-anchor="middle">voltmeter (parallel)</text>
+
+  <!-- current round the loop -->
+  <path class="cur" d="M60,120 L60,90" marker-end="url(#c9)"/>
+  <path class="cur" d="M95,70 L140,70" marker-end="url(#c9)"/>
+  <path class="cur" d="M340,105 L340,150" marker-end="url(#c9)"/>
+  <path class="cur" d="M320,230 L276,230" marker-end="url(#c9)"/>
+  <text class="curl" x="117" y="58" text-anchor="middle">I</text>
+
+  <text class="eq" x="36" y="332">R = V / I</text>
+</svg>

@@ -11,7 +11,7 @@
     .note { fill:#9AA0A6; font-size:12px; }
   </style>
   <defs>
-    <marker id="f7" markerWidth="10" markerHeight="10" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#6FB7E0"/></marker>
+    <marker id="f7" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#6FB7E0"/></marker>
   </defs>
 
   <!-- ===== top: current OUT of the page, anticlockwise field ===== -->

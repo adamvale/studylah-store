@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 350" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .wire { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .meter{ fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .plate{ stroke:#EAEAEA; }
+    .node { fill:#EAEAEA; }
+    .cur  { fill:none; stroke:#E8B65A; stroke-width:2.6; }
+    .curl { fill:#E8B65A; font-size:13px; }
+    .note { fill:#EAEAEA; font-size:12px; }
+    .eq   { fill:#EAEAEA; font-size:14px; }
+  </style>
+  <defs>
+    <marker id="c18" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="#E8B65A"/></marker>
+    <marker id="l18" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#EAEAEA"/></marker>
+  </defs>
+
+  <!-- cell -->
+  <path class="wire" d="M60,70 L60,142 M60,154 L60,230"/>
+  <line class="plate" x1="46" y1="142" x2="74" y2="142" stroke-width="2"/>
+  <line class="plate" x1="53" y1="154" x2="67" y2="154" stroke-width="5"/>
+
+  <!-- top line: resistor then ammeter, both in series -->
+  <path class="wire" d="M60,70 L130,70 M174,70 L242,70 M278,70 L340,70"/>
+  <rect class="wire" x="130" y="58" width="44" height="24"/>
+  <text x="152" y="48" text-anchor="middle">R</text>
+  <circle class="meter" cx="260" cy="70" r="18"/>
+  <text x="260" y="76" text-anchor="middle">A</text>
+
+  <!-- bottom line: the LED, in series with the resistor -->
+  <path class="wire" d="M340,70 L340,230"/>
+  <path class="wire" d="M340,230 L216,230 M192,230 L60,230"/>
+  <path class="wire" d="M216,218 L216,242 L192,230 Z"/>
+  <path class="wire" d="M192,218 L192,242"/>
+  <path class="wire" d="M206,214 L218,200" marker-end="url(#l18)"/>
+  <path class="wire" d="M196,214 L208,200" marker-end="url(#l18)"/>
+  <text class="note" x="150" y="206" text-anchor="end">LED</text>
+
+  <!-- voltmeter across the LED only -->
+  <circle class="node" cx="160" cy="230" r="3"/>
+  <circle class="node" cx="240" cy="230" r="3"/>
+  <path class="wire" d="M160,230 L160,290 L182,290 M240,230 L240,290 L218,290"/>
+  <circle class="meter" cx="200" cy="290" r="18"/>
+  <text x="200" y="296" text-anchor="middle">V</text>
+  <text class="note" x="262" y="296">V_LED</text>
+
+  <!-- current -->
+  <path class="cur" d="M60,120 L60,90" marker-end="url(#c18)"/>
+  <path class="cur" d="M90,70 L120,70" marker-end="url(#c18)"/>
+  <path class="cur" d="M340,105 L340,150" marker-end="url(#c18)"/>
+  <path class="cur" d="M320,230 L280,230" marker-end="url(#c18)"/>
+  <text class="curl" x="105" y="58" text-anchor="middle">I</text>
+
+  <text class="eq" x="200" y="332" text-anchor="middle">P_LED = I &#215; V_LED</text>
+</svg>

@@ -28,7 +28,7 @@
   </defs>
 
   <path class="axisline" d="M30,150 H410"/>
-  <path class="lens" d="M200,75 C245,115 245,185 200,225 C155,185 155,115 200,75 Z"/>
+  <path class="lens" d="M200,75 C222,115 222,185 200,225 C178,185 178,115 200,75 Z"/>
 
   <path class="obj" d="M80,150 V108" marker-end="url(#an)"/>
   <path class="img" d="M320,150 V192" marker-end="url(#am)"/>

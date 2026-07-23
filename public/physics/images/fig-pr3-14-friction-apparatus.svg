@@ -40,18 +40,17 @@
   <circle cx="312" cy="170" r="2" fill="#9AA0A6"/>
   <path class="pulley" d="M300,180 L312,182"/>
   <text class="lbl-guide" x="330" y="160">pulley</text>
-  <path class="string" d="M324,170 L324,222"/>
-  <text class="lbl-s" x="344" y="208">string</text>
+  <path class="string" d="M324,170 L324,218"/>
+  <text class="lbl-s" x="344" y="204">string</text>
 
   <!-- hanging masses -->
-  <rect class="mass" x="310" y="222" width="28" height="10"/>
-  <rect class="mass" x="310" y="234" width="28" height="10"/>
-  <rect class="mass" x="310" y="246" width="28" height="10"/>
-  <text class="lbl-s" x="346" y="240">masses</text>
+  <rect class="mass" x="310" y="218" width="28" height="10"/>
+  <rect class="mass" x="310" y="230" width="28" height="10"/>
+  <text class="lbl-s" x="346" y="234">masses</text>
 
   <!-- friction -->
   <path class="force-friction" d="M145,175 L62,175" marker-end="url(#d4blu)"/>
   <text class="lbl-friction" x="50" y="196" text-anchor="middle">friction</text>
 
-  <text x="210" y="265" text-anchor="middle">add mass until the block slides at steady speed</text>
+  <text x="200" y="278" text-anchor="middle">add mass until the block slides at steady speed</text>
 </svg>

@@ -33,7 +33,7 @@
   <path class="obj" d="M120,145 V205 M108,175 H132"/>
   <text class="green" x="120" y="138" text-anchor="middle">cross-wire</text>
 
-  <path class="lens" d="M230,125 C258,155 258,195 230,225 C202,195 202,155 230,125 Z"/>
+  <path class="lens" d="M230,125 C248,155 248,195 230,225 C212,195 212,155 230,125 Z"/>
   <text x="230" y="110" text-anchor="middle">lens</text>
 
   <path class="ray" d="M120,145 H180" marker-end="url(#ab)"/>

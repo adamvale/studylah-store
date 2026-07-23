@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 295" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .wire { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .rule { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .plate{ stroke:#EAEAEA; }
+    .term { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .cur  { fill:none; stroke:#E8B65A; stroke-width:2.8; }
+    .curl { fill:#E8B65A; font-size:13px; }
+    .dim  { fill:none; stroke:#9AA0A6; stroke-width:1.2; }
+    .eq   { fill:#EAEAEA; font-size:14px; }
+  </style>
+  <defs>
+    <marker id="c13" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="#E8B65A"/></marker>
+    <marker id="d13" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#9AA0A6"/></marker>
+    <marker id="d13s" markerWidth="9" markerHeight="8" refX="7" refY="3" orient="auto-start-reverse"><path d="M0,0 L7,3 L0,6 Z" fill="#9AA0A6"/></marker>
+  </defs>
+
+  <!-- supply and the fixed resistor X, in series with the tapped wire -->
+  <path class="wire" d="M50,70 L128,70 M142,70 L250,70 M294,70 L350,70"/>
+  <line class="plate" x1="142" y1="56" x2="142" y2="84" stroke-width="2"/>
+  <line class="plate" x1="128" y1="63" x2="128" y2="77" stroke-width="5"/>
+  <rect class="wire" x="250" y="58" width="44" height="24"/>
+  <text x="272" y="44" text-anchor="middle">fixed resistor X</text>
+
+  <!-- rails down to the wire and to the sliding contact -->
+  <path class="wire" d="M50,70 L50,170"/>
+  <path class="wire" d="M350,70 L350,120 L230,120 L230,158"/>
+  <path class="wire" d="M222,150 L238,150 L230,168 Z"/>
+  <text x="240" y="112">sliding contact</text>
+
+  <!-- resistance wire on the metre rule -->
+  <path class="wire" d="M50,170 L370,170"/>
+  <circle class="term" cx="50" cy="170" r="4"/>
+  <circle class="term" cx="370" cy="170" r="4"/>
+  <text x="368" y="158" text-anchor="end">resistance wire</text>
+
+  <rect class="rule" x="50" y="180" width="320" height="25"/>
+  <path class="rule" d="M82,180 L82,187 M114,180 L114,187 M146,180 L146,187 M178,180 L178,187 M210,180 L210,187 M242,180 L242,187 M274,180 L274,187 M306,180 L306,187 M338,180 L338,187"/>
+  <text x="368" y="222" text-anchor="end">metre rule</text>
+
+  <!-- the tapped length L carries the current -->
+  <path class="cur" d="M228,170 L60,170" marker-end="url(#c13)"/>
+  <path class="cur" d="M50,140 L50,105" marker-end="url(#c13)"/>
+  <path class="cur" d="M170,70 L215,70" marker-end="url(#c13)"/>
+  <text class="curl" x="196" y="58" text-anchor="middle">I</text>
+
+  <path class="dim" d="M50,208 L50,230 M230,208 L230,230"/>
+  <path class="dim" d="M50,222 L230,222" marker-start="url(#d13s)" marker-end="url(#d13)"/>
+  <text x="140" y="242" text-anchor="middle">length L</text>
+
+  <text class="eq" x="210" y="272" text-anchor="middle">R = (&#961;/A) L + R_X</text>
+</svg>

@@ -23,8 +23,8 @@
   </defs>
 
   <!-- steam leaving the small hole -->
-  <path class="steam" d="M252,134 q-9,-16 0,-28 q9,-14 0,-28" marker-end="url(#v10a)"/>
-  <path class="steam" d="M266,132 q9,-14 0,-26 q-9,-12 0,-24" marker-end="url(#v10a)"/>
+  <path class="steam" d="M246,140 q-10,-12 0,-24 q10,-12 0,-24 q-10,-12 0,-24" marker-end="url(#v10a)"/>
+  <path class="steam" d="M259,136 q10,-12 0,-24 q-10,-12 0,-24 q10,-12 0,-24" marker-end="url(#v10a)"/>
 
   <!-- beaker of boiling water -->
   <rect class="water" x="154" y="180" width="132" height="74"/>
@@ -55,7 +55,7 @@
   <text class="heaterlbl" x="182" y="96" text-anchor="end">heater</text>
   <text class="sub" x="272" y="64">steam</text>
   <text class="sub" x="306" y="124">small steam hole</text>
-  <path class="leader" d="M302,120 L266,140"/>
+  <path class="leader" d="M302,120 L268,138"/>
   <text x="136" y="150" text-anchor="end">lid</text>
   <text class="waterlbl small" x="146" y="200" text-anchor="end">boiling water</text>
   <text class="waterlbl small" x="146" y="218" text-anchor="end">at 100 °C</text>

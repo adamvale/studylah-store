@@ -9,7 +9,7 @@
     .curl { fill:#E8B65A; font-size:13px; }
   </style>
   <defs>
-    <marker id="c6" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#E8B65A"/></marker>
+    <marker id="c6" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="#E8B65A"/></marker>
   </defs>
 
   <!-- supply on the left -->
@@ -29,9 +29,9 @@
   <text x="228" y="200" text-anchor="end">R&#8322; = 6.0 &#937;</text>
 
   <!-- output taken across R2 -->
-  <path class="wire" d="M250,170 L356,170 M250,220 L356,220"/>
-  <circle class="term" cx="360" cy="170" r="4"/>
-  <circle class="term" cx="360" cy="220" r="4"/>
+  <path class="wire" d="M250,155 L356,155 M250,235 L356,235"/>
+  <circle class="term" cx="360" cy="155" r="4"/>
+  <circle class="term" cx="360" cy="235" r="4"/>
   <text x="372" y="200">V_out = ?</text>
 
   <!-- current -->

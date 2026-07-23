@@ -52,7 +52,7 @@
   <text class="heaterlbl" x="140" y="96" text-anchor="end">heater</text>
   <text x="212" y="106">thermometer</text>
   <text x="270" y="150">stirrer</text>
-  <path class="leader" d="M266,146 H236"/>
+  <path class="leader" d="M268,152 L237,192"/>
 
   <text class="waterlbl" x="108" y="222">water</text>
 

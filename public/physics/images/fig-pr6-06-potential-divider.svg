@@ -10,7 +10,7 @@
     .eq   { fill:#EAEAEA; font-size:15px; }
   </style>
   <defs>
-    <marker id="c6b" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#E8B65A"/></marker>
+    <marker id="c6b" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="#E8B65A"/></marker>
   </defs>
 
   <!-- supply -->
@@ -30,9 +30,9 @@
   <text x="248" y="200" text-anchor="end">R&#8322;</text>
 
   <!-- output tapped across R2 -->
-  <path class="wire" d="M270,170 L376,170 M270,220 L376,220"/>
-  <circle class="term" cx="380" cy="170" r="4"/>
-  <circle class="term" cx="380" cy="220" r="4"/>
+  <path class="wire" d="M270,155 L376,155 M270,235 L376,235"/>
+  <circle class="term" cx="380" cy="155" r="4"/>
+  <circle class="term" cx="380" cy="235" r="4"/>
   <text x="392" y="200">V_out</text>
 
   <!-- current runs through both resistors -->
