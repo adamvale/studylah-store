@@ -37,6 +37,35 @@ const PROBLEM_KINDS = ["slider", "order", "match", "tiles", "plot", "circuit", "
 function isProblem(kind: LessonStep["kind"]): boolean {
   return (PROBLEM_KINDS as readonly string[]).includes(kind);
 }
+function isQuestion(kind: LessonStep["kind"]): boolean {
+  return kind === "choice" || kind === "open" || isProblem(kind);
+}
+
+// What Gugu says when a question first appears: a light nudge that tells the
+// student to read and think, and names the interaction in a few words. It gives
+// NO hint (a human tutor only helps when asked) so the student thinks first.
+const OPENERS: Partial<Record<LessonStep["kind"], string>> = {
+  choice: "Take a moment to read this and think about it, then choose your answer.",
+  open: "Read this and take a moment to think, then write your answer.",
+  slider: "Read this and think about it, then slide to the value you think is right.",
+  order: "Read this and think about it, then put the steps in the right order.",
+  match: "Read this and think about it, then match each one to its pair.",
+  tiles: "Read this and think about it, then build your answer from the tiles.",
+  plot: "Read this and think about it, then tap the point on the grid.",
+  circuit: "Read this and think about it, then close the switches you need.",
+  cloze: "Read this and think about it, then fill in each blank.",
+  spoterror: "Read the working carefully and think about it, then tap the line with the mistake.",
+  classify: "Read this and think about it, then sort each one into its group.",
+  graphpick: "Read this and think about it, then pick the graph that matches.",
+};
+
+// What Gugu says the moment a student answers correctly, like any warm tutor.
+const CORRECT_PRAISE = [
+  "Good job, that is exactly right.",
+  "Well done, that is correct.",
+  "Nice work, you have got it.",
+  "Lovely, that is the right answer.",
+];
 
 export function LessonPlayer({
   steps,
@@ -59,11 +88,25 @@ export function LessonPlayer({
   const [gaveUp, setGaveUp] = useState(false); // "reveal the answer" on a problem
   const [understood, setUnderstood] = useState(false); // "I understand" on a teach step
 
+  const praised = useRef(false); // Gugu praises a correct answer once per step
+
   const step = steps[i];
   const last = i === steps.length - 1;
   const ask = "ask" in step ? step.ask : undefined;
   const hints = ("hints" in step ? step.hints : undefined) ?? [];
   const explain = "explain" in step ? step.explain : undefined;
+  // Gugu's opening line for a question (a nudge to read and think, no hint yet).
+  const opener = OPENERS[step.kind];
+  // Help ladder, on demand only: the scripted `ask` guidance first, then hints.
+  const helpItems = ask ? [ask, ...hints] : hints;
+
+  // A warm spoken reaction after a correct answer: praise, plus "let's try the
+  // next one" only when a question actually follows.
+  function praiseLine(): string {
+    const base = CORRECT_PRAISE[i % CORRECT_PRAISE.length];
+    const nextIsQuestion = !last && isQuestion(steps[i + 1].kind);
+    return nextIsQuestion ? `${base} Let's try the next one.` : base;
+  }
 
   // Teaching steps: Gugu speaks `say` (falling back to the body) to teach the
   // idea aloud, and the student must tap "I understand" before continuing.
@@ -80,18 +123,29 @@ export function LessonPlayer({
         ? understood
         : true;
 
-  // Gugu greets each problem out loud (best-effort; the "Hear it"/"Please
-  // repeat" buttons always replay). speak() cancels any prior line.
+  // When a question appears, Gugu opens with a light nudge (read and think),
+  // NOT a hint. Keyed on `i` so it re-speaks for each new question. The repeat
+  // icon replays it. speak() cancels any prior line.
   useEffect(() => {
-    if (ask) speak(ask);
+    if (opener) speak(opener);
     return () => stopSpeaking();
-  }, [ask]);
+  }, [opener, i]);
 
   // On a teaching step, Gugu starts teaching by voice as the card appears.
   useEffect(() => {
     if (teachSay) speak(teachSay);
     return () => stopSpeaking();
   }, [teachSay]);
+
+  // The moment an interactive problem is solved, Gugu reacts like a tutor.
+  // (Choice praise is spoken from its own click handler, before the summary.)
+  useEffect(() => {
+    if (solved && !praised.current && isProblem(step.kind)) {
+      praised.current = true;
+      speak(praiseLine());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [solved]);
 
   function next() {
     stopSpeaking();
@@ -106,10 +160,13 @@ export function LessonPlayer({
     setHintsShown(0);
     setGaveUp(false);
     setUnderstood(false);
+    praised.current = false;
   }
 
+  // A choice is "done" only once answered CORRECTLY (solved), so a wrong pick
+  // keeps the question open for another try rather than revealing the answer.
   const showSummary =
-    (step.kind === "choice" && picked !== null) || (isProblem(step.kind) && (solved || gaveUp));
+    (step.kind === "choice" && solved) || (isProblem(step.kind) && (solved || gaveUp));
 
   return (
     <ImmersiveShell
@@ -128,14 +185,13 @@ export function LessonPlayer({
         </button>
       }
     >
-      {/* Gugu speaks the guidance aloud (auto, and replayed by the repeat icon)
-          to SUPPLEMENT the question, so the prompt text is never shown on screen
-          or read back. Just a small repeat control sits above the question. */}
-      {ask && (
+      {/* Gugu's opening nudge is spoken aloud, never shown on screen. The repeat
+          icon replays it. Actual guidance stays behind Help until asked. */}
+      {opener && (
         <div className="mb-3 flex justify-end">
           <button
             type="button"
-            onClick={() => speak(ask)}
+            onClick={() => speak(opener)}
             aria-label="Repeat Gugu"
             className="flex h-9 w-9 items-center justify-center rounded-full border border-hairline text-accent"
           >
@@ -219,24 +275,39 @@ export function LessonPlayer({
             {step.options.map((opt, oi) => {
               const chosen = picked === oi;
               const isCorrect = oi === step.correct;
-              const show = picked !== null;
-              const tone = !show
-                ? "border-hairline"
-                : isCorrect
+              // Reveal the correct answer only once solved. Before that, a wrong
+              // pick shows red and the question stays open for another try.
+              const tone = solved
+                ? isCorrect
                   ? "border-guarantee bg-guarantee/10"
-                  : chosen
-                    ? "border-signal bg-signal/10"
-                    : "border-hairline opacity-60";
+                  : "border-hairline opacity-60"
+                : chosen
+                  ? "border-signal bg-signal/10"
+                  : "border-hairline";
               return (
                 <button
                   key={oi}
                   type="button"
-                  disabled={show}
-                  onClick={() => setPicked(oi)}
+                  disabled={solved}
+                  onClick={() => {
+                    if (solved) return;
+                    setPicked(oi);
+                    if (oi === step.correct) {
+                      setSolved(true);
+                      praised.current = true;
+                      speak(praiseLine());
+                    } else {
+                      // Gugu gives a hint straight away and asks for another go.
+                      const hi = Math.min(hintsShown, Math.max(helpItems.length - 1, 0));
+                      const hint = helpItems[hi] ?? "Think it through once more.";
+                      setHintsShown((n) => Math.min(n + 1, helpItems.length));
+                      speak(`Not quite. ${hint} Have another go.`);
+                    }
+                  }}
                   className={`flex w-full items-center gap-3 rounded-xl border-2 px-4 py-3 text-left text-sm text-ink transition-colors ${tone}`}
                 >
                   <span className="flex-1"><Sci>{opt}</Sci></span>
-                  {show && isCorrect && <NamedIcon name="check" size={16} />}
+                  {solved && isCorrect && <NamedIcon name="check" size={16} />}
                 </button>
               );
             })}
@@ -311,7 +382,7 @@ export function LessonPlayer({
         <div className="mt-4">
           {hintsShown > 0 && !showSummary && (
             <div className="space-y-2">
-              {hints.slice(0, hintsShown).map((h, hi) => (
+              {helpItems.slice(0, hintsShown).map((h, hi) => (
                 <div key={hi} className="flex items-start gap-2 rounded-xl border border-accent/30 bg-accent/5 p-3">
                   <NamedIcon name="sparkle" size={13} className="mt-0.5 shrink-0 text-accent" />
                   <p className="flex-1 text-sm leading-relaxed text-body"><Sci>{h}</Sci></p>
@@ -320,20 +391,20 @@ export function LessonPlayer({
             </div>
           )}
           <div className="mt-2 flex flex-wrap items-center gap-2">
-            {!showSummary && hintsShown < hints.length && (
+            {!showSummary && hintsShown < helpItems.length && (
               <button
                 type="button"
                 onClick={() => {
-                  const nextHint = hints[hintsShown];
+                  const nextHint = helpItems[hintsShown];
                   setHintsShown((n) => n + 1);
                   if (nextHint) speak(nextHint);
                 }}
                 className="rounded-full border border-hairline px-4 py-1.5 text-xs font-bold text-accent"
               >
-                {hintsShown === 0 ? "Help" : `Another hint (${hintsShown}/${hints.length})`}
+                {hintsShown === 0 ? "Help" : `Another hint (${hintsShown}/${helpItems.length})`}
               </button>
             )}
-            {!showSummary && isProblem(step.kind) && hintsShown >= hints.length && (
+            {!showSummary && isProblem(step.kind) && hintsShown >= helpItems.length && (
               <button
                 type="button"
                 onClick={() => {
