@@ -22,8 +22,13 @@ const KINEMATICS: Subconcept[] = [
     steps: [
       {
         kind: "concept",
-        heading: "Two ways to measure a journey",
-        body: "Distance is the total length of the path you actually travel. It is a scalar, so it has size only. Displacement is the straight line from where you started to where you finished, measured in a stated direction. It is a vector, so it has size and direction.",
+        heading: "Distance",
+        body: "Distance is the total length of the path you actually travel. It is a scalar, so it has size only, with no direction. If you walk 3 m forward and 3 m back, the distance is 6 m.",
+      },
+      {
+        kind: "concept",
+        heading: "Displacement",
+        body: "Displacement is the straight line from where you started to where you finished, in a stated direction. It is a vector, so it has size and direction. Walk 3 m forward then 3 m back and the displacement is zero, because you end where you began.",
       },
       {
         kind: "choice",
@@ -51,8 +56,13 @@ const KINEMATICS: Subconcept[] = [
     steps: [
       {
         kind: "concept",
-        heading: "Adding a direction to speed",
-        body: "Speed is how much distance you cover each second. It is a scalar. Velocity is displacement per second, which is speed in a stated direction. It is a vector. Both are measured in metres per second.",
+        heading: "Speed",
+        body: "Speed is how much distance you cover each second. It is a scalar, so it has size only. Its unit is the metre per second.",
+      },
+      {
+        kind: "concept",
+        heading: "Velocity",
+        body: "Velocity is displacement per second, which is speed in a stated direction. It is a vector, so it has size and direction. Its unit is also the metre per second.",
       },
       {
         kind: "classify",
@@ -85,8 +95,13 @@ const KINEMATICS: Subconcept[] = [
     steps: [
       {
         kind: "concept",
-        heading: "How quickly velocity changes",
-        body: "Acceleration is the change in velocity each second. It is a vector. In symbols, a = (v - u) / t, where u is the starting velocity and v is the final velocity. An object accelerates whenever its speed changes, its direction changes, or both.",
+        heading: "What acceleration is",
+        body: "Acceleration is the change in velocity each second. It is a vector. In symbols, a = (v - u) / t, where u is the starting velocity, v is the final velocity, and t is the time taken.",
+      },
+      {
+        kind: "concept",
+        heading: "Three ways to accelerate",
+        body: "An object accelerates whenever its speed changes, its direction changes, or both change. So even a car going round a bend at steady speed is accelerating, because its direction keeps changing.",
       },
       {
         kind: "slider",
@@ -107,7 +122,7 @@ const KINEMATICS: Subconcept[] = [
       },
       {
         kind: "insight",
-        body: "A car turning a corner at steady speed is still accelerating, because its direction keeps changing.",
+        body: "Acceleration is about how velocity changes, not how big it is. A slow object can have a large acceleration.",
       },
     ],
   },

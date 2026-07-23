@@ -78,9 +78,9 @@ export function ImmersiveShell({
         {headerRight}
       </div>
 
-      {/* Content, centred between the bar and the footer; scrolls only if a
-          single step overflows. */}
-      <div className="flex-1 overflow-y-auto px-4">
+      {/* Content, top-aligned just under the bar; scrolls only if a single step
+          overflows. The scrollbar is hidden so it never shows a grey rail. */}
+      <div className="flex-1 overflow-y-auto px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {(title || subtitle) && (
           <div className="pb-1 pt-1">
             {subtitle && (
@@ -93,7 +93,7 @@ export function ImmersiveShell({
             )}
           </div>
         )}
-        <div className="flex min-h-full flex-col justify-center py-3">{children}</div>
+        <div className="flex flex-col pb-3 pt-2">{children}</div>
       </div>
 
       {/* Footer pinned to the bottom edge, above the home indicator. */}

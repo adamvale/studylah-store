@@ -124,9 +124,9 @@ export function LessonPlayer({
             </p>
           )}
           {step.kind === "concept" && step.heading && (
-            <p className="font-display text-xl font-bold text-ink">{step.heading}</p>
+            <p className="font-display text-2xl font-bold text-ink">{step.heading}</p>
           )}
-          <p className={`${step.kind === "concept" && step.heading ? "mt-2" : ""} text-base leading-relaxed text-ink`}>
+          <p className={`${step.kind === "concept" && step.heading ? "mt-3" : ""} text-lg leading-relaxed text-ink`}>
             <Sci>{step.body}</Sci>
           </p>
         </div>
