@@ -85,21 +85,41 @@ export function SubjectTopics({
         <div className="mt-4 space-y-2">
           {subs.map((s) => {
             const isDone = done.has(s.id);
+            const kind = s.kind ?? "lesson";
+            const tint =
+              kind === "quiz"
+                ? "from-guarantee/10"
+                : kind === "revision"
+                  ? "from-accent/10"
+                  : "from-white/5";
+            const badgeTone = isDone
+              ? "bg-guarantee/20 text-guarantee"
+              : kind === "quiz"
+                ? "bg-guarantee/15 text-guarantee"
+                : "bg-accent/15 text-accent";
+            const label = kind === "quiz" ? "Topical quiz" : kind === "revision" ? "Checkpoint" : null;
             return (
               <button
                 key={s.id}
                 type="button"
                 onClick={() => setActive({ key: s.id, title: `${s.code} ${s.title}`, steps: s.steps })}
-                className="glass flex w-full items-center gap-3 bg-gradient-to-br from-white/5 to-transparent p-4 text-left transition-transform hover:-translate-y-0.5"
+                className={`glass flex w-full items-center gap-3 bg-gradient-to-br ${tint} to-transparent p-4 text-left transition-transform hover:-translate-y-0.5`}
               >
-                <span
-                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold ${
-                    isDone ? "bg-guarantee/20 text-guarantee" : "bg-accent/15 text-accent"
-                  }`}
-                >
-                  {isDone ? <NamedIcon name="check" size={15} /> : s.code.replace(/^T/, "")}
+                <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold ${badgeTone}`}>
+                  {isDone ? (
+                    <NamedIcon name="check" size={15} />
+                  ) : kind === "quiz" ? (
+                    <NamedIcon name="trophy" size={15} />
+                  ) : kind === "revision" ? (
+                    <NamedIcon name="target" size={15} />
+                  ) : (
+                    s.code.replace(/^T/, "")
+                  )}
                 </span>
                 <span className="min-w-0 flex-1">
+                  {label && (
+                    <span className="block text-[10px] font-bold uppercase tracking-wide text-accent">{label}</span>
+                  )}
                   <span className="block font-display text-sm font-bold text-ink">
                     <Sci>{s.title}</Sci>
                   </span>

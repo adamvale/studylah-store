@@ -5,7 +5,29 @@ import type { LessonStep } from "@/lib/lesson-steps";
 import { NamedIcon } from "@/components/icons";
 import { Sci } from "@/components/sci-text";
 import { ImmersiveShell } from "@/components/immersive-shell";
+import { physicsFigureSrc } from "@/lib/teaching";
 import { speak, stopSpeaking } from "@/lib/speak";
+
+// A physics diagram shown inside a teaching card or question. Silently renders
+// nothing if the figure name is unknown, so content never shows a broken image.
+function Figure({ name }: { name?: string }) {
+  const src = physicsFigureSrc(name);
+  if (!src) return null;
+  return (
+    <span className="mb-3 block overflow-hidden rounded-xl border border-hairline bg-white/95 p-2">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt=""
+        className="mx-auto block max-h-56 w-full object-contain"
+        onError={(e) => {
+          const p = e.currentTarget.parentElement;
+          if (p) p.style.display = "none";
+        }}
+      />
+    </span>
+  );
+}
 
 // The interactive lesson player: Brilliant-style, one step at a time, hands-on,
 // with Gugu's scripted voice guiding the way. Gugu opens a problem with `ask`,
@@ -55,7 +77,7 @@ export function LessonPlayer({
   const canContinue =
     step.kind === "reveal"
       ? revealed
-      : step.kind === "choice" || isProblem(step.kind) || isTeach
+      : step.kind === "choice" || step.kind === "open" || isProblem(step.kind) || isTeach
         ? understood
         : true;
 
@@ -136,6 +158,7 @@ export function LessonPlayer({
               <NamedIcon name="sparkle" size={14} /> Takeaway
             </p>
           )}
+          {"figure" in step && step.figure && <Figure name={step.figure} />}
           {step.kind === "concept" && step.heading && (
             <p className="font-display text-2xl font-bold text-ink">{step.heading}</p>
           )}
@@ -191,6 +214,7 @@ export function LessonPlayer({
 
       {step.kind === "choice" && (
         <div>
+          {step.figure && <Figure name={step.figure} />}
           <p className="font-display text-lg font-bold text-ink"><Sci>{step.question}</Sci></p>
           <div className="mt-3 space-y-2">
             {step.options.map((opt, oi) => {
@@ -221,6 +245,55 @@ export function LessonPlayer({
         </div>
       )}
 
+      {step.kind === "open" && (
+        <div>
+          {step.figure && <Figure name={step.figure} />}
+          <p className="font-display text-lg font-bold text-ink"><Sci>{step.prompt}</Sci></p>
+          <textarea
+            key={i}
+            rows={4}
+            placeholder="Jot your answer, then check it against Gugu's model answer."
+            className="mt-3 w-full resize-none rounded-xl border border-hairline bg-white/5 p-3 text-sm leading-relaxed text-ink placeholder:text-body/50 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          />
+          {!revealed ? (
+            <button
+              type="button"
+              onClick={() => {
+                setRevealed(true);
+                speak(step.modelAnswer);
+              }}
+              className="mt-3 w-full rounded-xl bg-accent/15 py-3 text-sm font-bold text-accent"
+            >
+              Show model answer
+            </button>
+          ) : (
+            <div className="glass mt-3 bg-gradient-to-br from-white/5 to-transparent p-4">
+              <div className="flex items-center justify-between gap-2">
+                <p className="text-xs font-bold uppercase tracking-wide text-accent">Model answer</p>
+                <button
+                  type="button"
+                  onClick={() => speak(step.modelAnswer)}
+                  className="shrink-0 rounded-full border border-hairline px-3 py-1 text-[11px] font-bold text-accent"
+                >
+                  Hear it
+                </button>
+              </div>
+              <p className="mt-1 text-sm leading-relaxed text-ink"><Sci>{step.modelAnswer}</Sci></p>
+              {step.marks && step.marks.length > 0 && (
+                <ul className="mt-3 space-y-1.5 border-t border-white/10 pt-3">
+                  {step.marks.map((m, mi) => (
+                    <li key={mi} className="flex items-start gap-2 text-sm leading-relaxed text-body">
+                      <NamedIcon name="check" size={14} className="mt-0.5 shrink-0 text-guarantee" />
+                      <span><Sci>{m}</Sci></span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
       {step.kind === "slider" && <SliderStep key={i} step={step} onSolved={setSolved} reveal={gaveUp} />}
       {step.kind === "order" && <OrderStep key={i} step={step} onSolved={setSolved} reveal={gaveUp} />}
       {step.kind === "match" && <MatchStep key={i} step={step} onSolved={setSolved} reveal={gaveUp} />}
@@ -235,7 +308,7 @@ export function LessonPlayer({
       {/* Help ladder + the understand gate. Escalating scripted hints on demand,
           then a reveal; the "I understand" button stays visible (it is what
           unlocks Continue) and sits beside Help. */}
-      {(step.kind === "choice" || isProblem(step.kind)) && (
+      {(step.kind === "choice" || step.kind === "open" || isProblem(step.kind)) && (
         <div className="mt-4">
           {hintsShown > 0 && !showSummary && (
             <div className="space-y-2">

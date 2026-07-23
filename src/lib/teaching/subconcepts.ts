@@ -11,6 +11,10 @@ export interface Subconcept {
   title: string; // "Distance vs displacement"
   blurb: string; // one line shown on the box
   steps: LessonStep[]; // teach, then test (concept + a question + insight)
+  // "lesson" (default) teaches then tests. "revision" is a checkpoint quiz over
+  // the boxes before it (5 MCQ + 5 interactive + 2 open). "quiz" is the final
+  // topical practice (10 MCQ + 10 interactive + 5 open). Both are question-only.
+  kind?: "lesson" | "revision" | "quiz";
 }
 
 const KINEMATICS: Subconcept[] = [
@@ -23,6 +27,7 @@ const KINEMATICS: Subconcept[] = [
       {
         kind: "concept",
         heading: "Distance",
+        figure: "fig-02-01-distance-displacement",
         body: "Distance is the total length of the path you actually travel. It is a scalar, so it has size only, with no direction. If you walk 3 m forward and 3 m back, the distance is 6 m.",
         say: "Let us start with distance. Distance is simply how far you actually travel, adding up every step, no matter which way you go. So if you walk three metres away and then three metres back, your feet have covered six metres in total. Distance only counts the ground covered, never the direction.",
       },

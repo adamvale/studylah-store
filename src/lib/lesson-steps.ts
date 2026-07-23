@@ -21,13 +21,18 @@ export type LessonStep =
   // A teaching beat. `body` is shown on screen; `say` is what Gugu speaks to
   // teach it aloud, supplementing (not just reading) the text. The student must
   // tap "I understand" to continue, and can tap "Please repeat" to hear it again.
-  | { kind: "concept"; heading?: string; body: string; say?: string }
+  // `figure` (optional) is a physics diagram name shown above the text.
+  | { kind: "concept"; heading?: string; body: string; say?: string; figure?: string }
   // Multiple choice with immediate feedback; the learner must answer to move on.
-  | ({ kind: "choice"; question: string; options: string[]; correct: number; explain: string } & Guided)
+  | ({ kind: "choice"; question: string; figure?: string; options: string[]; correct: number; explain: string } & Guided)
   // A prompt the learner thinks about, then taps to reveal the answer.
   | { kind: "reveal"; prompt: string; answer: string }
   // A highlighted takeaway. `say` is Gugu's spoken version.
-  | { kind: "insight"; body: string; say?: string }
+  | { kind: "insight"; body: string; say?: string; figure?: string }
+  // Open-ended (structured/free-response) question: the student thinks or writes,
+  // then reveals a model answer with the marking points to self-check. Gugu
+  // speaks `ask` to guide. Gated by "I understand" like every other screen.
+  | ({ kind: "open"; prompt: string; figure?: string; modelAnswer: string; marks?: string[] } & Guided)
   // Drag a slider to a target band and watch it respond; solved when in range.
   | ({
       kind: "slider";
@@ -85,6 +90,8 @@ export function stepText(step: LessonStep): string[] {
       return [step.heading ?? "", step.body, step.say ?? ""];
     case "insight":
       return [step.body, step.say ?? ""];
+    case "open":
+      return [step.prompt, step.modelAnswer, ...(step.marks ?? []), ...guided];
     case "reveal":
       return [step.prompt, step.answer];
     case "choice":
@@ -115,6 +122,7 @@ export function stepText(step: LessonStep): string[] {
 export function isInteractive(step: LessonStep): boolean {
   return (
     step.kind === "choice" ||
+    step.kind === "open" ||
     step.kind === "reveal" ||
     step.kind === "slider" ||
     step.kind === "order" ||
