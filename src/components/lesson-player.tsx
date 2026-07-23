@@ -23,6 +23,26 @@ function Katex({ tex, display }: { tex: string; display?: boolean }) {
   return <span dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
+// Teaching text with emphasised keywords: authors wrap a key term in *stars*
+// and it renders bold and accent-coloured so the eye lands on it. Everything
+// still passes through <Sci> for `_`/`^` notation.
+function RichText({ children }: { children: string }) {
+  const parts = (children ?? "").split(/(\*[^*]+\*)/g);
+  return (
+    <>
+      {parts.map((p, i) =>
+        p.length > 2 && p.startsWith("*") && p.endsWith("*") ? (
+          <strong key={i} className="font-semibold text-accent">
+            <Sci>{p.slice(1, -1)}</Sci>
+          </strong>
+        ) : (
+          <Sci key={i}>{p}</Sci>
+        ),
+      )}
+    </>
+  );
+}
+
 // A formula shown in proper maths on a teaching card: the equation big and
 // centred, then a legend naming each symbol and its unit, like an exam formula
 // list. The equation scrolls sideways on its own if it is very wide.
@@ -297,7 +317,7 @@ export function LessonPlayer({
             <p className="font-display text-2xl font-bold text-ink">{step.heading}</p>
           )}
           <p className={`${step.kind === "concept" && step.heading ? "mt-3" : ""} text-lg leading-relaxed text-ink`}>
-            <Sci>{step.body}</Sci>
+            <RichText>{step.body}</RichText>
           </p>
           {"formula" in step && step.formula && <Formula {...step.formula} />}
         </div>

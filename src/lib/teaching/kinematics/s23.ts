@@ -11,13 +11,13 @@ export const BOXES: Subconcept[] = [
         kind: "concept",
         heading: "Why average speed",
         figure: "fig-02-04-uturn-journey",
-        body: "Real journeys are rarely at one steady speed. A vehicle speeds up, slows down, and sometimes stops. Average speed sums up the whole trip in a single number.",
+        body: "Real journeys are rarely at one *steady speed*. A vehicle speeds up, slows down, and sometimes stops. *Average speed* sums up the whole trip in a *single number*.",
         say: "Look at the diagram. The dots on the straight track mark three points, A, C and B, and the blue arrows show a journey that runs six hundred metres from A to B, then turns around and comes two hundred and forty metres back to C, while the yellow arrow underneath marks the straight line from A to C. Now think of that trip as a real bus ride. It never holds one steady speed: it pulls away, it crawls in traffic, it waits at the lights, then it speeds off again. So a single speed reading tells you almost nothing about the trip as a whole. Average speed fixes that. It gives you one fair number for the entire journey, as if you had travelled the whole way at that steady pace.",
       },
       {
         kind: "concept",
         heading: "The formula",
-        body: "You add up all the distance for the trip, add up all the time, and divide.",
+        body: "You add up all the *distance* for the trip, add up all the *time*, and *divide*.",
         formula: {
           latex: "\\text{average speed} = \\dfrac{\\text{total distance travelled}}{\\text{total time taken}}",
           where: [
@@ -30,7 +30,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Work in SI units",
-        body: "Convert to metres and seconds before you divide. Minutes must become seconds, so 5 minutes is 5 times 60, which is 300 s.",
+        body: "Convert to *metres* and *seconds* before you divide. *Minutes* must become seconds, so 5 minutes is 5 times 60, which is 300 s.",
         say: "One habit will save you marks: always work in the base units, metres and seconds, before you divide. Times are often given in minutes, so turn every minute into sixty seconds first. Five minutes becomes three hundred seconds. Do this conversion at the start, and your final answer lands neatly in metres per second, exactly the unit the examiner wants.",
       },
       {
@@ -98,7 +98,7 @@ export const BOXES: Subconcept[] = [
       },
       {
         kind: "insight",
-        body: "Average speed is not the average of the separate speeds. Always go back to total distance over total time.",
+        body: "*Average speed* is not the average of the separate speeds. Always go back to *total distance* over *total time*.",
         say: "Here is the trap to remember. Average speed is almost never just the middle of the speeds you were given. You cannot simply add eight and twelve and halve it. Always return to the definition: total distance over total time, counting every stop. Trust the totals, and you will get it right every time.",
       },
     ],

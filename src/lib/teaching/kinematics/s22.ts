@@ -10,7 +10,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "What speed is",
-        body: "Speed is the distance travelled per unit time. It is a scalar, so it has size only, with no direction.",
+        body: "Speed is the *distance* travelled per unit *time*. It is a *scalar*, so it has size only, with no *direction*.",
         formula: {
           latex: "v = \\dfrac{d}{t}",
           where: [
@@ -24,7 +24,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Uniform speed",
-        body: "An object moves at uniform, or constant, speed when it covers equal distances in equal intervals of time. A ball rolling at a uniform 12 m/s moves exactly 12 m during every second.",
+        body: "An object moves at *uniform*, or *constant*, speed when it covers *equal distances* in *equal intervals* of time. A ball rolling at a uniform 12 m/s moves exactly 12 m during every second.",
         say: "Uniform speed means steady speed. In each second the object covers exactly the same distance as in the second before. So a ball rolling at a uniform twelve metres per second moves twelve metres in every single second.",
       },
       {
@@ -71,7 +71,7 @@ export const BOXES: Subconcept[] = [
       },
       {
         kind: "insight",
-        body: "Steady speed means equal distances in equal times: at 12 m/s you cover 12 m in the first second, 12 m in the next, and so on.",
+        body: "*Steady speed* means *equal distances* in *equal times*: at 12 m/s you cover 12 m in the first second, 12 m in the next, and so on.",
         say: "Here is the picture to hold onto. If the speed is steady, then every second looks the same as the last. At twelve metres per second you cover twelve metres this second, twelve the next, and twelve the one after that.",
       },
     ],

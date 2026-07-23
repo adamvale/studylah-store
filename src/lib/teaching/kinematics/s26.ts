@@ -10,14 +10,14 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "What it shows",
-        body: "A displacement-time graph shows how the displacement of an object changes with time. Displacement is on the y-axis and time is on the x-axis. The object moves in a straight line from a fixed starting point called the origin.",
+        body: "A *displacement-time graph* shows how the displacement of an object changes with time. Displacement is on the *y-axis* and time is on the *x-axis*. The object moves in a straight line from a fixed starting point called the *origin*.",
         say: "A displacement-time graph is a simple picture of a journey. The height of the line tells you how far the object is from where it started, and moving right along the bottom means time is passing. That starting point is called the origin.",
       },
       {
         kind: "concept",
         heading: "Gradient is velocity",
         figure: "fig-02-13-dt-gradient",
-        body: "The gradient, or slope, of the line is the velocity of the object. gradient = (d_2 - d_1) / (t_2 - t_1) = velocity. So a steady slope means a steady velocity.",
+        body: "The *gradient*, or *slope*, of the line is the *velocity* of the object. gradient = (d_2 - d_1) / (t_2 - t_1) = velocity. So a steady slope means a steady velocity.",
         say: "Look at the diagram. The blue line climbs steadily across the graph, with displacement up the side and time along the bottom, and the grey dashed lines mark out a triangle on it: the rise is d two minus d one, and the run is t two minus t one. Here is the key idea. The steepness of that line is the velocity. You work it out as the change in displacement divided by the change in time, which is just the rise over the run of that triangle. So reading velocity off this graph is the same as reading a slope.",
       },
       {
@@ -98,20 +98,20 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Sign of the gradient",
-        body: "A positive gradient means the object moves forward, away from the origin, so the velocity is positive. A negative gradient means the object moves backward, towards the origin, so the velocity is negative.",
+        body: "A *positive gradient* means the object moves *forward*, away from the origin, so the velocity is positive. A *negative gradient* means the object moves *backward*, towards the origin, so the velocity is negative.",
         say: "The direction of the slope tells you which way the object goes. A line climbing upward means it is heading away from the start, which we call positive. A line sloping downward means it is coming back towards the start, which we call negative.",
       },
       {
         kind: "concept",
         heading: "Height and the axis",
-        body: "The vertical height of the line gives the object's distance from the origin at that moment. When the line touches the time-axis again, the object is back at the origin, so its displacement is 0.",
+        body: "The *vertical height* of the line gives the object's *distance from the origin* at that moment. When the line touches the *time-axis* again, the object is back at the origin, so its displacement is *0*.",
         say: "Look at how high the line sits. That height is exactly how far the object is from where it started. And when the line drops back down and touches the bottom axis, the object has returned to the origin, so its displacement is zero again.",
       },
       {
         kind: "concept",
         heading: "Steeper means faster",
         figure: "fig-02-15-dt-steeper",
-        body: "The steeper the line, the greater the velocity. A gentle slope is a slow object and a steep slope is a fast one. Two lines can both go forward, but the steeper one is quicker.",
+        body: "The *steeper* the line, the *greater the velocity*. A *gentle slope* is a slow object and a *steep slope* is a fast one. Two lines can both go forward, but the steeper one is quicker.",
         say: "Look at the diagram. Two straight lines start from the same corner of the graph: the blue line, labelled A, shoots up steeply, while the yellow line, labelled B, climbs at a much gentler angle. Steepness is speed here. The steep blue line belongs to a fast object, while the lazy yellow slope belongs to a slow one. So when you compare two forward lines, just look at which one is steeper to see which is faster. Here, A is faster than B.",
       },
       {
@@ -192,20 +192,20 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Flat line: at rest",
-        body: "A horizontal line means the displacement stays the same. The object is not moving, so its velocity is zero. It simply sits at a fixed distance from the origin.",
+        body: "A *horizontal line* means the displacement stays the same. The object is *not moving*, so its *velocity is zero*. It simply sits at a fixed distance from the origin.",
         say: "A flat line is the easiest one. If the height never changes, the object is standing still. Its velocity is zero, and it just waits at the same distance from the start.",
       },
       {
         kind: "concept",
         heading: "Straight slope: constant velocity",
-        body: "A straight line with a positive slope means the displacement increases uniformly. The object moves away from the origin at a constant, or uniform, velocity.",
+        body: "A *straight line* with a *positive slope* means the displacement increases uniformly. The object moves away from the origin at a *constant*, or *uniform*, velocity.",
         say: "A straight, sloping line means steady progress. The displacement grows by the same amount each second, so the velocity never changes. We call that constant or uniform velocity.",
       },
       {
         kind: "concept",
         heading: "Curves: changing velocity",
         figure: "fig-02-16-dt-forward-types",
-        body: "A curve getting steeper means the velocity is increasing, because the displacement grows faster and faster. A curve getting less steep means the velocity is decreasing, because the displacement grows more and more slowly.",
+        body: "A *curve getting steeper* means the velocity is *increasing*, because the displacement grows faster and faster. A *curve getting less steep* means the velocity is *decreasing*, because the displacement grows more and more slowly.",
         say: "Look at the diagram. Four little graphs sit side by side, each with a blue line: a flat line for staying still, a straight slope for steady velocity, a curve that bends upward and gets steeper, and a curve that rises quickly then levels off. The two curves are the interesting ones, because curves mean the speed is changing. If the line gets steeper, the object is speeding up. If it bends over and gets gentler, the object is slowing down, even though it is still moving forward the whole time.",
       },
       {
@@ -270,18 +270,18 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Straight fall: constant velocity back",
-        body: "A straight line with a negative slope means the displacement decreases uniformly. The object moves at a constant velocity towards the origin. It gets closer to the start by the same amount each second.",
+        body: "A straight line with a *negative slope* means the displacement *decreases uniformly*. The object moves at a *constant velocity* towards the origin. It gets closer to the start by the same amount each second.",
         say: "When the line falls in a straight line, the object is heading home at a steady pace. The displacement shrinks by the same amount each second, so this is a constant velocity, just pointed back towards the origin.",
       },
       {
         kind: "concept",
         heading: "The two backward curves",
-        body: "A downward curve getting steeper means a non-uniform velocity that is increasing towards the origin. A downward curve getting less steep means a non-uniform velocity that is decreasing towards the origin.",
+        body: "A *downward curve getting steeper* means a *non-uniform velocity* that is *increasing* towards the origin. A *downward curve getting less steep* means a non-uniform velocity that is *decreasing* towards the origin.",
         say: "Backward curves work just like the forward ones, but flipped. If the falling line keeps getting steeper, the object rushes back faster and faster. If it flattens out as it falls, it is easing to a stop as it nears the start.",
       },
       {
         kind: "insight",
-        body: "For every forward shape there is a matching backward shape. The only difference is that the line falls instead of rises, so the velocity points towards the origin instead of away from it.",
+        body: "For every *forward shape* there is a matching *backward shape*. The only difference is that the line *falls* instead of *rises*, so the velocity points towards the origin instead of away from it.",
         say: "Here is a handy way to remember it. The backward graphs mirror the forward ones. Whatever the shape tells you about speeding up or slowing down still holds. The single change is the direction: the object is now travelling back towards where it started.",
       },
       {

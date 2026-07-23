@@ -35,6 +35,12 @@ before Continue unlocks.
    Unicode subscript/superscript characters. The player renders these with
    `<Sci>`, so just write the markers.
 5. Keep every string short and plain, for a 13 to 17 year old.
+6. **Emphasise keywords.** In a `concept`/`insight` `body`, wrap the key term(s)
+   the card teaches in single asterisks: `*vector*`, `*rate of change of
+   velocity*`. The player renders them bold and accent-coloured so the eye lands
+   on them. Star 2 to 4 terms per body (the core nouns/adjectives), never a whole
+   sentence, and never the same word twice. Only in `body` (not `say`, headings,
+   questions or formulas). Every teaching card should have its keywords starred.
 
 ## The step kinds
 

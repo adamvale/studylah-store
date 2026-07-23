@@ -11,14 +11,14 @@ export const BOXES: Subconcept[] = [
         kind: "concept",
         heading: "Axes and direction",
         figure: "fig-02-23-vt-positive-negative",
-        body: "On a velocity-time graph, velocity is on the y-axis and time is on the x-axis. A line above the time-axis is positive velocity, moving forward. A line below the axis is negative velocity, moving backward.",
+        body: "On a *velocity-time graph*, velocity is on the y-axis and time is on the x-axis. A line above the time-axis is *positive velocity*, moving forward. A line below the axis is *negative velocity*, moving backward.",
         say: "Look at the diagram. Velocity goes up the side with a plus sign near the top and a minus sign near the bottom, and the time axis cuts across the middle at zero: the blue label above the axis reads positive velocity, moving forward, and the red label below it reads negative velocity, moving backward. That is the whole trick to reading this graph. When the line sits above the axis the object is moving forward. When it drops below the axis it is moving backward. The sign is telling you the direction.",
       },
       {
         kind: "concept",
         heading: "Gradient is acceleration",
         figure: "fig-02-24-vt-gradient",
-        body: "The gradient, or steepness, of a velocity-time graph is the acceleration. You find it as the change in velocity divided by the change in time: (v_2 - v_1) / (t_2 - t_1).",
+        body: "The *gradient*, or steepness, of a *velocity-time graph* is the *acceleration*. You find it as the change in velocity divided by the change in time: (v_2 - v_1) / (t_2 - t_1).",
         say: "Look at the diagram. The blue line climbs steadily, with velocity up the side and time along the bottom, and the grey dashed lines mark out a triangle on it: the rise is v two minus v one, and the run is t two minus t one. Here is the key idea. The slope of this line is the acceleration. You take how much the velocity changed and divide by how long it took, the rise over the run. A steeper line means a bigger acceleration.",
       },
       {
@@ -69,7 +69,7 @@ export const BOXES: Subconcept[] = [
       },
       {
         kind: "insight",
-        body: "A velocity-time graph packs in two things at once: the height tells you the velocity, and the slope tells you the acceleration.",
+        body: "A *velocity-time graph* packs in two things at once: the height tells you the *velocity*, and the slope tells you the *acceleration*.",
         say: "So keep this in mind. On a velocity against time graph, how high the line sits gives the velocity, while how steep it is gives the acceleration. Two readings from one line.",
       },
     ],
@@ -84,13 +84,13 @@ export const BOXES: Subconcept[] = [
         kind: "concept",
         heading: "Area under the line",
         figure: "fig-02-25-vt-area",
-        body: "The area between the velocity-time line and the time-axis is the displacement. For a straight line you split the area into triangles and rectangles and add them up.",
+        body: "The *area* between the velocity-time line and the time-axis is the *displacement*. For a straight line you split the area into *triangles* and *rectangles* and add them up.",
         say: "Look at the diagram. The blue line slopes down to the time axis and shades in a blue triangle above it, then carries on below the axis and shades a pink triangle underneath. Here is the lovely trick. The area trapped between the line and the axis is the displacement. The blue triangle above the axis is forward displacement, the pink one below is backward displacement, and you find each one just by working out the area of the shape.",
       },
       {
         kind: "concept",
         heading: "Below the axis is negative",
-        body: "Area above the time-axis is a positive, forward displacement. Area below the axis is a negative, backward displacement. When the line touches the axis the velocity is zero, so the object is momentarily at rest.",
+        body: "Area above the time-axis is a *positive*, forward *displacement*. Area below the axis is a *negative*, backward displacement. When the line touches the axis the velocity is zero, so the object is momentarily *at rest*.",
         say: "Watch the sign. Area above the axis counts as forward displacement, and area below it counts as backward displacement. And the moment the line touches the axis, the velocity is zero, so the object is briefly at rest.",
       },
       {
@@ -131,7 +131,7 @@ export const BOXES: Subconcept[] = [
       },
       {
         kind: "insight",
-        body: "Gradient and area answer different questions. The gradient of the line gives the acceleration, while the area under the line gives the displacement.",
+        body: "Gradient and area answer different questions. The *gradient* of the line gives the *acceleration*, while the *area* under the line gives the *displacement*.",
         say: "Do not mix these two up. The slope of the line is the acceleration. The area underneath it is the displacement. One is about how fast the velocity changes, the other is about how far the object travels.",
       },
     ],
@@ -146,20 +146,20 @@ export const BOXES: Subconcept[] = [
         kind: "concept",
         heading: "Straight slope, uniform",
         figure: "fig-02-26-vt-accel-types",
-        body: "A straight sloping line on a velocity-time graph means constant, uniform acceleration: the velocity gains the same amount each second.",
+        body: "A straight sloping line on a *velocity-time graph* means *constant*, *uniform acceleration*: the velocity gains the same amount each second.",
         say: "Look at the diagram. Four little velocity time graphs sit in a row, each with a green line: a flat line, a straight rising slope, a curve that gets steeper, and a curve that levels off. Start with the second one, the simplest moving shape. A straight sloping line means the velocity climbs by the same amount every second. That is constant, uniform acceleration.",
       },
       {
         kind: "concept",
         heading: "Curves are non-uniform",
-        body: "A curve means non-uniform acceleration. A curve getting steeper is acceleration that increases. A curve getting less steep is acceleration that decreases.",
+        body: "A curve means *non-uniform acceleration*. A curve getting steeper is acceleration that *increases*. A curve getting less steep is acceleration that *decreases*.",
         say: "Now bend the line into a curve. A curve means the acceleration is changing. If the curve gets steeper the acceleration is growing, and if it gets less steep the acceleration is shrinking.",
       },
       {
         kind: "concept",
         heading: "Negative slope, slowing",
         figure: "fig-02-27-vt-decel-types",
-        body: "A line that slopes downward has a negative gradient, so the object is decelerating. A straight downward slope is uniform deceleration; a downward curve is non-uniform deceleration.",
+        body: "A line that slopes downward has a *negative gradient*, so the object is *decelerating*. A straight downward slope is *uniform deceleration*; a downward curve is *non-uniform deceleration*.",
         say: "Look at the diagram. All three small graphs show a red line heading downhill: the first drops in a dead straight slope, and the other two are curves that fall in different ways, one steep at first then flattening out, the other gentle at first then plunging. A downward slope is a negative gradient, so in every panel the object is slowing down. Straight down is steady deceleration, and a downward curve means the deceleration itself is changing.",
       },
       {
@@ -217,7 +217,7 @@ export const BOXES: Subconcept[] = [
       },
       {
         kind: "insight",
-        body: "Read the shape first. Straight means uniform, curved means non-uniform; sloping up is speeding up, sloping down is slowing down.",
+        body: "Read the shape first. Straight means *uniform*, curved means *non-uniform*; sloping up is *speeding up*, sloping down is *slowing down*.",
         say: "So glance at the shape before anything else. Straight lines are uniform and curves are non-uniform. Uphill means speeding up and downhill means slowing down. The picture tells the story.",
       },
     ],
@@ -231,20 +231,20 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Speed cannot be negative",
-        body: "Speed is a scalar, so it has size only and can never be negative. A speed-time graph always stays on or above the time-axis, at zero or higher.",
+        body: "Speed is a *scalar*, so it has size only and can never be *negative*. A *speed-time graph* always stays on or above the time-axis, at zero or higher.",
         say: "Remember that speed is a scalar with no direction. It is always zero or more. So a speed against time graph can never dip below the axis. It simply cannot go negative.",
       },
       {
         kind: "concept",
         heading: "Velocity can be negative",
-        body: "Velocity is a vector, so a negative sign shows motion in the opposite direction. A velocity-time graph can dip below the time-axis, but a speed-time graph cannot.",
+        body: "Velocity is a *vector*, so a *negative* sign shows motion in the opposite direction. A *velocity-time graph* can dip below the time-axis, but a speed-time graph cannot.",
         say: "Velocity is different. It is a vector, so a minus sign just means the object is now going the other way. That is why a velocity graph can drop below the axis while a speed graph never does.",
       },
       {
         kind: "concept",
         heading: "The ball thrown up",
         figure: "fig-02-30-ball-thrown",
-        body: "Take upward as positive. As the ball rises it slows to zero at the top. As it falls, the speed-time graph rises again from zero, but the velocity-time graph goes negative, because the ball now moves downward.",
+        body: "Take *upward as positive*. As the ball rises it slows to zero at the top. As it falls, the *speed-time graph* rises again from zero, but the *velocity-time graph* goes *negative*, because the ball now moves downward.",
         say: "Look at the diagram. On the left, the blue ball is drawn at three moments with yellow arrows for its velocity: at A it moves up at five metres per second, at B it hangs at the top with zero velocity, and at C it falls at five metres per second. Next to it, the blue speed time graph dips to zero and climbs back up in a V shape, but the velocity time graph is one straight line that crosses the axis, shaded blue above and pink below. That is the whole story of a ball thrown straight up, with up as positive. Going up it slows to a stop at the top. Coming down, the speed graph climbs back up from zero, but on the velocity graph the line goes below the axis, because the ball is now heading the opposite way.",
       },
       {
@@ -300,7 +300,7 @@ export const BOXES: Subconcept[] = [
       },
       {
         kind: "insight",
-        body: "For motion that reverses, distance and speed keep piling up, but displacement and velocity can cancel back toward zero.",
+        body: "For motion that reverses, distance and *speed* keep piling up, but *displacement* and *velocity* can cancel back toward zero.",
         say: "One closing thought. When motion doubles back, like the ball returning to your hand, the distance and speed keep adding up, yet the displacement and velocity can cancel out to zero. Direction is the difference.",
       },
     ],

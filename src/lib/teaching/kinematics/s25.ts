@@ -10,7 +10,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Acceleration",
-        body: "Acceleration is the rate of change of velocity: how much the velocity changes each second.",
+        body: "*Acceleration* is the *rate of change of velocity*: how much the velocity changes each second.",
         formula: {
           latex: "a = \\dfrac{v - u}{t}",
           where: [
@@ -25,14 +25,14 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "A vector",
-        body: "Because velocity is a vector, acceleration is a vector too. It has both a size and a direction. A positive value speeds an object up in the direction of motion.",
+        body: "Because velocity is a *vector*, acceleration is a vector too. It has both a *size* and a *direction*. A *positive* value speeds an object up in the direction of motion.",
         say: "Here is a key point. Since velocity carries a direction, acceleration does too. So acceleration is a vector, with a size and a direction, not just a number.",
       },
       {
         kind: "concept",
         heading: "Three ways to accelerate",
         figure: "fig-02-07-accel-change-direction",
-        body: "An object accelerates whenever any one of these happens: its speed changes, its direction changes, or both change together. Even at steady speed, changing direction is still acceleration.",
+        body: "An object accelerates whenever any one of these happens: its *speed changes*, its *direction changes*, or both change together. Even at steady speed, changing direction is still *acceleration*.",
         say: "Look at the diagram. The blue ball is drawn at three moments in time, and the yellow arrows show its velocity: at the start the arrow points straight ahead at four metres per second, and one second later it is still four metres per second but the arrow now points a different way. This surprises a lot of students. You accelerate if your speed changes, if your direction changes, or if both change. The ball in the picture kept the same speed, yet it accelerated, because its direction changed. So a car going round a bend at a steady speed is still accelerating too.",
       },
       {
@@ -78,7 +78,7 @@ export const BOXES: Subconcept[] = [
       },
       {
         kind: "insight",
-        body: "Acceleration is about the change in velocity, not how fast you are going. A slow object can accelerate hard, and a fast one may not accelerate at all.",
+        body: "*Acceleration* is about the *change in velocity*, not how fast you are going. A *slow object* can accelerate hard, and a fast one may not accelerate at all.",
         say: "Remember this. Acceleration is not about how fast you are moving. It is about how quickly that motion is changing. A slow car can accelerate hard, while a fast car at steady speed is not accelerating at all.",
       },
     ],
@@ -92,13 +92,13 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Zero acceleration",
-        body: "When an object moves at constant velocity, its velocity does not change. So its acceleration is zero. Steady speed in a straight line means no acceleration.",
+        body: "When an object moves at *constant velocity*, its velocity does not change. So its *acceleration* is *zero*. Steady speed in a straight line means no acceleration.",
         say: "If the velocity is not changing at all, then there is nothing to accelerate. So an object moving at constant velocity, steady speed in a straight line, has zero acceleration.",
       },
       {
         kind: "concept",
         heading: "Deceleration",
-        body: "Deceleration, or retardation, is a decrease in velocity over time. The object slows down while still moving the same way. Because the velocity is dropping, the acceleration has a negative sign.",
+        body: "*Deceleration*, or *retardation*, is a decrease in velocity over time. The object slows down while still moving the same way. Because the velocity is dropping, the acceleration has a *negative* sign.",
         say: "When something slows down, we call it deceleration. The object is still moving the same way, but losing velocity. Since the velocity is falling, the acceleration comes out negative.",
       },
       {
@@ -144,7 +144,7 @@ export const BOXES: Subconcept[] = [
       },
       {
         kind: "insight",
-        body: "A negative acceleration is not a special new quantity. It is just an acceleration pointing opposite to the motion, which is why it slows the object down.",
+        body: "A *negative acceleration* is not a special new quantity. It is just an acceleration pointing *opposite* to the motion, which is why it *slows the object down*.",
         say: "One last idea. A negative acceleration is nothing exotic. It simply points the opposite way to the motion, and that is exactly why the object slows down.",
       },
     ],
@@ -158,13 +158,13 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Uniform acceleration",
-        body: "Acceleration is uniform when the velocity changes by the same amount in every second. On a velocity-time graph this gives a straight, sloping line of constant gradient.",
+        body: "Acceleration is *uniform* when the velocity changes by the *same amount* in every second. On a velocity-time graph this gives a *straight, sloping line* of *constant gradient*.",
         say: "Uniform acceleration means the velocity gains the same amount every single second, like ten, twenty, thirty. On a velocity against time graph that draws a straight sloping line.",
       },
       {
         kind: "concept",
         heading: "Non-uniform acceleration",
-        body: "Acceleration is non-uniform when the velocity change is not the same each second. The gain grows or shrinks over time, so the velocity-time graph is a curve.",
+        body: "Acceleration is *non-uniform* when the *velocity change* is not the same each second. The gain grows or shrinks over time, so the velocity-time graph is a *curve*.",
         say: "Non-uniform acceleration means the velocity change is different each second, maybe five, then eight, then twelve. Because the slope keeps changing, the velocity against time graph bends into a curve.",
       },
       {
@@ -221,7 +221,7 @@ export const BOXES: Subconcept[] = [
       },
       {
         kind: "insight",
-        body: "The shape of a velocity-time graph tells the whole story: a straight slope is uniform acceleration, and a curve is non-uniform acceleration.",
+        body: "The shape of a velocity-time graph tells the whole story: a *straight slope* is *uniform acceleration*, and a *curve* is *non-uniform acceleration*.",
         say: "So keep this picture in mind. On a velocity against time graph, a straight slope means uniform acceleration, and a curve means non-uniform acceleration. The shape tells you everything.",
       },
     ],

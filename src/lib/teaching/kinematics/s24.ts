@@ -10,7 +10,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "What velocity is",
-        body: "Velocity is the displacement per unit time. It is speed in a stated direction, so it is a vector.",
+        body: "Velocity is the *displacement* per unit time. It is speed in a stated *direction*, so it is a *vector*.",
         formula: {
           latex: "v = \\dfrac{d}{t}",
           where: [
@@ -25,7 +25,7 @@ export const BOXES: Subconcept[] = [
         kind: "concept",
         heading: "Average velocity",
         figure: "fig-02-04-uturn-journey",
-        body: "Average velocity uses displacement, not distance, so it is often smaller than the average speed.",
+        body: "*Average velocity* uses *displacement*, not *distance*, so it is often smaller than the *average speed*.",
         formula: {
           latex: "\\text{average velocity} = \\dfrac{\\text{total displacement}}{\\text{total time taken}}",
           where: [
@@ -38,7 +38,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Signs for direction",
-        body: "When motion goes both ways, pick one direction as + and the opposite as -. Add the parts with their signs to get the displacement. A journey 600 m east then 240 m west gives (+600) + (-240) = +360 m.",
+        body: "When motion goes both ways, pick one *direction* as + and the opposite as -. Add the parts with their *signs* to get the *displacement*. A journey 600 m east then 240 m west gives (+600) + (-240) = +360 m.",
         say: "When something moves both ways, choose one direction to be positive and the other negative. Then add the pieces with their signs. Six hundred metres east and two hundred and forty metres west gives plus three hundred and sixty metres, which means three hundred and sixty metres due east.",
       },
       {
@@ -105,7 +105,7 @@ export const BOXES: Subconcept[] = [
       },
       {
         kind: "insight",
-        body: "If a journey ends where it started, the displacement is 0, so the average velocity is 0 m/s even though the average speed is not.",
+        body: "If a journey ends where it started, the *displacement* is 0, so the *average velocity* is 0 m/s even though the *average speed* is not.",
         say: "Here is the idea to hold onto. If you finish exactly where you began, your displacement is zero, so your average velocity is zero, no matter how far or how fast you ran. Your average speed, though, is not zero, and that gap between them is what velocity is really about.",
       },
     ],

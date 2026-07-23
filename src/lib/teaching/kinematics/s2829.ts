@@ -10,14 +10,14 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Only when a is constant",
-        body: "The equations of motion link five quantities: acceleration a, initial velocity u, final velocity v, displacement d and time t. They only work when the acceleration is constant. If the acceleration changes during the motion, you cannot use them.",
+        body: "The *equations of motion* link five quantities: acceleration a, initial velocity u, final velocity v, displacement d and time t. They only work when the *acceleration* is *constant*. If the acceleration changes during the motion, you cannot use them.",
         say: "Before you touch these equations, remember the one rule that decides everything. They only work when the acceleration stays the same the whole way through. They tie together five things: the acceleration, the starting velocity, the final velocity, the displacement, and the time. If the acceleration is changing, these equations simply do not apply.",
       },
       {
         kind: "concept",
         heading: "The four equations",
         figure: "fig-02-32-vt-worked-formulae",
-        body: "There are four equations, and each one leaves out exactly one quantity (shown on the right). The second is just the area of the trapezium under a straight velocity-time graph.",
+        body: "There are *four equations*, and each one leaves out exactly one quantity (shown on the right). The second is just the *area* of the *trapezium* under a straight *velocity-time graph*.",
         formula: {
           latex:
             "\\begin{array}{ll} v = u + at & \\text{(no } d) \\\\[4pt] d = \\tfrac{1}{2}(u + v)\\,t & \\text{(no } a) \\\\[4pt] d = ut + \\tfrac{1}{2}at^{2} & \\text{(no } v) \\\\[4pt] v^{2} = u^{2} + 2ad & \\text{(no } t) \\end{array}",
@@ -34,7 +34,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Choosing the right one",
-        body: "List the three quantities you know and the one you want. Then pick the equation that contains those four and leaves out the quantity you were not given. That way you never need a fifth unknown.",
+        body: "List the three quantities you know and the one you want. Then pick the *equation* that contains those four and leaves out the *quantity* you were not given. That way you never need a fifth unknown.",
         say: "So how do you choose? Write down the three things you are given and the one thing you are chasing. Then reach for the equation that leaves out the quantity you do not have. That is the whole trick: pick the equation missing the one value you were never told.",
       },
       {
@@ -87,7 +87,7 @@ export const BOXES: Subconcept[] = [
       },
       {
         kind: "insight",
-        body: "Pick the equation by what it leaves out, not by what it puts in. Match the missing quantity to the one value you were never given.",
+        body: "Pick the *equation* by what it leaves out, not by what it puts in. Match the *missing quantity* to the one value you were never given.",
         say: "Here is the one idea to carry away. Do not hunt for the equation that has your answer in it. Instead, spot the quantity you were never given, and choose the equation that leaves that one out. Do that and the right equation almost picks itself.",
       },
     ],
@@ -101,20 +101,20 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Same g for every mass",
-        body: "Near the Earth, any object released from a height accelerates downwards. If air resistance is negligible, every object falls with the same constant acceleration, whatever its mass. This acceleration of free fall, g, is about 10 m/s^2.",
+        body: "Near the Earth, any object released from a height accelerates downwards. If air resistance is negligible, every object falls with the same *constant acceleration*, whatever its mass. This acceleration of *free fall*, *g*, is about 10 m/s^2.",
         say: "Drop a heavy stone and a light pebble together, with no air resistance, and they hit the ground at the same moment. Near the Earth every falling object speeds up at the same rate, no matter how heavy it is. We call that rate g, the acceleration of free fall, and we take it as about ten metres per second squared.",
       },
       {
         kind: "concept",
         heading: "Ten more every second",
         figure: "fig-02-34-freefall-ball",
-        body: "A freely falling object gains 10 m/s of velocity during every second of the fall. Because the velocity increases by the same amount each second, its velocity-time graph is a straight line with a constant gradient.",
+        body: "A freely falling object gains 10 m/s of velocity during every second of the fall. Because the velocity increases by the same amount each second, its *velocity-time graph* is a *straight line* with a *constant gradient*.",
         say: "Look at the diagram. The blue ball is drawn falling down a dashed line, and the gaps between its positions grow wider and wider, while the yellow labels count its speed: zero at the start, ten metres per second after one second, twenty after two, thirty after three, with the green arrow showing the velocity climbing all the way down. That widening spacing is the giveaway. The ball gains the same ten metres per second every single second, so it covers more ground each second than the last. Because the gain is steady, the velocity-time graph is a straight, sloping line.",
       },
       {
         kind: "concept",
         heading: "Signs when it goes up",
-        body: "You must pick a positive direction first. If you take upward as positive, then g points the other way, so the acceleration is negative, about -10 m/s^2. Keep the sign the same all the way through the working.",
+        body: "You must pick a *positive direction* first. If you take upward as positive, then g points the other way, so the acceleration is *negative*, about -10 m/s^2. Keep the *sign* the same all the way through the working.",
         say: "Once an object also travels upward, you have to choose a positive direction before you start. If you call upward positive, then gravity, which pulls down, becomes negative, about minus ten metres per second squared. The key is to stick with that choice for the whole calculation and never switch it halfway.",
       },
       {
@@ -176,7 +176,7 @@ export const BOXES: Subconcept[] = [
       },
       {
         kind: "insight",
-        body: "Free fall is just constant acceleration with a = g. The same four equations of motion apply once you fix which direction is positive.",
+        body: "Free fall is just *constant acceleration* with a = g. The same four *equations of motion* apply once you fix which direction is *positive*.",
         say: "So free fall is nothing new. It is simply constant acceleration where the acceleration is g. The very same four equations of motion work here, as long as you decide which way is positive and keep the sign of g consistent with that choice.",
       },
     ],
