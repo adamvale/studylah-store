@@ -11,13 +11,14 @@ import { physicsFigureSrc } from "@/lib/teaching";
 import {
   CORRECT_PRAISE,
   NEXT_NUDGE,
+  REPEAT_LEAD,
   isProblem,
   isQuestion,
   openerFor,
   pick,
   retryLine,
 } from "@/lib/lesson-voice";
-import { speak, stopSpeaking } from "@/lib/speak";
+import { speak, speakSequence, stopSpeaking } from "@/lib/speak";
 
 // Render LaTeX with KaTeX (fonts bundled, no network). Falls back to the raw
 // string if the LaTeX is malformed, so bad content never crashes the lesson.
@@ -415,7 +416,7 @@ export function LessonPlayer({
           </button>
           <button
             type="button"
-            onClick={() => teachSay && speak(teachSay)}
+            onClick={() => teachSay && speakSequence([pick(REPEAT_LEAD, i), teachSay])}
             className="flex items-center gap-2 rounded-xl border border-hairline px-4 py-3.5 text-sm font-bold text-accent"
           >
             <NamedIcon name="ghost" size={15} />

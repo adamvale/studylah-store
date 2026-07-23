@@ -70,6 +70,15 @@ export const NEXT_NUDGE = [
 export const WRONG_LEAD = ["Not quite.", "Hmm, not this time.", "Close, but not that one.", "Not quite that one."];
 export const RETRY_NUDGE = ["Have another go.", "Give it another try.", "Want to try once more?", "Have another look."];
 
+// What Gugu says before going over a teaching card again, so a repeat sounds
+// like a patient tutor rather than a replayed recording.
+export const REPEAT_LEAD = [
+  "Sure, let me explain that again.",
+  "No worries, I will go through it once more.",
+  "Of course. Here it is again.",
+  "Not a problem, let's take another look.",
+];
+
 // The help ladder for a step: the scripted `ask` first (if any), then the hints.
 // Shared so the player and the TTS pre-generator agree on the exact strings.
 export function helpItemsFor(step: LessonStep): string[] {
@@ -109,5 +118,7 @@ export function fixedVoiceLines(): string[] {
     out.add(base);
     for (const nudge of NEXT_NUDGE) out.add(`${base} ${nudge}`);
   }
+  // Spoken on its own, ahead of the teaching card being repeated.
+  for (const lead of REPEAT_LEAD) out.add(lead);
   return [...out];
 }

@@ -115,12 +115,16 @@ if (typeof window !== "undefined" && "speechSynthesis" in window) {
   }
 }
 
-function deviceSpeak(text: string, lang: string): void {
-  if (!("speechSynthesis" in window)) return;
+function deviceSpeak(text: string, lang: string, onEnd?: () => void): void {
+  if (!("speechSynthesis" in window)) {
+    onEnd?.();
+    return;
+  }
   try {
     const synth = window.speechSynthesis;
     synth.cancel();
     const u = new SpeechSynthesisUtterance(text);
+    if (onEnd) u.addEventListener("end", onEnd, { once: true });
     const v = getVoice();
     if (v) {
       u.voice = v;
@@ -139,39 +143,65 @@ function deviceSpeak(text: string, lang: string): void {
 
 // ── Public API ──────────────────────────────────────────────────────────────
 let currentAudio: HTMLAudioElement | null = null;
+// Looking a line up in the manifest is async, so a line asked for just before
+// the student navigates could otherwise arrive late and start talking over the
+// next screen. Every speak/stop bumps this token; a lookup that finds the token
+// has moved on simply drops its line.
+let speakToken = 0;
+
+// Play one prepared line, calling `done` when it finishes (or fails over).
+function playLine(line: string, lang: string, token: number, done?: () => void): void {
+  if (token !== speakToken) return;
+  const h = hashLine(line);
+  const fallback = () => deviceSpeak(line, lang, done);
+  try {
+    const audio = new Audio(`/audio/gugu/${activeVoice}/${h}.mp3`);
+    currentAudio = audio;
+    let fellBack = false;
+    const once = () => {
+      if (fellBack) return;
+      fellBack = true;
+      fallback();
+    };
+    if (done) audio.addEventListener("ended", () => token === speakToken && done(), { once: true });
+    audio.addEventListener("error", once, { once: true });
+    void audio.play().catch(once);
+  } catch {
+    fallback();
+  }
+}
 
 export function speak(text: string, lang = "en-GB"): void {
+  speakSequence([text], lang);
+}
+
+// Say several lines back to back, e.g. a short "let me go over that again"
+// before repeating a teaching card. Each is looked up separately, so the lead-in
+// reuses its own generated file and the explanation reuses the one it already has.
+export function speakSequence(texts: string[], lang = "en-GB"): void {
   if (typeof window === "undefined") return;
   // Formulas are authored in notation so they LOOK right on screen; say them in
   // words. The TTS pre-generator applies the same transform, so hashes match.
-  const clean = normalizeLine(spokenMath(text));
-  if (!clean) return;
+  const lines = texts.map((t) => normalizeLine(spokenMath(t))).filter((t) => t.length > 0);
+  if (!lines.length) return;
   stopSpeaking();
-  const h = hashLine(clean);
+  const token = speakToken;
   void loadManifest().then((m) => {
-    if (m.has(h)) {
-      try {
-        const audio = new Audio(`/audio/gugu/${activeVoice}/${h}.mp3`);
-        currentAudio = audio;
-        let fellBack = false;
-        const fallback = () => {
-          if (fellBack) return;
-          fellBack = true;
-          deviceSpeak(text, lang);
-        };
-        audio.addEventListener("error", fallback, { once: true });
-        audio.play().catch(fallback);
-      } catch {
-        deviceSpeak(text, lang);
-      }
-    } else {
-      deviceSpeak(text, lang);
-    }
+    if (token !== speakToken) return; // superseded while we were loading
+    let idx = 0;
+    const next = (): void => {
+      if (token !== speakToken || idx >= lines.length) return;
+      const line = lines[idx++];
+      if (m.has(line ? hashLine(line) : "")) playLine(line, lang, token, next);
+      else deviceSpeak(line, lang, next);
+    };
+    next();
   });
 }
 
 export function stopSpeaking(): void {
   if (typeof window === "undefined") return;
+  speakToken++; // any in-flight lookup or queued line is now stale
   if (currentAudio) {
     try {
       currentAudio.pause();
