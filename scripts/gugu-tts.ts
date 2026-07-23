@@ -8,6 +8,7 @@ import { PLAYGROUND_MATHS } from "@/lib/playground-maths";
 import { fixedVoiceLines, retryLinesFor } from "@/lib/lesson-voice";
 import { subconceptsFor } from "@/lib/teaching/subconcepts";
 import { hashLine, normalizeLine } from "@/lib/speak";
+import { spokenMath } from "@/lib/spoken-math";
 import type { LessonStep } from "@/lib/lesson-steps";
 
 // Optional scope filter: which spoken fields to generate. Default is everything.
@@ -68,32 +69,35 @@ function stepSpokenLines(step: LessonStep): string[] {
 
 // Every FIXED (non-personalised, no {placeholder}) line Gugu speaks.
 function collectLines(): string[] {
+  // Same transform the player applies before speaking, so the generated file
+  // and the line the player looks up hash to the same value.
+  const norm = (x: string) => normalizeLine(spokenMath(x));
   const set = new Set<string>();
   // The broad pools are skipped entirely when scoped to specific box codes.
   if (!SCOPED) {
-    for (const l of fixedGuguLines()) set.add(normalizeLine(l));
+    for (const l of fixedGuguLines()) set.add(norm(l));
     for (const track of LIFE_TRACKS)
       for (const lesson of track.lessons)
-        for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(normalizeLine(x));
+        for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(norm(x));
     for (const subject of PRACTICAL_SUBJECTS)
       for (const lesson of subject.lessons)
-        for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(normalizeLine(x));
+        for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(norm(x));
     for (const arr of Object.values(PLAYGROUND_MATHS))
       for (const lesson of arr)
-        for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(normalizeLine(x));
+        for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(norm(x));
   }
   // Tuition subconcept lessons (Kinematics, then more as topics land).
   for (const topic of SUBCONCEPT_TOPICS)
     for (const box of subconceptsFor(topic) ?? []) {
       if (SCOPED && !ONLY_CODES.has(box.code)) continue;
       for (const step of box.steps) {
-        for (const x of stepSpokenLines(step)) set.add(normalizeLine(x));
+        for (const x of stepSpokenLines(step)) set.add(norm(x));
         // Wrong-answer retry lines (lead + hint + nudge) the player speaks live.
-        if (FIELDS.has("hints")) for (const x of retryLinesFor(step)) set.add(normalizeLine(x));
+        if (FIELDS.has("hints")) for (const x of retryLinesFor(step)) set.add(norm(x));
       }
     }
   // The engine's fixed question openers and correct-answer reactions.
-  if (FIELDS.has("system")) for (const l of fixedVoiceLines()) set.add(normalizeLine(l));
+  if (FIELDS.has("system")) for (const l of fixedVoiceLines()) set.add(norm(l));
   return [...set].filter((x) => x.length > 0 && !x.includes("{"));
 }
 

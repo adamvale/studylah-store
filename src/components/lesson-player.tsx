@@ -236,6 +236,9 @@ export function LessonPlayer({
   const [understood, setUnderstood] = useState(false); // "I understand" on a teach step
 
   const praised = useRef(false); // Gugu praises a correct answer once per step
+  // Steps Gugu has already opened aloud. A step is spoken the FIRST time it is
+  // shown only, so stepping back to re-read something stays silent.
+  const autoSpoken = useRef<Set<number>>(new Set());
 
   const step = steps[i];
   const last = i === steps.length - 1;
@@ -275,15 +278,21 @@ export function LessonPlayer({
   // NOT a hint. Keyed on `i` so it re-speaks for each new question. The repeat
   // icon replays it. speak() cancels any prior line.
   useEffect(() => {
-    if (opener) speak(opener);
+    if (opener && !autoSpoken.current.has(i)) {
+      autoSpoken.current.add(i);
+      speak(opener);
+    }
     return () => stopSpeaking();
   }, [opener, i]);
 
   // On a teaching step, Gugu starts teaching by voice as the card appears.
   useEffect(() => {
-    if (teachSay) speak(teachSay);
+    if (teachSay && !autoSpoken.current.has(i)) {
+      autoSpoken.current.add(i);
+      speak(teachSay);
+    }
     return () => stopSpeaking();
-  }, [teachSay]);
+  }, [teachSay, i]);
 
   // The moment an interactive problem is solved, Gugu reacts like a tutor.
   // (Choice praise is spoken from its own click handler, before the summary.)
@@ -311,6 +320,23 @@ export function LessonPlayer({
     praised.current = false;
   }
 
+  // Step back to re-read something already covered. The step is treated as
+  // already understood, so Continue is unlocked straight away and the student
+  // can flick back and forth freely. Gugu stays quiet on a revisit (see the
+  // autoSpoken guard); the "Hear it" control still replays on demand.
+  function back() {
+    if (i === 0) return;
+    stopSpeaking();
+    setI((n) => Math.max(0, n - 1));
+    setPicked(null);
+    setRevealed(false);
+    setSolved(false);
+    setHintsShown(0);
+    setGaveUp(false);
+    setUnderstood(true);
+    praised.current = false;
+  }
+
   // A choice is "done" only once answered CORRECTLY (solved), so a wrong pick
   // keeps the question open for another try rather than revealing the answer.
   const showSummary =
@@ -324,14 +350,26 @@ export function LessonPlayer({
       progress={{ current: i + 1, total: steps.length }}
       headerRight={<Calculator />}
       footer={
-        <button
-          type="button"
-          onClick={next}
-          disabled={!canContinue}
-          className="w-full rounded-xl bg-accent py-3.5 text-sm font-bold text-night disabled:opacity-40"
-        >
-          {last ? "Finish lesson" : "Continue"}
-        </button>
+        <div className="flex items-center gap-2">
+          {i > 0 && (
+            <button
+              type="button"
+              onClick={back}
+              aria-label="Back to the previous step"
+              className="shrink-0 rounded-xl border border-hairline px-4 py-3.5 text-sm font-semibold text-ink/80"
+            >
+              Back
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={next}
+            disabled={!canContinue}
+            className="flex-1 rounded-xl bg-accent py-3.5 text-sm font-bold text-night disabled:opacity-40"
+          >
+            {last ? "Finish lesson" : "Continue"}
+          </button>
+        </div>
       }
     >
       {/* Gugu's opening nudge is spoken aloud once as the question appears; no

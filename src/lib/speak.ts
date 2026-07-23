@@ -11,6 +11,8 @@
 // So nothing breaks before the audio is generated, and dynamic lines always
 // still speak.
 
+import { spokenMath } from "./spoken-math";
+
 // ── Line hashing (must match scripts/gugu-tts.ts exactly) ───────────────────
 export function normalizeLine(text: string): string {
   return text.trim().replace(/\s+/g, " ");
@@ -140,7 +142,9 @@ let currentAudio: HTMLAudioElement | null = null;
 
 export function speak(text: string, lang = "en-GB"): void {
   if (typeof window === "undefined") return;
-  const clean = normalizeLine(text);
+  // Formulas are authored in notation so they LOOK right on screen; say them in
+  // words. The TTS pre-generator applies the same transform, so hashes match.
+  const clean = normalizeLine(spokenMath(text));
   if (!clean) return;
   stopSpeaking();
   const h = hashLine(clean);

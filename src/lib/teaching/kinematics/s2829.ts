@@ -154,17 +154,17 @@ export const BOXES: Subconcept[] = [
         question: "A stone is dropped from rest at the top of a 45 m cliff and falls at 10 m/s^2. Using d = ut + 1/2 a t^2, how long does it take to reach the ground?",
         options: ["4.5 s", "9 s", "3 s", "2 s"],
         correct: 2,
-        ask: "With u 0, 45 equals a half times 10 times t squared. So 5 t squared is 45, which makes t squared 9. What is the square root of 9?",
+        ask: "With u = 0, 45 = 1/2 × 10 × t^2. So 5t^2 = 45, and t^2 = 9. What is the square root of 9?",
         hints: [
-          "Since it starts from rest, 45 = 1/2 times 10 times t^2.",
-          "That gives t squared equals 9, so t is the square root of 9.",
+          "Since it starts from rest, 45 = 1/2 × 10 × t^2.",
+          "That gives t^2 = 9, so t is the square root of 9.",
         ],
         working: [
           { label: "Formula", latex: "d = ut + \\tfrac{1}{2}at^{2}" },
           { label: "Substitute", latex: "45 = (0)(t) + \\tfrac{1}{2}(10)t^{2}" },
           { label: "Answer", latex: "t = 3\\ \\text{s}" },
         ],
-        explain: "The time is 3 seconds. With u 0, 45 equals a half times 10 times t squared, so t squared is 9, and the square root of 9 is 3.",
+        explain: "The time is 3 seconds. With u = 0, 45 = 1/2 × 10 × t^2, so t^2 = 9, and the square root of 9 is 3.",
       },
       {
         kind: "choice",
