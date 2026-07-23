@@ -35,14 +35,25 @@ export function hashLine(text: string): string {
 }
 
 // ── Manifest: which lines have a generated audio file ───────────────────────
+// Audio is namespaced by voice so several tutors can coexist. The active voice
+// is named in /audio/gugu/active.json = { voice }; its available lines are in
+// /audio/gugu/<voice>/manifest.json, and each file is /audio/gugu/<voice>/<hash>.mp3.
+let activeVoice = "";
 let manifest: Set<string> | null = null;
 let manifestPromise: Promise<Set<string>> | null = null;
 
 function loadManifest(): Promise<Set<string>> {
   if (manifest) return Promise.resolve(manifest);
   if (!manifestPromise) {
-    manifestPromise = fetch("/audio/gugu/manifest.json")
-      .then((r) => (r.ok ? (r.json() as Promise<string[]>) : Promise.resolve<string[]>([])))
+    manifestPromise = fetch("/audio/gugu/active.json")
+      .then((r) => (r.ok ? (r.json() as Promise<{ voice?: string }>) : { voice: "" }))
+      .then((cfg) => {
+        activeVoice = cfg.voice ?? "";
+        if (!activeVoice) return [] as string[];
+        return fetch(`/audio/gugu/${activeVoice}/manifest.json`).then((r) =>
+          r.ok ? (r.json() as Promise<string[]>) : ([] as string[]),
+        );
+      })
       .then((arr) => {
         manifest = new Set(arr);
         return manifest;
@@ -133,7 +144,7 @@ export function speak(text: string, lang = "en-GB"): void {
   void loadManifest().then((m) => {
     if (m.has(h)) {
       try {
-        const audio = new Audio(`/audio/gugu/${h}.mp3`);
+        const audio = new Audio(`/audio/gugu/${activeVoice}/${h}.mp3`);
         currentAudio = audio;
         let fellBack = false;
         const fallback = () => {

@@ -79,7 +79,11 @@ async function main(): Promise<void> {
     process.exit(1);
   }
 
-  const outDir = path.join(process.cwd(), "public", "audio", "gugu");
+  // Audio is namespaced by voice so several tutors can coexist. Generating a
+  // voice also makes it the active one (edit active.json by hand to switch back
+  // without regenerating, as long as that voice's folder exists).
+  const baseDir = path.join(process.cwd(), "public", "audio", "gugu");
+  const outDir = path.join(baseDir, voice);
   fs.mkdirSync(outDir, { recursive: true });
 
   const lines = collectLines();
@@ -129,8 +133,9 @@ async function main(): Promise<void> {
     .filter((f) => f.endsWith(".mp3"))
     .map((f) => f.replace(/\.mp3$/, ""));
   fs.writeFileSync(path.join(outDir, "manifest.json"), JSON.stringify(onDisk));
+  fs.writeFileSync(path.join(baseDir, "active.json"), JSON.stringify({ voice }));
   console.log(
-    `\nDone. ${made} generated, ${skipped} already existed, ${failed} failed. ${onDisk.length} files in the manifest (${hashes.length} lines collected this run).`
+    `\nDone (voice ${voice}). ${made} generated, ${skipped} already existed, ${failed} failed. ${onDisk.length} files in this voice's manifest (${hashes.length} lines collected this run).`
   );
   if (failed > 0) process.exitCode = 1;
 }
