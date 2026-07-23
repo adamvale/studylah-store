@@ -1,0 +1,216 @@
+import type { Subconcept } from "@/lib/teaching/subconcepts";
+
+// TP5 Waves, Revision 1. Checkpoint over Practical Chapter 05 (Waves and optics),
+// sections tp5.1 to tp5.3: wave properties and the wave equation, the law of
+// reflection, refraction and Snell's law. Question-only (no teach cards, no formula fields).
+
+export const BOXES: Subconcept[] = [
+  {
+    id: "tp5.rev1",
+    code: "R1",
+    title: "Revision 1",
+    blurb: "Checkpoint: waves, reflection and refraction",
+    kind: "revision",
+    steps: [
+      {
+        kind: "choice",
+        question: "As a water wave travels across a pond, what does the wave actually carry from one place to another?",
+        options: [
+          "The water itself, from one side to the other",
+          "The whole pond, moving bodily across",
+          "Energy, while the water only vibrates about a fixed point",
+          "Nothing at all",
+        ],
+        correct: 2,
+        ask: "Ask what moves along the pond and what only shakes in place. Which option keeps the water fixed but still passes something on?",
+        hints: [
+          "A floating leaf bobs up and down as the wave passes, but it does not travel across with the wave.",
+          "The medium only vibrates about a fixed point; it is energy that is carried along.",
+        ],
+        explain: "A wave carries energy, not the medium. The water only vibrates about a fixed point, so a floating object bobs up and down but does not travel across with the wave.",
+      },
+      {
+        kind: "choice",
+        question: "A wave has a frequency of 25 Hz and a wavelength of 1.2 m. What is its speed?",
+        figure: "fig-pr5-01-wave-distance",
+        options: ["30 m/s", "20.8 m/s", "26.2 m/s", "0.048 m/s"],
+        correct: 0,
+        ask: "The wave speed is the frequency times the wavelength, so work out 25 times 1.2. Which option matches?",
+        hints: [
+          "Use v equals f times lambda.",
+          "25 times 1.2 is 30, and the speed is in metres per second.",
+        ],
+        working: [
+          { label: "Formula", latex: "v = f\\lambda" },
+          { label: "Substitute", latex: "v = 25 \\times 1.2" },
+          { label: "Answer", latex: "v = 30\\ \\text{m/s}" },
+        ],
+        explain: "The speed is 30 metres per second, because 25 hertz times 1.2 metres is 30 metres per second.",
+      },
+      {
+        kind: "choice",
+        question: "A ray of light strikes a plane mirror with an angle of incidence of 40 degrees, measured from the normal. What is the angle of reflection?",
+        figure: "fig-pr5-03-reflection-pins",
+        options: ["50 degrees", "20 degrees", "80 degrees", "40 degrees"],
+        correct: 3,
+        ask: "The law of reflection links the 2 angles, both taken from the normal. What does it say the angle of reflection must equal?",
+        hints: [
+          "The law of reflection states that the angle of incidence equals the angle of reflection.",
+          "Both angles are measured from the normal, so a 40 degree incidence gives a 40 degree reflection.",
+        ],
+        explain: "The angle of reflection is 40 degrees, because the law of reflection says the angle of incidence equals the angle of reflection, both measured from the normal.",
+      },
+      {
+        kind: "choice",
+        question: "A ray of light passes from air into a glass block. How does it bend at the surface?",
+        figure: "fig-pr5-04-refraction-block",
+        options: [
+          "Away from the normal, because it speeds up",
+          "Towards the normal, because it slows down",
+          "It does not bend at all",
+          "It turns straight back into the air",
+        ],
+        correct: 1,
+        ask: "Glass is optically denser than air, so light travels more slowly in it. Which way does a ray bend when it slows down entering a denser medium?",
+        hints: [
+          "Entering a denser medium, light slows down.",
+          "When it slows entering glass, the ray bends towards the normal, so the angle of refraction is smaller than the angle of incidence.",
+        ],
+        explain: "The ray bends towards the normal, because glass is optically denser than air, so the light slows down. The angle of refraction is therefore smaller than the angle of incidence.",
+      },
+      {
+        kind: "choice",
+        question: "Light enters glass with an angle of incidence of 45 degrees and an angle of refraction of 28 degrees. Find the refractive index. Take sin 45 degrees = 0.707 and sin 28 degrees = 0.469.",
+        figure: "fig-pr5-04-refraction-block",
+        options: ["1.0", "0.67", "1.5", "2.1"],
+        correct: 2,
+        ask: "The refractive index is sin i divided by sin r, so divide 0.707 by 0.469. Which option is that?",
+        hints: [
+          "Use n equals sin i divided by sin r.",
+          "0.707 divided by 0.469 is about 1.5.",
+        ],
+        working: [
+          { label: "Formula", latex: "n = \\dfrac{\\sin i}{\\sin r}" },
+          { label: "Substitute", latex: "n = \\dfrac{\\sin 45^\\circ}{\\sin 28^\\circ} = \\dfrac{0.707}{0.469}" },
+          { label: "Answer", latex: "n = 1.5" },
+        ],
+        explain: "The refractive index is 1.5, because 0.707 divided by 0.469 is about 1.5. The refractive index has no unit.",
+      },
+      {
+        kind: "classify",
+        prompt: "Sort each statement under the graph it describes.",
+        bins: ["Displacement-distance graph", "Displacement-time graph"],
+        items: [
+          { text: "gives the wavelength", bin: 0 },
+          { text: "is a snapshot of the wave at one instant", bin: 0 },
+          { text: "gives the period", bin: 1 },
+          { text: "follows one point as time passes", bin: 1 },
+        ],
+        ask: "Ask whether the horizontal axis is a distance or a time. Wavelength is a length, so it comes from a distance axis; period is a time, so it comes from a time axis. Tap each statement and drop it in its bin.",
+        hints: [
+          "A displacement-distance graph is a snapshot along the wave, so its crest-to-crest gap is the wavelength.",
+          "A displacement-time graph follows one point, so the time for one cycle on it is the period.",
+        ],
+        explain: "The wavelength and the snapshot belong to the displacement-distance graph, because its axis is a distance. The period and the one-point trace belong to the displacement-time graph, because its axis is a time.",
+      },
+      {
+        kind: "match",
+        prompt: "Match each wave quantity to its symbol or unit.",
+        pairs: [
+          { left: "Frequency", right: "measured in hertz" },
+          { left: "Period", right: "measured in seconds" },
+          { left: "Wavelength", right: "the symbol lambda, in metres" },
+          { left: "Wave speed", right: "measured in metres per second" },
+        ],
+        ask: "Recall what each quantity measures and its unit. Frequency counts waves each second, the period is a time, the wavelength is a length, and the speed is a length divided by a time.",
+        hints: [
+          "Frequency is measured in hertz and the period in seconds.",
+          "The wavelength lambda is a length in metres, so the speed, a length over a time, is in metres per second.",
+        ],
+        explain: "Frequency is in hertz, the period is in seconds, the wavelength lambda is in metres, and the wave speed is in metres per second.",
+      },
+      {
+        kind: "graphpick",
+        prompt: "In a refraction experiment, sin i is plotted against sin r. Which graph is expected for air into glass?",
+        xLabel: "sin r",
+        yLabel: "sin i",
+        options: [
+          { points: [[0, 0], [0.6, 0.9]], caption: "a straight line through the origin" },
+          { points: [[0, 0.3], [0.6, 0.9]], caption: "a straight line cutting the axis above the origin" },
+          { points: [[0, 0], [0.3, 0.18], [0.6, 0.9]], caption: "a curve that steepens" },
+          { points: [[0, 0.5], [0.6, 0.5]], caption: "a horizontal line" },
+        ],
+        correct: 0,
+        ask: "Snell's law says sin i is a constant, n, times sin r. A quantity that is a fixed multiple of another gives what kind of line, and where does it start?",
+        hints: [
+          "sin i equals n times sin r, and when sin r is 0 so is sin i.",
+          "That gives a straight line through the origin, and its gradient is the refractive index n.",
+        ],
+        explain: "The correct graph is the straight line through the origin, because sin i equals n times sin r. Its gradient is the refractive index, and it passes through the origin because sin i is 0 when sin r is 0.",
+      },
+      {
+        kind: "order",
+        prompt: "Put the steps of the optical-pins method for the law of reflection in order.",
+        items: [
+          "Draw the mirror line and mark the point O where the incident ray meets it",
+          "Stand 2 pins at least 5.0 cm apart to fix the incident ray",
+          "Look from the other side and line up 2 more pins with the reflections of the first pins",
+          "Remove the pins and draw the incident and reflected rays through the pin marks",
+          "Draw the normal at O and measure the angles of incidence and reflection from it",
+        ],
+        ask: "Think about the order of the lab work: set up the mirror, fix each ray with pins, then draw and finally measure. Put the steps in that sequence.",
+        hints: [
+          "You must fix the incident ray with pins before you can find its reflection.",
+          "The angles can only be measured after the rays and the normal are drawn.",
+        ],
+        explain: "First draw the mirror and mark O, then fix the incident ray with 2 pins, then sight 2 more pins on the reflection, then draw both rays, and finally draw the normal and measure the 2 angles from it.",
+      },
+      {
+        kind: "slider",
+        prompt: "A wave has a frequency of 25 Hz. Set the slider to its period T, in seconds.",
+        min: 0,
+        max: 0.1,
+        step: 0.01,
+        unit: "s",
+        start: 0,
+        targetMin: 0.035,
+        targetMax: 0.045,
+        ask: "The period is 1 divided by the frequency, so work out 1 divided by 25.",
+        hints: [
+          "Use T equals 1 divided by f.",
+          "1 divided by 25 is 0.04, so slide to 0.04 seconds.",
+        ],
+        working: [
+          { label: "Formula", latex: "T = \\dfrac{1}{f}" },
+          { label: "Substitute", latex: "T = \\dfrac{1}{25}" },
+          { label: "Answer", latex: "T = 0.04\\ \\text{s}" },
+        ],
+        explain: "The period is 0.04 seconds, because 1 divided by 25 hertz is 0.04 seconds. The period is the time for one whole cycle.",
+      },
+      {
+        kind: "open",
+        prompt: "Explain why a ray of light changes direction when it passes from air into a glass block.",
+        figure: "fig-pr5-04-refraction-block",
+        modelAnswer: "Glass is optically denser than air, so light travels more slowly in glass than in air. When the ray meets the boundary at an angle, this change of speed makes it change direction, an effect called refraction. Because the light slows down entering the denser glass, it bends towards the normal, so the angle of refraction is smaller than the angle of incidence.",
+        marks: [
+          "Light travels more slowly in glass because glass is optically denser.",
+          "The change of speed at the boundary causes refraction (a change of direction).",
+          "Slowing down means the ray bends towards the normal, so r is less than i.",
+        ],
+        ask: "Think about how the speed of light changes at the boundary, and which way a ray bends when it slows down going into a denser medium.",
+      },
+      {
+        kind: "open",
+        prompt: "A student measures the angle of incidence i and the angle of refraction r for a ray entering a glass block, then plots sin i against sin r. Explain what the graph looks like and how it gives the refractive index.",
+        figure: "fig-pr5-05-sini-sinr-graph",
+        modelAnswer: "By Snell's law, sin i equals n times sin r, so sin i is a constant multiple of sin r. The graph is therefore a straight line passing through the origin. The gradient of that line equals the refractive index n. Taking several readings and drawing a best-fit line reduces the effect of random errors, giving a more reliable value of n than a single pair of angles.",
+        marks: [
+          "Snell's law gives sin i = n sin r, so the graph is a straight line through the origin.",
+          "The gradient of the line equals the refractive index n.",
+          "A best-fit line through many points reduces random error, so n is more reliable.",
+        ],
+        ask: "Start from Snell's law, sin i equals n times sin r. What shape of line does that give, and what does its gradient represent?",
+      },
+    ],
+  },
+];

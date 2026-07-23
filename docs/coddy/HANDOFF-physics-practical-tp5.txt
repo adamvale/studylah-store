@@ -1,0 +1,66 @@
+HANDOFF: TP5 Waves (Tuition teach-then-test lesson content)
+App topic: TP5 Waves  <-  Practical Chapter 5 (Waves and optics)
+Date: 2026-07-23. From: Coddy Cowork.  FIFTH of the 6-chapter PHYSICS PRACTICAL run.
+
+SOURCE: /root/work/practical-export/Practical Chapter 05 - Waves.md (copyright-free recreation).
+Authored ORIGINALLY with fresh verified sample numbers. Topic code "TP5", ids tp5.*, files p5-*.ts
+(Dev-Claude may remap).
+
+SUBCONCEPT COUNT AND CODES
+9 boxes: 6 teaching subconcepts + 2 revision checkpoints + 1 topical quiz. One box per file:
+  p5-1.ts  TP5.1  Wave properties and the wave equation             (properties of a wave)
+  p5-2.ts  TP5.2  The law of reflection                             (law of reflection, Exp 1)
+  p5-3.ts  TP5.3  Refraction and Snell's law                        (law of refraction, Exp 2)
+  p5-4.ts  TP5.4  Critical angle and total internal reflection      (critical angle, TIR)
+  p5-5.ts  TP5.5  The converging lens and the lens equation         (thin converging lens)
+  p5-6.ts  TP5.6  Measuring focal length                            (Exp 3, 4, 5)
+  p5-rev1.ts R1   Revision 1 (TP5.1 to TP5.3)
+  p5-rev2.ts R2   Revision 2 (TP5.4 to TP5.6)
+  p5-quiz.ts Quiz whole-topic quiz
+Totals: 111 steps, 80 questions.
+
+CALCULATION-HEAVY (v = f lambda, n = sin i / sin r, sin c = 1/n, the lens equation - the trig was
+recomputed by hand). Every calc question carries a `formula` field on the teach cards and a `working`
+block [Formula / Substitute / Answer(-with-unit)] on the calc questions. (`formula` is on
+concept/insight cards ONLY - the two revisions and the quiz carry no `formula` fields.)
+
+ANSWER KEYS (owner's priority - all independently re-derived and confirmed correct):
+  - Wave: v = f lambda = 25 x 1.2 = 30 m/s; T = 1/f = 1/25 = 0.04 s (500 Hz x 0.66 m = 330 m/s). Read
+    wavelength from a displacement-DISTANCE graph, period from a displacement-TIME graph.
+  - Reflection: angle of incidence = angle of reflection, both from the NORMAL (i = 40 -> r = 40).
+  - Snell: n = sin i / sin r; sin 45 / sin 28 = 0.707/0.469 = 1.5; sin 40 / sin 25.3 = 1.5; graph of
+    sin i vs sin r has gradient n = 0.75/0.50 = 1.50. Entering glass, light bends TOWARDS the normal.
+  - Critical angle: sin c = 1/n; n = 1.5 -> c = 42 degrees (41.8); n = 1.33 -> c = 49 degrees (48.8).
+    TIR needs a denser-to-less-dense ray AND incidence greater than the critical angle; at c the
+    refraction angle is 90 degrees.
+  - Lens: 1/f = 1/u + 1/v (compute 1/f then take the reciprocal): u = 25.0, v = 75.0 -> 1/f = 0.0533,
+    f = 18.8 cm; u = 30, v = 60 -> 1/f = 0.0500, f = 20.0 cm. Magnification m = v/u; a graph of m
+    against v has gradient 1/f (G = 0.190 -> f = 5.3 cm). Displacement method f = (D^2 - d^2)/(4D) =
+    (10000 - 3457)/400 = 16.4 cm. A real image is inverted.
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit: 0 type errors across all 9 files.
+2. Structural validator: 6 lessons each >= 3 questions with a say + 2 to 4 starred keywords; revisions
+   EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5; figure only on
+   concept/insight/choice/open; all indices in range. PASSED.
+3. Calc audit + independent answer-key check (with the trig recomputed): every wave speed, refractive
+   index, critical angle and focal length matched to the marked option/target; every choice `correct`
+   confirmed; every spoterror `errorLine` (0-based) confirmed to target the genuinely false line
+   ("the angle of incidence is measured from the mirror surface"; "total internal reflection happens
+   going from air into glass"); classify (refraction vs TIR), match, order (optical-pins / focal-length
+   steps) and graphpick (sin i vs sin r through the origin) answers confirmed. No errors found.
+4. Compliance scan: digits in spoken fields; angles as digits with "degrees"; spoken powers as digits;
+   on-screen fields use _/^ (sin i, 1/f, cm^-1, 10^8, u, v); equations only in `formula`/`working`;
+   no em/en dashes; no emojis; no grade or pass promises. Clean.
+Correct-option positions spread across 0 to 3 (quiz choice indices 2,0,3,1,2,0,3,1,0,2; revisions
+2,0,3,1,2 and 1,3,0,2,3).
+
+FIGURES: no NEW art - references the EXISTING practical Chapter-5 SVG library (fig-pr5-01 to
+fig-pr5-08). Colour words in each `say` follow the current fig-pr5 art / house dark-theme palette: the
+WAVE curve and light RAYS blue; the glass block and lens body a pale blue solid; the NORMAL (dashed),
+the rest line, guides, dimension lines and the gradient triangle grey; labels and the angle ARCS
+(i, r, c) amber; in a lens ray diagram the OBJECT arrow green and the IMAGE arrow amber; on the sin i
+vs sin r graph the plotted-point crosses red and the best-fit line blue; axes white/grey. A
+displacement-distance graph is a snapshot along the wave; a displacement-time graph follows one point.
+
+NEXT: TP6 Practical Chapter 6 (Electricity and Magnetism) - the final practical chapter.

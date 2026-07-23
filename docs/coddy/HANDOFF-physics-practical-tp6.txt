@@ -1,0 +1,73 @@
+HANDOFF: TP6 Electricity and Magnetism (Tuition teach-then-test lesson content)
+App topic: TP6 Electricity and Magnetism  <-  Practical Chapter 6 (Electricity and Magnetism)
+Date: 2026-07-23. From: Coddy Cowork.  SIXTH and FINAL chapter of the PHYSICS PRACTICAL run.
+
+SOURCE: /root/work/practical-export/Practical Chapter 06 - Electricity and Magnetism.md (copyright-free
+recreation). Authored ORIGINALLY with fresh verified sample numbers. Topic code "TP6", ids tp6.*,
+files p6-*.ts (Dev-Claude may remap).
+
+SUBCONCEPT COUNT AND CODES
+9 boxes: 6 teaching subconcepts + 2 revision checkpoints + 1 topical quiz. One box per file:
+  p6-1.ts  TP6.1  Resistance, resistivity and Ohm's law                    (resistance, Ohm's law)
+  p6-2.ts  TP6.2  Current-voltage characteristics                          (I-V characteristics)
+  p6-3.ts  TP6.3  The potential divider and combining resistors            (potential divider, series/parallel)
+  p6-4.ts  TP6.4  Electrical power and energy                              (power and energy)
+  p6-5.ts  TP6.5  Measuring resistance experiments                        (Exp A, C, D)
+  p6-6.ts  TP6.6  The magnetic effect of a current and induction          (magnetism)
+  p6-rev1.ts R1   Revision 1 (TP6.1 to TP6.3)
+  p6-rev2.ts R2   Revision 2 (TP6.4 to TP6.6)
+  p6-quiz.ts Quiz whole-topic quiz
+Totals: 111 steps, 80 questions.
+
+CALCULATION-HEAVY: R = rho L / A, V = IR, potential divider, P = IV = I^2 R, E = VIt, series/parallel
+and the gradient methods all carry a `formula` field on the teach cards and a `working` block
+[Formula / Substitute / Answer(-with-unit)] on the calc questions. (`formula` is on concept/insight
+cards ONLY - the two revisions and the quiz carry no `formula` fields.) TP6.6 (magnetism) is
+conceptual - no working.
+
+ANSWER KEYS (owner's priority - all independently re-derived and confirmed correct):
+  - Ohm: R = V/I = 12/0.50 = 24 ohms; 9.30/1.52 = 6.12 ohms. Component gradient 1/R = 0.050 A/V ->
+    R = 20 ohms. R = rho L / A: longer -> more R, thicker -> less; doubling the area halves R.
+  - Series/parallel: series 25 + 50 + 75 = 150 ohms (maximum); parallel 1/R = 1/25 + 1/50 + 1/75 =
+    0.0733 -> R = 13.6 ohms (minimum). Series shares V by R; parallel shares I inversely.
+  - Potential divider: V_out = (R2/(R1 + R2)) V = (6.0/10.0) x 5.0 = 3.0 V (and (6.0/9.0) x 9.0 = 6.0 V).
+  - Power/energy: P = IV = 0.50 x 12 = 6.0 W; P = I^2 R = 2.0^2 x 5.0 = 20 W; E = VIt = 12 x 0.50 x
+    120 = 720 J (2.0 min = 120 s); LED P = 0.117 x 0.36 = 0.042 W.
+  - I-V: ohmic = straight line through the origin, gradient 1/R (R = 6.00 -> 0.167 A/V); filament lamp
+    S-curve (non-ohmic); diode turn-on then steep (non-ohmic). Diode I = V_x/R = 22.0/22.0 = 1.00 A.
+  - Wire experiment: R/L vs 1/L, gradient = R_X = (6.5 - 1.7)/(5.0 - 1.0) = 1.20 ohms, intercept =
+    rho/A = 0.50 ohm/m.
+  - Magnetism (ground truth, all verified): current out of the page -> ANTICLOCKWISE field (into the
+    page -> clockwise); a solenoid's NORTH pole is the anticlockwise-current end; strengthen with more
+    current / turns / a soft-iron core; Fleming's LEFT hand = the MOTOR force (thumb force, first
+    finger field N-to-S, second finger current); Faraday = e.m.f. proportional to the rate of flux
+    change; Lenz = the induced current opposes the change; Fleming's RIGHT hand = the generator's
+    induced current.
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit: 0 type errors across all 9 files.
+2. Structural validator: 6 lessons each >= 3 questions with a say + 2 to 4 starred keywords; revisions
+   EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5; figure only on
+   concept/insight/choice/open; all indices in range. PASSED.
+3. Calc audit + independent answer-key check: every resistance, output voltage, power, energy and
+   gradient recomputed and matched to the marked option/target; every choice `correct` confirmed;
+   every spoterror `errorLine` (0-based) confirmed to target the genuinely false line ("Fleming's
+   right-hand rule gives the motor force"; "a filament lamp is an ohmic conductor"); the magnetism
+   directions (out-of-page anticlockwise, anticlockwise-end north, Fleming LEFT for the motor force,
+   Faraday rate-of-change, Lenz opposes) confirmed; classify/match/order/graphpick answers confirmed.
+   No errors found.
+4. Compliance scan: digits in spoken fields; spoken powers as digits; on-screen fields use _/^
+   (I^2 R, R_1, V_out, A V^-1, 1/L); equations only in `formula`/`working`; no em/en dashes; no
+   emojis; no grade or pass promises. Clean.
+Correct-option positions spread across 0 to 3 (quiz choice indices 2,0,3,1,2,0,3,1,0,2; revisions
+2,0,3,1,2 and 1,3,0,2,3).
+
+FIGURES: no NEW art - references the EXISTING practical Chapter-6 SVG library (fig-pr6-01 to
+fig-pr6-19). Colour words in each `say` follow the current fig-pr6 art / house dark-theme palette:
+circuit WIRES, resistors, lamps, diodes, meters and the solenoid's poles/labels white/grey; the
+CURRENT, the current dot/cross and the coil/conductor amber; the magnetic FIELD lines (dashed) blue;
+on an I-V (or R/L, P-I) graph the best-fit line blue, guides and gradient triangle grey, axis labels
+amber. A current out of the page (a dot) gives an anticlockwise field, into the page (a cross) a
+clockwise one. Stacked panels described top/bottom.
+
+NEXT: none - TP6 completes the 6-chapter PHYSICS PRACTICAL run (Practical Chapters 1 to 6).

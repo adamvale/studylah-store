@@ -39,9 +39,30 @@ import { BOXES as P4_6 } from "./p4-6";
 import { BOXES as P4_R1 } from "./p4-rev1";
 import { BOXES as P4_R2 } from "./p4-rev2";
 import { BOXES as P4_Q } from "./p4-quiz";
-// The Physics PRACTICAL run (Paper 3), authored in the same teach-then-test
-// shape as the theory topics so it plays on the same engine:
-//   TP1 Practical skills, TP2 Measurements and kinematics, TP3 Dynamics, TP4 Heat
+
+import { BOXES as P5_1 } from "./p5-1";
+import { BOXES as P5_2 } from "./p5-2";
+import { BOXES as P5_3 } from "./p5-3";
+import { BOXES as P5_4 } from "./p5-4";
+import { BOXES as P5_5 } from "./p5-5";
+import { BOXES as P5_6 } from "./p5-6";
+import { BOXES as P5_R1 } from "./p5-rev1";
+import { BOXES as P5_R2 } from "./p5-rev2";
+import { BOXES as P5_Q } from "./p5-quiz";
+
+import { BOXES as P6_1 } from "./p6-1";
+import { BOXES as P6_2 } from "./p6-2";
+import { BOXES as P6_3 } from "./p6-3";
+import { BOXES as P6_4 } from "./p6-4";
+import { BOXES as P6_5 } from "./p6-5";
+import { BOXES as P6_6 } from "./p6-6";
+import { BOXES as P6_R1 } from "./p6-rev1";
+import { BOXES as P6_R2 } from "./p6-rev2";
+import { BOXES as P6_Q } from "./p6-quiz";
+// The Physics PRACTICAL run (Paper 3), all six chapters, authored in the same
+// teach-then-test shape as the theory topics so it plays on the same engine:
+//   TP1 Practical skills   TP2 Measurements and kinematics   TP3 Dynamics
+//   TP4 Heat               TP5 Waves and optics              TP6 Electricity and magnetism
 // Each is 6 micro-lessons, a revision checkpoint after the third and the sixth,
 // then a topical quiz. Surfaced through the Practical Lab rather than the topic
 // list, because the practical paper is not a syllabus topic you can forecast.
@@ -58,4 +79,10 @@ export const PHYSICS_PRACTICAL: Subconcept[] = [
   ...P4_1, ...P4_2, ...P4_3, ...P4_R1,
   ...P4_4, ...P4_5, ...P4_6, ...P4_R2,
   ...P4_Q,
+  ...P5_1, ...P5_2, ...P5_3, ...P5_R1,
+  ...P5_4, ...P5_5, ...P5_6, ...P5_R2,
+  ...P5_Q,
+  ...P6_1, ...P6_2, ...P6_3, ...P6_R1,
+  ...P6_4, ...P6_5, ...P6_6, ...P6_R2,
+  ...P6_Q,
 ];
