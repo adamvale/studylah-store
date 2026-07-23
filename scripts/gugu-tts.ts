@@ -63,6 +63,23 @@ const SCOPED = ONLY_CODES.size > 0;
 
 const API = "https://api.elevenlabs.io/v1/text-to-speech";
 
+// Audio weight per line. ElevenLabs takes this as a QUERY parameter, not a body
+// field. Default is mp3_44100_128, which is why the first ~6000 lines average
+// 136 KB each and the folder reached 795 MB.
+//
+// 64 kbps is the sweet spot for a speaking voice: half the bytes, and on a phone
+// speaker the difference is very hard to hear. 32 kbps (mp3_22050_32) halves it
+// again but starts to sound thin.
+//
+// Useful values: mp3_22050_32, mp3_44100_32, mp3_44100_64, mp3_44100_96,
+// mp3_44100_128 (default), mp3_44100_192 (paid tiers only).
+//
+// NOTE: this does not change a line's hash, which comes from the text. Existing
+// files are therefore SKIPPED, not re-encoded, so changing this only affects
+// lines that have never been generated. To shrink what already exists you would
+// have to delete those mp3s and pay to generate them again.
+const OUTPUT_FORMAT = process.env.ELEVENLABS_OUTPUT_FORMAT ?? "mp3_44100_64";
+
 function stepSpokenLines(step: LessonStep): string[] {
   const out: string[] = [];
   if (FIELDS.has("ask") && "ask" in step && step.ask) out.push(step.ask);
@@ -151,7 +168,7 @@ async function main(): Promise<void> {
       continue;
     }
     try {
-      const res = await fetch(`${API}/${voice}`, {
+      const res = await fetch(`${API}/${voice}?output_format=${OUTPUT_FORMAT}`, {
         method: "POST",
         headers: { "xi-api-key": key, "Content-Type": "application/json", Accept: "audio/mpeg" },
         body: JSON.stringify({
@@ -185,7 +202,7 @@ async function main(): Promise<void> {
   fs.writeFileSync(path.join(outDir, "manifest.json"), JSON.stringify(onDisk));
   fs.writeFileSync(path.join(baseDir, "active.json"), JSON.stringify({ voice }));
   console.log(
-    `\nDone (voice ${voice}). ${made} generated, ${skipped} already existed, ${failed} failed. ${onDisk.length} files in this voice's manifest (${hashes.length} lines collected this run).`
+    `\nDone (voice ${voice}, ${OUTPUT_FORMAT}). ${made} generated, ${skipped} already existed, ${failed} failed. ${onDisk.length} files in this voice's manifest (${hashes.length} lines collected this run).`
   );
   if (failed > 0) process.exitCode = 1;
 }

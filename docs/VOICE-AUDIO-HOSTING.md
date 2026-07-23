@@ -101,3 +101,28 @@ rather than regenerating (regenerating costs ElevenLabs credits):
 ```bash
 rclone copy r2:studylah-audio/gugu public/audio/gugu --progress
 ```
+
+## Making new lines lighter
+
+ElevenLabs takes the bitrate as a **query parameter**, not a body field, which is
+easy to miss. `scripts/gugu-tts.ts` now sends it and it is configurable:
+
+```
+ELEVENLABS_OUTPUT_FORMAT=mp3_44100_64    # the default now
+```
+
+The first ~6,000 lines were generated at the API default of `mp3_44100_128`,
+which is why they average 136 KB. At 64 kbps the same line is exactly half the
+size (measured: 367 KB against 185 KB) and, for a speaking voice on a phone
+speaker, very hard to tell apart. `mp3_22050_32` halves it again but starts to
+sound thin.
+
+Values: `mp3_22050_32`, `mp3_44100_32`, `mp3_44100_64`, `mp3_44100_96`,
+`mp3_44100_128`, `mp3_44100_192` (paid tiers only).
+
+**This only affects lines that have never been generated.** A line's file is named
+by a hash of its text, so changing the bitrate does not change the name, and the
+generator skips any file that already exists. Shrinking the existing 795 MB would
+mean deleting those mp3s and paying to generate all ~740,000 characters again.
+Not worth it: the win is in what comes next, and roughly ten more Physics topics
+plus Chemistry and Biology are still to be authored.
