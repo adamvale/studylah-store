@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { onAudioLevel, onSpeakingChange } from "@/lib/speak";
 
 // A small window on the lesson where the tutor sits, so a student feels taught
@@ -12,10 +12,9 @@ import { onAudioLevel, onSpeakingChange } from "@/lib/speak";
 // lesson has thousands of spoken lines and they change often, so per-line video
 // would cost a re-render every time a word is edited. This costs two files.
 //
-// Shaped and placed like a FaceTime picture-in-picture tile: a small portrait
-// window in the bottom-left corner. The 3:4 frame matches the footage, so the
-// face is never cropped, and it stays click-through so it can never swallow a
-// tap meant for the lesson underneath.
+// Shaped like a FaceTime picture-in-picture tile, and draggable for the same
+// reason FaceTime's is: wherever it sits by default, sooner or later it covers
+// something the student wants to read. Where they put it is remembered.
 //
 // Drop the footage at:
 //   public/tutor/<name>-idle.mp4     a few seconds, looping, mouth closed
@@ -24,12 +23,80 @@ import { onAudioLevel, onSpeakingChange } from "@/lib/speak";
 // generated voice. If the files are missing the window hides itself, so nothing
 // breaks before the footage exists.
 
+const STORE_KEY = "tutor_head_pos";
+const EDGE = 12; // keep this much clear of every edge
+
+type Pos = { x: number; y: number };
+
 export function TutorHead({ name = "amy", width = 104 }: { name?: string; width?: number }) {
+  const height = Math.round((width * 4) / 3);
   const [speaking, setSpeaking] = useState(false);
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [pos, setPos] = useState<Pos | null>(null); // null until measured, so it never flashes
+  const [dragging, setDragging] = useState(false);
   const idleRef = useRef<HTMLVideoElement | null>(null);
   const talkRef = useRef<HTMLVideoElement | null>(null);
+  const grab = useRef<Pos>({ x: 0, y: 0 }); // pointer offset within the tile
+
+  // Never let it sit off-screen, including after a rotation or a resize.
+  const clamp = useCallback(
+    (p: Pos): Pos => ({
+      x: Math.min(Math.max(p.x, EDGE), Math.max(EDGE, window.innerWidth - width - EDGE)),
+      y: Math.min(Math.max(p.y, EDGE), Math.max(EDGE, window.innerHeight - height - EDGE)),
+    }),
+    [width, height],
+  );
+
+  // Start where the student last left it; otherwise bottom-left, clear of the footer.
+  useEffect(() => {
+    let start: Pos | null = null;
+    try {
+      const raw = localStorage.getItem(STORE_KEY);
+      if (raw) {
+        const p = JSON.parse(raw) as Pos;
+        if (typeof p?.x === "number" && typeof p?.y === "number") start = p;
+      }
+    } catch {
+      /* ignore a corrupt value */
+    }
+    setPos(clamp(start ?? { x: EDGE + 4, y: window.innerHeight - height - 96 }));
+    const onResize = () => setPos((p) => (p ? clamp(p) : p));
+    window.addEventListener("resize", onResize);
+    window.addEventListener("orientationchange", onResize);
+    return () => {
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("orientationchange", onResize);
+    };
+  }, [clamp, height]);
+
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!pos) return;
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    grab.current = { x: e.clientX - pos.x, y: e.clientY - pos.y };
+    setDragging(true);
+  };
+
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!dragging) return;
+    e.preventDefault(); // stop the lesson scrolling under the finger
+    setPos(clamp({ x: e.clientX - grab.current.x, y: e.clientY - grab.current.y }));
+  };
+
+  const endDrag = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!dragging) return;
+    setDragging(false);
+    try {
+      (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+    } catch {
+      /* ignore */
+    }
+    try {
+      if (pos) localStorage.setItem(STORE_KEY, JSON.stringify(pos));
+    } catch {
+      /* private mode, not worth caring about */
+    }
+  };
 
   useEffect(() => onSpeakingChange(setSpeaking), []);
 
@@ -79,16 +146,23 @@ export function TutorHead({ name = "amy", width = 104 }: { name?: string; width?
     }
   }, [speaking, ready]);
 
-  if (failed) return null;
+  if (failed || !pos) return null;
 
-  const common =
-    "absolute inset-0 h-full w-full object-cover transition-opacity duration-200";
+  const common = "absolute inset-0 h-full w-full object-cover transition-opacity duration-200";
 
   return (
     <div
-      aria-hidden
-      className="pointer-events-none fixed bottom-24 left-4 z-[60] overflow-hidden rounded-2xl border border-white/15 bg-night/70 shadow-2xl backdrop-blur"
-      style={{ width, height: Math.round((width * 4) / 3) }}
+      role="button"
+      tabIndex={-1}
+      aria-label="Tutor video. Drag to move it out of the way."
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={endDrag}
+      onPointerCancel={endDrag}
+      className={`fixed z-[60] cursor-grab touch-none select-none overflow-hidden rounded-2xl border bg-night/70 shadow-2xl backdrop-blur ${
+        dragging ? "cursor-grabbing border-accent/70 scale-105" : "border-white/15"
+      } transition-[border-color,transform] duration-150`}
+      style={{ width, height, left: pos.x, top: pos.y }}
     >
       <video
         ref={idleRef}
