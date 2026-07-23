@@ -12,14 +12,19 @@ import { onSpeakingChange } from "@/lib/speak";
 // lesson has thousands of spoken lines and they change often, so per-line video
 // would cost a re-render every time a word is edited. This costs two files.
 //
+// Shaped and placed like a FaceTime picture-in-picture tile: a small portrait
+// window in the bottom-left corner. The 3:4 frame matches the footage, so the
+// face is never cropped, and it stays click-through so it can never swallow a
+// tap meant for the lesson underneath.
+//
 // Drop the footage at:
 //   public/tutor/<name>-idle.mp4     a few seconds, looping, mouth closed
 //   public/tutor/<name>-talking.mp4  a few seconds, looping, mid-speech
-// Both muted and silent: the audio always comes from Gugu's generated voice.
-// If the files are missing the window hides itself, so nothing breaks before
-// the footage exists.
+// Both 3:4 portrait, muted and silent: the audio always comes from Gugu's
+// generated voice. If the files are missing the window hides itself, so nothing
+// breaks before the footage exists.
 
-export function TutorHead({ name = "amy", size = 96 }: { name?: string; size?: number }) {
+export function TutorHead({ name = "amy", width = 104 }: { name?: string; width?: number }) {
   const [speaking, setSpeaking] = useState(false);
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -55,8 +60,8 @@ export function TutorHead({ name = "amy", size = 96 }: { name?: string; size?: n
   return (
     <div
       aria-hidden
-      className="pointer-events-none fixed bottom-24 left-4 z-[60] overflow-hidden rounded-2xl border border-hairline bg-night/70 shadow-xl backdrop-blur"
-      style={{ width: size, height: size }}
+      className="pointer-events-none fixed bottom-24 left-4 z-[60] overflow-hidden rounded-2xl border border-white/15 bg-night/70 shadow-2xl backdrop-blur"
+      style={{ width, height: Math.round((width * 4) / 3) }}
     >
       <video
         ref={idleRef}
