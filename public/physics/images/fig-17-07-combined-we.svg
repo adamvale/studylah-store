@@ -8,8 +8,8 @@
     text { fill:#EAEAEA; }
     .wire { fill:none; stroke:#EAEAEA; stroke-width:2; }
     .res { fill:none; stroke:#EAEAEA; stroke-width:2; }
-    .cellL { stroke:#EAEAEA; stroke-width:2; }
-    .cellS { stroke:#EAEAEA; stroke-width:5; }
+    .cellL { stroke:#9AA0A6; stroke-width:2; }
+    .cellS { stroke:#9AA0A6; stroke-width:5; }
     .val { fill:#E8B65A; }
     .lbl { fill:#6FB7E0; font-style:italic; }
     .cur { stroke:#6FB7E0; stroke-width:2; fill:none; }

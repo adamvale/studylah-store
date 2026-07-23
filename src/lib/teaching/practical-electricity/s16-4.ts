@@ -14,7 +14,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "The 3 wires of a plug",
-        figure: "fig-18-04-3-pin-plug",
+        figure: "fig-18-04-three-pin-plug",
         body: "A 3-pin plug carries 3 wires, each a fixed colour. The *live* wire is brown, the *neutral* wire is blue, and the *earth* wire is green and yellow.",
         say: "The figure shows a 3-pin plug opened up. The brown live wire connects to one pin, the blue neutral wire to another, and the green and yellow earth wire to the top pin. A fuse sits in the brown live wire. At the bottom a cord grip clamps the outer cable sleeve so the wires cannot be tugged loose. Learn the 3 colours: live is brown, neutral is blue, earth is green and yellow.",
       },
@@ -68,7 +68,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "choice",
         question: "What is the job of the earth wire in a plug?",
-        figure: "fig-18-04-3-pin-plug",
+        figure: "fig-18-04-three-pin-plug",
         options: [
           "It carries the current back to the mains during normal use",
           "It carries no current normally and only conducts on a fault, giving current a safe path to the ground",

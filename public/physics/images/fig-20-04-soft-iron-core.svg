@@ -3,9 +3,11 @@
     text { fill:#EAEAEA; }
     .coil { stroke:#EAEAEA; stroke-width:2; fill:none; }
     .core { fill:#9AA0A6; fill-opacity:0.28; stroke:#9AA0A6; stroke-width:1.4; }
-    .fld  { stroke:#6FB7E0; stroke-width:1.5; fill:none; }
+    .fld  { stroke:#9AA0A6; stroke-width:1.5; fill:none; }
     .lbl  { fill:#E8B65A; font-size:14px; }
     .pole { fill:#EAEAEA; font-size:16px; font-weight:bold; text-anchor:middle; }
+    .poleN { fill:#E58F8F; font-size:16px; font-weight:bold; text-anchor:middle; }
+    .poleS { fill:#6FB7E0; font-size:16px; font-weight:bold; text-anchor:middle; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
   </style>
   <defs>
@@ -16,8 +18,8 @@
 
   <!-- soft iron core bar -->
   <rect class="core" x="150" y="128" width="260" height="44" rx="4"/>
-  <text class="pole" x="168" y="158">N</text>
-  <text class="pole" x="392" y="158">S</text>
+  <text class="poleN" x="168" y="158">N</text>
+  <text class="poleS" x="392" y="158">S</text>
 
   <!-- coil turns wound over the core -->
   <g class="coil">

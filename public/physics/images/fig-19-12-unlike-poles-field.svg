@@ -4,8 +4,8 @@
     .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
     .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
     .pole { font-size:16px; font-weight:bold; fill:#EAEAEA; }
-    .fl { stroke:#6FB7E0; stroke-width:1.5; fill:none; }
-    .fhead { fill:#6FB7E0; }
+    .fl { stroke:#9AA0A6; stroke-width:1.5; fill:none; }
+    .fhead { fill:#9AA0A6; }
     .lbl { fill:#E8B65A; font-size:15px; }
   </style>
 

@@ -5,12 +5,16 @@
     .magN { fill:#E58F8F; opacity:0.22; }
     .magS { fill:#6FB7E0; opacity:0.22; }
     .wire { fill:none; stroke:#E8B65A; stroke-width:2.4; }
-    .lead { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .lead { fill:none; stroke:#6FB7E0; stroke-width:1.6; }
+    .fl { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
     .mot { stroke:#86C98B; stroke-width:2.2; fill:none; marker-end:url(#ag); }
     .lbl { font-size:14px; }
   </style>
   <defs>
-    <marker id="ag" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#86C98B"/></marker>
+    <marker id="ag" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#86C98B"/>
+    </marker>
+    <marker id="afl" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,4 L0,8 Z" fill="#9AA0A6"/></marker>
   </defs>
 
   <!-- N magnet (block) -->
@@ -24,6 +28,10 @@
   <text x="365" y="162" font-size="18" text-anchor="middle">S</text>
 
   <!-- copper wire (conductor in the field) -->
+  <line class="fl" x1="144" y1="124" x2="314" y2="124" marker-end="url(#afl)"/>
+  <line class="fl" x1="144" y1="140" x2="314" y2="140" marker-end="url(#afl)"/>
+  <line class="fl" x1="144" y1="172" x2="314" y2="172" marker-end="url(#afl)"/>
+  <line class="fl" x1="144" y1="188" x2="314" y2="188" marker-end="url(#afl)"/>
   <line class="wire" x1="140" y1="155" x2="320" y2="155"/>
   <text class="lbl" x="230" y="120" text-anchor="middle" fill="#E8B65A">copper wire</text>
 

@@ -5,10 +5,10 @@
   </defs>
   <style>
     text { fill:#EAEAEA; }
-    .inc { stroke:#E8B65A; stroke-width:1.8; fill:none; }
+    .inc { stroke:#6FB7E0; stroke-width:1.8; fill:none; }
     .out { stroke:#6FB7E0; stroke-width:1.8; fill:none; }
-    .smooth { stroke:#EAEAEA; stroke-width:2.4; }
-    .rough { stroke:#EAEAEA; stroke-width:2; fill:none; }
+    .smooth { stroke:#9AA0A6; stroke-width:2.4; }
+    .rough { stroke:#9AA0A6; stroke-width:2; fill:none; }
   </style>
   <!-- Panel 1: regular reflection -->
   <text x="230" y="28" text-anchor="middle" font-size="15" font-weight="bold">Regular reflection</text>

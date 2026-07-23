@@ -44,7 +44,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "choice",
         question: "Nuclear fission is best described as...",
-        figure: "fig-22-07",
+        figure: "fig-22-07-nuclear-fission",
         options: ["a heavy nucleus splitting into 2 lighter nuclei", "2 light nuclei joining into a heavier one", "a nucleus giving out only a gamma ray", "an electron being thrown out of the nucleus"],
         correct: 0,
         ask: "Think about what happens to a large nucleus such as uranium when a neutron strikes it. Does it split or join?",
@@ -178,7 +178,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "A factory rolls out metal foil over a beta source, with a detector above the foil. Explain how this arrangement keeps the foil at a constant thickness.",
-        figure: "fig-22-09",
+        figure: "fig-22-09-thickness-monitoring",
         modelAnswer: "A beta source sits below the moving foil and a detector reads the count rate above it. Beta radiation passes through thin foil but is partly absorbed by thicker foil, so the count rate depends on the thickness. If the foil gets too thick the count rate drops, and if it gets too thin the count rate rises. The reading is compared with the value for the correct thickness, and the rollers are adjusted so the count rate, and therefore the thickness, is brought back to the right value.",
         marks: [
           "Beta is partly absorbed by the foil, so the count rate depends on the thickness.",
@@ -190,7 +190,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "Explain why nuclear fusion can only happen at very high temperature and pressure.",
-        figure: "fig-22-08",
+        figure: "fig-22-08-nuclear-fusion",
         modelAnswer: "Fusion joins 2 light nuclei into a heavier one. Nuclei are positively charged, so they repel one another strongly. To fuse they must be pushed very close together against this repulsion. A very high temperature gives the nuclei very high speeds, and a very high pressure packs them close together, so they can collide hard enough to overcome the repulsion and join. This is why fusion happens in the Sun but is very hard to achieve on Earth.",
         marks: [
           "Nuclei are positively charged and repel each other.",

@@ -405,7 +405,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "Describe alpha, beta and gamma radiation. For each, state what it is, the charge it carries, and how easily it is stopped.",
-        figure: "fig-22-03",
+        figure: "fig-22-03-penetrating-power",
         modelAnswer: "Alpha radiation is a helium nucleus of 2 protons and 2 neutrons, charge plus 2. It is very strongly ionising but very weakly penetrating, and is stopped by a sheet of paper. Beta radiation is a fast electron from the nucleus, charge minus 1. It is moderately ionising and penetrating, and is stopped by a few millimetres of aluminium. Gamma radiation is a high-energy electromagnetic wave with no charge. It is weakly ionising but very penetrating, and is only reduced by a few centimetres of lead.",
         marks: [
           "Alpha is a helium nucleus, charge plus 2, stopped by paper.",
@@ -442,7 +442,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "A factory uses a radioactive source and a detector to keep sheets of aluminium foil at a constant thickness. Explain how this thickness gauge works and why a beta source is chosen.",
-        figure: "fig-22-09",
+        figure: "fig-22-09-thickness-monitoring",
         modelAnswer: "A beta source is placed on one side of the moving foil and a detector on the other side. The detector measures the count rate of the radiation passing through. If the foil gets thicker, more beta is absorbed and the count rate falls; if it gets thinner, less is absorbed and the count rate rises. The reading controls the rollers to keep the thickness constant. Beta is chosen because alpha would be stopped completely by the foil and gamma would pass straight through almost unchanged, so only beta gives a count rate that varies with the thickness.",
         marks: [
           "The count rate through the foil is measured; thicker foil gives a lower count, thinner foil a higher count.",

@@ -50,7 +50,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "choice",
         question: "In a correctly wired mains plug, which wire contains the fuse?",
-        figure: "fig-18-04-3-pin-plug",
+        figure: "fig-18-04-three-pin-plug",
         options: [
           "The live wire",
           "The neutral wire",

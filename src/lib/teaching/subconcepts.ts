@@ -108,6 +108,103 @@ import { BOXES as W06 } from "./waves/s10-6";
 import { BOXES as WREV2 } from "./waves/s10-rev2";
 import { BOXES as WQUIZ } from "./waves/s10-quiz";
 
+import { BOXES as S11_1 } from "./em-spectrum/s11-1";
+import { BOXES as S11_2 } from "./em-spectrum/s11-2";
+import { BOXES as S11_3 } from "./em-spectrum/s11-3";
+import { BOXES as S11_4 } from "./em-spectrum/s11-4";
+import { BOXES as S11_5 } from "./em-spectrum/s11-5";
+import { BOXES as S11_R1 } from "./em-spectrum/s11-rev1";
+import { BOXES as S11_R2 } from "./em-spectrum/s11-rev2";
+import { BOXES as S11_Q } from "./em-spectrum/s11-quiz";
+
+import { BOXES as S12_1 } from "./light/s12-1";
+import { BOXES as S12_2 } from "./light/s12-2";
+import { BOXES as S12_3 } from "./light/s12-3";
+import { BOXES as S12_4 } from "./light/s12-4";
+import { BOXES as S12_5 } from "./light/s12-5";
+import { BOXES as S12_6 } from "./light/s12-6";
+import { BOXES as S12_R1 } from "./light/s12-rev1";
+import { BOXES as S12_R2 } from "./light/s12-rev2";
+import { BOXES as S12_Q } from "./light/s12-quiz";
+
+import { BOXES as S13_1 } from "./static/s13-1";
+import { BOXES as S13_2 } from "./static/s13-2";
+import { BOXES as S13_3 } from "./static/s13-3";
+import { BOXES as S13_4 } from "./static/s13-4";
+import { BOXES as S13_5 } from "./static/s13-5";
+import { BOXES as S13_6 } from "./static/s13-6";
+import { BOXES as S13_R1 } from "./static/s13-rev1";
+import { BOXES as S13_R2 } from "./static/s13-rev2";
+import { BOXES as S13_Q } from "./static/s13-quiz";
+
+import { BOXES as S14_1 } from "./current/s14-1";
+import { BOXES as S14_2 } from "./current/s14-2";
+import { BOXES as S14_3 } from "./current/s14-3";
+import { BOXES as S14_4 } from "./current/s14-4";
+import { BOXES as S14_5 } from "./current/s14-5";
+import { BOXES as S14_6 } from "./current/s14-6";
+import { BOXES as S14_R1 } from "./current/s14-rev1";
+import { BOXES as S14_R2 } from "./current/s14-rev2";
+import { BOXES as S14_Q } from "./current/s14-quiz";
+
+import { BOXES as S15_1 } from "./dc-circuits/s15-1";
+import { BOXES as S15_2 } from "./dc-circuits/s15-2";
+import { BOXES as S15_3 } from "./dc-circuits/s15-3";
+import { BOXES as S15_4 } from "./dc-circuits/s15-4";
+import { BOXES as S15_5 } from "./dc-circuits/s15-5";
+import { BOXES as S15_6 } from "./dc-circuits/s15-6";
+import { BOXES as S15_R1 } from "./dc-circuits/s15-rev1";
+import { BOXES as S15_R2 } from "./dc-circuits/s15-rev2";
+import { BOXES as S15_Q } from "./dc-circuits/s15-quiz";
+
+import { BOXES as S16_1 } from "./practical-electricity/s16-1";
+import { BOXES as S16_2 } from "./practical-electricity/s16-2";
+import { BOXES as S16_3 } from "./practical-electricity/s16-3";
+import { BOXES as S16_4 } from "./practical-electricity/s16-4";
+import { BOXES as S16_5 } from "./practical-electricity/s16-5";
+import { BOXES as S16_R1 } from "./practical-electricity/s16-rev1";
+import { BOXES as S16_R2 } from "./practical-electricity/s16-rev2";
+import { BOXES as S16_Q } from "./practical-electricity/s16-quiz";
+
+import { BOXES as S17_1 } from "./magnetism/s17-1";
+import { BOXES as S17_2 } from "./magnetism/s17-2";
+import { BOXES as S17_3 } from "./magnetism/s17-3";
+import { BOXES as S17_4 } from "./magnetism/s17-4";
+import { BOXES as S17_5 } from "./magnetism/s17-5";
+import { BOXES as S17_6 } from "./magnetism/s17-6";
+import { BOXES as S17_R1 } from "./magnetism/s17-rev1";
+import { BOXES as S17_R2 } from "./magnetism/s17-rev2";
+import { BOXES as S17_Q } from "./magnetism/s17-quiz";
+
+import { BOXES as S18_1 } from "./electromagnetism/s18-1";
+import { BOXES as S18_2 } from "./electromagnetism/s18-2";
+import { BOXES as S18_3 } from "./electromagnetism/s18-3";
+import { BOXES as S18_4 } from "./electromagnetism/s18-4";
+import { BOXES as S18_5 } from "./electromagnetism/s18-5";
+import { BOXES as S18_6 } from "./electromagnetism/s18-6";
+import { BOXES as S18_R1 } from "./electromagnetism/s18-rev1";
+import { BOXES as S18_R2 } from "./electromagnetism/s18-rev2";
+import { BOXES as S18_Q } from "./electromagnetism/s18-quiz";
+
+import { BOXES as S19_1 } from "./em-induction/s19-1";
+import { BOXES as S19_2 } from "./em-induction/s19-2";
+import { BOXES as S19_3 } from "./em-induction/s19-3";
+import { BOXES as S19_4 } from "./em-induction/s19-4";
+import { BOXES as S19_5 } from "./em-induction/s19-5";
+import { BOXES as S19_R1 } from "./em-induction/s19-rev1";
+import { BOXES as S19_R2 } from "./em-induction/s19-rev2";
+import { BOXES as S19_Q } from "./em-induction/s19-quiz";
+
+import { BOXES as S20_1 } from "./radioactivity/s20-1";
+import { BOXES as S20_2 } from "./radioactivity/s20-2";
+import { BOXES as S20_3 } from "./radioactivity/s20-3";
+import { BOXES as S20_4 } from "./radioactivity/s20-4";
+import { BOXES as S20_5 } from "./radioactivity/s20-5";
+import { BOXES as S20_6 } from "./radioactivity/s20-6";
+import { BOXES as S20_R1 } from "./radioactivity/s20-rev1";
+import { BOXES as S20_R2 } from "./radioactivity/s20-rev2";
+import { BOXES as S20_Q } from "./radioactivity/s20-quiz";
+
 // The bite-sized lesson layer. A topic is broken into small subconcepts; each
 // one teaches a little, then tests it with a question, so a student learns the
 // idea before facing exam questions. Keyed by topicKey (the same keys the
@@ -213,6 +310,87 @@ const WAVES: Subconcept[] = [
   ...WQUIZ,
 ];
 
+
+// Electromagnetic Waves (KB Ch13): 5 micro-lessons, a revision checkpoint after 11.3 and at the
+// end, then the topical quiz. Content lives in ./em-spectrum/*.
+const EM_SPECTRUM: Subconcept[] = [
+  ...S11_1, ...S11_2, ...S11_3, ...S11_R1,
+  ...S11_4, ...S11_5, ...S11_R2,
+  ...S11_Q,
+];
+
+// Light (KB Ch14): 6 micro-lessons, a revision checkpoint after 12.3 and at the
+// end, then the topical quiz. Content lives in ./light/*.
+const LIGHT: Subconcept[] = [
+  ...S12_1, ...S12_2, ...S12_3, ...S12_R1,
+  ...S12_4, ...S12_5, ...S12_6, ...S12_R2,
+  ...S12_Q,
+];
+
+// Static Electricity (KB Ch15): 6 micro-lessons, a revision checkpoint after 13.3 and at the
+// end, then the topical quiz. Content lives in ./static/*.
+const STATIC: Subconcept[] = [
+  ...S13_1, ...S13_2, ...S13_3, ...S13_R1,
+  ...S13_4, ...S13_5, ...S13_6, ...S13_R2,
+  ...S13_Q,
+];
+
+// Current of Electricity (KB Ch16): 6 micro-lessons, a revision checkpoint after 14.3 and at the
+// end, then the topical quiz. Content lives in ./current/*.
+const CURRENT: Subconcept[] = [
+  ...S14_1, ...S14_2, ...S14_3, ...S14_R1,
+  ...S14_4, ...S14_5, ...S14_6, ...S14_R2,
+  ...S14_Q,
+];
+
+// D.C. Circuits (KB Ch17): 6 micro-lessons, a revision checkpoint after 15.3 and at the
+// end, then the topical quiz. Content lives in ./dc-circuits/*.
+const DC_CIRCUITS: Subconcept[] = [
+  ...S15_1, ...S15_2, ...S15_3, ...S15_R1,
+  ...S15_4, ...S15_5, ...S15_6, ...S15_R2,
+  ...S15_Q,
+];
+
+// Practical Electricity (KB Ch18): 5 micro-lessons, a revision checkpoint after 16.2 and at the
+// end, then the topical quiz. Content lives in ./practical-electricity/*.
+const PRACTICAL_ELECTRICITY: Subconcept[] = [
+  ...S16_1, ...S16_2, ...S16_R1,
+  ...S16_3, ...S16_4, ...S16_5, ...S16_R2,
+  ...S16_Q,
+];
+
+// Magnetism (KB Ch19): 6 micro-lessons, a revision checkpoint after 17.3 and at the
+// end, then the topical quiz. Content lives in ./magnetism/*.
+const MAGNETISM: Subconcept[] = [
+  ...S17_1, ...S17_2, ...S17_3, ...S17_R1,
+  ...S17_4, ...S17_5, ...S17_6, ...S17_R2,
+  ...S17_Q,
+];
+
+// Electromagnetism (KB Ch20): 6 micro-lessons, a revision checkpoint after 18.3 and at the
+// end, then the topical quiz. Content lives in ./electromagnetism/*.
+const ELECTROMAGNETISM: Subconcept[] = [
+  ...S18_1, ...S18_2, ...S18_3, ...S18_R1,
+  ...S18_4, ...S18_5, ...S18_6, ...S18_R2,
+  ...S18_Q,
+];
+
+// Electromagnetic Induction (KB Ch21): 5 micro-lessons, a revision checkpoint after 19.3 and at the
+// end, then the topical quiz. Content lives in ./em-induction/*.
+const EM_INDUCTION: Subconcept[] = [
+  ...S19_1, ...S19_2, ...S19_3, ...S19_R1,
+  ...S19_4, ...S19_5, ...S19_R2,
+  ...S19_Q,
+];
+
+// Radioactivity (KB Ch22): 6 micro-lessons, a revision checkpoint after 20.3 and at the
+// end, then the topical quiz. Content lives in ./radioactivity/*.
+const RADIOACTIVITY: Subconcept[] = [
+  ...S20_1, ...S20_2, ...S20_3, ...S20_R1,
+  ...S20_4, ...S20_5, ...S20_6, ...S20_R2,
+  ...S20_Q,
+];
+
 // topicKey -> its subconcepts. Kinematics shares the pure/science key
 // "t2-kinematics"; the N-Level key is "kinematics". Dynamics uses "t3-dynamics"
 // (Pure), "t4-dynamics" (the other level) and the N-Level key "dynamics".
@@ -245,6 +423,30 @@ const SUBCONCEPTS: Record<string, Subconcept[]> = {
   "t10-general-wave-properties": WAVES,
   "t9-general-wave-properties-and-sound": WAVES,
   "general-properties-of-waves": WAVES,
+  "t11-electromagnetic-spectrum": EM_SPECTRUM,
+  "t10-electromagnetic-spectrum": EM_SPECTRUM,
+  "electromagnetic-spectrum": EM_SPECTRUM,
+  "t12-light": LIGHT,
+  "t11-light": LIGHT,
+  "t13-static-electricity": STATIC,
+  "t14-current-of-electricity": CURRENT,
+  "t12-electric-charge-and-current": CURRENT,
+  "electric-charge-and-current-of-electricity": CURRENT,
+  "t15-d-c-circuits": DC_CIRCUITS,
+  "t13-d-c-circuits": DC_CIRCUITS,
+  "d-c-circuits": DC_CIRCUITS,
+  "t16-practical-electricity": PRACTICAL_ELECTRICITY,
+  "t14-practical-electricity": PRACTICAL_ELECTRICITY,
+  "practical-electricity": PRACTICAL_ELECTRICITY,
+  "t17-magnetism": MAGNETISM,
+  "t18-electromagnetism": ELECTROMAGNETISM,
+  "t19-electromagnetic-induction": EM_INDUCTION,
+  "t20-radioactivity": RADIOACTIVITY,
+  "t16-radioactivity": RADIOACTIVITY,
+  "radioactivity": RADIOACTIVITY,
+  // One syllabus teaches magnetism and electromagnetism as a single topic,
+  // so that key gets both trees in order.
+  "t15-magnetism-and-electromagnetism": [...MAGNETISM, ...ELECTROMAGNETISM],
 };
 
 export function subconceptsFor(topicKey: string): Subconcept[] | undefined {

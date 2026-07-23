@@ -2,10 +2,12 @@
   <style>
     text { fill:#EAEAEA; }
     .coil { stroke:#EAEAEA; stroke-width:2; fill:none; }
-    .fld  { stroke:#6FB7E0; stroke-width:1.5; fill:none; }
+    .fld  { stroke:#9AA0A6; stroke-width:1.5; fill:none; }
     .core { stroke:#9AA0A6; stroke-width:1; fill:none; }
     .lbl  { fill:#E8B65A; font-size:14px; }
     .pole { fill:#EAEAEA; font-size:16px; font-weight:bold; text-anchor:middle; }
+    .poleN { fill:#E58F8F; font-size:16px; font-weight:bold; text-anchor:middle; }
+    .poleS { fill:#6FB7E0; font-size:16px; font-weight:bold; text-anchor:middle; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
   </style>
   <defs>
@@ -44,8 +46,8 @@
   <path class="fld" d="M104,242 Q160,216 188,196" marker-end="url(#f3)"/>
 
   <!-- poles -->
-  <text class="pole" x="200" y="185">S</text>
-  <text class="pole" x="440" y="185">N</text>
+  <text class="poleS" x="200" y="185">S</text>
+  <text class="poleN" x="440" y="185">N</text>
 
   <!-- labels -->
   <text class="lbl" x="498" y="168">field line</text>

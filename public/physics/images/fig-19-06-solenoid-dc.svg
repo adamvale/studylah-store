@@ -5,6 +5,8 @@
     .coil { stroke:#6FB7E0; stroke-width:2; fill:none; }
     .wire { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
     .pole { font-size:15px; font-weight:bold; fill:#EAEAEA; }
+    .poleN { font-size:15px; font-weight:bold; fill:#E58F8F; }
+    .poleS { font-size:15px; font-weight:bold; fill:#6FB7E0; }
     .lbl { fill:#E8B65A; font-size:14px; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
     .cur { stroke:#86C98B; stroke-width:2; fill:none; }
@@ -13,8 +15,8 @@
 
   <!-- steel bar inside solenoid -->
   <rect class="bar" x="200" y="70" width="240" height="40" rx="2"/>
-  <text class="pole" x="212" y="95">N</text>
-  <text class="pole" x="420" y="95">S</text>
+  <text class="poleN" x="212" y="95">N</text>
+  <text class="poleS" x="420" y="95">S</text>
 
   <!-- solenoid coils across the bar -->
   <g class="coil">

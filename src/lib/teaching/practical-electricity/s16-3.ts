@@ -30,7 +30,7 @@ export const BOXES: Subconcept[] = [
         heading: "Earthing",
         figure: "fig-18-03-earthing-comparison",
         body: "*Earthing* connects the metal *casing* to the ground through a low-resistance *earth wire*, so if the live wire touches the casing the fault current is *diverted* safely to earth instead of through a person.",
-        say: "This figure shows the same appliance twice. On the left there is no earth wire. A fault has let the brown live wire touch the metal casing, so the whole casing is now live. When a person touches it, the current flows through their body to the ground and they get a shock. On the right the metal casing is joined to the green and yellow earth wire. Now if the casing goes live, the current rushes down that low-resistance earth wire straight to the ground instead of through the person. The surge of current also blows the fuse or trips the breaker, so the appliance switches off and nobody is shocked.",
+        say: "This figure shows the same appliance twice. On the left there is no earth wire. A fault has let the brown live wire touch the metal casing, so the whole casing is now live. When a person touches it, the current flows through their body to the ground and they get a shock. On the right the metal casing is joined to the green earth wire. Now if the casing goes live, the current rushes down that low-resistance earth wire straight to the ground instead of through the person. The surge of current also blows the fuse or trips the breaker, so the appliance switches off and nobody is shocked.",
       },
       {
         kind: "concept",

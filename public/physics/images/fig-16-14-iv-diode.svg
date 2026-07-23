@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 300" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
-    .axis { stroke:#EAEAEA; stroke-width:2; fill:none; }
-    .curve { stroke:#86C98B; stroke-width:2.4; fill:none; }
+    .axis { stroke:#9AA0A6; stroke-width:2; fill:none; }
+    .curve { stroke:#6FB7E0; stroke-width:2.4; fill:none; }
     .lbl { font-size:12px; }
   </style>
   <!-- axes crossing at centre -->

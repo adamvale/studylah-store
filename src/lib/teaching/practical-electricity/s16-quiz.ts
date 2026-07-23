@@ -125,7 +125,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "choice",
         question: "In a mains plug, which wire should the fuse be fitted in?",
-        figure: "fig-18-04-3-pin-plug",
+        figure: "fig-18-04-three-pin-plug",
         options: [
           "The neutral wire",
           "The earth wire",

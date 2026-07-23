@@ -7,7 +7,7 @@
     .magS { fill:#6FB7E0; opacity:0.28; }
     .magN { fill:#E58F8F; opacity:0.28; }
     .mot { stroke:#E8B65A; stroke-width:1.8; fill:none; marker-end:url(#ar); }
-    .flux { stroke:#86C98B; stroke-width:1.3; fill:none; stroke-dasharray:4 3; }
+    .flux { stroke:#9AA0A6; stroke-width:1.3; fill:none; stroke-dasharray:4 3; }
     .ndl { stroke:#E8B65A; stroke-width:2.2; fill:none; }
     .cap { font-size:14px; text-anchor:middle; fill:#E8B65A; }
   </style>

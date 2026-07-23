@@ -56,7 +56,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "choice",
         question: "Uranium 238, with proton number 92, decays by alpha emission. Which nuclide is produced?",
-        figure: "fig-22-02",
+        figure: "fig-22-02-nuclide-notation",
         options: ["uranium 234", "thorium 234", "thorium 238", "radium 234"],
         correct: 1,
         ask: "In alpha decay the nucleon number falls by 4 and the proton number falls by 2. Start from uranium 238 with proton number 92.",
@@ -74,7 +74,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "choice",
         question: "Which radiation is the most strongly ionising but is stopped by a sheet of paper?",
-        figure: "fig-22-03",
+        figure: "fig-22-03-penetrating-power",
         options: ["Gamma radiation", "Beta radiation", "Alpha radiation", "X-radiation"],
         correct: 2,
         ask: "Think about which radiation ionises most strongly yet cannot even get through a sheet of paper.",
@@ -171,7 +171,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "Describe the structure of an atom. Name the particles found in the nucleus and their charges, and state where almost all of the atom's mass is located.",
-        figure: "fig-22-01",
+        figure: "fig-22-01-atom-structure",
         modelAnswer: "An atom has a tiny central nucleus containing protons, each with a charge of plus 1, and neutrons, which have no charge. Protons and neutrons together are called nucleons. Electrons, each with a charge of minus 1, move around the nucleus in outer shells. Almost all of the atom's mass is in the nucleus, because an electron is only about 1 divided by 1840 as heavy as a nucleon. A neutral atom has equal numbers of protons and electrons.",
         marks: [
           "Nucleus contains protons (charge +1) and neutrons (no charge).",
