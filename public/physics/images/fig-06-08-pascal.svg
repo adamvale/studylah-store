@@ -29,7 +29,7 @@
   <text x="210" y="245" text-anchor="middle" class="lbl">Applied pressure is transmitted equally</text>
   <text x="210" y="263" text-anchor="middle" class="lbl">in all directions (Pascal's principle)</text>
   <defs>
-    <marker id="j" markerWidth="7" markerHeight="7" refX="3.5" refY="6" orient="auto"><path d="M0,0 L3.5,7 L7,0 Z" fill="#6FB7E0"/></marker>
-    <marker id="f" markerWidth="8" markerHeight="8" refX="4" refY="6" orient="auto"><path d="M0,0 L4,7 L8,0 Z" fill="#E58F8F"/></marker>
+    <marker id="j" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#6FB7E0"/></marker>
+    <marker id="f" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#E8B65A"/></marker>
   </defs>
 </svg>

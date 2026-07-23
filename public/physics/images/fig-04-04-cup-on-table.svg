@@ -3,6 +3,12 @@
     <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
     </marker>
+    <marker id="arw-e58f8f" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#E58F8F"/>
+    </marker>
+    <marker id="arw-86c98b" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#86C98B"/>
+    </marker>
   </defs>
   <style>
     text { fill:#EAEAEA; }
@@ -20,10 +26,10 @@
   <text x="252" y="145" font-size="13.5">cup</text>
   <text x="325" y="200" font-size="13.5">table</text>
   <!-- normal force up -->
-  <line class="f" x1="200" y1="150" x2="200" y2="80" marker-end="url(#arw)"/>
+  <line class="f" x1="200" y1="150" x2="200" y2="80" marker-end="url(#arw-86c98b)"/>
   <text x="210" y="90" font-size="14" fill="#86C98B">F (normal force)</text>
   <!-- weight down -->
-  <line class="w" x1="200" y1="170" x2="200" y2="240" marker-end="url(#arw)"/>
+  <line class="w" x1="200" y1="170" x2="200" y2="240" marker-end="url(#arw-e58f8f)"/>
   <text x="210" y="225" font-size="14" fill="#E58F8F">W (weight)</text>
   <text x="200" y="265" text-anchor="middle" font-size="13">F = W, so the resultant force is zero.</text>
   <text x="200" y="283" text-anchor="middle" font-size="13">The cup stays at rest.</text>

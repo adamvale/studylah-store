@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 240" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .wire { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .dot  { fill:#E8B65A; }
+    .curl { fill:#E8B65A; font-size:13px; }
+    .lead { fill:none; stroke:#9AA0A6; stroke-width:1.1; }
+    .note { fill:#9AA0A6; font-size:12px; }
+    .qm   { fill:#9AA0A6; font-size:26px; }
+  </style>
+
+  <!-- straight wire seen end-on, current coming out of the page -->
+  <circle class="wire" cx="210" cy="120" r="16"/>
+  <circle class="dot" cx="210" cy="120" r="5"/>
+
+  <text class="curl" x="210" y="56" text-anchor="middle">current out of the page</text>
+  <path class="lead" d="M210,64 L210,100"/>
+
+  <text class="qm" x="120" y="130" text-anchor="middle">?</text>
+  <text class="qm" x="300" y="130" text-anchor="middle">?</text>
+
+  <text class="note" x="210" y="200" text-anchor="middle">field pattern = ?</text>
+</svg>

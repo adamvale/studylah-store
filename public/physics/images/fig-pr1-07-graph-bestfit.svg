@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 330" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12.5px; }
+    .axis { stroke:#EAEAEA; stroke-width:1.6; }
+    .point { stroke:#EAEAEA; stroke-width:2; stroke-linecap:round; }
+    .bestfit { fill:none; stroke:#6FB7E0; stroke-width:2.2; }
+    .tri { fill:none; stroke:#E8B65A; stroke-width:1.8; }
+    .tri-lbl { fill:#E8B65A; font-size:12.5px; }
+    .key { font-size:12px; }
+    .axlbl { font-size:12.5px; }
+  </style>
+  <defs>
+    <marker id="gb1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
+    </marker>
+  </defs>
+
+  <line class="axis" x1="60" y1="280" x2="60" y2="40" marker-end="url(#gb1)"/>
+  <line class="axis" x1="60" y1="280" x2="390" y2="280" marker-end="url(#gb1)"/>
+  <text x="30" y="30" class="axlbl">T&#178; / s&#178;</text>
+  <text x="340" y="305" class="axlbl">l / cm</text>
+
+  <!-- key -->
+  <path class="point" d="M100,50 l10,10 M110,50 l-10,10"/>
+  <text x="118" y="60" class="key">= readings</text>
+  <path class="bestfit" d="M100,80 H130"/>
+  <text x="138" y="85" class="key">= best fit line</text>
+
+  <!-- best fit line -->
+  <path class="bestfit" d="M85,262 L360,52"/>
+
+  <!-- readings -->
+  <path class="point" d="M95,250 l10,10 M105,250 l-10,10"/>
+  <path class="point" d="M145,202 l10,10 M155,202 l-10,10"/>
+  <path class="point" d="M195,174 l10,10 M205,174 l-10,10"/>
+  <path class="point" d="M245,126 l10,10 M255,126 l-10,10"/>
+  <path class="point" d="M295,97 l10,10 M305,97 l-10,10"/>
+  <path class="point" d="M340,54 l10,10 M350,54 l-10,10"/>
+
+  <!-- large gradient triangle -->
+  <path class="tri" d="M120,235 H330 V75"/>
+  <text x="338" y="160" class="tri-lbl">rise</text>
+  <text x="200" y="253" text-anchor="middle" class="tri-lbl">run</text>
+  <text x="70" y="305" class="tri-lbl">gradient = rise / run</text>
+</svg>

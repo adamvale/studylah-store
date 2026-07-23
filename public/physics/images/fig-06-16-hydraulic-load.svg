@@ -27,6 +27,6 @@
   <text x="300" y="168" text-anchor="end" class="lbl">area A&#8322; (large)</text>
   <text x="240" y="252" text-anchor="middle" class="lbl">F&#8321;/A&#8321; = F&#8322;/A&#8322;</text>
   <defs>
-    <marker id="lf" markerWidth="8" markerHeight="8" refX="4" refY="6" orient="auto"><path d="M0,0 L4,7 L8,0 Z" fill="#E58F8F"/></marker>
+    <marker id="lf" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#E58F8F"/></marker>
   </defs>
 </svg>

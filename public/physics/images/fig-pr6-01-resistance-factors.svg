@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 244" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .cond { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .face { fill:#EAEAEA; fill-opacity:0.30; stroke:#EAEAEA; stroke-width:2; }
+    .dim  { fill:none; stroke:#9AA0A6; stroke-width:1.2; }
+    .lead { fill:none; stroke:#9AA0A6; stroke-width:1.1; }
+    .note { fill:#9AA0A6; font-size:12px; }
+    .eq   { fill:#EAEAEA; font-size:16px; }
+  </style>
+  <defs>
+    <marker id="p2a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#9AA0A6"/></marker>
+    <marker id="p2b" markerWidth="9" markerHeight="8" refX="7" refY="3" orient="auto-start-reverse"><path d="M0,0 L7,3 L0,6 Z" fill="#9AA0A6"/></marker>
+  </defs>
+
+  <!-- one conductor lying on its side -->
+  <path class="cond" d="M110,60 L330,60 M110,120 L330,120"/>
+  <path class="cond" d="M330,60 A10,30 0 0 1 330,120"/>
+  <ellipse class="face" cx="110" cy="90" rx="10" ry="30"/>
+
+  <!-- shaded end face = cross-sectional area A -->
+  <path class="lead" d="M86,90 L98,90"/>
+  <text x="82" y="94" text-anchor="end">area A</text>
+
+  <!-- resistivity on the body -->
+  <text x="225" y="95" text-anchor="middle">resistivity &#961;</text>
+
+  <!-- length along the bar -->
+  <path class="dim" d="M110,124 L110,148 M330,124 L330,148"/>
+  <path class="dim" d="M110,142 L330,142" marker-start="url(#p2b)" marker-end="url(#p2a)"/>
+  <text x="220" y="164" text-anchor="middle" class="note">length L</text>
+
+  <text x="210" y="198" text-anchor="middle" class="eq">R = &#961; L / A</text>
+
+  <text x="30" y="228" class="note">longer L: bigger R</text>
+  <text x="230" y="228" class="note">bigger A: smaller R</text>
+</svg>

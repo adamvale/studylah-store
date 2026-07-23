@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 430" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .stand { fill:none; stroke:#EAEAEA; stroke-width:2.2; }
+    .base { fill:none; stroke:#EAEAEA; stroke-width:3; }
+    .lamina { fill:#EAEAEA; fill-opacity:0.10; stroke:#EAEAEA; stroke-width:1.6; }
+    .plumb { fill:none; stroke:#EAEAEA; stroke-width:1.4; }
+    .hole { fill:none; stroke:#EAEAEA; stroke-width:1.4; }
+    .drawn-line { fill:none; stroke:#9AA0A6; stroke-width:1.3; }
+    .leader { fill:none; stroke:#9AA0A6; stroke-width:1; }
+    .note { fill:#9AA0A6; font-size:11.5px; }
+  </style>
+
+  <!-- TOP: lamina hanging from one hole -->
+  <path class="base" d="M18,215 L78,215"/>
+  <path class="stand" d="M48,215 L48,60"/>
+  <path class="stand" d="M48,68 L148,68"/>
+  <polygon class="lamina" points="135,70 200,50 262,90 250,160 170,175 140,130"/>
+  <circle cx="150" cy="68" r="3.5" fill="#EAEAEA"/>
+  <path class="plumb" d="M150,68 L150,196"/>
+  <circle cx="150" cy="202" r="6" fill="#EAEAEA"/>
+  <text x="150" y="44" text-anchor="middle">hole</text>
+  <text x="215" y="112" text-anchor="middle">lamina</text>
+  <path class="leader" d="M182,209 L159,201"/>
+  <text x="185" y="213">plumb line</text>
+  <text x="20" y="235">stand</text>
+  <text class="note" x="230" y="248" text-anchor="middle">hang from each hole in turn</text>
+
+  <!-- BOTTOM: the 3 drawn lines cross at the centre of gravity -->
+  <polygon class="lamina" points="135,282 200,262 262,302 250,372 170,387 140,342"/>
+  <path class="drawn-line" d="M150,280 L241,369"/>
+  <path class="drawn-line" d="M252,312 L148,341"/>
+  <path class="drawn-line" d="M180,377 L214,282"/>
+  <circle class="hole" cx="150" cy="280" r="3"/>
+  <circle class="hole" cx="252" cy="312" r="3"/>
+  <circle class="hole" cx="180" cy="377" r="3"/>
+  <circle cx="198" cy="327" r="4.5" fill="#EAEAEA"/>
+  <text x="207" y="321">G</text>
+  <path class="leader" d="M131,270 L146,278"/>
+  <text class="note" x="128" y="272" text-anchor="end">holes</text>
+  <text x="210" y="412" text-anchor="middle">the 3 lines cross at the centre of gravity G</text>
+</svg>

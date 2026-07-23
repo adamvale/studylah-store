@@ -10,8 +10,8 @@
   </style>
   <defs>
     <marker id="if" markerWidth="12" markerHeight="12" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#86C98B"/></marker>
-    <marker id="i1" markerWidth="10" markerHeight="10" refX="4" refY="1" orient="auto"><path d="M0,7 L4,0 L8,7 Z" fill="#9AA0A6"/></marker>
-    <marker id="i2" markerWidth="10" markerHeight="10" refX="4" refY="6" orient="auto"><path d="M0,0 L4,7 L8,0 Z" fill="#9AA0A6"/></marker>
+    <marker id="i1" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto-start-reverse"><path d="M0,0 L8,3.5 L0,7 Z" fill="#9AA0A6"/></marker>
+    <marker id="i2" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#9AA0A6"/></marker>
   </defs>
   <!-- triangle P (bottom-left), Q (bottom-right), R (top-right) -->
   <polygon class="fill" points="60,205 320,205 320,85"/>

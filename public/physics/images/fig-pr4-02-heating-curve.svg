@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 320" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .axis { stroke:#EAEAEA; stroke-width:1.8; }
+    .curve { fill:none; stroke:#6FB7E0; stroke-width:2.6; }
+    .change { stroke:#E8B65A; stroke-width:1.6; stroke-dasharray:6 4; }
+    .axlbl { font-size:12px; fill:#EAEAEA; }
+    .state { font-size:13px; fill:#86C98B; }
+    .phase { font-size:12px; fill:#E8B65A; }
+    .note { font-size:12px; fill:#EAEAEA; }
+  </style>
+  <defs>
+    <marker id="h2a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
+    </marker>
+  </defs>
+
+  <line class="axis" x1="70" y1="270" x2="70" y2="30" marker-end="url(#h2a)"/>
+  <line class="axis" x1="70" y1="270" x2="410" y2="270" marker-end="url(#h2a)"/>
+  <text class="axlbl" x="24" y="22">temperature / °C</text>
+  <text class="axlbl" x="400" y="294" text-anchor="end">time / s</text>
+
+  <!-- melting and boiling levels -->
+  <line class="change" x1="70" y1="190" x2="405" y2="190"/>
+  <line class="change" x1="70" y1="110" x2="405" y2="110"/>
+  <text class="phase" x="64" y="194" text-anchor="end">melting</text>
+  <text class="phase" x="64" y="114" text-anchor="end">boiling</text>
+
+  <!-- heating curve: rise, plateau, rise, plateau, rise -->
+  <polyline class="curve" points="70,250 120,190 190,190 250,110 340,110 395,58"/>
+
+  <text class="state" x="78" y="262">solid</text>
+  <text class="state" x="205" y="230">liquid</text>
+  <text class="state" x="345" y="70">gas</text>
+
+  <text class="note" x="84" y="60">sloping: Q = m c Δθ</text>
+  <text class="note" x="84" y="82">flat: L = l m</text>
+</svg>

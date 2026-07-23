@@ -18,7 +18,7 @@
     <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
       <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
     </marker>
-    <marker id="aha" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+    <marker id="aha" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto-start-reverse">
       <path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/>
     </marker>
   </defs>

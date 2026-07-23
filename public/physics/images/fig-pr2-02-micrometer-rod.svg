@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 345" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .part { fill:#EAEAEA; fill-opacity:0.10; stroke:#EAEAEA; stroke-width:1.8; }
+    .frame { fill:none; stroke:#EAEAEA; stroke-width:2.6; }
+    .rod { fill:#EAEAEA; fill-opacity:0.18; stroke:#EAEAEA; stroke-width:1.8; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+    .lbl { fill:#EAEAEA; font-size:12px; }
+    .datum { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
+    .tick { stroke:#EAEAEA; stroke-width:1.2; }
+    .num { fill:#9AA0A6; font-size:11px; }
+    .hi { stroke:#E8B65A; stroke-width:2.2; fill:none; }
+    .hitx { fill:#E8B65A; font-size:11px; }
+    .read { fill:#E8B65A; font-size:14px; }
+  </style>
+  <path class="frame" d="M115,50 a68,68 0 0 0 0,120"/>
+  <rect class="part" x="115" y="100" width="32" height="20"/>
+  <rect class="rod" x="147" y="72" width="34" height="76" rx="6"/>
+  <rect class="part" x="181" y="102" width="36" height="16"/>
+  <rect class="part" x="217" y="86" width="88" height="48" rx="4"/>
+  <rect class="part" x="305" y="82" width="58" height="56" rx="6"/>
+  <rect class="part" x="363" y="94" width="28" height="32" rx="8"/>
+  <text class="lbl" x="110" y="40" text-anchor="middle">anvil</text>
+  <path class="lead" d="M110,46 L128,98"/>
+  <text class="lbl" x="164" y="40" text-anchor="middle">rod</text>
+  <path class="lead" d="M164,46 L164,70"/>
+  <text class="lbl" x="261" y="40" text-anchor="middle">sleeve</text>
+  <path class="lead" d="M261,46 L261,84"/>
+  <text class="lbl" x="334" y="62" text-anchor="middle">thimble</text>
+  <path class="lead" d="M334,68 L334,80"/>
+  <text class="lbl" x="199" y="168" text-anchor="middle">spindle</text>
+  <path class="lead" d="M199,158 L199,120"/>
+  <rect class="part" x="36" y="212" width="174" height="62" rx="4"/>
+  <path class="datum" d="M44,243 L208,243"/>
+  <line class="tick" x1="60" y1="243" x2="60" y2="225"/>
+  <text class="num" x="60" y="222" text-anchor="middle">0</text>
+  <line class="tick" x1="80" y1="243" x2="80" y2="231"/>
+  <line class="tick" x1="100" y1="243" x2="100" y2="231"/>
+  <line class="tick" x1="120" y1="243" x2="120" y2="231"/>
+  <line class="tick" x1="140" y1="243" x2="140" y2="231"/>
+  <line class="tick" x1="160" y1="243" x2="160" y2="225"/>
+  <text class="num" x="160" y="222" text-anchor="middle">5</text>
+  <line class="tick" x1="180" y1="243" x2="180" y2="231"/>
+  <line class="tick" x1="200" y1="243" x2="200" y2="231"/>
+  <line class="tick" x1="70" y1="243" x2="70" y2="255"/>
+  <line class="tick" x1="90" y1="243" x2="90" y2="255"/>
+  <line class="tick" x1="110" y1="243" x2="110" y2="255"/>
+  <line class="tick" x1="130" y1="243" x2="130" y2="255"/>
+  <line class="tick" x1="150" y1="243" x2="150" y2="255"/>
+  <line class="tick" x1="170" y1="243" x2="170" y2="255"/>
+  <line class="tick" x1="190" y1="243" x2="190" y2="255"/>
+  <line class="tick" x1="210" y1="243" x2="210" y2="255"/>
+  <text class="num" x="122" y="268" text-anchor="middle">sleeve scale, mm</text>
+  <rect class="part" x="214" y="200" width="76" height="88" rx="5"/>
+  <line class="tick" x1="218" y1="279" x2="230" y2="279"/>
+  <line class="tick" x1="218" y1="270" x2="230" y2="270"/>
+  <line class="tick" x1="218" y1="261" x2="236" y2="261"/>
+  <text class="num" x="242" y="265">30</text>
+  <line class="tick" x1="218" y1="252" x2="230" y2="252"/>
+  <line class="tick" x1="218" y1="234" x2="230" y2="234"/>
+  <line class="tick" x1="218" y1="225" x2="230" y2="225"/>
+  <line class="tick" x1="218" y1="216" x2="236" y2="216"/>
+  <text class="num" x="242" y="220">35</text>
+  <line class="tick" x1="218" y1="207" x2="230" y2="207"/>
+  <path class="hi" d="M218,243 L240,243"/>
+  <text class="hitx" x="244" y="247">32</text>
+  <text class="num" x="302" y="215">thimble scale</text>
+  <text x="36" y="310">sleeve 7.5 mm</text>
+  <text x="36" y="330">thimble 32 &#215; 0.01 mm = 0.32 mm</text>
+  <text class="read" x="410" y="320" text-anchor="end">total 7.82 mm</text>
+</svg>

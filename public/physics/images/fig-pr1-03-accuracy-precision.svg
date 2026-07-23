@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 390" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .ring { fill:none; stroke:#9AA0A6; stroke-width:1.6; }
+    .bull { fill:none; stroke:#86C98B; stroke-width:2; }
+    .bulldot { fill:#86C98B; }
+    .shot { stroke:#E58F8F; stroke-width:2; stroke-linecap:round; }
+    .key-shot { font-size:12px; fill:#E58F8F; }
+    .key-true { font-size:12px; fill:#86C98B; }
+  </style>
+
+  <!-- key -->
+  <path class="shot" d="M26,14 l8,8 M34,14 l-8,8"/>
+  <text x="44" y="23" class="key-shot">readings</text>
+  <circle class="bull" cx="196" cy="18" r="8"/>
+  <text x="212" y="23" class="key-true">true value</text>
+
+  <!-- top left: accurate and precise -->
+  <g transform="translate(110,110)">
+    <circle class="ring" cx="0" cy="0" r="50"/>
+    <circle class="ring" cx="0" cy="0" r="33"/>
+    <circle class="bull" cx="0" cy="0" r="17"/>
+    <circle class="bulldot" cx="0" cy="0" r="2.5"/>
+    <path class="shot" d="M-4,-4 l8,8 M4,-4 l-8,8"/>
+    <path class="shot" d="M6,-12 l8,8 M14,-12 l-8,8"/>
+    <path class="shot" d="M-13,4 l8,8 M-5,4 l-8,8"/>
+    <path class="shot" d="M4,5 l8,8 M12,5 l-8,8"/>
+    <path class="shot" d="M-12,-13 l8,8 M-4,-13 l-8,8"/>
+  </g>
+  <text x="110" y="180" text-anchor="middle">Accurate and</text>
+  <text x="110" y="198" text-anchor="middle">precise</text>
+
+  <!-- top right: precise but not accurate -->
+  <g transform="translate(310,110)">
+    <circle class="ring" cx="0" cy="0" r="50"/>
+    <circle class="ring" cx="0" cy="0" r="33"/>
+    <circle class="bull" cx="0" cy="0" r="17"/>
+    <circle class="bulldot" cx="0" cy="0" r="2.5"/>
+    <path class="shot" d="M22,-28 l8,8 M30,-28 l-8,8"/>
+    <path class="shot" d="M30,-34 l8,8 M38,-34 l-8,8"/>
+    <path class="shot" d="M14,-34 l8,8 M22,-34 l-8,8"/>
+    <path class="shot" d="M29,-21 l8,8 M37,-21 l-8,8"/>
+    <path class="shot" d="M15,-21 l8,8 M23,-21 l-8,8"/>
+  </g>
+  <text x="310" y="180" text-anchor="middle">Precise but</text>
+  <text x="310" y="198" text-anchor="middle">not accurate</text>
+
+  <!-- bottom left: accurate on average but not precise -->
+  <g transform="translate(110,282)">
+    <circle class="ring" cx="0" cy="0" r="50"/>
+    <circle class="ring" cx="0" cy="0" r="33"/>
+    <circle class="bull" cx="0" cy="0" r="17"/>
+    <circle class="bulldot" cx="0" cy="0" r="2.5"/>
+    <path class="shot" d="M26,-12 l8,8 M34,-12 l-8,8"/>
+    <path class="shot" d="M4,-35 l8,8 M12,-35 l-8,8"/>
+    <path class="shot" d="M-28,-22 l8,8 M-20,-22 l-8,8"/>
+    <path class="shot" d="M-35,6 l8,8 M-27,6 l-8,8"/>
+    <path class="shot" d="M-10,26 l8,8 M-2,26 l-8,8"/>
+    <path class="shot" d="M22,16 l8,8 M30,16 l-8,8"/>
+  </g>
+  <text x="110" y="352" text-anchor="middle">Accurate but</text>
+  <text x="110" y="370" text-anchor="middle">not precise</text>
+
+  <!-- bottom right: neither -->
+  <g transform="translate(310,282)">
+    <circle class="ring" cx="0" cy="0" r="50"/>
+    <circle class="ring" cx="0" cy="0" r="33"/>
+    <circle class="bull" cx="0" cy="0" r="17"/>
+    <circle class="bulldot" cx="0" cy="0" r="2.5"/>
+    <path class="shot" d="M2,-40 l8,8 M10,-40 l-8,8"/>
+    <path class="shot" d="M26,-22 l8,8 M34,-22 l-8,8"/>
+    <path class="shot" d="M10,-4 l8,8 M18,-4 l-8,8"/>
+    <path class="shot" d="M34,6 l8,8 M42,6 l-8,8"/>
+    <path class="shot" d="M6,22 l8,8 M14,22 l-8,8"/>
+  </g>
+  <text x="310" y="352" text-anchor="middle">Not accurate,</text>
+  <text x="310" y="370" text-anchor="middle">not precise</text>
+</svg>

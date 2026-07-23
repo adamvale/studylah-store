@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 380" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .glass { fill:none; stroke:#EAEAEA; stroke-width:2.2; }
+    .ice { fill:#A8D3EC; fill-opacity:0.55; stroke:#6FB7E0; stroke-width:1.4; }
+    .icelbl { fill:#A8D3EC; }
+    .melt { fill:#6FB7E0; fill-opacity:0.55; }
+    .drip { fill:#6FB7E0; }
+    .heater { fill:none; stroke:#E58F8F; stroke-width:2.8; }
+    .heaterlbl { fill:#E58F8F; }
+    .lead { fill:none; stroke:#9AA0A6; stroke-width:1.6; }
+    .term { fill:#9AA0A6; }
+    .leader { fill:none; stroke:#9AA0A6; stroke-width:1.2; }
+    .sub { font-size:12px; fill:#9AA0A6; }
+    .mid { font-size:12px; fill:#EAEAEA; }
+  </style>
+
+  <text class="heaterlbl" x="115" y="30" text-anchor="middle">heated funnel</text>
+  <text class="sub" x="115" y="50" text-anchor="middle">heater melts ice</text>
+  <text x="325" y="30" text-anchor="middle">control funnel, heater off</text>
+  <text class="sub" x="318" y="50" text-anchor="middle">warm room only</text>
+
+  <!-- LEFT: heated funnel -->
+  <path class="glass" d="M60,80 H170 L124,152 V196 H106 V152 Z"/>
+  <polygon class="ice" points="78,90 100,90 96,110 74,108"/>
+  <polygon class="ice" points="104,92 128,92 132,112 106,114"/>
+  <polygon class="ice" points="134,92 156,92 146,110 130,110"/>
+  <polygon class="ice" points="88,116 112,118 106,134 86,130"/>
+  <polygon class="ice" points="116,118 140,114 134,132 114,134"/>
+  <polygon class="ice" points="100,136 126,136 120,148 104,148"/>
+  <path class="heater" d="M96,122 l10,-8 l12,14 l12,-14 l12,14 l10,-8"/>
+  <path class="lead" d="M96,122 V68 H60"/>
+  <path class="lead" d="M152,120 V74 H60"/>
+  <circle class="term" cx="58" cy="68" r="3"/>
+  <circle class="term" cx="58" cy="74" r="3"/>
+  <circle class="drip" cx="115" cy="208" r="3"/>
+  <circle class="drip" cx="115" cy="222" r="3"/>
+  <circle class="drip" cx="115" cy="234" r="3"/>
+  <rect class="melt" x="74" y="282" width="82" height="26"/>
+  <path class="glass" d="M70,240 V310 H160 V240"/>
+
+  <!-- RIGHT: control funnel, heater switched off -->
+  <path class="glass" d="M270,80 H380 L334,152 V196 H316 V152 Z"/>
+  <polygon class="ice" points="288,90 310,90 306,110 284,108"/>
+  <polygon class="ice" points="314,92 338,92 342,112 316,114"/>
+  <polygon class="ice" points="344,92 366,92 356,110 340,110"/>
+  <polygon class="ice" points="298,116 322,118 316,134 296,130"/>
+  <polygon class="ice" points="326,118 350,114 344,132 324,134"/>
+  <polygon class="ice" points="310,136 336,136 330,148 314,148"/>
+  <path class="heater" d="M306,122 l10,-8 l12,14 l12,-14 l12,14 l10,-8"/>
+  <path class="lead" d="M306,122 V68 H352"/>
+  <path class="lead" d="M370,68 H392"/>
+  <path class="lead" d="M352,68 L370,56"/>
+  <path class="lead" d="M362,120 V74 H392"/>
+  <text class="sub" x="376" y="48">off</text>
+  <circle class="drip" cx="325" cy="210" r="3"/>
+  <circle class="drip" cx="325" cy="226" r="3"/>
+  <rect class="melt" x="284" y="292" width="82" height="16"/>
+  <path class="glass" d="M280,240 V310 H370 V240"/>
+
+  <!-- middle labels -->
+  <text class="icelbl" x="220" y="110" text-anchor="middle">ice</text>
+  <path class="leader" d="M206,106 H150"/>
+  <path class="leader" d="M234,106 H290"/>
+  <text class="mid" x="220" y="160" text-anchor="middle">funnel</text>
+  <path class="leader" d="M196,156 H126"/>
+  <text class="sub" x="220" y="300" text-anchor="middle">subtract</text>
+
+  <text x="115" y="336" text-anchor="middle">melted mass m₁</text>
+  <text x="325" y="336" text-anchor="middle">control mass m₂</text>
+  <text x="220" y="364" text-anchor="middle">P t = l_f (m₁ - m₂)</text>
+</svg>

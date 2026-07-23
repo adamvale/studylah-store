@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 360" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .glass { fill:none; stroke:#EAEAEA; stroke-width:2.2; }
+    .water { fill:#6FB7E0; fill-opacity:0.4; }
+    .bubble { fill:none; stroke:#6FB7E0; stroke-width:1.3; }
+    .block { fill:#A8D3EC; fill-opacity:0.55; stroke:#6FB7E0; stroke-width:2; }
+    .thread { fill:none; stroke:#9AA0A6; stroke-width:1.4; }
+    .stand { fill:none; stroke:#9AA0A6; stroke-width:2.2; }
+    .flame { fill:none; stroke:#E58F8F; stroke-width:2.2; }
+    .move { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .head { font-size:12px; fill:#EAEAEA; }
+    .eq { font-size:13px; fill:#EAEAEA; }
+  </style>
+  <defs>
+    <marker id="m7a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
+    </marker>
+  </defs>
+
+  <text class="head" x="108" y="26" text-anchor="middle">metal block in boiling water</text>
+  <text class="head" x="108" y="44" text-anchor="middle">at about 100 °C</text>
+  <text class="head" x="328" y="26" text-anchor="middle">same block lowered into</text>
+  <text class="head" x="328" y="44" text-anchor="middle">cool water in a calorimeter</text>
+
+  <!-- LEFT: block hanging in boiling water -->
+  <path class="stand" d="M80,52 H140"/>
+  <path class="thread" d="M111,52 V186"/>
+  <rect class="water" x="52" y="172" width="114" height="76"/>
+  <path class="glass" d="M48,140 V244 Q48,254 58,254 H160 Q170,254 170,244 V140"/>
+  <rect class="block" x="92" y="186" width="38" height="42" rx="3"/>
+  <circle class="bubble" cx="66" cy="200" r="3"/>
+  <circle class="bubble" cx="150" cy="214" r="3"/>
+  <circle class="bubble" cx="74" cy="234" r="3"/>
+  <circle class="bubble" cx="146" cy="188" r="3"/>
+  <circle class="bubble" cx="62" cy="218" r="3"/>
+  <path class="stand" d="M36,258 H180"/>
+  <path class="stand" d="M52,258 L44,292"/>
+  <path class="stand" d="M164,258 L172,292"/>
+  <path class="flame" d="M96,294 Q108,262 120,294 Q108,282 96,294"/>
+
+  <!-- RIGHT: block lowered into cool water in a calorimeter -->
+  <path class="stand" d="M298,52 H358"/>
+  <path class="thread" d="M328,52 V90"/>
+  <rect class="block" x="308" y="90" width="40" height="42" rx="3"/>
+  <path class="move" d="M328,140 V168" marker-end="url(#m7a)"/>
+  <rect class="water" x="262" y="182" width="132" height="66"/>
+  <path class="glass" d="M258,150 V250 H398 V150"/>
+  <text x="340" y="162">lower in</text>
+
+  <text x="108" y="316" text-anchor="middle">heat lost by the block</text>
+  <text x="328" y="316" text-anchor="middle">heat gained by the water</text>
+  <text class="eq" x="220" y="344" text-anchor="middle">heat lost = heat gained</text>
+</svg>

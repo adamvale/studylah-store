@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .axis { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .bestfit { fill:none; stroke:#6FB7E0; stroke-width:2.2; }
+    .cross { fill:none; stroke:#E58F8F; stroke-width:2.2; }
+    .tri { fill:none; stroke:#9AA0A6; stroke-width:1.3; stroke-dasharray:5 4; }
+    .lbl { fill:#E8B65A; font-size:12px; }
+    .blue { fill:#6FB7E0; font-size:12px; }
+    .red { fill:#E58F8F; font-size:12px; }
+  </style>
+  <defs>
+    <marker id="aw" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#EAEAEA"/></marker>
+  </defs>
+
+  <line class="axis" x1="70" y1="250" x2="70" y2="50" marker-end="url(#aw)"/>
+  <line class="axis" x1="70" y1="250" x2="380" y2="250" marker-end="url(#aw)"/>
+
+  <path class="bestfit" d="M70,250 L340,80"/>
+
+  <path class="tri" d="M150,199.6 H300"/>
+  <path class="tri" d="M300,199.6 V105.3"/>
+
+  <path class="cross" d="M95,229 L105,239 M95,239 L105,229"/>
+  <path class="cross" d="M135,198 L145,208 M135,208 L145,198"/>
+  <path class="cross" d="M180,175 L190,185 M180,185 L190,175"/>
+  <path class="cross" d="M225,142 L235,152 M225,152 L235,142"/>
+  <path class="cross" d="M270,118 L280,128 M270,128 L280,118"/>
+  <path class="cross" d="M315,85 L325,95 M315,95 L325,85"/>
+
+  <text x="48" y="40">sin i</text>
+  <text x="240" y="276" text-anchor="middle">sin r</text>
+  <text class="lbl" x="100" y="90">gradient = n</text>
+  <text class="blue" x="140" y="130">best-fit line</text>
+  <text class="lbl" x="225" y="224" text-anchor="middle">&#916; sin r</text>
+  <text class="lbl" x="310" y="155">&#916; sin i</text>
+  <text class="red" x="250" y="240">measured points</text>
+</svg>

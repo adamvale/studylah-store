@@ -7,8 +7,8 @@
     .lbl { fill:#E8B65A; font-size:12px; }
   </style>
   <defs>
-    <marker id="p1" markerWidth="10" markerHeight="10" refX="4" refY="1" orient="auto"><path d="M0,7 L4,0 L8,7 Z" fill="#9AA0A6"/></marker>
-    <marker id="p2" markerWidth="10" markerHeight="10" refX="4" refY="6" orient="auto"><path d="M0,0 L4,7 L8,0 Z" fill="#9AA0A6"/></marker>
+    <marker id="p1" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto-start-reverse"><path d="M0,0 L8,3.5 L0,7 Z" fill="#9AA0A6"/></marker>
+    <marker id="p2" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#9AA0A6"/></marker>
   </defs>
   <!-- terrain: P high left, dip, small bump Q, down to R ground right -->
   <path class="hill" d="M70,70 C120,90 150,200 200,205 C235,208 250,150 280,150 C330,150 360,240 440,240"/>

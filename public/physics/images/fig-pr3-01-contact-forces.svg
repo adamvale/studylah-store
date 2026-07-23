@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 310" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12.5px; }
+    .bench { stroke:#9AA0A6; stroke-width:3; fill:none; }
+    .hatch { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .block { fill:#6FB7E0; fill-opacity:0.22; stroke:#6FB7E0; stroke-width:1.6; }
+    .string { stroke:#EAEAEA; stroke-width:1.5; fill:none; }
+    .force-weight { stroke:#E58F8F; stroke-width:2.4; fill:none; }
+    .force-normal { stroke:#86C98B; stroke-width:2.4; fill:none; }
+    .force-tension { stroke:#E8B65A; stroke-width:2.4; fill:none; }
+    .force-friction { stroke:#6FB7E0; stroke-width:2.4; fill:none; }
+    .guide { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .lbl-weight { fill:#E58F8F; }
+    .lbl-normal { fill:#86C98B; }
+    .lbl-tension { fill:#E8B65A; }
+    .lbl-friction { fill:#6FB7E0; }
+    .lbl-guide { fill:#9AA0A6; font-size:11px; }
+  </style>
+  <defs>
+    <marker id="c1red" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#E58F8F"/></marker>
+    <marker id="c1grn" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#86C98B"/></marker>
+    <marker id="c1amb" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/></marker>
+    <marker id="c1blu" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#6FB7E0"/></marker>
+  </defs>
+
+  <!-- bench -->
+  <path class="bench" d="M40,225 L385,225"/>
+  <path class="hatch" d="M55,225 L47,236 M75,225 L67,236 M95,225 L87,236 M115,225 L107,236 M135,225 L127,236 M155,225 L147,236 M175,225 L167,236 M260,225 L252,236 M280,225 L272,236 M300,225 L292,236 M320,225 L312,236"/>
+  <text class="lbl-guide" x="350" y="244">bench</text>
+
+  <!-- block -->
+  <rect class="block" x="140" y="170" width="95" height="55"/>
+
+  <!-- normal reaction, perpendicular to the surface -->
+  <path class="force-normal" d="M178,222 L178,98" marker-end="url(#c1grn)"/>
+  <path class="guide" d="M164,225 L164,211 L178,211"/>
+  <text class="lbl-normal" x="190" y="92">normal reaction N</text>
+  <text class="lbl-guide" x="190" y="112">perpendicular to the surface</text>
+
+  <!-- weight -->
+  <path class="force-weight" d="M205,197 L205,288" marker-end="url(#c1red)"/>
+  <text class="lbl-weight" x="213" y="266">weight W</text>
+
+  <!-- string and tension -->
+  <path class="string" d="M235,190 L300,158"/>
+  <path class="force-tension" d="M300,158 L368,124" marker-end="url(#c1amb)"/>
+  <text class="lbl-tension" x="318" y="178">tension T</text>
+
+  <!-- friction -->
+  <path class="force-friction" d="M148,213 L68,213" marker-end="url(#c1blu)"/>
+  <text class="lbl-friction" x="100" y="201" text-anchor="middle">friction f</text>
+</svg>

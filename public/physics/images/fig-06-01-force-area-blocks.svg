@@ -8,8 +8,8 @@
     .amber { fill:#E8B65A; }
   </style>
   <defs>
-    <marker id="ah" markerWidth="8" markerHeight="8" refX="4" refY="6" orient="auto">
-      <path d="M0,0 L4,7 L8,0 Z" fill="#E58F8F"/>
+    <marker id="ah" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#E58F8F"/>
     </marker>
   </defs>
   <!-- TOP: Block P, large base, small pressure -->

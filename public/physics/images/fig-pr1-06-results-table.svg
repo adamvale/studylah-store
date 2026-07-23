@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 285" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .border { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .grid { fill:none; stroke:#9AA0A6; stroke-width:1; }
+    .headfill { fill:#EAEAEA; opacity:0.10; }
+    .head { font-size:13.5px; }
+    .cell { font-size:13px; }
+    .note { font-size:12.5px; fill:#E8B65A; }
+    .callout { fill:none; stroke:#E8B65A; stroke-width:1.5; }
+    .foot { font-size:12.5px; fill:#9AA0A6; }
+  </style>
+  <defs>
+    <marker id="tb1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="36" class="note">The unit is written once, in the heading</text>
+  <path class="callout" d="M96,42 V54" marker-end="url(#tb1)"/>
+
+  <rect class="headfill" x="40" y="60" width="340" height="32"/>
+  <rect class="border" x="40" y="60" width="340" height="182"/>
+  <path class="grid" d="M40,92 H380 M40,122 H380 M40,152 H380 M40,182 H380 M40,212 H380"/>
+  <path class="grid" d="M153,60 V242 M267,60 V242"/>
+
+  <text x="96" y="82" text-anchor="middle" class="head">l / cm</text>
+  <text x="210" y="82" text-anchor="middle" class="head">T / s</text>
+  <text x="323" y="82" text-anchor="middle" class="head">T&#178; / s&#178;</text>
+
+  <text x="96" y="113" text-anchor="middle" class="cell">40.0</text>
+  <text x="210" y="113" text-anchor="middle" class="cell">1.27</text>
+  <text x="323" y="113" text-anchor="middle" class="cell">1.61</text>
+
+  <text x="96" y="143" text-anchor="middle" class="cell">60.0</text>
+  <text x="210" y="143" text-anchor="middle" class="cell">1.55</text>
+  <text x="323" y="143" text-anchor="middle" class="cell">2.40</text>
+
+  <text x="96" y="173" text-anchor="middle" class="cell">80.0</text>
+  <text x="210" y="173" text-anchor="middle" class="cell">1.79</text>
+  <text x="323" y="173" text-anchor="middle" class="cell">3.20</text>
+
+  <text x="96" y="203" text-anchor="middle" class="cell">100.0</text>
+  <text x="210" y="203" text-anchor="middle" class="cell">2.01</text>
+  <text x="323" y="203" text-anchor="middle" class="cell">4.04</text>
+
+  <text x="96" y="233" text-anchor="middle" class="cell">120.0</text>
+  <text x="210" y="233" text-anchor="middle" class="cell">2.20</text>
+  <text x="323" y="233" text-anchor="middle" class="cell">4.84</text>
+
+  <text x="40" y="268" class="foot">Each cell holds a bare number, no unit</text>
+</svg>

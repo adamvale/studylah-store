@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 225" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .axis { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
+    .fit  { stroke:#6FB7E0; stroke-width:2.4; fill:none; }
+    .sym  { stroke:#EAEAEA; stroke-width:2; fill:none; }
+    .guide{ stroke:#9AA0A6; stroke-width:1.2; fill:none; stroke-dasharray:5 3; }
+    .ax   { fill:#E8B65A; font-size:13px; }
+    .note { fill:#9AA0A6; font-size:12px; }
+  </style>
+  <defs>
+    <marker id="a4" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/></marker>
+  </defs>
+
+  <!-- axes -->
+  <line class="axis" x1="42" y1="175" x2="395" y2="175" marker-end="url(#a4)"/>
+  <line class="axis" x1="170" y1="175" x2="170" y2="45" marker-end="url(#a4)"/>
+  <line class="axis" x1="170" y1="175" x2="170" y2="215"/>
+  <text class="ax" x="182" y="42">I / A</text>
+  <text class="ax" x="392" y="196" text-anchor="end">V / V</text>
+  <text x="163" y="192" text-anchor="end">O</text>
+
+  <!-- reverse: current stays near zero -->
+  <path class="fit" d="M48,180 L150,177 L170,175"/>
+  <!-- forward: flat until the turn-on voltage, then steep -->
+  <path class="fit" d="M170,175 C190,174 208,172 222,168 C238,163 248,120 252,50"/>
+
+  <!-- turn-on voltage -->
+  <path class="guide" d="M222,175 L222,146"/>
+  <text class="ax" x="224" y="194">0.7 V</text>
+
+  <!-- diode symbol -->
+  <path class="sym" d="M62,110 L140,110 M112,98 L112,122"/>
+  <path class="sym" d="M86,98 L86,122 L112,110 Z"/>
+  <text x="100" y="84" text-anchor="middle">diode</text>
+
+  <text class="note" x="48" y="206">reverse: blocks</text>
+  <text class="note" x="268" y="105">forward: conducts</text>
+</svg>

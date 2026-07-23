@@ -19,13 +19,13 @@
   <path class="tube" d="M100,90 L100,185 L330,185 L330,78"/>
   <!-- small piston M (left, narrow) -->
   <rect class="piston" x="70" y="112" width="30" height="12"/>
-  <line class="fin" x1="85" y1="68" x2="85" y2="108" marker-end="url(#hf)"/>
+  <line class="fin" x1="85" y1="68" x2="85" y2="108" marker-end="url(#hf-e8b65a)"/>
   <text x="95" y="82" class="lbl linF1">F&#8321; (small)</text>
   <line class="lead" x1="100" y1="118" x2="118" y2="132"/>
   <text x="122" y="140" class="lbl">piston M, area A&#8321; (small)</text>
   <!-- large piston N (right, wide) -->
   <rect class="piston" x="330" y="98" width="90" height="12"/>
-  <line class="fout" x1="375" y1="94" x2="375" y2="56" marker-end="url(#hf)"/>
+  <line class="fout" x1="375" y1="94" x2="375" y2="56" marker-end="url(#hf-86c98b)"/>
   <text x="385" y="66" class="lbl linF2">F&#8322; (large)</text>
   <line class="lead" x1="330" y1="108" x2="305" y2="158"/>
   <text x="300" y="170" text-anchor="end" class="lbl">piston N, area A&#8322; (large)</text>
@@ -33,6 +33,8 @@
   <text x="245" y="212" text-anchor="middle" class="lbl">liquid (incompressible)</text>
   <text x="240" y="256" text-anchor="middle" class="lbl amber">Pressure equal both sides:  F&#8321;/A&#8321; = F&#8322;/A&#8322;</text>
   <defs>
-    <marker id="hf" markerWidth="8" markerHeight="8" refX="4" refY="6" orient="auto"><path d="M0,0 L4,7 L8,0 Z" fill="#E58F8F"/></marker>
+    <marker id="hf" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#E58F8F"/></marker>
+    <marker id="hf-86c98b" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#86C98B"/></marker>
+    <marker id="hf-e8b65a" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#E8B65A"/></marker>
   </defs>
 </svg>

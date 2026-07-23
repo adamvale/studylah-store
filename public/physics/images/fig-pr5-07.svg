@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .lens { fill:#6FB7E0; fill-opacity:0.22; stroke:#6FB7E0; stroke-width:1.6; }
+    .ray { fill:none; stroke:#6FB7E0; stroke-width:2.2; }
+    .axisline { fill:none; stroke:#9AA0A6; stroke-width:1.2; }
+    .tick { fill:none; stroke:#9AA0A6; stroke-width:1.1; stroke-dasharray:4 3; }
+    .dim { fill:none; stroke:#9AA0A6; stroke-width:1.3; }
+    .focus { fill:none; stroke:#E8B65A; stroke-width:2.2; }
+    .sym { fill:#E8B65A; font-size:15px; }
+    .lbl { fill:#E8B65A; font-size:12px; }
+    .blue { fill:#6FB7E0; font-size:12px; }
+    .grey { fill:#9AA0A6; font-size:11px; }
+  </style>
+  <defs>
+    <marker id="ab" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#6FB7E0"/></marker>
+    <marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#9AA0A6"/></marker>
+  </defs>
+
+  <path class="axisline" d="M40,140 H390"/>
+  <path class="lens" d="M200,70 C238,108 238,172 200,210 C162,172 162,108 200,70 Z"/>
+
+  <path class="ray" d="M45,95 H130" marker-end="url(#ab)"/>
+  <path class="ray" d="M130,95 H200 L300,140 L380,176"/>
+  <path class="ray" d="M45,120 H130" marker-end="url(#ab)"/>
+  <path class="ray" d="M130,120 H200 L300,140 L380,156"/>
+  <path class="ray" d="M45,160 H130" marker-end="url(#ab)"/>
+  <path class="ray" d="M130,160 H200 L300,140 L380,124"/>
+  <path class="ray" d="M45,185 H130" marker-end="url(#ab)"/>
+  <path class="ray" d="M130,185 H200 L300,140 L380,104"/>
+
+  <path class="focus" d="M294,134 L306,146 M294,146 L306,134"/>
+  <text class="sym" x="300" y="166" text-anchor="middle">F</text>
+
+  <path class="tick" d="M200,212 V236"/>
+  <path class="tick" d="M300,148 V236"/>
+  <path class="dim" d="M250,228 H202" marker-end="url(#ag)"/>
+  <path class="dim" d="M250,228 H298" marker-end="url(#ag)"/>
+  <text class="sym" x="250" y="222" text-anchor="middle">f</text>
+  <text class="lbl" x="250" y="252" text-anchor="middle">focal length</text>
+
+  <text x="200" y="58" text-anchor="middle">converging lens</text>
+  <text class="blue" x="45" y="80">parallel rays</text>
+  <text class="grey" x="48" y="136">principal axis</text>
+</svg>

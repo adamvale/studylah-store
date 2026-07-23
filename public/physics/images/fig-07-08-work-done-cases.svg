@@ -12,7 +12,7 @@
   <defs>
     <marker id="fm2" markerWidth="12" markerHeight="12" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#86C98B"/></marker>
     <marker id="da" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9AA0A6"/></marker>
-    <marker id="db" markerWidth="10" markerHeight="10" refX="1" refY="4" orient="auto"><path d="M8,0 L0,4 L8,8 Z" fill="#9AA0A6"/></marker>
+    <marker id="db" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 Z" fill="#9AA0A6"/></marker>
   </defs>
   <!-- TOP CASE: force moves box -->
   <text x="140" y="30" text-anchor="middle" class="verdict" fill="#86C98B">work is done</text>

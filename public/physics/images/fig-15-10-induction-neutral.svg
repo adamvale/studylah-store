@@ -3,6 +3,12 @@
     <marker id="ah10" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
       <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
     </marker>
+    <marker id="ah10-e58f8f" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#E58F8F"/>
+    </marker>
+    <marker id="ah10-86c98b" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#86C98B"/>
+    </marker>
   </defs>
   <style>
     text { fill:#EAEAEA; font-size:12px; }
@@ -28,10 +34,10 @@
   <text class="pos" x="270" y="200">+</text><text class="pos" x="300" y="200">+</text><text class="pos" x="330" y="200">+</text>
   <text x="300" y="245" text-anchor="middle" font-size="13">neutral object</text>
   <!-- near (unlike) charges closer -> stronger attractive force -->
-  <line class="frcA" x1="300" y1="128" x2="300" y2="92" marker-end="url(#ah10)"/>
+  <line class="frcA" x1="300" y1="128" x2="300" y2="92" marker-end="url(#ah10-86c98b)"/>
   <text x="360" y="112" font-size="12" fill="#86C98B">strong attraction (unlike, closer)</text>
   <!-- far (like) charges further -> weaker repulsive force -->
-  <line class="frcR" x1="300" y1="205" x2="300" y2="235" marker-end="url(#ah10)"/>
+  <line class="frcR" x1="300" y1="205" x2="300" y2="235" marker-end="url(#ah10-e58f8f)"/>
   <text x="360" y="228" font-size="12" fill="#E58F8F">weak repulsion (like, further)</text>
   <text x="60" y="175" font-size="12" fill="#9AA0A6">net force:</text>
   <text x="60" y="190" font-size="12" fill="#9AA0A6">attraction</text>

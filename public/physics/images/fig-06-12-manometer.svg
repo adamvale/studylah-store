@@ -42,6 +42,6 @@
 
   <text x="230" y="277" text-anchor="middle" class="lbl">Same level X, Y &#8594; same pressure.  P_gas = P_atm + h&#961;g</text>
   <defs>
-    <marker id="ma" markerWidth="7" markerHeight="7" refX="3.5" refY="6" orient="auto"><path d="M0,0 L3.5,7 L7,0 Z" fill="#E58F8F"/></marker>
+    <marker id="ma" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#E58F8F"/></marker>
   </defs>
 </svg>

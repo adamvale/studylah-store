@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 232" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .pencil { fill:#EAEAEA; fill-opacity:0.10; stroke:#EAEAEA; stroke-width:1.8; }
+    .wire { fill:none; stroke:#EAEAEA; stroke-width:1.8; }
+    .len { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
+    .lentx { fill:#6FB7E0; font-size:15px; }
+    .guide { stroke:#9AA0A6; stroke-width:1.1; stroke-dasharray:4 3; fill:none; }
+    .lbl { fill:#EAEAEA; font-size:12px; }
+    .sub { fill:#9AA0A6; font-size:12px; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+  </style>
+  <defs><marker id="bl3" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#6FB7E0"/></marker><marker id="bl3s" markerWidth="9" markerHeight="9" refX="0" refY="3" orient="auto"><path d="M7,0 L0,3 L7,6 Z" fill="#6FB7E0"/></marker></defs>
+  <path class="pencil" d="M40,88 L360,88 L400,107 L360,126 L40,126 Z"/>
+  <ellipse class="wire" cx="120" cy="107" rx="6" ry="21"/>
+  <ellipse class="wire" cx="132" cy="107" rx="6" ry="21"/>
+  <ellipse class="wire" cx="144" cy="107" rx="6" ry="21"/>
+  <ellipse class="wire" cx="156" cy="107" rx="6" ry="21"/>
+  <ellipse class="wire" cx="168" cy="107" rx="6" ry="21"/>
+  <ellipse class="wire" cx="180" cy="107" rx="6" ry="21"/>
+  <ellipse class="wire" cx="192" cy="107" rx="6" ry="21"/>
+  <ellipse class="wire" cx="204" cy="107" rx="6" ry="21"/>
+  <ellipse class="wire" cx="216" cy="107" rx="6" ry="21"/>
+  <ellipse class="wire" cx="228" cy="107" rx="6" ry="21"/>
+  <ellipse class="wire" cx="240" cy="107" rx="6" ry="21"/>
+  <ellipse class="wire" cx="252" cy="107" rx="6" ry="21"/>
+  <ellipse class="wire" cx="264" cy="107" rx="6" ry="21"/>
+  <ellipse class="wire" cx="276" cy="107" rx="6" ry="21"/>
+  <ellipse class="wire" cx="288" cy="107" rx="6" ry="21"/>
+  <ellipse class="wire" cx="300" cy="107" rx="6" ry="21"/>
+  <path class="guide" d="M114,130 L114,168"/>
+  <path class="guide" d="M306,130 L306,168"/>
+  <path class="len" d="M114,162 L306,162" marker-start="url(#bl3s)" marker-end="url(#bl3)"/>
+  <text class="lentx" x="210" y="152" text-anchor="middle">d</text>
+  <text class="lbl" x="210" y="55" text-anchor="middle">wire wound in tight turns</text>
+  <path class="lead" d="M210,61 L210,86"/>
+  <text class="sub" x="55" y="78">pencil</text>
+  <path class="lead" d="M70,82 L80,90"/>
+  <text x="210" y="192" text-anchor="middle">n = 16 turns</text>
+  <text x="210" y="216" text-anchor="middle">one diameter = d / n</text>
+</svg>

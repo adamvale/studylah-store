@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 360" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .glass { fill:none; stroke:#EAEAEA; stroke-width:2.2; }
+    .water { fill:#6FB7E0; fill-opacity:0.45; }
+    .waterlbl { fill:#6FB7E0; }
+    .bubble { fill:none; stroke:#6FB7E0; stroke-width:1.3; }
+    .heater { fill:none; stroke:#E58F8F; stroke-width:3; }
+    .heaterlbl { fill:#E58F8F; }
+    .lid { fill:#9AA0A6; fill-opacity:0.3; stroke:#EAEAEA; stroke-width:1.8; }
+    .pan { fill:#9AA0A6; fill-opacity:0.25; stroke:#EAEAEA; stroke-width:1.8; }
+    .body { fill:none; stroke:#EAEAEA; stroke-width:2.2; }
+    .disp { fill:none; stroke:#9AA0A6; stroke-width:1.4; }
+    .steam { fill:none; stroke:#9AA0A6; stroke-width:1.8; }
+    .leader { fill:none; stroke:#9AA0A6; stroke-width:1.2; }
+    .sub { font-size:12px; fill:#9AA0A6; }
+    .small { font-size:12px; }
+  </style>
+  <defs>
+    <marker id="v10a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#9AA0A6"/>
+    </marker>
+  </defs>
+
+  <!-- steam leaving the small hole -->
+  <path class="steam" d="M252,134 q-9,-16 0,-28 q9,-14 0,-28" marker-end="url(#v10a)"/>
+  <path class="steam" d="M266,132 q9,-14 0,-26 q-9,-12 0,-24" marker-end="url(#v10a)"/>
+
+  <!-- beaker of boiling water -->
+  <rect class="water" x="154" y="180" width="132" height="74"/>
+  <path class="glass" d="M150,150 V256 H290 V150"/>
+  <circle class="bubble" cx="170" cy="230" r="3"/>
+  <circle class="bubble" cx="202" cy="210" r="3"/>
+  <circle class="bubble" cx="240" cy="236" r="3"/>
+  <circle class="bubble" cx="266" cy="204" r="3"/>
+  <circle class="bubble" cx="212" cy="246" r="3"/>
+
+  <!-- lid, with a gap for the heater and a small steam hole -->
+  <rect class="lid" x="142" y="140" width="40" height="10" rx="2"/>
+  <rect class="lid" x="198" y="140" width="48" height="10" rx="2"/>
+  <rect class="lid" x="258" y="140" width="40" height="10" rx="2"/>
+
+  <!-- immersion heater -->
+  <path class="heater" d="M190,100 V210"/>
+  <path class="heater" d="M190,210 l-10,7 l20,9 l-20,9 l20,9 l-10,7"/>
+
+  <!-- top pan balance -->
+  <rect class="pan" x="140" y="258" width="160" height="12" rx="3"/>
+  <rect class="body" x="80" y="270" width="280" height="46" rx="6"/>
+  <rect class="disp" x="252" y="282" width="92" height="26" rx="3"/>
+  <text class="small" x="298" y="301" text-anchor="middle">248.5 g</text>
+  <path class="body" d="M110,316 V324"/>
+  <path class="body" d="M330,316 V324"/>
+
+  <text class="heaterlbl" x="182" y="96" text-anchor="end">heater</text>
+  <text class="sub" x="272" y="64">steam</text>
+  <text class="sub" x="306" y="124">small steam hole</text>
+  <path class="leader" d="M302,120 L266,140"/>
+  <text x="136" y="150" text-anchor="end">lid</text>
+  <text class="waterlbl small" x="146" y="200" text-anchor="end">boiling water</text>
+  <text class="waterlbl small" x="146" y="218" text-anchor="end">at 100 °C</text>
+  <text x="306" y="90">P t = l_v m</text>
+  <text x="220" y="340" text-anchor="middle">top pan balance</text>
+</svg>

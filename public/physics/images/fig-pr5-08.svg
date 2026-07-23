@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 545" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .axis { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
+    .bestfit { fill:none; stroke:#6FB7E0; stroke-width:2.2; }
+    .cross { fill:none; stroke:#E58F8F; stroke-width:2.2; }
+    .maybe { fill:none; stroke:#9AA0A6; stroke-width:1.2; stroke-dasharray:5 4; }
+    .lbl { fill:#E8B65A; font-size:12px; }
+    .blue { fill:#6FB7E0; font-size:12px; }
+    .grey { fill:#9AA0A6; font-size:11px; }
+  </style>
+  <defs>
+    <marker id="aw" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#EAEAEA"/></marker>
+  </defs>
+
+  <line class="axis" x1="90" y1="230" x2="90" y2="60" marker-end="url(#aw)"/>
+  <line class="axis" x1="90" y1="230" x2="390" y2="230" marker-end="url(#aw)"/>
+
+  <path class="maybe" d="M110,215 L380,80"/>
+  <path class="maybe" d="M140,225 L360,120"/>
+  <path class="maybe" d="M110,195.5 L380,101"/>
+  <path class="cross" d="M234,144 L246,156 M234,156 L246,144"/>
+
+  <text x="36" y="52">magnification m</text>
+  <text x="240" y="258" text-anchor="middle">image distance v / cm</text>
+  <text class="lbl" x="120" y="80">one reading only</text>
+  <text class="grey" x="255" y="185">many gradients fit</text>
+
+  <line class="axis" x1="90" y1="500" x2="90" y2="330" marker-end="url(#aw)"/>
+  <line class="axis" x1="90" y1="500" x2="390" y2="500" marker-end="url(#aw)"/>
+
+  <path class="bestfit" d="M120,470 L360,345"/>
+
+  <path class="cross" d="M134,466 L146,478 M134,478 L146,466"/>
+  <path class="cross" d="M174,441 L186,453 M174,453 L186,441"/>
+  <path class="cross" d="M214,425 L226,437 M214,437 L226,425"/>
+  <path class="cross" d="M254,400 L266,412 M254,412 L266,400"/>
+  <path class="cross" d="M294,382 L306,394 M294,394 L306,382"/>
+  <path class="cross" d="M334,356 L346,368 M334,368 L346,356"/>
+
+  <text x="36" y="322">magnification m</text>
+  <text x="240" y="528" text-anchor="middle">image distance v / cm</text>
+  <text class="lbl" x="120" y="350">many readings</text>
+  <text class="blue" x="250" y="420">best-fit line</text>
+</svg>

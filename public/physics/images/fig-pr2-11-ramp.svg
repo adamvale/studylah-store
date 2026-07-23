@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 298" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .ramp { fill:#9AA0A6; fill-opacity:0.14; stroke:#9AA0A6; stroke-width:2.2; }
+    .cyl { fill:#9AA0A6; fill-opacity:0.22; stroke:#9AA0A6; stroke-width:1.8; }
+    .len { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
+    .lentx { fill:#6FB7E0; font-size:16px; }
+    .ang { stroke:#E8B65A; stroke-width:2.2; fill:none; }
+    .angtx { fill:#E8B65A; font-size:16px; }
+    .guide { stroke:#9AA0A6; stroke-width:1.1; stroke-dasharray:4 3; fill:none; }
+    .sub { fill:#9AA0A6; font-size:12px; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+  </style>
+  <defs><marker id="bl11" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#6FB7E0"/></marker><marker id="bl11s" markerWidth="9" markerHeight="9" refX="0" refY="3" orient="auto"><path d="M7,0 L0,3 L7,6 Z" fill="#6FB7E0"/></marker></defs>
+  <path class="ramp" d="M60,240 L360,240 L360,86 Z"/>
+  <g transform="rotate(-27.2,268,118)"><rect class="cyl" x="236" y="100" width="64" height="36" rx="4"/><ellipse class="cyl" cx="236" cy="118" rx="9" ry="18"/></g>
+  <path class="len" d="M96,237 L346,109" marker-start="url(#bl11s)" marker-end="url(#bl11)"/>
+  <text class="lentx" x="200" y="208" text-anchor="middle">s</text>
+  <path class="guide" d="M360,240 L392,240"/>
+  <path class="guide" d="M360,86 L392,86"/>
+  <path class="len" d="M384,86 L384,240" marker-start="url(#bl11s)" marker-end="url(#bl11)"/>
+  <text class="lentx" x="394" y="168">h</text>
+  <path class="ang" d="M130,240 A70,70 0 0 0 122.3,208"/>
+  <text class="angtx" x="140" y="230">&#952;</text>
+  <text class="sub" x="106" y="262">ramp</text>
+  <text class="sub" x="250" y="76">cylinder</text>
+  <path class="lead" d="M278,82 L272,98"/>
+  <text x="230" y="286" text-anchor="middle">sin &#952; = h / s</text>
+</svg>

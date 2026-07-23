@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 350" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .block { fill:#A8D3EC; fill-opacity:0.5; stroke:#6FB7E0; stroke-width:2; }
+    .blocklbl { fill:#A8D3EC; }
+    .lagging { fill:none; stroke:#E8B65A; stroke-width:2.4; stroke-dasharray:8 5; }
+    .lagginglbl { fill:#E8B65A; }
+    .hole { fill:none; stroke:#9AA0A6; stroke-width:1.3; }
+    .heater { fill:none; stroke:#E58F8F; stroke-width:3; }
+    .heaterlbl { fill:#E58F8F; }
+    .glass { fill:none; stroke:#EAEAEA; stroke-width:2; }
+    .leader { fill:none; stroke:#9AA0A6; stroke-width:1.2; }
+    .eq { font-size:13px; fill:#EAEAEA; }
+  </style>
+
+  <!-- lagging wrapped all around -->
+  <rect class="lagging" x="96" y="86" width="204" height="200" rx="10"/>
+  <rect class="lagging" x="108" y="98" width="180" height="176" rx="8"/>
+
+  <!-- aluminium block -->
+  <rect class="block" x="118" y="108" width="160" height="156" rx="4"/>
+
+  <!-- 2 drilled holes -->
+  <path class="hole" d="M160,108 V248 H180 V108"/>
+  <path class="hole" d="M216,108 V218 H232 V108"/>
+
+  <!-- immersion heater down inside the first hole -->
+  <path class="heater" d="M170,50 V222"/>
+  <path class="heater" d="M170,222 l-9,7 l18,9 l-18,9 l18,9 l-9,7"/>
+
+  <!-- thermometer in the second hole -->
+  <path class="glass" d="M224,44 V214"/>
+  <circle class="glass" cx="224" cy="218" r="5" fill="#EAEAEA" fill-opacity="0.5"/>
+
+  <text class="heaterlbl" x="150" y="48" text-anchor="end">heater</text>
+  <path class="leader" d="M154,44 H164"/>
+
+  <text x="240" y="44">thermometer</text>
+  <path class="leader" d="M236,40 H228"/>
+
+  <text class="lagginglbl" x="310" y="170">lagging</text>
+  <path class="leader" d="M306,166 H301"/>
+
+  <text class="blocklbl" x="200" y="310" text-anchor="middle">aluminium block</text>
+  <path class="leader" d="M200,296 V288"/>
+
+  <text class="eq" x="200" y="336" text-anchor="middle">P t = m c Δθ</text>
+</svg>

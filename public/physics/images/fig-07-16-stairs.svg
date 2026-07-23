@@ -7,8 +7,8 @@
     .lbl { fill:#E8B65A; font-size:12px; }
   </style>
   <defs>
-    <marker id="s1" markerWidth="10" markerHeight="10" refX="4" refY="1" orient="auto"><path d="M0,7 L4,0 L8,7 Z" fill="#9AA0A6"/></marker>
-    <marker id="s2" markerWidth="10" markerHeight="10" refX="4" refY="6" orient="auto"><path d="M0,0 L4,7 L8,0 Z" fill="#9AA0A6"/></marker>
+    <marker id="s1" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto-start-reverse"><path d="M0,0 L8,3.5 L0,7 Z" fill="#9AA0A6"/></marker>
+    <marker id="s2" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#9AA0A6"/></marker>
   </defs>
   <!-- staircase steps -->
   <polygon class="stair" points="40,230 40,190 90,190 90,150 140,150 140,110 190,110 190,70 240,70 240,230"/>

@@ -9,8 +9,8 @@
     .lbl { fill:#E8B65A; font-size:12px; }
   </style>
   <defs>
-    <marker id="c1" markerWidth="10" markerHeight="10" refX="4" refY="1" orient="auto"><path d="M0,7 L4,0 L8,7 Z" fill="#9AA0A6"/></marker>
-    <marker id="c2" markerWidth="10" markerHeight="10" refX="4" refY="6" orient="auto"><path d="M0,0 L4,7 L8,0 Z" fill="#9AA0A6"/></marker>
+    <marker id="c1" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto-start-reverse"><path d="M0,0 L8,3.5 L0,7 Z" fill="#9AA0A6"/></marker>
+    <marker id="c2" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#9AA0A6"/></marker>
   </defs>
   <!-- vertical mast -->
   <line class="beam" x1="60" y1="40" x2="60" y2="270"/>

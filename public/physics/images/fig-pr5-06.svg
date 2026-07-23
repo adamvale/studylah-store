@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .glass { fill:#6FB7E0; fill-opacity:0.22; stroke:#6FB7E0; stroke-width:1.6; }
+    .ray { fill:none; stroke:#6FB7E0; stroke-width:2.2; }
+    .normal { fill:none; stroke:#9AA0A6; stroke-width:1.4; stroke-dasharray:6 4; }
+    .arc { fill:none; stroke:#E8B65A; stroke-width:1.8; }
+    .sym { fill:#E8B65A; font-size:14px; }
+    .grey { fill:#9AA0A6; font-size:11px; }
+  </style>
+  <defs>
+    <marker id="ab" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#6FB7E0"/></marker>
+  </defs>
+
+  <rect class="glass" x="60" y="130" width="320" height="100" rx="3"/>
+
+  <path class="normal" d="M200,80 V190"/>
+
+  <path class="ray" d="M118.1,187.4 L159,158.7" marker-end="url(#ab)"/>
+  <path class="ray" d="M159,158.7 L200,130"/>
+
+  <path class="arc" d="M200,178 A48,48 0 0 1 160.7,157.5"/>
+  <text class="sym" x="180" y="166" text-anchor="middle">&#952;</text>
+
+  <text x="75" y="112">air</text>
+  <text x="75" y="155">glass</text>
+  <text class="grey" x="206" y="78">normal</text>
+  <text class="grey" x="300" y="122">boundary with air</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 300" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:12px; }
+    .axis { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
+    .tick { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .bestfit { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
+    .cross { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
+    .grad { stroke:#E8B65A; stroke-width:1.8; fill:none; }
+    .lbl-grad { fill:#E8B65A; font-size:11px; }
+    .num { font-size:11px; }
+  </style>
+  <defs>
+    <marker id="c6ax" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L6,3 L0,6 Z" fill="#EAEAEA"/></marker>
+  </defs>
+
+  <line class="axis" x1="60" y1="240" x2="60" y2="40" marker-end="url(#c6ax)"/>
+  <line class="axis" x1="60" y1="240" x2="340" y2="240" marker-end="url(#c6ax)"/>
+  <text x="22" y="30">load / N</text>
+  <text x="250" y="272" text-anchor="middle">extension / cm</text>
+
+  <path class="tick" d="M120,240 L120,246 M180,240 L180,246 M240,240 L240,246 M300,240 L300,246"/>
+  <path class="tick" d="M60,190 L54,190 M60,140 L54,140 M60,90 L54,90"/>
+  <text class="num" x="52" y="254" text-anchor="end">0</text>
+  <text class="num" x="120" y="254" text-anchor="middle">1</text>
+  <text class="num" x="180" y="254" text-anchor="middle">2</text>
+  <text class="num" x="240" y="254" text-anchor="middle">3</text>
+  <text class="num" x="300" y="254" text-anchor="middle">4</text>
+  <text class="num" x="52" y="194" text-anchor="end">1</text>
+  <text class="num" x="52" y="144" text-anchor="end">2</text>
+  <text class="num" x="52" y="94" text-anchor="end">3</text>
+
+  <!-- best-fit line through the origin -->
+  <path class="bestfit" d="M60,240 L315,60"/>
+
+  <!-- plotted points -->
+  <path class="cross" d="M95,209 L105,219 M105,209 L95,219"/>
+  <path class="cross" d="M135,176 L145,186 M145,176 L135,186"/>
+  <path class="cross" d="M175,152 L185,162 M185,152 L175,162"/>
+  <path class="cross" d="M215,120 L225,130 M225,120 L215,130"/>
+  <path class="cross" d="M255,95 L265,105 M265,95 L255,105"/>
+  <path class="cross" d="M295,65 L305,75 M305,65 L295,75"/>
+
+  <!-- gradient triangle -->
+  <path class="grad" d="M160,169 L280,169 L280,84 Z"/>
+  <text class="lbl-grad" x="220" y="186" text-anchor="middle">Δe</text>
+  <text class="lbl-grad" x="288" y="130">ΔF</text>
+  <text class="lbl-grad" x="120" y="110">gradient = k</text>
+</svg>

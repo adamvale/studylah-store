@@ -2,6 +2,8 @@
   <defs>
     <marker id="ao" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#E8B65A"/></marker>
     <marker id="ar" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#6FB7E0"/></marker>
+    <marker id="ar-86c98b" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#86C98B"/></marker>
+    <marker id="ar-e58f8f" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#E58F8F"/></marker>
   </defs>
   <style>
     text { fill:#EAEAEA; }
@@ -26,9 +28,9 @@
   <path class="r2" marker-end="url(#ao)" d="M150,110 L545,264"/>
   <!-- Ray 3: through near F, then parallel to axis -->
   <path class="r3" d="M150,110 L330,250"/>
-  <path class="r3" marker-end="url(#ar)" d="M330,250 L545,250"/>
+  <path class="r3" marker-end="url(#ar-e58f8f)" d="M330,250 L545,250"/>
   <!-- image arrow (inverted, real) -->
-  <path class="img" marker-end="url(#ar)" d="M510,180 L510,246"/>
+  <path class="img" marker-end="url(#ar-86c98b)" d="M510,180 L510,246"/>
   <text x="524" y="235" font-size="13" fill="#86C98B">image</text>
   <!-- focal points -->
   <circle class="pf" cx="240" cy="180" r="3"/><text x="240" y="200" text-anchor="middle" font-size="13" font-style="italic">F</text>

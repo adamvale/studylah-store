@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 326" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .rule { fill:#EAEAEA; fill-opacity:0.08; stroke:#EAEAEA; stroke-width:1.8; }
+    .obj { fill:#EAEAEA; fill-opacity:0.12; stroke:#EAEAEA; stroke-width:1.8; }
+    .tick { stroke:#EAEAEA; stroke-width:1.1; }
+    .num { fill:#9AA0A6; font-size:11px; }
+    .sight { stroke:#9AA0A6; stroke-width:1.6; stroke-dasharray:6 4; fill:none; }
+    .eyeok { fill:none; stroke:#9AA0A6; stroke-width:1.8; }
+    .eyebad { fill:none; stroke:#E58F8F; stroke-width:1.8; }
+    .sightbad { stroke:#E58F8F; stroke-width:1.6; stroke-dasharray:6 4; fill:none; }
+    .sub { fill:#9AA0A6; font-size:12px; }
+    .bad { fill:#E58F8F; font-size:12px; }
+    .good { fill:#86C98B; font-size:12px; }
+    .goodmark { stroke:#86C98B; stroke-width:2.2; fill:none; }
+    .badmark { stroke:#E58F8F; stroke-width:2.2; fill:none; }
+  </style>
+  <rect class="rule" x="40" y="240" width="350" height="36" rx="3"/>
+  <line class="tick" x1="60" y1="240" x2="60" y2="256"/>
+  <text class="num" x="60" y="270" text-anchor="middle">0</text>
+  <line class="tick" x1="70" y1="240" x2="70" y2="250"/>
+  <line class="tick" x1="80" y1="240" x2="80" y2="250"/>
+  <line class="tick" x1="90" y1="240" x2="90" y2="250"/>
+  <line class="tick" x1="100" y1="240" x2="100" y2="250"/>
+  <line class="tick" x1="110" y1="240" x2="110" y2="256"/>
+  <text class="num" x="110" y="270" text-anchor="middle">1</text>
+  <line class="tick" x1="120" y1="240" x2="120" y2="250"/>
+  <line class="tick" x1="130" y1="240" x2="130" y2="250"/>
+  <line class="tick" x1="140" y1="240" x2="140" y2="250"/>
+  <line class="tick" x1="150" y1="240" x2="150" y2="250"/>
+  <line class="tick" x1="160" y1="240" x2="160" y2="256"/>
+  <text class="num" x="160" y="270" text-anchor="middle">2</text>
+  <line class="tick" x1="170" y1="240" x2="170" y2="250"/>
+  <line class="tick" x1="180" y1="240" x2="180" y2="250"/>
+  <line class="tick" x1="190" y1="240" x2="190" y2="250"/>
+  <line class="tick" x1="200" y1="240" x2="200" y2="250"/>
+  <line class="tick" x1="210" y1="240" x2="210" y2="256"/>
+  <text class="num" x="210" y="270" text-anchor="middle">3</text>
+  <line class="tick" x1="220" y1="240" x2="220" y2="250"/>
+  <line class="tick" x1="230" y1="240" x2="230" y2="250"/>
+  <line class="tick" x1="240" y1="240" x2="240" y2="250"/>
+  <line class="tick" x1="250" y1="240" x2="250" y2="250"/>
+  <line class="tick" x1="260" y1="240" x2="260" y2="256"/>
+  <text class="num" x="260" y="270" text-anchor="middle">4</text>
+  <line class="tick" x1="270" y1="240" x2="270" y2="250"/>
+  <line class="tick" x1="280" y1="240" x2="280" y2="250"/>
+  <line class="tick" x1="290" y1="240" x2="290" y2="250"/>
+  <line class="tick" x1="300" y1="240" x2="300" y2="250"/>
+  <line class="tick" x1="310" y1="240" x2="310" y2="256"/>
+  <text class="num" x="310" y="270" text-anchor="middle">5</text>
+  <line class="tick" x1="320" y1="240" x2="320" y2="250"/>
+  <line class="tick" x1="330" y1="240" x2="330" y2="250"/>
+  <line class="tick" x1="340" y1="240" x2="340" y2="250"/>
+  <line class="tick" x1="350" y1="240" x2="350" y2="250"/>
+  <line class="tick" x1="360" y1="240" x2="360" y2="256"/>
+  <text class="num" x="360" y="270" text-anchor="middle">6</text>
+  <line class="tick" x1="370" y1="240" x2="370" y2="250"/>
+  <line class="tick" x1="380" y1="240" x2="380" y2="250"/>
+  <rect class="obj" x="92" y="150" width="118" height="50" rx="3"/>
+  <path class="sight" d="M210,150 L210,240"/>
+  <path class="eyeok" d="M186,60 q24,-20 48,0 q-24,20 -48,0"/>
+  <circle cx="210" cy="60" r="4.5" fill="#9AA0A6"/>
+  <path class="sight" d="M210,74 L210,146"/>
+  <path class="eyebad" d="M282,44 q22,-19 44,0 q-22,19 -44,0"/>
+  <circle cx="304" cy="44" r="4.5" fill="#E58F8F"/>
+  <path class="sightbad" d="M298,56 L210,200 L185,240"/>
+  <path class="goodmark" d="M210,234 L210,280"/>
+  <path class="badmark" d="M185,234 L185,280"/>
+  <text class="sub" x="140" y="180" text-anchor="middle">object</text>
+  <text class="sub" x="150" y="30" text-anchor="middle">eye directly in front</text>
+  <text class="sub" x="150" y="48" text-anchor="middle">at 90 degrees to the scale</text>
+  <text class="bad" x="366" y="86" text-anchor="middle">offset eye</text>
+  <text class="bad" x="180" y="294" text-anchor="end">reads 2.5</text>
+  <text class="good" x="216" y="294">true 3.0</text>
+  <text class="sub" x="210" y="316" text-anchor="middle">press the scale against the object</text>
+</svg>

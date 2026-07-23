@@ -34,6 +34,6 @@
 
   <text x="125" y="314" class="lbl">mercury reservoir</text>
   <defs>
-    <marker id="ba" markerWidth="7" markerHeight="7" refX="3.5" refY="6" orient="auto"><path d="M0,0 L3.5,7 L7,0 Z" fill="#E58F8F"/></marker>
+    <marker id="ba" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#E8B65A"/></marker>
   </defs>
 </svg>

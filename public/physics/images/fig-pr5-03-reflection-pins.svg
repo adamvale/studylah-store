@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 250" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:13px; }
+    .mirror { fill:none; stroke:#EAEAEA; stroke-width:2.6; }
+    .hatch { fill:none; stroke:#9AA0A6; stroke-width:1.2; }
+    .ray { fill:none; stroke:#6FB7E0; stroke-width:2.2; }
+    .normal { fill:none; stroke:#9AA0A6; stroke-width:1.4; stroke-dasharray:6 4; }
+    .arc { fill:none; stroke:#E8B65A; stroke-width:1.8; }
+    .pin { fill:#9AA0A6; stroke:#EAEAEA; stroke-width:1; }
+    .sym { fill:#E8B65A; font-size:14px; }
+    .eq { fill:#E8B65A; font-size:14px; }
+    .blue { fill:#6FB7E0; font-size:12px; }
+    .grey { fill:#9AA0A6; font-size:11px; }
+  </style>
+  <defs>
+    <marker id="ab" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#6FB7E0"/></marker>
+  </defs>
+
+  <path class="mirror" d="M60,190 H380"/>
+  <path class="hatch" d="M66,190 l-9,10 M86,190 l-9,10 M106,190 l-9,10 M126,190 l-9,10 M146,190 l-9,10 M166,190 l-9,10 M186,190 l-9,10 M266,190 l-9,10 M286,190 l-9,10 M306,190 l-9,10 M326,190 l-9,10 M346,190 l-9,10 M366,190 l-9,10"/>
+
+  <path class="normal" d="M220,190 V70"/>
+
+  <path class="ray" d="M123.6,75.1 L171.8,132.6" marker-end="url(#ab)"/>
+  <path class="ray" d="M171.8,132.6 L220,190"/>
+  <path class="ray" d="M220,190 L268.2,132.6"/>
+  <path class="ray" d="M268.2,132.6 L316.4,75.1" marker-end="url(#ab)"/>
+
+  <path class="arc" d="M190.4,154.8 A46,46 0 0 1 220,144"/>
+  <path class="arc" d="M220,144 A46,46 0 0 1 249.6,154.8"/>
+
+  <circle class="pin" cx="136.4" cy="90.4" r="4"/>
+  <circle class="pin" cx="158.9" cy="117.2" r="4"/>
+  <circle class="pin" cx="281.1" cy="117.2" r="4"/>
+  <circle class="pin" cx="303.6" cy="90.4" r="4"/>
+  <text class="grey" x="128" y="94" text-anchor="end">P1</text>
+  <text class="grey" x="150" y="126" text-anchor="end">P2</text>
+  <text class="grey" x="290" y="126">P3</text>
+  <text class="grey" x="312" y="94">P4</text>
+
+  <text class="sym" x="206" y="158" text-anchor="middle">&#952;i</text>
+  <text class="sym" x="234" y="158" text-anchor="middle">&#952;r</text>
+
+  <text class="blue" x="56" y="62">incoming ray</text>
+  <text class="blue" x="322" y="62">outgoing ray</text>
+  <text class="grey" x="226" y="68">normal</text>
+  <text class="grey" x="62" y="220">mirror</text>
+  <text x="216" y="208">O</text>
+  <text class="eq" x="318" y="232">&#952;i = &#952;r</text>
+</svg>
