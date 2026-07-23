@@ -1,9 +1,11 @@
+import { Fragment } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { requireMaster } from "@/lib/server/entitlements";
-import { isFeatureClosed, type GatedFeature } from "@/lib/feature-gates";
+import { type GatedFeature } from "@/lib/feature-gates";
+import { NativeOnly } from "@/components/native-only";
 import { NamedIcon, type IconName } from "@/components/icons";
 import { NativeToolCards } from "@/components/native-tool-cards";
 import { PageHeading } from "@/components/page-heading";
@@ -98,8 +100,15 @@ const TOOLS: {
     blurb: "The final week, paper by paper",
     tint: "from-indigo-400/25 to-violet-600/10",
   },
-  // Legends is not listed here: it has its own slot in the bottom tab bar, so a
-  // card would only be a second door to the same room.
+  {
+    href: "/account/adventure",
+    emoji: "gamepad",
+    name: "Legends",
+    blurb: "The RPG where battles are real questions",
+    tint: "from-violet-400/25 to-fuchsia-600/10",
+    badge: "BETA",
+    feature: "legends",
+  },
 ];
 
 export default async function LearnHubPage() {
@@ -115,30 +124,40 @@ export default async function LearnHubPage() {
 
       <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-3">
         <NativeToolCards />
-        {TOOLS.filter((t) => !t.feature || !isFeatureClosed(t.feature)).map((t) => (
-          <Link
-            key={t.href}
-            href={t.href}
-            className={`glass group relative overflow-hidden bg-gradient-to-br p-4 transition-transform hover:-translate-y-0.5 ${t.tint}`}
-          >
-            {t.badge && (
-              <span className="absolute right-3 top-3 rounded-full bg-white/15 px-2 py-0.5 text-[9px] font-bold tracking-wide text-ink">
-                {t.badge}
-              </span>
-            )}
-            <span className="icon-orb text-accent" aria-hidden>
-              <NamedIcon name={t.emoji as IconName} size={20} />
-            </span>
-            <p className="mt-3 font-display text-base font-bold text-ink">{t.name}</p>
-            <p className="mt-0.5 text-xs leading-relaxed text-body">{t.blurb}</p>
-            <span
-              className="mt-2 inline-block text-xs font-bold text-accent opacity-0 transition-opacity group-hover:opacity-100"
-              aria-hidden
+        {TOOLS.map((t) => {
+          const card = (
+            <Link
+              href={t.href}
+              className={`glass group relative overflow-hidden bg-gradient-to-br p-4 transition-transform hover:-translate-y-0.5 ${t.tint}`}
             >
-              Open →
-            </span>
-          </Link>
-        ))}
+              {t.badge && (
+                <span className="absolute right-3 top-3 rounded-full bg-white/15 px-2 py-0.5 text-[9px] font-bold tracking-wide text-ink">
+                  {t.badge}
+                </span>
+              )}
+              <span className="icon-orb text-accent" aria-hidden>
+                <NamedIcon name={t.emoji as IconName} size={20} />
+              </span>
+              <p className="mt-3 font-display text-base font-bold text-ink">{t.name}</p>
+              <p className="mt-0.5 text-xs leading-relaxed text-body">{t.blurb}</p>
+              <span
+                className="mt-2 inline-block text-xs font-bold text-accent opacity-0 transition-opacity group-hover:opacity-100"
+                aria-hidden
+              >
+                Open →
+              </span>
+            </Link>
+          );
+          // Gated cards are wrapped in place rather than filtered out, so the
+          // app shows them in their usual positions instead of appended.
+          return t.feature ? (
+            <NativeOnly key={t.href} feature={t.feature}>
+              {card}
+            </NativeOnly>
+          ) : (
+            <Fragment key={t.href}>{card}</Fragment>
+          );
+        })}
       </div>
     </div>
   );

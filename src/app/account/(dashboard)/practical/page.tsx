@@ -4,16 +4,15 @@ import { getCustomerId } from "@/lib/server/customer-session";
 import { requireMaster } from "@/lib/server/entitlements";
 import { ownedSubjects } from "@/lib/server/study";
 import { coverageCount } from "@/lib/topic-coverage";
-import { isFeatureClosed } from "@/lib/feature-gates";
 import { PageHeading } from "@/components/page-heading";
 import { PracticalClient } from "@/components/practical-client";
+import { CloseOnWeb } from "@/components/native-only";
 
 export const metadata: Metadata = { title: "Practical Lab" };
 
 // Practical Lab: trains the science practical paper. Owners only; works on web
 // and in the app (no camera/mic needed).
 export default async function PracticalPage() {
-  if (isFeatureClosed("practical")) redirect("/account/learn");
   const customerId = await getCustomerId();
   if (!customerId) redirect("/account/login");
   await requireMaster(customerId);
@@ -34,6 +33,7 @@ export default async function PracticalPage() {
 
   return (
     <div>
+      <CloseOnWeb feature="practical" />
       <PageHeading description="The practical paper rewards technique: apparatus, measurement, observations, and spotting the source of error. Train it here, one skill at a time, for Chemistry, Physics and Biology.">
         Practical <span className="sl-grad-text">Lab</span>
       </PageHeading>
