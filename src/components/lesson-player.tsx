@@ -11,12 +11,11 @@ import { physicsFigureSrc } from "@/lib/teaching";
 import {
   CORRECT_PRAISE,
   NEXT_NUDGE,
-  RETRY_NUDGE,
-  WRONG_LEAD,
   isProblem,
   isQuestion,
   openerFor,
   pick,
+  retryLine,
 } from "@/lib/lesson-voice";
 import { speak, stopSpeaking } from "@/lib/speak";
 
@@ -437,10 +436,9 @@ export function LessonPlayer({
                       speak(praiseLine());
                     } else {
                       // Gugu gives a hint straight away and asks for another go.
-                      const hi = Math.min(hintsShown, Math.max(helpItems.length - 1, 0));
-                      const hint = helpItems[hi] ?? "Think it through once more.";
+                      // Shared composer so the pre-generated audio matches exactly.
+                      speak(retryLine(helpItems, hintsShown));
                       setHintsShown((n) => Math.min(n + 1, helpItems.length));
-                      speak(`${pick(WRONG_LEAD, hintsShown)} ${hint} ${pick(RETRY_NUDGE, hintsShown)}`);
                     }
                   }}
                   className={`flex w-full items-center gap-3 rounded-xl border-2 px-4 py-3 text-left text-sm text-ink transition-colors ${tone}`}

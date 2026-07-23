@@ -5,7 +5,7 @@ import { fixedGuguLines } from "@/lib/gugu-lines";
 import { LIFE_TRACKS } from "@/lib/life-skills";
 import { PRACTICAL_SUBJECTS } from "@/lib/practical-lab";
 import { PLAYGROUND_MATHS } from "@/lib/playground-maths";
-import { fixedVoiceLines } from "@/lib/lesson-voice";
+import { fixedVoiceLines, retryLinesFor } from "@/lib/lesson-voice";
 import { subconceptsFor } from "@/lib/teaching/subconcepts";
 import { hashLine, normalizeLine } from "@/lib/speak";
 import type { LessonStep } from "@/lib/lesson-steps";
@@ -80,7 +80,11 @@ function collectLines(): string[] {
   for (const topic of SUBCONCEPT_TOPICS)
     for (const box of subconceptsFor(topic) ?? []) {
       if (SCOPED && !ONLY_CODES.has(box.code)) continue;
-      for (const step of box.steps) for (const x of stepSpokenLines(step)) set.add(normalizeLine(x));
+      for (const step of box.steps) {
+        for (const x of stepSpokenLines(step)) set.add(normalizeLine(x));
+        // Wrong-answer retry lines (lead + hint + nudge) the player speaks live.
+        if (FIELDS.has("hints")) for (const x of retryLinesFor(step)) set.add(normalizeLine(x));
+      }
     }
   // The engine's fixed question openers and correct-answer reactions.
   if (FIELDS.has("system")) for (const l of fixedVoiceLines()) set.add(normalizeLine(l));

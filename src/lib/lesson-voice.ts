@@ -64,10 +64,37 @@ export const NEXT_NUDGE = [
   "How about this next one.",
   "Right, let's keep going.",
 ];
-// Lead-in + invitation when a pick is wrong. (The full line embeds the hint, so
-// it is dynamic and cannot be pre-generated; those play in the device voice.)
+// Lead-in + invitation when a pick is wrong. The full line embeds a fixed hint,
+// so although it is composed live, the exact strings ARE enumerable (see
+// retryLinesFor) and can be pre-generated for the premium voice.
 export const WRONG_LEAD = ["Not quite.", "Hmm, not this time.", "Close, but not that one.", "Not quite that one."];
 export const RETRY_NUDGE = ["Have another go.", "Give it another try.", "Want to try once more?", "Have another look."];
+
+// The help ladder for a step: the scripted `ask` first (if any), then the hints.
+// Shared so the player and the TTS pre-generator agree on the exact strings.
+export function helpItemsFor(step: LessonStep): string[] {
+  const ask = "ask" in step ? step.ask : undefined;
+  const hints = ("hints" in step ? step.hints : undefined) ?? [];
+  return ask ? [ask, ...hints] : hints;
+}
+
+// The exact wrong-answer line the player speaks for a given attempt count.
+// MUST match the choice onClick handler in lesson-player.tsx.
+export function retryLine(helpItems: string[], hintsShown: number): string {
+  const hi = Math.min(hintsShown, Math.max(helpItems.length - 1, 0));
+  const hint = helpItems[hi] ?? "Think it through once more.";
+  return `${pick(WRONG_LEAD, hintsShown)} ${hint} ${pick(RETRY_NUDGE, hintsShown)}`;
+}
+
+// Every distinct wrong-answer line a choice step can produce, so premium TTS can
+// be generated for them (hintsShown runs 0..helpItems.length in the player).
+export function retryLinesFor(step: LessonStep): string[] {
+  if (step.kind !== "choice") return [];
+  const helpItems = helpItemsFor(step);
+  const out = new Set<string>();
+  for (let shown = 0; shown <= helpItems.length; shown++) out.add(retryLine(helpItems, shown));
+  return [...out];
+}
 
 // Every FIXED spoken line the engine can produce for a question opener or a
 // correct-answer reaction, so premium TTS can be generated for them. The
