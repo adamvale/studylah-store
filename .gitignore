@@ -51,6 +51,8 @@ prisma/dev.db*
 
 scratch/
 
-# Gugu's generated voice: ~900MB of mp3, served from object storage.
-# See docs/VOICE-AUDIO-HOSTING.md. Kept locally, never committed.
-public/audio/gugu/
+# Gugu's generated voice is served from object storage once the bucket is live.
+# Do NOT ignore it until then: the deployed site still serves these files, so
+# untracking early makes Amy fall silent in production. Cutover steps are in
+# docs/VOICE-AUDIO-HOSTING.md.
+# public/audio/gugu/
