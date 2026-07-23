@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { requireMaster } from "@/lib/server/entitlements";
+import { isFeatureClosed, type GatedFeature } from "@/lib/feature-gates";
 import { NamedIcon, type IconName } from "@/components/icons";
 import { NativeToolCards } from "@/components/native-tool-cards";
 import { PageHeading } from "@/components/page-heading";
@@ -20,6 +21,7 @@ const TOOLS: {
   blurb: string;
   tint: string; // gradient tint per card, the reference's colour variety
   badge?: string;
+  feature?: GatedFeature; // gated tools drop out of the grid while closed
 }[] = [
   {
     href: "/account/learn/tuition",
@@ -28,6 +30,7 @@ const TOOLS: {
     blurb: "Your subjects, taught topic by topic",
     tint: "from-indigo-400/25 to-violet-600/10",
     badge: "NEW",
+    feature: "tuition",
   },
   {
     href: "/account/fasttrack",
@@ -51,6 +54,7 @@ const TOOLS: {
     blurb: "Train the science practical paper",
     tint: "from-teal-400/20 to-violet-600/10",
     badge: "NEW",
+    feature: "practical",
   },
   {
     href: "/account/practice",
@@ -94,14 +98,8 @@ const TOOLS: {
     blurb: "The final week, paper by paper",
     tint: "from-indigo-400/25 to-violet-600/10",
   },
-  {
-    href: "/account/adventure",
-    emoji: "gamepad",
-    name: "Legends",
-    blurb: "The RPG where battles are real questions",
-    tint: "from-violet-400/25 to-fuchsia-600/10",
-    badge: "BETA",
-  },
+  // Legends is not listed here: it has its own slot in the bottom tab bar, so a
+  // card would only be a second door to the same room.
 ];
 
 export default async function LearnHubPage() {
@@ -117,7 +115,7 @@ export default async function LearnHubPage() {
 
       <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-3">
         <NativeToolCards />
-        {TOOLS.map((t) => (
+        {TOOLS.filter((t) => !t.feature || !isFeatureClosed(t.feature)).map((t) => (
           <Link
             key={t.href}
             href={t.href}

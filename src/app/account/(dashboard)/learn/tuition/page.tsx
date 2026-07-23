@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getCustomerId } from "@/lib/server/customer-session";
 import { requireMaster } from "@/lib/server/entitlements";
 import { ownedSubjects } from "@/lib/server/study";
+import { isFeatureClosed } from "@/lib/feature-gates";
 import { PageHeading } from "@/components/page-heading";
 import { MySubjects, type MySubject } from "@/components/my-subjects";
 
@@ -11,6 +12,7 @@ export const metadata: Metadata = { title: "Tuition" };
 // Tuition: every subject, taught topic by topic. Tap a subject to see its
 // topics, then a topic to learn it in bite-sized subconcepts before practising.
 export default async function TuitionPage() {
+  if (isFeatureClosed("tuition")) redirect("/account/learn");
   const customerId = await getCustomerId();
   if (!customerId) redirect("/account/login");
   await requireMaster(customerId);

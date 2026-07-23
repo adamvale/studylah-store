@@ -9,6 +9,7 @@ import { MisconceptionQuiz } from "@/components/misconception-quiz";
 import { teachingPackFor, type TeachingPack } from "@/lib/teaching";
 import { subconceptsFor } from "@/lib/teaching/subconcepts";
 import type { LessonStep } from "@/lib/lesson-steps";
+import { isFeatureClosed } from "@/lib/feature-gates";
 
 // A subject's page: the full topic list. Tapping a topic opens its bite-sized
 // subconcept lessons (teach a bit, then a question) where they exist; otherwise
@@ -161,9 +162,11 @@ export function SubjectTopics({
 
   return (
     <div>
-      <Link href="/account/learn/tuition" className="text-xs font-bold text-accent">
-        ← Tuition
-      </Link>
+      {!isFeatureClosed("tuition") && (
+        <Link href="/account/learn/tuition" className="text-xs font-bold text-accent">
+          ← Tuition
+        </Link>
+      )}
       <h1 className="mt-2 font-display text-2xl font-black text-ink">
         <Sci>{subjectName}</Sci>
       </h1>
