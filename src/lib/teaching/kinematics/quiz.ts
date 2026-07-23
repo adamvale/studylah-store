@@ -20,6 +20,12 @@ export const BOXES: Subconcept[] = [
           "Three minutes is one hundred and eighty seconds.",
           "Distance is speed times time, so four times one hundred and eighty.",
         ],
+        working: [
+          { label: "Formula", latex: "d = v \\times t" },
+          { label: "Substitute", latex: "t = 3 \\times 60 = 180\\ \\text{s}" },
+          { label: "Substitute", latex: "d = 4 \\times 180" },
+          { label: "Answer", latex: "d = 720\\ \\text{m}" },
+        ],
         explain: "The distance is seven hundred and twenty metres, because four metres per second times one hundred and eighty seconds is seven hundred and twenty.",
       },
       // 2 (speed vs velocity) correct = 0
@@ -68,6 +74,11 @@ export const BOXES: Subconcept[] = [
         hints: [
           "Starting from rest means the initial velocity is zero.",
           "Nought point four times five is two.",
+        ],
+        working: [
+          { label: "Formula", latex: "v = u + at" },
+          { label: "Substitute", latex: "v = 0 + 0.4 \\times 5" },
+          { label: "Answer", latex: "v = 2\\ \\text{m/s}" },
         ],
         explain: "His velocity is two metres per second, because starting from rest the velocity is nought point four times five, which is two.",
       },
@@ -118,6 +129,11 @@ export const BOXES: Subconcept[] = [
           "Area under a velocity-time graph is the displacement.",
           "For the flat part, area is twelve times six.",
         ],
+        working: [
+          { label: "Formula", latex: "d = v \\times t" },
+          { label: "Substitute", latex: "d = 12 \\times 6" },
+          { label: "Answer", latex: "d = 72\\ \\text{m}" },
+        ],
         explain: "The displacement is seventy two metres, because during the constant part the area is twelve metres per second times six seconds, which is seventy two.",
       },
       // 8 (average speed of whole journey, same object) correct = 2
@@ -131,6 +147,12 @@ export const BOXES: Subconcept[] = [
           "Total distance is twenty four plus seventy two plus twelve, which is one hundred and eight.",
           "Average speed is total distance over total time, so one hundred and eight over twelve.",
         ],
+        working: [
+          { label: "Formula", latex: "\\text{average speed} = \\dfrac{\\text{total distance}}{\\text{total time}}" },
+          { label: "Substitute", latex: "= \\dfrac{24 + 72 + 12}{4 + 6 + 2}" },
+          { label: "Substitute", latex: "= \\dfrac{108}{12}" },
+          { label: "Answer", latex: "= 9\\ \\text{m/s}" },
+        ],
         explain: "The average speed is nine metres per second, because the total distance of one hundred and eight metres divided by the total time of twelve seconds is nine.",
       },
       // 9 (free fall velocity) correct = 3
@@ -143,6 +165,11 @@ export const BOXES: Subconcept[] = [
         hints: [
           "A freely falling object gains ten metres per second each second.",
           "Ten times three is thirty.",
+        ],
+        working: [
+          { label: "Formula", latex: "v = u + at" },
+          { label: "Substitute", latex: "v = 0 + 10 \\times 3" },
+          { label: "Answer", latex: "v = 30\\ \\text{m/s}" },
         ],
         explain: "The velocity is thirty metres per second, because a freely falling object gains ten metres per second every second, and ten times three is thirty.",
       },
@@ -181,6 +208,11 @@ export const BOXES: Subconcept[] = [
         hints: [
           "The change in velocity is twenty minus twelve, which is eight.",
           "Eight divided by five is one point six.",
+        ],
+        working: [
+          { label: "Formula", latex: "a = \\dfrac{v-u}{t}" },
+          { label: "Substitute", latex: "a = \\dfrac{20-12}{5}" },
+          { label: "Answer", latex: "a = 1.6\\ \\text{m/s}^2" },
         ],
         explain: "The acceleration is one point six metres per second squared, because the velocity gains eight metres per second over five seconds, and eight divided by five is one point six.",
       },
@@ -319,6 +351,11 @@ export const BOXES: Subconcept[] = [
         hints: [
           "The time is two seconds along the bottom.",
           "After two seconds the velocity is ten times two, which is twenty.",
+        ],
+        working: [
+          { label: "Formula", latex: "v = u + at" },
+          { label: "Substitute", latex: "v = 0 + 10 \\times 2" },
+          { label: "Answer", latex: "v = 20\\ \\text{m/s}" },
         ],
         explain: "The point is at two seconds and twenty metres per second, because a freely falling object gains ten metres per second each second, and ten times two is twenty.",
       },

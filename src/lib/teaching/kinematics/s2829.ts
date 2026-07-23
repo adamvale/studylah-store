@@ -71,6 +71,11 @@ export const BOXES: Subconcept[] = [
           "The first part is fifty times eight, which is four hundred.",
           "The second part is a half times four times sixty-four, which is one hundred and twenty-eight. Now add them.",
         ],
+        working: [
+          { label: "Formula", latex: "d = ut + \\tfrac{1}{2}at^{2}" },
+          { label: "Substitute", latex: "d = (50)(8) + \\tfrac{1}{2}(4)(8)^{2}" },
+          { label: "Answer", latex: "d = 528\\ \\text{m}" },
+        ],
         explain: "The displacement is five hundred and twenty-eight metres. Fifty times eight is four hundred, and a half times four times eight squared is one hundred and twenty-eight, and four hundred plus one hundred and twenty-eight is five hundred and twenty-eight.",
       },
       {
@@ -82,6 +87,11 @@ export const BOXES: Subconcept[] = [
         hints: [
           "Work out six plus ten carefully.",
           "Six plus ten is sixteen, not twenty-six.",
+        ],
+        working: [
+          { label: "Formula", latex: "v = u + at" },
+          { label: "Substitute", latex: "v = 6 + (2)(5)" },
+          { label: "Answer", latex: "v = 16\\ \\text{m/s}" },
         ],
         explain: "The last line is wrong: six plus ten is sixteen, so the final velocity is sixteen metres per second.",
       },
@@ -127,6 +137,11 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 30,
         targetMax: 30,
+        working: [
+          { label: "Formula", latex: "v = u + at" },
+          { label: "Substitute", latex: "v = 0 + (10)(3)" },
+          { label: "Answer", latex: "v = 30\\ \\text{m/s}" },
+        ],
         explain: "After three seconds the velocity is thirty metres per second, because it gains ten metres per second every second, and ten times three is thirty.",
         ask: "It starts from rest and gains ten metres per second each second. Slide to its velocity after three seconds.",
         hints: [
@@ -144,6 +159,11 @@ export const BOXES: Subconcept[] = [
           "Since it starts from rest, 45 = 1/2 times 10 times t^2.",
           "That gives t squared equals nine, so t is the square root of nine.",
         ],
+        working: [
+          { label: "Formula", latex: "d = ut + \\tfrac{1}{2}at^{2}" },
+          { label: "Substitute", latex: "45 = (0)(t) + \\tfrac{1}{2}(10)t^{2}" },
+          { label: "Answer", latex: "t = 3\\ \\text{s}" },
+        ],
         explain: "The time is three seconds. With u zero, forty-five equals a half times ten times t squared, so t squared is nine, and the square root of nine is three.",
       },
       {
@@ -155,6 +175,11 @@ export const BOXES: Subconcept[] = [
         hints: [
           "Start from v equals u plus a t, with u equal to zero.",
           "Ten times three seconds is thirty metres per second.",
+        ],
+        working: [
+          { label: "Formula", latex: "v = u + at" },
+          { label: "Substitute", latex: "v = 0 + (10)(3)" },
+          { label: "Answer", latex: "v = 30\\ \\text{m/s}" },
         ],
         explain: "The velocity is thirty metres per second, because starting from rest, v equals zero plus ten times three, which is thirty.",
       },

@@ -19,6 +19,11 @@ export const BOXES: Subconcept[] = [
           "The gradient of a velocity-time graph is the acceleration.",
           "Thirty divided by fifteen is two.",
         ],
+        working: [
+          { label: "Formula", latex: "a = \\dfrac{v-u}{t}" },
+          { label: "Substitute", latex: "a = \\dfrac{30-0}{15}" },
+          { label: "Answer", latex: "a = 2\\ \\text{m/s}^2" },
+        ],
         explain: "The acceleration is two metres per second squared, because the gradient is the change in velocity, thirty, divided by the time, fifteen.",
       },
       // 2 choice: displacement as area (constant velocity section)
@@ -31,6 +36,11 @@ export const BOXES: Subconcept[] = [
         hints: [
           "The area under a velocity-time graph is the displacement.",
           "A rectangle area is height times width, thirty times thirty.",
+        ],
+        working: [
+          { label: "Formula", latex: "d = v \\times t" },
+          { label: "Substitute", latex: "d = 30 \\times 30" },
+          { label: "Answer", latex: "d = 900\\ \\text{m}" },
         ],
         explain: "The displacement is nine hundred metres, because the area under the graph is a rectangle, thirty metres per second times thirty seconds.",
       },
@@ -80,6 +90,11 @@ export const BOXES: Subconcept[] = [
         hints: [
           "Each triangle area is half times fifteen times thirty, which is two hundred and twenty five.",
           "The middle rectangle is thirty times thirty, which is nine hundred.",
+        ],
+        working: [
+          { label: "Formula", latex: "d = \\tfrac{1}{2}(a+b)h" },
+          { label: "Substitute", latex: "d = \\tfrac{1}{2}(30+60)(30)" },
+          { label: "Answer", latex: "d = 1350\\ \\text{m}" },
         ],
         explain: "The total displacement is one thousand three hundred and fifty metres: two hundred and twenty five for each triangle plus nine hundred for the rectangle in the middle.",
       },

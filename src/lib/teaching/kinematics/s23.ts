@@ -43,6 +43,11 @@ export const BOXES: Subconcept[] = [
           "Five minutes is five times sixty, which is three hundred seconds.",
           "Distance is speed times time, so eight times three hundred.",
         ],
+        working: [
+          { label: "Formula", latex: "d = v \\times t" },
+          { label: "Substitute", latex: "d = 8 \\times (5 \\times 60)" },
+          { label: "Answer", latex: "d = 2400\\ \\text{m}" },
+        ],
         explain: "She travels two thousand four hundred metres, because eight metres per second times three hundred seconds is two thousand four hundred metres.",
       },
       {
@@ -76,6 +81,11 @@ export const BOXES: Subconcept[] = [
         hints: [
           "Divide five thousand two hundred and eighty by six hundred.",
           "The answer is a little under nine metres per second.",
+        ],
+        working: [
+          { label: "Formula", latex: "\\text{average speed} = \\dfrac{\\text{total distance}}{\\text{total time}}" },
+          { label: "Substitute", latex: "\\text{average speed} = \\dfrac{5280}{600}" },
+          { label: "Answer", latex: "\\text{average speed} = 8.8\\ \\text{m/s}" },
         ],
         explain: "The average speed is eight point eight metres per second, because five thousand two hundred and eighty metres divided by six hundred seconds is eight point eight.",
       },

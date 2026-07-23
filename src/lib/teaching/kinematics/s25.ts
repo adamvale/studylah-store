@@ -45,6 +45,11 @@ export const BOXES: Subconcept[] = [
           "Acceleration is the change in velocity divided by the time.",
           "Twenty minus twelve is eight, and eight divided by five is one point six.",
         ],
+        working: [
+          { label: "Formula", latex: "a = \\dfrac{v - u}{t}" },
+          { label: "Substitute", latex: "a = \\dfrac{20 - 12}{5}" },
+          { label: "Answer", latex: "a = 1.6\\ \\text{m/s}^2" },
+        ],
         explain: "The acceleration is one point six metres per second squared, because twenty minus twelve is eight, and eight divided by five is one point six.",
       },
       {
@@ -110,6 +115,11 @@ export const BOXES: Subconcept[] = [
         hints: [
           "At rest the final velocity is zero.",
           "Zero minus twenty four is minus twenty four, and that divided by six is minus four.",
+        ],
+        working: [
+          { label: "Formula", latex: "a = \\dfrac{v - u}{t}" },
+          { label: "Substitute", latex: "a = \\dfrac{0 - 24}{6}" },
+          { label: "Answer", latex: "a = -4\\ \\text{m/s}^2" },
         ],
         explain: "The acceleration is minus four metres per second squared, because zero minus twenty four is minus twenty four, and that divided by six is minus four. The car decelerates at four metres per second squared.",
       },

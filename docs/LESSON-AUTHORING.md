@@ -138,6 +138,17 @@ files). The engine drives the tutor rhythm; you supply the words:
   alone as a "try again" nudge; hint 1 is gentle, the last is nearly the answer.
 - `explain`: the teaching summary, spoken/shown once the student solves it or
   reveals the answer. State the actual answer here so "reveal" teaches.
+- `working`: for ANY calculation question, the full worked solution shown in
+  proper maths once solved/revealed. An array of `{ label, latex }` steps, always
+  in this order:
+  1. `{ label: "Formula", latex: "a = \\dfrac{v - u}{t}" }` (one line per formula
+     when a problem needs several)
+  2. `{ label: "Substitute", latex: "a = \\dfrac{20 - 12}{5}" }` (values plugged in)
+  3. `{ label: "Answer", latex: "a = 1.6\\ \\text{m/s}^2" }` (final value WITH unit)
+  `latex` is real LaTeX (escape backslashes; units as `\\text{m/s}^2`). Every
+  question that needs a calculation MUST have `working`. Skip it for purely
+  conceptual questions (scalar vs vector, definitions, ordering, matching, graph-
+  shape picking) and for `open` questions (which already show a model answer).
 
 Write `ask`/`hints`/`explain` as speech: plain words, no notation the ear can't
 parse (say "0.24 millimetres", not "0.24 mm", inside `ask`/`hints`; keep the

@@ -32,6 +32,13 @@ export const BOXES: Subconcept[] = [
           "Ninety five kilometres is ninety five thousand metres.",
           "Forty minutes is two thousand four hundred seconds.",
         ],
+        working: [
+          { label: "Formula", latex: "v = \\dfrac{d}{t}" },
+          { label: "Substitute", latex: "d = 95\\ \\text{km} = 95000\\ \\text{m}" },
+          { label: "Substitute", latex: "t = 40\\ \\text{min} = 2400\\ \\text{s}" },
+          { label: "Substitute", latex: "v = \\dfrac{95000}{2400}" },
+          { label: "Answer", latex: "v = 39.6\\ \\text{m/s}" },
+        ],
         explain: "The speed is about thirty nine point six metres per second, because ninety five thousand metres divided by two thousand four hundred seconds is roughly thirty nine point six.",
       },
       // 3
@@ -57,6 +64,11 @@ export const BOXES: Subconcept[] = [
         hints: [
           "Average speed is total distance over total time.",
           "Five thousand two hundred and eighty divided by six hundred is eight point eight.",
+        ],
+        working: [
+          { label: "Formula", latex: "v = \\dfrac{d}{t}" },
+          { label: "Substitute", latex: "v = \\dfrac{5280}{600}" },
+          { label: "Answer", latex: "v = 8.8\\ \\text{m/s}" },
         ],
         explain: "Her average speed is eight point eight metres per second, because five thousand two hundred and eighty metres divided by six hundred seconds is eight point eight.",
       },

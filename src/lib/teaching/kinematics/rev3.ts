@@ -32,6 +32,11 @@ export const BOXES: Subconcept[] = [
           "Velocity equals change in displacement over change in time.",
           "Five metres divided by two seconds.",
         ],
+        working: [
+          { label: "Formula", latex: "v = \\dfrac{\\Delta d}{\\Delta t}" },
+          { label: "Substitute", latex: "v = \\dfrac{5 - 0}{2}" },
+          { label: "Answer", latex: "v = 2.5\\ \\text{m/s}" },
+        ],
         explain: "The velocity is two point five metres per second, because five metres divided by two seconds is two point five.",
       },
       // 3 (choice) horizontal line

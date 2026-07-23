@@ -52,6 +52,11 @@ export const BOXES: Subconcept[] = [
           "Velocity is the gradient, rise over run.",
           "Five divided by two is two point five.",
         ],
+        working: [
+          { label: "Formula", latex: "\\text{gradient} = \\dfrac{\\Delta d}{\\Delta t}" },
+          { label: "Substitute", latex: "\\text{gradient} = \\dfrac{5 - 0}{2}" },
+          { label: "Answer", latex: "v = 2.5\\ \\text{m/s}" },
+        ],
         explain: "The velocity is two point five metres per second, because five metres divided by two seconds is two point five.",
       },
       {
@@ -68,6 +73,11 @@ export const BOXES: Subconcept[] = [
         hints: [
           "Divide the rise in displacement by the time.",
           "Twelve divided by four is three.",
+        ],
+        working: [
+          { label: "Formula", latex: "\\text{gradient} = \\dfrac{\\Delta d}{\\Delta t}" },
+          { label: "Substitute", latex: "\\text{gradient} = \\dfrac{12 - 0}{4}" },
+          { label: "Answer", latex: "v = 3\\ \\text{m/s}" },
         ],
         explain: "The velocity is three metres per second, because twelve metres divided by four seconds is three.",
       },

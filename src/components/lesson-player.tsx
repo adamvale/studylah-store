@@ -296,6 +296,7 @@ export function LessonPlayer({
   const ask = "ask" in step ? step.ask : undefined;
   const hints = ("hints" in step ? step.hints : undefined) ?? [];
   const explain = "explain" in step ? step.explain : undefined;
+  const working = "working" in step ? step.working : undefined;
   // Gugu's opening line for a question: a varied, natural lead-in (no hint yet).
   const opener = openerFor(step.kind, i);
   // Help ladder, on demand only: the scripted `ask` guidance first, then hints.
@@ -665,6 +666,30 @@ export function LessonPlayer({
             </button>
           </div>
           <p className="mt-1 text-sm leading-relaxed text-body"><Sci>{explain}</Sci></p>
+        </div>
+      )}
+
+      {/* The full worked solution for a calculation: formula, substitute, answer. */}
+      {showSummary && working && working.length > 0 && (
+        <div className="glass mt-3 bg-gradient-to-br from-white/5 to-transparent p-4">
+          <p className="text-xs font-bold uppercase tracking-wide text-accent">Working</p>
+          <ol className="mt-3 space-y-3">
+            {working.map((w, wi) => (
+              <li key={wi} className="flex items-start gap-3">
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/15 text-[11px] font-bold text-accent">
+                  {wi + 1}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="text-[11px] font-bold uppercase tracking-wide text-body">{w.label}</p>
+                  {w.latex && (
+                    <div className="mt-1 overflow-x-auto text-ink [&_.katex]:text-[1.15rem]">
+                      <Katex tex={w.latex} />
+                    </div>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       )}
     </ImmersiveShell>

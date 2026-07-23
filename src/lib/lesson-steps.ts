@@ -10,11 +10,21 @@
 // read aloud on demand with the device's own speech, so it costs nothing to
 // run. Pure types, safe on server and client.
 
+// One line of a worked solution. `label` names the move ("Formula",
+// "Substitute", "Answer"); `latex` is the maths for that line (rendered by
+// KaTeX). A calculation question should walk: choose the formula(s), substitute
+// the values, then the answer WITH its unit.
+export interface WorkingStep {
+  label: string;
+  latex?: string;
+}
+
 // Fields shared by every "problem" step: Gugu's opening line and the help
 // ladder. Both optional so plain content still works.
 interface Guided {
   ask?: string; // Gugu's opening prompt, spoken/shown when the step opens
   hints?: string[]; // escalating nudges revealed one at a time via "Help"
+  working?: WorkingStep[]; // step-by-step worked solution, shown once solved/revealed
 }
 
 // A formula shown in proper maths on a teaching card: the equation in LaTeX,
@@ -99,7 +109,7 @@ function formulaText(f: Formula | undefined): string[] {
 
 // Every human-facing string in a step, for compliance scanning and search.
 export function stepText(step: LessonStep): string[] {
-  const guided = "ask" in step ? [step.ask ?? "", ...(step.hints ?? [])] : [];
+  const guided = "ask" in step ? [step.ask ?? "", ...(step.hints ?? []), ...(step.working ?? []).map((w) => w.label)] : [];
   switch (step.kind) {
     case "concept":
       return [step.heading ?? "", step.body, step.say ?? "", ...formulaText(step.formula)];

@@ -78,6 +78,11 @@ export const BOXES: Subconcept[] = [
           "Acceleration equals the change in velocity divided by the time.",
           "Twenty five minus fifteen is ten, and ten divided by five is two.",
         ],
+        working: [
+          { label: "Formula", latex: "a = \\dfrac{v - u}{t}" },
+          { label: "Substitute", latex: "a = \\dfrac{25 - 15}{5}" },
+          { label: "Answer", latex: "a = 2\\ \\text{m/s}^2" },
+        ],
         explain:
           "The acceleration is two metres per second squared, because twenty five minus fifteen is ten, and ten divided by five seconds is two.",
       },
@@ -116,6 +121,11 @@ export const BOXES: Subconcept[] = [
           "The change in velocity is twenty minus twelve, which is eight.",
           "Eight divided by five is one point six.",
         ],
+        working: [
+          { label: "Formula", latex: "a = \\dfrac{v - u}{t}" },
+          { label: "Substitute", latex: "a = \\dfrac{20 - 12}{5}" },
+          { label: "Answer", latex: "a = 1.6\\ \\text{m/s}^2" },
+        ],
         explain:
           "The acceleration is one point six metres per second squared, because twenty minus twelve is eight, and eight divided by five seconds is one point six.",
       },
@@ -129,6 +139,11 @@ export const BOXES: Subconcept[] = [
         hints: [
           "Use acceleration equals final velocity minus initial velocity, over time.",
           "Zero minus twenty four is minus twenty four, and that divided by six is minus four.",
+        ],
+        working: [
+          { label: "Formula", latex: "a = \\dfrac{v - u}{t}" },
+          { label: "Substitute", latex: "a = \\dfrac{0 - 24}{6}" },
+          { label: "Answer", latex: "a = -4\\ \\text{m/s}^2" },
         ],
         explain:
           "The acceleration is minus four metres per second squared. The car is slowing down, so the value is negative, and we say it decelerates at four metres per second squared.",

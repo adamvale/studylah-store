@@ -37,6 +37,11 @@ export const BOXES: Subconcept[] = [
           "Start from rest, so u is zero, and use v equals u plus a t.",
           "Ten metres per second squared times three point five seconds is thirty five.",
         ],
+        working: [
+          { label: "Formula", latex: "v = u + at" },
+          { label: "Substitute", latex: "v = 0 + 10 \\times 3.5" },
+          { label: "Answer", latex: "v = 35\\ \\text{m/s}" },
+        ],
         explain: "The final velocity is thirty five metres per second, because starting from rest, ten times three point five is thirty five.",
       },
       // 3 (choice) velocity gained each second in free fall
@@ -80,6 +85,11 @@ export const BOXES: Subconcept[] = [
         hints: [
           "The car stops, so the final velocity v is zero.",
           "A half times eighteen times two point four is twenty one point six.",
+        ],
+        working: [
+          { label: "Formula", latex: "d = \\tfrac{1}{2}(u+v)t" },
+          { label: "Substitute", latex: "d = \\tfrac{1}{2}(18+0)(2.4)" },
+          { label: "Answer", latex: "d = 21.6\\ \\text{m}" },
         ],
         explain: "The braking distance is twenty one point six metres, because a half times eighteen plus zero, times two point four seconds, is twenty one point six.",
       },

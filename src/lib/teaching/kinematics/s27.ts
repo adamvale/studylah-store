@@ -31,6 +31,11 @@ export const BOXES: Subconcept[] = [
           "Acceleration is the gradient: change in velocity divided by change in time.",
           "Thirty divided by fifteen is two.",
         ],
+        working: [
+          { label: "Formula", latex: "a = \\dfrac{v - u}{t}" },
+          { label: "Substitute", latex: "a = \\dfrac{30 - 0}{15}" },
+          { label: "Answer", latex: "a = 2\\ \\text{m/s}^2" },
+        ],
         explain: "The acceleration is two metres per second squared, because the velocity climbs by thirty over fifteen seconds, and thirty divided by fifteen is two.",
       },
       {
@@ -64,6 +69,11 @@ export const BOXES: Subconcept[] = [
         hints: [
           "Work out thirty divided by fifteen.",
           "Thirty divided by fifteen is two, not three.",
+        ],
+        working: [
+          { label: "Formula", latex: "a = \\dfrac{v - u}{t}" },
+          { label: "Substitute", latex: "a = \\dfrac{30 - 0}{15}" },
+          { label: "Answer", latex: "a = 2\\ \\text{m/s}^2" },
         ],
         explain: "The last line is wrong: thirty divided by fifteen is two, so the acceleration is two metres per second squared.",
       },
@@ -103,6 +113,11 @@ export const BOXES: Subconcept[] = [
           "The area of a triangle is a half times base times height.",
           "A half times fifteen times thirty is two hundred and twenty five.",
         ],
+        working: [
+          { label: "Formula", latex: "d = \\tfrac{1}{2} \\times b \\times h" },
+          { label: "Substitute", latex: "d = \\tfrac{1}{2} \\times 15 \\times 30" },
+          { label: "Answer", latex: "d = 225\\ \\text{m}" },
+        ],
         explain: "The displacement is two hundred and twenty five metres, because the triangle area is a half times fifteen times thirty, which is two hundred and twenty five.",
       },
       {
@@ -114,6 +129,11 @@ export const BOXES: Subconcept[] = [
         hints: [
           "Total displacement is the sum of all the areas.",
           "Two hundred and twenty five plus nine hundred plus two hundred and twenty five is one thousand three hundred and fifty.",
+        ],
+        working: [
+          { label: "Formula", latex: "d = d_1 + d_2 + d_3" },
+          { label: "Substitute", latex: "d = 225 + 900 + 225" },
+          { label: "Answer", latex: "d = 1350\\ \\text{m}" },
         ],
         explain: "The total displacement is one thousand three hundred and fifty metres, because you add the three areas: two hundred and twenty five plus nine hundred plus two hundred and twenty five.",
       },

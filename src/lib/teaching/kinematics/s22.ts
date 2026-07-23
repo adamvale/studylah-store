@@ -37,6 +37,11 @@ export const BOXES: Subconcept[] = [
           "Speed is distance divided by time.",
           "Ninety divided by six is fifteen.",
         ],
+        working: [
+          { label: "Formula", latex: "v = \\dfrac{d}{t}" },
+          { label: "Substitute", latex: "v = \\dfrac{90}{6}" },
+          { label: "Answer", latex: "v = 15\\ \\text{m/s}" },
+        ],
         explain: "The speed is fifteen metres per second, because ninety metres divided by six seconds is fifteen.",
       },
       {
@@ -53,6 +58,11 @@ export const BOXES: Subconcept[] = [
         hints: [
           "Divide the distance by the time.",
           "Twenty four divided by three is eight.",
+        ],
+        working: [
+          { label: "Formula", latex: "v = \\dfrac{d}{t}" },
+          { label: "Substitute", latex: "v = \\dfrac{24}{3}" },
+          { label: "Answer", latex: "v = 8\\ \\text{m/s}" },
         ],
         explain: "Her speed is eight metres per second, because twenty four metres divided by three seconds is eight.",
       },

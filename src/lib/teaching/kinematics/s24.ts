@@ -84,6 +84,11 @@ export const BOXES: Subconcept[] = [
           "Divide the displacement by the time.",
           "Three hundred and sixty divided by ninety is four.",
         ],
+        working: [
+          { label: "Formula", latex: "v = \\dfrac{d}{t}" },
+          { label: "Substitute", latex: "v = \\dfrac{360}{90}" },
+          { label: "Answer", latex: "v = 4\\ \\text{m/s}" },
+        ],
         explain: "Her average velocity is four metres per second due north, because 360 m divided by 90 s is four.",
       },
       {
