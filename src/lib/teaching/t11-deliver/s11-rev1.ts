@@ -1,0 +1,242 @@
+import type { Subconcept } from "@/lib/teaching/subconcepts";
+
+// T11 Electromagnetic Waves, Revision 1. Checkpoint over KB Chapter 13,
+// sections t11.1 to t11.3: what an EM wave is, the spectrum, common
+// properties and v = f lambda. Question-only.
+
+export const BOXES: Subconcept[] = [
+  {
+    id: "t11.rev1",
+    code: "R1",
+    title: "Revision 1",
+    blurb: "Checkpoint: EM waves, the spectrum and v = f lambda",
+    kind: "revision",
+    steps: [
+      {
+        kind: "choice",
+        question: "Which of these best describes an electromagnetic wave?",
+        figure: "fig-13-01-em-wave-structure",
+        options: [
+          "A longitudinal wave that needs a stretched spring to travel",
+          "A vibration of air particles back and forth",
+          "A transverse wave of oscillating electric and magnetic fields",
+          "A stream of tiny solid particles thrown out by a source",
+        ],
+        correct: 2,
+        ask: "An EM wave is made of 2 fields at right angles that both vibrate across the direction of travel. Which option names those fields?",
+        hints: [
+          "The electric field and the magnetic field oscillate at 90 degrees to each other.",
+          "Because both fields vibrate across the direction of travel, every EM wave is transverse.",
+        ],
+        explain: "An electromagnetic wave is a transverse wave made of an oscillating electric field and an oscillating magnetic field at right angles to each other and to the direction of travel. In the figure the electric wave is drawn in yellow and the magnetic wave in blue.",
+      },
+      {
+        kind: "choice",
+        question: "Sunlight reaches Earth across empty space. What does this show about electromagnetic waves?",
+        options: [
+          "They can travel through a vacuum, needing no medium",
+          "They must have air to carry them along",
+          "They can only travel through water",
+          "They need a solid material to pass through",
+        ],
+        correct: 0,
+        ask: "Between the Sun and the Earth there is almost no matter. What must be true if the light still gets through?",
+        hints: [
+          "Sound needs particles to pass on the vibration, but light does not.",
+          "EM waves transfer energy without matter, so they cross a vacuum.",
+        ],
+        explain: "Electromagnetic waves need no medium, so they travel through a vacuum. That is why sunlight can cross the empty space between the Sun and the Earth.",
+      },
+      {
+        kind: "choice",
+        question: "Orange light has a wavelength of 6.0 times 10^{-7} m. Using v = 3.0 times 10^{8} m/s, find its frequency.",
+        options: [
+          "1.8 times 10^{2} Hz",
+          "5.0 times 10^{13} Hz",
+          "2.0 times 10^{-15} Hz",
+          "5.0 times 10^{14} Hz",
+        ],
+        correct: 3,
+        ask: "Rearrange v = f lambda to get frequency, so work out the speed divided by the wavelength. Which option matches?",
+        hints: [
+          "From v = f lambda, the frequency f is v divided by lambda.",
+          "3.0 times 10 to the power 8 divided by 6.0 times 10 to the power negative 7 is 5.0 times 10 to the power 14.",
+        ],
+        working: [
+          { label: "Formula", latex: "f = \\dfrac{v}{\\lambda}" },
+          { label: "Substitute", latex: "f = \\dfrac{3.0 \\times 10^{8}}{6.0 \\times 10^{-7}}" },
+          { label: "Answer", latex: "f = 5.0 \\times 10^{14}\\ \\text{Hz}" },
+        ],
+        explain: "The frequency is 5.0 times 10 to the power 14 hertz, because 3.0 times 10 to the power 8 metres per second divided by 6.0 times 10 to the power negative 7 metres gives 5.0 times 10 to the power 14 hertz.",
+      },
+      {
+        kind: "choice",
+        question: "An FM radio station broadcasts at a frequency of 9.0 times 10^{7} Hz. Using v = 3.0 times 10^{8} m/s, find its wavelength.",
+        options: [
+          "0.33 m",
+          "3.3 m",
+          "33 m",
+          "2.7 times 10^{16} m",
+        ],
+        correct: 1,
+        ask: "Rearrange v = f lambda to get wavelength, so work out the speed divided by the frequency. Which option matches?",
+        hints: [
+          "From v = f lambda, the wavelength lambda is v divided by f.",
+          "3.0 times 10 to the power 8 divided by 9.0 times 10 to the power 7 is about 3.3.",
+        ],
+        working: [
+          { label: "Formula", latex: "\\lambda = \\dfrac{v}{f}" },
+          { label: "Substitute", latex: "\\lambda = \\dfrac{3.0 \\times 10^{8}}{9.0 \\times 10^{7}}" },
+          { label: "Answer", latex: "\\lambda = 3.3\\ \\text{m}" },
+        ],
+        explain: "The wavelength is 3.3 metres, because 3.0 times 10 to the power 8 metres per second divided by 9.0 times 10 to the power 7 hertz gives about 3.3 metres.",
+      },
+      {
+        kind: "choice",
+        question: "Which region of the electromagnetic spectrum has the longest wavelength?",
+        options: [
+          "Gamma rays",
+          "X-rays",
+          "Radio waves",
+          "Ultraviolet",
+        ],
+        correct: 2,
+        ask: "Longest wavelength goes with the lowest frequency. Which region sits at the low-frequency end of the spectrum?",
+        hints: [
+          "Going from radio waves to gamma rays, frequency increases and wavelength decreases.",
+          "Radio waves are at the start of that list, so they have the longest wavelength.",
+        ],
+        explain: "Radio waves have the longest wavelength, because they sit at the low-frequency end of the spectrum. Gamma rays are at the opposite end, with the shortest wavelength and the highest energy.",
+      },
+      {
+        kind: "order",
+        prompt: "Put the 7 regions of the electromagnetic spectrum in order of increasing frequency.",
+        items: [
+          "Radio waves",
+          "Microwaves",
+          "Infrared",
+          "Visible light",
+          "Ultraviolet",
+          "X-rays",
+          "Gamma rays",
+        ],
+        ask: "Start at the low-frequency, long-wavelength end and finish at the high-frequency, high-energy end. The memory aid is R M I V U X G.",
+        hints: [
+          "Radio waves have the lowest frequency; gamma rays have the highest.",
+          "The order is radio waves, microwaves, infrared, visible light, ultraviolet, X-rays, gamma rays.",
+        ],
+        explain: "In order of increasing frequency the regions are radio waves, microwaves, infrared, visible light, ultraviolet, X-rays and gamma rays. As you move along this list the frequency and energy increase while the wavelength decreases.",
+      },
+      {
+        kind: "classify",
+        prompt: "Sort each region of the spectrum by whether it is ionising or non-ionising.",
+        bins: ["Non-ionising", "Ionising"],
+        items: [
+          { text: "radio waves", bin: 0 },
+          { text: "microwaves", bin: 0 },
+          { text: "infrared", bin: 0 },
+          { text: "ultraviolet", bin: 1 },
+          { text: "X-rays", bin: 1 },
+          { text: "gamma rays", bin: 1 },
+        ],
+        ask: "Ionising radiation is the high-energy end of the spectrum that can knock electrons out of atoms. Which regions carry the most energy? Tap each one into its bin.",
+        hints: [
+          "Radio waves, microwaves and infrared are low-energy, so they are non-ionising.",
+          "Ultraviolet, X-rays and gamma rays are high-energy and ionising.",
+        ],
+        explain: "Radio waves, microwaves and infrared are non-ionising because they carry little energy. Ultraviolet, X-rays and gamma rays are ionising because they have enough energy to knock electrons out of atoms and damage living cells.",
+      },
+      {
+        kind: "cloze",
+        prompt: "Complete the summary of the properties shared by all electromagnetic waves.",
+        segments: [
+          "Every EM wave is ",
+          ", it can travel through a ",
+          ", and all EM waves obey the equation ",
+          ".",
+        ],
+        bank: ["transverse", "vacuum", "v = f lambda", "longitudinal", "medium", "p = mv"],
+        answer: ["transverse", "vacuum", "v = f lambda"],
+        ask: "Recall the shape of every EM wave, the empty space it can cross, and the equation linking speed, frequency and wavelength.",
+        hints: [
+          "The 2 fields vibrate across the direction of travel, so each wave is transverse and can cross a vacuum.",
+          "Speed equals frequency times wavelength, written v = f lambda.",
+        ],
+        explain: "Every EM wave is transverse, it can travel through a vacuum with no medium, and all EM waves obey v = f lambda, which links speed, frequency and wavelength.",
+      },
+      {
+        kind: "spoterror",
+        prompt: "One line in this summary of electromagnetic waves is wrong. Find it.",
+        lines: [
+          "All EM waves are transverse waves.",
+          "EM waves transfer energy from place to place.",
+          "EM waves are longitudinal and need a medium to travel.",
+          "In a vacuum all EM waves travel at 3.0 times 10^{8} m/s.",
+        ],
+        errorLine: 2,
+        ask: "Check each line against what you know about EM waves. Which one contradicts the fact that light crosses empty space?",
+        hints: [
+          "EM waves are transverse, not longitudinal, and they need no medium.",
+          "The 3rd line makes 2 mistakes at once, so it is the wrong one.",
+        ],
+        explain: "The 3rd line is wrong. EM waves are transverse, not longitudinal, and they need no medium, since they can cross a vacuum. The other lines are all correct.",
+      },
+      {
+        kind: "tiles",
+        prompt: "An X-ray has a frequency of 1.5 times 10^{18} Hz. Using v = 3.0 times 10^{8} m/s, build the working line that gives its wavelength.",
+        tiles: [
+          "\\lambda =",
+          "3.0 \\times 10^{8}",
+          "\\div",
+          "1.5 \\times 10^{18}",
+          "=",
+          "2.0 \\times 10^{-10}",
+          "\\text{m}",
+          "\\text{Hz}",
+        ],
+        answer: [
+          "\\lambda =",
+          "3.0 \\times 10^{8}",
+          "\\div",
+          "1.5 \\times 10^{18}",
+          "=",
+          "2.0 \\times 10^{-10}",
+          "\\text{m}",
+        ],
+        ask: "To find wavelength, divide the speed by the frequency, so set up 3.0 times 10 to the power 8 divided by 1.5 times 10 to the power 18.",
+        hints: [
+          "From v = f lambda, the wavelength lambda is v divided by f.",
+          "3.0 times 10 to the power 8 divided by 1.5 times 10 to the power 18 is 2.0 times 10 to the power negative 10, in metres.",
+        ],
+        working: [
+          { label: "Formula", latex: "\\lambda = \\dfrac{v}{f}" },
+          { label: "Substitute", latex: "\\lambda = \\dfrac{3.0 \\times 10^{8}}{1.5 \\times 10^{18}}" },
+          { label: "Answer", latex: "\\lambda = 2.0 \\times 10^{-10}\\ \\text{m}" },
+        ],
+        explain: "The wavelength is 2.0 times 10 to the power negative 10 metres, because 3.0 times 10 to the power 8 metres per second divided by 1.5 times 10 to the power 18 hertz gives 2.0 times 10 to the power negative 10 metres.",
+      },
+      {
+        kind: "open",
+        prompt: "State what an electromagnetic wave is and give 2 properties shared by every electromagnetic wave.",
+        modelAnswer: "An electromagnetic wave is a transverse wave made of an oscillating electric field and an oscillating magnetic field at right angles to each other and to the direction of travel. All EM waves transfer energy without matter, travel through a vacuum at 3.0 times 10 to the power 8 metres per second, and obey v = f lambda. Any 2 of these shared properties are acceptable.",
+        marks: [
+          "An EM wave is a transverse wave of oscillating electric and magnetic fields at right angles.",
+          "Property 1: all EM waves travel through a vacuum at 3.0 times 10^{8} m/s.",
+          "Property 2: all EM waves are transverse, transfer energy, and obey v = f lambda.",
+        ],
+        ask: "Think about the 2 fields that make up the wave and their directions, then recall the speed, the equation and the fact that no medium is needed.",
+      },
+      {
+        kind: "open",
+        prompt: "A beam of light passes from a vacuum into a glass block. State what happens to its speed, its wavelength and its frequency, and explain why.",
+        modelAnswer: "As the light enters the glass its speed decreases and its wavelength decreases, but its frequency stays the same because the frequency is fixed by the source. Since v = f lambda and f is unchanged, a smaller speed means a smaller wavelength. This drop in speed is what causes the light to refract.",
+        marks: [
+          "Speed decreases on entering the glass.",
+          "Wavelength decreases; frequency stays the same (fixed by the source).",
+          "Because v = f lambda with f constant, a smaller v gives a smaller lambda; the speed drop causes refraction.",
+        ],
+        ask: "Recall which of the 3 quantities is set by the source and cannot change, then use v = f lambda to work out what the other 2 must do.",
+      },
+    ],
+  },
+];

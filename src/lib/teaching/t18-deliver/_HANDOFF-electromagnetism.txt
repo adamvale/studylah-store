@@ -1,0 +1,51 @@
+HANDOFF: T18 Electromagnetism (Tuition teach-then-test lesson content)
+App topic: T18 Electromagnetism  <-  KB Chapter 20 (Electromagnetism)
+Date: 2026-07-23. From: Coddy Cowork.
+
+SUBCONCEPT COUNT AND CODES
+9 boxes: 6 teaching subconcepts + 2 revision checkpoints + 1 topical quiz. One box per file:
+  s18-1.ts  T18.1  The magnetic effect of a current              (KB 20.1)
+  s18-2.ts  T18.2  The circuit breaker                           (KB 20.2)
+  s18-3.ts  T18.3  Force on a current-carrying conductor         (KB 20.3)
+  s18-4.ts  T18.4  Fleming's left-hand rule                      (KB 20.4)
+  s18-5.ts  T18.5  Force on charged particles; the turning coil  (KB 20.5, 20.6)
+  s18-6.ts  T18.6  The d.c. motor                                (KB 20.7)
+  s18-rev1.ts R1   Revision 1 (T18.1 to T18.3)
+  s18-rev2.ts R2   Revision 2 (T18.4 to T18.6)
+  s18-quiz.ts Quiz whole-topic quiz
+Totals: 103 steps, 75 questions.
+
+CONCEPTUAL CHAPTER: no calculations, so NO `working` blocks and NO `formula` fields anywhere.
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit: 0 type errors across all 9 files.
+2. Structural validator: 6 lessons each >= 3 questions with a say + 2 to 4 starred keywords; revisions
+   EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5; figure only on
+   concept/insight/choice/open; all indices in range. PASSED.
+3. Independent physics check (with every Fleming's-left-hand-rule direction recomputed from F = I x B):
+   confirmed every choice `correct`, every spoterror line and every classify/match/order/cloze answer.
+   Confirmed the key facts and directions: the field around a straight wire is CONCENTRIC CIRCLES
+   (out of the page -> anticlockwise, into the page -> clockwise); a solenoid is an electromagnet with
+   the anticlockwise-current end a NORTH pole; a circuit breaker's electromagnet attracts the iron
+   bolt on over-current and is resettable; the motor force is MAXIMUM when the conductor is
+   perpendicular and ZERO when parallel; Fleming's LEFT hand gives thumb = force, first finger =
+   field, second finger = current, and current out of the page with a field to the left gives a
+   DOWNWARD force; in a field into the page with motion to the right a PROTON deflects UP and an
+   ELECTRON DOWN; a coil turns because of a COUPLE; the split-ring commutator reverses the current
+   every HALF-turn and momentum carries the coil past the vertical. Spoterror wrong lines: "the field
+   is straight lines along the wire"; "Fleming's RIGHT-hand rule gives the motor force"; "the
+   split-ring commutator keeps the current steady". All clean.
+4. Compliance scan: digits in spoken fields (angles as digits, "90 degrees"); no em/en dashes; no
+   emojis; no grade or pass promises. Clean.
+Correct-option positions spread across 0 to 3 (quiz choice indices 2,0,3,1,2,0,3,1,0,2; revisions
+2,0,3,1,2 and 1,3,0,2,3).
+
+FIGURES: no NEW art. References the current Chapter 20 library (fig-20-01 to fig-20-16). Colour I
+wrote every `say` to (house-key rendering): the FORCE/thrust arrow (F) = yellow; the magnetic FIELD
+lines/arrows (B) = grey, with a NORTH pole red and a SOUTH pole blue; the CURRENT (I), the current
+dot/cross and a moving charge = blue; wires, coils, the soft-iron core, the split-ring commutator,
+brushes and the magnet body = white/grey. For Fleming's rule: thumb (force) yellow, first finger
+(field) grey, second finger (current) blue. Please redraw to the colour key when rendering; no new
+name introduced by T18.
+
+NEXT: T19 electromagnetic induction (KB Chapter 21).

@@ -1,0 +1,210 @@
+import type { Subconcept } from "@/lib/teaching/subconcepts";
+
+// T15 D.C. Circuits, Revision 1. Checkpoint over KB Chapter 17,
+// sections t15.1 to t15.3: series circuits, parallel circuits, and
+// comparing and combining them. Question-only.
+
+export const BOXES: Subconcept[] = [
+  {
+    id: "t15.rev1",
+    code: "R1",
+    title: "Revision 1",
+    blurb: "Checkpoint: series, parallel and combined circuits",
+    kind: "revision",
+    steps: [
+      {
+        kind: "choice",
+        question: "A 12 V supply drives a 3 ohm resistor in series with a 9 ohm resistor. What is the current in the circuit?",
+        figure: "fig-17-03-series-we1",
+        options: ["4 A", "12 A", "1 A", "0.5 A"],
+        correct: 2,
+        ask: "In series the resistances add, so the effective resistance is 3 plus 9. Then divide 12 by that. Which option matches?",
+        hints: [
+          "In a series circuit the effective resistance is R_1 plus R_2, so 3 plus 9 is 12 ohms.",
+          "The current is the supply p.d. divided by the resistance, so 12 divided by 12 is 1.",
+        ],
+        working: [
+          { label: "Formula", latex: "I = \\dfrac{V}{R_1 + R_2}" },
+          { label: "Substitute", latex: "I = \\dfrac{12}{3 + 9}" },
+          { label: "Answer", latex: "I = 1\\ \\text{A}" },
+        ],
+        explain: "The current is 1 ampere, because the 2 resistors in series add to 12 ohms, and 12 volts divided by 12 ohms is 1 ampere. That same 1 ampere flows through both resistors.",
+      },
+      {
+        kind: "choice",
+        question: "A 4 ohm resistor and a 12 ohm resistor are connected in parallel across a 12 V supply. What is their effective resistance?",
+        figure: "fig-17-06-parallel-we1",
+        options: ["3 ohms", "16 ohms", "8 ohms", "48 ohms"],
+        correct: 0,
+        ask: "For a parallel pair the reciprocals add, so work out one quarter plus one twelfth, then flip the result. Which option is that?",
+        hints: [
+          "1 over the effective resistance equals 1 over 4 plus 1 over 12, which is 4 over 12.",
+          "4 over 12 is 1 over 3, so the effective resistance is 3 ohms, smaller than either branch.",
+        ],
+        working: [
+          { label: "Formula", latex: "\\dfrac{1}{R_{eff}} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2}" },
+          { label: "Substitute", latex: "\\dfrac{1}{R_{eff}} = \\dfrac{1}{4} + \\dfrac{1}{12}" },
+          { label: "Answer", latex: "R_{eff} = 3\\ \\Omega" },
+        ],
+        explain: "The effective resistance is 3 ohms, because 1 over 4 plus 1 over 12 is 4 over 12, or 1 over 3. A parallel combination is always smaller than the smallest branch.",
+      },
+      {
+        kind: "choice",
+        question: "In a series circuit, which quantity is the same at every point?",
+        options: ["The p.d. across each component", "The resistance of each component", "The power in each component", "The current"],
+        correct: 3,
+        ask: "There is only one path in a series loop, so ask what cannot change as you move around it. Which option is that?",
+        hints: [
+          "Because a series circuit is a single loop, the charge has nowhere else to go.",
+          "The current is the same at every point (I_1 equals I_2 equals I_3); it is the p.d. that is shared between components.",
+        ],
+        explain: "The current is the same at every point, because a series circuit is a single loop with one path. The source p.d. is shared, so it is not the same across each component.",
+      },
+      {
+        kind: "choice",
+        question: "A 6 ohm resistor and a 3 ohm resistor are connected in parallel across a 6 V supply. What is the total current drawn from the supply?",
+        options: ["1 A", "3 A", "2 A", "9 A"],
+        correct: 1,
+        ask: "Every branch has the full 6 volts across it. Find each branch current, then add them. Which option is the total?",
+        hints: [
+          "The 6 ohm branch carries 6 divided by 6, which is 1 ampere, and the 3 ohm branch carries 6 divided by 3, which is 2 amperes.",
+          "The branch currents add to the supply current, so 1 plus 2 is 3.",
+        ],
+        working: [
+          { label: "Formula", latex: "I = I_1 + I_2" },
+          { label: "Substitute", latex: "I = \\dfrac{6}{6} + \\dfrac{6}{3}" },
+          { label: "Answer", latex: "I = 3\\ \\text{A}" },
+        ],
+        explain: "The total current is 3 amperes, because the 6 ohm branch carries 1 ampere and the 3 ohm branch carries 2 amperes, and the branch currents add to the supply current.",
+      },
+      {
+        kind: "choice",
+        question: "One lamp in a branch of a parallel circuit burns out. What happens to a lamp in another branch?",
+        options: ["It also goes out", "Its p.d. drops to zero", "It keeps working normally", "Its current rises sharply"],
+        correct: 2,
+        ask: "Each branch of a parallel circuit is its own path across the same 2 points. Ask whether the others still have a complete path. Which option is that?",
+        hints: [
+          "A break in one branch only opens that branch; the other branches still join the same 2 points.",
+          "The working branches still have the full supply p.d. across them, so they carry on as before.",
+        ],
+        explain: "It keeps working normally, because each parallel branch is a separate path across the same 2 points. A fault in one branch does not break the others, which is why house wiring is parallel.",
+      },
+      {
+        kind: "slider",
+        prompt: "A 2 ohm resistor P is in series with a parallel pair of 6 ohm and 3 ohm across a 6 V supply. The parallel pair combine to 2 ohms. Set the slider to the current drawn from the supply, in A.",
+        min: 0,
+        max: 3,
+        step: 0.1,
+        unit: "A",
+        start: 0,
+        targetMin: 1.4,
+        targetMax: 1.6,
+        ask: "Add the 2 ohm resistor to the 2 ohm parallel group to get the effective resistance, then divide 6 by it. Where should the slider sit?",
+        hints: [
+          "The parallel pair is 2 ohms, so the effective resistance is 2 plus 2, which is 4 ohms.",
+          "The current is 6 divided by 4, which is 1.5, so slide to 1.5 amperes.",
+        ],
+        working: [
+          { label: "Formula", latex: "I = \\dfrac{V}{R_{eff}}" },
+          { label: "Substitute", latex: "I = \\dfrac{6}{2 + 2}" },
+          { label: "Answer", latex: "I = 1.5\\ \\text{A}" },
+        ],
+        explain: "The current is 1.5 amperes, because the 2 ohm resistor and the 2 ohm parallel group add to 4 ohms, and 6 volts divided by 4 ohms is 1.5 amperes.",
+      },
+      {
+        kind: "slider",
+        prompt: "At a junction, 5 A and 4 A flow in, and 6 A flows out along one wire. Set the slider to the current flowing out along the remaining wire Y, in A.",
+        min: 0,
+        max: 9,
+        step: 0.1,
+        unit: "A",
+        start: 0,
+        targetMin: 2.9,
+        targetMax: 3.1,
+        ask: "By conservation of charge the current in equals the current out. Add the 2 currents in, then take away the 6 amperes already leaving. Where should the slider sit?",
+        hints: [
+          "The current flowing in is 5 plus 4, which is 9 amperes.",
+          "6 amperes already flow out, so wire Y must carry 9 minus 6, which is 3.",
+        ],
+        working: [
+          { label: "Formula", latex: "I_{in} = I_{out}" },
+          { label: "Substitute", latex: "5 + 4 = 6 + Y" },
+          { label: "Answer", latex: "Y = 3\\ \\text{A}" },
+        ],
+        explain: "Wire Y carries 3 amperes outward, because the 9 amperes flowing in must equal the total flowing out, and 9 minus the 6 amperes already leaving is 3 amperes.",
+      },
+      {
+        kind: "tiles",
+        prompt: "An 18 V supply drives a 3 ohm resistor in series with a 6 ohm resistor. Build the working line that gives the current.",
+        tiles: ["I =", "18", "\\div", "9", "=", "2", "A", "3", "6"],
+        answer: ["I =", "18", "\\div", "9", "=", "2", "A"],
+        ask: "Add the resistances to get 9 ohms, then divide 18 by 9. Lay out 18 divided by 9 equals 2.",
+        hints: [
+          "In series the resistance is 3 plus 6, which is 9 ohms.",
+          "18 divided by 9 is 2, and the current is in amperes.",
+        ],
+        working: [
+          { label: "Formula", latex: "I = \\dfrac{V}{R_1 + R_2}" },
+          { label: "Substitute", latex: "I = \\dfrac{18}{3 + 6}" },
+          { label: "Answer", latex: "I = 2\\ \\text{A}" },
+        ],
+        explain: "The current is 2 amperes, because the 2 resistors add to 9 ohms, and 18 volts divided by 9 ohms is 2 amperes.",
+      },
+      {
+        kind: "order",
+        prompt: "Put these steps for finding the supply current of a combined circuit in the correct order.",
+        items: [
+          "Find the single resistance of the parallel group",
+          "Add it to the series resistance to get the effective resistance",
+          "Divide the supply p.d. by the effective resistance to get the main current",
+          "Use the p.d. across the parallel group to find each branch current",
+        ],
+        ask: "Reduce the circuit in stages. Think about which part you must simplify before you can treat the whole thing as a series circuit. Put the steps in order.",
+        hints: [
+          "You cannot add resistances in series until the parallel group has been replaced by a single value.",
+          "Once you have the effective resistance you find the main current, and only then can you split it between the branches.",
+        ],
+        explain: "First replace the parallel group with its single resistance, then add it to the series resistance, then divide the supply p.d. by that effective resistance to get the main current, and finally use the group's p.d. to find each branch current.",
+      },
+      {
+        kind: "spoterror",
+        prompt: "One line in this summary of series circuits is wrong. Tap the mistake.",
+        lines: [
+          "A series circuit is a single loop, so there is only one path for the charge.",
+          "The current is the same at every point in the loop.",
+          "The p.d. is the same across every series component.",
+          "The effective resistance is found by adding the resistances.",
+        ],
+        errorLine: 2,
+        ask: "Check each line against what stays the same in series and what is shared. One of them describes a parallel rule by mistake.",
+        hints: [
+          "In series the current is the same everywhere, but the source p.d. is shared between the components.",
+          "Being the same across every component is a rule for parallel branches, not for series ones.",
+        ],
+        explain: "The wrong line is the one saying the p.d. is the same across every series component. In series the p.d.s add up to the source p.d.; it is in parallel that every branch shares the same p.d.",
+      },
+      {
+        kind: "open",
+        prompt: "Describe how the current and the p.d. behave in a series circuit, and then in a parallel circuit.",
+        modelAnswer: "In a series circuit the current is the same at every point, because there is one path, and the source p.d. is shared, so it equals the sum of the p.d.s across the components (V = V1 + V2). In a parallel circuit every branch has the same p.d. as the supply (V = V1 = V2), and the branch currents add up to the source current (I = I1 + I2) by conservation of charge.",
+        marks: [
+          "Series: current is the same everywhere; p.d.s add to the source p.d.",
+          "Parallel: every branch has the same p.d.",
+          "Parallel: branch currents add to the source current.",
+        ],
+        ask: "For each type, say what happens to the current as you move round, and how the source p.d. is shared or repeated across the components.",
+      },
+      {
+        kind: "open",
+        prompt: "Explain one advantage of connecting household lamps in parallel rather than in series.",
+        modelAnswer: "In parallel each lamp forms its own branch across the supply, so every lamp gets the full supply p.d. and can be switched on or off on its own. If one lamp fails its branch breaks but the others still have a complete path and stay lit. In series a single break would stop the whole circuit and every lamp would go out.",
+        marks: [
+          "Each lamp is on its own branch and gets the full supply p.d.",
+          "Lamps can be switched independently.",
+          "If one lamp fails, the others keep working (a series break stops all).",
+        ],
+        ask: "Think about what happens to the other lamps when one fails, and whether each lamp can be controlled on its own.",
+      },
+    ],
+  },
+];

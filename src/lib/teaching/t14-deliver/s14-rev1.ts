@@ -1,0 +1,222 @@
+import type { Subconcept } from "@/lib/teaching/subconcepts";
+
+// T14 Current of Electricity, Revision 1. Checkpoint over KB Chapter 16,
+// sections t14.1 to t14.3: current and Q = It, e.m.f. and p.d., resistance and
+// R = V/I. Question-only. Figures (real fig-16) only on choice/open.
+
+export const BOXES: Subconcept[] = [
+  {
+    id: "t14.rev1",
+    code: "R1",
+    title: "Revision 1",
+    blurb: "Checkpoint: current, e.m.f., p.d. and resistance",
+    kind: "revision",
+    steps: [
+      {
+        kind: "choice",
+        question: "In a circuit, the conventional current is taken to flow...",
+        figure: "fig-16-03-conventional-vs-electron",
+        options: [
+          "in the same direction as the electrons, from minus to plus",
+          "only while the electrons are standing still",
+          "from the positive terminal to the negative terminal, opposite to the electron flow",
+          "from the negative terminal to the positive terminal, alongside the electron flow",
+        ],
+        correct: 2,
+        ask: "Conventional current is drawn as a flow of positive charge out of the positive terminal. Which option matches that, and note that the electrons drift the other way.",
+        hints: [
+          "Conventional current runs from the positive terminal to the negative terminal.",
+          "The real electron flow goes from negative to positive, so the 2 directions are opposite.",
+        ],
+        explain: "Conventional current is taken to flow from the positive terminal to the negative terminal, which is the opposite direction to the real electron flow from negative to positive.",
+      },
+      {
+        kind: "choice",
+        question: "A component has 12 V across it and carries a current of 0.5 A. What is its resistance?",
+        options: ["24 ohms", "6 ohms", "0.24 ohms", "2.4 ohms"],
+        correct: 0,
+        ask: "Resistance is the p.d. divided by the current, so work out 12 divided by 0.5. Which option is that?",
+        hints: [
+          "Use R equals V divided by I.",
+          "12 divided by 0.5 is 24, and resistance is measured in ohms.",
+        ],
+        working: [
+          { label: "Formula", latex: "R = \\dfrac{V}{I}" },
+          { label: "Substitute", latex: "R = \\dfrac{12}{0.5}" },
+          { label: "Answer", latex: "R = 24\\ \\Omega" },
+        ],
+        explain: "The resistance is 24 ohms, because 12 volts divided by 0.5 amperes is 24 ohms.",
+      },
+      {
+        kind: "choice",
+        question: "Which statement correctly distinguishes e.m.f. from potential difference?",
+        options: [
+          "e.m.f. is measured in amperes, while p.d. is measured in volts",
+          "e.m.f. is the energy transferred to one component, while p.d. is the energy given to the whole circuit",
+          "e.m.f. and p.d. are the same quantity under 2 different names",
+          "e.m.f. is the energy a source gives each coulomb around the whole circuit, while p.d. is the energy each coulomb transfers to a component",
+        ],
+        correct: 3,
+        ask: "One quantity belongs to the source and drives charge round the whole circuit; the other is the energy used up at a single component. Which option keeps them apart correctly?",
+        hints: [
+          "e.m.f. is a property of the source and describes energy given to each coulomb around the whole circuit.",
+          "p.d. describes the energy each coulomb transfers to one component. Both are in volts.",
+        ],
+        explain: "The e.m.f. is the energy a source gives to each coulomb as it drives the charge around the whole circuit, while the potential difference is the energy each coulomb transfers to a particular component. Both are measured in volts.",
+      },
+      {
+        kind: "choice",
+        question: "A battery of e.m.f. 6.0 V drives a charge of 40 C around a circuit. How much energy does it transfer?",
+        options: ["6.7 J", "240 J", "46 J", "0.15 J"],
+        correct: 1,
+        ask: "The energy is the e.m.f. multiplied by the charge, so work out 6.0 times 40. Which option matches?",
+        hints: [
+          "Rearranging E equals W divided by Q gives W equals E times Q.",
+          "6.0 times 40 is 240, and energy is measured in joules.",
+        ],
+        working: [
+          { label: "Formula", latex: "W = EQ" },
+          { label: "Substitute", latex: "W = 6.0 \\times 40" },
+          { label: "Answer", latex: "W = 240\\ \\text{J}" },
+        ],
+        explain: "The energy transferred is 240 joules, because an e.m.f. of 6.0 volts times a charge of 40 coulombs gives 240 joules.",
+      },
+      {
+        kind: "choice",
+        question: "A wire carries a current of 0.8 A when the p.d. across it is 4.0 V. What is its resistance?",
+        options: ["0.2 ohms", "3.2 ohms", "5 ohms", "32 ohms"],
+        correct: 2,
+        ask: "Resistance is the p.d. divided by the current, so work out 4.0 divided by 0.8. Which option is that?",
+        hints: [
+          "Use R equals V divided by I.",
+          "4.0 divided by 0.8 is 5, and resistance is measured in ohms.",
+        ],
+        working: [
+          { label: "Formula", latex: "R = \\dfrac{V}{I}" },
+          { label: "Substitute", latex: "R = \\dfrac{4.0}{0.8}" },
+          { label: "Answer", latex: "R = 5\\ \\Omega" },
+        ],
+        explain: "The resistance is 5 ohms, because 4.0 volts divided by 0.8 amperes is 5 ohms.",
+      },
+      {
+        kind: "tiles",
+        prompt: "A current of 4 A flows for 180 s. Build the working line that gives the charge Q.",
+        tiles: ["Q =", "4", "\\times", "180", "=", "720", "C", "s"],
+        answer: ["Q =", "4", "\\times", "180", "=", "720", "C"],
+        ask: "Charge is the current multiplied by the time, so set up 4 times 180.",
+        hints: [
+          "Use Q equals I times t.",
+          "4 times 180 is 720, and charge is measured in coulombs.",
+        ],
+        working: [
+          { label: "Formula", latex: "Q = It" },
+          { label: "Substitute", latex: "Q = 4 \\times 180" },
+          { label: "Answer", latex: "Q = 720\\ \\text{C}" },
+        ],
+        explain: "The charge is 720 coulombs, because a current of 4 amperes flowing for 180 seconds delivers 4 times 180, which is 720 coulombs.",
+      },
+      {
+        kind: "slider",
+        prompt: "A charge of 450 C flows when the current is 2.5 A. Set the slider to the time taken, in s.",
+        min: 0,
+        max: 300,
+        step: 1,
+        unit: "s",
+        start: 0,
+        targetMin: 179,
+        targetMax: 181,
+        ask: "Rearrange Q equals I times t to get the time, so work out 450 divided by 2.5.",
+        hints: [
+          "From Q equals I t, the time is Q divided by I.",
+          "450 divided by 2.5 is 180, so slide to 180 seconds.",
+        ],
+        working: [
+          { label: "Formula", latex: "t = \\dfrac{Q}{I}" },
+          { label: "Substitute", latex: "t = \\dfrac{450}{2.5}" },
+          { label: "Answer", latex: "t = 180\\ \\text{s}" },
+        ],
+        explain: "The time is 180 seconds, because 450 coulombs divided by 2.5 amperes is 180 seconds.",
+      },
+      {
+        kind: "slider",
+        prompt: "A cell does 4.5 J of work on each 1 C that passes through it. Set the slider to the e.m.f. of the cell, in V.",
+        min: 0,
+        max: 10,
+        step: 0.1,
+        unit: "V",
+        start: 0,
+        targetMin: 4.4,
+        targetMax: 4.6,
+        ask: "The e.m.f. is the work done per unit charge, so work out 4.5 divided by 1.",
+        hints: [
+          "Use E equals W divided by Q.",
+          "4.5 divided by 1 is 4.5, so slide to 4.5 volts.",
+        ],
+        working: [
+          { label: "Formula", latex: "E = \\dfrac{W}{Q}" },
+          { label: "Substitute", latex: "E = \\dfrac{4.5}{1}" },
+          { label: "Answer", latex: "E = 4.5\\ \\text{V}" },
+        ],
+        explain: "The e.m.f. is 4.5 volts, because 4.5 joules of work on each 1 coulomb is 4.5 joules per coulomb, which is 4.5 volts.",
+      },
+      {
+        kind: "spoterror",
+        prompt: "One line in this summary of resistance is wrong. Tap the mistaken line.",
+        lines: [
+          "Resistance is the ratio of p.d. to current, R = V / I, measured in ohms.",
+          "A metal resists the current because the electrons collide with its vibrating ions.",
+          "As the metal heats up, the ions vibrate less, so its resistance falls.",
+          "At a fixed p.d., a hotter metal wire carries a smaller current than a cool one.",
+        ],
+        errorLine: 2,
+        ask: "Think about what happens to the metal ions when the wire gets hotter, and whether that makes the electrons pass more easily or less easily.",
+        hints: [
+          "Heating a metal makes its ions vibrate more strongly, not less.",
+          "More vibration means more collisions, so the resistance rises rather than falls.",
+        ],
+        explain: "The wrong line is the third one. When a metal heats up its ions vibrate more, so the electrons collide with them more often and the resistance rises, not falls. That is why a hotter wire carries a smaller current at the same p.d.",
+      },
+      {
+        kind: "order",
+        prompt: "Put these steps for measuring the resistance of a metal conductor in order.",
+        items: [
+          "Connect the ammeter in series with the conductor",
+          "Connect the voltmeter in parallel across the conductor",
+          "Vary the current and record V and I in a table",
+          "Plot a graph of V against I",
+          "Take the gradient of the line, which equals the resistance",
+        ],
+        ask: "Recall where each meter goes, then what readings you collect, and finally how the graph gives the resistance. Put the steps in order.",
+        hints: [
+          "The ammeter goes in series and the voltmeter goes in parallel before you take any readings.",
+          "Once you have pairs of V and I, plot V against I. The gradient of the straight line is the resistance.",
+        ],
+        explain: "First put the ammeter in series and the voltmeter in parallel, then vary the current and record V and I, then plot V against I, and finally take the gradient, which equals the resistance.",
+      },
+      {
+        kind: "open",
+        prompt: "Explain the difference between the e.m.f. of a source and the potential difference across a component. Refer to energy and to each coulomb of charge.",
+        figure: "fig-16-04-emf-source",
+        modelAnswer: "The e.m.f. of a source is the work it does in driving each coulomb of charge around the whole circuit, that is the energy it gives to every coulomb. It is a property of the source and is present even when no current flows. The potential difference across a component is the energy transferred from each coulomb to that component as the charge passes through it, and it is zero when no current flows. Both are measured in volts, where 1 volt is 1 joule per coulomb.",
+        marks: [
+          "e.m.f. is the energy the source gives to each coulomb around the whole circuit.",
+          "p.d. is the energy each coulomb transfers to a component.",
+          "Both are measured in volts, where 1 volt is 1 joule per coulomb.",
+        ],
+        ask: "Think about where the energy is handed out and where it is used up, and remember that both quantities are joules per coulomb.",
+      },
+      {
+        kind: "open",
+        prompt: "Explain, in terms of the moving electrons and the metal ions, why the resistance of a metal wire increases when its temperature rises.",
+        figure: "fig-16-07-resistance-temperature",
+        modelAnswer: "A metal resists the current because the moving electrons collide with the metal ions as they drift through the wire. When the wire is heated, the ions gain energy and vibrate more strongly, so the electrons collide with them more often. The extra collisions make it harder for the electrons to pass, so the resistance rises. At a fixed p.d. this larger resistance means the current falls.",
+        marks: [
+          "Electrons collide with the metal ions as they move, which causes resistance.",
+          "Heating makes the ions vibrate more, so there are more collisions.",
+          "More collisions give a higher resistance, and a smaller current at fixed p.d.",
+        ],
+        ask: "Think about what the electrons bump into as they drift, and how heating changes how strongly those ions vibrate.",
+      },
+    ],
+  },
+];

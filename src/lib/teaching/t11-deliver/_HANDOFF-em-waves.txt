@@ -1,0 +1,52 @@
+HANDOFF: T11 Electromagnetic Waves (Tuition teach-then-test lesson content)
+App topic: T11 Electromagnetic Waves  <-  KB Chapter 13 (Electromagnetic Waves)
+Date: 2026-07-23. From: Coddy Cowork.
+
+SUBCONCEPT COUNT AND CODES
+8 boxes: 5 teaching subconcepts + 2 revision checkpoints + 1 topical quiz. One box per file,
+each exporting `export const BOXES: Subconcept[]`:
+  s11-1.ts  T11.1  What an electromagnetic wave is                 (KB 13.1)
+  s11-2.ts  T11.2  The electromagnetic spectrum                    (KB 13.2)
+  s11-3.ts  T11.3  Common properties and the wave equation         (KB 13.3)
+  s11-4.ts  T11.4  Uses of the spectrum                            (KB 13.4)
+  s11-5.ts  T11.5  Harmful effects of EM waves                     (KB 13.5)
+  s11-rev1.ts R1   Revision 1 (T11.1 to T11.3)
+  s11-rev2.ts R2   Revision 2 (T11.4 to T11.5)
+  s11-quiz.ts Quiz whole-topic quiz
+Totals: 97 steps, 73 questions.
+
+RECOMPUTED ANSWERS (v = f lambda calculations use powers of 10; v = 3.0 times 10 to the power 8 m/s)
+Every calculation question carries a `working` block; all recomputed and matched to the marked
+option/target: f = 3.0e8 / 6.0e-7 = 5.0 times 10 to the power 14 Hz; f = 3.0e8 / 5.0e-7 = 6.0 times
+10 to the power 14 Hz; lambda = 3.0e8 / 9.0e7 = 3.3 m; lambda = 3.0e8 / 6.0e5 = 5.0 times 10 to the
+power 2 m (500 m); lambda = 3.0e8 / 1.5e18 = 2.0 times 10 to the power negative 10 m. Spoken powers
+are DIGITS including negatives ("2.0 times 10 to the power negative 10 metres"). Spoterror wrong
+lines: s11-rev1 line 2 ("EM waves are longitudinal and need a medium"); s11-rev2 line 2 ("radio
+waves are ionising"); s11-quiz line 2 (lambda written as 33 m instead of 3.3 m).
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit: 0 type errors across all 8 files.
+2. Structural validator: 5 lessons each >= 3 questions with a say + 2 to 4 starred keywords; revisions
+   EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5; figure only on
+   concept/insight/choice/open; all indices/cloze/tiles/classify/graphpick in range. PASSED.
+3. Calc audit + independent physics check: every working recomputed and matched; an independent
+   checker confirmed every choice `correct`, spoterror line and classify/match/order/cloze/tiles
+   answer. Confirmed: EM waves are transverse (not longitudinal) and need no medium; spectrum order
+   radio -> gamma with frequency/energy up and wavelength down; entering a medium the frequency stays
+   the same while speed and wavelength drop; red = longest, violet = shortest visible wavelength;
+   ionising = UV/X-rays/gamma only; every use mapped to the right region. Clean.
+4. Compliance scan: digits (and spoken powers as digits) in spoken fields; no em/en dashes; no
+   emojis; no grade or pass promises. Clean.
+Correct-option positions spread across 0 to 3 (quiz choice indices 2,1,0,3,1,2,0,0,3,1,2; revisions
+2,0,3,1,2 and 1,3,0,2,3).
+
+FIGURES: no NEW art. References the current Chapter 13 library:
+  fig-13-01-em-wave-structure (T11.1): yellow electric-field wave and blue magnetic-field wave at 90
+    degrees, grey travel arrow, wavelength marked.
+  fig-13-02-em-spectrum (T11.2): the seven regions as a VERTICAL stack, radio (long wavelength, low
+    frequency) at top to gamma (short wavelength, high energy) at bottom, grey "frequency and energy
+    increase" arrow. `say` narrates top-to-bottom.
+  fig-13-03-leaf-reflection (T11.3): yellow mixed-light beam onto a green leaf, green "only green is
+    reflected" to the eye. Please redraw to the colour key when rendering; no new name introduced.
+
+NEXT: T12 light (KB Chapter 14).

@@ -1,0 +1,85 @@
+HANDOFF: T20 Radioactivity (Tuition teach-then-test lesson content)
+App topic: T20 Radioactivity  <-  KB Chapter 22 (Radioactivity)
+Date: 2026-07-23. From: Coddy Cowork.
+
+SUBCONCEPT COUNT AND CODES
+9 boxes: 6 teaching subconcepts + 2 revision checkpoints + 1 topical quiz. One box per file:
+  s20-1.ts  T20.1  The atom, nuclide notation and isotopes        (KB 22.1, 22.2, 22.3)
+  s20-2.ts  T20.2  Nuclear decay: alpha, beta and gamma           (KB 22.4, 22.5)
+  s20-3.ts  T20.3  Nuclide equations                              (KB 22.6)
+  s20-4.ts  T20.4  Background radiation, activity and half-life   (KB 22.7, 22.8, 22.9)
+  s20-5.ts  T20.5  Nuclear fission and nuclear fusion             (KB 22.10, 22.11, 22.12)
+  s20-6.ts  T20.6  Uses, hazards and safety                       (KB 22.13, 22.14)
+  s20-rev1.ts R1   Revision 1 (T20.1 to T20.3)
+  s20-rev2.ts R2   Revision 2 (T20.4 to T20.6)
+  s20-quiz.ts Quiz whole-topic quiz
+Totals: 123 steps, 86 questions.
+
+MIXED CHAPTER: T20.1 (counting), T20.3 (nuclide equations) and T20.4 (half-life) are CALCULATION -
+every calc question carries a `formula` field and a `working` block [Formula / Substitute /
+Answer(-with-unit)], using ONLY the values in the CALCULATION BANK below. T20.2, T20.5 (bar the
+fission-balancing item) and T20.6 are CONCEPTUAL (no working). Nuclide symbols live only in `formula`
+/ `working` / on-screen option latex; every SPOKEN field (say/ask/hints/explain/marks/modelAnswer)
+says nuclide names in words ("uranium 238", "the proton number") with digits.
+
+CALCULATION BANK (all independently recomputed; all match the marked answers):
+  Nuclide equations (conserve nucleon number A and proton number Z):
+   - alpha (A-4, Z-2): U-238 -> Th-234 + He-4 (92->90); Th-230 -> Ra-226; Ra-226 -> Rn-222;
+     Po-210 -> Pb-206 (84->82); Po-212 -> Pb-208; Pt-188 -> Os-184 (78->76).
+   - beta (A same, Z+1): I-131 -> Xe-131 (53->54); Th-234 -> Pa-234 (90->91); Na-24 -> Mg-24;
+     Pb-210 -> Bi-210; C-14 -> N-14; Sr-90 -> Y-90.
+   - gamma: A and Z unchanged (Co-60 -> Co-60 + gamma).
+   - decay chain: Bi-212 -alpha-> Tl-208 -beta-> Pb-208.
+   - fission: n + U-235 -> Kr-89 + Ba-144 + 3n; n + U-235 -> Xe-140 + Sr-94 + 2n.
+   - fusion: H-2 + H-3 -> He-4 + n.
+  Counting (neutral atom: electrons = protons = Z; neutrons = A - Z):
+   - vanadium 51 (Z 23): 23 protons, 23 electrons, 28 neutrons.
+   - platinum 188 (Z 78): 110 neutrons, 78 electrons; osmium 184 (Z 76): total subatomic particles 260.
+   - uranium 235 (Z 92): 92 electrons, 143 neutrons.
+  Half-life (number of half-lives = total time / half-life; halve the count/mass each half-life):
+   - 24000 counts/s, half-life 5 s -> 375 after 30 s (6 half-lives).
+   - 640 counts/min, half-life 8 h -> 40 at 32 h (4), 10 at 48 h (6).
+   - 480 -> 60 counts/s in 18 h => half-life 6 h; -> 30 at 24 h.
+   - 6400 -> 100 counts/s in 6 min => half-life 1 min.
+   - 72 mg, half-life 15 years -> 18 mg at 30 years, 4.5 mg at 60 years.
+   - 3.2 million -> 0.2 million in 12 h => half-life 3 h.
+   - 240 g, half-life 6 years -> 30 g after 18 years (3).
+   - background 25, measured 825 -> corrected 800; measured 225 -> corrected 200; 800->200 in 30 min
+     => half-life 15 min. (corrected count rate = measured - background.)
+   - carbon dating: 16 -> 4 beta per gram per minute = 2 half-lives = 11400 years (2 x 5700).
+   - fermium 252, 3200 counts/min after 5 half-lives -> 100.
+   - cobalt 60 counts 2040,1960,2080,1920,2000: average 2000 counts/s; to one quarter after
+     2 half-lives = 10.6 years.
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit: 0 type errors across all 9 files.
+2. Structural validator: 6 lessons each >= 3 questions with a say + 2 to 4 starred keywords; revisions
+   EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5; figure only on
+   concept/insight/choice/open; all indices in range. PASSED.
+3. Calc audit + independent physics check: every nuclide equation balances on nucleon and proton
+   number and each daughter element name matches its proton number (Th 90, Ra 88, Rn 86, Po 84,
+   Pb 82, Pa 91, Xe 54, Mg 12, N 7, Y 39, Os 76, Tl 81, Bi 83); every counting and half-life
+   Substitute/Answer matches the bank; confirmed alpha most ionising / least penetrating (paper) and
+   bends to the negative plate, gamma least ionising / most penetrating (lead) and undeflected, beta
+   between (aluminium) and bends to the positive plate; decay is spontaneous AND random; fission is a
+   heavy nucleus split by a neutron (chain reaction), fusion joins two light nuclei and needs very
+   high temperature and pressure (the Sun) and is harder than fission. Every choice `correct` index
+   points at the true option; every spoterror `errorLine` (0-based) targets the genuinely false line
+   ("gamma is deflected toward the positive plate"; "gamma radiation is a charged particle";
+   "radioactive decay speeds up if you heat the source"; "in beta decay the nucleon number rises by
+   1"; "fusion splits a heavy nucleus"). No errors found.
+4. Compliance scan: digits in spoken fields; units for the ear (becquerel, counts per second/minute,
+   years, hours, minutes, seconds, milligrams, grams); equations only in `formula`/`working` latex;
+   no em/en dashes; no emojis; no grade or pass promises. Clean.
+Correct-option positions spread across 0 to 3 (quiz choice indices 2,0,3,1,2,0,3,1,0,2; revisions
+2,0,3,1,2 and 1,3,0,2,3).
+
+FIGURES: no NEW art. References the current Chapter 22 library (fig-22-01 to fig-22-09). Colour I
+wrote every `say` to (house-key rendering): an ALPHA particle/ray = red, a BETA particle/ray = blue,
+a GAMMA ray = green; a PROTON = red, a NEUTRON = grey, an ELECTRON = blue; the nucleus outline,
+plates, labels, the atom body, the foil and the detector = white/grey; FIELD lines and the dashed
+normal = grey; ENERGY released, the half-life decay curve and highlighted fission neutrons = amber.
+(Consistent: alpha is a helium nucleus, so red like a proton; beta is an electron, so blue.) Please
+redraw to the colour key when rendering; no new name introduced by T20.
+
+NEXT: none - T20 radioactivity (KB Chapter 22) is the FINAL physics topic in this run.

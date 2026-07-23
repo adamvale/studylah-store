@@ -1,0 +1,51 @@
+HANDOFF: T16 Practical Electricity (Tuition teach-then-test lesson content)
+App topic: T16 Practical Electricity  <-  KB Chapter 18 (Practical Electricity)
+Date: 2026-07-23. From: Coddy Cowork.
+
+SUBCONCEPT COUNT AND CODES
+8 boxes: 5 teaching subconcepts + 2 revision checkpoints + 1 topical quiz. One box per file:
+  s16-1.ts  T16.1  Electrical power                              (KB 18.1)
+  s16-2.ts  T16.2  Cost of electricity and the kilowatt-hour     (KB 18.2)
+  s16-3.ts  T16.3  Safe use: fuses, breakers, earthing, double insulation (KB 18.3)
+  s16-4.ts  T16.4  Wiring a mains plug                           (KB 18.4)
+  s16-5.ts  T16.5  Dangers of electricity                        (KB 18.5)
+  s16-rev1.ts R1   Revision 1 (T16.1 to T16.2)
+  s16-rev2.ts R2   Revision 2 (T16.3 to T16.5)
+  s16-quiz.ts Quiz whole-topic quiz
+Totals: 99 steps, 75 questions.
+
+RECOMPUTED ANSWERS (t16.1 and t16.2 are CALCULATION; t16.3 to t16.5 conceptual)
+Formulae in `formula` fields: P = V I = I^2 R = V^2 / R; E = P t = V I t; E (kWh) = P (kW) x t (h);
+cost = energy (kWh) x unit price. All recomputed and matched: P = 12 x 3.0 = 36 W; I = 60/240 =
+0.25 A; I = 90000/3000 = 30 A; power lost = 30^2 x 5.0 = 4.5 times 10 to the power 3 W; R = 240^2/600
+= 96 ohms; E = 12 x 3.0 x 480 = 1.73 times 10 to the power 4 J; E = 5 x 300 = 1500 J; a 2 kW heater
+for 4 h = 8 kWh costing 2.00 dollars at 25 cents/unit; a 2.4 kW air conditioner for 5 h = 12 kWh
+costing 3.36 dollars; 12 kWh in 0.5 h gives P = 24 kW; a 0.2 kW fan using 0.5 kWh runs 2.5 hours;
+three appliances 3 + 3 + 5 = 11 A, so a 13 A fuse. Spoterror wrong lines: "a fuse goes in the neutral
+wire" (it goes in the live wire); "a fuse is a source of e.m.f."; a kWh working that leaves the time
+in minutes.
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit: 0 type errors across all 8 files.
+2. Structural validator: 5 lessons each >= 3 questions with a say + 2 to 4 starred keywords; revisions
+   EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5; figure only on
+   concept/insight/choice/open; all indices in range. PASSED.
+3. Calc audit + independent physics check: every `working` recomputed and matched; an independent
+   checker re-derived every calculation and confirmed every choice `correct`, spoterror line and
+   classify/match/order/cloze/tiles answer. Confirmed: a heating element needs high resistance AND a
+   high melting point; kWh keeps power in kW and time in HOURS; a fuse melts on over-current and goes
+   in the LIVE wire; earthing is a LOW-resistance path to the ground; double insulation needs no
+   earth wire (two-pin plug); the wire colours are live = brown, neutral = blue, earth = green and
+   yellow; a shock is a complete circuit to the ground. Clean.
+4. Compliance scan: digits (spoken powers as digits) in spoken fields; money written as digits; no
+   em/en dashes; no emojis; no grade or pass promises. Clean.
+Correct-option positions spread across 0 to 3 (quiz choice indices 0,1,3,2,3,1,2,0,2,1; revisions
+2,0,3,1,2 and 1,3,0,2,3).
+
+FIGURES: no NEW art. References the current Chapter 18 library (fig-18-01 to fig-18-11). Colour I
+wrote every `say` to: the CURRENT / charge = blue; MAINS WIRES by their real colours (live = brown,
+neutral = blue, earth = green and yellow); metal casings, appliances, the resistance-scale bar, the
+consumer-unit/circuit-breaker box and the plug body = white/grey. Please redraw to the colour key
+when rendering; no new name introduced by T16.
+
+NEXT: T17 magnetism (KB Chapter 19).

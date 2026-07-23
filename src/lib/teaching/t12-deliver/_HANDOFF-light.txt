@@ -1,0 +1,57 @@
+HANDOFF: T12 Light (Tuition teach-then-test lesson content)
+App topic: T12 Light  <-  KB Chapter 14 (Light)
+Date: 2026-07-23. From: Coddy Cowork.
+
+SUBCONCEPT COUNT AND CODES
+9 boxes: 6 teaching subconcepts + 2 revision checkpoints + 1 topical quiz. One box per file,
+each exporting `export const BOXES: Subconcept[]`:
+  s12-1.ts  T12.1  Properties of light and reflection            (KB 14.1, 14.2)
+  s12-2.ts  T12.2  The image in a plane mirror                   (KB 14.3)
+  s12-3.ts  T12.3  Refraction and refractive index               (KB 14.4, 14.5)
+  s12-4.ts  T12.4  Critical angle and total internal reflection  (KB 14.6, 14.7)
+  s12-5.ts  T12.5  Lenses: converging and diverging              (KB 14.8)
+  s12-6.ts  T12.6  Lens images and ray diagrams                  (KB 14.8)
+  s12-rev1.ts R1   Revision 1 (T12.1 to T12.3)
+  s12-rev2.ts R2   Revision 2 (T12.4 to T12.6)
+  s12-quiz.ts Quiz whole-topic quiz
+Totals: 103 steps, 75 questions.
+
+RECOMPUTED ANSWERS (TRIGONOMETRY: n = sin i / sin r, n = c/v, sin c = 1/n; each calc has `working`)
+All recomputed and matched to the marked option/target: angle from the normal 90 - 55 = 35 degrees;
+i = 40 into glass n = 1.52 gives sin r = sin 40 / 1.52 = 0.423 so r = 25 degrees; i = 60, r = 36
+gives n = sin 60 / sin 36 = 1.47; glass n = 1.5 gives v = c/n = 3.0e8 / 1.5 = 2.0 times 10 to the
+power 8 m/s; liquid-to-air 41/30 gives n = sin 41 / sin 30 = 1.31; sin c = 1/1.52 -> c = 41 degrees;
+1/1.49 -> c = 42 degrees; 1/2.42 -> c = 24 degrees; mirror image 2.5 + 2.5 = 5.0 m. Lens images use
+the object-position table (no lens-formula arithmetic). Spoterror wrong lines: measuring an angle
+from the surface instead of the normal; the reversed TIR density-order line; a "TIR from air into
+glass" line.
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit: 0 type errors across all 9 files.
+2. Structural validator: 6 lessons each >= 3 questions with a say + 2 to 4 starred keywords; revisions
+   EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5; figure only on
+   concept/insight/choice/open; all indices/cloze/tiles/classify/graphpick in range. PASSED.
+3. Calc audit + independent physics check: every trig working recomputed with sine tables and matched
+   to its option/target; an independent checker confirmed every choice `correct`, spoterror line and
+   classify/match/order/cloze/tiles answer. Confirmed: angles measured from the normal; i = r; the 5
+   plane-mirror image traits (virtual/upright/laterally inverted/same size/equal distance); light
+   bends toward the normal into a denser medium (i > r); n = sin i / sin r with i in air (n > 1);
+   sin c = 1/n; TIR needs denser-to-less-dense AND i > c; converging (convex) vs diverging (concave)
+   not swapped; real images inverted, virtual images upright; magnifying glass = virtual, upright,
+   enlarged. Clean.
+4. Compliance scan: digits (and spoken powers/angles as digits) in spoken fields; refractive index
+   written with no unit; no em/en dashes; no emojis; no grade or pass promises. Clean.
+Correct-option positions spread across 0 to 3 (quiz choice indices 3,1,0,2,1,3,0,2,1,3; revisions
+2,0,3,1,2 and 1,3,0,2,3).
+
+FIGURES: no NEW art. References the current Chapter 14 library (fig-14-01 to fig-14-21). NOTE FOR
+CODDY CODE: most fig-14 SVGs are still the WIDE landscape art (viewBox around 560-680 wide) queued
+for the portrait redraw. I wrote every `say` in the house colour vocabulary the redraw will use so
+the narration will match once redrawn: LIGHT RAYS (incident, reflected, refracted, emergent) = blue;
+the NORMAL = grey dashed at 90 degrees; angles i and r marked at the normal; mirrors, glass blocks,
+prisms, water and the lens body = pale grey; the OBJECT = a white arrow and the IMAGE = a white
+dashed (ghost) arrow; principal axis, F and C = grey. Multi-case figures (fig-14-02 regular/diffuse,
+fig-14-09 toward/away, fig-14-15 converging/diverging) are described left/right as currently drawn;
+if the redraw stacks them vertically, switch those say lines to top/bottom.
+
+NEXT: T13 static electricity (KB Chapter 15).

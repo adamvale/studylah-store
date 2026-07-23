@@ -1,0 +1,53 @@
+HANDOFF: T15 D.C. Circuits (Tuition teach-then-test lesson content)
+App topic: T15 D.C. Circuits  <-  KB Chapter 17 (D.C. Circuits)
+Date: 2026-07-23. From: Coddy Cowork.
+
+SUBCONCEPT COUNT AND CODES
+9 boxes: 6 teaching subconcepts + 2 revision checkpoints + 1 topical quiz. One box per file:
+  s15-1.ts  T15.1  Series circuits                               (KB 17.1)
+  s15-2.ts  T15.2  Parallel circuits                             (KB 17.2)
+  s15-3.ts  T15.3  Comparing series and parallel; combined       (KB 17.3, 17.4)
+  s15-4.ts  T15.4  The potential divider                         (KB 17.5)
+  s15-5.ts  T15.5  Thermistors                                   (KB 17.6)
+  s15-6.ts  T15.6  Light-dependent resistors (LDRs)              (KB 17.6)
+  s15-rev1.ts R1   Revision 1 (T15.1 to T15.3)
+  s15-rev2.ts R2   Revision 2 (T15.4 to T15.6)
+  s15-quiz.ts Quiz whole-topic quiz
+Totals: 106 steps, 79 questions.
+
+RECOMPUTED ANSWERS (heavy CALCULATION chapter; every calc question carries `working`)
+Formulae in `formula` fields: V = V1 + V2 and R_eff = R1 + R2 (series); I = I1 + I2 and
+1/R_eff = 1/R1 + 1/R2 (parallel); V_out = R2/(R1 + R2) x V_in (potential divider). All recomputed
+and matched: series 12 V/(3+9) = 1 A, V2 = 9 V; 18 V/(3+6) = 2 A; 0.4 x 5 = 2 V; parallel 4||12 =
+3 ohms so I = 4 A; 6 V with 6 and 3 gives I = 3 A; 6||12 = 4 ohms; combined 2 + (6||3 = 2) = 4 ohms,
+I = 1.5 A, V across P = 3 V, I_Q = 0.5 A; 4 + (3||6 = 2) = 6 ohms, I = 1.5 A, V across the 4 ohm =
+6 V; divider 6 V with 2 and 4 gives 4 V, 12 V with 9 and 3 gives 3 V, 12 V with 4 and 16 gives 9.6 V;
+thermistor with a fixed 8 ohm across 4.0 V reading 1.0 V gives R_t = 24 ohms; LDR (300 ohms day,
+5000 ohms night) with 2000 ohms across 20 V gives 2.6 V (day) and 14.3 V (night); junction 5 + 4
+in, 6 out gives Y = 3 A out. Spoterror wrong lines: "current splits in a series circuit"/"p.d. the
+same across series components"; "a thermistor's resistance rises when hotter" (it falls).
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit: 0 type errors across all 9 files.
+2. Structural validator: 6 lessons each >= 3 questions with a say + 2 to 4 starred keywords; revisions
+   EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5; figure only on
+   concept/insight/choice/open; all indices/cloze/tiles/classify/graphpick in range. PASSED.
+3. Calc audit + independent physics check: every `working` recomputed and matched to its option/
+   target; an independent checker re-derived every calculation and confirmed every choice `correct`,
+   spoterror line and classify/match/order/cloze/tiles/graphpick answer. Confirmed: series current is
+   the same everywhere and p.d.s add; parallel branch currents add (conservation of charge) and every
+   branch shares the p.d.; a parallel combination is smaller than its smallest branch; combined
+   circuits reduce by collapsing the parallel group first; the divider formula is not inverted; a
+   thermistor's resistance FALLS as temperature rises and an LDR's FALLS as light gets brighter.
+   Clean.
+4. Compliance scan: digits in spoken fields; units spelled for the ear; no em/en dashes; no emojis;
+   no grade or pass promises. Clean.
+Correct-option positions spread across 0 to 3 (quiz choice indices 0,1,1,2,2,3,3,0,1,2; revisions
+2,0,3,1,2 and 1,3,0,2,3).
+
+FIGURES: no NEW art. References the current Chapter 17 library (fig-17-01 to fig-17-13). Colour I
+wrote every `say` to: the CURRENT / branch currents = blue and the resistance-temperature graph line
+in fig-17-12 = blue; wires, resistors, cells, the thermistor, the LDR and meters (ammeter A,
+voltmeter V) = white/grey. Please redraw to the colour key when rendering; no new name introduced.
+
+NEXT: T16 practical electricity (KB Chapter 18).

@@ -1,0 +1,60 @@
+HANDOFF: T19 Electromagnetic Induction (Tuition teach-then-test lesson content)
+App topic: T19 Electromagnetic Induction  <-  KB Chapter 21 (Electromagnetic Induction)
+Date: 2026-07-23. From: Coddy Cowork.
+
+SUBCONCEPT COUNT AND CODES
+8 boxes: 5 teaching subconcepts + 2 revision checkpoints + 1 topical quiz. One box per file:
+  s19-1.ts  T19.1  Electromagnetic induction and Faraday's law       (KB 21.1)
+  s19-2.ts  T19.2  Direction of the induced e.m.f.: Lenz's law       (KB 21.2)
+  s19-3.ts  T19.3  The a.c. generator                                (KB 21.3)
+  s19-4.ts  T19.4  The transformer                                   (KB 21.4)
+  s19-5.ts  T19.5  Transmission of electrical power                  (KB 21.5)
+  s19-rev1.ts R1   Revision 1 (T19.1 to T19.3)
+  s19-rev2.ts R2   Revision 2 (T19.4 to T19.5)
+  s19-quiz.ts Quiz whole-topic quiz
+Totals: 96 steps, 71 questions.
+
+MIXED CHAPTER: T19.1 to T19.3 are CONCEPTUAL (no working, no formula). T19.4 (transformer) and
+T19.5 (power transmission) are CALCULATION - every calc question carries a `formula` field and a
+`working` block [Formula / Substitute / Answer-with-unit]. Only the CALCULATION BANK values are used.
+
+CALCULATION BANK (all independently recomputed, all match the marked answers):
+  Transformer  V_s / V_p = N_s / N_p ; ideal V_p I_p = V_s I_s
+   - 240 V, 1200 -> 60 turns:  V_s = 240 x 60 / 1200 = 12 V (step-down)
+   - 240 V, 800 -> 200 turns:  V_s = 240 x 200 / 800 = 60 V (step-down)
+   - step-down 230 V -> 46 V (5:1), N_s = 120 -> N_p = 600; I_s = 230 x 1.2 / 46 = 6.0 A
+   - step-up 120 V, I_p = 0.30 A, I_s = 0.015 A:  V_s = 120 x 0.30 / 0.015 = 2400 V
+  Power transmission  P_loss = I^2 R, I = P / V
+   - 8 kW down 0.5 ohm at 400 V:  I = 20 A, P_loss = 20^2 x 0.5 = 200 W
+   - same 8 kW at 4000 V:         I = 2 A,  P_loss = 2^2 x 0.5 = 2 W (far less lost)
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit: 0 type errors across all 8 files.
+2. Structural validator: 5 lessons each >= 3 questions with a say + 2 to 4 starred keywords; revisions
+   EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5; figure only on
+   concept/insight/choice/open; all indices in range. PASSED.
+3. Calc audit + independent physics check: every transformer and power-loss Substitute/Answer matches
+   the bank above; confirmed Lenz's law (an approaching N pole induces a near N pole that repels,
+   opposing the motion; a leaving N pole induces a near S pole that attracts) and its link to the
+   conservation of energy; the a.c. generator uses TWO slip rings and carbon brushes, gives ZERO
+   e.m.f. when the coil is vertical (cutting no lines) and MAXIMUM when horizontal, so a sine output
+   reversing every half turn, with Fleming's RIGHT-hand rule for the induced-current direction; the
+   transformer works on a.c. ONLY (a steady d.c. field induces nothing) and is laminated to cut eddy
+   currents; power is transmitted at high voltage / low current because P_loss = I^2 R. Every choice
+   `correct` index points at the true option; every spoterror `errorLine` targets the genuinely wrong
+   line ("the induced current helps the magnet's motion", "a stationary magnet induces a steady
+   current", "a transformer works on a steady d.c."). No errors found.
+4. Compliance scan: digits in spoken fields; spoken powers/units for the ear (volts, amperes, watts,
+   turns); equations only in `formula` fields; no em/en dashes; no emojis; no grade or pass promises.
+   Clean.
+Correct-option positions spread across 0 to 3 (not all option A); verified per question.
+
+FIGURES: no NEW art. References the current Chapter 21 library (fig-21-01 to fig-21-10). Colour I
+wrote every `say` to (house-key rendering): the induced CURRENT and the a.c. output graph line =
+blue; the magnetic FIELD lines = grey; a magnet's NORTH pole = red, SOUTH pole = blue; coils, wires,
+the soft-iron core, slip rings, brushes, the galvanometer and the transformer body = white/grey. For
+Fleming's RIGHT-hand rule (generator): thumb (motion) yellow, first finger (field) grey, second
+finger (induced current) blue. Please redraw to the colour key when rendering; no new name introduced
+by T19.
+
+NEXT: T20 radioactivity (KB Chapter 22) - the final physics topic.

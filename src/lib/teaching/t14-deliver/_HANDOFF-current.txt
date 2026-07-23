@@ -1,0 +1,54 @@
+HANDOFF: T14 Current of Electricity (Tuition teach-then-test lesson content)
+App topic: T14 Current of Electricity  <-  KB Chapter 16 (Current of Electricity)
+Date: 2026-07-23. From: Coddy Cowork.
+
+SUBCONCEPT COUNT AND CODES
+9 boxes: 6 teaching subconcepts + 2 revision checkpoints + 1 topical quiz. One box per file:
+  s14-1.ts  T14.1  Electric current and Q = It                   (KB 16.1, 16.2, 16.3)
+  s14-2.ts  T14.2  e.m.f. and potential difference               (KB 16.4, 16.5)
+  s14-3.ts  T14.3  Resistance and R = V/I                        (KB 16.6, 16.7)
+  s14-4.ts  T14.4  Resistors in series and parallel             (KB 16.8)
+  s14-5.ts  T14.5  Resistance of a wire; R = rho l / A           (KB 16.9, 16.10)
+  s14-6.ts  T14.6  Ohm's law and I-V characteristics             (KB 16.11)
+  s14-rev1.ts R1   Revision 1 (T14.1 to T14.3)
+  s14-rev2.ts R2   Revision 2 (T14.4 to T14.6)
+  s14-quiz.ts Quiz whole-topic quiz
+Totals: 104 steps, 77 questions.
+
+RECOMPUTED ANSWERS (heavy CALCULATION chapter; every calc question carries `working`)
+Formulae in `formula` fields: Q = I t; E = W/Q; V = W/Q; R = V/I; R_E = R1 + R2 + ... (series);
+1/R_E = 1/R1 + 1/R2 + ... (parallel); R = rho l / A. All recomputed and matched to the marked
+option/target: Q = 4 x 180 = 720 C; t = 450/2.5 = 180 s; I = 960/16 = 60 A; E = 4.5/1 = 4.5 V;
+W = 6.0 x 40 = 240 J; E = 2100/300 = 7 V; W = 15 x 60 = 900 J; R = 12/0.5 = 24 ohms; 4.5/0.03 = 150
+ohms; 4.0/0.8 = 5 ohms; V = 4 x 12 = 48 V; series 3+5+2 = 10 ohms and 6+4+10 = 20 ohms; parallel
+3,6,6 = 1.5 ohms; 8||8 = 4 then +4 = 8 ohms; 12||6 = 4 then +6 = 10 ohms; three identical series
+36 ohms give 4 ohms in parallel (difference 32 ohms); 2+6 across 8 V gives I = 1 A; rho = R A / l =
+(2.5 x 2.5e-7)/5 = 1.25 times 10 to the power negative 7 ohm metres; an iron wire of 6 ohms becomes
+12 ohms (length doubled) and 3 ohms (area doubled). Spoterror wrong lines: "resistance falls as a
+metal heats up" (it rises); adding a parallel pair as if in series.
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit: 0 type errors across all 9 files.
+2. Structural validator: 6 lessons each >= 3 questions with a say + 2 to 4 starred keywords; revisions
+   EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5; figure only on
+   concept/insight/choice/open; all indices/cloze/tiles/classify/graphpick in range. PASSED.
+3. Calc audit + independent physics check: every `working` recomputed and matched to its option/
+   target; an independent checker re-derived every calculation and confirmed every choice `correct`,
+   spoterror line and classify/match/order/cloze/tiles/graphpick answer. Confirmed: conventional
+   current runs from + to - and electron flow the OPPOSITE way; e.m.f. is the whole-circuit source
+   quantity and p.d. is across a component; a metal's resistance RISES with temperature; series adds
+   (larger) and parallel combines by reciprocals (smaller than any one); R grows with length and
+   falls with area; the I-V graphs are ohmic = straight line through the origin, filament = curve
+   that bends over, diode = one-way. Clean.
+4. Compliance scan: digits (spoken powers as digits) in spoken fields; units spelled for the ear;
+   no em/en dashes; no emojis; no grade or pass promises. Clean.
+Correct-option positions spread across 0 to 3 (quiz choice indices 2,0,3,1,2,0,1,3,2,0; revisions
+2,0,3,1,2 and 1,3,0,2,3).
+
+FIGURES: no NEW art. References the current Chapter 16 library (fig-16-01 to fig-16-26). Colour I
+wrote every `say` to (from the current SVGs): ELECTRON FLOW = blue, CONVENTIONAL CURRENT = amber
+(yellow), graph LINES on I-V / V-I graphs = blue, and wires, resistors, cells, lamps and meters
+(ammeter A, voltmeter V) = white/grey. Please redraw to the colour key when rendering; no new name
+introduced by T14.
+
+NEXT: T15 DC circuits (KB Chapter 17).

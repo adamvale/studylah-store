@@ -1,0 +1,49 @@
+HANDOFF: T17 Magnetism (Tuition teach-then-test lesson content)
+App topic: T17 Magnetism  <-  KB Chapter 19 (Magnetism)
+Date: 2026-07-23. From: Coddy Cowork.
+
+SUBCONCEPT COUNT AND CODES
+9 boxes: 6 teaching subconcepts + 2 revision checkpoints + 1 topical quiz. One box per file:
+  s17-1.ts  T17.1  Magnets, poles and the law of poles           (KB 19.1, 19.2, 19.3)
+  s17-2.ts  T17.2  Induced magnetism                             (KB 19.4)
+  s17-3.ts  T17.3  Magnetising and demagnetising                 (KB 19.5, 19.6)
+  s17-4.ts  T17.4  Soft and hard materials; storing magnets      (KB 19.7, 19.8)
+  s17-5.ts  T17.5  Magnetic field lines of a bar magnet          (KB 19.9)
+  s17-6.ts  T17.6  Fields between magnets; plotting a field       (KB 19.10, 19.11)
+  s17-rev1.ts R1   Revision 1 (T17.1 to T17.3)
+  s17-rev2.ts R2   Revision 2 (T17.4 to T17.6)
+  s17-quiz.ts Quiz whole-topic quiz
+Totals: 107 steps, 78 questions.
+
+CONCEPTUAL CHAPTER: no calculations, so NO `working` blocks and NO `formula` fields anywhere.
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit: 0 type errors across all 9 files.
+2. Structural validator: 6 lessons each >= 3 questions with a say + 2 to 4 starred keywords; revisions
+   EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5; figure only on
+   concept/insight/choice/open; all indices in range. PASSED.
+3. Independent physics check: confirmed every choice `correct`, every spoterror line and every
+   classify/match/order/cloze/tiles answer. Confirmed the key facts: aligned domains = magnetised,
+   random = unmagnetised; magnetic materials are iron/cobalt/nickel; like poles repel and unlike
+   attract; REPULSION is the only sure test (attraction alone is not); an induced magnet's near end
+   takes the OPPOSITE pole and the magnetism is TEMPORARY; a d.c. solenoid makes soft iron a
+   temporary and steel a permanent magnet, with the anticlockwise-current end a NORTH pole;
+   demagnetise by slowly withdrawing from an a.c. solenoid (or hammer/heat); soft iron (temporary,
+   electromagnets) vs steel (permanent); field lines run OUT of N and INTO S, never cross, and their
+   spacing shows strength; a neutral point is where the two fields cancel; a plotting compass shows
+   direction while iron filings show only shape. Spoterror wrong lines: "attraction proves a magnet"
+   (s17-rev1, s17-quiz); "induced magnetism is permanent" (s17-2); "field lines point out of S into
+   N" (s17-5, s17-rev2); "field lines cross" (s17-quiz).
+4. Compliance scan: digits in spoken fields; no em/en dashes; no emojis; no grade or pass promises.
+   Clean.
+Correct-option positions spread across 0 to 3 (quiz choice indices 2,0,1,3,1,0,3,2,0,1; revisions
+2,0,3,1,2 and 1,3,0,2,3).
+
+FIGURES: no NEW art. References the current Chapter 19 library (fig-19-01 to fig-19-24). Colour I
+wrote every `say` to (from the current SVGs): a NORTH pole = red, a SOUTH pole = blue; the magnet
+body, iron/steel bars, nails, the solenoid and keepers = white/grey; MAGNETIC FIELD LINES and domain
+arrows = grey (lines point out of N into S); a plotting compass's RED tip is the north-seeking end.
+Multi-panel figures are described as side panels or numbered steps. Please redraw to the colour key
+when rendering; no new name introduced by T17.
+
+NEXT: T18 electromagnetism (KB Chapter 20).
