@@ -17,18 +17,27 @@ interface Guided {
   hints?: string[]; // escalating nudges revealed one at a time via "Help"
 }
 
+// A formula shown in proper maths on a teaching card: the equation in LaTeX,
+// plus a legend naming each symbol and its unit (like an exam formula list).
+// Units use `_`/`^` notation (rendered by <Sci>), e.g. "m/s^2".
+export interface Formula {
+  latex: string; // e.g. "a = \\dfrac{v - u}{t}"
+  where?: { sym: string; meaning: string; unit?: string }[]; // sym is LaTeX ("v^2")
+}
+
 export type LessonStep =
   // A teaching beat. `body` is shown on screen; `say` is what Gugu speaks to
   // teach it aloud, supplementing (not just reading) the text. The student must
   // tap "I understand" to continue, and can tap "Please repeat" to hear it again.
-  // `figure` (optional) is a physics diagram name shown above the text.
-  | { kind: "concept"; heading?: string; body: string; say?: string; figure?: string }
+  // `figure` (optional) is a physics diagram name shown above the text;
+  // `formula` (optional) renders an equation in proper maths with a symbol legend.
+  | { kind: "concept"; heading?: string; body: string; say?: string; figure?: string; formula?: Formula }
   // Multiple choice with immediate feedback; the learner must answer to move on.
   | ({ kind: "choice"; question: string; figure?: string; options: string[]; correct: number; explain: string } & Guided)
   // A prompt the learner thinks about, then taps to reveal the answer.
   | { kind: "reveal"; prompt: string; answer: string }
   // A highlighted takeaway. `say` is Gugu's spoken version.
-  | { kind: "insight"; body: string; say?: string; figure?: string }
+  | { kind: "insight"; body: string; say?: string; figure?: string; formula?: Formula }
   // Open-ended (structured/free-response) question: the student thinks or writes,
   // then reveals a model answer with the marking points to self-check. Gugu
   // speaks `ask` to guide. Gated by "I understand" like every other screen.
@@ -82,14 +91,20 @@ export type LessonStep =
   // drawn from its `points` (x,y pairs on a shared 0..max scale).
   | ({ kind: "graphpick"; prompt: string; xLabel?: string; yLabel?: string; options: { points: [number, number][]; caption?: string }[]; correct: number; explain: string } & Guided);
 
+// The legend's human-facing strings (the LaTeX itself is not prose).
+function formulaText(f: Formula | undefined): string[] {
+  if (!f) return [];
+  return (f.where ?? []).flatMap((w) => [w.meaning, w.unit ?? ""]);
+}
+
 // Every human-facing string in a step, for compliance scanning and search.
 export function stepText(step: LessonStep): string[] {
   const guided = "ask" in step ? [step.ask ?? "", ...(step.hints ?? [])] : [];
   switch (step.kind) {
     case "concept":
-      return [step.heading ?? "", step.body, step.say ?? ""];
+      return [step.heading ?? "", step.body, step.say ?? "", ...formulaText(step.formula)];
     case "insight":
-      return [step.body, step.say ?? ""];
+      return [step.body, step.say ?? "", ...formulaText(step.formula)];
     case "open":
       return [step.prompt, step.modelAnswer, ...(step.marks ?? []), ...guided];
     case "reveal":

@@ -10,14 +10,29 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "What velocity is",
-        body: "Velocity is the displacement per unit time. It is speed in a stated direction, so it is a vector. Its unit is the metre per second, m/s.",
+        body: "Velocity is the displacement per unit time. It is speed in a stated direction, so it is a vector.",
+        formula: {
+          latex: "v = \\dfrac{d}{t}",
+          where: [
+            { sym: "v", meaning: "velocity", unit: "m/s" },
+            { sym: "d", meaning: "displacement", unit: "m" },
+            { sym: "t", meaning: "time taken", unit: "s" },
+          ],
+        },
         say: "Velocity is just speed with a direction attached. It is displacement divided by time, so it tells you how fast you move and which way. Because direction is part of it, velocity is a vector, measured in metres per second.",
       },
       {
         kind: "concept",
         heading: "Average velocity",
         figure: "fig-02-04-uturn-journey",
-        body: "Average velocity is the total displacement divided by the total time taken. It uses displacement, not distance, so it is often smaller than the average speed.",
+        body: "Average velocity uses displacement, not distance, so it is often smaller than the average speed.",
+        formula: {
+          latex: "\\text{average velocity} = \\dfrac{\\text{total displacement}}{\\text{total time taken}}",
+          where: [
+            { sym: "\\text{displacement}", meaning: "straight line from start to finish", unit: "m" },
+            { sym: "\\text{time}", meaning: "total time taken", unit: "s" },
+          ],
+        },
         say: "Look at the diagram. The blue arrows trace the actual journey along the track, six hundred metres from A to B and then two hundred and forty metres back to C, but the yellow arrow shows the displacement, only three hundred and sixty metres from A to C. For a whole journey, average velocity is the total displacement over the total time. Watch the trap here: it uses displacement, not distance. If you double back, your displacement shrinks, so your average velocity comes out smaller than your average speed.",
       },
       {

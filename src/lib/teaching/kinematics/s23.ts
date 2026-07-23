@@ -17,7 +17,14 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "The formula",
-        body: "Average speed = total distance travelled / total time taken. You add up all the distance for the trip, add up all the time, and divide.",
+        body: "You add up all the distance for the trip, add up all the time, and divide.",
+        formula: {
+          latex: "\\text{average speed} = \\dfrac{\\text{total distance travelled}}{\\text{total time taken}}",
+          where: [
+            { sym: "\\text{distance}", meaning: "total path travelled", unit: "m" },
+            { sym: "\\text{time}", meaning: "total time taken", unit: "s" },
+          ],
+        },
         say: "Here is the rule. Average speed equals the total distance travelled divided by the total time taken. Notice it is the totals that matter, not any one part. Add up every metre you covered, add up every second the trip took, including any time spent stopped, and then divide the distance by the time. That last point catches people out: a rest stop still counts toward the total time.",
       },
       {

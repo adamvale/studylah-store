@@ -17,7 +17,18 @@ export const BOXES: Subconcept[] = [
         kind: "concept",
         heading: "The four equations",
         figure: "fig-02-32-vt-worked-formulae",
-        body: "There are four equations, and each one leaves out exactly one quantity. v = u + at leaves out d. d = 1/2 (u + v) t leaves out a. d = ut + 1/2 a t^2 leaves out v. v^2 = u^2 + 2ad leaves out t. That last one, d = 1/2 (u + v) t, is just the area of the trapezium under a straight velocity-time graph.",
+        body: "There are four equations, and each one leaves out exactly one quantity (shown on the right). The second is just the area of the trapezium under a straight velocity-time graph.",
+        formula: {
+          latex:
+            "\\begin{array}{ll} v = u + at & \\text{(no } d) \\\\[4pt] d = \\tfrac{1}{2}(u + v)\\,t & \\text{(no } a) \\\\[4pt] d = ut + \\tfrac{1}{2}at^{2} & \\text{(no } v) \\\\[4pt] v^{2} = u^{2} + 2ad & \\text{(no } t) \\end{array}",
+          where: [
+            { sym: "a", meaning: "acceleration (constant)", unit: "m/s^2" },
+            { sym: "u", meaning: "initial velocity", unit: "m/s" },
+            { sym: "v", meaning: "final velocity", unit: "m/s" },
+            { sym: "d", meaning: "displacement", unit: "m" },
+            { sym: "t", meaning: "time taken", unit: "s" },
+          ],
+        },
         say: "Look at the diagram. The blue line on the velocity time graph climbs from a starting velocity u up to a final velocity v after a time t, and the shaded blue area underneath it forms a trapezium. Keep that picture in mind. There are four equations, and here is the neat pattern. Each equation quietly leaves out one of the five quantities. The first, v equals u plus a t, has no displacement in it. The second, d equals a half times u plus v, all times t, has no acceleration in it. The third, d equals u t plus a half a t squared, has no final velocity. And the fourth, v squared equals u squared plus two a d, has no time in it. That second one is really just the area of the trapezium under a straight velocity-time graph.",
       },
       {

@@ -10,7 +10,16 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Acceleration",
-        body: "Acceleration is the rate of change of velocity: how much the velocity changes each second. Its formula is a = (v - u) / t, where u is the starting velocity and v is the final velocity. Its unit is m/s^2.",
+        body: "Acceleration is the rate of change of velocity: how much the velocity changes each second.",
+        formula: {
+          latex: "a = \\dfrac{v - u}{t}",
+          where: [
+            { sym: "a", meaning: "acceleration", unit: "m/s^2" },
+            { sym: "v", meaning: "final velocity", unit: "m/s" },
+            { sym: "u", meaning: "initial velocity", unit: "m/s" },
+            { sym: "t", meaning: "time taken", unit: "s" },
+          ],
+        },
         say: "Acceleration tells you how quickly the velocity is changing every second. You take the final velocity, subtract the starting velocity, and divide by the time taken. We measure it in metres per second squared.",
       },
       {

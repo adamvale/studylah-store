@@ -10,7 +10,15 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "What speed is",
-        body: "Speed is the distance travelled per unit time. It is a scalar, so it has size only, with no direction. Its unit is the metre per second, m/s.",
+        body: "Speed is the distance travelled per unit time. It is a scalar, so it has size only, with no direction.",
+        formula: {
+          latex: "v = \\dfrac{d}{t}",
+          where: [
+            { sym: "v", meaning: "speed", unit: "m/s" },
+            { sym: "d", meaning: "distance", unit: "m" },
+            { sym: "t", meaning: "time taken", unit: "s" },
+          ],
+        },
         say: "Speed just tells you how much ground you cover each second. It is distance divided by time, and it carries no direction at all, so it is a scalar. We measure it in metres per second.",
       },
       {

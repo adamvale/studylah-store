@@ -1,12 +1,59 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { LessonStep } from "@/lib/lesson-steps";
+import katex from "katex";
+import "katex/dist/katex.min.css";
+import type { Formula as FormulaSpec, LessonStep } from "@/lib/lesson-steps";
 import { NamedIcon } from "@/components/icons";
 import { Sci } from "@/components/sci-text";
 import { ImmersiveShell } from "@/components/immersive-shell";
 import { physicsFigureSrc } from "@/lib/teaching";
 import { speak, stopSpeaking } from "@/lib/speak";
+
+// Render LaTeX with KaTeX (fonts bundled, no network). Falls back to the raw
+// string if the LaTeX is malformed, so bad content never crashes the lesson.
+function Katex({ tex, display }: { tex: string; display?: boolean }) {
+  const html = useMemo(() => {
+    try {
+      return katex.renderToString(tex, { displayMode: display, throwOnError: false, output: "html" });
+    } catch {
+      return tex;
+    }
+  }, [tex, display]);
+  return <span dangerouslySetInnerHTML={{ __html: html }} />;
+}
+
+// A formula shown in proper maths on a teaching card: the equation big and
+// centred, then a legend naming each symbol and its unit, like an exam formula
+// list. The equation scrolls sideways on its own if it is very wide.
+function Formula({ latex, where }: FormulaSpec) {
+  return (
+    <div className="mt-4 rounded-xl border border-hairline bg-white/[0.06] p-4">
+      <div className="overflow-x-auto text-center text-ink [&_.katex]:text-[1.5rem]">
+        <Katex tex={latex} display />
+      </div>
+      {where && where.length > 0 && (
+        <ul className="mt-3 space-y-1.5 border-t border-white/10 pt-3">
+          {where.map((w, wi) => (
+            <li key={wi} className="flex items-baseline gap-2 text-sm leading-relaxed">
+              <span className="min-w-[1.75rem] shrink-0 text-accent [&_.katex]:text-[0.95rem]">
+                <Katex tex={w.sym} />
+              </span>
+              <span className="flex-1 text-body">
+                <Sci>{w.meaning}</Sci>
+              </span>
+              {w.unit && (
+                <span className="shrink-0 font-mono text-xs text-body/80">
+                  <Sci>{w.unit}</Sci>
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
 
 // A physics diagram shown inside a teaching card or question. The SVGs are drawn
 // for a dark background, so we render them bare (no card, no border, no white
@@ -220,6 +267,7 @@ export function LessonPlayer({
           <p className={`${step.kind === "concept" && step.heading ? "mt-3" : ""} text-lg leading-relaxed text-ink`}>
             <Sci>{step.body}</Sci>
           </p>
+          {"formula" in step && step.formula && <Formula {...step.formula} />}
         </div>
       )}
 

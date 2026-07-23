@@ -254,6 +254,37 @@ student writes, then reveals a model answer and marking points to self-check.
 `ask` is Gugu's spoken guide. Grounded in the notes' structured/free-response
 questions.
 
+### Formulas on teaching cards (ALWAYS use `formula`, never inline text)
+
+Whenever a concept states an equation, put it in the `formula` field, NOT as
+plain text in `body`. It renders in proper maths (real fraction bars, powers)
+with a legend naming every symbol and its unit, like an exam formula list.
+
+```ts
+{ kind: "concept", heading: "Acceleration",
+  body: "Acceleration is the rate of change of velocity: how much the velocity changes each second.",
+  formula: {
+    latex: "a = \\dfrac{v - u}{t}",   // real LaTeX (KaTeX): \dfrac, ^, \text{...}, \begin{array}{...}
+    where: [
+      { sym: "a", meaning: "acceleration", unit: "m/s^2" },
+      { sym: "v", meaning: "final velocity", unit: "m/s" },
+      { sym: "u", meaning: "initial velocity", unit: "m/s" },
+      { sym: "t", meaning: "time taken", unit: "s" },
+    ],
+  },
+  say: "..." }
+```
+
+Rules:
+- `latex` is real LaTeX. Escape backslashes in the TS string (`\\dfrac`). Use
+  `\text{...}` for word-quantities ("average speed"), a `\begin{array}{ll}...`
+  for a set of equations. Do NOT put the equation in `body` as well.
+- `where` lists EVERY symbol in the formula: `sym` is LaTeX (`"v^2"`), `meaning`
+  is plain words, `unit` uses `_`/`^` notation (`"m/s^2"`, `"m"`, `"s"`). Omit
+  `unit` only for a genuinely dimensionless quantity.
+- The `say` and any `explain`/`hints` still speak the maths in words ("v squared
+  equals u squared plus two a d"), since LaTeX is not read aloud.
+
 ### Figures on teaching cards
 
 `concept`, `insight`, `choice` and `open` take an optional `figure` (a physics
