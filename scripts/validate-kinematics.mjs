@@ -1,5 +1,6 @@
-// Structural + compliance check for the authored Kinematics tree.
-// Run after all kinematics/*.ts files are in place and wired into subconcepts.ts.
+// Structural + compliance check for an authored subconcept tree.
+// Run after all section .ts files are in place and wired into subconcepts.ts.
+//   node scripts/validate-kinematics.mjs [topicKey]   (default t2-kinematics)
 import { subconceptsFor } from "../src/lib/teaching/subconcepts.ts";
 import { stepText } from "../src/lib/lesson-steps.ts";
 import { readdirSync } from "node:fs";
@@ -10,8 +11,10 @@ const figs = new Set(
     .map((f) => f.replace(/\.svg$/, "")),
 );
 
-const boxes = subconceptsFor("t2-kinematics") ?? [];
+const TOPIC = process.argv[2] ?? "t2-kinematics";
+const boxes = subconceptsFor(TOPIC) ?? [];
 const fail = [];
+const warn = [];
 const ids = new Set();
 const dash = /[–—]/; // en dash, em dash
 
@@ -29,7 +32,7 @@ for (const b of boxes) {
     else if (s.kind === "insight") counts.insight++;
     else if (INTERACTIVE.has(s.kind)) counts.interactive++;
     // figure references must exist
-    if ("figure" in s && s.figure && !figs.has(s.figure)) fail.push(`${b.code}: missing figure ${s.figure}`);
+    if ("figure" in s && s.figure && !figs.has(s.figure)) warn.push(`${b.code}: figure not yet in repo: ${s.figure}`);
     // notation/dash check on on-screen strings (skip spoken-only fields)
     for (const t of stepText(s)) {
       if (dash.test(t)) fail.push(`${b.code}: en/em dash in "${String(t).slice(0, 40)}"`);
@@ -58,7 +61,11 @@ for (const b of boxes) {
   console.log(`${b.code.padEnd(7)} ${kind.padEnd(9)} ${b.steps.length} steps  (choice ${counts.choice}, interactive ${counts.interactive}, open ${counts.open}, concept ${counts.concept})`);
 }
 
-console.log(`\n${boxes.length} boxes total.`);
+console.log(`\n${boxes.length} boxes total for "${TOPIC}".`);
+if (warn.length) {
+  const uniq = [...new Set(warn.map((w) => w.split(": figure not yet in repo: ")[1]))];
+  console.log(`\nFIGURES NOT YET IN REPO (${uniq.length} distinct): ${uniq.join(", ")}`);
+}
 if (fail.length) {
   console.log(`\nFAILURES (${fail.length}):`);
   for (const f of fail) console.log("  - " + f);

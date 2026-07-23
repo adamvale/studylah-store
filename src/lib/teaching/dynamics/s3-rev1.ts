@@ -1,0 +1,201 @@
+import type { Subconcept } from "@/lib/teaching/subconcepts";
+
+// T3 Dynamics, Revision 1. Checkpoint over KB Chapter 03 (Mass and Weight),
+// sections t3.1 to t3.5: forces, mass, gravity and weight. Question-only.
+
+export const BOXES: Subconcept[] = [
+  {
+    id: "t3.rev1",
+    code: "R1",
+    title: "Revision 1",
+    blurb: "Checkpoint: forces, mass, gravity and weight",
+    kind: "revision",
+    steps: [
+      {
+        kind: "choice",
+        question: "Which of the following is a contact force?",
+        options: ["The gravitational force", "The magnetic force", "Friction", "The electrostatic force"],
+        correct: 2,
+        ask: "Ask which force can only act while the 2 surfaces are actually touching. Which option is that?",
+        hints: [
+          "Gravity, magnetism and the force between charges all reach across an empty gap.",
+          "Friction only appears where one surface slides or grips against another, so the surfaces must be touching.",
+        ],
+        explain: "Friction is the contact force, because it only acts where 2 surfaces meet. The gravitational, magnetic and electrostatic forces are all non-contact forces that act across a gap.",
+      },
+      {
+        kind: "choice",
+        question: "A 3 kg mass rests on Earth, where g = 10 N/kg. What is its weight?",
+        options: ["30 N", "3 N", "13 N", "0.3 N"],
+        correct: 0,
+        ask: "Weight is mass times g, so work out 3 times 10. Which option matches?",
+        hints: [
+          "Use W equals m times g.",
+          "3 times 10 is 30, and the unit of weight is the newton.",
+        ],
+        working: [
+          { label: "Formula", latex: "W = mg" },
+          { label: "Substitute", latex: "W = 3 \\times 10" },
+          { label: "Answer", latex: "W = 30\\ \\text{N}" },
+        ],
+        explain: "The weight is 30 newtons, because 3 kilograms times 10 newtons per kilogram gives 30 newtons.",
+      },
+      {
+        kind: "choice",
+        question: "An astronaut carries a 6 kg toolkit from Earth to the Moon. What happens to the toolkit's mass?",
+        options: ["It becomes larger", "It becomes smaller", "It stays 6 kg", "It falls to zero"],
+        correct: 2,
+        ask: "Mass counts the amount of matter in the toolkit. Does moving it to the Moon add or remove any matter?",
+        hints: [
+          "Mass is the amount of matter in a body, and it is the same everywhere in the universe.",
+          "Only the weight changes on the Moon, because g is smaller there. The mass is unchanged.",
+        ],
+        explain: "The mass stays 6 kilograms, because mass is the amount of matter and it does not change with place. Only the weight would be smaller on the Moon.",
+      },
+      {
+        kind: "choice",
+        question: "A 5 kg mass sits on a planet where g = 1.6 N/kg. What is its weight?",
+        options: ["8 N", "5 N", "80 N", "3.2 N"],
+        correct: 0,
+        ask: "Weight is still mass times g, so work out 5 times 1.6. Which option is that?",
+        hints: [
+          "Use W equals m times g, with g equal to 1.6 on this planet.",
+          "5 times 1.6 is 8, and weight is measured in newtons.",
+        ],
+        working: [
+          { label: "Formula", latex: "W = mg" },
+          { label: "Substitute", latex: "W = 5 \\times 1.6" },
+          { label: "Answer", latex: "W = 8\\ \\text{N}" },
+        ],
+        explain: "The weight is 8 newtons, because 5 kilograms times 1.6 newtons per kilogram is 8 newtons. The same 5 kilogram mass would weigh 50 newtons on Earth.",
+      },
+      {
+        kind: "choice",
+        question: "The gravitational field strength g is best described as the...",
+        options: ["force on each kilogram of mass", "total mass of an object", "force needed to stop an object", "distance an object falls each second"],
+        correct: 0,
+        ask: "Think about what g measures at a point in a field, and why its unit is newtons per kilogram.",
+        hints: [
+          "The unit of g, newtons per kilogram, is a force divided by a mass.",
+          "g tells you how many newtons of gravitational force act on every 1 kilogram placed there.",
+        ],
+        explain: "The gravitational field strength is the gravitational force on each kilogram of mass, which is why its unit is newtons per kilogram. On Earth it is about 10 newtons per kilogram.",
+      },
+      {
+        kind: "slider",
+        prompt: "A camera weighs 84 N on Earth, where g = 10 N/kg. Set the slider to its mass, in kg.",
+        min: 0,
+        max: 20,
+        step: 0.1,
+        unit: "kg",
+        start: 0,
+        targetMin: 8.3,
+        targetMax: 8.5,
+        ask: "Rearrange weight equals mass times g to get mass, so work out 84 divided by 10.",
+        hints: [
+          "From W equals m g, the mass is W divided by g.",
+          "84 divided by 10 is 8.4, so slide to 8.4 kilograms.",
+        ],
+        working: [
+          { label: "Formula", latex: "m = \\dfrac{W}{g}" },
+          { label: "Substitute", latex: "m = \\dfrac{84}{10}" },
+          { label: "Answer", latex: "m = 8.4\\ \\text{kg}" },
+        ],
+        explain: "The mass is 8.4 kilograms, because 84 newtons divided by 10 newtons per kilogram is 8.4 kilograms. The mass is in kilograms, not the newtons of the weight.",
+      },
+      {
+        kind: "classify",
+        prompt: "Sort each force into the correct family.",
+        bins: ["Contact", "Non-contact"],
+        items: [
+          { text: "friction", bin: 0 },
+          { text: "tension", bin: 0 },
+          { text: "normal force", bin: 0 },
+          { text: "gravitational force", bin: 1 },
+          { text: "magnetic force", bin: 1 },
+          { text: "electrostatic force", bin: 1 },
+        ],
+        ask: "For each force, ask whether the 2 objects must be touching for it to act. If they must, it is a contact force. Tap each one and drop it in its bin.",
+        hints: [
+          "Friction, tension and the normal force all rely on surfaces meeting.",
+          "The gravitational, magnetic and electrostatic forces each reach across an empty gap.",
+        ],
+        explain: "Friction, tension and the normal force are contact forces, because they only act where surfaces meet. The gravitational, magnetic and electrostatic forces are non-contact forces, because each acts across empty space.",
+      },
+      {
+        kind: "tiles",
+        prompt: "A 5 kg mass weighs 8 N on a distant planet. Build the working line that gives g there.",
+        tiles: ["g =", "8", "\\div", "5", "=", "1.6", "N/kg", "kg"],
+        answer: ["g =", "8", "\\div", "5", "=", "1.6", "N/kg"],
+        ask: "To find g, divide the weight by the mass, so set up 8 divided by 5.",
+        hints: [
+          "Rearranging W equals m g gives g equal to W divided by m.",
+          "8 divided by 5 is 1.6, and g is measured in newtons per kilogram.",
+        ],
+        working: [
+          { label: "Formula", latex: "g = \\dfrac{W}{m}" },
+          { label: "Substitute", latex: "g = \\dfrac{8}{5}" },
+          { label: "Answer", latex: "g = 1.6\\ \\text{N/kg}" },
+        ],
+        explain: "The gravitational field strength is 1.6 newtons per kilogram, because 8 newtons divided by 5 kilograms is 1.6 newtons per kilogram.",
+      },
+      {
+        kind: "cloze",
+        prompt: "Complete the summary of mass and weight.",
+        segments: [
+          "Mass is the amount of matter, measured in ",
+          ", while weight is a force measured in ",
+          ". A body's mass stays ",
+          " everywhere, but its weight depends on ",
+          ".",
+        ],
+        bank: ["kilograms", "newtons", "constant", "g", "seconds", "changing"],
+        answer: ["kilograms", "newtons", "constant", "g"],
+        ask: "Recall the unit of mass, the unit of weight, and which of the 2 quantities never changes when you move an object.",
+        hints: [
+          "Mass is measured in kilograms; weight, being a force, is measured in newtons.",
+          "Mass is the same everywhere, so the quantity that changes weight is g, the gravitational field strength.",
+        ],
+        explain: "Mass is measured in kilograms and weight in newtons. Mass stays constant everywhere, while weight depends on g, so it changes where the field is weaker.",
+      },
+      {
+        kind: "order",
+        prompt: "Put these steps for finding an object's weight in order.",
+        items: [
+          "Write down the mass in kg",
+          "Note the value of g in N/kg for that place",
+          "Multiply the mass by g",
+          "State the weight, in N",
+        ],
+        ask: "Think about what 2 quantities you need in hand before you can multiply to get a weight. Put the steps in order.",
+        hints: [
+          "You cannot multiply until you know both the mass and the value of g.",
+          "Weight equals mass times g, and the answer is a force in newtons.",
+        ],
+        explain: "First write the mass in kilograms, then note g in newtons per kilogram, then multiply the 2 together, and finally state the weight in newtons.",
+      },
+      {
+        kind: "open",
+        prompt: "Explain 2 ways in which mass and weight are different.",
+        modelAnswer: "Mass is the amount of matter in a body. It is a scalar measured in kilograms and it stays the same everywhere. Weight is the gravitational force on that mass. It is a vector measured in newtons, given by W = mg, so it changes when g changes.",
+        marks: [
+          "Mass is a scalar in kg; weight is a force (vector) in N.",
+          "Mass is constant everywhere; weight depends on g.",
+          "Weight is given by W = mg.",
+        ],
+        ask: "Think about what each quantity measures, its unit, and whether it changes when the object is carried to the Moon.",
+      },
+      {
+        kind: "open",
+        prompt: "A rock weighs less on the Moon than on Earth, yet its mass is unchanged. Explain why, using the idea of gravitational field strength.",
+        modelAnswer: "Weight is the gravitational force on the rock, W = mg. The gravitational field strength g is the force on each kilogram of mass. On the Moon g is about 1.6 newtons per kilogram, much less than the about 10 newtons per kilogram on Earth. The mass, the amount of matter, does not change, but because g is smaller on the Moon, mg is smaller, so the weight is less.",
+        marks: [
+          "Weight W = mg depends on g.",
+          "g on the Moon (about 1.6 N/kg) is less than on Earth (about 10 N/kg).",
+          "Mass is unchanged, so a smaller g gives a smaller weight.",
+        ],
+        ask: "Weight is mass times g. Which of those 2 changes between the Earth and the Moon, and which stays the same?",
+      },
+    ],
+  },
+];

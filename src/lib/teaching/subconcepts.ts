@@ -15,6 +15,23 @@ import { BOXES as S2829 } from "./kinematics/s2829";
 import { BOXES as REV5 } from "./kinematics/rev5";
 import { BOXES as QUIZ } from "./kinematics/quiz";
 
+import { BOXES as D01 } from "./dynamics/s3-01";
+import { BOXES as D02 } from "./dynamics/s3-02";
+import { BOXES as D03 } from "./dynamics/s3-03";
+import { BOXES as D04 } from "./dynamics/s3-04";
+import { BOXES as D05 } from "./dynamics/s3-05";
+import { BOXES as DREV1 } from "./dynamics/s3-rev1";
+import { BOXES as D06 } from "./dynamics/s3-06";
+import { BOXES as D07 } from "./dynamics/s3-07";
+import { BOXES as D08 } from "./dynamics/s3-08";
+import { BOXES as D09 } from "./dynamics/s3-09";
+import { BOXES as D10 } from "./dynamics/s3-10";
+import { BOXES as DREV2 } from "./dynamics/s3-rev2";
+import { BOXES as D11 } from "./dynamics/s3-11";
+import { BOXES as D12 } from "./dynamics/s3-12";
+import { BOXES as DREV3 } from "./dynamics/s3-rev3";
+import { BOXES as DQUIZ } from "./dynamics/s3-quiz";
+
 // The bite-sized lesson layer. A topic is broken into small subconcepts; each
 // one teaches a little, then tests it with a question, so a student learns the
 // idea before facing exam questions. Keyed by topicKey (the same keys the
@@ -44,11 +61,25 @@ const KINEMATICS: Subconcept[] = [
   ...QUIZ,
 ];
 
+// The full Dynamics tree (KB Ch03 Mass and Weight + Ch04 Forces), same teaching
+// order: 12 micro-lessons with a revision checkpoint at each topic seam, closing
+// with the topical practice quiz. Content lives in ./dynamics/*.
+const DYNAMICS: Subconcept[] = [
+  ...D01, ...D02, ...D03, ...D04, ...D05, ...DREV1,
+  ...D06, ...D07, ...D08, ...D09, ...D10, ...DREV2,
+  ...D11, ...D12, ...DREV3,
+  ...DQUIZ,
+];
+
 // topicKey -> its subconcepts. Kinematics shares the pure/science key
-// "t2-kinematics"; the N-Level key is "kinematics".
+// "t2-kinematics"; the N-Level key is "kinematics". Dynamics uses "t3-dynamics"
+// (Pure), "t4-dynamics" (the other level) and the N-Level key "dynamics".
 const SUBCONCEPTS: Record<string, Subconcept[]> = {
   "t2-kinematics": KINEMATICS,
   kinematics: KINEMATICS,
+  "t3-dynamics": DYNAMICS,
+  "t4-dynamics": DYNAMICS,
+  dynamics: DYNAMICS,
 };
 
 export function subconceptsFor(topicKey: string): Subconcept[] | undefined {
