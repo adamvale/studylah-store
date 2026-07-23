@@ -7,6 +7,7 @@ import type { Formula as FormulaSpec, LessonStep } from "@/lib/lesson-steps";
 import { NamedIcon } from "@/components/icons";
 import { Sci } from "@/components/sci-text";
 import { ImmersiveShell } from "@/components/immersive-shell";
+import { TutorHead } from "@/components/tutor-head";
 import { physicsFigureSrc } from "@/lib/teaching";
 import {
   CORRECT_PRAISE,
@@ -373,6 +374,10 @@ export function LessonPlayer({
         </div>
       }
     >
+      {/* The tutor window: idle while Gugu is quiet, talking while she speaks.
+          Hides itself if the footage is not in place. */}
+      <TutorHead />
+
       {/* Gugu's opening nudge is spoken aloud once as the question appears; no
           repeat control, since each question just moves the student on. */}
 

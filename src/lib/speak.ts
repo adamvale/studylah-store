@@ -141,6 +141,35 @@ function deviceSpeak(text: string, lang: string, onEnd?: () => void): void {
   }
 }
 
+// ── Is Gugu talking right now? ──────────────────────────────────────────────
+// The tutor head (and anything else that wants to react) subscribes here, so
+// the UI never has to guess from timers whether a line is still playing.
+type SpeakingListener = (speaking: boolean) => void;
+const speakingListeners = new Set<SpeakingListener>();
+let speaking = false;
+
+export function isSpeaking(): boolean {
+  return speaking;
+}
+
+export function onSpeakingChange(fn: SpeakingListener): () => void {
+  speakingListeners.add(fn);
+  fn(speaking);
+  return () => speakingListeners.delete(fn);
+}
+
+function setSpeaking(next: boolean): void {
+  if (speaking === next) return;
+  speaking = next;
+  for (const fn of speakingListeners) {
+    try {
+      fn(next);
+    } catch {
+      /* a bad listener must not break playback */
+    }
+  }
+}
+
 // ── Public API ──────────────────────────────────────────────────────────────
 let currentAudio: HTMLAudioElement | null = null;
 // Looking a line up in the manifest is async, so a line asked for just before
@@ -190,8 +219,13 @@ export function speakSequence(texts: string[], lang = "en-GB"): void {
     if (token !== speakToken) return; // superseded while we were loading
     let idx = 0;
     const next = (): void => {
-      if (token !== speakToken || idx >= lines.length) return;
+      if (token !== speakToken) return;
+      if (idx >= lines.length) {
+        setSpeaking(false); // the whole sequence is done
+        return;
+      }
       const line = lines[idx++];
+      setSpeaking(true);
       if (m.has(line ? hashLine(line) : "")) playLine(line, lang, token, next);
       else deviceSpeak(line, lang, next);
     };
@@ -202,6 +236,7 @@ export function speakSequence(texts: string[], lang = "en-GB"): void {
 export function stopSpeaking(): void {
   if (typeof window === "undefined") return;
   speakToken++; // any in-flight lookup or queued line is now stale
+  setSpeaking(false);
   if (currentAudio) {
     try {
       currentAudio.pause();
