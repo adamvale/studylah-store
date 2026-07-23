@@ -36,6 +36,13 @@ export function hashLine(text: string): string {
   return n.toString(36);
 }
 
+// Where the generated voice lives. Set NEXT_PUBLIC_AUDIO_BASE_URL to a bucket or
+// CDN origin (no trailing slash) to serve it from there instead of the repo, e.g.
+//   NEXT_PUBLIC_AUDIO_BASE_URL=https://audio.studylah.education/gugu
+// Unset, it falls back to the files under public/, so local dev and any older
+// deploy keep working untouched. See docs/VOICE-AUDIO-HOSTING.md.
+const AUDIO_BASE = (process.env.NEXT_PUBLIC_AUDIO_BASE_URL || "/audio/gugu").replace(/\/+$/, "");
+
 // ── Manifest: which lines have a generated audio file ───────────────────────
 // Audio is namespaced by voice so several tutors can coexist (Amy, Jay, ...).
 // The active voice is named in /audio/gugu/active.json = { voice }; its available
@@ -50,12 +57,12 @@ let manifestPromise: Promise<Set<string>> | null = null;
 function loadManifest(): Promise<Set<string>> {
   if (manifest) return Promise.resolve(manifest);
   if (!manifestPromise) {
-    manifestPromise = fetch("/audio/gugu/active.json")
+    manifestPromise = fetch(`${AUDIO_BASE}/active.json`)
       .then((r) => (r.ok ? (r.json() as Promise<{ voice?: string }>) : { voice: "" }))
       .then((cfg) => {
         activeVoice = cfg.voice || DEFAULT_TUTOR_VOICE_ID;
         if (!activeVoice) return [] as string[];
-        return fetch(`/audio/gugu/${activeVoice}/manifest.json`).then((r) =>
+        return fetch(`${AUDIO_BASE}/${activeVoice}/manifest.json`).then((r) =>
           r.ok ? (r.json() as Promise<string[]>) : ([] as string[]),
         );
       })
@@ -184,7 +191,7 @@ function playLine(line: string, lang: string, token: number, done?: () => void):
   const h = hashLine(line);
   const fallback = () => deviceSpeak(line, lang, done);
   try {
-    const audio = new Audio(`/audio/gugu/${activeVoice}/${h}.mp3`);
+    const audio = new Audio(`${AUDIO_BASE}/${activeVoice}/${h}.mp3`);
     currentAudio = audio;
     let fellBack = false;
     const once = () => {
