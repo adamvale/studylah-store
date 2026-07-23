@@ -55,6 +55,7 @@ function collect(svg, baseSize) {
   const anchorFor = classAnchors(svg);
   const texts = [];
   const circs = [];
+  const axes = { h: [], v: [] };
   for (const { dx, dy, body } of segments(svg)) {
     for (const m of body.matchAll(/<text\b([^>]*)>([^<]*)<\/text>/g)) {
       const a = attrs(m[1]);
@@ -73,8 +74,17 @@ function collect(svg, baseSize) {
       const a = attrs(m[1]);
       circs.push({ cx: parseFloat(a.cx ?? "0") + dx, cy: parseFloat(a.cy ?? "0") + dy, r: parseFloat(a.r ?? "0") });
     }
+    // axis lines: long, axis-aligned <line>s (used to detect graph-like figures)
+    for (const m of body.matchAll(/<line\b([^>]*)\/?>(?:<\/line>)?/g)) {
+      const a = attrs(m[1]);
+      const x1 = parseFloat(a.x1 ?? "0") + dx, y1 = parseFloat(a.y1 ?? "0") + dy;
+      const x2 = parseFloat(a.x2 ?? "0") + dx, y2 = parseFloat(a.y2 ?? "0") + dy;
+      const len = Math.hypot(x2 - x1, y2 - y1);
+      if (Math.abs(y2 - y1) <= 3 && len >= 60) axes.h.push({ x1, x2, y: y1 });
+      if (Math.abs(x2 - x1) <= 3 && len >= 60) axes.v.push({ y1, y2, x: x1 });
+    }
   }
-  return { texts, circs };
+  return { texts, circs, axes };
 }
 
 function overlap(a, b) {
@@ -89,7 +99,7 @@ for (const f of files) {
   const vb = /viewBox="([\d.\s-]+)"/.exec(svg)?.[1].split(/\s+/).map(Number) ?? [0, 0, 9999, 9999];
   const [vx, vy, vw, vh] = vb;
   const styleSize = parseFloat(/text\s*{[^}]*font-size:\s*([\d.]+)px/.exec(svg)?.[1] ?? "13");
-  const { texts, circs } = collect(svg, styleSize);
+  const { texts, circs, axes } = collect(svg, styleSize);
   const problems = [];
 
   for (let i = 0; i < texts.length; i++)
@@ -110,6 +120,22 @@ for (const f of files) {
       problems.push(`overflow: "${t.content.slice(0, 24)}" outside viewBox`);
 
   if (styleSize < 12 && vw >= 500) problems.push(`tiny-font: base ${styleSize}px on ${vw}-wide viewBox`);
+
+  // Axis-label check: a graph (>=1 long horizontal AND >=1 long vertical axis)
+  // must name both axes. Heuristic: a label near the foot of a vertical axis
+  // (the x-axis name) and one near the top of a vertical axis (the y-axis name).
+  const wordy = texts.filter((t) => t.content.length >= 3 && /[a-zA-Z]/.test(t.content));
+  if (axes.h.length && axes.v.length) {
+    for (const v of axes.v) {
+      const yTop = Math.min(v.y1, v.y2), yBot = Math.max(v.y1, v.y2);
+      const near = (t, cx, cy, rx, ry) => Math.abs((t.x0 + t.x1) / 2 - cx) < rx && Math.abs((t.y0 + t.y1) / 2 - cy) < ry;
+      const hasYlabel = wordy.some((t) => near(t, v.x, yTop, 90, 34));
+      const hasXlabel = wordy.some((t) => near(t, v.x + 120, yBot, 220, 40));
+      if (!hasYlabel) problems.push(`axis-label: y-axis near (${v.x|0},${yTop|0}) has no label`);
+      if (!hasXlabel) problems.push(`axis-label: x-axis at foot (${v.x|0},${yBot|0}) has no label`);
+      break; // one representative axis pair is enough to warn
+    }
+  }
 
   if (problems.length) {
     flagged++;
