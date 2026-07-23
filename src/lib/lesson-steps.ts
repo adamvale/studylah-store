@@ -18,14 +18,16 @@ interface Guided {
 }
 
 export type LessonStep =
-  // Read a beat, then continue.
-  | { kind: "concept"; heading?: string; body: string }
+  // A teaching beat. `body` is shown on screen; `say` is what Gugu speaks to
+  // teach it aloud, supplementing (not just reading) the text. The student must
+  // tap "I understand" to continue, and can tap "Please repeat" to hear it again.
+  | { kind: "concept"; heading?: string; body: string; say?: string }
   // Multiple choice with immediate feedback; the learner must answer to move on.
   | ({ kind: "choice"; question: string; options: string[]; correct: number; explain: string } & Guided)
   // A prompt the learner thinks about, then taps to reveal the answer.
   | { kind: "reveal"; prompt: string; answer: string }
-  // A highlighted takeaway.
-  | { kind: "insight"; body: string }
+  // A highlighted takeaway. `say` is Gugu's spoken version.
+  | { kind: "insight"; body: string; say?: string }
   // Drag a slider to a target band and watch it respond; solved when in range.
   | ({
       kind: "slider";
@@ -80,9 +82,9 @@ export function stepText(step: LessonStep): string[] {
   const guided = "ask" in step ? [step.ask ?? "", ...(step.hints ?? [])] : [];
   switch (step.kind) {
     case "concept":
-      return [step.heading ?? "", step.body];
+      return [step.heading ?? "", step.body, step.say ?? ""];
     case "insight":
-      return [step.body];
+      return [step.body, step.say ?? ""];
     case "reveal":
       return [step.prompt, step.answer];
     case "choice":

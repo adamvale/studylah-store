@@ -160,3 +160,57 @@ parse (say "0.24 millimetres", not "0.24 mm", inside `ask`/`hints`; keep the
 - `npx tsc --noEmit` passes (types catch most mistakes).
 - `npm test` passes (compliance + uniqueness invariants for lessons).
 - No emoji, no dashes, notation uses `_`/`^`.
+
+## The Tuition layer: bite-sized subconcept lessons
+
+Under **Learn > Tuition**, a topic (e.g. "T2 Kinematics") opens into small
+**subconcept** boxes (T2.1, T2.2, T2.3 ...). Each box is a mini-lesson that
+*teaches a little, then tests it*. This is the "teach before you practise"
+layer, so a student never faces a question cold.
+
+- Lives in: `src/lib/teaching/subconcepts.ts` (`SUBCONCEPTS`, keyed by topicKey).
+- A subconcept is `{ id, code, title, blurb, steps: LessonStep[] }`.
+- `subconceptsFor(topicKey)` is what the subject page reads. Register the same
+  array under every topicKey that shares the content (Pure, Science, N-Level).
+
+### Two extra rules for this layer (on top of the non-negotiables above)
+
+6. **One idea per `concept` step.** A teaching card shows exactly ONE piece of
+   knowledge. "Distance" and "Displacement" are TWO cards, never one. If a card
+   teaches two things, split it. Bodies stay short (2 to 4 sentences).
+
+7. **Every `concept` and `insight` step has a `say`.** `body` is the few words
+   shown on screen; `say` is what Gugu *speaks to teach it aloud*. The student
+   taps "I understand" before Continue unlocks, and can tap "Please repeat" to
+   hear `say` again. So `say` must **supplement** the screen, not read it back:
+   add the intuition, the worked aside, the "here is the trap", in warm spoken
+   English (write numbers/units as words, like `ask`: "six metres", not "6 m").
+
+### Worked subconcept shape
+
+```ts
+{
+  id: "t2.1", code: "T2.1", title: "Distance vs displacement",
+  blurb: "Path length versus the straight line, with direction",
+  steps: [
+    { kind: "concept", heading: "Distance",
+      body: "Distance is the total path you travel. It is a scalar: size only, no direction.",
+      say: "Let us start with distance. It is simply how far you actually travel, adding up every step no matter which way you go. Walk three metres out and three back, and your feet have covered six metres in total." },
+    { kind: "concept", heading: "Displacement",
+      body: "Displacement is the straight line from start to finish, with a direction. It is a vector.",
+      say: "Displacement is different. It only cares where you end up compared to where you began. Walk out and back to the same spot and your displacement is zero, even though the distance was six metres." },
+    { kind: "choice", question: "...", options: ["..."], correct: 1,
+      ask: "...", hints: ["...", "..."], explain: "..." },
+    { kind: "insight",
+      body: "Return to your start and displacement is zero, even though distance is not.",
+      say: "So the one thing to hold onto: come back to where you started and your displacement is zero, even though you covered a real distance along the way." },
+  ],
+}
+```
+
+### Quality bar per subconcept
+
+- 3 to 5 steps: one or more single-idea `concept` cards, then ONE test
+  (a `choice`/`slider`/`classify`/... problem), then an `insight`.
+- Every `concept` and `insight` has a `say`. Every problem has `ask`/`hints`/`explain`.
+- One idea per teach card. If in doubt, split into more cards.

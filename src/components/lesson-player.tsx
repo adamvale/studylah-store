@@ -36,12 +36,18 @@ export function LessonPlayer({
   const [solved, setSolved] = useState(false); // interactive widgets report up
   const [hintsShown, setHintsShown] = useState(0);
   const [gaveUp, setGaveUp] = useState(false); // "reveal the answer" on a problem
+  const [understood, setUnderstood] = useState(false); // "I understand" on a teach step
 
   const step = steps[i];
   const last = i === steps.length - 1;
   const ask = "ask" in step ? step.ask : undefined;
   const hints = ("hints" in step ? step.hints : undefined) ?? [];
   const explain = "explain" in step ? step.explain : undefined;
+
+  // Teaching steps: Gugu speaks `say` (falling back to the body) to teach the
+  // idea aloud, and the student must tap "I understand" before continuing.
+  const isTeach = step.kind === "concept" || step.kind === "insight";
+  const teachSay = isTeach ? (("say" in step && step.say) ? step.say : step.body) : undefined;
 
   const canContinue =
     step.kind === "choice"
@@ -50,14 +56,22 @@ export function LessonPlayer({
         ? revealed
         : isProblem(step.kind)
           ? solved || gaveUp
-          : true;
+          : isTeach
+            ? understood
+            : true;
 
-  // Gugu greets each problem out loud (best-effort; the "Hear it" button always
-  // replays). speak() cancels any prior line, so double effects are harmless.
+  // Gugu greets each problem out loud (best-effort; the "Hear it"/"Please
+  // repeat" buttons always replay). speak() cancels any prior line.
   useEffect(() => {
     if (ask) speak(ask);
     return () => stopSpeaking();
   }, [ask]);
+
+  // On a teaching step, Gugu starts teaching by voice as the card appears.
+  useEffect(() => {
+    if (teachSay) speak(teachSay);
+    return () => stopSpeaking();
+  }, [teachSay]);
 
   function next() {
     stopSpeaking();
@@ -71,6 +85,7 @@ export function LessonPlayer({
     setSolved(false);
     setHintsShown(0);
     setGaveUp(false);
+    setUnderstood(false);
   }
 
   const showSummary =
@@ -129,6 +144,31 @@ export function LessonPlayer({
           <p className={`${step.kind === "concept" && step.heading ? "mt-3" : ""} text-lg leading-relaxed text-ink`}>
             <Sci>{step.body}</Sci>
           </p>
+        </div>
+      )}
+
+      {/* Teaching steps: Gugu teaches by voice; confirm understanding to move on,
+          or ask her to repeat. */}
+      {isTeach && (
+        <div className="mt-4 flex gap-2">
+          <button
+            type="button"
+            onClick={() => setUnderstood(true)}
+            className={`flex flex-1 items-center justify-center gap-2 rounded-xl py-3.5 text-sm font-bold ${
+              understood ? "bg-guarantee/20 text-guarantee" : "bg-accent text-night"
+            }`}
+          >
+            {understood && <NamedIcon name="check" size={16} />}
+            {understood ? "Got it" : "I understand"}
+          </button>
+          <button
+            type="button"
+            onClick={() => teachSay && speak(teachSay)}
+            className="flex items-center gap-2 rounded-xl border border-hairline px-4 py-3.5 text-sm font-bold text-accent"
+          >
+            <NamedIcon name="ghost" size={15} />
+            Please repeat
+          </button>
         </div>
       )}
 

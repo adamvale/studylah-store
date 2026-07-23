@@ -24,11 +24,13 @@ const KINEMATICS: Subconcept[] = [
         kind: "concept",
         heading: "Distance",
         body: "Distance is the total length of the path you actually travel. It is a scalar, so it has size only, with no direction. If you walk 3 m forward and 3 m back, the distance is 6 m.",
+        say: "Let us start with distance. Distance is simply how far you actually travel, adding up every step, no matter which way you go. So if you walk three metres away and then three metres back, your feet have covered six metres in total. Distance only counts the ground covered, never the direction.",
       },
       {
         kind: "concept",
         heading: "Displacement",
         body: "Displacement is the straight line from where you started to where you finished, in a stated direction. It is a vector, so it has size and direction. Walk 3 m forward then 3 m back and the displacement is zero, because you end where you began.",
+        say: "Now, displacement is different. Displacement only cares about where you end up compared to where you began, in a straight line, and it comes with a direction. Walk three metres out and three metres back, and your displacement is zero, because you finished exactly where you started. The distance was six metres, but the displacement is zero.",
       },
       {
         kind: "choice",
@@ -45,6 +47,7 @@ const KINEMATICS: Subconcept[] = [
       {
         kind: "insight",
         body: "If you finish exactly where you started, your displacement is zero, even though your distance is not.",
+        say: "So here is the one thing to hold onto. If you come back to where you started, your displacement is zero, even though you have covered a real distance along the way.",
       },
     ],
   },
@@ -58,11 +61,13 @@ const KINEMATICS: Subconcept[] = [
         kind: "concept",
         heading: "Speed",
         body: "Speed is how much distance you cover each second. It is a scalar, so it has size only. Its unit is the metre per second.",
+        say: "Speed tells you how quickly you cover distance. It is just distance divided by the time taken, and it has no direction attached. We measure it in metres per second.",
       },
       {
         kind: "concept",
         heading: "Velocity",
         body: "Velocity is displacement per second, which is speed in a stated direction. It is a vector, so it has size and direction. Its unit is also the metre per second.",
+        say: "Velocity is speed with a direction added on. It is displacement each second, so it tells you both how fast you are going and which way. Same units, metres per second, but now the direction matters.",
       },
       {
         kind: "classify",
@@ -84,6 +89,7 @@ const KINEMATICS: Subconcept[] = [
       {
         kind: "insight",
         body: "Two cars at the same speed but heading opposite ways have different velocities, because velocity includes direction.",
+        say: "Picture two cars, both doing fifty on the same road but driving in opposite directions. Same speed, but different velocities, because velocity carries the direction with it.",
       },
     ],
   },
@@ -97,11 +103,13 @@ const KINEMATICS: Subconcept[] = [
         kind: "concept",
         heading: "What acceleration is",
         body: "Acceleration is the change in velocity each second. It is a vector. In symbols, a = (v - u) / t, where u is the starting velocity, v is the final velocity, and t is the time taken.",
+        say: "Acceleration is how quickly your velocity is changing every second. In symbols, it is the final velocity minus the starting velocity, all divided by the time it took. That is the whole idea.",
       },
       {
         kind: "concept",
         heading: "Three ways to accelerate",
         body: "An object accelerates whenever its speed changes, its direction changes, or both change. So even a car going round a bend at steady speed is accelerating, because its direction keeps changing.",
+        say: "Now here is the part that surprises people. An object is accelerating if its speed changes, if its direction changes, or if both change. So a car going around a bend at a steady speed is still accelerating, because its direction keeps changing the whole way round.",
       },
       {
         kind: "slider",
@@ -123,6 +131,7 @@ const KINEMATICS: Subconcept[] = [
       {
         kind: "insight",
         body: "Acceleration is about how velocity changes, not how big it is. A slow object can have a large acceleration.",
+        say: "The key thing to remember is that acceleration is about the change in velocity, not how big the velocity already is. Even a slow object can be accelerating very hard.",
       },
     ],
   },
