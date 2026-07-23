@@ -19,7 +19,7 @@ export const BOXES: Subconcept[] = [
           "Displacement measures start to finish, not the path.",
           "She ends exactly where she started.",
         ],
-        explain: "Her displacement is zero, because she finished at the very point she started from, even though the distance she ran was four hundred metres.",
+        explain: "Her displacement is 0, because she finished at the very point she started from, even though the distance she ran was 400 metres.",
       },
       // 2
       {
@@ -27,10 +27,10 @@ export const BOXES: Subconcept[] = [
         question: "A train covers 95 km along a straight track in 40 min. What is its speed in m/s?",
         options: ["2.4 m/s", "23.8 m/s", "158 m/s", "39.6 m/s"],
         correct: 3,
-        ask: "First change ninety five kilometres into metres and forty minutes into seconds, then divide distance by time. What do you get?",
+        ask: "First change 95 kilometres into metres and 40 minutes into seconds, then divide distance by time. What do you get?",
         hints: [
-          "Ninety five kilometres is ninety five thousand metres.",
-          "Forty minutes is two thousand four hundred seconds.",
+          "95 kilometres is 95000 metres.",
+          "40 minutes is 2400 seconds.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{d}{t}" },
@@ -39,7 +39,7 @@ export const BOXES: Subconcept[] = [
           { label: "Substitute", latex: "v = \\dfrac{95000}{2400}" },
           { label: "Answer", latex: "v = 39.6\\ \\text{m/s}" },
         ],
-        explain: "The speed is about thirty nine point six metres per second, because ninety five thousand metres divided by two thousand four hundred seconds is roughly thirty nine point six.",
+        explain: "The speed is about 39.6 metres per second, because 95000 metres divided by 2400 seconds is roughly 39.6.",
       },
       // 3
       {
@@ -60,17 +60,17 @@ export const BOXES: Subconcept[] = [
         question: "A cyclist covers a total of 5280 m in a total time of 600 s. What is her average speed?",
         options: ["0.11 m/s", "8.8 m/s", "880 m/s", "48 m/s"],
         correct: 1,
-        ask: "Average speed is total distance divided by total time. Five thousand two hundred and eighty divided by six hundred. Which option is that?",
+        ask: "Average speed is total distance divided by total time. 5280 divided by 600. Which option is that?",
         hints: [
           "Average speed is total distance over total time.",
-          "Five thousand two hundred and eighty divided by six hundred is eight point eight.",
+          "5280 divided by 600 is 8.8.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{d}{t}" },
           { label: "Substitute", latex: "v = \\dfrac{5280}{600}" },
           { label: "Answer", latex: "v = 8.8\\ \\text{m/s}" },
         ],
-        explain: "Her average speed is eight point eight metres per second, because five thousand two hundred and eighty metres divided by six hundred seconds is eight point eight.",
+        explain: "Her average speed is 8.8 metres per second, because 5280 metres divided by 600 seconds is 8.8.",
       },
       // 5
       {
@@ -182,26 +182,26 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "An object travels at 18 m/s due north for 20 min from point X, then at 24 m/s due east for 15 min to reach point Y. The straight-line distance from X to Y is 27.0 km. Find the average speed and the average velocity, both in km/h.",
-        modelAnswer: "First find each leg. The northward leg is eighteen metres per second times one thousand two hundred seconds, which is twenty one thousand six hundred metres, or twenty one point six kilometres. The eastward leg is twenty four metres per second times nine hundred seconds, which is also twenty one point six kilometres. The total distance is forty three point two kilometres. The total time is thirty five minutes, which is thirty five over sixty of an hour. The average speed is forty three point two divided by that time, about seventy four point one kilometres per hour. The average velocity uses the straight line displacement of twenty seven kilometres, so it is twenty seven divided by the same time, about forty six point three kilometres per hour, in the direction from X to Y.",
+        modelAnswer: "First find each leg. The northward leg is 18 metres per second times 1200 seconds, which is 21600 metres, or 21.6 kilometres. The eastward leg is 24 metres per second times 900 seconds, which is also 21.6 kilometres. The total distance is 43.2 kilometres. The total time is 35 minutes, which is 35 over 60 of an hour. The average speed is 43.2 divided by that time, about 74.1 kilometres per hour. The average velocity uses the straight line displacement of 27 kilometres, so it is 27 divided by the same time, about 46.3 kilometres per hour, in the direction from X to Y.",
         marks: [
           "Leg 1 = 18 x 1200 = 21600 m = 21.6 km; Leg 2 = 24 x 900 = 21600 m = 21.6 km.",
           "Total distance = 43.2 km; total time = 35 min = 35/60 h.",
           "Average speed = 43.2 / (35/60) = 74.1 km/h.",
           "Average velocity = 27.0 / (35/60) = 46.3 km/h in the direction X to Y.",
         ],
-        ask: "Work out each leg of the journey in kilometres first, then add them for the total distance. Average speed uses that total distance, but average velocity uses the straight line displacement of twenty seven kilometres. Divide each by the total time in hours.",
+        ask: "Work out each leg of the journey in kilometres first, then add them for the total distance. Average speed uses that total distance, but average velocity uses the straight line displacement of 27 kilometres. Divide each by the total time in hours.",
       },
       // 12 open
       {
         kind: "open",
         prompt: "A car drives 300 m due north, then 300 m due south, returning to its starting point, in a total time of 40 s. Find its average speed and its average velocity.",
-        modelAnswer: "The total distance is three hundred plus three hundred, which is six hundred metres. The average speed is six hundred divided by forty seconds, which is fifteen metres per second. The car ends where it started, so its displacement is zero. The average velocity is therefore zero divided by forty, which is zero metres per second.",
+        modelAnswer: "The total distance is 300 plus 300, which is 600 metres. The average speed is 600 divided by 40 seconds, which is 15 metres per second. The car ends where it started, so its displacement is 0. The average velocity is therefore 0 divided by 40, which is 0 metres per second.",
         marks: [
           "Total distance = 300 + 300 = 600 m; average speed = 600 / 40 = 15 m/s.",
           "Displacement = 0 m, because the car returns to its start.",
           "Average velocity = 0 / 40 = 0 m/s.",
         ],
-        ask: "Average speed uses the total distance, which is six hundred metres. Average velocity uses the displacement. The car returns to where it started, so think carefully about what its displacement is before you divide by the time.",
+        ask: "Average speed uses the total distance, which is 600 metres. Average velocity uses the displacement. The car returns to where it started, so think carefully about what its displacement is before you divide by the time.",
       },
     ],
   },

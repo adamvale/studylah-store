@@ -62,7 +62,7 @@ export const BOXES: Subconcept[] = [
         ask: "An object accelerates if its speed changes, its direction changes, or both. Only steady velocity means no acceleration. Tap each object, then its bin.",
         hints: [
           "Changing direction at a steady speed still counts as accelerating.",
-          "Constant velocity means the velocity never changes, so the acceleration is zero.",
+          "Constant velocity means the velocity never changes, so the acceleration is 0.",
         ],
         explain:
           "Speeding up, changing direction, and slowing down are all acceleration. Only the van at constant velocity has zero acceleration.",
@@ -73,10 +73,10 @@ export const BOXES: Subconcept[] = [
           "A motorcycle speeds up from 54 km/h, which is 15 m/s, to 90 km/h, which is 25 m/s, in 5 s. Find its acceleration.",
         options: ["7.2 m/s^2", "0.5 m/s^2", "5 m/s^2", "2 m/s^2"],
         correct: 3,
-        ask: "The velocities are already in metres per second: fifteen and twenty five. Subtract fifteen from twenty five, then divide by five seconds. Which option is that?",
+        ask: "The velocities are already in metres per second: 15 and 25. Subtract 15 from 25, then divide by 5 seconds. Which option is that?",
         hints: [
           "Acceleration equals the change in velocity divided by the time.",
-          "Twenty five minus fifteen is ten, and ten divided by five is two.",
+          "25 minus 15 is 10, and 10 divided by 5 is 2.",
         ],
         working: [
           { label: "Formula", latex: "a = \\dfrac{v - u}{t}" },
@@ -84,7 +84,7 @@ export const BOXES: Subconcept[] = [
           { label: "Answer", latex: "a = 2\\ \\text{m/s}^2" },
         ],
         explain:
-          "The acceleration is two metres per second squared, because twenty five minus fifteen is ten, and ten divided by five seconds is two.",
+          "The acceleration is 2 metres per second squared, because 25 minus 15 is 10, and 10 divided by 5 seconds is 2.",
       },
       {
         kind: "spoterror",
@@ -97,13 +97,13 @@ export const BOXES: Subconcept[] = [
           "a = 10 / 5 = 5 m/s^2",
         ],
         errorLine: 3,
-        ask: "Check the last line. Ten divided by five. Is that really five?",
+        ask: "Check the last line. 10 divided by 5. Is that really 5?",
         hints: [
-          "Work out ten divided by five carefully.",
-          "Ten divided by five is two, not five.",
+          "Work out 10 divided by 5 carefully.",
+          "10 divided by 5 is 2, not 5.",
         ],
         explain:
-          "The last line is wrong: ten divided by five is two, so the acceleration is two metres per second squared, not five.",
+          "The last line is wrong: 10 divided by 5 is 2, so the acceleration is 2 metres per second squared, not 5.",
       },
       {
         kind: "slider",
@@ -116,10 +116,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 1.6,
         targetMax: 1.6,
-        ask: "Take twenty minus twelve, then divide by five seconds. Slide to that value.",
+        ask: "Take 20 minus 12, then divide by 5 seconds. Slide to that value.",
         hints: [
-          "The change in velocity is twenty minus twelve, which is eight.",
-          "Eight divided by five is one point six.",
+          "The change in velocity is 20 minus 12, which is 8.",
+          "8 divided by 5 is 1.6.",
         ],
         working: [
           { label: "Formula", latex: "a = \\dfrac{v - u}{t}" },
@@ -127,7 +127,7 @@ export const BOXES: Subconcept[] = [
           { label: "Answer", latex: "a = 1.6\\ \\text{m/s}^2" },
         ],
         explain:
-          "The acceleration is one point six metres per second squared, because twenty minus twelve is eight, and eight divided by five seconds is one point six.",
+          "The acceleration is 1.6 metres per second squared, because 20 minus 12 is 8, and 8 divided by 5 seconds is 1.6.",
       },
       {
         kind: "choice",
@@ -135,10 +135,10 @@ export const BOXES: Subconcept[] = [
           "A car travelling at 24 m/s is brought to rest in 6 s. What is its acceleration?",
         options: ["-4 m/s^2", "4 m/s^2", "-2 m/s^2", "24 m/s^2"],
         correct: 0,
-        ask: "The final velocity is zero. Take zero minus twenty four, then divide by six. Watch the sign. Which option is that?",
+        ask: "The final velocity is 0. Take 0 minus 24, then divide by 6. Watch the sign. Which option is that?",
         hints: [
           "Use acceleration equals final velocity minus initial velocity, over time.",
-          "Zero minus twenty four is minus twenty four, and that divided by six is minus four.",
+          "0 minus 24 is -24, and that divided by 6 is -4.",
         ],
         working: [
           { label: "Formula", latex: "a = \\dfrac{v - u}{t}" },
@@ -146,7 +146,7 @@ export const BOXES: Subconcept[] = [
           { label: "Answer", latex: "a = -4\\ \\text{m/s}^2" },
         ],
         explain:
-          "The acceleration is minus four metres per second squared. The car is slowing down, so the value is negative, and we say it decelerates at four metres per second squared.",
+          "The acceleration is -4 metres per second squared. The car is slowing down, so the value is negative, and we say it decelerates at 4 metres per second squared.",
       },
       {
         kind: "order",
@@ -196,7 +196,7 @@ export const BOXES: Subconcept[] = [
         correct: 2,
         ask: "Zero acceleration means the velocity never changes at all. Which object keeps exactly the same velocity?",
         hints: [
-          "If the velocity is constant, the acceleration is zero.",
+          "If the velocity is constant, the acceleration is 0.",
           "Speeding up, slowing down, and falling all change the velocity.",
         ],
         explain:
@@ -221,14 +221,14 @@ export const BOXES: Subconcept[] = [
         prompt:
           "A sprinter starts from rest and accelerates uniformly at 2.5 m/s^2 for the first 4 s of a 100 m run, then keeps that velocity for the rest. Find the total time for the 100 m. Show your working.",
         modelAnswer:
-          "In the first four seconds the sprinter reaches a velocity of two point five times four, which is ten metres per second. The distance covered while accelerating is a half times two point five times four squared, which is twenty metres. That leaves eighty metres at a steady ten metres per second, which takes eighty divided by ten, that is eight seconds. So the total time is four plus eight, which is twelve seconds.",
+          "In the first 4 seconds the sprinter reaches a velocity of 2.5 times 4, which is 10 metres per second. The distance covered while accelerating is a half times 2.5 times 4 squared, which is 20 metres. That leaves 80 metres at a steady 10 metres per second, which takes 80 divided by 10, that is 8 seconds. So the total time is 4 plus 8, which is 12 seconds.",
         marks: [
           "Velocity after the acceleration phase: v = 2.5 x 4 = 10 m/s.",
           "Distance in the first 4 s: s = 1/2 x 2.5 x 4^2 = 20 m.",
           "Remaining distance 100 - 20 = 80 m at 10 m/s takes 80 / 10 = 8 s.",
           "Total time = 4 + 8 = 12 s.",
         ],
-        ask: "Split the run into two parts. First find the velocity and the distance during the four seconds of acceleration, then work out how long the leftover distance takes at that steady velocity, and add the two times together.",
+        ask: "Split the run into two parts. First find the velocity and the distance during the 4 seconds of acceleration, then work out how long the leftover distance takes at that steady velocity, and add the two times together.",
       },
     ],
   },

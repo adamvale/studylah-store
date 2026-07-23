@@ -25,24 +25,24 @@ export const BOXES: Subconcept[] = [
         kind: "concept",
         heading: "Uniform speed",
         body: "An object moves at *uniform*, or *constant*, speed when it covers *equal distances* in *equal intervals* of time. A ball rolling at a uniform 12 m/s moves exactly 12 m during every second.",
-        say: "Uniform speed means steady speed. In each second the object covers exactly the same distance as in the second before. So a ball rolling at a uniform twelve metres per second moves twelve metres in every single second.",
+        say: "Uniform speed means steady speed. In each second the object covers exactly the same distance as in the second before. So a ball rolling at a uniform 12 metres per second moves 12 metres in every single second.",
       },
       {
         kind: "choice",
         question: "A car travels 90 m in 6 s at a steady speed. What is its speed?",
         options: ["540 m/s", "96 m/s", "15 m/s", "0.067 m/s"],
         correct: 2,
-        ask: "Use speed equals distance over time. Ninety divided by six. Which option is that?",
+        ask: "Use speed equals distance over time. 90 divided by 6. Which option is that?",
         hints: [
           "Speed is distance divided by time.",
-          "Ninety divided by six is fifteen.",
+          "90 divided by 6 is 15.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{d}{t}" },
           { label: "Substitute", latex: "v = \\dfrac{90}{6}" },
           { label: "Answer", latex: "v = 15\\ \\text{m/s}" },
         ],
-        explain: "The speed is fifteen metres per second, because ninety metres divided by six seconds is fifteen.",
+        explain: "The speed is 15 metres per second, because 90 metres divided by 6 seconds is 15.",
       },
       {
         kind: "slider",
@@ -54,17 +54,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 8,
         targetMax: 8,
-        ask: "Speed is distance over time. Twenty four divided by three. Slide to that value.",
+        ask: "Speed is distance over time. 24 divided by 3. Slide to that value.",
         hints: [
           "Divide the distance by the time.",
-          "Twenty four divided by three is eight.",
+          "24 divided by 3 is 8.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{d}{t}" },
           { label: "Substitute", latex: "v = \\dfrac{24}{3}" },
           { label: "Answer", latex: "v = 8\\ \\text{m/s}" },
         ],
-        explain: "Her speed is eight metres per second, because twenty four metres divided by three seconds is eight.",
+        explain: "Her speed is 8 metres per second, because 24 metres divided by 3 seconds is 8.",
       },
       {
         kind: "cloze",
@@ -82,7 +82,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "insight",
         body: "*Steady speed* means *equal distances* in *equal times*: at 12 m/s you cover 12 m in the first second, 12 m in the next, and so on.",
-        say: "Here is the picture to hold onto. If the speed is steady, then every second looks the same as the last. At twelve metres per second you cover twelve metres this second, twelve the next, and twelve the one after that.",
+        say: "Here is the picture to hold onto. If the speed is steady, then every second looks the same as the last. At 12 metres per second you cover 12 metres this second, 12 the next, and 12 the one after that.",
       },
     ],
   },

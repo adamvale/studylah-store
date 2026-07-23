@@ -33,13 +33,13 @@ export const BOXES: Subconcept[] = [
             { sym: "\\text{time}", meaning: "total time taken", unit: "s" },
           ],
         },
-        say: "Look at the diagram. The blue arrows trace the actual journey along the track, six hundred metres from A to B and then two hundred and forty metres back to C, but the yellow arrow shows the displacement, only three hundred and sixty metres from A to C. For a whole journey, average velocity is the total displacement over the total time. Watch the trap here: it uses displacement, not distance. If you double back, your displacement shrinks, so your average velocity comes out smaller than your average speed.",
+        say: "Look at the diagram. The blue arrows trace the actual journey along the track, 600 metres from A to B and then 240 metres back to C, but the yellow arrow shows the displacement, only 360 metres from A to C. For a whole journey, average velocity is the total displacement over the total time. Watch the trap here: it uses displacement, not distance. If you double back, your displacement shrinks, so your average velocity comes out smaller than your average speed.",
       },
       {
         kind: "concept",
         heading: "Signs for direction",
         body: "When motion goes both ways, pick one *direction* as + and the opposite as -. Add the parts with their *signs* to get the *displacement*. A journey 600 m east then 240 m west gives (+600) + (-240) = +360 m.",
-        say: "When something moves both ways, choose one direction to be positive and the other negative. Then add the pieces with their signs. Six hundred metres east and two hundred and forty metres west gives plus three hundred and sixty metres, which means three hundred and sixty metres due east.",
+        say: "When something moves both ways, choose one direction to be positive and the other negative. Then add the pieces with their signs. 600 metres east and 240 metres west gives plus 360 metres, which means 360 metres due east.",
       },
       {
         kind: "choice",
@@ -79,17 +79,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 4,
         targetMax: 4,
-        ask: "Average velocity is displacement over time. Three hundred and sixty divided by ninety. Slide to that value.",
+        ask: "Average velocity is displacement over time. 360 divided by 90. Slide to that value.",
         hints: [
           "Divide the displacement by the time.",
-          "Three hundred and sixty divided by ninety is four.",
+          "360 divided by 90 is 4.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{d}{t}" },
           { label: "Substitute", latex: "v = \\dfrac{360}{90}" },
           { label: "Answer", latex: "v = 4\\ \\text{m/s}" },
         ],
-        explain: "Her average velocity is four metres per second due north, because 360 m divided by 90 s is four.",
+        explain: "Her average velocity is 4 metres per second due north, because 360 m divided by 90 s is 4.",
       },
       {
         kind: "order",
@@ -111,7 +111,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "insight",
         body: "If a journey ends where it started, the *displacement* is 0, so the *average velocity* is 0 m/s even though the *average speed* is not.",
-        say: "Here is the idea to hold onto. If you finish exactly where you began, your displacement is zero, so your average velocity is zero, no matter how far or how fast you ran. Your average speed, though, is not zero, and that gap between them is what velocity is really about.",
+        say: "Here is the idea to hold onto. If you finish exactly where you began, your displacement is 0, so your average velocity is 0, no matter how far or how fast you ran. Your average speed, though, is not 0, and that gap between them is what velocity is really about.",
       },
     ],
   },

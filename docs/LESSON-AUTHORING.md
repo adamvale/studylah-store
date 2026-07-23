@@ -150,9 +150,12 @@ files). The engine drives the tutor rhythm; you supply the words:
   conceptual questions (scalar vs vector, definitions, ordering, matching, graph-
   shape picking) and for `open` questions (which already show a model answer).
 
-Write `ask`/`hints`/`explain` as speech: plain words, no notation the ear can't
-parse (say "0.24 millimetres", not "0.24 mm", inside `ask`/`hints`; keep the
-`_`/`^` markers for the on-screen `prompt`/`options`).
+Write `ask`/`hints`/`explain`/`say`/`modelAnswer`/`marks` as speech, BUT write
+every number as a DIGIT, not a word: "20 minus 12 is 8", "1.6", "-4", "300", not
+"twenty minus twelve is eight". Spell only the UNIT as words the ear can parse
+("1.6 metres per second squared", "0.24 millimetres", not "1.6 m/s^2"). Keep the
+`_`/`^` markers for the on-screen `prompt`/`options`. (Digits read the same aloud
+and are far clearer on the hint/explain cards that are shown on screen.)
 
 ## Adding a lesson (worked shape)
 

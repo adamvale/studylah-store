@@ -27,17 +27,17 @@ export const BOXES: Subconcept[] = [
         question: "A displacement-time graph rises in a straight line from 0 to 5 m during the first 2 s. What is the velocity in that interval?",
         options: ["10 m/s", "0.4 m/s", "2.5 m/s", "3 m/s"],
         correct: 2,
-        ask: "Velocity is the gradient. Take the rise of five metres and divide by the two seconds. What do you get?",
+        ask: "Velocity is the gradient. Take the rise of 5 metres and divide by the 2 seconds. What do you get?",
         hints: [
           "Velocity equals change in displacement over change in time.",
-          "Five metres divided by two seconds.",
+          "5 metres divided by 2 seconds.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{\\Delta d}{\\Delta t}" },
           { label: "Substitute", latex: "v = \\dfrac{5 - 0}{2}" },
           { label: "Answer", latex: "v = 2.5\\ \\text{m/s}" },
         ],
-        explain: "The velocity is two point five metres per second, because five metres divided by two seconds is two point five.",
+        explain: "The velocity is 2.5 metres per second, because 5 metres divided by 2 seconds is 2.5.",
       },
       // 3 (choice) horizontal line
       {
@@ -48,9 +48,9 @@ export const BOXES: Subconcept[] = [
         ask: "A flat line means the displacement is not changing at all. If the displacement stays the same, how fast is the object moving?",
         hints: [
           "No change in displacement means no movement.",
-          "A gradient of zero means zero velocity.",
+          "A gradient of 0 means zero velocity.",
         ],
-        explain: "The object is at rest, because a horizontal line has zero gradient, so the displacement stays the same and the velocity is zero.",
+        explain: "The object is at rest, because a horizontal line has zero gradient, so the displacement stays the same and the velocity is 0.",
       },
       // 4 (choice) negative gradient
       {
@@ -164,18 +164,18 @@ export const BOXES: Subconcept[] = [
           "velocity = 12 / 4 = 4 m/s",
         ],
         errorLine: 3,
-        ask: "Check the last line. Twelve divided by four. Is that four?",
+        ask: "Check the last line. 12 divided by 4. Is that 4?",
         hints: [
-          "Work out twelve divided by four.",
-          "Twelve divided by four is three, not four.",
+          "Work out 12 divided by 4.",
+          "12 divided by 4 is 3, not 4.",
         ],
-        explain: "The last line is wrong: twelve divided by four is three, so the velocity is three metres per second.",
+        explain: "The last line is wrong: 12 divided by 4 is 3, so the velocity is 3 metres per second.",
       },
       // 11 (open) describe the motion
       {
         kind: "open",
         prompt: "A displacement-time graph shows this motion: from 0 to 2 s the line rises straight from 0 to 5 m; from 2 to 6 s it stays flat at 5 m; from 6 to 10 s it falls straight back to 0 m. Describe the motion in each stage.",
-        modelAnswer: "From zero to two seconds the displacement increases uniformly, so the object moves with a constant velocity away from the origin. From two to six seconds the displacement stays at five metres, so the object is at rest. From six to ten seconds the displacement decreases uniformly back to zero, so the object moves with a constant velocity towards the origin and ends back at the origin.",
+        modelAnswer: "From 0 to 2 seconds the displacement increases uniformly, so the object moves with a constant velocity away from the origin. From 2 to 6 seconds the displacement stays at 5 metres, so the object is at rest. From 6 to 10 seconds the displacement decreases uniformly back to 0, so the object moves with a constant velocity towards the origin and ends back at the origin.",
         marks: [
           "0 to 2 s: displacement increases uniformly, so constant velocity away from the origin.",
           "2 to 6 s: displacement stays at 5 m, so the object is at rest.",
@@ -187,7 +187,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "During a jog, a displacement-time graph rises in a straight line from 4 m at 10 s to 14 m at 15 s. Calculate the velocity over this interval, showing your working.",
-        modelAnswer: "The velocity is the gradient of the line. The change in displacement is fourteen minus four, which is ten metres. The change in time is fifteen minus ten, which is five seconds. So the velocity is ten divided by five, which is two metres per second away from the origin.",
+        modelAnswer: "The velocity is the gradient of the line. The change in displacement is 14 minus 4, which is 10 metres. The change in time is 15 minus 10, which is 5 seconds. So the velocity is 10 divided by 5, which is 2 metres per second away from the origin.",
         marks: [
           "Change in displacement = 14 - 4 = 10 m.",
           "Change in time = 15 - 10 = 5 s.",

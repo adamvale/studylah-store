@@ -50,7 +50,7 @@ export const BOXES: Subconcept[] = [
           "Displacement is measured from the start point to the finish point.",
           "She ends where she began, so the straight line between them has no length.",
         ],
-        explain: "Her displacement is zero, because she finishes exactly where she started. Her distance, the whole path, is four hundred metres.",
+        explain: "Her displacement is zero, because she finishes exactly where she started. Her distance, the whole path, is 400 metres.",
       },
       {
         kind: "classify",

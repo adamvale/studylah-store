@@ -47,17 +47,17 @@ export const BOXES: Subconcept[] = [
           "0.4 m/s",
         ],
         correct: 2,
-        ask: "Take the rise in displacement over the time. Five metres over two seconds. Which option is that?",
+        ask: "Take the rise in displacement over the time. 5 metres over 2 seconds. Which option is that?",
         hints: [
           "Velocity is the gradient, rise over run.",
-          "Five divided by two is two point five.",
+          "5 divided by 2 is 2.5.",
         ],
         working: [
           { label: "Formula", latex: "\\text{gradient} = \\dfrac{\\Delta d}{\\Delta t}" },
           { label: "Substitute", latex: "\\text{gradient} = \\dfrac{5 - 0}{2}" },
           { label: "Answer", latex: "v = 2.5\\ \\text{m/s}" },
         ],
-        explain: "The velocity is two point five metres per second, because five metres divided by two seconds is two point five.",
+        explain: "The velocity is 2.5 metres per second, because 5 metres divided by 2 seconds is 2.5.",
       },
       {
         kind: "slider",
@@ -69,17 +69,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 3,
         targetMax: 3,
-        ask: "Velocity is the gradient. Twelve metres over four seconds. Slide to that value.",
+        ask: "Velocity is the gradient. 12 metres over 4 seconds. Slide to that value.",
         hints: [
           "Divide the rise in displacement by the time.",
-          "Twelve divided by four is three.",
+          "12 divided by 4 is 3.",
         ],
         working: [
           { label: "Formula", latex: "\\text{gradient} = \\dfrac{\\Delta d}{\\Delta t}" },
           { label: "Substitute", latex: "\\text{gradient} = \\dfrac{12 - 0}{4}" },
           { label: "Answer", latex: "v = 3\\ \\text{m/s}" },
         ],
-        explain: "The velocity is three metres per second, because twelve metres divided by four seconds is three.",
+        explain: "The velocity is 3 metres per second, because 12 metres divided by 4 seconds is 3.",
       },
       {
         kind: "order",
@@ -115,7 +115,7 @@ export const BOXES: Subconcept[] = [
         kind: "concept",
         heading: "Height and the axis",
         body: "The *vertical height* of the line gives the object's *distance from the origin* at that moment. When the line touches the *time-axis* again, the object is back at the origin, so its displacement is *0*.",
-        say: "Look at how high the line sits. That height is exactly how far the object is from where it started. And when the line drops back down and touches the bottom axis, the object has returned to the origin, so its displacement is zero again.",
+        say: "Look at how high the line sits. That height is exactly how far the object is from where it started. And when the line drops back down and touches the bottom axis, the object has returned to the origin, so its displacement is 0 again.",
       },
       {
         kind: "concept",
@@ -171,10 +171,10 @@ export const BOXES: Subconcept[] = [
         correct: 0,
         ask: "Returning to the origin means the line has to touch the time-axis again. Which graph does that?",
         hints: [
-          "At the origin the displacement is zero.",
+          "At the origin the displacement is 0.",
           "Look for the line that comes back down to the bottom axis.",
         ],
-        explain: "The first graph rises and then falls back to the time-axis, so the object leaves the origin and returns to it when the displacement is zero again.",
+        explain: "The first graph rises and then falls back to the time-axis, so the object leaves the origin and returns to it when the displacement is 0 again.",
       },
       {
         kind: "match",
@@ -188,7 +188,7 @@ export const BOXES: Subconcept[] = [
         ask: "Think about what each part of the line is telling you. Match each feature to its meaning.",
         hints: [
           "The height measures how far from the start the object is.",
-          "The bottom axis is where displacement is zero.",
+          "The bottom axis is where displacement is 0.",
         ],
       },
     ],
@@ -203,7 +203,7 @@ export const BOXES: Subconcept[] = [
         kind: "concept",
         heading: "Flat line: at rest",
         body: "A *horizontal line* means the displacement stays the same. The object is *not moving*, so its *velocity is zero*. It simply sits at a fixed distance from the origin.",
-        say: "A flat line is the easiest one. If the height never changes, the object is standing still. Its velocity is zero, and it just waits at the same distance from the start.",
+        say: "A flat line is the easiest one. If the height never changes, the object is standing still. Its velocity is 0, and it just waits at the same distance from the start.",
       },
       {
         kind: "concept",
@@ -231,9 +231,9 @@ export const BOXES: Subconcept[] = [
         ask: "A flat line means the displacement is not changing at all. What does that mean for the object?",
         hints: [
           "No change in displacement means no movement.",
-          "A stationary object has zero velocity.",
+          "A stationary object has 0 velocity.",
         ],
-        explain: "The object is at rest, because a horizontal line means the displacement stays the same and the velocity is zero.",
+        explain: "The object is at rest, because a horizontal line means the displacement stays the same and the velocity is 0.",
       },
       {
         kind: "graphpick",

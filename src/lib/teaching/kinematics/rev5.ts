@@ -32,17 +32,17 @@ export const BOXES: Subconcept[] = [
         question: "A ball falls freely from rest for 3.5 s. Take g = 10 m/s^2. What is its final velocity?",
         options: ["3.5 m/s", "35 m/s", "61.25 m/s", "350 m/s"],
         correct: 1,
-        ask: "Use v equals u plus a t, starting from rest. Ten times three point five. Which option is that?",
+        ask: "Use v equals u plus a t, starting from rest. 10 times 3.5. Which option is that?",
         hints: [
-          "Start from rest, so u is zero, and use v equals u plus a t.",
-          "Ten metres per second squared times three point five seconds is thirty five.",
+          "Start from rest, so u is 0, and use v equals u plus a t.",
+          "10 metres per second squared times 3.5 seconds is 35.",
         ],
         working: [
           { label: "Formula", latex: "v = u + at" },
           { label: "Substitute", latex: "v = 0 + 10 \\times 3.5" },
           { label: "Answer", latex: "v = 35\\ \\text{m/s}" },
         ],
-        explain: "The final velocity is thirty five metres per second, because starting from rest, ten times three point five is thirty five.",
+        explain: "The final velocity is 35 metres per second, because starting from rest, 10 times 3.5 is 35.",
       },
       // 3 (choice) velocity gained each second in free fall
       {
@@ -50,12 +50,12 @@ export const BOXES: Subconcept[] = [
         question: "As an object falls freely, by how much does its velocity increase during each second?",
         options: ["1 m/s", "2 m/s", "5 m/s", "10 m/s"],
         correct: 3,
-        ask: "A freely falling object gains the same amount of velocity every second, equal to g. Taking g as ten, how much is that each second?",
+        ask: "A freely falling object gains the same amount of velocity every second, equal to g. Taking g as 10, how much is that each second?",
         hints: [
           "Free fall means the velocity rises by g each second.",
-          "Taking g as ten metres per second squared, that is ten metres per second gained each second.",
+          "Taking g as 10 metres per second squared, that is 10 metres per second gained each second.",
         ],
-        explain: "The velocity increases by about ten metres per second each second, because a freely falling object accelerates at g, which we take as ten metres per second squared.",
+        explain: "The velocity increases by about 10 metres per second each second, because a freely falling object accelerates at g, which we take as 10 metres per second squared.",
       },
       // 4 (choice) which equation to find d from u, v, t
       {
@@ -81,17 +81,17 @@ export const BOXES: Subconcept[] = [
         question: "A car travelling at 18 m/s brakes to a stop in 2.4 s at constant deceleration. What is its braking distance?",
         options: ["43.2 m", "7.5 m", "21.6 m", "18 m"],
         correct: 2,
-        ask: "Use displacement equals a half times u plus v times t. Here v is zero, so it is a half times eighteen times two point four. What is that?",
+        ask: "Use displacement equals a half times u plus v times t. Here v is 0, so it is a half times 18 times 2.4. What is that?",
         hints: [
-          "The car stops, so the final velocity v is zero.",
-          "A half times eighteen times two point four is twenty one point six.",
+          "The car stops, so the final velocity v is 0.",
+          "A half times 18 times 2.4 is 21.6.",
         ],
         working: [
           { label: "Formula", latex: "d = \\tfrac{1}{2}(u+v)t" },
           { label: "Substitute", latex: "d = \\tfrac{1}{2}(18+0)(2.4)" },
           { label: "Answer", latex: "d = 21.6\\ \\text{m}" },
         ],
-        explain: "The braking distance is twenty one point six metres, because a half times eighteen plus zero, times two point four seconds, is twenty one point six.",
+        explain: "The braking distance is 21.6 metres, because a half times 18 plus 0, times 2.4 seconds, is 21.6.",
       },
       // 6 (interactive: match) equation to quantity it leaves out
       {
@@ -108,7 +108,7 @@ export const BOXES: Subconcept[] = [
           "Look at what each equation does not contain.",
           "The equation v equals u plus a t has no displacement in it.",
         ],
-        explain: "The equation v equals u plus a t leaves out displacement, d equals a half times u plus v times t leaves out acceleration, d equals u t plus a half a t squared leaves out final velocity, and v squared equals u squared plus two a d leaves out time.",
+        explain: "The equation v equals u plus a t leaves out displacement, d equals a half times u plus v times t leaves out acceleration, d equals u t plus a half a t squared leaves out final velocity, and v squared equals u squared plus 2 a d leaves out time.",
       },
       // 7 (interactive: order) steps to find braking distance
       {
@@ -125,7 +125,7 @@ export const BOXES: Subconcept[] = [
           "List your known quantities before choosing an equation.",
           "You substitute the numbers only after you have chosen the equation.",
         ],
-        explain: "First list u, v and t with v equal to zero, then choose the equation that leaves out acceleration, substitute the values, and finally work out the displacement and state its unit.",
+        explain: "First list u, v and t with v equal to 0, then choose the equation that leaves out acceleration, substitute the values, and finally work out the displacement and state its unit.",
       },
       // 8 (interactive: spoterror) free fall distance calculation
       {
@@ -138,12 +138,12 @@ export const BOXES: Subconcept[] = [
           "d = 1/2 (10)(7) = 35 m",
         ],
         errorLine: 3,
-        ask: "Check the last line. Three point five squared is not three point five times two. What is three point five squared?",
+        ask: "Check the last line. 3.5 squared is not 3.5 times 2. What is 3.5 squared?",
         hints: [
           "Squaring means multiply the number by itself.",
-          "Three point five squared is twelve point two five, not seven.",
+          "3.5 squared is 12.25, not 7.",
         ],
-        explain: "The last line is wrong: three point five squared is twelve point two five, so the distance is a half times ten times twelve point two five, which is sixty one point two five metres.",
+        explain: "The last line is wrong: 3.5 squared is 12.25, so the distance is a half times 10 times 12.25, which is 61.25 metres.",
       },
       // 9 (interactive: classify) true or false statements
       {
@@ -175,37 +175,37 @@ export const BOXES: Subconcept[] = [
           { points: [[0, 8], [4, 0]], caption: "straight line falling to zero" },
         ],
         correct: 0,
-        ask: "Free fall from rest starts at zero velocity and gains the same amount every second. What shape is that?",
+        ask: "Free fall from rest starts at 0 velocity and gains the same amount every second. What shape is that?",
         hints: [
-          "Released from rest means it starts at zero velocity.",
+          "Released from rest means it starts at 0 velocity.",
           "Constant acceleration is a straight sloping line.",
         ],
-        explain: "A straight line rising from zero shows free fall from rest, because the velocity starts at zero and increases by the same amount every second.",
+        explain: "A straight line rising from 0 shows free fall from rest, because the velocity starts at 0 and increases by the same amount every second.",
       },
       // 11 (open) free fall: final velocity and distance
       {
         kind: "open",
         prompt: "A ball falls freely from rest for 3.5 s. Take g = 10 m/s^2. Find (a) its final velocity and (b) how far it falls, showing your working.",
-        modelAnswer: "Take downward as positive, so u is zero and a is ten metres per second squared. For part a, use v equals u plus a t: v equals zero plus ten times three point five, which is thirty five metres per second. For part b, use d equals u t plus a half a t squared: d equals zero plus a half times ten times three point five squared, which is a half times ten times twelve point two five, giving sixty one point two five metres.",
+        modelAnswer: "Take downward as positive, so u is 0 and a is 10 metres per second squared. For part a, use v equals u plus a t: v equals 0 plus 10 times 3.5, which is 35 metres per second. For part b, use d equals u t plus a half a t squared: d equals 0 plus a half times 10 times 3.5 squared, which is a half times 10 times 12.25, giving 61.25 metres.",
         marks: [
           "u = 0, a = 10 m/s^2, t = 3.5 s (downward taken as positive).",
           "(a) v = u + at = 0 + 10 x 3.5 = 35 m/s.",
           "(b) d = ut + 1/2 a t^2 = 1/2 (10)(3.5)^2 = 61.25 m.",
         ],
-        ask: "Start from rest, so u is zero. Use v equals u plus a t for the velocity, then d equals u t plus a half a t squared for the distance. Remember to square the time.",
+        ask: "Start from rest, so u is 0. Use v equals u plus a t for the velocity, then d equals u t plus a half a t squared for the distance. Remember to square the time.",
       },
       // 12 (open) ball thrown up from a cliff
       {
         kind: "open",
         prompt: "A ball is thrown vertically upwards at 7 m/s from the edge of a cliff and takes 5.0 s to reach the ground. Take g = 10 m/s^2. Find (a) the height of the cliff and (b) the velocity of the ball as it hits the ground, showing your working.",
         figure: "fig-02-35-cliff-throw",
-        modelAnswer: "Take upward as positive, so u is seven metres per second and a is minus ten metres per second squared. For part a, the displacement from the cliff edge is d equals u t plus a half a t squared: d equals seven times five plus a half times minus ten times five squared, which is thirty five minus one hundred and twenty five, giving minus ninety metres. The minus sign means the ball lands ninety metres below the edge, so the cliff is ninety metres high. For part b, use v equals u plus a t: v equals seven plus minus ten times five, which is seven minus fifty, giving minus forty three metres per second. So the ball hits the ground at forty three metres per second, directed downward.",
+        modelAnswer: "Take upward as positive, so u is 7 metres per second and a is minus 10 metres per second squared. For part a, the displacement from the cliff edge is d equals u t plus a half a t squared: d equals 7 times 5 plus a half times minus 10 times 5 squared, which is 35 minus 125, giving minus 90 metres. The minus sign means the ball lands 90 metres below the edge, so the cliff is 90 metres high. For part b, use v equals u plus a t: v equals 7 plus minus 10 times 5, which is 7 minus 50, giving minus 43 metres per second. So the ball hits the ground at 43 metres per second, directed downward.",
         marks: [
           "Upward taken as positive: u = 7 m/s, a = -10 m/s^2, t = 5.0 s.",
           "(a) d = ut + 1/2 a t^2 = 7(5) + 1/2 (-10)(5)^2 = 35 - 125 = -90 m, so the cliff is 90 m high.",
           "(b) v = u + at = 7 + (-10)(5) = -43 m/s, that is 43 m/s downward.",
         ],
-        ask: "Take upward as positive, so the initial velocity is positive seven and the acceleration is minus ten. Use d equals u t plus a half a t squared for the displacement, and a negative result means below the edge. Then use v equals u plus a t for the landing velocity.",
+        ask: "Take upward as positive, so the initial velocity is positive 7 and the acceleration is minus 10. Use d equals u t plus a half a t squared for the displacement, and a negative result means below the edge. Then use v equals u plus a t for the landing velocity.",
       },
     ],
   },
