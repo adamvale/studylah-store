@@ -8,24 +8,23 @@ import { ImmersiveShell } from "@/components/immersive-shell";
 import { physicsFigureSrc } from "@/lib/teaching";
 import { speak, stopSpeaking } from "@/lib/speak";
 
-// A physics diagram shown inside a teaching card or question. Silently renders
-// nothing if the figure name is unknown, so content never shows a broken image.
+// A physics diagram shown inside a teaching card or question. The SVGs are drawn
+// for a dark background, so we render them bare (no card, no border, no white
+// fill) and as large as possible (full width) because their labels are small.
+// Renders nothing if the figure name is unknown, so content never shows a break.
 function Figure({ name }: { name?: string }) {
   const src = physicsFigureSrc(name);
   if (!src) return null;
   return (
-    <span className="mb-3 block overflow-hidden rounded-xl border border-hairline bg-white/95 p-2">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src}
-        alt=""
-        className="mx-auto block max-h-56 w-full object-contain"
-        onError={(e) => {
-          const p = e.currentTarget.parentElement;
-          if (p) p.style.display = "none";
-        }}
-      />
-    </span>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt=""
+      className="mb-3 block h-auto w-full object-contain"
+      onError={(e) => {
+        e.currentTarget.style.display = "none";
+      }}
+    />
   );
 }
 

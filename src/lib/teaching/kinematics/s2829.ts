@@ -1,0 +1,173 @@
+import type { Subconcept } from "@/lib/teaching/subconcepts";
+
+export const BOXES: Subconcept[] = [
+  {
+    id: "t2.8",
+    code: "T2.8",
+    title: "Equations of motion",
+    blurb: "Four equations for constant acceleration, each leaving out one quantity",
+    steps: [
+      {
+        kind: "concept",
+        heading: "Only when a is constant",
+        body: "The equations of motion link five quantities: acceleration a, initial velocity u, final velocity v, displacement d and time t. They only work when the acceleration is constant. If the acceleration changes during the motion, you cannot use them.",
+        say: "Before you touch these equations, remember the one rule that decides everything. They only work when the acceleration stays the same the whole way through. They tie together five things: the acceleration, the starting velocity, the final velocity, the displacement, and the time. If the acceleration is changing, these equations simply do not apply.",
+      },
+      {
+        kind: "concept",
+        heading: "The four equations",
+        figure: "fig-02-32-vt-worked-formulae",
+        body: "There are four equations, and each one leaves out exactly one quantity. v = u + at leaves out d. d = 1/2 (u + v) t leaves out a. d = ut + 1/2 a t^2 leaves out v. v^2 = u^2 + 2ad leaves out t. That last one, d = 1/2 (u + v) t, is just the area of the trapezium under a straight velocity-time graph.",
+        say: "There are four of them, and here is the neat pattern. Each equation quietly leaves out one of the five quantities. The first, v equals u plus a t, has no displacement in it. The second, d equals a half times u plus v, all times t, has no acceleration in it. The third, d equals u t plus a half a t squared, has no final velocity. And the fourth, v squared equals u squared plus two a d, has no time in it. That second one is really just the area of the trapezium under a straight velocity-time graph.",
+      },
+      {
+        kind: "concept",
+        heading: "Choosing the right one",
+        body: "List the three quantities you know and the one you want. Then pick the equation that contains those four and leaves out the quantity you were not given. That way you never need a fifth unknown.",
+        say: "So how do you choose? Write down the three things you are given and the one thing you are chasing. Then reach for the equation that leaves out the quantity you do not have. That is the whole trick: pick the equation missing the one value you were never told.",
+      },
+      {
+        kind: "choice",
+        question: "Which equation would you use to find v when you know u, a and t, but not d?",
+        options: ["d = 1/2 (u + v) t", "v = u + at", "v^2 = u^2 + 2ad", "d = ut + 1/2 a t^2"],
+        correct: 1,
+        ask: "You know the starting velocity, the acceleration and the time, and you want the final velocity. Pick the equation that leaves out displacement. Which one is that?",
+        hints: [
+          "You want the equation with no displacement in it.",
+          "The final velocity equals the starting velocity plus a t.",
+        ],
+        explain: "Use v equals u plus a t, because it links final velocity, starting velocity, acceleration and time, and leaves out the displacement you were not given.",
+      },
+      {
+        kind: "tiles",
+        prompt: "Build the equation that finds displacement d from u, a and t.",
+        tiles: ["d =", "ut", "+", "1/2 a t^2", "v^2", "2ad"],
+        answer: ["d =", "ut", "+", "1/2 a t^2"],
+        explain: "The equation is d equals u t plus a half a t squared. It uses the starting velocity, the acceleration and the time, and leaves out the final velocity.",
+        ask: "You are given the starting velocity, the acceleration and the time. Drag the tiles to build the displacement equation that leaves out final velocity.",
+        hints: [
+          "Start with d equals, then the u t term.",
+          "Add a half a t squared. There is no v squared in this one.",
+        ],
+      },
+      {
+        kind: "choice",
+        question: "An object moving at 50 m/s accelerates uniformly at 4 m/s^2 for 8 s. Using d = ut + 1/2 a t^2, what displacement does it travel?",
+        options: ["400 m", "528 m", "128 m", "464 m"],
+        correct: 1,
+        ask: "Work out u times t, that is fifty times eight. Then a half times four times eight squared. Add the two parts. Which option is that?",
+        hints: [
+          "The first part is fifty times eight, which is four hundred.",
+          "The second part is a half times four times sixty-four, which is one hundred and twenty-eight. Now add them.",
+        ],
+        explain: "The displacement is five hundred and twenty-eight metres. Fifty times eight is four hundred, and a half times four times eight squared is one hundred and twenty-eight, and four hundred plus one hundred and twenty-eight is five hundred and twenty-eight.",
+      },
+      {
+        kind: "spoterror",
+        prompt: "A student finds v when u = 6 m/s, a = 2 m/s^2 and t = 5 s. Tap the line with the mistake.",
+        lines: ["u = 6 m/s, a = 2 m/s^2, t = 5 s", "v = u + at", "v = 6 + 2 x 5", "v = 6 + 10 = 26 m/s"],
+        errorLine: 3,
+        ask: "Check the last line. Six plus ten. Is that twenty-six?",
+        hints: [
+          "Work out six plus ten carefully.",
+          "Six plus ten is sixteen, not twenty-six.",
+        ],
+        explain: "The last line is wrong: six plus ten is sixteen, so the final velocity is sixteen metres per second.",
+      },
+      {
+        kind: "insight",
+        body: "Pick the equation by what it leaves out, not by what it puts in. Match the missing quantity to the one value you were never given.",
+        say: "Here is the one idea to carry away. Do not hunt for the equation that has your answer in it. Instead, spot the quantity you were never given, and choose the equation that leaves that one out. Do that and the right equation almost picks itself.",
+      },
+    ],
+  },
+  {
+    id: "t2.9",
+    code: "T2.9",
+    title: "Free fall",
+    blurb: "Near Earth everything falls with the same acceleration g of about 10 m/s^2",
+    steps: [
+      {
+        kind: "concept",
+        heading: "Same g for every mass",
+        body: "Near the Earth, any object released from a height accelerates downwards. If air resistance is negligible, every object falls with the same constant acceleration, whatever its mass. This acceleration of free fall, g, is about 10 m/s^2.",
+        say: "Drop a heavy stone and a light pebble together, with no air resistance, and they hit the ground at the same moment. Near the Earth every falling object speeds up at the same rate, no matter how heavy it is. We call that rate g, the acceleration of free fall, and we take it as about ten metres per second squared.",
+      },
+      {
+        kind: "concept",
+        heading: "Ten more every second",
+        figure: "fig-02-34-freefall-ball",
+        body: "A freely falling object gains 10 m/s of velocity during every second of the fall. Because the velocity increases by the same amount each second, its velocity-time graph is a straight line with a constant gradient.",
+        say: "Watch the speed of a falling ball. After one second it is doing ten metres per second, after two seconds twenty, after three seconds thirty. It gains the same ten metres per second every single second. Because the gain is steady, the velocity-time graph is a straight, sloping line.",
+      },
+      {
+        kind: "concept",
+        heading: "Signs when it goes up",
+        body: "You must pick a positive direction first. If you take upward as positive, then g points the other way, so the acceleration is negative, about -10 m/s^2. Keep the sign the same all the way through the working.",
+        say: "Once an object also travels upward, you have to choose a positive direction before you start. If you call upward positive, then gravity, which pulls down, becomes negative, about minus ten metres per second squared. The key is to stick with that choice for the whole calculation and never switch it halfway.",
+      },
+      {
+        kind: "slider",
+        prompt: "A ball is dropped from rest. What is its velocity after 3 s, taking g as 10 m/s^2?",
+        min: 0,
+        max: 50,
+        step: 5,
+        unit: "m/s",
+        start: 0,
+        targetMin: 30,
+        targetMax: 30,
+        explain: "After three seconds the velocity is thirty metres per second, because it gains ten metres per second every second, and ten times three is thirty.",
+        ask: "It starts from rest and gains ten metres per second each second. Slide to its velocity after three seconds.",
+        hints: [
+          "Each second adds another ten metres per second.",
+          "Ten times three seconds is thirty metres per second.",
+        ],
+      },
+      {
+        kind: "choice",
+        question: "A stone is dropped from rest at the top of a 45 m cliff and falls at 10 m/s^2. Using d = ut + 1/2 a t^2, how long does it take to reach the ground?",
+        options: ["4.5 s", "9 s", "3 s", "2 s"],
+        correct: 2,
+        ask: "With u zero, forty-five equals a half times ten times t squared. So five t squared is forty-five, which makes t squared nine. What is the square root of nine?",
+        hints: [
+          "Since it starts from rest, 45 = 1/2 times 10 times t^2.",
+          "That gives t squared equals nine, so t is the square root of nine.",
+        ],
+        explain: "The time is three seconds. With u zero, forty-five equals a half times ten times t squared, so t squared is nine, and the square root of nine is three.",
+      },
+      {
+        kind: "choice",
+        question: "For that same stone, using v = u + at, what is its velocity just before it lands after 3 s?",
+        options: ["30 m/s", "15 m/s", "45 m/s", "10 m/s"],
+        correct: 0,
+        ask: "It starts from rest, so v equals zero plus ten times three. Which option is that?",
+        hints: [
+          "Start from v equals u plus a t, with u equal to zero.",
+          "Ten times three seconds is thirty metres per second.",
+        ],
+        explain: "The velocity is thirty metres per second, because starting from rest, v equals zero plus ten times three, which is thirty.",
+      },
+      {
+        kind: "order",
+        prompt: "Put the steps to find a dropped stone's landing speed in order.",
+        items: [
+          "Take downward as positive, so a is +10 m/s^2 and u is 0",
+          "Find the time to fall using d = ut + 1/2 a t^2",
+          "Put that time into v = u + at",
+          "State the velocity with its unit",
+        ],
+        explain: "First set the positive direction and note u is zero, then find the fall time from the displacement equation, then use v equals u plus a t, and finally state the answer in metres per second.",
+        ask: "Think about what you need before you can find the speed. Put the steps in order.",
+        hints: [
+          "You need the time before you can find the final velocity.",
+          "Set the signs first, then find t, then find v.",
+        ],
+      },
+      {
+        kind: "insight",
+        body: "Free fall is just constant acceleration with a = g. The same four equations of motion apply once you fix which direction is positive.",
+        say: "So free fall is nothing new. It is simply constant acceleration where the acceleration is g. The very same four equations of motion work here, as long as you decide which way is positive and keep the sign of g consistent with that choice.",
+      },
+    ],
+  },
+];
