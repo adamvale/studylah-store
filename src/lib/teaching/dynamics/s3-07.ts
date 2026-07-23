@@ -27,7 +27,7 @@ export const BOXES: Subconcept[] = [
         heading: "Moving at constant velocity",
         figure: "fig-04-05-ball-constant-velocity",
         body: "An object can keep moving at *constant velocity* with a *zero* resultant force too. Here the *driving force* forward and *friction* backward are balanced.",
-        say: "Here a ball rolls along at a steady speed. The yellow arrow pushing it forward is the driving force, and the pink arrow pointing back is friction. They are equal in size, so once again the resultant force is 0. A zero resultant force does not mean stopped. It means no change, so the ball simply keeps the same velocity.",
+        say: "Here a ball rolls along at a steady speed. The yellow arrow pushing it forward is the driving force, and the blue arrow pointing back is friction. They are equal in size, so once again the resultant force is 0. A zero resultant force does not mean stopped. It means no change, so the ball simply keeps the same velocity.",
       },
       {
         kind: "concept",

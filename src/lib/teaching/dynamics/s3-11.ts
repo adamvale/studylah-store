@@ -14,7 +14,7 @@ export const BOXES: Subconcept[] = [
         heading: "What friction is",
         figure: "fig-04-23-friction",
         body: "*Friction* is the *contact force* a surface exerts on an object to oppose its motion across it. It acts *parallel* to the surfaces and always *opposite* to the direction of motion.",
-        say: "Look at the diagram. The block slides to the right, shown by the blue arrow, and the pink friction arrow points the other way, back to the left, flat along the surface where the 2 meet. That is the key idea. Friction is a contact force, so the surfaces must be touching, and it always pushes back against the motion, never with it.",
+        say: "Look at the diagram. The block slides to the right, shown by the grey arrow, and the blue friction arrow points the other way, back to the left, flat along the surface where the 2 meet. That is the key idea. Friction is a contact force, so the surfaces must be touching, and it always pushes back against the motion, never with it.",
       },
       {
         kind: "concept",

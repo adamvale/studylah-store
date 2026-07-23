@@ -35,7 +35,7 @@ export const BOXES: Subconcept[] = [
         heading: "Combine the forces first",
         figure: "fig-04-11-we-box-push",
         body: "Before using the law, find the *resultant force*. Forces in the *same direction* add together, while forces in *opposite directions* subtract.",
-        say: "The picture shows a box on the ground. A yellow arrow pushes it forward with 25 newtons, and a pink friction arrow drags backward with 13 newtons. These point opposite ways, so they subtract: 25 minus 13 leaves a resultant of 12 newtons forward. The box has a mass of 4 kilograms, so its acceleration is 12 divided by 4, which is 3 metres per second squared. Always combine the forces into a single resultant before you work out the acceleration.",
+        say: "The picture shows a box on the ground. A yellow arrow pushes it forward with 25 newtons, and a blue friction arrow drags backward with 13 newtons. These point opposite ways, so they subtract: 25 minus 13 leaves a resultant of 12 newtons forward. The box has a mass of 4 kilograms, so its acceleration is 12 divided by 4, which is 3 metres per second squared. Always combine the forces into a single resultant before you work out the acceleration.",
       },
       {
         kind: "choice",

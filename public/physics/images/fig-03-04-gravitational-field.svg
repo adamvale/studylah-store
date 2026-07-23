@@ -4,14 +4,14 @@
     .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
     .planet { fill:#6FB7E0; opacity:0.28; stroke:#6FB7E0; stroke-width:1.8; }
     .field { stroke:#9AA0A6; stroke-width:1.3; fill:none; }
-    .force { stroke:#86C98B; stroke-width:2.4; fill:none; }
+    .force { stroke:#E58F8F; stroke-width:2.4; fill:none; }
   </style>
   <defs>
     <marker id="ah-f" markerWidth="8" markerHeight="8" refX="6" refY="3.5" orient="auto">
       <path d="M0,0 L7,3.5 L0,7 z" fill="#9AA0A6"/>
     </marker>
     <marker id="ah-y" markerWidth="9" markerHeight="9" refX="6.5" refY="4" orient="auto">
-      <path d="M0,0 L8,4 L0,8 z" fill="#86C98B"/>
+      <path d="M0,0 L8,4 L0,8 z" fill="#E58F8F"/>
     </marker>
   </defs>
   <!-- radial field lines pointing inward -->
@@ -50,8 +50,8 @@
   <path class="lead" d="M400,146 L470,120"/>
   <text x="475" y="126" font-size="17" fill="#E8B65A">object Y</text>
   <path class="lead" d="M360,175 L470,175"/>
-  <text x="475" y="170" font-size="17" fill="#86C98B">gravitational</text>
-  <text x="475" y="190" font-size="17" fill="#86C98B">force</text>
+  <text x="475" y="170" font-size="17" fill="#E58F8F">gravitational</text>
+  <text x="475" y="190" font-size="17" fill="#E58F8F">force</text>
   <path class="lead" d="M185,300 L213,293"/>
   <text x="20" y="302" font-size="17">gravitational field</text>
   <text x="20" y="322" font-size="17">of object X</text>

@@ -10,7 +10,7 @@
   <style>
     text { fill:#EAEAEA; }
     .box { fill:#6FB7E0; opacity:0.26; stroke:#6FB7E0; stroke-width:1.6; }
-    .f { stroke:#EAEAEA; stroke-width:2.2; }
+    .f { stroke:#E8B65A; stroke-width:2.2; }
     .ground { stroke:#9AA0A6; stroke-width:1.4; }
     .res { stroke:#86C98B; stroke-width:2.4; }
   </style>
