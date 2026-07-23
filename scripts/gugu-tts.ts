@@ -22,6 +22,20 @@ const FIELDS = new Set(
 // The Tuition subconcept topics whose spoken lines to include (grows per topic).
 const SUBCONCEPT_TOPICS = ["t2-kinematics"];
 
+// Optional: restrict generation to specific subconcept box codes, e.g. one
+// section. When set, ONLY those boxes are generated and the other content pools
+// (fixed lines, life, practical, playground) are skipped — so you can roll out a
+// voice section by section. System openers/praise still come along (they are what
+// makes the questions in that section speak in this voice too).
+//   e.g.  GUGU_TTS_SUBCONCEPT_CODES=T2.1 npm run gugu:tts
+const ONLY_CODES = new Set(
+  (process.env.GUGU_TTS_SUBCONCEPT_CODES ?? "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean),
+);
+const SCOPED = ONLY_CODES.size > 0;
+
 // Pre-generate Gugu's voice with ElevenLabs (or any TTS you point it at). Every
 // scripted line becomes public/audio/gugu/<hash>.mp3, plus a manifest. The app
 // plays those files instantly at zero runtime cost, and falls back to the
@@ -49,20 +63,25 @@ function stepSpokenLines(step: LessonStep): string[] {
 // Every FIXED (non-personalised, no {placeholder}) line Gugu speaks.
 function collectLines(): string[] {
   const set = new Set<string>();
-  for (const l of fixedGuguLines()) set.add(normalizeLine(l));
-  for (const track of LIFE_TRACKS)
-    for (const lesson of track.lessons)
-      for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(normalizeLine(x));
-  for (const subject of PRACTICAL_SUBJECTS)
-    for (const lesson of subject.lessons)
-      for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(normalizeLine(x));
-  for (const arr of Object.values(PLAYGROUND_MATHS))
-    for (const lesson of arr)
-      for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(normalizeLine(x));
+  // The broad pools are skipped entirely when scoped to specific box codes.
+  if (!SCOPED) {
+    for (const l of fixedGuguLines()) set.add(normalizeLine(l));
+    for (const track of LIFE_TRACKS)
+      for (const lesson of track.lessons)
+        for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(normalizeLine(x));
+    for (const subject of PRACTICAL_SUBJECTS)
+      for (const lesson of subject.lessons)
+        for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(normalizeLine(x));
+    for (const arr of Object.values(PLAYGROUND_MATHS))
+      for (const lesson of arr)
+        for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(normalizeLine(x));
+  }
   // Tuition subconcept lessons (Kinematics, then more as topics land).
   for (const topic of SUBCONCEPT_TOPICS)
-    for (const box of subconceptsFor(topic) ?? [])
+    for (const box of subconceptsFor(topic) ?? []) {
+      if (SCOPED && !ONLY_CODES.has(box.code)) continue;
       for (const step of box.steps) for (const x of stepSpokenLines(step)) set.add(normalizeLine(x));
+    }
   // The engine's fixed question openers and correct-answer reactions.
   if (FIELDS.has("system")) for (const l of fixedVoiceLines()) set.add(normalizeLine(l));
   return [...set].filter((x) => x.length > 0 && !x.includes("{"));
@@ -87,6 +106,17 @@ async function main(): Promise<void> {
   fs.mkdirSync(outDir, { recursive: true });
 
   const lines = collectLines();
+
+  // Dry run: report what WOULD be generated (line count + characters, which is
+  // what ElevenLabs bills on) and stop, without touching the API.
+  if (process.env.GUGU_TTS_DRY === "1") {
+    const chars = lines.reduce((n, l) => n + l.length, 0);
+    console.log(
+      `DRY RUN (voice ${voice}${SCOPED ? `, codes ${[...ONLY_CODES].join(",")}` : ""}): ${lines.length} lines, ${chars} characters.`,
+    );
+    return;
+  }
+
   const hashes: string[] = [];
   let made = 0;
   let skipped = 0;
