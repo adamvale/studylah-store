@@ -218,3 +218,46 @@ layer, so a student never faces a question cold.
   (a `choice`/`slider`/`classify`/... problem), then an `insight`.
 - Every `concept` and `insight` has a `say`. Every problem has `ask`/`hints`/`explain`.
 - One idea per teach card. If in doubt, split into more cards.
+
+## Full topic structure (the Kinematics model)
+
+`T2 Kinematics` is the built reference for a COMPLETE topic. Follow its shape for
+every new topic. Content lives one file per section under
+`src/lib/teaching/kinematics/*.ts`, each exporting `export const BOXES: Subconcept[]`,
+composed in order in `subconcepts.ts`. A topic is an ordered list of boxes:
+
+1. **Micro-lesson boxes**, one per syllabus sub-section (2.1, 2.2, ...). If a
+   section has many learning points, SPLIT it into lettered boxes (2.5a, 2.5b,
+   2.5c ...) so each idea gets its own screen. Each micro-lesson = single-idea
+   `concept` cards (every one with a `say`) then AT LEAST 3 questions (mix of
+   `choice` and interactive), optionally a closing `insight`.
+2. **Revision checkpoints** after each section, `kind: "revision"`: EXACTLY
+   5 `choice` + 5 interactive + at least 2 `open`, question-only, covering the
+   boxes since the previous checkpoint.
+3. A final **Topical quiz**, `kind: "quiz"`: EXACTLY 10 `choice` + 10
+   interactive + 5 `open`, spanning the whole topic.
+
+"interactive" = any question kind that is not `choice` and not `open` (slider,
+order, match, tiles, plot, cloze, spoterror, classify, graphpick). Spread the
+kinds; do not lean on one. Vary which option is `correct` (0-based).
+
+### The `open` step (open-ended / structured question)
+
+`{ kind: "open"; prompt; figure?; modelAnswer; marks: string[]; ask }` — the
+student writes, then reveals a model answer and marking points to self-check.
+`ask` is Gugu's spoken guide. Grounded in the notes' structured/free-response
+questions.
+
+### Figures on teaching cards
+
+`concept`, `insight`, `choice` and `open` take an optional `figure` (a physics
+diagram name, e.g. `"fig-02-13-dt-gradient"`). It renders bare and full-width on
+the dark background (no box). Only reference diagrams that exist under
+`public/physics/images/`. Never make a question's answer depend on reading exact
+values off a printed figure the student cannot zoom: use `graphpick` (it draws
+its own graphs) or state the numbers in words.
+
+### Validate before handing back
+
+`npx tsx scripts/validate-kinematics.mjs` checks the counts per box, figure
+existence, dashes and index bounds. Extend it (or copy it) for new topics.
