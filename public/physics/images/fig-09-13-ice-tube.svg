@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 260" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .tube { fill:#6FB7E0; opacity:0.12; stroke:#EAEAEA; stroke-width:1.8; }
     .gauze { stroke:#9AA0A6; stroke-width:1.4; }
     .ice { fill:#6FB7E0; opacity:0.35; stroke:#6FB7E0; stroke-width:1.2; }
@@ -36,9 +36,9 @@
   <!-- labels -->
   <text class="lbl" x="405" y="55">steam</text>
   <path class="lead" d="M400,58 L378,52"/>
-  <text class="lbl" x="405" y="120">boiling water</text>
-  <path class="lead" d="M400,116 L330,108"/>
-  <text class="lbl" x="70" y="150">ice held by</text>
-  <text class="lbl" x="70" y="165">wire gauze</text>
-  <path class="lead" d="M118,152 L165,158"/>
+  <text class="lbl" x="450" y="120" text-anchor="end">boiling water</text>
+  <path class="lead" d="M372,117 L328,104"/>
+  <text class="lbl" x="45" y="150">ice held by</text>
+  <text class="lbl" x="45" y="165">wire gauze</text>
+  <path class="lead" d="M100,155 L150,158"/>
 </svg>

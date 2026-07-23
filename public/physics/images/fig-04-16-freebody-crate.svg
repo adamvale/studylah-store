@@ -16,15 +16,15 @@
   <rect class="box" x="175" y="130" width="70" height="55"/>
   <!-- normal up -->
   <line class="norm" x1="210" y1="130" x2="210" y2="55" marker-end="url(#arwG)"/>
-  <text x="218" y="72" font-size="12.5" fill="#86C98B">F(normal)</text>
+  <text x="218" y="72" font-size="13.5" fill="#86C98B">F(normal)</text>
   <!-- weight down -->
   <line class="weight" x1="210" y1="185" x2="210" y2="260" marker-end="url(#arwR)"/>
-  <text x="218" y="245" font-size="12.5" fill="#E58F8F">W (weight)</text>
+  <text x="218" y="245" font-size="13.5" fill="#E58F8F">W (weight)</text>
   <!-- applied right -->
   <line class="app" x1="245" y1="157" x2="345" y2="157" marker-end="url(#arwB)"/>
-  <text x="270" y="147" font-size="12.5" fill="#6FB7E0">F(applied)</text>
+  <text x="270" y="147" font-size="13.5" fill="#6FB7E0">F(applied)</text>
   <!-- friction left -->
   <line class="fric" x1="175" y1="157" x2="75" y2="157" marker-end="url(#arwA)"/>
-  <text x="95" y="147" font-size="12.5" fill="#E8B65A">F(friction)</text>
-  <text x="210" y="290" text-anchor="middle" font-size="11.5">Free-body diagram of a crate pulled across the floor.</text>
+  <text x="95" y="147" font-size="13.5" fill="#E8B65A">F(friction)</text>
+  <text x="210" y="290" text-anchor="middle" font-size="12.5">Free-body diagram of a crate pulled across the floor.</text>
 </svg>

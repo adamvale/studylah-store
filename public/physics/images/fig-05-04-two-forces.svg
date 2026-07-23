@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 220" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 240" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
     .beam { fill:#6FB7E0; opacity:0.30; stroke:#6FB7E0; stroke-width:1.6; }
     .pivot { fill:#E8B65A; opacity:0.35; stroke:#E8B65A; stroke-width:1.6; }
     .force { stroke:#E58F8F; stroke-width:2.4; fill:none; }
     .dim { stroke:#9AA0A6; stroke-width:1.3; fill:none; }
-    .lbl { font-size:13px; }
+    .lbl { font-size:14px; }
   </style>
   <rect class="beam" x="60" y="120" width="350" height="11"/>
   <polygon class="pivot" points="62,157 86,157 74,131"/>
@@ -31,5 +31,6 @@
   <line class="force" x1="340" y1="105" x2="340" y2="155"/>
   <path class="force" d="M340,155 l-5,-10 M340,155 l5,-10"/>
   <text class="lbl" x="340" y="176" text-anchor="middle" fill="#E58F8F">F₂</text>
-  <text class="lbl" x="230" y="205" text-anchor="middle" font-size="12">Both forces turn the beam the same way: total moment = F₁d₁ + F₂d₂</text>
+  <text class="lbl" x="230" y="212" text-anchor="middle" font-size="13">Both forces turn the beam the same way:</text>
+  <text class="lbl" x="230" y="231" text-anchor="middle" font-size="13">total moment = F₁d₁ + F₂d₂</text>
 </svg>

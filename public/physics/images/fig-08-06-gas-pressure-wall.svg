@@ -6,7 +6,7 @@
     .in { stroke:#86C98B; stroke-width:1.6; fill:none; }
     .out { stroke:#E58F8F; stroke-width:1.6; fill:none; }
     .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
-    .lbl { font-size:12px; }
+    .lbl { font-size:15px; }
     .amber { fill:#E8B65A; }
   </style>
 
@@ -32,19 +32,20 @@
   <path class="in" d="M235,150 L268,150" marker-end="url(#gi)"/>
 
   <!-- labels -->
-  <text class="lbl amber" x="300" y="70">inner wall of container</text>
-  <path class="lead" d="M295,66 L270,80"/>
+  <text class="lbl amber" x="300" y="68">inner wall</text>
+  <path class="lead" d="M295,64 L272,80"/>
 
-  <text class="lbl amber" x="300" y="112">particle hits wall</text>
-  <path class="lead" d="M295,108 L262,110"/>
+  <text class="lbl amber" x="300" y="96">particle hits wall</text>
+  <path class="lead" d="M295,92 L264,106"/>
 
-  <text class="lbl in" x="300" y="150" style="fill:#86C98B">force on wall</text>
-  <path class="lead" d="M296,146 L272,150"/>
+  <text class="lbl" x="300" y="126" style="fill:#E58F8F">reaction force</text>
+  <text class="lbl" x="300" y="144" style="fill:#E58F8F">on particle</text>
+  <path class="lead" d="M295,124 L272,129"/>
 
-  <text class="lbl out" x="300" y="130" style="fill:#E58F8F">reaction force on particle</text>
-  <path class="lead" d="M296,126 L272,130"/>
+  <text class="lbl" x="300" y="176" style="fill:#86C98B">force on wall</text>
+  <path class="lead" d="M295,170 L272,152"/>
 
-  <text class="lbl" x="155" y="278" text-anchor="middle" fill="#9AA0A6" font-style="italic">particles collide with and rebound off the walls</text>
+  <text class="lbl" x="240" y="278" text-anchor="middle" font-size="14" fill="#9AA0A6" font-style="italic">particles collide with and rebound off the walls</text>
 
   <defs>
     <marker id="gi" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">

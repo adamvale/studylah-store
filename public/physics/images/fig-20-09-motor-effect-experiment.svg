@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:14px; }
     .pole { fill:#9AA0A6; fill-opacity:0.22; stroke:#EAEAEA; stroke-width:1.6; }
     .plbl { fill:#EAEAEA; font-size:16px; font-weight:bold; text-anchor:middle; }
     .fld  { stroke:#6FB7E0; stroke-width:1.5; fill:none; }
@@ -25,18 +25,19 @@
   <line class="fld" x1="220" y1="82" x2="220" y2="248" marker-end="url(#f9)"/>
   <line class="fld" x1="300" y1="82" x2="300" y2="248" marker-end="url(#f9)"/>
   <line class="fld" x1="340" y1="82" x2="340" y2="248" marker-end="url(#f9)"/>
-  <text class="lbl" x="384" y="168">field, B (down)</text>
-  <path class="lead" d="M382,164 L344,166"/>
+  <text class="lbl" x="384" y="225">field, B (down)</text>
+  <path class="lead" d="M382,220 L344,214"/>
 
   <!-- conductor end-on, current out of page -->
   <circle cx="260" cy="165" r="13" fill="#6FB7E0" fill-opacity="0.32" stroke="#EAEAEA" stroke-width="1.8"/>
   <circle cx="260" cy="165" r="3.4" fill="#EAEAEA"/>
-  <text class="lbl" x="150" y="130" text-anchor="end">current out of page (&#8857;)</text>
-  <path class="lead" d="M152,126 L248,160"/>
+  <text class="lbl" x="10" y="126">current out of page (&#8857;)</text>
+  <path class="lead" d="M120,132 L245,158"/>
 
   <!-- force to the right -->
   <line class="force" x1="275" y1="165" x2="360" y2="165" marker-end="url(#x9)"/>
   <text fill="#E58F8F" x="366" y="169" font-weight="bold">force, F</text>
 
-  <text class="note" x="40" y="322">Reversing the current OR the field reverses the force; reversing both leaves it unchanged.</text>
+  <text class="note" x="40" y="306" font-size="13">Reversing the current OR the field reverses the force;</text>
+  <text class="note" x="40" y="324" font-size="13">reversing both leaves the force unchanged.</text>
 </svg>

@@ -3,11 +3,11 @@
     text { fill:#EAEAEA; }
     .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
     .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
-    .pole { font-size:14px; font-weight:bold; fill:#EAEAEA; }
+    .pole { font-size:15px; font-weight:bold; fill:#EAEAEA; }
     .nail { stroke:#EAEAEA; stroke-width:2.2; fill:none; }
-    .lbl { fill:#E8B65A; font-size:12.5px; }
+    .lbl { fill:#E8B65A; font-size:14px; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
-    .pt { font-size:12px; fill:#EAEAEA; }
+    .pt { font-size:13.5px; fill:#EAEAEA; }
   </style>
 
   <!-- horizontal permanent magnet, S left, N right; nails hang from N pole -->
@@ -17,7 +17,8 @@
     <text class="pole" x="14" y="21">S</text>
     <text class="pole" x="168" y="21">N</text>
   </g>
-  <text x="80" y="55" text-anchor="end" class="lbl">permanent magnet</text>
+  <text x="30" y="40" class="lbl">permanent magnet</text>
+  <path class="lead" d="M148,44 L170,58"/>
 
   <!-- first nail (hangs from N pole) -->
   <line class="nail" x1="285" y1="90" x2="285" y2="150"/>

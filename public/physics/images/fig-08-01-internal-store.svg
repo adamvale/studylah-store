@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 320" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 320" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
     .particle { fill:#6FB7E0; opacity:0.32; stroke:#6FB7E0; stroke-width:1.6; }
     .bond { stroke:#9AA0A6; stroke-width:1.4; stroke-dasharray:5 4; fill:none; }
     .vib { stroke:#86C98B; stroke-width:1.6; fill:none; }
     .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
-    .lbl { font-size:13px; }
+    .lbl { font-size:16px; }
     .amber { fill:#E8B65A; }
   </style>
   <!-- four particles in a square -->
@@ -35,20 +35,21 @@
 
   <!-- labels -->
   <text class="lbl amber" x="70" y="70">particle</text>
-  <path class="lead" d="M120,66 L183,86"/>
+  <path class="lead" d="M136,72 L183,84"/>
 
-  <text class="lbl amber" x="395" y="72">kinetic store</text>
-  <text class="lbl" x="395" y="88" font-size="11">(due to vibration)</text>
-  <path class="lead" d="M390,72 L350,84"/>
+  <text class="lbl amber" x="390" y="72">kinetic store</text>
+  <text class="lbl" x="390" y="91" font-size="13">(due to vibration)</text>
+  <path class="lead" d="M385,72 L350,84"/>
 
-  <text class="lbl amber" x="395" y="150">potential energy store</text>
-  <text class="lbl" x="395" y="166" font-size="11">(due to attractive force)</text>
-  <path class="lead" d="M390,150 L335,150"/>
+  <text class="lbl amber" x="390" y="150">potential energy</text>
+  <text class="lbl amber" x="390" y="169">store</text>
+  <text class="lbl" x="390" y="188" font-size="13">(due to attractive force)</text>
+  <path class="lead" d="M385,150 L335,150"/>
 
   <text class="lbl amber" x="40" y="200">attractive</text>
-  <text class="lbl amber" x="40" y="216">force</text>
-  <path class="lead" d="M100,206 L200,150"/>
+  <text class="lbl amber" x="40" y="218">force</text>
+  <path class="lead" d="M105,206 L200,150"/>
 
   <!-- caption -->
-  <text x="280" y="290" text-anchor="middle" font-size="13">internal store = kinetic store + potential energy store</text>
+  <text x="280" y="290" text-anchor="middle" font-size="16">internal store = kinetic store + potential energy store</text>
 </svg>

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 320" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .box { fill:none; stroke:#EAEAEA; stroke-width:2; }
     .chimney { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
     .smoke { stroke:#9AA0A6; stroke-width:2; fill:none; stroke-dasharray:5 4; }
@@ -29,12 +29,12 @@
   <path class="up" d="M145,150 L145,110"/>
   <path class="up" d="M138,124 L145,108 L152,124"/>
   <!-- labels -->
-  <text class="lbl" x="360" y="80">smouldering paper</text>
-  <path class="lead" d="M358,84 L322,86"/>
-  <text class="lbl" x="360" y="130">smoke drawn down</text>
-  <path class="lead" d="M358,134 L300,140"/>
-  <text class="lbl" x="35" y="190">warm air &amp;</text>
-  <text class="lbl" x="35" y="205">smoke rise</text>
+  <text class="lbl" x="430" y="60" text-anchor="end">smouldering paper</text>
+  <path class="lead" d="M368,64 L322,80"/>
+  <text class="lbl" x="430" y="130" text-anchor="end">smoke drawn down</text>
+  <path class="lead" d="M360,133 L303,142"/>
+  <text class="lbl" x="20" y="190">warm air &amp;</text>
+  <text class="lbl" x="20" y="205">smoke rise</text>
   <path class="lead" d="M85,198 L138,175"/>
   <text x="145" y="270" text-anchor="middle">candle</text>
 </svg>

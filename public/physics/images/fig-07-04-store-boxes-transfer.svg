@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:14px; }
     .box { fill:#6FB7E0; opacity:0.14; stroke:#EAEAEA; stroke-width:1.6; }
     .arrow { stroke:#E8B65A; stroke-width:2.2; fill:none; }
-    .lbl { fill:#9AA0A6; font-size:11px; }
+    .lbl { fill:#9AA0A6; font-size:12px; }
   </style>
   <defs><marker id="am" markerWidth="12" markerHeight="12" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#E8B65A"/></marker></defs>
   <!-- box A -->

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 320" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:14px; }
     .beaker { fill:none; stroke:#EAEAEA; stroke-width:2; }
     .fluid { fill:#6FB7E0; opacity:0.14; }
     .loop { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
@@ -25,7 +25,7 @@
   <!-- numbered stages -->
   <text class="num" x="160" y="165">1</text>
   <text class="num" x="258" y="165">2</text>
-  <text class="num" x="210" y="150">3</text>
+  <text class="num" x="210" y="78">3</text>
   <!-- heat source arrow -->
   <path class="heat" d="M175,300 L175,248"/>
   <path class="heat" d="M167,262 L175,246 L183,262"/>

@@ -5,15 +5,15 @@
     </marker>
   </defs>
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .chimney { fill:none; stroke:#EAEAEA; stroke-width:2; }
     .plate { fill:#E58F8F; opacity:0.14; stroke:#E58F8F; stroke-width:1.6; }
     .grid  { stroke:#6FB7E0; stroke-width:2; }
-    .pos { fill:#E58F8F; font-size:12px; text-anchor:middle; }
+    .pos { fill:#E58F8F; font-size:13px; text-anchor:middle; }
     .particle { fill:#9AA0A6; }
     .particleN { fill:#6FB7E0; }
     .arrow { stroke:#EAEAEA; stroke-width:2; fill:none; }
-    .num { fill:#E8B65A; font-size:12px; font-weight:bold; text-anchor:middle; }
+    .num { fill:#E8B65A; font-size:13px; font-weight:bold; text-anchor:middle; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; }
   </style>
   <!-- chimney walls -->
@@ -45,15 +45,15 @@
   <!-- collecting bin -->
   <path class="chimney" d="M215,335 L235,355 L325,355 L345,335" fill="none"/>
   <!-- labels -->
-  <text x="280" y="45" text-anchor="middle" font-size="11">clean gas out (no pollutants)</text>
-  <text x="30" y="360" font-size="11">dirty waste gas in</text>
+  <text x="280" y="45" text-anchor="middle" font-size="12">clean gas out (no pollutants)</text>
+  <text x="30" y="360" font-size="12">dirty waste gas in</text>
   <line class="lead" x1="180" y1="180" x2="120" y2="180"/>
-  <text x="20" y="184" font-size="11">chimney</text>
+  <text x="20" y="184" font-size="12">chimney</text>
   <line class="lead" x1="196" y1="150" x2="430" y2="130"/>
-  <text x="435" y="134" font-size="11" fill="#E58F8F">+ collecting plate</text>
+  <text x="435" y="134" font-size="12" fill="#E58F8F">+ collecting plate</text>
   <line class="lead" x1="330" y1="300" x2="430" y2="300"/>
-  <text x="435" y="304" font-size="11" fill="#6FB7E0">&#8722; metal grid</text>
-  <text x="435" y="322" font-size="11" fill="#9AA0A6">(charges the dust)</text>
+  <text x="435" y="304" font-size="12" fill="#6FB7E0">− metal grid</text>
+  <text x="435" y="322" font-size="12" fill="#9AA0A6">(charges the dust)</text>
   <line class="lead" x1="280" y1="355" x2="430" y2="370"/>
-  <text x="435" y="374" font-size="11">collecting bin</text>
+  <text x="435" y="374" font-size="12">collecting bin</text>
 </svg>

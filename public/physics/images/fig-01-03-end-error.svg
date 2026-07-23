@@ -17,14 +17,14 @@
     <line x1="250" y1="70" x2="250" y2="90"/>
     <line x1="315" y1="70" x2="315" y2="90"/>
   </g>
-  <g font-size="12" text-anchor="middle">
+  <g font-size="14" text-anchor="middle">
     <text x="120" y="124">1</text>
     <text x="185" y="124">2</text>
     <text x="250" y="124">3</text>
     <text x="315" y="124">4</text>
   </g>
-  <text x="405" y="92" font-size="12">cm</text>
-  <text x="70" y="40" text-anchor="middle" font-size="13" class="bad">end error</text>
+  <text x="405" y="92" font-size="14">cm</text>
+  <text x="70" y="40" text-anchor="middle" font-size="14" class="bad">end error</text>
   <path d="M70,46 L64,68" fill="none" stroke="#9AA0A6" stroke-width="1.3"/>
-  <text x="300" y="150" text-anchor="middle" font-size="12">The end of the rule is worn / damaged</text>
+  <text x="240" y="150" text-anchor="middle" font-size="14">The end of the rule is worn / damaged</text>
 </svg>

@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 590 340" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:13px; }
+    text { fill:#EAEAEA; font-size:14px; }
     .plate { stroke:#EAEAEA; stroke-width:4; }
     .src { fill:#E8B65A; opacity:0.35; stroke:#E8B65A; stroke-width:1.5; }
     .alpha { stroke:#E58F8F; stroke-width:2.4; fill:none; }
     .beta { stroke:#6FB7E0; stroke-width:2.4; fill:none; }
     .gamma { stroke:#86C98B; stroke-width:2.4; fill:none; }
-    .cap { font-size:12px; fill:#9AA0A6; }
+    .cap { font-size:13px; fill:#9AA0A6; }
     .sign { font-size:22px; fill:#EAEAEA; }
   </style>
   <!-- plates -->
@@ -34,5 +34,5 @@
   <path class="alpha" d="M200,170 Q340,195 470,240"/>
   <text x="478" y="244" fill="#E58F8F">&#945; (positive)</text>
 
-  <text x="315" y="330" text-anchor="middle" fill="#E8B65A" font-size="12">&#945; and &#946; bend to opposite plates; &#947; passes straight through</text>
+  <text x="315" y="330" text-anchor="middle" fill="#E8B65A" font-size="13">&#945; and &#946; bend to opposite plates; &#947; passes straight through</text>
 </svg>

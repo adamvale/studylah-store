@@ -29,11 +29,11 @@
   <path class="body" d="M222,263 L222,305 Q222,320 240,320 Q258,320 258,305 L258,263 Z"/>
   <!-- labels X Y Z M -->
   <line class="lead" x1="210" y1="170" x2="90" y2="145"/>
-  <text x="85" y="149" text-anchor="end" font-size="14" class="amber">X</text>
+  <text x="85" y="149" text-anchor="end" font-size="16" class="amber">X</text>
   <line class="lead" x1="173" y1="201" x2="90" y2="225"/>
-  <text x="85" y="229" text-anchor="end" font-size="14" class="amber">Y</text>
+  <text x="85" y="229" text-anchor="end" font-size="16" class="amber">Y</text>
   <line class="lead" x1="313" y1="203" x2="410" y2="180"/>
-  <text x="418" y="184" font-size="14" class="amber">M</text>
-  <line class="lead" x1="290" y1="225" x2="410" y2="240"/>
-  <text x="418" y="244" font-size="14" class="amber">Z</text>
+  <text x="418" y="184" font-size="16" class="amber">M</text>
+  <line class="lead" x1="278" y1="230" x2="410" y2="240"/>
+  <text x="418" y="244" font-size="16" class="amber">Z</text>
 </svg>

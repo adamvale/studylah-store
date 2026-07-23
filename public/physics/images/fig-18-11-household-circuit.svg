@@ -11,51 +11,51 @@
   </style>
   <!-- consumer unit -->
   <rect class="box" x="40" y="70" width="90" height="150"/>
-  <text x="85" y="60" text-anchor="middle" font-size="11">consumer unit</text>
-  <text x="70" y="90" font-size="10">N</text>
-  <text x="100" y="90" font-size="10">L</text>
+  <text x="85" y="60" text-anchor="middle" font-size="13.5">consumer unit</text>
+  <text x="70" y="90" font-size="12.5">N</text>
+  <text x="100" y="90" font-size="12.5">L</text>
   <!-- main switch -->
   <line class="wire" x1="105" y1="100" x2="105" y2="130"/>
   <line class="open" x1="105" y1="130" x2="122" y2="118"/>
-  <text x="140" y="120" font-size="10">main switch</text>
+  <text x="140" y="120" font-size="12.5">main switch</text>
   <!-- earth of consumer unit -->
   <line class="earth" x1="70" y1="100" x2="70" y2="240"/>
   <line class="earth" x1="58" y1="240" x2="82" y2="240"/>
   <line class="earth" x1="63" y1="246" x2="77" y2="246"/>
   <line class="earth" x1="67" y1="252" x2="73" y2="252"/>
-  <text x="70" y="270" text-anchor="middle" font-size="10" class="grn">earth</text>
+  <text x="70" y="270" text-anchor="middle" font-size="12.5" class="grn">earth</text>
 
   <!-- ring main circuit (dashed loop) -->
   <rect class="ring" x="230" y="90" width="130" height="150"/>
-  <text x="295" y="262" text-anchor="middle" font-size="11">ring main circuit</text>
+  <text x="295" y="262" text-anchor="middle" font-size="13.5">ring main circuit</text>
   <line class="wire" x1="105" y1="130" x2="230" y2="130"/>
-  <text x="245" y="120" font-size="10">L</text>
-  <text x="245" y="230" font-size="10">N</text>
+  <text x="245" y="120" font-size="12.5">L</text>
+  <text x="245" y="230" font-size="12.5">N</text>
   <line class="wire" x1="105" y1="150" x2="230" y2="220"/>
   <line class="earth" x1="70" y1="200" x2="230" y2="200"/>
-  <text x="245" y="204" font-size="10" class="grn">E</text>
+  <text x="245" y="204" font-size="12.5" class="grn">E</text>
 
   <!-- power sockets -->
   <g>
     <rect class="box" x="430" y="95" width="70" height="45"/>
-    <text x="465" y="88" text-anchor="middle" font-size="10" class="grn">E</text>
-    <text x="440" y="122" font-size="10">N</text>
-    <text x="490" y="122" font-size="10">L</text>
-    <text x="465" y="158" text-anchor="middle" font-size="10">power socket</text>
+    <text x="465" y="88" text-anchor="middle" font-size="12.5" class="grn">E</text>
+    <text x="440" y="122" font-size="12.5">N</text>
+    <text x="490" y="122" font-size="12.5">L</text>
+    <text x="465" y="158" text-anchor="middle" font-size="12.5">power socket</text>
   </g>
   <g>
     <rect class="box" x="430" y="185" width="70" height="45"/>
-    <text x="465" y="178" text-anchor="middle" font-size="10" class="grn">E</text>
-    <text x="440" y="212" font-size="10">N</text>
-    <text x="490" y="212" font-size="10">L</text>
-    <text x="465" y="248" text-anchor="middle" font-size="10">power socket</text>
+    <text x="465" y="178" text-anchor="middle" font-size="12.5" class="grn">E</text>
+    <text x="440" y="212" font-size="12.5">N</text>
+    <text x="490" y="212" font-size="12.5">L</text>
+    <text x="465" y="248" text-anchor="middle" font-size="12.5">power socket</text>
   </g>
 
   <!-- appliances -->
   <rect class="app" x="560" y="80" width="60" height="55" rx="3"/>
-  <text x="590" y="112" text-anchor="middle" font-size="11">oven</text>
+  <text x="590" y="112" text-anchor="middle" font-size="13.5">oven</text>
   <rect class="app" x="560" y="180" width="60" height="55" rx="3"/>
-  <text x="590" y="212" text-anchor="middle" font-size="11">kettle</text>
+  <text x="590" y="212" text-anchor="middle" font-size="13.5">kettle</text>
 
-  <text x="320" y="330" text-anchor="middle" font-size="11">Complete the L, N and E connections from the ring main to each socket and appliance.</text>
+  <text x="320" y="330" text-anchor="middle" font-size="13.5">Complete the L, N and E connections from the ring main to each socket and appliance.</text>
 </svg>

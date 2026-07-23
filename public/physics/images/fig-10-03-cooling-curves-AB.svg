@@ -5,7 +5,7 @@
     .A { stroke:#6FB7E0; stroke-width:2; fill:none; }
     .B { stroke:#E8B65A; stroke-width:2; fill:none; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
-    .s { font-size:12px; }
+    .s { font-size:14px; }
   </style>
   <!-- axes -->
   <path class="ax" d="M70,40 L70,250 L390,250"/>
@@ -19,9 +19,9 @@
   <!-- curve B: steeper (lower c) -->
   <path class="B" d="M90,70 C140,150 210,195 360,215"/>
   <!-- labels -->
-  <text class="s" fill="#6FB7E0" x="300" y="150">A — less steep (higher c)</text>
-  <path class="lead" d="M298,154 L270,158"/>
-  <text class="s" fill="#E8B65A" x="250" y="230">B — steeper (lower c)</text>
-  <path class="lead" d="M248,226 L235,214"/>
-  <text class="s" x="120" y="285" text-anchor="middle">Same mass, cooled under the same conditions</text>
+  <text class="s" fill="#6FB7E0" x="190" y="118">A: less steep (higher c)</text>
+  <path class="lead" d="M245,124 L245,142"/>
+  <text class="s" fill="#E8B65A" x="235" y="243">B: steeper (lower c)</text>
+  <path class="lead" d="M280,230 L272,212"/>
+  <text class="s" x="185" y="290" text-anchor="middle">Same mass, cooled under the same conditions</text>
 </svg>

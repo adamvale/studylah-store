@@ -6,7 +6,7 @@
     .coil { stroke:#6FB7E0; stroke-width:1.8; fill:none; }
     .slide { fill:#E8B65A; fill-opacity:0.35; stroke:#E8B65A; stroke-width:1.6; }
     .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
-    .lbl { font-size:12px; }
+    .lbl { font-size:14px; }
   </style>
   <!-- metal rod carrying the resistance coil -->
   <rect class="rod" x="90" y="150" width="260" height="26"/>

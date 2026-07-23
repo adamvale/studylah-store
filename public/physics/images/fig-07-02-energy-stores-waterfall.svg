@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 340" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .cliff { fill:#9AA0A6; opacity:0.18; stroke:#9AA0A6; stroke-width:1.4; }
     .water { stroke:#6FB7E0; stroke-width:2; fill:none; }
     .drop { stroke:#6FB7E0; stroke-width:1.4; fill:none; opacity:0.8; }
     .wheel { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
-    .lbl { fill:#E8B65A; font-size:12px; }
+    .lbl { fill:#E8B65A; font-size:13px; }
     .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
-    .store { fill:#86C98B; font-size:11px; }
+    .store { fill:#86C98B; font-size:12px; }
   </style>
   <!-- cliff body -->
   <path class="cliff" d="M120,90 L250,90 L250,300 L120,300 Z"/>

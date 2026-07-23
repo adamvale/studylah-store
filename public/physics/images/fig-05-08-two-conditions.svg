@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 230" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 250" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
     .beam { fill:#EAEAEA; opacity:0.22; stroke:#EAEAEA; stroke-width:1.6; }
     .up { stroke:#86C98B; stroke-width:2.4; fill:none; }
     .down { stroke:#E58F8F; stroke-width:2.4; fill:none; }
     .dim { stroke:#9AA0A6; stroke-width:1.3; fill:none; }
-    .lbl { font-size:13px; }
+    .lbl { font-size:14px; }
   </style>
   <rect class="beam" x="60" y="110" width="340" height="10"/>
   <!-- up forces at ends -->
@@ -31,5 +31,6 @@
   <line class="dim" x1="90" y1="120" x2="90" y2="145" stroke-dasharray="3 3"/>
   <line class="dim" x1="258" y1="120" x2="258" y2="145" stroke-dasharray="3 3"/>
   <line class="dim" x1="370" y1="120" x2="370" y2="145" stroke-dasharray="3 3"/>
-  <text class="lbl" x="230" y="216" text-anchor="middle" font-size="12">No resultant force (4 + 6 = 10) and no resultant moment → equilibrium</text>
+  <text class="lbl" x="230" y="222" text-anchor="middle" font-size="13">No resultant force (4 + 6 = 10) and no resultant moment,</text>
+  <text class="lbl" x="230" y="241" text-anchor="middle" font-size="13">so the beam is in equilibrium</text>
 </svg>

@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 250" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .tank { fill:none; stroke:#EAEAEA; stroke-width:2; }
     .liq { fill:#6FB7E0; opacity:0.18; }
     .obj { fill:#E8B65A; opacity:0.40; stroke:#E8B65A; stroke-width:1.4; }
     .arrow { stroke:#E58F8F; stroke-width:2; }
     .depth { stroke:#E8B65A; stroke-width:1.5; }
-    .lbl { font-size:11px; }
+    .lbl { font-size:12px; }
     .lead { stroke:#9AA0A6; stroke-width:1; }
   </style>
   <!-- air region -->

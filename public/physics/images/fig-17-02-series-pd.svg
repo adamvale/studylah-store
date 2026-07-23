@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 280" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="50 10 450 280" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
     .wire { fill:none; stroke:#EAEAEA; stroke-width:2; }
@@ -21,7 +21,7 @@
   <!-- resistor R2 on right side (vertical) -->
   <rect class="res" x="396" y="105" width="28" height="46"/>
   <!-- voltmeter V2 across R2 -->
-  <path class="lead" d="M424,128 L470,128"/>
+  <path class="lead" d="M410,90 L470,90 L470,113"/>
   <path class="lead" d="M410,175 L470,175 L470,143"/>
   <circle class="meter" cx="470" cy="128" r="15"/>
   <text x="470" y="133" text-anchor="middle" font-size="13">V</text>

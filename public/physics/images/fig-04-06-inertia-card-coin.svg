@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 240" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 450" font-family="Segoe UI, Arial, sans-serif">
   <defs>
     <marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/>
@@ -16,17 +16,18 @@
     .drop { stroke:#86C98B; stroke-width:2; stroke-dasharray:5 4; }
   </style>
   <!-- Panel 1: before -->
-  <text x="150" y="30" text-anchor="middle" font-size="13" font-weight="bold">Flick the card away quickly</text>
-  <path class="glass" d="M110,190 L110,140 L190,140 L190,190"/>
-  <rect class="card" x="95" y="122" width="120" height="12"/>
-  <ellipse class="coin" cx="150" cy="116" rx="20" ry="7"/>
-  <line class="flick" x1="215" y1="128" x2="290" y2="128" marker-end="url(#arw)"/>
-  <text x="250" y="118" text-anchor="middle" font-size="12" fill="#E8B65A">flick</text>
+  <text x="210" y="32" text-anchor="middle" font-size="14" font-weight="bold">Flick the card away quickly</text>
+  <path class="glass" d="M170,190 L170,140 L250,140 L250,190"/>
+  <rect class="card" x="155" y="122" width="120" height="12"/>
+  <ellipse class="coin" cx="210" cy="116" rx="20" ry="7"/>
+  <line class="flick" x1="282" y1="128" x2="360" y2="128" marker-end="url(#arw)"/>
+  <text x="320" y="116" text-anchor="middle" font-size="13" fill="#E8B65A">flick</text>
+  <line x1="40" y1="215" x2="380" y2="215" stroke="#9AA0A6" stroke-width="1" stroke-dasharray="4 4"/>
   <!-- Panel 2: after -->
-  <text x="430" y="30" text-anchor="middle" font-size="13" font-weight="bold">Coin drops into the glass</text>
-  <path class="glass" d="M390,190 L390,140 L470,140 L470,190"/>
-  <ellipse class="coin" cx="430" cy="165" rx="20" ry="7"/>
-  <line class="drop" x1="430" y1="120" x2="430" y2="155" marker-end="url(#arwd)"/>
-  <text x="530" y="215" text-anchor="end" font-size="12">The coin's inertia keeps it in place, then it falls straight down.</text>
-  <line x1="320" y1="40" x2="320" y2="200" stroke="#9AA0A6" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="210" y="252" text-anchor="middle" font-size="14" font-weight="bold">Coin drops into the glass</text>
+  <path class="glass" d="M170,390 L170,340 L250,340 L250,390"/>
+  <ellipse class="coin" cx="210" cy="365" rx="20" ry="7"/>
+  <line class="drop" x1="210" y1="300" x2="210" y2="352" marker-end="url(#arwd)"/>
+  <text x="210" y="420" text-anchor="middle" font-size="13">The coin's inertia keeps it in place,</text>
+  <text x="210" y="438" text-anchor="middle" font-size="13">then it falls straight down.</text>
 </svg>

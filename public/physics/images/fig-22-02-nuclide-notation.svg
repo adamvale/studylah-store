@@ -7,7 +7,7 @@
     .blue { fill:#6FB7E0; }
     .green { fill:#86C98B; }
     .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
-    .note { font-size:13px; }
+    .note { font-size:14px; }
   </style>
   <!-- notation A/Z X -->
   <text class="num amber" x="150" y="105" text-anchor="end">A</text>
@@ -17,7 +17,7 @@
   <!-- A leader -->
   <path class="lead" d="M158,95 L300,70"/>
   <text class="amber note" x="305" y="66">A = nucleon (mass) number</text>
-  <text class="note" x="305" y="86">= number of protons + neutrons</text>
+  <text class="note" x="305" y="86">= protons + neutrons</text>
 
   <!-- Z leader -->
   <path class="lead" d="M158,168 L300,190"/>
@@ -26,7 +26,7 @@
 
   <!-- X leader -->
   <path class="lead" d="M225,150 L300,130"/>
-  <text class="green note" x="305" y="134">X = chemical symbol of the element</text>
+  <text class="green note" x="305" y="134">X = chemical symbol</text>
 
   <text class="note" x="60" y="235">Number of neutrons = A − Z</text>
 </svg>

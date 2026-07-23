@@ -1,66 +1,59 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 540" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
     .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.5; }
     .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.5; }
-    .pole { font-size:13px; font-weight:bold; fill:#EAEAEA; }
+    .pole { font-size:14px; font-weight:bold; fill:#EAEAEA; }
     .nail { stroke:#EAEAEA; stroke-width:2.4; fill:none; }
-    .small { font-size:12px; fill:#EAEAEA; }
-    .lbl { fill:#E8B65A; font-size:12.5px; }
-    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+    .small { font-size:13px; fill:#EAEAEA; }
+    .lbl { fill:#E8B65A; font-size:14px; }
     .flow { stroke:#86C98B; stroke-width:2.2; fill:none; }
   </style>
 
-  <!-- LEFT: magnet holding a chain of induced nails -->
-  <text x="30" y="30" font-size="13" font-weight="bold">Magnet attached: nails hang in a chain</text>
-  <!-- horizontal magnet, S left N right, chain hangs from N pole -->
-  <g transform="translate(40,50)">
+  <!-- PANEL 1: magnet holding a chain of induced nails -->
+  <text x="24" y="28" font-size="15" font-weight="bold">Magnet attached: nails hang in a chain</text>
+  <!-- horizontal magnet, S left N right, chain hangs below the N end -->
+  <g transform="translate(40,48)">
     <rect class="magS" x="0" y="0" width="80" height="30" rx="2"/>
     <rect class="magN" x="80" y="0" width="80" height="30" rx="2"/>
     <text class="pole" x="12" y="20">S</text>
     <text class="pole" x="148" y="20">N</text>
   </g>
-  <!-- nail 1 hanging below N pole -->
-  <g class="nail" transform="translate(160,80)">
-    <line x1="0" y1="0" x2="0" y2="40"/>
-  </g>
-  <text class="small" x="168" y="92">N</text>
-  <text class="small" x="168" y="118">S</text>
+  <!-- nail 1: top end (next to the magnet's N pole) is induced S -->
+  <line class="nail" x1="160" y1="78" x2="160" y2="118"/>
+  <text class="small" x="168" y="90">S</text>
+  <text class="small" x="168" y="116">N</text>
   <!-- nail 2 -->
-  <g class="nail" transform="translate(160,125)">
-    <line x1="0" y1="0" x2="0" y2="40"/>
-  </g>
-  <text class="small" x="168" y="137">N</text>
-  <text class="small" x="168" y="163">S</text>
+  <line class="nail" x1="160" y1="123" x2="160" y2="163"/>
+  <text class="small" x="168" y="135">S</text>
+  <text class="small" x="168" y="161">N</text>
   <!-- nail 3 -->
-  <g class="nail" transform="translate(160,170)">
-    <line x1="0" y1="0" x2="0" y2="40"/>
-  </g>
-  <text class="small" x="168" y="182">N</text>
-  <text class="small" x="168" y="208">S</text>
-  <text x="200" y="150" class="lbl">each nail becomes an</text>
-  <text x="200" y="166" class="lbl">induced magnet and holds</text>
-  <text x="200" y="182" class="lbl">up the next nail</text>
+  <line class="nail" x1="160" y1="168" x2="160" y2="208"/>
+  <text class="small" x="168" y="180">S</text>
+  <text class="small" x="168" y="206">N</text>
+  <text x="200" y="140" class="lbl">each nail becomes an</text>
+  <text x="200" y="156" class="lbl">induced magnet and holds</text>
+  <text x="200" y="172" class="lbl">up the next nail</text>
 
-  <!-- arrow right -->
-  <g class="flow" transform="translate(300,240)">
-    <line x1="0" y1="0" x2="40" y2="0"/>
-    <polygon fill="#86C98B" points="40,-7 40,7 54,0"/>
+  <!-- arrow down -->
+  <g class="flow">
+    <line x1="160" y1="228" x2="160" y2="272"/>
+    <polygon fill="#86C98B" points="153,272 167,272 160,286"/>
   </g>
-  <text x="300" y="228" font-size="12.5" fill="#86C98B">magnet removed</text>
+  <text x="180" y="258" font-size="14" fill="#86C98B">magnet removed</text>
 
-  <!-- RIGHT: nails fall apart -->
-  <text x="380" y="30" font-size="13" font-weight="bold">Magnet removed: nails fall apart</text>
-  <g class="nail" transform="translate(430,90)">
+  <!-- PANEL 2: nails fall apart -->
+  <text x="24" y="330" font-size="15" font-weight="bold">Magnet removed: nails fall apart</text>
+  <g class="nail" transform="translate(90,365)">
     <line x1="0" y1="0" x2="30" y2="18" transform="rotate(-20)"/>
   </g>
-  <g class="nail" transform="translate(470,130)">
+  <g class="nail" transform="translate(160,395)">
     <line x1="0" y1="0" x2="32" y2="0" transform="rotate(35)"/>
   </g>
-  <g class="nail" transform="translate(440,175)">
+  <g class="nail" transform="translate(110,430)">
     <line x1="0" y1="0" x2="34" y2="0" transform="rotate(-10)"/>
   </g>
-  <text x="380" y="215" class="lbl">the induced magnetism is lost, so</text>
-  <text x="380" y="231" class="lbl">the nails separate — induction is</text>
-  <text x="380" y="247" class="lbl">only temporary</text>
+  <text x="30" y="478" class="lbl">the induced magnetism is lost, so</text>
+  <text x="30" y="494" class="lbl">the nails separate, induction is</text>
+  <text x="30" y="510" class="lbl">only temporary</text>
 </svg>

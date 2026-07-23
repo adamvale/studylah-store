@@ -6,7 +6,7 @@
     .pole { font-size:16px; font-weight:bold; fill:#EAEAEA; }
     .fl { stroke:#6FB7E0; stroke-width:1.6; fill:none; }
     .fhead { fill:#6FB7E0; }
-    .lbl { fill:#E8B65A; font-size:12.5px; }
+    .lbl { fill:#E8B65A; font-size:15px; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
   </style>
 
@@ -47,15 +47,15 @@
   <text class="pole" x="425" y="207">S</text>
 
   <!-- labels -->
-  <text x="360" y="55" class="lbl">field lines point OUT of the N pole and INTO the S pole</text>
-  <text x="30" y="200" class="lbl">lines crowd</text>
-  <text x="30" y="216" class="lbl">near the poles</text>
-  <text x="30" y="232" class="lbl">(field strongest)</text>
-  <path class="lead" d="M110,210 L248,200"/>
+  <text x="350" y="34" text-anchor="middle" class="lbl">field lines point OUT of the N pole and INTO the S pole</text>
+  <text x="30" y="196" class="lbl">lines crowd</text>
+  <text x="30" y="215" class="lbl">near the poles</text>
+  <text x="30" y="234" class="lbl">(field strongest)</text>
+  <path class="lead" d="M140,218 L248,202"/>
 
-  <text x="470" y="360" class="lbl">lines spread out here</text>
-  <text x="470" y="376" class="lbl">(field weakest)</text>
+  <text x="470" y="358" class="lbl">lines spread out here</text>
+  <text x="470" y="377" class="lbl">(field weakest)</text>
   <path class="lead" d="M468,368 L420,330"/>
 
-  <text x="350" y="405" text-anchor="middle" font-size="12.5">Field lines form continuous closed loops and never cross.</text>
+  <text x="350" y="405" text-anchor="middle" font-size="14.5">Field lines form continuous closed loops and never cross.</text>
 </svg>

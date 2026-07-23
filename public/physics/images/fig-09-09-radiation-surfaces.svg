@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 340" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 515 340" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .cell { stroke:#EAEAEA; stroke-width:1.4; }
     .axis { stroke:#9AA0A6; stroke-width:1.6; fill:none; }
-    .head { fill:#EAEAEA; font-size:12px; text-anchor:middle; }
+    .head { fill:#EAEAEA; font-size:14px; text-anchor:middle; }
     .good { fill:#86C98B; font-weight:bold; }
     .poor { fill:#E58F8F; font-weight:bold; }
   </style>

@@ -7,13 +7,13 @@
     .force { stroke:#E58F8F; stroke-width:2.4; fill:none; }
     .weight { fill:#6FB7E0; opacity:0.3; stroke:#6FB7E0; stroke-width:1.4; }
     .dim { stroke:#9AA0A6; stroke-width:1.3; fill:none; }
-    .lbl { font-size:12px; }
+    .lbl { font-size:14px; }
   </style>
   <!-- support post -->
   <rect class="post" x="120" y="95" width="20" height="90"/>
   <!-- pivot -->
   <circle class="pin" cx="130" cy="95" r="5"/>
-  <text class="lbl" x="140" y="90">pivot</text>
+  <text class="lbl" x="142" y="86">pivot</text>
   <!-- barrier arm horizontal -->
   <rect class="arm" x="70" y="90" width="330" height="9"/>
   <!-- counterweight P on short (left) side -->

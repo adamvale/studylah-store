@@ -12,12 +12,12 @@
   </style>
   <line class="ground" x1="40" y1="130" x2="420" y2="130"/>
   <rect class="box" x="185" y="80" width="90" height="50"/>
-  <text x="230" y="110" text-anchor="middle" font-size="13">object</text>
+  <text x="230" y="110" text-anchor="middle" font-size="14">object</text>
   <!-- left force pointing right into box -->
   <line class="f" x1="95" y1="105" x2="180" y2="105" marker-end="url(#arw)"/>
-  <text x="120" y="95" text-anchor="middle" font-size="13">10 N</text>
+  <text x="120" y="95" text-anchor="middle" font-size="14">10 N</text>
   <!-- right force pointing left into box -->
   <line class="f" x1="365" y1="105" x2="280" y2="105" marker-end="url(#arw)"/>
-  <text x="345" y="95" text-anchor="middle" font-size="13">10 N</text>
-  <text x="230" y="170" text-anchor="middle" font-size="12.5" fill="#86C98B">Resultant force = 10 N + (&#8722;10 N) = 0 N &#8212; balanced</text>
+  <text x="345" y="95" text-anchor="middle" font-size="14">10 N</text>
+  <text x="230" y="170" text-anchor="middle" font-size="13.5" fill="#86C98B">Resultant force = 10 N + (&#8722;10 N) = 0 N (balanced)</text>
 </svg>

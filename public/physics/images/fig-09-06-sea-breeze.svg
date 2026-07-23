@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 300" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .sky { fill:none; }
     .land { fill:#E8B65A; opacity:0.20; stroke:#E8B65A; stroke-width:1.4; }
     .sea { fill:#6FB7E0; opacity:0.22; stroke:#6FB7E0; stroke-width:1.4; }
@@ -35,7 +35,7 @@
   <!-- cool sea breeze along surface toward land -->
   <path class="flow" d="M320,205 C260,222 190,220 135,208"/>
   <path class="flow" d="M152,201 L132,208 L151,215" fill="#EAEAEA"/>
-  <text class="warm" x="95" y="150">warm air rises</text>
+  <text class="warm" x="142" y="150">warm air rises</text>
   <text class="cool" x="355" y="150">cool air sinks</text>
   <text class="lbl" x="230" y="200" text-anchor="middle">sea breeze (sea &#8594; land)</text>
 </svg>

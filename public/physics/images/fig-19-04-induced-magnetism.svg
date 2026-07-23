@@ -5,13 +5,13 @@
     .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.5; }
     .iron { fill:#9AA0A6; opacity:0.22; stroke:#EAEAEA; stroke-width:1.5; }
     .pole { font-size:14px; font-weight:bold; fill:#EAEAEA; }
-    .lbl { fill:#E8B65A; font-size:12.5px; }
+    .lbl { fill:#E8B65A; font-size:14px; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
     .flow { stroke:#86C98B; stroke-width:2.2; fill:none; }
   </style>
 
   <!-- BEFORE: iron bar just brought near N pole of permanent magnet -->
-  <text x="30" y="34" font-size="13" font-weight="bold">Step 1: a magnetic material is brought near a magnet</text>
+  <text x="30" y="34" font-size="15" font-weight="bold">Step 1: a magnetic material is brought near a magnet</text>
   <g transform="translate(30,55)">
     <rect class="magS" x="0" y="0" width="90" height="34" rx="2"/>
     <rect class="magN" x="90" y="0" width="90" height="34" rx="2"/>
@@ -29,10 +29,10 @@
     <line x1="0" y1="0" x2="0" y2="34"/>
     <polygon fill="#86C98B" points="-7,34 7,34 0,46"/>
   </g>
-  <text x="300" y="158" font-size="13" fill="#86C98B" font-weight="bold">magnetic induction</text>
+  <text x="300" y="158" font-size="15" fill="#86C98B" font-weight="bold">magnetic induction</text>
 
   <!-- AFTER: iron becomes induced magnet; near end gets opposite pole (S), far end N -->
-  <text x="30" y="212" font-size="13" font-weight="bold">Step 2: the material becomes an induced magnet</text>
+  <text x="30" y="212" font-size="15" font-weight="bold">Step 2: the material becomes an induced magnet</text>
   <g transform="translate(30,233)">
     <rect class="magS" x="0" y="0" width="90" height="34" rx="2"/>
     <rect class="magN" x="90" y="0" width="90" height="34" rx="2"/>
@@ -46,8 +46,8 @@
     <text class="pole" x="30" y="22">S</text>
     <text class="pole" x="118" y="22">N</text>
   </g>
-  <text x="410" y="244" class="lbl">induced magnet:</text>
-  <text x="410" y="260" class="lbl">the near end takes</text>
-  <text x="410" y="276" class="lbl">the opposite pole (S).</text>
+  <text x="395" y="244" class="lbl">induced magnet:</text>
+  <text x="395" y="260" class="lbl">the near end takes</text>
+  <text x="395" y="276" class="lbl">the opposite pole (S)</text>
   <text x="30" y="300" class="lbl">unlike poles now face each other, so the bar is attracted</text>
 </svg>

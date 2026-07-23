@@ -1,68 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 940" font-family="Segoe UI, Arial, sans-serif">
   <defs>
     <marker id="ah12" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
       <path d="M0,0 L6,3 L0,6 Z" fill="#E8B65A"/>
     </marker>
   </defs>
   <style>
-    text { fill:#EAEAEA; font-size:11px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .sphere { fill:#9AA0A6; opacity:0.2; stroke:#EAEAEA; stroke-width:1.5; }
     .stand { fill:none; stroke:#9AA0A6; stroke-width:1.6; }
     .wire { stroke:#EAEAEA; stroke-width:1.4; fill:none; }
     .rodn { fill:#6FB7E0; opacity:0.18; stroke:#6FB7E0; stroke-width:1.4; }
-    .pos { fill:#E58F8F; font-size:12px; text-anchor:middle; }
-    .neg { fill:#6FB7E0; font-size:13px; text-anchor:middle; }
-    .flow { stroke:#E8B65A; stroke-width:1.6; fill:none; }
-    .hd { font-size:12px; font-weight:bold; }
+    .posq { fill:#E58F8F; font-size:14px; text-anchor:middle; }
+    .neg { fill:#6FB7E0; font-size:15px; text-anchor:middle; }
+    .flow { stroke:#E8B65A; stroke-width:1.8; fill:none; }
+    .hd { font-size:14px; font-weight:bold; }
   </style>
-
-  <!-- ground symbol helper positions -->
   <!-- STEP 1 -->
-  <text x="80" y="30" class="hd">1. Neutral sphere</text>
-  <circle class="sphere" cx="80" cy="90" r="34"/>
-  <line class="stand" x1="80" y1="124" x2="80" y2="170"/>
-  <rect x="66" y="170" width="28" height="8" fill="#9AA0A6" opacity="0.4"/>
-  <!-- earth wire -->
-  <path class="wire" d="M114,90 L150,90 L150,200"/>
-  <line class="wire" x1="138" y1="200" x2="162" y2="200"/>
-  <line class="wire" x1="142" y1="206" x2="158" y2="206"/>
-  <line class="wire" x1="146" y1="212" x2="154" y2="212"/>
-  <text x="120" y="240">on insulating stand,</text>
-  <text x="120" y="254">earth wire attached</text>
-
+  <text x="30" y="40" class="hd">1. Neutral sphere, earth wire attached</text>
+  <circle class="sphere" cx="140" cy="125" r="40"/>
+  <line class="stand" x1="140" y1="165" x2="140" y2="205"/>
+  <rect x="120" y="205" width="40" height="8" fill="#9AA0A6" opacity="0.4"/>
+  <path class="wire" d="M180,125 L230,125 L230,198"/>
+  <line class="wire" x1="215" y1="198" x2="245" y2="198"/>
+  <line class="wire" x1="220" y1="205" x2="240" y2="205"/>
+  <line class="wire" x1="225" y1="212" x2="235" y2="212"/>
+  <text x="262" y="115">on an insulating stand,</text>
+  <text x="262" y="133">connected to earth</text>
   <!-- STEP 2 -->
-  <text x="345" y="30" class="hd">2. Rod brought near</text>
-  <rect class="rodn" x="235" y="60" width="90" height="18" rx="5"/>
-  <text class="neg" x="255" y="74">&#8722;</text><text class="neg" x="280" y="74">&#8722;</text><text class="neg" x="305" y="74">&#8722;</text>
-  <circle class="sphere" cx="380" cy="110" r="34"/>
-  <text class="pos" x="362" y="100">+</text><text class="pos" x="362" y="120">+</text>
-  <text class="neg" x="400" y="100">&#8722;</text><text class="neg" x="400" y="120">&#8722;</text>
-  <line class="stand" x1="380" y1="144" x2="380" y2="185"/>
-  <rect x="366" y="185" width="28" height="8" fill="#9AA0A6" opacity="0.4"/>
-  <path class="wire" d="M414,110 L450,110 L450,210"/>
-  <line class="wire" x1="438" y1="210" x2="462" y2="210"/>
-  <line class="wire" x1="442" y1="216" x2="458" y2="216"/>
-  <!-- electrons flow down to earth -->
-  <path class="flow" d="M448,150 L448,205" marker-end="url(#ah12)"/>
-  <text x="455" y="175" fill="#E8B65A">e&#8315;</text>
-  <text x="300" y="270">charges separate; electrons</text>
-  <text x="300" y="284">flow to earth (sphere +)</text>
-
+  <text x="30" y="262" class="hd">2. Negative rod brought near</text>
+  <rect class="rodn" x="45" y="290" width="125" height="20" rx="6"/>
+  <text class="neg" x="72" y="305">−</text><text class="neg" x="105" y="305">−</text><text class="neg" x="138" y="305">−</text>
+  <circle class="sphere" cx="260" cy="345" r="40"/>
+  <text class="posq" x="234" y="338">+</text>
+  <text class="posq" x="238" y="362">+</text>
+  <line class="stand" x1="260" y1="385" x2="260" y2="425"/>
+  <rect x="240" y="425" width="40" height="8" fill="#9AA0A6" opacity="0.4"/>
+  <path class="wire" d="M300,345 L350,345 L350,418"/>
+  <line class="wire" x1="335" y1="418" x2="365" y2="418"/>
+  <line class="wire" x1="340" y1="425" x2="360" y2="425"/>
+  <line class="wire" x1="345" y1="432" x2="355" y2="432"/>
+  <path class="flow" d="M357,360 L357,410" marker-end="url(#ah12)"/>
+  <text x="368" y="390" fill="#E8B65A">e⁻</text>
+  <text x="30" y="460">electrons are repelled to earth; sphere is left positive</text>
   <!-- STEP 3 -->
-  <text x="80" y="330" class="hd">3. Cut earth wire</text>
-  <!-- reuse lower-left area -->
-  <rect class="rodn" x="15" y="300" width="70" height="16" rx="5"/>
-  <text class="neg" x="35" y="313">&#8722;</text><text class="neg" x="60" y="313">&#8722;</text>
-  <circle class="sphere" cx="120" cy="345" r="26"/>
-  <text class="pos" x="112" y="350">+</text><text class="pos" x="128" y="342">+</text>
-  <line class="wire" x1="146" y1="345" x2="170" y2="345"/>
-  <line class="wire" x1="160" y1="338" x2="172" y2="352" stroke="#E58F8F"/>
-  <text x="150" y="372" font-size="10">earth wire cut</text>
-
+  <text x="30" y="510" class="hd">3. Earth wire removed (rod still near)</text>
+  <rect class="rodn" x="45" y="538" width="125" height="20" rx="6"/>
+  <text class="neg" x="72" y="553">−</text><text class="neg" x="105" y="553">−</text><text class="neg" x="138" y="553">−</text>
+  <circle class="sphere" cx="260" cy="595" r="40"/>
+  <text class="posq" x="234" y="588">+</text>
+  <text class="posq" x="238" y="612">+</text>
+  <line class="stand" x1="260" y1="635" x2="260" y2="675"/>
+  <rect x="240" y="675" width="40" height="8" fill="#9AA0A6" opacity="0.4"/>
+  <line class="wire" x1="300" y1="595" x2="332" y2="595"/>
+  <line x1="325" y1="583" x2="342" y2="607" stroke="#E58F8F" stroke-width="1.8"/>
+  <text x="352" y="600" font-size="12">wire cut</text>
+  <text x="30" y="710">sphere keeps its positive charge</text>
   <!-- STEP 4 -->
-  <text x="360" y="330" class="hd">4. Remove rod &#8594; sphere positive</text>
-  <circle class="sphere" cx="400" cy="352" r="26"/>
-  <text class="pos" x="392" y="348">+</text><text class="pos" x="410" y="348">+</text><text class="pos" x="400" y="365">+</text>
-  <line class="stand" x1="400" y1="378" x2="400" y2="380"/>
-  <text x="440" y="356" fill="#E58F8F">left positively charged</text>
+  <text x="30" y="760" class="hd">4. Rod removed</text>
+  <circle class="sphere" cx="230" cy="835" r="40"/>
+  <text class="posq" x="212" y="825">+</text>
+  <text class="posq" x="248" y="825">+</text>
+  <text class="posq" x="230" y="858">+</text>
+  <line class="stand" x1="230" y1="875" x2="230" y2="905"/>
+  <rect x="210" y="905" width="40" height="8" fill="#9AA0A6" opacity="0.4"/>
+  <text x="30" y="932">the sphere is left positively charged all over</text>
 </svg>

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 190" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:14px; }
     .floor { stroke:#EAEAEA; stroke-width:2; fill:none; }
     .pool { fill:#6FB7E0; opacity:0.32; stroke:#6FB7E0; stroke-width:1.4; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }

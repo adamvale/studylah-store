@@ -3,15 +3,15 @@
     text { fill:#EAEAEA; }
     .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.5; }
     .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.5; }
-    .pole { font-size:14px; font-weight:bold; fill:#EAEAEA; }
+    .pole { font-size:15px; font-weight:bold; fill:#EAEAEA; }
     .force { stroke:#86C98B; stroke-width:2.4; fill:none; }
     .fhead { fill:#86C98B; }
-    .title { font-size:14px; font-weight:bold; }
-    .sub { font-size:12.5px; fill:#9AA0A6; }
+    .title { font-size:16px; font-weight:bold; }
+    .sub { font-size:14.5px; fill:#9AA0A6; }
   </style>
 
   <!-- ===== Case 1: unlike poles attract ===== -->
-  <text x="30" y="40" class="title">Unlike poles — attraction</text>
+  <text x="30" y="40" class="title">Unlike poles: attraction</text>
   <!-- left magnet N | S  -->
   <g transform="translate(30,60)">
     <rect class="magN" x="0" y="0" width="90" height="34" rx="2"/>
@@ -34,7 +34,7 @@
   <text x="320" y="110" text-anchor="middle" class="sub">forces pull the magnets together</text>
 
   <!-- ===== Case 2: like poles (N-N) repel ===== -->
-  <text x="30" y="185" class="title">Like poles — repulsion</text>
+  <text x="30" y="185" class="title">Like poles: repulsion</text>
   <g transform="translate(30,205)">
     <rect class="magN" x="0" y="0" width="90" height="34" rx="2"/>
     <rect class="magS" x="90" y="0" width="90" height="34" rx="2"/>
@@ -55,7 +55,7 @@
   <text x="320" y="255" text-anchor="middle" class="sub">forces push the magnets apart</text>
 
   <!-- ===== Case 3: like poles (S-S) repel ===== -->
-  <text x="30" y="315" class="title">Like poles — repulsion (S facing S)</text>
+  <text x="30" y="315" class="title">Like poles: repulsion (S facing S)</text>
   <g transform="translate(30,330)">
     <rect class="magN" x="0" y="0" width="90" height="34" rx="2"/>
     <rect class="magS" x="90" y="0" width="90" height="34" rx="2"/>

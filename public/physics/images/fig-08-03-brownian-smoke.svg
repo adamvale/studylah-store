@@ -5,7 +5,7 @@
     .path { stroke:#E8B65A; stroke-width:1.6; fill:none; }
     .smoke { fill:#EAEAEA; }
     .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
-    .lbl { font-size:12px; }
+    .lbl { font-size:15px; }
     .amber { fill:#E8B65A; }
   </style>
   <!-- microscope field of view -->
@@ -30,12 +30,13 @@
   <circle class="smoke" cx="235" cy="105" r="3.5"/>
 
   <!-- labels -->
-  <text class="lbl amber" x="20" y="240">smoke particle</text>
-  <path class="lead" d="M70,236 L127,220"/>
+  <text class="lbl amber" x="105" y="290" text-anchor="middle">smoke particle</text>
+  <path class="lead" d="M115,276 L129,226"/>
 
-  <text class="lbl amber" x="320" y="120">bright specks move</text>
-  <text class="lbl amber" x="320" y="138">in a jerky, zigzag path</text>
-  <path class="lead" d="M315,128 L252,160"/>
+  <text class="lbl amber" x="330" y="104">bright specks</text>
+  <text class="lbl amber" x="330" y="123">move in a jerky,</text>
+  <text class="lbl amber" x="330" y="142">zigzag path</text>
+  <path class="lead" d="M325,130 L252,162"/>
 
   <defs>
     <marker id="arw" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">

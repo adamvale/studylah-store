@@ -6,8 +6,8 @@
     .neutron { fill:#9AA0A6; opacity:0.9; stroke:#EAEAEA; stroke-width:0.8; }
     .electron { fill:#6FB7E0; stroke:#EAEAEA; stroke-width:0.8; }
     .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
-    .lbl { fill:#E8B65A; font-size:13px; }
-    .sym { fill:#EAEAEA; font-size:11px; }
+    .lbl { fill:#E8B65A; font-size:14px; }
+    .sym { fill:#EAEAEA; font-size:13px; }
   </style>
   <!-- electron shells -->
   <ellipse class="shell" cx="230" cy="180" rx="130" ry="130"/>
@@ -28,14 +28,15 @@
   <text class="lbl" x="395" y="55">electron</text>
   <path class="lead" d="M393,50 L238,50"/>
 
-  <text class="lbl" x="395" y="185">electron shell (energy level)</text>
-  <path class="lead" d="M392,181 L360,180"/>
+  <text class="lbl" x="365" y="240">electron shell</text>
+  <text class="lbl" x="365" y="258">(energy level)</text>
+  <path class="lead" d="M363,244 L332,262"/>
 
-  <text class="lbl" x="40" y="120" text-anchor="end">nucleus</text>
-  <path class="lead" d="M45,116 L215,178"/>
+  <text class="lbl" x="8" y="105">nucleus</text>
+  <path class="lead" d="M62,108 L215,175"/>
 
-  <text class="lbl" x="40" y="250" text-anchor="end">proton (+)</text>
-  <path class="lead" d="M45,246 L211,190"/>
+  <text class="lbl" x="8" y="245">proton (+)</text>
+  <path class="lead" d="M62,240 L211,190"/>
   <circle class="proton" cx="70" cy="272" r="8"/>
   <text class="sym" x="86" y="276">+</text>
 

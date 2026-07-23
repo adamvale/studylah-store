@@ -6,7 +6,7 @@
     .pivot { fill:#E8B65A; stroke:#E8B65A; }
     .force { stroke:#E58F8F; stroke-width:2.4; fill:none; }
     .dim { stroke:#9AA0A6; stroke-width:1.3; fill:none; }
-    .lbl { font-size:12px; }
+    .lbl { font-size:14px; }
   </style>
   <!-- wall on right -->
   <rect class="wall" x="370" y="40" width="20" height="120"/>
@@ -19,7 +19,7 @@
   <!-- plank hinged at wall -->
   <rect class="plank" x="80" y="95" width="290" height="10"/>
   <circle class="pivot" cx="368" cy="100" r="6"/>
-  <text class="lbl" x="360" y="128" text-anchor="middle">pivot (hinge)</text>
+  <text class="lbl" x="320" y="128" text-anchor="middle">pivot (hinge)</text>
   <!-- weight acts at centre -->
   <line class="force" x1="224" y1="105" x2="224" y2="150"/>
   <path class="force" d="M224,150 l-5,-10 M224,150 l5,-10"/>

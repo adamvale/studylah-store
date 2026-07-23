@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 570" font-family="Segoe UI, Arial, sans-serif">
   <defs>
     <marker id="a1" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#E8B65A"/></marker>
     <marker id="a2" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#6FB7E0"/></marker>
@@ -9,29 +9,27 @@
     .out { stroke:#6FB7E0; stroke-width:1.8; fill:none; }
     .smooth { stroke:#EAEAEA; stroke-width:2.4; }
     .rough { stroke:#EAEAEA; stroke-width:2; fill:none; }
-    .norm { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:4 4; }
   </style>
-  <text x="160" y="26" text-anchor="middle" font-size="14" font-weight="bold">Regular reflection</text>
-  <text x="480" y="26" text-anchor="middle" font-size="14" font-weight="bold">Diffuse (irregular) reflection</text>
-  <!-- Regular: smooth flat surface, parallel reflected rays -->
-  <line class="smooth" x1="60" y1="200" x2="270" y2="200"/>
-  <!-- three parallel incident rays hitting flat surface, all reflect parallel -->
-  <path class="inc" marker-end="url(#a1)" d="M70,70 L120,198"/>
-  <path class="inc" marker-end="url(#a1)" d="M140,70 L190,198"/>
-  <path class="inc" marker-end="url(#a1)" d="M210,70 L260,198"/>
-  <path class="out" marker-end="url(#a2)" d="M120,200 L170,72"/>
-  <path class="out" marker-end="url(#a2)" d="M190,200 L240,72"/>
-  <path class="out" marker-end="url(#a2)" d="M260,200 L310,72"/>
-  <text x="165" y="245" text-anchor="middle" font-size="12">Smooth surface: reflected rays</text>
-  <text x="165" y="262" text-anchor="middle" font-size="12">stay parallel.</text>
-  <!-- Diffuse: rough surface, scattered rays -->
-  <path class="rough" d="M380,205 L410,192 L440,208 L470,190 L500,206 L530,193 L560,205 L590,191"/>
-  <path class="inc" marker-end="url(#a1)" d="M400,70 L423,196"/>
-  <path class="inc" marker-end="url(#a1)" d="M460,70 L468,196"/>
-  <path class="inc" marker-end="url(#a1)" d="M520,70 L533,196"/>
-  <path class="out" marker-end="url(#a2)" d="M425,196 L470,74"/>
-  <path class="out" marker-end="url(#a2)" d="M468,196 L560,90"/>
-  <path class="out" marker-end="url(#a2)" d="M533,196 L505,72"/>
-  <text x="485" y="245" text-anchor="middle" font-size="12">Rough surface: reflected rays</text>
-  <text x="485" y="262" text-anchor="middle" font-size="12">scatter in different directions.</text>
+  <!-- Panel 1: regular reflection -->
+  <text x="230" y="28" text-anchor="middle" font-size="15" font-weight="bold">Regular reflection</text>
+  <line class="smooth" x1="135" y1="200" x2="345" y2="200"/>
+  <path class="inc" marker-end="url(#a1)" d="M145,70 L195,198"/>
+  <path class="inc" marker-end="url(#a1)" d="M215,70 L265,198"/>
+  <path class="inc" marker-end="url(#a1)" d="M285,70 L335,198"/>
+  <path class="out" marker-end="url(#a2)" d="M195,200 L245,72"/>
+  <path class="out" marker-end="url(#a2)" d="M265,200 L315,72"/>
+  <path class="out" marker-end="url(#a2)" d="M335,200 L385,72"/>
+  <text x="230" y="245" text-anchor="middle" font-size="14">Smooth surface: reflected rays</text>
+  <text x="230" y="263" text-anchor="middle" font-size="14">stay parallel.</text>
+  <!-- Panel 2: diffuse reflection -->
+  <text x="230" y="308" text-anchor="middle" font-size="15" font-weight="bold">Diffuse (irregular) reflection</text>
+  <path class="rough" d="M105,485 L135,472 L165,488 L195,470 L225,486 L255,473 L285,485 L315,471"/>
+  <path class="inc" marker-end="url(#a1)" d="M125,350 L148,476"/>
+  <path class="inc" marker-end="url(#a1)" d="M185,350 L193,476"/>
+  <path class="inc" marker-end="url(#a1)" d="M245,350 L258,476"/>
+  <path class="out" marker-end="url(#a2)" d="M150,476 L195,354"/>
+  <path class="out" marker-end="url(#a2)" d="M193,476 L285,370"/>
+  <path class="out" marker-end="url(#a2)" d="M258,476 L230,352"/>
+  <text x="230" y="525" text-anchor="middle" font-size="14">Rough surface: reflected rays</text>
+  <text x="230" y="543" text-anchor="middle" font-size="14">scatter in different directions.</text>
 </svg>

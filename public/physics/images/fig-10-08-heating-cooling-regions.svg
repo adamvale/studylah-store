@@ -1,45 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 640" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:14px; }
     .ax { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
     .hc { stroke:#6FB7E0; stroke-width:2.4; fill:none; }
     .cc { stroke:#E8B65A; stroke-width:2.4; fill:none; }
-    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
     .pt { fill:#EAEAEA; font-weight:bold; }
-    .ke { fill:#E58F8F; }
-    .pe { fill:#86C98B; }
-    .cap { fill:#EAEAEA; text-anchor:middle; font-size:13px; }
+    .ke { fill:#E58F8F; font-size:13.5px; }
+    .pe { fill:#86C98B; font-size:13.5px; }
+    .cap { fill:#EAEAEA; text-anchor:middle; font-size:14px; }
   </style>
 
-  <!-- LEFT heating -->
-  <path class="ax" d="M60,40 L60,270 L340,270"/>
-  <text x="60" y="30" text-anchor="middle">temperature/&#176;C</text>
-  <text x="312" y="288">time</text>
-  <path class="hc" d="M65,240 L120,170 L210,170 L270,90 L320,90"/>
-  <circle cx="120" cy="170" r="3" fill="#EAEAEA"/><circle cx="210" cy="170" r="3" fill="#EAEAEA"/>
-  <text class="pt" x="82" y="215">A</text>
-  <text class="pt" x="112" y="188">B</text>
-  <text class="pt" x="205" y="188">C</text>
-  <text class="ke" x="72" y="120">AB: KE rises</text>
-  <text class="ke" x="72" y="136">&#8594; temp changes</text>
-  <text class="pe" x="150" y="150">BC: PE rises</text>
-  <path class="lead" d="M168,154 L170,168"/>
-  <text class="pe" x="150" y="164">&#8594; temp constant</text>
-  <text class="cap" x="200" y="308">heating curve</text>
+  <!-- TOP: heating curve -->
+  <path class="ax" d="M60,40 L60,265 L440,265"/>
+  <text x="60" y="26" text-anchor="middle">temperature/&#176;C</text>
+  <text x="408" y="286">time</text>
+  <path class="hc" d="M65,235 L130,165 L230,165 L300,85 L360,85"/>
+  <circle cx="130" cy="165" r="3" fill="#EAEAEA"/><circle cx="230" cy="165" r="3" fill="#EAEAEA"/>
+  <text class="pt" x="84" y="210">A</text>
+  <text class="pt" x="116" y="187">B</text>
+  <text class="pt" x="232" y="187">C</text>
+  <text class="ke" x="72" y="105">AB: KE rises</text>
+  <text class="ke" x="72" y="122">&#8594; temp changes</text>
+  <text class="pe" x="128" y="140">BC: PE rises</text>
+  <text class="pe" x="128" y="157">&#8594; temp constant</text>
+  <text class="cap" x="240" y="302">heating curve</text>
 
-  <!-- RIGHT cooling -->
-  <path class="ax" d="M400,40 L400,270 L690,270"/>
-  <text x="400" y="30" text-anchor="middle">temperature/&#176;C</text>
-  <text x="662" y="288">time</text>
-  <path class="cc" d="M405,90 L455,170 L545,170 L605,240 L660,240"/>
-  <circle cx="455" cy="170" r="3" fill="#EAEAEA"/><circle cx="545" cy="170" r="3" fill="#EAEAEA"/>
-  <text class="pt" x="418" y="110">P</text>
-  <text class="pt" x="452" y="160">Q</text>
-  <text class="pt" x="548" y="160">R</text>
-  <text class="ke" x="470" y="115">PQ: KE falls</text>
-  <text class="ke" x="470" y="131">&#8594; temp changes</text>
-  <text class="pe" x="480" y="200">QR: PE falls</text>
-  <path class="lead" d="M498,196 L500,172"/>
-  <text class="pe" x="480" y="216">&#8594; temp constant</text>
-  <text class="cap" x="545" y="308">cooling curve</text>
+  <!-- BOTTOM: cooling curve -->
+  <path class="ax" d="M60,360 L60,585 L440,585"/>
+  <text x="60" y="346" text-anchor="middle">temperature/&#176;C</text>
+  <text x="408" y="606">time</text>
+  <path class="cc" d="M65,405 L125,485 L225,485 L290,558 L350,558"/>
+  <circle cx="125" cy="485" r="3" fill="#EAEAEA"/><circle cx="225" cy="485" r="3" fill="#EAEAEA"/>
+  <text class="pt" x="84" y="418">P</text>
+  <text class="pt" x="110" y="478">Q</text>
+  <text class="pt" x="230" y="478">R</text>
+  <text class="ke" x="155" y="425">PQ: KE falls</text>
+  <text class="ke" x="155" y="442">&#8594; temp changes</text>
+  <text class="pe" x="130" y="520">QR: PE falls</text>
+  <text class="pe" x="130" y="537">&#8594; temp constant</text>
+  <text class="cap" x="240" y="622">cooling curve</text>
 </svg>

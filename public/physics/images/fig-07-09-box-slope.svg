@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .slope { stroke:#EAEAEA; stroke-width:2; fill:none; }
     .fill { fill:#9AA0A6; opacity:0.12; stroke:none; }
     .block { fill:#6FB7E0; opacity:0.30; stroke:#6FB7E0; stroke-width:1.6; }
@@ -23,8 +23,8 @@
     <rect class="block" x="-22" y="-16" width="44" height="30"/>
   </g>
   <!-- push force up slope -->
-  <line class="force" x1="118" y1="187" x2="168" y2="163" marker-end="url(#fm3)"/>
-  <text class="lbl" x="120" y="145"><tspan font-style="italic">F</tspan></text>
+  <line class="force" x1="88" y1="176" x2="124" y2="160" marker-end="url(#fm3)"/>
+  <text class="lbl" x="98" y="150"><tspan font-style="italic">F</tspan></text>
   <!-- P label -->
   <text x="45" y="222" fill="#EAEAEA">P</text>
   <!-- slope length 6 m -->

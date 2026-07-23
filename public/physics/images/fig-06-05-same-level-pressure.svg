@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 230" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .vessel { fill:none; stroke:#EAEAEA; stroke-width:2; }
     .liq { fill:#6FB7E0; opacity:0.20; stroke:none; }
     .level { stroke:#9AA0A6; stroke-width:1.2; stroke-dasharray:5 3; }
     .depth { stroke:#E8B65A; stroke-width:1.6; }
-    .lbl { font-size:11px; }
+    .lbl { font-size:12px; }
   </style>
   <!-- main reservoir body -->
   <rect class="liq" x="40" y="70" width="400" height="110"/>
@@ -37,5 +37,5 @@
   <text x="445" y="64" class="lbl" fill="#E8B65A">same</text>
   <text x="445" y="168" class="lbl" fill="#E8B65A">depth</text>
 
-  <text x="240" y="205" text-anchor="middle" class="lbl">Same depth &#8594; same pressure, whatever the shape or width of the vessel</text>
+  <text x="240" y="205" text-anchor="middle" class="lbl">Same depth &#8594; same pressure, whatever the vessel shape</text>
 </svg>

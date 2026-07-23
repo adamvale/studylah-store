@@ -1,55 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 280" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 705" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
     .box { fill:none; stroke:#EAEAEA; stroke-width:1.8; }
     .p { fill:#6FB7E0; opacity:0.34; stroke:#6FB7E0; stroke-width:1.2; }
     .arr { stroke:#86C98B; stroke-width:1.4; fill:none; }
-    .title { font-size:15px; font-weight:bold; text-anchor:middle; }
-    .sub { font-size:11px; text-anchor:middle; fill:#9AA0A6; }
+    .title { font-size:18px; font-weight:bold; text-anchor:middle; }
+    .sub { font-size:14px; text-anchor:middle; fill:#9AA0A6; }
   </style>
 
   <!-- SOLID -->
-  <text class="title" x="110" y="30">Solid</text>
-  <rect class="box" x="30" y="45" width="160" height="150"/>
+  <text class="title" text-anchor="middle" x="150" y="28">Solid</text>
+  <rect class="box" x="70" y="40" width="160" height="150"/>
   <g class="p">
-    <circle cx="52" cy="67" r="12"/><circle cx="78" cy="67" r="12"/><circle cx="104" cy="67" r="12"/><circle cx="130" cy="67" r="12"/><circle cx="156" cy="67" r="12"/>
-    <circle cx="52" cy="93" r="12"/><circle cx="78" cy="93" r="12"/><circle cx="104" cy="93" r="12"/><circle cx="130" cy="93" r="12"/><circle cx="156" cy="93" r="12"/>
-    <circle cx="52" cy="119" r="12"/><circle cx="78" cy="119" r="12"/><circle cx="104" cy="119" r="12"/><circle cx="130" cy="119" r="12"/><circle cx="156" cy="119" r="12"/>
-    <circle cx="52" cy="145" r="12"/><circle cx="78" cy="145" r="12"/><circle cx="104" cy="145" r="12"/><circle cx="130" cy="145" r="12"/><circle cx="156" cy="145" r="12"/>
-    <circle cx="52" cy="171" r="12"/><circle cx="78" cy="171" r="12"/><circle cx="104" cy="171" r="12"/><circle cx="130" cy="171" r="12"/><circle cx="156" cy="171" r="12"/>
+    <circle cx="92" cy="62" r="12"/><circle cx="118" cy="62" r="12"/><circle cx="144" cy="62" r="12"/><circle cx="170" cy="62" r="12"/><circle cx="196" cy="62" r="12"/>
+    <circle cx="92" cy="88" r="12"/><circle cx="118" cy="88" r="12"/><circle cx="144" cy="88" r="12"/><circle cx="170" cy="88" r="12"/><circle cx="196" cy="88" r="12"/>
+    <circle cx="92" cy="114" r="12"/><circle cx="118" cy="114" r="12"/><circle cx="144" cy="114" r="12"/><circle cx="170" cy="114" r="12"/><circle cx="196" cy="114" r="12"/>
+    <circle cx="92" cy="140" r="12"/><circle cx="118" cy="140" r="12"/><circle cx="144" cy="140" r="12"/><circle cx="170" cy="140" r="12"/><circle cx="196" cy="140" r="12"/>
+    <circle cx="92" cy="166" r="12"/><circle cx="118" cy="166" r="12"/><circle cx="144" cy="166" r="12"/><circle cx="170" cy="166" r="12"/><circle cx="196" cy="166" r="12"/>
   </g>
-  <text class="sub" x="110" y="215">regular pattern, fixed positions</text>
-  <text class="sub" x="110" y="230">vibrate in place</text>
+  <text class="sub" text-anchor="middle" x="150" y="212">regular pattern, fixed positions</text>
+  <text class="sub" text-anchor="middle" x="150" y="230">vibrate in place</text>
 
   <!-- LIQUID -->
-  <text class="title" x="330" y="30">Liquid</text>
-  <rect class="box" x="250" y="45" width="160" height="150"/>
+  <text class="title" text-anchor="middle" x="150" y="258">Liquid</text>
+  <rect class="box" x="70" y="270" width="160" height="150"/>
   <g class="p">
-    <circle cx="272" cy="72" r="12"/><circle cx="300" cy="66" r="12"/><circle cx="330" cy="74" r="12"/><circle cx="362" cy="65" r="12"/><circle cx="390" cy="72" r="12"/>
-    <circle cx="268" cy="100" r="12"/><circle cx="298" cy="96" r="12"/><circle cx="326" cy="104" r="12"/><circle cx="356" cy="95" r="12"/><circle cx="388" cy="102" r="12"/>
-    <circle cx="276" cy="130" r="12"/><circle cx="306" cy="126" r="12"/><circle cx="338" cy="132" r="12"/><circle cx="368" cy="124" r="12"/><circle cx="394" cy="132" r="12"/>
-    <circle cx="270" cy="160" r="12"/><circle cx="300" cy="158" r="12"/><circle cx="332" cy="164" r="12"/><circle cx="362" cy="156" r="12"/><circle cx="392" cy="162" r="12"/>
+    <circle cx="92" cy="297" r="12"/><circle cx="120" cy="291" r="12"/><circle cx="150" cy="299" r="12"/><circle cx="182" cy="290" r="12"/><circle cx="210" cy="297" r="12"/>
+    <circle cx="88" cy="325" r="12"/><circle cx="118" cy="321" r="12"/><circle cx="146" cy="329" r="12"/><circle cx="176" cy="320" r="12"/><circle cx="208" cy="327" r="12"/>
+    <circle cx="96" cy="355" r="12"/><circle cx="126" cy="351" r="12"/><circle cx="158" cy="357" r="12"/><circle cx="188" cy="349" r="12"/><circle cx="214" cy="357" r="12"/>
+    <circle cx="90" cy="385" r="12"/><circle cx="120" cy="383" r="12"/><circle cx="152" cy="389" r="12"/><circle cx="182" cy="381" r="12"/><circle cx="212" cy="387" r="12"/>
   </g>
-  <text class="sub" x="330" y="215">close together but irregular</text>
-  <text class="sub" x="330" y="230">slide past one another</text>
+  <text class="sub" text-anchor="middle" x="150" y="442">close together but irregular</text>
+  <text class="sub" text-anchor="middle" x="150" y="460">slide past one another</text>
 
   <!-- GAS -->
-  <text class="title" x="550" y="30">Gas</text>
-  <rect class="box" x="470" y="45" width="160" height="150"/>
+  <text class="title" text-anchor="middle" x="150" y="488">Gas</text>
+  <rect class="box" x="70" y="500" width="160" height="150"/>
   <g class="p">
-    <circle cx="500" cy="72" r="12"/><circle cx="560" cy="64" r="12"/><circle cx="608" cy="86" r="12"/>
-    <circle cx="490" cy="120" r="12"/><circle cx="548" cy="108" r="12"/><circle cx="600" cy="132" r="12"/>
-    <circle cx="516" cy="168" r="12"/><circle cx="576" cy="158" r="12"/>
+    <circle cx="100" cy="527" r="12"/><circle cx="160" cy="519" r="12"/><circle cx="208" cy="541" r="12"/>
+    <circle cx="90" cy="575" r="12"/><circle cx="148" cy="563" r="12"/><circle cx="200" cy="587" r="12"/>
+    <circle cx="116" cy="623" r="12"/><circle cx="176" cy="613" r="12"/>
   </g>
   <g class="arr">
-    <path d="M500,72 l22,-14" marker-end="url(#a)"/>
-    <path d="M560,64 l-16,20" marker-end="url(#a)"/>
-    <path d="M600,132 l18,10" marker-end="url(#a)"/>
-    <path d="M490,120 l-10,18" marker-end="url(#a)"/>
-    <path d="M576,158 l20,-10" marker-end="url(#a)"/>
+    <path d="M100,527 l22,-14" marker-end="url(#a)"/>
+    <path d="M160,519 l-16,20" marker-end="url(#a)"/>
+    <path d="M200,587 l18,10" marker-end="url(#a)"/>
+    <path d="M90,575 l-10,18" marker-end="url(#a)"/>
+    <path d="M176,613 l20,-10" marker-end="url(#a)"/>
   </g>
-  <text class="sub" x="550" y="215">far apart, no pattern</text>
-  <text class="sub" x="550" y="230">move freely in all directions</text>
+  <text class="sub" text-anchor="middle" x="150" y="672">far apart, no pattern</text>
+  <text class="sub" text-anchor="middle" x="150" y="690">move freely in all directions</text>
 
   <defs>
     <marker id="a" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">

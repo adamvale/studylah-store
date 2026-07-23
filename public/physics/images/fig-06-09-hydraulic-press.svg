@@ -1,31 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 260" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .tube { fill:none; stroke:#EAEAEA; stroke-width:2; }
     .liq { fill:#6FB7E0; opacity:0.20; }
     .piston { fill:#9AA0A6; opacity:0.40; stroke:#EAEAEA; stroke-width:1.5; }
     .force { stroke:#E58F8F; stroke-width:2.4; }
-    .lbl { font-size:11px; }
+    .lead { stroke:#9AA0A6; stroke-width:1; }
+    .lbl { font-size:12px; }
     .amber { fill:#E8B65A; }
   </style>
-  <!-- U-shaped vessel: narrow left limb, wide right limb -->
-  <path class="liq" d="M60,120 L60,220 L420,220 L420,110 L360,110 L360,180 L120,180 L120,120 Z"/>
-  <path class="tube" d="M60,90 L60,220 L420,220 L420,80"/>
-  <path class="tube" d="M120,90 L120,180 L360,180 L360,80"/>
-  <!-- small piston M (left) -->
-  <rect class="piston" x="60" y="112" width="60" height="12"/>
-  <line class="force" x1="90" y1="70" x2="90" y2="108" marker-end="url(#hf)"/>
-  <text x="98" y="86" class="lbl amber">F&#8321; (small)</text>
-  <text x="55" y="145" class="lbl">piston M, area A&#8321;</text>
+  <!-- narrow left limb, wide right limb -->
+  <path class="liq" d="M70,120 L70,225 L420,225 L420,110 L330,110 L330,185 L100,185 L100,120 Z"/>
+  <path class="tube" d="M70,90 L70,225 L420,225 L420,78"/>
+  <path class="tube" d="M100,90 L100,185 L330,185 L330,78"/>
+  <!-- small piston M (left, narrow) -->
+  <rect class="piston" x="70" y="112" width="30" height="12"/>
+  <line class="force" x1="85" y1="68" x2="85" y2="108" marker-end="url(#hf)"/>
+  <text x="95" y="82" class="lbl amber">F&#8321; (small)</text>
+  <line class="lead" x1="100" y1="118" x2="118" y2="132"/>
+  <text x="122" y="140" class="lbl">piston M, area A&#8321; (small)</text>
+  <!-- large piston N (right, wide) -->
+  <rect class="piston" x="330" y="98" width="90" height="12"/>
+  <line class="force" x1="375" y1="94" x2="375" y2="56" marker-end="url(#hf)"/>
+  <text x="385" y="66" class="lbl amber">F&#8322; (large)</text>
+  <line class="lead" x1="330" y1="108" x2="305" y2="158"/>
+  <text x="300" y="170" text-anchor="end" class="lbl">piston N, area A&#8322; (large)</text>
 
-  <!-- large piston N (right) -->
-  <rect class="piston" x="360" y="102" width="60" height="12"/>
-  <line class="force" x1="390" y1="102" x2="390" y2="64" marker-end="url(#hf)"/>
-  <text x="360" y="56" class="lbl amber">F&#8322; (large)</text>
-  <text x="360" y="140" class="lbl">piston N, area A&#8322;</text>
-
-  <text x="240" y="215" text-anchor="middle" class="lbl">liquid (incompressible)</text>
-  <text x="240" y="250" text-anchor="middle" class="lbl amber">Pressure equal both sides:  F&#8321;/A&#8321; = F&#8322;/A&#8322;</text>
+  <text x="245" y="212" text-anchor="middle" class="lbl">liquid (incompressible)</text>
+  <text x="240" y="256" text-anchor="middle" class="lbl amber">Pressure equal both sides:  F&#8321;/A&#8321; = F&#8322;/A&#8322;</text>
   <defs>
     <marker id="hf" markerWidth="8" markerHeight="8" refX="4" refY="6" orient="auto"><path d="M0,0 L4,7 L8,0 Z" fill="#E58F8F"/></marker>
   </defs>

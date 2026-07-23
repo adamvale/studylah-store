@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 250" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .tank { fill:none; stroke:#EAEAEA; stroke-width:2; }
     .liq { fill:#6FB7E0; opacity:0.18; }
     .lead { stroke:#9AA0A6; stroke-width:1.2; }
     .depth { stroke:#E8B65A; stroke-width:1.6; }
     .force { stroke:#E58F8F; stroke-width:1.8; }
-    .lbl { font-size:11px; }
+    .lbl { font-size:12px; }
   </style>
   <rect class="liq" x="60" y="60" width="330" height="150"/>
   <path class="tank" d="M60,45 L60,210 L390,210 L390,45"/>
@@ -36,8 +36,8 @@
     <line x1="253" y1="150" x2="231" y2="150" marker-end="url(#p)"/>
     <line x1="253" y1="150" x2="275" y2="150" marker-end="url(#p)"/>
   </g>
-  <text x="180" y="200" text-anchor="middle" class="lbl">pressure acts in all directions</text>
-  <text x="320" y="200" text-anchor="middle" class="lbl" fill="#E8B65A">P = h&#961;g</text>
+  <text x="170" y="235" text-anchor="middle" class="lbl">pressure acts in all directions</text>
+  <text x="360" y="235" text-anchor="middle" class="lbl" fill="#E8B65A">P = h&#961;g</text>
   <defs>
     <marker id="p" markerWidth="7" markerHeight="7" refX="3.5" refY="6" orient="auto">
       <path d="M0,0 L3.5,7 L7,0 Z" fill="#E58F8F"/>

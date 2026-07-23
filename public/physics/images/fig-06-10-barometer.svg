@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 320" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .glass { fill:none; stroke:#EAEAEA; stroke-width:2; }
     .merc { fill:#9AA0A6; opacity:0.55; }
     .lead { stroke:#9AA0A6; stroke-width:1; }
     .height { stroke:#E8B65A; stroke-width:1.6; }
     .arrow { stroke:#E58F8F; stroke-width:2; }
-    .lbl { font-size:11px; }
+    .lbl { font-size:12px; }
   </style>
   <!-- reservoir -->
   <path class="glass" d="M150,300 L150,270 Q150,260 160,260 L280,260 Q290,260 290,270 L290,300"/>
@@ -21,9 +21,9 @@
   <line class="lead" x1="218" y1="82" x2="240" y2="80"/>
 
   <!-- height marker 76 cm -->
-  <line class="height" x1="160" y1="100" x2="160" y2="283"/>
+  <line class="height" x1="160" y1="100" x2="160" y2="268"/>
   <line class="height" x1="155" y1="100" x2="165" y2="100"/>
-  <line class="height" x1="155" y1="283" x2="165" y2="283"/>
+  <line class="height" x1="155" y1="268" x2="165" y2="268"/>
   <text x="100" y="195" class="lbl" fill="#E8B65A">76 cm</text>
   <text x="100" y="210" class="lbl" fill="#E8B65A">(760 mm)</text>
 
@@ -32,7 +32,7 @@
   <text x="278" y="248" class="lbl">atmospheric</text>
   <text x="278" y="262" class="lbl">pressure</text>
 
-  <text x="120" y="300" class="lbl">mercury reservoir</text>
+  <text x="125" y="314" class="lbl">mercury reservoir</text>
   <defs>
     <marker id="ba" markerWidth="7" markerHeight="7" refX="3.5" refY="6" orient="auto"><path d="M0,0 L3.5,7 L7,0 Z" fill="#E58F8F"/></marker>
   </defs>

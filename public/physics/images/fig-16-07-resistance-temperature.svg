@@ -5,7 +5,7 @@
     .line1 { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
     .line2 { stroke:#E8B65A; stroke-width:2.2; fill:none; }
     .line3 { stroke:#86C98B; stroke-width:2.2; fill:none; }
-    .lbl { font-size:12px; }
+    .lbl { font-size:14px; }
   </style>
   <line class="axis" x1="70" y1="250" x2="380" y2="250"/>
   <line class="axis" x1="70" y1="250" x2="70" y2="40"/>

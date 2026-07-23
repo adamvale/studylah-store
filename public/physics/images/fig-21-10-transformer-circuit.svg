@@ -5,7 +5,7 @@
     .pc { fill:none; stroke:#E8B65A; stroke-width:2; }
     .sc { fill:none; stroke:#6FB7E0; stroke-width:2; }
     .core { stroke:#9AA0A6; stroke-width:2; }
-    .lbl { font-size:12px; }
+    .lbl { font-size:14px; }
   </style>
 
   <!-- a.c. supply -->

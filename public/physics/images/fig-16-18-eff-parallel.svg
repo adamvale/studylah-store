@@ -7,8 +7,8 @@
   <path class="wire" d="M60,50 L150,50 M166,50 L280,50"/>
   <line class="wire" x1="150" y1="34" x2="150" y2="66" stroke-width="2.4"/>
   <line class="wire" x1="166" y1="42" x2="166" y2="58" stroke-width="5"/>
-  <path class="wire" d="M60,50 L60,210"/>
-  <path class="wire" d="M280,50 L280,210"/>
+  <path class="wire" d="M60,50 L60,190"/>
+  <path class="wire" d="M280,50 L280,190"/>
   <!-- branch 1 -->
   <path class="wire" d="M60,90 L120,90"/>
   <rect class="wire" x="120" y="78" width="46" height="24"/>

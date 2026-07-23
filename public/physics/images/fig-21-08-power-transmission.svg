@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 600" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
     .out { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
@@ -7,12 +7,13 @@
     .filld { fill:#86C98B; opacity:0.22; }
     .cable { fill:none; stroke:#E58F8F; stroke-width:1.8; }
     .tower { fill:none; stroke:#9AA0A6; stroke-width:1.5; }
-    .lbl { font-size:12px; text-anchor:middle; }
-    .lblc { font-size:11px; text-anchor:middle; fill:#E58F8F; }
+    .lbl { font-size:14px; text-anchor:middle; }
+    .sub { font-size:13px; text-anchor:middle; }
+    .lblc { font-size:13px; text-anchor:middle; fill:#E58F8F; }
   </style>
 
-  <!-- ground -->
-  <line class="out" x1="0" y1="250" x2="800" y2="250" stroke="#9AA0A6"/>
+  <!-- ===== ROW 1: generate and step up ===== -->
+  <line class="out" x1="0" y1="250" x2="460" y2="250" stroke="#9AA0A6"/>
 
   <!-- power station -->
   <rect class="out fillb" x="20" y="170" width="90" height="80"/>
@@ -20,48 +21,58 @@
   <rect class="out fillb" x="34" y="140" width="16" height="30"/>
   <rect class="out fillb" x="60" y="130" width="16" height="40"/>
   <text class="lbl" x="65" y="272">power station</text>
-  <text class="lbl" x="65" y="288" font-size="11" fill="#9AA0A6">generates at lower V</text>
+  <text class="sub" x="75" y="290" fill="#9AA0A6">generates at lower V</text>
 
   <!-- step-up transformer -->
-  <rect class="out fillu" x="140" y="185" width="55" height="55"/>
-  <rect class="out" x="140" y="185" width="55" height="55"/>
-  <text x="167" y="217" font-size="16" text-anchor="middle" fill="#E8B65A">&#8593;</text>
-  <text class="lbl" x="167" y="272" fill="#E8B65A">step-up</text>
-  <text class="lbl" x="167" y="288" font-size="11">V increased</text>
-  <line class="out" x1="110" y1="212" x2="140" y2="212"/>
+  <rect class="out fillu" x="180" y="185" width="55" height="55"/>
+  <rect class="out" x="180" y="185" width="55" height="55"/>
+  <text x="207" y="217" font-size="16" text-anchor="middle" fill="#E8B65A">&#8593;</text>
+  <text class="lbl" x="207" y="272" fill="#E8B65A">step-up</text>
+  <text class="sub" x="207" y="290">V increased</text>
+  <line class="out" x1="110" y1="212" x2="180" y2="212"/>
 
-  <!-- pylons -->
+  <!-- pylon 1 -->
   <g class="tower">
-    <path d="M300,240 L312,110 L324,240 M300,240 L324,240 M304,200 L320,200 M302,175 L322,175 M300,150 L324,150"/>
-    <line x1="292" y1="118" x2="332" y2="118"/>
-    <line x1="288" y1="132" x2="336" y2="132"/>
-  </g>
-  <g class="tower">
-    <path d="M470,240 L482,110 L494,240 M470,240 L494,240 M474,200 L490,200 M472,175 L492,175 M470,150 L494,150"/>
-    <line x1="462" y1="118" x2="502" y2="118"/>
-    <line x1="458" y1="132" x2="506" y2="132"/>
+    <path d="M262,240 L274,110 L286,240 M262,240 L286,240 M266,200 L282,200 M264,175 L284,175 M262,150 L286,150"/>
+    <line x1="254" y1="118" x2="294" y2="118"/>
+    <line x1="250" y1="132" x2="298" y2="132"/>
   </g>
 
-  <!-- transmission cables (high voltage) -->
-  <path class="cable" d="M195,200 Q250,150 292,118"/>
-  <path class="cable" d="M332,118 Q400,160 462,118"/>
-  <path class="cable" d="M502,118 Q560,160 610,205"/>
-  <text class="lblc" x="400" y="70">high-voltage transmission</text>
-  <text class="lblc" x="400" y="86">low current &#8594; small power loss (P = I&#178;R)</text>
+  <!-- cables (high voltage) -->
+  <path class="cable" d="M235,200 Q250,158 252,130"/>
+  <path class="cable" d="M298,130 Q380,170 460,140"/>
+  <text class="lblc" x="300" y="60">high-voltage transmission</text>
+  <text class="lblc" x="300" y="80">low current &#8594; small power loss (P = I&#178;R)</text>
+
+  <!-- ===== ROW 2: step down and deliver ===== -->
+  <line class="out" x1="0" y1="530" x2="460" y2="530" stroke="#9AA0A6"/>
+
+  <!-- cable arriving from row 1 -->
+  <path class="cable" d="M0,395 Q40,430 66,400"/>
+
+  <!-- pylon 2 -->
+  <g class="tower">
+    <path d="M72,520 L84,390 L96,520 M72,520 L96,520 M76,480 L92,480 M74,455 L94,455 M72,430 L96,430"/>
+    <line x1="64" y1="398" x2="104" y2="398"/>
+    <line x1="60" y1="412" x2="108" y2="412"/>
+  </g>
+
+  <!-- cable to step-down transformer -->
+  <path class="cable" d="M108,410 Q180,455 237,465"/>
 
   <!-- step-down transformer -->
-  <rect class="out filld" x="610" y="185" width="55" height="55"/>
-  <rect class="out" x="610" y="185" width="55" height="55"/>
-  <text x="637" y="217" font-size="16" text-anchor="middle" fill="#86C98B">&#8595;</text>
-  <text class="lbl" x="637" y="272" fill="#86C98B">step-down</text>
-  <text class="lbl" x="637" y="288" font-size="11">V decreased</text>
+  <rect class="out filld" x="210" y="465" width="55" height="55"/>
+  <rect class="out" x="210" y="465" width="55" height="55"/>
+  <text x="237" y="497" font-size="16" text-anchor="middle" fill="#86C98B">&#8595;</text>
+  <text class="lbl" x="237" y="552" fill="#86C98B">step-down</text>
+  <text class="sub" x="237" y="570">V decreased</text>
 
   <!-- homes -->
-  <line class="out" x1="665" y1="212" x2="695" y2="212"/>
-  <rect class="out filld" x="695" y="200" width="45" height="50"/>
-  <rect class="out" x="695" y="200" width="45" height="50"/>
-  <path class="out filld" d="M693,200 L717,178 L742,200 Z"/>
-  <path class="out" d="M693,200 L717,178 L742,200 Z"/>
-  <text class="lbl" x="717" y="272">homes</text>
-  <text class="lbl" x="717" y="288" font-size="11" fill="#9AA0A6">240 V</text>
+  <line class="out" x1="265" y1="492" x2="295" y2="492"/>
+  <rect class="out filld" x="295" y="480" width="45" height="50"/>
+  <rect class="out" x="295" y="480" width="45" height="50"/>
+  <path class="out filld" d="M293,480 L317,458 L342,480 Z"/>
+  <path class="out" d="M293,480 L317,458 L342,480 Z"/>
+  <text class="lbl" x="330" y="552">homes</text>
+  <text class="sub" x="330" y="570" fill="#9AA0A6">240 V</text>
 </svg>

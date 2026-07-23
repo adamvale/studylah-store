@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 260" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:14px; }
     .beaker { fill:none; stroke:#EAEAEA; stroke-width:2; }
     .liq { fill:#6FB7E0; opacity:0.28; stroke:#6FB7E0; stroke-width:1.2; }
     .p { fill:#6FB7E0; stroke:#EAEAEA; stroke-width:1; }
@@ -33,8 +33,8 @@
     <path d="M238,148 C232,130 240,118 240,113"/>
     <path d="M288,148 C286,142 290,138 290,138"/>
   </g>
-  <text class="tag" x="255" y="70">fast particles escape from the surface</text>
-  <path class="lead" d="M258,74 L240,100"/>
+  <text class="tag" x="220" y="56" text-anchor="middle">fast particles escape from the surface</text>
+  <path class="lead" d="M232,62 L240,94"/>
   <text class="tag" x="20" y="205">liquid</text>
-  <path class="lead" d="M52,201 L92,195"/>
+  <path class="lead" d="M60,200 L90,196"/>
 </svg>

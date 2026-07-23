@@ -29,7 +29,7 @@
     </marker>
   </defs>
   <line x1="200" y1="26" x2="260" y2="26" class="axis" marker-start="url(#ah)" marker-end="url(#ah)" stroke-width="1.3"/>
-  <text x="230" y="18" text-anchor="middle" font-size="11.5">movement of balls</text>
+  <text x="230" y="18" text-anchor="middle" font-size="13">movement of balls</text>
   <circle cx="90" cy="60" r="2.6" fill="#86C98B" opacity="0.5"/>
   <circle cx="90" cy="75" r="2.6" fill="#86C98B" opacity="0.5"/>
   <circle cx="90" cy="90" r="2.6" fill="#86C98B" opacity="0.5"/>
@@ -200,8 +200,8 @@
   <circle cx="385" cy="165" r="2.6" fill="#86C98B" opacity="0.5"/>
   <circle cx="385" cy="180" r="2.6" fill="#86C98B" opacity="0.5"/>
   <circle cx="385" cy="195" r="2.6" fill="#86C98B" opacity="0.5"/>
-  <text x="120" y="52" text-anchor="middle" font-size="12" fill="#E8B65A">P</text>
+  <text x="120" y="52" text-anchor="middle" font-size="14" fill="#E8B65A">P</text>
   <line x1="200" y1="225" x2="360" y2="225" class="axis" marker-end="url(#ah)"/>
-  <text x="280" y="243" text-anchor="middle" font-size="12">wave motion</text>
+  <text x="280" y="243" text-anchor="middle" font-size="13.5">wave motion</text>
 
 </svg>

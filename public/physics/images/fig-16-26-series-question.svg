@@ -15,13 +15,11 @@
   <text x="26" y="131" class="lbl">R</text>
   <!-- bottom rail to node P -->
   <path class="wire" d="M60,210 L110,210"/>
-  <text x="100" y="228" class="node">P</text>
   <!-- right rail with P-resistor -->
   <path class="wire" d="M320,45 L320,210"/>
   <rect class="wire" x="308" y="105" width="24" height="46"/>
   <text x="338" y="131" class="lbl">P</text>
   <path class="wire" d="M320,210 L270,210"/>
-  <text x="264" y="228" class="node">R&#8320;</text>
   <!-- parallel pair Q (upper) and S (lower) between the two mid nodes -->
   <path class="wire" d="M110,210 L110,150 L150,150"/>
   <rect class="wire" x="150" y="138" width="46" height="24"/>

@@ -5,7 +5,7 @@
     .cell { fill:#6FB7E0; opacity:0.18; stroke:#6FB7E0; stroke-width:1.6; }
     .ray { stroke:#E8B65A; stroke-width:1.4; fill:none; }
     .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
-    .lbl { font-size:12px; }
+    .lbl { font-size:15px; }
     .amber { fill:#E8B65A; }
     .glow { fill:#E8B65A; opacity:0.25; }
   </style>
@@ -25,8 +25,8 @@
     <circle cx="278" cy="163" r="2.2"/><circle cx="300" cy="170" r="2.2"/><circle cx="220" cy="176" r="2.2"/>
     <circle cx="265" cy="158" r="2.2"/>
   </g>
-  <text class="lbl amber" x="345" y="165">glass cell with</text>
-  <text class="lbl amber" x="345" y="181">smoke particles</text>
+  <text class="lbl amber" x="345" y="164">glass cell with</text>
+  <text class="lbl amber" x="345" y="183">smoke particles</text>
   <path class="lead" d="M340,172 L332,168"/>
 
   <!-- lamp / bulb on the left -->

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 360" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .body { fill:none; stroke:#EAEAEA; stroke-width:1.8; }
     .liquid { fill:#E58F8F; opacity:0.16; }
     .stopper { fill:#E8B65A; opacity:0.35; stroke:#E8B65A; stroke-width:1.4; }
@@ -37,11 +37,12 @@
   <text class="lbl" x="180" y="45" text-anchor="middle">stopper</text>
   <path class="lead" d="M170,50 L165,58"/>
   <text class="lbl" x="55" y="100">trapped air</text>
-  <path class="lead" d="M105,96 L138,100"/>
+  <path class="lead" d="M130,97 L140,99"/>
   <text class="lbl" x="55" y="200">hot liquid</text>
-  <path class="lead" d="M100,196 L155,200"/>
-  <text class="lbl" x="430" y="118">silvered glass walls</text>
-  <path class="lead" d="M428,122 L400,140"/>
-  <text class="lbl" x="440" y="255">vacuum</text>
-  <path class="lead" d="M438,251 L382,230"/>
+  <path class="lead" d="M123,197 L155,200"/>
+  <text class="lbl" x="380" y="95" text-anchor="middle">silvered glass walls</text>
+  <path class="lead" d="M352,100 L365,124"/>
+  <path class="lead" d="M408,100 L395,124"/>
+  <text class="lbl" x="380" y="292" text-anchor="middle">vacuum</text>
+  <path class="lead" d="M380,280 L380,254"/>
 </svg>

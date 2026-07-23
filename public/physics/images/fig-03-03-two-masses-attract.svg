@@ -20,9 +20,9 @@
   <path class="force" d="M175,120 L245,120" marker-end="url(#ah-m)"/>
   <path class="force" d="M355,120 L285,120" marker-end="url(#ah-m)"/>
   <!-- central label -->
-  <text x="265" y="82" text-anchor="middle" font-size="13" fill="#86C98B">gravitational force</text>
-  <text x="265" y="100" text-anchor="middle" font-size="12" fill="#86C98B">(force due to gravity)</text>
+  <text x="255" y="80" text-anchor="middle" font-size="15" fill="#86C98B">gravitational force</text>
+  <text x="250" y="100" text-anchor="middle" font-size="13" fill="#86C98B">(force due to gravity)</text>
   <!-- object labels -->
-  <text x="120" y="192" text-anchor="middle" font-size="12">object with mass</text>
-  <text x="410" y="215" text-anchor="middle" font-size="12">object with mass</text>
+  <text x="120" y="192" text-anchor="middle" font-size="15">object with mass</text>
+  <text x="410" y="218" text-anchor="middle" font-size="15">object with mass</text>
 </svg>

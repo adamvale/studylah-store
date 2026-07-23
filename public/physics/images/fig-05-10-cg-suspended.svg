@@ -7,7 +7,7 @@
     .cg { fill:#E8B65A; stroke:#E8B65A; }
     .pin { fill:#EAEAEA; }
     .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
-    .lbl { font-size:12px; }
+    .lbl { font-size:13px; }
   </style>
   <!-- ceiling / support -->
   <line class="support" x1="60" y1="40" x2="200" y2="40"/>
@@ -24,7 +24,6 @@
   <line class="support" x1="130" y1="44" x2="130" y2="90"/>
   <!-- square lamina hanging, CG vertically below pivot -->
   <rect class="shape" x="90" y="90" width="80" height="80"/>
-  <line class="plumb" x1="130" y1="90" x2="130" y2="90"/>
   <!-- vertical line through pivot and CG -->
   <line class="plumb" x1="130" y1="44" x2="130" y2="230"/>
   <circle class="cg" cx="130" cy="130" r="3.6"/>

@@ -3,11 +3,11 @@
     text { fill:#EAEAEA; }
     .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
     .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
-    .pole { font-size:15px; font-weight:bold; fill:#EAEAEA; }
+    .pole { font-size:16px; font-weight:bold; fill:#EAEAEA; }
     .comp { fill:none; stroke:#9AA0A6; stroke-width:1.3; }
     .needle { stroke:#EAEAEA; stroke-width:2; }
     .nhead { fill:#E58F8F; }
-    .lbl { fill:#E8B65A; font-size:12.5px; }
+    .lbl { fill:#E8B65A; font-size:14px; }
   </style>
 
   <!-- compasses around the magnet; red arrow tip = north-seeking pole -->
@@ -34,7 +34,8 @@
 
   <text x="320" y="35" text-anchor="middle" class="lbl">Each compass needle lines up with the field: its</text>
   <text x="320" y="52" text-anchor="middle" class="lbl">red (north-seeking) tip points from N toward S.</text>
-  <text x="470" y="250" class="lbl">move the compass step</text>
-  <text x="470" y="266" class="lbl">by step and mark each</text>
-  <text x="470" y="282" class="lbl">arrow to trace a field line</text>
+  <text x="455" y="236" class="lbl">move the compass</text>
+  <text x="455" y="254" class="lbl">step by step and</text>
+  <text x="455" y="272" class="lbl">mark each arrow to</text>
+  <text x="455" y="290" class="lbl">trace a field line</text>
 </svg>

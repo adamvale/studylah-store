@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 260" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 260" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
     .wire { fill:none; stroke:#EAEAEA; stroke-width:2; }
@@ -26,12 +26,12 @@
   <!-- movement arrow (electrons drift left, toward + terminal externally) -->
   <path class="arrow" d="M215,130 L120,130"/>
   <path class="arrow" d="M120,130 l12,-6 M120,130 l12,6" fill="none"/>
-  <text x="60" y="126" font-size="12" text-anchor="middle">movement</text>
-  <text x="60" y="140" font-size="12" text-anchor="middle">of electrons</text>
+  <text x="66" y="122" font-size="14" text-anchor="middle">movement</text>
+  <text x="66" y="140" font-size="14" text-anchor="middle">of electrons</text>
 
   <!-- labels -->
   <line class="lead" x1="360" y1="108" x2="360" y2="225"/>
-  <text x="360" y="242" font-size="12" text-anchor="middle">free electrons</text>
-  <line class="lead" x1="430" y1="130" x2="470" y2="130"/>
-  <text x="475" y="134" font-size="12">conducting wire</text>
+  <text x="360" y="243" font-size="14" text-anchor="middle">free electrons</text>
+  <line class="lead" x1="400" y1="42" x2="400" y2="64"/>
+  <text x="400" y="32" font-size="14" text-anchor="middle">conducting wire</text>
 </svg>

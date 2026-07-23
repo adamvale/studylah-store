@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .hill { stroke:#EAEAEA; stroke-width:2; fill:none; }
     .ball { fill:#6FB7E0; stroke:#EAEAEA; stroke-width:1.4; }
     .dim { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
@@ -28,4 +28,5 @@
   <!-- Q above R = 6 m -->
   <line class="dim" x1="310" y1="150" x2="310" y2="240" marker-start="url(#p1)" marker-end="url(#p2)"/>
   <text class="lbl" x="318" y="200">6 m</text>
+  <text x="240" y="290" text-anchor="middle" font-size="12" fill="#9AA0A6">(not to scale)</text>
 </svg>

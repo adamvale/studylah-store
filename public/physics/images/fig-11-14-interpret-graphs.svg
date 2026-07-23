@@ -1,58 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 215" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 460" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
     .axis { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
     .wave { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
-    .wave2 { stroke:#E8B65A; stroke-width:2.2; fill:none; stroke-dasharray:6 4; }
-    .rest { stroke:#9AA0A6; stroke-width:1.2; stroke-dasharray:5 4; fill:none; }
-    .guide { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:3 3; fill:none; }
-    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .wave2 { stroke:#86C98B; stroke-width:2.2; fill:none; }
     .dim { stroke:#E8B65A; stroke-width:1.4; fill:none; }
-    .lbl { fill:#E8B65A; font-size:13px; }
-    .lblb { fill:#6FB7E0; font-size:13px; }
+    .lbl { fill:#E8B65A; font-size:14px; }
     .tick { stroke:#EAEAEA; stroke-width:1.2; }
-    .sm { font-size:12px; }
   </style>
-
   <defs>
-    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto-start-reverse">
       <path d="M0,0 L7,3 L0,6 Z" fill="#EAEAEA"/>
     </marker>
-    <marker id="aha" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+    <marker id="aha" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto-start-reverse">
       <path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/>
     </marker>
   </defs>
-  <text x="230" y="26" text-anchor="middle" font-size="12.5" fill="#6FB7E0">displacement–distance graph</text>
-  <line x1="80" y1="166" x2="80" y2="54" class="axis" marker-end="url(#ah)"/>
-  <line x1="66" y1="110" x2="380" y2="110" class="axis" marker-end="url(#ah)"/>
-  <text x="74" y="50" text-anchor="end" font-size="12">displacement</text>
-  <text x="380" y="128" text-anchor="end" font-size="12">distance</text>
-  <text x="74" y="125" text-anchor="end" font-size="12">0</text>
-  <text x="74" y="76" text-anchor="end" font-size="12" font-style="italic">A</text>
-  <line x1="77" y1="72" x2="83" y2="72" class="tick"/>
-  <text x="74" y="152" text-anchor="end" font-size="12" font-style="italic">-A</text>
-  <line x1="77" y1="148" x2="83" y2="148" class="tick"/>
-  <path class="wave" d="M 80.00,110.00 L 82.00,105.67 L 84.00,101.39 L 86.00,97.23 L 88.00,93.23 L 90.00,89.46 L 92.00,85.95 L 94.00,82.75 L 96.00,79.91 L 98.00,77.46 L 100.00,75.43 L 102.00,73.86 L 104.00,72.76 L 106.00,72.14 L 108.00,72.02 L 110.00,72.39 L 112.00,73.25 L 114.00,74.59 L 116.00,76.39 L 118.00,78.63 L 120.00,81.28 L 122.00,84.31 L 124.00,87.66 L 126.00,91.31 L 128.00,95.21 L 130.00,99.29 L 132.00,103.52 L 134.00,107.83 L 136.00,112.17 L 138.00,116.48 L 140.00,120.71 L 142.00,124.79 L 144.00,128.69 L 146.00,132.34 L 148.00,135.69 L 150.00,138.72 L 152.00,141.37 L 154.00,143.61 L 156.00,145.41 L 158.00,146.75 L 160.00,147.61 L 162.00,147.98 L 164.00,147.86 L 166.00,147.24 L 168.00,146.14 L 170.00,144.57 L 172.00,142.54 L 174.00,140.09 L 176.00,137.25 L 178.00,134.05 L 180.00,130.54 L 182.00,126.77 L 184.00,122.77 L 186.00,118.61 L 188.00,114.33 L 190.00,110.00 L 192.00,105.67 L 194.00,101.39 L 196.00,97.23 L 198.00,93.23 L 200.00,89.46 L 202.00,85.95 L 204.00,82.75 L 206.00,79.91 L 208.00,77.46 L 210.00,75.43 L 212.00,73.86 L 214.00,72.76 L 216.00,72.14 L 218.00,72.02 L 220.00,72.39 L 222.00,73.25 L 224.00,74.59 L 226.00,76.39 L 228.00,78.63 L 230.00,81.28 L 232.00,84.31 L 234.00,87.66 L 236.00,91.31 L 238.00,95.21 L 240.00,99.29 L 242.00,103.52 L 244.00,107.83 L 246.00,112.17 L 248.00,116.48 L 250.00,120.71 L 252.00,124.79 L 254.00,128.69 L 256.00,132.34 L 258.00,135.69 L 260.00,138.72 L 262.00,141.37 L 264.00,143.61 L 266.00,145.41 L 268.00,146.75 L 270.00,147.61 L 272.00,147.98 L 274.00,147.86 L 276.00,147.24 L 278.00,146.14 L 280.00,144.57 L 282.00,142.54 L 284.00,140.09 L 286.00,137.25 L 288.00,134.05 L 290.00,130.54 L 292.00,126.77 L 294.00,122.77 L 296.00,118.61 L 298.00,114.33 L 300.00,110.00 L 302.00,105.67 L 304.00,101.39 L 306.00,97.23 L 308.00,93.23 L 310.00,89.46 L 312.00,85.95 L 314.00,82.75 L 316.00,79.91 L 318.00,77.46 L 320.00,75.43 L 322.00,73.86 L 324.00,72.76 L 326.00,72.14 L 328.00,72.02 L 330.00,72.39 L 332.00,73.25 L 334.00,74.59 L 336.00,76.39 L 338.00,78.63 L 340.00,81.28 L 342.00,84.31 L 344.00,87.66 L 346.00,91.31 L 348.00,95.21 L 350.00,99.29 L 352.00,103.52 L 354.00,107.83 L 356.00,112.17 L 358.00,116.48 L 360.00,120.71"/>
-  <line x1="107.5" y1="62.0" x2="217.5" y2="62.0" class="dim" marker-start="url(#aha)" marker-end="url(#aha)"/>
-  <text x="162.5" y="56.0" text-anchor="middle" class="lbl" font-style="italic">λ</text>
-  <line x1="107.5" y1="110" x2="107.5" y2="72.0" class="dim"/>
-  <text x="113.5" y="91.0" class="lbl" font-style="italic">A</text>
-  <text x="230" y="200" text-anchor="middle" font-size="11.5" fill="#9AA0A6">gives wavelength λ and amplitude A</text>
-  <text x="620" y="26" text-anchor="middle" font-size="12.5" fill="#86C98B">displacement–time graph</text>
-  <line x1="470" y1="166" x2="470" y2="54" class="axis" marker-end="url(#ah)"/>
-  <line x1="456" y1="110" x2="770" y2="110" class="axis" marker-end="url(#ah)"/>
-  <text x="464" y="50" text-anchor="end" font-size="12">displacement</text>
-  <text x="770" y="128" text-anchor="end" font-size="12">time</text>
-  <text x="464" y="125" text-anchor="end" font-size="12">0</text>
-  <text x="464" y="76" text-anchor="end" font-size="12" font-style="italic">A</text>
-  <line x1="467" y1="72" x2="473" y2="72" class="tick"/>
-  <text x="464" y="152" text-anchor="end" font-size="12" font-style="italic">-A</text>
-  <line x1="467" y1="148" x2="473" y2="148" class="tick"/>
-  <path class="wave" d="M 470.00,110.00 L 472.00,105.67 L 474.00,101.39 L 476.00,97.23 L 478.00,93.23 L 480.00,89.46 L 482.00,85.95 L 484.00,82.75 L 486.00,79.91 L 488.00,77.46 L 490.00,75.43 L 492.00,73.86 L 494.00,72.76 L 496.00,72.14 L 498.00,72.02 L 500.00,72.39 L 502.00,73.25 L 504.00,74.59 L 506.00,76.39 L 508.00,78.63 L 510.00,81.28 L 512.00,84.31 L 514.00,87.66 L 516.00,91.31 L 518.00,95.21 L 520.00,99.29 L 522.00,103.52 L 524.00,107.83 L 526.00,112.17 L 528.00,116.48 L 530.00,120.71 L 532.00,124.79 L 534.00,128.69 L 536.00,132.34 L 538.00,135.69 L 540.00,138.72 L 542.00,141.37 L 544.00,143.61 L 546.00,145.41 L 548.00,146.75 L 550.00,147.61 L 552.00,147.98 L 554.00,147.86 L 556.00,147.24 L 558.00,146.14 L 560.00,144.57 L 562.00,142.54 L 564.00,140.09 L 566.00,137.25 L 568.00,134.05 L 570.00,130.54 L 572.00,126.77 L 574.00,122.77 L 576.00,118.61 L 578.00,114.33 L 580.00,110.00 L 582.00,105.67 L 584.00,101.39 L 586.00,97.23 L 588.00,93.23 L 590.00,89.46 L 592.00,85.95 L 594.00,82.75 L 596.00,79.91 L 598.00,77.46 L 600.00,75.43 L 602.00,73.86 L 604.00,72.76 L 606.00,72.14 L 608.00,72.02 L 610.00,72.39 L 612.00,73.25 L 614.00,74.59 L 616.00,76.39 L 618.00,78.63 L 620.00,81.28 L 622.00,84.31 L 624.00,87.66 L 626.00,91.31 L 628.00,95.21 L 630.00,99.29 L 632.00,103.52 L 634.00,107.83 L 636.00,112.17 L 638.00,116.48 L 640.00,120.71 L 642.00,124.79 L 644.00,128.69 L 646.00,132.34 L 648.00,135.69 L 650.00,138.72 L 652.00,141.37 L 654.00,143.61 L 656.00,145.41 L 658.00,146.75 L 660.00,147.61 L 662.00,147.98 L 664.00,147.86 L 666.00,147.24 L 668.00,146.14 L 670.00,144.57 L 672.00,142.54 L 674.00,140.09 L 676.00,137.25 L 678.00,134.05 L 680.00,130.54 L 682.00,126.77 L 684.00,122.77 L 686.00,118.61 L 688.00,114.33 L 690.00,110.00 L 692.00,105.67 L 694.00,101.39 L 696.00,97.23 L 698.00,93.23 L 700.00,89.46 L 702.00,85.95 L 704.00,82.75 L 706.00,79.91 L 708.00,77.46 L 710.00,75.43 L 712.00,73.86 L 714.00,72.76 L 716.00,72.14 L 718.00,72.02 L 720.00,72.39 L 722.00,73.25 L 724.00,74.59 L 726.00,76.39 L 728.00,78.63 L 730.00,81.28 L 732.00,84.31 L 734.00,87.66 L 736.00,91.31 L 738.00,95.21 L 740.00,99.29 L 742.00,103.52 L 744.00,107.83 L 746.00,112.17 L 748.00,116.48 L 750.00,120.71"/>
-  <line x1="497.5" y1="62.0" x2="607.5" y2="62.0" class="dim" marker-start="url(#aha)" marker-end="url(#aha)"/>
-  <text x="552.5" y="56.0" text-anchor="middle" class="lbl" font-style="italic">T</text>
-  <line x1="497.5" y1="110" x2="497.5" y2="72.0" class="dim"/>
-  <text x="503.5" y="91.0" class="lbl" font-style="italic">A</text>
-  <text x="620" y="200" text-anchor="middle" font-size="11.5" fill="#9AA0A6">gives period T (then f = 1/T) and amplitude A</text>
 
+  <!-- TOP: displacement-distance -->
+  <text x="210" y="22" text-anchor="middle" font-size="14.5" fill="#6FB7E0">displacement-distance graph</text>
+  <line x1="70" y1="170" x2="70" y2="52" class="axis" marker-end="url(#ah)"/>
+  <line x1="56" y1="112" x2="395" y2="112" class="axis" marker-end="url(#ah)"/>
+  <text x="14" y="42" font-size="13">displacement</text>
+  <text x="395" y="130" text-anchor="end" font-size="13">distance</text>
+  <text x="64" y="126" text-anchor="end" font-size="13">0</text>
+  <text x="64" y="78" text-anchor="end" font-size="13" font-style="italic">A</text>
+  <line x1="67" y1="74" x2="73" y2="74" class="tick"/>
+  <text x="64" y="154" text-anchor="end" font-size="13" font-style="italic">-A</text>
+  <line x1="67" y1="150" x2="73" y2="150" class="tick"/>
+  <path class="wave" d="M70,112 Q97.5,36 125,112 Q152.5,188 180,112 Q207.5,36 235,112 Q262.5,188 290,112 Q317.5,36 345,112"/>
+  <line x1="97.5" y1="58" x2="207.5" y2="58" class="dim" marker-start="url(#aha)" marker-end="url(#aha)"/>
+  <text x="152" y="52" text-anchor="middle" class="lbl" font-style="italic">&#955;</text>
+  <line x1="97.5" y1="112" x2="97.5" y2="74" class="dim"/>
+  <text x="104" y="96" class="lbl" font-style="italic">A</text>
+  <text x="210" y="200" text-anchor="middle" font-size="13" fill="#9AA0A6">gives wavelength &#955; and amplitude A</text>
+
+  <!-- BOTTOM: displacement-time -->
+  <text x="210" y="262" text-anchor="middle" font-size="14.5" fill="#86C98B">displacement-time graph</text>
+  <line x1="70" y1="410" x2="70" y2="292" class="axis" marker-end="url(#ah)"/>
+  <line x1="56" y1="352" x2="395" y2="352" class="axis" marker-end="url(#ah)"/>
+  <text x="14" y="282" font-size="13">displacement</text>
+  <text x="395" y="370" text-anchor="end" font-size="13">time</text>
+  <text x="64" y="366" text-anchor="end" font-size="13">0</text>
+  <text x="64" y="318" text-anchor="end" font-size="13" font-style="italic">A</text>
+  <line x1="67" y1="314" x2="73" y2="314" class="tick"/>
+  <text x="64" y="394" text-anchor="end" font-size="13" font-style="italic">-A</text>
+  <line x1="67" y1="390" x2="73" y2="390" class="tick"/>
+  <path class="wave2" d="M70,352 Q97.5,276 125,352 Q152.5,428 180,352 Q207.5,276 235,352 Q262.5,428 290,352 Q317.5,276 345,352"/>
+  <line x1="97.5" y1="298" x2="207.5" y2="298" class="dim" marker-start="url(#aha)" marker-end="url(#aha)"/>
+  <text x="152" y="292" text-anchor="middle" class="lbl" font-style="italic">T</text>
+  <line x1="97.5" y1="352" x2="97.5" y2="314" class="dim"/>
+  <text x="104" y="336" class="lbl" font-style="italic">A</text>
+  <text x="210" y="440" text-anchor="middle" font-size="13" fill="#9AA0A6">gives period T (then f = 1/T) and amplitude A</text>
 </svg>

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 260" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .input { fill:#6FB7E0; opacity:0.30; stroke:#6FB7E0; stroke-width:1.2; }
     .useful { fill:#86C98B; opacity:0.32; stroke:#86C98B; stroke-width:1.2; }
     .waste { fill:#E58F8F; opacity:0.30; stroke:#E58F8F; stroke-width:1.2; }
@@ -15,7 +15,7 @@
   <text x="330" y="115" text-anchor="middle" fill="#86C98B" font-weight="bold">useful output</text>
   <!-- waste band turning downward -->
   <path class="waste" d="M200,150 L200,190 C280,190 300,190 320,230 L360,230 L360,190 C340,190 280,190 240,150 Z"/>
-  <text x="380" y="222" fill="#E58F8F">dissipated (wasted)</text>
+  <text x="330" y="252" fill="#E58F8F">dissipated (wasted)</text>
   <!-- caption -->
   <text x="250" y="30" text-anchor="middle" font-size="13" fill="#EAEAEA">Energy flow through a device (Sankey diagram)</text>
 </svg>

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 160" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 170" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
     .axis { stroke:#EAEAEA; stroke-width:2; }
@@ -7,7 +7,7 @@
     .blue { fill:#6FB7E0; }
   </style>
   <!-- metal labels -->
-  <g font-size="13" text-anchor="middle">
+  <g font-size="16" text-anchor="middle">
     <text x="90" y="45">silver</text>
     <text x="220" y="45">copper</text>
     <text x="350" y="45">tungsten</text>
@@ -24,7 +24,7 @@
   <line class="axis" x1="60" y1="80" x2="520" y2="80"/>
   <path class="axis" fill="none" d="M512,73 L522,80 L512,87"/>
   <!-- end labels -->
-  <text x="90" y="115" text-anchor="middle" font-size="13" class="blue">low resistance</text>
-  <text x="480" y="115" text-anchor="middle" font-size="13" class="amber">high resistance</text>
-  <text x="290" y="145" text-anchor="middle" font-size="12">resistance of the metal increases &#8594;</text>
+  <text x="90" y="115" text-anchor="middle" font-size="16" class="blue">low resistance</text>
+  <text x="480" y="115" text-anchor="middle" font-size="16" class="amber">high resistance</text>
+  <text x="290" y="150" text-anchor="middle" font-size="15">resistance of the metal increases &#8594;</text>
 </svg>

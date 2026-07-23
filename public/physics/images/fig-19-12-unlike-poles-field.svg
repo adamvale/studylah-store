@@ -3,10 +3,10 @@
     text { fill:#EAEAEA; }
     .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
     .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
-    .pole { font-size:15px; font-weight:bold; fill:#EAEAEA; }
+    .pole { font-size:16px; font-weight:bold; fill:#EAEAEA; }
     .fl { stroke:#6FB7E0; stroke-width:1.5; fill:none; }
     .fhead { fill:#6FB7E0; }
-    .lbl { fill:#E8B65A; font-size:12.5px; }
+    .lbl { fill:#E8B65A; font-size:15px; }
   </style>
 
   <!-- Field lines run from the N pole (left) across the gap into the S pole (right): ATTRACTION -->
@@ -45,7 +45,7 @@
     <text class="pole" x="168" y="21">N</text>
   </g>
 
-  <text x="320" y="40" text-anchor="middle" class="lbl">Unlike poles facing — attraction</text>
-  <text x="320" y="300" text-anchor="middle" font-size="12.5">Field lines run straight across the gap from N into S,</text>
-  <text x="320" y="318" text-anchor="middle" font-size="12.5">pulling the two magnets together.</text>
+  <text x="320" y="40" text-anchor="middle" class="lbl">Unlike poles facing: attraction</text>
+  <text x="320" y="300" text-anchor="middle" font-size="14.5">Field lines run straight across the gap from N into S,</text>
+  <text x="320" y="318" text-anchor="middle" font-size="14.5">pulling the two magnets together.</text>
 </svg>

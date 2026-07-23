@@ -21,10 +21,10 @@
     <line x1="360" y1="150" x2="348" y2="164"/><line x1="390" y1="150" x2="378" y2="164"/>
     <line x1="420" y1="150" x2="408" y2="164"/>
   </g>
-  <text x="445" y="145" font-size="11">mirror</text>
+  <text x="445" y="145" font-size="12">mirror</text>
   <!-- object -->
   <circle class="pt" cx="400" cy="80" r="4"/>
-  <text x="412" y="78" font-size="12" fill="#E8B65A">object</text>
+  <text x="412" y="78" font-size="13" fill="#E8B65A">object</text>
   <!-- incident rays object -> M1(230,150), M2(280,150) -->
   <path class="inc" marker-end="url(#a1)" d="M400,80 L232,149"/>
   <path class="inc" marker-end="url(#a1)" d="M400,80 L282,149"/>
@@ -36,5 +36,5 @@
   <path class="virt" d="M280,150 L400,220"/>
   <!-- image -->
   <circle cx="400" cy="220" r="4" fill="none" stroke="#9AA0A6" stroke-width="1.5"/>
-  <text x="412" y="224" font-size="12">image</text>
+  <text x="412" y="224" font-size="13">image</text>
 </svg>

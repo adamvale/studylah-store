@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 360" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .envelope { fill:#E8B65A; opacity:0.14; stroke:#EAEAEA; stroke-width:1.8; }
     .rise { stroke:#E58F8F; stroke-width:2.2; fill:none; }
     .sink { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
@@ -25,9 +25,8 @@
   <rect class="basket" x="140" y="315" width="60" height="30"/>
   <path class="flame" d="M170,300 C163,288 177,282 170,270 C163,282 160,292 170,300 Z"/>
   <!-- labels -->
-  <text class="lbl" x="290" y="150" >convection</text>
-  <text class="lbl" x="290" y="165">current</text>
-  <path class="lead" d="M288,160 L232,175"/>
+  <text class="lbl" x="170" y="22" text-anchor="middle">convection current</text>
+  <path class="lead" d="M195,26 L220,88"/>
   <text class="lbl" x="215" y="308">burner</text>
   <path class="lead" d="M213,304 L182,292"/>
 </svg>

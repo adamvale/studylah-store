@@ -6,7 +6,7 @@
     .pole { font-size:15px; font-weight:bold; fill:#EAEAEA; }
     .fl { stroke:#6FB7E0; stroke-width:1.6; fill:none; }
     .fhead { fill:#6FB7E0; }
-    .lbl { fill:#E8B65A; font-size:12.5px; }
+    .lbl { fill:#E8B65A; font-size:14.5px; }
   </style>
 
   <!-- N pole slab (left) facing S pole slab (right), small gap -->
@@ -37,6 +37,6 @@
   <path class="fl" d="M426,190 C450,205 450,210 442,216"/>
 
   <text x="260" y="40" text-anchor="middle" class="lbl">Two flat opposite poles, close but not touching</text>
-  <text x="260" y="255" text-anchor="middle" font-size="12.5">Between the poles the lines are parallel and evenly spaced</text>
-  <text x="260" y="273" text-anchor="middle" font-size="12.5">— a uniform field. Arcing appears only at the edges.</text>
+  <text x="260" y="255" text-anchor="middle" font-size="14">Between the poles the lines are parallel and evenly</text>
+  <text x="260" y="273" text-anchor="middle" font-size="14">spaced, a uniform field. Arcing appears only at the edges.</text>
 </svg>

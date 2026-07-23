@@ -1,27 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 250" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 265" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .tube { fill:none; stroke:#EAEAEA; stroke-width:2; }
     .liq { fill:#6FB7E0; opacity:0.20; }
     .piston { fill:#9AA0A6; opacity:0.40; stroke:#EAEAEA; stroke-width:1.5; }
     .load { fill:#E8B65A; opacity:0.35; stroke:#E8B65A; stroke-width:1.4; }
     .force { stroke:#E58F8F; stroke-width:2.4; }
-    .lbl { font-size:11px; }
+    .lead { stroke:#9AA0A6; stroke-width:1; }
+    .lbl { font-size:12px; }
   </style>
-  <path class="liq" d="M60,120 L60,215 L420,215 L420,110 L360,110 L360,175 L120,175 L120,120 Z"/>
-  <path class="tube" d="M60,90 L60,215 L420,215 L420,80"/>
-  <path class="tube" d="M120,90 L120,175 L360,175 L360,80"/>
-  <!-- small piston -->
-  <rect class="piston" x="60" y="112" width="60" height="12"/>
-  <line class="force" x1="90" y1="72" x2="90" y2="108" marker-end="url(#lf)"/>
-  <text x="98" y="88" class="lbl">applied force</text>
-  <text x="45" y="145" class="lbl">area A&#8321;</text>
-  <!-- large piston with load -->
-  <rect class="piston" x="360" y="102" width="60" height="12"/>
-  <rect class="load" x="372" y="72" width="36" height="30"/>
-  <text x="390" y="92" text-anchor="middle" class="lbl">load L</text>
-  <text x="360" y="140" class="lbl">area A&#8322;</text>
-  <text x="240" y="245" text-anchor="middle" class="lbl">F&#8321;/A&#8321; = F&#8322;/A&#8322;</text>
+  <!-- narrow left limb, wide right limb -->
+  <path class="liq" d="M70,120 L70,220 L420,220 L420,108 L330,108 L330,182 L100,182 L100,120 Z"/>
+  <path class="tube" d="M70,90 L70,220 L420,220 L420,72"/>
+  <path class="tube" d="M100,90 L100,182 L330,182 L330,72"/>
+  <!-- small piston (narrow limb) -->
+  <rect class="piston" x="70" y="112" width="30" height="12"/>
+  <line class="force" x1="85" y1="68" x2="85" y2="108" marker-end="url(#lf)"/>
+  <text x="95" y="82" class="lbl">applied force</text>
+  <line class="lead" x1="100" y1="118" x2="118" y2="132"/>
+  <text x="122" y="140" class="lbl">area A&#8321; (small)</text>
+  <!-- large piston with load (wide limb) -->
+  <rect class="piston" x="330" y="96" width="90" height="12"/>
+  <rect class="load" x="352" y="66" width="46" height="30"/>
+  <text x="375" y="86" text-anchor="middle" class="lbl">load L</text>
+  <line class="lead" x1="330" y1="106" x2="305" y2="156"/>
+  <text x="300" y="168" text-anchor="end" class="lbl">area A&#8322; (large)</text>
+  <text x="240" y="252" text-anchor="middle" class="lbl">F&#8321;/A&#8321; = F&#8322;/A&#8322;</text>
   <defs>
     <marker id="lf" markerWidth="8" markerHeight="8" refX="4" refY="6" orient="auto"><path d="M0,0 L4,7 L8,0 Z" fill="#E58F8F"/></marker>
   </defs>

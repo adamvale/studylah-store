@@ -5,7 +5,7 @@
     .coil { stroke:#6FB7E0; stroke-width:2; fill:none; }
     .wire { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
     .arr { stroke:#9AA0A6; stroke-width:1.6; fill:none; }
-    .lbl { fill:#E8B65A; font-size:12.5px; }
+    .lbl { fill:#E8B65A; font-size:14px; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
     .mv { stroke:#86C98B; stroke-width:2.2; fill:none; }
   </style>
@@ -20,9 +20,9 @@
     <line x1="315" y1="105" x2="340" y2="122"/><polygon fill="#9AA0A6" points="340,122 332,121 337,115"/>
     <line x1="355" y1="120" x2="378" y2="104"/><polygon fill="#9AA0A6" points="378,104 370,105 375,111"/>
   </g>
-  <text x="70" y="105" class="lbl">domains left</text>
-  <text x="70" y="121" class="lbl">pointing randomly</text>
-  <path class="lead" d="M150,112 L178,110"/>
+  <text x="30" y="58" class="lbl">domains left</text>
+  <text x="30" y="74" class="lbl">pointing randomly</text>
+  <path class="lead" d="M135,72 L180,103"/>
 
   <!-- coils -->
   <g class="coil">

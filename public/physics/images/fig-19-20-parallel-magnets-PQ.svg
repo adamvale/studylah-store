@@ -3,8 +3,8 @@
     text { fill:#EAEAEA; }
     .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
     .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
-    .pole { font-size:14px; font-weight:bold; fill:#EAEAEA; }
-    .lbl { fill:#E8B65A; font-size:13px; }
+    .pole { font-size:15px; font-weight:bold; fill:#EAEAEA; }
+    .lbl { fill:#E8B65A; font-size:15px; }
   </style>
   <!-- magnet P (top): N left, S right -->
   <g transform="translate(60,50)">

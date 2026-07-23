@@ -7,7 +7,7 @@
     .wire { fill:none; stroke:#E8B65A; stroke-width:2.4; }
     .lead { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
     .mot { stroke:#86C98B; stroke-width:2.2; fill:none; marker-end:url(#ag); }
-    .lbl { font-size:12px; }
+    .lbl { font-size:14px; }
   </style>
   <defs>
     <marker id="ag" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#86C98B"/></marker>
@@ -35,6 +35,6 @@
   <path class="lead" d="M140,155 L120,220 L205,262"/>
   <path class="lead" d="M320,155 L340,220 L255,262"/>
   <circle cx="230" cy="262" r="16" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
-  <text x="230" y="267" font-size="13" text-anchor="middle" fill="#E8B65A">G</text>
-  <text x="230" y="300" font-size="12" text-anchor="middle">galvanometer</text>
+  <text x="230" y="267" font-size="14" text-anchor="middle" fill="#E8B65A">G</text>
+  <text x="230" y="300" font-size="14" text-anchor="middle">galvanometer</text>
 </svg>

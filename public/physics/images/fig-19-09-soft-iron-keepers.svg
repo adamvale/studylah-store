@@ -4,8 +4,8 @@
     .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.5; }
     .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.5; }
     .keeper { fill:#9AA0A6; opacity:0.22; stroke:#EAEAEA; stroke-width:1.5; }
-    .pole { font-size:13px; font-weight:bold; fill:#EAEAEA; }
-    .lbl { fill:#E8B65A; font-size:12.5px; }
+    .pole { font-size:15px; font-weight:bold; fill:#EAEAEA; }
+    .lbl { fill:#E8B65A; font-size:14px; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
   </style>
 
@@ -31,11 +31,11 @@
 
   <text x="60" y="80" class="lbl">soft iron keeper</text>
   <path class="lead" d="M120,95 L133,120"/>
-  <text x="350" y="80" class="lbl">soft iron keeper</text>
-  <path class="lead" d="M340,95 L327,120"/>
-  <text x="240" y="160" text-anchor="middle" class="lbl">permanent bar magnets</text>
+  <text x="430" y="80" text-anchor="end" class="lbl">soft iron keeper</text>
+  <path class="lead" d="M360,86 L328,116"/>
+  <text x="230" y="164" text-anchor="middle" class="lbl">permanent bar magnets</text>
 
-  <text x="230" y="270" text-anchor="middle" font-size="12.5">The keepers become induced magnets and</text>
-  <text x="230" y="288" text-anchor="middle" font-size="12.5">complete a closed loop of poles (N–S–N–S),</text>
-  <text x="230" y="306" text-anchor="middle" font-size="12.5">so the magnets keep their strength.</text>
+  <text x="230" y="270" text-anchor="middle" font-size="14">The keepers become induced magnets and</text>
+  <text x="230" y="288" text-anchor="middle" font-size="14">complete a closed loop of poles (N-S-N-S),</text>
+  <text x="230" y="306" text-anchor="middle" font-size="14">so the magnets keep their strength.</text>
 </svg>

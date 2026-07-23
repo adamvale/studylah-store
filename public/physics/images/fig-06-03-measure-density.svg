@@ -35,8 +35,9 @@
   <line class="lead" x1="316" y1="218" x2="360" y2="218"/>
   <text x="363" y="222" class="lbl">submerged solid</text>
 
-  <text x="250" y="272" text-anchor="middle">Volume of solid = V&#8322; &#8722; V&#8321;   (measure mass on a balance, then &#961; = m / V)</text>
+  <text x="250" y="266" text-anchor="middle">Volume of solid = V&#8322; &#8722; V&#8321;</text>
+  <text x="250" y="286" text-anchor="middle">measure mass m on a balance, then &#961; = m / V</text>
   <!-- small balance display -->
-  <rect class="disp" x="120" y="258" width="70" height="22" rx="3"/>
-  <text x="155" y="273" text-anchor="middle" class="read">125.0 g</text>
+  <rect class="disp" x="395" y="160" width="70" height="22" rx="3"/>
+  <text x="430" y="175" text-anchor="middle" class="read">125.0 g</text>
 </svg>

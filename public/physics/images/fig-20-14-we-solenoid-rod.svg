@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 260" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:13px; }
+    text { fill:#EAEAEA; font-size:14px; }
     .core { fill:#9AA0A6; fill-opacity:0.28; stroke:#9AA0A6; stroke-width:1.4; }
     .coil { stroke:#EAEAEA; stroke-width:2; fill:none; }
     .cur  { stroke:#6FB7E0; stroke-width:2; fill:none; }
-    .lbl  { fill:#E8B65A; font-size:13px; }
-    .end  { fill:#EAEAEA; font-size:15px; font-weight:bold; }
+    .lbl  { fill:#E8B65A; font-size:14px; }
+    .end  { fill:#EAEAEA; font-size:16px; font-weight:bold; }
   </style>
   <defs>
     <marker id="cs" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 z" fill="#6FB7E0"/></marker>
@@ -37,7 +37,7 @@
     <line x1="303" y1="150" x2="303" y2="112" marker-end="url(#cs)"/>
     <line x1="333" y1="150" x2="333" y2="112" marker-end="url(#cs)"/>
   </g>
-  <text fill="#6FB7E0" x="360" y="152">current flows up on the near side</text>
+  <text fill="#6FB7E0" x="250" y="185" text-anchor="middle">current flows up on the near side</text>
 
   <!-- ends -->
   <text class="end" x="128" y="90">A</text>

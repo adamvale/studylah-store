@@ -1,15 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 340" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
     .beam { fill:#6FB7E0; opacity:0.30; stroke:#6FB7E0; stroke-width:1.6; }
     .pivot { fill:#E8B65A; opacity:0.35; stroke:#E8B65A; stroke-width:1.6; }
     .force { stroke:#E58F8F; stroke-width:2.4; fill:none; }
     .turn { stroke:#86C98B; stroke-width:2; fill:none; }
-    .lbl { font-size:13px; }
-    .ttl { font-size:13px; fill:#EAEAEA; font-weight:bold; }
+    .lbl { font-size:14px; }
+    .ttl { font-size:14px; fill:#EAEAEA; font-weight:bold; }
   </style>
-  <!-- LEFT: clockwise -->
-  <text class="ttl" x="130" y="30" text-anchor="middle">Clockwise moment</text>
+  <!-- TOP: clockwise -->
+  <text class="ttl" x="140" y="30" text-anchor="middle">Clockwise moment</text>
   <rect class="beam" x="40" y="95" width="200" height="11"/>
   <polygon class="pivot" points="128,132 152,132 140,106"/>
   <text class="lbl" x="140" y="150" text-anchor="middle">pivot</text>
@@ -20,19 +20,19 @@
   <!-- turning arrow clockwise -->
   <path class="turn" d="M170,70 A30,30 0 0 1 196,96"/>
   <path class="turn" d="M196,96 l-9,-1 M196,96 l1,-9"/>
-  <text class="lbl" x="150" y="66" fill="#86C98B">turns clockwise</text>
+  <text class="lbl" x="163" y="64" text-anchor="end" fill="#86C98B">turns clockwise</text>
 
-  <!-- RIGHT: anticlockwise -->
-  <text class="ttl" x="430" y="30" text-anchor="middle">Anticlockwise moment</text>
-  <rect class="beam" x="320" y="95" width="200" height="11"/>
-  <polygon class="pivot" points="408,132 432,132 420,106"/>
-  <text class="lbl" x="420" y="150" text-anchor="middle">pivot</text>
+  <!-- BOTTOM: anticlockwise -->
+  <text class="ttl" x="140" y="200" text-anchor="middle">Anticlockwise moment</text>
+  <rect class="beam" x="40" y="265" width="200" height="11"/>
+  <polygon class="pivot" points="128,302 152,302 140,276"/>
+  <text class="lbl" x="140" y="320" text-anchor="middle">pivot</text>
   <!-- force down on left side -->
-  <line class="force" x1="345" y1="55" x2="345" y2="93"/>
-  <path class="force" d="M345,93 l-5,-10 M345,93 l5,-10"/>
-  <text class="lbl" x="322" y="72" fill="#E58F8F">force</text>
+  <line class="force" x1="65" y1="225" x2="65" y2="263"/>
+  <path class="force" d="M65,263 l-5,-10 M65,263 l5,-10"/>
+  <text class="lbl" x="58" y="242" text-anchor="end" fill="#E58F8F">force</text>
   <!-- turning arrow anticlockwise -->
-  <path class="turn" d="M390,70 A30,30 0 0 0 364,96"/>
-  <path class="turn" d="M364,96 l9,-1 M364,96 l-1,-9"/>
-  <text class="lbl" x="405" y="66" fill="#86C98B">turns anticlockwise</text>
+  <path class="turn" d="M110,240 A30,30 0 0 0 84,266"/>
+  <path class="turn" d="M84,266 l9,-1 M84,266 l-1,-9"/>
+  <text class="lbl" x="120" y="236" fill="#86C98B">turns anticlockwise</text>
 </svg>

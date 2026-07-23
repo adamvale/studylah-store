@@ -4,8 +4,8 @@
     .fillg { fill:#EAEAEA; opacity:0.10; stroke:#EAEAEA; stroke-width:1.6; }
     .frame { fill:none; stroke:#EAEAEA; stroke-width:2.4; }
     .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
-    .lbl { fill:#6FB7E0; font-size:13px; }
-    .disp { fill:#86C98B; font-size:15px; font-family:monospace; }
+    .lbl { fill:#6FB7E0; font-size:18px; }
+    .disp { fill:#86C98B; font-size:18px; font-family:monospace; }
   </style>
   <!-- C-frame -->
   <path class="frame" d="M170,110 a95,95 0 0 0 0,120"/>

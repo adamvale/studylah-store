@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:13px; }
+    text { fill:#EAEAEA; font-size:14px; }
     .beaker { fill:none; stroke:#EAEAEA; stroke-width:2; }
     .liq { fill:#E8B65A; opacity:0.26; stroke:#E8B65A; stroke-width:1.2; }
     .ice { fill:#6FB7E0; opacity:0.40; stroke:#6FB7E0; stroke-width:1.6; }

@@ -19,10 +19,10 @@
   <text class="lbl" x="95" y="150" fill="#E58F8F">+</text>
   <text class="lbl" x="95" y="190" fill="#E58F8F">+</text>
   <!-- minus signs on right plate -->
-  <text class="lbl" x="368" y="70" fill="#6FB7E0">&#8722;</text>
-  <text class="lbl" x="368" y="110" fill="#6FB7E0">&#8722;</text>
-  <text class="lbl" x="368" y="150" fill="#6FB7E0">&#8722;</text>
-  <text class="lbl" x="368" y="190" fill="#6FB7E0">&#8722;</text>
+  <text class="lbl" x="368" y="70" fill="#6FB7E0">−</text>
+  <text class="lbl" x="368" y="110" fill="#6FB7E0">−</text>
+  <text class="lbl" x="368" y="150" fill="#6FB7E0">−</text>
+  <text class="lbl" x="368" y="190" fill="#6FB7E0">−</text>
   <!-- uniform straight field lines from + to - -->
   <line class="fl" x1="116" y1="80" x2="344" y2="80" marker-end="url(#ah8)"/>
   <line class="fl" x1="116" y1="115" x2="344" y2="115" marker-end="url(#ah8)"/>
@@ -31,5 +31,5 @@
   <!-- edge curvature (fringing) at top and bottom -->
   <path class="fl" d="M112,55 Q230,40 348,55" marker-end="url(#ah8)"/>
   <path class="fl" d="M112,205 Q230,220 348,205" marker-end="url(#ah8)"/>
-  <text x="230" y="240" text-anchor="middle" font-size="11" fill="#9AA0A6">uniform, parallel field between the plates</text>
+  <text x="230" y="240" text-anchor="middle" font-size="13" fill="#9AA0A6">uniform, parallel field between the plates</text>
 </svg>

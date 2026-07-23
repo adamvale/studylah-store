@@ -1,10 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 620" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
     .wire { stroke:#EAEAEA; stroke-width:3; fill:none; }
     .fld  { stroke:#6FB7E0; stroke-width:1.6; fill:none; }
-    .lbl  { fill:#E8B65A; font-size:12px; }
-    .cap  { font-size:12px; text-anchor:middle; }
+    .lbl  { fill:#E8B65A; font-size:14px; }
+    .cap  { font-size:14px; text-anchor:middle; }
+    .ttl  { font-size:15px; font-weight:bold; text-anchor:middle; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
     .ah   { fill:#6FB7E0; }
   </style>
@@ -15,46 +16,48 @@
   </defs>
 
   <!-- SIDE VIEW -->
-  <text x="120" y="34" text-anchor="middle" font-size="13" font-weight="bold">Side view</text>
-  <line class="wire" x1="120" y1="315" x2="120" y2="70" marker-end="url(#cur)"/>
-  <text class="lbl" x="150" y="70">current, I</text>
-  <ellipse class="fld" cx="120" cy="120" rx="58" ry="15"/>
-  <ellipse class="fld" cx="120" cy="180" rx="58" ry="15"/>
-  <ellipse class="fld" cx="120" cy="240" rx="58" ry="15"/>
-  <text class="lbl" x="120" y="345" text-anchor="middle">magnetic field</text>
-  <path class="lead" d="M120,332 L178,240"/>
+  <text class="ttl" x="230" y="30">Side view</text>
+  <line class="wire" x1="230" y1="310" x2="230" y2="64" marker-end="url(#cur)"/>
+  <text class="lbl" x="246" y="74">current, I</text>
+  <ellipse class="fld" cx="230" cy="110" rx="58" ry="15"/>
+  <ellipse class="fld" cx="230" cy="170" rx="58" ry="15"/>
+  <ellipse class="fld" cx="230" cy="230" rx="58" ry="15"/>
+  <text class="lbl" x="310" y="240">magnetic field</text>
+  <path class="lead" d="M306,236 L292,232"/>
 
-  <!-- TOP VIEW: current OUT of page -->
-  <text x="400" y="34" text-anchor="middle" font-size="13" font-weight="bold">Top view</text>
+  <!-- TOP VIEWS -->
+  <text class="ttl" x="230" y="372">Top view</text>
+
+  <!-- current OUT of page -->
   <g>
-    <circle class="fld" cx="400" cy="185" r="26"/>
-    <circle class="fld" cx="400" cy="185" r="46"/>
-    <circle class="fld" cx="400" cy="185" r="66"/>
+    <circle class="fld" cx="115" cy="490" r="26"/>
+    <circle class="fld" cx="115" cy="490" r="46"/>
+    <circle class="fld" cx="115" cy="490" r="66"/>
     <!-- current out: dot -->
-    <circle cx="400" cy="185" r="9" fill="none" stroke="#EAEAEA" stroke-width="1.5"/>
-    <circle cx="400" cy="185" r="2.6" fill="#EAEAEA"/>
-    <!-- anticlockwise arrowheads: top points left, bottom points right -->
-    <path class="ah" d="M404,159 L396,155 L404,151 z"/>
-    <path class="ah" d="M396,211 L404,215 L396,219 z"/>
-    <path class="ah" d="M374,181 L370,189 L366,181 z"/>
+    <circle cx="115" cy="490" r="9" fill="none" stroke="#EAEAEA" stroke-width="1.5"/>
+    <circle cx="115" cy="490" r="2.6" fill="#EAEAEA"/>
+    <!-- anticlockwise arrowheads -->
+    <path class="ah" d="M119,464 L111,460 L119,456 z"/>
+    <path class="ah" d="M111,516 L119,520 L111,524 z"/>
+    <path class="ah" d="M89,486 L85,494 L81,486 z"/>
   </g>
-  <text class="cap" x="400" y="285">current OUT of page (&#8857;)</text>
-  <text class="cap" x="400" y="303" fill="#86C98B">field is anticlockwise</text>
+  <text class="cap" x="115" y="585">current OUT of page (&#8857;)</text>
+  <text class="cap" x="115" y="605" fill="#86C98B">field is anticlockwise</text>
 
-  <!-- TOP VIEW: current INTO page -->
+  <!-- current INTO page -->
   <g>
-    <circle class="fld" cx="600" cy="185" r="26"/>
-    <circle class="fld" cx="600" cy="185" r="46"/>
-    <circle class="fld" cx="600" cy="185" r="66"/>
+    <circle class="fld" cx="345" cy="490" r="26"/>
+    <circle class="fld" cx="345" cy="490" r="46"/>
+    <circle class="fld" cx="345" cy="490" r="66"/>
     <!-- current in: cross -->
-    <circle cx="600" cy="185" r="9" fill="none" stroke="#EAEAEA" stroke-width="1.5"/>
-    <line x1="594" y1="179" x2="606" y2="191" stroke="#EAEAEA" stroke-width="1.5"/>
-    <line x1="606" y1="179" x2="594" y2="191" stroke="#EAEAEA" stroke-width="1.5"/>
-    <!-- clockwise arrowheads: top points right, bottom points left -->
-    <path class="ah" d="M596,159 L604,155 L596,151 z"/>
-    <path class="ah" d="M604,211 L596,215 L604,219 z"/>
-    <path class="ah" d="M626,181 L630,189 L634,181 z"/>
+    <circle cx="345" cy="490" r="9" fill="none" stroke="#EAEAEA" stroke-width="1.5"/>
+    <line x1="339" y1="484" x2="351" y2="496" stroke="#EAEAEA" stroke-width="1.5"/>
+    <line x1="351" y1="484" x2="339" y2="496" stroke="#EAEAEA" stroke-width="1.5"/>
+    <!-- clockwise arrowheads -->
+    <path class="ah" d="M341,464 L349,460 L341,456 z"/>
+    <path class="ah" d="M349,516 L341,520 L349,524 z"/>
+    <path class="ah" d="M371,486 L375,494 L379,486 z"/>
   </g>
-  <text class="cap" x="600" y="285">current INTO page (&#8855;)</text>
-  <text class="cap" x="600" y="303" fill="#E58F8F">field is clockwise</text>
+  <text class="cap" x="345" y="585">current INTO page (&#8855;)</text>
+  <text class="cap" x="345" y="605" fill="#E58F8F">field is clockwise</text>
 </svg>

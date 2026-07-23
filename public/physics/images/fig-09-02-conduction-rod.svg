@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:14px; }
     .rod { stroke:#EAEAEA; stroke-width:1.6; }
     .flame { fill:#E8B65A; opacity:0.5; stroke:#E8B65A; stroke-width:1.2; }
     .burner { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
     .flow { stroke:#E8B65A; stroke-width:2.2; fill:none; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
-    .lbl { fill:#E8B65A; font-size:12px; }
+    .lbl { fill:#E8B65A; font-size:14px; }
   </style>
   <!-- metal rod, hot end (left, near flame) gradient via segments -->
   <defs>
@@ -22,12 +22,12 @@
   <path class="flow" d="M150,108 L420,108"/>
   <path class="flow" d="M410,101 L422,108 L410,115"/>
   <!-- hot / cool end labels -->
-  <text x="140" y="145" text-anchor="middle" fill="#E58F8F">hotter end</text>
+  <text x="175" y="145" text-anchor="middle" fill="#E58F8F">hotter end</text>
   <text x="435" y="145" text-anchor="middle" fill="#6FB7E0">cooler end</text>
   <!-- bunsen burner under left end -->
-  <path class="flame" d="M120,95 C112,80 128,70 120,55 C112,70 108,86 120,95 Z"/>
+  <path class="flame" d="M120,150 C112,138 126,132 120,123 C114,132 108,140 120,150 Z"/>
   <rect class="burner" x="112" y="150" width="16" height="55"/>
   <line class="burner" x1="105" y1="205" x2="135" y2="205"/>
-  <text x="120" y="225" text-anchor="middle">Bunsen burner</text>
-  <text x="120" y="240" text-anchor="middle">(heat source)</text>
+  <text x="120" y="223" text-anchor="middle">Bunsen burner</text>
+  <text x="120" y="242" text-anchor="middle">(heat source)</text>
 </svg>

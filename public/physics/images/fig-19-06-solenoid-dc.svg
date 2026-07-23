@@ -4,8 +4,8 @@
     .bar { fill:#9AA0A6; opacity:0.20; stroke:#EAEAEA; stroke-width:1.5; }
     .coil { stroke:#6FB7E0; stroke-width:2; fill:none; }
     .wire { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
-    .pole { font-size:14px; font-weight:bold; fill:#EAEAEA; }
-    .lbl { fill:#E8B65A; font-size:12.5px; }
+    .pole { font-size:15px; font-weight:bold; fill:#EAEAEA; }
+    .lbl { fill:#E8B65A; font-size:14px; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
     .cur { stroke:#86C98B; stroke-width:2; fill:none; }
     .chead { fill:#86C98B; }
@@ -45,22 +45,22 @@
   <path class="lead" d="M448,101 L440,95"/>
 
   <!-- ==== end-on rule ==== -->
-  <text x="30" y="235" font-size="13" font-weight="bold">Which end becomes which pole?</text>
+  <text x="30" y="235" font-size="15" font-weight="bold">Which end becomes which pole?</text>
   <!-- N end: anticlockwise current -->
   <g transform="translate(70,270)">
     <circle cx="0" cy="0" r="26" class="cur"/>
     <path class="cur" d="M0,-26 A26,26 0 0 0 -22,14"/>
     <polygon class="chead" points="-26,4 -18,10 -14,0"/>
-    <text x="0" y="55" text-anchor="middle" font-size="12">anticlockwise</text>
-    <text x="0" y="70" text-anchor="middle" font-size="12">= North pole</text>
+    <text x="0" y="55" text-anchor="middle" font-size="14">anticlockwise</text>
+    <text x="0" y="76" text-anchor="middle" font-size="14">= North pole</text>
   </g>
   <!-- S end: clockwise current -->
   <g transform="translate(520,270)">
     <circle cx="0" cy="0" r="26" class="cur"/>
     <path class="cur" d="M0,-26 A26,26 0 0 1 22,14"/>
     <polygon class="chead" points="26,4 18,10 14,0"/>
-    <text x="0" y="55" text-anchor="middle" font-size="12">clockwise</text>
-    <text x="0" y="70" text-anchor="middle" font-size="12">= South pole</text>
+    <text x="0" y="55" text-anchor="middle" font-size="14">clockwise</text>
+    <text x="0" y="76" text-anchor="middle" font-size="14">= South pole</text>
   </g>
   <!-- little magnet in middle -->
   <g transform="translate(240,258)">

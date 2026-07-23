@@ -5,7 +5,7 @@
     </marker>
   </defs>
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .pipe { fill:none; stroke:#EAEAEA; stroke-width:1.8; }
     .flow { fill:#6FB7E0; opacity:0.12; }
     .neg { fill:#6FB7E0; font-size:13px; text-anchor:middle; }
@@ -13,14 +13,14 @@
     .move { stroke:#E8B65A; stroke-width:2; fill:none; }
     .truck { fill:#9AA0A6; opacity:0.2; stroke:#EAEAEA; stroke-width:1.6; }
     .chain { stroke:#E8B65A; stroke-width:2; stroke-dasharray:3 3; fill:none; }
-    .hd { font-size:12px; font-weight:bold; }
+    .hd { font-size:13px; font-weight:bold; }
   </style>
   <!-- TOP: hose / pipe charging (hazard) -->
   <text x="40" y="26" class="hd">Hazard: fluid or dry bulk flowing through a pipe</text>
   <rect class="pipe" x="60" y="55" width="360" height="60" rx="4"/>
   <!-- wall charges negative on inner wall -->
   <g class="neg">
-    <text x="90" y="72">&#8722;</text><text x="140" y="72">&#8722;</text><text x="190" y="72">&#8722;</text><text x="240" y="72">&#8722;</text><text x="290" y="72">&#8722;</text><text x="340" y="72">&#8722;</text>
+    <text x="90" y="72">−</text><text x="140" y="72">−</text><text x="190" y="72">−</text><text x="240" y="72">−</text><text x="290" y="72">−</text><text x="340" y="72">−</text>
   </g>
   <rect class="flow" x="60" y="80" width="360" height="35"/>
   <!-- flowing material positive -->
@@ -30,7 +30,7 @@
   <line class="move" x1="80" y1="97" x2="400" y2="97" marker-end="url(#ah15)"/>
   <text x="430" y="70" fill="#6FB7E0">pipe wall</text>
   <text x="430" y="100" fill="#E58F8F">flow of fuel / dry bulk</text>
-  <text x="60" y="140" font-size="11" fill="#9AA0A6">friction transfers electrons &#8594; opposite charges build up &#8594; a spark can ignite fuel</text>
+  <text x="60" y="140" font-size="12" fill="#9AA0A6">friction transfers electrons → opposite charges build up → a spark can ignite fuel</text>
 
   <!-- BOTTOM: truck earthed by metal chain (safety) -->
   <text x="40" y="200" class="hd">Safety: earth the tanker with a metal chain</text>
@@ -44,8 +44,8 @@
   <line stroke="#9AA0A6" stroke-width="1.5" x1="40" y1="308" x2="420" y2="308"/>
   <!-- chain from body to ground -->
   <path class="chain" d="M70,275 L70,308"/>
-  <line class="move" x1="70" y1="305" x2="70" y2="245" marker-end="url(#ah15)"/>
-  <text x="85" y="270" fill="#E8B65A">electrons flow to ground</text>
-  <text x="300" y="260" font-size="11" fill="#9AA0A6">charge does not build up,</text>
-  <text x="300" y="276" font-size="11" fill="#9AA0A6">so no dangerous spark</text>
+  <line class="move" x1="70" y1="248" x2="70" y2="302" marker-end="url(#ah15)"/>
+  <text x="60" y="330" fill="#E8B65A">electrons flow to ground</text>
+  <text x="300" y="260" font-size="12" fill="#9AA0A6">charge does not build up,</text>
+  <text x="300" y="276" font-size="12" fill="#9AA0A6">so no dangerous spark</text>
 </svg>

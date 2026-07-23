@@ -23,5 +23,5 @@
   <text x="225" y="268" class="lbl" text-anchor="middle">x</text>
   <text x="312" y="165" class="lbl">y</text>
 
-  <text x="150" y="120" class="lbl" fill="#E8B65A">gradient = y / x = R</text>
+  <text x="85" y="120" class="lbl" fill="#E8B65A">gradient = y / x = R</text>
 </svg>

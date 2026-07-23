@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .solid { fill:#6FB7E0; opacity:0.20; stroke:#EAEAEA; stroke-width:1.5; }
     .edge { fill:none; stroke:#EAEAEA; stroke-width:1.5; }
-    .dim { fill:#9AA0A6; font-size:11px; }
-    .val { fill:#E8B65A; font-size:12px; text-anchor:middle; }
-    .cap { font-size:13px; text-anchor:middle; }
+    .dim { fill:#9AA0A6; font-size:12px; }
+    .val { fill:#E8B65A; font-size:13px; text-anchor:middle; }
+    .cap { font-size:14px; text-anchor:middle; }
   </style>
   <!-- Object A: cube 4x4x4 -->
   <text class="cap" x="130" y="30">Object A</text>
@@ -26,7 +26,7 @@
   <path class="edge" d="M300,120 L300,138 L312,144 L312,126"/>
   <path class="edge" d="M312,144 L482,84 L482,66"/>
   <text class="dim" x="285" y="130" text-anchor="end">1 cm</text>
-  <text class="dim" x="430" y="105">64 cm</text>
+  <text class="dim" x="380" y="145" text-anchor="middle">64 cm</text>
   <text class="val" x="390" y="215">Volume = 1&#215;1&#215;64 = 64 cm&#179;</text>
   <text class="val" x="390" y="235">Surface area = 4&#215;(1&#215;64) + 2&#215;(1&#215;1)</text>
   <text class="val" x="390" y="253">= 258 cm&#178;</text>

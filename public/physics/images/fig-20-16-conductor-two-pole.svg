@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 260" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:14px; }
     .pole { fill:#9AA0A6; fill-opacity:0.22; stroke:#EAEAEA; stroke-width:1.6; }
     .plbl { fill:#EAEAEA; font-size:16px; font-weight:bold; text-anchor:middle; }
     .fld  { stroke:#6FB7E0; stroke-width:1.5; fill:none; }

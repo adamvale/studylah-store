@@ -5,7 +5,7 @@
     .lbl { font-size:12px; }
     .flow { stroke:#6FB7E0; stroke-width:2.2; fill:none; }
   </style>
-  <rect class="wire" x="70" y="55" width="200" height="130" fill="none"/>
+  <path class="wire" d="M70,136 L70,185 L270,185 L270,55 L70,55 L70,104"/>
   <!-- cell top, labelled V -->
   <line class="wire" x1="155" y1="39" x2="155" y2="71" stroke-width="2.4"/>
   <line class="wire" x1="171" y1="47" x2="171" y2="63" stroke-width="5"/>
@@ -13,8 +13,8 @@
   <!-- ammeter reading on left rail -->
   <circle class="wire" cx="70" cy="120" r="16"/>
   <text x="70" y="125" font-size="13" text-anchor="middle">A</text>
-  <path class="flow" d="M40,120 l0,-22"/>
-  <path class="flow" d="M40,98 l-4,10 M40,98 l4,10"/>
+  <path class="flow" d="M40,98 l0,22"/>
+  <path class="flow" d="M40,120 l-4,-10 M40,120 l4,-10"/>
   <text x="20" y="150" class="lbl">1.5 A</text>
   <!-- resistor on bottom -->
   <rect class="wire" x="147" y="173" width="46" height="24"/>

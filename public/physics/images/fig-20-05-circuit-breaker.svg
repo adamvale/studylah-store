@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 640" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .wire { stroke:#EAEAEA; stroke-width:1.8; fill:none; }
     .coil { stroke:#E8B65A; stroke-width:2; fill:none; }
     .core { fill:#9AA0A6; fill-opacity:0.28; stroke:#9AA0A6; stroke-width:1.2; }
@@ -8,7 +8,7 @@
     .spring{ stroke:#86C98B; stroke-width:1.6; fill:none; }
     .arm  { stroke:#EAEAEA; stroke-width:3; fill:none; }
     .lbl  { fill:#E8B65A; }
-    .ttl  { fill:#EAEAEA; font-size:13px; font-weight:bold; text-anchor:middle; }
+    .ttl  { fill:#EAEAEA; font-size:15px; font-weight:bold; text-anchor:middle; }
     .lead { stroke:#9AA0A6; stroke-width:1; fill:none; }
     .dash { stroke:#E58F8F; stroke-width:1.4; stroke-dasharray:4 3; fill:none; }
   </style>
@@ -19,63 +19,60 @@
   </defs>
 
   <!-- ===== NORMAL ===== -->
-  <text class="ttl" x="180" y="26">Under normal conditions</text>
-  <!-- coil + core -->
-  <rect class="core" x="70" y="150" width="80" height="26"/>
-  <g class="coil">
-    <path d="M74,150 q10,-16 20,0"/><path d="M94,150 q10,-16 20,0"/><path d="M114,150 q10,-16 20,0"/>
+  <g>
+    <text class="ttl" x="185" y="26">Under normal conditions</text>
+    <!-- coil + core -->
+    <rect class="core" x="70" y="150" width="80" height="26"/>
+    <path class="coil" d="M74,150 q10,-16 20,0"/><path class="coil" d="M94,150 q10,-16 20,0"/><path class="coil" d="M114,150 q10,-16 20,0"/>
+    <text class="lbl" x="60" y="200">coil + soft-iron core</text>
+    <path class="lead" d="M95,196 L110,178"/>
+    <!-- iron bolt held in catch -->
+    <rect class="bolt" x="158" y="152" width="34" height="22"/>
+    <text class="lbl" x="196" y="146">iron bolt (held)</text>
+    <!-- pivoted contact arm CLOSED -->
+    <circle cx="210" cy="210" r="3" fill="#EAEAEA"/>
+    <line class="arm" x1="210" y1="210" x2="285" y2="205"/>
+    <circle cx="285" cy="205" r="3" fill="#86C98B"/>
+    <text x="250" y="235">switch closed</text>
+    <!-- spring -->
+    <path class="spring" d="M200,176 l6,8 l-12,8 l12,8 l-6,8"/>
+    <text class="lbl" x="150" y="250">spring compressed</text>
+    <!-- supply wires -->
+    <line class="wire" x1="40" y1="130" x2="40" y2="285"/>
+    <line class="wire" x1="40" y1="130" x2="70" y2="130"/>
+    <line class="wire" x1="150" y1="163" x2="330" y2="163"/>
+    <line class="wire" x1="285" y1="205" x2="330" y2="205"/>
+    <line class="wire" x1="330" y1="163" x2="330" y2="205"/>
+    <line class="wire" x1="40" y1="285" x2="210" y2="285"/>
+    <line class="wire" x1="210" y1="285" x2="210" y2="210"/>
+    <text x="30" y="112" fill="#86C98B">weak field: bolt not attracted, current flows</text>
   </g>
-  <text class="lbl" x="60" y="200" >coil + soft-iron core</text>
-  <path class="lead" d="M95,196 L110,178"/>
-  <!-- iron bolt held in catch -->
-  <rect class="bolt" x="158" y="152" width="34" height="22"/>
-  <text class="lbl" x="196" y="146">iron bolt (held)</text>
-  <!-- pivoted contact arm CLOSED -->
-  <circle cx="210" cy="210" r="3" fill="#EAEAEA"/>
-  <line class="arm" x1="210" y1="210" x2="285" y2="205"/>
-  <circle cx="285" cy="205" r="3" fill="#86C98B"/>
-  <text x="250" y="235">switch closed</text>
-  <!-- spring -->
-  <path class="spring" d="M200,176 l6,8 l-12,8 l12,8 l-6,8"/>
-  <text class="lbl" x="150" y="250">spring compressed</text>
-  <!-- supply wires -->
-  <line class="wire" x1="40" y1="130" x2="40" y2="285"/>
-  <line class="wire" x1="40" y1="130" x2="70" y2="130"/>
-  <line class="wire" x1="150" y1="163" x2="330" y2="163"/>
-  <line class="wire" x1="285" y1="205" x2="330" y2="205"/>
-  <line class="wire" x1="330" y1="163" x2="330" y2="205"/>
-  <line class="wire" x1="40" y1="285" x2="210" y2="285"/>
-  <line class="wire" x1="210" y1="285" x2="210" y2="210"/>
-  <text x="30" y="120" fill="#86C98B">weak field: bolt not attracted, current flows</text>
-
-  <!-- divider -->
-  <line x1="368" y1="20" x2="368" y2="300" stroke="#9AA0A6" stroke-width="1" stroke-dasharray="4 4"/>
 
   <!-- ===== FAULT ===== -->
-  <text class="ttl" x="545" y="26">When a fault occurs</text>
-  <rect class="core" x="430" y="150" width="80" height="26"/>
-  <g class="coil">
-    <path d="M434,150 q10,-16 20,0"/><path d="M454,150 q10,-16 20,0"/><path d="M474,150 q10,-16 20,0"/>
+  <g transform="translate(-366,320)">
+    <text class="ttl" x="551" y="26">When a fault occurs</text>
+    <rect class="core" x="430" y="150" width="80" height="26"/>
+    <path class="coil" d="M434,150 q10,-16 20,0"/><path class="coil" d="M454,150 q10,-16 20,0"/><path class="coil" d="M474,150 q10,-16 20,0"/>
+    <!-- iron bolt pulled toward coil -->
+    <rect class="bolt" x="512" y="152" width="34" height="22" transform="translate(-14,0)"/>
+    <path class="dash" d="M545,163 L510,163" marker-end="url(#cb)"/>
+    <text class="lbl" x="500" y="142">bolt attracted &#8594;</text>
+    <!-- pivoted contact arm OPEN -->
+    <circle cx="576" cy="210" r="3" fill="#EAEAEA"/>
+    <line class="arm" x1="576" y1="210" x2="640" y2="188"/>
+    <circle cx="651" cy="205" r="3" fill="#E58F8F"/>
+    <text x="612" y="238" fill="#E58F8F">switch open</text>
+    <!-- spring released -->
+    <path class="spring" d="M556,176 l6,10 l-12,10 l12,10 l-6,10"/>
+    <text class="lbl" x="520" y="258">spring released</text>
+    <!-- supply -->
+    <line class="wire" x1="400" y1="130" x2="400" y2="285"/>
+    <line class="wire" x1="400" y1="130" x2="430" y2="130"/>
+    <line class="wire" x1="510" y1="163" x2="696" y2="163"/>
+    <line class="wire" x1="651" y1="205" x2="696" y2="205"/>
+    <line class="wire" x1="696" y1="163" x2="696" y2="205"/>
+    <line class="wire" x1="400" y1="285" x2="576" y2="285"/>
+    <line class="wire" x1="576" y1="285" x2="576" y2="210"/>
+    <text x="392" y="112" fill="#E58F8F">strong field: bolt pulled, switch trips open</text>
   </g>
-  <!-- iron bolt pulled toward coil -->
-  <rect class="bolt" x="512" y="152" width="34" height="22" transform="translate(-14,0)"/>
-  <path class="dash" d="M545,163 L510,163" marker-end="url(#cb)"/>
-  <text class="lbl" x="500" y="132">bolt attracted &#8594;</text>
-  <!-- pivoted contact arm OPEN -->
-  <circle cx="576" cy="210" r="3" fill="#EAEAEA"/>
-  <line class="arm" x1="576" y1="210" x2="640" y2="188"/>
-  <circle cx="651" cy="205" r="3" fill="#E58F8F"/>
-  <text x="612" y="238" fill="#E58F8F">switch open</text>
-  <!-- spring released -->
-  <path class="spring" d="M556,176 l6,10 l-12,10 l12,10 l-6,10"/>
-  <text class="lbl" x="520" y="258">spring released</text>
-  <!-- supply -->
-  <line class="wire" x1="400" y1="130" x2="400" y2="285"/>
-  <line class="wire" x1="400" y1="130" x2="430" y2="130"/>
-  <line class="wire" x1="510" y1="163" x2="696" y2="163"/>
-  <line class="wire" x1="651" y1="205" x2="696" y2="205"/>
-  <line class="wire" x1="696" y1="163" x2="696" y2="205"/>
-  <line class="wire" x1="400" y1="285" x2="576" y2="285"/>
-  <line class="wire" x1="576" y1="285" x2="576" y2="210"/>
-  <text x="392" y="120" fill="#E58F8F">strong field: bolt pulled, switch trips open</text>
 </svg>

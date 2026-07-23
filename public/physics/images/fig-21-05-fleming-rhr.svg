@@ -5,7 +5,7 @@
     .axB { stroke:#6FB7E0; stroke-width:2.6; fill:none; marker-end:url(#ab); }
     .axI { stroke:#86C98B; stroke-width:2.6; fill:none; marker-end:url(#ai); }
     .hand { fill:none; stroke:#9AA0A6; stroke-width:1.6; }
-    .lbl { font-size:13px; }
+    .lbl { font-size:14px; }
   </style>
   <defs>
     <marker id="af" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#E8B65A"/></marker>
@@ -25,14 +25,14 @@
 
   <!-- first finger: magnetic field B (to the left, N to S) -->
   <line class="axB" x1="205" y1="210" x2="60" y2="180"/>
-  <text class="lbl" x="20" y="170" fill="#6FB7E0">first finger &#8594;</text>
-  <text class="lbl" x="20" y="186" fill="#6FB7E0">field, B (N to S)</text>
+  <text class="lbl" x="20" y="152" fill="#6FB7E0">first finger &#8594;</text>
+  <text class="lbl" x="20" y="170" fill="#6FB7E0">field, B (N to S)</text>
 
   <!-- second finger: induced current I (down-right, out toward viewer) -->
   <line class="axI" x1="205" y1="210" x2="330" y2="320"/>
   <text class="lbl" x="300" y="345" fill="#86C98B">second finger &#8594;</text>
   <text class="lbl" x="300" y="361" fill="#86C98B">induced current, I</text>
 
-  <text x="230" y="240" font-size="12" fill="#9AA0A6">right hand, three fingers</text>
-  <text x="230" y="256" font-size="12" fill="#9AA0A6">held at right angles</text>
+  <text x="230" y="240" font-size="13" fill="#9AA0A6">right hand, three fingers</text>
+  <text x="230" y="258" font-size="13" fill="#9AA0A6">held at right angles</text>
 </svg>

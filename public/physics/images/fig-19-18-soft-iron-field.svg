@@ -4,10 +4,10 @@
     .magN { fill:#E58F8F; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
     .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
     .iron { fill:#9AA0A6; opacity:0.22; stroke:#EAEAEA; stroke-width:1.6; }
-    .pole { font-size:14px; font-weight:bold; fill:#EAEAEA; }
+    .pole { font-size:15px; font-weight:bold; fill:#EAEAEA; }
     .fl { stroke:#6FB7E0; stroke-width:1.5; fill:none; }
     .fhead { fill:#6FB7E0; }
-    .lbl { fill:#E8B65A; font-size:12px; }
+    .lbl { fill:#E8B65A; font-size:14px; }
   </style>
 
   <!-- permanent magnet S..N (N faces the iron bar) -->
@@ -43,5 +43,6 @@
 
   <text x="80" y="90" class="lbl">permanent magnet</text>
   <text x="380" y="90" class="lbl">soft iron bar (induced)</text>
-  <text x="300" y="220" text-anchor="middle" font-size="12.5">Lines run from the magnet's N pole into the near (S) end of the induced bar.</text>
+  <text x="300" y="214" text-anchor="middle" font-size="14.5">Lines run from the magnet's N pole into</text>
+  <text x="300" y="232" text-anchor="middle" font-size="14.5">the near (S) end of the induced bar.</text>
 </svg>

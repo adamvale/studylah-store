@@ -15,16 +15,16 @@
   </style>
   <!-- resultant on top -->
   <line class="res" x1="175" y1="55" x2="255" y2="55" marker-end="url(#arwG)"/>
-  <text x="215" y="40" text-anchor="middle" font-size="12.5" fill="#86C98B">resultant force 3 N</text>
-  <text x="215" y="72" text-anchor="middle" font-size="11.5" fill="#86C98B">acceleration</text>
+  <text x="215" y="40" text-anchor="middle" font-size="13.5" fill="#86C98B">resultant force 3 N</text>
+  <text x="215" y="72" text-anchor="middle" font-size="12.5" fill="#86C98B">acceleration</text>
   <!-- box -->
   <rect class="box" x="180" y="110" width="80" height="50"/>
   <!-- 8 N right -->
   <line class="f" x1="100" y1="135" x2="176" y2="135" marker-end="url(#arw)"/>
-  <text x="125" y="125" text-anchor="middle" font-size="13">8 N</text>
+  <text x="125" y="125" text-anchor="middle" font-size="14">8 N</text>
   <!-- 5 N left -->
   <line class="f" x1="340" y1="135" x2="264" y2="135" marker-end="url(#arw)"/>
-  <text x="315" y="125" text-anchor="middle" font-size="13">5 N</text>
-  <text x="220" y="200" text-anchor="middle" font-size="12.5">Resultant = 8 N + (&#8722;5 N) = 3 N</text>
-  <text x="220" y="220" text-anchor="middle" font-size="12.5">The box accelerates in the direction of the 3 N resultant.</text>
+  <text x="315" y="125" text-anchor="middle" font-size="14">5 N</text>
+  <text x="220" y="200" text-anchor="middle" font-size="13.5">Resultant = 8 N + (&#8722;5 N) = 3 N</text>
+  <text x="220" y="220" text-anchor="middle" font-size="13.5">The box accelerates in the direction of the 3 N resultant.</text>
 </svg>

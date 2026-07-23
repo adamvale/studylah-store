@@ -4,8 +4,8 @@
     .wire { stroke:#EAEAEA; stroke-width:3; fill:none; }
     .hand { stroke:#E8B65A; stroke-width:2; fill:#E8B65A; fill-opacity:0.14; }
     .fld  { stroke:#6FB7E0; stroke-width:1.8; fill:none; }
-    .lbl  { fill:#EAEAEA; font-size:13px; }
-    .note { fill:#9AA0A6; font-size:12px; }
+    .lbl  { fill:#EAEAEA; font-size:14px; }
+    .note { fill:#9AA0A6; font-size:13px; }
   </style>
   <defs>
     <marker id="a2" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto">
@@ -28,9 +28,9 @@
   <!-- curled fingers = magnetic field direction (arc arrows around wire) -->
   <path class="fld" d="M175,150 a70,26 0 0 0 110,0" marker-end="url(#a3)"/>
   <path class="fld" d="M180,110 a55,20 0 0 0 100,0" marker-end="url(#a3)"/>
-  <text x="300" y="150" fill="#6FB7E0" font-size="13">curled fingers =</text>
-  <text x="300" y="168" fill="#6FB7E0" font-size="13">magnetic field</text>
+  <text x="300" y="150" fill="#6FB7E0" font-size="14">curled fingers =</text>
+  <text x="300" y="168" fill="#6FB7E0" font-size="14">magnetic field</text>
 
   <text class="note" x="30" y="315">Right-hand grip rule: thumb points along the current,</text>
-  <text class="note" x="30" y="332">the curled fingers give the direction of the field around the wire.</text>
+  <text class="note" x="30" y="332">the curled fingers give the direction of the field.</text>
 </svg>

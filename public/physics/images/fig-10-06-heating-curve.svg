@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 320" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-45 0 505 320" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:14px; }
     .ax { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
     .curve { stroke:#6FB7E0; stroke-width:2.4; fill:none; }
     .g { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:5 4; }
@@ -15,8 +15,8 @@
   <!-- guide lines -->
   <line class="g" x1="70" y1="100" x2="320" y2="100"/>
   <line class="g" x1="70" y1="190" x2="180" y2="190"/>
-  <text class="lbl" x="20" y="104">boiling point</text>
-  <text class="lbl" x="14" y="194">melting point</text>
+  <text class="lbl" x="62" y="104" text-anchor="end">boiling point</text>
+  <text class="lbl" x="62" y="194" text-anchor="end">melting point</text>
 
   <!-- heating curve: solid rise, melt plateau, liquid rise, boil plateau, gas rise -->
   <path class="curve" d="M75,250 L110,190 L180,190 L230,100 L320,100 L375,55"/>

@@ -5,7 +5,7 @@
     .door { fill:#E8B65A; opacity:0.14; stroke:#EAEAEA; stroke-width:1.5; }
     .iron { fill:#9AA0A6; opacity:0.30; stroke:#EAEAEA; stroke-width:1.5; }
     .magnet { fill:#E58F8F; opacity:0.26; stroke:#EAEAEA; stroke-width:1.5; }
-    .lbl { fill:#E8B65A; font-size:12.5px; }
+    .lbl { fill:#E8B65A; font-size:14px; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
   </style>
   <!-- door leaf (left) with soft iron plate -->
@@ -17,9 +17,9 @@
 
   <text x="60" y="30" class="lbl">door</text>
   <text x="330" y="30" class="lbl">frame</text>
-  <text x="40" y="140" text-anchor="end" class="lbl">soft iron plate</text>
-  <path class="lead" d="M42,138 L118,130"/>
-  <text x="420" y="140" class="lbl">permanent magnet</text>
-  <path class="lead" d="M418,138 L342,130"/>
-  <text x="230" y="245" text-anchor="middle" font-size="12.5">When the door closes, the plate meets the magnet.</text>
+  <text x="230" y="112" text-anchor="middle" class="lbl">soft iron plate</text>
+  <path class="lead" d="M178,108 L136,118"/>
+  <text x="230" y="158" text-anchor="middle" class="lbl">permanent magnet</text>
+  <path class="lead" d="M284,154 L324,142"/>
+  <text x="230" y="245" text-anchor="middle" font-size="14">When the door closes, the plate meets the magnet.</text>
 </svg>

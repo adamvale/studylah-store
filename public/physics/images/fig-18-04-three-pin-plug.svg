@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 400" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 585 400" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
     .body { fill:#6FB7E0; opacity:0.10; stroke:#EAEAEA; stroke-width:2; }
@@ -27,7 +27,7 @@
   <path class="blue" d="M213,211 Q210,240 240,258"/>
   <!-- fuse then live wire (right pin) -->
   <rect class="fuse" x="330" y="204" width="46" height="18" rx="3"/>
-  <text x="353" y="198" text-anchor="middle" font-size="10" style="fill:#E8B65A">fuse</text>
+  <text x="353" y="198" text-anchor="middle" font-size="12" style="fill:#E8B65A">fuse</text>
   <circle class="term" cx="348" cy="240" r="6"/>
   <path class="brown" d="M330,213 L318,213 L318,235 Q318,255 300,262"/>
   <line class="brown" x1="348" y1="222" x2="348" y2="234"/>
@@ -39,17 +39,21 @@
 
   <!-- labels -->
   <line class="lead" x1="250" y1="180" x2="120" y2="150"/>
-  <text x="115" y="150" text-anchor="end" font-size="12" style="fill:#86C98B">earth wire (green/yellow)</text>
+  <text x="115" y="146" text-anchor="end" font-size="13.5" style="fill:#86C98B">earth wire</text>
+  <text x="115" y="162" text-anchor="end" font-size="13.5" style="fill:#86C98B">(green/yellow)</text>
   <line class="lead" x1="213" y1="211" x2="120" y2="235"/>
-  <text x="115" y="238" text-anchor="end" font-size="12" style="fill:#6FB7E0">neutral wire (blue)</text>
+  <text x="115" y="232" text-anchor="end" font-size="13.5" style="fill:#6FB7E0">neutral wire</text>
+  <text x="115" y="248" text-anchor="end" font-size="13.5" style="fill:#6FB7E0">(blue)</text>
   <line class="lead" x1="353" y1="213" x2="470" y2="185"/>
-  <text x="475" y="188" font-size="12" style="fill:#E8B65A">fuse (in live wire)</text>
+  <text x="475" y="182" font-size="13.5" style="fill:#E8B65A">fuse</text>
+  <text x="475" y="198" font-size="13.5" style="fill:#E8B65A">(in live wire)</text>
   <line class="lead" x1="330" y1="235" x2="470" y2="245"/>
-  <text x="475" y="248" font-size="12" style="fill:#E8B65A">live wire (brown)</text>
+  <text x="475" y="242" font-size="13.5" style="fill:#E8B65A">live wire</text>
+  <text x="475" y="258" font-size="13.5" style="fill:#E8B65A">(brown)</text>
   <line class="lead" x1="308" y1="264" x2="470" y2="300"/>
-  <text x="475" y="303" font-size="12">cord grip</text>
-  <line class="lead" x1="298" y1="300" x2="470" y2="340"/>
-  <text x="475" y="343" font-size="12">cable sleeve</text>
+  <text x="475" y="303" font-size="13.5">cord grip</text>
+  <line class="lead" x1="298" y1="300" x2="465" y2="340"/>
+  <text x="470" y="343" font-size="13.5">cable sleeve</text>
 
-  <text x="280" y="378" text-anchor="middle" font-size="11">Colours: live = brown, neutral = blue, earth = green/yellow</text>
+  <text x="292" y="380" text-anchor="middle" font-size="13">Colours: live = brown, neutral = blue, earth = green/yellow</text>
 </svg>

@@ -4,8 +4,8 @@
     .coil { stroke:#EAEAEA; stroke-width:2; fill:none; }
     .core { fill:#9AA0A6; fill-opacity:0.28; stroke:#9AA0A6; stroke-width:1.4; }
     .fld  { stroke:#6FB7E0; stroke-width:1.5; fill:none; }
-    .lbl  { fill:#E8B65A; font-size:12px; }
-    .pole { fill:#EAEAEA; font-size:15px; font-weight:bold; text-anchor:middle; }
+    .lbl  { fill:#E8B65A; font-size:14px; }
+    .pole { fill:#EAEAEA; font-size:16px; font-weight:bold; text-anchor:middle; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
   </style>
   <defs>
@@ -41,8 +41,8 @@
   <path class="fld" d="M160,120 C120,60 440,60 400,120" marker-end="url(#f4)"/>
   <path class="fld" d="M160,180 C120,240 440,240 400,180" marker-end="url(#f4)"/>
 
-  <text class="lbl" x="470" y="152">soft iron core</text>
-  <path class="lead" d="M468,148 L412,150"/>
+  <text class="lbl" x="424" y="152">soft iron core</text>
+  <path class="lead" d="M420,149 L412,150"/>
   <text class="lbl" x="280" y="40" text-anchor="middle">a stronger electromagnet is produced</text>
   <path class="lead" d="M280,46 L280,88"/>
 </svg>

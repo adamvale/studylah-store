@@ -1,45 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 280" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 285" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .tube { fill:none; stroke:#EAEAEA; stroke-width:2; }
     .liq { fill:#6FB7E0; opacity:0.30; }
     .box { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
     .level { stroke:#9AA0A6; stroke-width:1.2; stroke-dasharray:5 3; }
     .height { stroke:#E8B65A; stroke-width:1.6; }
+    .hdash { stroke:#E8B65A; stroke-width:1; stroke-dasharray:3 3; }
     .arrow { stroke:#E58F8F; stroke-width:2; }
-    .lbl { font-size:11px; }
+    .lbl { font-size:12px; }
   </style>
   <!-- gas supply box -->
-  <rect class="box" x="30" y="90" width="80" height="45"/>
-  <text x="70" y="110" text-anchor="middle" class="lbl">gas</text>
+  <rect class="box" x="30" y="88" width="80" height="50"/>
+  <text x="70" y="108" text-anchor="middle" class="lbl">gas</text>
   <text x="70" y="124" text-anchor="middle" class="lbl">supply</text>
 
-  <!-- U-tube: left limb (from gas), right limb (open, higher) -->
-  <path class="liq" d="M150,112 L150,230 Q150,255 175,255 L245,255 Q270,255 270,230 L270,150 L300,150 L300,230 Q300,258 270,258 L175,258 Q145,258 145,230 L145,112 Z"/>
-  <path class="tube" d="M145,112 L145,230 Q145,258 175,258 L270,258 Q300,258 300,230 L300,120"/>
-  <path class="tube" d="M150,112 L150,230 Q150,253 175,253 L270,253 Q295,253 295,230 L295,120"/>
-  <!-- connect gas to left limb top -->
-  <line class="tube" x1="110" y1="112" x2="150" y2="112"/>
-  <line class="tube" x1="110" y1="106" x2="150" y2="106"/>
-  <line class="tube" x1="110" y1="106" x2="110" y2="112"/>
+  <!-- U-tube: closed pipe from gas into left limb, open right limb -->
+  <path class="liq" d="M150,180 L150,230 Q150,258 178,258 L272,258 Q300,258 300,230 L300,150 L280,150 L280,230 Q280,238 272,238 L178,238 Q170,238 170,230 L170,180 Z"/>
+  <path class="tube" d="M110,106 L150,106 L150,230 Q150,258 178,258 L272,258 Q300,258 300,230 L300,88"/>
+  <path class="tube" d="M110,126 L170,126 L170,230 Q170,238 178,238 L272,238 Q280,238 280,230 L280,88"/>
 
-  <!-- open top of right limb, atmosphere -->
-  <line class="arrow" x1="298" y1="95" x2="298" y2="118" marker-end="url(#ma)"/>
-  <text x="308" y="105" class="lbl">P_atm</text>
+  <!-- atmosphere at open right limb -->
+  <line class="arrow" x1="290" y1="64" x2="290" y2="84" marker-end="url(#ma)"/>
+  <text x="302" y="78" class="lbl">P_atm</text>
+  <!-- gas pressure pushes the left surface down -->
+  <text x="116" y="100" class="lbl">P_gas</text>
 
-  <!-- X and Y at same level -->
+  <!-- X and Y at the same level (level of the lower surface) -->
   <line class="level" x1="150" y1="180" x2="300" y2="180"/>
-  <circle cx="170" cy="180" r="3.5" fill="#E8B65A"/>
-  <circle cx="285" cy="180" r="3.5" fill="#E8B65A"/>
-  <text x="160" y="196" class="lbl">X</text>
-  <text x="288" y="196" class="lbl">Y</text>
-  <text x="150" y="150" class="lbl">P_gas</text>
+  <circle cx="160" cy="180" r="3.5" fill="#E8B65A"/>
+  <circle cx="290" cy="180" r="3.5" fill="#E8B65A"/>
+  <text x="132" y="185" class="lbl">X</text>
+  <text x="310" y="185" class="lbl">Y</text>
 
-  <!-- height difference h -->
-  <line class="height" x1="330" y1="150" x2="330" y2="180"/>
-  <line class="height" x1="325" y1="150" x2="335" y2="150"/>
-  <line class="height" x1="325" y1="180" x2="335" y2="180"/>
-  <text x="338" y="169" class="lbl" fill="#E8B65A">h</text>
+  <!-- height difference h on the open side -->
+  <line class="hdash" x1="300" y1="150" x2="325" y2="150"/>
+  <line class="height" x1="320" y1="150" x2="320" y2="180"/>
+  <line class="height" x1="315" y1="150" x2="325" y2="150"/>
+  <line class="height" x1="315" y1="180" x2="325" y2="180"/>
+  <text x="330" y="170" class="lbl" fill="#E8B65A">h</text>
 
   <text x="230" y="277" text-anchor="middle" class="lbl">Same level X, Y &#8594; same pressure.  P_gas = P_atm + h&#961;g</text>
   <defs>

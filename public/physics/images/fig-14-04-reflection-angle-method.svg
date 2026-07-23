@@ -13,17 +13,17 @@
   </style>
   <line class="mirror" x1="70" y1="220" x2="450" y2="220"/>
   <path class="norm" d="M260,220 L260,60"/>
-  <text x="260" y="50" text-anchor="middle" font-size="12">normal</text>
+  <text x="260" y="50" text-anchor="middle" font-size="13">normal</text>
   <!-- incident ray making 55 deg with the surface (so i = 35 from normal) -->
-  <path class="inc" marker-end="url(#a1)" d="M150,142 L258,218"/>
-  <path class="out" marker-end="url(#a2)" d="M262,218 L370,142"/>
+  <path class="inc" marker-end="url(#a1)" d="M183,110 L258,218"/>
+  <path class="out" marker-end="url(#a2)" d="M262,218 L337,110"/>
   <!-- angle to surface (between ray and mirror) -->
-  <path class="arc" d="M205,220 A55,55 0 0,0 224,182"/>
-  <text x="196" y="205" font-size="12">55&#176;</text>
+  <path class="arc" d="M205,220 A55,55 0 0,0 229,175"/>
+  <text x="188" y="207" font-size="13">55&#176;</text>
   <!-- angle from normal -->
-  <path class="arc" d="M260,150 A70,70 0 0,0 220,180"/>
-  <text x="228" y="165" font-size="13" font-style="italic">i</text>
-  <path class="arc" d="M260,150 A70,70 0 0,1 300,180"/>
-  <text x="292" y="165" font-size="13" font-style="italic">r</text>
-  <text x="260" y="270" text-anchor="middle" font-size="13"><tspan font-style="italic">i</tspan> = 90&#176; &#8722; 55&#176; = 35&#176;, so <tspan font-style="italic">r</tspan> = 35&#176;</text>
+  <path class="arc" d="M260,150 A70,70 0 0,0 220,163"/>
+  <text x="231" y="148" font-size="14" font-style="italic">i</text>
+  <path class="arc" d="M260,150 A70,70 0 0,1 300,163"/>
+  <text x="283" y="148" font-size="14" font-style="italic">r</text>
+  <text x="260" y="270" text-anchor="middle" font-size="14"><tspan font-style="italic">i</tspan> = 90&#176; &#8722; 55&#176; = 35&#176;, so <tspan font-style="italic">r</tspan> = 35&#176;</text>
 </svg>

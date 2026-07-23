@@ -7,9 +7,10 @@
     .pc { fill:none; stroke:#E8B65A; stroke-width:1.8; }
     .sc { fill:none; stroke:#6FB7E0; stroke-width:1.8; }
     .wire { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
-    .lbl { font-size:12px; fill:#E8B65A; }
-    .lbl2 { font-size:12px; fill:#6FB7E0; }
-    .lbl3 { font-size:12px; }
+    .lbl { font-size:14px; fill:#E8B65A; }
+    .lbl2 { font-size:14px; fill:#6FB7E0; }
+    .lbl3 { font-size:14px; }
+    .lead2 { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
   </style>
 
   <!-- laminated soft-iron core (frame of four bars) -->
@@ -39,7 +40,8 @@
     <ellipse cx="220" cy="184" rx="40" ry="9"/>
     <ellipse cx="220" cy="206" rx="40" ry="9"/>
   </g>
-  <text class="lbl" x="150" y="255">primary coil (N&#8346;)</text>
+  <text class="lbl" x="30" y="258">primary coil (N&#8346;)</text>
+  <path class="lead2" d="M150,252 L192,212"/>
 
   <!-- secondary coil around right limb -->
   <g class="sc">
@@ -49,15 +51,15 @@
     <ellipse cx="420" cy="184" rx="40" ry="9"/>
     <ellipse cx="420" cy="206" rx="40" ry="9"/>
   </g>
-  <text class="lbl2" x="410" y="255">secondary coil (N&#8347;)</text>
+  <text class="lbl2" x="470" y="258">secondary coil (N&#8347;)</text>
+  <path class="lead2" d="M468,252 L430,215"/>
 
   <!-- primary circuit: a.c. supply -->
   <path class="wire" d="M180,118 L90,118 L90,150"/>
   <path class="wire" d="M180,206 L90,206 L90,190"/>
   <circle cx="90" cy="170" r="20" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
   <path d="M80,170 q5,-8 10,0 q5,8 10,0" fill="none" stroke="#EAEAEA" stroke-width="1.4"/>
-  <text class="lbl3" x="46" y="140">a.c.</text>
-  <text class="lbl3" x="40" y="220">supply</text>
+  <text class="lbl3" x="90" y="228" text-anchor="middle">a.c. supply</text>
   <text class="lbl3" x="24" y="176" fill="#E8B65A">V&#8346;</text>
   <text class="lbl3" x="120" y="108" fill="#E8B65A">I&#8346;</text>
 

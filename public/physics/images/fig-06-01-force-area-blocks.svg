@@ -1,36 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 260" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 490" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
     .ground { stroke:#9AA0A6; stroke-width:1.5; }
     .blk { fill:#6FB7E0; opacity:0.30; stroke:#6FB7E0; stroke-width:1.6; }
     .arrow { stroke:#E58F8F; stroke-width:2; }
-    .lbl { font-size:12px; }
+    .lbl { font-size:13px; }
     .amber { fill:#E8B65A; }
   </style>
-  <!-- LEFT block P: large base, small pressure -->
-  <text x="120" y="30" text-anchor="middle" font-size="14" class="amber">Block P</text>
-  <line class="arrow" x1="120" y1="42" x2="120" y2="92" marker-end="url(#ah)"/>
-  <text x="132" y="72" class="lbl">F</text>
-  <rect class="blk" x="70" y="95" width="100" height="70"/>
-  <line class="ground" x1="40" y1="165" x2="210" y2="165"/>
-  <g class="ground"><line x1="55" y1="165" x2="45" y2="178"/><line x1="80" y1="165" x2="70" y2="178"/><line x1="105" y1="165" x2="95" y2="178"/><line x1="130" y1="165" x2="120" y2="178"/><line x1="155" y1="165" x2="145" y2="178"/><line x1="180" y1="165" x2="170" y2="178"/></g>
-  <text x="120" y="200" text-anchor="middle" class="lbl">large contact area A</text>
-  <text x="120" y="218" text-anchor="middle" class="lbl">&#8594; smaller pressure</text>
-
-  <!-- RIGHT block Q: small base, large pressure -->
-  <text x="420" y="30" text-anchor="middle" font-size="14" class="amber">Block Q</text>
-  <line class="arrow" x1="420" y1="42" x2="420" y2="92" marker-end="url(#ah)"/>
-  <text x="432" y="72" class="lbl">F</text>
-  <rect class="blk" x="400" y="95" width="40" height="70"/>
-  <line class="ground" x1="330" y1="165" x2="500" y2="165"/>
-  <g class="ground"><line x1="345" y1="165" x2="335" y2="178"/><line x1="370" y1="165" x2="360" y2="178"/><line x1="395" y1="165" x2="385" y2="178"/><line x1="420" y1="165" x2="410" y2="178"/><line x1="445" y1="165" x2="435" y2="178"/><line x1="470" y1="165" x2="460" y2="178"/></g>
-  <text x="420" y="200" text-anchor="middle" class="lbl">small contact area A</text>
-  <text x="420" y="218" text-anchor="middle" class="lbl">&#8594; greater pressure</text>
-
-  <text x="280" y="248" text-anchor="middle" class="lbl">Same force F, smaller area &#8594; more pressure</text>
   <defs>
     <marker id="ah" markerWidth="8" markerHeight="8" refX="4" refY="6" orient="auto">
       <path d="M0,0 L4,7 L8,0 Z" fill="#E58F8F"/>
     </marker>
   </defs>
+  <!-- TOP: Block P, large base, small pressure -->
+  <g transform="translate(25,0)">
+    <text x="120" y="30" text-anchor="middle" font-size="15" class="amber">Block P</text>
+    <line class="arrow" x1="120" y1="42" x2="120" y2="92" marker-end="url(#ah)"/>
+    <text x="132" y="72" class="lbl">F</text>
+    <rect class="blk" x="70" y="95" width="100" height="70"/>
+    <line class="ground" x1="40" y1="165" x2="210" y2="165"/>
+    <line class="ground" x1="55" y1="165" x2="45" y2="178"/><line class="ground" x1="80" y1="165" x2="70" y2="178"/><line class="ground" x1="105" y1="165" x2="95" y2="178"/><line class="ground" x1="130" y1="165" x2="120" y2="178"/><line class="ground" x1="155" y1="165" x2="145" y2="178"/><line class="ground" x1="180" y1="165" x2="170" y2="178"/>
+    <text x="120" y="200" text-anchor="middle" class="lbl">large contact area A</text>
+    <text x="120" y="218" text-anchor="middle" class="lbl">&#8594; smaller pressure</text>
+  </g>
+  <!-- BOTTOM: Block Q, small base, large pressure -->
+  <g transform="translate(-265,230)">
+    <text x="420" y="30" text-anchor="middle" font-size="15" class="amber">Block Q</text>
+    <line class="arrow" x1="420" y1="42" x2="420" y2="92" marker-end="url(#ah)"/>
+    <text x="432" y="72" class="lbl">F</text>
+    <rect class="blk" x="400" y="95" width="40" height="70"/>
+    <line class="ground" x1="330" y1="165" x2="500" y2="165"/>
+    <line class="ground" x1="345" y1="165" x2="335" y2="178"/><line class="ground" x1="370" y1="165" x2="360" y2="178"/><line class="ground" x1="395" y1="165" x2="385" y2="178"/><line class="ground" x1="420" y1="165" x2="410" y2="178"/><line class="ground" x1="445" y1="165" x2="435" y2="178"/><line class="ground" x1="470" y1="165" x2="460" y2="178"/>
+    <text x="420" y="200" text-anchor="middle" class="lbl">small contact area A</text>
+    <text x="420" y="218" text-anchor="middle" class="lbl">&#8594; greater pressure</text>
+  </g>
+  <text x="150" y="472" text-anchor="middle" font-size="12">Same force F, smaller area &#8594; more pressure</text>
 </svg>

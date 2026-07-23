@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:13px; }
     .glass { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
     .black { fill:#3a3a3a; stroke:#EAEAEA; stroke-width:1.4; }
     .white { fill:#EAEAEA; opacity:0.85; stroke:#EAEAEA; stroke-width:1.4; }
@@ -8,7 +8,7 @@
     .merc { stroke:#E58F8F; stroke-width:2.6; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
     .lbl { fill:#E8B65A; }
-    .cap { text-anchor:middle; font-size:12px; }
+    .cap { text-anchor:middle; font-size:13px; }
   </style>
   <!-- black-surface flask -->
   <circle class="black" cx="120" cy="200" r="45"/>

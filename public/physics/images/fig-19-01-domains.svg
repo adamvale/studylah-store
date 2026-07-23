@@ -4,13 +4,13 @@
     .box { fill:#6FB7E0; opacity:0.12; stroke:#EAEAEA; stroke-width:1.6; }
     .arrow { stroke:#6FB7E0; stroke-width:2; fill:none; }
     .head { fill:#6FB7E0; }
-    .lbl { fill:#E8B65A; font-size:13px; }
-    .cap { font-size:13px; }
+    .lbl { fill:#E8B65A; font-size:15.5px; }
+    .cap { font-size:15.5px; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
   </style>
 
   <!-- ALIGNED (magnet) -->
-  <text x="40" y="30" class="cap" font-weight="bold">Magnetised material — a magnet</text>
+  <text x="40" y="30" class="cap" font-weight="bold">Magnetised material: a magnet</text>
   <rect class="box" x="40" y="45" width="360" height="90" rx="4"/>
   <g class="arrow">
     <!-- 3 rows x 6 arrows, all pointing right -->
@@ -39,7 +39,7 @@
   <path class="lead" d="M428,60 L330,72"/>
 
   <!-- RANDOM (non-magnet) -->
-  <text x="40" y="228" class="cap" font-weight="bold">Unmagnetised material — not a magnet</text>
+  <text x="40" y="228" class="cap" font-weight="bold">Unmagnetised material: not a magnet</text>
   <g stroke="#9AA0A6" stroke-width="2" fill="none">
     <g transform="translate(40,245)">
       <line x1="20" y1="20" x2="55" y2="8"/><polygon fill="#9AA0A6" points="55,8 45,7 52,15"/>

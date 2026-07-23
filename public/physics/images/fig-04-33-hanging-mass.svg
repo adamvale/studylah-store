@@ -21,13 +21,13 @@
   <line class="guide" x1="200" y1="40" x2="200" y2="180"/>
   <line class="string" x1="200" y1="40" x2="245" y2="175"/>
   <path d="M200,90 A50,50 0 0 0 215,105" fill="none" stroke="#9AA0A6" stroke-width="1"/>
-  <text x="207" y="88" font-size="11">20&#176;</text>
-  <text x="255" y="120" font-size="12" fill="#E8B65A">T = 160 N</text>
+  <text x="207" y="88" font-size="12.5">20&#176;</text>
+  <text x="255" y="120" font-size="13.5" fill="#E8B65A">T = 160 N</text>
   <!-- mass -->
   <rect class="box" x="220" y="175" width="50" height="45"/>
-  <text x="245" y="202" text-anchor="middle" font-size="11">15 kg</text>
+  <text x="245" y="202" text-anchor="middle" font-size="12.5">15 kg</text>
   <!-- horizontal force F -->
   <line class="f" x1="245" y1="197" x2="335" y2="197" marker-end="url(#arw)"/>
-  <text x="300" y="188" font-size="12.5" fill="#6FB7E0">F</text>
-  <text x="190" y="270" text-anchor="middle" font-size="11">Resultant force is zero (not drawn to scale).</text>
+  <text x="300" y="188" font-size="14" fill="#6FB7E0">F</text>
+  <text x="190" y="270" text-anchor="middle" font-size="12.5">Resultant force is zero (not drawn to scale).</text>
 </svg>

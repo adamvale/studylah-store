@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 420" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 660" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
     .w { stroke:#EAEAEA; stroke-width:2; fill:none; }
     .t { stroke:#EAEAEA; stroke-width:2.4; fill:none; }
-    .lbl { font-size:12px; text-anchor:middle; fill:#9AA0A6; }
+    .lbl { font-size:15px; text-anchor:middle; fill:#9AA0A6; }
     .ttl { font-size:19px; text-anchor:middle; fill:#6FB7E0; letter-spacing:1px; }
     .accent { stroke:#6FB7E0; stroke-width:2; fill:none; }
   </style>
-  <text x="390" y="30" class="ttl">Electric circuit symbols</text>
+  <text x="230" y="30" class="ttl">Electric circuit symbols</text>
 
   <!-- Row 1 : y center 100 -->
   <!-- cell -->
@@ -39,7 +39,7 @@
     <text x="380" y="150" class="lbl">lamp / bulb</text>
   </g>
   <!-- switch open -->
-  <g>
+  <g transform="translate(-453,120)">
     <line class="w" x1="485" y1="100" x2="515" y2="100"/>
     <circle cx="515" cy="100" r="3" fill="#EAEAEA"/>
     <line class="w" x1="515" y1="100" x2="548" y2="83"/>
@@ -48,7 +48,7 @@
     <text x="533" y="150" class="lbl">switch (open)</text>
   </g>
   <!-- LDR -->
-  <g>
+  <g transform="translate(-470,120)">
     <circle class="w" cx="700" cy="100" r="24"/>
     <rect class="w" x="681" y="93" width="38" height="14"/>
     <line class="w" x1="655" y1="100" x2="676" y2="100"/>
@@ -62,7 +62,7 @@
 
   <!-- Row 2 : y center 220 -->
   <!-- fuse -->
-  <g>
+  <g transform="translate(301,0)">
     <line class="w" x1="35" y1="220" x2="58" y2="220"/>
     <rect class="w" x="58" y="208" width="42" height="24"/>
     <line class="w" x1="58" y1="220" x2="100" y2="220"/>
@@ -70,7 +70,7 @@
     <text x="79" y="270" class="lbl">fuse</text>
   </g>
   <!-- ammeter -->
-  <g>
+  <g transform="translate(-147,120)">
     <line class="w" x1="185" y1="220" x2="208" y2="220"/>
     <circle class="w" cx="227" cy="220" r="19"/>
     <text x="227" y="226" font-size="16" text-anchor="middle">A</text>
@@ -78,7 +78,7 @@
     <text x="227" y="270" class="lbl">ammeter</text>
   </g>
   <!-- voltmeter -->
-  <g>
+  <g transform="translate(-150,120)">
     <line class="w" x1="335" y1="220" x2="361" y2="220"/>
     <circle class="w" cx="380" cy="220" r="19"/>
     <text x="380" y="226" font-size="16" text-anchor="middle">V</text>
@@ -86,7 +86,7 @@
     <text x="380" y="270" class="lbl">voltmeter</text>
   </g>
   <!-- switch closed -->
-  <g>
+  <g transform="translate(-153,120)">
     <line class="w" x1="485" y1="220" x2="515" y2="220"/>
     <circle cx="515" cy="220" r="3" fill="#EAEAEA"/>
     <line class="w" x1="515" y1="220" x2="551" y2="220"/>
@@ -95,7 +95,7 @@
     <text x="533" y="270" class="lbl">switch (closed)</text>
   </g>
   <!-- bell -->
-  <g>
+  <g transform="translate(-620,240)">
     <path class="w" d="M676,224 a24,20 0 0 1 48,0 z"/>
     <line class="w" x1="700" y1="204" x2="700" y2="196"/>
     <circle cx="700" cy="194" r="3" fill="#EAEAEA"/>
@@ -106,14 +106,14 @@
 
   <!-- Row 3 : y center 340 -->
   <!-- resistor -->
-  <g>
+  <g transform="translate(151,120)">
     <line class="w" x1="35" y1="340" x2="55" y2="340"/>
     <rect class="w" x="55" y="328" width="48" height="24"/>
     <line class="w" x1="103" y1="340" x2="123" y2="340"/>
     <text x="79" y="390" class="lbl">resistor</text>
   </g>
   <!-- variable resistor -->
-  <g>
+  <g transform="translate(151,120)">
     <line class="w" x1="185" y1="340" x2="205" y2="340"/>
     <rect class="w" x="205" y="328" width="48" height="24"/>
     <line class="w" x1="253" y1="340" x2="273" y2="340"/>
@@ -122,7 +122,7 @@
     <text x="229" y="390" class="lbl">variable resistor</text>
   </g>
   <!-- thermistor -->
-  <g>
+  <g transform="translate(-296,240)">
     <line class="w" x1="335" y1="340" x2="352" y2="340"/>
     <rect class="w" x="352" y="328" width="48" height="24"/>
     <line class="w" x1="400" y1="340" x2="417" y2="340"/>
@@ -131,7 +131,7 @@
     <text x="376" y="390" class="lbl">thermistor</text>
   </g>
   <!-- diode -->
-  <g>
+  <g transform="translate(-297,240)">
     <line class="w" x1="485" y1="340" x2="515" y2="340"/>
     <path class="w" d="M515,326 L515,354 L539,340 Z" fill="#6FB7E0" fill-opacity="0.28"/>
     <line class="t" x1="539" y1="326" x2="539" y2="354"/>

@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:13px; }
+    text { fill:#EAEAEA; font-size:14px; }
     .neutron { fill:#9AA0A6; opacity:0.9; stroke:#EAEAEA; stroke-width:0.8; }
     .proton { fill:#E58F8F; opacity:0.9; stroke:#EAEAEA; stroke-width:0.8; }
     .electron { fill:#6FB7E0; stroke:#EAEAEA; stroke-width:0.8; }
     .arrow { stroke:#EAEAEA; stroke-width:1.6; fill:none; marker-end:url(#ah); }
-    .cap { font-size:12px; fill:#9AA0A6; }
-    .amber { fill:#E8B65A; font-size:12px; }
+    .cap { font-size:13px; fill:#9AA0A6; }
+    .amber { fill:#E8B65A; font-size:13px; }
   </style>
   <defs>
     <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
@@ -33,7 +33,8 @@
   <path class="arrow" d="M340,110 L420,110"/>
   <circle class="electron" cx="435" cy="110" r="12"/>
   <text x="435" y="114" text-anchor="middle" font-size="11">e</text>
-  <text x="400" y="98" text-anchor="middle" class="amber">&#946;-particle</text>
+  <text x="378" y="92" text-anchor="middle" class="amber">&#946;-particle</text>
 
-  <text x="240" y="215" text-anchor="middle" class="cap">A neutron becomes a proton plus a fast electron; the electron is emitted as the &#946;-particle.</text>
+  <text x="240" y="210" text-anchor="middle" class="cap">A neutron becomes a proton plus a fast electron;</text>
+  <text x="240" y="228" text-anchor="middle" class="cap">the electron is emitted as the &#946;-particle.</text>
 </svg>

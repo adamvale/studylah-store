@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 300" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
     .view { fill:none; stroke:#EAEAEA; stroke-width:2; }
@@ -10,5 +10,6 @@
   <circle class="dust" cx="120" cy="110" r="6"/>
   <circle class="dust" cx="200" cy="160" r="6"/>
   <circle class="dust" cx="150" cy="205" r="6"/>
-  <text class="lbl" x="160" y="292" text-anchor="middle" fill="#9AA0A6" font-style="italic">dust specks suspended in still air (magnified)</text>
+  <text class="lbl" x="160" y="292" text-anchor="middle" font-size="14" fill="#9AA0A6" font-style="italic">dust specks suspended in</text>
+  <text class="lbl" x="160" y="310" text-anchor="middle" font-size="14" fill="#9AA0A6" font-style="italic">still air (magnified)</text>
 </svg>

@@ -1,53 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 820" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
     .mag { fill:#E58F8F; opacity:0.26; stroke:#EAEAEA; stroke-width:1.5; }
     .iron { fill:#9AA0A6; opacity:0.28; stroke:#EAEAEA; stroke-width:1.5; }
     .plastic { fill:#E8B65A; opacity:0.22; stroke:#EAEAEA; stroke-width:1.5; }
     .nail { stroke:#EAEAEA; stroke-width:2; }
-    .lbl { fill:#E8B65A; font-size:12px; }
-    .cap { font-size:14px; font-weight:bold; }
+    .lbl { fill:#E8B65A; font-size:14px; }
+    .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
+    .cap { font-size:16px; font-weight:bold; }
   </style>
 
   <!-- X: magnet alone -->
-  <text x="90" y="30" text-anchor="middle" class="cap">X</text>
-  <rect class="mag" x="70" y="45" width="40" height="120" rx="3"/>
+  <text x="40" y="34" class="cap">X</text>
+  <rect class="mag" x="70" y="50" width="44" height="120" rx="3"/>
   <g class="nail">
-    <line x1="90" y1="165" x2="72" y2="220"/>
-    <line x1="90" y1="165" x2="82" y2="230"/>
-    <line x1="90" y1="165" x2="90" y2="235"/>
-    <line x1="90" y1="165" x2="98" y2="230"/>
-    <line x1="90" y1="165" x2="108" y2="220"/>
+    <line x1="92" y1="170" x2="74" y2="225"/>
+    <line x1="92" y1="170" x2="84" y2="235"/>
+    <line x1="92" y1="170" x2="92" y2="240"/>
+    <line x1="92" y1="170" x2="100" y2="235"/>
+    <line x1="92" y1="170" x2="110" y2="225"/>
   </g>
-  <text x="90" y="260" text-anchor="middle" class="lbl">bar magnet</text>
-  <text x="90" y="276" text-anchor="middle" class="lbl">only</text>
+  <text x="140" y="110" class="lbl">bar magnet only</text>
+  <path class="lead" d="M136,106 L116,106"/>
 
   <!-- Y: magnet + iron block -->
-  <text x="300" y="30" text-anchor="middle" class="cap">Y</text>
-  <rect class="mag" x="280" y="45" width="40" height="90" rx="3"/>
-  <rect class="iron" x="280" y="135" width="40" height="34" rx="2"/>
+  <text x="40" y="294" class="cap">Y</text>
+  <rect class="mag" x="70" y="310" width="44" height="90" rx="3"/>
+  <rect class="iron" x="70" y="400" width="44" height="34" rx="2"/>
   <g class="nail">
-    <line x1="300" y1="169" x2="282" y2="222"/>
-    <line x1="300" y1="169" x2="292" y2="232"/>
-    <line x1="300" y1="169" x2="300" y2="236"/>
-    <line x1="300" y1="169" x2="308" y2="232"/>
-    <line x1="300" y1="169" x2="318" y2="222"/>
+    <line x1="92" y1="434" x2="74" y2="489"/>
+    <line x1="92" y1="434" x2="84" y2="499"/>
+    <line x1="92" y1="434" x2="92" y2="504"/>
+    <line x1="92" y1="434" x2="100" y2="499"/>
+    <line x1="92" y1="434" x2="110" y2="489"/>
   </g>
-  <text x="360" y="155" class="lbl">iron block</text>
-  <path d="M355,151 L322,151" stroke="#9AA0A6" stroke-width="1.1" fill="none"/>
-  <text x="300" y="272" text-anchor="middle" class="lbl">magnet + iron</text>
+  <text x="140" y="350" class="lbl">bar magnet</text>
+  <path class="lead" d="M136,346 L116,346"/>
+  <text x="140" y="422" class="lbl">iron block</text>
+  <path class="lead" d="M136,418 L116,418"/>
 
   <!-- Z: magnet + plastic block -->
-  <text x="500" y="30" text-anchor="middle" class="cap">Z</text>
-  <rect class="mag" x="480" y="45" width="40" height="90" rx="3"/>
-  <rect class="plastic" x="480" y="135" width="40" height="34" rx="2"/>
+  <text x="40" y="554" class="cap">Z</text>
+  <rect class="mag" x="70" y="570" width="44" height="90" rx="3"/>
+  <rect class="plastic" x="70" y="660" width="44" height="34" rx="2"/>
   <g class="nail">
-    <line x1="500" y1="169" x2="488" y2="215"/>
-    <line x1="500" y1="169" x2="512" y2="215"/>
+    <line x1="92" y1="694" x2="80" y2="740"/>
+    <line x1="92" y1="694" x2="104" y2="740"/>
   </g>
-  <text x="560" y="155" class="lbl">plastic block</text>
-  <path d="M555,151 L522,151" stroke="#9AA0A6" stroke-width="1.1" fill="none"/>
-  <text x="500" y="272" text-anchor="middle" class="lbl">magnet + plastic</text>
+  <text x="140" y="610" class="lbl">bar magnet</text>
+  <path class="lead" d="M136,606 L116,606"/>
+  <text x="140" y="682" class="lbl">plastic block</text>
+  <path class="lead" d="M136,678 L116,678"/>
 
-  <text x="300" y="315" text-anchor="middle" font-size="12.5">Each magnet is held vertically; iron nails are collected at the lower end.</text>
+  <text x="180" y="782" text-anchor="middle" font-size="14">Each magnet is held vertically; iron nails</text>
+  <text x="180" y="800" text-anchor="middle" font-size="14">are collected at the lower end.</text>
 </svg>
