@@ -165,6 +165,75 @@ export function onSpeakingChange(fn: SpeakingListener): () => void {
   return () => speakingListeners.delete(fn);
 }
 
+// ── How loud is she, right now? ─────────────────────────────────────────────
+// A generic talking loop gives itself away because the mouth moves during
+// pauses. Publishing the live level lets the tutor head run its clip only while
+// there is actually voice, which is most of what the eye notices.
+//
+// Reading samples needs the audio in the Web Audio graph, and for a
+// cross-origin file that needs CORS plus crossOrigin="anonymous" (see
+// docs/VOICE-AUDIO-HOSTING.md). Without it the graph reads silence, so we report
+// -1 meaning "no level available" and callers fall back to plain playback.
+type LevelListener = (level: number) => void;
+const levelListeners = new Set<LevelListener>();
+let audioCtx: AudioContext | null = null;
+let analyser: AnalyserNode | null = null;
+let levelRaf = 0;
+
+export function onAudioLevel(fn: LevelListener): () => void {
+  levelListeners.add(fn);
+  return () => {
+    levelListeners.delete(fn);
+  };
+}
+
+function emitLevel(v: number): void {
+  for (const fn of levelListeners) {
+    try {
+      fn(v);
+    } catch {
+      /* a bad listener must not break playback */
+    }
+  }
+}
+
+// Route one <audio> through an analyser. Safe to fail: if anything here throws,
+// playback still happens, we just cannot report a level.
+function attachAnalyser(el: HTMLAudioElement): void {
+  if (!levelListeners.size) return; // nobody is watching, do not build a graph
+  try {
+    const Ctx: typeof AudioContext =
+      window.AudioContext ?? (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+    if (!Ctx) return;
+    audioCtx ??= new Ctx();
+    void audioCtx.resume(); // iOS keeps it suspended until a gesture
+    if (!analyser) {
+      analyser = audioCtx.createAnalyser();
+      analyser.fftSize = 256;
+      analyser.smoothingTimeConstant = 0.6;
+      analyser.connect(audioCtx.destination);
+    }
+    audioCtx.createMediaElementSource(el).connect(analyser);
+    if (!levelRaf) {
+      const buf = new Uint8Array(analyser.frequencyBinCount);
+      const tick = () => {
+        if (!analyser) return;
+        analyser.getByteTimeDomainData(buf);
+        let sum = 0;
+        for (let i = 0; i < buf.length; i++) {
+          const d = (buf[i] - 128) / 128;
+          sum += d * d;
+        }
+        emitLevel(Math.min(1, Math.sqrt(sum / buf.length) * 4)); // rms, scaled to a usable 0..1
+        levelRaf = requestAnimationFrame(tick);
+      };
+      levelRaf = requestAnimationFrame(tick);
+    }
+  } catch {
+    emitLevel(-1); // tainted or unsupported: caller should just play normally
+  }
+}
+
 function setSpeaking(next: boolean): void {
   if (speaking === next) return;
   speaking = next;
@@ -192,7 +261,11 @@ function playLine(line: string, lang: string, token: number, done?: () => void):
   const fallback = () => deviceSpeak(line, lang, done);
   try {
     const audio = new Audio(`${AUDIO_BASE}/${activeVoice}/${h}.mp3`);
+    // Needed to read samples once the audio is served from a bucket; harmless
+    // for same-origin files.
+    audio.crossOrigin = "anonymous";
     currentAudio = audio;
+    attachAnalyser(audio);
     let fellBack = false;
     const once = () => {
       if (fellBack) return;
@@ -233,6 +306,7 @@ export function speakSequence(texts: string[], lang = "en-GB"): void {
       }
       const line = lines[idx++];
       setSpeaking(true);
+      if (!m.has(line ? hashLine(line) : "")) emitLevel(-1); // device voice: no level to read
       if (m.has(line ? hashLine(line) : "")) playLine(line, lang, token, next);
       else deviceSpeak(line, lang, next);
     };
@@ -244,6 +318,7 @@ export function stopSpeaking(): void {
   if (typeof window === "undefined") return;
   speakToken++; // any in-flight lookup or queued line is now stale
   setSpeaking(false);
+  emitLevel(0);
   if (currentAudio) {
     try {
       currentAudio.pause();

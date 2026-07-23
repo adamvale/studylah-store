@@ -66,9 +66,10 @@ Doing these out of order is what breaks production.
 
 1. Make a bucket (Cloudflare R2 is a good fit: no egress charges) and give it a
    public base URL, ideally on your own domain.
-2. **Allow cross-origin GETs from the site.** The mp3 files are played by an
-   `<audio>` element and do not need CORS, but `manifest.json` and `active.json`
-   are read with `fetch()` and do. Without CORS the manifest comes back empty and
+2. **Allow cross-origin GETs from the site.** `manifest.json` and `active.json`
+   are read with `fetch()`, and the mp3s are now read through the Web Audio graph
+   to drive the tutor head's mouth, so BOTH need CORS. Without it the graph reads
+   silence and the head falls back to running its clip continuously. Without CORS the manifest comes back empty and
    *every* line silently falls back to the device voice, which is easy to
    misread as "the premium voice broke".
 3. Upload:

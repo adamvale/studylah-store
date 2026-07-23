@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { onSpeakingChange } from "@/lib/speak";
+import { onAudioLevel, onSpeakingChange } from "@/lib/speak";
 
 // A small window on the lesson where the tutor sits, so a student feels taught
 // by a person rather than read to by an app.
@@ -32,6 +32,33 @@ export function TutorHead({ name = "amy", width = 104 }: { name?: string; width?
   const talkRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => onSpeakingChange(setSpeaking), []);
+
+  // A generic loop reads as wrong mainly because the mouth moves during pauses.
+  // So the talking clip is advanced only while there is real voice energy and
+  // held still between words and sentences. It cannot match phonemes, but at
+  // this size what the eye checks is "does the mouth move when I hear her".
+  //
+  // level < 0 means the waveform is unreadable (device voice, or audio served
+  // without CORS). Then we just let the clip run, which is the old behaviour.
+  const voiced = useRef(true);
+  useEffect(
+    () =>
+      onAudioLevel((level) => {
+        const talk = talkRef.current;
+        if (!talk) return;
+        if (level < 0) {
+          voiced.current = true;
+          if (talk.paused) void talk.play().catch(() => {});
+          return;
+        }
+        const isVoiced = level > 0.06; // below this is a pause, not speech
+        if (isVoiced === voiced.current) return;
+        voiced.current = isVoiced;
+        if (isVoiced) void talk.play().catch(() => {});
+        else talk.pause(); // hold the frame rather than mouthing at silence
+      }),
+    [],
+  );
 
   // Keep the visible clip rolling and rewind the hidden one, so every switch
   // starts from the top of the loop rather than halfway through a mouth shape.
