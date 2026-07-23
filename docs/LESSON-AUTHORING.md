@@ -113,19 +113,25 @@ when solved or revealed).
 
 Gugu guides the student through a problem with **scripted** lines. They are the
 SAME for every student and read aloud on demand by the device (no AI, no audio
-files). Add to any problem step:
+files). The engine drives the tutor rhythm; you supply the words:
 
-- `ask`: Gugu's opening line. It is **spoken only, never shown on screen**:
-  Gugu says it aloud as the question appears (a small repeat icon replays it),
-  so it must SUPPLEMENT the question, not read it back, in the same warm spoken
-  voice as `say`. One or two short sentences ending with a nudge. Example:
-  `"This is a titration question. What do you do first? Put the steps in order."`
-  Note: on every question the student taps "I understand" (beside Help) to unlock
-  Continue, exactly like a teach card, so `ask` is the guidance for that moment.
-- `hints`: an array of 2 to 3 escalating nudges. The student taps Help to hear
-  them one at a time. Hint 1 is gentle; the last is nearly the answer.
-- `explain`: the teaching summary, spoken when the student solves it or reveals
-  the answer. State the actual answer here so "reveal" teaches.
+- **The engine opens each question itself** with a generic "read this and think
+  about it, then <do the interaction>" nudge (spoken, no hint). So DO NOT write
+  `ask` as a "read the question" opener, and don't repeat the on-screen prompt.
+- **The engine reacts after every answer itself**: warm praise on a correct
+  answer (and "let's try the next one" when a question follows); on a wrong MCQ
+  it speaks the next help item and lets the student try again. You don't write
+  the praise; you write the guidance it draws on.
+
+- `ask`: the **first item on the Help ladder** (revealed when the student taps
+  Help, and spoken to them on a wrong MCQ). Write it as genuine first-tier
+  guidance: the approach or the first thing to notice, warm and spoken, never a
+  re-read of the prompt. Example:
+  `"Acceleration is change in velocity over time. Work out the change first, then divide by the time."`
+- `hints`: an array of 2 to 3 escalating nudges AFTER `ask`. Each must stand
+  alone as a "try again" nudge; hint 1 is gentle, the last is nearly the answer.
+- `explain`: the teaching summary, spoken/shown once the student solves it or
+  reveals the answer. State the actual answer here so "reveal" teaches.
 
 Write `ask`/`hints`/`explain` as speech: plain words, no notation the ear can't
 parse (say "0.24 millimetres", not "0.24 mm", inside `ask`/`hints`; keep the
