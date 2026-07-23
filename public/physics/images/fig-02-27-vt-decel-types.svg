@@ -1,32 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 720" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:11px; }
-    .axis { stroke:#EAEAEA; stroke-width:1.4; }
-    .line { fill:none; stroke:#E58F8F; stroke-width:2.2; }
-    .cap { font-size:10.5px; text-anchor:middle; }
+    text { fill:#EAEAEA; font-size:14px; }
+    .axis { stroke:#EAEAEA; stroke-width:1.6; }
+    .line { fill:none; stroke:#E58F8F; stroke-width:2.6; }
+    .cap { font-size:14px; text-anchor:middle; }
   </style>
   <defs>
     <marker id="dt" markerWidth="7" markerHeight="7" refX="5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#EAEAEA"/></marker>
   </defs>
-  <g transform="translate(10,10)">
+  <!-- straight fall: constant deceleration -->
+  <g transform="translate(125,10)">
     <line class="axis" x1="30" y1="160" x2="30" y2="20" marker-end="url(#dt)"/>
     <line class="axis" x1="30" y1="160" x2="150" y2="160" marker-end="url(#dt)"/>
     <line class="line" x1="35" y1="35" x2="140" y2="155"/>
-    <text x="90" y="185" class="cap">velocity ↓ uniformly</text>
-    <text x="90" y="200" class="cap">constant deceleration</text>
+    <text x="90" y="188" class="cap">velocity down uniformly</text>
+    <text x="90" y="206" class="cap">constant deceleration</text>
   </g>
-  <g transform="translate(180,10)">
-    <line class="axis" x1="30" y1="160" x2="30" y2="20" marker-end="url(#dt)"/>
-    <line class="axis" x1="30" y1="160" x2="150" y2="160" marker-end="url(#dt)"/>
-    <path class="line" d="M35,35 Q60,150 140,155"/>
-    <text x="90" y="185" class="cap">velocity ↓ increasing rate</text>
-    <text x="90" y="200" class="cap">decel. non-uniform, increasing</text>
-  </g>
-  <g transform="translate(350,10)">
+  <!-- shallow then steep: the drop speeds up, deceleration increasing -->
+  <g transform="translate(125,250)">
     <line class="axis" x1="30" y1="160" x2="30" y2="20" marker-end="url(#dt)"/>
     <line class="axis" x1="30" y1="160" x2="150" y2="160" marker-end="url(#dt)"/>
     <path class="line" d="M35,35 Q110,45 140,155"/>
-    <text x="90" y="185" class="cap">velocity ↓ decreasing rate</text>
-    <text x="90" y="200" class="cap">decel. non-uniform, decreasing</text>
+    <text x="90" y="188" class="cap">velocity down, faster</text>
+    <text x="90" y="206" class="cap">deceleration increasing</text>
+  </g>
+  <!-- steep then shallow: the drop eases off, deceleration decreasing -->
+  <g transform="translate(125,490)">
+    <line class="axis" x1="30" y1="160" x2="30" y2="20" marker-end="url(#dt)"/>
+    <line class="axis" x1="30" y1="160" x2="150" y2="160" marker-end="url(#dt)"/>
+    <path class="line" d="M35,35 Q60,150 140,155"/>
+    <text x="90" y="188" class="cap">velocity down, slower</text>
+    <text x="90" y="206" class="cap">deceleration decreasing</text>
   </g>
 </svg>

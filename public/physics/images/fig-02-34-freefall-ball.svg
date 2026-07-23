@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 320" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:14px; }
     .ball { fill:#6FB7E0; opacity:0.85; stroke:#EAEAEA; stroke-width:1.2; }
     .drop { stroke:#9AA0A6; stroke-width:1.2; stroke-dasharray:4 3; }
     .arr { stroke:#86C98B; stroke-width:2; fill:none; }
-    .lb { fill:#E8B65A; font-size:12px; }
+    .lb { fill:#E8B65A; font-size:14px; }
   </style>
   <defs>
     <marker id="fb" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#86C98B"/></marker>

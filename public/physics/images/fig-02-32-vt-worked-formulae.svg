@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 230" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:12px; }
+    text { fill:#EAEAEA; font-size:14px; }
     .axis { stroke:#EAEAEA; stroke-width:1.6; }
     .line { fill:none; stroke:#6FB7E0; stroke-width:2.2; }
     .guide { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:4 3; }
     .fill { fill:#6FB7E0; opacity:0.28; }
-    .ax { font-size:11px; }
+    .ax { font-size:13px; }
   </style>
   <defs>
     <marker id="wf" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#EAEAEA"/></marker>
@@ -13,7 +13,7 @@
   <line class="axis" x1="60" y1="195" x2="60" y2="25" marker-end="url(#wf)"/>
   <line class="axis" x1="60" y1="195" x2="320" y2="195" marker-end="url(#wf)"/>
   <text x="30" y="30">velocity / (m/s)</text>
-  <text x="290" y="215">time / s</text>
+  <text x="330" y="215" text-anchor="end">time / s</text>
   <text x="52" y="198" text-anchor="end" class="ax">O</text>
   <text x="52" y="70" text-anchor="end" class="ax">v</text>
   <text x="52" y="150" text-anchor="end" class="ax">u</text>
