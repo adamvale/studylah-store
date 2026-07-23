@@ -28,7 +28,7 @@ const EDGE = 12; // keep this much clear of every edge
 
 type Pos = { x: number; y: number };
 
-export function TutorHead({ name = "amy", width = 104 }: { name?: string; width?: number }) {
+export function TutorHead({ name = "amy", width = 52 }: { name?: string; width?: number }) {
   const height = Math.round((width * 4) / 3);
   const [speaking, setSpeaking] = useState(false);
   const [ready, setReady] = useState(false);

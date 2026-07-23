@@ -34,76 +34,131 @@ function Katex({ tex, display }: { tex: string; display?: boolean }) {
   return <span dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
-// Safe arithmetic evaluator (shunting-yard, no eval): + - * / , parentheses,
-// decimals and a leading minus. Returns "" if the expression is incomplete.
-function evalArith(expr: string): string {
-  const tokens = expr.match(/(\d+\.?\d*|\.\d+|[+\-*/()])/g);
+// Safe expression evaluator: tokenise, shunting-yard, evaluate. No eval().
+// Covers what an O-Level science paper actually asks for: + - * / and powers,
+// brackets, decimals, unary minus, trig in degrees or radians, roots, logs and
+// the two constants. Returns "" while the expression is still incomplete, so a
+// half-typed sum just sits there rather than flashing an error.
+const FUNCS = ["asin", "acos", "atan", "sin", "cos", "tan", "sqrt", "log", "ln"];
+const isFunc = (t: string) => FUNCS.includes(t);
+
+function evalExpr(expr: string, deg: boolean): string {
+  // asin/acos/atan must come before sin/cos/tan or the prefix would win.
+  const tokens = expr.match(/\d+\.?\d*|\.\d+|asin|acos|atan|sin|cos|tan|sqrt|log|ln|pi|e|[+\-*/^()]/g);
   if (!tokens) return "";
   const out: string[] = [];
   const ops: string[] = [];
-  const prec: Record<string, number> = { "+": 1, "-": 1, "*": 2, "/": 2 };
+  const prec: Record<string, number> = { "+": 2, "-": 2, "*": 3, "/": 3, "^": 4, u: 5 };
+  const rightAssoc = (o: string) => o === "^" || o === "u";
   let prev: string | null = null;
   for (const t of tokens) {
-    if (/^[\d.]/.test(t)) {
-      out.push(t);
-    } else if (t === "(") {
-      ops.push(t);
-    } else if (t === ")") {
+    if (/^[\d.]/.test(t)) out.push(t);
+    else if (t === "pi") out.push(String(Math.PI));
+    else if (t === "e") out.push(String(Math.E));
+    else if (isFunc(t) || t === "(") ops.push(t);
+    else if (t === ")") {
       while (ops.length && ops[ops.length - 1] !== "(") out.push(ops.pop() as string);
+      if (!ops.length) return ""; // unbalanced, keep waiting
       ops.pop();
+      if (ops.length && isFunc(ops[ops.length - 1])) out.push(ops.pop() as string);
     } else {
-      // a leading "-" (start, after "(" or after an operator) means 0 - x
-      if (t === "-" && (prev === null || prev === "(" || "+-*/".includes(prev))) out.push("0");
-      while (ops.length && "+-*/".includes(ops[ops.length - 1]) && prec[ops[ops.length - 1]] >= prec[t]) {
-        out.push(ops.pop() as string);
+      // a minus is unary at the start, after "(" or straight after another operator
+      const o = t === "-" && (prev === null || prev === "(" || "+-*/^".includes(prev)) ? "u" : t;
+      while (ops.length) {
+        const top = ops[ops.length - 1];
+        if (top === "(") break;
+        const topPrec = isFunc(top) ? 6 : prec[top];
+        if (topPrec > prec[o] || (topPrec === prec[o] && !rightAssoc(o))) out.push(ops.pop() as string);
+        else break;
       }
-      ops.push(t);
+      ops.push(o);
     }
     prev = t;
   }
-  while (ops.length) out.push(ops.pop() as string);
+  while (ops.length) {
+    const o = ops.pop() as string;
+    if (o === "(") return "";
+    out.push(o);
+  }
+
   const st: number[] = [];
+  const toRad = (x: number) => (deg ? (x * Math.PI) / 180 : x);
+  const fromRad = (x: number) => (deg ? (x * 180) / Math.PI : x);
   for (const t of out) {
     if (/^[\d.]/.test(t)) {
       st.push(parseFloat(t));
+    } else if (t === "u") {
+      const a = st.pop();
+      if (a === undefined) return "";
+      st.push(-a);
+    } else if (isFunc(t)) {
+      const a = st.pop();
+      if (a === undefined) return "";
+      st.push(
+        t === "sin" ? Math.sin(toRad(a))
+        : t === "cos" ? Math.cos(toRad(a))
+        : t === "tan" ? Math.tan(toRad(a))
+        : t === "asin" ? fromRad(Math.asin(a))
+        : t === "acos" ? fromRad(Math.acos(a))
+        : t === "atan" ? fromRad(Math.atan(a))
+        : t === "sqrt" ? Math.sqrt(a)
+        : t === "log" ? Math.log10(a)
+        : Math.log(a),
+      );
     } else {
       const b = st.pop();
       const a = st.pop();
       if (a === undefined || b === undefined) return "";
-      st.push(t === "+" ? a + b : t === "-" ? a - b : t === "*" ? a * b : a / b);
+      st.push(t === "+" ? a + b : t === "-" ? a - b : t === "*" ? a * b : t === "/" ? a / b : Math.pow(a, b));
     }
   }
   const r = st.pop();
   if (r === undefined || st.length || !Number.isFinite(r)) return "";
-  return String(Math.round(r * 1e10) / 1e10);
+  const rounded = Math.round(r * 1e10) / 1e10;
+  // physics answers run to both extremes, so switch to standard form rather than
+  // showing a screen of zeros
+  if (rounded !== 0 && (Math.abs(rounded) >= 1e10 || Math.abs(rounded) < 1e-6)) return rounded.toExponential(4);
+  return String(rounded);
 }
 
-// A calculator the student can pop open during any question. The button lives
-// in the top bar; the keypad floats above the footer. Basic four-function with
-// parentheses and decimals, which is all O-Level working needs.
+// A scientific calculator the student can pop open during any question. The
+// button lives in the top bar; the keypad floats above the footer. Trig defaults
+// to degrees, which is what the syllabus uses, with a toggle for radians.
 function Calculator() {
   const [open, setOpen] = useState(false);
   const [expr, setExpr] = useState("");
-  const pretty = (s: string) => s.replace(/\*/g, " × ").replace(/\//g, " ÷ ").replace(/([+\-])/g, " $1 ").trim();
+  const [deg, setDeg] = useState(true);
+  const pretty = (t: string) =>
+    t
+      .replace(/\*/g, " × ")
+      .replace(/\//g, " ÷ ")
+      .replace(/sqrt\(/g, "√(")
+      .replace(/pi/g, "π")
+      .replace(/asin\(/g, "sin⁻¹(")
+      .replace(/acos\(/g, "cos⁻¹(")
+      .replace(/atan\(/g, "tan⁻¹(");
   const press = (t: string) => {
     if (t === "C") return setExpr("");
     if (t === "back") return setExpr((e) => e.slice(0, -1));
-    if (t === "=") return setExpr((e) => evalArith(e) || e);
+    if (t === "=") return setExpr((e) => evalExpr(e, deg) || e);
     setExpr((e) => e + t);
   };
+  const A = "text-accent";
   const KEYS: { label: string; t: string; tone?: string }[] = [
-    { label: "C", t: "C", tone: "text-signal" }, { label: "(", t: "(" }, { label: ")", t: ")" }, { label: "÷", t: "/", tone: "text-accent" },
-    { label: "7", t: "7" }, { label: "8", t: "8" }, { label: "9", t: "9" }, { label: "×", t: "*", tone: "text-accent" },
-    { label: "4", t: "4" }, { label: "5", t: "5" }, { label: "6", t: "6" }, { label: "-", t: "-", tone: "text-accent" },
-    { label: "1", t: "1" }, { label: "2", t: "2" }, { label: "3", t: "3" }, { label: "+", t: "+", tone: "text-accent" },
-    { label: "0", t: "0" }, { label: ".", t: "." }, { label: "⌫", t: "back" }, { label: "=", t: "=", tone: "bg-accent !text-night" },
+    { label: "C", t: "C", tone: "text-signal" }, { label: "(", t: "(" }, { label: ")", t: ")" }, { label: "⌫", t: "back" }, { label: "÷", t: "/", tone: A },
+    { label: "sin", t: "sin(", tone: A }, { label: "cos", t: "cos(", tone: A }, { label: "tan", t: "tan(", tone: A }, { label: "√", t: "sqrt(", tone: A }, { label: "×", t: "*", tone: A },
+    { label: "7", t: "7" }, { label: "8", t: "8" }, { label: "9", t: "9" }, { label: "x²", t: "^2", tone: A }, { label: "−", t: "-", tone: A },
+    { label: "4", t: "4" }, { label: "5", t: "5" }, { label: "6", t: "6" }, { label: "xʸ", t: "^", tone: A }, { label: "+", t: "+", tone: A },
+    { label: "1", t: "1" }, { label: "2", t: "2" }, { label: "3", t: "3" }, { label: "log", t: "log(", tone: A }, { label: "×10ˣ", t: "*10^", tone: A },
+    { label: "0", t: "0" }, { label: ".", t: "." }, { label: "π", t: "pi", tone: A }, { label: "ln", t: "ln(", tone: A }, { label: "=", t: "=", tone: "bg-accent !text-night" },
   ];
+  const result = evalExpr(expr, deg);
   return (
     <>
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        aria-label="Calculator"
+        aria-label="Scientific calculator"
         className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border ${open ? "border-accent text-accent" : "border-hairline text-body"}`}
       >
         <NamedIcon name="calculator" size={18} />
@@ -111,19 +166,30 @@ function Calculator() {
       {open && (
         <div className="fixed inset-0 z-[70] flex items-end justify-center" onClick={() => setOpen(false)}>
           <div
-            className="mb-24 w-[min(20rem,92vw)] rounded-2xl border border-hairline bg-night/95 p-3 shadow-2xl backdrop-blur"
+            className="mb-24 w-[min(22rem,94vw)] rounded-2xl border border-hairline bg-night/95 p-3 shadow-2xl backdrop-blur"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="mb-2 min-h-[2.75rem] rounded-xl bg-white/5 px-3 py-2 text-right">
-              <div className="truncate font-mono text-lg text-ink">{pretty(expr) || "0"}</div>
+            <div className="mb-2 rounded-xl bg-white/5 px-3 py-2">
+              <div className="flex items-center justify-between">
+                <button
+                  type="button"
+                  onClick={() => setDeg((d) => !d)}
+                  className="rounded-md border border-hairline px-2 py-0.5 text-[11px] font-bold text-body"
+                >
+                  {deg ? "DEG" : "RAD"}
+                </button>
+                {/* a running answer, so the student sees it resolve as they type */}
+                <div className="truncate font-mono text-xs text-body/70">{result && result !== expr ? `= ${result}` : ""}</div>
+              </div>
+              <div className="mt-1 truncate text-right font-mono text-lg text-ink">{pretty(expr) || "0"}</div>
             </div>
-            <div className="grid grid-cols-4 gap-1.5">
+            <div className="grid grid-cols-5 gap-1.5">
               {KEYS.map((k) => (
                 <button
                   key={k.label}
                   type="button"
                   onClick={() => press(k.t)}
-                  className={`rounded-xl border border-hairline py-3 text-base font-bold text-ink ${k.tone ?? ""}`}
+                  className={`rounded-xl border border-hairline py-3 text-sm font-bold text-ink ${k.tone ?? ""}`}
                 >
                   {k.label}
                 </button>

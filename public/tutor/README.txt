@@ -11,7 +11,7 @@ so the clips only have to look right, not match any particular words.
 Format:
   - 3:4 PORTRAIT, to match the window. 360x480 is plenty. Do not send square or
     landscape: the window is portrait and would crop the face.
-  - Head and shoulders, centred, framed to read at about 104 px wide.
+  - Head and shoulders, centred, framed to read at about 52 px wide.
   - Under about 3 seconds, looping cleanly (start and end on the same pose) so
     the repeat is not obvious.
   - H.264, a couple of hundred KB each. These ship in the app bundle.
