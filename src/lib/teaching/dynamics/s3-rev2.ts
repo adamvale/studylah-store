@@ -34,17 +34,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-04-11-we-box-push",
         options: ["3.0 m/s^2", "9.5 m/s^2", "12 m/s^2", "0.33 m/s^2"],
         correct: 0,
-        ask: "First combine the forces along the line: 25 minus 13 gives the resultant. Then divide by the 4 kilogram mass.",
+        ask: "First combine the forces along the line: 25 - 13 gives the resultant. Then divide by the 4 kilogram mass.",
         hints: [
-          "The resultant force is 25 minus 13, which is 12 newtons.",
-          "12 divided by 4 is 3.0, in metres per second squared.",
+          "The resultant force is 25 - 13, which is 12 newtons.",
+          "12 ÷ 4 is 3.0, in metres per second squared.",
         ],
         working: [
           { label: "Formula", latex: "a = \\dfrac{F}{m}" },
           { label: "Substitute", latex: "a = \\dfrac{25 - 13}{4}" },
           { label: "Answer", latex: "a = 3.0\\ \\text{m/s}^2" },
         ],
-        explain: "The resultant force is 25 minus 13, which is 12 newtons, so the acceleration is 12 divided by 4, giving 3.0 metres per second squared.",
+        explain: "The resultant force is 25 - 13, which is 12 newtons, so the acceleration is 12 ÷ 4, giving 3.0 metres per second squared.",
       },
       {
         kind: "choice",
@@ -68,10 +68,10 @@ export const BOXES: Subconcept[] = [
         question: "A resultant force of 18 N acts on a mass of 6 kg. Find its acceleration.",
         options: ["3.0 m/s^2", "0.33 m/s^2", "24 m/s^2", "108 m/s^2"],
         correct: 0,
-        ask: "Acceleration is the resultant force divided by the mass, so work out 18 divided by 6. Which option matches?",
+        ask: "Acceleration is the resultant force divided by the mass, so work out 18 ÷ 6. Which option matches?",
         hints: [
           "Rearrange F equals m a into a equals F divided by m.",
-          "18 divided by 6 is 3.0, in metres per second squared.",
+          "18 ÷ 6 is 3.0, in metres per second squared.",
         ],
         working: [
           { label: "Formula", latex: "a = \\dfrac{F}{m}" },
@@ -110,7 +110,7 @@ export const BOXES: Subconcept[] = [
         targetMax: 15.1,
         ask: "The 2 forces are at right angles, so combine them with Pythagoras: square each force, add, then take the square root.",
         hints: [
-          "12 squared is 144 and 9 squared is 81, and 144 plus 81 is 225.",
+          "12 squared is 144 and 9^2 is 81, and 144 + 81 is 225.",
           "The square root of 225 is 15, so slide to 15 newtons.",
         ],
         working: [
@@ -118,7 +118,7 @@ export const BOXES: Subconcept[] = [
           { label: "Substitute", latex: "F = \\sqrt{12^2 + 9^2}" },
           { label: "Answer", latex: "F = 15\\ \\text{N}" },
         ],
-        explain: "The 2 forces are at right angles, so the resultant is the square root of 12 squared plus 9 squared, which is the square root of 225, giving 15 newtons.",
+        explain: "The 2 forces are at right angles, so the resultant is the square root of 12 squared plus 9^2, which is the square root of 225, giving 15 newtons.",
       },
       {
         kind: "match",
@@ -175,10 +175,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A 4 kg mass accelerates at 3 m/s^2. Build the working line that gives the resultant force F.",
         tiles: ["F =", "4", "\\times", "3", "=", "12", "N", "m/s^2"],
         answer: ["F =", "4", "\\times", "3", "=", "12", "N"],
-        ask: "The resultant force is mass times acceleration, so set up 4 times 3.",
+        ask: "The resultant force is mass times acceleration, so set up 4 × 3.",
         hints: [
           "Use F equals m times a.",
-          "4 times 3 is 12, and force is measured in newtons.",
+          "4 × 3 is 12, and force is measured in newtons.",
         ],
         working: [
           { label: "Formula", latex: "F = ma" },

@@ -42,10 +42,10 @@ export const BOXES: Subconcept[] = [
         question: "A 3 kg mass rests on the Earth, where g = 10 N/kg. Find its weight W.",
         options: ["30 N", "3 N", "0.3 N", "13 N"],
         correct: 0,
-        ask: "Weight is mass times g, so work out 3 times 10. Which option matches?",
+        ask: "Weight is mass times g, so work out 3 × 10. Which option matches?",
         hints: [
           "Use W equals m times g.",
-          "3 times 10 is 30, and the unit of weight is the newton.",
+          "3 × 10 is 30, and the unit of weight is the newton.",
         ],
         working: [
           { label: "Formula", latex: "W = mg" },
@@ -64,10 +64,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 9.5,
         targetMax: 9.7,
-        ask: "On the Moon the weight is still mass times g, so work out 6 times 1.6.",
+        ask: "On the Moon the weight is still mass times g, so work out 6 × 1.6.",
         hints: [
           "Use W equals m times g, with g equal to 1.6 on the Moon.",
-          "6 times 1.6 is 9.6, so slide to 9.6 newtons.",
+          "6 × 1.6 is 9.6, so slide to 9.6 newtons.",
         ],
         working: [
           { label: "Formula", latex: "W = mg" },
@@ -81,10 +81,10 @@ export const BOXES: Subconcept[] = [
         question: "A camera weighs 84 N on the Earth, where g = 10 N/kg. Find its mass.",
         options: ["8.4 kg", "840 kg", "94 kg", "8.4 N"],
         correct: 0,
-        ask: "Rearrange weight equals mass times g to get mass, so work out 84 divided by 10.",
+        ask: "Rearrange weight equals mass times g to get mass, so work out 84 ÷ 10.",
         hints: [
           "From W equals m g, the mass is W divided by g.",
-          "84 divided by 10 is 8.4, and mass is measured in kilograms.",
+          "84 ÷ 10 is 8.4, and mass is measured in kilograms.",
         ],
         working: [
           { label: "Formula", latex: "m = \\dfrac{W}{g}" },
@@ -98,10 +98,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A spring balance reads a crate's weight as 108 N. Its mass is 45 kg. Build the working line that gives g.",
         tiles: ["g =", "108", "\\div", "45", "=", "2.4", "N/kg", "kg"],
         answer: ["g =", "108", "\\div", "45", "=", "2.4", "N/kg"],
-        ask: "To find g, divide the weight by the mass, so set up 108 divided by 45.",
+        ask: "To find g, divide the weight by the mass, so set up 108 ÷ 45.",
         hints: [
           "Rearranging W equals m g gives g equal to W divided by m.",
-          "108 divided by 45 is 2.4, and g is measured in newtons per kilogram.",
+          "108 ÷ 45 is 2.4, and g is measured in newtons per kilogram.",
         ],
         working: [
           { label: "Formula", latex: "g = \\dfrac{W}{m}" },

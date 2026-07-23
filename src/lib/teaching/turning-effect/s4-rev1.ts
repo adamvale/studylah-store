@@ -18,10 +18,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-05-21-mcq-beam",
         options: ["18 N", "36 N", "2 N", "12 N"],
         correct: 0,
-        ask: "The beam is balanced, so the 2 moments are equal. Work out 6 times 6, then divide by 2 to get W.",
+        ask: "The beam is balanced, so the 2 moments are equal. Work out 6 × 6, then divide by 2 to get W.",
         hints: [
-          "By the principle of moments, 6 times 6 equals W times 2.",
-          "6 times 6 is 36, and 36 divided by 2 is 18.",
+          "By the principle of moments, 6 × 6 equals W times 2.",
+          "6 × 6 is 36, and 36 ÷ 2 is 18.",
         ],
         working: [
           { label: "Formula", latex: "F_1 d_1 = W d_2" },
@@ -36,10 +36,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-05-24-metre-rule-spring",
         options: ["60 N", "80 N", "60 N m", "107 N"],
         correct: 0,
-        ask: "The rule is balanced, so the block's moment equals the spring's moment. Work out 80 times 0.75, then divide by 1.0.",
+        ask: "The rule is balanced, so the block's moment equals the spring's moment. Work out 80 × 0.75, then divide by 1.0.",
         hints: [
-          "By the principle of moments, 80 times 0.75 equals the reading times 1.0.",
-          "80 times 0.75 is 60, and dividing by 1.0 leaves 60 newtons.",
+          "By the principle of moments, 80 × 0.75 equals the reading times 1.0.",
+          "80 × 0.75 is 60, and dividing by 1.0 leaves 60 newtons.",
         ],
         working: [
           { label: "Formula", latex: "F = \\dfrac{W d_1}{d_2}" },
@@ -53,10 +53,10 @@ export const BOXES: Subconcept[] = [
         question: "A car-park barrier is pivoted at one end. A load of 400 N acts 1.50 m from the pivot. A downward force P acts 0.40 m from the pivot on the other side to keep the barrier level. Find P.",
         options: ["1500 N", "600 N", "150 N", "240 N"],
         correct: 0,
-        ask: "The barrier is in equilibrium, so the 2 moments are equal. Work out 400 times 1.50, then divide by 0.40.",
+        ask: "The barrier is in equilibrium, so the 2 moments are equal. Work out 400 × 1.50, then divide by 0.40.",
         hints: [
-          "By the principle of moments, P times 0.40 equals 400 times 1.50.",
-          "400 times 1.50 is 600, and 600 divided by 0.40 is 1500.",
+          "By the principle of moments, P times 0.40 equals 400 × 1.50.",
+          "400 × 1.50 is 600, and 600 ÷ 0.40 is 1500.",
         ],
         working: [
           { label: "Formula", latex: "P d_1 = F d_2" },
@@ -109,10 +109,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 83,
         targetMax: 85,
-        ask: "Add the 2 moments on the first side, then divide by 0.10 to get W. Start with 20 times 0.30 and 12 times 0.20.",
+        ask: "Add the 2 moments on the first side, then divide by 0.10 to get W. Start with 20 × 0.30 and 12 × 0.20.",
         hints: [
-          "The total clockwise moment is 20 times 0.30 plus 12 times 0.20.",
-          "20 times 0.30 is 6, and 12 times 0.20 is 2.4, so the total is 8.4, and 8.4 divided by 0.10 is 84.",
+          "The total clockwise moment is 20 × 0.30 + 12 × 0.20.",
+          "20 × 0.30 is 6, and 12 × 0.20 is 2.4, so the total is 8.4, and 8.4 ÷ 0.10 is 84.",
         ],
         working: [
           { label: "Formula", latex: "W = \\dfrac{F_1 d_1 + F_2 d_2}{d}" },
@@ -126,10 +126,10 @@ export const BOXES: Subconcept[] = [
         prompt: "On a see-saw, a 30 N weight sits 0.40 m from the pivot and balances a weight W at 0.20 m on the other side. Build the working line that gives W.",
         tiles: ["W =", "30", "\\times", "0.40", "\\div", "0.20", "=", "60", "N", "N m"],
         answer: ["W =", "30", "\\times", "0.40", "\\div", "0.20", "=", "60", "N"],
-        ask: "The see-saw is balanced, so 30 times 0.40 equals W times 0.20. Rearrange to divide the moment by 0.20.",
+        ask: "The see-saw is balanced, so 30 × 0.40 equals W times 0.20. Rearrange to divide the moment by 0.20.",
         hints: [
-          "By the principle of moments, W equals 30 times 0.40 divided by 0.20.",
-          "30 times 0.40 is 12, and 12 divided by 0.20 is 60, and the weight is a force in newtons.",
+          "By the principle of moments, W equals 30 × 0.40 ÷ 0.20.",
+          "30 × 0.40 is 12, and 12 ÷ 0.20 is 60, and the weight is a force in newtons.",
         ],
         working: [
           { label: "Formula", latex: "W = \\dfrac{F_1 d_1}{d_2}" },
@@ -182,10 +182,10 @@ export const BOXES: Subconcept[] = [
           "Moment = 15 N",
         ],
         errorLine: 2,
-        ask: "The arithmetic 60 times 0.25 is fine. Check the unit written on the final line against what a moment is measured in.",
+        ask: "The arithmetic 60 × 0.25 is fine. Check the unit written on the final line against what a moment is measured in.",
         hints: [
           "A moment is a force times a distance, so its unit cannot be the plain newton.",
-          "60 times 0.25 is 15, but the unit should be N m, not N.",
+          "60 × 0.25 is 15, but the unit should be N m, not N.",
         ],
         working: [
           { label: "Formula", latex: "M = F \\times d" },
@@ -208,9 +208,9 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "A uniform plank of weight 300 N rests on 2 supports, P and Q. A load of weight 60 N sits on the plank. The support forces are found to be T_P = 170 N and T_Q = 190 N. Explain how the 2 conditions for equilibrium are met.",
-        modelAnswer: "There is no resultant force, because the 2 upward support forces add to 170 plus 190, which is 360 newtons, and this balances the total downward weight of the plank plus the load, 300 plus 60, which is also 360 newtons. There is also no resultant moment, because if you take moments about either support, the total clockwise moment equals the total anticlockwise moment. Those balances are exactly what fix the support forces at 170 newtons and 190 newtons.",
+        modelAnswer: "There is no resultant force, because the 2 upward support forces add to 170 + 190, which is 360 newtons, and this balances the total downward weight of the plank plus the load, 300 + 60, which is also 360 newtons. There is also no resultant moment, because if you take moments about either support, the total clockwise moment equals the total anticlockwise moment. Those balances are exactly what fix the support forces at 170 newtons and 190 newtons.",
         marks: [
-          "Upward forces balance downward forces: 170 plus 190 is 360 N, equal to 300 plus 60.",
+          "Upward forces balance downward forces: 170 + 190 is 360 N, equal to 300 + 60.",
           "Taking moments about a support, clockwise moments equal anticlockwise moments.",
           "Both conditions together give the values 170 N and 190 N.",
         ],

@@ -73,17 +73,17 @@ export const BOXES: Subconcept[] = [
         question: "A uniform metre rule balances on a knife-edge at the 40 cm mark. A weight of 2.0 N hangs at the 20 cm mark. The rule's centre of gravity is at the 50 cm mark. Find the weight W of the rule.",
         options: ["1.0 N", "2.0 N", "8.0 N", "4.0 N"],
         correct: 3,
-        ask: "Take moments about the pivot at 40 cm. The 2.0 N weight acts 40 minus 20 from the pivot; the rule's weight acts 50 minus 40 from it. Set clockwise equal to anticlockwise.",
+        ask: "Take moments about the pivot at 40 cm. The 2.0 N weight acts 40 - 20 from the pivot; the rule's weight acts 50 - 40 from it. Set clockwise equal to anticlockwise.",
         hints: [
           "The 2.0 N weight is 20 cm from the pivot; the rule's weight is 10 cm from the pivot.",
-          "2.0 times 20 equals W times 10, so 40 equals 10 times W.",
+          "2.0 × 20 equals W times 10, so 40 equals 10 times W.",
         ],
         working: [
           { label: "Formula", latex: "F_1 \\, d_1 = W \\, d_2" },
           { label: "Substitute", latex: "2.0 \\times (40-20) = W \\times (50-40)" },
           { label: "Answer", latex: "W = \\dfrac{40}{10} = 4.0\\ \\text{N}" },
         ],
-        explain: "The rule's weight is 4.0 newtons. The 2.0 newton weight gives an anticlockwise moment of 2.0 times 20, which is 40, and this balances W times 10, so W is 40 divided by 10, which is 4.0 newtons.",
+        explain: "The rule's weight is 4.0 newtons. The 2.0 newton weight gives an anticlockwise moment of 2.0 × 20, which is 40, and this balances W times 10, so W is 40 ÷ 10, which is 4.0 newtons.",
       },
       {
         kind: "choice",

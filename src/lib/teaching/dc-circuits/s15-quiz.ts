@@ -21,7 +21,7 @@ export const BOXES: Subconcept[] = [
         correct: 0,
         ask: "In series the resistances add, so first find the total resistance, then use I equals V divided by R.",
         hints: [
-          "The effective resistance is 3 plus 9, which is 12 ohms.",
+          "The effective resistance is 3 + 9, which is 12 ohms.",
           "12 volts divided by 12 ohms is 1 ampere.",
         ],
         working: [
@@ -62,8 +62,8 @@ export const BOXES: Subconcept[] = [
         targetMax: 2.1,
         ask: "The resistances add in series. Find the total, then divide the supply p.d. by it.",
         hints: [
-          "The total resistance is 3 plus 6, which is 9 ohms.",
-          "18 divided by 9 is 2, so slide to 2 amperes.",
+          "The total resistance is 3 + 6, which is 9 ohms.",
+          "18 ÷ 9 is 2, so slide to 2 amperes.",
         ],
         working: [
           { label: "Formula", latex: "I = \\dfrac{V}{R_{eff}}" },
@@ -80,15 +80,15 @@ export const BOXES: Subconcept[] = [
         correct: 1,
         ask: "For a parallel pair the reciprocals of the resistances add. The result is always smaller than the smallest branch.",
         hints: [
-          "1 over R equals 1 over 4 plus 1 over 12, which is 4 over 12.",
-          "So R is 12 divided by 4, which is 3 ohms.",
+          "1 over R equals 1 over 4 + 1 over 12, which is 4 over 12.",
+          "So R is 12 ÷ 4, which is 3 ohms.",
         ],
         working: [
           { label: "Formula", latex: "\\dfrac{1}{R_{eff}} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2}" },
           { label: "Substitute", latex: "\\dfrac{1}{R_{eff}} = \\dfrac{1}{4} + \\dfrac{1}{12} = \\dfrac{4}{12}" },
           { label: "Answer", latex: "R_{eff} = 3\\ \\Omega" },
         ],
-        explain: "The effective resistance is 3 ohms. Adding the reciprocals gives 1 over 4 plus 1 over 12, which is 4 over 12, so R is 3 ohms, smaller than either branch.",
+        explain: "The effective resistance is 3 ohms. Adding the reciprocals gives 1 over 4 + 1 over 12, which is 4 over 12, so R is 3 ohms, smaller than either branch.",
       },
       // 5 - INTERACTIVE (tiles) - parallel calculation
       {
@@ -96,10 +96,10 @@ export const BOXES: Subconcept[] = [
         prompt: "The parallel pair above has an effective resistance of 3 ohms across the 12 V supply. Build the working line for the total current I, using I = V/R.",
         tiles: ["I =", "12", "\\div", "3", "=", "4", "A", "V"],
         answer: ["I =", "12", "\\div", "3", "=", "4", "A"],
-        ask: "The total current is the supply p.d. divided by the effective resistance, so set up 12 divided by 3.",
+        ask: "The total current is the supply p.d. divided by the effective resistance, so set up 12 ÷ 3.",
         hints: [
           "Use I equals V divided by R, with R equal to 3 ohms.",
-          "12 divided by 3 is 4, and current is measured in amperes.",
+          "12 ÷ 3 is 4, and current is measured in amperes.",
         ],
         working: [
           { label: "Formula", latex: "I = \\dfrac{V}{R_{eff}}" },
@@ -139,8 +139,8 @@ export const BOXES: Subconcept[] = [
         targetMax: 3.1,
         ask: "Charge is conserved at a junction, so the total current flowing in equals the total flowing out. Add the currents in, then subtract the current already leaving.",
         hints: [
-          "The current in is 5 plus 4, which is 9 amperes.",
-          "6 amperes already leaves, so wire Y carries 9 minus 6, which is 3 amperes.",
+          "The current in is 5 + 4, which is 9 amperes.",
+          "6 amperes already leaves, so wire Y carries 9 - 6, which is 3 amperes.",
         ],
         working: [
           { label: "Formula", latex: "\\sum I_{in} = \\sum I_{out}" },
@@ -170,8 +170,8 @@ export const BOXES: Subconcept[] = [
         correct: 2,
         ask: "Reduce the circuit in stages. First replace the parallel pair with a single resistance, then add the series resistor.",
         hints: [
-          "6 ohm in parallel with 3 ohm gives 1 over 6 plus 1 over 3, which is 3 over 6, so 2 ohms.",
-          "Add the 2 ohm resistor P in series: 2 plus 2 is 4 ohms.",
+          "6 ohm in parallel with 3 ohm gives 1 over 6 + 1 over 3, which is 3 over 6, so 2 ohms.",
+          "Add the 2 ohm resistor P in series: 2 + 2 is 4 ohms.",
         ],
         working: [
           { label: "Formula", latex: "R_{eff} = R_P + \\left(\\dfrac{1}{R_1} + \\dfrac{1}{R_2}\\right)^{-1}" },
@@ -194,7 +194,7 @@ export const BOXES: Subconcept[] = [
         ask: "Once the circuit is reduced to a single effective resistance, use I equals V divided by R for the whole circuit.",
         hints: [
           "Use I equals V divided by R, with R equal to 4 ohms.",
-          "6 divided by 4 is 1.5, so slide to 1.5 amperes.",
+          "6 ÷ 4 is 1.5, so slide to 1.5 amperes.",
         ],
         working: [
           { label: "Formula", latex: "I = \\dfrac{V}{R_{eff}}" },
@@ -259,7 +259,7 @@ export const BOXES: Subconcept[] = [
         ask: "The output is the fraction of the input set by the divider rule, V_out equals R2 over R1 plus R2, times V_in.",
         hints: [
           "R2 over R1 plus R2 is 4 over 6.",
-          "4 over 6 times 6 volts is 4 volts.",
+          "4 over 6 × 6 volts is 4 volts.",
         ],
         working: [
           { label: "Formula", latex: "V_{out} = \\dfrac{R_2}{R_1 + R_2} \\times V_{in}" },
@@ -282,7 +282,7 @@ export const BOXES: Subconcept[] = [
         ask: "Use the divider rule: the output equals R2 over R1 plus R2, times the input voltage.",
         hints: [
           "R2 over R1 plus R2 is 3 over 12.",
-          "3 over 12 times 12 volts is 3, so slide to 3 volts.",
+          "3 over 12 × 12 volts is 3, so slide to 3 volts.",
         ],
         working: [
           { label: "Formula", latex: "V_{out} = \\dfrac{R_2}{R_1 + R_2} \\times V_{in}" },
@@ -330,14 +330,14 @@ export const BOXES: Subconcept[] = [
         ask: "Use the divider rule with the output across the 8 ohm resistor: 1.0 equals 8 over 8 plus R_t, times 4.0. Rearrange for R_t.",
         hints: [
           "1.0 equals 8 over 8 plus R_t, times 4.0, so 8 plus R_t equals 32.",
-          "R_t is 32 minus 8, which is 24 ohms.",
+          "R_t is 32 - 8, which is 24 ohms.",
         ],
         working: [
           { label: "Formula", latex: "V_{out} = \\dfrac{R}{R + R_t} \\times V_{in}" },
           { label: "Substitute", latex: "1.0 = \\dfrac{8}{8 + R_t} \\times 4.0" },
           { label: "Answer", latex: "R_t = 24\\ \\Omega" },
         ],
-        explain: "The thermistor's resistance is 24 ohms. The output rule gives 8 plus R_t equals 32, so R_t is 32 minus 8, which is 24 ohms.",
+        explain: "The thermistor's resistance is 24 ohms. The output rule gives 8 plus R_t equals 32, so R_t is 32 - 8, which is 24 ohms.",
       },
       // 19 - INTERACTIVE (cloze) - thermistor concept
       {

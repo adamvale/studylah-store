@@ -39,10 +39,10 @@ export const BOXES: Subconcept[] = [
         question: "A crate weighs 540 N and stands on a base of area 0.90 m^2. Find the pressure it exerts on the floor.",
         options: ["600 Pa", "486 Pa", "540 Pa", "0.0017 Pa"],
         correct: 0,
-        ask: "Pressure is force divided by area, so work out 540 divided by 0.90.",
+        ask: "Pressure is force divided by area, so work out 540 ÷ 0.90.",
         hints: [
           "Use P equals F divided by A.",
-          "540 divided by 0.90 is 600, and pressure is measured in pascals.",
+          "540 ÷ 0.90 is 600, and pressure is measured in pascals.",
         ],
         working: [
           { label: "Formula", latex: "P = \\dfrac{F}{A}" },
@@ -64,14 +64,14 @@ export const BOXES: Subconcept[] = [
         ask: "Check that the area used in the division is in metres squared, not centimetres squared.",
         hints: [
           "The area was correctly converted to 0.0002 metres squared on the first line.",
-          "The division should use 0.0002, not 2, so it is 10 divided by 0.0002, which is 50000 pascals.",
+          "The division should use 0.0002, not 2, so it is 10 ÷ 0.0002, which is 50000 pascals.",
         ],
         working: [
           { label: "Formula", latex: "P = \\dfrac{F}{A}" },
           { label: "Substitute", latex: "P = \\dfrac{10}{0.0002}" },
           { label: "Answer", latex: "P = 50000\\ \\text{Pa}" },
         ],
-        explain: "The mistake is on the line P equals 10 divided by 2. The area must be in metres squared, so it should be 10 divided by 0.0002, which is 50000 pascals, not 5 pascals.",
+        explain: "The mistake is on the line P equals 10 ÷ 2. The area must be in metres squared, so it should be 10 ÷ 0.0002, which is 50000 pascals, not 5 pascals.",
       },
       {
         kind: "open",
@@ -107,17 +107,17 @@ export const BOXES: Subconcept[] = [
         prompt: "A metal has mass 0.45 kg and volume 18 x 10^-6 m^3. Build the working line for its density, using rho = m / V.",
         tiles: ["rho =", "0.45", "\\div", "18 \\times 10^-6", "=", "2.5 \\times 10^4", "kg/m^3", "m"],
         answer: ["rho =", "0.45", "\\div", "18 \\times 10^-6", "=", "2.5 \\times 10^4", "kg/m^3"],
-        ask: "Density is mass divided by volume, so divide 0.45 by 18 times 10 to the power minus 6.",
+        ask: "Density is mass divided by volume, so divide 0.45 by 18 × 10 to the power minus 6.",
         hints: [
           "Use rho equals m divided by V.",
-          "0.45 divided by 18 times 10 to the power minus 6 is 2.5 times 10 to the power 4, in kilograms per metre cubed.",
+          "0.45 ÷ 18 × 10 to the power minus 6 is 2.5 × 10 to the power 4, in kilograms per metre cubed.",
         ],
         working: [
           { label: "Formula", latex: "\\rho = \\dfrac{m}{V}" },
           { label: "Substitute", latex: "\\rho = \\dfrac{0.45}{18 \\times 10^{-6}}" },
           { label: "Answer", latex: "\\rho = 2.5 \\times 10^4\\ \\text{kg/m}^3" },
         ],
-        explain: "The density is 2.5 times 10 to the power 4 kilograms per metre cubed, because 0.45 kilograms divided by 18 times 10 to the power minus 6 metres cubed is 2.5 times 10 to the power 4.",
+        explain: "The density is 2.5 × 10 to the power 4 kilograms per metre cubed, because 0.45 kilograms divided by 18 × 10 to the power minus 6 metres cubed is 2.5 × 10 to the power 4.",
       },
       {
         kind: "classify",
@@ -172,10 +172,10 @@ export const BOXES: Subconcept[] = [
         question: "A flat plate lies 4.0 m below the surface of water of density 1000 kg/m^3 (g = 10 N/kg). Find the pressure of the water on it.",
         options: ["40000 Pa", "4000 Pa", "400 Pa", "14000 Pa"],
         correct: 0,
-        ask: "Use pressure equals depth times density times g, so work out 4.0 times 1000 times 10.",
+        ask: "Use pressure equals depth times density times g, so work out 4.0 × 1000 × 10.",
         hints: [
           "Use P equals h rho g.",
-          "4.0 times 1000 is 4000, and 4000 times 10 is 40000, in pascals.",
+          "4.0 × 1000 is 4000, and 4000 × 10 is 40000, in pascals.",
         ],
         working: [
           { label: "Formula", latex: "P = h\\rho g" },
@@ -259,17 +259,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 590,
         targetMax: 610,
-        ask: "First find the pressure, 30 divided by 3.0, then multiply by the large area of 60.",
+        ask: "First find the pressure, 30 ÷ 3.0, then multiply by the large area of 60.",
         hints: [
-          "The pressure is 30 divided by 3.0, which is 10 newtons per centimetre squared.",
-          "10 times 60 is 600, so slide to 600 newtons.",
+          "The pressure is 30 ÷ 3.0, which is 10 newtons per centimetre squared.",
+          "10 × 60 is 600, so slide to 600 newtons.",
         ],
         working: [
           { label: "Formula", latex: "\\dfrac{F_1}{A_1} = \\dfrac{F_2}{A_2}" },
           { label: "Substitute", latex: "F_2 = \\dfrac{30}{3.0} \\times 60" },
           { label: "Answer", latex: "F_2 = 600\\ \\text{N}" },
         ],
-        explain: "The pressure is 30 divided by 3.0, which is 10 newtons per centimetre squared. On the 60 centimetre squared piston that gives 10 times 60, which is 600 newtons.",
+        explain: "The pressure is 30 ÷ 3.0, which is 10 newtons per centimetre squared. On the 60 centimetre squared piston that gives 10 × 60, which is 600 newtons.",
       },
       {
         kind: "choice",
@@ -277,17 +277,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-06-16-hydraulic-load",
         options: ["1600 N", "8 N", "1000 N", "40 N"],
         correct: 0,
-        ask: "First find the pressure, 40 divided by 5.0, then multiply by the large area of 200.",
+        ask: "First find the pressure, 40 ÷ 5.0, then multiply by the large area of 200.",
         hints: [
-          "The pressure is 40 divided by 5.0, which is 8 newtons per centimetre squared.",
-          "8 times 200 is 1600, so the output force is 1600 newtons.",
+          "The pressure is 40 ÷ 5.0, which is 8 newtons per centimetre squared.",
+          "8 × 200 is 1600, so the output force is 1600 newtons.",
         ],
         working: [
           { label: "Formula", latex: "\\dfrac{F_1}{A_1} = \\dfrac{F_2}{A_2}" },
           { label: "Substitute", latex: "F_2 = \\dfrac{40}{5.0} \\times 200" },
           { label: "Answer", latex: "F_2 = 1600\\ \\text{N}" },
         ],
-        explain: "The pressure is 40 divided by 5.0, which is 8 newtons per centimetre squared. Acting on the 200 centimetre squared piston, that gives an output force of 8 times 200, which is 1600 newtons.",
+        explain: "The pressure is 40 ÷ 5.0, which is 8 newtons per centimetre squared. Acting on the 200 centimetre squared piston, that gives an output force of 8 × 200, which is 1600 newtons.",
       },
       {
         kind: "open",
@@ -305,17 +305,17 @@ export const BOXES: Subconcept[] = [
         question: "A mercury barometer column is 0.76 m tall. Mercury has density 1.36 x 10^4 kg/m^3 (g = 10 N/kg). Find the atmospheric pressure this represents.",
         options: ["1.03 x 10^5 Pa", "1.03 x 10^4 Pa", "7.6 x 10^4 Pa", "1.36 x 10^5 Pa"],
         correct: 0,
-        ask: "Use pressure equals height times density times g, so work out 0.76 times 1.36 times 10 to the power 4, then times 10.",
+        ask: "Use pressure equals height times density times g, so work out 0.76 × 1.36 × 10 to the power 4, then times 10.",
         hints: [
           "Use P equals h rho g with h equal to 0.76 metres.",
-          "0.76 times 1.36 times 10 to the power 4 times 10 is about 1.03 times 10 to the power 5 pascals.",
+          "0.76 × 1.36 × 10 to the power 4 × 10 is about 1.03 × 10 to the power 5 pascals.",
         ],
         working: [
           { label: "Formula", latex: "P = h\\rho g" },
           { label: "Substitute", latex: "P = 0.76 \\times (1.36 \\times 10^4) \\times 10" },
           { label: "Answer", latex: "P = 1.03 \\times 10^5\\ \\text{Pa}" },
         ],
-        explain: "The pressure is about 1.03 times 10 to the power 5 pascals, because 0.76 metres times 1.36 times 10 to the power 4 kilograms per metre cubed times 10 newtons per kilogram is about 1.03 times 10 to the power 5 pascals.",
+        explain: "The pressure is about 1.03 × 10 to the power 5 pascals, because 0.76 metres times 1.36 × 10 to the power 4 kilograms per metre cubed times 10 newtons per kilogram is about 1.03 × 10 to the power 5 pascals.",
       },
       {
         kind: "slider",
@@ -330,7 +330,7 @@ export const BOXES: Subconcept[] = [
         ask: "Going down in the mercury you add the extra height, so add 4 to 76.",
         hints: [
           "Pressure at a point is the vertical height of mercury above it; going down you add the depth.",
-          "76 plus 4 is 80, so slide to 80 cm Hg.",
+          "76 + 4 is 80, so slide to 80 cm Hg.",
         ],
         working: [
           { label: "Formula", latex: "P_C = P_B + h" },
@@ -389,17 +389,17 @@ export const BOXES: Subconcept[] = [
         prompt: "In a U-tube, 20 cm of oil of density 800 kg/m^3 balances a height h of water of density 1000 kg/m^3. Build the working line for h, using h_1 rho_1 = h_2 rho_2.",
         tiles: ["h =", "20", "\\times", "800", "\\div", "1000", "=", "16", "cm", "m"],
         answer: ["h =", "20", "\\times", "800", "\\div", "1000", "=", "16", "cm"],
-        ask: "At the boundary the pressures balance, so h equals 20 times 800 divided by 1000.",
+        ask: "At the boundary the pressures balance, so h equals 20 × 800 ÷ 1000.",
         hints: [
-          "Use h_1 rho_1 equals h_2 rho_2, so h equals 20 times 800 divided by 1000.",
-          "20 times 800 is 16000, and 16000 divided by 1000 is 16, in centimetres.",
+          "Use h_1 rho_1 equals h_2 rho_2, so h equals 20 × 800 ÷ 1000.",
+          "20 × 800 is 16000, and 16000 ÷ 1000 is 16, in centimetres.",
         ],
         working: [
           { label: "Formula", latex: "h_1 \\rho_1 = h_2 \\rho_2" },
           { label: "Substitute", latex: "h = \\dfrac{20 \\times 800}{1000}" },
           { label: "Answer", latex: "h = 16\\ \\text{cm}" },
         ],
-        explain: "The height of water is 16 centimetres, because 20 times 800 divided by 1000 is 16. The denser water needs a shorter column to balance the oil.",
+        explain: "The height of water is 16 centimetres, because 20 × 800 ÷ 1000 is 16. The denser water needs a shorter column to balance the oil.",
       },
       {
         kind: "cloze",

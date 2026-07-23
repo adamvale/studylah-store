@@ -42,10 +42,10 @@ export const BOXES: Subconcept[] = [
         question: "A resultant force of 12 N acts on a 3.0 kg mass. Find its acceleration.",
         options: ["4.0 m/s^2", "36 m/s^2", "0.25 m/s^2", "9.0 m/s^2"],
         correct: 0,
-        ask: "Acceleration is the resultant force divided by the mass, so work out 12 divided by 3.0. Which option matches?",
+        ask: "Acceleration is the resultant force divided by the mass, so work out 12 ÷ 3.0. Which option matches?",
         hints: [
           "Rearrange F equals m a into a equals F divided by m.",
-          "12 divided by 3.0 is 4.0, in metres per second squared.",
+          "12 ÷ 3.0 is 4.0, in metres per second squared.",
         ],
         working: [
           { label: "Formula", latex: "a = \\dfrac{F}{m}" },
@@ -64,27 +64,27 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 5.9,
         targetMax: 6.1,
-        ask: "First combine the forces: 18 minus 6.0 gives the resultant. Then divide by the 2.0 kilogram mass.",
+        ask: "First combine the forces: 18 - 6.0 gives the resultant. Then divide by the 2.0 kilogram mass.",
         hints: [
-          "The resultant force is 18 minus 6.0, which is 12 newtons.",
-          "12 divided by 2.0 is 6.0, so slide to 6.0 metres per second squared.",
+          "The resultant force is 18 - 6.0, which is 12 newtons.",
+          "12 ÷ 2.0 is 6.0, so slide to 6.0 metres per second squared.",
         ],
         working: [
           { label: "Formula", latex: "a = \\dfrac{F}{m}" },
           { label: "Substitute", latex: "a = \\dfrac{18 - 6.0}{2.0}" },
           { label: "Answer", latex: "a = 6.0\\ \\text{m/s}^2" },
         ],
-        explain: "The resultant force is 18 minus 6.0, which is 12 newtons, so the acceleration is 12 divided by 2.0, giving 6.0 metres per second squared.",
+        explain: "The resultant force is 18 - 6.0, which is 12 newtons, so the acceleration is 12 ÷ 2.0, giving 6.0 metres per second squared.",
       },
       {
         kind: "tiles",
         prompt: "A 4.0 kg mass accelerates at 2.5 m/s^2. Build the working line that gives the resultant force F.",
         tiles: ["F =", "4.0", "\\times", "2.5", "=", "10", "N", "m/s^2"],
         answer: ["F =", "4.0", "\\times", "2.5", "=", "10", "N"],
-        ask: "The resultant force is mass times acceleration, so set up 4.0 times 2.5.",
+        ask: "The resultant force is mass times acceleration, so set up 4.0 × 2.5.",
         hints: [
           "Use F equals m times a.",
-          "4.0 times 2.5 is 10, and force is measured in newtons.",
+          "4.0 × 2.5 is 10, and force is measured in newtons.",
         ],
         working: [
           { label: "Formula", latex: "F = ma" },
@@ -101,14 +101,14 @@ export const BOXES: Subconcept[] = [
         ask: "Check the rearrangement. To make mass the subject of F equals m a, should you multiply by a or divide by a?",
         hints: [
           "Rearranging F equals m a for mass gives m equals F divided by a.",
-          "The line that multiplies F by a is wrong; it should divide, giving 20 divided by 5.0.",
+          "The line that multiplies F by a is wrong; it should divide, giving 20 ÷ 5.0.",
         ],
         working: [
           { label: "Formula", latex: "m = \\dfrac{F}{a}" },
           { label: "Substitute", latex: "m = \\dfrac{20}{5.0}" },
           { label: "Answer", latex: "m = 4.0\\ \\text{kg}" },
         ],
-        explain: "The mistake is on the line that writes m equals F times a. Rearranging F equals m a for mass gives m equals F divided by a, so the mass is 20 divided by 5.0, which is 4.0 kilograms, not 100 kilograms.",
+        explain: "The mistake is on the line that writes m equals F times a. Rearranging F equals m a for mass gives m equals F divided by a, so the mass is 20 ÷ 5.0, which is 4.0 kilograms, not 100 kilograms.",
       },
       {
         kind: "insight",

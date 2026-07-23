@@ -69,10 +69,10 @@ export const BOXES: Subconcept[] = [
         question: "In an experiment the angle of incidence in air is 45 degrees and the angle of refraction in the glass is 28 degrees. Find the refractive index n. (sin 45 = 0.707, sin 28 = 0.469)",
         options: ["1.3", "1.5", "0.66", "2.0"],
         correct: 1,
-        ask: "Use n equals sin i divided by sin r, so work out 0.707 divided by 0.469.",
+        ask: "Use n equals sin i divided by sin r, so work out 0.707 ÷ 0.469.",
         hints: [
           "Put sin i on top and sin r on the bottom.",
-          "0.707 divided by 0.469 is about 1.5.",
+          "0.707 ÷ 0.469 is about 1.5.",
         ],
         working: [
           { label: "Formula", latex: "n = \\dfrac{\\sin i}{\\sin r}" },
@@ -109,27 +109,27 @@ export const BOXES: Subconcept[] = [
         start: 1.0,
         targetMin: 1.45,
         targetMax: 1.55,
-        ask: "The gradient is the rise in sin i divided by the run in sin r, so work out 0.90 minus 0.15, over 0.60 minus 0.10.",
+        ask: "The gradient is the rise in sin i divided by the run in sin r, so work out 0.90 - 0.15, over 0.60 - 0.10.",
         hints: [
-          "Rise is 0.90 minus 0.15, which is 0.75. Run is 0.60 minus 0.10, which is 0.50.",
-          "0.75 divided by 0.50 is 1.50, so slide to 1.5.",
+          "Rise is 0.90 - 0.15, which is 0.75. Run is 0.60 - 0.10, which is 0.50.",
+          "0.75 ÷ 0.50 is 1.50, so slide to 1.5.",
         ],
         working: [
           { label: "Formula", latex: "n = \\text{gradient} = \\dfrac{\\Delta \\sin i}{\\Delta \\sin r}" },
           { label: "Substitute", latex: "n = \\dfrac{0.90 - 0.15}{0.60 - 0.10} = \\dfrac{0.75}{0.50}" },
           { label: "Answer", latex: "n = 1.50" },
         ],
-        explain: "The gradient is 0.75 divided by 0.50, which is 1.50, so the refractive index read from the graph is 1.5.",
+        explain: "The gradient is 0.75 ÷ 0.50, which is 1.50, so the refractive index read from the graph is 1.5.",
       },
       {
         kind: "choice",
         question: "For a second block the angle of incidence in air is 40 degrees and the angle of refraction is 25.3 degrees. Find the refractive index n. (sin 40 = 0.643, sin 25.3 = 0.428)",
         options: ["1.5", "0.67", "1.3", "2.5"],
         correct: 0,
-        ask: "Use n equals sin i divided by sin r, so work out 0.643 divided by 0.428.",
+        ask: "Use n equals sin i divided by sin r, so work out 0.643 ÷ 0.428.",
         hints: [
           "Sin i is on top, sin r on the bottom.",
-          "0.643 divided by 0.428 is about 1.5.",
+          "0.643 ÷ 0.428 is about 1.5.",
         ],
         working: [
           { label: "Formula", latex: "n = \\dfrac{\\sin i}{\\sin r}" },

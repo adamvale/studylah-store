@@ -70,17 +70,17 @@ export const BOXES: Subconcept[] = [
         question: "A brick is dropped from rest. Ignoring air resistance, g = 10 m/s^2. Find its speed after 5 s.",
         options: ["50 m/s", "2 m/s", "15 m/s", "500 m/s"],
         correct: 0,
-        ask: "The starting speed is 0, so the speed is simply g times the time. Work out 10 times 5.",
+        ask: "The starting speed is 0, so the speed is simply g times the time. Work out 10 × 5.",
         hints: [
           "Use v = u + a t, with u equal to 0 and a equal to g, which is 10.",
-          "10 times 5 is 50, and the speed here is in metres per second.",
+          "10 × 5 is 50, and the speed here is in metres per second.",
         ],
         working: [
           { label: "Formula", latex: "v = u + at" },
           { label: "Substitute", latex: "v = 0 + 10 \\times 5" },
           { label: "Answer", latex: "v = 50\\ \\text{m/s}" },
         ],
-        explain: "The speed is 50 metres per second, because starting from rest the velocity grows by 10 metres per second every second, and 10 times 5 is 50.",
+        explain: "The speed is 50 metres per second, because starting from rest the velocity grows by 10 metres per second every second, and 10 × 5 is 50.",
       },
       {
         kind: "graphpick",

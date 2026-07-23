@@ -15,10 +15,10 @@ export const BOXES: Subconcept[] = [
         question: "A runner keeps a constant speed of 4.0 m/s. What distance does he cover in 3 minutes?",
         options: ["1.3 m", "12 m", "72 m", "720 m"],
         correct: 3,
-        ask: "First change 3 minutes into seconds, then multiply by the speed. 4 times 180. Which option is that?",
+        ask: "First change 3 minutes into seconds, then multiply by the speed. 4 × 180. Which option is that?",
         hints: [
           "3 minutes is 180 seconds.",
-          "Distance is speed times time, so 4 times 180.",
+          "Distance is speed times time, so 4 × 180.",
         ],
         working: [
           { label: "Formula", latex: "d = v \\times t" },
@@ -70,17 +70,17 @@ export const BOXES: Subconcept[] = [
         question: "A cyclist starts from rest and accelerates uniformly at 0.4 m/s^2. What is his velocity after 5 s?",
         options: ["0.4 m/s", "1.5 m/s", "2.0 m/s", "2.5 m/s"],
         correct: 2,
-        ask: "Use final velocity equals starting velocity plus acceleration times time. He starts from rest, so 0 plus 0.4 times 5. Which option is that?",
+        ask: "Use final velocity equals starting velocity plus acceleration times time. He starts from rest, so 0 + 0.4 × 5. Which option is that?",
         hints: [
           "Starting from rest means the initial velocity is 0.",
-          "0.4 times 5 is 2.",
+          "0.4 × 5 is 2.",
         ],
         working: [
           { label: "Formula", latex: "v = u + at" },
           { label: "Substitute", latex: "v = 0 + 0.4 \\times 5" },
           { label: "Answer", latex: "v = 2\\ \\text{m/s}" },
         ],
-        explain: "His velocity is 2 metres per second, because starting from rest the velocity is 0.4 times 5, which is 2.",
+        explain: "His velocity is 2 metres per second, because starting from rest the velocity is 0.4 × 5, which is 2.",
       },
       // 5 (velocity is gradient of d-t graph) correct = 1
       {
@@ -124,10 +124,10 @@ export const BOXES: Subconcept[] = [
         question: "A velocity-time graph shows an object speed up from rest to 12 m/s in 4 s, then travel at a constant 12 m/s for 6 s, then slow to rest in 2 s. What is the displacement during the constant-velocity part?",
         options: ["72 m", "48 m", "120 m", "24 m"],
         correct: 0,
-        ask: "During the constant part the displacement is the area of a rectangle, which is velocity times time. 12 times 6. Which option is that?",
+        ask: "During the constant part the displacement is the area of a rectangle, which is velocity times time. 12 × 6. Which option is that?",
         hints: [
           "Area under a velocity-time graph is the displacement.",
-          "For the flat part, area is 12 times 6.",
+          "For the flat part, area is 12 × 6.",
         ],
         working: [
           { label: "Formula", latex: "d = v \\times t" },
@@ -144,7 +144,7 @@ export const BOXES: Subconcept[] = [
         correct: 2,
         ask: "Find the total distance as the whole area, then divide by the total time of 12 seconds. The total area is 108 metres. What is 108 over 12?",
         hints: [
-          "Total distance is 24 plus 72 plus 12, which is 108.",
+          "Total distance is 24 + 72 + 12, which is 108.",
           "Average speed is total distance over total time, so 108 over 12.",
         ],
         working: [
@@ -161,17 +161,17 @@ export const BOXES: Subconcept[] = [
         question: "A ball is dropped from rest and falls freely. Taking g as 10 m/s^2, what is its velocity after 3 s?",
         options: ["10 m/s", "15 m/s", "20 m/s", "30 m/s"],
         correct: 3,
-        ask: "In free fall the velocity grows by 10 metres per second every second. After 3 seconds, 10 times 3. Which option is that?",
+        ask: "In free fall the velocity grows by 10 metres per second every second. After 3 seconds, 10 × 3. Which option is that?",
         hints: [
           "A freely falling object gains 10 metres per second each second.",
-          "10 times 3 is 30.",
+          "10 × 3 is 30.",
         ],
         working: [
           { label: "Formula", latex: "v = u + at" },
           { label: "Substitute", latex: "v = 0 + 10 \\times 3" },
           { label: "Answer", latex: "v = 30\\ \\text{m/s}" },
         ],
-        explain: "The velocity is 30 metres per second, because a freely falling object gains 10 metres per second every second, and 10 times 3 is 30.",
+        explain: "The velocity is 30 metres per second, because a freely falling object gains 10 metres per second every second, and 10 × 3 is 30.",
       },
       // 10 (which v-t graph, worded shapes) correct = 1
       {
@@ -206,15 +206,15 @@ export const BOXES: Subconcept[] = [
         targetMax: 1.7,
         ask: "Use change in velocity over time. 20 take away 12, then divide by 5. Slide to the value.",
         hints: [
-          "The change in velocity is 20 minus 12, which is 8.",
-          "8 divided by 5 is 1.6.",
+          "The change in velocity is 20 - 12, which is 8.",
+          "8 ÷ 5 is 1.6.",
         ],
         working: [
           { label: "Formula", latex: "a = \\dfrac{v-u}{t}" },
           { label: "Substitute", latex: "a = \\dfrac{20-12}{5}" },
           { label: "Answer", latex: "a = 1.6\\ \\text{m/s}^2" },
         ],
-        explain: "The acceleration is 1.6 metres per second squared, because the velocity gains 8 metres per second over 5 seconds, and 8 divided by 5 is 1.6.",
+        explain: "The acceleration is 1.6 metres per second squared, because the velocity gains 8 metres per second over 5 seconds, and 8 ÷ 5 is 1.6.",
       },
       // 2 order (steps to find acceleration)
       {
@@ -292,12 +292,12 @@ export const BOXES: Subconcept[] = [
           "a = -24 / 6 = -6 m/s^2",
         ],
         errorLine: 3,
-        ask: "Check the last line. 24 divided by 6. Is that 6?",
+        ask: "Check the last line. 24 ÷ 6. Is that 6?",
         hints: [
-          "Work out 24 divided by 6.",
-          "24 divided by 6 is 4, not 6.",
+          "Work out 24 ÷ 6.",
+          "24 ÷ 6 is 4, not 6.",
         ],
-        explain: "The last line is wrong: 24 divided by 6 is 4, so the acceleration is minus 4 metres per second squared, a deceleration of 4 metres per second squared.",
+        explain: "The last line is wrong: 24 ÷ 6 is 4, so the acceleration is minus 4 metres per second squared, a deceleration of 4 metres per second squared.",
       },
       // 7 classify (v-t shapes by acceleration)
       {
@@ -347,17 +347,17 @@ export const BOXES: Subconcept[] = [
         targetX: 2,
         targetY: 20,
         tolerance: 2,
-        ask: "In free fall the velocity grows by 10 metres per second each second. After 2 seconds, 10 times 2. Plot the point at that time and velocity.",
+        ask: "In free fall the velocity grows by 10 metres per second each second. After 2 seconds, 10 × 2. Plot the point at that time and velocity.",
         hints: [
           "The time is 2 seconds along the bottom.",
-          "After 2 seconds the velocity is 10 times 2, which is 20.",
+          "After 2 seconds the velocity is 10 × 2, which is 20.",
         ],
         working: [
           { label: "Formula", latex: "v = u + at" },
           { label: "Substitute", latex: "v = 0 + 10 \\times 2" },
           { label: "Answer", latex: "v = 20\\ \\text{m/s}" },
         ],
-        explain: "The point is at 2 seconds and 20 metres per second, because a freely falling object gains 10 metres per second each second, and 10 times 2 is 20.",
+        explain: "The point is at 2 seconds and 20 metres per second, because a freely falling object gains 10 metres per second each second, and 10 × 2 is 20.",
       },
       // 10 graphpick (d-t constant velocity)
       {
@@ -384,7 +384,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "A ball is held at rest 80 m above the ground, then released and accelerates uniformly as it falls. It reaches the ground in 4.0 s. Calculate (a) the average speed of the ball as it falls, (b) the maximum velocity of the ball.",
-        modelAnswer: "For part a, the average speed is the total distance divided by the total time, which is 80 divided by 4, giving 20 metres per second. For part b, take downward as positive with g equal to 10 metres per second squared, starting from rest. Using final velocity equals starting velocity plus acceleration times time, the velocity is 0 plus 10 times 4, which is 40 metres per second, reached just as it lands.",
+        modelAnswer: "For part a, the average speed is the total distance divided by the total time, which is 80 ÷ 4, giving 20 metres per second. For part b, take downward as positive with g equal to 10 metres per second squared, starting from rest. Using final velocity equals starting velocity plus acceleration times time, the velocity is 0 + 10 × 4, which is 40 metres per second, reached just as it lands.",
         marks: [
           "Average speed = total distance / total time = 80 / 4 = 20 m/s.",
           "Maximum velocity using v = u + at with u = 0, a = 10 m/s^2, t = 4 s.",
@@ -396,7 +396,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "A car accelerates uniformly from rest and travels 30 m during the first 10.0 s of its motion. Calculate (a) the average speed over this period, (b) the velocity at the end of this period, (c) the acceleration.",
-        modelAnswer: "For part a, the average speed is 30 divided by 10, which is 3 metres per second. For part b, because the acceleration is uniform and it starts from rest, the average speed is half of the final velocity, so the final velocity is 2 times 3, which is 6 metres per second. For part c, the acceleration is the change in velocity over time, which is 6 over 10, giving 0.6 metres per second squared.",
+        modelAnswer: "For part a, the average speed is 30 ÷ 10, which is 3 metres per second. For part b, because the acceleration is uniform and it starts from rest, the average speed is half of the final velocity, so the final velocity is 2 × 3, which is 6 metres per second. For part c, the acceleration is the change in velocity over time, which is 6 over 10, giving 0.6 metres per second squared.",
         marks: [
           "Average speed = 30 / 10 = 3 m/s.",
           "Uniform acceleration from rest: average speed = half of final velocity, so v = 2 x 3 = 6 m/s.",
@@ -408,7 +408,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "In an experiment, a trolley is pushed from rest and accelerates uniformly. It moves a displacement of 2.4 m in 1.5 s. (a) Determine the average velocity of the trolley. (b) If the acceleration is constant, calculate its velocity after 1.5 s. (c) What is the acceleration of the trolley?",
-        modelAnswer: "For part a, the average velocity is the displacement over the time, which is 2.4 divided by 1.5, giving 1.6 metres per second. For part b, starting from rest with uniform acceleration the average velocity is half of the final velocity, so the final velocity is 2 times 1.6, which is 3.2 metres per second. For part c, the acceleration is the change in velocity over time, which is 3.2 divided by 1.5, giving about 2.1 metres per second squared.",
+        modelAnswer: "For part a, the average velocity is the displacement over the time, which is 2.4 ÷ 1.5, giving 1.6 metres per second. For part b, starting from rest with uniform acceleration the average velocity is half of the final velocity, so the final velocity is 2 × 1.6, which is 3.2 metres per second. For part c, the acceleration is the change in velocity over time, which is 3.2 ÷ 1.5, giving about 2.1 metres per second squared.",
         marks: [
           "Average velocity = 2.4 / 1.5 = 1.6 m/s.",
           "From rest with uniform acceleration: v = 2 x 1.6 = 3.2 m/s.",
@@ -420,7 +420,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "An object has an initial velocity of 10 m/s. It accelerates uniformly to 25 m/s in 5 s, moves at 25 m/s for another 5 s, then decelerates uniformly to rest over 15 s. Calculate (a) the acceleration in the first 5 s, (b) the deceleration in the last 15 s, (c) the total distance travelled, (d) the average speed for the journey.",
-        modelAnswer: "For part a, the acceleration is the change in velocity over time, which is 25 minus 10 over 5, giving 3 metres per second squared. For part b, the deceleration is 0 minus 25 over 15, giving minus 1.67 metres per second squared, a deceleration of about 1.67 metres per second squared. For part c, the total distance is the area under the velocity-time graph. The first part is a trapezium, half of 10 plus 25 times 5, which is 87.5 metres. The middle part is 25 times 5, which is 125 metres. The last part is half of 25 times 15, which is 187.5 metres. The total is 400 metres. For part d, the total time is 25 seconds, so the average speed is 400 divided by 25, which is 16 metres per second.",
+        modelAnswer: "For part a, the acceleration is the change in velocity over time, which is 25 - 10 over 5, giving 3 metres per second squared. For part b, the deceleration is 0 - 25 over 15, giving minus 1.67 metres per second squared, a deceleration of about 1.67 metres per second squared. For part c, the total distance is the area under the velocity-time graph. The first part is a trapezium, half of 10 + 25 × 5, which is 87.5 metres. The middle part is 25 × 5, which is 125 metres. The last part is half of 25 × 15, which is 187.5 metres. The total is 400 metres. For part d, the total time is 25 seconds, so the average speed is 400 ÷ 25, which is 16 metres per second.",
         marks: [
           "Acceleration = (25 - 10) / 5 = 3 m/s^2.",
           "Deceleration = (0 - 25) / 15 = about -1.67 m/s^2.",
@@ -433,7 +433,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "A ball is thrown vertically upwards with an initial velocity of 40 m/s. Take g as 10 m/s^2 and ignore air resistance. Calculate (a) the time taken to reach maximum height, (b) the maximum height reached, (c) the total time for the whole up-and-down journey.",
-        modelAnswer: "Take upward as positive, so the acceleration is minus 10 metres per second squared, and at the highest point the velocity is momentarily 0. For part a, using final velocity equals starting velocity plus acceleration times time, 0 equals 40 minus 10 times the time, so the time is 4 seconds. For part b, using final velocity squared equals starting velocity squared plus 2 times acceleration times displacement, 0 equals 40 squared minus 20 times the displacement, so 20 times the displacement is 1600, giving 80 metres. For part c, the way up and the way down take equal times, so the total time is 2 times 4, which is 8 seconds.",
+        modelAnswer: "Take upward as positive, so the acceleration is minus 10 metres per second squared, and at the highest point the velocity is momentarily 0. For part a, using final velocity equals starting velocity plus acceleration times time, 0 equals 40 - 10 times the time, so the time is 4 seconds. For part b, using final velocity squared equals starting velocity squared plus 2 times acceleration times displacement, 0 equals 40 squared minus 20 times the displacement, so 20 times the displacement is 1600, giving 80 metres. For part c, the way up and the way down take equal times, so the total time is 2 × 4, which is 8 seconds.",
         marks: [
           "Take up as positive, a = -10 m/s^2, v = 0 at the top.",
           "Time up using v = u + at: 0 = 40 - 10t, so t = 4 s.",

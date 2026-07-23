@@ -17,34 +17,34 @@ export const BOXES: Subconcept[] = [
         question: "A ray strikes a plane mirror at 55 degrees to the mirror surface. What is the angle of incidence?",
         options: ["90 degrees", "55 degrees", "35 degrees", "45 degrees"],
         correct: 2,
-        ask: "The angle of incidence is measured from the normal, not the surface. The normal is at 90 degrees to the surface, so take 90 minus 55.",
+        ask: "The angle of incidence is measured from the normal, not the surface. The normal is at 90 degrees to the surface, so take 90 - 55.",
         hints: [
-          "The normal sits at 90 degrees to the mirror, so a ray at 55 degrees to the surface is 90 minus 55 from the normal.",
-          "90 minus 55 is 35, so the angle of incidence is 35 degrees.",
+          "The normal sits at 90 degrees to the mirror, so a ray at 55 degrees to the surface is 90 - 55 from the normal.",
+          "90 - 55 is 35, so the angle of incidence is 35 degrees.",
         ],
         working: [
           { label: "Formula", latex: "i = 90^{\\circ} - \\theta" },
           { label: "Substitute", latex: "i = 90^{\\circ} - 55^{\\circ}" },
           { label: "Answer", latex: "i = r = 35^{\\circ}" },
         ],
-        explain: "The angle of incidence is 35 degrees, because angles are always measured from the normal. 90 minus 55 is 35, and by the law of reflection the reflected ray also leaves at 35 degrees.",
+        explain: "The angle of incidence is 35 degrees, because angles are always measured from the normal. 90 - 55 is 35, and by the law of reflection the reflected ray also leaves at 35 degrees.",
       },
       {
         kind: "choice",
         question: "A ray enters glass from air at an angle of incidence of 40 degrees. The glass has n = 1.52. Find the angle of refraction.",
         options: ["25 degrees", "40 degrees", "61 degrees", "15 degrees"],
         correct: 0,
-        ask: "Rearrange n = sin i / sin r to get sin r = sin i divided by n. Work out sin 40 divided by 1.52.",
+        ask: "Rearrange n = sin i / sin r to get sin r = sin i divided by n. Work out sin 40 ÷ 1.52.",
         hints: [
           "From n = sin i / sin r, the angle in the glass gives sin r = sin i / n.",
-          "sin r = sin 40 divided by 1.52 gives r = 25 degrees.",
+          "sin r = sin 40 ÷ 1.52 gives r = 25 degrees.",
         ],
         working: [
           { label: "Formula", latex: "\\sin r = \\dfrac{\\sin i}{n}" },
           { label: "Substitute", latex: "\\sin r = \\dfrac{\\sin 40^{\\circ}}{1.52}" },
           { label: "Answer", latex: "r = 25^{\\circ}" },
         ],
-        explain: "The angle of refraction is 25 degrees. Entering the denser glass the ray bends toward the normal, so r is smaller than i, and sin 40 divided by 1.52 gives 25 degrees.",
+        explain: "The angle of refraction is 25 degrees. Entering the denser glass the ray bends toward the normal, so r is smaller than i, and sin 40 ÷ 1.52 gives 25 degrees.",
       },
       {
         kind: "choice",
@@ -86,17 +86,17 @@ export const BOXES: Subconcept[] = [
         question: "Light travels at 3.0 x 10^8 m/s in a vacuum. In glass of refractive index n = 1.5, what is the speed of light?",
         options: ["3.0 x 10^8 m/s", "4.5 x 10^8 m/s", "2.0 x 10^8 m/s", "1.5 x 10^8 m/s"],
         correct: 2,
-        ask: "Use n = c divided by v, so v = c divided by n. Work out 3.0 times 10 to the power 8 divided by 1.5.",
+        ask: "Use n = c divided by v, so v = c divided by n. Work out 3.0 × 10 to the power 8 ÷ 1.5.",
         hints: [
           "Rearrange n = c / v to get v = c / n.",
-          "3.0 times 10 to the power 8 divided by 1.5 is 2.0 times 10 to the power 8 metres per second.",
+          "3.0 × 10 to the power 8 ÷ 1.5 is 2.0 × 10 to the power 8 metres per second.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{c}{n}" },
           { label: "Substitute", latex: "v = \\dfrac{3.0 \\times 10^{8}}{1.5}" },
           { label: "Answer", latex: "v = 2.0 \\times 10^{8}\\ \\text{m/s}" },
         ],
-        explain: "The speed in glass is 2.0 times 10 to the power 8 metres per second, because 3.0 times 10 to the power 8 divided by 1.5 is 2.0 times 10 to the power 8. Light always travels slower in a denser medium.",
+        explain: "The speed in glass is 2.0 × 10 to the power 8 metres per second, because 3.0 × 10 to the power 8 ÷ 1.5 is 2.0 × 10 to the power 8. Light always travels slower in a denser medium.",
       },
       {
         kind: "tiles",
@@ -165,14 +165,14 @@ export const BOXES: Subconcept[] = [
         ask: "The image is as far behind the mirror as the object is in front. Add the object distance and the image distance.",
         hints: [
           "The image forms 2.5 metres behind the mirror, matching the 2.5 metres in front.",
-          "2.5 plus 2.5 is 5.0, so the object and image are 5.0 metres apart.",
+          "2.5 + 2.5 is 5.0, so the object and image are 5.0 metres apart.",
         ],
         working: [
           { label: "Formula", latex: "d = d_{o} + d_{i}" },
           { label: "Substitute", latex: "d = 2.5 + 2.5" },
           { label: "Answer", latex: "d = 5.0\\ \\text{m}" },
         ],
-        explain: "The object and image are 5.0 metres apart, because the image sits 2.5 metres behind the mirror to match the 2.5 metres in front, and 2.5 plus 2.5 is 5.0.",
+        explain: "The object and image are 5.0 metres apart, because the image sits 2.5 metres behind the mirror to match the 2.5 metres in front, and 2.5 + 2.5 is 5.0.",
       },
       {
         kind: "spoterror",
@@ -187,9 +187,9 @@ export const BOXES: Subconcept[] = [
         ask: "One line measures the angle from the wrong reference. Angles in optics are measured from the normal, not the surface.",
         hints: [
           "The angle of incidence is always taken from the normal, never from the surface.",
-          "A ray at 30 degrees to the surface is 90 minus 30, so i is 60 degrees, not 30 degrees.",
+          "A ray at 30 degrees to the surface is 90 - 30, so i is 60 degrees, not 30 degrees.",
         ],
-        explain: "The mistake is measuring the angle from the surface. Angles are measured from the normal, so a ray at 30 degrees to the surface has an angle of incidence of 90 minus 30, which is 60 degrees.",
+        explain: "The mistake is measuring the angle from the surface. Angles are measured from the normal, so a ray at 30 degrees to the surface has an angle of incidence of 90 - 30, which is 60 degrees.",
       },
       {
         kind: "open",

@@ -104,10 +104,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 29.5,
         targetMax: 30.5,
-        ask: "Use the wave equation, speed equals frequency times wavelength. Work out 25 times 1.2.",
+        ask: "Use the wave equation, speed equals frequency times wavelength. Work out 25 × 1.2.",
         hints: [
           "The wave equation is v = f lambda.",
-          "25 times 1.2 is 30, so slide to 30 metres per second.",
+          "25 × 1.2 is 30, so slide to 30 metres per second.",
         ],
         working: [
           { label: "Formula", latex: "v = f\\lambda" },
@@ -121,27 +121,27 @@ export const BOXES: Subconcept[] = [
         question: "A wave has a frequency of 25 Hz. What is its period T?",
         options: ["25 s", "2.5 s", "0.04 s", "0.4 s"],
         correct: 2,
-        ask: "The period is 1 divided by the frequency. Work out 1 divided by 25.",
+        ask: "The period is 1 divided by the frequency. Work out 1 ÷ 25.",
         hints: [
           "Use T = 1/f.",
-          "1 divided by 25 is 0.04, and the period is in seconds.",
+          "1 ÷ 25 is 0.04, and the period is in seconds.",
         ],
         working: [
           { label: "Formula", latex: "T = \\dfrac{1}{f}" },
           { label: "Substitute", latex: "T = \\dfrac{1}{25}" },
           { label: "Answer", latex: "T = 0.04\\ \\text{s}" },
         ],
-        explain: "The period is 0.04 seconds, because 1 divided by 25 hertz is 0.04 seconds.",
+        explain: "The period is 0.04 seconds, because 1 ÷ 25 hertz is 0.04 seconds.",
       },
       {
         kind: "choice",
         question: "A sound wave has frequency f = 500 Hz and wavelength lambda = 0.66 m. Find its speed v.",
         options: ["330 m/s", "758 m/s", "0.0013 m/s", "500 m/s"],
         correct: 0,
-        ask: "Use the wave equation, speed equals frequency times wavelength. Work out 500 times 0.66.",
+        ask: "Use the wave equation, speed equals frequency times wavelength. Work out 500 × 0.66.",
         hints: [
           "The wave equation is v = f lambda.",
-          "500 times 0.66 is 330, in metres per second.",
+          "500 × 0.66 is 330, in metres per second.",
         ],
         working: [
           { label: "Formula", latex: "v = f\\lambda" },

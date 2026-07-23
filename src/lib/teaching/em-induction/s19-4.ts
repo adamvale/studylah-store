@@ -50,10 +50,10 @@ export const BOXES: Subconcept[] = [
         question: "A transformer has 1200 turns on its primary and 60 turns on its secondary. The primary is connected to a 240 V a.c. supply. What is the secondary voltage V_s?",
         options: ["4800 V", "12 V", "48 V", "20 V"],
         correct: 1,
-        ask: "Use V_s over V_p equals N_s over N_p, so V_s is 240 times 60 divided by 1200. Which option is that?",
+        ask: "Use V_s over V_p equals N_s over N_p, so V_s is 240 × 60 ÷ 1200. Which option is that?",
         hints: [
           "Multiply 240 volts by the turns ratio, 60 over 1200.",
-          "240 times 60 is 14400, and divided by 1200 that is 12.",
+          "240 × 60 is 14400, and divided by 1200 that is 12.",
         ],
         working: [
           { label: "Formula", latex: "V_s = V_p \\times \\dfrac{N_s}{N_p}" },
@@ -72,10 +72,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 55,
         targetMax: 65,
-        ask: "The secondary voltage is 240 times 200 divided by 800. Work that out and slide to it.",
+        ask: "The secondary voltage is 240 × 200 ÷ 800. Work that out and slide to it.",
         hints: [
           "Multiply 240 volts by the turns ratio, 200 over 800, which is one quarter.",
-          "240 times 200 divided by 800 is 60, so slide to 60 volts.",
+          "240 × 200 ÷ 800 is 60, so slide to 60 volts.",
         ],
         working: [
           { label: "Formula", latex: "V_s = V_p \\times \\dfrac{N_s}{N_p}" },
@@ -89,34 +89,34 @@ export const BOXES: Subconcept[] = [
         question: "An ideal step-down transformer takes 230 V and delivers 46 V. The primary current is 1.2 A. What is the secondary current I_s?",
         options: ["0.24 A", "5.0 A", "6.0 A", "1.2 A"],
         correct: 2,
-        ask: "Power is conserved, so V_p I_p equals V_s I_s. That makes I_s equal to 230 times 1.2 divided by 46. Which option is that?",
+        ask: "Power is conserved, so V_p I_p equals V_s I_s. That makes I_s equal to 230 × 1.2 ÷ 46. Which option is that?",
         hints: [
           "Rearrange V_p I_p equals V_s I_s to get I_s equals V_p I_p over V_s.",
-          "230 times 1.2 is 276, and divided by 46 that is 6.0.",
+          "230 × 1.2 is 276, and divided by 46 that is 6.0.",
         ],
         working: [
           { label: "Formula", latex: "I_s = \\dfrac{V_p I_p}{V_s}" },
           { label: "Substitute", latex: "I_s = \\dfrac{230 \\times 1.2}{46}" },
           { label: "Answer", latex: "I_s = 6.0\\ \\text{A}" },
         ],
-        explain: "The secondary current is 6.0 amperes, because 230 volts times 1.2 amperes is 276 watts, and 276 divided by 46 volts is 6.0 amperes. Stepping the voltage down steps the current up.",
+        explain: "The secondary current is 6.0 amperes, because 230 volts times 1.2 amperes is 276 watts, and 276 ÷ 46 volts is 6.0 amperes. Stepping the voltage down steps the current up.",
       },
       {
         kind: "choice",
         question: "An ideal transformer has a primary at 120 V drawing 0.30 A. The secondary current is 0.015 A. What is the secondary voltage V_s?",
         options: ["6 V", "240 V", "800 V", "2400 V"],
         correct: 3,
-        ask: "Power is conserved, so V_p I_p equals V_s I_s, giving V_s equal to 120 times 0.30 divided by 0.015. Which option is that?",
+        ask: "Power is conserved, so V_p I_p equals V_s I_s, giving V_s equal to 120 × 0.30 ÷ 0.015. Which option is that?",
         hints: [
           "Rearrange V_p I_p equals V_s I_s to get V_s equals V_p I_p over I_s.",
-          "120 times 0.30 is 36, and divided by 0.015 that is 2400.",
+          "120 × 0.30 is 36, and divided by 0.015 that is 2400.",
         ],
         working: [
           { label: "Formula", latex: "V_s = \\dfrac{V_p I_p}{I_s}" },
           { label: "Substitute", latex: "V_s = \\dfrac{120 \\times 0.30}{0.015}" },
           { label: "Answer", latex: "V_s = 2400\\ \\text{V}" },
         ],
-        explain: "The secondary voltage is 2400 volts, because 120 volts times 0.30 amperes is 36 watts, and 36 divided by 0.015 amperes is 2400 volts. A small secondary current goes with a large secondary voltage, so this is a step-up transformer.",
+        explain: "The secondary voltage is 2400 volts, because 120 volts times 0.30 amperes is 36 watts, and 36 ÷ 0.015 amperes is 2400 volts. A small secondary current goes with a large secondary voltage, so this is a step-up transformer.",
       },
       {
         kind: "choice",

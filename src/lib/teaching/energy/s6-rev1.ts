@@ -65,8 +65,8 @@ export const BOXES: Subconcept[] = [
         correct: 0,
         ask: "Use kinetic energy equals a half times mass times speed squared. First square the speed, then multiply by the mass and by a half.",
         hints: [
-          "Square the speed first: 2.0 squared is 4.0.",
-          "A half times 0.80 times 4.0 is 1.6, and energy is measured in joules.",
+          "Square the speed first: 2.0^2 is 4.0.",
+          "A half times 0.80 × 4.0 is 1.6, and energy is measured in joules.",
         ],
         working: [
           { label: "Formula", latex: "E_k = \\tfrac{1}{2} m v^2" },
@@ -81,10 +81,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-07-05-lifting-pe",
         options: ["90 J", "10 J", "33 J", "270 J"],
         correct: 0,
-        ask: "When you already know the weight, the gravitational potential energy is weight times height. Work out 30 times 3.",
+        ask: "When you already know the weight, the gravitational potential energy is weight times height. Work out 30 × 3.",
         hints: [
           "The weight is already the mass times g part, so E_p equals weight times height.",
-          "30 times 3 is 90, and energy is measured in joules.",
+          "30 × 3 is 90, and energy is measured in joules.",
         ],
         working: [
           { label: "Formula", latex: "E_p = Wh" },
@@ -133,10 +133,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A 0.40 kg apple is lifted 12 m. Take g = 10 N/kg. Build the working line that gives its gravitational potential energy E_p.",
         tiles: ["E_p =", "0.40", "\\times", "10", "\\times", "12", "=", "48", "J", "N", "24"],
         answer: ["E_p =", "0.40", "\\times", "10", "\\times", "12", "=", "48", "J"],
-        ask: "Gravitational potential energy is mass times g times height. Set up 0.40 times 10 times 12.",
+        ask: "Gravitational potential energy is mass times g times height. Set up 0.40 × 10 × 12.",
         hints: [
           "Use E_p equals mass times g times height, with g equal to 10.",
-          "0.40 times 10 is 4, and 4 times 12 is 48, measured in joules.",
+          "0.40 × 10 is 4, and 4 × 12 is 48, measured in joules.",
         ],
         working: [
           { label: "Formula", latex: "E_p = mgh" },

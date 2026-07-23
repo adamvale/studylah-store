@@ -72,17 +72,17 @@ export const BOXES: Subconcept[] = [
         question: "A spring has a natural length L_0 = 4.0 cm. With a load it stretches to L = 9.0 cm. What is the extension e?",
         options: ["9.0 cm", "13.0 cm", "5.0 cm", "0.44 cm"],
         correct: 2,
-        ask: "Extension is the stretched length minus the natural length, so work out 9.0 minus 4.0.",
+        ask: "Extension is the stretched length minus the natural length, so work out 9.0 - 4.0.",
         hints: [
           "Use e = L minus L_0.",
-          "9.0 minus 4.0 is 5.0, and the answer is a length in centimetres.",
+          "9.0 - 4.0 is 5.0, and the answer is a length in centimetres.",
         ],
         working: [
           { label: "Formula", latex: "e = L - L_0" },
           { label: "Substitute", latex: "e = 9.0 - 4.0" },
           { label: "Answer", latex: "e = 5.0\\ \\text{cm}" },
         ],
-        explain: "The extension is 5.0 centimetres, because the spring grew from a natural length of 4.0 centimetres to a stretched length of 9.0 centimetres, and 9.0 minus 4.0 is 5.0.",
+        explain: "The extension is 5.0 centimetres, because the spring grew from a natural length of 4.0 centimetres to a stretched length of 9.0 centimetres, and 9.0 - 4.0 is 5.0.",
       },
       {
         kind: "choice",
@@ -92,7 +92,7 @@ export const BOXES: Subconcept[] = [
         ask: "Rearrange F = ke to get k = F over e, then divide 2.0 by 0.050.",
         hints: [
           "The spring constant is the force divided by the extension in metres.",
-          "2.0 divided by 0.050 is 40, in newtons per metre.",
+          "2.0 ÷ 0.050 is 40, in newtons per metre.",
         ],
         working: [
           { label: "Formula", latex: "k = \\dfrac{F}{e}" },
@@ -130,10 +130,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 49,
         targetMax: 51,
-        ask: "The spring constant is the gradient, the rise in load divided by the run in extension in metres, so work out 2.0 divided by 0.040.",
+        ask: "The spring constant is the gradient, the rise in load divided by the run in extension in metres, so work out 2.0 ÷ 0.040.",
         hints: [
           "Gradient equals rise over run: load divided by extension in metres.",
-          "2.0 divided by 0.040 is 50, so slide to 50 newtons per metre.",
+          "2.0 ÷ 0.040 is 50, so slide to 50 newtons per metre.",
         ],
         working: [
           { label: "Formula", latex: "k = \\dfrac{\\Delta F}{\\Delta e}" },

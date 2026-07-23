@@ -40,17 +40,17 @@ export const BOXES: Subconcept[] = [
         question: "A trolley speeds up from 12 m/s to 20 m/s in 5 s. What is its acceleration?",
         options: ["1.6 m/s^2", "6.4 m/s^2", "4 m/s^2", "0.625 m/s^2"],
         correct: 0,
-        ask: "Use acceleration equals final velocity minus starting velocity, all over time. 20 minus 12 is 8, then divide by 5. Which option is that?",
+        ask: "Use acceleration equals final velocity minus starting velocity, all over time. 20 - 12 is 8, then divide by 5. Which option is that?",
         hints: [
           "Acceleration is the change in velocity divided by the time.",
-          "20 minus 12 is 8, and 8 divided by 5 is 1.6.",
+          "20 - 12 is 8, and 8 ÷ 5 is 1.6.",
         ],
         working: [
           { label: "Formula", latex: "a = \\dfrac{v - u}{t}" },
           { label: "Substitute", latex: "a = \\dfrac{20 - 12}{5}" },
           { label: "Answer", latex: "a = 1.6\\ \\text{m/s}^2" },
         ],
-        explain: "The acceleration is 1.6 metres per second squared, because 20 minus 12 is 8, and 8 divided by 5 is 1.6.",
+        explain: "The acceleration is 1.6 metres per second squared, because 20 - 12 is 8, and 8 ÷ 5 is 1.6.",
       },
       {
         kind: "choice",
@@ -111,17 +111,17 @@ export const BOXES: Subconcept[] = [
         question: "A car travelling at 24 m/s is brought to rest in 6 s. What is its acceleration?",
         options: ["4 m/s^2", "-4 m/s^2", "-144 m/s^2", "0 m/s^2"],
         correct: 1,
-        ask: "The car ends at rest, so the final velocity is 0. Work out 0 minus 24, then divide by 6. Watch the sign. Which option is that?",
+        ask: "The car ends at rest, so the final velocity is 0. Work out 0 - 24, then divide by 6. Watch the sign. Which option is that?",
         hints: [
           "At rest the final velocity is 0.",
-          "0 minus 24 is -24, and that divided by 6 is -4.",
+          "0 - 24 is -24, and that divided by 6 is -4.",
         ],
         working: [
           { label: "Formula", latex: "a = \\dfrac{v - u}{t}" },
           { label: "Substitute", latex: "a = \\dfrac{0 - 24}{6}" },
           { label: "Answer", latex: "a = -4\\ \\text{m/s}^2" },
         ],
-        explain: "The acceleration is -4 metres per second squared, because 0 minus 24 is -24, and that divided by 6 is -4. The car decelerates at 4 metres per second squared.",
+        explain: "The acceleration is -4 metres per second squared, because 0 - 24 is -24, and that divided by 6 is -4. The car decelerates at 4 metres per second squared.",
       },
       {
         kind: "choice",

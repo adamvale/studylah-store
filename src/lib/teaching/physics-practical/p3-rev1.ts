@@ -34,10 +34,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr3-02-spring-balance",
         options: ["6.50 N", "0.650 N", "65.0 N", "16.5 N"],
         correct: 0,
-        ask: "The balance reads weight, which is mass times g. Work out 0.650 times 10. Which option is that?",
+        ask: "The balance reads weight, which is mass times g. Work out 0.650 × 10. Which option is that?",
         hints: [
           "Use W = m g, with g equal to 10 newtons per kilogram.",
-          "0.650 times 10 is 6.50, and weight is measured in newtons.",
+          "0.650 × 10 is 6.50, and weight is measured in newtons.",
         ],
         working: [
           { label: "Formula", latex: "W = mg" },
@@ -51,10 +51,10 @@ export const BOXES: Subconcept[] = [
         question: "A block of mass 384 g has a volume of 480 cm^3. What is its density?",
         options: ["1.25 g/cm^3", "8.0 g/cm^3", "0.60 g/cm^3", "0.80 g/cm^3"],
         correct: 3,
-        ask: "Density is mass divided by volume. Work out 384 divided by 480. Which option is that?",
+        ask: "Density is mass divided by volume. Work out 384 ÷ 480. Which option is that?",
         hints: [
           "Use rho = m divided by V.",
-          "384 divided by 480 is 0.80, in grams per cubic centimetre.",
+          "384 ÷ 480 is 0.80, in grams per cubic centimetre.",
         ],
         working: [
           { label: "Formula", latex: "\\rho = \\dfrac{m}{V}" },
@@ -72,7 +72,7 @@ export const BOXES: Subconcept[] = [
         ask: "The extension is how much longer the spring is now, so subtract the natural length from the stretched length. Which option is that?",
         hints: [
           "Use e = L minus L_0.",
-          "9.0 minus 4.0 is 5.0 centimetres.",
+          "9.0 - 4.0 is 5.0 centimetres.",
         ],
         working: [
           { label: "Formula", latex: "e = L - L_0" },
@@ -157,10 +157,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A spring extends by 0.050 m under a load of 2.0 N. Build the working line that gives the spring constant k.",
         tiles: ["k =", "2.0", "\\div", "0.050", "=", "40", "N/m", "N"],
         answer: ["k =", "2.0", "\\div", "0.050", "=", "40", "N/m"],
-        ask: "The spring constant is the load divided by the extension, so set up 2.0 divided by 0.050.",
+        ask: "The spring constant is the load divided by the extension, so set up 2.0 ÷ 0.050.",
         hints: [
           "Rearranging F = ke gives k equal to F divided by e.",
-          "2.0 divided by 0.050 is 40, in newtons per metre.",
+          "2.0 ÷ 0.050 is 40, in newtons per metre.",
         ],
         working: [
           { label: "Formula", latex: "k = \\dfrac{F}{e}" },

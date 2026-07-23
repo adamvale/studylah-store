@@ -35,10 +35,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr5-01-wave-distance",
         options: ["30 m/s", "20.8 m/s", "26.2 m/s", "0.048 m/s"],
         correct: 0,
-        ask: "The wave speed is the frequency times the wavelength, so work out 25 times 1.2. Which option matches?",
+        ask: "The wave speed is the frequency times the wavelength, so work out 25 × 1.2. Which option matches?",
         hints: [
           "Use v equals f times lambda.",
-          "25 times 1.2 is 30, and the speed is in metres per second.",
+          "25 × 1.2 is 30, and the speed is in metres per second.",
         ],
         working: [
           { label: "Formula", latex: "v = f\\lambda" },
@@ -87,14 +87,14 @@ export const BOXES: Subconcept[] = [
         ask: "The refractive index is sin i divided by sin r, so divide 0.707 by 0.469. Which option is that?",
         hints: [
           "Use n equals sin i divided by sin r.",
-          "0.707 divided by 0.469 is about 1.5.",
+          "0.707 ÷ 0.469 is about 1.5.",
         ],
         working: [
           { label: "Formula", latex: "n = \\dfrac{\\sin i}{\\sin r}" },
           { label: "Substitute", latex: "n = \\dfrac{\\sin 45^\\circ}{\\sin 28^\\circ} = \\dfrac{0.707}{0.469}" },
           { label: "Answer", latex: "n = 1.5" },
         ],
-        explain: "The refractive index is 1.5, because 0.707 divided by 0.469 is about 1.5. The refractive index has no unit.",
+        explain: "The refractive index is 1.5, because 0.707 ÷ 0.469 is about 1.5. The refractive index has no unit.",
       },
       {
         kind: "classify",
@@ -175,17 +175,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 0.035,
         targetMax: 0.045,
-        ask: "The period is 1 divided by the frequency, so work out 1 divided by 25.",
+        ask: "The period is 1 divided by the frequency, so work out 1 ÷ 25.",
         hints: [
           "Use T equals 1 divided by f.",
-          "1 divided by 25 is 0.04, so slide to 0.04 seconds.",
+          "1 ÷ 25 is 0.04, so slide to 0.04 seconds.",
         ],
         working: [
           { label: "Formula", latex: "T = \\dfrac{1}{f}" },
           { label: "Substitute", latex: "T = \\dfrac{1}{25}" },
           { label: "Answer", latex: "T = 0.04\\ \\text{s}" },
         ],
-        explain: "The period is 0.04 seconds, because 1 divided by 25 hertz is 0.04 seconds. The period is the time for one whole cycle.",
+        explain: "The period is 0.04 seconds, because 1 ÷ 25 hertz is 0.04 seconds. The period is the time for one whole cycle.",
       },
       {
         kind: "open",

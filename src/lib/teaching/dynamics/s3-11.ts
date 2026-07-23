@@ -74,17 +74,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 3.9,
         targetMax: 4.1,
-        ask: "First find the resultant force, 58 minus 18, then divide by the 10 kilogram mass.",
+        ask: "First find the resultant force, 58 - 18, then divide by the 10 kilogram mass.",
         hints: [
-          "The resultant force is 58 minus 18, which is 40 newtons.",
-          "Acceleration is resultant force divided by mass, so 40 divided by 10 is 4.",
+          "The resultant force is 58 - 18, which is 40 newtons.",
+          "Acceleration is resultant force divided by mass, so 40 ÷ 10 is 4.",
         ],
         working: [
           { label: "Formula", latex: "a = \\dfrac{F_{\\text{resultant}}}{m}" },
           { label: "Substitute", latex: "a = \\dfrac{58 - 18}{10}" },
           { label: "Answer", latex: "a = 4\\ \\text{m/s}^2" },
         ],
-        explain: "The acceleration is 4 metres per second squared. The resultant force is 58 minus 18, which is 40 newtons, and 40 divided by the 10 kilogram mass gives 4 metres per second squared.",
+        explain: "The acceleration is 4 metres per second squared. The resultant force is 58 - 18, which is 40 newtons, and 40 divided by the 10 kilogram mass gives 4 metres per second squared.",
       },
       {
         kind: "classify",

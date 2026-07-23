@@ -32,7 +32,7 @@ export const BOXES: Subconcept[] = [
         ask: "The number of neutrons is the nucleon number minus the proton number. Take 23 away from 51.",
         hints: [
           "Number of neutrons equals the nucleon number minus the proton number.",
-          "51 minus 23 is 28, so there are 28 neutrons.",
+          "51 - 23 is 28, so there are 28 neutrons.",
         ],
         working: [
           { label: "Formula", latex: "N = A - Z" },
@@ -62,7 +62,7 @@ export const BOXES: Subconcept[] = [
         ask: "In alpha decay the nucleon number falls by 4 and the proton number falls by 2. Start from uranium 238 with proton number 92.",
         hints: [
           "An alpha particle is a helium nucleus, so the nucleon number drops by 4 and the proton number drops by 2.",
-          "238 minus 4 is 234, and 92 minus 2 is 90, which is the element thorium.",
+          "238 - 4 is 234, and 92 - 2 is 90, which is the element thorium.",
         ],
         working: [
           { label: "Formula", latex: "^{A}_{Z}\\text{U} \\rightarrow \\ ^{A-4}_{Z-2}\\text{X} + \\ ^{4}_{2}\\text{He}" },
@@ -172,7 +172,7 @@ export const BOXES: Subconcept[] = [
         kind: "open",
         prompt: "Describe the structure of an atom. Name the particles found in the nucleus and their charges, and state where almost all of the atom's mass is located.",
         figure: "fig-22-01-atom-structure",
-        modelAnswer: "An atom has a tiny central nucleus containing protons, each with a charge of plus 1, and neutrons, which have no charge. Protons and neutrons together are called nucleons. Electrons, each with a charge of minus 1, move around the nucleus in outer shells. Almost all of the atom's mass is in the nucleus, because an electron is only about 1 divided by 1840 as heavy as a nucleon. A neutral atom has equal numbers of protons and electrons.",
+        modelAnswer: "An atom has a tiny central nucleus containing protons, each with a charge of plus 1, and neutrons, which have no charge. Protons and neutrons together are called nucleons. Electrons, each with a charge of minus 1, move around the nucleus in outer shells. Almost all of the atom's mass is in the nucleus, because an electron is only about 1 ÷ 1840 as heavy as a nucleon. A neutral atom has equal numbers of protons and electrons.",
         marks: [
           "Nucleus contains protons (charge +1) and neutrons (no charge).",
           "Electrons (charge -1) move in shells outside the nucleus.",

@@ -47,34 +47,34 @@ export const BOXES: Subconcept[] = [
         question: "Express 0.08 m in nanometres, in standard form. (1 m = 10^9 nm)",
         options: ["8 x 10^7 nm", "8 x 10^9 nm", "8 x 10^-7 nm", "0.8 x 10^8 nm"],
         correct: 0,
-        ask: "To go from metres to nanometres you multiply by 10^9, so work out 0.08 times 10^9.",
+        ask: "To go from metres to nanometres you multiply by 10^9, so work out 0.08 × 10^9.",
         hints: [
           "There are 10 to the power 9 nanometres in 1 metre, so multiply 0.08 by 10 to the power 9.",
-          "0.08 times 10 to the power 9 is 8 times 10 to the power 7.",
+          "0.08 × 10 to the power 9 is 8 × 10 to the power 7.",
         ],
         working: [
           { label: "Formula", latex: "1\\ \\text{m} = 10^{9}\\ \\text{nm}" },
           { label: "Substitute", latex: "0.08 \\times 10^{9}" },
           { label: "Answer", latex: "8 \\times 10^{7}\\ \\text{nm}" },
         ],
-        explain: "0.08 metres is 8 times 10 to the power 7 nanometres, because multiplying 0.08 by 10 to the power 9 gives 8 times 10 to the power 7. Note that 0.8 times 10 to the power 8 is the same size but is not standard form, since A must be at least 1.",
+        explain: "0.08 metres is 8 × 10 to the power 7 nanometres, because multiplying 0.08 by 10 to the power 9 gives 8 × 10 to the power 7. Note that 0.8 × 10 to the power 8 is the same size but is not standard form, since A must be at least 1.",
       },
       {
         kind: "choice",
         question: "Express 32 mm in kilometres, in standard form. (1 km = 10^6 mm)",
         options: ["3.2 x 10^-5 km", "3.2 x 10^5 km", "32 x 10^-6 km", "3.2 x 10^-4 km"],
         correct: 0,
-        ask: "To go from millimetres to kilometres you divide by 10^6, so work out 32 divided by 10^6.",
+        ask: "To go from millimetres to kilometres you divide by 10^6, so work out 32 ÷ 10^6.",
         hints: [
           "There are 10 to the power 6 millimetres in 1 kilometre, so divide 32 by 10 to the power 6.",
-          "32 divided by 10 to the power 6 is 3.2 times 10 to the power minus 5.",
+          "32 ÷ 10 to the power 6 is 3.2 × 10 to the power minus 5.",
         ],
         working: [
           { label: "Formula", latex: "1\\ \\text{km} = 10^{6}\\ \\text{mm}" },
           { label: "Substitute", latex: "32 \\div 10^{6}" },
           { label: "Answer", latex: "3.2 \\times 10^{-5}\\ \\text{km}" },
         ],
-        explain: "32 millimetres is 3.2 times 10 to the power minus 5 kilometres, because 32 divided by 10 to the power 6 is 3.2 times 10 to the power minus 5.",
+        explain: "32 millimetres is 3.2 × 10 to the power minus 5 kilometres, because 32 ÷ 10 to the power 6 is 3.2 × 10 to the power minus 5.",
       },
       {
         kind: "choice",
@@ -104,10 +104,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 2.3,
         targetMax: 2.5,
-        ask: "Measuring from a mark other than 0 means you subtract the 2 readings, so work out 5.4 minus 3.0.",
+        ask: "Measuring from a mark other than 0 means you subtract the 2 readings, so work out 5.4 - 3.0.",
         hints: [
           "The length is the right-hand reading minus the left-hand reading.",
-          "5.4 minus 3.0 is 2.4, so slide to 2.4 centimetres.",
+          "5.4 - 3.0 is 2.4, so slide to 2.4 centimetres.",
         ],
         working: [
           { label: "Formula", latex: "L = x_2 - x_1" },
@@ -124,14 +124,14 @@ export const BOXES: Subconcept[] = [
         ask: "Standard form is A times 10^n with A between 1 and 10, so move the decimal point to just after the first digit and count the places.",
         hints: [
           "Put the decimal point after the first digit to get 5.28, then count how many places it moved.",
-          "The point moves 6 places, so the number is 5.28 times 10 to the power 6 joules.",
+          "The point moves 6 places, so the number is 5.28 × 10 to the power 6 joules.",
         ],
         working: [
           { label: "Formula", latex: "A \\times 10^{n},\\ 1 \\le A < 10" },
           { label: "Substitute", latex: "5\\,280\\,000 = 5.28 \\times 10^{6}" },
           { label: "Answer", latex: "5.28 \\times 10^{6}\\ \\text{J}" },
         ],
-        explain: "5 280 000 joules is 5.28 times 10 to the power 6 joules, because moving the decimal point 6 places to the left gives 5.28 times 10 to the power 6.",
+        explain: "5 280 000 joules is 5.28 × 10 to the power 6 joules, because moving the decimal point 6 places to the left gives 5.28 × 10 to the power 6.",
       },
       {
         kind: "match",

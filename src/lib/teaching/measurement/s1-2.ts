@@ -55,7 +55,7 @@ export const BOXES: Subconcept[] = [
           { label: "Substitute", latex: "0.0000473 = 4.73 \\times 10^{-5}" },
           { label: "Answer", latex: "0.0000473\\ \\text{m} = 4.73 \\times 10^{-5}\\ \\text{m}" },
         ],
-        explain: "In standard form 0.0000473 becomes 4.73 times 10 to the power minus 5, because the decimal point moves 5 places to the right to sit just after the first non-zero digit. Note that 47.3 times 10 to the power minus 6 is the same size but is not standard form, since A must be less than 10.",
+        explain: "In standard form 0.0000473 becomes 4.73 × 10 to the power minus 5, because the decimal point moves 5 places to the right to sit just after the first non-zero digit. Note that 47.3 × 10 to the power minus 6 is the same size but is not standard form, since A must be less than 10.",
       },
       {
         kind: "tiles",
@@ -65,14 +65,14 @@ export const BOXES: Subconcept[] = [
         ask: "Put the decimal point just after the first digit, 5, then count how many places it moved to find the power.",
         hints: [
           "The number becomes 5.28, and the decimal point moves 6 places to the left.",
-          "Moving 6 places to the left gives 10 to the power 6, so it is 5.28 times 10 to the power 6.",
+          "Moving 6 places to the left gives 10 to the power 6, so it is 5.28 × 10 to the power 6.",
         ],
         working: [
           { label: "Formula", latex: "A \\times 10^{n},\\ 1 \\le A < 10" },
           { label: "Substitute", latex: "5\\,280\\,000 = 5.28 \\times 10^{6}" },
           { label: "Answer", latex: "5\\,280\\,000\\ \\text{J} = 5.28 \\times 10^{6}\\ \\text{J}" },
         ],
-        explain: "5 280 000 joules is 5.28 times 10 to the power 6 joules, because the decimal point moves 6 places to the left to sit just after the 5.",
+        explain: "5 280 000 joules is 5.28 × 10 to the power 6 joules, because the decimal point moves 6 places to the left to sit just after the 5.",
       },
       {
         kind: "slider",
@@ -85,15 +85,15 @@ export const BOXES: Subconcept[] = [
         targetMax: 7.5,
         ask: "First write 1 metre as 10 to the power 9 nanometres, then convert 0.08 metres and read off the power of 10.",
         hints: [
-          "1 metre is 10 to the power 9 nanometres, so 0.08 metres is 0.08 times 10 to the power 9 nanometres.",
-          "0.08 times 10 to the power 9 is 8 times 10 to the power 7, so the power n is 7.",
+          "1 metre is 10 to the power 9 nanometres, so 0.08 metres is 0.08 × 10 to the power 9 nanometres.",
+          "0.08 × 10 to the power 9 is 8 × 10 to the power 7, so the power n is 7.",
         ],
         working: [
           { label: "Formula", latex: "1\\ \\text{m} = 10^{9}\\ \\text{nm}" },
           { label: "Substitute", latex: "0.08\\ \\text{m} = 0.08 \\times 10^{9}\\ \\text{nm}" },
           { label: "Answer", latex: "= 8 \\times 10^{7}\\ \\text{nm}" },
         ],
-        explain: "The power n is 7, because 0.08 times 10 to the power 9 nanometres is 8 times 10 to the power 7 nanometres.",
+        explain: "The power n is 7, because 0.08 × 10 to the power 9 nanometres is 8 × 10 to the power 7 nanometres.",
       },
       {
         kind: "spoterror",
@@ -105,17 +105,17 @@ export const BOXES: Subconcept[] = [
           "= 3.2 x 10^-4 km",
         ],
         errorLine: 3,
-        ask: "Check the last line. Work out 0.032 times 10 to the power minus 3 and compare the power of 10.",
+        ask: "Check the last line. Work out 0.032 × 10 to the power minus 3 and compare the power of 10.",
         hints: [
-          "0.032 is 3.2 times 10 to the power minus 2.",
-          "3.2 times 10 to the power minus 2, times 10 to the power minus 3, is 3.2 times 10 to the power minus 5, not minus 4.",
+          "0.032 is 3.2 × 10 to the power minus 2.",
+          "3.2 × 10 to the power minus 2, × 10 to the power minus 3, is 3.2 × 10 to the power minus 5, not minus 4.",
         ],
         working: [
           { label: "Formula", latex: "1\\ \\text{km} = 10^{3}\\ \\text{m}" },
           { label: "Substitute", latex: "0.032\\ \\text{m} = 0.032 \\times 10^{-3}\\ \\text{km}" },
           { label: "Answer", latex: "= 3.2 \\times 10^{-5}\\ \\text{km}" },
         ],
-        explain: "The last line is wrong. 0.032 times 10 to the power minus 3 is 3.2 times 10 to the power minus 5 kilometres, not 3.2 times 10 to the power minus 4.",
+        explain: "The last line is wrong. 0.032 × 10 to the power minus 3 is 3.2 × 10 to the power minus 5 kilometres, not 3.2 × 10 to the power minus 4.",
       },
       {
         kind: "insight",

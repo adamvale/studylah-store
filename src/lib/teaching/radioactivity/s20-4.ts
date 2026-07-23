@@ -89,9 +89,9 @@ export const BOXES: Subconcept[] = [
         question: "A source has a count rate of 24000 counts/s and a half-life of 5 s. What is the count rate after 30 s?",
         options: ["750 counts/s", "1500 counts/s", "375 counts/s", "187.5 counts/s"],
         correct: 2,
-        ask: "First find the number of half-lives, 30 divided by 5. Then halve 24000 that many times.",
+        ask: "First find the number of half-lives, 30 ÷ 5. Then halve 24000 that many times.",
         hints: [
-          "30 divided by 5 is 6 half-lives.",
+          "30 ÷ 5 is 6 half-lives.",
           "Halving 24000 6 times gives 12000, 6000, 3000, 1500, 750, then 375.",
         ],
         working: [
@@ -99,7 +99,7 @@ export const BOXES: Subconcept[] = [
           { label: "Substitute", latex: "n = \\dfrac{30}{5} = 6" },
           { label: "Answer", latex: "24000 \\to 375\\ \\text{counts/s}" },
         ],
-        explain: "The count rate is 375 counts per second, because 30 divided by 5 is 6 half-lives, and halving 24000 6 times gives 375.",
+        explain: "The count rate is 375 counts per second, because 30 ÷ 5 is 6 half-lives, and halving 24000 6 times gives 375.",
       },
       {
         kind: "choice",
@@ -140,9 +140,9 @@ export const BOXES: Subconcept[] = [
         question: "A radioactive sample has a mass of 72 mg and a half-life of 15 years. What mass remains after 30 years?",
         options: ["18 mg", "36 mg", "9 mg", "4.5 mg"],
         correct: 0,
-        ask: "Find the number of half-lives, 30 divided by 15. Then halve the mass that many times.",
+        ask: "Find the number of half-lives, 30 ÷ 15. Then halve the mass that many times.",
         hints: [
-          "30 divided by 15 is 2 half-lives.",
+          "30 ÷ 15 is 2 half-lives.",
           "72 halves to 36, then to 18.",
         ],
         working: [
@@ -150,17 +150,17 @@ export const BOXES: Subconcept[] = [
           { label: "Substitute", latex: "n = \\dfrac{30}{15} = 2" },
           { label: "Answer", latex: "72 \\to 36 \\to 18\\ \\text{mg}" },
         ],
-        explain: "The mass remaining is 18 milligrams, because 30 divided by 15 is 2 half-lives, and 72 halved twice is 18.",
+        explain: "The mass remaining is 18 milligrams, because 30 ÷ 15 is 2 half-lives, and 72 halved twice is 18.",
       },
       {
         kind: "choice",
         question: "The background count rate is 25 counts/min. A source reads a measured count rate of 825 counts/min. What is the corrected count rate?",
         options: ["800 counts/min", "850 counts/min", "825 counts/min", "775 counts/min"],
         correct: 0,
-        ask: "The corrected count rate is the measured count rate minus the background. Work out 825 minus 25.",
+        ask: "The corrected count rate is the measured count rate minus the background. Work out 825 - 25.",
         hints: [
           "Use corrected count rate equals measured minus background.",
-          "825 minus 25 is 800.",
+          "825 - 25 is 800.",
         ],
         working: [
           { label: "Formula", latex: "\\text{corrected} = \\text{measured} - \\text{background}" },

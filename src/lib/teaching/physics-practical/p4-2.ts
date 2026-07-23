@@ -103,17 +103,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 125000,
         targetMax: 127000,
-        ask: "Use Q equals m times c times the temperature change. The rise is 80 minus 20, which is 60 degrees Celsius.",
+        ask: "Use Q equals m times c times the temperature change. The rise is 80 - 20, which is 60 degrees Celsius.",
         hints: [
-          "First find the temperature change: 80 minus 20 is 60.",
-          "Q is 0.50 times 4200 times 60, which is 126000 joules.",
+          "First find the temperature change: 80 - 20 is 60.",
+          "Q is 0.50 × 4200 × 60, which is 126000 joules.",
         ],
         working: [
           { label: "Formula", latex: "Q = mc\\,\\Delta\\theta" },
           { label: "Substitute", latex: "Q = 0.50 \\times 4200 \\times 60" },
           { label: "Answer", latex: "Q = 126000\\ \\text{J} = 1.26 \\times 10^{5}\\ \\text{J}" },
         ],
-        explain: "The heat needed is 126000 joules, which is 1.26 times 10 to the power 5 joules, because 0.50 times 4200 times 60 is 126000.",
+        explain: "The heat needed is 126000 joules, which is 1.26 × 10 to the power 5 joules, because 0.50 × 4200 × 60 is 126000.",
       },
       {
         kind: "choice",
@@ -127,15 +127,15 @@ export const BOXES: Subconcept[] = [
         correct: 1,
         ask: "First find the heat from Q equals power times time, then use DeltaTheta equals Q divided by m times c.",
         hints: [
-          "Q is 60 times 300, which is 18000 joules.",
-          "DeltaTheta is 18000 divided by 2.0 times 385, which is 18000 divided by 770, about 23.",
+          "Q is 60 × 300, which is 18000 joules.",
+          "DeltaTheta is 18000 ÷ 2.0 × 385, which is 18000 ÷ 770, about 23.",
         ],
         working: [
           { label: "Formula", latex: "\\Delta\\theta = \\dfrac{Q}{mc},\\quad Q = Pt" },
           { label: "Substitute", latex: "\\Delta\\theta = \\dfrac{60 \\times 300}{2.0 \\times 385} = \\dfrac{18000}{770}" },
           { label: "Answer", latex: "\\Delta\\theta = 23\\ \\text{degC}" },
         ],
-        explain: "The heat supplied is 60 times 300, which is 18000 joules. Dividing by 2.0 times 385, which is 770, gives a temperature rise of about 23 degrees Celsius.",
+        explain: "The heat supplied is 60 × 300, which is 18000 joules. Dividing by 2.0 × 385, which is 770, gives a temperature rise of about 23 degrees Celsius.",
       },
       {
         kind: "choice",
@@ -149,15 +149,15 @@ export const BOXES: Subconcept[] = [
         correct: 3,
         ask: "First take off the heat that warms the calorimeter, its heat capacity times the temperature rise, then divide the rest by the oil's mass times the rise.",
         hints: [
-          "Heat to the calorimeter is 40 times 40, which is 1600 joules, so the oil gets 9400 minus 1600, which is 7800 joules.",
-          "c is 7800 divided by 0.10 times 40, which is 7800 divided by 4, which is 1950.",
+          "Heat to the calorimeter is 40 × 40, which is 1600 joules, so the oil gets 9400 - 1600, which is 7800 joules.",
+          "c is 7800 ÷ 0.10 × 40, which is 7800 ÷ 4, which is 1950.",
         ],
         working: [
           { label: "Formula", latex: "c = \\dfrac{Q - C\\,\\Delta\\theta}{m\\,\\Delta\\theta}" },
           { label: "Substitute", latex: "c = \\dfrac{9400 - (40 \\times 40)}{0.10 \\times 40} = \\dfrac{7800}{4}" },
           { label: "Answer", latex: "c = 1950\\ \\text{J/(kg degC)}" },
         ],
-        explain: "The calorimeter takes 40 times 40, which is 1600 joules, leaving 7800 joules for the oil. Dividing by 0.10 times 40, which is 4, gives 1950 joules per kilogram per degree Celsius.",
+        explain: "The calorimeter takes 40 × 40, which is 1600 joules, leaving 7800 joules for the oil. Dividing by 0.10 × 40, which is 4, gives 1950 joules per kilogram per degree Celsius.",
       },
       {
         kind: "insight",

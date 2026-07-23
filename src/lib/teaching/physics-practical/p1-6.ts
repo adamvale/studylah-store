@@ -104,17 +104,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr1-07-graph-bestfit",
         options: ["0.50", "2.0", "10", "14"],
         correct: 1,
-        ask: "The gradient is the rise divided by the run. The rise is 12.0 minus 2.0, and the run is 5.0 minus 0.",
+        ask: "The gradient is the rise divided by the run. The rise is 12.0 - 2.0, and the run is 5.0 - 0.",
         hints: [
-          "Rise is 12.0 minus 2.0, which is 10.0. Run is 5.0 minus 0, which is 5.0.",
-          "10.0 divided by 5.0 is 2.0.",
+          "Rise is 12.0 - 2.0, which is 10.0. Run is 5.0 - 0, which is 5.0.",
+          "10.0 ÷ 5.0 is 2.0.",
         ],
         working: [
           { label: "Formula", latex: "m = \\dfrac{y_2 - y_1}{x_2 - x_1}" },
           { label: "Substitute", latex: "m = \\dfrac{12.0 - 2.0}{5.0 - 0}" },
           { label: "Answer", latex: "m = 2.0" },
         ],
-        explain: "The gradient is 2.0, because the rise of 12.0 minus 2.0 is 10.0, the run of 5.0 minus 0 is 5.0, and 10.0 divided by 5.0 is 2.0.",
+        explain: "The gradient is 2.0, because the rise of 12.0 - 2.0 is 10.0, the run of 5.0 - 0 is 5.0, and 10.0 ÷ 5.0 is 2.0.",
       },
       {
         kind: "choice",
@@ -123,15 +123,15 @@ export const BOXES: Subconcept[] = [
         correct: 3,
         ask: "Use y equals m x plus c. Put in one point and the gradient 2.0, then solve for c.",
         hints: [
-          "At the point (2.0, 5.0): 5.0 equals 2.0 times 2.0 plus c.",
-          "2.0 times 2.0 is 4.0, so c is 5.0 minus 4.0, which is 1.0.",
+          "At the point (2.0, 5.0): 5.0 equals 2.0 × 2.0 plus c.",
+          "2.0 × 2.0 is 4.0, so c is 5.0 - 4.0, which is 1.0.",
         ],
         working: [
           { label: "Formula", latex: "y = mx + c" },
           { label: "Substitute", latex: "5.0 = (2.0)(2.0) + c" },
           { label: "Answer", latex: "c = 1.0" },
         ],
-        explain: "The intercept is 1.0, because at the point 2.0 comma 5.0 we have 5.0 equals 2.0 times 2.0 plus c, and 5.0 minus 4.0 is 1.0.",
+        explain: "The intercept is 1.0, because at the point 2.0 comma 5.0 we have 5.0 equals 2.0 × 2.0 plus c, and 5.0 - 4.0 is 1.0.",
       },
       {
         kind: "open",

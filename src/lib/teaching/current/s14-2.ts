@@ -58,10 +58,10 @@ export const BOXES: Subconcept[] = [
         question: "A source drives 1 C of charge around a circuit and does 4.5 J of work on it. What is the e.m.f. of the source?",
         options: ["9.0 V", "2.25 V", "4.5 V", "0.22 V"],
         correct: 2,
-        ask: "The e.m.f. is the work done divided by the charge, so work out 4.5 divided by 1.",
+        ask: "The e.m.f. is the work done divided by the charge, so work out 4.5 ÷ 1.",
         hints: [
           "Use E equals W divided by Q.",
-          "4.5 divided by 1 is 4.5, and the answer is in volts.",
+          "4.5 ÷ 1 is 4.5, and the answer is in volts.",
         ],
         working: [
           { label: "Formula", latex: "E = \\dfrac{W}{Q}" },
@@ -75,27 +75,27 @@ export const BOXES: Subconcept[] = [
         question: "A source of e.m.f. 6.0 V drives a charge of 40 C around a circuit. How much work does it do on that charge?",
         options: ["240 J", "46 J", "6.7 J", "0.15 J"],
         correct: 0,
-        ask: "Rearrange E equals W divided by Q to get W equals E times Q, so work out 6.0 times 40.",
+        ask: "Rearrange E equals W divided by Q to get W equals E times Q, so work out 6.0 × 40.",
         hints: [
           "The work done is the e.m.f. multiplied by the charge.",
-          "6.0 times 40 is 240, and the answer is in joules.",
+          "6.0 × 40 is 240, and the answer is in joules.",
         ],
         working: [
           { label: "Formula", latex: "W = E\\,Q" },
           { label: "Substitute", latex: "W = 6.0 \\times 40" },
           { label: "Answer", latex: "W = 240\\ \\text{J}" },
         ],
-        explain: "The work done is 240 joules, because 6.0 volts means 6.0 joules per coulomb, and 6.0 times 40 coulombs is 240 joules.",
+        explain: "The work done is 240 joules, because 6.0 volts means 6.0 joules per coulomb, and 6.0 × 40 coulombs is 240 joules.",
       },
       {
         kind: "choice",
         question: "A battery does 2100 J of work driving 300 C of charge around a circuit. What is its e.m.f.?",
         options: ["70 V", "0.14 V", "630000 V", "7 V"],
         correct: 3,
-        ask: "The e.m.f. is the work done divided by the charge, so work out 2100 divided by 300.",
+        ask: "The e.m.f. is the work done divided by the charge, so work out 2100 ÷ 300.",
         hints: [
           "Use E equals W divided by Q.",
-          "2100 divided by 300 is 7, and the answer is in volts.",
+          "2100 ÷ 300 is 7, and the answer is in volts.",
         ],
         working: [
           { label: "Formula", latex: "E = \\dfrac{W}{Q}" },
@@ -109,17 +109,17 @@ export const BOXES: Subconcept[] = [
         question: "A source of e.m.f. 15 V drives 60 C of charge around a circuit. How much energy does it give to that charge?",
         options: ["75 J", "900 J", "4 J", "0.25 J"],
         correct: 1,
-        ask: "Rearrange E equals W divided by Q to get W equals E times Q, so work out 15 times 60.",
+        ask: "Rearrange E equals W divided by Q to get W equals E times Q, so work out 15 × 60.",
         hints: [
           "The energy given is the e.m.f. multiplied by the charge.",
-          "15 times 60 is 900, and the answer is in joules.",
+          "15 × 60 is 900, and the answer is in joules.",
         ],
         working: [
           { label: "Formula", latex: "W = E\\,Q" },
           { label: "Substitute", latex: "W = 15 \\times 60" },
           { label: "Answer", latex: "W = 900\\ \\text{J}" },
         ],
-        explain: "The energy is 900 joules, because 15 volts means 15 joules per coulomb, and 15 times 60 coulombs is 900 joules.",
+        explain: "The energy is 900 joules, because 15 volts means 15 joules per coulomb, and 15 × 60 coulombs is 900 joules.",
       },
       {
         kind: "choice",

@@ -51,27 +51,27 @@ export const BOXES: Subconcept[] = [
         question: "3 resistors of 3 ohm, 5 ohm and 2 ohm are connected in series. What is the effective resistance?",
         options: ["16 ohm", "3 ohm", "10 ohm", "0.97 ohm"],
         correct: 2,
-        ask: "Series resistors just add, so work out 3 plus 5 plus 2.",
+        ask: "Series resistors just add, so work out 3 + 5 + 2.",
         hints: [
           "Use R_E = R_1 + R_2 + R_3 for a series chain.",
-          "3 plus 5 plus 2 is 10, and the total must be larger than any single resistor.",
+          "3 + 5 + 2 is 10, and the total must be larger than any single resistor.",
         ],
         working: [
           { label: "Formula", latex: "R_E = R_1 + R_2 + R_3" },
           { label: "Substitute", latex: "R_E = 3 + 5 + 2" },
           { label: "Answer", latex: "R_E = 10\\ \\Omega" },
         ],
-        explain: "The effective resistance is 10 ohms, because resistors in series carry the same current and simply add: 3 plus 5 plus 2 is 10.",
+        explain: "The effective resistance is 10 ohms, because resistors in series carry the same current and simply add: 3 + 5 + 2 is 10.",
       },
       {
         kind: "choice",
         question: "3 resistors of 3 ohm, 6 ohm and 6 ohm are connected in parallel. What is the effective resistance?",
         options: ["15 ohm", "1.5 ohm", "6 ohm", "5 ohm"],
         correct: 1,
-        ask: "Add the reciprocals: 1/3 plus 1/6 plus 1/6, which is 2/6 plus 1/6 plus 1/6.",
+        ask: "Add the reciprocals: 1/3 + 1/6 + 1/6, which is 2/6 + 1/6 + 1/6.",
         hints: [
           "Use 1/R_E = 1/R_1 + 1/R_2 + 1/R_3.",
-          "1/3 plus 1/6 plus 1/6 is 4/6, so R_E is 6 divided by 4, which is 1.5 ohms.",
+          "1/3 + 1/6 + 1/6 is 4/6, so R_E is 6 ÷ 4, which is 1.5 ohms.",
         ],
         working: [
           { label: "Formula", latex: "\\frac{1}{R_E} = \\frac{1}{R_1} + \\frac{1}{R_2} + \\frac{1}{R_3}" },
@@ -88,7 +88,7 @@ export const BOXES: Subconcept[] = [
         ask: "Combine the parallel pair first: 2 equal 8 ohm resistors in parallel give 4 ohm. Then add the series 4 ohm.",
         hints: [
           "2 equal resistors in parallel give half their value, so 8 ohm and 8 ohm give 4 ohm.",
-          "Then add the series resistor: 4 plus 4 is 8 ohms.",
+          "Then add the series resistor: 4 + 4 is 8 ohms.",
         ],
         working: [
           { label: "Formula", latex: "\\frac{1}{R_P} = \\frac{1}{8} + \\frac{1}{8},\\quad R_E = R_P + 4" },
@@ -104,8 +104,8 @@ export const BOXES: Subconcept[] = [
         correct: 0,
         ask: "Do the parallel pair first: 12 and 6 in parallel give 4 ohm. Then add the series 6 ohm.",
         hints: [
-          "For the parallel pair, 1/12 plus 1/6 is 1/12 plus 2/12, which is 3/12, so R is 4 ohm.",
-          "Then add the series resistor: 4 plus 6 is 10 ohms.",
+          "For the parallel pair, 1/12 + 1/6 is 1/12 + 2/12, which is 3/12, so R is 4 ohm.",
+          "Then add the series resistor: 4 + 6 is 10 ohms.",
         ],
         working: [
           { label: "Formula", latex: "\\frac{1}{R_P} = \\frac{1}{12} + \\frac{1}{6},\\quad R_E = R_P + 6" },

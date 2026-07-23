@@ -61,10 +61,10 @@ export const BOXES: Subconcept[] = [
         question: "A flat plate lies 4.0 m below the surface of water of density 1000 kg/m^3 (g = 10 N/kg). Find the pressure the water exerts on the plate.",
         options: ["40000 Pa", "4000 Pa", "400 Pa", "50 Pa"],
         correct: 0,
-        ask: "The liquid pressure is depth times density times g, so work out 4.0 times 1000 times 10.",
+        ask: "The liquid pressure is depth times density times g, so work out 4.0 × 1000 × 10.",
         hints: [
           "Use P equals h times rho times g.",
-          "4.0 times 1000 times 10 is 40000, and pressure is in pascals.",
+          "4.0 × 1000 × 10 is 40000, and pressure is in pascals.",
         ],
         working: [
           { label: "Formula", latex: "P = h\\rho g" },
@@ -83,17 +83,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 4.9,
         targetMax: 5.1,
-        ask: "Rearrange P equals h times rho times g to get depth, so divide 45000 by 900 times 10, that is 45000 divided by 9000.",
+        ask: "Rearrange P equals h times rho times g to get depth, so divide 45000 by 900 × 10, that is 45000 ÷ 9000.",
         hints: [
           "The depth is the pressure divided by rho times g.",
-          "900 times 10 is 9000, and 45000 divided by 9000 is 5.0, so slide to 5.0 metres.",
+          "900 × 10 is 9000, and 45000 ÷ 9000 is 5.0, so slide to 5.0 metres.",
         ],
         working: [
           { label: "Formula", latex: "h = \\dfrac{P}{\\rho g}" },
           { label: "Substitute", latex: "h = \\dfrac{45000}{900 \\times 10}" },
           { label: "Answer", latex: "h = 5.0\\ \\text{m}" },
         ],
-        explain: "The depth is 5.0 metres, because 45000 pascals divided by 9000, that is 900 times 10, is 5.0 metres.",
+        explain: "The depth is 5.0 metres, because 45000 pascals divided by 9000, that is 900 × 10, is 5.0 metres.",
       },
       {
         kind: "choice",

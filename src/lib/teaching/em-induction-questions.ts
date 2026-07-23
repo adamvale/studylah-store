@@ -397,7 +397,7 @@ export const EM_INDUCTION_QUESTIONS: TeachQuestion[] = [
       "The secondary voltage over the primary voltage equals the secondary turns over the primary turns.",
       "The secondary has 60 turns and the primary has 1200 turns, a ratio of one to twenty.",
       "So the secondary voltage is the primary voltage divided by twenty.",
-      "That is 240 divided by 20, which is 12 volts."
+      "That is 240 ÷ 20, which is 12 volts."
     ],
     explain: "The voltage follows the turns on the same side, so with 60 secondary turns against 1200 primary turns the voltage is stepped down by a factor of twenty, from 240 volts to 12 volts. The value 4800 comes from flipping the ratio the wrong way up, and the other answers come from using the turns without the voltage correctly."
   },
@@ -460,7 +460,7 @@ export const EM_INDUCTION_QUESTIONS: TeachQuestion[] = [
       "The primary power is 230 volts times 1.2 amps, which is 276 watts.",
       "Dividing 276 watts by 46 volts gives 6.0 amps."
     ],
-    explain: "This is a step-down transformer, so the voltage falls and the current rises to keep the power the same. The primary power is 230 times 1.2, which is 276 watts, and dividing by the 46 volt output gives a secondary current of 6.0 amps. Answers below the primary current miss that a step-down raises the current, and 5.0 comes from using the voltage ratio while forgetting the primary current."
+    explain: "This is a step-down transformer, so the voltage falls and the current rises to keep the power the same. The primary power is 230 × 1.2, which is 276 watts, and dividing by the 46 volt output gives a secondary current of 6.0 amps. Answers below the primary current miss that a step-down raises the current, and 5.0 comes from using the voltage ratio while forgetting the primary current."
   },
   {
     id: "emi-q-22",
@@ -519,9 +519,9 @@ export const EM_INDUCTION_QUESTIONS: TeachQuestion[] = [
       "First find the current from the power and the voltage.",
       "The current is 8000 watts divided by 4000 volts, which is 2 amps.",
       "The power lost is the current squared times the resistance.",
-      "That is 2 squared times 0.5, which is 4 times 0.5, giving 2 watts."
+      "That is 2^2 times 0.5, which is 4 × 0.5, giving 2 watts."
     ],
-    explain: "At 4000 volts the current is only 2 amps, so the loss is 2 squared times 0.5, which is 2 watts. The value 200 comes from using the much larger current you would get at a low voltage, and the values 1 and 4 come from forgetting to square the current or from dropping the resistance. The loss depends on the current squared times the resistance."
+    explain: "At 4000 volts the current is only 2 amps, so the loss is 2^2 times 0.5, which is 2 watts. The value 200 comes from using the much larger current you would get at a low voltage, and the values 1 and 4 come from forgetting to square the current or from dropping the resistance. The loss depends on the current squared times the resistance."
   },
   {
     id: "emi-q-25",

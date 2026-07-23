@@ -42,17 +42,17 @@ export const BOXES: Subconcept[] = [
           "8.4 x 10^3 J",
         ],
         correct: 1,
-        ask: "Energy is mass times specific heat capacity times temperature change. The change is 70 minus 20, which is 50. Work out 2.0 times 4200 times 50.",
+        ask: "Energy is mass times specific heat capacity times temperature change. The change is 70 - 20, which is 50. Work out 2.0 × 4200 × 50.",
         hints: [
           "Use Q equals m times c times the temperature change.",
-          "2.0 times 4200 times 50 is 420000, which is 4.2 times 10 to the power 5 joules.",
+          "2.0 × 4200 × 50 is 420000, which is 4.2 × 10 to the power 5 joules.",
         ],
         working: [
           { label: "Formula", latex: "Q = mc\\,\\Delta\\theta" },
           { label: "Substitute", latex: "Q = 2.0 \\times 4200 \\times 50" },
           { label: "Answer", latex: "Q = 4.2 \\times 10^{5}\\ \\text{J}" },
         ],
-        explain: "The energy is 4.2 times 10 to the power 5 joules, because 2.0 kilograms times 4200 joules per kilogram per degree times a 50 degree rise is 420000 joules.",
+        explain: "The energy is 4.2 × 10 to the power 5 joules, because 2.0 kilograms times 4200 joules per kilogram per degree times a 50 degree rise is 420000 joules.",
       },
       // 3 -- choice, specific heat capacity from C, c = 300 (correct 0)
       {
@@ -65,10 +65,10 @@ export const BOXES: Subconcept[] = [
           "3000 J/(kg C)",
         ],
         correct: 0,
-        ask: "Specific heat capacity is the heat capacity divided by the mass. Work out 120 divided by 0.40.",
+        ask: "Specific heat capacity is the heat capacity divided by the mass. Work out 120 ÷ 0.40.",
         hints: [
           "Use c equals C divided by m.",
-          "120 divided by 0.40 is 300 joules per kilogram per degree.",
+          "120 ÷ 0.40 is 300 joules per kilogram per degree.",
         ],
         working: [
           { label: "Formula", latex: "c = \\dfrac{C}{m}" },
@@ -90,15 +90,15 @@ export const BOXES: Subconcept[] = [
         correct: 3,
         ask: "First find the energy the heater gives: power times time. Then the temperature rise is that energy divided by mass times specific heat capacity.",
         hints: [
-          "The energy is 1400 times 60, which is 84000 joules.",
-          "The temperature rise is 84000 divided by 1.0 times 4200, which is 20 degrees.",
+          "The energy is 1400 × 60, which is 84000 joules.",
+          "The temperature rise is 84000 ÷ 1.0 × 4200, which is 20 degrees.",
         ],
         working: [
           { label: "Formula", latex: "\\Delta\\theta = \\dfrac{Pt}{mc}" },
           { label: "Substitute", latex: "\\Delta\\theta = \\dfrac{1400 \\times 60}{1.0 \\times 4200}" },
           { label: "Answer", latex: "\\Delta\\theta = 20\\ \\text{C}" },
         ],
-        explain: "The temperature rises by 20 degrees. The heater supplies 1400 times 60, which is 84000 joules, and 84000 divided by 1.0 times 4200 is 20 degrees.",
+        explain: "The temperature rises by 20 degrees. The heater supplies 1400 × 60, which is 84000 joules, and 84000 ÷ 1.0 × 4200 is 20 degrees.",
       },
       // 5 -- choice, latent heat melt ice, 6.72e5 (correct 2)
       {
@@ -111,17 +111,17 @@ export const BOXES: Subconcept[] = [
           "6.72 x 10^6 J",
         ],
         correct: 2,
-        ask: "The energy to melt is the specific latent heat of fusion times the mass. Work out 3.36 times 10 to the power 5 times 2.0.",
+        ask: "The energy to melt is the specific latent heat of fusion times the mass. Work out 3.36 × 10 to the power 5 × 2.0.",
         hints: [
           "Use L equals l_f times m.",
-          "3.36 times 10 to the power 5 times 2.0 is 6.72 times 10 to the power 5 joules.",
+          "3.36 × 10 to the power 5 × 2.0 is 6.72 × 10 to the power 5 joules.",
         ],
         working: [
           { label: "Formula", latex: "L = l_f\\,m" },
           { label: "Substitute", latex: "L = 3.36 \\times 10^{5} \\times 2.0" },
           { label: "Answer", latex: "L = 6.72 \\times 10^{5}\\ \\text{J}" },
         ],
-        explain: "The energy is 6.72 times 10 to the power 5 joules, because 3.36 times 10 to the power 5 joules per kilogram times 2.0 kilograms is 672000 joules.",
+        explain: "The energy is 6.72 × 10 to the power 5 joules, because 3.36 × 10 to the power 5 joules per kilogram times 2.0 kilograms is 672000 joules.",
       },
       // 6 -- choice, latent heat boil water, 1.13e6 (correct 0)
       {
@@ -134,17 +134,17 @@ export const BOXES: Subconcept[] = [
           "1.13 x 10^5 J",
         ],
         correct: 0,
-        ask: "The energy to boil is the specific latent heat of vaporisation times the mass. Work out 2.26 times 10 to the power 6 times 0.50.",
+        ask: "The energy to boil is the specific latent heat of vaporisation times the mass. Work out 2.26 × 10 to the power 6 × 0.50.",
         hints: [
           "Use L equals l_v times m.",
-          "2.26 times 10 to the power 6 times 0.50 is 1.13 times 10 to the power 6 joules.",
+          "2.26 × 10 to the power 6 × 0.50 is 1.13 × 10 to the power 6 joules.",
         ],
         working: [
           { label: "Formula", latex: "L = l_v\\,m" },
           { label: "Substitute", latex: "L = 2.26 \\times 10^{6} \\times 0.50" },
           { label: "Answer", latex: "L = 1.13 \\times 10^{6}\\ \\text{J}" },
         ],
-        explain: "The energy is 1.13 times 10 to the power 6 joules, because 2.26 times 10 to the power 6 joules per kilogram times 0.50 kilograms is 1130000 joules.",
+        explain: "The energy is 1.13 × 10 to the power 6 joules, because 2.26 × 10 to the power 6 joules per kilogram times 0.50 kilograms is 1130000 joules.",
       },
       // 7 -- choice, latent heat conceptual (correct 3)
       {
@@ -320,10 +320,10 @@ export const BOXES: Subconcept[] = [
         prompt: "3000 J raises a block's temperature by 25 C. Build the working line for its heat capacity C, using C = Q / theta.",
         tiles: ["C =", "3000", "\\div", "25", "=", "120", "J/C", "J"],
         answer: ["C =", "3000", "\\div", "25", "=", "120", "J/C"],
-        ask: "Heat capacity is the energy divided by the temperature change, so set up 3000 divided by 25.",
+        ask: "Heat capacity is the energy divided by the temperature change, so set up 3000 ÷ 25.",
         hints: [
           "Use C equals Q divided by the temperature change.",
-          "3000 divided by 25 is 120, and heat capacity is measured in joules per degree.",
+          "3000 ÷ 25 is 120, and heat capacity is measured in joules per degree.",
         ],
         working: [
           { label: "Formula", latex: "C = \\dfrac{Q}{\\Delta\\theta}" },
@@ -338,17 +338,17 @@ export const BOXES: Subconcept[] = [
         prompt: "1.0 kg of ice at 0 C is melted, then the water is warmed to 20 C. Melting needs 3.36 x 10^5 J and warming needs 8.4 x 10^4 J. Build the working line for the total energy Q.",
         tiles: ["Q =", "3.36 x 10^5", "+", "8.4 x 10^4", "=", "4.2 x 10^5", "J", "6.72 x 10^5"],
         answer: ["Q =", "3.36 x 10^5", "+", "8.4 x 10^4", "=", "4.2 x 10^5", "J"],
-        ask: "The total is the melting energy plus the warming energy. Add 3.36 times 10 to the power 5 and 8.4 times 10 to the power 4.",
+        ask: "The total is the melting energy plus the warming energy. Add 3.36 × 10 to the power 5 and 8.4 × 10 to the power 4.",
         hints: [
           "Add the change-of-state energy and the temperature-change energy.",
-          "336000 plus 84000 is 420000, which is 4.2 times 10 to the power 5 joules.",
+          "336000 + 84000 is 420000, which is 4.2 × 10 to the power 5 joules.",
         ],
         working: [
           { label: "Formula", latex: "Q = l_f\\,m + mc\\,\\Delta\\theta" },
           { label: "Substitute", latex: "Q = 3.36 \\times 10^{5} + 8.4 \\times 10^{4}" },
           { label: "Answer", latex: "Q = 4.2 \\times 10^{5}\\ \\text{J}" },
         ],
-        explain: "The total energy is 4.2 times 10 to the power 5 joules, because 3.36 times 10 to the power 5 joules to melt the ice plus 8.4 times 10 to the power 4 joules to warm the water is 420000 joules.",
+        explain: "The total energy is 4.2 × 10 to the power 5 joules, because 3.36 × 10 to the power 5 joules to melt the ice plus 8.4 × 10 to the power 4 joules to warm the water is 420000 joules.",
       },
       // 18 -- interactive spoterror, wrong latent heat value (l_v used for melting)
       {
@@ -363,14 +363,14 @@ export const BOXES: Subconcept[] = [
         ask: "Check the number that was put in for the specific latent heat. Melting uses l_f, not the much larger vaporisation value.",
         hints: [
           "The formula line is correct, so look at the number substituted for l.",
-          "The student used 2.26 times 10 to the power 6, which is l_v for boiling; melting should use 3.36 times 10 to the power 5.",
+          "The student used 2.26 × 10 to the power 6, which is l_v for boiling; melting should use 3.36 × 10 to the power 5.",
         ],
         working: [
           { label: "Formula", latex: "L = l_f\\,m" },
           { label: "Substitute", latex: "L = 3.36 \\times 10^{5} \\times 2.0" },
           { label: "Answer", latex: "L = 6.72 \\times 10^{5}\\ \\text{J}" },
         ],
-        explain: "The mistake is on the substitution line, which uses 2.26 times 10 to the power 6, the value for boiling. Melting uses l_f equal to 3.36 times 10 to the power 5, giving 6.72 times 10 to the power 5 joules.",
+        explain: "The mistake is on the substitution line, which uses 2.26 × 10 to the power 6, the value for boiling. Melting uses l_f equal to 3.36 × 10 to the power 5, giving 6.72 × 10 to the power 5 joules.",
       },
       // 19 -- interactive graphpick, heating curve shape (correct 1)
       {

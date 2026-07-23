@@ -62,10 +62,10 @@ export const BOXES: Subconcept[] = [
         question: "A student of mass 50 kg runs up a staircase 3.0 m high in 6.0 s. Taking g = 10 N/kg, the work done against gravity is 1500 J. What is the student's power?",
         options: ["250 W", "9000 W", "150 W", "25 W"],
         correct: 0,
-        ask: "Power is the work done divided by the time taken, so work out 1500 divided by 6.0.",
+        ask: "Power is the work done divided by the time taken, so work out 1500 ÷ 6.0.",
         hints: [
           "Use power equals work done divided by time.",
-          "1500 divided by 6.0 is 250, and power is measured in watts.",
+          "1500 ÷ 6.0 is 250, and power is measured in watts.",
         ],
         working: [
           { label: "Formula", latex: "P = \\dfrac{W}{t}" },
@@ -79,24 +79,24 @@ export const BOXES: Subconcept[] = [
         prompt: "A conveyor belt pulls a load along at a constant 2.5 m/s with a force of 240 N. Build the working line that gives the power P.",
         tiles: ["P =", "240", "\\times", "2.5", "=", "600", "W", "N"],
         answer: ["P =", "240", "\\times", "2.5", "=", "600", "W"],
-        ask: "At a constant speed the power is the force times the speed, so set up 240 times 2.5.",
+        ask: "At a constant speed the power is the force times the speed, so set up 240 × 2.5.",
         hints: [
           "Use power equals force times speed.",
-          "240 times 2.5 is 600, and power is measured in watts.",
+          "240 × 2.5 is 600, and power is measured in watts.",
         ],
         working: [
           { label: "Formula", latex: "P = F v" },
           { label: "Substitute", latex: "P = 240 \\times 2.5" },
           { label: "Answer", latex: "P = 600\\ \\text{W}" },
         ],
-        explain: "The power is 600 watts, because a force of 240 newtons moving its load at 2.5 metres per second transfers 240 times 2.5, which is 600 watts.",
+        explain: "The power is 600 watts, because a force of 240 newtons moving its load at 2.5 metres per second transfers 240 × 2.5, which is 600 watts.",
       },
       {
         kind: "choice",
         question: "An electric heater is supplied with 200000 J of energy and is 75% efficient. How much energy is usefully transferred as heat?",
         options: ["150000 J", "50000 J", "266667 J", "75000 J"],
         correct: 0,
-        ask: "The useful output is the efficiency as a fraction times the total input, so work out 75 divided by 100, then times 200000.",
+        ask: "The useful output is the efficiency as a fraction times the total input, so work out 75 ÷ 100, then times 200000.",
         hints: [
           "Useful output equals the efficiency times the total input.",
           "75 percent of 200000 is 150000.",
@@ -121,14 +121,14 @@ export const BOXES: Subconcept[] = [
         ask: "First find the useful output, which is 25% of 800, then subtract it from the total input of 800.",
         hints: [
           "The dissipated energy is the total input minus the useful output.",
-          "25 percent of 800 is 200, and 800 minus 200 is 600.",
+          "25 percent of 800 is 200, and 800 - 200 is 600.",
         ],
         working: [
           { label: "Formula", latex: "\\text{dissipated} = \\text{total} - \\text{useful}" },
           { label: "Substitute", latex: "\\text{dissipated} = 800 - 200" },
           { label: "Answer", latex: "\\text{dissipated} = 600\\ \\text{J}" },
         ],
-        explain: "The energy dissipated is 600 joules, because 25 percent of 800 joules is 200 joules of useful output, and 800 minus 200 is 600 joules wasted.",
+        explain: "The energy dissipated is 600 joules, because 25 percent of 800 joules is 200 joules of useful output, and 800 - 200 is 600 joules wasted.",
       },
       {
         kind: "classify",

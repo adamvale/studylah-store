@@ -42,7 +42,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Source 2: falling or moving",
-        body: "Energy can also come from *motion*. Falling water loses gravitational *potential energy* m g h, and a moving object that stops loses its *kinetic energy* one half m v squared. That lost energy turns into internal energy and warms the substance.",
+        body: "Energy can also come from *motion*. Falling water loses gravitational *potential energy* m g h, and a moving object that stops loses its *kinetic energy* one half m v^2. That lost energy turns into internal energy and warms the substance.",
         formula: {
           latex: "E_p = mgh \\qquad E_k = \\tfrac{1}{2}mv^2",
           where: [
@@ -64,17 +64,17 @@ export const BOXES: Subconcept[] = [
         question: "A 1400 W heater runs for 60 s in 1.0 kg of water (c = 4200 J/(kg C)). Find the temperature rise.",
         options: ["40 C", "10 C", "20 C", "84 C"],
         correct: 2,
-        ask: "First find the energy: power times time, so 1400 times 60. Then divide that energy by mass times c, which is 1.0 times 4200.",
+        ask: "First find the energy: power times time, so 1400 × 60. Then divide that energy by mass times c, which is 1.0 × 4200.",
         hints: [
-          "Energy supplied is 1400 times 60, which is 84000 joules.",
-          "Temperature change is 84000 divided by 1.0 times 4200, and 84000 divided by 4200 is 20.",
+          "Energy supplied is 1400 × 60, which is 84000 joules.",
+          "Temperature change is 84000 ÷ 1.0 × 4200, and 84000 ÷ 4200 is 20.",
         ],
         working: [
           { label: "Formula", latex: "\\Delta\\theta = \\dfrac{Pt}{mc}" },
           { label: "Substitute", latex: "\\Delta\\theta = \\dfrac{1400 \\times 60}{1.0 \\times 4200}" },
           { label: "Answer", latex: "\\Delta\\theta = 20\\ \\text{C}" },
         ],
-        explain: "The rise is 20 degrees, because the heater supplies 84000 joules and 84000 divided by 1.0 times 4200 is 20.",
+        explain: "The rise is 20 degrees, because the heater supplies 84000 joules and 84000 ÷ 1.0 × 4200 is 20.",
       },
       {
         kind: "choice",
@@ -84,14 +84,14 @@ export const BOXES: Subconcept[] = [
         ask: "Set the lost potential energy m g h equal to m c theta_change. The mass cancels, so the rise is g times h divided by c.",
         hints: [
           "Because m appears on both sides, theta_change is g h over c.",
-          "That is 10 times 210 divided by 4200, and 2100 divided by 4200 is 0.5.",
+          "That is 10 × 210 ÷ 4200, and 2100 ÷ 4200 is 0.5.",
         ],
         working: [
           { label: "Formula", latex: "\\Delta\\theta = \\dfrac{gh}{c}" },
           { label: "Substitute", latex: "\\Delta\\theta = \\dfrac{10 \\times 210}{4200}" },
           { label: "Answer", latex: "\\Delta\\theta = 0.5\\ \\text{C}" },
         ],
-        explain: "The rise is 0.5 degrees, because the mass cancels and 10 times 210 divided by 4200 is 0.5.",
+        explain: "The rise is 0.5 degrees, because the mass cancels and 10 × 210 ÷ 4200 is 0.5.",
       },
       {
         kind: "slider",
@@ -103,17 +103,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 0.35,
         targetMax: 0.45,
-        ask: "Set the lost kinetic energy one half m v squared equal to m c theta_change. The mass cancels, so the rise is one half v squared divided by c.",
+        ask: "Set the lost kinetic energy one half m v^2 equal to m c theta_change. The mass cancels, so the rise is one half v^2 divided by c.",
         hints: [
-          "v squared is 20 times 20, which is 400, and half of that is 200.",
-          "Then 200 divided by 500 is 0.4, so slide to 0.4 degrees.",
+          "v^2 is 20 × 20, which is 400, and half of that is 200.",
+          "Then 200 ÷ 500 is 0.4, so slide to 0.4 degrees.",
         ],
         working: [
           { label: "Formula", latex: "\\Delta\\theta = \\dfrac{\\frac{1}{2}v^2}{c}" },
           { label: "Substitute", latex: "\\Delta\\theta = \\dfrac{0.5 \\times 400}{500}" },
           { label: "Answer", latex: "\\Delta\\theta = 0.4\\ \\text{C}" },
         ],
-        explain: "The rise is 0.4 degrees, because the mass cancels and 0.5 times 400 divided by 500 is 0.4.",
+        explain: "The rise is 0.4 degrees, because the mass cancels and 0.5 × 400 ÷ 500 is 0.4.",
       },
       {
         kind: "choice",
@@ -123,7 +123,7 @@ export const BOXES: Subconcept[] = [
         ask: "The masses are equal and it is the same water, so the energy the hot side gives out equals the energy the cold side takes in with the same m and c. That means the final temperature is the average of the 2 starting temperatures.",
         hints: [
           "Equal masses of the same material settle at the average temperature.",
-          "The average of 80 and 20 is 100 divided by 2, which is 50.",
+          "The average of 80 and 20 is 100 ÷ 2, which is 50.",
         ],
         working: [
           { label: "Formula", latex: "mc(\\theta_{hot} - \\theta_f) = mc(\\theta_f - \\theta_{cold})" },

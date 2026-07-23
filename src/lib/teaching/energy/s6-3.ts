@@ -64,15 +64,15 @@ export const BOXES: Subconcept[] = [
         correct: 0,
         ask: "Kinetic energy is half the mass times the speed squared, so square the 2.0 first, then multiply by 0.80 and by a half.",
         hints: [
-          "Use E_k equals a half times m times v squared.",
-          "2.0 squared is 4.0, and a half times 0.80 times 4.0 is 1.6.",
+          "Use E_k equals a half times m times v^2.",
+          "2.0^2 is 4.0, and a half times 0.80 × 4.0 is 1.6.",
         ],
         working: [
           { label: "Formula", latex: "E_k = \\tfrac{1}{2} m v^2" },
           { label: "Substitute", latex: "E_k = \\tfrac{1}{2} \\times 0.80 \\times 2.0^2" },
           { label: "Answer", latex: "E_k = 1.6\\ \\text{J}" },
         ],
-        explain: "The kinetic energy is 1.6 joules, because 2.0 squared is 4.0, and a half times 0.80 kilograms times 4.0 is 1.6 joules.",
+        explain: "The kinetic energy is 1.6 joules, because 2.0^2 is 4.0, and a half times 0.80 kilograms times 4.0 is 1.6 joules.",
       },
       {
         kind: "slider",
@@ -84,10 +84,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 47.5,
         targetMax: 48.5,
-        ask: "The gravitational potential energy is mass times g times height, so work out 0.40 times 10 times 12.",
+        ask: "The gravitational potential energy is mass times g times height, so work out 0.40 × 10 × 12.",
         hints: [
           "Use E_p equals m times g times h.",
-          "0.40 times 10 is 4.0, and 4.0 times 12 is 48, so slide to 48 joules.",
+          "0.40 × 10 is 4.0, and 4.0 × 12 is 48, so slide to 48 joules.",
         ],
         working: [
           { label: "Formula", latex: "E_p = mgh" },
@@ -101,10 +101,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A crate of weight 30 N is raised through a vertical height of 3 m. Build the working line that gives its gravitational potential energy E_p.",
         tiles: ["E_p =", "30", "\\times", "3", "5", "=", "90", "J", "N"],
         answer: ["E_p =", "30", "\\times", "3", "=", "90", "J"],
-        ask: "When the weight is given, the gravitational potential energy is weight times height, so set up 30 times 3.",
+        ask: "When the weight is given, the gravitational potential energy is weight times height, so set up 30 × 3.",
         hints: [
           "Use E_p equals W times h, because weight already includes the mass and g.",
-          "30 times 3 is 90, and energy is measured in joules.",
+          "30 × 3 is 90, and energy is measured in joules.",
         ],
         working: [
           { label: "Formula", latex: "E_p = Wh" },

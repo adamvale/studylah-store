@@ -60,10 +60,10 @@ export const BOXES: Subconcept[] = [
         question: "A cyclist covers a total of 5280 m in a total time of 600 s. What is her average speed?",
         options: ["0.11 m/s", "8.8 m/s", "880 m/s", "48 m/s"],
         correct: 1,
-        ask: "Average speed is total distance divided by total time. 5280 divided by 600. Which option is that?",
+        ask: "Average speed is total distance divided by total time. 5280 ÷ 600. Which option is that?",
         hints: [
           "Average speed is total distance over total time.",
-          "5280 divided by 600 is 8.8.",
+          "5280 ÷ 600 is 8.8.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{d}{t}" },
@@ -195,7 +195,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "A car drives 300 m due north, then 300 m due south, returning to its starting point, in a total time of 40 s. Find its average speed and its average velocity.",
-        modelAnswer: "The total distance is 300 plus 300, which is 600 metres. The average speed is 600 divided by 40 seconds, which is 15 metres per second. The car ends where it started, so its displacement is 0. The average velocity is therefore 0 divided by 40, which is 0 metres per second.",
+        modelAnswer: "The total distance is 300 + 300, which is 600 metres. The average speed is 600 ÷ 40 seconds, which is 15 metres per second. The car ends where it started, so its displacement is 0. The average velocity is therefore 0 ÷ 40, which is 0 metres per second.",
         marks: [
           "Total distance = 300 + 300 = 600 m; average speed = 600 / 40 = 15 m/s.",
           "Displacement = 0 m, because the car returns to its start.",

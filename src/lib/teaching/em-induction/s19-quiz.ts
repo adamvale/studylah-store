@@ -277,17 +277,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-21-07-transformer",
         options: ["24 V", "12 V", "48 V", "6 V"],
         correct: 1,
-        ask: "Use V_s over V_p equals N_s over N_p, so V_s is 240 times 60 divided by 1200. Which option is that?",
+        ask: "Use V_s over V_p equals N_s over N_p, so V_s is 240 × 60 ÷ 1200. Which option is that?",
         hints: [
           "Rearrange to V_s equals V_p times N_s divided by N_p.",
-          "240 times 60 is 14400, divided by 1200 gives 12 volts.",
+          "240 × 60 is 14400, ÷ 1200 gives 12 volts.",
         ],
         working: [
           { label: "Formula", latex: "V_s = V_p \\times \\dfrac{N_s}{N_p}" },
           { label: "Substitute", latex: "V_s = 240 \\times \\dfrac{60}{1200}" },
           { label: "Answer", latex: "V_s = 12\\ \\text{V}" },
         ],
-        explain: "The secondary voltage is 12 volts, because 240 volts times 60 divided by 1200 is 12 volts. Fewer secondary turns make this a step-down transformer.",
+        explain: "The secondary voltage is 12 volts, because 240 volts times 60 ÷ 1200 is 12 volts. Fewer secondary turns make this a step-down transformer.",
       },
       // 17. interactive: spoterror (transformer)
       {
@@ -318,17 +318,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 59,
         targetMax: 61,
-        ask: "Use V_s over V_p equals N_s over N_p, so V_s is 240 times 200 divided by 800.",
+        ask: "Use V_s over V_p equals N_s over N_p, so V_s is 240 × 200 ÷ 800.",
         hints: [
           "Rearrange to V_s equals V_p times N_s divided by N_p.",
-          "240 times 200 is 48000, divided by 800 gives 60 volts.",
+          "240 × 200 is 48000, ÷ 800 gives 60 volts.",
         ],
         working: [
           { label: "Formula", latex: "V_s = V_p \\times \\dfrac{N_s}{N_p}" },
           { label: "Substitute", latex: "V_s = 240 \\times \\dfrac{200}{800}" },
           { label: "Answer", latex: "V_s = 60\\ \\text{V}" },
         ],
-        explain: "The secondary voltage is 60 volts, because 240 volts times 200 divided by 800 is 60 volts. It is a step-down transformer because it has fewer secondary turns.",
+        explain: "The secondary voltage is 60 volts, because 240 volts times 200 ÷ 800 is 60 volts. It is a step-down transformer because it has fewer secondary turns.",
       },
       // 19. interactive: tiles (transformer CALC) -> I_s = 6.0 A
       {
@@ -336,17 +336,17 @@ export const BOXES: Subconcept[] = [
         prompt: "An ideal step-down transformer runs at V_p = 230 V with a primary current I_p = 1.2 A and gives V_s = 46 V. Build the working line for the secondary current I_s.",
         tiles: ["I_s =", "230", "\\times", "1.2", "\\div", "46", "=", "6.0", "A", "V"],
         answer: ["I_s =", "230", "\\times", "1.2", "\\div", "46", "=", "6.0", "A"],
-        ask: "For an ideal transformer V_p times I_p equals V_s times I_s, so I_s is 230 times 1.2 divided by 46.",
+        ask: "For an ideal transformer V_p times I_p equals V_s times I_s, so I_s is 230 × 1.2 ÷ 46.",
         hints: [
           "Rearrange to I_s equals V_p times I_p divided by V_s.",
-          "230 times 1.2 is 276, divided by 46 gives 6.0 amperes.",
+          "230 × 1.2 is 276, ÷ 46 gives 6.0 amperes.",
         ],
         working: [
           { label: "Formula", latex: "V_p I_p = V_s I_s" },
           { label: "Substitute", latex: "I_s = \\dfrac{230 \\times 1.2}{46}" },
           { label: "Answer", latex: "I_s = 6.0\\ \\text{A}" },
         ],
-        explain: "The secondary current is 6.0 amperes, because 230 times 1.2 is 276, and 276 divided by 46 is 6.0 amperes. A step-down transformer gives a larger current at a lower voltage.",
+        explain: "The secondary current is 6.0 amperes, because 230 × 1.2 is 276, and 276 ÷ 46 is 6.0 amperes. A step-down transformer gives a larger current at a lower voltage.",
       },
       // 20. interactive: slider (transformer CALC) -> V_s = 2400 V
       {
@@ -359,17 +359,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 2390,
         targetMax: 2410,
-        ask: "For an ideal transformer V_p times I_p equals V_s times I_s, so V_s is 120 times 0.30 divided by 0.015.",
+        ask: "For an ideal transformer V_p times I_p equals V_s times I_s, so V_s is 120 × 0.30 ÷ 0.015.",
         hints: [
           "Rearrange to V_s equals V_p times I_p divided by I_s.",
-          "120 times 0.30 is 36, divided by 0.015 gives 2400 volts.",
+          "120 × 0.30 is 36, ÷ 0.015 gives 2400 volts.",
         ],
         working: [
           { label: "Formula", latex: "V_p I_p = V_s I_s" },
           { label: "Substitute", latex: "V_s = \\dfrac{120 \\times 0.30}{0.015}" },
           { label: "Answer", latex: "V_s = 2400\\ \\text{V}" },
         ],
-        explain: "The secondary voltage is 2400 volts, because 120 times 0.30 is 36, and 36 divided by 0.015 is 2400 volts. The small secondary current goes with a large step-up in voltage.",
+        explain: "The secondary voltage is 2400 volts, because 120 × 0.30 is 36, and 36 ÷ 0.015 is 2400 volts. The small secondary current goes with a large step-up in voltage.",
       },
       // 21. open (transformer)
       {
@@ -395,12 +395,12 @@ export const BOXES: Subconcept[] = [
           "A higher voltage increases the current and so the power delivered",
         ],
         correct: 0,
-        ask: "For a fixed power, P equals I times V, so a higher voltage gives a smaller current. Then think about the I squared R loss.",
+        ask: "For a fixed power, P equals I times V, so a higher voltage gives a smaller current. Then think about the I^2 R loss.",
         hints: [
-          "The heat lost in the cables is I squared times R, which grows sharply with current.",
-          "Raising the voltage lowers the current, and a smaller current cuts the I squared R loss a lot.",
+          "The heat lost in the cables is I^2 times R, which grows sharply with current.",
+          "Raising the voltage lowers the current, and a smaller current cuts the I^2 R loss a lot.",
         ],
-        explain: "At high voltage the current needed for a given power is small, and since the heat lost in the cables is I squared times R, a smaller current means far less energy wasted as heat.",
+        explain: "At high voltage the current needed for a given power is small, and since the heat lost in the cables is I^2 times R, a smaller current means far less energy wasted as heat.",
       },
       // 23. choice (power transmission, CALC) correct 2 -> P_loss = 200 W at 400 V
       {
@@ -409,17 +409,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-21-08-power-transmission",
         options: ["20 W", "40 W", "200 W", "800 W"],
         correct: 2,
-        ask: "First find the current from I equals P over V, then use P_loss equals I squared times R with R equal to 0.5 ohms.",
+        ask: "First find the current from I equals P over V, then use P_loss equals I^2 times R with R equal to 0.5 ohms.",
         hints: [
-          "I equals 8000 divided by 400, which is 20 amperes.",
-          "P_loss equals 20 squared times 0.5, which is 400 times 0.5, giving 200 watts.",
+          "I equals 8000 ÷ 400, which is 20 amperes.",
+          "P_loss equals 20 squared times 0.5, which is 400 × 0.5, giving 200 watts.",
         ],
         working: [
           { label: "Formula", latex: "P_{loss} = I^2 R, \\quad I = \\dfrac{P}{V}" },
           { label: "Substitute", latex: "I = \\dfrac{8000}{400} = 20\\ \\text{A}, \\quad P_{loss} = 20^2 \\times 0.5" },
           { label: "Answer", latex: "P_{loss} = 200\\ \\text{W}" },
         ],
-        explain: "The current is 8000 divided by 400, which is 20 amperes, so the loss is 20 squared times 0.5, which is 200 watts. At a higher voltage the current and the loss would be far smaller.",
+        explain: "The current is 8000 ÷ 400, which is 20 amperes, so the loss is 20 squared times 0.5, which is 200 watts. At a higher voltage the current and the loss would be far smaller.",
       },
       // 24. interactive: tiles (power transmission CALC) -> P_loss = 2 W at 4000 V
       {
@@ -427,17 +427,17 @@ export const BOXES: Subconcept[] = [
         prompt: "The same 8 kW is now sent along the 0.5 ohm cable at 4000 V, giving a current of 2 A. Build the working line for the power lost in the cable.",
         tiles: ["P =", "2^2", "\\times", "0.5", "=", "2", "W", "A"],
         answer: ["P =", "2^2", "\\times", "0.5", "=", "2", "W"],
-        ask: "Use P_loss equals I squared times R, with the current equal to 2 amperes and R equal to 0.5 ohms.",
+        ask: "Use P_loss equals I^2 times R, with the current equal to 2 amperes and R equal to 0.5 ohms.",
         hints: [
-          "Square the current first: 2 squared is 4.",
-          "4 times 0.5 is 2, so the loss is 2 watts, far less than at the lower voltage.",
+          "Square the current first: 2^2 is 4.",
+          "4 × 0.5 is 2, so the loss is 2 watts, far less than at the lower voltage.",
         ],
         working: [
           { label: "Formula", latex: "P_{loss} = I^2 R" },
           { label: "Substitute", latex: "P_{loss} = 2^2 \\times 0.5" },
           { label: "Answer", latex: "P_{loss} = 2\\ \\text{W}" },
         ],
-        explain: "The power lost is 2 watts, because 2 squared is 4 and 4 times 0.5 is 2 watts. Raising the voltage from 400 to 4000 volts cuts the loss from 200 watts to just 2 watts.",
+        explain: "The power lost is 2 watts, because 2^2 is 4 and 4 × 0.5 is 2 watts. Raising the voltage from 400 to 4000 volts cuts the loss from 200 watts to just 2 watts.",
       },
       // 25. open (power transmission)
       {
@@ -450,7 +450,7 @@ export const BOXES: Subconcept[] = [
           "For fixed power a high voltage means a small current (P = I V), so less is wasted.",
           "Step-up transformer raises voltage for the cables; step-down transformer lowers it for homes.",
         ],
-        ask: "Link the I squared R loss to the current, then say how the 2 transformers set the voltage high for the cables and low for homes.",
+        ask: "Link the I^2 R loss to the current, then say how the 2 transformers set the voltage high for the cables and low for homes.",
       },
     ],
   },

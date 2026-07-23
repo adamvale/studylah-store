@@ -431,9 +431,9 @@ export const KINEMATICS_QUESTIONS: TeachQuestion[] = [
       "List what you have: initial velocity, acceleration, and displacement.",
       "You want the final velocity, and you do not know the time.",
       "So choose the equation that has those four quantities and leaves out time.",
-      "That is v squared equals u squared plus two a d."
+      "That is v^2 equals u^2 plus two a d."
     ],
-    explain: "Pick the equation that matches your known and unknown quantities and skips the one you do not have. Here time is missing, so you want the equation without time in it, which is v squared equals u squared plus two a d. The other three all contain time, so they would need a value you were never given."
+    explain: "Pick the equation that matches your known and unknown quantities and skips the one you do not have. Here time is missing, so you want the equation without time in it, which is v^2 equals u^2 plus two a d. The other three all contain time, so they would need a value you were never given."
   },
   {
     id: "km-q-23",

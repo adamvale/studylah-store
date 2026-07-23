@@ -61,19 +61,19 @@ export const BOXES: Subconcept[] = [
         ask: "Think about the wave type set by the field directions, whether these waves need matter, and what is identical for all of them in empty space.",
         hints: [
           "The fields vibrate at right angles to the travel direction, so the wave type is transverse.",
-          "Electromagnetic waves cross a vacuum, and in it they all share the same speed, 3.0 times 10 to the power 8 metres per second.",
+          "Electromagnetic waves cross a vacuum, and in it they all share the same speed, 3.0 × 10 to the power 8 metres per second.",
         ],
-        explain: "Every electromagnetic wave is a transverse wave that can travel through a vacuum, and in empty space they all travel at the same speed, 3.0 times 10 to the power 8 metres per second.",
+        explain: "Every electromagnetic wave is a transverse wave that can travel through a vacuum, and in empty space they all travel at the same speed, 3.0 × 10 to the power 8 metres per second.",
       },
       {
         kind: "open",
         prompt: "Describe what an electromagnetic wave is and explain why it is called a transverse wave.",
-        modelAnswer: "An electromagnetic wave is produced when an electric charge vibrates or accelerates. A changing electric field creates a changing magnetic field, and the 2 fields oscillate at right angles to each other and to the direction of travel. Because the vibrations are at right angles to the direction of travel, it is a transverse wave. Electromagnetic waves transfer energy and need no medium, so they can cross a vacuum at 3.0 times 10 to the power 8 metres per second.",
+        modelAnswer: "An electromagnetic wave is produced when an electric charge vibrates or accelerates. A changing electric field creates a changing magnetic field, and the 2 fields oscillate at right angles to each other and to the direction of travel. Because the vibrations are at right angles to the direction of travel, it is a transverse wave. Electromagnetic waves transfer energy and need no medium, so they can cross a vacuum at 3.0 × 10 to the power 8 metres per second.",
         marks: [
           "An electromagnetic wave is made by a vibrating or accelerating charge, with linked electric and magnetic fields.",
           "The fields oscillate at right angles to each other and to the direction of travel.",
           "It is transverse because the vibrations are at right angles to the direction of travel.",
-          "It transfers energy and needs no medium, travelling at 3.0 times 10 to the power 8 metres per second in a vacuum.",
+          "It transfers energy and needs no medium, travelling at 3.0 × 10 to the power 8 metres per second in a vacuum.",
         ],
         ask: "Describe the 2 fields and the directions they vibrate in, then link that to the meaning of the word transverse.",
       },
@@ -159,17 +159,17 @@ export const BOXES: Subconcept[] = [
           "6.0 x 10^{7} Hz",
         ],
         correct: 1,
-        ask: "Frequency is the speed divided by the wavelength, so work out 3.0 times 10 to the power 8 divided by 5.0 times 10 to the power negative 7.",
+        ask: "Frequency is the speed divided by the wavelength, so work out 3.0 × 10 to the power 8 ÷ 5.0 × 10 to the power negative 7.",
         hints: [
           "Rearrange v equals f lambda into f equals v divided by lambda.",
-          "3.0 divided by 5.0 is 0.6, and 10 to the power 8 divided by 10 to the power negative 7 is 10 to the power 15, giving 6.0 times 10 to the power 14 hertz.",
+          "3.0 ÷ 5.0 is 0.6, and 10 to the power 8 ÷ 10 to the power negative 7 is 10 to the power 15, giving 6.0 × 10 to the power 14 hertz.",
         ],
         working: [
           { label: "Formula", latex: "f = \\dfrac{v}{\\lambda}" },
           { label: "Substitute", latex: "f = \\dfrac{3.0 \\times 10^{8}}{5.0 \\times 10^{-7}}" },
           { label: "Answer", latex: "f = 6.0 \\times 10^{14}\\ \\text{Hz}" },
         ],
-        explain: "The frequency is 6.0 times 10 to the power 14 hertz, because 3.0 times 10 to the power 8 divided by 5.0 times 10 to the power negative 7 is 6.0 times 10 to the power 14.",
+        explain: "The frequency is 6.0 × 10 to the power 14 hertz, because 3.0 × 10 to the power 8 ÷ 5.0 × 10 to the power negative 7 is 6.0 × 10 to the power 14.",
       },
       {
         kind: "choice",
@@ -181,17 +181,17 @@ export const BOXES: Subconcept[] = [
           "4.5 x 10^{26} m",
         ],
         correct: 2,
-        ask: "Wavelength is the speed divided by the frequency, so work out 3.0 times 10 to the power 8 divided by 1.5 times 10 to the power 18.",
+        ask: "Wavelength is the speed divided by the frequency, so work out 3.0 × 10 to the power 8 ÷ 1.5 × 10 to the power 18.",
         hints: [
           "Rearrange v equals f lambda into lambda equals v divided by f.",
-          "3.0 divided by 1.5 is 2.0, and 10 to the power 8 divided by 10 to the power 18 is 10 to the power negative 10, giving 2.0 times 10 to the power negative 10 metres.",
+          "3.0 ÷ 1.5 is 2.0, and 10 to the power 8 ÷ 10 to the power 18 is 10 to the power negative 10, giving 2.0 × 10 to the power negative 10 metres.",
         ],
         working: [
           { label: "Formula", latex: "\\lambda = \\dfrac{v}{f}" },
           { label: "Substitute", latex: "\\lambda = \\dfrac{3.0 \\times 10^{8}}{1.5 \\times 10^{18}}" },
           { label: "Answer", latex: "\\lambda = 2.0 \\times 10^{-10}\\ \\text{m}" },
         ],
-        explain: "The wavelength is 2.0 times 10 to the power negative 10 metres, because 3.0 times 10 to the power 8 divided by 1.5 times 10 to the power 18 is 2.0 times 10 to the power negative 10.",
+        explain: "The wavelength is 2.0 × 10 to the power negative 10 metres, because 3.0 × 10 to the power 8 ÷ 1.5 × 10 to the power 18 is 2.0 × 10 to the power negative 10.",
       },
       {
         kind: "tiles",
@@ -212,17 +212,17 @@ export const BOXES: Subconcept[] = [
           "5.0 \\times 10^{14}",
           "Hz",
         ],
-        ask: "Frequency is the speed over the wavelength, so divide 3.0 times 10 to the power 8 by 6.0 times 10 to the power negative 7, and remember the unit is hertz.",
+        ask: "Frequency is the speed over the wavelength, so divide 3.0 × 10 to the power 8 by 6.0 × 10 to the power negative 7, and remember the unit is hertz.",
         hints: [
           "Use f equals v divided by lambda.",
-          "3.0 divided by 6.0 is 0.5, and 10 to the power 8 divided by 10 to the power negative 7 is 10 to the power 15, giving 5.0 times 10 to the power 14 hertz.",
+          "3.0 ÷ 6.0 is 0.5, and 10 to the power 8 ÷ 10 to the power negative 7 is 10 to the power 15, giving 5.0 × 10 to the power 14 hertz.",
         ],
         working: [
           { label: "Formula", latex: "f = \\dfrac{v}{\\lambda}" },
           { label: "Substitute", latex: "f = \\dfrac{3.0 \\times 10^{8}}{6.0 \\times 10^{-7}}" },
           { label: "Answer", latex: "f = 5.0 \\times 10^{14}\\ \\text{Hz}" },
         ],
-        explain: "The frequency is 5.0 times 10 to the power 14 hertz, because 3.0 times 10 to the power 8 divided by 6.0 times 10 to the power negative 7 is 5.0 times 10 to the power 14.",
+        explain: "The frequency is 5.0 × 10 to the power 14 hertz, because 3.0 × 10 to the power 8 ÷ 6.0 × 10 to the power negative 7 is 5.0 × 10 to the power 14.",
       },
       {
         kind: "tiles",
@@ -243,17 +243,17 @@ export const BOXES: Subconcept[] = [
           "5.0 \\times 10^{2}",
           "m",
         ],
-        ask: "Wavelength is the speed over the frequency, so divide 3.0 times 10 to the power 8 by 6.0 times 10 to the power 5, and remember the unit is metres.",
+        ask: "Wavelength is the speed over the frequency, so divide 3.0 × 10 to the power 8 by 6.0 × 10 to the power 5, and remember the unit is metres.",
         hints: [
           "Use lambda equals v divided by f.",
-          "3.0 divided by 6.0 is 0.5, and 10 to the power 8 divided by 10 to the power 5 is 10 to the power 3, giving 5.0 times 10 to the power 2 metres, which is 500 metres.",
+          "3.0 ÷ 6.0 is 0.5, and 10 to the power 8 ÷ 10 to the power 5 is 10 to the power 3, giving 5.0 × 10 to the power 2 metres, which is 500 metres.",
         ],
         working: [
           { label: "Formula", latex: "\\lambda = \\dfrac{v}{f}" },
           { label: "Substitute", latex: "\\lambda = \\dfrac{3.0 \\times 10^{8}}{6.0 \\times 10^{5}}" },
           { label: "Answer", latex: "\\lambda = 5.0 \\times 10^{2}\\ \\text{m}" },
         ],
-        explain: "The wavelength is 5.0 times 10 to the power 2 metres, which is 500 metres, because 3.0 times 10 to the power 8 divided by 6.0 times 10 to the power 5 is 5.0 times 10 to the power 2.",
+        explain: "The wavelength is 5.0 × 10 to the power 2 metres, which is 500 metres, because 3.0 × 10 to the power 8 ÷ 6.0 × 10 to the power 5 is 5.0 × 10 to the power 2.",
       },
       {
         kind: "spoterror",
@@ -264,9 +264,9 @@ export const BOXES: Subconcept[] = [
           "\\lambda = 33\\ \\text{m}",
         ],
         errorLine: 2,
-        ask: "Check the last step. Work out 3.0 times 10 to the power 8 divided by 9.0 times 10 to the power 7 for yourself and compare it with the value written.",
+        ask: "Check the last step. Work out 3.0 × 10 to the power 8 ÷ 9.0 × 10 to the power 7 for yourself and compare it with the value written.",
         hints: [
-          "3.0 divided by 9.0 is 0.33, and 10 to the power 8 divided by 10 to the power 7 is 10, so the answer is about 3.3.",
+          "3.0 ÷ 9.0 is 0.33, and 10 to the power 8 ÷ 10 to the power 7 is 10, so the answer is about 3.3.",
           "The final line should read 3.3 metres, not 33 metres.",
         ],
         working: [
@@ -274,7 +274,7 @@ export const BOXES: Subconcept[] = [
           { label: "Substitute", latex: "\\lambda = \\dfrac{3.0 \\times 10^{8}}{9.0 \\times 10^{7}}" },
           { label: "Answer", latex: "\\lambda = 3.3\\ \\text{m}" },
         ],
-        explain: "The mistake is on the last line. 3.0 times 10 to the power 8 divided by 9.0 times 10 to the power 7 is about 3.3, so the wavelength is 3.3 metres, not 33 metres.",
+        explain: "The mistake is on the last line. 3.0 × 10 to the power 8 ÷ 9.0 × 10 to the power 7 is about 3.3, so the wavelength is 3.3 metres, not 33 metres.",
       },
       {
         kind: "graphpick",
@@ -422,7 +422,7 @@ export const BOXES: Subconcept[] = [
         correct: 2,
         ask: "All electromagnetic waves travel at the same speed, so speed is not the reason. Think about how much energy each carries and whether it can ionise atoms.",
         hints: [
-          "Both waves travel at 3.0 times 10 to the power 8 metres per second, so speed is not the difference.",
+          "Both waves travel at 3.0 × 10 to the power 8 metres per second, so speed is not the difference.",
           "Gamma rays have a far higher frequency and energy, which makes them ionising and able to damage cells.",
         ],
         explain: "Gamma rays are more dangerous because they have a much higher frequency and energy and are ionising, so they can knock electrons from atoms and damage or kill living cells. Radio waves are low-energy and non-ionising, and both types travel at the same speed.",

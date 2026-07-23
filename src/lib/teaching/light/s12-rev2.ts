@@ -35,17 +35,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-14-12-critical-angle",
         options: ["24 degrees", "49 degrees", "42 degrees", "41 degrees"],
         correct: 3,
-        ask: "Work out 1 divided by 1.52, then take the inverse sine to get the angle. Which option matches?",
+        ask: "Work out 1 ÷ 1.52, then take the inverse sine to get the angle. Which option matches?",
         hints: [
           "Use sin c equals 1 divided by n, with n equal to 1.52.",
-          "1 divided by 1.52 is about 0.66, and the angle whose sine is 0.66 is 41 degrees.",
+          "1 ÷ 1.52 is about 0.66, and the angle whose sine is 0.66 is 41 degrees.",
         ],
         working: [
           { label: "Formula", latex: "\\sin c = \\dfrac{1}{n}" },
           { label: "Substitute", latex: "\\sin c = \\dfrac{1}{1.52}" },
           { label: "Answer", latex: "c = 41^\\circ" },
         ],
-        explain: "The critical angle is 41 degrees, because 1 divided by 1.52 is about 0.66, and the inverse sine of 0.66 is 41 degrees. The other values belong to diamond, water and perspex.",
+        explain: "The critical angle is 41 degrees, because 1 ÷ 1.52 is about 0.66, and the inverse sine of 0.66 is 41 degrees. The other values belong to diamond, water and perspex.",
       },
       {
         kind: "choice",
@@ -109,14 +109,14 @@ export const BOXES: Subconcept[] = [
         ask: "Start from sin c equals 1 over n, put in 2.42, then take the inverse sine. Lay the tiles in that order.",
         hints: [
           "Use sin c equals 1 divided by n, with n equal to 2.42.",
-          "1 divided by 2.42 is 0.413, and the inverse sine of 0.413 is 24 degrees.",
+          "1 ÷ 2.42 is 0.413, and the inverse sine of 0.413 is 24 degrees.",
         ],
         working: [
           { label: "Formula", latex: "\\sin c = \\dfrac{1}{n}" },
           { label: "Substitute", latex: "\\sin c = \\dfrac{1}{2.42}" },
           { label: "Answer", latex: "c = 24^\\circ" },
         ],
-        explain: "The critical angle of diamond is 24 degrees, because 1 divided by 2.42 is 0.413, and the inverse sine of 0.413 is 24 degrees. This small critical angle is why diamonds sparkle so much.",
+        explain: "The critical angle of diamond is 24 degrees, because 1 ÷ 2.42 is 0.413, and the inverse sine of 0.413 is 24 degrees. This small critical angle is why diamonds sparkle so much.",
       },
       {
         kind: "slider",
@@ -128,17 +128,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 41,
         targetMax: 43,
-        ask: "Work out 1 divided by 1.49, then take the inverse sine, and slide to that angle.",
+        ask: "Work out 1 ÷ 1.49, then take the inverse sine, and slide to that angle.",
         hints: [
           "Use sin c equals 1 divided by n, with n equal to 1.49.",
-          "1 divided by 1.49 is about 0.67, and the inverse sine of 0.67 is 42 degrees.",
+          "1 ÷ 1.49 is about 0.67, and the inverse sine of 0.67 is 42 degrees.",
         ],
         working: [
           { label: "Formula", latex: "\\sin c = \\dfrac{1}{n}" },
           { label: "Substitute", latex: "\\sin c = \\dfrac{1}{1.49}" },
           { label: "Answer", latex: "c = 42^\\circ" },
         ],
-        explain: "The critical angle of perspex is 42 degrees, because 1 divided by 1.49 is about 0.67, and the inverse sine of 0.67 is 42 degrees.",
+        explain: "The critical angle of perspex is 42 degrees, because 1 ÷ 1.49 is about 0.67, and the inverse sine of 0.67 is 42 degrees.",
       },
       {
         kind: "classify",

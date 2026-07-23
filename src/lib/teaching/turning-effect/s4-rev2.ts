@@ -88,10 +88,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-05-23-lamina-loaded",
         options: ["0.75 N m", "0.30 N m", "5.15 N m", "33 N m"],
         correct: 0,
-        ask: "Moment is force times distance, so work out 5 times 0.15. Which option is that?",
+        ask: "Moment is force times distance, so work out 5 × 0.15. Which option is that?",
         hints: [
           "Use moment equals force times perpendicular distance.",
-          "5 times 0.15 is 0.75, and the moment is measured in newton metres.",
+          "5 × 0.15 is 0.75, and the moment is measured in newton metres.",
         ],
         working: [
           { label: "Formula", latex: "M = F \\times d" },

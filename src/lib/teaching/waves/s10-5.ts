@@ -58,10 +58,10 @@ export const BOXES: Subconcept[] = [
         question: "A wave has a frequency of 8 Hz and a wavelength of 0.15 m. What is its speed?",
         options: ["53 m/s", "0.019 m/s", "1.2 m/s", "0.15 m/s"],
         correct: 2,
-        ask: "The wave speed is frequency times wavelength, so work out 8 times 0.15.",
+        ask: "The wave speed is frequency times wavelength, so work out 8 × 0.15.",
         hints: [
           "Use v equals f times lambda.",
-          "8 times 0.15 is 1.2, a speed in metres per second.",
+          "8 × 0.15 is 1.2, a speed in metres per second.",
         ],
         working: [
           { label: "Formula", latex: "v = f\\lambda" },
@@ -80,10 +80,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 158,
         targetMax: 162,
-        ask: "The speed is frequency times wavelength, so work out 200 times 0.80.",
+        ask: "The speed is frequency times wavelength, so work out 200 × 0.80.",
         hints: [
           "Use v equals f times lambda.",
-          "200 times 0.80 is 160, so slide to 160 metres per second.",
+          "200 × 0.80 is 160, so slide to 160 metres per second.",
         ],
         working: [
           { label: "Formula", latex: "v = f\\lambda" },
@@ -97,10 +97,10 @@ export const BOXES: Subconcept[] = [
         question: "A wavefront travels 18 m along a rope in 12 s. What is the wave speed?",
         options: ["216 m/s", "1.5 m/s", "0.67 m/s", "6 m/s"],
         correct: 1,
-        ask: "The speed is the distance divided by the time, so work out 18 divided by 12.",
+        ask: "The speed is the distance divided by the time, so work out 18 ÷ 12.",
         hints: [
           "Use v equals d divided by t.",
-          "18 divided by 12 is 1.5, a speed in metres per second.",
+          "18 ÷ 12 is 1.5, a speed in metres per second.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{d}{t}" },
@@ -114,10 +114,10 @@ export const BOXES: Subconcept[] = [
         question: "A wave travels at 1.5 m/s and has a wavelength of 3.0 m. What is its frequency?",
         options: ["4.5 Hz", "2 Hz", "3 Hz", "0.5 Hz"],
         correct: 3,
-        ask: "Rearrange v equals f times lambda to get frequency, so work out 1.5 divided by 3.0.",
+        ask: "Rearrange v equals f times lambda to get frequency, so work out 1.5 ÷ 3.0.",
         hints: [
           "The frequency is the speed divided by the wavelength.",
-          "1.5 divided by 3.0 is 0.5, a frequency in hertz.",
+          "1.5 ÷ 3.0 is 0.5, a frequency in hertz.",
         ],
         working: [
           { label: "Formula", latex: "f = \\dfrac{v}{\\lambda}" },

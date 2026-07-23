@@ -34,7 +34,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "One shared speed",
-        body: "In a vacuum, every electromagnetic wave travels at the *same speed*, 3.0 times 10 to the power 8 metres per second. This is the *speed of light*. Different charges vibrating at different rates give waves of different *frequencies* and wavelengths, but never a different speed.",
+        body: "In a vacuum, every electromagnetic wave travels at the *same speed*, 3.0 × 10 to the power 8 metres per second. This is the *speed of light*. Different charges vibrating at different rates give waves of different *frequencies* and wavelengths, but never a different speed.",
         say: "Here is the fact that ties the whole family together. In a vacuum, radio waves, visible light and X-rays all travel at exactly the same speed, 3.0 times 10 to the power 8 metres per second, which we call the speed of light. What changes from one EM wave to another is how fast the charge vibrated, and that sets the frequency and the wavelength. The speed in a vacuum stays fixed for all of them.",
       },
       {
@@ -84,9 +84,9 @@ export const BOXES: Subconcept[] = [
         ask: "Recall the one speed that every member of the EM family shares in a vacuum.",
         hints: [
           "In a vacuum, all EM waves travel at the speed of light.",
-          "That speed is 3.0 times 10 to the power 8 metres per second, the same for every EM wave.",
+          "That speed is 3.0 × 10 to the power 8 metres per second, the same for every EM wave.",
         ],
-        explain: "In a vacuum, all electromagnetic waves travel at the same speed, 3.0 times 10 to the power 8 metres per second, the speed of light. Only their frequency and wavelength differ.",
+        explain: "In a vacuum, all electromagnetic waves travel at the same speed, 3.0 × 10 to the power 8 metres per second, the speed of light. Only their frequency and wavelength differ.",
       },
       {
         kind: "classify",
@@ -102,14 +102,14 @@ export const BOXES: Subconcept[] = [
         ],
         ask: "Sort the true facts about EM waves into the first bin. An EM wave is transverse, carries energy, needs no medium, and its 2 fields sit at right angles.",
         hints: [
-          "EM waves are transverse, transfer energy, are made by a vibrating charge, and cross a vacuum at 3.0 times 10 to the power 8 metres per second.",
+          "EM waves are transverse, transfer energy, are made by a vibrating charge, and cross a vacuum at 3.0 × 10 to the power 8 metres per second.",
           "The 2 false statements are the ones about needing a medium and about the fields being parallel.",
         ],
-        explain: "Every EM wave is transverse, transfers energy, is made by a vibrating charge, and crosses a vacuum at 3.0 times 10 to the power 8 metres per second. EM waves need no medium, and their electric and magnetic fields are at right angles, not parallel.",
+        explain: "Every EM wave is transverse, transfers energy, is made by a vibrating charge, and crosses a vacuum at 3.0 × 10 to the power 8 metres per second. EM waves need no medium, and their electric and magnetic fields are at right angles, not parallel.",
       },
       {
         kind: "insight",
-        body: "All EM waves share the *same nature*: made by a vibrating charge, *transverse*, carrying *energy* through a *vacuum* at 3.0 times 10 to the power 8 metres per second. Only their frequency and wavelength set them apart.",
+        body: "All EM waves share the *same nature*: made by a vibrating charge, *transverse*, carrying *energy* through a *vacuum* at 3.0 × 10 to the power 8 metres per second. Only their frequency and wavelength set them apart.",
         say: "Here is the idea to keep. Every electromagnetic wave, from radio to gamma, is built the same way. A vibrating charge makes a changing electric field and a changing magnetic field at right angles, giving a transverse wave that carries energy across a vacuum at 3.0 times 10 to the power 8 metres per second. The only thing that changes across the whole family is the frequency and the wavelength.",
       },
     ],

@@ -333,17 +333,17 @@ export const BOXES: Subconcept[] = [
         start: 30,
         targetMin: 30.25,
         targetMax: 30.35,
-        ask: "Add the 3 times and divide by 3. Work out 30.2 plus 30.5 plus 30.2, then divide by 3.",
+        ask: "Add the 3 times and divide by 3. Work out 30.2 + 30.5 + 30.2, then divide by 3.",
         hints: [
           "The 3 times add up to 90.9 seconds.",
-          "90.9 divided by 3 is 30.3, so slide to 30.3 seconds.",
+          "90.9 ÷ 3 is 30.3, so slide to 30.3 seconds.",
         ],
         working: [
           { label: "Formula", latex: "\\bar{t} = \\dfrac{t_1 + t_2 + t_3}{3}" },
           { label: "Substitute", latex: "\\bar{t} = \\dfrac{30.2 + 30.5 + 30.2}{3} = \\dfrac{90.9}{3}" },
           { label: "Answer", latex: "\\bar{t} = 30.3\\ \\text{s}" },
         ],
-        explain: "The average is 30.3 seconds, because 30.2 plus 30.5 plus 30.2 is 90.9 seconds, and 90.9 divided by 3 is 30.3 seconds.",
+        explain: "The average is 30.3 seconds, because 30.2 + 30.5 + 30.2 is 90.9 seconds, and 90.9 ÷ 3 is 30.3 seconds.",
       },
       // 19 (interactive: tiles, T = 30.0 / 20 = 1.5 s)
       {
@@ -351,17 +351,17 @@ export const BOXES: Subconcept[] = [
         prompt: "The time for 20 oscillations is 30.0 s. Build the working line for the period T, using T = t / 20.",
         tiles: ["T =", "30.0", "\\div", "20", "=", "1.5", "s", "cm"],
         answer: ["T =", "30.0", "\\div", "20", "=", "1.5", "s"],
-        ask: "The period is the total time divided by the number of oscillations, so set up 30.0 divided by 20.",
+        ask: "The period is the total time divided by the number of oscillations, so set up 30.0 ÷ 20.",
         hints: [
           "Use T equals the total time divided by 20.",
-          "30.0 divided by 20 is 1.5, and the period is measured in seconds.",
+          "30.0 ÷ 20 is 1.5, and the period is measured in seconds.",
         ],
         working: [
           { label: "Formula", latex: "T = \\dfrac{t}{n}" },
           { label: "Substitute", latex: "T = \\dfrac{30.0}{20}" },
           { label: "Answer", latex: "T = 1.5\\ \\text{s}" },
         ],
-        explain: "The period is 1.5 seconds, because the time for 20 oscillations is 30.0 seconds, and 30.0 divided by 20 is 1.5 seconds.",
+        explain: "The period is 1.5 seconds, because the time for 20 oscillations is 30.0 seconds, and 30.0 ÷ 20 is 1.5 seconds.",
       },
       // 20 (choice, correct 0, gradient 2.0)
       {
@@ -371,15 +371,15 @@ export const BOXES: Subconcept[] = [
         correct: 0,
         ask: "The gradient is the rise divided by the run. Work out the change in y over the change in x between the 2 points.",
         hints: [
-          "Rise is 12.0 minus 2.0; run is 5.0 minus 0.",
-          "10.0 divided by 5.0 is 2.0.",
+          "Rise is 12.0 - 2.0; run is 5.0 - 0.",
+          "10.0 ÷ 5.0 is 2.0.",
         ],
         working: [
           { label: "Formula", latex: "m = \\dfrac{y_2 - y_1}{x_2 - x_1}" },
           { label: "Substitute", latex: "m = \\dfrac{12.0 - 2.0}{5.0 - 0} = \\dfrac{10.0}{5.0}" },
           { label: "Answer", latex: "m = 2.0" },
         ],
-        explain: "The gradient is 2.0. The rise is 12.0 minus 2.0, which is 10.0, and the run is 5.0 minus 0, which is 5.0, and 10.0 divided by 5.0 is 2.0.",
+        explain: "The gradient is 2.0. The rise is 12.0 - 2.0, which is 10.0, and the run is 5.0 - 0, which is 5.0, and 10.0 ÷ 5.0 is 2.0.",
       },
       // 21 (interactive: slider, intercept c = 1.0 from (2.0,5.0)&(6.0,13.0))
       {
@@ -394,15 +394,15 @@ export const BOXES: Subconcept[] = [
         targetMax: 1.05,
         ask: "Use y = mx + c at one known point. Put in y equals 5.0, m equals 2.0 and x equals 2.0, then find c.",
         hints: [
-          "At the point (2.0, 5.0): 5.0 equals 2.0 times 2.0 plus c.",
-          "2.0 times 2.0 is 4.0, so c is 5.0 minus 4.0, which is 1.0.",
+          "At the point (2.0, 5.0): 5.0 equals 2.0 × 2.0 plus c.",
+          "2.0 × 2.0 is 4.0, so c is 5.0 - 4.0, which is 1.0.",
         ],
         working: [
           { label: "Formula", latex: "c = y - mx" },
           { label: "Substitute", latex: "c = 5.0 - 2.0 \\times 2.0" },
           { label: "Answer", latex: "c = 1.0" },
         ],
-        explain: "The intercept is 1.0. Using the point (2.0, 5.0) with a gradient of 2.0, c equals 5.0 minus 2.0 times 2.0, which is 5.0 minus 4.0, giving 1.0.",
+        explain: "The intercept is 1.0. Using the point (2.0, 5.0) with a gradient of 2.0, c equals 5.0 - 2.0 × 2.0, which is 5.0 - 4.0, giving 1.0.",
       },
       // 22 (interactive: graphpick, best-fit line)
       {

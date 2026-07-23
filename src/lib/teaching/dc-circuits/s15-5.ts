@@ -50,17 +50,17 @@ export const BOXES: Subconcept[] = [
         question: "A thermistor is in series with a fixed 8 ohm resistor across 4.0 V. The output across the 8 ohm resistor reads 1.0 V. What is the thermistor's resistance R_t?",
         options: ["16 ohms", "8 ohms", "24 ohms", "32 ohms"],
         correct: 2,
-        ask: "Use V_out = R divided by (R plus R_t), all times V_in. Put in 1.0 = 8 divided by (8 plus R_t), times 4.0, and solve for R_t.",
+        ask: "Use V_out = R divided by (R plus R_t), all times V_in. Put in 1.0 = 8 ÷ (8 plus R_t), times 4.0, and solve for R_t.",
         hints: [
-          "Rearrange to 8 plus R_t = 8 times 4.0 divided by 1.0, which is 32.",
-          "8 plus R_t is 32, so R_t is 32 minus 8, which is 24.",
+          "Rearrange to 8 plus R_t = 8 × 4.0 ÷ 1.0, which is 32.",
+          "8 plus R_t is 32, so R_t is 32 - 8, which is 24.",
         ],
         working: [
           { label: "Formula", latex: "V_{out} = \\dfrac{R}{R + R_t} \\times V_{in}" },
           { label: "Substitute", latex: "1.0 = \\dfrac{8}{8 + R_t} \\times 4.0" },
           { label: "Answer", latex: "8 + R_t = 32,\\ R_t = 24\\ \\Omega" },
         ],
-        explain: "The thermistor is 24 ohms, because 1.0 volt equals 8 divided by 8 plus R_t times 4.0 volts, giving 8 plus R_t equals 32, so R_t is 24 ohms.",
+        explain: "The thermistor is 24 ohms, because 1.0 volt equals 8 ÷ 8 plus R_t times 4.0 volts, giving 8 plus R_t equals 32, so R_t is 24 ohms.",
       },
       {
         kind: "choice",

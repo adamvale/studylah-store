@@ -17,7 +17,7 @@ export const BOXES: Subconcept[] = [
         ask: "On a velocity-time graph the gradient is the acceleration. Take the change in velocity, 30, and divide by the time, 15. What do you get?",
         hints: [
           "The gradient of a velocity-time graph is the acceleration.",
-          "30 divided by 15 is 2.",
+          "30 ÷ 15 is 2.",
         ],
         working: [
           { label: "Formula", latex: "a = \\dfrac{v-u}{t}" },
@@ -35,7 +35,7 @@ export const BOXES: Subconcept[] = [
         ask: "The area under a velocity-time graph is the displacement. Here it is a rectangle, 30 tall and 30 wide. What is that area?",
         hints: [
           "The area under a velocity-time graph is the displacement.",
-          "A rectangle area is height times width, 30 times 30.",
+          "A rectangle area is height times width, 30 × 30.",
         ],
         working: [
           { label: "Formula", latex: "d = v \\times t" },
@@ -88,8 +88,8 @@ export const BOXES: Subconcept[] = [
         correct: 3,
         ask: "The displacement is the whole area under the velocity-time graph, a trapezium. Add the two triangles, each 225, to the middle rectangle of 900. What is the total?",
         hints: [
-          "Each triangle area is half times 15 times 30, which is 225.",
-          "The middle rectangle is 30 times 30, which is 900.",
+          "Each triangle area is half times 15 × 30, which is 225.",
+          "The middle rectangle is 30 × 30, which is 900.",
         ],
         working: [
           { label: "Formula", latex: "d = \\tfrac{1}{2}(a+b)h" },
@@ -168,12 +168,12 @@ export const BOXES: Subconcept[] = [
           "a = 30 / 15 = 3 m/s^2",
         ],
         errorLine: 3,
-        ask: "Check the last line. 30 divided by 15. Is that 3?",
+        ask: "Check the last line. 30 ÷ 15. Is that 3?",
         hints: [
-          "Work out 30 divided by 15.",
-          "30 divided by 15 is 2, not 3.",
+          "Work out 30 ÷ 15.",
+          "30 ÷ 15 is 2, not 3.",
         ],
-        explain: "The last line is wrong: 30 divided by 15 is 2, so the acceleration is 2 metres per second squared.",
+        explain: "The last line is wrong: 30 ÷ 15 is 2, so the acceleration is 2 metres per second squared.",
       },
       // 10 interactive: order the steps to find displacement from area
       {
@@ -196,7 +196,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "A car accelerates uniformly from rest at 5 m/s^2 for 4 s. It then holds that velocity for 8 s, then slows to rest with a uniform deceleration of 4 m/s^2. Find the velocity after the first 4 s, the time it takes to stop, the total displacement, and sketch the velocity-time graph.",
-        modelAnswer: "After the first 4 seconds the velocity is the acceleration times time, 5 times 4, which is 20 metres per second. To stop from 20 metres per second at 4 metres per second squared takes 20 divided by 4, which is 5 seconds. For the displacement, find the area under the graph. The first triangle is half times 4 times 20, which is 40 metres. The middle rectangle is 20 times 8, which is 160 metres. The last triangle is half times 5 times 20, which is 50 metres. The total displacement is 40 plus 160 plus 50, which is 250 metres. The sketch is a line rising from 0 to 20 over the first 4 seconds, then flat at 20 for 8 seconds, then falling back to 0 over the last 5 seconds.",
+        modelAnswer: "After the first 4 seconds the velocity is the acceleration times time, 5 × 4, which is 20 metres per second. To stop from 20 metres per second at 4 metres per second squared takes 20 ÷ 4, which is 5 seconds. For the displacement, find the area under the graph. The first triangle is half times 4 × 20, which is 40 metres. The middle rectangle is 20 × 8, which is 160 metres. The last triangle is half times 5 × 20, which is 50 metres. The total displacement is 40 + 160 + 50, which is 250 metres. The sketch is a line rising from 0 to 20 over the first 4 seconds, then flat at 20 for 8 seconds, then falling back to 0 over the last 5 seconds.",
         marks: [
           "Velocity after 4 s = a x t = 5 x 4 = 20 m/s.",
           "Deceleration time = 20 / 4 = 5 s.",
@@ -210,7 +210,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "A ball leaves a hand at 5 m/s straight up, taking 10 s to reach the top, then returns to the hand in another 10 s. Taking up as positive, describe how its speed-time graph differs from its velocity-time graph, and find the total distance and the total displacement.",
-        modelAnswer: "On the way up both the speed and the velocity fall from 5 to 0. On the way down the speed rises again from 0 back to 5, staying positive, so the speed-time graph is a V shape that never goes below the axis. The velocity, though, goes negative on the way down, because the ball now moves opposite to the upward direction, so the velocity-time graph carries straight down through 0 into the negative region. For the distances, each part is a triangle of area half times 5 times 10, which is 25 metres. The total distance is 25 plus 25, which is 50 metres. The displacement adds a positive 25 going up and a negative 25 coming down, so the total displacement is 0, because the ball returns to the hand.",
+        modelAnswer: "On the way up both the speed and the velocity fall from 5 to 0. On the way down the speed rises again from 0 back to 5, staying positive, so the speed-time graph is a V shape that never goes below the axis. The velocity, though, goes negative on the way down, because the ball now moves opposite to the upward direction, so the velocity-time graph carries straight down through 0 into the negative region. For the distances, each part is a triangle of area half times 5 × 10, which is 25 metres. The total distance is 25 + 25, which is 50 metres. The displacement adds a positive 25 going up and a negative 25 coming down, so the total displacement is 0, because the ball returns to the hand.",
         marks: [
           "Speed-time graph stays positive, a V shape, because speed is a scalar.",
           "Velocity-time graph goes negative on the way down, because the direction reverses.",

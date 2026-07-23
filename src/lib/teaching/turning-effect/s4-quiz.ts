@@ -20,10 +20,10 @@ export const BOXES: Subconcept[] = [
         question: "A spanner turns a bolt. You push with a force of 60 N at a perpendicular distance of 0.25 m from the bolt. What is the moment of your push?",
         options: ["15 N m", "240 N m", "15 N", "0.25 N m"],
         correct: 0,
-        ask: "The moment is the force times the perpendicular distance, so work out 60 times 0.25. Which option is that, with the right unit?",
+        ask: "The moment is the force times the perpendicular distance, so work out 60 × 0.25. Which option is that, with the right unit?",
         hints: [
           "Use moment equals force times distance.",
-          "60 times 0.25 is 15, and the moment is measured in newton metres.",
+          "60 × 0.25 is 15, and the moment is measured in newton metres.",
         ],
         working: [
           { label: "Formula", latex: "M = F \\times d" },
@@ -37,10 +37,10 @@ export const BOXES: Subconcept[] = [
         prompt: "An iron is held down by a force of 5 N acting 0.15 m from its pivot. Build the working line for the moment M of this force.",
         tiles: ["M =", "5", "\\times", "0.15", "=", "0.75", "0.075", "N m", "N"],
         answer: ["M =", "5", "\\times", "0.15", "=", "0.75", "N m"],
-        ask: "The moment is force times the perpendicular distance, so set up 5 times 0.15.",
+        ask: "The moment is force times the perpendicular distance, so set up 5 × 0.15.",
         hints: [
           "Use M equals force times distance.",
-          "5 times 0.15 is 0.75, and the moment is measured in newton metres.",
+          "5 × 0.15 is 0.75, and the moment is measured in newton metres.",
         ],
         working: [
           { label: "Formula", latex: "M = F \\times d" },
@@ -95,17 +95,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-05-07-seesaw-balance",
         options: ["60 N", "15 N", "24 N", "240 N"],
         correct: 0,
-        ask: "For a balanced see-saw the clockwise moment equals the anticlockwise moment. Work out 30 times 0.40, then divide by 0.20.",
+        ask: "For a balanced see-saw the clockwise moment equals the anticlockwise moment. Work out 30 × 0.40, then divide by 0.20.",
         hints: [
-          "Use the principle of moments: 30 times 0.40 equals W times 0.20.",
-          "30 times 0.40 is 12, and 12 divided by 0.20 is 60.",
+          "Use the principle of moments: 30 × 0.40 equals W times 0.20.",
+          "30 × 0.40 is 12, and 12 ÷ 0.20 is 60.",
         ],
         working: [
           { label: "Formula", latex: "F_1 d_1 = F_2 d_2" },
           { label: "Substitute", latex: "30 \\times 0.40 = W \\times 0.20" },
           { label: "Answer", latex: "W = 60\\ \\text{N}" },
         ],
-        explain: "The weight is 60 newtons. The clockwise and anticlockwise moments are equal, so 30 times 0.40, which is 12 newton metres, equals W times 0.20, giving W equal to 60 newtons.",
+        explain: "The weight is 60 newtons. The clockwise and anticlockwise moments are equal, so 30 × 0.40, which is 12 newton metres, equals W times 0.20, giving W equal to 60 newtons.",
       },
       {
         kind: "choice",
@@ -113,17 +113,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-05-21-mcq-beam",
         options: ["18 N", "2 N", "36 N", "12 N"],
         correct: 0,
-        ask: "Balance means the moments are equal. Work out 6 times 6, then divide by 2.",
+        ask: "Balance means the moments are equal. Work out 6 × 6, then divide by 2.",
         hints: [
-          "Use 6 times 6 equals W times 2.",
-          "6 times 6 is 36, and 36 divided by 2 is 18.",
+          "Use 6 × 6 equals W times 2.",
+          "6 × 6 is 36, and 36 ÷ 2 is 18.",
         ],
         working: [
           { label: "Formula", latex: "F_1 d_1 = F_2 d_2" },
           { label: "Substitute", latex: "6 \\times 6 = W \\times 2" },
           { label: "Answer", latex: "W = 18\\ \\text{N}" },
         ],
-        explain: "The weight is 18 newtons, because 6 times 6, which is 36 newton metres, equals W times 2, so W is 36 divided by 2, which is 18 newtons.",
+        explain: "The weight is 18 newtons, because 6 × 6, which is 36 newton metres, equals W times 2, so W is 36 ÷ 2, which is 18 newtons.",
       },
       {
         kind: "slider",
@@ -135,17 +135,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 83,
         targetMax: 85,
-        ask: "Add the 2 moments on one side, then set that equal to W times 0.10. Work out 20 times 0.30 plus 12 times 0.20, then divide by 0.10.",
+        ask: "Add the 2 moments on one side, then set that equal to W times 0.10. Work out 20 × 0.30 + 12 × 0.20, then divide by 0.10.",
         hints: [
-          "The total moment on one side is 20 times 0.30 plus 12 times 0.20.",
-          "20 times 0.30 is 6 and 12 times 0.20 is 2.4, so the total is 8.4, and 8.4 divided by 0.10 is 84.",
+          "The total moment on one side is 20 × 0.30 + 12 × 0.20.",
+          "20 × 0.30 is 6 and 12 × 0.20 is 2.4, so the total is 8.4, and 8.4 ÷ 0.10 is 84.",
         ],
         working: [
           { label: "Formula", latex: "F_1 d_1 + F_2 d_2 = W d" },
           { label: "Substitute", latex: "(20 \\times 0.30) + (12 \\times 0.20) = W \\times 0.10" },
           { label: "Answer", latex: "W = 84\\ \\text{N}" },
         ],
-        explain: "The weight is 84 newtons. The 2 moments add to 6 plus 2.4, which is 8.4 newton metres, and that equals W times 0.10, so W is 8.4 divided by 0.10, which is 84 newtons.",
+        explain: "The weight is 84 newtons. The 2 moments add to 6 + 2.4, which is 8.4 newton metres, and that equals W times 0.10, so W is 8.4 ÷ 0.10, which is 84 newtons.",
       },
       {
         kind: "spoterror",
@@ -159,15 +159,15 @@ export const BOXES: Subconcept[] = [
         errorLine: 2,
         ask: "Check how the student rearranges to find W. To get W by itself, do you multiply by 2.0 or divide by 2.0?",
         hints: [
-          "The balance equation is 300 times 1.5 equals W times 2.0.",
-          "To find W, divide 300 times 1.5 by 2.0, not multiply. The line that multiplies by 2.0 is wrong.",
+          "The balance equation is 300 × 1.5 equals W times 2.0.",
+          "To find W, divide 300 × 1.5 by 2.0, not multiply. The line that multiplies by 2.0 is wrong.",
         ],
         working: [
           { label: "Formula", latex: "F_1 d_1 = F_2 d_2" },
           { label: "Substitute", latex: "W = \\dfrac{300 \\times 1.5}{2.0}" },
           { label: "Answer", latex: "W = 225\\ \\text{N}" },
         ],
-        explain: "The mistake is the line that writes W equals 300 times 1.5 times 2.0. To find W you divide 300 times 1.5 by 2.0, so W is 450 divided by 2.0, which is 225 newtons, not 900 newtons.",
+        explain: "The mistake is the line that writes W equals 300 × 1.5 × 2.0. To find W you divide 300 × 1.5 by 2.0, so W is 450 ÷ 2.0, which is 225 newtons, not 900 newtons.",
       },
       {
         kind: "open",
@@ -203,17 +203,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-05-24-metre-rule-spring",
         options: ["60 N", "107 N", "80 N", "0.94 N"],
         correct: 0,
-        ask: "The rule is balanced, so the moments are equal. Work out 80 times 0.75, then divide by 1.0.",
+        ask: "The rule is balanced, so the moments are equal. Work out 80 × 0.75, then divide by 1.0.",
         hints: [
-          "Use 80 times 0.75 equals the spring force times 1.0.",
-          "80 times 0.75 is 60, and 60 divided by 1.0 is 60.",
+          "Use 80 × 0.75 equals the spring force times 1.0.",
+          "80 × 0.75 is 60, and 60 ÷ 1.0 is 60.",
         ],
         working: [
           { label: "Formula", latex: "F_1 d_1 = F_2 d_2" },
           { label: "Substitute", latex: "80 \\times 0.75 = F \\times 1.0" },
           { label: "Answer", latex: "F = 60\\ \\text{N}" },
         ],
-        explain: "The spring balance reads 60 newtons, because 80 times 0.75, which is 60 newton metres, equals the spring force times 1.0, so the force is 60 newtons.",
+        explain: "The spring balance reads 60 newtons, because 80 × 0.75, which is 60 newton metres, equals the spring force times 1.0, so the force is 60 newtons.",
       },
       {
         kind: "cloze",

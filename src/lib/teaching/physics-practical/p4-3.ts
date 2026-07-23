@@ -82,17 +82,17 @@ export const BOXES: Subconcept[] = [
           "3.34 x 10^5 J",
         ],
         correct: 1,
-        ask: "Use L equals l f times m. Multiply 3.34 times 10 to the power 5 by 0.20.",
+        ask: "Use L equals l f times m. Multiply 3.34 × 10 to the power 5 by 0.20.",
         hints: [
           "The latent heat is the specific latent heat of fusion times the mass.",
-          "3.34 times 10 to the power 5, times 0.20, is 6.68 times 10 to the power 4.",
+          "3.34 × 10 to the power 5, × 0.20, is 6.68 × 10 to the power 4.",
         ],
         working: [
           { label: "Formula", latex: "L = l_f\\,m" },
           { label: "Substitute", latex: "L = 3.34 \\times 10^{5} \\times 0.20" },
           { label: "Answer", latex: "L = 6.68 \\times 10^{4}\\ \\text{J}" },
         ],
-        explain: "The heat needed is 6.68 times 10 to the power 4 joules, because 3.34 times 10 to the power 5 joules per kilogram times 0.20 kilograms is 6.68 times 10 to the power 4 joules.",
+        explain: "The heat needed is 6.68 × 10 to the power 4 joules, because 3.34 × 10 to the power 5 joules per kilogram times 0.20 kilograms is 6.68 × 10 to the power 4 joules.",
       },
       {
         kind: "choice",
@@ -107,7 +107,7 @@ export const BOXES: Subconcept[] = [
         ask: "Compare loosening particles so they can slide past each other with tearing them completely apart. Which takes more energy?",
         hints: [
           "Boiling separates the particles fully; melting only loosens them.",
-          "For water, vaporisation is 2.26 times 10 to the power 6 joules per kilogram, far above fusion at 3.34 times 10 to the power 5.",
+          "For water, vaporisation is 2.26 × 10 to the power 6 joules per kilogram, far above fusion at 3.34 × 10 to the power 5.",
         ],
         explain: "Vaporisation needs far more energy per kilogram, because boiling pulls the particles completely apart into a gas, while melting only loosens them.",
       },
@@ -137,15 +137,15 @@ export const BOXES: Subconcept[] = [
         answer: ["3.34 x 10^5", "x", "0.30", "=", "1.0 x 10^5 J"],
         ask: "Freezing releases the same latent heat as melting, so use L equals l f times m with the mass 0.30 kilograms.",
         hints: [
-          "The latent heat is 3.34 times 10 to the power 5 times 0.30.",
-          "3.34 times 10 to the power 5, times 0.30, is 1.0 times 10 to the power 5.",
+          "The latent heat is 3.34 × 10 to the power 5 × 0.30.",
+          "3.34 × 10 to the power 5, × 0.30, is 1.0 × 10 to the power 5.",
         ],
         working: [
           { label: "Formula", latex: "L = l_f\\,m" },
           { label: "Substitute", latex: "L = 3.34 \\times 10^{5} \\times 0.30" },
           { label: "Answer", latex: "L = 1.0 \\times 10^{5}\\ \\text{J}" },
         ],
-        explain: "The heat released is 1.0 times 10 to the power 5 joules, because 3.34 times 10 to the power 5 joules per kilogram times 0.30 kilograms is 1.0 times 10 to the power 5 joules.",
+        explain: "The heat released is 1.0 × 10 to the power 5 joules, because 3.34 × 10 to the power 5 joules per kilogram times 0.30 kilograms is 1.0 × 10 to the power 5 joules.",
       },
     ],
   },

@@ -17,9 +17,9 @@ export const BOXES: Subconcept[] = [
         question: "A glass block has refractive index n = 1.5. Using sin c = 1/n, what is its critical angle c?",
         options: ["49 degrees", "42 degrees", "34 degrees", "90 degrees"],
         correct: 1,
-        ask: "Work out sin c as 1 divided by 1.5, then take the inverse sine. Which option is that angle?",
+        ask: "Work out sin c as 1 ÷ 1.5, then take the inverse sine. Which option is that angle?",
         hints: [
-          "sin c is 1 divided by n, so 1 divided by 1.5 is 0.667.",
+          "sin c is 1 divided by n, so 1 ÷ 1.5 is 0.667.",
           "The angle whose sine is 0.667 is about 42 degrees.",
         ],
         working: [
@@ -27,24 +27,24 @@ export const BOXES: Subconcept[] = [
           { label: "Substitute", latex: "\\sin c = \\dfrac{1}{1.5} = 0.667" },
           { label: "Answer", latex: "c = 42^\\circ" },
         ],
-        explain: "The critical angle is about 42 degrees, because 1 divided by 1.5 is 0.667, and the angle whose sine is 0.667 is 42 degrees.",
+        explain: "The critical angle is about 42 degrees, because 1 ÷ 1.5 is 0.667, and the angle whose sine is 0.667 is 42 degrees.",
       },
       {
         kind: "choice",
         question: "An object at u = 25.0 cm gives a sharp image at v = 75.0 cm. Using 1/f = 1/u + 1/v, find the focal length f.",
         options: ["20.0 cm", "50.0 cm", "100 cm", "18.8 cm"],
         correct: 3,
-        ask: "Add 1 divided by 25.0 to 1 divided by 75.0 to get 1/f, then take the reciprocal. Which option matches?",
+        ask: "Add 1 ÷ 25.0 to 1 ÷ 75.0 to get 1/f, then take the reciprocal. Which option matches?",
         hints: [
-          "1 divided by 25.0 is 0.0400 and 1 divided by 75.0 is 0.0133, so 1/f is 0.0533 per centimetre.",
-          "The focal length is 1 divided by 0.0533, which is about 18.8 centimetres.",
+          "1 ÷ 25.0 is 0.0400 and 1 ÷ 75.0 is 0.0133, so 1/f is 0.0533 per centimetre.",
+          "The focal length is 1 ÷ 0.0533, which is about 18.8 centimetres.",
         ],
         working: [
           { label: "Formula", latex: "\\dfrac{1}{f} = \\dfrac{1}{u} + \\dfrac{1}{v}" },
           { label: "Substitute", latex: "\\dfrac{1}{f} = \\dfrac{1}{25.0} + \\dfrac{1}{75.0} = 0.0533" },
           { label: "Answer", latex: "f = 18.8\\ \\text{cm}" },
         ],
-        explain: "The focal length is about 18.8 centimetres, because 0.0400 plus 0.0133 is 0.0533 per centimetre, and 1 divided by 0.0533 is 18.8 centimetres.",
+        explain: "The focal length is about 18.8 centimetres, because 0.0400 + 0.0133 is 0.0533 per centimetre, and 1 ÷ 0.0533 is 18.8 centimetres.",
       },
       {
         kind: "choice",
@@ -68,9 +68,9 @@ export const BOXES: Subconcept[] = [
         question: "Water has refractive index n = 1.33. Using sin c = 1/n, what is its critical angle c?",
         options: ["34 degrees", "42 degrees", "49 degrees", "58 degrees"],
         correct: 2,
-        ask: "Work out sin c as 1 divided by 1.33, then take the inverse sine. Which option is that angle?",
+        ask: "Work out sin c as 1 ÷ 1.33, then take the inverse sine. Which option is that angle?",
         hints: [
-          "1 divided by 1.33 is 0.752.",
+          "1 ÷ 1.33 is 0.752.",
           "The angle whose sine is 0.752 is about 49 degrees.",
         ],
         working: [
@@ -78,7 +78,7 @@ export const BOXES: Subconcept[] = [
           { label: "Substitute", latex: "\\sin c = \\dfrac{1}{1.33} = 0.752" },
           { label: "Answer", latex: "c = 49^\\circ" },
         ],
-        explain: "The critical angle for water is about 49 degrees, because 1 divided by 1.33 is 0.752, and the angle whose sine is 0.752 is 49 degrees. It is larger than the 42 degrees for glass because water is less optically dense.",
+        explain: "The critical angle for water is about 49 degrees, because 1 ÷ 1.33 is 0.752, and the angle whose sine is 0.752 is 49 degrees. It is larger than the 42 degrees for glass because water is less optically dense.",
       },
       {
         kind: "choice",
@@ -130,7 +130,7 @@ export const BOXES: Subconcept[] = [
           "The magnification method plots m against v so the gradient gives 1 divided by f.",
           "The displacement method uses a fixed object-screen distance D and the separation d of the 2 lens positions.",
         ],
-        explain: "The magnification method plots m against v with gradient 1 over f. The displacement method plots D squared minus d squared against D with gradient 4 times f. The single reading method just takes one pair of u and v.",
+        explain: "The magnification method plots m against v with gradient 1 over f. The displacement method plots D^2 minus d^2 against D with gradient 4 times f. The single reading method just takes one pair of u and v.",
       },
       {
         kind: "order",
@@ -173,17 +173,17 @@ export const BOXES: Subconcept[] = [
         prompt: "For a fixed object-screen distance D = 100.0 cm the 2 sharp-image positions are separated by d = 58.8 cm. Build the working line for f.",
         tiles: ["f =", "(100.0^2 - 58.8^2)", "\\div", "(4 \\times 100.0)", "=", "16.4", "cm", "(2 \\times 100.0)"],
         answer: ["f =", "(100.0^2 - 58.8^2)", "\\div", "(4 \\times 100.0)", "=", "16.4", "cm"],
-        ask: "Use f equals D squared minus d squared, all divided by 4 times D. Substitute D as 100.0 and d as 58.8.",
+        ask: "Use f equals D^2 minus d^2, all divided by 4 times D. Substitute D as 100.0 and d as 58.8.",
         hints: [
-          "100.0 squared is 10000 and 58.8 squared is 3457, so the top is 6543.",
-          "Divide 6543 by 4 times 100.0, which is 400, to get about 16.4 centimetres.",
+          "100.0^2 is 10000 and 58.8^2 is 3457, so the top is 6543.",
+          "Divide 6543 by 4 × 100.0, which is 400, to get about 16.4 centimetres.",
         ],
         working: [
           { label: "Formula", latex: "f = \\dfrac{D^2 - d^2}{4D}" },
           { label: "Substitute", latex: "f = \\dfrac{100.0^2 - 58.8^2}{4 \\times 100.0}" },
           { label: "Answer", latex: "f = 16.4\\ \\text{cm}" },
         ],
-        explain: "The focal length is about 16.4 centimetres, because 10000 minus 3457 is 6543, and 6543 divided by 400 is 16.4 centimetres.",
+        explain: "The focal length is about 16.4 centimetres, because 10000 - 3457 is 6543, and 6543 ÷ 400 is 16.4 centimetres.",
       },
       {
         kind: "open",

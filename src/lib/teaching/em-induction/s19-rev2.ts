@@ -18,17 +18,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-21-07-transformer",
         options: ["24 V", "12 V", "48 V", "4800 V"],
         correct: 1,
-        ask: "The voltages share the turns ratio, so work out 240 times 60, then divide by 1200. Which option is that?",
+        ask: "The voltages share the turns ratio, so work out 240 × 60, then divide by 1200. Which option is that?",
         hints: [
           "Use V_s over V_p equals N_s over N_p, so V_s equals V_p times N_s divided by N_p.",
-          "240 times 60 is 14400, and 14400 divided by 1200 is 12.",
+          "240 × 60 is 14400, and 14400 ÷ 1200 is 12.",
         ],
         working: [
           { label: "Formula", latex: "V_s = V_p \\times \\dfrac{N_s}{N_p}" },
           { label: "Substitute", latex: "V_s = 240 \\times \\dfrac{60}{1200}" },
           { label: "Answer", latex: "V_s = 12\\ \\text{V}" },
         ],
-        explain: "The secondary voltage is 12 volts, because 240 volts times 60 divided by 1200 is 12 volts. Fewer secondary turns means a lower voltage, so this is a step-down transformer.",
+        explain: "The secondary voltage is 12 volts, because 240 volts times 60 ÷ 1200 is 12 volts. Fewer secondary turns means a lower voltage, so this is a step-down transformer.",
       },
       {
         kind: "choice",
@@ -52,17 +52,17 @@ export const BOXES: Subconcept[] = [
         question: "A transformer has a primary of 800 turns at 240 V and a secondary of 200 turns. What is the secondary voltage?",
         options: ["60 V", "30 V", "120 V", "6 V"],
         correct: 0,
-        ask: "Use the turns ratio again, so work out 240 times 200, then divide by 800. Which option matches?",
+        ask: "Use the turns ratio again, so work out 240 × 200, then divide by 800. Which option matches?",
         hints: [
           "V_s equals V_p times N_s divided by N_p.",
-          "240 times 200 is 48000, and 48000 divided by 800 is 60.",
+          "240 × 200 is 48000, and 48000 ÷ 800 is 60.",
         ],
         working: [
           { label: "Formula", latex: "V_s = V_p \\times \\dfrac{N_s}{N_p}" },
           { label: "Substitute", latex: "V_s = 240 \\times \\dfrac{200}{800}" },
           { label: "Answer", latex: "V_s = 60\\ \\text{V}" },
         ],
-        explain: "The secondary voltage is 60 volts, because 240 volts times 200 divided by 800 is 60 volts. The secondary has fewer turns, so the voltage steps down.",
+        explain: "The secondary voltage is 60 volts, because 240 volts times 200 ÷ 800 is 60 volts. The secondary has fewer turns, so the voltage steps down.",
       },
       {
         kind: "choice",
@@ -76,20 +76,20 @@ export const BOXES: Subconcept[] = [
         correct: 2,
         ask: "For a fixed power, P equals I times V. Think about what a higher voltage does to the current, and how the heat loss depends on that current.",
         hints: [
-          "The power lost as heat is I squared times R, so it depends on the square of the current.",
+          "The power lost as heat is I^2 times R, so it depends on the square of the current.",
           "For a fixed power, a higher voltage means a smaller current, and squaring a smaller current makes the loss much smaller.",
         ],
-        explain: "High voltage is used so the current is small, because the heat loss is I squared times R. Since the loss depends on the square of the current, cutting the current sharply cuts the wasted heat.",
+        explain: "High voltage is used so the current is small, because the heat loss is I^2 times R. Since the loss depends on the square of the current, cutting the current sharply cuts the wasted heat.",
       },
       {
         kind: "choice",
         question: "An ideal transformer steps 230 V down to 46 V. The primary current is 1.2 A. What is the secondary current?",
         options: ["0.24 A", "1.2 A", "1.5 A", "6.0 A"],
         correct: 3,
-        ask: "For an ideal transformer the power is unchanged, so V_p times I_p equals V_s times I_s. Work out 230 times 1.2, then divide by 46.",
+        ask: "For an ideal transformer the power is unchanged, so V_p times I_p equals V_s times I_s. Work out 230 × 1.2, then divide by 46.",
         hints: [
           "Rearrange V_p I_p equals V_s I_s to get I_s equals V_p times I_p divided by V_s.",
-          "230 times 1.2 is 276, and 276 divided by 46 is 6.0.",
+          "230 × 1.2 is 276, and 276 ÷ 46 is 6.0.",
         ],
         working: [
           { label: "Formula", latex: "I_s = \\dfrac{V_p I_p}{V_s}" },
@@ -108,10 +108,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 2390,
         targetMax: 2410,
-        ask: "The power is unchanged, so V_p times I_p equals V_s times I_s. Work out 120 times 0.30, then divide by 0.015.",
+        ask: "The power is unchanged, so V_p times I_p equals V_s times I_s. Work out 120 × 0.30, then divide by 0.015.",
         hints: [
           "Rearrange V_p I_p equals V_s I_s to get V_s equals V_p times I_p divided by I_s.",
-          "120 times 0.30 is 36, and 36 divided by 0.015 is 2400.",
+          "120 × 0.30 is 36, and 36 ÷ 0.015 is 2400.",
         ],
         working: [
           { label: "Formula", latex: "V_s = \\dfrac{V_p I_p}{I_s}" },
@@ -144,15 +144,15 @@ export const BOXES: Subconcept[] = [
         answer: ["P_loss =", "20^2", "\\times", "0.5", "=", "200", "W"],
         ask: "The heat loss is the current squared times the resistance, so square 20 first, then multiply by 0.5.",
         hints: [
-          "Use P_loss equals I squared times R, with I equal to 20 and R equal to 0.5.",
-          "20 squared is 400, and 400 times 0.5 is 200.",
+          "Use P_loss equals I^2 times R, with I equal to 20 and R equal to 0.5.",
+          "20 squared is 400, and 400 × 0.5 is 200.",
         ],
         working: [
           { label: "Formula", latex: "P_{loss} = I^2 R" },
           { label: "Substitute", latex: "P_{loss} = 20^2 \\times 0.5" },
           { label: "Answer", latex: "P_{loss} = 200\\ \\text{W}" },
         ],
-        explain: "The power lost is 200 watts, because 20 squared is 400 and 400 times 0.5 is 200 watts. Sending the same 8 kilowatts at 4000 volts instead drops the current to 2 amperes, and 2 squared times 0.5 is only 2 watts.",
+        explain: "The power lost is 200 watts, because 20 squared is 400 and 400 × 0.5 is 200 watts. Sending the same 8 kilowatts at 4000 volts instead drops the current to 2 amperes, and 2^2 times 0.5 is only 2 watts.",
       },
       {
         kind: "classify",
@@ -190,7 +190,7 @@ export const BOXES: Subconcept[] = [
           "The wasted energy leaves the cables as heat, and the loss formula is the current squared times the resistance.",
           "We transmit at high voltage so the current is low, because the loss grows with the square of the current.",
         ],
-        explain: "Power is lost as heat at a rate I squared times R. We send it at high voltage and low current, because the loss depends on the square of the current, so a smaller current wastes far less energy.",
+        explain: "Power is lost as heat at a rate I^2 times R. We send it at high voltage and low current, because the loss depends on the square of the current, so a smaller current wastes far less energy.",
       },
       {
         kind: "open",

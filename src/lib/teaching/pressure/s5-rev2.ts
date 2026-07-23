@@ -36,10 +36,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-06-16-hydraulic-load",
         options: ["8 N/cm^2", "200 N/cm^2", "45 N/cm^2", "0.125 N/cm^2"],
         correct: 0,
-        ask: "Pressure is force divided by area, so work out 40 divided by 5.0.",
+        ask: "Pressure is force divided by area, so work out 40 ÷ 5.0.",
         hints: [
           "Use P equals F divided by A.",
-          "40 divided by 5.0 is 8 newtons per square centimetre.",
+          "40 ÷ 5.0 is 8 newtons per square centimetre.",
         ],
         working: [
           { label: "Formula", latex: "P = \\dfrac{F}{A}" },
@@ -71,10 +71,10 @@ export const BOXES: Subconcept[] = [
         question: "In a mercury barometer the atmosphere supports a column of 76 cm Hg. A point C lies 4 cm below the mercury level in the reservoir. What is the pressure at C?",
         options: ["80 cm Hg", "76 cm Hg", "72 cm Hg", "4 cm Hg"],
         correct: 0,
-        ask: "At the reservoir surface the pressure is 76 centimetres of mercury. Going 4 centimetres deeper adds to it, so work out 76 plus 4.",
+        ask: "At the reservoir surface the pressure is 76 centimetres of mercury. Going 4 centimetres deeper adds to it, so work out 76 + 4.",
         hints: [
           "Going down in a liquid adds the extra height of liquid above the point.",
-          "76 plus 4 is 80 centimetres of mercury.",
+          "76 + 4 is 80 centimetres of mercury.",
         ],
         working: [
           { label: "Formula", latex: "P_C = P_{atm} + h" },
@@ -88,17 +88,17 @@ export const BOXES: Subconcept[] = [
         question: "A mercury barometer reads a vertical column of 0.76 m. Mercury has density 1.36 x 10^4 kg/m^3 and g = 10 N/kg. What is the atmospheric pressure?",
         options: ["1.03 x 10^5 Pa", "1.03 x 10^4 Pa", "7.6 x 10^3 Pa", "1.36 x 10^5 Pa"],
         correct: 0,
-        ask: "Use pressure equals height times density times g. Multiply 0.76 by 1.36 times 10 to the power 4, then by 10.",
+        ask: "Use pressure equals height times density times g. Multiply 0.76 by 1.36 × 10 to the power 4, then by 10.",
         hints: [
           "The formula is P equals h times rho times g.",
-          "0.76 times 1.36 times 10 to the power 4 times 10 is about 1.03 times 10 to the power 5.",
+          "0.76 × 1.36 × 10 to the power 4 × 10 is about 1.03 × 10 to the power 5.",
         ],
         working: [
           { label: "Formula", latex: "P = h \\rho g" },
           { label: "Substitute", latex: "P = 0.76 \\times (1.36 \\times 10^{4}) \\times 10" },
           { label: "Answer", latex: "P = 1.03 \\times 10^{5}\\ \\text{Pa}" },
         ],
-        explain: "The atmospheric pressure is about 1.03 times 10 to the power 5 pascals, because 0.76 metres times 1.36 times 10 to the power 4 kilograms per metre cubed times 10 newtons per kilogram is about 1.03 times 10 to the power 5 pascals.",
+        explain: "The atmospheric pressure is about 1.03 × 10 to the power 5 pascals, because 0.76 metres times 1.36 × 10 to the power 4 kilograms per metre cubed times 10 newtons per kilogram is about 1.03 × 10 to the power 5 pascals.",
       },
       {
         kind: "slider",
@@ -110,10 +110,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 1590,
         targetMax: 1610,
-        ask: "The output force is the pressure times the piston area, so work out 8 times 200.",
+        ask: "The output force is the pressure times the piston area, so work out 8 × 200.",
         hints: [
           "Use force equals pressure times area.",
-          "8 times 200 is 1600, so slide to 1600 newtons.",
+          "8 × 200 is 1600, so slide to 1600 newtons.",
         ],
         working: [
           { label: "Formula", latex: "F = P \\times A" },
@@ -127,10 +127,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A gas raises the open side of a manometer by 9.0 cm above the gas side. Atmospheric pressure is 76 cm Hg. Build the working line that gives the gas pressure, in cm Hg.",
         tiles: ["P_gas =", "76", "+", "9.0", "=", "85", "cm Hg", "-"],
         answer: ["P_gas =", "76", "+", "9.0", "=", "85", "cm Hg"],
-        ask: "The gas is above atmospheric, so add the height difference to 76. Work out 76 plus 9.0.",
+        ask: "The gas is above atmospheric, so add the height difference to 76. Work out 76 + 9.0.",
         hints: [
           "Use gas pressure equals atmospheric pressure plus the height difference h.",
-          "76 plus 9.0 is 85 centimetres of mercury.",
+          "76 + 9.0 is 85 centimetres of mercury.",
         ],
         working: [
           { label: "Formula", latex: "P_{gas} = P_{atm} + h" },
@@ -149,17 +149,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 15.5,
         targetMax: 16.5,
-        ask: "At the boundary the 2 columns give equal pressure, so height times density is equal on both sides. Work out 20 times 800 divided by 1000.",
+        ask: "At the boundary the 2 columns give equal pressure, so height times density is equal on both sides. Work out 20 × 800 ÷ 1000.",
         hints: [
-          "Balancing the pressures gives water height equal to 20 times 800 divided by 1000.",
-          "20 times 800 is 16000, and divided by 1000 is 16, so slide to 16 centimetres.",
+          "Balancing the pressures gives water height equal to 20 × 800 ÷ 1000.",
+          "20 × 800 is 16000, and divided by 1000 is 16, so slide to 16 centimetres.",
         ],
         working: [
           { label: "Formula", latex: "h_2 = \\dfrac{h_1 \\rho_1}{\\rho_2}" },
           { label: "Substitute", latex: "h_2 = \\dfrac{20 \\times 800}{1000}" },
           { label: "Answer", latex: "h_2 = 16\\ \\text{cm}" },
         ],
-        explain: "The water column is 16 centimetres, because equal pressures at the boundary give height times density equal on both sides, and 20 times 800 divided by 1000 is 16. The denser water needs a shorter column.",
+        explain: "The water column is 16 centimetres, because equal pressures at the boundary give height times density equal on both sides, and 20 × 800 ÷ 1000 is 16. The denser water needs a shorter column.",
       },
       {
         kind: "classify",

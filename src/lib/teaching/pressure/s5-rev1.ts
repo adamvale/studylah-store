@@ -32,10 +32,10 @@ export const BOXES: Subconcept[] = [
         question: "A crate weighs 540 N and rests on a base 1.5 m by 0.60 m, an area of 0.90 m^2. What pressure does it exert on the floor?",
         options: ["600 Pa", "6000 Pa", "486 Pa", "900 Pa"],
         correct: 0,
-        ask: "Pressure is force divided by area, so work out 540 divided by 0.90.",
+        ask: "Pressure is force divided by area, so work out 540 ÷ 0.90.",
         hints: [
           "Use P equals F divided by A, with F of 540 newtons and A of 0.90 metres squared.",
-          "540 divided by 0.90 is 600, and pressure is measured in pascals.",
+          "540 ÷ 0.90 is 600, and pressure is measured in pascals.",
         ],
         working: [
           { label: "Formula", latex: "P = \\dfrac{F}{A}" },
@@ -62,10 +62,10 @@ export const BOXES: Subconcept[] = [
         question: "A plate lies 4.0 m below the surface of water of density 1000 kg/m^3, where g = 10 N/kg. What is the water pressure on the plate?",
         options: ["40000 Pa", "4000 Pa", "400000 Pa", "50000 Pa"],
         correct: 0,
-        ask: "The pressure in a liquid is depth times density times g, so work out 4.0 times 1000 times 10.",
+        ask: "The pressure in a liquid is depth times density times g, so work out 4.0 × 1000 × 10.",
         hints: [
           "Use P equals h times rho times g.",
-          "4.0 times 1000 is 4000, and 4000 times 10 is 40000.",
+          "4.0 × 1000 is 4000, and 4000 × 10 is 40000.",
         ],
         working: [
           { label: "Formula", latex: "P = h\\rho g" },
@@ -97,34 +97,34 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 24500,
         targetMax: 25500,
-        ask: "Density is mass divided by volume, so work out 0.45 divided by 18 times 10 to the power negative 6.",
+        ask: "Density is mass divided by volume, so work out 0.45 ÷ 18 × 10 to the power negative 6.",
         hints: [
           "Use density equals mass divided by volume.",
-          "0.45 divided by 18 times 10 to the power negative 6 is 25000, which is 2.5 times 10 to the power 4.",
+          "0.45 ÷ 18 × 10 to the power negative 6 is 25000, which is 2.5 × 10 to the power 4.",
         ],
         working: [
           { label: "Formula", latex: "\\rho = \\dfrac{m}{V}" },
           { label: "Substitute", latex: "\\rho = \\dfrac{0.45}{18 \\times 10^{-6}}" },
           { label: "Answer", latex: "\\rho = 2.5 \\times 10^{4}\\ \\text{kg/m}^3" },
         ],
-        explain: "The density is 2.5 times 10 to the power 4 kilograms per metre cubed, because 0.45 kilograms divided by 18 times 10 to the power negative 6 metres cubed is 25000.",
+        explain: "The density is 2.5 × 10 to the power 4 kilograms per metre cubed, because 0.45 kilograms divided by 18 × 10 to the power negative 6 metres cubed is 25000.",
       },
       {
         kind: "tiles",
         prompt: "A metal has density 1420 kg/m^3. Build the working line that converts this to g/cm^3.",
         tiles: ["1420", "\\div", "1000", "\\times", "=", "1.42", "g/cm^3", "kg/m^3"],
         answer: ["1420", "\\div", "1000", "=", "1.42", "g/cm^3"],
-        ask: "To change kilograms per metre cubed into grams per centimetre cubed, divide by 1000, so set up 1420 divided by 1000.",
+        ask: "To change kilograms per metre cubed into grams per centimetre cubed, divide by 1000, so set up 1420 ÷ 1000.",
         hints: [
           "1 gram per centimetre cubed equals 1000 kilograms per metre cubed.",
-          "1420 divided by 1000 is 1.42, and the answer is in grams per centimetre cubed.",
+          "1420 ÷ 1000 is 1.42, and the answer is in grams per centimetre cubed.",
         ],
         working: [
           { label: "Formula", latex: "\\text{g/cm}^3 = \\text{kg/m}^3 \\div 1000" },
           { label: "Substitute", latex: "1420 \\div 1000" },
           { label: "Answer", latex: "1.42\\ \\text{g/cm}^3" },
         ],
-        explain: "The density is 1.42 grams per centimetre cubed, because 1420 divided by 1000 is 1.42. You divide by 1000 to go from kilograms per metre cubed to grams per centimetre cubed.",
+        explain: "The density is 1.42 grams per centimetre cubed, because 1420 ÷ 1000 is 1.42. You divide by 1000 to go from kilograms per metre cubed to grams per centimetre cubed.",
       },
       {
         kind: "classify",

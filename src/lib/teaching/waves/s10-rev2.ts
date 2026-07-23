@@ -17,34 +17,34 @@ export const BOXES: Subconcept[] = [
         question: "A wave has a period of 0.25 s. What is its frequency?",
         options: ["0.25 Hz", "4 Hz", "40 Hz", "0.04 Hz"],
         correct: 1,
-        ask: "Frequency is 1 divided by the period, so work out 1 divided by 0.25. Which option is that?",
+        ask: "Frequency is 1 divided by the period, so work out 1 ÷ 0.25. Which option is that?",
         hints: [
           "Use f equals 1 divided by T.",
-          "1 divided by 0.25 is 4, and frequency is measured in hertz.",
+          "1 ÷ 0.25 is 4, and frequency is measured in hertz.",
         ],
         working: [
           { label: "Formula", latex: "f = \\dfrac{1}{T}" },
           { label: "Substitute", latex: "f = \\dfrac{1}{0.25}" },
           { label: "Answer", latex: "f = 4\\ \\text{Hz}" },
         ],
-        explain: "The frequency is 4 hertz, because 1 divided by 0.25 seconds is 4. So 4 complete oscillations happen every second.",
+        explain: "The frequency is 4 hertz, because 1 ÷ 0.25 seconds is 4. So 4 complete oscillations happen every second.",
       },
       {
         kind: "choice",
         question: "A vibrating source has a frequency of 25 Hz. What is the period of the wave?",
         options: ["25 s", "2.5 s", "0.25 s", "0.04 s"],
         correct: 3,
-        ask: "The period is 1 divided by the frequency, so work out 1 divided by 25. Which option matches?",
+        ask: "The period is 1 divided by the frequency, so work out 1 ÷ 25. Which option matches?",
         hints: [
           "Use T equals 1 divided by f.",
-          "1 divided by 25 is 0.04, and the period is measured in seconds.",
+          "1 ÷ 25 is 0.04, and the period is measured in seconds.",
         ],
         working: [
           { label: "Formula", latex: "T = \\dfrac{1}{f}" },
           { label: "Substitute", latex: "T = \\dfrac{1}{25}" },
           { label: "Answer", latex: "T = 0.04\\ \\text{s}" },
         ],
-        explain: "The period is 0.04 seconds, because 1 divided by 25 hertz is 0.04 seconds. That is the time for a single oscillation.",
+        explain: "The period is 0.04 seconds, because 1 ÷ 25 hertz is 0.04 seconds. That is the time for a single oscillation.",
       },
       {
         kind: "choice",
@@ -63,10 +63,10 @@ export const BOXES: Subconcept[] = [
         question: "A wave crest travels 18 m in 12 s. What is the wave speed?",
         options: ["216 m/s", "0.67 m/s", "1.5 m/s", "6 m/s"],
         correct: 2,
-        ask: "Speed is distance divided by time, so work out 18 divided by 12. Which option is that?",
+        ask: "Speed is distance divided by time, so work out 18 ÷ 12. Which option is that?",
         hints: [
           "Use v equals d divided by t.",
-          "18 divided by 12 is 1.5, and speed is measured in metres per second.",
+          "18 ÷ 12 is 1.5, and speed is measured in metres per second.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{d}{t}" },
@@ -93,10 +93,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A wave has frequency 8 Hz and wavelength 0.15 m. Build the working line that gives its speed.",
         tiles: ["v =", "8", "\\times", "0.15", "\\div", "=", "1.2", "m/s", "Hz"],
         answer: ["v =", "8", "\\times", "0.15", "=", "1.2", "m/s"],
-        ask: "Wave speed is frequency times wavelength, so set up 8 times 0.15.",
+        ask: "Wave speed is frequency times wavelength, so set up 8 × 0.15.",
         hints: [
           "Use v equals f times lambda.",
-          "8 times 0.15 is 1.2, and speed is measured in metres per second.",
+          "8 × 0.15 is 1.2, and speed is measured in metres per second.",
         ],
         working: [
           { label: "Formula", latex: "v = f\\lambda" },
@@ -120,7 +120,7 @@ export const BOXES: Subconcept[] = [
           { label: "Substitute", latex: "v = 2 \\times 3" },
           { label: "Answer", latex: "v = 6\\ \\text{m/s}" },
         ],
-        explain: "The mistake is on the last line, line 2, which divides the frequency by the wavelength. Wave speed is frequency times wavelength, so v equals 2 times 3, which is 6 metres per second.",
+        explain: "The mistake is on the last line, line 2, which divides the frequency by the wavelength. Wave speed is frequency times wavelength, so v equals 2 × 3, which is 6 metres per second.",
       },
       {
         kind: "slider",
@@ -132,10 +132,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 0.45,
         targetMax: 0.55,
-        ask: "Rearrange v equals f times lambda to get frequency, so work out 1.5 divided by 3.0.",
+        ask: "Rearrange v equals f times lambda to get frequency, so work out 1.5 ÷ 3.0.",
         hints: [
           "From v equals f lambda, the frequency is v divided by lambda.",
-          "1.5 divided by 3.0 is 0.5, so slide to 0.5 hertz.",
+          "1.5 ÷ 3.0 is 0.5, so slide to 0.5 hertz.",
         ],
         working: [
           { label: "Formula", latex: "f = \\dfrac{v}{\\lambda}" },

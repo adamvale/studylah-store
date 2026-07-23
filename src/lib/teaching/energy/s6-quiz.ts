@@ -89,10 +89,10 @@ export const BOXES: Subconcept[] = [
         question: "A 0.80 kg ball moves at 2.0 m/s. Find its kinetic store E_k.",
         options: ["1.6 J", "0.80 J", "3.2 J", "1.6 W"],
         correct: 0,
-        ask: "The kinetic store is half the mass times the speed squared, so work out 0.5 times 0.80 times 2.0 squared.",
+        ask: "The kinetic store is half the mass times the speed squared, so work out 0.5 × 0.80 × 2.0^2.",
         hints: [
-          "Use E_k equals a half m v squared.",
-          "2.0 squared is 4.0, and 0.5 times 0.80 times 4.0 is 1.6, measured in joules.",
+          "Use E_k equals a half m v^2.",
+          "2.0^2 is 4.0, and 0.5 × 0.80 × 4.0 is 1.6, measured in joules.",
         ],
         working: [
           { label: "Formula", latex: "E_k = \\tfrac{1}{2} m v^2" },
@@ -111,10 +111,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 47,
         targetMax: 49,
-        ask: "The gravitational potential store gained is mass times g times the height, so work out 0.40 times 10 times 12.",
+        ask: "The gravitational potential store gained is mass times g times the height, so work out 0.40 × 10 × 12.",
         hints: [
           "Use E_p equals m g h, with g equal to 10 newtons per kilogram.",
-          "0.40 times 10 times 12 is 48, so slide to 48 joules.",
+          "0.40 × 10 × 12 is 48, so slide to 48 joules.",
         ],
         working: [
           { label: "Formula", latex: "E_p = mgh" },
@@ -128,10 +128,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A block of weight 30 N is raised 3 m. Using E_p = W h, build the working line for the gain in its gravitational potential store.",
         tiles: ["E_p =", "30", "\\times", "3", "=", "90", "J", "N"],
         answer: ["E_p =", "30", "\\times", "3", "=", "90", "J"],
-        ask: "Because W equals m g, the gravitational potential store gained is the weight times the height, so set up 30 times 3.",
+        ask: "Because W equals m g, the gravitational potential store gained is the weight times the height, so set up 30 × 3.",
         hints: [
           "Use E_p equals W times h, the weight times the height raised.",
-          "30 times 3 is 90, and energy is measured in joules.",
+          "30 × 3 is 90, and energy is measured in joules.",
         ],
         working: [
           { label: "Formula", latex: "E_p = W h" },
@@ -191,17 +191,17 @@ export const BOXES: Subconcept[] = [
         question: "A 0.500 kg mango falls from a branch 20 m high (g = 10 N/kg). All of its gravitational potential store becomes kinetic. Find its speed just before it lands.",
         options: ["20 m/s", "10 m/s", "40 m/s", "4 m/s"],
         correct: 0,
-        ask: "Set the gravitational potential store equal to the kinetic store: m g h equals a half m v squared. The mass cancels, so v is the square root of 2 g h.",
+        ask: "Set the gravitational potential store equal to the kinetic store: m g h equals a half m v^2. The mass cancels, so v is the square root of 2 g h.",
         hints: [
-          "E_p is m g h, which is 0.500 times 10 times 20, giving 100 joules, and this equals the kinetic store.",
-          "v equals the square root of 2 times 10 times 20, which is the square root of 400, giving 20 metres per second.",
+          "E_p is m g h, which is 0.500 × 10 × 20, giving 100 joules, and this equals the kinetic store.",
+          "v equals the square root of 2 × 10 × 20, which is the square root of 400, giving 20 metres per second.",
         ],
         working: [
           { label: "Formula", latex: "mgh = \\tfrac{1}{2} m v^2 \\Rightarrow v = \\sqrt{2gh}" },
           { label: "Substitute", latex: "v = \\sqrt{2 \\times 10 \\times 20}" },
           { label: "Answer", latex: "v = 20\\ \\text{m/s}" },
         ],
-        explain: "The speed is 20 metres per second, because the mass cancels and v is the square root of 2 times 10 times 20, which is the square root of 400, giving 20 metres per second.",
+        explain: "The speed is 20 metres per second, because the mass cancels and v is the square root of 2 × 10 × 20, which is the square root of 400, giving 20 metres per second.",
       },
       {
         kind: "cloze",
@@ -226,10 +226,10 @@ export const BOXES: Subconcept[] = [
         question: "A box is pushed with a steady force of 5 N and moves 6 m in the direction of the force. Find the work done.",
         options: ["30 J", "11 J", "1.2 J", "30 N"],
         correct: 0,
-        ask: "Work done is the force times the distance moved in the direction of the force, so work out 5 times 6.",
+        ask: "Work done is the force times the distance moved in the direction of the force, so work out 5 × 6.",
         hints: [
           "Use W equals F times d.",
-          "5 times 6 is 30, and work is measured in joules.",
+          "5 × 6 is 30, and work is measured in joules.",
         ],
         working: [
           { label: "Formula", latex: "W = F d" },
@@ -251,14 +251,14 @@ export const BOXES: Subconcept[] = [
         ask: "The total work splits between the gravitational potential store and friction, so the friction work is the total work minus E_p. Should the last line add or subtract?",
         hints: [
           "Work against friction is the total work done minus the gain in the gravitational potential store.",
-          "30 minus 24 is 6, so the friction work is 6 joules; the line that adds them to get 54 is wrong.",
+          "30 - 24 is 6, so the friction work is 6 joules; the line that adds them to get 54 is wrong.",
         ],
         working: [
           { label: "Formula", latex: "W_{friction} = W - E_p" },
           { label: "Substitute", latex: "W_{friction} = 30 - 24" },
           { label: "Answer", latex: "W_{friction} = 6\\ \\text{J}" },
         ],
-        explain: "The mistake is the last line, which adds 30 and 24. The work against friction is the total work minus the gravitational potential store gained, so it is 30 minus 24, which is 6 joules.",
+        explain: "The mistake is the last line, which adds 30 and 24. The work against friction is the total work minus the gravitational potential store gained, so it is 30 - 24, which is 6 joules.",
       },
       {
         kind: "open",
@@ -278,15 +278,15 @@ export const BOXES: Subconcept[] = [
         correct: 0,
         ask: "First find the work done against gravity with m g h, then divide by the time to get the power.",
         hints: [
-          "The work done is m g h, which is 50 times 10 times 3.0, giving 1500 joules.",
-          "Power is work divided by time, so 1500 divided by 6.0 is 250 watts.",
+          "The work done is m g h, which is 50 × 10 × 3.0, giving 1500 joules.",
+          "Power is work divided by time, so 1500 ÷ 6.0 is 250 watts.",
         ],
         working: [
           { label: "Formula", latex: "P = \\dfrac{W}{t} = \\dfrac{mgh}{t}" },
           { label: "Substitute", latex: "P = \\dfrac{50 \\times 10 \\times 3.0}{6.0}" },
           { label: "Answer", latex: "P = 250\\ \\text{W}" },
         ],
-        explain: "The work done is 50 times 10 times 3.0, which is 1500 joules, and the power is 1500 divided by 6.0, giving 250 watts.",
+        explain: "The work done is 50 × 10 × 3.0, which is 1500 joules, and the power is 1500 ÷ 6.0, giving 250 watts.",
       },
       {
         kind: "slider",
@@ -298,10 +298,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 590,
         targetMax: 610,
-        ask: "At constant speed the power is the force times the speed, so work out 240 times 2.5.",
+        ask: "At constant speed the power is the force times the speed, so work out 240 × 2.5.",
         hints: [
           "Use P equals F times v.",
-          "240 times 2.5 is 600, so slide to 600 watts.",
+          "240 × 2.5 is 600, so slide to 600 watts.",
         ],
         working: [
           { label: "Formula", latex: "P = F v" },
@@ -315,10 +315,10 @@ export const BOXES: Subconcept[] = [
         question: "An electric heater takes in 200000 J of energy and usefully transfers 150000 J. Find its efficiency.",
         options: ["75%", "25%", "133%", "50%"],
         correct: 0,
-        ask: "Efficiency is the useful output divided by the total input, times 100 percent, so work out 150000 divided by 200000.",
+        ask: "Efficiency is the useful output divided by the total input, times 100 percent, so work out 150000 ÷ 200000.",
         hints: [
           "Use efficiency equals useful output divided by total input, times 100 percent.",
-          "150000 divided by 200000 is 0.75, and times 100 percent that is 75 percent.",
+          "150000 ÷ 200000 is 0.75, and times 100 percent that is 75 percent.",
         ],
         working: [
           { label: "Formula", latex: "\\text{efficiency} = \\dfrac{\\text{useful output}}{\\text{total input}} \\times 100\\%" },
@@ -335,7 +335,7 @@ export const BOXES: Subconcept[] = [
         ask: "The total input equals the useful output plus the dissipated energy, so the dissipated energy is the total minus the useful output.",
         hints: [
           "Use dissipated energy equals total input minus useful output.",
-          "800 minus 200 is 600, measured in joules.",
+          "800 - 200 is 600, measured in joules.",
         ],
         working: [
           { label: "Formula", latex: "\\text{dissipated} = \\text{total input} - \\text{useful output}" },

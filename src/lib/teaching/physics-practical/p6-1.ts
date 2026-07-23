@@ -60,10 +60,10 @@ export const BOXES: Subconcept[] = [
         question: "A lamp carries a current of 1.52 A when the voltage across it is 9.30 V. Find its resistance.",
         options: ["0.16 ohms", "14.1 ohms", "6.12 ohms", "10.8 ohms"],
         correct: 2,
-        ask: "Resistance is voltage divided by current, so work out 9.30 divided by 1.52.",
+        ask: "Resistance is voltage divided by current, so work out 9.30 ÷ 1.52.",
         hints: [
           "Rearrange V = IR to R = V/I.",
-          "9.30 divided by 1.52 is about 6.12.",
+          "9.30 ÷ 1.52 is about 6.12.",
         ],
         working: [
           { label: "Formula", latex: "R = \\dfrac{V}{I}" },
@@ -106,10 +106,10 @@ export const BOXES: Subconcept[] = [
         question: "A lamp draws a current of 0.50 A when connected to a 12 V supply. What is its resistance?",
         options: ["6.0 ohms", "0.042 ohms", "12 ohms", "24 ohms"],
         correct: 3,
-        ask: "Resistance is voltage divided by current, so work out 12 divided by 0.50.",
+        ask: "Resistance is voltage divided by current, so work out 12 ÷ 0.50.",
         hints: [
           "Use R = V/I.",
-          "12 divided by 0.50 is 24.",
+          "12 ÷ 0.50 is 24.",
         ],
         working: [
           { label: "Formula", latex: "R = \\dfrac{V}{I}" },

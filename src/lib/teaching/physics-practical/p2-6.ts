@@ -26,7 +26,7 @@ export const BOXES: Subconcept[] = [
       },
       {
         kind: "concept",
-        heading: "From rest, d against t squared is a straight line",
+        heading: "From rest, d against t^2 is a straight line",
         figure: "fig-pr2-08-distance-time2-graph",
         body: "Released from *rest* with constant acceleration a, the distance grows as *d = (1/2) a t^2*, so d is proportional to *t^2*. Plotting d against t^2 gives a *straight line* through the origin.",
         formula: {
@@ -75,7 +75,7 @@ export const BOXES: Subconcept[] = [
       },
       {
         kind: "concept",
-        heading: "A graph of v squared against x gives g",
+        heading: "A graph of v^2 against x gives g",
         figure: "fig-pr2-12-speed2-distance-graph",
         body: "Since *v^2 = 2 a x*, a graph of *v^2 against x* is a straight line of gradient *G = 2a*. With a = g sin theta down the slope, *g = G / (2 sin theta)*.",
         formula: {
@@ -94,10 +94,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr2-11-ramp",
         options: ["0.800", "1.74", "0.174", "5.76"],
         correct: 2,
-        ask: "Sine theta is the height divided by the slope distance, so work out 0.139 divided by 0.800.",
+        ask: "Sine theta is the height divided by the slope distance, so work out 0.139 ÷ 0.800.",
         hints: [
           "Use sin theta equals h over s.",
-          "0.139 divided by 0.800 is 0.174.",
+          "0.139 ÷ 0.800 is 0.174.",
         ],
         working: [
           { label: "Formula", latex: "\\sin\\theta = \\dfrac{h}{s}" },
@@ -111,17 +111,17 @@ export const BOXES: Subconcept[] = [
         question: "The cylinder runs x = 0.900 m down the slope in a mean time t_ave = 1.036 s, starting from rest. Find the speed v at the bottom.",
         options: ["1.74 m/s", "0.87 m/s", "0.90 m/s", "1.04 m/s"],
         correct: 0,
-        ask: "The final speed is twice the average, so use v equals 2x over t. Work out 2 times 0.900 divided by 1.036.",
+        ask: "The final speed is twice the average, so use v equals 2x over t. Work out 2 × 0.900 ÷ 1.036.",
         hints: [
           "Use v equals 2x divided by t_ave.",
-          "2 times 0.900 is 1.8, and 1.8 divided by 1.036 is about 1.74.",
+          "2 × 0.900 is 1.8, and 1.8 ÷ 1.036 is about 1.74.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{2x}{t_{\\text{ave}}}" },
           { label: "Substitute", latex: "v = \\dfrac{2 \\times 0.900}{1.036}" },
           { label: "Answer", latex: "v = 1.74\\ \\text{m/s}" },
         ],
-        explain: "The speed at the bottom is 1.74 metres per second, because 2 times 0.900 metres is 1.8 metres, and 1.8 divided by 1.036 seconds is 1.74 metres per second.",
+        explain: "The speed at the bottom is 1.74 metres per second, because 2 × 0.900 metres is 1.8 metres, and 1.8 ÷ 1.036 seconds is 1.74 metres per second.",
       },
       {
         kind: "choice",
@@ -130,15 +130,15 @@ export const BOXES: Subconcept[] = [
         correct: 3,
         ask: "Square the speed: multiply 1.74 by itself.",
         hints: [
-          "v squared means v times v.",
-          "1.74 times 1.74 is about 3.02.",
+          "v^2 means v times v.",
+          "1.74 × 1.74 is about 3.02.",
         ],
         working: [
           { label: "Formula", latex: "v^{2} = v \\times v" },
           { label: "Substitute", latex: "v^{2} = 1.74 \\times 1.74" },
           { label: "Answer", latex: "v^{2} = 3.02\\ (\\text{m/s})^{2}" },
         ],
-        explain: "v squared is 3.02, because 1.74 times 1.74 is 3.02, in units of metres per second all squared.",
+        explain: "v^2 is 3.02, because 1.74 × 1.74 is 3.02, in units of metres per second all squared.",
       },
       {
         kind: "slider",
@@ -150,17 +150,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 1.42,
         targetMax: 1.48,
-        ask: "The final speed is twice the average, so use v equals 2x over t. Work out 2 times 0.60 divided by 0.83.",
+        ask: "The final speed is twice the average, so use v equals 2x over t. Work out 2 × 0.60 ÷ 0.83.",
         hints: [
           "Use v equals 2x divided by t_ave.",
-          "2 times 0.60 is 1.20, and 1.20 divided by 0.83 is about 1.45.",
+          "2 × 0.60 is 1.20, and 1.20 ÷ 0.83 is about 1.45.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{2x}{t_{\\text{ave}}}" },
           { label: "Substitute", latex: "v = \\dfrac{2 \\times 0.60}{0.83}" },
           { label: "Answer", latex: "v = 1.45\\ \\text{m/s}" },
         ],
-        explain: "The final speed is 1.45 metres per second, because 2 times 0.60 metres is 1.20 metres, and 1.20 divided by 0.83 seconds is 1.45 metres per second. Squaring it gives v squared of 2.1.",
+        explain: "The final speed is 1.45 metres per second, because 2 × 0.60 metres is 1.20 metres, and 1.20 ÷ 0.83 seconds is 1.45 metres per second. Squaring it gives v^2 of 2.1.",
       },
       {
         kind: "graphpick",
@@ -206,29 +206,29 @@ export const BOXES: Subconcept[] = [
           },
         ],
         correct: 1,
-        ask: "v squared equals 2 a x, so v squared is proportional to x. What shape is a proportional relationship, and where must it start when x is 0?",
+        ask: "v^2 equals 2 a x, so v^2 is proportional to x. What shape is a proportional relationship, and where must it start when x is 0?",
         hints: [
           "Proportional means a straight line through the origin.",
-          "When x is 0 the speed is 0, so v squared is 0 there. The line must pass through the origin.",
+          "When x is 0 the speed is 0, so v^2 is 0 there. The line must pass through the origin.",
         ],
-        explain: "The correct graph is a straight line through the origin, because v squared equals 2 a x makes v squared proportional to x, so at x equals 0 the value is 0 and the gradient is 2a.",
+        explain: "The correct graph is a straight line through the origin, because v^2 equals 2 a x makes v^2 proportional to x, so at x equals 0 the value is 0 and the gradient is 2a.",
       },
       {
         kind: "choice",
         question: "The v^2 against x line has gradient G = 3.40 m/s^2, and sin theta = 0.174. Find g using g = G / (2 sin theta).",
         options: ["19.5 m/s^2", "9.8 m/s^2", "0.59 m/s^2", "3.40 m/s^2"],
         correct: 1,
-        ask: "Divide the gradient by 2 times sine theta. Work out 3.40 divided by 0.348.",
+        ask: "Divide the gradient by 2 times sine theta. Work out 3.40 ÷ 0.348.",
         hints: [
-          "First find 2 times 0.174, which is 0.348.",
-          "3.40 divided by 0.348 is about 9.8.",
+          "First find 2 × 0.174, which is 0.348.",
+          "3.40 ÷ 0.348 is about 9.8.",
         ],
         working: [
           { label: "Formula", latex: "g = \\dfrac{G}{2\\sin\\theta}" },
           { label: "Substitute", latex: "g = \\dfrac{3.40}{2 \\times 0.174}" },
           { label: "Answer", latex: "g = 9.8\\ \\text{m/s}^{2}" },
         ],
-        explain: "g is 9.8 metres per second squared, because 2 times 0.174 is 0.348, and 3.40 divided by 0.348 is 9.8.",
+        explain: "g is 9.8 metres per second squared, because 2 × 0.174 is 0.348, and 3.40 ÷ 0.348 is 9.8.",
       },
       {
         kind: "open",

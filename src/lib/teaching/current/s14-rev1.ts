@@ -35,10 +35,10 @@ export const BOXES: Subconcept[] = [
         question: "A component has 12 V across it and carries a current of 0.5 A. What is its resistance?",
         options: ["24 ohms", "6 ohms", "0.24 ohms", "2.4 ohms"],
         correct: 0,
-        ask: "Resistance is the p.d. divided by the current, so work out 12 divided by 0.5. Which option is that?",
+        ask: "Resistance is the p.d. divided by the current, so work out 12 ÷ 0.5. Which option is that?",
         hints: [
           "Use R equals V divided by I.",
-          "12 divided by 0.5 is 24, and resistance is measured in ohms.",
+          "12 ÷ 0.5 is 24, and resistance is measured in ohms.",
         ],
         working: [
           { label: "Formula", latex: "R = \\dfrac{V}{I}" },
@@ -69,10 +69,10 @@ export const BOXES: Subconcept[] = [
         question: "A battery of e.m.f. 6.0 V drives a charge of 40 C around a circuit. How much energy does it transfer?",
         options: ["6.7 J", "240 J", "46 J", "0.15 J"],
         correct: 1,
-        ask: "The energy is the e.m.f. multiplied by the charge, so work out 6.0 times 40. Which option matches?",
+        ask: "The energy is the e.m.f. multiplied by the charge, so work out 6.0 × 40. Which option matches?",
         hints: [
           "Rearranging E equals W divided by Q gives W equals E times Q.",
-          "6.0 times 40 is 240, and energy is measured in joules.",
+          "6.0 × 40 is 240, and energy is measured in joules.",
         ],
         working: [
           { label: "Formula", latex: "W = EQ" },
@@ -86,10 +86,10 @@ export const BOXES: Subconcept[] = [
         question: "A wire carries a current of 0.8 A when the p.d. across it is 4.0 V. What is its resistance?",
         options: ["0.2 ohms", "3.2 ohms", "5 ohms", "32 ohms"],
         correct: 2,
-        ask: "Resistance is the p.d. divided by the current, so work out 4.0 divided by 0.8. Which option is that?",
+        ask: "Resistance is the p.d. divided by the current, so work out 4.0 ÷ 0.8. Which option is that?",
         hints: [
           "Use R equals V divided by I.",
-          "4.0 divided by 0.8 is 5, and resistance is measured in ohms.",
+          "4.0 ÷ 0.8 is 5, and resistance is measured in ohms.",
         ],
         working: [
           { label: "Formula", latex: "R = \\dfrac{V}{I}" },
@@ -103,17 +103,17 @@ export const BOXES: Subconcept[] = [
         prompt: "A current of 4 A flows for 180 s. Build the working line that gives the charge Q.",
         tiles: ["Q =", "4", "\\times", "180", "=", "720", "C", "s"],
         answer: ["Q =", "4", "\\times", "180", "=", "720", "C"],
-        ask: "Charge is the current multiplied by the time, so set up 4 times 180.",
+        ask: "Charge is the current multiplied by the time, so set up 4 × 180.",
         hints: [
           "Use Q equals I times t.",
-          "4 times 180 is 720, and charge is measured in coulombs.",
+          "4 × 180 is 720, and charge is measured in coulombs.",
         ],
         working: [
           { label: "Formula", latex: "Q = It" },
           { label: "Substitute", latex: "Q = 4 \\times 180" },
           { label: "Answer", latex: "Q = 720\\ \\text{C}" },
         ],
-        explain: "The charge is 720 coulombs, because a current of 4 amperes flowing for 180 seconds delivers 4 times 180, which is 720 coulombs.",
+        explain: "The charge is 720 coulombs, because a current of 4 amperes flowing for 180 seconds delivers 4 × 180, which is 720 coulombs.",
       },
       {
         kind: "slider",
@@ -125,10 +125,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 179,
         targetMax: 181,
-        ask: "Rearrange Q equals I times t to get the time, so work out 450 divided by 2.5.",
+        ask: "Rearrange Q equals I times t to get the time, so work out 450 ÷ 2.5.",
         hints: [
           "From Q equals I t, the time is Q divided by I.",
-          "450 divided by 2.5 is 180, so slide to 180 seconds.",
+          "450 ÷ 2.5 is 180, so slide to 180 seconds.",
         ],
         working: [
           { label: "Formula", latex: "t = \\dfrac{Q}{I}" },
@@ -147,10 +147,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 4.4,
         targetMax: 4.6,
-        ask: "The e.m.f. is the work done per unit charge, so work out 4.5 divided by 1.",
+        ask: "The e.m.f. is the work done per unit charge, so work out 4.5 ÷ 1.",
         hints: [
           "Use E equals W divided by Q.",
-          "4.5 divided by 1 is 4.5, so slide to 4.5 volts.",
+          "4.5 ÷ 1 is 4.5, so slide to 4.5 volts.",
         ],
         working: [
           { label: "Formula", latex: "E = \\dfrac{W}{Q}" },

@@ -374,7 +374,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "Explain, in terms of electrons, how a neutral object can become negatively charged.",
-        modelAnswer: "A neutral object has equal numbers of protons and electrons, so the charges cancel. When it gains extra electrons from another object, it now has more electrons than protons. The extra negative charge is not balanced, so the object has an overall negative charge. Only the electrons move; the protons stay fixed in the nuclei. Each electron carries a tiny charge of 1.60 times 10 to the power negative 19 coulombs.",
+        modelAnswer: "A neutral object has equal numbers of protons and electrons, so the charges cancel. When it gains extra electrons from another object, it now has more electrons than protons. The extra negative charge is not balanced, so the object has an overall negative charge. Only the electrons move; the protons stay fixed in the nuclei. Each electron carries a tiny charge of 1.60 × 10 to the power negative 19 coulombs.",
         marks: [
           "A neutral object has equal numbers of protons and electrons.",
           "It becomes negative by gaining extra electrons from elsewhere.",

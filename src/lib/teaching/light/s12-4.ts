@@ -51,17 +51,17 @@ export const BOXES: Subconcept[] = [
         question: "The refractive index of a glass block is n = 1.52. Find its critical angle c.",
         options: ["49 degrees", "66 degrees", "41 degrees", "33 degrees"],
         correct: 2,
-        ask: "Use sine of c equals 1 divided by n. Work out 1 divided by 1.52, then take the inverse sine.",
+        ask: "Use sine of c equals 1 divided by n. Work out 1 ÷ 1.52, then take the inverse sine.",
         hints: [
           "Start from sin c = 1 / n with n = 1.52.",
-          "1 divided by 1.52 is about 0.66, and the inverse sine of that is 41 degrees.",
+          "1 ÷ 1.52 is about 0.66, and the inverse sine of that is 41 degrees.",
         ],
         working: [
           { label: "Formula", latex: "\\sin c = \\dfrac{1}{n}" },
           { label: "Substitute", latex: "\\sin c = \\dfrac{1}{1.52}" },
           { label: "Answer", latex: "c = 41^{\\circ}" },
         ],
-        explain: "The critical angle is 41 degrees, because 1 divided by 1.52 is about 0.66, and the inverse sine of 0.66 is 41 degrees.",
+        explain: "The critical angle is 41 degrees, because 1 ÷ 1.52 is about 0.66, and the inverse sine of 0.66 is 41 degrees.",
       },
       {
         kind: "choice",
@@ -71,31 +71,31 @@ export const BOXES: Subconcept[] = [
         ask: "Use sine of c equals 1 divided by n with n equal to 1.49, then take the inverse sine.",
         hints: [
           "Substitute n = 1.49 into sin c = 1 / n.",
-          "1 divided by 1.49 is about 0.67, and its inverse sine is 42 degrees.",
+          "1 ÷ 1.49 is about 0.67, and its inverse sine is 42 degrees.",
         ],
         working: [
           { label: "Formula", latex: "\\sin c = \\dfrac{1}{n}" },
           { label: "Substitute", latex: "\\sin c = \\dfrac{1}{1.49}" },
           { label: "Answer", latex: "c = 42^{\\circ}" },
         ],
-        explain: "The critical angle is 42 degrees, because 1 divided by 1.49 is about 0.67, and the inverse sine of 0.67 is 42 degrees.",
+        explain: "The critical angle is 42 degrees, because 1 ÷ 1.49 is about 0.67, and the inverse sine of 0.67 is 42 degrees.",
       },
       {
         kind: "choice",
         question: "Diamond has a very high refractive index, n = 2.42. Find its critical angle c.",
         options: ["41 degrees", "49 degrees", "42 degrees", "24 degrees"],
         correct: 3,
-        ask: "Use sine of c equals 1 divided by n. A larger n gives a smaller critical angle. Work out 1 divided by 2.42.",
+        ask: "Use sine of c equals 1 divided by n. A larger n gives a smaller critical angle. Work out 1 ÷ 2.42.",
         hints: [
           "Put n = 2.42 into sin c = 1 / n.",
-          "1 divided by 2.42 is about 0.41, and the inverse sine of that is 24 degrees.",
+          "1 ÷ 2.42 is about 0.41, and the inverse sine of that is 24 degrees.",
         ],
         working: [
           { label: "Formula", latex: "\\sin c = \\dfrac{1}{n}" },
           { label: "Substitute", latex: "\\sin c = \\dfrac{1}{2.42}" },
           { label: "Answer", latex: "c = 24^{\\circ}" },
         ],
-        explain: "The critical angle is 24 degrees, because 1 divided by 2.42 is about 0.41, and the inverse sine of 0.41 is 24 degrees. The small critical angle is why a diamond traps and sparkles with so much light.",
+        explain: "The critical angle is 24 degrees, because 1 ÷ 2.42 is about 0.41, and the inverse sine of 0.41 is 24 degrees. The small critical angle is why a diamond traps and sparkles with so much light.",
       },
       {
         kind: "choice",

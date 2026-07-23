@@ -61,7 +61,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "A jogger runs 600 m east then 240 m west in 12 min. Find her average velocity, showing your working.",
-        modelAnswer: "Take east as positive. The displacement is 600 minus 240, which is 360 m due east. The time is 12 times 60, which is 720 s. Average velocity is 360 divided by 720, which is 0.5 m/s due east.",
+        modelAnswer: "Take east as positive. The displacement is 600 - 240, which is 360 m due east. The time is 12 × 60, which is 720 s. Average velocity is 360 ÷ 720, which is 0.5 m/s due east.",
         marks: [
           "Displacement = 600 - 240 = 360 m due east (east taken as positive).",
           "Time converted to 720 s.",
@@ -79,10 +79,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 4,
         targetMax: 4,
-        ask: "Average velocity is displacement over time. 360 divided by 90. Slide to that value.",
+        ask: "Average velocity is displacement over time. 360 ÷ 90. Slide to that value.",
         hints: [
           "Divide the displacement by the time.",
-          "360 divided by 90 is 4.",
+          "360 ÷ 90 is 4.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{d}{t}" },

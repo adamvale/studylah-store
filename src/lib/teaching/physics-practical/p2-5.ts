@@ -48,7 +48,7 @@ export const BOXES: Subconcept[] = [
         kind: "concept",
         heading: "Squaring makes a straight line",
         figure: "fig-pr2-09-period2-length-graph",
-        body: "*Squaring* the equation *linearises* it: T^2 = (4 pi^2 / g) l. So a graph of *T squared against l* is a straight line through the origin, and its *gradient* is 4 pi^2 / g.",
+        body: "*Squaring* the equation *linearises* it: T^2 = (4 pi^2 / g) l. So a graph of *T^2 against l* is a straight line through the origin, and its *gradient* is 4 pi^2 / g.",
         formula: {
           latex: "T^2 = \\dfrac{4\\pi^2}{g}\\,l",
           where: [
@@ -69,10 +69,10 @@ export const BOXES: Subconcept[] = [
         question: "A stopwatch reads 40.12 s for 20 complete oscillations. What is the period T?",
         options: ["40.12 s", "0.4988 s", "2.006 s", "20.06 s"],
         correct: 2,
-        ask: "The period is the total time for 20 oscillations divided by 20. Work out 40.12 divided by 20.",
+        ask: "The period is the total time for 20 oscillations divided by 20. Work out 40.12 ÷ 20.",
         hints: [
           "Use T equals total time divided by the number of oscillations.",
-          "40.12 divided by 20 is 2.006, a time in seconds.",
+          "40.12 ÷ 20 is 2.006, a time in seconds.",
         ],
         working: [
           { label: "Formula", latex: "T = \\dfrac{t}{20}" },
@@ -93,7 +93,7 @@ export const BOXES: Subconcept[] = [
         targetMax: 4.1,
         ask: "Square the period, then divide by the length. Work out 2.006 squared, then divide by 1.000.",
         hints: [
-          "T^2 over l is the gradient of the T squared against l line.",
+          "T^2 over l is the gradient of the T^2 against l line.",
           "2.006 squared is about 4.02, and dividing by 1.000 leaves 4.02.",
         ],
         working: [
@@ -101,17 +101,17 @@ export const BOXES: Subconcept[] = [
           { label: "Substitute", latex: "k = \\dfrac{(2.006)^2}{1.000}" },
           { label: "Answer", latex: "k = 4.02\\ \\text{s}^2/\\text{m}" },
         ],
-        explain: "The value is 4.02 s squared per metre, because 2.006 squared is 4.02 and dividing by a length of 1.000 metre leaves 4.02.",
+        explain: "The value is 4.02 s^2 per metre, because 2.006 squared is 4.02 and dividing by a length of 1.000 metre leaves 4.02.",
       },
       {
         kind: "choice",
         question: "A graph of T^2 against l has a gradient of 4.02 s^2/m. Taking 4 pi^2 = 39.48, find g.",
         options: ["4.02 m/s^2", "9.8 m/s^2", "39.48 m/s^2", "0.10 m/s^2"],
         correct: 1,
-        ask: "The value of g is 4 pi squared divided by the gradient. Work out 39.48 divided by 4.02.",
+        ask: "The value of g is 4 pi squared divided by the gradient. Work out 39.48 ÷ 4.02.",
         hints: [
           "Use g equals 4 pi squared divided by the gradient.",
-          "39.48 divided by 4.02 is about 9.8, an acceleration.",
+          "39.48 ÷ 4.02 is about 9.8, an acceleration.",
         ],
         working: [
           { label: "Formula", latex: "g = \\dfrac{4\\pi^2}{\\text{gradient}}" },
@@ -125,10 +125,10 @@ export const BOXES: Subconcept[] = [
         question: "Another student's best-fit line has a gradient of 4.05 s^2/m. Taking 4 pi^2 = 39.48, find g.",
         options: ["9.7 m/s^2", "10.2 m/s^2", "4.05 m/s^2", "20.0 m/s^2"],
         correct: 0,
-        ask: "Again g is 4 pi squared divided by the gradient. Work out 39.48 divided by 4.05.",
+        ask: "Again g is 4 pi squared divided by the gradient. Work out 39.48 ÷ 4.05.",
         hints: [
           "Use g equals 4 pi squared divided by the gradient.",
-          "39.48 divided by 4.05 is about 9.7.",
+          "39.48 ÷ 4.05 is about 9.7.",
         ],
         working: [
           { label: "Formula", latex: "g = \\dfrac{4\\pi^2}{\\text{gradient}}" },
@@ -142,17 +142,17 @@ export const BOXES: Subconcept[] = [
         question: "A single pendulum has l = 0.90 m and T = 1.90 s. Using g = 4 pi^2 l / T^2 with 4 pi^2 = 39.48, find g.",
         options: ["8.5 m/s^2", "3.61 m/s^2", "19.6 m/s^2", "9.8 m/s^2"],
         correct: 3,
-        ask: "Multiply 4 pi squared by the length, then divide by the period squared. Work out 39.48 times 0.90, then divide by 1.90 squared.",
+        ask: "Multiply 4 pi squared by the length, then divide by the period squared. Work out 39.48 × 0.90, then divide by 1.90 squared.",
         hints: [
           "First square the period: 1.90 squared is 3.61.",
-          "39.48 times 0.90 is 35.53, and 35.53 divided by 3.61 is about 9.8.",
+          "39.48 × 0.90 is 35.53, and 35.53 ÷ 3.61 is about 9.8.",
         ],
         working: [
           { label: "Formula", latex: "g = \\dfrac{4\\pi^2 l}{T^2}" },
           { label: "Substitute", latex: "g = \\dfrac{39.48 \\times 0.90}{(1.90)^2}" },
           { label: "Answer", latex: "g = 9.8\\ \\text{m/s}^2" },
         ],
-        explain: "The acceleration of free fall is 9.8 metres per second squared, because 39.48 times 0.90 is 35.53, and dividing by 1.90 squared, which is 3.61, gives 9.8.",
+        explain: "The acceleration of free fall is 9.8 metres per second squared, because 39.48 × 0.90 is 35.53, and dividing by 1.90 squared, which is 3.61, gives 9.8.",
       },
       {
         kind: "choice",
@@ -179,9 +179,9 @@ export const BOXES: Subconcept[] = [
         ask: "You need a length and a period before you can plot anything, and you need the whole line before you can take its gradient.",
         hints: [
           "Start by measuring a length, then time the swings for that length.",
-          "Only once the T squared against l line is drawn can you read its gradient and work out g.",
+          "Only once the T^2 against l line is drawn can you read its gradient and work out g.",
         ],
-        explain: "First measure l, then time 20 oscillations for T, repeat and plot T squared against l, take the gradient of the best-fit line, and finally get g from 4 pi squared divided by the gradient.",
+        explain: "First measure l, then time 20 oscillations for T, repeat and plot T^2 against l, take the gradient of the best-fit line, and finally get g from 4 pi squared divided by the gradient.",
       },
       {
         kind: "graphpick",
@@ -195,12 +195,12 @@ export const BOXES: Subconcept[] = [
           { points: [[0, 8], [1, 4], [2, 0]], caption: "a line sloping downwards" },
         ],
         correct: 2,
-        ask: "T^2 equals 4 pi squared over g times l, which is a straight line. When l is 0, what is T squared?",
+        ask: "T^2 equals 4 pi squared over g times l, which is a straight line. When l is 0, what is T^2?",
         hints: [
           "The equation has no added constant, so the line must pass through the origin.",
           "A bigger length gives a bigger period, so the line rises from the origin, not falls.",
         ],
-        explain: "The correct graph is a straight line through the origin, because T squared equals a constant times l with no intercept, so when the length is 0 so is T squared.",
+        explain: "The correct graph is a straight line through the origin, because T^2 equals a constant times l with no intercept, so when the length is 0 so is T^2.",
       },
     ],
   },

@@ -82,10 +82,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr2-03-wire-coil",
         options: ["0.045 mm", "1.8 mm", "0.90 mm", "45 mm"],
         correct: 2,
-        ask: "One diameter is the total length divided by the number of turns, so work out 45.0 divided by 50.",
+        ask: "One diameter is the total length divided by the number of turns, so work out 45.0 ÷ 50.",
         hints: [
           "Use diameter equals d divided by n.",
-          "45.0 divided by 50 is 0.90, a length in millimetres.",
+          "45.0 ÷ 50 is 0.90, a length in millimetres.",
         ],
         working: [
           { label: "Formula", latex: "\\text{diameter} = \\dfrac{d}{n}" },
@@ -99,10 +99,10 @@ export const BOXES: Subconcept[] = [
         question: "The balance is tared, then a stack of 50 identical sheets of paper is weighed as 20.0 g. Find the mass of one sheet.",
         options: ["0.40 g", "2.5 g", "20 g", "0.80 g"],
         correct: 0,
-        ask: "One sheet's mass is the stack mass divided by the number of sheets, so work out 20.0 divided by 50.",
+        ask: "One sheet's mass is the stack mass divided by the number of sheets, so work out 20.0 ÷ 50.",
         hints: [
           "Divide the total mass by 50.",
-          "20.0 divided by 50 is 0.40, a mass in grams.",
+          "20.0 ÷ 50 is 0.40, a mass in grams.",
         ],
         working: [
           { label: "Formula", latex: "m_1 = \\dfrac{m}{n}" },
@@ -117,10 +117,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr2-03-wire-coil",
         options: ["0.32 mm", "0.80 mm", "1.25 mm", "40 mm"],
         correct: 1,
-        ask: "Again one diameter is the total length divided by the number of turns, so work out 32.0 divided by 40.",
+        ask: "Again one diameter is the total length divided by the number of turns, so work out 32.0 ÷ 40.",
         hints: [
           "Use diameter equals d divided by n.",
-          "32.0 divided by 40 is 0.80, a length in millimetres.",
+          "32.0 ÷ 40 is 0.80, a length in millimetres.",
         ],
         working: [
           { label: "Formula", latex: "\\text{diameter} = \\dfrac{d}{n}" },
@@ -135,10 +135,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr2-04-coin-setsquares",
         options: ["6.4 cm", "10.4 cm", "1.6 cm", "2.4 cm"],
         correct: 3,
-        ask: "The diameter is the gap between the 2 set squares, so work out R_2 minus R_1, that is 6.4 minus 4.0.",
+        ask: "The diameter is the gap between the 2 set squares, so work out R_2 minus R_1, that is 6.4 - 4.0.",
         hints: [
           "Use diameter equals R_2 minus R_1.",
-          "6.4 minus 4.0 is 2.4, a length in centimetres.",
+          "6.4 - 4.0 is 2.4, a length in centimetres.",
         ],
         working: [
           { label: "Formula", latex: "\\text{diameter} = R_2 - R_1" },

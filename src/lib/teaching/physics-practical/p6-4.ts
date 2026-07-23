@@ -59,10 +59,10 @@ export const BOXES: Subconcept[] = [
         question: "A lamp carries a current of 0.50 A across a voltage of 12 V. What is its electrical power?",
         options: ["24 W", "0.60 W", "6.0 W", "12 W"],
         correct: 2,
-        ask: "Power is current times voltage, so work out 0.50 times 12.",
+        ask: "Power is current times voltage, so work out 0.50 × 12.",
         hints: [
           "Use P = IV.",
-          "0.50 times 12 is 6.0, and the answer is a power in watts.",
+          "0.50 × 12 is 6.0, and the answer is a power in watts.",
         ],
         working: [
           { label: "Formula", latex: "P = IV" },
@@ -76,17 +76,17 @@ export const BOXES: Subconcept[] = [
         question: "A resistor of 5.0 ohms carries a current of 2.0 A. Using P = I^2 R, what power does it dissipate?",
         options: ["20 W", "10 W", "2.5 W", "40 W"],
         correct: 0,
-        ask: "Square the current first, then multiply by the resistance. Work out 2.0 squared, then times 5.0.",
+        ask: "Square the current first, then multiply by the resistance. Work out 2.0^2, then times 5.0.",
         hints: [
           "Use P = I^2 R, so square the current before multiplying.",
-          "2.0 squared is 4.0, and 4.0 times 5.0 is 20.",
+          "2.0^2 is 4.0, and 4.0 × 5.0 is 20.",
         ],
         working: [
           { label: "Formula", latex: "P = I^2 R" },
           { label: "Substitute", latex: "P = 2.0^2 \\times 5.0" },
           { label: "Answer", latex: "P = 20\\ \\text{W}" },
         ],
-        explain: "The power is 20 watts, because 2.0 amperes squared is 4.0, and 4.0 times 5.0 ohms is 20 watts.",
+        explain: "The power is 20 watts, because 2.0 amperes squared is 4.0, and 4.0 × 5.0 ohms is 20 watts.",
       },
       {
         kind: "slider",
@@ -98,10 +98,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 710,
         targetMax: 730,
-        ask: "Energy is voltage times current times time in seconds, so work out 12 times 0.50 times 120.",
+        ask: "Energy is voltage times current times time in seconds, so work out 12 × 0.50 × 120.",
         hints: [
           "Use E = VIt, and turn 2.0 minutes into 120 seconds first.",
-          "12 times 0.50 is 6.0, and 6.0 times 120 is 720, so slide to 720 joules.",
+          "12 × 0.50 is 6.0, and 6.0 × 120 is 720, so slide to 720 joules.",
         ],
         working: [
           { label: "Formula", latex: "E = VIt" },
@@ -133,10 +133,10 @@ export const BOXES: Subconcept[] = [
         question: "In the same circuit the LED current is 0.117 A and the voltage across it is V_LED = 0.36 V. What is the power dissipated in the LED?",
         options: ["0.36 W", "0.042 W", "0.12 W", "0.42 W"],
         correct: 1,
-        ask: "The LED power is its current times its own voltage, so work out 0.117 times 0.36.",
+        ask: "The LED power is its current times its own voltage, so work out 0.117 × 0.36.",
         hints: [
           "Use P = I x V_LED.",
-          "0.117 times 0.36 is about 0.042, and the answer is a power in watts.",
+          "0.117 × 0.36 is about 0.042, and the answer is a power in watts.",
         ],
         working: [
           { label: "Formula", latex: "P = I \\times V_{LED}" },

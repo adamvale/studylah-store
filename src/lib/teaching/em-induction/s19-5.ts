@@ -57,9 +57,9 @@ export const BOXES: Subconcept[] = [
         question: "A cable of resistance 0.5 ohm carries 8 kW of power at 400 V. How much power is wasted as heat in the cable?",
         options: ["20 W", "80 W", "200 W", "3200 W"],
         correct: 2,
-        ask: "First find the current with I = P / V, so 8000 divided by 400. Then put that current into P_loss = I^2 R.",
+        ask: "First find the current with I = P / V, so 8000 ÷ 400. Then put that current into P_loss = I^2 R.",
         hints: [
-          "8000 divided by 400 is 20, so the current is 20 amperes.",
+          "8000 ÷ 400 is 20, so the current is 20 amperes.",
           "P_loss is 20 squared times 0.5, and 20 squared is 400.",
         ],
         working: [
@@ -68,17 +68,17 @@ export const BOXES: Subconcept[] = [
           { label: "Substitute", latex: "P_{\\text{loss}} = 20^2 \\times 0.5" },
           { label: "Answer", latex: "P_{\\text{loss}} = 200\\ \\text{W}" },
         ],
-        explain: "The waste is 200 watts. The current is 8000 divided by 400, which is 20 amperes, and 20 squared times 0.5 ohm is 200 watts.",
+        explain: "The waste is 200 watts. The current is 8000 ÷ 400, which is 20 amperes, and 20 squared times 0.5 ohm is 200 watts.",
       },
       {
         kind: "choice",
         question: "The same 8 kW is now sent down the same 0.5 ohm cable at 4000 V instead. How much power is wasted as heat?",
         options: ["200 W", "2 W", "20 W", "0.5 W"],
         correct: 1,
-        ask: "Find the new current with I = P / V, so 8000 divided by 4000. Then use P_loss = I^2 R with the same 0.5 ohm.",
+        ask: "Find the new current with I = P / V, so 8000 ÷ 4000. Then use P_loss = I^2 R with the same 0.5 ohm.",
         hints: [
-          "8000 divided by 4000 is 2, so the current is only 2 amperes now.",
-          "P_loss is 2 squared times 0.5, and 2 squared is 4.",
+          "8000 ÷ 4000 is 2, so the current is only 2 amperes now.",
+          "P_loss is 2^2 times 0.5, and 2^2 is 4.",
         ],
         working: [
           { label: "Current", latex: "I = \\dfrac{P}{V} = \\dfrac{8000}{4000} = 2\\ \\text{A}" },

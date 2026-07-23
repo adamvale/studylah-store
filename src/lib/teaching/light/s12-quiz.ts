@@ -39,14 +39,14 @@ export const BOXES: Subconcept[] = [
         ask: "Angles are always measured from the normal, which is at 90 degrees to the surface. Subtract the 55 degrees from 90.",
         hints: [
           "The normal is at 90 degrees to the surface, so the angle from the normal is 90 minus the angle to the surface.",
-          "90 minus 55 is 35 degrees.",
+          "90 - 55 is 35 degrees.",
         ],
         working: [
           { label: "Formula", latex: "i = 90^\\circ - \\theta_{\\text{surface}}" },
           { label: "Substitute", latex: "i = 90^\\circ - 55^\\circ" },
           { label: "Answer", latex: "i = 35^\\circ" },
         ],
-        explain: "The angle of incidence is 35 degrees, because it is measured from the normal, and 90 minus 55 is 35 degrees.",
+        explain: "The angle of incidence is 35 degrees, because it is measured from the normal, and 90 - 55 is 35 degrees.",
       },
       // 3 - CHOICE - S2 plane mirror virtual vs real (conceptual) - correct 0
       {
@@ -92,17 +92,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-14-11-semicircular-block",
         options: ["40 degrees", "25 degrees", "61 degrees", "15 degrees"],
         correct: 1,
-        ask: "Rearrange n = sin i / sin r to sin r = sin i / n, work out sin of 40 divided by 1.52, then take the inverse sine.",
+        ask: "Rearrange n = sin i / sin r to sin r = sin i / n, work out sin of 40 ÷ 1.52, then take the inverse sine.",
         hints: [
           "Use sin r equals sin i divided by n.",
-          "sin of 40 divided by 1.52 gives a sine whose angle is 25 degrees.",
+          "sin of 40 ÷ 1.52 gives a sine whose angle is 25 degrees.",
         ],
         working: [
           { label: "Formula", latex: "\\sin r = \\dfrac{\\sin i}{n}" },
           { label: "Substitute", latex: "\\sin r = \\dfrac{\\sin 40^\\circ}{1.52}" },
           { label: "Answer", latex: "r = 25^\\circ" },
         ],
-        explain: "The angle of refraction is 25 degrees, because sin r is sin of 40 divided by 1.52, and the angle with that sine is 25 degrees. The ray bends toward the normal on entering the denser glass.",
+        explain: "The angle of refraction is 25 degrees, because sin r is sin of 40 ÷ 1.52, and the angle with that sine is 25 degrees. The ray bends toward the normal on entering the denser glass.",
       },
       // 6 - CHOICE - S3 CALCULATION n=1.5 -> v=2.0e8 - correct 3
       {
@@ -110,17 +110,17 @@ export const BOXES: Subconcept[] = [
         question: "Light travels at 3.0 x 10^8 m/s in a vacuum. Find its speed in glass of refractive index 1.5.",
         options: ["4.5 x 10^8 m/s", "3.0 x 10^8 m/s", "1.5 x 10^8 m/s", "2.0 x 10^8 m/s"],
         correct: 3,
-        ask: "Refractive index is n = c / v, so the speed in the glass is v = c / n. Divide 3.0 times 10 to the power 8 by 1.5.",
+        ask: "Refractive index is n = c / v, so the speed in the glass is v = c / n. Divide 3.0 × 10 to the power 8 by 1.5.",
         hints: [
           "Rearrange n equals c divided by v into v equals c divided by n.",
-          "3.0 times 10 to the power 8 divided by 1.5 is 2.0 times 10 to the power 8 metres per second.",
+          "3.0 × 10 to the power 8 ÷ 1.5 is 2.0 × 10 to the power 8 metres per second.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{c}{n}" },
           { label: "Substitute", latex: "v = \\dfrac{3.0 \\times 10^8}{1.5}" },
           { label: "Answer", latex: "v = 2.0 \\times 10^8\\ \\text{m/s}" },
         ],
-        explain: "The speed in the glass is 2.0 times 10 to the power 8 metres per second, because 3.0 times 10 to the power 8 divided by 1.5 is 2.0 times 10 to the power 8. Light is slower in the denser medium.",
+        explain: "The speed in the glass is 2.0 × 10 to the power 8 metres per second, because 3.0 × 10 to the power 8 ÷ 1.5 is 2.0 × 10 to the power 8. Light is slower in the denser medium.",
       },
       // 7 - CHOICE - S4 CALCULATION n=1.52 -> c=41 - correct 0
       {
@@ -128,17 +128,17 @@ export const BOXES: Subconcept[] = [
         question: "A glass block has a refractive index of 1.52. Find its critical angle.",
         options: ["41 degrees", "52 degrees", "90 degrees", "25 degrees"],
         correct: 0,
-        ask: "The critical angle comes from sin c = 1 / n. Work out 1 divided by 1.52, then take the inverse sine.",
+        ask: "The critical angle comes from sin c = 1 / n. Work out 1 ÷ 1.52, then take the inverse sine.",
         hints: [
           "Use sin c equals 1 divided by n.",
-          "1 divided by 1.52 gives a sine whose angle is 41 degrees.",
+          "1 ÷ 1.52 gives a sine whose angle is 41 degrees.",
         ],
         working: [
           { label: "Formula", latex: "\\sin c = \\dfrac{1}{n}" },
           { label: "Substitute", latex: "\\sin c = \\dfrac{1}{1.52}" },
           { label: "Answer", latex: "c = 41^\\circ" },
         ],
-        explain: "The critical angle is 41 degrees, because sin c is 1 divided by 1.52, and the angle with that sine is 41 degrees.",
+        explain: "The critical angle is 41 degrees, because sin c is 1 ÷ 1.52, and the angle with that sine is 41 degrees.",
       },
       // 8 - CHOICE - S4 TIR decision (conceptual) - correct 2 - figure
       {
@@ -304,17 +304,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 41,
         targetMax: 43,
-        ask: "The critical angle comes from sin c = 1 / n. Work out 1 divided by 1.49, then take the inverse sine.",
+        ask: "The critical angle comes from sin c = 1 / n. Work out 1 ÷ 1.49, then take the inverse sine.",
         hints: [
           "Use sin c equals 1 divided by n.",
-          "1 divided by 1.49 gives a sine whose angle is 42 degrees, so slide to 42.",
+          "1 ÷ 1.49 gives a sine whose angle is 42 degrees, so slide to 42.",
         ],
         working: [
           { label: "Formula", latex: "\\sin c = \\dfrac{1}{n}" },
           { label: "Substitute", latex: "\\sin c = \\dfrac{1}{1.49}" },
           { label: "Answer", latex: "c = 42^\\circ" },
         ],
-        explain: "The critical angle of perspex is 42 degrees, because sin c is 1 divided by 1.49, and the angle with that sine is 42 degrees.",
+        explain: "The critical angle of perspex is 42 degrees, because sin c is 1 ÷ 1.49, and the angle with that sine is 42 degrees.",
       },
       // 17 - INTERACTIVE match - S5 lens terms
       {

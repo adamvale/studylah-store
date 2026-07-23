@@ -32,10 +32,10 @@ export const BOXES: Subconcept[] = [
         question: "A car travels 90 m in 6 s at a steady speed. What is its speed?",
         options: ["540 m/s", "96 m/s", "15 m/s", "0.067 m/s"],
         correct: 2,
-        ask: "Use speed equals distance over time. 90 divided by 6. Which option is that?",
+        ask: "Use speed equals distance over time. 90 ÷ 6. Which option is that?",
         hints: [
           "Speed is distance divided by time.",
-          "90 divided by 6 is 15.",
+          "90 ÷ 6 is 15.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{d}{t}" },
@@ -54,10 +54,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 8,
         targetMax: 8,
-        ask: "Speed is distance over time. 24 divided by 3. Slide to that value.",
+        ask: "Speed is distance over time. 24 ÷ 3. Slide to that value.",
         hints: [
           "Divide the distance by the time.",
-          "24 divided by 3 is 8.",
+          "24 ÷ 3 is 8.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{d}{t}" },

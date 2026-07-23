@@ -18,10 +18,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-17-03-series-we1",
         options: ["4 A", "12 A", "1 A", "0.5 A"],
         correct: 2,
-        ask: "In series the resistances add, so the effective resistance is 3 plus 9. Then divide 12 by that. Which option matches?",
+        ask: "In series the resistances add, so the effective resistance is 3 + 9. Then divide 12 by that. Which option matches?",
         hints: [
-          "In a series circuit the effective resistance is R_1 plus R_2, so 3 plus 9 is 12 ohms.",
-          "The current is the supply p.d. divided by the resistance, so 12 divided by 12 is 1.",
+          "In a series circuit the effective resistance is R_1 plus R_2, so 3 + 9 is 12 ohms.",
+          "The current is the supply p.d. divided by the resistance, so 12 ÷ 12 is 1.",
         ],
         working: [
           { label: "Formula", latex: "I = \\dfrac{V}{R_1 + R_2}" },
@@ -38,7 +38,7 @@ export const BOXES: Subconcept[] = [
         correct: 0,
         ask: "For a parallel pair the reciprocals add, so work out one quarter plus one twelfth, then flip the result. Which option is that?",
         hints: [
-          "1 over the effective resistance equals 1 over 4 plus 1 over 12, which is 4 over 12.",
+          "1 over the effective resistance equals 1 over 4 + 1 over 12, which is 4 over 12.",
           "4 over 12 is 1 over 3, so the effective resistance is 3 ohms, smaller than either branch.",
         ],
         working: [
@@ -46,7 +46,7 @@ export const BOXES: Subconcept[] = [
           { label: "Substitute", latex: "\\dfrac{1}{R_{eff}} = \\dfrac{1}{4} + \\dfrac{1}{12}" },
           { label: "Answer", latex: "R_{eff} = 3\\ \\Omega" },
         ],
-        explain: "The effective resistance is 3 ohms, because 1 over 4 plus 1 over 12 is 4 over 12, or 1 over 3. A parallel combination is always smaller than the smallest branch.",
+        explain: "The effective resistance is 3 ohms, because 1 over 4 + 1 over 12 is 4 over 12, or 1 over 3. A parallel combination is always smaller than the smallest branch.",
       },
       {
         kind: "choice",
@@ -67,8 +67,8 @@ export const BOXES: Subconcept[] = [
         correct: 1,
         ask: "Every branch has the full 6 volts across it. Find each branch current, then add them. Which option is the total?",
         hints: [
-          "The 6 ohm branch carries 6 divided by 6, which is 1 ampere, and the 3 ohm branch carries 6 divided by 3, which is 2 amperes.",
-          "The branch currents add to the supply current, so 1 plus 2 is 3.",
+          "The 6 ohm branch carries 6 ÷ 6, which is 1 ampere, and the 3 ohm branch carries 6 ÷ 3, which is 2 amperes.",
+          "The branch currents add to the supply current, so 1 + 2 is 3.",
         ],
         working: [
           { label: "Formula", latex: "I = I_1 + I_2" },
@@ -101,8 +101,8 @@ export const BOXES: Subconcept[] = [
         targetMax: 1.6,
         ask: "Add the 2 ohm resistor to the 2 ohm parallel group to get the effective resistance, then divide 6 by it. Where should the slider sit?",
         hints: [
-          "The parallel pair is 2 ohms, so the effective resistance is 2 plus 2, which is 4 ohms.",
-          "The current is 6 divided by 4, which is 1.5, so slide to 1.5 amperes.",
+          "The parallel pair is 2 ohms, so the effective resistance is 2 + 2, which is 4 ohms.",
+          "The current is 6 ÷ 4, which is 1.5, so slide to 1.5 amperes.",
         ],
         working: [
           { label: "Formula", latex: "I = \\dfrac{V}{R_{eff}}" },
@@ -123,8 +123,8 @@ export const BOXES: Subconcept[] = [
         targetMax: 3.1,
         ask: "By conservation of charge the current in equals the current out. Add the 2 currents in, then take away the 6 amperes already leaving. Where should the slider sit?",
         hints: [
-          "The current flowing in is 5 plus 4, which is 9 amperes.",
-          "6 amperes already flow out, so wire Y must carry 9 minus 6, which is 3.",
+          "The current flowing in is 5 + 4, which is 9 amperes.",
+          "6 amperes already flow out, so wire Y must carry 9 - 6, which is 3.",
         ],
         working: [
           { label: "Formula", latex: "I_{in} = I_{out}" },
@@ -138,10 +138,10 @@ export const BOXES: Subconcept[] = [
         prompt: "An 18 V supply drives a 3 ohm resistor in series with a 6 ohm resistor. Build the working line that gives the current.",
         tiles: ["I =", "18", "\\div", "9", "=", "2", "A", "3", "6"],
         answer: ["I =", "18", "\\div", "9", "=", "2", "A"],
-        ask: "Add the resistances to get 9 ohms, then divide 18 by 9. Lay out 18 divided by 9 equals 2.",
+        ask: "Add the resistances to get 9 ohms, then divide 18 by 9. Lay out 18 ÷ 9 equals 2.",
         hints: [
-          "In series the resistance is 3 plus 6, which is 9 ohms.",
-          "18 divided by 9 is 2, and the current is in amperes.",
+          "In series the resistance is 3 + 6, which is 9 ohms.",
+          "18 ÷ 9 is 2, and the current is in amperes.",
         ],
         working: [
           { label: "Formula", latex: "I = \\dfrac{V}{R_1 + R_2}" },

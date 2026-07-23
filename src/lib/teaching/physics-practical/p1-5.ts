@@ -116,7 +116,7 @@ export const BOXES: Subconcept[] = [
         ask: "Start with the variable you set on the left, then the raw timing trials, then the quantities you calculate from them on the right.",
         hints: [
           "The independent variable l comes first, and the calculated columns T and T^2 come last.",
-          "Order is: length, then the 3 trials, then their average, then the period, then T squared.",
+          "Order is: length, then the 3 trials, then their average, then the period, then T^2.",
         ],
         explain: "The table runs from what you set to what you plot: length l first, then the 3 timing trials, then their average, then the period T, and finally T^2 on the far right for the graph.",
       },
@@ -133,14 +133,14 @@ export const BOXES: Subconcept[] = [
         ask: "Add the 3 times and divide by 3, then keep the same one decimal place as the raw readings.",
         hints: [
           "Add 30.2, 30.5 and 30.2, which is 90.9, then divide by 3.",
-          "90.9 divided by 3 is 30.3, and it keeps one decimal place like the raw data.",
+          "90.9 ÷ 3 is 30.3, and it keeps one decimal place like the raw data.",
         ],
         working: [
           { label: "Formula", latex: "\\bar{t} = \\dfrac{t_1 + t_2 + t_3}{3}" },
           { label: "Substitute", latex: "\\bar{t} = \\dfrac{30.2 + 30.5 + 30.2}{3} = \\dfrac{90.9}{3}" },
           { label: "Answer", latex: "\\bar{t} = 30.3\\ \\text{s}" },
         ],
-        explain: "The average is 30.3 seconds, because 30.2 plus 30.5 plus 30.2 is 90.9, and 90.9 divided by 3 is 30.3. It keeps one decimal place to match the raw timings.",
+        explain: "The average is 30.3 seconds, because 30.2 + 30.5 + 30.2 is 90.9, and 90.9 ÷ 3 is 30.3. It keeps one decimal place to match the raw timings.",
       },
       {
         kind: "slider",
@@ -152,10 +152,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 1.4,
         targetMax: 1.6,
-        ask: "The period is the average time divided by the number of oscillations, so work out 30.0 divided by 20.",
+        ask: "The period is the average time divided by the number of oscillations, so work out 30.0 ÷ 20.",
         hints: [
           "Use T equals t-bar divided by 20.",
-          "30.0 divided by 20 is 1.5, so slide to 1.5 seconds.",
+          "30.0 ÷ 20 is 1.5, so slide to 1.5 seconds.",
         ],
         working: [
           { label: "Formula", latex: "T = \\dfrac{\\bar{t}}{20}" },

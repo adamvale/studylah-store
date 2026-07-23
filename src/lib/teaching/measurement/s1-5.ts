@@ -43,10 +43,10 @@ export const BOXES: Subconcept[] = [
         question: "A pendulum makes 20 complete oscillations in 30 s. What is its period?",
         options: ["1.5 s", "600 s", "0.67 s", "15 s"],
         correct: 0,
-        ask: "The period is the total time divided by the number of oscillations, so work out 30 divided by 20.",
+        ask: "The period is the total time divided by the number of oscillations, so work out 30 ÷ 20.",
         hints: [
           "Use period equals total time divided by 20.",
-          "30 divided by 20 is 1.5, and the period is a time in seconds.",
+          "30 ÷ 20 is 1.5, and the period is a time in seconds.",
         ],
         working: [
           { label: "Formula", latex: "T = \\dfrac{t}{20}" },
@@ -82,10 +82,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 1.65,
         targetMax: 1.75,
-        ask: "The period is the total time divided by 20, so work out 34 divided by 20.",
+        ask: "The period is the total time divided by 20, so work out 34 ÷ 20.",
         hints: [
           "Use period equals total time divided by 20.",
-          "34 divided by 20 is 1.7, so slide to 1.7 seconds.",
+          "34 ÷ 20 is 1.7, so slide to 1.7 seconds.",
         ],
         working: [
           { label: "Formula", latex: "T = \\dfrac{t}{20}" },

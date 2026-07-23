@@ -37,10 +37,10 @@ export const BOXES: Subconcept[] = [
         question: "A wave has frequency 25 Hz and wavelength 1.2 m. Find its speed v.",
         options: ["30 m/s", "20.8 m/s", "26.2 m/s", "2.4 m/s"],
         correct: 0,
-        ask: "The wave speed is frequency times wavelength, so work out 25 times 1.2. Which option is that?",
+        ask: "The wave speed is frequency times wavelength, so work out 25 × 1.2. Which option is that?",
         hints: [
           "Use v = f lambda.",
-          "25 times 1.2 is 30, in metres per second.",
+          "25 × 1.2 is 30, in metres per second.",
         ],
         working: [
           { label: "Formula", latex: "v = f\\lambda" },
@@ -77,14 +77,14 @@ export const BOXES: Subconcept[] = [
         ask: "The refractive index is sin i divided by sin r, so divide 0.707 by 0.469. Which option is that?",
         hints: [
           "Use n = sin i / sin r.",
-          "0.707 divided by 0.469 is about 1.5.",
+          "0.707 ÷ 0.469 is about 1.5.",
         ],
         working: [
           { label: "Formula", latex: "n = \\dfrac{\\sin i}{\\sin r}" },
           { label: "Substitute", latex: "n = \\dfrac{\\sin 45^{\\circ}}{\\sin 28^{\\circ}} = \\dfrac{0.707}{0.469}" },
           { label: "Answer", latex: "n = 1.5" },
         ],
-        explain: "The refractive index is 1.5, because 0.707 divided by 0.469 is about 1.5. The refractive index has no units.",
+        explain: "The refractive index is 1.5, because 0.707 ÷ 0.469 is about 1.5. The refractive index has no units.",
       },
       // 5. choice, conceptual refraction (correct 2), figure
       {
@@ -112,9 +112,9 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr5-06",
         options: ["42 degrees", "48 degrees", "28 degrees", "62 degrees"],
         correct: 0,
-        ask: "The sine of the critical angle is 1 divided by n, so work out 1 divided by 1.5, then take the inverse sine.",
+        ask: "The sine of the critical angle is 1 divided by n, so work out 1 ÷ 1.5, then take the inverse sine.",
         hints: [
-          "Use sin c = 1/n, so sin c = 1 divided by 1.5, which is 0.667.",
+          "Use sin c = 1/n, so sin c = 1 ÷ 1.5, which is 0.667.",
           "The angle whose sine is 0.667 is about 42 degrees.",
         ],
         working: [
@@ -122,7 +122,7 @@ export const BOXES: Subconcept[] = [
           { label: "Substitute", latex: "\\sin c = \\dfrac{1}{1.5} = 0.667" },
           { label: "Answer", latex: "c = 42^{\\circ}" },
         ],
-        explain: "The critical angle is 42 degrees, because 1 divided by 1.5 is 0.667, and the angle whose sine is 0.667 is about 42 degrees.",
+        explain: "The critical angle is 42 degrees, because 1 ÷ 1.5 is 0.667, and the angle whose sine is 0.667 is about 42 degrees.",
       },
       // 7. choice, conceptual TIR conditions (correct 3)
       {
@@ -148,17 +148,17 @@ export const BOXES: Subconcept[] = [
         question: "An object at u = 30 cm forms a sharp image at v = 60 cm through a converging lens. Find the focal length f.",
         options: ["10.0 cm", "20.0 cm", "90.0 cm", "45.0 cm"],
         correct: 1,
-        ask: "Add 1 divided by u and 1 divided by v to get 1 divided by f, then invert. Work out 1 over 30 plus 1 over 60 first.",
+        ask: "Add 1 divided by u and 1 divided by v to get 1 divided by f, then invert. Work out 1 over 30 + 1 over 60 first.",
         hints: [
           "Use 1/f = 1/u + 1/v, so 1/f = 1/30 + 1/60 = 0.0500 cm^-1.",
-          "The focal length is 1 divided by 0.0500, which is 20.0 cm.",
+          "The focal length is 1 ÷ 0.0500, which is 20.0 cm.",
         ],
         working: [
           { label: "Formula", latex: "\\dfrac{1}{f} = \\dfrac{1}{u} + \\dfrac{1}{v}" },
           { label: "Substitute", latex: "\\dfrac{1}{f} = \\dfrac{1}{30} + \\dfrac{1}{60} = 0.0500\\ \\text{cm}^{-1}" },
           { label: "Answer", latex: "f = 20.0\\ \\text{cm}" },
         ],
-        explain: "The focal length is 20.0 centimetres. 1 over 30 plus 1 over 60 is 0.0500 per centimetre, and 1 divided by 0.0500 is 20.0 centimetres.",
+        explain: "The focal length is 20.0 centimetres. 1 over 30 + 1 over 60 is 0.0500 per centimetre, and 1 ÷ 0.0500 is 20.0 centimetres.",
       },
       // 9. choice, conceptual lens (correct 0), figure
       {
@@ -185,17 +185,17 @@ export const BOXES: Subconcept[] = [
         question: "A wave has a frequency of 25 Hz. Find its period T.",
         options: ["25 s", "2.5 s", "0.04 s", "0.4 s"],
         correct: 2,
-        ask: "The period is 1 divided by the frequency, so work out 1 divided by 25. Which option is that?",
+        ask: "The period is 1 divided by the frequency, so work out 1 ÷ 25. Which option is that?",
         hints: [
           "Use T = 1/f.",
-          "1 divided by 25 is 0.04, in seconds.",
+          "1 ÷ 25 is 0.04, in seconds.",
         ],
         working: [
           { label: "Formula", latex: "T = \\dfrac{1}{f}" },
           { label: "Substitute", latex: "T = \\dfrac{1}{25}" },
           { label: "Answer", latex: "T = 0.04\\ \\text{s}" },
         ],
-        explain: "The period is 0.04 seconds, because 1 divided by 25 hertz is 0.04 seconds.",
+        explain: "The period is 0.04 seconds, because 1 ÷ 25 hertz is 0.04 seconds.",
       },
       // 11. interactive: classify refraction vs TIR
       {
@@ -263,9 +263,9 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 48,
         targetMax: 50,
-        ask: "The sine of the critical angle is 1 divided by n. Work out 1 divided by 1.33, then take the inverse sine.",
+        ask: "The sine of the critical angle is 1 divided by n. Work out 1 ÷ 1.33, then take the inverse sine.",
         hints: [
-          "Use sin c = 1/n, so sin c = 1 divided by 1.33, which is 0.752.",
+          "Use sin c = 1/n, so sin c = 1 ÷ 1.33, which is 0.752.",
           "The angle whose sine is 0.752 is about 49 degrees, so slide to 49.",
         ],
         working: [
@@ -273,7 +273,7 @@ export const BOXES: Subconcept[] = [
           { label: "Substitute", latex: "\\sin c = \\dfrac{1}{1.33} = 0.752" },
           { label: "Answer", latex: "c = 49^{\\circ}" },
         ],
-        explain: "The critical angle is 49 degrees, because 1 divided by 1.33 is 0.752, and the angle whose sine is 0.752 is about 49 degrees.",
+        explain: "The critical angle is 49 degrees, because 1 ÷ 1.33 is 0.752, and the angle whose sine is 0.752 is about 49 degrees.",
       },
       // 15. interactive cloze: refraction sentence
       {
@@ -338,10 +338,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A wave has frequency 25 Hz and wavelength 1.2 m. Build the working line for its speed v.",
         tiles: ["v =", "25", "\\times", "1.2", "=", "30", "m/s", "Hz"],
         answer: ["v =", "25", "\\times", "1.2", "=", "30", "m/s"],
-        ask: "The wave speed is frequency times wavelength, so set up 25 times 1.2.",
+        ask: "The wave speed is frequency times wavelength, so set up 25 × 1.2.",
         hints: [
           "Use v = f lambda.",
-          "25 times 1.2 is 30, and speed is measured in metres per second.",
+          "25 × 1.2 is 30, and speed is measured in metres per second.",
         ],
         working: [
           { label: "Formula", latex: "v = f\\lambda" },
@@ -361,17 +361,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 18.6,
         targetMax: 19.0,
-        ask: "Add 1 divided by u and 1 divided by v to get 1 divided by f, then invert. Work out 1 over 25.0 plus 1 over 75.0 first.",
+        ask: "Add 1 divided by u and 1 divided by v to get 1 divided by f, then invert. Work out 1 over 25.0 + 1 over 75.0 first.",
         hints: [
           "Use 1/f = 1/u + 1/v, so 1/f = 1/25.0 + 1/75.0 = 0.0533 cm^-1.",
-          "The focal length is 1 divided by 0.0533, which is 18.8 cm, so slide to 18.8.",
+          "The focal length is 1 ÷ 0.0533, which is 18.8 cm, so slide to 18.8.",
         ],
         working: [
           { label: "Formula", latex: "\\dfrac{1}{f} = \\dfrac{1}{u} + \\dfrac{1}{v}" },
           { label: "Substitute", latex: "\\dfrac{1}{f} = \\dfrac{1}{25.0} + \\dfrac{1}{75.0} = 0.0533\\ \\text{cm}^{-1}" },
           { label: "Answer", latex: "f = 18.8\\ \\text{cm}" },
         ],
-        explain: "The focal length is 18.8 centimetres. 1 over 25.0 plus 1 over 75.0 is 0.0533 per centimetre, and 1 divided by 0.0533 is 18.8 centimetres.",
+        explain: "The focal length is 18.8 centimetres. 1 over 25.0 + 1 over 75.0 is 0.0533 per centimetre, and 1 ÷ 0.0533 is 18.8 centimetres.",
       },
       // 20. interactive spoterror: TIR direction
       {

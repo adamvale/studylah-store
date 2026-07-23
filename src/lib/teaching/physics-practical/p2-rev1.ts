@@ -29,17 +29,17 @@ export const BOXES: Subconcept[] = [
         question: "The main scale of a vernier caliper reads 4.2 cm and vernier division 3 lines up with the main scale. What is the reading?",
         options: ["4.23 cm", "4.03 cm", "4.5 cm", "7.2 cm"],
         correct: 0,
-                ask: "Add the main-scale value to the coinciding division times 0.01 cm. Work out 4.2 plus 3 times 0.01.",
+                ask: "Add the main-scale value to the coinciding division times 0.01 cm. Work out 4.2 + 3 × 0.01.",
         hints: [
           "Each vernier division is worth 0.01 cm, so division 3 adds 0.03 cm.",
-          "4.2 plus 0.03 is 4.23 cm.",
+          "4.2 + 0.03 is 4.23 cm.",
         ],
         working: [
           { label: "Formula", latex: "\\text{reading} = \\text{main} + n \\times 0.01\\ \\text{cm}" },
           { label: "Substitute", latex: "\\text{reading} = 4.2 + 3 \\times 0.01" },
           { label: "Answer", latex: "\\text{reading} = 4.23\\ \\text{cm}" },
         ],
-        explain: "The reading is 4.23 centimetres, because the main scale gives 4.2 centimetres and vernier division 3 adds 3 times 0.01, which is 0.03 centimetres.",
+        explain: "The reading is 4.23 centimetres, because the main scale gives 4.2 centimetres and vernier division 3 adds 3 × 0.01, which is 0.03 centimetres.",
       },
       {
         kind: "choice",
@@ -47,17 +47,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr2-02-micrometer-rod",
         options: ["7.32 mm", "8.20 mm", "10.7 mm", "7.82 mm"],
         correct: 3,
-                ask: "Add the sleeve reading to the thimble reading times 0.01 mm. Work out 7.5 plus 32 times 0.01.",
+                ask: "Add the sleeve reading to the thimble reading times 0.01 mm. Work out 7.5 + 32 × 0.01.",
         hints: [
           "Each thimble division is worth 0.01 mm, so a thimble reading of 32 adds 0.32 mm.",
-          "7.5 plus 0.32 is 7.82 mm.",
+          "7.5 + 0.32 is 7.82 mm.",
         ],
         working: [
           { label: "Formula", latex: "\\text{reading} = \\text{sleeve} + n \\times 0.01\\ \\text{mm}" },
           { label: "Substitute", latex: "\\text{reading} = 7.5 + 32 \\times 0.01" },
           { label: "Answer", latex: "\\text{reading} = 7.82\\ \\text{mm}" },
         ],
-        explain: "The reading is 7.82 millimetres, because the sleeve gives 7.5 millimetres and the thimble reading of 32 adds 32 times 0.01, which is 0.32 millimetres.",
+        explain: "The reading is 7.82 millimetres, because the sleeve gives 7.5 millimetres and the thimble reading of 32 adds 32 × 0.01, which is 0.32 millimetres.",
       },
       {
         kind: "choice",
@@ -67,14 +67,14 @@ export const BOXES: Subconcept[] = [
                 ask: "Subtract the zero error from the observed reading. Because the zero error is negative, work out 8.46 minus negative 0.03.",
         hints: [
           "Corrected equals observed minus the zero error, and subtracting a negative adds it back.",
-          "8.46 minus negative 0.03 is 8.46 plus 0.03, which is 8.49 mm.",
+          "8.46 minus negative 0.03 is 8.46 + 0.03, which is 8.49 mm.",
         ],
         working: [
           { label: "Formula", latex: "\\text{corrected} = \\text{observed} - \\text{zero error}" },
           { label: "Substitute", latex: "\\text{corrected} = 8.46 - (-0.03)" },
           { label: "Answer", latex: "\\text{corrected} = 8.49\\ \\text{mm}" },
         ],
-        explain: "The corrected diameter is 8.49 millimetres, because corrected equals observed minus the zero error, and 8.46 minus negative 0.03 is 8.46 plus 0.03, which is 8.49 millimetres.",
+        explain: "The corrected diameter is 8.49 millimetres, because corrected equals observed minus the zero error, and 8.46 minus negative 0.03 is 8.46 + 0.03, which is 8.49 millimetres.",
       },
       {
         kind: "choice",
@@ -135,17 +135,17 @@ export const BOXES: Subconcept[] = [
         start: 12.0,
         targetMin: 12.36,
         targetMax: 12.38,
-                ask: "Subtract the zero error from the observed reading. Work out 12.40 minus 0.03.",
+                ask: "Subtract the zero error from the observed reading. Work out 12.40 - 0.03.",
         hints: [
           "Corrected equals observed minus the zero error, and here the zero error is positive.",
-          "12.40 minus 0.03 is 12.37, so slide to 12.37 mm.",
+          "12.40 - 0.03 is 12.37, so slide to 12.37 mm.",
         ],
         working: [
           { label: "Formula", latex: "\\text{corrected} = \\text{observed} - \\text{zero error}" },
           { label: "Substitute", latex: "\\text{corrected} = 12.40 - 0.03" },
           { label: "Answer", latex: "\\text{corrected} = 12.37\\ \\text{mm}" },
         ],
-        explain: "The corrected reading is 12.37 millimetres, because corrected equals observed minus the zero error, and 12.40 minus 0.03 is 12.37 millimetres. A positive zero error is subtracted.",
+        explain: "The corrected reading is 12.37 millimetres, because corrected equals observed minus the zero error, and 12.40 - 0.03 is 12.37 millimetres. A positive zero error is subtracted.",
       },
       {
         kind: "cloze",

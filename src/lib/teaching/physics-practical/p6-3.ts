@@ -69,34 +69,34 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr6-06-potential-divider",
         options: ["5.0 V", "2.0 V", "3.0 V", "1.5 V"],
         correct: 2,
-        ask: "The output is R2 over the sum of R1 and R2, all times the supply. Work out 6.0 divided by 10.0, then times 5.0.",
+        ask: "The output is R2 over the sum of R1 and R2, all times the supply. Work out 6.0 ÷ 10.0, then times 5.0.",
         hints: [
-          "The total resistance is 4.0 plus 6.0, which is 10.0 ohms.",
-          "6.0 over 10.0 is 0.6, and 0.6 times 5.0 is 3.0.",
+          "The total resistance is 4.0 + 6.0, which is 10.0 ohms.",
+          "6.0 over 10.0 is 0.6, and 0.6 × 5.0 is 3.0.",
         ],
         working: [
           { label: "Formula", latex: "V_{out} = \\dfrac{R_2}{R_1 + R_2}\\, V" },
           { label: "Substitute", latex: "V_{out} = \\dfrac{6.0}{4.0 + 6.0} \\times 5.0" },
           { label: "Answer", latex: "V_{out} = 3.0\\ \\text{V}" },
         ],
-        explain: "The output is 3.0 volts, because R2 takes 6.0 over 10.0 of the supply, and 0.6 times 5.0 volts is 3.0 volts.",
+        explain: "The output is 3.0 volts, because R2 takes 6.0 over 10.0 of the supply, and 0.6 × 5.0 volts is 3.0 volts.",
       },
       {
         kind: "choice",
         question: "Resistors of 25 ohm, 50 ohm and 75 ohm are joined in series. What is the total resistance?",
         options: ["150 ohm", "50 ohm", "13.6 ohm", "75 ohm"],
         correct: 0,
-        ask: "In series the resistances simply add. Work out 25 plus 50 plus 75.",
+        ask: "In series the resistances simply add. Work out 25 + 50 + 75.",
         hints: [
           "Series resistances add straight up: R = R_1 + R_2 + R_3.",
-          "25 plus 50 is 75, and 75 plus 75 is 150.",
+          "25 + 50 is 75, and 75 + 75 is 150.",
         ],
         working: [
           { label: "Formula", latex: "R = R_1 + R_2 + R_3" },
           { label: "Substitute", latex: "R = 25 + 50 + 75" },
           { label: "Answer", latex: "R = 150\\ \\Omega" },
         ],
-        explain: "The total is 150 ohms, because in series the resistances add: 25 plus 50 plus 75 is 150.",
+        explain: "The total is 150 ohms, because in series the resistances add: 25 + 50 + 75 is 150.",
       },
       {
         kind: "choice",
@@ -126,10 +126,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 5.5,
         targetMax: 6.5,
-        ask: "The output is R2 over the sum of R1 and R2, all times the supply. Work out 6.0 divided by 9.0, then times 9.0.",
+        ask: "The output is R2 over the sum of R1 and R2, all times the supply. Work out 6.0 ÷ 9.0, then times 9.0.",
         hints: [
-          "The total resistance is 3.0 plus 6.0, which is 9.0 ohms.",
-          "6.0 over 9.0 times 9.0 leaves just 6.0, so slide to 6.0 volts.",
+          "The total resistance is 3.0 + 6.0, which is 9.0 ohms.",
+          "6.0 over 9.0 × 9.0 leaves just 6.0, so slide to 6.0 volts.",
         ],
         working: [
           { label: "Formula", latex: "V_{out} = \\dfrac{R_2}{R_1 + R_2}\\, V" },
@@ -143,10 +143,10 @@ export const BOXES: Subconcept[] = [
         question: "The 25 ohm, 50 ohm and 75 ohm resistors are now all connected in parallel. What is the total resistance? (1/R = 1/25 + 1/50 + 1/75)",
         options: ["150 ohm", "13.6 ohm", "25 ohm", "50 ohm"],
         correct: 1,
-        ask: "Add the reciprocals to get 1 over R, then flip it. Work out 1 over 25 plus 1 over 50 plus 1 over 75.",
+        ask: "Add the reciprocals to get 1 over R, then flip it. Work out 1 over 25 + 1 over 50 + 1 over 75.",
         hints: [
           "1 over 25 is 0.04, 1 over 50 is 0.02, and 1 over 75 is about 0.0133.",
-          "Those add to 0.0733, and 1 divided by 0.0733 is about 13.6.",
+          "Those add to 0.0733, and 1 ÷ 0.0733 is about 13.6.",
         ],
         working: [
           { label: "Formula", latex: "\\dfrac{1}{R} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2} + \\dfrac{1}{R_3}" },

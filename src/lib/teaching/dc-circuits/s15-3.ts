@@ -94,7 +94,7 @@ export const BOXES: Subconcept[] = [
         ask: "The parallel pair already counts as 2 ohms, and it sits in series with P. Add the 2 series resistances.",
         hints: [
           "Once the pair is a single 2 ohm resistance, the circuit is just 2 resistors in series.",
-          "2 plus 2 is 4, so the effective resistance is 4 ohms.",
+          "2 + 2 is 4, so the effective resistance is 4 ohms.",
         ],
         working: [
           { label: "Formula", latex: "R_{\\text{eff}} = R_P + R_{\\text{pair}}" },
@@ -109,10 +109,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-17-07-combined-we",
         options: ["1.5 A", "0.5 A", "3 A", "2 A"],
         correct: 0,
-        ask: "The main current is the source p.d. divided by the effective resistance. Work out 6 divided by 4.",
+        ask: "The main current is the source p.d. divided by the effective resistance. Work out 6 ÷ 4.",
         hints: [
           "Use I equals V divided by R_eff.",
-          "6 divided by 4 is 1.5, so the main current is 1.5 amperes.",
+          "6 ÷ 4 is 1.5, so the main current is 1.5 amperes.",
         ],
         working: [
           { label: "Formula", latex: "I = \\dfrac{V}{R_{\\text{eff}}}" },
@@ -127,10 +127,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-17-07-combined-we",
         options: ["1.5 V", "6 V", "3 V", "0.5 V"],
         correct: 2,
-        ask: "P carries the whole main current, so its p.d. is the current times its resistance. Work out 1.5 times 2.",
+        ask: "P carries the whole main current, so its p.d. is the current times its resistance. Work out 1.5 × 2.",
         hints: [
           "Use V equals I times R for the resistor P.",
-          "1.5 times 2 is 3, so the p.d. across P is 3 volts.",
+          "1.5 × 2 is 3, so the p.d. across P is 3 volts.",
         ],
         working: [
           { label: "Formula", latex: "V_P = I \\times R_P" },
@@ -145,17 +145,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-17-07-combined-we",
         options: ["1 A", "1.5 A", "0.5 A", "3 A"],
         correct: 2,
-        ask: "Every branch of the pair feels the same 3 volts. The branch current is that p.d. divided by the branch resistance, so work out 3 divided by 6.",
+        ask: "Every branch of the pair feels the same 3 volts. The branch current is that p.d. divided by the branch resistance, so work out 3 ÷ 6.",
         hints: [
           "Use I_Q equals the pair's p.d. divided by 6 ohms.",
-          "3 divided by 6 is 0.5, so the 6 ohm branch carries 0.5 amperes.",
+          "3 ÷ 6 is 0.5, so the 6 ohm branch carries 0.5 amperes.",
         ],
         working: [
           { label: "Formula", latex: "I_Q = \\dfrac{V_{\\text{pair}}}{R_Q}" },
           { label: "Substitute", latex: "I_Q = \\dfrac{3}{6}" },
           { label: "Answer", latex: "I_Q = 0.5\\ \\text{A}" },
         ],
-        explain: "The 6 ohm branch carries 0.5 amperes, because 3 volts across 6 ohms is 0.5 amperes. The 3 ohm branch takes the other 1 ampere, and 0.5 plus 1 gives back the 1.5 ampere main current.",
+        explain: "The 6 ohm branch carries 0.5 amperes, because 3 volts across 6 ohms is 0.5 amperes. The 3 ohm branch takes the other 1 ampere, and 0.5 + 1 gives back the 1.5 ampere main current.",
       },
       {
         kind: "choice",
@@ -165,7 +165,7 @@ export const BOXES: Subconcept[] = [
         ask: "The parallel pair is worth 2 ohms and sits in series with the 4 ohm resistor. Add the 2 series resistances.",
         hints: [
           "3 ohm and 6 ohm in parallel give 2 ohms, so the circuit is a 4 ohm and a 2 ohm in series.",
-          "4 plus 2 is 6, so the effective resistance is 6 ohms.",
+          "4 + 2 is 6, so the effective resistance is 6 ohms.",
         ],
         working: [
           { label: "Formula", latex: "R_{\\text{eff}} = R + R_{\\text{pair}}" },
@@ -179,10 +179,10 @@ export const BOXES: Subconcept[] = [
         question: "In that 9 V circuit the main current is 1.5 A and it all flows through the 4 ohm resistor. What is the p.d. across the 4 ohm resistor?",
         options: ["3 V", "6 V", "9 V", "1.5 V"],
         correct: 1,
-        ask: "The 4 ohm resistor carries the whole main current, so its p.d. is the current times its resistance. Work out 1.5 times 4.",
+        ask: "The 4 ohm resistor carries the whole main current, so its p.d. is the current times its resistance. Work out 1.5 × 4.",
         hints: [
           "Use V equals I times R for the 4 ohm resistor.",
-          "1.5 times 4 is 6, so the p.d. across it is 6 volts.",
+          "1.5 × 4 is 6, so the p.d. across it is 6 volts.",
         ],
         working: [
           { label: "Formula", latex: "V = I \\times R" },

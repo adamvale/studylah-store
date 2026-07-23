@@ -28,10 +28,10 @@ export const BOXES: Subconcept[] = [
         question: "A 3 kg mass rests on Earth, where g = 10 N/kg. What is its weight?",
         options: ["30 N", "3 N", "13 N", "0.3 N"],
         correct: 0,
-        ask: "Weight is mass times g, so work out 3 times 10. Which option matches?",
+        ask: "Weight is mass times g, so work out 3 × 10. Which option matches?",
         hints: [
           "Use W equals m times g.",
-          "3 times 10 is 30, and the unit of weight is the newton.",
+          "3 × 10 is 30, and the unit of weight is the newton.",
         ],
         working: [
           { label: "Formula", latex: "W = mg" },
@@ -57,10 +57,10 @@ export const BOXES: Subconcept[] = [
         question: "A 5 kg mass sits on a planet where g = 1.6 N/kg. What is its weight?",
         options: ["8 N", "5 N", "80 N", "3.2 N"],
         correct: 0,
-        ask: "Weight is still mass times g, so work out 5 times 1.6. Which option is that?",
+        ask: "Weight is still mass times g, so work out 5 × 1.6. Which option is that?",
         hints: [
           "Use W equals m times g, with g equal to 1.6 on this planet.",
-          "5 times 1.6 is 8, and weight is measured in newtons.",
+          "5 × 1.6 is 8, and weight is measured in newtons.",
         ],
         working: [
           { label: "Formula", latex: "W = mg" },
@@ -91,10 +91,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 8.3,
         targetMax: 8.5,
-        ask: "Rearrange weight equals mass times g to get mass, so work out 84 divided by 10.",
+        ask: "Rearrange weight equals mass times g to get mass, so work out 84 ÷ 10.",
         hints: [
           "From W equals m g, the mass is W divided by g.",
-          "84 divided by 10 is 8.4, so slide to 8.4 kilograms.",
+          "84 ÷ 10 is 8.4, so slide to 8.4 kilograms.",
         ],
         working: [
           { label: "Formula", latex: "m = \\dfrac{W}{g}" },
@@ -127,10 +127,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A 5 kg mass weighs 8 N on a distant planet. Build the working line that gives g there.",
         tiles: ["g =", "8", "\\div", "5", "=", "1.6", "N/kg", "kg"],
         answer: ["g =", "8", "\\div", "5", "=", "1.6", "N/kg"],
-        ask: "To find g, divide the weight by the mass, so set up 8 divided by 5.",
+        ask: "To find g, divide the weight by the mass, so set up 8 ÷ 5.",
         hints: [
           "Rearranging W equals m g gives g equal to W divided by m.",
-          "8 divided by 5 is 1.6, and g is measured in newtons per kilogram.",
+          "8 ÷ 5 is 1.6, and g is measured in newtons per kilogram.",
         ],
         working: [
           { label: "Formula", latex: "g = \\dfrac{W}{m}" },

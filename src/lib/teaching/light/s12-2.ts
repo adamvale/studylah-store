@@ -79,17 +79,17 @@ export const BOXES: Subconcept[] = [
         question: "An object stands 2.5 m in front of a plane mirror. How far apart are the object and its image?",
         options: ["2.5 m", "5.0 m", "1.25 m", "0 m"],
         correct: 1,
-        ask: "The image is as far behind the mirror as the object is in front, so add the 2 distances. Work out 2.5 plus 2.5.",
+        ask: "The image is as far behind the mirror as the object is in front, so add the 2 distances. Work out 2.5 + 2.5.",
         hints: [
           "The image sits 2.5 metres behind the mirror.",
-          "Object to mirror is 2.5 metres and mirror to image is 2.5 metres, and 2.5 plus 2.5 is 5.0.",
+          "Object to mirror is 2.5 metres and mirror to image is 2.5 metres, and 2.5 + 2.5 is 5.0.",
         ],
         working: [
           { label: "Formula", latex: "d_{\\text{object to image}} = d_{\\text{in front}} + d_{\\text{behind}}" },
           { label: "Substitute", latex: "d = 2.5 + 2.5" },
           { label: "Answer", latex: "d = 5.0\\ \\text{m}" },
         ],
-        explain: "The object and image are 5.0 metres apart, because the image lies 2.5 metres behind the mirror while the object is 2.5 metres in front, and 2.5 plus 2.5 is 5.0 metres.",
+        explain: "The object and image are 5.0 metres apart, because the image lies 2.5 metres behind the mirror while the object is 2.5 metres in front, and 2.5 + 2.5 is 5.0 metres.",
       },
       {
         kind: "choice",

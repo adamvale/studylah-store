@@ -86,10 +86,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-05-19-plank-two-strings",
         options: ["190 N", "570 N", "170 N", "360 N"],
         correct: 0,
-        ask: "Take moments about P so string P drops out. Balance the anticlockwise moment of T_Q against the clockwise moments of the weight and the load, so work out 300 times 1.5 plus 60 times 2.0, then divide by 3.0.",
+        ask: "Take moments about P so string P drops out. Balance the anticlockwise moment of T_Q against the clockwise moments of the weight and the load, so work out 300 × 1.5 + 60 × 2.0, then divide by 3.0.",
         hints: [
-          "The clockwise moments are 300 times 1.5 and 60 times 2.0; the anticlockwise moment is T_Q times 3.0.",
-          "450 plus 120 is 570, and 570 divided by 3.0 is 190.",
+          "The clockwise moments are 300 × 1.5 and 60 × 2.0; the anticlockwise moment is T_Q times 3.0.",
+          "450 + 120 is 570, and 570 ÷ 3.0 is 190.",
         ],
         working: [
           { label: "Formula", latex: "T_Q \\times 3.0 = (300 \\times 1.5) + (60 \\times 2.0)" },
@@ -108,10 +108,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 168,
         targetMax: 172,
-        ask: "The force condition says total up equals total down. The downward forces are 300 plus 60, and T_Q takes 190 of that, so work out 360 minus 190.",
+        ask: "The force condition says total up equals total down. The downward forces are 300 + 60, and T_Q takes 190 of that, so work out 360 - 190.",
         hints: [
-          "Total upward tension T_P plus T_Q must equal 300 plus 60.",
-          "360 minus 190 is 170, so slide to 170 newtons.",
+          "Total upward tension T_P plus T_Q must equal 300 + 60.",
+          "360 - 190 is 170, so slide to 170 newtons.",
         ],
         working: [
           { label: "Formula", latex: "T_P + T_Q = 300 + 60" },

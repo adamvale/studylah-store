@@ -349,12 +349,12 @@ export const KINEMATICS_MISCONCEPTIONS: Misconception[] = [
     belief: "Any equation of motion will do as long as I have three numbers to put in.",
     tell: "The student plugs values into an equation that contains a quantity they were never given, or that leaves out the one they actually need.",
     whyItHappens: "The four equations look interchangeable, so students grab the first one they remember instead of matching it to the known and unknown quantities.",
-    reteach: "Each equation of motion is built to leave out exactly one of the five quantities: initial velocity, final velocity, acceleration, displacement, and time. The trick is to list what you know and what you want, then pick the equation that contains those and skips the quantity you do not have. For example, if you have no time and you want a final velocity, use v squared equals u squared plus two a d, because that is the one without time in it.",
+    reteach: "Each equation of motion is built to leave out exactly one of the five quantities: initial velocity, final velocity, acceleration, displacement, and time. The trick is to list what you know and what you want, then pick the equation that contains those and skips the quantity you do not have. For example, if you have no time and you want a final velocity, use v^2 equals u^2 plus two a d, because that is the one without time in it.",
     microExample: "Known u, a, d; want v; no time: use v^2 = u^2 + 2ad (not v = u + at, which needs t).",
     figure: "fig-02-32-vt-worked-formulae.svg",
     check: {
       question: "You know the initial velocity, the acceleration, and the displacement, and you want the final velocity, but you do not know the time. Which equation fits?",
-      answer: "Use v squared equals u squared plus two a d, because it is the equation that does not involve time."
+      answer: "Use v^2 equals u^2 plus two a d, because it is the equation that does not involve time."
     }
   },
   {

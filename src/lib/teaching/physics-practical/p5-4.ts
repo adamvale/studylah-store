@@ -49,9 +49,9 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr5-06-critical-angle",
         options: ["28 degrees", "34 degrees", "42 degrees", "49 degrees"],
         correct: 2,
-        ask: "The critical angle comes from sin c = 1 divided by n. Work out 1 divided by 1.5, then take the inverse sine.",
+        ask: "The critical angle comes from sin c = 1 divided by n. Work out 1 ÷ 1.5, then take the inverse sine.",
         hints: [
-          "First find sin c = 1 divided by 1.5, which is 0.667.",
+          "First find sin c = 1 ÷ 1.5, which is 0.667.",
           "The angle whose sine is 0.667 is about 42 degrees.",
         ],
         working: [
@@ -59,7 +59,7 @@ export const BOXES: Subconcept[] = [
           { label: "Substitute", latex: "\\sin c = \\dfrac{1}{1.5} = 0.667" },
           { label: "Answer", latex: "c = 42\\ \\text{degrees}" },
         ],
-        explain: "The critical angle is 42 degrees, because 1 divided by 1.5 is 0.667, and the angle whose sine is 0.667 is about 42 degrees.",
+        explain: "The critical angle is 42 degrees, because 1 ÷ 1.5 is 0.667, and the angle whose sine is 0.667 is about 42 degrees.",
       },
       {
         kind: "choice",
@@ -68,7 +68,7 @@ export const BOXES: Subconcept[] = [
         correct: 0,
         ask: "Use sin c = 1 divided by n with n equal to 1.33, then take the inverse sine.",
         hints: [
-          "First find sin c = 1 divided by 1.33, which is 0.752.",
+          "First find sin c = 1 ÷ 1.33, which is 0.752.",
           "The angle whose sine is 0.752 is about 49 degrees.",
         ],
         working: [
@@ -76,7 +76,7 @@ export const BOXES: Subconcept[] = [
           { label: "Substitute", latex: "\\sin c = \\dfrac{1}{1.33} = 0.752" },
           { label: "Answer", latex: "c = 49\\ \\text{degrees}" },
         ],
-        explain: "The critical angle for water is 49 degrees, because 1 divided by 1.33 is 0.752, and the angle whose sine is 0.752 is about 49 degrees.",
+        explain: "The critical angle for water is 49 degrees, because 1 ÷ 1.33 is 0.752, and the angle whose sine is 0.752 is about 49 degrees.",
       },
       {
         kind: "choice",

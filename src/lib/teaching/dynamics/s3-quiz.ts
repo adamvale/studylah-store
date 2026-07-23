@@ -74,10 +74,10 @@ export const BOXES: Subconcept[] = [
         question: "A 3 kg bag rests on the Earth, where g = 10 N/kg. Find its weight W.",
         options: ["30 N", "3 N", "13 N", "0.3 N"],
         correct: 0,
-        ask: "Weight is mass times g, so work out 3 times 10. Which option matches?",
+        ask: "Weight is mass times g, so work out 3 × 10. Which option matches?",
         hints: [
           "Use W equals m times g.",
-          "3 times 10 is 30, and weight is measured in newtons.",
+          "3 × 10 is 30, and weight is measured in newtons.",
         ],
         working: [
           { label: "Formula", latex: "W = mg" },
@@ -96,10 +96,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 4.7,
         targetMax: 4.9,
-        ask: "On the Moon the weight is still mass times g, so work out 3 times 1.6.",
+        ask: "On the Moon the weight is still mass times g, so work out 3 × 1.6.",
         hints: [
           "Use W equals m times g, with g equal to 1.6 on the Moon.",
-          "3 times 1.6 is 4.8, so slide to 4.8 newtons.",
+          "3 × 1.6 is 4.8, so slide to 4.8 newtons.",
         ],
         working: [
           { label: "Formula", latex: "W = mg" },
@@ -116,14 +116,14 @@ export const BOXES: Subconcept[] = [
         ask: "Check how weight relates to mass and g. In W equals m g, do you multiply the mass by g or divide by it?",
         hints: [
           "Weight is mass times g, written W equals m g.",
-          "The line that divides 3 by 10 is wrong; it should be 3 times 10, giving 30 newtons.",
+          "The line that divides 3 by 10 is wrong; it should be 3 × 10, giving 30 newtons.",
         ],
         working: [
           { label: "Formula", latex: "W = mg" },
           { label: "Substitute", latex: "W = 3 \\times 10" },
           { label: "Answer", latex: "W = 30\\ \\text{N}" },
         ],
-        explain: "The mistake is on the line that writes W equals m divided by g. Weight is mass times g, so W equals 3 times 10, which is 30 newtons, not 0.3 newtons.",
+        explain: "The mistake is on the line that writes W equals m divided by g. Weight is mass times g, so W equals 3 × 10, which is 30 newtons, not 0.3 newtons.",
       },
       {
         kind: "open",
@@ -194,27 +194,27 @@ export const BOXES: Subconcept[] = [
         question: "A ball is pulled by 2 forces at right angles: 12 N to the east and 9 N to the north. Find the size of the resultant force.",
         options: ["15 N", "21 N", "3 N", "108 N"],
         correct: 0,
-        ask: "The 2 forces are at right angles, so use Pythagoras: square them, add, then take the square root of 12 squared plus 9 squared.",
+        ask: "The 2 forces are at right angles, so use Pythagoras: square them, add, then take the square root of 12 squared plus 9^2.",
         hints: [
           "For 2 forces at right angles, the resultant is the square root of the sum of their squares.",
-          "12 squared is 144 and 9 squared is 81; 144 plus 81 is 225, and the square root of 225 is 15.",
+          "12 squared is 144 and 9^2 is 81; 144 + 81 is 225, and the square root of 225 is 15.",
         ],
         working: [
           { label: "Formula", latex: "R = \\sqrt{F_1^2 + F_2^2}" },
           { label: "Substitute", latex: "R = \\sqrt{12^2 + 9^2}" },
           { label: "Answer", latex: "R = 15\\ \\text{N}" },
         ],
-        explain: "The resultant is 15 newtons, because 12 squared plus 9 squared is 144 plus 81, which is 225, and the square root of 225 is 15 newtons.",
+        explain: "The resultant is 15 newtons, because 12 squared plus 9^2 is 144 + 81, which is 225, and the square root of 225 is 15 newtons.",
       },
       {
         kind: "choice",
         question: "A resultant force of 12 N acts on a 4 kg trolley. Find its acceleration.",
         options: ["3 m/s^2", "48 m/s^2", "0.33 m/s^2", "16 m/s^2"],
         correct: 0,
-        ask: "Acceleration is the resultant force divided by the mass, so work out 12 divided by 4. Which option matches?",
+        ask: "Acceleration is the resultant force divided by the mass, so work out 12 ÷ 4. Which option matches?",
         hints: [
           "Rearrange F equals m a into a equals F divided by m.",
-          "12 divided by 4 is 3, in metres per second squared.",
+          "12 ÷ 4 is 3, in metres per second squared.",
         ],
         working: [
           { label: "Formula", latex: "a = \\dfrac{F}{m}" },
@@ -233,27 +233,27 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 5.9,
         targetMax: 6.1,
-        ask: "First combine the forces: 30 minus 6 gives the resultant. Then divide by the 4 kilogram mass.",
+        ask: "First combine the forces: 30 - 6 gives the resultant. Then divide by the 4 kilogram mass.",
         hints: [
-          "The resultant force is 30 minus 6, which is 24 newtons.",
-          "24 divided by 4 is 6, so slide to 6 metres per second squared.",
+          "The resultant force is 30 - 6, which is 24 newtons.",
+          "24 ÷ 4 is 6, so slide to 6 metres per second squared.",
         ],
         working: [
           { label: "Formula", latex: "a = \\dfrac{F}{m}" },
           { label: "Substitute", latex: "a = \\dfrac{30 - 6}{4}" },
           { label: "Answer", latex: "a = 6\\ \\text{m/s}^2" },
         ],
-        explain: "The resultant force is 30 minus 6, which is 24 newtons, so the acceleration is 24 divided by 4, giving 6 metres per second squared.",
+        explain: "The resultant force is 30 - 6, which is 24 newtons, so the acceleration is 24 ÷ 4, giving 6 metres per second squared.",
       },
       {
         kind: "tiles",
         prompt: "A 5 kg mass has a resultant force that gives it an acceleration of 2 m/s^2. Build the working line for the resultant force F.",
         tiles: ["F =", "5", "\\times", "2", "=", "10", "N", "kg"],
         answer: ["F =", "5", "\\times", "2", "=", "10", "N"],
-        ask: "The resultant force is mass times acceleration, so set up 5 times 2.",
+        ask: "The resultant force is mass times acceleration, so set up 5 × 2.",
         hints: [
           "Use F equals m times a.",
-          "5 times 2 is 10, and force is measured in newtons.",
+          "5 × 2 is 10, and force is measured in newtons.",
         ],
         working: [
           { label: "Formula", latex: "F = ma" },
@@ -375,17 +375,17 @@ export const BOXES: Subconcept[] = [
         prompt: "An object falls freely from rest for 4 s (take g = 10 m/s^2). Build the working line for its speed v, using v = g t.",
         tiles: ["v =", "10", "\\times", "4", "=", "40", "m/s", "s"],
         answer: ["v =", "10", "\\times", "4", "=", "40", "m/s"],
-        ask: "In free fall the speed is g times the time, so set up 10 times 4.",
+        ask: "In free fall the speed is g times the time, so set up 10 × 4.",
         hints: [
           "Use v equals g times t, with g equal to 10 metres per second squared.",
-          "10 times 4 is 40, and speed is measured in metres per second.",
+          "10 × 4 is 40, and speed is measured in metres per second.",
         ],
         working: [
           { label: "Formula", latex: "v = gt" },
           { label: "Substitute", latex: "v = 10 \\times 4" },
           { label: "Answer", latex: "v = 40\\ \\text{m/s}" },
         ],
-        explain: "The speed is 40 metres per second, because in free fall the speed gained is g times the time, and 10 times 4 is 40 metres per second.",
+        explain: "The speed is 40 metres per second, because in free fall the speed gained is g times the time, and 10 × 4 is 40 metres per second.",
       },
       {
         kind: "graphpick",

@@ -97,15 +97,15 @@ export const BOXES: Subconcept[] = [
         correct: 1,
         ask: "The nucleon numbers must balance. The left side totals 236, so work out what the 2 named daughters leave over.",
         hints: [
-          "Add the nucleon numbers on the left: 1 plus 235 is 236.",
-          "140 plus 94 is 234, so 2 nucleons remain, which is 2 neutrons.",
+          "Add the nucleon numbers on the left: 1 + 235 is 236.",
+          "140 + 94 is 234, so 2 nucleons remain, which is 2 neutrons.",
         ],
         working: [
           { label: "Balance nucleon number", latex: "1 + 235 = 140 + 94 + n" },
           { label: "Substitute", latex: "236 = 234 + n" },
           { label: "Answer", latex: "n = 2\\ \\text{neutrons}" },
         ],
-        explain: "The left side has 236 nucleons and the 2 daughters take 234, so 2 neutrons are released. The proton numbers also balance: 92 equals 54 plus 38.",
+        explain: "The left side has 236 nucleons and the 2 daughters take 234, so 2 neutrons are released. The proton numbers also balance: 92 equals 54 + 38.",
       },
       {
         kind: "choice",

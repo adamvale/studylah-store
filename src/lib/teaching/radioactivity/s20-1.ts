@@ -85,10 +85,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 27.5,
         targetMax: 28.5,
-        ask: "The number of neutrons is the nucleon number minus the proton number, so work out 51 minus 23.",
+        ask: "The number of neutrons is the nucleon number minus the proton number, so work out 51 - 23.",
         hints: [
           "Neutrons equal the nucleon number minus the proton number.",
-          "51 minus 23 is 28, so slide to 28 neutrons.",
+          "51 - 23 is 28, so slide to 28 neutrons.",
         ],
         working: [
           { label: "Formula", latex: "N = A - Z" },

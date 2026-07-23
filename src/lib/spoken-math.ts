@@ -43,10 +43,15 @@ export function spokenMath(text: string): string {
   // Single-digit subscripts read as words: F_1 -> "F one".
   s = s.replace(/([A-Za-z])_\{?(\d)\}?/g, (_m, v: string, d: string) => `${v} ${ONES[Number(d)]}`);
 
-  // Common fractions and operators.
+  // Common fractions and operators. The +, - and ÷ rules are anchored to digits
+  // on both sides so ordinary prose, hyphenated words and ranges are untouched;
+  // only real arithmetic is spoken out.
   s = s.replace(/½/g, "one half");
   s = s.replace(/\b1\/2\b/g, "one half");
   s = s.replace(/\s[×*]\s/g, " times ");
+  s = s.replace(/\s÷\s/g, " divided by ");
+  s = s.replace(/(\d)\s\+\s(?=[\d(])/g, "$1 plus ");
+  s = s.replace(/(\d)\s[-−]\s(?=[\d(])/g, "$1 minus ");
   s = s.replace(/\s=\s/g, " equals ");
 
   return s;

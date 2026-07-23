@@ -91,15 +91,15 @@ export const BOXES: Subconcept[] = [
         targetMax: 4250,
         ask: "Take the calorimeter's 616 joules off the energy first, then divide by mass of water times the temperature rise.",
         hints: [
-          "The water gets 17400 minus 616, which is 16784 joules.",
-          "Divide 16784 by 0.200 times 20.0, that is by 4, to get 4200.",
+          "The water gets 17400 - 616, which is 16784 joules.",
+          "Divide 16784 by 0.200 × 20.0, that is by 4, to get 4200.",
         ],
         working: [
           { label: "Formula", latex: "c_w = \\dfrac{E - m_c c_c\\,\\Delta\\theta}{m_w\\,\\Delta\\theta}" },
           { label: "Substitute", latex: "c_w = \\dfrac{17400 - 616}{0.200 \\times 20.0}" },
           { label: "Answer", latex: "c_w = 4.2 \\times 10^{3}\\ \\text{J/(kg\\,}^\\circ\\text{C)}" },
         ],
-        explain: "The specific heat capacity of the water is 4.2 times 10 to the power 3 joules per kilogram per degree Celsius, because 17400 minus 616 is 16784 joules, and dividing by 0.200 times 20.0, which is 4, gives 4200.",
+        explain: "The specific heat capacity of the water is 4.2 × 10 to the power 3 joules per kilogram per degree Celsius, because 17400 - 616 is 16784 joules, and dividing by 0.200 × 20.0, which is 4, gives 4200.",
       },
       {
         kind: "choice",
@@ -113,15 +113,15 @@ export const BOXES: Subconcept[] = [
         correct: 2,
         ask: "Heat lost by the metal equals the 4006 joules gained. Divide 4006 by mass of metal times its temperature drop.",
         hints: [
-          "The metal's temperature drop is 99.0 minus 28.6, which is 70.4 degrees Celsius.",
-          "Divide 4006 by 0.150 times 70.4, that is by 10.56, to get about 380.",
+          "The metal's temperature drop is 99.0 - 28.6, which is 70.4 degrees Celsius.",
+          "Divide 4006 by 0.150 × 70.4, that is by 10.56, to get about 380.",
         ],
         working: [
           { label: "Formula", latex: "c_m = \\dfrac{(m_w c_w + m_c c_c)(\\theta_f - \\theta_{cold})}{m_m(\\theta_{hot} - \\theta_f)}" },
           { label: "Substitute", latex: "c_m = \\dfrac{4006}{0.150 \\times (99.0 - 28.6)}" },
           { label: "Answer", latex: "c_m = 3.8 \\times 10^{2}\\ \\text{J/(kg\\,}^\\circ\\text{C)}" },
         ],
-        explain: "The metal's specific heat capacity is 3.8 times 10 to the power 2 joules per kilogram per degree Celsius, because 4006 joules divided by 0.150 times 70.4, which is 10.56, is about 380.",
+        explain: "The metal's specific heat capacity is 3.8 × 10 to the power 2 joules per kilogram per degree Celsius, because 4006 joules divided by 0.150 × 70.4, which is 10.56, is about 380.",
       },
       {
         kind: "choice",

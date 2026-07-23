@@ -175,17 +175,17 @@ export const BOXES: Subconcept[] = [
         prompt: "3 appliances on one plug draw 3 A, 3 A and 5 A. Build the line that gives the total current the fuse must carry.",
         tiles: ["I =", "3", "+", "3", "+", "5", "=", "11", "A", "13", "10"],
         answer: ["I =", "3", "+", "3", "+", "5", "=", "11", "A"],
-        ask: "Add the 3 currents to find the total the plug carries. Set up 3 plus 3 plus 5.",
+        ask: "Add the 3 currents to find the total the plug carries. Set up 3 + 3 + 5.",
         hints: [
           "The total current is the sum of the 3 appliance currents.",
-          "3 plus 3 plus 5 is 11, so the plug carries 11 amperes.",
+          "3 + 3 + 5 is 11, so the plug carries 11 amperes.",
         ],
         working: [
           { label: "Formula", latex: "I = I_1 + I_2 + I_3" },
           { label: "Substitute", latex: "I = 3 + 3 + 5" },
           { label: "Answer", latex: "I = 11\\ \\text{A}" },
         ],
-        explain: "The plug carries 11 amperes, because 3 plus 3 plus 5 is 11. A fuse must be rated just above this, so from the standard ratings of 1, 2, 5, 10 and 13 amperes the 13 ampere fuse is chosen.",
+        explain: "The plug carries 11 amperes, because 3 + 3 + 5 is 11. A fuse must be rated just above this, so from the standard ratings of 1, 2, 5, 10 and 13 amperes the 13 ampere fuse is chosen.",
       },
       {
         kind: "open",

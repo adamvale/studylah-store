@@ -44,10 +44,10 @@ export const BOXES: Subconcept[] = [
         question: "A current of 4 A flows for 3 minutes. How much charge passes through the wire?",
         options: ["12 C", "45 C", "720 C", "180 C"],
         correct: 2,
-        ask: "First turn 3 minutes into seconds, then use charge equals current times time, so work out 4 times 180.",
+        ask: "First turn 3 minutes into seconds, then use charge equals current times time, so work out 4 × 180.",
         hints: [
-          "3 minutes is 3 times 60, which is 180 seconds.",
-          "4 times 180 is 720, and the answer is a charge in coulombs.",
+          "3 minutes is 3 × 60, which is 180 seconds.",
+          "4 × 180 is 720, and the answer is a charge in coulombs.",
         ],
         working: [
           { label: "Formula", latex: "Q = I\\,t" },
@@ -61,10 +61,10 @@ export const BOXES: Subconcept[] = [
         question: "A charge of 450 C is delivered by a steady current of 2.5 A. For how long does the current flow?",
         options: ["1125 s", "180 s", "452.5 s", "90 s"],
         correct: 1,
-        ask: "Rearrange charge equals current times time to make time the subject, so work out 450 divided by 2.5.",
+        ask: "Rearrange charge equals current times time to make time the subject, so work out 450 ÷ 2.5.",
         hints: [
           "The time is the charge divided by the current.",
-          "450 divided by 2.5 is 180, and the answer is a time in seconds.",
+          "450 ÷ 2.5 is 180, and the answer is a time in seconds.",
         ],
         working: [
           { label: "Formula", latex: "t = \\dfrac{Q}{I}" },
@@ -78,10 +78,10 @@ export const BOXES: Subconcept[] = [
         question: "A charge of 960 C passes through a car starter motor in just 16 s. What is the current?",
         options: ["15360 A", "0.017 A", "944 A", "60 A"],
         correct: 3,
-        ask: "Rearrange charge equals current times time to make current the subject, so work out 960 divided by 16.",
+        ask: "Rearrange charge equals current times time to make current the subject, so work out 960 ÷ 16.",
         hints: [
           "The current is the charge divided by the time.",
-          "960 divided by 16 is 60, and the answer is a current in amperes.",
+          "960 ÷ 16 is 60, and the answer is a current in amperes.",
         ],
         working: [
           { label: "Formula", latex: "I = \\dfrac{Q}{t}" },

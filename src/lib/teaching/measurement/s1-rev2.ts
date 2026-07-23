@@ -32,10 +32,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-01-11-pendulum-swing",
         options: ["1.5 s", "15 s", "0.67 s", "600 s"],
         correct: 0,
-        ask: "The period is the time for 1 oscillation, so divide the total time by the number of oscillations. Work out 30 divided by 20.",
+        ask: "The period is the time for 1 oscillation, so divide the total time by the number of oscillations. Work out 30 ÷ 20.",
         hints: [
           "Use period equals total time divided by 20.",
-          "30 divided by 20 is 1.5, and the period is measured in seconds.",
+          "30 ÷ 20 is 1.5, and the period is measured in seconds.",
         ],
         working: [
           { label: "Formula", latex: "T = \\dfrac{t}{20}" },
@@ -82,10 +82,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 1.9,
         targetMax: 2.1,
-        ask: "The period is the total time divided by the number of oscillations, so work out 40 divided by 20.",
+        ask: "The period is the total time divided by the number of oscillations, so work out 40 ÷ 20.",
         hints: [
           "Use period equals total time divided by 20.",
-          "40 divided by 20 is 2, so slide to 2 seconds.",
+          "40 ÷ 20 is 2, so slide to 2 seconds.",
         ],
         working: [
           { label: "Formula", latex: "T = \\dfrac{t}{20}" },
@@ -126,10 +126,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A pendulum takes 36 s for 20 oscillations. Build the working line that gives the period T.",
         tiles: ["T =", "36", "\\div", "20", "=", "1.8", "s", "40"],
         answer: ["T =", "36", "\\div", "20", "=", "1.8", "s"],
-        ask: "The period is the total time divided by the number of oscillations, so set up 36 divided by 20.",
+        ask: "The period is the total time divided by the number of oscillations, so set up 36 ÷ 20.",
         hints: [
           "Use period equals total time divided by 20.",
-          "36 divided by 20 is 1.8, and the period is measured in seconds.",
+          "36 ÷ 20 is 1.8, and the period is measured in seconds.",
         ],
         working: [
           { label: "Formula", latex: "T = \\dfrac{t}{20}" },

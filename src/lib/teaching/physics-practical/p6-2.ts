@@ -99,17 +99,17 @@ export const BOXES: Subconcept[] = [
           "0.167 A V^-1",
         ],
         correct: 3,
-        ask: "For an ohmic conductor the gradient of the I against V line is 1 divided by R. Work out 1 divided by 6 point 0 0.",
+        ask: "For an ohmic conductor the gradient of the I against V line is 1 divided by R. Work out 1 ÷ 6 point 0 0.",
         hints: [
           "The gradient equals 1 over R.",
-          "1 divided by 6 point 0 0 is 0 point 1 6 7.",
+          "1 ÷ 6 point 0 0 is 0 point 1 6 7.",
         ],
         working: [
           { label: "Formula", latex: "\\text{gradient} = \\dfrac{1}{R}" },
           { label: "Substitute", latex: "\\text{gradient} = \\dfrac{1}{6.00}" },
           { label: "Answer", latex: "\\text{gradient} = 0.167\\ \\text{A V}^{-1}" },
         ],
-        explain: "The gradient is 0 point 1 6 7 amperes per volt, because 1 divided by 6 point 0 0 ohms is 0 point 1 6 7.",
+        explain: "The gradient is 0 point 1 6 7 amperes per volt, because 1 ÷ 6 point 0 0 ohms is 0 point 1 6 7.",
       },
       {
         kind: "choice",
@@ -124,7 +124,7 @@ export const BOXES: Subconcept[] = [
         ask: "The diode and resistor X are in series, so the same current flows through both. Find that current from X using I equals V_x divided by R.",
         hints: [
           "In a series circuit the current is the same everywhere.",
-          "22 point 0 divided by 22 point 0 is 1 point 0 0.",
+          "22 point 0 ÷ 22 point 0 is 1 point 0 0.",
         ],
         working: [
           { label: "Formula", latex: "I = \\dfrac{V_x}{R}" },

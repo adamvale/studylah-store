@@ -62,13 +62,13 @@ export const BOXES: Subconcept[] = [
         ask: "One millimetre is one thousandth of a metre. Which power of 10 gives 0.001?",
         hints: [
           "1 millimetre equals 0.001 metres.",
-          "0.001 is 1 times 10 to the power negative 3.",
+          "0.001 is 1 × 10 to the power negative 3.",
         ],
         working: [
           { label: "Convert", latex: "1\\ \\text{mm} = 0.001\\ \\text{m}" },
           { label: "Answer", latex: "1 \\times 10^{-3}\\ \\text{m}" },
         ],
-        explain: "1 millimetre is 0.001 metres, which is 1 times 10 to the negative 3 metres. The negative index shows the number is smaller than 1.",
+        explain: "1 millimetre is 0.001 metres, which is 1 × 10 to the negative 3 metres. The negative index shows the number is smaller than 1.",
       },
       {
         kind: "choice",

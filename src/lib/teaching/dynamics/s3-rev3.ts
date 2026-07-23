@@ -84,17 +84,17 @@ export const BOXES: Subconcept[] = [
         question: "A stone is dropped from rest. Ignoring air resistance, with g = 10 m/s^2, find its speed after 3 s.",
         options: ["30 m/s", "13 m/s", "3 m/s", "300 m/s"],
         correct: 0,
-        ask: "The starting speed is 0, so the speed is just g times the time. Work out 10 times 3.",
+        ask: "The starting speed is 0, so the speed is just g times the time. Work out 10 × 3.",
         hints: [
           "Use v = u + a t, with u equal to 0 and a equal to g, which is 10.",
-          "10 times 3 is 30, and the speed is in metres per second.",
+          "10 × 3 is 30, and the speed is in metres per second.",
         ],
         working: [
           { label: "Formula", latex: "v = u + at" },
           { label: "Substitute", latex: "v = 0 + 10 \\times 3" },
           { label: "Answer", latex: "v = 30\\ \\text{m/s}" },
         ],
-        explain: "The speed is 30 metres per second. Starting from rest, the velocity grows by 10 metres per second every second, and 10 times 3 is 30.",
+        explain: "The speed is 30 metres per second. Starting from rest, the velocity grows by 10 metres per second every second, and 10 × 3 is 30.",
       },
       {
         kind: "slider",
@@ -106,17 +106,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 5.9,
         targetMax: 6.1,
-        ask: "First find the resultant force, 42 minus 12, then divide by the 5 kilogram mass.",
+        ask: "First find the resultant force, 42 - 12, then divide by the 5 kilogram mass.",
         hints: [
-          "The resultant force is 42 minus 12, which is 30 newtons.",
-          "Acceleration is resultant force divided by mass, so 30 divided by 5 is 6.",
+          "The resultant force is 42 - 12, which is 30 newtons.",
+          "Acceleration is resultant force divided by mass, so 30 ÷ 5 is 6.",
         ],
         working: [
           { label: "Formula", latex: "a = \\dfrac{F_{\\text{resultant}}}{m}" },
           { label: "Substitute", latex: "a = \\dfrac{42 - 12}{5}" },
           { label: "Answer", latex: "a = 6\\ \\text{m/s}^2" },
         ],
-        explain: "The acceleration is 6 metres per second squared. The resultant force is 42 minus 12, which is 30 newtons, and 30 divided by the 5 kilogram mass gives 6 metres per second squared.",
+        explain: "The acceleration is 6 metres per second squared. The resultant force is 42 - 12, which is 30 newtons, and 30 divided by the 5 kilogram mass gives 6 metres per second squared.",
       },
       {
         kind: "order",

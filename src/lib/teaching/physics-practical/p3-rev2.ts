@@ -20,25 +20,25 @@ export const BOXES: Subconcept[] = [
         correct: 1,
         ask: "The 2.0 N weight sits 20 centimetres from the pivot and the rule's weight sits 10 centimetres from it on the other side. Balance the 2 moments and solve for W.",
         hints: [
-          "Clockwise moment equals anticlockwise moment: 2.0 times 20 on one side, W times 10 on the other.",
-          "2.0 times 20 is 40, and 40 divided by 10 is 4.0 newtons.",
+          "Clockwise moment equals anticlockwise moment: 2.0 × 20 on one side, W times 10 on the other.",
+          "2.0 × 20 is 40, and 40 ÷ 10 is 4.0 newtons.",
         ],
         working: [
           { label: "Formula", latex: "F_1 d_1 = W d_2" },
           { label: "Substitute", latex: "2.0 \\times 20 = W \\times 10" },
           { label: "Answer", latex: "W = 4.0\\ \\text{N}" },
         ],
-        explain: "The rule's weight is 4.0 newtons. The 2.0 newton weight gives an anticlockwise moment of 2.0 times 20, which is 40; setting this equal to W times 10 gives W equal to 4.0 newtons.",
+        explain: "The rule's weight is 4.0 newtons. The 2.0 newton weight gives an anticlockwise moment of 2.0 × 20, which is 40; setting this equal to W times 10 gives W equal to 4.0 newtons.",
       },
       {
         kind: "choice",
         question: "A rectangular block has a mass of 384 g and a volume of 480 cm^3. What is its density?",
         options: ["1.25 g/cm^3", "0.60 g/cm^3", "480 g/cm^3", "0.80 g/cm^3"],
         correct: 3,
-        ask: "Density is mass divided by volume, so work out 384 divided by 480.",
+        ask: "Density is mass divided by volume, so work out 384 ÷ 480.",
         hints: [
           "Use density equals mass divided by volume.",
-          "384 divided by 480 is 0.80 grams per cubic centimetre.",
+          "384 ÷ 480 is 0.80 grams per cubic centimetre.",
         ],
         working: [
           { label: "Formula", latex: "\\rho = \\dfrac{m}{V}" },
@@ -53,10 +53,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr3-14-friction-apparatus",
         options: ["3.0 N", "0.30 N", "30 N", "0.030 N"],
         correct: 0,
-        ask: "At constant velocity the resultant force is zero, so the friction equals the pull, which equals the hanging weight Mg. Work out 0.300 times 10.",
+        ask: "At constant velocity the resultant force is zero, so the friction equals the pull, which equals the hanging weight Mg. Work out 0.300 × 10.",
         hints: [
           "Constant velocity means the pull equals the friction, and the pull equals Mg.",
-          "0.300 times 10 is 3.0 newtons.",
+          "0.300 × 10 is 3.0 newtons.",
         ],
         working: [
           { label: "Formula", latex: "W = Mg" },
@@ -74,9 +74,9 @@ export const BOXES: Subconcept[] = [
         ask: "The moments equation is 100 r = 50 q + M p. Rearranged to r/p = 0.5 (q/p) + M/100, which part of it becomes the gradient?",
         hints: [
           "Dividing the moments equation through gives r/p = 0.5 times q/p plus M over 100.",
-          "The number in front of q/p is 50 divided by 100, which is 0.5, the ratio of the 2 masses.",
+          "The number in front of q/p is 50 ÷ 100, which is 0.5, the ratio of the 2 masses.",
         ],
-        explain: "The gradient of 0.5 is the ratio of the 50 gram mass to the 100 gram mass. In r/p = 0.5 times q/p plus M over 100, the gradient comes from 50 divided by 100, while the unknown mass M appears in the intercept M over 100.",
+        explain: "The gradient of 0.5 is the ratio of the 50 gram mass to the 100 gram mass. In r/p = 0.5 times q/p plus M over 100, the gradient comes from 50 ÷ 100, while the unknown mass M appears in the intercept M over 100.",
       },
       {
         kind: "choice",
@@ -151,10 +151,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 0.47,
         targetMax: 0.49,
-        ask: "Divide the pull W by the total force L + mg, so work out 3.0 divided by 6.214.",
+        ask: "Divide the pull W by the total force L + mg, so work out 3.0 ÷ 6.214.",
         hints: [
           "Use mu equals W divided by the quantity L plus mg.",
-          "3.0 divided by 6.214 is about 0.48.",
+          "3.0 ÷ 6.214 is about 0.48.",
         ],
         working: [
           { label: "Formula", latex: "\\mu = \\dfrac{W}{L + mg}" },

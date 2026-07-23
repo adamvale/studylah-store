@@ -22,7 +22,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Charge is measured in coulombs",
-        body: "*Charge* is measured in *coulombs*, symbol C. A single *proton* carries a charge of positive 1.60 times 10 to the power negative 19 coulombs, and an *electron* carries the same size of charge but negative.",
+        body: "*Charge* is measured in *coulombs*, symbol C. A single *proton* carries a charge of positive 1.60 × 10 to the power negative 19 coulombs, and an *electron* carries the same size of charge but negative.",
         say: "We measure charge in units called coulombs. One proton carries a charge of 1.60 times 10 to the power negative 19 coulombs, and that value is positive. One electron carries exactly the same size of charge, 1.60 times 10 to the power negative 19 coulombs, but its charge is negative. Because the 2 are equal in size and opposite in sign, they cancel perfectly.",
       },
       {
@@ -75,9 +75,9 @@ export const BOXES: Subconcept[] = [
         ask: "A proton is positive, and its charge has the same size as an electron's. Which option is positive with that value?",
         hints: [
           "The proton is positive, so rule out the neutral and the negative options.",
-          "The proton charge is 1.60 times 10 to the power negative 19 coulombs, and it is positive.",
+          "The proton charge is 1.60 × 10 to the power negative 19 coulombs, and it is positive.",
         ],
-        explain: "The proton charge is 1.60 times 10 to the power negative 19 coulombs, and it is positive. An electron has the same size of charge but negative.",
+        explain: "The proton charge is 1.60 × 10 to the power negative 19 coulombs, and it is positive. An electron has the same size of charge but negative.",
       },
       {
         kind: "classify",

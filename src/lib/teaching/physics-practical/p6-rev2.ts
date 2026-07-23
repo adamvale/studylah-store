@@ -17,10 +17,10 @@ export const BOXES: Subconcept[] = [
         question: "A lamp draws a current of 0.50 A from a 12 V supply. What is the electrical power in the lamp?",
         options: ["3.0 W", "6.0 W", "12 W", "24 W"],
         correct: 1,
-        ask: "Power is current times voltage, so work out 0.50 times 12. Which option matches?",
+        ask: "Power is current times voltage, so work out 0.50 × 12. Which option matches?",
         hints: [
           "Use P equals I times V.",
-          "0.50 times 12 is 6.0, and power is measured in watts.",
+          "0.50 × 12 is 6.0, and power is measured in watts.",
         ],
         working: [
           { label: "Formula", latex: "P = IV" },
@@ -34,17 +34,17 @@ export const BOXES: Subconcept[] = [
         question: "A fixed resistor of 5.0 ohms carries a current of 2.0 A. Using P = I^2 R, what power is dissipated?",
         options: ["5.0 W", "10 W", "40 W", "20 W"],
         correct: 3,
-        ask: "Square the current first, then multiply by the resistance. Work out 2.0 squared times 5.0. Which option is that?",
+        ask: "Square the current first, then multiply by the resistance. Work out 2.0^2 times 5.0. Which option is that?",
         hints: [
           "Use P equals the current squared times the resistance.",
-          "2.0 squared is 4.0, and 4.0 times 5.0 is 20.",
+          "2.0^2 is 4.0, and 4.0 × 5.0 is 20.",
         ],
         working: [
           { label: "Formula", latex: "P = I^2 R" },
           { label: "Substitute", latex: "P = 2.0^2 \\times 5.0" },
           { label: "Answer", latex: "P = 20\\ \\text{W}" },
         ],
-        explain: "The power is 20 watts, because 2.0 amperes squared is 4.0, and 4.0 times 5.0 ohms is 20 watts.",
+        explain: "The power is 20 watts, because 2.0 amperes squared is 4.0, and 4.0 × 5.0 ohms is 20 watts.",
       },
       {
         kind: "choice",
@@ -64,10 +64,10 @@ export const BOXES: Subconcept[] = [
         question: "A lamp runs at 12 V drawing 0.50 A for 2.0 minutes. How much electrical energy is transferred? (2.0 minutes = 120 s)",
         options: ["60 J", "360 J", "720 J", "1440 J"],
         correct: 2,
-        ask: "Energy is voltage times current times time in seconds, so work out 12 times 0.50 times 120. Which option matches?",
+        ask: "Energy is voltage times current times time in seconds, so work out 12 × 0.50 × 120. Which option matches?",
         hints: [
           "Use E equals V times I times t, with the time in seconds.",
-          "12 times 0.50 is 6.0, and 6.0 times 120 is 720.",
+          "12 × 0.50 is 6.0, and 6.0 × 120 is 720.",
         ],
         working: [
           { label: "Formula", latex: "E = VIt" },
@@ -163,7 +163,7 @@ export const BOXES: Subconcept[] = [
         ask: "Energy is voltage times current times time. Multiply 12 by 0.50 by 120 to get the joules.",
         hints: [
           "Use E equals V times I times t.",
-          "12 times 0.50 is 6.0, and 6.0 times 120 is 720 joules.",
+          "12 × 0.50 is 6.0, and 6.0 × 120 is 720 joules.",
         ],
         working: [
           { label: "Formula", latex: "E = VIt" },

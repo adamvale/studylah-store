@@ -40,17 +40,17 @@ export const BOXES: Subconcept[] = [
           "4.2 x 10^4 J",
         ],
         correct: 0,
-        ask: "Use Q equals m times c times the temperature change. The change is 70 minus 20, which is 50. Work out 2.0 times 4200 times 50.",
+        ask: "Use Q equals m times c times the temperature change. The change is 70 - 20, which is 50. Work out 2.0 × 4200 × 50.",
         hints: [
-          "The temperature change is 70 minus 20, which is 50 degrees.",
-          "2.0 times 4200 times 50 is 420000, which is 4.2 times 10 to the power 5 joules.",
+          "The temperature change is 70 - 20, which is 50 degrees.",
+          "2.0 × 4200 × 50 is 420000, which is 4.2 × 10 to the power 5 joules.",
         ],
         working: [
           { label: "Formula", latex: "Q = mc\\,\\Delta\\theta" },
           { label: "Substitute", latex: "Q = 2.0 \\times 4200 \\times 50" },
           { label: "Answer", latex: "Q = 4.2 \\times 10^{5}\\ \\text{J}" },
         ],
-        explain: "The energy supplied is 4.2 times 10 to the power 5 joules, because 2.0 kilograms times 4200 times a 50 degree rise is 420000 joules.",
+        explain: "The energy supplied is 4.2 × 10 to the power 5 joules, because 2.0 kilograms times 4200 times a 50 degree rise is 420000 joules.",
       },
       {
         kind: "choice",
@@ -62,17 +62,17 @@ export const BOXES: Subconcept[] = [
           "20 C",
         ],
         correct: 3,
-        ask: "First find the energy supplied from E equals power times time, so 1400 times 60. Then use that energy in Q equals m c times the temperature change.",
+        ask: "First find the energy supplied from E equals power times time, so 1400 × 60. Then use that energy in Q equals m c times the temperature change.",
         hints: [
-          "The energy supplied is 1400 times 60, which is 84000 joules.",
-          "The temperature change is 84000 divided by 1.0 times 4200, which is 20 degrees.",
+          "The energy supplied is 1400 × 60, which is 84000 joules.",
+          "The temperature change is 84000 ÷ 1.0 × 4200, which is 20 degrees.",
         ],
         working: [
           { label: "Formula", latex: "\\Delta\\theta = \\dfrac{Pt}{mc}" },
           { label: "Substitute", latex: "\\Delta\\theta = \\dfrac{1400 \\times 60}{1.0 \\times 4200}" },
           { label: "Answer", latex: "\\Delta\\theta = 20\\ \\text{C}" },
         ],
-        explain: "The temperature rises by 20 degrees, because the heater delivers 84000 joules, and 84000 divided by 1.0 times 4200 is 20.",
+        explain: "The temperature rises by 20 degrees, because the heater delivers 84000 joules, and 84000 ÷ 1.0 × 4200 is 20.",
       },
       {
         kind: "choice",
@@ -195,15 +195,15 @@ export const BOXES: Subconcept[] = [
         errorLine: 4,
         ask: "The first 3 lines find the heat capacity correctly. To get the specific heat capacity you divide the heat capacity by the mass, so check whether the last line divides or multiplies.",
         hints: [
-          "Specific heat capacity is c equals C divided by m, so it should be 120 divided by 0.40.",
-          "120 divided by 0.40 is 300, not 48. The last line multiplied instead of dividing.",
+          "Specific heat capacity is c equals C divided by m, so it should be 120 ÷ 0.40.",
+          "120 ÷ 0.40 is 300, not 48. The last line multiplied instead of dividing.",
         ],
         working: [
           { label: "Formula", latex: "c = \\dfrac{C}{m}" },
           { label: "Substitute", latex: "c = \\dfrac{120}{0.40}" },
           { label: "Answer", latex: "c = 300\\ \\text{J/(kg\\,C)}" },
         ],
-        explain: "The last line is wrong. It should divide the heat capacity by the mass, so 120 divided by 0.40 is 300 joules per kilogram degree, not multiply to give 48.",
+        explain: "The last line is wrong. It should divide the heat capacity by the mass, so 120 ÷ 0.40 is 300 joules per kilogram degree, not multiply to give 48.",
       },
       {
         kind: "open",

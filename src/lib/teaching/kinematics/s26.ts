@@ -50,7 +50,7 @@ export const BOXES: Subconcept[] = [
         ask: "Take the rise in displacement over the time. 5 metres over 2 seconds. Which option is that?",
         hints: [
           "Velocity is the gradient, rise over run.",
-          "5 divided by 2 is 2.5.",
+          "5 ÷ 2 is 2.5.",
         ],
         working: [
           { label: "Formula", latex: "\\text{gradient} = \\dfrac{\\Delta d}{\\Delta t}" },
@@ -72,7 +72,7 @@ export const BOXES: Subconcept[] = [
         ask: "Velocity is the gradient. 12 metres over 4 seconds. Slide to that value.",
         hints: [
           "Divide the rise in displacement by the time.",
-          "12 divided by 4 is 3.",
+          "12 ÷ 4 is 3.",
         ],
         working: [
           { label: "Formula", latex: "\\text{gradient} = \\dfrac{\\Delta d}{\\Delta t}" },

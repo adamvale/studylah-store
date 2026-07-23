@@ -45,10 +45,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-07-09-box-slope",
         options: ["30 J", "11 J", "1.2 J", "18 J"],
         correct: 0,
-        ask: "Work done is the force times the distance moved in the direction of the force, so work out 5 times 6.",
+        ask: "Work done is the force times the distance moved in the direction of the force, so work out 5 × 6.",
         hints: [
           "Use work equals force times distance.",
-          "5 times 6 is 30, and work is measured in joules.",
+          "5 × 6 is 30, and work is measured in joules.",
         ],
         working: [
           { label: "Formula", latex: "W = Fd" },
@@ -73,7 +73,7 @@ export const BOXES: Subconcept[] = [
           "If the distance moved is 0, then the work done is 0.",
           "Pushing a wall that does not move does no work, however hard you push.",
         ],
-        explain: "No work is done when pushing a wall that does not move, because the object does not move, so the distance is 0 and 5 times 0 is 0. In the other 3 cases the object moves, so work is done.",
+        explain: "No work is done when pushing a wall that does not move, because the object does not move, so the distance is 0 and 5 × 0 is 0. In the other 3 cases the object moves, so work is done.",
       },
       {
         kind: "slider",
@@ -85,10 +85,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 23.5,
         targetMax: 24.5,
-        ask: "The gain in gravitational potential energy is mass times g times the vertical height, so work out 0.80 times 10 times 3.",
+        ask: "The gain in gravitational potential energy is mass times g times the vertical height, so work out 0.80 × 10 × 3.",
         hints: [
           "Use E_p equals m g h, and use only the vertical height of 3 metres.",
-          "0.80 times 10 times 3 is 24, so slide to 24 joules.",
+          "0.80 × 10 × 3 is 24, so slide to 24 joules.",
         ],
         working: [
           { label: "Formula", latex: "E_p = mgh" },
@@ -102,10 +102,10 @@ export const BOXES: Subconcept[] = [
         prompt: "Pushing the box up the slope does 30 J of work, but it gains only 24 J of gravitational potential energy. Build the working line that gives the work done against friction.",
         tiles: ["W_f =", "30", "-", "24", "=", "6", "J", "54"],
         answer: ["W_f =", "30", "-", "24", "=", "6", "J"],
-        ask: "The work against friction is the total work done minus the energy stored, so work out 30 minus 24.",
+        ask: "The work against friction is the total work done minus the energy stored, so work out 30 - 24.",
         hints: [
           "Subtract the gravitational potential energy from the total work done.",
-          "30 minus 24 is 6, and the answer is in joules.",
+          "30 - 24 is 6, and the answer is in joules.",
         ],
         working: [
           { label: "Formula", latex: "W_f = W - E_p" },

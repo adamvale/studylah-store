@@ -74,10 +74,10 @@ export const BOXES: Subconcept[] = [
         question: "A block has mass 384 g and measures 12.0 cm by 8.0 cm by 5.0 cm, a volume of 480 cm^3. What is its density?",
         options: ["0.80 g/cm^3", "1.25 g/cm^3", "8.0 g/cm^3", "480 g/cm^3"],
         correct: 0,
-        ask: "Density is mass divided by volume. The volume is 480 cubic centimetres, so work out 384 divided by 480.",
+        ask: "Density is mass divided by volume. The volume is 480 cubic centimetres, so work out 384 ÷ 480.",
         hints: [
           "The volume is length times width times thickness, which is 480 cubic centimetres.",
-          "384 divided by 480 is 0.80.",
+          "384 ÷ 480 is 0.80.",
         ],
         working: [
           { label: "Formula", latex: "\\rho = \\dfrac{m}{V}" },
@@ -91,10 +91,10 @@ export const BOXES: Subconcept[] = [
         question: "The block slides at constant velocity when a 0.300 kg mass hangs from the string (g = 10 N/kg). What is the friction force? (pull W = Mg)",
         options: ["30 N", "0.30 N", "3.0 N", "0.030 N"],
         correct: 2,
-        ask: "At steady speed the friction equals the pull, and the pull is the hanging weight Mg. Work out 0.300 times 10.",
+        ask: "At steady speed the friction equals the pull, and the pull is the hanging weight Mg. Work out 0.300 × 10.",
         hints: [
           "Use W = Mg with g = 10 newtons per kilogram.",
-          "0.300 times 10 is 3.0.",
+          "0.300 × 10 is 3.0.",
         ],
         working: [
           { label: "Formula", latex: "W = Mg" },
@@ -141,15 +141,15 @@ export const BOXES: Subconcept[] = [
         correct: 1,
         ask: "The coefficient is the pull divided by the total downward push, which is the load plus the block's own weight. Add 2.00 and 4.214, then divide 3.0 by the total.",
         hints: [
-          "Add the load and the block's weight: 2.00 plus 4.214 is 6.214 newtons.",
-          "3.0 divided by 6.214 is 0.48.",
+          "Add the load and the block's weight: 2.00 + 4.214 is 6.214 newtons.",
+          "3.0 ÷ 6.214 is 0.48.",
         ],
         working: [
           { label: "Formula", latex: "\\mu = \\dfrac{W}{L + mg}" },
           { label: "Substitute", latex: "\\mu = \\dfrac{3.0}{2.00 + 4.214}" },
           { label: "Answer", latex: "\\mu = 0.48" },
         ],
-        explain: "The coefficient is 0.48, because 2.00 newtons plus 4.214 newtons is 6.214 newtons, and 3.0 divided by 6.214 is 0.48. Being a ratio of 2 forces, it has no unit.",
+        explain: "The coefficient is 0.48, because 2.00 newtons plus 4.214 newtons is 6.214 newtons, and 3.0 ÷ 6.214 is 0.48. Being a ratio of 2 forces, it has no unit.",
       },
     ],
   },

@@ -164,12 +164,12 @@ export const BOXES: Subconcept[] = [
           "velocity = 12 / 4 = 4 m/s",
         ],
         errorLine: 3,
-        ask: "Check the last line. 12 divided by 4. Is that 4?",
+        ask: "Check the last line. 12 ÷ 4. Is that 4?",
         hints: [
-          "Work out 12 divided by 4.",
-          "12 divided by 4 is 3, not 4.",
+          "Work out 12 ÷ 4.",
+          "12 ÷ 4 is 3, not 4.",
         ],
-        explain: "The last line is wrong: 12 divided by 4 is 3, so the velocity is 3 metres per second.",
+        explain: "The last line is wrong: 12 ÷ 4 is 3, so the velocity is 3 metres per second.",
       },
       // 11 (open) describe the motion
       {
@@ -187,7 +187,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "During a jog, a displacement-time graph rises in a straight line from 4 m at 10 s to 14 m at 15 s. Calculate the velocity over this interval, showing your working.",
-        modelAnswer: "The velocity is the gradient of the line. The change in displacement is 14 minus 4, which is 10 metres. The change in time is 15 minus 10, which is 5 seconds. So the velocity is 10 divided by 5, which is 2 metres per second away from the origin.",
+        modelAnswer: "The velocity is the gradient of the line. The change in displacement is 14 - 4, which is 10 metres. The change in time is 15 - 10, which is 5 seconds. So the velocity is 10 ÷ 5, which is 2 metres per second away from the origin.",
         marks: [
           "Change in displacement = 14 - 4 = 10 m.",
           "Change in time = 15 - 10 = 5 s.",

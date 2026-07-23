@@ -34,10 +34,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-17-09-potential-divider",
         options: ["2 V", "6 V", "3 V", "4 V"],
         correct: 3,
-        ask: "Use V_out equals R_2 divided by the total resistance, times the input. The total is 2 plus 4, which is 6 ohms. Which option matches?",
+        ask: "Use V_out equals R_2 divided by the total resistance, times the input. The total is 2 + 4, which is 6 ohms. Which option matches?",
         hints: [
-          "V_out is 4 divided by 6, times 6 volts.",
-          "4 divided by 6 times 6 is 4, so the output is 4 volts.",
+          "V_out is 4 ÷ 6, × 6 volts.",
+          "4 ÷ 6 × 6 is 4, so the output is 4 volts.",
         ],
         working: [
           { label: "Formula", latex: "V_{out} = \\dfrac{R_2}{R_1 + R_2} \\times V_{in}" },
@@ -76,10 +76,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-17-11-ldr-divider",
         options: ["20 V", "17.4 V", "10 V", "2.6 V"],
         correct: 3,
-        ask: "The p.d. across the LDR is its resistance, 300, divided by the total, 300 plus 2000, times 20 volts. Which option matches?",
+        ask: "The p.d. across the LDR is its resistance, 300, divided by the total, 300 + 2000, × 20 volts. Which option matches?",
         hints: [
-          "The total resistance is 300 plus 2000, which is 2300 ohms.",
-          "300 divided by 2300 times 20 is about 2.6, so the p.d. is 2.6 volts.",
+          "The total resistance is 300 + 2000, which is 2300 ohms.",
+          "300 ÷ 2300 × 20 is about 2.6, so the p.d. is 2.6 volts.",
         ],
         working: [
           { label: "Formula", latex: "V_{LDR} = \\dfrac{R_{LDR}}{R_{LDR} + R} \\times V_{in}" },
@@ -98,10 +98,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 9.5,
         targetMax: 9.7,
-        ask: "Use V_out equals R_2 divided by the total, times the input. The total is 4 plus 16, which is 20 ohms. Work out 16 divided by 20 times 12.",
+        ask: "Use V_out equals R_2 divided by the total, times the input. The total is 4 + 16, which is 20 ohms. Work out 16 ÷ 20 × 12.",
         hints: [
-          "V_out is 16 divided by 20, times 12 volts.",
-          "16 divided by 20 times 12 is 9.6, so slide to 9.6 volts.",
+          "V_out is 16 ÷ 20, × 12 volts.",
+          "16 ÷ 20 × 12 is 9.6, so slide to 9.6 volts.",
         ],
         working: [
           { label: "Formula", latex: "V_{out} = \\dfrac{R_2}{R_1 + R_2} \\times V_{in}" },
@@ -115,10 +115,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A thermistor is in series with a fixed 8 ohm resistor across 4.0 V. The output across the 8 ohm resistor reads 1.0 V. Build the working line that gives the thermistor's resistance R_t.",
         tiles: ["R_t =", "32", "-", "8", "=", "24", "ohms", "16"],
         answer: ["R_t =", "32", "-", "8", "=", "24", "ohms"],
-        ask: "The output across the 8 ohm resistor is 8 divided by the total, times 4.0. Since 1.0 is a quarter of 4.0, the total must be 4 times 8, which is 32 ohms. Take the 8 ohm resistor off that total.",
+        ask: "The output across the 8 ohm resistor is 8 divided by the total, times 4.0. Since 1.0 is a quarter of 4.0, the total must be 4 × 8, which is 32 ohms. Take the 8 ohm resistor off that total.",
         hints: [
           "From 1.0 equals 8 over the total times 4.0, the total resistance is 32 ohms.",
-          "The thermistor is 32 minus 8, which is 24 ohms.",
+          "The thermistor is 32 - 8, which is 24 ohms.",
         ],
         working: [
           { label: "Formula", latex: "V_{out} = \\dfrac{R}{R + R_t} \\times V_{in}" },

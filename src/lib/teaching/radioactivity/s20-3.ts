@@ -63,10 +63,10 @@ export const BOXES: Subconcept[] = [
         question: "Complete the alpha decay: ^{238}_{92}U -> ? + ^{4}_{2}He. Which is the missing nucleus?",
         options: ["^{242}_{94}Pu", "^{234}_{92}U", "^{234}_{90}Th", "^{236}_{88}Ra"],
         correct: 2,
-        ask: "Alpha decay takes 4 off the top and 2 off the bottom. Work out 238 minus 4 and 92 minus 2.",
+        ask: "Alpha decay takes 4 off the top and 2 off the bottom. Work out 238 - 4 and 92 - 2.",
         hints: [
-          "The nucleon numbers must balance: 238 = A + 4, so A is 238 minus 4.",
-          "238 minus 4 is 234, and 92 minus 2 is 90, which is thorium.",
+          "The nucleon numbers must balance: 238 = A + 4, so A is 238 - 4.",
+          "238 - 4 is 234, and 92 - 2 is 90, which is thorium.",
         ],
         working: [
           { label: "Formula", latex: "A = 238 - 4, \\quad Z = 92 - 2" },
@@ -80,10 +80,10 @@ export const BOXES: Subconcept[] = [
         question: "Complete the beta decay: ^{234}_{90}Th -> ? + ^{0}_{-1}e. Which is the missing nucleus?",
         options: ["^{234}_{91}Pa", "^{234}_{89}Ac", "^{230}_{88}Ra", "^{234}_{90}Th"],
         correct: 0,
-        ask: "Beta decay keeps the top number the same and raises the bottom number by 1. Work out 90 plus 1.",
+        ask: "Beta decay keeps the top number the same and raises the bottom number by 1. Work out 90 + 1.",
         hints: [
           "The nucleon number stays at 234; the proton number rises by 1.",
-          "90 plus 1 is 91, which is protactinium.",
+          "90 + 1 is 91, which is protactinium.",
         ],
         working: [
           { label: "Formula", latex: "A = 234, \\quad Z = 90 + 1" },
@@ -97,7 +97,7 @@ export const BOXES: Subconcept[] = [
         question: "Identify the missing particle: ^{210}_{84}Po -> ^{206}_{82}Pb + ?",
         options: ["a beta particle, ^{0}_{-1}e", "a neutron, ^{1}_{0}n", "a gamma ray", "an alpha particle, ^{4}_{2}He"],
         correct: 3,
-        ask: "Find the change in the top and bottom numbers: 210 minus 206 and 84 minus 82. Which particle carries that away?",
+        ask: "Find the change in the top and bottom numbers: 210 - 206 and 84 - 82. Which particle carries that away?",
         hints: [
           "The nucleon number falls by 4 and the proton number falls by 2.",
           "A particle of 4 on top and 2 on the bottom is a helium nucleus, an alpha particle.",

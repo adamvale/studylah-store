@@ -17,17 +17,17 @@ export const BOXES: Subconcept[] = [
         question: "3 resistors of 6 ohm, 4 ohm and 10 ohm are connected in series. What is their combined resistance?",
         options: ["16 ohm", "20 ohm", "24 ohm", "10 ohm"],
         correct: 1,
-        ask: "Series resistances simply add, so work out 6 plus 4 plus 10. Which option is that?",
+        ask: "Series resistances simply add, so work out 6 + 4 + 10. Which option is that?",
         hints: [
           "For resistors in series the effective resistance is R1 plus R2 plus R3.",
-          "6 plus 4 plus 10 is 20 ohms, which is larger than any single resistor.",
+          "6 + 4 + 10 is 20 ohms, which is larger than any single resistor.",
         ],
         working: [
           { label: "Formula", latex: "R_E = R_1 + R_2 + R_3" },
           { label: "Substitute", latex: "R_E = 6 + 4 + 10" },
           { label: "Answer", latex: "R_E = 20\\ \\Omega" },
         ],
-        explain: "The combined resistance is 20 ohms, because series resistors carry the same current and add, so 6 plus 4 plus 10 is 20 ohms. The total is always larger than any one resistor.",
+        explain: "The combined resistance is 20 ohms, because series resistors carry the same current and add, so 6 + 4 + 10 is 20 ohms. The total is always larger than any one resistor.",
       },
       {
         kind: "choice",
@@ -35,17 +35,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-16-11-parallel-resistors",
         options: ["15 ohm", "6 ohm", "3 ohm", "1.5 ohm"],
         correct: 3,
-        ask: "For parallel resistors add the reciprocals: 1 over 3 plus 1 over 6 plus 1 over 6. What does that reciprocal come to?",
+        ask: "For parallel resistors add the reciprocals: 1 over 3 + 1 over 6 + 1 over 6. What does that reciprocal come to?",
         hints: [
-          "Use 1 over R equals 1 over 3 plus 1 over 6 plus 1 over 6.",
-          "1 over 3 plus 1 over 6 plus 1 over 6 is 4 over 6, so R is 6 divided by 4, which is 1.5 ohms.",
+          "Use 1 over R equals 1 over 3 + 1 over 6 + 1 over 6.",
+          "1 over 3 + 1 over 6 + 1 over 6 is 4 over 6, so R is 6 ÷ 4, which is 1.5 ohms.",
         ],
         working: [
           { label: "Formula", latex: "\\frac{1}{R_E} = \\frac{1}{R_1} + \\frac{1}{R_2} + \\frac{1}{R_3}" },
           { label: "Substitute", latex: "\\frac{1}{R_E} = \\frac{1}{3} + \\frac{1}{6} + \\frac{1}{6} = \\frac{4}{6}" },
           { label: "Answer", latex: "R_E = 1.5\\ \\Omega" },
         ],
-        explain: "The effective resistance is 1.5 ohms, because the reciprocals give 4 over 6, so R is 6 divided by 4. A parallel combination is always smaller than the smallest single resistor, here smaller than 3 ohms.",
+        explain: "The effective resistance is 1.5 ohms, because the reciprocals give 4 over 6, so R is 6 ÷ 4. A parallel combination is always smaller than the smallest single resistor, here smaller than 3 ohms.",
       },
       {
         kind: "choice",
@@ -64,10 +64,10 @@ export const BOXES: Subconcept[] = [
         question: "An iron wire has a resistance of 6 ohm. If its length is doubled while everything else stays the same, what is its new resistance?",
         options: ["3 ohm", "6 ohm", "12 ohm", "36 ohm"],
         correct: 2,
-        ask: "Resistance is proportional to length, so doubling the length doubles the resistance. What is 2 times 6?",
+        ask: "Resistance is proportional to length, so doubling the length doubles the resistance. What is 2 × 6?",
         hints: [
           "From R equals rho l over A, resistance is proportional to length when rho and A stay fixed.",
-          "Doubling the length doubles the resistance, and 2 times 6 is 12 ohms.",
+          "Doubling the length doubles the resistance, and 2 × 6 is 12 ohms.",
         ],
         working: [
           { label: "Formula", latex: "R = \\frac{\\rho l}{A}\\ \\Rightarrow\\ R \\propto l" },
@@ -127,14 +127,14 @@ export const BOXES: Subconcept[] = [
         ask: "Combine the parallel pair first, then add the 4 ohm resistor in series. 2 8 ohm resistors in parallel give what?",
         hints: [
           "2 equal resistors in parallel give half of one, so 8 in parallel with 8 is 4 ohms.",
-          "Then add the series resistor: 4 plus 4 is 8 ohms.",
+          "Then add the series resistor: 4 + 4 is 8 ohms.",
         ],
         working: [
           { label: "Formula", latex: "\\frac{1}{R_p} = \\frac{1}{R_1} + \\frac{1}{R_2},\\quad R_E = R_p + R_3" },
           { label: "Substitute", latex: "\\frac{1}{R_p} = \\frac{1}{8} + \\frac{1}{8},\\quad R_E = 4 + 4" },
           { label: "Answer", latex: "R_E = 8\\ \\Omega" },
         ],
-        explain: "The effective resistance is 8 ohms, because 8 ohms in parallel with 8 ohms is 4 ohms, and adding the 4 ohm series resistor gives 4 plus 4, which is 8 ohms. Always combine the parallel part before adding the series part.",
+        explain: "The effective resistance is 8 ohms, because 8 ohms in parallel with 8 ohms is 4 ohms, and adding the 4 ohm series resistor gives 4 + 4, which is 8 ohms. Always combine the parallel part before adding the series part.",
       },
       {
         kind: "slider",
@@ -148,15 +148,15 @@ export const BOXES: Subconcept[] = [
         targetMax: 4.1,
         ask: "If 3 equal resistors add to 36 ohms in series, each one is 12 ohms. Now combine 3 12 ohm resistors in parallel.",
         hints: [
-          "Each resistor is 36 divided by 3, which is 12 ohms.",
-          "In parallel, 1 over R equals 3 times 1 over 12, which is 1 over 4, so R is 4 ohms.",
+          "Each resistor is 36 ÷ 3, which is 12 ohms.",
+          "In parallel, 1 over R equals 3 × 1 over 12, which is 1 over 4, so R is 4 ohms.",
         ],
         working: [
           { label: "Formula", latex: "\\frac{1}{R_E} = \\frac{1}{R_1} + \\frac{1}{R_2} + \\frac{1}{R_3}" },
           { label: "Substitute", latex: "\\frac{1}{R_E} = \\frac{1}{12} + \\frac{1}{12} + \\frac{1}{12} = \\frac{1}{4}" },
           { label: "Answer", latex: "R_E = 4\\ \\Omega" },
         ],
-        explain: "The parallel resistance is 4 ohms, because each resistor is 12 ohms and 3 of them in parallel give 12 divided by 3. That is 32 ohms less than the 36 ohms they give in series.",
+        explain: "The parallel resistance is 4 ohms, because each resistor is 12 ohms and 3 of them in parallel give 12 ÷ 3. That is 32 ohms less than the 36 ohms they give in series.",
       },
       {
         kind: "spoterror",
@@ -170,10 +170,10 @@ export const BOXES: Subconcept[] = [
         errorLine: 3,
         ask: "The reciprocal working on the line above already gives 2 over 6. Check whether the final line uses that, or wrongly adds the resistances instead.",
         hints: [
-          "1 over R equals 2 over 6, so R should be 6 divided by 2.",
+          "1 over R equals 2 over 6, so R should be 6 ÷ 2.",
           "The last line adds the resistors as if they were in series, which is wrong for a parallel pair.",
         ],
-        explain: "The last line is wrong, because it adds the resistors like a series circuit. Since 1 over R is 2 over 6, R is 6 divided by 2, which is 3 ohms, smaller than either resistor.",
+        explain: "The last line is wrong, because it adds the resistors like a series circuit. Since 1 over R is 2 over 6, R is 6 ÷ 2, which is 3 ohms, smaller than either resistor.",
       },
       {
         kind: "cloze",
@@ -208,7 +208,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "Describe how you would find the effective resistance of a circuit in which a parallel pair of resistors is connected in series with a third resistor.",
-        modelAnswer: "First combine the parallel pair using 1 over R_p equals 1 over R1 plus 1 over R2, then take the reciprocal to get R_p. This single value replaces the parallel pair. Then add the third resistor in series, R_E equals R_p plus R3, because series resistances add. The result is the effective resistance of the whole circuit.",
+        modelAnswer: "First combine the parallel pair using 1 over R_p equals 1 over R1 + 1 over R2, then take the reciprocal to get R_p. This single value replaces the parallel pair. Then add the third resistor in series, R_E equals R_p plus R3, because series resistances add. The result is the effective resistance of the whole circuit.",
         marks: [
           "Combine the parallel pair first using the reciprocal rule.",
           "Take the reciprocal to get the parallel resistance R_p.",

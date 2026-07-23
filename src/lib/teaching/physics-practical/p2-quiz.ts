@@ -37,17 +37,17 @@ export const BOXES: Subconcept[] = [
         question: "On vernier calipers the main scale reads 4.2 cm and vernier division 3 lines up with a main-scale mark. What is the reading?",
         options: ["4.23 cm", "4.20 cm", "4.53 cm", "7.2 cm"],
         correct: 0,
-        ask: "Add the main scale value to the coinciding vernier division times 0.01 centimetres. What is 4.2 plus 0.03?",
+        ask: "Add the main scale value to the coinciding vernier division times 0.01 centimetres. What is 4.2 + 0.03?",
         hints: [
           "The vernier part is the coinciding division times 0.01 centimetres.",
-          "Division 3 gives 0.03 centimetres, and 4.2 plus 0.03 is 4.23.",
+          "Division 3 gives 0.03 centimetres, and 4.2 + 0.03 is 4.23.",
         ],
         working: [
           { label: "Formula", latex: "R = \\text{main} + (\\text{division} \\times 0.01\\ \\text{cm})" },
           { label: "Substitute", latex: "R = 4.2 + (3 \\times 0.01)" },
           { label: "Answer", latex: "R = 4.23\\ \\text{cm}" },
         ],
-        explain: "The reading is 4.23 centimetres, because the main scale gives 4.2 centimetres and division 3 adds 3 times 0.01, which is 0.03 centimetres.",
+        explain: "The reading is 4.23 centimetres, because the main scale gives 4.2 centimetres and division 3 adds 3 × 0.01, which is 0.03 centimetres.",
       },
       // -------- CHOICE 3 (correct 3) CALC micrometer --------
       {
@@ -56,17 +56,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr2-02-micrometer-rod",
         options: ["7.5 mm", "32 mm", "7.32 mm", "7.82 mm"],
         correct: 3,
-        ask: "Add the sleeve reading to the thimble reading times 0.01 millimetres. What is 7.5 plus 0.32?",
+        ask: "Add the sleeve reading to the thimble reading times 0.01 millimetres. What is 7.5 + 0.32?",
         hints: [
           "The thimble part is its reading times 0.01 millimetres.",
-          "32 gives 0.32 millimetres, and 7.5 plus 0.32 is 7.82.",
+          "32 gives 0.32 millimetres, and 7.5 + 0.32 is 7.82.",
         ],
         working: [
           { label: "Formula", latex: "R = \\text{sleeve} + (\\text{thimble} \\times 0.01\\ \\text{mm})" },
           { label: "Substitute", latex: "R = 7.5 + (32 \\times 0.01)" },
           { label: "Answer", latex: "R = 7.82\\ \\text{mm}" },
         ],
-        explain: "The measurement is 7.82 millimetres, because the sleeve gives 7.5 millimetres and the thimble adds 32 times 0.01, which is 0.32 millimetres.",
+        explain: "The measurement is 7.82 millimetres, because the sleeve gives 7.5 millimetres and the thimble adds 32 × 0.01, which is 0.32 millimetres.",
       },
       // -------- CHOICE 4 (correct 1) CALC zero error --------
       {
@@ -77,14 +77,14 @@ export const BOXES: Subconcept[] = [
         ask: "Corrected equals observed minus the zero error. Subtracting a negative zero error adds it back, so work out 8.46 minus negative 0.03.",
         hints: [
           "Use corrected = observed - zero error, and a negative zero error is added back.",
-          "8.46 minus negative 0.03 is 8.46 plus 0.03, which is 8.49.",
+          "8.46 minus negative 0.03 is 8.46 + 0.03, which is 8.49.",
         ],
         working: [
           { label: "Formula", latex: "\\text{corrected} = \\text{observed} - \\text{zero error}" },
           { label: "Substitute", latex: "\\text{corrected} = 8.46 - (-0.03)" },
           { label: "Answer", latex: "\\text{corrected} = 8.49\\ \\text{mm}" },
         ],
-        explain: "The corrected diameter is 8.49 millimetres, because 8.46 minus negative 0.03 is 8.46 plus 0.03, which is 8.49 millimetres.",
+        explain: "The corrected diameter is 8.49 millimetres, because 8.46 minus negative 0.03 is 8.46 + 0.03, which is 8.49 millimetres.",
       },
       // -------- CHOICE 5 (correct 2) CALC zero error positive --------
       {
@@ -93,17 +93,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr2-05-zero-error",
         options: ["12.43 mm", "12.40 mm", "12.37 mm", "12.03 mm"],
         correct: 2,
-        ask: "Corrected equals observed minus the zero error. A positive zero error is subtracted, so work out 12.40 minus 0.03.",
+        ask: "Corrected equals observed minus the zero error. A positive zero error is subtracted, so work out 12.40 - 0.03.",
         hints: [
           "Use corrected = observed - zero error.",
-          "12.40 minus 0.03 is 12.37.",
+          "12.40 - 0.03 is 12.37.",
         ],
         working: [
           { label: "Formula", latex: "\\text{corrected} = \\text{observed} - \\text{zero error}" },
           { label: "Substitute", latex: "\\text{corrected} = 12.40 - 0.03" },
           { label: "Answer", latex: "\\text{corrected} = 12.37\\ \\text{mm}" },
         ],
-        explain: "The corrected reading is 12.37 millimetres, because a positive zero error is subtracted, and 12.40 minus 0.03 is 12.37 millimetres.",
+        explain: "The corrected reading is 12.37 millimetres, because a positive zero error is subtracted, and 12.40 - 0.03 is 12.37 millimetres.",
       },
       // -------- CHOICE 6 (correct 0) parallax conceptual --------
       {
@@ -149,10 +149,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr2-03-wire-coil",
         options: ["9.0 mm", "0.90 mm", "0.45 mm", "1.1 mm"],
         correct: 1,
-        ask: "One diameter is the total length divided by the number of turns. What is 45.0 divided by 50?",
+        ask: "One diameter is the total length divided by the number of turns. What is 45.0 ÷ 50?",
         hints: [
           "Use diameter = total length / number of turns.",
-          "45.0 divided by 50 is 0.90.",
+          "45.0 ÷ 50 is 0.90.",
         ],
         working: [
           { label: "Formula", latex: "d = \\dfrac{\\text{total length}}{n}" },
@@ -187,10 +187,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr2-09-period2-length-graph",
         options: ["4.02 m/s^2", "39.48 m/s^2", "9.8 m/s^2", "0.10 m/s^2"],
         correct: 2,
-        ask: "The gradient equals 4 pi squared divided by g, so g equals 4 pi squared divided by the gradient. What is 39.48 divided by 4.02?",
+        ask: "The gradient equals 4 pi squared divided by g, so g equals 4 pi squared divided by the gradient. What is 39.48 ÷ 4.02?",
         hints: [
           "Rearrange to g = 4 pi^2 / gradient.",
-          "39.48 divided by 4.02 is about 9.8.",
+          "39.48 ÷ 4.02 is about 9.8.",
         ],
         working: [
           { label: "Formula", latex: "g = \\dfrac{4\\pi^2}{\\text{gradient}}" },
@@ -286,10 +286,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 9.6,
         targetMax: 9.8,
-        ask: "Divide 4 pi squared by the gradient, so work out 39.48 divided by 4.05.",
+        ask: "Divide 4 pi squared by the gradient, so work out 39.48 ÷ 4.05.",
         hints: [
           "Use g = 4 pi^2 / gradient.",
-          "39.48 divided by 4.05 is about 9.7, so slide to 9.7.",
+          "39.48 ÷ 4.05 is about 9.7, so slide to 9.7.",
         ],
         working: [
           { label: "Formula", latex: "g = \\dfrac{4\\pi^2}{\\text{gradient}}" },
@@ -304,10 +304,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A ramp has height h = 0.139 m over a slope distance s = 0.800 m. Build the working line for sin theta = h / s.",
         tiles: ["\\sin\\theta =", "0.139", "\\div", "0.800", "=", "0.174", "\\times", "0.278"],
         answer: ["\\sin\\theta =", "0.139", "\\div", "0.800", "=", "0.174"],
-        ask: "The sine of the angle is the height divided by the slope distance, so set up 0.139 divided by 0.800.",
+        ask: "The sine of the angle is the height divided by the slope distance, so set up 0.139 ÷ 0.800.",
         hints: [
           "Use sin theta = h / s.",
-          "0.139 divided by 0.800 is 0.174.",
+          "0.139 ÷ 0.800 is 0.174.",
         ],
         working: [
           { label: "Formula", latex: "\\sin\\theta = \\dfrac{h}{s}" },
@@ -364,10 +364,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 2.004,
         targetMax: 2.008,
-        ask: "The period is the total time divided by the number of oscillations, so work out 40.12 divided by 20.",
+        ask: "The period is the total time divided by the number of oscillations, so work out 40.12 ÷ 20.",
         hints: [
           "Use T = mean t / 20.",
-          "40.12 divided by 20 is 2.006, so slide to 2.006.",
+          "40.12 ÷ 20 is 2.006, so slide to 2.006.",
         ],
         working: [
           { label: "Formula", latex: "T = \\dfrac{\\text{mean } t}{20}" },
@@ -382,17 +382,17 @@ export const BOXES: Subconcept[] = [
         prompt: "A cylinder starts from rest and covers x = 0.900 m on a ramp in t_ave = 1.036 s. Build the working line for the final speed v = 2x / t.",
         tiles: ["v =", "2 \\times 0.900", "\\div", "1.036", "=", "1.74", "m/s", "s"],
         answer: ["v =", "2 \\times 0.900", "\\div", "1.036", "=", "1.74", "m/s"],
-        ask: "From rest the final speed is twice the average speed, so it is 2 times the distance divided by the time. Set up 2 times 0.900 divided by 1.036.",
+        ask: "From rest the final speed is twice the average speed, so it is 2 times the distance divided by the time. Set up 2 × 0.900 ÷ 1.036.",
         hints: [
           "Use v = 2x / t, because the final speed is twice the average speed from rest.",
-          "2 times 0.900 is 1.800, and 1.800 divided by 1.036 is about 1.74.",
+          "2 × 0.900 is 1.800, and 1.800 ÷ 1.036 is about 1.74.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{2x}{t}" },
           { label: "Substitute", latex: "v = \\dfrac{2 \\times 0.900}{1.036}" },
           { label: "Answer", latex: "v = 1.74\\ \\text{m/s}" },
         ],
-        explain: "The final speed is 1.74 metres per second, because 2 times 0.900 metres is 1.800 metres, and 1.800 divided by 1.036 seconds is about 1.74 metres per second.",
+        explain: "The final speed is 1.74 metres per second, because 2 × 0.900 metres is 1.800 metres, and 1.800 ÷ 1.036 seconds is about 1.74 metres per second.",
       },
       // ============ OPEN (5) ============
       {

@@ -17,10 +17,10 @@ export const BOXES: Subconcept[] = [
         question: "A device operates at 12 V and carries a current of 3.0 A. What is its electrical power?",
         options: ["12 W", "4 W", "36 W", "15 W"],
         correct: 2,
-        ask: "Power is voltage times current, so work out 12 times 3.0. Which option matches?",
+        ask: "Power is voltage times current, so work out 12 × 3.0. Which option matches?",
         hints: [
           "Use P equals V times I.",
-          "12 times 3.0 is 36, and power is measured in watts.",
+          "12 × 3.0 is 36, and power is measured in watts.",
         ],
         working: [
           { label: "Formula", latex: "P = VI" },
@@ -34,10 +34,10 @@ export const BOXES: Subconcept[] = [
         question: "A lamp is rated 240 V, 60 W. What current does it draw at its normal voltage?",
         options: ["0.25 A", "4 A", "2.5 A", "15000 A"],
         correct: 0,
-        ask: "Rearrange power equals voltage times current to get current, so work out 60 divided by 240. Which option is that?",
+        ask: "Rearrange power equals voltage times current to get current, so work out 60 ÷ 240. Which option is that?",
         hints: [
           "From P equals V times I, the current is P divided by V.",
-          "60 divided by 240 is 0.25, in amperes.",
+          "60 ÷ 240 is 0.25, in amperes.",
         ],
         working: [
           { label: "Formula", latex: "I = \\dfrac{P}{V}" },
@@ -53,32 +53,32 @@ export const BOXES: Subconcept[] = [
         correct: 3,
         ask: "Resistance is voltage squared divided by power, so work out 240 squared divided by 600. Which option matches?",
         hints: [
-          "Use R equals V squared divided by P.",
-          "240 squared is 57600, and 57600 divided by 600 is 96, in ohms.",
+          "Use R equals V^2 divided by P.",
+          "240 squared is 57600, and 57600 ÷ 600 is 96, in ohms.",
         ],
         working: [
           { label: "Formula", latex: "R = \\dfrac{V^2}{P}" },
           { label: "Substitute", latex: "R = \\dfrac{240^2}{600}" },
           { label: "Answer", latex: "R = 96\\ \\Omega" },
         ],
-        explain: "The resistance is 96 ohms, because 240 squared is 57600, and 57600 divided by 600 is 96 ohms.",
+        explain: "The resistance is 96 ohms, because 240 squared is 57600, and 57600 ÷ 600 is 96 ohms.",
       },
       {
         kind: "choice",
         question: "A 2 kW heater runs for 4 hours. Electricity costs 0.25 dollars per kWh. What is the cost of running it?",
         options: ["0.50 dollars", "2.00 dollars", "8.00 dollars", "0.25 dollars"],
         correct: 1,
-        ask: "First find the energy in kilowatt-hours, 2 times 4, then multiply by the price of 0.25. Which option is that?",
+        ask: "First find the energy in kilowatt-hours, 2 × 4, then multiply by the price of 0.25. Which option is that?",
         hints: [
-          "Energy in kilowatt-hours is power in kilowatts times time in hours: 2 times 4 is 8 kilowatt-hours.",
-          "Cost is 8 times 0.25, which is 2.00 dollars.",
+          "Energy in kilowatt-hours is power in kilowatts times time in hours: 2 × 4 is 8 kilowatt-hours.",
+          "Cost is 8 × 0.25, which is 2.00 dollars.",
         ],
         working: [
           { label: "Formula", latex: "\\text{cost} = P \\times t \\times \\text{price}" },
           { label: "Substitute", latex: "\\text{cost} = 2 \\times 4 \\times 0.25" },
           { label: "Answer", latex: "\\text{cost} = 2.00\\ \\text{dollars}" },
         ],
-        explain: "The heater uses 2 times 4, which is 8 kilowatt-hours, and 8 times 0.25 dollars is 2.00 dollars.",
+        explain: "The heater uses 2 × 4, which is 8 kilowatt-hours, and 8 × 0.25 dollars is 2.00 dollars.",
       },
       {
         kind: "choice",
@@ -95,7 +95,7 @@ export const BOXES: Subconcept[] = [
           "A household transfers millions of joules, so the joule count is huge and hard to handle.",
           "The kilowatt-hour is a much larger unit, so the numbers on a bill stay small and convenient.",
         ],
-        explain: "In joules a household uses awkwardly large numbers, so suppliers use the larger kilowatt-hour to keep the figures manageable. One kilowatt-hour equals 3.6 times 10 to the power 6 joules.",
+        explain: "In joules a household uses awkwardly large numbers, so suppliers use the larger kilowatt-hour to keep the figures manageable. One kilowatt-hour equals 3.6 × 10 to the power 6 joules.",
       },
       {
         kind: "slider",
@@ -107,10 +107,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 1490,
         targetMax: 1510,
-        ask: "5 minutes is 300 seconds and the power is 5 watts, so work out 5 times 300.",
+        ask: "5 minutes is 300 seconds and the power is 5 watts, so work out 5 × 300.",
         hints: [
           "Energy is power times time in seconds, so convert 5 minutes to 300 seconds.",
-          "5 times 300 is 1500, in joules.",
+          "5 × 300 is 1500, in joules.",
         ],
         working: [
           { label: "Formula", latex: "E = Pt" },
@@ -124,10 +124,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A 0.2 kW fan transfers 0.5 kWh of energy. Build the working line that gives the time it runs, in hours.",
         tiles: ["t =", "0.5", "\\div", "0.2", "=", "2.5", "h", "kWh"],
         answer: ["t =", "0.5", "\\div", "0.2", "=", "2.5", "h"],
-        ask: "Time is energy divided by power, so set up 0.5 divided by 0.2.",
+        ask: "Time is energy divided by power, so set up 0.5 ÷ 0.2.",
         hints: [
           "Rearranging E equals P times t gives t equal to E divided by P.",
-          "0.5 divided by 0.2 is 2.5, in hours.",
+          "0.5 ÷ 0.2 is 2.5, in hours.",
         ],
         working: [
           { label: "Formula", latex: "t = \\dfrac{E}{P}" },
@@ -184,14 +184,14 @@ export const BOXES: Subconcept[] = [
         ask: "For a kilowatt-hour answer the time must stay in hours, not minutes. Check the line where a number is substituted.",
         hints: [
           "Energy in kilowatt-hours needs power in kilowatts and time in hours.",
-          "The time should stay as 3 hours, so it should be 2 times 3, not 2 times 180.",
+          "The time should stay as 3 hours, so it should be 2 × 3, not 2 × 180.",
         ],
         working: [
           { label: "Formula", latex: "E = Pt" },
           { label: "Substitute", latex: "E = 2 \\times 3" },
           { label: "Answer", latex: "E = 6\\ \\text{kWh}" },
         ],
-        explain: "The last line is wrong: the time was left in minutes. For kilowatt-hours the time must be in hours, so the energy is 2 times 3, which is 6 kilowatt-hours, not 360.",
+        explain: "The last line is wrong: the time was left in minutes. For kilowatt-hours the time must be in hours, so the energy is 2 × 3, which is 6 kilowatt-hours, not 360.",
       },
       {
         kind: "open",

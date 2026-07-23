@@ -30,7 +30,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Work in SI units",
-        body: "Convert to *metres* and *seconds* before you divide. *Minutes* must become seconds, so 5 minutes is 5 times 60, which is 300 s.",
+        body: "Convert to *metres* and *seconds* before you divide. *Minutes* must become seconds, so 5 minutes is 5 × 60, which is 300 s.",
         say: "One habit will save you marks: always work in the base units, metres and seconds, before you divide. Times are often given in minutes, so turn every minute into 60 seconds first. 5 minutes becomes 300 seconds. Do this conversion at the start, and your final answer lands neatly in metres per second, exactly the unit the examiner wants.",
       },
       {
@@ -38,10 +38,10 @@ export const BOXES: Subconcept[] = [
         question: "A cyclist rides at a steady 8 m/s for the first 5 minutes. How far does she travel in that part?",
         options: ["40 m", "2400 m", "480 m", "1600 m"],
         correct: 1,
-        ask: "First turn 5 minutes into seconds, so 5 times 60. Then multiply by 8 metres per second. Which option is that?",
+        ask: "First turn 5 minutes into seconds, so 5 × 60. Then multiply by 8 metres per second. Which option is that?",
         hints: [
-          "5 minutes is 5 times 60, which is 300 seconds.",
-          "Distance is speed times time, so 8 times 300.",
+          "5 minutes is 5 × 60, which is 300 seconds.",
+          "Distance is speed times time, so 8 × 300.",
         ],
         working: [
           { label: "Formula", latex: "d = v \\times t" },
@@ -77,7 +77,7 @@ export const BOXES: Subconcept[] = [
         start: 6,
         targetMin: 8.7,
         targetMax: 8.9,
-        ask: "Average speed is total distance divided by total time, so 5280 divided by 600. Slide to that value.",
+        ask: "Average speed is total distance divided by total time, so 5280 ÷ 600. Slide to that value.",
         hints: [
           "Divide 5280 by 600.",
           "The answer is a little under 9 metres per second.",

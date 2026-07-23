@@ -58,10 +58,10 @@ export const BOXES: Subconcept[] = [
         question: "A 12 V supply drives a current of 3.0 A through a resistor. What is the power transferred?",
         options: ["4.0 W", "0.25 W", "36 W", "15 W"],
         correct: 2,
-        ask: "Power is voltage times current, so work out 12 times 3.0.",
+        ask: "Power is voltage times current, so work out 12 × 3.0.",
         hints: [
           "Use P = V I.",
-          "12 times 3.0 is 36, and power is measured in watts.",
+          "12 × 3.0 is 36, and power is measured in watts.",
         ],
         working: [
           { label: "Formula", latex: "P = VI" },
@@ -75,10 +75,10 @@ export const BOXES: Subconcept[] = [
         question: "A lamp is marked 240 V, 60 W. What current does it draw at its rated voltage?",
         options: ["0.25 A", "4.0 A", "0.5 A", "14400 A"],
         correct: 0,
-        ask: "Rearrange power equals voltage times current to get the current, so work out 60 divided by 240.",
+        ask: "Rearrange power equals voltage times current to get the current, so work out 60 ÷ 240.",
         hints: [
           "The current is the power divided by the voltage.",
-          "60 divided by 240 is 0.25, an answer in amperes.",
+          "60 ÷ 240 is 0.25, an answer in amperes.",
         ],
         working: [
           { label: "Formula", latex: "I = \\dfrac{P}{V}" },
@@ -95,7 +95,7 @@ export const BOXES: Subconcept[] = [
         ask: "Current is power divided by voltage. Write 90 kW as 90000 W, then divide by 3000.",
         hints: [
           "Use I = P / V with the power in watts.",
-          "90000 divided by 3000 is 30, an answer in amperes.",
+          "90000 ÷ 3000 is 30, an answer in amperes.",
         ],
         working: [
           { label: "Formula", latex: "I = \\dfrac{P}{V}" },
@@ -112,31 +112,31 @@ export const BOXES: Subconcept[] = [
         ask: "The power lost in the cables is current squared times resistance, so work out 30 squared times 5.0.",
         hints: [
           "Use P = I^2 R.",
-          "30 squared is 900, and 900 times 5.0 is 4500, which is 4.5 times 10 to the power 3 watts.",
+          "30 squared is 900, and 900 × 5.0 is 4500, which is 4.5 × 10 to the power 3 watts.",
         ],
         working: [
           { label: "Formula", latex: "P = I^2 R" },
           { label: "Substitute", latex: "P = 30^2 \\times 5.0" },
           { label: "Answer", latex: "P = 4.5 \\times 10^3\\ \\text{W}" },
         ],
-        explain: "The wasted power is 4.5 times 10 to the power 3 watts, because 30 squared is 900, and 900 times 5.0 ohms is 4500 watts.",
+        explain: "The wasted power is 4.5 × 10 to the power 3 watts, because 30 squared is 900, and 900 × 5.0 ohms is 4500 watts.",
       },
       {
         kind: "choice",
         question: "A current of 3.0 A flows from a 12 V supply for 8 minutes (480 s). How much energy is transferred?",
         options: ["3.6 x 10^4 J", "1.73 x 10^4 J", "36 J", "5.76 x 10^3 J"],
         correct: 1,
-        ask: "Energy is voltage times current times time. Work out 12 times 3.0 times 480, keeping the time in seconds.",
+        ask: "Energy is voltage times current times time. Work out 12 × 3.0 × 480, keeping the time in seconds.",
         hints: [
           "Use E = V I t, with the time in seconds.",
-          "12 times 3.0 is 36, and 36 times 480 is about 1.73 times 10 to the power 4.",
+          "12 × 3.0 is 36, and 36 × 480 is about 1.73 × 10 to the power 4.",
         ],
         working: [
           { label: "Formula", latex: "E = VIt" },
           { label: "Substitute", latex: "E = 12 \\times 3.0 \\times 480" },
           { label: "Answer", latex: "E = 1.73 \\times 10^4\\ \\text{J}" },
         ],
-        explain: "The energy is about 1.73 times 10 to the power 4 joules, because 12 volts times 3.0 amperes times 480 seconds is 17280 joules.",
+        explain: "The energy is about 1.73 × 10 to the power 4 joules, because 12 volts times 3.0 amperes times 480 seconds is 17280 joules.",
       },
       {
         kind: "choice",

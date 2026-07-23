@@ -93,15 +93,15 @@ export const BOXES: Subconcept[] = [
         correct: 2,
         ask: "First turn the period into a frequency with f = 1 divided by T, then multiply that frequency by the wavelength.",
         hints: [
-          "1 divided by 0.5 is 2, so the frequency is 2 hertz.",
-          "Then v = f times lambda, so 2 times 3 is 6.",
+          "1 ÷ 0.5 is 2, so the frequency is 2 hertz.",
+          "Then v = f times lambda, so 2 × 3 is 6.",
         ],
         working: [
           { label: "Formula", latex: "f = \\dfrac{1}{T}, \\quad v = f\\lambda" },
           { label: "Substitute", latex: "f = \\dfrac{1}{0.5} = 2\\ \\text{Hz}, \\quad v = 2 \\times 3" },
           { label: "Answer", latex: "v = 6\\ \\text{m/s}" },
         ],
-        explain: "The speed is 6 metres per second. A period of 0.5 seconds gives a frequency of 2 hertz, because 1 divided by 0.5 is 2, and then 2 hertz times 3 metres is 6 metres per second.",
+        explain: "The speed is 6 metres per second. A period of 0.5 seconds gives a frequency of 2 hertz, because 1 ÷ 0.5 is 2, and then 2 hertz times 3 metres is 6 metres per second.",
       },
       {
         kind: "slider",
@@ -113,10 +113,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 11.5,
         targetMax: 12.5,
-        ask: "The waveform slides along by distance equals speed times time, so work out 2 times 6.",
+        ask: "The waveform slides along by distance equals speed times time, so work out 2 × 6.",
         hints: [
           "Use d = v times t.",
-          "2 times 6 is 12, so slide to 12 metres.",
+          "2 × 6 is 12, so slide to 12 metres.",
         ],
         working: [
           { label: "Formula", latex: "d = v\\,t" },

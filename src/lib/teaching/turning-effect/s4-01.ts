@@ -52,10 +52,10 @@ export const BOXES: Subconcept[] = [
         question: "A door needs a moment of 36 N m to swing open. A person pushes with a force of 30 N at right angles to the door. How far from the hinge must the push act?",
         options: ["1.2 m", "0.83 m", "6 m", "66 m"],
         correct: 0,
-        ask: "Rearrange moment equals force times distance to get the distance, so work out 36 divided by 30.",
+        ask: "Rearrange moment equals force times distance to get the distance, so work out 36 ÷ 30.",
         hints: [
           "The distance is the moment divided by the force.",
-          "36 divided by 30 is 1.2, and the answer is a distance in metres.",
+          "36 ÷ 30 is 1.2, and the answer is a distance in metres.",
         ],
         working: [
           { label: "Formula", latex: "d = \\dfrac{M}{F}" },
@@ -74,10 +74,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 14.5,
         targetMax: 15.5,
-        ask: "The moment is the force times the perpendicular distance, so work out 60 times 0.25.",
+        ask: "The moment is the force times the perpendicular distance, so work out 60 × 0.25.",
         hints: [
           "Use moment equals force times distance.",
-          "60 times 0.25 is 15, so slide to 15 newton metres.",
+          "60 × 0.25 is 15, so slide to 15 newton metres.",
         ],
         working: [
           { label: "Formula", latex: "M = F \\times d" },
@@ -91,10 +91,10 @@ export const BOXES: Subconcept[] = [
         question: "Two forces turn a beam the same way about a pivot: 20 N acts 2 m from the pivot and 10 N acts 5 m from the pivot. What is the total moment?",
         options: ["90 N m", "30 N m", "10 N m", "50 N m"],
         correct: 0,
-        ask: "When 2 forces turn the same way, add their moments. Work out 20 times 2, then 10 times 5, then add.",
+        ask: "When 2 forces turn the same way, add their moments. Work out 20 × 2, then 10 × 5, then add.",
         hints: [
           "Find each moment separately with force times distance.",
-          "20 times 2 is 40, and 10 times 5 is 50, and 40 plus 50 is 90.",
+          "20 × 2 is 40, and 10 × 5 is 50, and 40 + 50 is 90.",
         ],
         working: [
           { label: "Formula", latex: "M = F_1 d_1 + F_2 d_2" },

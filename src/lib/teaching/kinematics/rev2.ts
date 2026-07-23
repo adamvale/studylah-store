@@ -76,7 +76,7 @@ export const BOXES: Subconcept[] = [
         ask: "The velocities are already in metres per second: 15 and 25. Subtract 15 from 25, then divide by 5 seconds. Which option is that?",
         hints: [
           "Acceleration equals the change in velocity divided by the time.",
-          "25 minus 15 is 10, and 10 divided by 5 is 2.",
+          "25 - 15 is 10, and 10 ÷ 5 is 2.",
         ],
         working: [
           { label: "Formula", latex: "a = \\dfrac{v - u}{t}" },
@@ -84,7 +84,7 @@ export const BOXES: Subconcept[] = [
           { label: "Answer", latex: "a = 2\\ \\text{m/s}^2" },
         ],
         explain:
-          "The acceleration is 2 metres per second squared, because 25 minus 15 is 10, and 10 divided by 5 seconds is 2.",
+          "The acceleration is 2 metres per second squared, because 25 - 15 is 10, and 10 ÷ 5 seconds is 2.",
       },
       {
         kind: "spoterror",
@@ -97,13 +97,13 @@ export const BOXES: Subconcept[] = [
           "a = 10 / 5 = 5 m/s^2",
         ],
         errorLine: 3,
-        ask: "Check the last line. 10 divided by 5. Is that really 5?",
+        ask: "Check the last line. 10 ÷ 5. Is that really 5?",
         hints: [
-          "Work out 10 divided by 5 carefully.",
-          "10 divided by 5 is 2, not 5.",
+          "Work out 10 ÷ 5 carefully.",
+          "10 ÷ 5 is 2, not 5.",
         ],
         explain:
-          "The last line is wrong: 10 divided by 5 is 2, so the acceleration is 2 metres per second squared, not 5.",
+          "The last line is wrong: 10 ÷ 5 is 2, so the acceleration is 2 metres per second squared, not 5.",
       },
       {
         kind: "slider",
@@ -116,10 +116,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 1.6,
         targetMax: 1.6,
-        ask: "Take 20 minus 12, then divide by 5 seconds. Slide to that value.",
+        ask: "Take 20 - 12, then divide by 5 seconds. Slide to that value.",
         hints: [
-          "The change in velocity is 20 minus 12, which is 8.",
-          "8 divided by 5 is 1.6.",
+          "The change in velocity is 20 - 12, which is 8.",
+          "8 ÷ 5 is 1.6.",
         ],
         working: [
           { label: "Formula", latex: "a = \\dfrac{v - u}{t}" },
@@ -127,7 +127,7 @@ export const BOXES: Subconcept[] = [
           { label: "Answer", latex: "a = 1.6\\ \\text{m/s}^2" },
         ],
         explain:
-          "The acceleration is 1.6 metres per second squared, because 20 minus 12 is 8, and 8 divided by 5 seconds is 1.6.",
+          "The acceleration is 1.6 metres per second squared, because 20 - 12 is 8, and 8 ÷ 5 seconds is 1.6.",
       },
       {
         kind: "choice",
@@ -135,10 +135,10 @@ export const BOXES: Subconcept[] = [
           "A car travelling at 24 m/s is brought to rest in 6 s. What is its acceleration?",
         options: ["-4 m/s^2", "4 m/s^2", "-2 m/s^2", "24 m/s^2"],
         correct: 0,
-        ask: "The final velocity is 0. Take 0 minus 24, then divide by 6. Watch the sign. Which option is that?",
+        ask: "The final velocity is 0. Take 0 - 24, then divide by 6. Watch the sign. Which option is that?",
         hints: [
           "Use acceleration equals final velocity minus initial velocity, over time.",
-          "0 minus 24 is -24, and that divided by 6 is -4.",
+          "0 - 24 is -24, and that divided by 6 is -4.",
         ],
         working: [
           { label: "Formula", latex: "a = \\dfrac{v - u}{t}" },
@@ -221,7 +221,7 @@ export const BOXES: Subconcept[] = [
         prompt:
           "A sprinter starts from rest and accelerates uniformly at 2.5 m/s^2 for the first 4 s of a 100 m run, then keeps that velocity for the rest. Find the total time for the 100 m. Show your working.",
         modelAnswer:
-          "In the first 4 seconds the sprinter reaches a velocity of 2.5 times 4, which is 10 metres per second. The distance covered while accelerating is a half times 2.5 times 4 squared, which is 20 metres. That leaves 80 metres at a steady 10 metres per second, which takes 80 divided by 10, that is 8 seconds. So the total time is 4 plus 8, which is 12 seconds.",
+          "In the first 4 seconds the sprinter reaches a velocity of 2.5 × 4, which is 10 metres per second. The distance covered while accelerating is a half times 2.5 × 4^2, which is 20 metres. That leaves 80 metres at a steady 10 metres per second, which takes 80 ÷ 10, that is 8 seconds. So the total time is 4 + 8, which is 12 seconds.",
         marks: [
           "Velocity after the acceleration phase: v = 2.5 x 4 = 10 m/s.",
           "Distance in the first 4 s: s = 1/2 x 2.5 x 4^2 = 20 m.",

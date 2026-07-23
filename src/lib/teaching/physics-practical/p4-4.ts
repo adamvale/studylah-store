@@ -71,10 +71,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 47,
         targetMax: 49,
-        ask: "Power is the voltage times the current, so work out 12.0 times 4.0.",
+        ask: "Power is the voltage times the current, so work out 12.0 × 4.0.",
         hints: [
           "Use power equals voltage times current.",
-          "12.0 times 4.0 is 48, so slide to 48 watts.",
+          "12.0 × 4.0 is 48, so slide to 48 watts.",
         ],
         working: [
           { label: "Formula", latex: "P = VI" },
@@ -94,17 +94,17 @@ export const BOXES: Subconcept[] = [
           "8.6 x 10^3 J/(kg degC)",
         ],
         correct: 2,
-        ask: "Divide the power by the mass times the gradient, so work out 48 divided by 1.00 times 0.056.",
+        ask: "Divide the power by the mass times the gradient, so work out 48 ÷ 1.00 × 0.056.",
         hints: [
           "Use c equals power divided by mass times gradient.",
-          "48 divided by 0.056 is about 860, which is 8.6 times 10 to the power 2.",
+          "48 ÷ 0.056 is about 860, which is 8.6 × 10 to the power 2.",
         ],
         working: [
           { label: "Formula", latex: "c = \\dfrac{P}{m \\times \\text{gradient}}" },
           { label: "Substitute", latex: "c = \\dfrac{48}{1.00 \\times 0.056}" },
           { label: "Answer", latex: "c \\approx 8.6 \\times 10^{2}\\ \\text{J/(kg}\\,^{\\circ}\\text{C)}" },
         ],
-        explain: "The specific heat capacity is about 8.6 times 10 to the power 2 joules per kilogram per degree Celsius, because 48 watts divided by 1.00 kilogram times 0.056 degrees Celsius per second is roughly 860. That sits just below the accepted aluminium value of 900, a little low because of heat loss.",
+        explain: "The specific heat capacity is about 8.6 × 10 to the power 2 joules per kilogram per degree Celsius, because 48 watts divided by 1.00 kilogram times 0.056 degrees Celsius per second is roughly 860. That sits just below the accepted aluminium value of 900, a little low because of heat loss.",
       },
       {
         kind: "choice",

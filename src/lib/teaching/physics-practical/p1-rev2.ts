@@ -41,10 +41,10 @@ export const BOXES: Subconcept[] = [
           "2.0 s^2/cm",
         ],
         correct: 3,
-        ask: "Gradient is the rise divided by the run over a large triangle. Work out 12.0 minus 2.0, then divide by 5.0 minus 0.",
+        ask: "Gradient is the rise divided by the run over a large triangle. Work out 12.0 - 2.0, then divide by 5.0 - 0.",
         hints: [
           "The gradient m is the change in the vertical divided by the change in the horizontal.",
-          "12.0 minus 2.0 is 10.0, and 5.0 minus 0 is 5.0, so 10.0 divided by 5.0 is 2.0.",
+          "12.0 - 2.0 is 10.0, and 5.0 - 0 is 5.0, so 10.0 ÷ 5.0 is 2.0.",
         ],
         working: [
           { label: "Formula", latex: "y = mx + c,\\quad m = \\dfrac{y_2 - y_1}{x_2 - x_1}" },
@@ -63,17 +63,17 @@ export const BOXES: Subconcept[] = [
           "10.1 s",
         ],
         correct: 0,
-        ask: "Add the 3 times together, then divide the total by 3. Work out 30.2 plus 30.5 plus 30.2, then divide by 3.",
+        ask: "Add the 3 times together, then divide the total by 3. Work out 30.2 + 30.5 + 30.2, then divide by 3.",
         hints: [
           "The mean is the sum of the readings divided by how many there are.",
-          "30.2 plus 30.5 plus 30.2 is 90.9, and 90.9 divided by 3 is 30.3.",
+          "30.2 + 30.5 + 30.2 is 90.9, and 90.9 ÷ 3 is 30.3.",
         ],
         working: [
           { label: "Formula", latex: "\\bar{t} = \\dfrac{t_1 + t_2 + t_3}{3}" },
           { label: "Substitute", latex: "\\bar{t} = \\dfrac{30.2 + 30.5 + 30.2}{3}" },
           { label: "Answer", latex: "\\bar{t} = 30.3\\ \\text{s}" },
         ],
-        explain: "The average is 30.3 seconds, because the 3 readings add to 90.9 seconds and 90.9 divided by 3 is 30.3. Averaging repeats like this reduces the random error.",
+        explain: "The average is 30.3 seconds, because the 3 readings add to 90.9 seconds and 90.9 ÷ 3 is 30.3. Averaging repeats like this reduces the random error.",
       },
       {
         kind: "choice",

@@ -68,7 +68,7 @@ export const BOXES: Subconcept[] = [
         ask: "Add the 2 forces with their signs: right is positive, so the left force counts as negative. Work out 15 plus negative 9.",
         hints: [
           "The resultant is the signed sum, so use 15 plus negative 9.",
-          "15 minus 9 is 6, and because the larger force points right, the resultant points right.",
+          "15 - 9 is 6, and because the larger force points right, the resultant points right.",
         ],
         working: [
           { label: "Formula", latex: "F = F_1 + F_2" },
@@ -109,7 +109,7 @@ export const BOXES: Subconcept[] = [
         ask: "Add the forces with their signs: 20 for the right force and negative 14 for the left force.",
         hints: [
           "The resultant is 20 plus negative 14.",
-          "20 minus 14 is 6, so slide to positive 6 newtons.",
+          "20 - 14 is 6, so slide to positive 6 newtons.",
         ],
         working: [
           { label: "Formula", latex: "F = F_1 + F_2" },

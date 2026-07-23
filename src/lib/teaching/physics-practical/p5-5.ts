@@ -138,10 +138,10 @@ export const BOXES: Subconcept[] = [
         question: "An object at u = 30 cm forms an image at v = 60 cm. What is the magnification m?",
         options: ["0.5", "90", "2.0", "30"],
         correct: 2,
-        ask: "Magnification is the image distance divided by the object distance, so work out 60 divided by 30.",
+        ask: "Magnification is the image distance divided by the object distance, so work out 60 ÷ 30.",
         hints: [
           "Use m = v divided by u.",
-          "60 divided by 30 is 2.0, and magnification has no unit.",
+          "60 ÷ 30 is 2.0, and magnification has no unit.",
         ],
         working: [
           { label: "Formula", latex: "m = \\dfrac{v}{u}" },

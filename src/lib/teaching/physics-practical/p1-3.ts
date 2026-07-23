@@ -140,14 +140,14 @@ export const BOXES: Subconcept[] = [
         ask: "One millimetre is one thousandth of a metre. Write one thousandth as a power of 10.",
         hints: [
           "1 mm = 0.001 m.",
-          "0.001 is 1 times 10 to the minus 3.",
+          "0.001 is 1 × 10 to the minus 3.",
         ],
         working: [
           { label: "Relation", latex: "1\\ \\text{mm} = 0.001\\ \\text{m}" },
           { label: "Standard form", latex: "0.001 = 1 \\times 10^{-3}" },
           { label: "Answer", latex: "1 \\times 10^{-3}\\ \\text{m}" },
         ],
-        explain: "1 millimetre is 1 x 10^-3 metre, because a millimetre is one thousandth of a metre, and one thousandth written as a power of 10 is 1 times 10 to the minus 3.",
+        explain: "1 millimetre is 1 x 10^-3 metre, because a millimetre is one thousandth of a metre, and one thousandth written as a power of 10 is 1 × 10 to the minus 3.",
       },
       {
         kind: "classify",

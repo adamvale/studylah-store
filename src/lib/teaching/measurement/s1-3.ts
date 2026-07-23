@@ -44,10 +44,10 @@ export const BOXES: Subconcept[] = [
         question: "A block lies along a rule. One end sits at the 3.0 cm mark and the other at the 5.4 cm mark. What is the length of the block?",
         options: ["2.4 cm", "8.4 cm", "5.4 cm", "1.4 cm"],
         correct: 0,
-        ask: "Subtract the near reading from the far reading, so work out 5.4 minus 3.0.",
+        ask: "Subtract the near reading from the far reading, so work out 5.4 - 3.0.",
         hints: [
           "The length is the far reading minus the near reading.",
-          "5.4 minus 3.0 is 2.4, and the answer is a length in centimetres.",
+          "5.4 - 3.0 is 2.4, and the answer is a length in centimetres.",
         ],
         working: [
           { label: "Formula", latex: "L = x_2 - x_1" },

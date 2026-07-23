@@ -79,10 +79,10 @@ export const BOXES: Subconcept[] = [
         question: "A mass of 0.650 kg hangs from a spring balance. Take g = 10 N/kg. What is its weight?",
         options: ["0.065 N", "6.50 N", "65.0 N", "0.650 N"],
         correct: 1,
-        ask: "Weight is mass times g, so work out 0.650 times 10.",
+        ask: "Weight is mass times g, so work out 0.650 × 10.",
         hints: [
           "Use W = m g with g equal to 10 newtons per kilogram.",
-          "0.650 times 10 is 6.50, and the answer is a force in newtons.",
+          "0.650 × 10 is 6.50, and the answer is a force in newtons.",
         ],
         working: [
           { label: "Formula", latex: "W = mg" },
@@ -96,10 +96,10 @@ export const BOXES: Subconcept[] = [
         question: "A box of mass 2.5 kg rests on a bench (g = 10 N/kg). What is its weight on Earth?",
         options: ["0.25 N", "2.5 N", "12.5 N", "25 N"],
         correct: 3,
-        ask: "Weight is mass times g, so work out 2.5 times 10.",
+        ask: "Weight is mass times g, so work out 2.5 × 10.",
         hints: [
           "Use W = m g with g equal to 10 newtons per kilogram.",
-          "2.5 times 10 is 25, and the answer is a force in newtons.",
+          "2.5 × 10 is 25, and the answer is a force in newtons.",
         ],
         working: [
           { label: "Formula", latex: "W = mg" },
@@ -118,10 +118,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 0.79,
         targetMax: 0.81,
-        ask: "Density is mass divided by volume, so work out 384 divided by 480.",
+        ask: "Density is mass divided by volume, so work out 384 ÷ 480.",
         hints: [
           "Use rho equals mass divided by volume.",
-          "384 divided by 480 is 0.80, so slide to 0.80 grams per cubic centimetre.",
+          "384 ÷ 480 is 0.80, so slide to 0.80 grams per cubic centimetre.",
         ],
         working: [
           { label: "Formula", latex: "\\rho = \\dfrac{m}{V}" },

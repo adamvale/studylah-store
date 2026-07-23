@@ -67,17 +67,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 595,
         targetMax: 605,
-        ask: "First find the pressure, which is 30 divided by 3.0. Then multiply that pressure by the large area, 60.",
+        ask: "First find the pressure, which is 30 ÷ 3.0. Then multiply that pressure by the large area, 60.",
         hints: [
-          "The pressure is 30 divided by 3.0, which is 10 newtons per square centimetre.",
-          "The output force is 10 times 60, which is 600, so slide to 600 newtons.",
+          "The pressure is 30 ÷ 3.0, which is 10 newtons per square centimetre.",
+          "The output force is 10 × 60, which is 600, so slide to 600 newtons.",
         ],
         working: [
           { label: "Formula", latex: "F_2 = \\dfrac{F_1}{A_1} \\times A_2" },
           { label: "Substitute", latex: "F_2 = \\dfrac{30}{3.0} \\times 60" },
           { label: "Answer", latex: "F_2 = 600\\ \\text{N}" },
         ],
-        explain: "The output force is 600 newtons, because the pressure is 30 newtons divided by 3.0 square centimetres, which is 10 newtons per square centimetre, and 10 times 60 square centimetres is 600 newtons.",
+        explain: "The output force is 600 newtons, because the pressure is 30 newtons divided by 3.0 square centimetres, which is 10 newtons per square centimetre, and 10 × 60 square centimetres is 600 newtons.",
       },
       {
         kind: "order",

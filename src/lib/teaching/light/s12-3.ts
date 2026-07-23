@@ -78,9 +78,9 @@ export const BOXES: Subconcept[] = [
         question: "A ray hits a glass block of refractive index 1.52 at an angle of incidence i = 40 degrees. Find the angle of refraction r.",
         options: ["61 degrees", "25 degrees", "40 degrees", "15 degrees"],
         correct: 1,
-        ask: "Rearrange n = sin i / sin r to sin r = sin i / n, then work out sin 40 divided by 1.52 and take the inverse sine.",
+        ask: "Rearrange n = sin i / sin r to sin r = sin i / n, then work out sin 40 ÷ 1.52 and take the inverse sine.",
         hints: [
-          "sin r = sin 40 divided by 1.52.",
+          "sin r = sin 40 ÷ 1.52.",
           "That gives a sine of about 0.42, and the angle with that sine is 25 degrees.",
         ],
         working: [
@@ -102,7 +102,7 @@ export const BOXES: Subconcept[] = [
         ask: "The refractive index is sin i divided by sin r, so work out sin 60 divided by sin 36.",
         hints: [
           "Use n = sin i / sin r with i = 60 degrees and r = 36 degrees.",
-          "0.87 divided by 0.59 is about 1.47, so slide to 1.47.",
+          "0.87 ÷ 0.59 is about 1.47, so slide to 1.47.",
         ],
         working: [
           { label: "Formula", latex: "n = \\dfrac{\\sin i}{\\sin r}" },
@@ -121,17 +121,17 @@ export const BOXES: Subconcept[] = [
           "2.0 x 10^8 m/s",
         ],
         correct: 3,
-        ask: "Rearrange n = c / v to v = c / n, then divide 3.0 times 10 to the power 8 by 1.5.",
+        ask: "Rearrange n = c / v to v = c / n, then divide 3.0 × 10 to the power 8 by 1.5.",
         hints: [
           "The speed in the glass is c divided by n.",
-          "3.0 times 10 to the power 8 divided by 1.5 is 2.0 times 10 to the power 8.",
+          "3.0 × 10 to the power 8 ÷ 1.5 is 2.0 × 10 to the power 8.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{c}{n}" },
           { label: "Substitute", latex: "v = \\dfrac{3.0 \\times 10^8}{1.5}" },
           { label: "Answer", latex: "v = 2.0 \\times 10^8\\ \\text{m/s}" },
         ],
-        explain: "The speed in the glass is 2.0 times 10 to the power 8 metres per second, because 3.0 times 10 to the power 8 divided by 1.5 is 2.0 times 10 to the power 8. Light is slower in the denser glass than in a vacuum.",
+        explain: "The speed in the glass is 2.0 × 10 to the power 8 metres per second, because 3.0 × 10 to the power 8 ÷ 1.5 is 2.0 × 10 to the power 8. Light is slower in the denser glass than in a vacuum.",
       },
       {
         kind: "choice",
@@ -141,7 +141,7 @@ export const BOXES: Subconcept[] = [
         ask: "The refractive index is the sine of the angle in air divided by the sine of the angle in the liquid, so work out sin 41 divided by sin 30.",
         hints: [
           "Use n = sin i / sin r, with the angle in air on top.",
-          "0.66 divided by 0.50 is about 1.31.",
+          "0.66 ÷ 0.50 is about 1.31.",
         ],
         working: [
           { label: "Formula", latex: "n = \\dfrac{\\sin i}{\\sin r}" },

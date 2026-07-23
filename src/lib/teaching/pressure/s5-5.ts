@@ -74,10 +74,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-06-15-barometer-points",
         options: ["80 cm Hg", "72 cm Hg", "76 cm Hg", "4 cm Hg"],
         correct: 0,
-        ask: "Going down from the reservoir level, add the extra vertical height. Work out 76 plus 4.",
+        ask: "Going down from the reservoir level, add the extra vertical height. Work out 76 + 4.",
         hints: [
           "Moving deeper into the mercury raises the pressure, so you add the depth.",
-          "76 plus 4 is 80, measured in centimetres of mercury.",
+          "76 + 4 is 80, measured in centimetres of mercury.",
         ],
         working: [
           { label: "Formula", latex: "P_C = P_B + h" },
@@ -91,17 +91,17 @@ export const BOXES: Subconcept[] = [
         prompt: "1 atmosphere is a 76 cm (0.76 m) column of mercury, density 1.36 x 10^4 kg/m^3, with g = 10 N/kg. Build the working line for the pressure in pascals.",
         tiles: ["P =", "0.76", "\\times", "1.36 \\times 10^4", "\\times", "10", "=", "1.03 \\times 10^5", "Pa", "cm Hg"],
         answer: ["P =", "0.76", "\\times", "1.36 \\times 10^4", "\\times", "10", "=", "1.03 \\times 10^5", "Pa"],
-        ask: "Use P equals h times rho times g, with h equal to 0.76 metres. Multiply 0.76 by 1.36 times 10 to the power 4, then by 10.",
+        ask: "Use P equals h times rho times g, with h equal to 0.76 metres. Multiply 0.76 by 1.36 × 10 to the power 4, then by 10.",
         hints: [
           "The height must be in metres, so 76 centimetres is 0.76 metres.",
-          "0.76 times 1.36 times 10 to the power 4 times 10 is 1.03 times 10 to the power 5 pascals.",
+          "0.76 × 1.36 × 10 to the power 4 × 10 is 1.03 × 10 to the power 5 pascals.",
         ],
         working: [
           { label: "Formula", latex: "P = h\\rho g" },
           { label: "Substitute", latex: "P = 0.76 \\times (1.36 \\times 10^4) \\times 10" },
           { label: "Answer", latex: "P = 1.03 \\times 10^5\\ \\text{Pa}" },
         ],
-        explain: "The atmospheric pressure is 1.03 times 10 to the power 5 pascals, because 0.76 metres times 1.36 times 10 to the power 4 kilograms per cubic metre times 10 newtons per kilogram is 1.03 times 10 to the power 5 pascals.",
+        explain: "The atmospheric pressure is 1.03 × 10 to the power 5 pascals, because 0.76 metres times 1.36 × 10 to the power 4 kilograms per cubic metre times 10 newtons per kilogram is 1.03 × 10 to the power 5 pascals.",
       },
       {
         kind: "match",

@@ -84,10 +84,10 @@ export const BOXES: Subconcept[] = [
         question: "A 2 kg object weighs 20 N on the Earth (g = 10 N/kg). Find its weight on the Moon, where g = 1.6 N/kg.",
         options: ["3.2 N", "20 N", "2 N", "12.5 N"],
         correct: 0,
-        ask: "Weight is still mass times g, but use the Moon's g of 1.6. Work out 2 times 1.6.",
+        ask: "Weight is still mass times g, but use the Moon's g of 1.6. Work out 2 × 1.6.",
         hints: [
           "Use W equals m times g, with g equal to 1.6 on the Moon.",
-          "2 times 1.6 is 3.2, and the unit of weight is the newton.",
+          "2 × 1.6 is 3.2, and the unit of weight is the newton.",
         ],
         working: [
           { label: "Formula", latex: "W = mg" },

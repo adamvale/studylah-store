@@ -35,17 +35,17 @@ export const BOXES: Subconcept[] = [
         question: "A mango of mass 0.500 kg falls from rest through a height of 20 m. Taking g = 10 N/kg and ignoring air resistance, what is its speed just before it lands?",
         options: ["20 m/s", "200 m/s", "14 m/s", "10 m/s"],
         correct: 0,
-        ask: "All the gravitational potential energy becomes kinetic energy. Find E_p with m g h, set it equal to half m v squared, then solve for v.",
+        ask: "All the gravitational potential energy becomes kinetic energy. Find E_p with m g h, set it equal to half m v^2, then solve for v.",
         hints: [
-          "E_p is m g h, which is 0.500 times 10 times 20, giving 100 joules, and this equals the kinetic energy.",
-          "From half m v squared equal to 100, v squared is 400, so v is 20.",
+          "E_p is m g h, which is 0.500 × 10 × 20, giving 100 joules, and this equals the kinetic energy.",
+          "From half m v^2 equal to 100, v^2 is 400, so v is 20.",
         ],
         working: [
           { label: "Formula", latex: "\\tfrac{1}{2}mv^2 = mgh" },
           { label: "Substitute", latex: "\\tfrac{1}{2}(0.500)v^2 = 0.500 \\times 10 \\times 20" },
           { label: "Answer", latex: "v = 20\\ \\text{m/s}" },
         ],
-        explain: "The speed is 20 metres per second, because the 100 joules of gravitational potential energy all become kinetic energy; half of 0.500 times v squared equals 100 gives v squared of 400, so v is 20.",
+        explain: "The speed is 20 metres per second, because the 100 joules of gravitational potential energy all become kinetic energy; half of 0.500 times v^2 equals 100 gives v^2 of 400, so v is 20.",
       },
       {
         kind: "choice",
@@ -53,10 +53,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-07-09-box-slope",
         options: ["30 J", "11 J", "1.2 J", "15 J"],
         correct: 0,
-        ask: "Work done by a force is the force times the distance moved in the direction of the force, so work out 5 times 6.",
+        ask: "Work done by a force is the force times the distance moved in the direction of the force, so work out 5 × 6.",
         hints: [
           "Use work equals force times distance.",
-          "5 times 6 is 30, and work is measured in joules.",
+          "5 × 6 is 30, and work is measured in joules.",
         ],
         working: [
           { label: "Formula", latex: "W = F d" },
@@ -72,8 +72,8 @@ export const BOXES: Subconcept[] = [
         correct: 0,
         ask: "First find the work done raising the student, m g h, then divide that energy by the 6.0 seconds taken.",
         hints: [
-          "The work done is m g h, which is 50 times 10 times 3.0, giving 1500 joules.",
-          "Power is energy divided by time, so 1500 divided by 6.0 is 250.",
+          "The work done is m g h, which is 50 × 10 × 3.0, giving 1500 joules.",
+          "Power is energy divided by time, so 1500 ÷ 6.0 is 250.",
         ],
         working: [
           { label: "Formula", latex: "P = \\dfrac{W}{t},\\ \\ W = mgh" },
@@ -90,15 +90,15 @@ export const BOXES: Subconcept[] = [
         correct: 0,
         ask: "The useful output is 25% of the input. Work out the useful energy, then subtract it from the 800 joules of input to find the dissipated energy.",
         hints: [
-          "Useful output is 0.25 times 800, which is 200 joules.",
-          "Dissipated energy is the input minus the useful output, so 800 minus 200 is 600.",
+          "Useful output is 0.25 × 800, which is 200 joules.",
+          "Dissipated energy is the input minus the useful output, so 800 - 200 is 600.",
         ],
         working: [
           { label: "Formula", latex: "E_{diss} = E_{in} - E_{useful}" },
           { label: "Substitute", latex: "E_{diss} = 800 - (0.25 \\times 800)" },
           { label: "Answer", latex: "E_{diss} = 600\\ \\text{J}" },
         ],
-        explain: "The dissipated energy is 600 joules, because only 200 joules (25% of 800) is useful output, and the input minus the useful output, 800 minus 200, is 600 joules.",
+        explain: "The dissipated energy is 600 joules, because only 200 joules (25% of 800) is useful output, and the input minus the useful output, 800 - 200, is 600 joules.",
       },
       {
         kind: "slider",
@@ -110,10 +110,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 590,
         targetMax: 610,
-        ask: "At constant speed the power is the force times the speed, so work out 240 times 2.5.",
+        ask: "At constant speed the power is the force times the speed, so work out 240 × 2.5.",
         hints: [
           "Use power equals force times velocity.",
-          "240 times 2.5 is 600, so slide to 600 watts.",
+          "240 × 2.5 is 600, so slide to 600 watts.",
         ],
         working: [
           { label: "Formula", latex: "P = F v" },
@@ -127,10 +127,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A box is pushed 6 m up a slope by a 5 N force, gaining 24 J of gravitational potential energy. Build the working line for the work done against friction.",
         tiles: ["W_f =", "30", "-", "24", "=", "6", "J", "12"],
         answer: ["W_f =", "30", "-", "24", "=", "6", "J"],
-        ask: "The push does 30 joules of work in total, which is 5 times 6. Subtract the 24 joules that became gravitational potential energy to find the work against friction.",
+        ask: "The push does 30 joules of work in total, which is 5 × 6. Subtract the 24 joules that became gravitational potential energy to find the work against friction.",
         hints: [
-          "Total work is force times distance, 5 times 6, which is 30 joules.",
-          "Work against friction is 30 minus 24, which is 6 joules.",
+          "Total work is force times distance, 5 × 6, which is 30 joules.",
+          "Work against friction is 30 - 24, which is 6 joules.",
         ],
         working: [
           { label: "Formula", latex: "W_f = F d - E_p" },

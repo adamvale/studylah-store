@@ -75,17 +75,17 @@ export const BOXES: Subconcept[] = [
         question: "A box is pulled with 12 N east and 9 N north at the same time. These 2 forces are at right angles. Find the resultant force.",
         options: ["15 N", "21 N", "3 N", "10.5 N"],
         correct: 0,
-        ask: "The 2 forces are at 90 degrees, so use Pythagoras. Work out the square root of 12 squared plus 9 squared. Which option is that?",
+        ask: "The 2 forces are at 90 degrees, so use Pythagoras. Work out the square root of 12 squared plus 9^2. Which option is that?",
         hints: [
           "For 2 forces at right angles, the resultant is the square root of the sum of their squares.",
-          "12 squared is 144 and 9 squared is 81. 144 plus 81 is 225, and the square root of 225 is 15.",
+          "12 squared is 144 and 9^2 is 81. 144 + 81 is 225, and the square root of 225 is 15.",
         ],
         working: [
           { label: "Formula", latex: "F = \\sqrt{F_1^2 + F_2^2}" },
           { label: "Substitute", latex: "F = \\sqrt{12^2 + 9^2}" },
           { label: "Answer", latex: "F = 15\\ \\text{N}" },
         ],
-        explain: "The resultant is 15 newtons, because 12 squared plus 9 squared is 225, and the square root of 225 is 15. This is a 3, 4, 5 right-angled triangle scaled up by 3.",
+        explain: "The resultant is 15 newtons, because 12 squared plus 9^2 is 225, and the square root of 225 is 15. This is a 3, 4, 5 right-angled triangle scaled up by 3.",
       },
       {
         kind: "match",

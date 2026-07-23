@@ -60,10 +60,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-17-03-series-we1",
         options: ["3 ohms", "6 ohms", "12 ohms", "27 ohms"],
         correct: 2,
-        ask: "In series the resistances just add, so work out 3 plus 9.",
+        ask: "In series the resistances just add, so work out 3 + 9.",
         hints: [
           "Use R_eff = R_1 + R_2.",
-          "3 plus 9 is 12, and the answer is a resistance in ohms.",
+          "3 + 9 is 12, and the answer is a resistance in ohms.",
         ],
         working: [
           { label: "Formula", latex: "R_{\\text{eff}} = R_1 + R_2" },
@@ -77,10 +77,10 @@ export const BOXES: Subconcept[] = [
         question: "A 12 V supply drives a current through the 3 ohm and 9 ohm resistors in series (total 12 ohms). What is the current?",
         options: ["1 A", "0.75 A", "4 A", "12 A"],
         correct: 0,
-        ask: "The current is the supply voltage divided by the total resistance, so work out 12 divided by 12.",
+        ask: "The current is the supply voltage divided by the total resistance, so work out 12 ÷ 12.",
         hints: [
           "Use I = V / R_eff with R_eff = 12 ohms.",
-          "12 divided by 12 is 1, and the answer is a current in amperes.",
+          "12 ÷ 12 is 1, and the answer is a current in amperes.",
         ],
         working: [
           { label: "Formula", latex: "I = \\dfrac{V}{R_{\\text{eff}}}" },
@@ -95,27 +95,27 @@ export const BOXES: Subconcept[] = [
         figure: "fig-17-03-series-we1",
         options: ["3 V", "6 V", "15 V", "9 V"],
         correct: 3,
-        ask: "The 2 component voltages add up to the supply, so work out 12 minus 3.",
+        ask: "The 2 component voltages add up to the supply, so work out 12 - 3.",
         hints: [
           "Use V = V_1 + V_2, rearranged to V_2 = V - V_1.",
-          "12 minus 3 is 9, and the answer is a p.d. in volts.",
+          "12 - 3 is 9, and the answer is a p.d. in volts.",
         ],
         working: [
           { label: "Formula", latex: "V_2 = V - V_1" },
           { label: "Substitute", latex: "V_2 = 12 - 3" },
           { label: "Answer", latex: "V_2 = 9\\ \\text{V}" },
         ],
-        explain: "The p.d. across the 9 ohm resistor is 9 volts, because the 2 component voltages must add to the 12 volt supply, and 12 minus 3 is 9.",
+        explain: "The p.d. across the 9 ohm resistor is 9 volts, because the 2 component voltages must add to the 12 volt supply, and 12 - 3 is 9.",
       },
       {
         kind: "choice",
         question: "An 18 V supply is connected across a 3 ohm and a 6 ohm resistor in series. What is the current in the circuit?",
         options: ["6 A", "9 A", "3 A", "2 A"],
         correct: 3,
-        ask: "First add the resistances to get the total, then divide the voltage by it. Work out 18 divided by 9.",
+        ask: "First add the resistances to get the total, then divide the voltage by it. Work out 18 ÷ 9.",
         hints: [
-          "The total resistance is 3 plus 6, which is 9 ohms.",
-          "18 divided by 9 is 2, and the answer is a current in amperes.",
+          "The total resistance is 3 + 6, which is 9 ohms.",
+          "18 ÷ 9 is 2, and the answer is a current in amperes.",
         ],
         working: [
           { label: "Formula", latex: "I = \\dfrac{V}{R_1 + R_2}" },
@@ -129,10 +129,10 @@ export const BOXES: Subconcept[] = [
         question: "A current of 0.4 A flows through a 5 ohm resistor in a series circuit. What is the p.d. across it?",
         options: ["1.25 V", "2 V", "12.5 V", "0.08 V"],
         correct: 1,
-        ask: "The p.d. across a resistor is the current times its resistance, so work out 0.4 times 5.",
+        ask: "The p.d. across a resistor is the current times its resistance, so work out 0.4 × 5.",
         hints: [
           "Use V = I R.",
-          "0.4 times 5 is 2, and the answer is a p.d. in volts.",
+          "0.4 × 5 is 2, and the answer is a p.d. in volts.",
         ],
         working: [
           { label: "Formula", latex: "V = I R" },

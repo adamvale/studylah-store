@@ -45,10 +45,10 @@ export const BOXES: Subconcept[] = [
         question: "A 6 V supply is across a divider with R_1 = 2 ohm on top and R_2 = 4 ohm below. Find V_out across R_2.",
         options: ["2 V", "3 V", "4 V", "6 V"],
         correct: 2,
-        ask: "The output is R2 over R1 plus R2, times the input. Work out 4 divided by 6, then times 6.",
+        ask: "The output is R2 over R1 plus R2, times the input. Work out 4 ÷ 6, then times 6.",
         hints: [
-          "The total resistance is 2 plus 4, which is 6 ohms.",
-          "4 divided by 6, times 6 volts, is 4 volts.",
+          "The total resistance is 2 + 4, which is 6 ohms.",
+          "4 ÷ 6, × 6 volts, is 4 volts.",
         ],
         working: [
           { label: "Formula", latex: "V_{out} = \\dfrac{R_2}{R_1 + R_2} \\times V_{in}" },
@@ -62,10 +62,10 @@ export const BOXES: Subconcept[] = [
         question: "A 12 V supply is across a divider with R_1 = 9 ohm on top and R_2 = 3 ohm below. Find V_out across R_2.",
         options: ["3 V", "9 V", "4 V", "6 V"],
         correct: 0,
-        ask: "Use the output equals R2 over R1 plus R2, times the input. Work out 3 divided by 12, then times 12.",
+        ask: "Use the output equals R2 over R1 plus R2, times the input. Work out 3 ÷ 12, then times 12.",
         hints: [
-          "The total resistance is 9 plus 3, which is 12 ohms.",
-          "3 divided by 12, times 12 volts, is 3 volts.",
+          "The total resistance is 9 + 3, which is 12 ohms.",
+          "3 ÷ 12, × 12 volts, is 3 volts.",
         ],
         working: [
           { label: "Formula", latex: "V_{out} = \\dfrac{R_2}{R_1 + R_2} \\times V_{in}" },
@@ -79,10 +79,10 @@ export const BOXES: Subconcept[] = [
         question: "A 12 V supply is across a divider with R_1 = 4 ohm on top and R_2 = 16 ohm below. Find V_out across R_2.",
         options: ["2.4 V", "6 V", "12 V", "9.6 V"],
         correct: 3,
-        ask: "Use the output equals R2 over R1 plus R2, times the input. Work out 16 divided by 20, then times 12.",
+        ask: "Use the output equals R2 over R1 plus R2, times the input. Work out 16 ÷ 20, then times 12.",
         hints: [
-          "The total resistance is 4 plus 16, which is 20 ohms.",
-          "16 divided by 20, times 12 volts, is 9.6 volts.",
+          "The total resistance is 4 + 16, which is 20 ohms.",
+          "16 ÷ 20, × 12 volts, is 9.6 volts.",
         ],
         working: [
           { label: "Formula", latex: "V_{out} = \\dfrac{R_2}{R_1 + R_2} \\times V_{in}" },

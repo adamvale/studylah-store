@@ -38,10 +38,10 @@ export const BOXES: Subconcept[] = [
         question: "A mass of 0.650 kg hangs from a spring balance (g = 10 N/kg). Find its weight W.",
         options: ["6.50 N", "0.065 N", "65 N", "0.650 N"],
         correct: 0,
-        ask: "Weight is mass times g, so work out 0.650 times 10. Which option matches?",
+        ask: "Weight is mass times g, so work out 0.650 × 10. Which option matches?",
         hints: [
           "Use W equals m times g.",
-          "0.650 times 10 is 6.50, and weight is measured in newtons.",
+          "0.650 × 10 is 6.50, and weight is measured in newtons.",
         ],
         working: [
           { label: "Formula", latex: "W = mg" },
@@ -153,10 +153,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 24.9,
         targetMax: 25.1,
-        ask: "Weight is mass times g, so work out 2.5 times 10.",
+        ask: "Weight is mass times g, so work out 2.5 × 10.",
         hints: [
           "Use W equals m times g.",
-          "2.5 times 10 is 25, so slide to 25 newtons.",
+          "2.5 × 10 is 25, so slide to 25 newtons.",
         ],
         working: [
           { label: "Formula", latex: "W = mg" },
@@ -176,17 +176,17 @@ export const BOXES: Subconcept[] = [
           "480 g/cm^3, sinks",
         ],
         correct: 2,
-        ask: "Density is mass divided by volume. Work out the volume from 12.0 times 8.0 times 5.0, then divide 384 by it. Compare with 1.0 gram per cubic centimetre for water.",
+        ask: "Density is mass divided by volume. Work out the volume from 12.0 × 8.0 × 5.0, then divide 384 by it. Compare with 1.0 gram per cubic centimetre for water.",
         hints: [
-          "The volume is 12.0 times 8.0 times 5.0, which is 480 cubic centimetres.",
-          "384 divided by 480 is 0.80, and 0.80 is less than 1.0, so it floats.",
+          "The volume is 12.0 × 8.0 × 5.0, which is 480 cubic centimetres.",
+          "384 ÷ 480 is 0.80, and 0.80 is less than 1.0, so it floats.",
         ],
         working: [
           { label: "Formula", latex: "\\rho = \\dfrac{m}{V}" },
           { label: "Substitute", latex: "\\rho = \\dfrac{384}{12.0 \\times 8.0 \\times 5.0} = \\dfrac{384}{480}" },
           { label: "Answer", latex: "\\rho = 0.80\\ \\text{g/cm}^3" },
         ],
-        explain: "The volume is 480 cubic centimetres, so the density is 384 divided by 480, which is 0.80 grams per cubic centimetre. That is less than the 1.0 grams per cubic centimetre of water, so the block floats.",
+        explain: "The volume is 480 cubic centimetres, so the density is 384 ÷ 480, which is 0.80 grams per cubic centimetre. That is less than the 1.0 grams per cubic centimetre of water, so the block floats.",
       },
       // 10) open, centre of gravity of a lamina
       {
@@ -209,15 +209,15 @@ export const BOXES: Subconcept[] = [
         correct: 0,
         ask: "At balance the clockwise moment equals the anticlockwise moment about the pivot. The 2.0 N acts 20 cm from the pivot; the rule's weight acts 10 cm from the pivot on the other side.",
         hints: [
-          "The 2.0 N is at 40 minus 20, which is 20 cm from the pivot; the weight is at 50 minus 40, which is 10 cm.",
-          "2.0 times 20 equals W times 10, so W is 40 divided by 10, which is 4.0 newtons.",
+          "The 2.0 N is at 40 - 20, which is 20 cm from the pivot; the weight is at 50 - 40, which is 10 cm.",
+          "2.0 × 20 equals W times 10, so W is 40 ÷ 10, which is 4.0 newtons.",
         ],
         working: [
           { label: "Formula", latex: "F_1 d_1 = W d_2" },
           { label: "Substitute", latex: "2.0 \\times 20 = W \\times 10" },
           { label: "Answer", latex: "W = 4.0\\ \\text{N}" },
         ],
-        explain: "Taking moments about the pivot, 2.0 times 20 equals W times 10, so 40 equals 10 W, giving W equal to 4.0 newtons.",
+        explain: "Taking moments about the pivot, 2.0 × 20 equals W times 10, so 40 equals 10 W, giving W equal to 4.0 newtons.",
       },
       // 12) interactive: cloze, Hooke's law / spring balance
       {
@@ -246,15 +246,15 @@ export const BOXES: Subconcept[] = [
         correct: 3,
         ask: "First find the extension, e equals L minus L nought, in metres. Then k is the load divided by the extension.",
         hints: [
-          "The extension is 9.0 minus 4.0, which is 5.0 centimetres, or 0.050 metres.",
-          "k is 2.0 divided by 0.050, which is 40 newtons per metre.",
+          "The extension is 9.0 - 4.0, which is 5.0 centimetres, or 0.050 metres.",
+          "k is 2.0 ÷ 0.050, which is 40 newtons per metre.",
         ],
         working: [
           { label: "Formula", latex: "k = \\dfrac{F}{e},\\quad e = L - L_0" },
           { label: "Substitute", latex: "k = \\dfrac{2.0}{0.050}" },
           { label: "Answer", latex: "k = 40\\ \\text{N/m}" },
         ],
-        explain: "The extension is 9.0 minus 4.0, which is 5.0 centimetres, or 0.050 metres. The spring constant is 2.0 divided by 0.050, which is 40 newtons per metre.",
+        explain: "The extension is 9.0 - 4.0, which is 5.0 centimetres, or 0.050 metres. The spring constant is 2.0 ÷ 0.050, which is 40 newtons per metre.",
       },
       // 14) interactive: spoterror, weight is a scalar
       {
@@ -300,10 +300,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A block of mass 384 g has a volume of 480 cm^3. Build the working line for its density rho.",
         tiles: ["rho =", "384", "/", "480", "=", "0.80", "g/cm^3", "1.25"],
         answer: ["rho =", "384", "/", "480", "=", "0.80", "g/cm^3"],
-        ask: "Density is mass divided by volume, so set up 384 divided by 480.",
+        ask: "Density is mass divided by volume, so set up 384 ÷ 480.",
         hints: [
           "Use rho equals m divided by V.",
-          "384 divided by 480 is 0.80, in grams per cubic centimetre.",
+          "384 ÷ 480 is 0.80, in grams per cubic centimetre.",
         ],
         working: [
           { label: "Formula", latex: "\\rho = \\dfrac{m}{V}" },
@@ -354,10 +354,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 2.9,
         targetMax: 3.1,
-        ask: "The pull equals the weight of the hanging mass, W equals M times g, so work out 0.300 times 10.",
+        ask: "The pull equals the weight of the hanging mass, W equals M times g, so work out 0.300 × 10.",
         hints: [
           "Use W equals M times g for the hanging mass.",
-          "0.300 times 10 is 3.0, so slide to 3.0 newtons.",
+          "0.300 × 10 is 3.0, so slide to 3.0 newtons.",
         ],
         working: [
           { label: "Formula", latex: "W = Mg" },
@@ -410,15 +410,15 @@ export const BOXES: Subconcept[] = [
         correct: 2,
         ask: "Rearrange to mu equals W divided by the total, L plus m g. Add 2.00 and 4.214, then divide 3.0 by that.",
         hints: [
-          "L plus m g is 2.00 plus 4.214, which is 6.214 newtons.",
-          "3.0 divided by 6.214 is about 0.48, and mu has no units.",
+          "L plus m g is 2.00 + 4.214, which is 6.214 newtons.",
+          "3.0 ÷ 6.214 is about 0.48, and mu has no units.",
         ],
         working: [
           { label: "Formula", latex: "\\mu = \\dfrac{W}{L + mg}" },
           { label: "Substitute", latex: "\\mu = \\dfrac{3.0}{2.00 + 4.214}" },
           { label: "Answer", latex: "\\mu = 0.48" },
         ],
-        explain: "The total force term is 2.00 plus 4.214, which is 6.214 newtons. So mu is 3.0 divided by 6.214, which is about 0.48. The coefficient of friction is a ratio of forces, so it has no units.",
+        explain: "The total force term is 2.00 + 4.214, which is 6.214 newtons. So mu is 3.0 ÷ 6.214, which is about 0.48. The coefficient of friction is a ratio of forces, so it has no units.",
       },
       // 23) open, why pull equals friction at constant velocity
       {

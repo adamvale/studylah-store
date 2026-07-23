@@ -54,27 +54,27 @@ export const BOXES: Subconcept[] = [
           "2.0 x 10^-7 ohm m",
         ],
         correct: 1,
-        ask: "Rearrange R = rho l / A to rho = R A / l, then work out 2.5 times 2.5 times 10 to the power negative 7, divided by 5.",
+        ask: "Rearrange R = rho l / A to rho = R A / l, then work out 2.5 × 2.5 × 10 to the power negative 7, ÷ 5.",
         hints: [
           "The resistivity is R times A divided by l.",
-          "2.5 times 2.5 times 10 to the power negative 7 is 6.25 times 10 to the power negative 7, and dividing by 5 gives 1.25 times 10 to the power negative 7.",
+          "2.5 × 2.5 × 10 to the power negative 7 is 6.25 × 10 to the power negative 7, and dividing by 5 gives 1.25 × 10 to the power negative 7.",
         ],
         working: [
           { label: "Formula", latex: "\\rho = \\dfrac{R\\,A}{l}" },
           { label: "Substitute", latex: "\\rho = \\dfrac{2.5 \\times 2.5 \\times 10^{-7}}{5}" },
           { label: "Answer", latex: "\\rho = 1.25 \\times 10^{-7}\\ \\text{ohm m}" },
         ],
-        explain: "The resistivity is 1.25 times 10 to the power negative 7 ohm metres, because 2.5 times 2.5 times 10 to the power negative 7 is 6.25 times 10 to the power negative 7, and that divided by 5 is 1.25 times 10 to the power negative 7.",
+        explain: "The resistivity is 1.25 × 10 to the power negative 7 ohm metres, because 2.5 × 2.5 × 10 to the power negative 7 is 6.25 × 10 to the power negative 7, and that divided by 5 is 1.25 × 10 to the power negative 7.",
       },
       {
         kind: "choice",
         question: "An iron wire has a resistance of 6 ohms. It is replaced by a wire of the same metal and thickness but twice the length. What is the new resistance?",
         options: ["3 ohms", "6 ohms", "12 ohms", "24 ohms"],
         correct: 2,
-        ask: "Resistance is proportional to length, so doubling the length doubles the resistance. Work out 2 times 6.",
+        ask: "Resistance is proportional to length, so doubling the length doubles the resistance. Work out 2 × 6.",
         hints: [
           "R is proportional to l, so if l doubles then R doubles.",
-          "2 times 6 is 12.",
+          "2 × 6 is 12.",
         ],
         working: [
           { label: "Formula", latex: "R \\propto l" },
@@ -93,10 +93,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 2.5,
         targetMax: 3.5,
-        ask: "Resistance is inversely proportional to area, so doubling the area halves the resistance. Work out 6 divided by 2.",
+        ask: "Resistance is inversely proportional to area, so doubling the area halves the resistance. Work out 6 ÷ 2.",
         hints: [
           "R is proportional to 1 over A, so if A doubles then R halves.",
-          "6 divided by 2 is 3, so slide to 3 ohms.",
+          "6 ÷ 2 is 3, so slide to 3 ohms.",
         ],
         working: [
           { label: "Formula", latex: "R \\propto \\dfrac{1}{A}" },

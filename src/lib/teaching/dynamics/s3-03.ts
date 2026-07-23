@@ -65,10 +65,10 @@ export const BOXES: Subconcept[] = [
         question: "A 3 kg mass rests near the Earth's surface, where g = 10 N/kg. Find the gravitational force F on it.",
         options: ["30 N", "3 N", "13 N", "0.3 N"],
         correct: 0,
-        ask: "The force is mass times g, so work out 3 times 10. Which option matches?",
+        ask: "The force is mass times g, so work out 3 × 10. Which option matches?",
         hints: [
           "Rearrange g equals F divided by m into F equals m times g.",
-          "3 times 10 is 30, and the unit of force is the newton.",
+          "3 × 10 is 30, and the unit of force is the newton.",
         ],
         working: [
           { label: "Formula", latex: "F = mg" },
@@ -87,10 +87,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 49,
         targetMax: 51,
-        ask: "The pull is mass times g, so work out 5 times 10 and slide to that value.",
+        ask: "The pull is mass times g, so work out 5 × 10 and slide to that value.",
         hints: [
           "Use F equals m times g, with g equal to 10 newtons per kilogram.",
-          "5 times 10 is 50, so slide to 50 newtons.",
+          "5 × 10 is 50, so slide to 50 newtons.",
         ],
         working: [
           { label: "Formula", latex: "F = mg" },

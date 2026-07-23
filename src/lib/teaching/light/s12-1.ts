@@ -100,14 +100,14 @@ export const BOXES: Subconcept[] = [
         ask: "The angle of incidence is measured from the normal, not the surface. Subtract the surface angle from 90.",
         hints: [
           "The normal is at 90 degrees to the surface, so add or subtract to switch between them.",
-          "90 minus 55 is 35, so the angle from the normal is 35 degrees.",
+          "90 - 55 is 35, so the angle from the normal is 35 degrees.",
         ],
         working: [
           { label: "Formula", latex: "i = 90^\\circ - \\theta_{\\text{surface}}" },
           { label: "Substitute", latex: "i = 90^\\circ - 55^\\circ" },
           { label: "Answer", latex: "i = 35^\\circ" },
         ],
-        explain: "The angle of incidence is 35 degrees, because angles are measured from the normal, and 90 minus 55 is 35 degrees.",
+        explain: "The angle of incidence is 35 degrees, because angles are measured from the normal, and 90 - 55 is 35 degrees.",
       },
       {
         kind: "insight",

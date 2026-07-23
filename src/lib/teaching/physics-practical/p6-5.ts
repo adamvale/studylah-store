@@ -76,10 +76,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr6-09-lamp-circuit",
         options: ["14.1 ohms", "0.163 ohms", "6.12 ohms", "10.8 ohms"],
         correct: 2,
-        ask: "Resistance is voltage divided by current, so work out 9.30 divided by 1.52.",
+        ask: "Resistance is voltage divided by current, so work out 9.30 ÷ 1.52.",
         hints: [
           "Use R = V/I with V of 9.30 volts and I of 1.52 amperes.",
-          "9.30 divided by 1.52 is about 6.12.",
+          "9.30 ÷ 1.52 is about 6.12.",
         ],
         working: [
           { label: "Formula", latex: "R = \\dfrac{V}{I}" },
@@ -105,17 +105,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr6-14-wire-graph",
         options: ["4.8 ohms", "1.20 ohms", "0.50 ohms", "3.2 ohms"],
         correct: 1,
-        ask: "The gradient is the change in R/L divided by the change in 1/L, so work out (6.5 minus 1.7) divided by (5.0 minus 1.0).",
+        ask: "The gradient is the change in R/L divided by the change in 1/L, so work out (6.5 - 1.7) divided by (5.0 - 1.0).",
         hints: [
           "Gradient is rise over run: (6.5 - 1.7) over (5.0 - 1.0).",
-          "4.8 divided by 4.0 is 1.20.",
+          "4.8 ÷ 4.0 is 1.20.",
         ],
         working: [
           { label: "Formula", latex: "R_X = \\dfrac{\\Delta(R/L)}{\\Delta(1/L)}" },
           { label: "Substitute", latex: "R_X = \\dfrac{6.5 - 1.7}{5.0 - 1.0}" },
           { label: "Answer", latex: "R_X = 1.20\\ \\text{ohms}" },
         ],
-        explain: "R_X is 1.20 ohms, because 6.5 minus 1.7 is 4.8, and 5.0 minus 1.0 is 4.0, and 4.8 divided by 4.0 is 1.20 ohms.",
+        explain: "R_X is 1.20 ohms, because 6.5 - 1.7 is 4.8, and 5.0 - 1.0 is 4.0, and 4.8 ÷ 4.0 is 1.20 ohms.",
       },
       {
         kind: "choice",
@@ -123,17 +123,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr6-16-component-iv",
         options: ["0.050 ohms", "6.7 ohms", "0.15 ohms", "20 ohms"],
         correct: 3,
-        ask: "First find the gradient, (0.25 minus 0.10) over (5.0 minus 2.0), then take R as 1 divided by that gradient.",
+        ask: "First find the gradient, (0.25 - 0.10) over (5.0 - 2.0), then take R as 1 divided by that gradient.",
         hints: [
-          "The gradient is 0.15 divided by 3.0, which is 0.050 amperes per volt.",
-          "R is 1 divided by 0.050, which is 20.",
+          "The gradient is 0.15 ÷ 3.0, which is 0.050 amperes per volt.",
+          "R is 1 ÷ 0.050, which is 20.",
         ],
         working: [
           { label: "Formula", latex: "\\text{gradient} = \\dfrac{1}{R} = \\dfrac{0.25 - 0.10}{5.0 - 2.0}" },
           { label: "Substitute", latex: "R = \\dfrac{1}{0.050}" },
           { label: "Answer", latex: "R = 20\\ \\text{ohms}" },
         ],
-        explain: "The gradient is 0.15 divided by 3.0, which is 0.050 amperes per volt, and R is 1 divided by 0.050, which is 20 ohms.",
+        explain: "The gradient is 0.15 ÷ 3.0, which is 0.050 amperes per volt, and R is 1 ÷ 0.050, which is 20 ohms.",
       },
       {
         kind: "graphpick",

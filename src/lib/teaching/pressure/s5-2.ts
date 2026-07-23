@@ -44,17 +44,17 @@ export const BOXES: Subconcept[] = [
         question: "A metal object weighs 4.5 N, so its mass is 0.45 kg (g = 10 N/kg). Lowered into a measuring cylinder, it raises the liquid from 45 cm^3 to 63 cm^3. Find its density.",
         options: ["2.5 x 10^4 kg/m^3", "2.5 x 10^3 kg/m^3", "0.025 kg/m^3", "40 kg/m^3"],
         correct: 0,
-        ask: "The volume is 63 minus 45, in cubic centimetres. Change it to cubic metres by multiplying by 10^-6, then divide the mass by the volume.",
+        ask: "The volume is 63 - 45, in cubic centimetres. Change it to cubic metres by multiplying by 10^-6, then divide the mass by the volume.",
         hints: [
-          "The displaced volume is 63 minus 45, which is 18 cm^3, and 18 cm^3 is 18 times 10 to the power -6 cubic metres.",
-          "Density is 0.45 divided by 18 times 10 to the power -6, which is 2.5 times 10 to the power 4.",
+          "The displaced volume is 63 - 45, which is 18 cm^3, and 18 cm^3 is 18 × 10 to the power -6 cubic metres.",
+          "Density is 0.45 ÷ 18 × 10 to the power -6, which is 2.5 × 10 to the power 4.",
         ],
         working: [
           { label: "Formula", latex: "\\rho = \\dfrac{m}{V}" },
           { label: "Substitute", latex: "\\rho = \\dfrac{0.45}{18 \\times 10^{-6}}" },
           { label: "Answer", latex: "\\rho = 2.5 \\times 10^{4}\\ \\text{kg/m}^3" },
         ],
-        explain: "The density is 2.5 times 10 to the power 4 kilograms per cubic metre, because the displaced volume of 18 cubic centimetres is 18 times 10 to the power -6 cubic metres, and 0.45 divided by that is 2.5 times 10 to the power 4.",
+        explain: "The density is 2.5 × 10 to the power 4 kilograms per cubic metre, because the displaced volume of 18 cubic centimetres is 18 × 10 to the power -6 cubic metres, and 0.45 divided by that is 2.5 × 10 to the power 4.",
       },
       {
         kind: "classify",
@@ -78,10 +78,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A liquid has a density of 1420 kg/m^3. Build the working line that converts it to g/cm^3.",
         tiles: ["1420", "\\div", "1000", "=", "1.42", "g/cm^3", "\\times", "kg/m^3"],
         answer: ["1420", "\\div", "1000", "=", "1.42", "g/cm^3"],
-        ask: "To go from kilograms per cubic metre to grams per cubic centimetre, divide by 1000. Set up 1420 divided by 1000.",
+        ask: "To go from kilograms per cubic metre to grams per cubic centimetre, divide by 1000. Set up 1420 ÷ 1000.",
         hints: [
-          "Dividing by 1000 shifts the value down: 1420 divided by 1000.",
-          "1420 divided by 1000 is 1.42, and the unit becomes grams per cubic centimetre.",
+          "Dividing by 1000 shifts the value down: 1420 ÷ 1000.",
+          "1420 ÷ 1000 is 1.42, and the unit becomes grams per cubic centimetre.",
         ],
         working: [
           { label: "Formula", latex: "\\text{g/cm}^3 = \\dfrac{\\text{kg/m}^3}{1000}" },
@@ -95,10 +95,10 @@ export const BOXES: Subconcept[] = [
         question: "Cooking oil has a density of 0.680 g/cm^3. What is this in kg/m^3?",
         options: ["680 kg/m^3", "68 kg/m^3", "6800 kg/m^3", "0.00068 kg/m^3"],
         correct: 0,
-        ask: "To go from grams per cubic centimetre to kilograms per cubic metre, multiply by 1000. Work out 0.680 times 1000.",
+        ask: "To go from grams per cubic centimetre to kilograms per cubic metre, multiply by 1000. Work out 0.680 × 1000.",
         hints: [
-          "Multiplying by 1000 shifts the value up: 0.680 times 1000.",
-          "0.680 times 1000 is 680, in kilograms per cubic metre.",
+          "Multiplying by 1000 shifts the value up: 0.680 × 1000.",
+          "0.680 × 1000 is 680, in kilograms per cubic metre.",
         ],
         working: [
           { label: "Formula", latex: "\\text{kg/m}^3 = \\text{g/cm}^3 \\times 1000" },

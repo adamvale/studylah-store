@@ -39,10 +39,10 @@ export const BOXES: Subconcept[] = [
         question: "A current of 4 A flows in a wire for 3 minutes. How much charge passes a point in the wire?",
         options: ["720 C", "12 C", "45 C", "1.3 C"],
         correct: 0,
-        ask: "Charge is current times time, but first change 3 minutes into seconds. What is 3 times 60?",
+        ask: "Charge is current times time, but first change 3 minutes into seconds. What is 3 × 60?",
         hints: [
-          "3 minutes is 3 times 60, which is 180 seconds.",
-          "Use Q equals I times t: 4 times 180 is 720.",
+          "3 minutes is 3 × 60, which is 180 seconds.",
+          "Use Q equals I times t: 4 × 180 is 720.",
         ],
         working: [
           { label: "Formula", latex: "Q = It" },
@@ -75,10 +75,10 @@ export const BOXES: Subconcept[] = [
         question: "A source does 2100 J of work in driving 300 C of charge around a circuit. Find the e.m.f. of the source.",
         options: ["0.14 V", "7 V", "700 V", "2400 V"],
         correct: 1,
-        ask: "The e.m.f. is the work done per coulomb, so divide the energy by the charge: 2100 divided by 300.",
+        ask: "The e.m.f. is the work done per coulomb, so divide the energy by the charge: 2100 ÷ 300.",
         hints: [
           "Use E equals W divided by Q.",
-          "2100 divided by 300 is 7.",
+          "2100 ÷ 300 is 7.",
         ],
         working: [
           { label: "Formula", latex: "E = \\dfrac{W}{Q}" },
@@ -93,10 +93,10 @@ export const BOXES: Subconcept[] = [
         question: "A component has a potential difference of 12 V across it and a current of 0.5 A through it. Find its resistance.",
         options: ["6 ohms", "0.04 ohms", "24 ohms", "12.5 ohms"],
         correct: 2,
-        ask: "Resistance is the p.d. divided by the current, so work out 12 divided by 0.5.",
+        ask: "Resistance is the p.d. divided by the current, so work out 12 ÷ 0.5.",
         hints: [
           "Use R equals V divided by I.",
-          "12 divided by 0.5 is 24.",
+          "12 ÷ 0.5 is 24.",
         ],
         working: [
           { label: "Formula", latex: "R = \\dfrac{V}{I}" },
@@ -129,17 +129,17 @@ export const BOXES: Subconcept[] = [
         question: "Resistors of 3 ohms, 5 ohms and 2 ohms are joined in series. Find the effective resistance.",
         options: ["2 ohms", "10 ohms", "0.97 ohms", "30 ohms"],
         correct: 1,
-        ask: "Resistors in series simply add up, so work out 3 plus 5 plus 2.",
+        ask: "Resistors in series simply add up, so work out 3 + 5 + 2.",
         hints: [
           "Use R_E equals R_1 plus R_2 plus R_3 for series resistors.",
-          "3 plus 5 plus 2 is 10.",
+          "3 + 5 + 2 is 10.",
         ],
         working: [
           { label: "Formula", latex: "R_E = R_1 + R_2 + R_3" },
           { label: "Substitute", latex: "R_E = 3 + 5 + 2" },
           { label: "Answer", latex: "R_E = 10\\ \\Omega" },
         ],
-        explain: "The effective resistance is 10 ohms, because series resistors add up and 3 plus 5 plus 2 is 10 ohms. The total is always larger than any single resistor.",
+        explain: "The effective resistance is 10 ohms, because series resistors add up and 3 + 5 + 2 is 10 ohms. The total is always larger than any single resistor.",
       },
       // 8 of 10 choice (concept: parallel is smaller) -----------------------
       {
@@ -168,7 +168,7 @@ export const BOXES: Subconcept[] = [
         ask: "Resistance is proportional to the length of the wire. If the length doubles, what happens to the 6 ohms?",
         hints: [
           "R equals rho times l divided by A, so R is proportional to the length l.",
-          "Doubling the length doubles the resistance: 2 times 6 is 12.",
+          "Doubling the length doubles the resistance: 2 × 6 is 12.",
         ],
         working: [
           { label: "Formula", latex: "R = \\dfrac{\\rho l}{A}" },
@@ -208,10 +208,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 59,
         targetMax: 61,
-        ask: "Current is charge divided by time, so work out 960 divided by 16.",
+        ask: "Current is charge divided by time, so work out 960 ÷ 16.",
         hints: [
           "Rearrange Q equals I times t into I equals Q divided by t.",
-          "960 divided by 16 is 60, so slide to 60 amperes.",
+          "960 ÷ 16 is 60, so slide to 60 amperes.",
         ],
         working: [
           { label: "Formula", latex: "I = \\dfrac{Q}{t}" },
@@ -231,9 +231,9 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 1.4,
         targetMax: 1.6,
-        ask: "Add the reciprocals: 1 over 3 plus 1 over 6 plus 1 over 6. Then turn that reciprocal back into a resistance.",
+        ask: "Add the reciprocals: 1 over 3 + 1 over 6 + 1 over 6. Then turn that reciprocal back into a resistance.",
         hints: [
-          "1 over 3 is 2 over 6, so the total is 2 over 6 plus 1 over 6 plus 1 over 6, which is 4 over 6.",
+          "1 over 3 is 2 over 6, so the total is 2 over 6 + 1 over 6 + 1 over 6, which is 4 over 6.",
           "1 over R_E is 4 over 6, so R_E is 6 over 4, which is 1.5 ohms.",
         ],
         working: [
@@ -256,8 +256,8 @@ export const BOXES: Subconcept[] = [
         targetMax: 1.1,
         ask: "First add the series resistors to get the total resistance, then divide the 8 volts by it.",
         hints: [
-          "The total resistance is 2 plus 6, which is 8 ohms.",
-          "I equals V divided by R, so 8 divided by 8 is 1 ampere.",
+          "The total resistance is 2 + 6, which is 8 ohms.",
+          "I equals V divided by R, so 8 ÷ 8 is 1 ampere.",
         ],
         working: [
           { label: "Formula", latex: "I = \\dfrac{V}{R_E}" },
@@ -371,7 +371,7 @@ export const BOXES: Subconcept[] = [
         errorLine: 0,
         ask: "Check the very first line: is adding the resistors the rule for series or for parallel? Parallel resistors do not simply add.",
         hints: [
-          "Parallel resistors combine by reciprocals: 1 over R_E equals 1 over R_1 plus 1 over R_2.",
+          "Parallel resistors combine by reciprocals: 1 over R_E equals 1 over R_1 + 1 over R_2.",
           "The first line uses the series rule by mistake; 2 6 ohm resistors in parallel actually give 3 ohms, not 12.",
         ],
         working: [
@@ -387,10 +387,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A source of e.m.f. 6.0 V drives 40 C of charge around a circuit. Build the working line for the energy W it transfers.",
         tiles: ["W =", "6", "\\times", "40", "=", "240", "J", "C"],
         answer: ["W =", "6", "\\times", "40", "=", "240", "J"],
-        ask: "The energy is the e.m.f. times the charge, so set up 6 times 40.",
+        ask: "The energy is the e.m.f. times the charge, so set up 6 × 40.",
         hints: [
           "Rearrange E equals W divided by Q into W equals E times Q.",
-          "6 times 40 is 240, and energy is measured in joules.",
+          "6 × 40 is 240, and energy is measured in joules.",
         ],
         working: [
           { label: "Formula", latex: "W = EQ" },

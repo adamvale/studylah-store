@@ -69,10 +69,10 @@ export const BOXES: Subconcept[] = [
         question: "A crate weighs 540 N and stands on a base 1.5 m by 0.60 m, an area of 0.90 m^2. Find the pressure on the floor.",
         options: ["600 Pa", "486 Pa", "60 Pa", "6000 Pa"],
         correct: 0,
-        ask: "Use pressure equals force divided by area, so work out 540 divided by 0.90.",
+        ask: "Use pressure equals force divided by area, so work out 540 ÷ 0.90.",
         hints: [
           "The base area is already 0.90 square metres, so divide the weight by it.",
-          "540 divided by 0.90 is 600, and pressure is measured in pascals.",
+          "540 ÷ 0.90 is 600, and pressure is measured in pascals.",
         ],
         working: [
           { label: "Formula", latex: "P = \\dfrac{F}{A}" },
@@ -91,17 +91,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 29500,
         targetMax: 30500,
-        ask: "First share the 84 newtons between the 4 feet, so each foot carries 84 divided by 4. Then divide that force by the area of one foot.",
+        ask: "First share the 84 newtons between the 4 feet, so each foot carries 84 ÷ 4. Then divide that force by the area of one foot.",
         hints: [
-          "84 divided by 4 is 21, so each foot presses down with 21 newtons.",
-          "21 divided by 0.0007 is 30000, so slide to 30000 pascals.",
+          "84 ÷ 4 is 21, so each foot presses down with 21 newtons.",
+          "21 ÷ 0.0007 is 30000, so slide to 30000 pascals.",
         ],
         working: [
           { label: "Formula", latex: "P = \\dfrac{F}{A}" },
           { label: "Substitute", latex: "P = \\dfrac{21}{0.00070}" },
           { label: "Answer", latex: "P = 30000\\ \\text{Pa}" },
         ],
-        explain: "Each foot carries a quarter of the weight, 21 newtons, on 0.0007 square metres, so the pressure is 21 divided by 0.0007, which is 30000 pascals. That is far more than the whole cabinet on a wide base would give.",
+        explain: "Each foot carries a quarter of the weight, 21 newtons, on 0.0007 square metres, so the pressure is 21 ÷ 0.0007, which is 30000 pascals. That is far more than the whole cabinet on a wide base would give.",
       },
       {
         kind: "classify",

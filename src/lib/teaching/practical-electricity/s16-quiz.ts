@@ -19,10 +19,10 @@ export const BOXES: Subconcept[] = [
         question: "A heater runs at 12 V and draws a current of 3.0 A. Find its power P.",
         options: ["36 W", "4 W", "15 W", "72 W"],
         correct: 0,
-        ask: "Power is voltage times current, so work out 12 times 3.0. Which option matches?",
+        ask: "Power is voltage times current, so work out 12 × 3.0. Which option matches?",
         hints: [
           "Use P equals V times I.",
-          "12 times 3.0 is 36, and power is measured in watts.",
+          "12 × 3.0 is 36, and power is measured in watts.",
         ],
         working: [
           { label: "Formula", latex: "P = VI" },
@@ -37,10 +37,10 @@ export const BOXES: Subconcept[] = [
         question: "A lamp is rated 240 V, 60 W. Find the current I it draws.",
         options: ["4 A", "0.25 A", "15 A", "0.3 A"],
         correct: 1,
-        ask: "Rearrange P equals V times I into I equals P divided by V, then work out 60 divided by 240.",
+        ask: "Rearrange P equals V times I into I equals P divided by V, then work out 60 ÷ 240.",
         hints: [
           "Current is power divided by voltage, I equals P divided by V.",
-          "60 divided by 240 is 0.25, in amperes.",
+          "60 ÷ 240 is 0.25, in amperes.",
         ],
         working: [
           { label: "Formula", latex: "I = \\dfrac{P}{V}" },
@@ -73,17 +73,17 @@ export const BOXES: Subconcept[] = [
         question: "A 2 kW heater runs for 4 h. Electricity costs 0.25 dollars per kWh. Find the cost.",
         options: ["8.00 dollars", "0.50 dollars", "2.00 dollars", "4.00 dollars"],
         correct: 2,
-        ask: "First find the energy in kilowatt-hours, 2 times 4, then multiply by the price of 0.25 dollars.",
+        ask: "First find the energy in kilowatt-hours, 2 × 4, then multiply by the price of 0.25 dollars.",
         hints: [
-          "Energy in kilowatt-hours is power in kilowatts times time in hours, so 2 times 4 is 8 kilowatt-hours.",
-          "Cost is 8 times 0.25, which is 2.00 dollars.",
+          "Energy in kilowatt-hours is power in kilowatts times time in hours, so 2 × 4 is 8 kilowatt-hours.",
+          "Cost is 8 × 0.25, which is 2.00 dollars.",
         ],
         working: [
           { label: "Formula", latex: "\\text{cost} = P \\times t \\times \\text{price}" },
           { label: "Substitute", latex: "\\text{cost} = 2 \\times 4 \\times 0.25" },
           { label: "Answer", latex: "\\text{cost} = 2.00\\ \\text{dollars}" },
         ],
-        explain: "The heater uses 2 times 4, which is 8 kilowatt-hours, and 8 times 0.25 dollars is 2.00 dollars.",
+        explain: "The heater uses 2 × 4, which is 8 kilowatt-hours, and 8 × 0.25 dollars is 2.00 dollars.",
       },
       // ---------- CHOICE 5 (Cost, conceptual) ----------
       {
@@ -209,15 +209,15 @@ export const BOXES: Subconcept[] = [
         targetMax: 4600,
         ask: "The power lost in a resistance is the current squared times the resistance, so work out 30 squared times 5.0.",
         hints: [
-          "Use P equals I squared times R.",
-          "30 squared is 900, and 900 times 5.0 is 4500, which is 4.5 times 10 to the power 3 watts.",
+          "Use P equals I^2 times R.",
+          "30 squared is 900, and 900 × 5.0 is 4500, which is 4.5 × 10 to the power 3 watts.",
         ],
         working: [
           { label: "Formula", latex: "P = I^2 R" },
           { label: "Substitute", latex: "P = 30^2 \\times 5.0" },
           { label: "Answer", latex: "P = 4.5 \\times 10^3\\ \\text{W}" },
         ],
-        explain: "The power lost is 4.5 times 10 to the power 3 watts, because 30 squared is 900, and 900 times 5.0 ohms is 4500 watts.",
+        explain: "The power lost is 4.5 × 10 to the power 3 watts, because 30 squared is 900, and 900 × 5.0 ohms is 4500 watts.",
       },
       // ---------- INTERACTIVE 2: tiles (Energy, calc) ----------
       {
@@ -225,10 +225,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A 2 V, 5 W bulb is switched on for 300 s. Build the working line for the energy E it transfers, using E = P t.",
         tiles: ["E =", "5", "\\times", "300", "=", "1500", "J", "W"],
         answer: ["E =", "5", "\\times", "300", "=", "1500", "J"],
-        ask: "Energy is power times time, so set up 5 times 300 with the correct unit.",
+        ask: "Energy is power times time, so set up 5 × 300 with the correct unit.",
         hints: [
           "Use E equals P times t, with P equal to 5 watts and t equal to 300 seconds.",
-          "5 times 300 is 1500, and energy is measured in joules.",
+          "5 × 300 is 1500, and energy is measured in joules.",
         ],
         working: [
           { label: "Formula", latex: "E = Pt" },
@@ -248,10 +248,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 23,
         targetMax: 25,
-        ask: "Power is energy divided by time, so work out 12 divided by 0.5.",
+        ask: "Power is energy divided by time, so work out 12 ÷ 0.5.",
         hints: [
           "Use P equals E divided by t, with the energy in kilowatt-hours and the time in hours.",
-          "12 divided by 0.5 is 24, in kilowatts.",
+          "12 ÷ 0.5 is 24, in kilowatts.",
         ],
         working: [
           { label: "Formula", latex: "P = \\dfrac{E}{t}" },
@@ -268,15 +268,15 @@ export const BOXES: Subconcept[] = [
         answer: ["I =", "3", "+", "3", "+", "5", "=", "11", "A"],
         ask: "Add the 3 currents to find the total the plug carries, then keep the correct unit.",
         hints: [
-          "The total current is the sum of the 3, so 3 plus 3 plus 5.",
-          "3 plus 3 plus 5 is 11, in amperes.",
+          "The total current is the sum of the 3, so 3 + 3 + 5.",
+          "3 + 3 + 5 is 11, in amperes.",
         ],
         working: [
           { label: "Formula", latex: "I = I_1 + I_2 + I_3" },
           { label: "Substitute", latex: "I = 3 + 3 + 5" },
           { label: "Answer", latex: "I = 11\\ \\text{A}" },
         ],
-        explain: "The total current is 11 amperes, because 3 plus 3 plus 5 is 11. The fuse chosen is the next standard rating above this, which is the 13 ampere fuse.",
+        explain: "The total current is 11 amperes, because 3 + 3 + 5 is 11. The fuse chosen is the next standard rating above this, which is the 13 ampere fuse.",
       },
       // ---------- INTERACTIVE 5: match (Safety devices) ----------
       {
@@ -403,10 +403,10 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "Explain what is meant by one kilowatt-hour, and why electricity suppliers measure energy in kilowatt-hours rather than in joules.",
-        modelAnswer: "One kilowatt-hour is the energy transferred by an appliance of power 1 kilowatt working for 1 hour, which is equal to 3.6 times 10 to the power 6 joules. Suppliers use the kilowatt-hour because a joule is a very small unit, so the energy a whole home uses would be an enormous number of joules. The kilowatt-hour is a much larger unit, so bills use small, convenient numbers.",
+        modelAnswer: "One kilowatt-hour is the energy transferred by an appliance of power 1 kilowatt working for 1 hour, which is equal to 3.6 × 10 to the power 6 joules. Suppliers use the kilowatt-hour because a joule is a very small unit, so the energy a whole home uses would be an enormous number of joules. The kilowatt-hour is a much larger unit, so bills use small, convenient numbers.",
         marks: [
           "One kilowatt-hour is the energy used by a 1 kilowatt appliance in 1 hour.",
-          "It equals 3.6 times 10 to the power 6 joules.",
+          "It equals 3.6 × 10 to the power 6 joules.",
           "A joule is very small, so kilowatt-hours give tidy numbers instead of huge ones.",
         ],
         ask: "Define the kilowatt-hour from a power and a time, then compare the size of a joule with the energy a home uses.",

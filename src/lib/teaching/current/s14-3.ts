@@ -54,10 +54,10 @@ export const BOXES: Subconcept[] = [
         question: "A component has a p.d. of 12 V across it and a current of 0.5 A through it. Find its resistance.",
         options: ["6 ohms", "24 ohms", "0.04 ohms", "12.5 ohms"],
         correct: 1,
-        ask: "Resistance is p.d. divided by current, so work out 12 divided by 0.5.",
+        ask: "Resistance is p.d. divided by current, so work out 12 ÷ 0.5.",
         hints: [
           "Use R = V / I.",
-          "12 divided by 0.5 is 24, and the answer is a resistance in ohms.",
+          "12 ÷ 0.5 is 24, and the answer is a resistance in ohms.",
         ],
         working: [
           { label: "Formula", latex: "R = \\dfrac{V}{I}" },
@@ -71,10 +71,10 @@ export const BOXES: Subconcept[] = [
         question: "A resistor carries a current of 0.03 A when the p.d. across it is 4.5 V. What is its resistance?",
         options: ["0.135 ohms", "1.5 ohms", "150 ohms", "15 ohms"],
         correct: 2,
-        ask: "Divide the p.d. by the current, so work out 4.5 divided by 0.03.",
+        ask: "Divide the p.d. by the current, so work out 4.5 ÷ 0.03.",
         hints: [
           "Use R = V / I.",
-          "4.5 divided by 0.03 is 150, and the answer is a resistance in ohms.",
+          "4.5 ÷ 0.03 is 150, and the answer is a resistance in ohms.",
         ],
         working: [
           { label: "Formula", latex: "R = \\dfrac{V}{I}" },
@@ -88,10 +88,10 @@ export const BOXES: Subconcept[] = [
         question: "A wire has a p.d. of 4.0 V across it and carries a current of 0.8 A. Calculate its resistance.",
         options: ["3.2 ohms", "0.2 ohms", "8 ohms", "5 ohms"],
         correct: 3,
-        ask: "Resistance is p.d. divided by current, so work out 4.0 divided by 0.8.",
+        ask: "Resistance is p.d. divided by current, so work out 4.0 ÷ 0.8.",
         hints: [
           "Use R = V / I.",
-          "4.0 divided by 0.8 is 5, and the answer is a resistance in ohms.",
+          "4.0 ÷ 0.8 is 5, and the answer is a resistance in ohms.",
         ],
         working: [
           { label: "Formula", latex: "R = \\dfrac{V}{I}" },
@@ -105,10 +105,10 @@ export const BOXES: Subconcept[] = [
         question: "A current of 4 A flows through a 12 ohm resistor. What is the p.d. across it?",
         options: ["48 V", "3 V", "16 V", "0.33 V"],
         correct: 0,
-        ask: "Rearrange R = V / I to get V = I R, so work out 4 times 12.",
+        ask: "Rearrange R = V / I to get V = I R, so work out 4 × 12.",
         hints: [
           "Multiply the current by the resistance.",
-          "4 times 12 is 48, and the answer is a p.d. in volts.",
+          "4 × 12 is 48, and the answer is a p.d. in volts.",
         ],
         working: [
           { label: "Formula", latex: "V = I R" },

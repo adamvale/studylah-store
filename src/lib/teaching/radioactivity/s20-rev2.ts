@@ -31,7 +31,7 @@ export const BOXES: Subconcept[] = [
         correct: 3,
         ask: "First find how many half-lives fit in 30 seconds by dividing 30 by 5. Then halve the count rate that many times.",
         hints: [
-          "30 divided by 5 is 6, so 6 half-lives pass.",
+          "30 ÷ 5 is 6, so 6 half-lives pass.",
           "Halve 24000 6 times: 12000, then 6000, 3000, 1500, 750, and finally 375 counts per second.",
         ],
         working: [
@@ -61,7 +61,7 @@ export const BOXES: Subconcept[] = [
         correct: 2,
         ask: "Find how many half-lives are in 18 years by dividing 18 by 6. Then halve the mass that many times.",
         hints: [
-          "18 divided by 6 is 3, so 3 half-lives pass.",
+          "18 ÷ 6 is 3, so 3 half-lives pass.",
           "Halve 240 grams 3 times: 120, then 60, then 30 grams.",
         ],
         working: [
@@ -166,7 +166,7 @@ export const BOXES: Subconcept[] = [
         ask: "First count how many times you must halve 480 to reach 60. Then divide the 18 hours by that number of half-lives.",
         hints: [
           "480 halves to 240, then 120, then 60, which is 3 halvings.",
-          "3 half-lives take 18 hours, so one half-life is 18 divided by 3, which is 6 hours.",
+          "3 half-lives take 18 hours, so one half-life is 18 ÷ 3, which is 6 hours.",
         ],
         working: [
           { label: "Formula", latex: "n = \\dfrac{t}{t_{1/2}}" },

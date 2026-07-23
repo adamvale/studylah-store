@@ -18,10 +18,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr2-03-wire-coil",
         options: ["9.0 mm", "0.90 mm", "2250 mm", "45.0 mm"],
         correct: 1,
-                ask: "One diameter is the total length divided by the number of turns, so work out 45.0 divided by 50. Which option is that?",
+                ask: "One diameter is the total length divided by the number of turns, so work out 45.0 ÷ 50. Which option is that?",
         hints: [
           "Coiling 50 turns makes the length 50 times larger, so divide the length by 50 to get 1 diameter.",
-          "45.0 divided by 50 is 0.90, measured in millimetres.",
+          "45.0 ÷ 50 is 0.90, measured in millimetres.",
         ],
         working: [
           { label: "Formula", latex: "d = \\dfrac{L}{n}" },
@@ -36,17 +36,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr2-09-period2-length-graph",
         options: ["4.02 m/s^2", "39.48 m/s^2", "9.7 m/s^2", "9.8 m/s^2"],
         correct: 3,
-                ask: "The gradient equals 4 pi squared divided by g, so g is 4 pi squared divided by the gradient. Work out 39.48 divided by 4.02.",
+                ask: "The gradient equals 4 pi squared divided by g, so g is 4 pi squared divided by the gradient. Work out 39.48 ÷ 4.02.",
         hints: [
-          "Squaring the pendulum equation gives T squared equals 4 pi squared over g, times l.",
-          "39.48 divided by 4.02 is about 9.8, in metres per second squared.",
+          "Squaring the pendulum equation gives T^2 equals 4 pi squared over g, times l.",
+          "39.48 ÷ 4.02 is about 9.8, in metres per second squared.",
         ],
         working: [
           { label: "Formula", latex: "g = \\dfrac{4\\pi^2}{\\text{gradient}}" },
           { label: "Substitute", latex: "g = \\dfrac{39.48}{4.02}" },
           { label: "Answer", latex: "g = 9.8\\ \\text{m/s}^2" },
         ],
-        explain: "The gravitational field strength is 9.8 metres per second squared, because 39.48 divided by the gradient 4.02 is 9.8. The gradient of the T squared against l line is 4 pi squared over g.",
+        explain: "The gravitational field strength is 9.8 metres per second squared, because 39.48 divided by the gradient 4.02 is 9.8. The gradient of the T^2 against l line is 4 pi squared over g.",
       },
       {
         kind: "choice",
@@ -67,10 +67,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr2-11-ramp",
         options: ["0.800", "5.76", "0.174", "0.139"],
         correct: 2,
-                ask: "The sine of the ramp angle is the height divided by the slope distance, so work out 0.139 divided by 0.800.",
+                ask: "The sine of the ramp angle is the height divided by the slope distance, so work out 0.139 ÷ 0.800.",
         hints: [
           "For a right-angled triangle, sine theta is the opposite side, the height, over the hypotenuse, the slope distance.",
-          "0.139 divided by 0.800 is about 0.174, with no unit.",
+          "0.139 ÷ 0.800 is about 0.174, with no unit.",
         ],
         working: [
           { label: "Formula", latex: "\\sin\\theta = \\dfrac{h}{s}" },
@@ -84,17 +84,17 @@ export const BOXES: Subconcept[] = [
         question: "A cylinder starts from rest and covers x = 0.900 m of the ramp in an average time of 1.036 s. The final speed is twice the average speed, so v = 2x / t. Find v.",
         options: ["0.87 m/s", "1.04 m/s", "0.90 m/s", "1.74 m/s"],
         correct: 3,
-                ask: "Because it starts from rest, the final speed is 2 times x divided by t. Work out 2 times 0.900, then divide by 1.036.",
+                ask: "Because it starts from rest, the final speed is 2 times x divided by t. Work out 2 × 0.900, then divide by 1.036.",
         hints: [
           "From rest, the average speed is half the final speed, so the final speed is 2x divided by t.",
-          "2 times 0.900 is 1.800, and 1.800 divided by 1.036 is about 1.74 metres per second.",
+          "2 × 0.900 is 1.800, and 1.800 ÷ 1.036 is about 1.74 metres per second.",
         ],
         working: [
           { label: "Formula", latex: "v = \\dfrac{2x}{t}" },
           { label: "Substitute", latex: "v = \\dfrac{2 \\times 0.900}{1.036}" },
           { label: "Answer", latex: "v = 1.74\\ \\text{m/s}" },
         ],
-        explain: "The final speed is 1.74 metres per second, because 2 times 0.900 metres is 1.800 metres, and dividing by 1.036 seconds gives 1.74 metres per second. From rest the final speed is twice the average speed.",
+        explain: "The final speed is 1.74 metres per second, because 2 × 0.900 metres is 1.800 metres, and dividing by 1.036 seconds gives 1.74 metres per second. From rest the final speed is twice the average speed.",
       },
       {
         kind: "graphpick",
@@ -108,12 +108,12 @@ export const BOXES: Subconcept[] = [
           { points: [[0, 4.0], [0.5, 2.0], [1.0, 0]] },
         ],
         correct: 1,
-        ask: "T squared equals 4 pi squared over g, times l. That is a straight line that passes through the origin and rises as l rises. Which graph matches?",
+        ask: "T^2 equals 4 pi squared over g, times l. That is a straight line that passes through the origin and rises as l rises. Which graph matches?",
         hints: [
-          "The relation T squared equals a constant times l has no added number, so the line goes through the origin.",
+          "The relation T^2 equals a constant times l has no added number, so the line goes through the origin.",
           "It is a straight line, not a curve, and it rises as the length increases.",
         ],
-        explain: "T squared is proportional to l, so the correct graph is a straight line rising through the origin. A curve would mean T squared is not proportional to l, and a line that misses the origin would have an added constant.",
+        explain: "T^2 is proportional to l, so the correct graph is a straight line rising through the origin. A curve would mean T^2 is not proportional to l, and a line that misses the origin would have an added constant.",
       },
       {
         kind: "order",
@@ -130,7 +130,7 @@ export const BOXES: Subconcept[] = [
           "Start by measuring a length, then time many oscillations to get its period.",
           "Only once the line is plotted can you read its gradient and put it into g equals 4 pi squared over the gradient.",
         ],
-        explain: "First measure the length to the centre of the bob, then time 20 oscillations for the period, repeat for several lengths and plot T squared against l, read the gradient, and finally calculate g as 4 pi squared divided by the gradient.",
+        explain: "First measure the length to the centre of the bob, then time 20 oscillations for the period, repeat for several lengths and plot T^2 against l, read the gradient, and finally calculate g as 4 pi squared divided by the gradient.",
       },
       {
         kind: "match",
@@ -158,10 +158,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 9.6,
         targetMax: 9.8,
-                ask: "g is 4 pi squared divided by the gradient, so work out 39.48 divided by 4.05 and slide to that value.",
+                ask: "g is 4 pi squared divided by the gradient, so work out 39.48 ÷ 4.05 and slide to that value.",
         hints: [
-          "The gradient of the T squared against l line is 4 pi squared over g, so g is 4 pi squared over the gradient.",
-          "39.48 divided by 4.05 is about 9.7, so slide to 9.7 metres per second squared.",
+          "The gradient of the T^2 against l line is 4 pi squared over g, so g is 4 pi squared over the gradient.",
+          "39.48 ÷ 4.05 is about 9.7, so slide to 9.7 metres per second squared.",
         ],
         working: [
           { label: "Formula", latex: "g = \\dfrac{4\\pi^2}{\\text{gradient}}" },

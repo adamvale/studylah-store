@@ -61,10 +61,10 @@ export const BOXES: Subconcept[] = [
         figure: "fig-17-06-parallel-we1",
         options: ["3 A", "4 A", "16 A", "48 A"],
         correct: 1,
-        ask: "First combine the branches: 1 over R equals 1 over 4 plus 1 over 12, which is 4 over 12, so R is 3 ohms. Then the current is 12 divided by 3.",
+        ask: "First combine the branches: 1 over R equals 1 over 4 + 1 over 12, which is 4 over 12, so R is 3 ohms. Then the current is 12 ÷ 3.",
         hints: [
-          "1 over 4 plus 1 over 12 is 4 over 12, so the effective resistance is 3 ohms.",
-          "The total current is 12 divided by 3, which is 4.",
+          "1 over 4 + 1 over 12 is 4 over 12, so the effective resistance is 3 ohms.",
+          "The total current is 12 ÷ 3, which is 4.",
         ],
         working: [
           { label: "Formula", latex: "\\frac{1}{R_{eff}} = \\frac{1}{R_1} + \\frac{1}{R_2},\\quad I = \\frac{V}{R_{eff}}" },
@@ -80,8 +80,8 @@ export const BOXES: Subconcept[] = [
         correct: 2,
         ask: "Each branch has the full 6 volts across it. Find each branch current with I equals V over R, then add them.",
         hints: [
-          "The 6 ohm branch carries 6 divided by 6, which is 1 ampere; the 3 ohm branch carries 6 divided by 3, which is 2 amperes.",
-          "Add the branch currents: 1 plus 2 is 3.",
+          "The 6 ohm branch carries 6 ÷ 6, which is 1 ampere; the 3 ohm branch carries 6 ÷ 3, which is 2 amperes.",
+          "Add the branch currents: 1 + 2 is 3.",
         ],
         working: [
           { label: "Formula", latex: "I = I_1 + I_2 = \\frac{V}{R_1} + \\frac{V}{R_2}" },
@@ -95,9 +95,9 @@ export const BOXES: Subconcept[] = [
         question: "A 6 ohm resistor and a 12 ohm resistor are connected in parallel. What is their effective resistance?",
         options: ["4 ohms", "18 ohms", "2 ohms", "9 ohms"],
         correct: 0,
-        ask: "Add the reciprocals: 1 over 6 plus 1 over 12. Put them over 12, then flip the total.",
+        ask: "Add the reciprocals: 1 over 6 + 1 over 12. Put them over 12, then flip the total.",
         hints: [
-          "1 over 6 is 2 over 12, so 1 over 6 plus 1 over 12 is 3 over 12, which is 1 over 4.",
+          "1 over 6 is 2 over 12, so 1 over 6 + 1 over 12 is 3 over 12, which is 1 over 4.",
           "Flip 1 over 4 to get 4 ohms. The answer must be smaller than the smallest branch, 6 ohms.",
         ],
         working: [

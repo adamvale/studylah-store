@@ -77,14 +77,14 @@ export const BOXES: Subconcept[] = [
         ask: "There are 10 to the power 6 millimetres in 1 kilometre, so divide 32 by 10 to the power 6.",
         hints: [
           "1 kilometre is 10 to the power 6 millimetres.",
-          "32 divided by 10 to the power 6 is 3.2 times 10 to the power minus 5.",
+          "32 ÷ 10 to the power 6 is 3.2 × 10 to the power minus 5.",
         ],
         working: [
           { label: "Formula", latex: "1\\ \\text{km} = 10^{6}\\ \\text{mm}" },
           { label: "Substitute", latex: "32 \\div 10^{6}" },
           { label: "Answer", latex: "3.2 \\times 10^{-5}\\ \\text{km}" },
         ],
-        explain: "32 millimetres is 3.2 times 10 to the power minus 5 kilometres, because there are 10 to the power 6 millimetres in a kilometre, and 32 divided by 10 to the power 6 is 3.2 times 10 to the power minus 5.",
+        explain: "32 millimetres is 3.2 × 10 to the power minus 5 kilometres, because there are 10 to the power 6 millimetres in a kilometre, and 32 ÷ 10 to the power 6 is 3.2 × 10 to the power minus 5.",
       },
       {
         kind: "choice",
@@ -224,17 +224,17 @@ export const BOXES: Subconcept[] = [
         prompt: "A block lies along a ruler from the 3.0 cm mark to the 5.4 cm mark. Build the working line for its length L.",
         tiles: ["L =", "5.4", "-", "3.0", "=", "2.4", "cm", "mm"],
         answer: ["L =", "5.4", "-", "3.0", "=", "2.4", "cm"],
-        ask: "The length is the end reading minus the start reading, so set up 5.4 minus 3.0.",
+        ask: "The length is the end reading minus the start reading, so set up 5.4 - 3.0.",
         hints: [
           "Subtract the start mark from the end mark.",
-          "5.4 minus 3.0 is 2.4, and the answer is in centimetres.",
+          "5.4 - 3.0 is 2.4, and the answer is in centimetres.",
         ],
         working: [
           { label: "Formula", latex: "L = x_2 - x_1" },
           { label: "Substitute", latex: "L = 5.4 - 3.0" },
           { label: "Answer", latex: "L = 2.4\\ \\text{cm}" },
         ],
-        explain: "The length is 2.4 centimetres, because the block runs from 3.0 to 5.4 centimetres, and 5.4 minus 3.0 is 2.4 centimetres. Measuring from a mark other than 0 avoids any worn end of the rule.",
+        explain: "The length is 2.4 centimetres, because the block runs from 3.0 to 5.4 centimetres, and 5.4 - 3.0 is 2.4 centimetres. Measuring from a mark other than 0 avoids any worn end of the rule.",
       },
       {
         kind: "slider",
@@ -248,14 +248,14 @@ export const BOXES: Subconcept[] = [
         ask: "Standard form needs A to be at least 1 and less than 10. Move the decimal point in 5 280 000 to find A.",
         hints: [
           "Put the decimal point just after the first digit, 5, then count how many places it moved.",
-          "5 280 000 becomes 5.28 times 10 to the power 6, so A is 5.28.",
+          "5 280 000 becomes 5.28 × 10 to the power 6, so A is 5.28.",
         ],
         working: [
           { label: "Formula", latex: "N = A \\times 10^{n},\\ 1 \\le A < 10" },
           { label: "Substitute", latex: "5\\,280\\,000 = 5.28 \\times 10^{6}" },
           { label: "Answer", latex: "A = 5.28" },
         ],
-        explain: "In standard form 5 280 000 joules is 5.28 times 10 to the power 6 joules, so A is 5.28. A must be at least 1 and less than 10.",
+        explain: "In standard form 5 280 000 joules is 5.28 × 10 to the power 6 joules, so A is 5.28. A must be at least 1 and less than 10.",
       },
       {
         kind: "spoterror",
@@ -268,15 +268,15 @@ export const BOXES: Subconcept[] = [
         errorLine: 2,
         ask: "Check the last line. Write 0.08 in standard form first, then combine the powers of 10.",
         hints: [
-          "0.08 is 8 times 10 to the power minus 2.",
-          "Minus 2 plus 9 is 7, so 0.08 times 10 to the power 9 is 8 times 10 to the power 7, not 10 to the power 8.",
+          "0.08 is 8 × 10 to the power minus 2.",
+          "Minus 2 + 9 is 7, so 0.08 × 10 to the power 9 is 8 × 10 to the power 7, not 10 to the power 8.",
         ],
         working: [
           { label: "Formula", latex: "1\\ \\text{m} = 10^{9}\\ \\text{nm}" },
           { label: "Substitute", latex: "0.08\\ \\text{m} = 0.08 \\times 10^{9}\\ \\text{nm}" },
           { label: "Answer", latex: "= 8 \\times 10^{7}\\ \\text{nm}" },
         ],
-        explain: "The last line is wrong. 0.08 is 8 times 10 to the power minus 2, and minus 2 plus 9 is 7, so 0.08 times 10 to the power 9 is 8 times 10 to the power 7 nanometres, not 8 times 10 to the power 8.",
+        explain: "The last line is wrong. 0.08 is 8 × 10 to the power minus 2, and minus 2 + 9 is 7, so 0.08 × 10 to the power 9 is 8 × 10 to the power 7 nanometres, not 8 × 10 to the power 8.",
       },
       {
         kind: "cloze",
@@ -321,10 +321,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 1.4,
         targetMax: 1.6,
-        ask: "The period is the time for 1 oscillation, so divide the total time by the number of swings: 30 divided by 20.",
+        ask: "The period is the time for 1 oscillation, so divide the total time by the number of swings: 30 ÷ 20.",
         hints: [
           "Use period equals total time divided by the number of oscillations.",
-          "30 divided by 20 is 1.5, so slide to 1.5 seconds.",
+          "30 ÷ 20 is 1.5, so slide to 1.5 seconds.",
         ],
         working: [
           { label: "Formula", latex: "T = \\dfrac{t}{20}" },
@@ -365,7 +365,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "Explain what standard form is and give one reason it is useful in physics.",
-        modelAnswer: "Standard form writes a number as A times 10 to the power n, where A is at least 1 and less than 10, and n is a whole number. For example 5 280 000 joules is written as 5.28 times 10 to the power 6 joules. It is useful because it lets you write very large or very small numbers compactly and compare their sizes at a glance.",
+        modelAnswer: "Standard form writes a number as A times 10 to the power n, where A is at least 1 and less than 10, and n is a whole number. For example 5 280 000 joules is written as 5.28 × 10 to the power 6 joules. It is useful because it lets you write very large or very small numbers compactly and compare their sizes at a glance.",
         marks: [
           "Standard form is A times 10 to the power n, with A from 1 up to but not including 10.",
           "A correct example is given.",
@@ -399,7 +399,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "open",
         prompt: "Describe how you would measure the period of a simple pendulum accurately using a stopwatch.",
-        modelAnswer: "Time how long the pendulum takes to make 20 complete oscillations rather than just 1, then divide that time by 20 to find the period. Timing many swings and dividing reduces the effect of your reaction time. Repeating the measurement and taking an average makes it more reliable still. For example, if 20 oscillations take 30 seconds, the period is 30 divided by 20, which is 1.5 seconds.",
+        modelAnswer: "Time how long the pendulum takes to make 20 complete oscillations rather than just 1, then divide that time by 20 to find the period. Timing many swings and dividing reduces the effect of your reaction time. Repeating the measurement and taking an average makes it more reliable still. For example, if 20 oscillations take 30 seconds, the period is 30 ÷ 20, which is 1.5 seconds.",
         marks: [
           "Time a number of oscillations, for example 20, not just 1.",
           "Divide the total time by the number of oscillations to get the period.",

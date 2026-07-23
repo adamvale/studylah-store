@@ -19,10 +19,10 @@ export const BOXES: Subconcept[] = [
         question: "A filament lamp carries a current of 0.50 A when the voltage across it is 12 V. Find its resistance R.",
         options: ["6.0 ohms", "0.042 ohms", "24 ohms", "2.4 ohms"],
         correct: 2,
-        ask: "Resistance is voltage divided by current, so work out 12 divided by 0.50. Which option matches?",
+        ask: "Resistance is voltage divided by current, so work out 12 ÷ 0.50. Which option matches?",
         hints: [
           "Use R equals V divided by I.",
-          "12 divided by 0.50 is 24, measured in ohms.",
+          "12 ÷ 0.50 is 24, measured in ohms.",
         ],
         working: [
           { label: "Formula", latex: "R = \\dfrac{V}{I}" },
@@ -74,17 +74,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr6-06-potential-divider",
         options: ["5.0 V", "3.0 V", "2.0 V", "0.6 V"],
         correct: 1,
-        ask: "The output is the supply voltage times R_2 divided by the total resistance, so work out 6.0 divided by 10.0, then times 5.0.",
+        ask: "The output is the supply voltage times R_2 divided by the total resistance, so work out 6.0 ÷ 10.0, then times 5.0.",
         hints: [
           "Use V_out equals R_2 divided by the sum of R_1 and R_2, all times V.",
-          "6.0 divided by 10.0 is 0.6, and 0.6 times 5.0 is 3.0 volts.",
+          "6.0 ÷ 10.0 is 0.6, and 0.6 × 5.0 is 3.0 volts.",
         ],
         working: [
           { label: "Formula", latex: "V_{out} = \\dfrac{R_2}{R_1 + R_2}\\,V" },
           { label: "Substitute", latex: "V_{out} = \\dfrac{6.0}{4.0 + 6.0}\\times 5.0" },
           { label: "Answer", latex: "V_{out} = 3.0\\ \\text{V}" },
         ],
-        explain: "The output is 3.0 volts, because 6.0 divided by 10.0 is 0.6, and 0.6 times 5.0 volts is 3.0 volts.",
+        explain: "The output is 3.0 volts, because 6.0 ÷ 10.0 is 0.6, and 0.6 × 5.0 volts is 3.0 volts.",
       },
       // 5 - choice, correct 2 (power P = IV = 6.0 W)
       {
@@ -92,10 +92,10 @@ export const BOXES: Subconcept[] = [
         question: "A lamp carries a current of 0.50 A at a voltage of 12 V. Find the power it transfers.",
         options: ["24 W", "0.042 W", "6.0 W", "12 W"],
         correct: 2,
-        ask: "Power is current times voltage, so work out 0.50 times 12. Which option matches?",
+        ask: "Power is current times voltage, so work out 0.50 × 12. Which option matches?",
         hints: [
           "Use P equals I times V.",
-          "0.50 times 12 is 6.0, measured in watts.",
+          "0.50 × 12 is 6.0, measured in watts.",
         ],
         working: [
           { label: "Formula", latex: "P = IV" },
@@ -111,17 +111,17 @@ export const BOXES: Subconcept[] = [
         figure: "fig-pr6-05-series-parallel",
         options: ["150 ohms", "13.6 ohms", "50 ohms", "16.7 ohms"],
         correct: 0,
-        ask: "Resistors in series simply add up, so work out 25 plus 50 plus 75.",
+        ask: "Resistors in series simply add up, so work out 25 + 50 + 75.",
         hints: [
           "For a series circuit the total resistance is the sum of the separate resistances.",
-          "25 plus 50 plus 75 is 150 ohms.",
+          "25 + 50 + 75 is 150 ohms.",
         ],
         working: [
           { label: "Formula", latex: "R = R_1 + R_2 + R_3" },
           { label: "Substitute", latex: "R = 25 + 50 + 75" },
           { label: "Answer", latex: "R = 150\\ \\text{ohms}" },
         ],
-        explain: "The total is 150 ohms, because resistors in series add: 25 plus 50 plus 75 is 150 ohms.",
+        explain: "The total is 150 ohms, because resistors in series add: 25 + 50 + 75 is 150 ohms.",
       },
       // 7 - choice, correct 3 (field out of page -> anticlockwise)
       {
@@ -166,17 +166,17 @@ export const BOXES: Subconcept[] = [
         question: "A current of 2.0 A flows through a 5.0 ohm resistor. Find the power dissipated using P = I^2 R.",
         options: ["20 W", "10 W", "40 W", "2.0 W"],
         correct: 0,
-        ask: "Square the current first, then multiply by the resistance: work out 2.0 squared, then times 5.0.",
+        ask: "Square the current first, then multiply by the resistance: work out 2.0^2, then times 5.0.",
         hints: [
-          "Use P equals I squared times R.",
-          "2.0 squared is 4.0, and 4.0 times 5.0 is 20 watts.",
+          "Use P equals I^2 times R.",
+          "2.0^2 is 4.0, and 4.0 × 5.0 is 20 watts.",
         ],
         working: [
           { label: "Formula", latex: "P = I^2 R" },
           { label: "Substitute", latex: "P = 2.0^2 \\times 5.0" },
           { label: "Answer", latex: "P = 20\\ \\text{W}" },
         ],
-        explain: "The power is 20 watts, because 2.0 squared is 4.0, and 4.0 times 5.0 ohms is 20 watts.",
+        explain: "The power is 20 watts, because 2.0^2 is 4.0, and 4.0 × 5.0 ohms is 20 watts.",
       },
       // 10 - choice, correct 2 (diode current I = V_x / R = 1.00 A)
       {
@@ -184,17 +184,17 @@ export const BOXES: Subconcept[] = [
         question: "A diode is in series with a 22.0 ohm resistor X. The voltmeter reads 22.0 V across X. Find the current in the circuit.",
         options: ["0.60 A", "22 A", "1.00 A", "0.50 A"],
         correct: 2,
-        ask: "The current through the resistor is the same as through the diode, so use I equals V_x divided by R: 22.0 divided by 22.0.",
+        ask: "The current through the resistor is the same as through the diode, so use I equals V_x divided by R: 22.0 ÷ 22.0.",
         hints: [
           "In series the current is the same everywhere, so find it from the resistor.",
-          "22.0 divided by 22.0 is 1.00 ampere.",
+          "22.0 ÷ 22.0 is 1.00 ampere.",
         ],
         working: [
           { label: "Formula", latex: "I = \\dfrac{V_x}{R}" },
           { label: "Substitute", latex: "I = \\dfrac{22.0}{22.0}" },
           { label: "Answer", latex: "I = 1.00\\ \\text{A}" },
         ],
-        explain: "The current is 1.00 ampere, because 22.0 volts across the 22.0 ohm resistor gives 22.0 divided by 22.0, which is 1.00 ampere, and that same current flows through the diode in series.",
+        explain: "The current is 1.00 ampere, because 22.0 volts across the 22.0 ohm resistor gives 22.0 ÷ 22.0, which is 1.00 ampere, and that same current flows through the diode in series.",
       },
       // INTERACTIVE 1 - classify (ohmic vs non-ohmic)
       {
@@ -262,10 +262,10 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 715,
         targetMax: 725,
-        ask: "Energy is voltage times current times time. Turn 2.0 minutes into 120 seconds, then work out 12 times 0.50 times 120.",
+        ask: "Energy is voltage times current times time. Turn 2.0 minutes into 120 seconds, then work out 12 × 0.50 × 120.",
         hints: [
           "Use E equals V times I times t, with t equal to 120 seconds.",
-          "12 times 0.50 is 6.0, and 6.0 times 120 is 720 joules.",
+          "12 × 0.50 is 6.0, and 6.0 × 120 is 720 joules.",
         ],
         working: [
           { label: "Formula", latex: "E = VIt" },
@@ -337,10 +337,10 @@ export const BOXES: Subconcept[] = [
         prompt: "A lamp reads 9.30 V and 1.52 A. Build the working line for its resistance R, using R = V/I.",
         tiles: ["R =", "9.30", "\\div", "1.52", "=", "6.12", "ohms", "A"],
         answer: ["R =", "9.30", "\\div", "1.52", "=", "6.12", "ohms"],
-        ask: "Resistance is voltage divided by current, so set up 9.30 divided by 1.52.",
+        ask: "Resistance is voltage divided by current, so set up 9.30 ÷ 1.52.",
         hints: [
           "Use R equals V divided by I.",
-          "9.30 divided by 1.52 is 6.12, measured in ohms.",
+          "9.30 ÷ 1.52 is 6.12, measured in ohms.",
         ],
         working: [
           { label: "Formula", latex: "R = \\dfrac{V}{I}" },
@@ -360,17 +360,17 @@ export const BOXES: Subconcept[] = [
         start: 0,
         targetMin: 19,
         targetMax: 21,
-        ask: "For an ohmic component the gradient of the I-V line equals 1 divided by R, so R is 1 divided by the gradient: work out 1 divided by 0.050.",
+        ask: "For an ohmic component the gradient of the I-V line equals 1 divided by R, so R is 1 divided by the gradient: work out 1 ÷ 0.050.",
         hints: [
           "The gradient is 1 divided by R, so R equals 1 divided by the gradient.",
-          "1 divided by 0.050 is 20 ohms.",
+          "1 ÷ 0.050 is 20 ohms.",
         ],
         working: [
           { label: "Formula", latex: "R = \\dfrac{1}{\\text{gradient}}" },
           { label: "Substitute", latex: "R = \\dfrac{1}{0.050}" },
           { label: "Answer", latex: "R = 20\\ \\text{ohms}" },
         ],
-        explain: "The resistance is 20 ohms, because the gradient of the I-V line is 1 divided by R, and 1 divided by 0.050 is 20 ohms.",
+        explain: "The resistance is 20 ohms, because the gradient of the I-V line is 1 divided by R, and 1 ÷ 0.050 is 20 ohms.",
       },
       // INTERACTIVE 10 - classify (Faraday vs Lenz)
       {

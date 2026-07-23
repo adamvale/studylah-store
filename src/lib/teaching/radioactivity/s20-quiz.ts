@@ -106,7 +106,7 @@ export const BOXES: Subconcept[] = [
           { label: "Substitute", latex: "^{238}_{92}\\text{U} \\rightarrow\\ ^{234}_{90}\\text{X} + ^{4}_{2}\\text{He}" },
           { label: "Answer", latex: "\\text{X} = \\ ^{234}_{90}\\text{Th}" },
         ],
-        explain: "In alpha decay the nucleon number falls by 4 and the proton number falls by 2, so uranium 238 becomes thorium 234. The nucleon numbers balance as 238 equals 234 plus 4, and the proton numbers balance as 92 equals 90 plus 2.",
+        explain: "In alpha decay the nucleon number falls by 4 and the proton number falls by 2, so uranium 238 becomes thorium 234. The nucleon numbers balance as 238 equals 234 + 4, and the proton numbers balance as 92 equals 90 + 2.",
       },
       // 6 CHOICE calc, counting (correct 0)
       {
@@ -114,17 +114,17 @@ export const BOXES: Subconcept[] = [
         question: "A vanadium 51 nucleus has a proton number of 23. How many neutrons does it contain?",
         options: ["28", "23", "51", "74"],
         correct: 0,
-        ask: "The number of neutrons is the nucleon number minus the proton number. Work out 51 minus 23.",
+        ask: "The number of neutrons is the nucleon number minus the proton number. Work out 51 - 23.",
         hints: [
           "Neutrons equal the nucleon number minus the proton number.",
-          "51 minus 23 is 28 neutrons.",
+          "51 - 23 is 28 neutrons.",
         ],
         working: [
           { label: "Formula", latex: "N = A - Z" },
           { label: "Substitute", latex: "N = 51 - 23" },
           { label: "Answer", latex: "N = 28" },
         ],
-        explain: "The number of neutrons is the nucleon number minus the proton number, so 51 minus 23 is 28 neutrons.",
+        explain: "The number of neutrons is the nucleon number minus the proton number, so 51 - 23 is 28 neutrons.",
       },
       // 7 CHOICE calc, half-life (correct 3)
       {
@@ -342,7 +342,7 @@ export const BOXES: Subconcept[] = [
           { label: "Substitute", latex: "^{210}_{84}\\text{Po} \\rightarrow\\ ^{206}_{82}\\text{X} + ^{4}_{2}\\text{He}" },
           { label: "Answer", latex: "^{210}_{84}\\text{Po} \\rightarrow\\ ^{206}_{82}\\text{Pb} + ^{4}_{2}\\text{He}" },
         ],
-        explain: "In alpha decay polonium 210 loses 4 from its nucleon number and 2 from its proton number, becoming lead 206 plus a helium 4 nucleus. The nucleon numbers balance as 210 equals 206 plus 4, and the proton numbers as 84 equals 82 plus 2.",
+        explain: "In alpha decay polonium 210 loses 4 from its nucleon number and 2 from its proton number, becoming lead 206 plus a helium 4 nucleus. The nucleon numbers balance as 210 equals 206 + 4, and the proton numbers as 84 equals 82 + 2.",
       },
       // 18 INTERACTIVE graphpick: halving decay curve
       {
