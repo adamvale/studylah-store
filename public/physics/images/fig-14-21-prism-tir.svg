@@ -12,19 +12,19 @@
     .arc { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
   </style>
   <!-- right-angle prism -->
-  <polygon class="prism" points="150,80 150,260 330,260"/>
+  <polygon data-step="1" class="prism" points="150,80 150,260 330,260"/>
   <!-- incident ray enters vertical face normally -->
-  <path class="inc" marker-end="url(#a1)" d="M70,140 L208,140"/>
-  <text x="90" y="130" font-size="13" fill="#E8B65A">incident ray</text>
+  <path data-step="2" class="inc" marker-end="url(#a1)" d="M70,140 L208,140"/>
+  <text data-step="2" x="90" y="130" font-size="13" fill="#E8B65A">incident ray</text>
   <!-- normal at hitting point H(210,140), perpendicular to hypotenuse -->
-  <path class="norm" d="M170,180 L250,100"/>
+  <path data-step="3" class="norm" d="M170,180 L250,100"/>
   <!-- reflected ray goes straight down, exits bottom face -->
-  <path class="ref" marker-end="url(#a2)" d="M210,140 L210,318"/>
-  <text x="222" y="300" font-size="13" fill="#6FB7E0">reflected ray</text>
+  <path data-step="4" class="ref" marker-end="url(#a2)" d="M210,140 L210,318"/>
+  <text data-step="4" x="222" y="300" font-size="13" fill="#6FB7E0">reflected ray</text>
   <!-- angle marks -->
-  <path class="arc" d="M186,140 A24,24 0 0,0 199,120"/>
-  <text x="176" y="128" font-size="12">45&#176;</text>
-  <path class="arc" d="M210,164 A24,24 0 0,0 226,157"/>
-  <text x="216" y="180" font-size="12">45&#176;</text>
-  <text x="220" y="70" text-anchor="middle" font-size="13">45&#176; &gt; critical angle &#8594; total internal reflection</text>
+  <path data-step="5" class="arc" d="M186,140 A24,24 0 0,0 199,120"/>
+  <text data-step="5" x="176" y="128" font-size="12">45&#176;</text>
+  <path data-step="5" class="arc" d="M210,164 A24,24 0 0,0 226,157"/>
+  <text data-step="5" x="216" y="180" font-size="12">45&#176;</text>
+  <text data-step="5" x="220" y="70" text-anchor="middle" font-size="13">45&#176; &gt; critical angle &#8594; total internal reflection</text>
 </svg>

@@ -13,30 +13,30 @@
     <marker id="ab" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#6FB7E0"/></marker>
   </defs>
 
-  <rect class="glass" x="110" y="150" width="240" height="120" rx="3"/>
+  <rect data-step="1" class="glass" x="110" y="150" width="240" height="120" rx="3"/>
 
-  <path class="normal" d="M190,95 V215"/>
-  <path class="normal" d="M261.3,215 V325"/>
+  <path data-step="1" class="normal" d="M190,95 V215"/>
+  <path data-step="1" class="normal" d="M261.3,215 V325"/>
 
-  <path class="ray" d="M105.7,79.3 L147.9,114.7" marker-end="url(#ab)"/>
-  <path class="ray" d="M147.9,114.7 L190,150"/>
-  <path class="ray" d="M190,150 L225.6,210" marker-end="url(#ab)"/>
-  <path class="ray" d="M225.6,210 L261.3,270"/>
-  <path class="ray" d="M261.3,270 L295.8,299" marker-end="url(#ab)"/>
-  <path class="ray" d="M295.8,299 L330.2,327.9"/>
+  <path data-step="1" class="ray" d="M105.7,79.3 L147.9,114.7" marker-end="url(#ab)"/>
+  <path data-step="1" class="ray" d="M147.9,114.7 L190,150"/>
+  <path data-step="1" class="ray" d="M190,150 L225.6,210" marker-end="url(#ab)"/>
+  <path data-step="2" class="ray" d="M225.6,210 L261.3,270"/>
+  <path data-step="2" class="ray" d="M261.3,270 L295.8,299" marker-end="url(#ab)"/>
+  <path data-step="2" class="ray" d="M295.8,299 L330.2,327.9"/>
 
-  <path class="arc" d="M151.7,117.9 A50,50 0 0 1 190,100"/>
-  <path class="arc" d="M190,190 A40,40 0 0 0 210.4,184.4"/>
+  <path data-step="2" class="arc" d="M151.7,117.9 A50,50 0 0 1 190,100"/>
+  <path data-step="2" class="arc" d="M190,190 A40,40 0 0 0 210.4,184.4"/>
 
-  <text class="sym" x="172" y="124" text-anchor="middle">i</text>
-  <text class="sym" x="197" y="186" text-anchor="middle">r</text>
+  <text data-step="3" class="sym" x="172" y="124" text-anchor="middle">i</text>
+  <text data-step="3" class="sym" x="197" y="186" text-anchor="middle">r</text>
 
-  <text x="34" y="140">air</text>
-  <text x="120" y="174">glass</text>
-  <text x="34" y="300">air</text>
-  <text class="grey" x="196" y="92">normal</text>
-  <text class="grey" x="267" y="212">normal</text>
-  <text class="lbl" x="240" y="120">r is less than i</text>
-  <text class="lbl" x="120" y="240">towards normal</text>
-  <text class="lbl" x="120" y="332">away from normal</text>
+  <text data-step="3" x="34" y="140">air</text>
+  <text data-step="3" x="120" y="174">glass</text>
+  <text data-step="3" x="34" y="300">air</text>
+  <text data-step="4" class="grey" x="196" y="92">normal</text>
+  <text data-step="4" class="grey" x="267" y="212">normal</text>
+  <text data-step="4" class="lbl" x="240" y="120">r is less than i</text>
+  <text data-step="4" class="lbl" x="120" y="240">towards normal</text>
+  <text data-step="4" class="lbl" x="120" y="332">away from normal</text>
 </svg>

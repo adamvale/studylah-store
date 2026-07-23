@@ -7,21 +7,21 @@
     .lbl { font-size:12px; }
     .fill { fill:#6FB7E0; fill-opacity:0.15; }
   </style>
-  <line class="axis" x1="60" y1="250" x2="350" y2="250"/>
-  <line class="axis" x1="60" y1="250" x2="60" y2="40"/>
-  <path class="axis" d="M60,40 l-5,10 M60,40 l5,10"/>
-  <path class="axis" d="M350,250 l-10,-5 M350,250 l-10,5"/>
-  <text x="70" y="55" class="lbl">V / V</text>
-  <text x="320" y="275" class="lbl">I / A</text>
+  <line data-step="1" class="axis" x1="60" y1="250" x2="350" y2="250"/>
+  <line data-step="1" class="axis" x1="60" y1="250" x2="60" y2="40"/>
+  <path data-step="1" class="axis" d="M60,40 l-5,10 M60,40 l5,10"/>
+  <path data-step="1" class="axis" d="M350,250 l-10,-5 M350,250 l-10,5"/>
+  <text data-step="1" x="70" y="55" class="lbl">V / V</text>
+  <text data-step="1" x="320" y="275" class="lbl">I / A</text>
 
   <!-- straight line through origin -->
-  <line class="line" x1="60" y1="250" x2="300" y2="70"/>
+  <line data-step="1" class="line" x1="60" y1="250" x2="300" y2="70"/>
   <!-- right triangle showing y and x -->
-  <polygon class="fill" points="150,250 300,250 300,70"/>
-  <line class="guide" x1="150" y1="250" x2="300" y2="250"/>
-  <line class="guide" x1="300" y1="250" x2="300" y2="70"/>
-  <text x="225" y="268" class="lbl" text-anchor="middle">x</text>
-  <text x="312" y="165" class="lbl">y</text>
+  <polygon data-step="2" class="fill" points="150,250 300,250 300,70"/>
+  <line data-step="2" class="guide" x1="150" y1="250" x2="300" y2="250"/>
+  <line data-step="2" class="guide" x1="300" y1="250" x2="300" y2="70"/>
+  <text data-step="2" x="225" y="268" class="lbl" text-anchor="middle">x</text>
+  <text data-step="2" x="312" y="165" class="lbl">y</text>
 
-  <text x="85" y="120" class="lbl" fill="#E8B65A">gradient = y / x = R</text>
+  <text data-step="2" x="85" y="120" class="lbl" fill="#E8B65A">gradient = y / x = R</text>
 </svg>

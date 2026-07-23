@@ -234,6 +234,78 @@ function attachAnalyser(el: HTMLAudioElement): void {
   }
 }
 
+// ── How far through the line is she? ────────────────────────────────────────
+// A figure that builds itself on a fixed timeline talks over her: she is still
+// on "in the top half" while the drawing has moved on. So we publish her actual
+// position in the audio, and the figure advances against that instead of a
+// stopwatch. She sets the pace; the drawing follows.
+//
+// `progress` is 0..1 across the WHOLE sequence, not one line, so a lead-in
+// ("let me explain again") does not restart the drawing. Lines are weighted by
+// length, which is a good proxy for how long each takes to say, and within the
+// playing line we use its real currentTime.
+//
+// `progress` of -1 means "no timeline available" (the device voice, which
+// cannot be scrubbed). Callers fall back to a timed build.
+export type SpeakProgress = { text: string; progress: number };
+type ProgressListener = (p: SpeakProgress) => void;
+const progressListeners = new Set<ProgressListener>();
+let progressRaf = 0;
+let seqLines: string[] = [];
+let seqWeights: number[] = [];
+let seqIndex = 0;
+
+export function onSpeakProgress(fn: ProgressListener): () => void {
+  progressListeners.add(fn);
+  return () => {
+    progressListeners.delete(fn);
+  };
+}
+
+function emitProgress(progress: number): void {
+  const text = seqLines.join(" ");
+  for (const fn of progressListeners) {
+    try {
+      fn({ text, progress });
+    } catch {
+      /* a bad listener must not break playback */
+    }
+  }
+}
+
+// Fraction of the sequence completed before the current line starts.
+function weightBefore(idx: number): number {
+  const total = seqWeights.reduce((a, b) => a + b, 0) || 1;
+  let sum = 0;
+  for (let i = 0; i < idx && i < seqWeights.length; i++) sum += seqWeights[i];
+  return sum / total;
+}
+
+function weightOf(idx: number): number {
+  const total = seqWeights.reduce((a, b) => a + b, 0) || 1;
+  return (seqWeights[idx] ?? 0) / total;
+}
+
+function stopProgressLoop(): void {
+  if (progressRaf) cancelAnimationFrame(progressRaf);
+  progressRaf = 0;
+}
+
+// Follow one <audio> and publish where it has got to.
+function trackProgress(el: HTMLAudioElement, idx: number): void {
+  if (!progressListeners.size) return;
+  stopProgressLoop();
+  const base = weightBefore(idx);
+  const share = weightOf(idx);
+  const tick = () => {
+    const d = el.duration;
+    const within = Number.isFinite(d) && d > 0 ? Math.min(1, el.currentTime / d) : 0;
+    emitProgress(base + share * within);
+    progressRaf = requestAnimationFrame(tick);
+  };
+  progressRaf = requestAnimationFrame(tick);
+}
+
 function setSpeaking(next: boolean): void {
   if (speaking === next) return;
   speaking = next;
@@ -266,6 +338,7 @@ function playLine(line: string, lang: string, token: number, done?: () => void):
     audio.crossOrigin = "anonymous";
     currentAudio = audio;
     attachAnalyser(audio);
+    trackProgress(audio, seqIndex - 1);
     let fellBack = false;
     const once = () => {
       if (fellBack) return;
@@ -295,19 +368,30 @@ export function speakSequence(texts: string[], lang = "en-GB"): void {
   if (!lines.length) return;
   stopSpeaking();
   const token = speakToken;
+  seqLines = lines;
+  seqWeights = lines.map((l) => l.length);
+  seqIndex = 0;
   void loadManifest().then((m) => {
     if (token !== speakToken) return; // superseded while we were loading
     let idx = 0;
     const next = (): void => {
       if (token !== speakToken) return;
       if (idx >= lines.length) {
+        stopProgressLoop();
+        emitProgress(1); // land the drawing on its finished state
         setSpeaking(false); // the whole sequence is done
         return;
       }
       const line = lines[idx++];
+      seqIndex = idx;
       setSpeaking(true);
-      if (!m.has(line ? hashLine(line) : "")) emitLevel(-1); // device voice: no level to read
-      if (m.has(line ? hashLine(line) : "")) playLine(line, lang, token, next);
+      const has = m.has(line ? hashLine(line) : "");
+      if (!has) {
+        emitLevel(-1); // device voice: no level to read
+        stopProgressLoop();
+        emitProgress(-1); // and no timeline to follow either
+      }
+      if (has) playLine(line, lang, token, next);
       else deviceSpeak(line, lang, next);
     };
     next();
@@ -319,6 +403,7 @@ export function stopSpeaking(): void {
   speakToken++; // any in-flight lookup or queued line is now stale
   setSpeaking(false);
   emitLevel(0);
+  stopProgressLoop();
   if (currentAudio) {
     try {
       currentAudio.pause();

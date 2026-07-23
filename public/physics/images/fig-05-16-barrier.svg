@@ -10,31 +10,31 @@
     .lbl { font-size:14px; }
   </style>
   <!-- support post -->
-  <rect class="post" x="120" y="95" width="20" height="90"/>
+  <rect data-step="1" class="post" x="120" y="95" width="20" height="90"/>
   <!-- pivot -->
-  <circle class="pin" cx="130" cy="95" r="5"/>
-  <text class="lbl" x="142" y="86">pivot</text>
+  <circle data-step="2" class="pin" cx="130" cy="95" r="5"/>
+  <text data-step="2" class="lbl" x="142" y="86">pivot</text>
   <!-- barrier arm horizontal -->
-  <rect class="arm" x="70" y="90" width="330" height="9"/>
+  <rect data-step="3" class="arm" x="70" y="90" width="330" height="9"/>
   <!-- counterweight P on short (left) side -->
-  <rect class="weight" x="66" y="100" width="26" height="26"/>
-  <line class="force" x1="79" y1="126" x2="79" y2="165"/>
-  <path class="force" d="M79,165 l-5,-10 M79,165 l5,-10"/>
-  <text class="lbl" x="79" y="182" text-anchor="middle" fill="#E58F8F">P</text>
+  <rect data-step="4" class="weight" x="66" y="100" width="26" height="26"/>
+  <line data-step="4" class="force" x1="79" y1="126" x2="79" y2="165"/>
+  <path data-step="4" class="force" d="M79,165 l-5,-10 M79,165 l5,-10"/>
+  <text data-step="4" class="lbl" x="79" y="182" text-anchor="middle" fill="#E58F8F">P</text>
   <!-- load 400 N on long side -->
-  <line class="force" x1="330" y1="99" x2="330" y2="150"/>
-  <path class="force" d="M330,150 l-5,-10 M330,150 l5,-10"/>
-  <text class="lbl" x="330" y="167" text-anchor="middle" fill="#E58F8F">400 N</text>
+  <line data-step="5" class="force" x1="330" y1="99" x2="330" y2="150"/>
+  <path data-step="5" class="force" d="M330,150 l-5,-10 M330,150 l5,-10"/>
+  <text data-step="5" class="lbl" x="330" y="167" text-anchor="middle" fill="#E58F8F">400 N</text>
   <!-- distances -->
-  <line class="dim" x1="79" y1="65" x2="130" y2="65"/>
-  <path class="dim" d="M79,65 l8,-4 M79,65 l8,4"/>
-  <path class="dim" d="M130,65 l-8,-4 M130,65 l-8,4"/>
-  <text class="lbl" x="104" y="59" text-anchor="middle">0.40 m</text>
-  <line class="dim" x1="130" y1="65" x2="330" y2="65"/>
-  <path class="dim" d="M130,65 l8,-4 M130,65 l8,4"/>
-  <path class="dim" d="M330,65 l-8,-4 M330,65 l-8,4"/>
-  <text class="lbl" x="230" y="59" text-anchor="middle">1.50 m</text>
-  <line class="dim" x1="79" y1="65" x2="79" y2="100" stroke-dasharray="3 3"/>
-  <line class="dim" x1="130" y1="65" x2="130" y2="90" stroke-dasharray="3 3"/>
-  <line class="dim" x1="330" y1="65" x2="330" y2="90" stroke-dasharray="3 3"/>
+  <line data-step="6" class="dim" x1="79" y1="65" x2="130" y2="65"/>
+  <path data-step="6" class="dim" d="M79,65 l8,-4 M79,65 l8,4"/>
+  <path data-step="6" class="dim" d="M130,65 l-8,-4 M130,65 l-8,4"/>
+  <text data-step="6" class="lbl" x="104" y="59" text-anchor="middle">0.40 m</text>
+  <line data-step="6" class="dim" x1="130" y1="65" x2="330" y2="65"/>
+  <path data-step="6" class="dim" d="M130,65 l8,-4 M130,65 l8,4"/>
+  <path data-step="6" class="dim" d="M330,65 l-8,-4 M330,65 l-8,4"/>
+  <text data-step="6" class="lbl" x="230" y="59" text-anchor="middle">1.50 m</text>
+  <line data-step="6" class="dim" x1="79" y1="65" x2="79" y2="100" stroke-dasharray="3 3"/>
+  <line data-step="6" class="dim" x1="130" y1="65" x2="130" y2="90" stroke-dasharray="3 3"/>
+  <line data-step="6" class="dim" x1="330" y1="65" x2="330" y2="90" stroke-dasharray="3 3"/>
 </svg>

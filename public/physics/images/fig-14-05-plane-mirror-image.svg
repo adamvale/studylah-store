@@ -8,29 +8,29 @@
     .dim { stroke:#9AA0A6; stroke-width:1; }
   </style>
   <!-- mirror at x=300, hatched on right (silvered back) -->
-  <line class="mirror" x1="300" y1="40" x2="300" y2="240"/>
-  <g stroke="#9AA0A6" stroke-width="1">
+  <line data-step="1" class="mirror" x1="300" y1="40" x2="300" y2="240"/>
+  <g data-step="1" stroke="#9AA0A6" stroke-width="1">
     <line x1="300" y1="55" x2="312" y2="43"/><line x1="300" y1="80" x2="312" y2="68"/>
     <line x1="300" y1="105" x2="312" y2="93"/><line x1="300" y1="130" x2="312" y2="118"/>
     <line x1="300" y1="155" x2="312" y2="143"/><line x1="300" y1="180" x2="312" y2="168"/>
     <line x1="300" y1="205" x2="312" y2="193"/><line x1="300" y1="230" x2="312" y2="218"/>
   </g>
-  <text x="300" y="262" text-anchor="middle" font-size="13" fill="#6FB7E0">plane mirror</text>
+  <text data-step="1" x="300" y="262" text-anchor="middle" font-size="13" fill="#6FB7E0">plane mirror</text>
   <!-- object: upright letter-P shape (asymmetric to show lateral inversion) at x=200 -->
-  <path class="obj" d="M200,190 L200,110 L232,110 L232,150 L200,150"/>
-  <text x="180" y="210" text-anchor="middle" font-size="13" fill="#E8B65A">object</text>
+  <path data-step="2" class="obj" d="M200,190 L200,110 L232,110 L232,150 L200,150"/>
+  <text data-step="2" x="180" y="210" text-anchor="middle" font-size="13" fill="#E8B65A">object</text>
   <!-- image: laterally inverted P at x=400 (equal distance behind) -->
-  <path class="img" d="M400,190 L400,110 L368,110 L368,150 L400,150"/>
-  <text x="420" y="210" text-anchor="middle" font-size="13">image</text>
+  <path data-step="3" class="img" d="M400,190 L400,110 L368,110 L368,150 L400,150"/>
+  <text data-step="3" x="420" y="210" text-anchor="middle" font-size="13">image</text>
   <!-- equal-distance guides -->
-  <line class="guide" x1="216" y1="150" x2="300" y2="150"/>
-  <line class="guide" x1="300" y1="150" x2="384" y2="150"/>
-  <path class="dim" d="M216,275 L300,275"/><path class="dim" d="M300,275 L384,275"/>
-  <line class="dim" x1="216" y1="269" x2="216" y2="281"/>
-  <line class="dim" x1="300" y1="269" x2="300" y2="281"/>
-  <line class="dim" x1="384" y1="269" x2="384" y2="281"/>
-  <text x="258" y="292" text-anchor="middle" font-size="13"><tspan font-style="italic">d</tspan></text>
-  <text x="342" y="292" text-anchor="middle" font-size="13"><tspan font-style="italic">d</tspan></text>
-  <text x="300" y="325" text-anchor="middle" font-size="14">Upright, same size, laterally inverted,</text>
-  <text x="300" y="344" text-anchor="middle" font-size="14">virtual, equal distances from the mirror.</text>
+  <line data-step="4" class="guide" x1="216" y1="150" x2="300" y2="150"/>
+  <line data-step="4" class="guide" x1="300" y1="150" x2="384" y2="150"/>
+  <path data-step="4" class="dim" d="M216,275 L300,275"/><path data-step="4" class="dim" d="M300,275 L384,275"/>
+  <line data-step="4" class="dim" x1="216" y1="269" x2="216" y2="281"/>
+  <line data-step="4" class="dim" x1="300" y1="269" x2="300" y2="281"/>
+  <line data-step="4" class="dim" x1="384" y1="269" x2="384" y2="281"/>
+  <text data-step="4" x="258" y="292" text-anchor="middle" font-size="13"><tspan font-style="italic">d</tspan></text>
+  <text data-step="4" x="342" y="292" text-anchor="middle" font-size="13"><tspan font-style="italic">d</tspan></text>
+  <text data-step="4" x="300" y="325" text-anchor="middle" font-size="14">Upright, same size, laterally inverted,</text>
+  <text data-step="4" x="300" y="344" text-anchor="middle" font-size="14">virtual, equal distances from the mirror.</text>
 </svg>

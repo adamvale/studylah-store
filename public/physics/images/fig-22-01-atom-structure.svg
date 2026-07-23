@@ -10,38 +10,38 @@
     .sym { fill:#EAEAEA; font-size:13px; }
   </style>
   <!-- electron shells -->
-  <ellipse class="shell" cx="230" cy="180" rx="130" ry="130"/>
-  <ellipse class="shell" cx="230" cy="180" rx="85" ry="85"/>
+  <ellipse data-step="1" class="shell" cx="230" cy="180" rx="130" ry="130"/>
+  <ellipse data-step="1" class="shell" cx="230" cy="180" rx="85" ry="85"/>
   <!-- nucleus: protons + neutrons clustered -->
-  <g>
+  <g data-step="2">
     <circle class="proton" cx="222" cy="172" r="12"/>
     <circle class="neutron" cx="240" cy="176" r="12"/>
     <circle class="proton" cx="228" cy="192" r="12"/>
     <circle class="neutron" cx="212" cy="188" r="12"/>
   </g>
   <!-- electrons on shells -->
-  <circle class="electron" cx="230" cy="50" r="8"/>
-  <circle class="electron" cx="360" cy="180" r="8"/>
-  <circle class="electron" cx="230" cy="95" r="8"/>
-  <circle class="electron" cx="145" cy="180" r="8"/>
+  <circle data-step="3" class="electron" cx="230" cy="50" r="8"/>
+  <circle data-step="3" class="electron" cx="360" cy="180" r="8"/>
+  <circle data-step="3" class="electron" cx="230" cy="95" r="8"/>
+  <circle data-step="3" class="electron" cx="145" cy="180" r="8"/>
   <!-- labels with leaders -->
-  <text class="lbl" x="395" y="55">electron</text>
-  <path class="lead" d="M393,50 L238,50"/>
+  <text data-step="4" class="lbl" x="395" y="55">electron</text>
+  <path data-step="4" class="lead" d="M393,50 L238,50"/>
 
-  <text class="lbl" x="365" y="240">electron shell</text>
-  <text class="lbl" x="365" y="258">(energy level)</text>
-  <path class="lead" d="M363,244 L332,262"/>
+  <text data-step="4" class="lbl" x="365" y="240">electron shell</text>
+  <text data-step="4" class="lbl" x="365" y="258">(energy level)</text>
+  <path data-step="4" class="lead" d="M363,244 L332,262"/>
 
-  <text class="lbl" x="8" y="105">nucleus</text>
-  <path class="lead" d="M62,108 L215,175"/>
+  <text data-step="4" class="lbl" x="8" y="105">nucleus</text>
+  <path data-step="4" class="lead" d="M62,108 L215,175"/>
 
-  <text class="lbl" x="8" y="245">proton (+)</text>
-  <path class="lead" d="M62,240 L211,190"/>
-  <circle class="proton" cx="70" cy="272" r="8"/>
-  <text class="sym" x="86" y="276">+</text>
+  <text data-step="4" class="lbl" x="8" y="245">proton (+)</text>
+  <path data-step="4" class="lead" d="M62,240 L211,190"/>
+  <circle data-step="4" class="proton" cx="70" cy="272" r="8"/>
+  <text data-step="4" class="sym" x="86" y="276">+</text>
 
-  <text class="lbl" x="300" y="330">neutron (0)</text>
-  <path class="lead" d="M298,326 L240,188"/>
-  <circle class="neutron" cx="70" cy="300" r="8"/>
-  <text class="sym" x="86" y="304">0</text>
+  <text data-step="4" class="lbl" x="300" y="330">neutron (0)</text>
+  <path data-step="4" class="lead" d="M298,326 L240,188"/>
+  <circle data-step="4" class="neutron" cx="70" cy="300" r="8"/>
+  <text data-step="4" class="sym" x="86" y="304">0</text>
 </svg>

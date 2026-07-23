@@ -15,28 +15,28 @@
     </marker>
   </defs>
 
-  <line class="axis" x1="70" y1="270" x2="70" y2="30" marker-end="url(#g9a)"/>
-  <line class="axis" x1="70" y1="270" x2="410" y2="270" marker-end="url(#g9a)"/>
-  <text class="axlbl" x="16" y="22">mass (m₁ - m₂) / g</text>
-  <text class="axlbl" x="400" y="294" text-anchor="end">time / s</text>
+  <line data-step="1" class="axis" x1="70" y1="270" x2="70" y2="30" marker-end="url(#g9a)"/>
+  <line data-step="1" class="axis" x1="70" y1="270" x2="410" y2="270" marker-end="url(#g9a)"/>
+  <text data-step="1" class="axlbl" x="16" y="22">mass (m₁ - m₂) / g</text>
+  <text data-step="1" class="axlbl" x="400" y="294" text-anchor="end">time / s</text>
 
   <!-- best fit line -->
-  <path class="bestfit" d="M82,242 L392,90"/>
+  <path data-step="1" class="bestfit" d="M82,242 L392,90"/>
 
   <!-- readings -->
-  <path class="cross" d="M94,229 l12,12 M106,229 l-12,12"/>
-  <path class="cross" d="M144,202 l12,12 M156,202 l-12,12"/>
-  <path class="cross" d="M194,179 l12,12 M206,179 l-12,12"/>
-  <path class="cross" d="M244,151 l12,12 M256,151 l-12,12"/>
-  <path class="cross" d="M294,130 l12,12 M306,130 l-12,12"/>
-  <path class="cross" d="M344,102 l12,12 M356,102 l-12,12"/>
-  <path class="cross" d="M379,87 l12,12 M391,87 l-12,12"/>
+  <path data-step="2" class="cross" d="M94,229 l12,12 M106,229 l-12,12"/>
+  <path data-step="2" class="cross" d="M144,202 l12,12 M156,202 l-12,12"/>
+  <path data-step="2" class="cross" d="M194,179 l12,12 M206,179 l-12,12"/>
+  <path data-step="2" class="cross" d="M244,151 l12,12 M256,151 l-12,12"/>
+  <path data-step="2" class="cross" d="M294,130 l12,12 M306,130 l-12,12"/>
+  <path data-step="2" class="cross" d="M344,102 l12,12 M356,102 l-12,12"/>
+  <path data-step="2" class="cross" d="M379,87 l12,12 M391,87 l-12,12"/>
 
   <!-- gradient triangle -->
-  <path class="grad" d="M170,198 H300 V134 Z"/>
-  <text class="gradlbl" x="235" y="216" text-anchor="middle">run</text>
-  <text class="gradlbl" x="308" y="172">rise</text>
+  <path data-step="3" class="grad" d="M170,198 H300 V134 Z"/>
+  <text data-step="3" class="gradlbl" x="235" y="216" text-anchor="middle">run</text>
+  <text data-step="3" class="gradlbl" x="308" y="172">rise</text>
 
-  <text class="note" x="95" y="60">gradient = P / l_f</text>
-  <text class="note" x="95" y="82">l_f = P / gradient</text>
+  <text data-step="3" class="note" x="95" y="60">gradient = P / l_f</text>
+  <text data-step="3" class="note" x="95" y="82">l_f = P / gradient</text>
 </svg>

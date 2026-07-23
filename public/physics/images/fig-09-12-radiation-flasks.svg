@@ -11,23 +11,23 @@
     .cap { text-anchor:middle; font-size:13px; }
   </style>
   <!-- black-surface flask -->
-  <circle class="black" cx="120" cy="200" r="45"/>
-  <path class="glass" d="M110,158 L110,120 L130,120 L130,158"/>
+  <circle data-step="1" class="black" cx="120" cy="200" r="45"/>
+  <path data-step="1" class="glass" d="M110,158 L110,120 L130,120 L130,158"/>
   <!-- thermometer -->
-  <line class="thermo" x1="120" y1="120" x2="120" y2="55"/>
-  <circle class="black" cx="120" cy="120" r="6"/>
-  <line class="merc" x1="120" y1="118" x2="120" y2="75"/>
-  <text class="cap" x="120" y="270">black surface</text>
+  <line data-step="2" class="thermo" x1="120" y1="120" x2="120" y2="55"/>
+  <circle data-step="2" class="black" cx="120" cy="120" r="6"/>
+  <line data-step="2" class="merc" x1="120" y1="118" x2="120" y2="75"/>
+  <text data-step="2" class="cap" x="120" y="270">black surface</text>
   <!-- white-surface flask -->
-  <circle class="white" cx="300" cy="200" r="45"/>
-  <path class="glass" d="M290,158 L290,120 L310,120 L310,158"/>
-  <line class="thermo" x1="300" y1="120" x2="300" y2="55"/>
-  <circle class="white" cx="300" cy="120" r="6"/>
-  <line class="merc" x1="300" y1="118" x2="300" y2="90"/>
-  <text class="cap" x="300" y="270">white surface</text>
+  <circle data-step="3" class="white" cx="300" cy="200" r="45"/>
+  <path data-step="3" class="glass" d="M290,158 L290,120 L310,120 L310,158"/>
+  <line data-step="3" class="thermo" x1="300" y1="120" x2="300" y2="55"/>
+  <circle data-step="3" class="white" cx="300" cy="120" r="6"/>
+  <line data-step="3" class="merc" x1="300" y1="118" x2="300" y2="90"/>
+  <text data-step="3" class="cap" x="300" y="270">white surface</text>
   <!-- labels -->
-  <text class="lbl" x="210" y="45" text-anchor="middle">thermometers</text>
-  <path class="lead" d="M180,50 L122,58"/>
-  <path class="lead" d="M240,50 L298,58"/>
-  <text class="cap" x="210" y="295" fill="#9AA0A6">both flasks contain water, placed in the sun</text>
+  <text data-step="4" class="lbl" x="210" y="45" text-anchor="middle">thermometers</text>
+  <path data-step="4" class="lead" d="M180,50 L122,58"/>
+  <path data-step="4" class="lead" d="M240,50 L298,58"/>
+  <text data-step="4" class="cap" x="210" y="295" fill="#9AA0A6">both flasks contain water, placed in the sun</text>
 </svg>

@@ -20,7 +20,7 @@
   </defs>
 
   <!-- solenoid coils (loops drawn as ellipses spanning the barrel) -->
-  <g class="coil">
+  <g data-step="1" class="coil">
     <ellipse cx="220" cy="180" rx="12" ry="42"/>
     <ellipse cx="260" cy="180" rx="12" ry="42"/>
     <ellipse cx="300" cy="180" rx="12" ry="42"/>
@@ -29,31 +29,31 @@
     <ellipse cx="420" cy="180" rx="12" ry="42"/>
   </g>
   <!-- leads / current direction -->
-  <line class="coil" x1="208" y1="222" x2="208" y2="270" marker-end="url(#c3)"/>
-  <line class="coil" x1="432" y1="138" x2="432" y2="90"  marker-end="url(#c3)"/>
-  <text class="lbl" x="190" y="286" text-anchor="end">current in</text>
-  <text class="lbl" x="446" y="86">current out</text>
+  <line data-step="2" class="coil" x1="208" y1="222" x2="208" y2="270" marker-end="url(#c3)"/>
+  <line data-step="2" class="coil" x1="432" y1="138" x2="432" y2="90"  marker-end="url(#c3)"/>
+  <text data-step="2" class="lbl" x="190" y="286" text-anchor="end">current in</text>
+  <text data-step="2" class="lbl" x="446" y="86">current out</text>
 
   <!-- inside field: straight, left(S) to right(N) -->
-  <line class="fld" x1="240" y1="180" x2="410" y2="180" marker-end="url(#f3)"/>
+  <line data-step="3" class="fld" x1="240" y1="180" x2="410" y2="180" marker-end="url(#f3)"/>
 
   <!-- outside field lines: leave the N (right) end, enter the S (left) end -->
-  <path class="fld" d="M455,180 L545,180" marker-end="url(#f3)"/>
-  <path class="fld" d="M452,162 Q510,138 566,120" marker-end="url(#f3)"/>
-  <path class="fld" d="M452,198 Q510,222 566,240" marker-end="url(#f3)"/>
-  <path class="fld" d="M95,180 L186,180" marker-end="url(#f3)"/>
-  <path class="fld" d="M104,118 Q160,144 188,164" marker-end="url(#f3)"/>
-  <path class="fld" d="M104,242 Q160,216 188,196" marker-end="url(#f3)"/>
+  <path data-step="4" class="fld" d="M455,180 L545,180" marker-end="url(#f3)"/>
+  <path data-step="4" class="fld" d="M452,162 Q510,138 566,120" marker-end="url(#f3)"/>
+  <path data-step="4" class="fld" d="M452,198 Q510,222 566,240" marker-end="url(#f3)"/>
+  <path data-step="4" class="fld" d="M95,180 L186,180" marker-end="url(#f3)"/>
+  <path data-step="4" class="fld" d="M104,118 Q160,144 188,164" marker-end="url(#f3)"/>
+  <path data-step="4" class="fld" d="M104,242 Q160,216 188,196" marker-end="url(#f3)"/>
 
   <!-- poles -->
-  <text class="poleS" x="200" y="185">S</text>
-  <text class="poleN" x="440" y="185">N</text>
+  <text data-step="5" class="poleS" x="200" y="185">S</text>
+  <text data-step="5" class="poleN" x="440" y="185">N</text>
 
   <!-- labels -->
-  <text class="lbl" x="498" y="168">field line</text>
-  <path class="lead" d="M496,163 L482,154"/>
-  <text class="lbl" x="315" y="118" text-anchor="middle">inside: straight, parallel, strong &amp; uniform</text>
-  <path class="lead" d="M315,122 L320,168"/>
-  <text class="lbl" x="315" y="256" text-anchor="middle">outside: field leaves N, enters S (weaker)</text>
-  <path class="lead" d="M455,252 L505,224"/>
+  <text data-step="6" class="lbl" x="498" y="168">field line</text>
+  <path data-step="6" class="lead" d="M496,163 L482,154"/>
+  <text data-step="6" class="lbl" x="315" y="118" text-anchor="middle">inside: straight, parallel, strong &amp; uniform</text>
+  <path data-step="6" class="lead" d="M315,122 L320,168"/>
+  <text data-step="6" class="lbl" x="315" y="256" text-anchor="middle">outside: field leaves N, enters S (weaker)</text>
+  <path data-step="6" class="lead" d="M455,252 L505,224"/>
 </svg>

@@ -12,32 +12,32 @@
     .cap { font-size:14; font-weight:bold; }
   </style>
   <!-- normal force on flat surface -->
-  <text x="210" y="30" text-anchor="middle" class="cap">Normal force (flat surface)</text>
-  <line class="ground" x1="90" y1="125" x2="330" y2="125"/>
-  <rect class="box" x="185" y="95" width="50" height="30"/>
-  <line class="n" x1="210" y1="95" x2="210" y2="50" marker-end="url(#arwG)"/>
-  <text x="220" y="65" font-size="12.5" fill="#86C98B">normal</text>
+  <text data-step="1" x="210" y="30" text-anchor="middle" class="cap">Normal force (flat surface)</text>
+  <line data-step="1" class="ground" x1="90" y1="125" x2="330" y2="125"/>
+  <rect data-step="1" class="box" x="185" y="95" width="50" height="30"/>
+  <line data-step="1" class="n" x1="210" y1="95" x2="210" y2="50" marker-end="url(#arwG)"/>
+  <text data-step="1" x="220" y="65" font-size="12.5" fill="#86C98B">normal</text>
   <!-- normal force on slope -->
-  <text x="210" y="170" text-anchor="middle" class="cap">Normal force (slope)</text>
-  <text x="230" y="196" font-size="12.5" fill="#86C98B">normal (90&#176; to surface)</text>
-  <line class="ground" x1="110" y1="285" x2="310" y2="220"/>
-  <g transform="translate(200,240) rotate(-18)">
+  <text data-step="2" x="210" y="170" text-anchor="middle" class="cap">Normal force (slope)</text>
+  <text data-step="2" x="230" y="196" font-size="12.5" fill="#86C98B">normal (90&#176; to surface)</text>
+  <line data-step="2" class="ground" x1="110" y1="285" x2="310" y2="220"/>
+  <g data-step="2" transform="translate(200,240) rotate(-18)">
     <rect class="box" x="-25" y="-18" width="50" height="30"/>
     <line class="n" x1="0" y1="-18" x2="0" y2="-60" marker-end="url(#arwG)"/>
   </g>
   <!-- Tension -->
-  <text x="210" y="330" text-anchor="middle" class="cap">Tension</text>
-  <rect class="box" x="120" y="355" width="55" height="35"/>
-  <line class="f" x1="175" y1="372" x2="270" y2="372" marker-end="url(#arw)"/>
-  <line x1="175" y1="372" x2="212" y2="372" stroke="#9AA0A6" stroke-width="3"/>
-  <text x="228" y="360" font-size="12.5">tension</text>
+  <text data-step="3" x="210" y="330" text-anchor="middle" class="cap">Tension</text>
+  <rect data-step="3" class="box" x="120" y="355" width="55" height="35"/>
+  <line data-step="3" class="f" x1="175" y1="372" x2="270" y2="372" marker-end="url(#arw)"/>
+  <line data-step="3" x1="175" y1="372" x2="212" y2="372" stroke="#9AA0A6" stroke-width="3"/>
+  <text data-step="3" x="228" y="360" font-size="12.5">tension</text>
   <!-- Thrust / Upthrust -->
-  <text x="210" y="435" text-anchor="middle" class="cap">Thrust and Upthrust</text>
-  <rect class="box" x="120" y="460" width="55" height="35"/>
-  <line class="f" x1="175" y1="477" x2="262" y2="477" marker-end="url(#arw)"/>
-  <text x="205" y="465" font-size="12.5">thrust</text>
-  <line class="f" x1="330" y1="510" x2="330" y2="452" marker-end="url(#arw)"/>
-  <text x="338" y="482" font-size="12.5">upthrust</text>
-  <text x="210" y="558" text-anchor="middle" font-size="13">Applied force, weight, friction, air resistance</text>
-  <text x="210" y="576" text-anchor="middle" font-size="13">and drag are the other common forces.</text>
+  <text data-step="4" x="210" y="435" text-anchor="middle" class="cap">Thrust and Upthrust</text>
+  <rect data-step="4" class="box" x="120" y="460" width="55" height="35"/>
+  <line data-step="4" class="f" x1="175" y1="477" x2="262" y2="477" marker-end="url(#arw)"/>
+  <text data-step="4" x="205" y="465" font-size="12.5">thrust</text>
+  <line data-step="4" class="f" x1="330" y1="510" x2="330" y2="452" marker-end="url(#arw)"/>
+  <text data-step="4" x="338" y="482" font-size="12.5">upthrust</text>
+  <text data-step="4" x="210" y="558" text-anchor="middle" font-size="13">Applied force, weight, friction, air resistance</text>
+  <text data-step="4" x="210" y="576" text-anchor="middle" font-size="13">and drag are the other common forces.</text>
 </svg>

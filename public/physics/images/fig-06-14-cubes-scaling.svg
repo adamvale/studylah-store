@@ -7,7 +7,7 @@
     .lbl { font-size:11px; }
   </style>
   <!-- small cube -->
-  <g>
+  <g data-step="1">
     <rect class="face" x="60" y="120" width="45" height="45"/>
     <path class="edge" d="M60,120 L60,165 L105,165 L105,120 Z"/>
     <path class="edge" d="M60,120 L75,105 L120,105 L105,120"/>
@@ -18,7 +18,7 @@
     <text x="82" y="98" text-anchor="middle" class="lbl">small cube (weight w)</text>
   </g>
   <!-- large cube, edges 2a -->
-  <g>
+  <g data-step="2">
     <rect class="face" x="240" y="80" width="90" height="90"/>
     <path class="edge" d="M240,80 L240,170 L330,170 L330,80 Z"/>
     <path class="edge" d="M240,80 L270,50 L360,50 L330,80"/>

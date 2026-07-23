@@ -12,14 +12,14 @@
     .fr { stroke:#E58F8F; stroke-width:2.4; }
     .v { stroke:#9AA0A6; stroke-width:1.8; }
   </style>
-  <line class="ground" x1="40" y1="120" x2="420" y2="120"/>
-  <text x="70" y="138" font-size="12.5">floor</text>
-  <rect class="box" x="190" y="78" width="80" height="42"/>
-  <text x="230" y="104" text-anchor="middle" font-size="13.5">3 kg</text>
-  <line class="v" x1="280" y1="58" x2="360" y2="58" marker-end="url(#arwm)"/>
-  <text x="320" y="48" text-anchor="middle" font-size="12.5" fill="#9AA0A6">constant speed 4 m/s</text>
-  <line class="app" x1="120" y1="99" x2="186" y2="99" marker-end="url(#arwB)"/>
-  <text x="150" y="86" text-anchor="middle" font-size="12.5" fill="#6FB7E0">external force</text>
-  <line class="fr" x1="340" y1="99" x2="274" y2="99" marker-end="url(#arwR)"/>
-  <text x="345" y="103" font-size="12.5" fill="#E58F8F">friction</text>
+  <line data-step="1" class="ground" x1="40" y1="120" x2="420" y2="120"/>
+  <text data-step="3" x="70" y="138" font-size="12.5">floor</text>
+  <rect data-step="1" class="box" x="190" y="78" width="80" height="42"/>
+  <text data-step="3" x="230" y="104" text-anchor="middle" font-size="13.5">3 kg</text>
+  <line data-step="1" class="v" x1="280" y1="58" x2="360" y2="58" marker-end="url(#arwm)"/>
+  <text data-step="3" x="320" y="48" text-anchor="middle" font-size="12.5" fill="#9AA0A6">constant speed 4 m/s</text>
+  <line data-step="2" class="app" x1="120" y1="99" x2="186" y2="99" marker-end="url(#arwB)"/>
+  <text data-step="4" x="150" y="86" text-anchor="middle" font-size="12.5" fill="#6FB7E0">external force</text>
+  <line data-step="2" class="fr" x1="340" y1="99" x2="274" y2="99" marker-end="url(#arwR)"/>
+  <text data-step="4" x="345" y="103" font-size="12.5" fill="#E58F8F">friction</text>
 </svg>

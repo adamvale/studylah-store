@@ -13,19 +13,19 @@
     <marker id="ab" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#6FB7E0"/></marker>
   </defs>
 
-  <rect class="glass" x="70" y="140" width="280" height="110" rx="3"/>
+  <rect data-step="1" class="glass" x="70" y="140" width="280" height="110" rx="3"/>
 
-  <path class="normal" d="M180,90 V200"/>
+  <path data-step="1" class="normal" d="M180,90 V200"/>
 
-  <path class="ray" d="M103.4,75.7 L141.7,107.9" marker-end="url(#ab)"/>
-  <path class="ray" d="M141.7,107.9 L180,140"/>
-  <path class="guide" d="M180,140 L256.6,204.3"/>
+  <path data-step="1" class="ray" d="M103.4,75.7 L141.7,107.9" marker-end="url(#ab)"/>
+  <path data-step="2" class="ray" d="M141.7,107.9 L180,140"/>
+  <path data-step="2" class="guide" d="M180,140 L256.6,204.3"/>
 
-  <path class="arc" d="M144.8,110.4 A46,46 0 0 1 180,94"/>
-  <text class="sym" x="166" y="116" text-anchor="middle">i</text>
+  <path data-step="2" class="arc" d="M144.8,110.4 A46,46 0 0 1 180,94"/>
+  <text data-step="3" class="sym" x="166" y="116" text-anchor="middle">i</text>
 
-  <text x="86" y="124">air</text>
-  <text x="86" y="170">glass</text>
-  <text class="grey" x="186" y="86">normal</text>
-  <text class="grey" x="268" y="200">undeviated path</text>
+  <text data-step="3" x="86" y="124">air</text>
+  <text data-step="3" x="86" y="170">glass</text>
+  <text data-step="4" class="grey" x="186" y="86">normal</text>
+  <text data-step="4" class="grey" x="268" y="200">undeviated path</text>
 </svg>

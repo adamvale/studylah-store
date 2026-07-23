@@ -16,18 +16,18 @@
     .drop { stroke:#86C98B; stroke-width:2; stroke-dasharray:5 4; }
   </style>
   <!-- Panel 1: before -->
-  <text x="210" y="32" text-anchor="middle" font-size="14" font-weight="bold">Flick the card away quickly</text>
-  <path class="glass" d="M170,190 L170,140 L250,140 L250,190"/>
-  <rect class="card" x="155" y="122" width="120" height="12"/>
-  <ellipse class="coin" cx="210" cy="116" rx="20" ry="7"/>
-  <line class="flick" x1="282" y1="128" x2="360" y2="128" marker-end="url(#arw)"/>
-  <text x="320" y="116" text-anchor="middle" font-size="13" fill="#E8B65A">flick</text>
-  <line x1="40" y1="215" x2="380" y2="215" stroke="#9AA0A6" stroke-width="1" stroke-dasharray="4 4"/>
+  <text data-step="1" x="210" y="32" text-anchor="middle" font-size="14" font-weight="bold">Flick the card away quickly</text>
+  <path data-step="1" class="glass" d="M170,190 L170,140 L250,140 L250,190"/>
+  <rect data-step="1" class="card" x="155" y="122" width="120" height="12"/>
+  <ellipse data-step="1" class="coin" cx="210" cy="116" rx="20" ry="7"/>
+  <line data-step="1" class="flick" x1="282" y1="128" x2="360" y2="128" marker-end="url(#arw)"/>
+  <text data-step="1" x="320" y="116" text-anchor="middle" font-size="13" fill="#E8B65A">flick</text>
+  <line data-step="1" x1="40" y1="215" x2="380" y2="215" stroke="#9AA0A6" stroke-width="1" stroke-dasharray="4 4"/>
   <!-- Panel 2: after -->
-  <text x="210" y="252" text-anchor="middle" font-size="14" font-weight="bold">Coin drops into the glass</text>
-  <path class="glass" d="M170,390 L170,340 L250,340 L250,390"/>
-  <ellipse class="coin" cx="210" cy="365" rx="20" ry="7"/>
-  <line class="drop" x1="210" y1="300" x2="210" y2="352" marker-end="url(#arwd)"/>
-  <text x="210" y="420" text-anchor="middle" font-size="13">The coin's inertia keeps it in place,</text>
-  <text x="210" y="438" text-anchor="middle" font-size="13">then it falls straight down.</text>
+  <text data-step="2" x="210" y="252" text-anchor="middle" font-size="14" font-weight="bold">Coin drops into the glass</text>
+  <path data-step="2" class="glass" d="M170,390 L170,340 L250,340 L250,390"/>
+  <ellipse data-step="2" class="coin" cx="210" cy="365" rx="20" ry="7"/>
+  <line data-step="2" class="drop" x1="210" y1="300" x2="210" y2="352" marker-end="url(#arwd)"/>
+  <text data-step="2" x="210" y="420" text-anchor="middle" font-size="13">The coin's inertia keeps it in place,</text>
+  <text data-step="2" x="210" y="438" text-anchor="middle" font-size="13">then it falls straight down.</text>
 </svg>

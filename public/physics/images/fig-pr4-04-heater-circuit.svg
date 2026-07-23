@@ -16,43 +16,43 @@
   </defs>
 
   <!-- main loop: supply, ammeter and heater all in series -->
-  <path class="wire" d="M60,70 H114"/>
-  <path class="wire" d="M146,70 H210"/>
-  <path class="wire" d="M290,70 H340 V210"/>
-  <path class="wire" d="M340,210 H222"/>
-  <path class="wire" d="M178,210 H60 V70"/>
+  <path data-step="1" class="wire" d="M60,70 H114"/>
+  <path data-step="1" class="wire" d="M146,70 H210"/>
+  <path data-step="1" class="wire" d="M290,70 H340 V210"/>
+  <path data-step="1" class="wire" d="M340,210 H222"/>
+  <path data-step="1" class="wire" d="M178,210 H60 V70"/>
 
   <!-- current arrow -->
-  <path class="wire" d="M74,70 H100" marker-end="url(#c4a)"/>
-  <text class="sym" x="86" y="60" text-anchor="middle">I</text>
+  <path data-step="2" class="wire" d="M74,70 H100" marker-end="url(#c4a)"/>
+  <text data-step="2" class="sym" x="86" y="60" text-anchor="middle">I</text>
 
   <!-- ammeter in series -->
-  <circle class="meter" cx="130" cy="70" r="16"/>
-  <text class="sym" x="130" y="75" text-anchor="middle">A</text>
-  <text x="130" y="108" text-anchor="middle">ammeter</text>
-  <text class="note" x="130" y="126" text-anchor="middle">in series</text>
+  <circle data-step="3" class="meter" cx="130" cy="70" r="16"/>
+  <text data-step="3" class="sym" x="130" y="75" text-anchor="middle">A</text>
+  <text data-step="3" x="130" y="108" text-anchor="middle">ammeter</text>
+  <text data-step="3" class="note" x="130" y="126" text-anchor="middle">in series</text>
 
   <!-- heater -->
-  <rect class="heater" x="210" y="56" width="80" height="28" rx="3"/>
-  <path class="heater" d="M222,70 l8,-8 l12,16 l12,-16 l12,16 l12,-16 l8,8"/>
-  <text class="heaterlbl" x="250" y="102" text-anchor="middle">heater</text>
+  <rect data-step="4" class="heater" x="210" y="56" width="80" height="28" rx="3"/>
+  <path data-step="4" class="heater" d="M222,70 l8,-8 l12,16 l12,-16 l12,16 l12,-16 l8,8"/>
+  <text data-step="4" class="heaterlbl" x="250" y="102" text-anchor="middle">heater</text>
 
   <!-- voltmeter in parallel across the heater -->
-  <path class="wire" d="M210,70 V26 H234"/>
-  <path class="wire" d="M266,26 H290 V70"/>
-  <circle class="meter" cx="250" cy="26" r="16"/>
-  <text class="sym" x="250" y="31" text-anchor="middle">V</text>
-  <text x="312" y="24">voltmeter</text>
-  <text class="note" x="312" y="42">in parallel</text>
+  <path data-step="5" class="wire" d="M210,70 V26 H234"/>
+  <path data-step="5" class="wire" d="M266,26 H290 V70"/>
+  <circle data-step="5" class="meter" cx="250" cy="26" r="16"/>
+  <text data-step="5" class="sym" x="250" y="31" text-anchor="middle">V</text>
+  <text data-step="5" x="312" y="24">voltmeter</text>
+  <text data-step="5" class="note" x="312" y="42">in parallel</text>
 
   <!-- low voltage supply -->
-  <line class="cell" x1="186" y1="198" x2="186" y2="222"/>
-  <line class="cell" x1="196" y1="204" x2="196" y2="216"/>
-  <line class="cell" x1="206" y1="198" x2="206" y2="222"/>
-  <line class="cell" x1="216" y1="204" x2="216" y2="216"/>
-  <path class="wire" d="M178,210 H186"/>
-  <path class="wire" d="M216,210 H222"/>
-  <text x="200" y="246" text-anchor="middle">low voltage supply</text>
+  <line data-step="6" class="cell" x1="186" y1="198" x2="186" y2="222"/>
+  <line data-step="6" class="cell" x1="196" y1="204" x2="196" y2="216"/>
+  <line data-step="6" class="cell" x1="206" y1="198" x2="206" y2="222"/>
+  <line data-step="6" class="cell" x1="216" y1="204" x2="216" y2="216"/>
+  <path data-step="6" class="wire" d="M178,210 H186"/>
+  <path data-step="6" class="wire" d="M216,210 H222"/>
+  <text data-step="6" x="200" y="246" text-anchor="middle">low voltage supply</text>
 
-  <text x="392" y="246" text-anchor="end">P = V I</text>
+  <text data-step="6" x="392" y="246" text-anchor="end">P = V I</text>
 </svg>

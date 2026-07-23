@@ -8,20 +8,20 @@
     .s { font-size:14px; }
   </style>
   <!-- axes -->
-  <path class="ax" d="M70,40 L70,250 L390,250"/>
-  <text class="s" x="70" y="30" text-anchor="middle">temperature</text>
-  <text class="s" x="360" y="270">time</text>
+  <path data-step="1" class="ax" d="M70,40 L70,250 L390,250"/>
+  <text data-step="1" class="s" x="70" y="30" text-anchor="middle">temperature</text>
+  <text data-step="1" class="s" x="360" y="270">time</text>
   <!-- start temperature dashed -->
-  <line x1="70" y1="70" x2="90" y2="70" stroke="#9AA0A6" stroke-width="1" stroke-dasharray="4 3"/>
-  <text class="s" x="42" y="74">T</text>
+  <line data-step="2" x1="70" y1="70" x2="90" y2="70" stroke="#9AA0A6" stroke-width="1" stroke-dasharray="4 3"/>
+  <text data-step="2" class="s" x="42" y="74">T</text>
   <!-- curve A: gentler (higher c) -->
-  <path class="A" d="M90,70 C170,120 260,150 380,165"/>
+  <path data-step="3" class="A" d="M90,70 C170,120 260,150 380,165"/>
   <!-- curve B: steeper (lower c) -->
-  <path class="B" d="M90,70 C140,150 210,195 360,215"/>
+  <path data-step="4" class="B" d="M90,70 C140,150 210,195 360,215"/>
   <!-- labels -->
-  <text class="s" fill="#6FB7E0" x="190" y="118">A: less steep (higher c)</text>
-  <path class="lead" d="M245,124 L245,142"/>
-  <text class="s" fill="#E8B65A" x="235" y="243">B: steeper (lower c)</text>
-  <path class="lead" d="M280,230 L272,212"/>
-  <text class="s" x="185" y="290" text-anchor="middle">Same mass, cooled under the same conditions</text>
+  <text data-step="5" class="s" fill="#6FB7E0" x="190" y="118">A: less steep (higher c)</text>
+  <path data-step="5" class="lead" d="M245,124 L245,142"/>
+  <text data-step="5" class="s" fill="#E8B65A" x="235" y="243">B: steeper (lower c)</text>
+  <path data-step="5" class="lead" d="M280,230 L272,212"/>
+  <text data-step="5" class="s" x="185" y="290" text-anchor="middle">Same mass, cooled under the same conditions</text>
 </svg>

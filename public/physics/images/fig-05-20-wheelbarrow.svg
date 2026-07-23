@@ -11,34 +11,34 @@
     .lbl { font-size:14px; }
   </style>
   <!-- wheel = pivot at left -->
-  <circle class="wheel" cx="90" cy="150" r="20"/>
-  <circle cx="90" cy="150" r="3" fill="#E8B65A"/>
-  <text class="lbl" x="70" y="185" text-anchor="middle">pivot (wheel)</text>
+  <circle data-step="1" class="wheel" cx="90" cy="150" r="20"/>
+  <circle data-step="1" cx="90" cy="150" r="3" fill="#E8B65A"/>
+  <text data-step="1" class="lbl" x="70" y="185" text-anchor="middle">pivot (wheel)</text>
   <!-- arm/handle -->
-  <line class="arm" x1="90" y1="150" x2="410" y2="120"/>
+  <line data-step="2" class="arm" x1="90" y1="150" x2="410" y2="120"/>
   <!-- tray with load -->
-  <path class="tray" d="M120,140 L235,130 L225,95 L150,100 Z"/>
+  <path data-step="3" class="tray" d="M120,140 L235,130 L225,95 L150,100 Z"/>
   <!-- centre of gravity of load -->
-  <circle class="cg" cx="180" cy="128" r="4"/>
-  <text class="lbl" x="180" y="120" text-anchor="middle" fill="#E8B65A">G</text>
+  <circle data-step="4" class="cg" cx="180" cy="128" r="4"/>
+  <text data-step="4" class="lbl" x="180" y="120" text-anchor="middle" fill="#E8B65A">G</text>
   <!-- load weight down -->
-  <line class="force" x1="180" y1="128" x2="180" y2="185"/>
-  <path class="force" d="M180,185 l-5,-10 M180,185 l5,-10"/>
-  <text class="lbl" x="180" y="202" text-anchor="middle" fill="#E58F8F">800 N</text>
+  <line data-step="5" class="force" x1="180" y1="128" x2="180" y2="185"/>
+  <path data-step="5" class="force" d="M180,185 l-5,-10 M180,185 l5,-10"/>
+  <text data-step="5" class="lbl" x="180" y="202" text-anchor="middle" fill="#E58F8F">800 N</text>
   <!-- effort up at handle -->
-  <line class="effort" x1="405" y1="121" x2="405" y2="70"/>
-  <path class="effort" d="M405,70 l-5,10 M405,70 l5,10"/>
-  <text class="lbl" x="405" y="62" text-anchor="middle" fill="#86C98B">effort, M</text>
+  <line data-step="6" class="effort" x1="405" y1="121" x2="405" y2="70"/>
+  <path data-step="6" class="effort" d="M405,70 l-5,10 M405,70 l5,10"/>
+  <text data-step="6" class="lbl" x="405" y="62" text-anchor="middle" fill="#86C98B">effort, M</text>
   <!-- distances -->
-  <line class="dim" x1="90" y1="210" x2="180" y2="210"/>
-  <path class="dim" d="M90,210 l8,-4 M90,210 l8,4"/>
-  <path class="dim" d="M180,210 l-8,-4 M180,210 l-8,4"/>
-  <text class="lbl" x="135" y="226" text-anchor="middle">0.80 m</text>
-  <line class="dim" x1="90" y1="244" x2="405" y2="244"/>
-  <path class="dim" d="M90,244 l8,-4 M90,244 l8,4"/>
-  <path class="dim" d="M405,244 l-8,-4 M405,244 l-8,4"/>
-  <text class="lbl" x="250" y="238" text-anchor="middle">2.0 m to handle</text>
-  <line class="dim" x1="90" y1="170" x2="90" y2="244" stroke-dasharray="3 3"/>
-  <line class="dim" x1="180" y1="130" x2="180" y2="210" stroke-dasharray="3 3"/>
-  <line class="dim" x1="405" y1="121" x2="405" y2="244" stroke-dasharray="3 3"/>
+  <line data-step="7" class="dim" x1="90" y1="210" x2="180" y2="210"/>
+  <path data-step="7" class="dim" d="M90,210 l8,-4 M90,210 l8,4"/>
+  <path data-step="7" class="dim" d="M180,210 l-8,-4 M180,210 l-8,4"/>
+  <text data-step="7" class="lbl" x="135" y="226" text-anchor="middle">0.80 m</text>
+  <line data-step="7" class="dim" x1="90" y1="244" x2="405" y2="244"/>
+  <path data-step="7" class="dim" d="M90,244 l8,-4 M90,244 l8,4"/>
+  <path data-step="7" class="dim" d="M405,244 l-8,-4 M405,244 l-8,4"/>
+  <text data-step="7" class="lbl" x="250" y="238" text-anchor="middle">2.0 m to handle</text>
+  <line data-step="7" class="dim" x1="90" y1="170" x2="90" y2="244" stroke-dasharray="3 3"/>
+  <line data-step="7" class="dim" x1="180" y1="130" x2="180" y2="210" stroke-dasharray="3 3"/>
+  <line data-step="7" class="dim" x1="405" y1="121" x2="405" y2="244" stroke-dasharray="3 3"/>
 </svg>

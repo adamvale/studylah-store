@@ -16,20 +16,20 @@
     <marker id="am" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#E8B65A"/></marker>
   </defs>
 
-  <line class="axis" x1="60" y1="236" x2="60" y2="60" marker-end="url(#aw)"/>
-  <line class="rest" x1="60" y1="160" x2="400" y2="160" marker-end="url(#ag)"/>
+  <line data-step="1" class="axis" x1="60" y1="236" x2="60" y2="60" marker-end="url(#aw)"/>
+  <line data-step="1" class="rest" x1="60" y1="160" x2="400" y2="160" marker-end="url(#ag)"/>
 
-  <path class="wave" d="M70,160 C86.4,101 98.6,101 115,160 C131.4,219 143.6,219 160,160 C176.4,101 188.6,101 205,160 C221.4,219 233.6,219 250,160 C266.4,101 278.6,101 295,160 C311.4,219 323.6,219 340,160"/>
+  <path data-step="1" class="wave" d="M70,160 C86.4,101 98.6,101 115,160 C131.4,219 143.6,219 160,160 C176.4,101 188.6,101 205,160 C221.4,219 233.6,219 250,160 C266.4,101 278.6,101 295,160 C311.4,219 323.6,219 340,160"/>
 
-  <path class="guide" d="M92.5,116 V92"/>
-  <path class="guide" d="M182.5,116 V92"/>
-  <path class="dim" d="M137.5,92 H93.5" marker-end="url(#am)"/>
-  <path class="dim" d="M137.5,92 H181.5" marker-end="url(#am)"/>
+  <path data-step="1" class="guide" d="M92.5,116 V92"/>
+  <path data-step="2" class="guide" d="M182.5,116 V92"/>
+  <path data-step="2" class="dim" d="M137.5,92 H93.5" marker-end="url(#am)"/>
+  <path data-step="2" class="dim" d="M137.5,92 H181.5" marker-end="url(#am)"/>
 
-  <text class="sym" x="137.5" y="86" text-anchor="middle">T</text>
-  <text class="lbl" x="137.5" y="232" text-anchor="middle">one complete cycle</text>
+  <text data-step="3" class="sym" x="137.5" y="86" text-anchor="middle">T</text>
+  <text data-step="3" class="lbl" x="137.5" y="232" text-anchor="middle">one complete cycle</text>
 
-  <text x="12" y="50">displacement / cm</text>
-  <text x="240" y="262" text-anchor="middle">time / s</text>
-  <text class="grey" x="348" y="180">rest line</text>
+  <text data-step="3" x="12" y="50">displacement / cm</text>
+  <text data-step="4" x="240" y="262" text-anchor="middle">time / s</text>
+  <text data-step="4" class="grey" x="348" y="180">rest line</text>
 </svg>

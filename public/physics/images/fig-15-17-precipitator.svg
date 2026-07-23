@@ -17,43 +17,43 @@
     .lead { stroke:#9AA0A6; stroke-width:1.1; }
   </style>
   <!-- chimney walls -->
-  <line class="chimney" x1="180" y1="60" x2="180" y2="360"/>
-  <line class="chimney" x1="380" y1="60" x2="380" y2="360"/>
+  <line data-step="1" class="chimney" x1="180" y1="60" x2="180" y2="360"/>
+  <line data-step="1" class="chimney" x1="380" y1="60" x2="380" y2="360"/>
   <!-- positively charged collecting plates on inner walls -->
-  <rect class="plate" x="182" y="90" width="14" height="180"/>
-  <rect class="plate" x="364" y="90" width="14" height="180"/>
-  <g class="pos">
+  <rect data-step="2" class="plate" x="182" y="90" width="14" height="180"/>
+  <rect data-step="2" class="plate" x="364" y="90" width="14" height="180"/>
+  <g data-step="2" class="pos">
     <text x="189" y="115">+</text><text x="189" y="155">+</text><text x="189" y="195">+</text><text x="189" y="235">+</text>
     <text x="371" y="115">+</text><text x="371" y="155">+</text><text x="371" y="195">+</text><text x="371" y="235">+</text>
   </g>
   <!-- negatively charged metal grid near bottom -->
-  <line class="grid" x1="210" y1="300" x2="350" y2="300"/>
-  <g class="particleN"><circle cx="230" cy="300" r="2.5"/><circle cx="280" cy="300" r="2.5"/><circle cx="330" cy="300" r="2.5"/></g>
+  <line data-step="3" class="grid" x1="210" y1="300" x2="350" y2="300"/>
+  <g data-step="3" class="particleN"><circle cx="230" cy="300" r="2.5"/><circle cx="280" cy="300" r="2.5"/><circle cx="330" cy="300" r="2.5"/></g>
   <!-- dirty gas rising -->
-  <line class="arrow" x1="280" y1="360" x2="280" y2="315" marker-end="url(#ah17)"/>
-  <g class="particle">
+  <line data-step="4" class="arrow" x1="280" y1="360" x2="280" y2="315" marker-end="url(#ah17)"/>
+  <g data-step="4" class="particle">
     <circle cx="260" cy="345" r="4"/><circle cx="300" cy="350" r="4"/><circle cx="280" cy="335" r="4"/>
   </g>
   <!-- negatively charged particles moving to + plates -->
-  <g class="particleN">
+  <g data-step="5" class="particleN">
     <circle cx="240" cy="250" r="4"/><circle cx="320" cy="240" r="4"/><circle cx="270" cy="210" r="4"/><circle cx="330" cy="200" r="4"/>
   </g>
-  <line class="arrow" x1="255" y1="240" x2="205" y2="200" marker-end="url(#ah17)"/>
-  <line class="arrow" x1="325" y1="230" x2="360" y2="200" marker-end="url(#ah17)"/>
+  <line data-step="5" class="arrow" x1="255" y1="240" x2="205" y2="200" marker-end="url(#ah17)"/>
+  <line data-step="5" class="arrow" x1="325" y1="230" x2="360" y2="200" marker-end="url(#ah17)"/>
   <!-- clean gas out top -->
-  <line class="arrow" x1="280" y1="120" x2="280" y2="70" marker-end="url(#ah17)"/>
+  <line data-step="6" class="arrow" x1="280" y1="120" x2="280" y2="70" marker-end="url(#ah17)"/>
   <!-- collecting bin -->
-  <path class="chimney" d="M215,335 L235,355 L325,355 L345,335" fill="none"/>
+  <path data-step="7" class="chimney" d="M215,335 L235,355 L325,355 L345,335" fill="none"/>
   <!-- labels -->
-  <text x="280" y="45" text-anchor="middle" font-size="12">clean gas out (no pollutants)</text>
-  <text x="30" y="360" font-size="12">dirty waste gas in</text>
-  <line class="lead" x1="180" y1="180" x2="120" y2="180"/>
-  <text x="20" y="184" font-size="12">chimney</text>
-  <line class="lead" x1="196" y1="150" x2="430" y2="130"/>
-  <text x="435" y="134" font-size="12" fill="#E58F8F">+ collecting plate</text>
-  <line class="lead" x1="330" y1="300" x2="430" y2="300"/>
-  <text x="435" y="304" font-size="12" fill="#6FB7E0">− metal grid</text>
-  <text x="435" y="322" font-size="12" fill="#9AA0A6">(charges the dust)</text>
-  <line class="lead" x1="280" y1="355" x2="430" y2="370"/>
-  <text x="435" y="374" font-size="12">collecting bin</text>
+  <text data-step="8" x="280" y="45" text-anchor="middle" font-size="12">clean gas out (no pollutants)</text>
+  <text data-step="8" x="30" y="360" font-size="12">dirty waste gas in</text>
+  <line data-step="8" class="lead" x1="180" y1="180" x2="120" y2="180"/>
+  <text data-step="8" x="20" y="184" font-size="12">chimney</text>
+  <line data-step="8" class="lead" x1="196" y1="150" x2="430" y2="130"/>
+  <text data-step="8" x="435" y="134" font-size="12" fill="#E58F8F">+ collecting plate</text>
+  <line data-step="8" class="lead" x1="330" y1="300" x2="430" y2="300"/>
+  <text data-step="8" x="435" y="304" font-size="12" fill="#6FB7E0">− metal grid</text>
+  <text data-step="8" x="435" y="322" font-size="12" fill="#9AA0A6">(charges the dust)</text>
+  <line data-step="8" class="lead" x1="280" y1="355" x2="430" y2="370"/>
+  <text data-step="8" x="435" y="374" font-size="12">collecting bin</text>
 </svg>

@@ -9,9 +9,9 @@
     .lbl { font-size:12px; }
   </style>
   <!-- spherical vessel with many holes -->
-  <circle class="sphere" cx="210" cy="140" r="70"/>
+  <circle data-step="1" class="sphere" cx="210" cy="140" r="70"/>
   <!-- jets spurting equally in all directions -->
-  <g class="jet">
+  <g data-step="2" class="jet">
     <line x1="210" y1="70" x2="210" y2="45" marker-end="url(#j)"/>
     <line x1="259" y1="91" x2="277" y2="73" marker-end="url(#j)"/>
     <line x1="280" y1="140" x2="305" y2="140" marker-end="url(#j)"/>
@@ -21,13 +21,13 @@
     <line x1="161" y1="91" x2="143" y2="73" marker-end="url(#j)"/>
   </g>
   <!-- cylinder + piston with applied force on left -->
-  <rect class="metal" x="55" y="128" width="87" height="24"/>
-  <rect class="piston" x="60" y="130" width="16" height="20"/>
-  <line class="force" x1="30" y1="140" x2="58" y2="140" marker-end="url(#f)"/>
-  <text x="25" y="132" class="lbl" fill="#E58F8F">force F</text>
+  <rect data-step="3" class="metal" x="55" y="128" width="87" height="24"/>
+  <rect data-step="3" class="piston" x="60" y="130" width="16" height="20"/>
+  <line data-step="3" class="force" x1="30" y1="140" x2="58" y2="140" marker-end="url(#f)"/>
+  <text data-step="3" x="25" y="132" class="lbl" fill="#E58F8F">force F</text>
 
-  <text x="210" y="245" text-anchor="middle" class="lbl">Applied pressure is transmitted equally</text>
-  <text x="210" y="263" text-anchor="middle" class="lbl">in all directions (Pascal's principle)</text>
+  <text data-step="3" x="210" y="245" text-anchor="middle" class="lbl">Applied pressure is transmitted equally</text>
+  <text data-step="3" x="210" y="263" text-anchor="middle" class="lbl">in all directions (Pascal's principle)</text>
   <defs>
     <marker id="j" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#6FB7E0"/></marker>
     <marker id="f" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#E8B65A"/></marker>

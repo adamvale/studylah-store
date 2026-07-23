@@ -17,12 +17,12 @@
   </defs>
 
   <!-- soft iron core bar -->
-  <rect class="core" x="150" y="128" width="260" height="44" rx="4"/>
-  <text class="poleN" x="168" y="158">N</text>
-  <text class="poleS" x="392" y="158">S</text>
+  <rect data-step="1" class="core" x="150" y="128" width="260" height="44" rx="4"/>
+  <text data-step="1" class="poleN" x="168" y="158">N</text>
+  <text data-step="1" class="poleS" x="392" y="158">S</text>
 
   <!-- coil turns wound over the core -->
-  <g class="coil">
+  <g data-step="2" class="coil">
     <path d="M170,128 q14,-20 28,0"/>
     <path d="M198,128 q14,-20 28,0"/>
     <path d="M226,128 q14,-20 28,0"/>
@@ -40,11 +40,11 @@
   </g>
 
   <!-- external field lines (strong electromagnet) -->
-  <path class="fld" d="M160,120 C120,60 440,60 400,120" marker-end="url(#f4)"/>
-  <path class="fld" d="M160,180 C120,240 440,240 400,180" marker-end="url(#f4)"/>
+  <path data-step="3" class="fld" d="M160,120 C120,60 440,60 400,120" marker-end="url(#f4)"/>
+  <path data-step="3" class="fld" d="M160,180 C120,240 440,240 400,180" marker-end="url(#f4)"/>
 
-  <text class="lbl" x="424" y="152">soft iron core</text>
-  <path class="lead" d="M420,149 L412,150"/>
-  <text class="lbl" x="280" y="40" text-anchor="middle">a stronger electromagnet is produced</text>
-  <path class="lead" d="M280,46 L280,88"/>
+  <text data-step="3" class="lbl" x="424" y="152">soft iron core</text>
+  <path data-step="3" class="lead" d="M420,149 L412,150"/>
+  <text data-step="3" class="lbl" x="280" y="40" text-anchor="middle">a stronger electromagnet is produced</text>
+  <path data-step="3" class="lead" d="M280,46 L280,88"/>
 </svg>

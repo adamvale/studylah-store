@@ -16,20 +16,20 @@
   </defs>
 
   <!-- SIDE VIEW -->
-  <text class="ttl" x="230" y="30">Side view</text>
-  <line class="wire" x1="230" y1="310" x2="230" y2="64" marker-end="url(#cur)"/>
-  <text class="lbl" x="246" y="74">current, I</text>
-  <ellipse class="fld" cx="230" cy="110" rx="58" ry="15"/>
-  <ellipse class="fld" cx="230" cy="170" rx="58" ry="15"/>
-  <ellipse class="fld" cx="230" cy="230" rx="58" ry="15"/>
-  <text class="lbl" x="310" y="240">magnetic field</text>
-  <path class="lead" d="M306,236 L292,232"/>
+  <text data-step="1" class="ttl" x="230" y="30">Side view</text>
+  <line data-step="1" class="wire" x1="230" y1="310" x2="230" y2="64" marker-end="url(#cur)"/>
+  <text data-step="1" class="lbl" x="246" y="74">current, I</text>
+  <ellipse data-step="1" class="fld" cx="230" cy="110" rx="58" ry="15"/>
+  <ellipse data-step="1" class="fld" cx="230" cy="170" rx="58" ry="15"/>
+  <ellipse data-step="1" class="fld" cx="230" cy="230" rx="58" ry="15"/>
+  <text data-step="1" class="lbl" x="310" y="240">magnetic field</text>
+  <path data-step="1" class="lead" d="M306,236 L292,232"/>
 
   <!-- TOP VIEWS -->
-  <text class="ttl" x="230" y="372">Top view</text>
+  <text data-step="2" class="ttl" x="230" y="372">Top view</text>
 
   <!-- current OUT of page -->
-  <g>
+  <g data-step="3">
     <circle class="fld" cx="115" cy="490" r="26"/>
     <circle class="fld" cx="115" cy="490" r="46"/>
     <circle class="fld" cx="115" cy="490" r="66"/>
@@ -41,11 +41,11 @@
     <path class="ah" d="M111,516 L119,520 L111,524 z"/>
     <path class="ah" d="M89,486 L85,494 L81,486 z"/>
   </g>
-  <text class="cap" x="115" y="585">current OUT of page (&#8857;)</text>
-  <text class="cap" x="115" y="605" fill="#86C98B">field is anticlockwise</text>
+  <text data-step="3" class="cap" x="115" y="585">current OUT of page (&#8857;)</text>
+  <text data-step="3" class="cap" x="115" y="605" fill="#86C98B">field is anticlockwise</text>
 
   <!-- current INTO page -->
-  <g>
+  <g data-step="4">
     <circle class="fld" cx="345" cy="490" r="26"/>
     <circle class="fld" cx="345" cy="490" r="46"/>
     <circle class="fld" cx="345" cy="490" r="66"/>
@@ -58,6 +58,6 @@
     <path class="ah" d="M349,516 L341,520 L349,524 z"/>
     <path class="ah" d="M371,486 L375,494 L379,486 z"/>
   </g>
-  <text class="cap" x="345" y="585">current INTO page (&#8855;)</text>
-  <text class="cap" x="345" y="605" fill="#E58F8F">field is clockwise</text>
+  <text data-step="4" class="cap" x="345" y="585">current INTO page (&#8855;)</text>
+  <text data-step="4" class="cap" x="345" y="605" fill="#E58F8F">field is clockwise</text>
 </svg>

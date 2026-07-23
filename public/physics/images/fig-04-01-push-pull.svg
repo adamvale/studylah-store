@@ -15,22 +15,22 @@
   </style>
 
   <!-- PUSH panel (top): yellow force from behind the box; box moves right -->
-  <text x="210" y="32" text-anchor="middle" font-size="16" font-weight="bold">A push</text>
-  <rect class="box" x="182" y="54" width="64" height="64"/>
-  <line class="force" x1="92" y1="86" x2="178" y2="86" marker-end="url(#fArw)"/>
-  <text x="130" y="76" text-anchor="middle" font-size="13" fill="#E8B65A">force</text>
-  <text x="210" y="140" text-anchor="middle" font-size="13">The force acts from behind.</text>
-  <line class="motion" x1="150" y1="166" x2="286" y2="166" marker-end="url(#mArw)"/>
-  <text x="322" y="170" font-size="12" fill="#6FB7E0">moves</text>
+  <text data-step="1" x="210" y="32" text-anchor="middle" font-size="16" font-weight="bold">A push</text>
+  <rect data-step="1" class="box" x="182" y="54" width="64" height="64"/>
+  <line data-step="1" class="force" x1="92" y1="86" x2="178" y2="86" marker-end="url(#fArw)"/>
+  <text data-step="1" x="130" y="76" text-anchor="middle" font-size="13" fill="#E8B65A">force</text>
+  <text data-step="1" x="210" y="140" text-anchor="middle" font-size="13">The force acts from behind.</text>
+  <line data-step="1" class="motion" x1="150" y1="166" x2="286" y2="166" marker-end="url(#mArw)"/>
+  <text data-step="1" x="322" y="170" font-size="12" fill="#6FB7E0">moves</text>
 
-  <line x1="40" y1="200" x2="380" y2="200" stroke="#9AA0A6" stroke-width="1" stroke-dasharray="4 4"/>
+  <line data-step="1" x1="40" y1="200" x2="380" y2="200" stroke="#9AA0A6" stroke-width="1" stroke-dasharray="4 4"/>
 
   <!-- PULL panel (bottom): yellow force from the front of the box; box moves the same way -->
-  <text x="210" y="236" text-anchor="middle" font-size="16" font-weight="bold">A pull</text>
-  <rect class="box" x="182" y="258" width="64" height="64"/>
-  <line class="force" x1="250" y1="290" x2="336" y2="290" marker-end="url(#fArw)"/>
-  <text x="296" y="280" text-anchor="middle" font-size="13" fill="#E8B65A">force</text>
-  <text x="210" y="344" text-anchor="middle" font-size="13">The force acts from the front.</text>
-  <line class="motion" x1="150" y1="370" x2="286" y2="370" marker-end="url(#mArw)"/>
-  <text x="322" y="374" font-size="12" fill="#6FB7E0">moves</text>
+  <text data-step="2" x="210" y="236" text-anchor="middle" font-size="16" font-weight="bold">A pull</text>
+  <rect data-step="2" class="box" x="182" y="258" width="64" height="64"/>
+  <line data-step="2" class="force" x1="250" y1="290" x2="336" y2="290" marker-end="url(#fArw)"/>
+  <text data-step="2" x="296" y="280" text-anchor="middle" font-size="13" fill="#E8B65A">force</text>
+  <text data-step="2" x="210" y="344" text-anchor="middle" font-size="13">The force acts from the front.</text>
+  <line data-step="2" class="motion" x1="150" y1="370" x2="286" y2="370" marker-end="url(#mArw)"/>
+  <text data-step="2" x="322" y="374" font-size="12" fill="#6FB7E0">moves</text>
 </svg>

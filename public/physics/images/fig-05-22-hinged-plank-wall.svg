@@ -9,26 +9,26 @@
     .lbl { font-size:14px; }
   </style>
   <!-- wall on right -->
-  <rect class="wall" x="370" y="40" width="20" height="120"/>
-  <g stroke="#9AA0A6" stroke-width="1">
+  <rect data-step="1" class="wall" x="370" y="40" width="20" height="120"/>
+  <g data-step="1" stroke="#9AA0A6" stroke-width="1">
     <line x1="390" y1="50" x2="398" y2="42"/><line x1="390" y1="70" x2="398" y2="62"/>
     <line x1="390" y1="90" x2="398" y2="82"/><line x1="390" y1="110" x2="398" y2="102"/>
     <line x1="390" y1="130" x2="398" y2="122"/>
   </g>
-  <text class="lbl" x="405" y="100">wall</text>
+  <text data-step="1" class="lbl" x="405" y="100">wall</text>
   <!-- plank hinged at wall -->
-  <rect class="plank" x="80" y="95" width="290" height="10"/>
-  <circle class="pivot" cx="368" cy="100" r="6"/>
-  <text class="lbl" x="320" y="128" text-anchor="middle">pivot (hinge)</text>
+  <rect data-step="2" class="plank" x="80" y="95" width="290" height="10"/>
+  <circle data-step="2" class="pivot" cx="368" cy="100" r="6"/>
+  <text data-step="2" class="lbl" x="320" y="128" text-anchor="middle">pivot (hinge)</text>
   <!-- weight acts at centre -->
-  <line class="force" x1="224" y1="105" x2="224" y2="150"/>
-  <path class="force" d="M224,150 l-5,-10 M224,150 l5,-10"/>
-  <text class="lbl" x="224" y="167" text-anchor="middle" fill="#E58F8F">weight</text>
+  <line data-step="3" class="force" x1="224" y1="105" x2="224" y2="150"/>
+  <path data-step="3" class="force" d="M224,150 l-5,-10 M224,150 l5,-10"/>
+  <text data-step="3" class="lbl" x="224" y="167" text-anchor="middle" fill="#E58F8F">weight</text>
   <!-- length -->
-  <line class="dim" x1="80" y1="65" x2="368" y2="65"/>
-  <path class="dim" d="M80,65 l8,-4 M80,65 l8,4"/>
-  <path class="dim" d="M368,65 l-8,-4 M368,65 l-8,4"/>
-  <text class="lbl" x="224" y="59" text-anchor="middle">1.0 m</text>
-  <line class="dim" x1="80" y1="65" x2="80" y2="95" stroke-dasharray="3 3"/>
-  <line class="dim" x1="368" y1="65" x2="368" y2="95" stroke-dasharray="3 3"/>
+  <line data-step="4" class="dim" x1="80" y1="65" x2="368" y2="65"/>
+  <path data-step="4" class="dim" d="M80,65 l8,-4 M80,65 l8,4"/>
+  <path data-step="4" class="dim" d="M368,65 l-8,-4 M368,65 l-8,4"/>
+  <text data-step="4" class="lbl" x="224" y="59" text-anchor="middle">1.0 m</text>
+  <line data-step="4" class="dim" x1="80" y1="65" x2="80" y2="95" stroke-dasharray="3 3"/>
+  <line data-step="4" class="dim" x1="368" y1="65" x2="368" y2="95" stroke-dasharray="3 3"/>
 </svg>

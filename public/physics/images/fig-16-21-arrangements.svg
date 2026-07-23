@@ -7,18 +7,18 @@
   </style>
 
   <!-- ===== Panel A: all four in series ===== -->
-  <text x="150" y="35" class="tag" text-anchor="middle">A</text>
-  <path class="wire" d="M40,60 L142,60 M158,60 L260,60"/>
-  <line class="wire" x1="142" y1="46" x2="142" y2="74"/>
-  <line class="wire" x1="158" y1="52" x2="158" y2="68" stroke-width="4.5"/>
-  <path class="wire" d="M40,60 L40,170 L260,170 L260,60"/>
-  <rect class="r" x="57" y="163" width="34" height="14"/>
-  <rect class="r" x="108" y="163" width="34" height="14"/>
-  <rect class="r" x="159" y="163" width="34" height="14"/>
-  <rect class="r" x="210" y="163" width="34" height="14"/>
+  <text data-step="1" x="150" y="35" class="tag" text-anchor="middle">A</text>
+  <path data-step="1" class="wire" d="M40,60 L142,60 M158,60 L260,60"/>
+  <line data-step="1" class="wire" x1="142" y1="46" x2="142" y2="74"/>
+  <line data-step="1" class="wire" x1="158" y1="52" x2="158" y2="68" stroke-width="4.5"/>
+  <path data-step="1" class="wire" d="M40,60 L40,170 L260,170 L260,60"/>
+  <rect data-step="1" class="r" x="57" y="163" width="34" height="14"/>
+  <rect data-step="1" class="r" x="108" y="163" width="34" height="14"/>
+  <rect data-step="1" class="r" x="159" y="163" width="34" height="14"/>
+  <rect data-step="1" class="r" x="210" y="163" width="34" height="14"/>
 
   <!-- ===== Panel B: all four in parallel ===== -->
-  <g transform="translate(-300,180)">
+  <g data-step="2" transform="translate(-300,180)">
   <text x="450" y="35" class="tag" text-anchor="middle">B</text>
   <path class="wire" d="M340,60 L442,60 M458,60 L560,60"/>
   <line class="wire" x1="442" y1="46" x2="442" y2="74"/>
@@ -36,7 +36,7 @@
   </g>
 
   <!-- ===== Panel C: two parallel pairs in series ===== -->
-  <g transform="translate(0,145)">
+  <g data-step="3" transform="translate(0,145)">
   <text x="150" y="285" class="tag" text-anchor="middle">C</text>
   <path class="wire" d="M40,310 L142,310 M158,310 L260,310"/>
   <line class="wire" x1="142" y1="296" x2="142" y2="324"/>
@@ -57,7 +57,7 @@
   </g>
 
   <!-- ===== Panel D: one in series with three in parallel ===== -->
-  <g transform="translate(-300,300)">
+  <g data-step="4" transform="translate(-300,300)">
   <text x="450" y="285" class="tag" text-anchor="middle">D</text>
   <path class="wire" d="M340,310 L442,310 M458,310 L560,310"/>
   <line class="wire" x1="442" y1="296" x2="442" y2="324"/>

@@ -10,9 +10,9 @@
   </style>
 
   <!-- ALIGNED (magnet) -->
-  <text x="40" y="30" class="cap" font-weight="bold">Magnetised material: a magnet</text>
-  <rect class="box" x="40" y="45" width="360" height="90" rx="4"/>
-  <g class="arrow">
+  <text data-step="1" x="40" y="30" class="cap" font-weight="bold">Magnetised material: a magnet</text>
+  <rect data-step="1" class="box" x="40" y="45" width="360" height="90" rx="4"/>
+  <g data-step="1" class="arrow">
     <!-- 3 rows x 6 arrows, all pointing right -->
     <g>
       <line x1="60" y1="63" x2="110" y2="63"/><polygon class="head" points="110,59 120,63 110,67"/>
@@ -33,14 +33,14 @@
       <line x1="270" y1="63" x2="320" y2="63"/><polygon class="head" points="320,59 330,63 320,67"/>
     </g>
   </g>
-  <text x="220" y="160" text-anchor="middle" class="cap">Domains all point the same way, so</text>
-  <text x="220" y="178" text-anchor="middle" class="cap">their fields add up to a strong field.</text>
-  <text x="430" y="55" class="lbl">domain</text>
-  <path class="lead" d="M428,60 L330,72"/>
+  <text data-step="1" x="220" y="160" text-anchor="middle" class="cap">Domains all point the same way, so</text>
+  <text data-step="1" x="220" y="178" text-anchor="middle" class="cap">their fields add up to a strong field.</text>
+  <text data-step="1" x="430" y="55" class="lbl">domain</text>
+  <path data-step="1" class="lead" d="M428,60 L330,72"/>
 
   <!-- RANDOM (non-magnet) -->
-  <text x="40" y="228" class="cap" font-weight="bold">Unmagnetised material: not a magnet</text>
-  <g stroke="#9AA0A6" stroke-width="2" fill="none">
+  <text data-step="2" x="40" y="228" class="cap" font-weight="bold">Unmagnetised material: not a magnet</text>
+  <g data-step="2" stroke="#9AA0A6" stroke-width="2" fill="none">
     <g transform="translate(40,245)">
       <line x1="20" y1="20" x2="55" y2="8"/><polygon fill="#9AA0A6" points="55,8 45,7 52,15"/>
       <line x1="75" y1="10" x2="110" y2="30"/><polygon fill="#9AA0A6" points="110,30 100,30 106,22"/>
@@ -58,8 +58,8 @@
       <line x1="300" y1="30" x2="335" y2="12"/><polygon fill="#9AA0A6" points="335,12 325,13 332,20"/>
     </g>
   </g>
-  <rect x="40" y="243" width="360" height="72" rx="4" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
-  <text x="430" y="290" class="cap">Domains point in all</text>
-  <text x="430" y="308" class="cap">directions, so their</text>
-  <text x="430" y="326" class="cap">fields cancel out.</text>
+  <rect data-step="2" x="40" y="243" width="360" height="72" rx="4" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
+  <text data-step="2" x="430" y="290" class="cap">Domains point in all</text>
+  <text data-step="2" x="430" y="308" class="cap">directions, so their</text>
+  <text data-step="2" x="430" y="326" class="cap">fields cancel out.</text>
 </svg>

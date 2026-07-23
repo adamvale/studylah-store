@@ -10,24 +10,24 @@
     .f { stroke:#6FB7E0; stroke-width:2.4; }
     .guide { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:4 3; }
   </style>
-  <line class="ceiling" x1="120" y1="40" x2="300" y2="40"/>
-  <g stroke="#9AA0A6" stroke-width="1">
+  <line data-step="1" class="ceiling" x1="120" y1="40" x2="300" y2="40"/>
+  <g data-step="1" stroke="#9AA0A6" stroke-width="1">
     <line x1="130" y1="40" x2="122" y2="50"/><line x1="150" y1="40" x2="142" y2="50"/>
     <line x1="170" y1="40" x2="162" y2="50"/><line x1="190" y1="40" x2="182" y2="50"/>
     <line x1="210" y1="40" x2="202" y2="50"/><line x1="230" y1="40" x2="222" y2="50"/>
     <line x1="250" y1="40" x2="242" y2="50"/><line x1="270" y1="40" x2="262" y2="50"/>
   </g>
   <!-- vertical reference and string at angle -->
-  <line class="guide" x1="200" y1="40" x2="200" y2="180"/>
-  <line class="string" x1="200" y1="40" x2="245" y2="175"/>
-  <path d="M200,90 A50,50 0 0 0 215,105" fill="none" stroke="#9AA0A6" stroke-width="1"/>
-  <text x="207" y="88" font-size="12.5">20&#176;</text>
-  <text x="255" y="120" font-size="13.5" fill="#E8B65A">T = 160 N</text>
+  <line data-step="1" class="guide" x1="200" y1="40" x2="200" y2="180"/>
+  <line data-step="1" class="string" x1="200" y1="40" x2="245" y2="175"/>
+  <path data-step="1" d="M200,90 A50,50 0 0 0 215,105" fill="none" stroke="#9AA0A6" stroke-width="1"/>
+  <text data-step="1" x="207" y="88" font-size="12.5">20&#176;</text>
+  <text data-step="1" x="255" y="120" font-size="13.5" fill="#E8B65A">T = 160 N</text>
   <!-- mass -->
-  <rect class="box" x="220" y="175" width="50" height="45"/>
-  <text x="245" y="202" text-anchor="middle" font-size="12.5">15 kg</text>
+  <rect data-step="2" class="box" x="220" y="175" width="50" height="45"/>
+  <text data-step="2" x="245" y="202" text-anchor="middle" font-size="12.5">15 kg</text>
   <!-- horizontal force F -->
-  <line class="f" x1="245" y1="197" x2="335" y2="197" marker-end="url(#arw)"/>
-  <text x="300" y="188" font-size="14" fill="#6FB7E0">F</text>
-  <text x="190" y="270" text-anchor="middle" font-size="12.5">Resultant force is zero (not drawn to scale).</text>
+  <line data-step="3" class="f" x1="245" y1="197" x2="335" y2="197" marker-end="url(#arw)"/>
+  <text data-step="3" x="300" y="188" font-size="14" fill="#6FB7E0">F</text>
+  <text data-step="3" x="190" y="270" text-anchor="middle" font-size="12.5">Resultant force is zero (not drawn to scale).</text>
 </svg>

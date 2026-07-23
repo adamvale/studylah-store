@@ -7,24 +7,24 @@
     .blue { fill:#6FB7E0; }
   </style>
   <!-- metal labels -->
-  <g font-size="16" text-anchor="middle">
+  <g data-step="1" font-size="16" text-anchor="middle">
     <text x="90" y="45">silver</text>
     <text x="220" y="45">copper</text>
     <text x="350" y="45">tungsten</text>
     <text x="480" y="45">nichrome</text>
   </g>
   <!-- ticks -->
-  <g class="tick">
+  <g data-step="2" class="tick">
     <line x1="90" y1="60" x2="90" y2="80"/>
     <line x1="220" y1="60" x2="220" y2="80"/>
     <line x1="350" y1="60" x2="350" y2="80"/>
     <line x1="480" y1="60" x2="480" y2="80"/>
   </g>
   <!-- axis with arrow -->
-  <line class="axis" x1="60" y1="80" x2="520" y2="80"/>
-  <path class="axis" fill="none" d="M512,73 L522,80 L512,87"/>
+  <line data-step="3" class="axis" x1="60" y1="80" x2="520" y2="80"/>
+  <path data-step="3" class="axis" fill="none" d="M512,73 L522,80 L512,87"/>
   <!-- end labels -->
-  <text x="90" y="115" text-anchor="middle" font-size="16" class="blue">low resistance</text>
-  <text x="480" y="115" text-anchor="middle" font-size="16" class="amber">high resistance</text>
-  <text x="290" y="150" text-anchor="middle" font-size="15">resistance of the metal increases &#8594;</text>
+  <text data-step="4" x="90" y="115" text-anchor="middle" font-size="16" class="blue">low resistance</text>
+  <text data-step="4" x="480" y="115" text-anchor="middle" font-size="16" class="amber">high resistance</text>
+  <text data-step="4" x="290" y="150" text-anchor="middle" font-size="15">resistance of the metal increases &#8594;</text>
 </svg>

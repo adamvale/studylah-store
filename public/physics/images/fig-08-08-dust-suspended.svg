@@ -5,11 +5,11 @@
     .dust { fill:#6FB7E0; opacity:0.6; stroke:#6FB7E0; stroke-width:1.2; }
     .lbl { font-size:12px; }
   </style>
-  <circle class="view" cx="160" cy="150" r="120"/>
+  <circle data-step="1" class="view" cx="160" cy="150" r="120"/>
   <!-- three dust specks suspended -->
-  <circle class="dust" cx="120" cy="110" r="6"/>
-  <circle class="dust" cx="200" cy="160" r="6"/>
-  <circle class="dust" cx="150" cy="205" r="6"/>
-  <text class="lbl" x="160" y="292" text-anchor="middle" font-size="14" fill="#9AA0A6" font-style="italic">dust specks suspended in</text>
-  <text class="lbl" x="160" y="310" text-anchor="middle" font-size="14" fill="#9AA0A6" font-style="italic">still air (magnified)</text>
+  <circle data-step="1" class="dust" cx="120" cy="110" r="6"/>
+  <circle data-step="2" class="dust" cx="200" cy="160" r="6"/>
+  <circle data-step="2" class="dust" cx="150" cy="205" r="6"/>
+  <text data-step="3" class="lbl" x="160" y="292" text-anchor="middle" font-size="14" fill="#9AA0A6" font-style="italic">dust specks suspended in</text>
+  <text data-step="4" class="lbl" x="160" y="310" text-anchor="middle" font-size="14" fill="#9AA0A6" font-style="italic">still air (magnified)</text>
 </svg>

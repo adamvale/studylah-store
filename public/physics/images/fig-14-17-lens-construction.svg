@@ -16,24 +16,24 @@
     .r3 { stroke:#E58F8F; stroke-width:1.6; fill:none; }
     .pf { fill:#EAEAEA; }
   </style>
-  <line class="axis" x1="40" y1="180" x2="580" y2="180"/>
-  <path class="lens" d="M330,100 Q360,180 330,260 Q300,180 330,100 Z"/>
+  <line data-step="1" class="axis" x1="40" y1="180" x2="580" y2="180"/>
+  <path data-step="1" class="lens" d="M330,100 Q360,180 330,260 Q300,180 330,100 Z"/>
   <!-- object arrow (at 2F) -->
-  <path class="obj" marker-end="url(#ao)" d="M150,180 L150,112"/>
-  <text x="150" y="103" text-anchor="middle" font-size="13" fill="#E8B65A">object</text>
+  <path data-step="1" class="obj" marker-end="url(#ao)" d="M150,180 L150,112"/>
+  <text data-step="1" x="150" y="103" text-anchor="middle" font-size="13" fill="#E8B65A">object</text>
   <!-- Ray 1: parallel to axis, then through far F -->
-  <path class="r1" d="M150,110 L330,110"/>
-  <path class="r1" marker-end="url(#ar)" d="M330,110 L545,277"/>
+  <path data-step="2" class="r1" d="M150,110 L330,110"/>
+  <path data-step="2" class="r1" marker-end="url(#ar)" d="M330,110 L545,277"/>
   <!-- Ray 2: through optical centre C -->
-  <path class="r2" marker-end="url(#ao)" d="M150,110 L545,264"/>
+  <path data-step="3" class="r2" marker-end="url(#ao)" d="M150,110 L545,264"/>
   <!-- Ray 3: through near F, then parallel to axis -->
-  <path class="r3" d="M150,110 L330,250"/>
-  <path class="r3" marker-end="url(#ar-e58f8f)" d="M330,250 L545,250"/>
+  <path data-step="4" class="r3" d="M150,110 L330,250"/>
+  <path data-step="4" class="r3" marker-end="url(#ar-e58f8f)" d="M330,250 L545,250"/>
   <!-- image arrow (inverted, real) -->
-  <path class="img" marker-end="url(#ar-86c98b)" d="M510,180 L510,246"/>
-  <text x="524" y="235" font-size="13" fill="#86C98B">image</text>
+  <path data-step="5" class="img" marker-end="url(#ar-86c98b)" d="M510,180 L510,246"/>
+  <text data-step="5" x="524" y="235" font-size="13" fill="#86C98B">image</text>
   <!-- focal points -->
-  <circle class="pf" cx="240" cy="180" r="3"/><text x="240" y="200" text-anchor="middle" font-size="13" font-style="italic">F</text>
-  <circle class="pf" cx="420" cy="180" r="3"/><text x="420" y="200" text-anchor="middle" font-size="13" font-style="italic">F</text>
-  <circle class="pf" cx="330" cy="180" r="3"/><text x="330" y="278" text-anchor="middle" font-size="12">C</text>
+  <circle data-step="6" class="pf" cx="240" cy="180" r="3"/><text data-step="6" x="240" y="200" text-anchor="middle" font-size="13" font-style="italic">F</text>
+  <circle data-step="6" class="pf" cx="420" cy="180" r="3"/><text data-step="6" x="420" y="200" text-anchor="middle" font-size="13" font-style="italic">F</text>
+  <circle data-step="6" class="pf" cx="330" cy="180" r="3"/><text data-step="6" x="330" y="278" text-anchor="middle" font-size="12">C</text>
 </svg>

@@ -80,3 +80,44 @@ woven into Gugu's `say` so her voice walks the student through the picture.
    wrong curves; the lint cannot.
 
 Delivery = SVGs + `svg-manifest.md`, lint-clean, and every preview eyeballed.
+
+## Build order: keep writing section comments
+
+Figures are no longer shown finished. The player reveals them in steps, paced
+to Gugu's voice, so a diagram draws itself while she describes it.
+
+You do not author the steps. `scripts/stamp-svg-steps.mjs` reads the section
+comments you already write and turns each one into a step:
+
+```svg
+<!-- 1. the axes -->        <- step 1
+<line .../>
+<!-- 2. the readings -->    <- step 2
+<path .../>
+```
+
+So the only thing asked of a new figure is what good figures already do:
+**group the elements by what they draw, and put a comment above each group, in
+the order you would draw them on a board.** Two or more comments is enough.
+
+A figure with no section comments still works, but falls back to a guess:
+shapes first, then the text that labels them. That is worse than your ordering,
+never better.
+
+Two rules to keep in mind:
+
+- **Do not reorder elements to change the build.** `data-step` is a reveal
+  index and is independent of paint order, which is what element order
+  controls. Moving a node to "fix" the animation changes what paints over what.
+  Change the comments instead.
+- **A step can name its own moment.** If a figure has one part the narration
+  calls out explicitly, add the phrase to any element in that group:
+
+  ```svg
+  <g data-cue="in the top half"> ... </g>
+  ```
+
+  That step then waits for those words instead of taking its even share.
+
+Run `node scripts/stamp-svg-steps.mjs` after adding figures. It is idempotent
+and skips files that already carry steps.

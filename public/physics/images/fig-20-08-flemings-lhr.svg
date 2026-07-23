@@ -17,22 +17,22 @@
   </defs>
 
   <!-- stylised left palm -->
-  <path class="hand" d="M170,300 q-10,-70 4,-120 l14,-2 q4,-40 12,-40 q10,0 10,26 l-2,52
+  <path data-step="1" class="hand" d="M170,300 q-10,-70 4,-120 l14,-2 q4,-40 12,-40 q10,0 10,26 l-2,52
      q30,-6 40,4 q10,10 -6,20 l-30,14 q6,30 -6,60 q-24,20 -50,-14 z"/>
 
   <!-- Force (thumb) up -->
-  <line class="fF" x1="200" y1="180" x2="200" y2="70" marker-end="url(#mF)"/>
-  <text class="tF" x="208" y="66">Force / thrust, F (thumb)</text>
+  <line data-step="2" class="fF" x1="200" y1="180" x2="200" y2="70" marker-end="url(#mF)"/>
+  <text data-step="2" class="tF" x="208" y="66">Force / thrust, F (thumb)</text>
 
   <!-- Field (first finger) to upper right -->
-  <line class="fB" x1="200" y1="180" x2="330" y2="120" marker-end="url(#mB)"/>
-  <text class="tB" x="330" y="100" text-anchor="middle">Field, B (first finger)</text>
+  <line data-step="3" class="fB" x1="200" y1="180" x2="330" y2="120" marker-end="url(#mB)"/>
+  <text data-step="3" class="tB" x="330" y="100" text-anchor="middle">Field, B (first finger)</text>
 
   <!-- Current (second finger) to the right/down -->
-  <line class="fI" x1="200" y1="180" x2="345" y2="205" marker-end="url(#mI)"/>
-  <text class="tI" x="250" y="235">Current, I (second finger)</text>
+  <line data-step="4" class="fI" x1="200" y1="180" x2="345" y2="205" marker-end="url(#mI)"/>
+  <text data-step="4" class="tI" x="250" y="235">Current, I (second finger)</text>
 
-  <text class="note" x="30" y="312">Fleming's left-hand rule: hold the thumb and first two fingers</text>
-  <text class="note" x="30" y="330">of the left hand at right angles.</text>
-  <text class="note" x="30" y="348">thuMb = Motion, First finger = Field, seCond finger = Current.</text>
+  <text data-step="4" class="note" x="30" y="312">Fleming's left-hand rule: hold the thumb and first two fingers</text>
+  <text data-step="4" class="note" x="30" y="330">of the left hand at right angles.</text>
+  <text data-step="4" class="note" x="30" y="348">thuMb = Motion, First finger = Field, seCond finger = Current.</text>
 </svg>

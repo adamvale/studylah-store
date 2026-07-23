@@ -19,62 +19,62 @@
   </defs>
 
   <!-- poles -->
-  <rect class="pole" x="40" y="150" width="70" height="90"/>
-  <rect class="pole" x="550" y="150" width="70" height="90"/>
-  <text class="plbl" x="75" y="200">N</text>
-  <text class="plbl" x="585" y="200">S</text>
+  <rect data-step="1" class="pole" x="40" y="150" width="70" height="90"/>
+  <rect data-step="1" class="pole" x="550" y="150" width="70" height="90"/>
+  <text data-step="1" class="plbl" x="75" y="200">N</text>
+  <text data-step="1" class="plbl" x="585" y="200">S</text>
 
   <!-- rectangular coil (perspective parallelogram) A B C D -->
-  <polygon class="coil" points="230,250 285,190 445,190 390,250"/>
-  <text x="222" y="266">A</text>
-  <text x="278" y="184">B</text>
-  <text x="450" y="184">C</text>
-  <text x="392" y="266">D</text>
-  <text class="lbl" x="360" y="158">coil (wound on a soft-iron cylinder)</text>
-  <path class="lead" d="M358,162 L365,188"/>
+  <polygon data-step="2" class="coil" points="230,250 285,190 445,190 390,250"/>
+  <text data-step="2" x="222" y="266">A</text>
+  <text data-step="2" x="278" y="184">B</text>
+  <text data-step="2" x="450" y="184">C</text>
+  <text data-step="2" x="392" y="266">D</text>
+  <text data-step="2" class="lbl" x="360" y="158">coil (wound on a soft-iron cylinder)</text>
+  <path data-step="2" class="lead" d="M358,162 L365,188"/>
 
   <!-- current direction arrows on the coil sides -->
-  <line x1="252" y1="222" x2="230" y2="248" stroke="#6FB7E0" stroke-width="2" marker-end="url(#mc)"/>
-  <line x1="410" y1="222" x2="432" y2="196" stroke="#6FB7E0" stroke-width="2" marker-end="url(#mc)"/>
-  <text class="cur" x="470" y="215">current, I</text>
+  <line data-step="3" x1="252" y1="222" x2="230" y2="248" stroke="#6FB7E0" stroke-width="2" marker-end="url(#mc)"/>
+  <line data-step="3" x1="410" y1="222" x2="432" y2="196" stroke="#6FB7E0" stroke-width="2" marker-end="url(#mc)"/>
+  <text data-step="3" class="cur" x="470" y="215">current, I</text>
 
   <!-- forces: up on side AB (current towards viewer), down on side DC (current away) -->
-  <line class="force" x1="262" y1="210" x2="262" y2="140" marker-end="url(#mfr)"/>
-  <text fill="#E58F8F" x="270" y="150" font-weight="bold">F</text>
-  <line class="force" x1="412" y1="232" x2="412" y2="300" marker-end="url(#mfr)"/>
-  <text fill="#E58F8F" x="422" y="300" font-weight="bold">F</text>
+  <line data-step="4" class="force" x1="262" y1="210" x2="262" y2="140" marker-end="url(#mfr)"/>
+  <text data-step="4" fill="#E58F8F" x="270" y="150" font-weight="bold">F</text>
+  <line data-step="4" class="force" x1="412" y1="232" x2="412" y2="300" marker-end="url(#mfr)"/>
+  <text data-step="4" fill="#E58F8F" x="422" y="300" font-weight="bold">F</text>
 
   <!-- axle from coil to commutator -->
-  <line class="axle" x1="285" y1="220" x2="445" y2="220"/>
-  <line class="axle" x1="230" y1="250" x2="200" y2="330"/>
-  <text class="lbl" x="455" y="240">axle</text>
-  <path class="lead" d="M453,234 L447,222"/>
+  <line data-step="5" class="axle" x1="285" y1="220" x2="445" y2="220"/>
+  <line data-step="5" class="axle" x1="230" y1="250" x2="200" y2="330"/>
+  <text data-step="5" class="lbl" x="455" y="240">axle</text>
+  <path data-step="5" class="lead" d="M453,234 L447,222"/>
 
   <!-- split-ring commutator: two half-rings with gaps at top & bottom -->
-  <path class="ring" d="M200,302 A28,28 0 0 0 200,358"/>
-  <path class="ring" d="M200,302 A28,28 0 0 1 200,358"/>
-  <line x1="200" y1="298" x2="200" y2="306" stroke="#0d0d0d" stroke-width="4"/>
-  <line x1="200" y1="354" x2="200" y2="362" stroke="#0d0d0d" stroke-width="4"/>
-  <text class="lbl" x="60" y="330">split-ring</text>
-  <text class="lbl" x="60" y="346">commutator</text>
-  <path class="lead" d="M118,338 L170,332"/>
-  <text class="lbl" x="120" y="392" fill="#E8B65A">split / gap</text>
-  <path class="lead" d="M150,388 L196,360"/>
+  <path data-step="6" class="ring" d="M200,302 A28,28 0 0 0 200,358"/>
+  <path data-step="6" class="ring" d="M200,302 A28,28 0 0 1 200,358"/>
+  <line data-step="6" x1="200" y1="298" x2="200" y2="306" stroke="#0d0d0d" stroke-width="4"/>
+  <line data-step="6" x1="200" y1="354" x2="200" y2="362" stroke="#0d0d0d" stroke-width="4"/>
+  <text data-step="6" class="lbl" x="60" y="330">split-ring</text>
+  <text data-step="6" class="lbl" x="60" y="346">commutator</text>
+  <path data-step="6" class="lead" d="M118,338 L170,332"/>
+  <text data-step="6" class="lbl" x="120" y="392" fill="#E8B65A">split / gap</text>
+  <path data-step="6" class="lead" d="M150,388 L196,360"/>
 
   <!-- carbon brushes -->
-  <rect class="brush" x="150" y="322" width="18" height="16"/>
-  <rect class="brush" x="232" y="322" width="18" height="16"/>
-  <text class="lbl" x="270" y="334">carbon brush</text>
-  <path class="lead" d="M268,330 L251,330"/>
+  <rect data-step="7" class="brush" x="150" y="322" width="18" height="16"/>
+  <rect data-step="7" class="brush" x="232" y="322" width="18" height="16"/>
+  <text data-step="7" class="lbl" x="270" y="334">carbon brush</text>
+  <path data-step="7" class="lead" d="M268,330 L251,330"/>
 
   <!-- wires to battery -->
-  <line class="wire" x1="159" y1="338" x2="159" y2="415"/>
-  <line class="wire" x1="241" y1="338" x2="241" y2="415"/>
-  <line class="wire" x1="159" y1="415" x2="185" y2="415"/>
-  <line class="wire" x1="215" y1="415" x2="241" y2="415"/>
+  <line data-step="8" class="wire" x1="159" y1="338" x2="159" y2="415"/>
+  <line data-step="8" class="wire" x1="241" y1="338" x2="241" y2="415"/>
+  <line data-step="8" class="wire" x1="159" y1="415" x2="185" y2="415"/>
+  <line data-step="8" class="wire" x1="215" y1="415" x2="241" y2="415"/>
   <!-- battery symbol -->
-  <line class="wire" x1="185" y1="402" x2="185" y2="428"/>
-  <line class="wire" x1="200" y1="408" x2="200" y2="422"/>
-  <line class="wire" x1="215" y1="402" x2="215" y2="428"/>
-  <text x="248" y="418">battery</text>
+  <line data-step="9" class="wire" x1="185" y1="402" x2="185" y2="428"/>
+  <line data-step="9" class="wire" x1="200" y1="408" x2="200" y2="422"/>
+  <line data-step="9" class="wire" x1="215" y1="402" x2="215" y2="428"/>
+  <text data-step="9" x="248" y="418">battery</text>
 </svg>

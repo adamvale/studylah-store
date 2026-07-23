@@ -12,30 +12,30 @@
 
   <!-- compasses around the magnet; red arrow tip = north-seeking pole -->
   <!-- 1 leftmost: 180 -->
-  <g transform="translate(191,225) rotate(180)"><circle class="comp" r="16"/><line class="needle" x1="-12" y1="0" x2="12" y2="0"/><polygon class="nhead" points="8,-4 8,4 16,0"/></g>
+  <g data-step="1" transform="translate(191,225) rotate(180)"><circle class="comp" r="16"/><line class="needle" x1="-12" y1="0" x2="12" y2="0"/><polygon class="nhead" points="8,-4 8,4 16,0"/></g>
   <!-- 2 upper-left: 225 -->
-  <g transform="translate(210,152) rotate(225)"><circle class="comp" r="16"/><line class="needle" x1="-12" y1="0" x2="12" y2="0"/><polygon class="nhead" points="8,-4 8,4 16,0"/></g>
+  <g data-step="2" transform="translate(210,152) rotate(225)"><circle class="comp" r="16"/><line class="needle" x1="-12" y1="0" x2="12" y2="0"/><polygon class="nhead" points="8,-4 8,4 16,0"/></g>
   <!-- 3 top-left: 300 -->
-  <g transform="translate(259,113) rotate(300)"><circle class="comp" r="16"/><line class="needle" x1="-12" y1="0" x2="12" y2="0"/><polygon class="nhead" points="8,-4 8,4 16,0"/></g>
+  <g data-step="3" transform="translate(259,113) rotate(300)"><circle class="comp" r="16"/><line class="needle" x1="-12" y1="0" x2="12" y2="0"/><polygon class="nhead" points="8,-4 8,4 16,0"/></g>
   <!-- 4 top: 0 -->
-  <g transform="translate(300,105) rotate(0)"><circle class="comp" r="16"/><line class="needle" x1="-12" y1="0" x2="12" y2="0"/><polygon class="nhead" points="8,-4 8,4 16,0"/></g>
+  <g data-step="4" transform="translate(300,105) rotate(0)"><circle class="comp" r="16"/><line class="needle" x1="-12" y1="0" x2="12" y2="0"/><polygon class="nhead" points="8,-4 8,4 16,0"/></g>
   <!-- 5 top-right: 60 -->
-  <g transform="translate(341,113) rotate(60)"><circle class="comp" r="16"/><line class="needle" x1="-12" y1="0" x2="12" y2="0"/><polygon class="nhead" points="8,-4 8,4 16,0"/></g>
+  <g data-step="5" transform="translate(341,113) rotate(60)"><circle class="comp" r="16"/><line class="needle" x1="-12" y1="0" x2="12" y2="0"/><polygon class="nhead" points="8,-4 8,4 16,0"/></g>
   <!-- 6 upper-right: 135 -->
-  <g transform="translate(390,152) rotate(135)"><circle class="comp" r="16"/><line class="needle" x1="-12" y1="0" x2="12" y2="0"/><polygon class="nhead" points="8,-4 8,4 16,0"/></g>
+  <g data-step="6" transform="translate(390,152) rotate(135)"><circle class="comp" r="16"/><line class="needle" x1="-12" y1="0" x2="12" y2="0"/><polygon class="nhead" points="8,-4 8,4 16,0"/></g>
   <!-- 7 rightmost: 180 -->
-  <g transform="translate(410,225) rotate(180)"><circle class="comp" r="16"/><line class="needle" x1="-12" y1="0" x2="12" y2="0"/><polygon class="nhead" points="8,-4 8,4 16,0"/></g>
+  <g data-step="7" transform="translate(410,225) rotate(180)"><circle class="comp" r="16"/><line class="needle" x1="-12" y1="0" x2="12" y2="0"/><polygon class="nhead" points="8,-4 8,4 16,0"/></g>
 
   <!-- magnet -->
-  <rect class="magN" x="220" y="200" width="80" height="30" rx="2"/>
-  <rect class="magS" x="300" y="200" width="80" height="30" rx="2"/>
-  <text class="pole" x="234" y="221">N</text>
-  <text class="pole" x="360" y="221">S</text>
+  <rect data-step="8" class="magN" x="220" y="200" width="80" height="30" rx="2"/>
+  <rect data-step="8" class="magS" x="300" y="200" width="80" height="30" rx="2"/>
+  <text data-step="8" class="pole" x="234" y="221">N</text>
+  <text data-step="8" class="pole" x="360" y="221">S</text>
 
-  <text x="320" y="35" text-anchor="middle" class="lbl">Each compass needle lines up with the field: its</text>
-  <text x="320" y="52" text-anchor="middle" class="lbl">red (north-seeking) tip points from N toward S.</text>
-  <text x="455" y="236" class="lbl">move the compass</text>
-  <text x="455" y="254" class="lbl">step by step and</text>
-  <text x="455" y="272" class="lbl">mark each arrow to</text>
-  <text x="455" y="290" class="lbl">trace a field line</text>
+  <text data-step="8" x="320" y="35" text-anchor="middle" class="lbl">Each compass needle lines up with the field: its</text>
+  <text data-step="8" x="320" y="52" text-anchor="middle" class="lbl">red (north-seeking) tip points from N toward S.</text>
+  <text data-step="8" x="455" y="236" class="lbl">move the compass</text>
+  <text data-step="8" x="455" y="254" class="lbl">step by step and</text>
+  <text data-step="8" x="455" y="272" class="lbl">mark each arrow to</text>
+  <text data-step="8" x="455" y="290" class="lbl">trace a field line</text>
 </svg>

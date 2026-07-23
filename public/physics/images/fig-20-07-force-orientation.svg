@@ -19,7 +19,7 @@
   </defs>
 
   <!-- TOP: perpendicular -> maximum force -->
-  <g transform="translate(15,10)">
+  <g data-step="1" transform="translate(15,10)">
     <text class="ttl" x="165" y="26">Conductor perpendicular to field</text>
     <line class="fld" x1="70" y1="80"  x2="240" y2="80"  marker-end="url(#fa)"/>
     <line class="fld" x1="70" y1="115" x2="240" y2="115" marker-end="url(#fa)"/>
@@ -34,7 +34,7 @@
   </g>
 
   <!-- BOTTOM: parallel -> zero force -->
-  <g transform="translate(-315,290)">
+  <g data-step="2" transform="translate(-315,290)">
     <text class="ttl" x="495" y="26">Conductor parallel to field</text>
     <line class="fld" x1="390" y1="110" x2="600" y2="110" marker-end="url(#fa)"/>
     <line class="fld" x1="390" y1="190" x2="600" y2="190" marker-end="url(#fa)"/>

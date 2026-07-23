@@ -13,29 +13,29 @@
     .arc { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
   </style>
   <!-- Panel 1: less dense to denser, bends toward normal, i > r -->
-  <rect class="dense" x="40" y="150" width="270" height="110"/>
-  <line class="bd" x1="40" y1="150" x2="310" y2="150"/>
-  <path class="norm" d="M175,60 L175,255"/>
-  <path class="inc" marker-end="url(#a1)" d="M99,86 L173,148"/>
-  <path class="ref" marker-end="url(#a2)" d="M175,150 L215,219"/>
-  <path class="arc" d="M175,105 A45,45 0 0,0 143,117"/>
-  <text x="146" y="110" font-size="13" font-style="italic">i</text>
-  <path class="arc" d="M175,200 A45,45 0 0,1 197,190"/>
-  <text x="188" y="192" font-size="13" font-style="italic">r</text>
-  <text x="50" y="140" font-size="13">less dense</text>
-  <text x="240" y="177" font-size="13">denser</text>
-  <text x="175" y="287" text-anchor="middle" font-size="14">Bends <tspan fill="#6FB7E0">toward</tspan> normal (<tspan font-style="italic">i</tspan> &gt; <tspan font-style="italic">r</tspan>)</text>
+  <rect data-step="1" class="dense" x="40" y="150" width="270" height="110"/>
+  <line data-step="1" class="bd" x1="40" y1="150" x2="310" y2="150"/>
+  <path data-step="1" class="norm" d="M175,60 L175,255"/>
+  <path data-step="1" class="inc" marker-end="url(#a1)" d="M99,86 L173,148"/>
+  <path data-step="1" class="ref" marker-end="url(#a2)" d="M175,150 L215,219"/>
+  <path data-step="1" class="arc" d="M175,105 A45,45 0 0,0 143,117"/>
+  <text data-step="1" x="146" y="110" font-size="13" font-style="italic">i</text>
+  <path data-step="1" class="arc" d="M175,200 A45,45 0 0,1 197,190"/>
+  <text data-step="1" x="188" y="192" font-size="13" font-style="italic">r</text>
+  <text data-step="1" x="50" y="140" font-size="13">less dense</text>
+  <text data-step="1" x="240" y="177" font-size="13">denser</text>
+  <text data-step="1" x="175" y="287" text-anchor="middle" font-size="14">Bends <tspan fill="#6FB7E0">toward</tspan> normal (<tspan font-style="italic">i</tspan> &gt; <tspan font-style="italic">r</tspan>)</text>
   <!-- Panel 2: denser to less dense, bends away from normal, i < r -->
-  <rect class="dense" x="40" y="320" width="270" height="110"/>
-  <line class="bd" x1="40" y1="430" x2="310" y2="430"/>
-  <path class="norm" d="M175,325 L175,535"/>
-  <path class="inc" marker-end="url(#a1)" d="M125,343 L173,428"/>
-  <path class="ref" marker-end="url(#a2)" d="M175,430 L236,481"/>
-  <path class="arc" d="M175,385 A45,45 0 0,0 153,395"/>
-  <text x="156" y="390" font-size="13" font-style="italic">i</text>
-  <path class="arc" d="M175,480 A45,45 0 0,1 205,467"/>
-  <text x="195" y="472" font-size="13" font-style="italic">r</text>
-  <text x="50" y="345" font-size="13">denser</text>
-  <text x="230" y="455" font-size="13">less dense</text>
-  <text x="175" y="567" text-anchor="middle" font-size="14">Bends <tspan fill="#6FB7E0">away from</tspan> normal (<tspan font-style="italic">i</tspan> &lt; <tspan font-style="italic">r</tspan>)</text>
+  <rect data-step="2" class="dense" x="40" y="320" width="270" height="110"/>
+  <line data-step="2" class="bd" x1="40" y1="430" x2="310" y2="430"/>
+  <path data-step="2" class="norm" d="M175,325 L175,535"/>
+  <path data-step="2" class="inc" marker-end="url(#a1)" d="M125,343 L173,428"/>
+  <path data-step="2" class="ref" marker-end="url(#a2)" d="M175,430 L236,481"/>
+  <path data-step="2" class="arc" d="M175,385 A45,45 0 0,0 153,395"/>
+  <text data-step="2" x="156" y="390" font-size="13" font-style="italic">i</text>
+  <path data-step="2" class="arc" d="M175,480 A45,45 0 0,1 205,467"/>
+  <text data-step="2" x="195" y="472" font-size="13" font-style="italic">r</text>
+  <text data-step="2" x="50" y="345" font-size="13">denser</text>
+  <text data-step="2" x="230" y="455" font-size="13">less dense</text>
+  <text data-step="2" x="175" y="567" text-anchor="middle" font-size="14">Bends <tspan fill="#6FB7E0">away from</tspan> normal (<tspan font-style="italic">i</tspan> &lt; <tspan font-style="italic">r</tspan>)</text>
 </svg>

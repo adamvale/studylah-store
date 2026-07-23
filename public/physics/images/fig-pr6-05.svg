@@ -9,38 +9,38 @@
   </style>
 
   <!-- A: three in series -->
-  <text class="tag" x="34" y="66">A</text>
-  <path class="wire" d="M60,60 L90,60 M130,60 L190,60 M230,60 L290,60 M330,60 L380,60"/>
-  <rect class="res" x="90" y="48" width="40" height="24"/>
-  <rect class="res" x="190" y="48" width="40" height="24"/>
-  <rect class="res" x="290" y="48" width="40" height="24"/>
-  <circle class="node" cx="60" cy="60" r="4"/>
-  <circle class="node" cx="380" cy="60" r="4"/>
+  <text data-step="1" class="tag" x="34" y="66">A</text>
+  <path data-step="1" class="wire" d="M60,60 L90,60 M130,60 L190,60 M230,60 L290,60 M330,60 L380,60"/>
+  <rect data-step="1" class="res" x="90" y="48" width="40" height="24"/>
+  <rect data-step="1" class="res" x="190" y="48" width="40" height="24"/>
+  <rect data-step="1" class="res" x="290" y="48" width="40" height="24"/>
+  <circle data-step="1" class="node" cx="60" cy="60" r="4"/>
+  <circle data-step="1" class="node" cx="380" cy="60" r="4"/>
 
   <!-- B: three in parallel -->
-  <text class="tag" x="34" y="186">B</text>
-  <path class="wire" d="M60,180 L100,180 M340,180 L380,180"/>
-  <path class="wire" d="M100,145 L100,215 M340,145 L340,215"/>
-  <path class="wire" d="M100,145 L200,145 M240,145 L340,145"/>
-  <path class="wire" d="M100,180 L200,180 M240,180 L340,180"/>
-  <path class="wire" d="M100,215 L200,215 M240,215 L340,215"/>
-  <rect class="res" x="200" y="133" width="40" height="24"/>
-  <rect class="res" x="200" y="168" width="40" height="24"/>
-  <rect class="res" x="200" y="203" width="40" height="24"/>
-  <circle class="node" cx="60" cy="180" r="4"/>
-  <circle class="node" cx="380" cy="180" r="4"/>
+  <text data-step="2" class="tag" x="34" y="186">B</text>
+  <path data-step="2" class="wire" d="M60,180 L100,180 M340,180 L380,180"/>
+  <path data-step="2" class="wire" d="M100,145 L100,215 M340,145 L340,215"/>
+  <path data-step="2" class="wire" d="M100,145 L200,145 M240,145 L340,145"/>
+  <path data-step="2" class="wire" d="M100,180 L200,180 M240,180 L340,180"/>
+  <path data-step="2" class="wire" d="M100,215 L200,215 M240,215 L340,215"/>
+  <rect data-step="2" class="res" x="200" y="133" width="40" height="24"/>
+  <rect data-step="2" class="res" x="200" y="168" width="40" height="24"/>
+  <rect data-step="2" class="res" x="200" y="203" width="40" height="24"/>
+  <circle data-step="2" class="node" cx="60" cy="180" r="4"/>
+  <circle data-step="2" class="node" cx="380" cy="180" r="4"/>
 
   <!-- C: one in series with two in parallel -->
-  <text class="tag" x="34" y="326">C</text>
-  <path class="wire" d="M60,320 L95,320 M135,320 L200,320 M320,320 L380,320"/>
-  <rect class="res" x="95" y="308" width="40" height="24"/>
-  <path class="wire" d="M200,295 L200,345 M320,295 L320,345"/>
-  <path class="wire" d="M200,295 L240,295 M280,295 L320,295"/>
-  <path class="wire" d="M200,345 L240,345 M280,345 L320,345"/>
-  <rect class="res" x="240" y="283" width="40" height="24"/>
-  <rect class="res" x="240" y="333" width="40" height="24"/>
-  <circle class="node" cx="60" cy="320" r="4"/>
-  <circle class="node" cx="380" cy="320" r="4"/>
+  <text data-step="3" class="tag" x="34" y="326">C</text>
+  <path data-step="3" class="wire" d="M60,320 L95,320 M135,320 L200,320 M320,320 L380,320"/>
+  <rect data-step="3" class="res" x="95" y="308" width="40" height="24"/>
+  <path data-step="3" class="wire" d="M200,295 L200,345 M320,295 L320,345"/>
+  <path data-step="3" class="wire" d="M200,295 L240,295 M280,295 L320,295"/>
+  <path data-step="3" class="wire" d="M200,345 L240,345 M280,345 L320,345"/>
+  <rect data-step="3" class="res" x="240" y="283" width="40" height="24"/>
+  <rect data-step="3" class="res" x="240" y="333" width="40" height="24"/>
+  <circle data-step="3" class="node" cx="60" cy="320" r="4"/>
+  <circle data-step="3" class="node" cx="380" cy="320" r="4"/>
 
-  <text class="note" x="210" y="390" text-anchor="middle">which gives the lowest total R?</text>
+  <text data-step="3" class="note" x="210" y="390" text-anchor="middle">which gives the lowest total R?</text>
 </svg>

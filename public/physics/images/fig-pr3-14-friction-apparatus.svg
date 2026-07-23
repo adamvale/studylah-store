@@ -21,36 +21,36 @@
   </defs>
 
   <!-- bench -->
-  <path class="bench" d="M30,180 L300,180"/>
-  <path class="hatch" d="M100,181 L92,191 M120,181 L112,191 M140,181 L132,191 M160,181 L152,191 M180,181 L172,191 M200,181 L192,191 M220,181 L212,191 M240,181 L232,191 M260,181 L252,191 M280,181 L272,191"/>
-  <text class="lbl-s" x="195" y="205">bench</text>
+  <path data-step="1" class="bench" d="M30,180 L300,180"/>
+  <path data-step="1" class="hatch" d="M100,181 L92,191 M120,181 L112,191 M140,181 L132,191 M160,181 L152,191 M180,181 L172,191 M200,181 L192,191 M220,181 L212,191 M240,181 L232,191 M260,181 L252,191 M280,181 L272,191"/>
+  <text data-step="1" class="lbl-s" x="195" y="205">bench</text>
 
   <!-- block -->
-  <rect class="block" x="90" y="140" width="80" height="40"/>
+  <rect data-step="2" class="block" x="90" y="140" width="80" height="40"/>
 
   <!-- direction of motion -->
-  <path class="motion" d="M110,120 L190,120" marker-end="url(#d4blu)"/>
-  <text class="lbl-friction" x="150" y="110" text-anchor="middle">motion</text>
+  <path data-step="3" class="motion" d="M110,120 L190,120" marker-end="url(#d4blu)"/>
+  <text data-step="3" class="lbl-friction" x="150" y="110" text-anchor="middle">motion</text>
 
   <!-- string over the pulley, with the pull along it -->
-  <path class="string" d="M170,158 L230,158"/>
-  <path class="force-pull" d="M230,158 L298,158" marker-end="url(#d4amb)"/>
-  <text class="lbl-pull" x="265" y="148" text-anchor="middle">pull</text>
-  <circle class="pulley" cx="312" cy="170" r="12"/>
-  <circle cx="312" cy="170" r="2" fill="#9AA0A6"/>
-  <path class="pulley" d="M300,180 L312,182"/>
-  <text class="lbl-guide" x="330" y="160">pulley</text>
-  <path class="string" d="M324,170 L324,218"/>
-  <text class="lbl-s" x="344" y="204">string</text>
+  <path data-step="4" class="string" d="M170,158 L230,158"/>
+  <path data-step="4" class="force-pull" d="M230,158 L298,158" marker-end="url(#d4amb)"/>
+  <text data-step="4" class="lbl-pull" x="265" y="148" text-anchor="middle">pull</text>
+  <circle data-step="4" class="pulley" cx="312" cy="170" r="12"/>
+  <circle data-step="4" cx="312" cy="170" r="2" fill="#9AA0A6"/>
+  <path data-step="4" class="pulley" d="M300,180 L312,182"/>
+  <text data-step="4" class="lbl-guide" x="330" y="160">pulley</text>
+  <path data-step="4" class="string" d="M324,170 L324,218"/>
+  <text data-step="4" class="lbl-s" x="344" y="204">string</text>
 
   <!-- hanging masses -->
-  <rect class="mass" x="310" y="218" width="28" height="10"/>
-  <rect class="mass" x="310" y="230" width="28" height="10"/>
-  <text class="lbl-s" x="346" y="234">masses</text>
+  <rect data-step="5" class="mass" x="310" y="218" width="28" height="10"/>
+  <rect data-step="5" class="mass" x="310" y="230" width="28" height="10"/>
+  <text data-step="5" class="lbl-s" x="346" y="234">masses</text>
 
   <!-- friction -->
-  <path class="force-friction" d="M145,175 L62,175" marker-end="url(#d4blu)"/>
-  <text class="lbl-friction" x="50" y="196" text-anchor="middle">friction</text>
+  <path data-step="6" class="force-friction" d="M145,175 L62,175" marker-end="url(#d4blu)"/>
+  <text data-step="6" class="lbl-friction" x="50" y="196" text-anchor="middle">friction</text>
 
-  <text x="200" y="278" text-anchor="middle">add mass until the block slides at steady speed</text>
+  <text data-step="6" x="200" y="278" text-anchor="middle">add mass until the block slides at steady speed</text>
 </svg>

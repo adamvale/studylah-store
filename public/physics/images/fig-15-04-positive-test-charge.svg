@@ -13,17 +13,17 @@
     .mv  { stroke:#E8B65A; stroke-width:2; }
   </style>
   <!-- Panel 1: positive test charge repelled by + (moves away) -->
-  <text x="170" y="30" text-anchor="middle" font-size="14">Near a positive charge</text>
-  <circle cx="120" cy="140" r="26" class="pos"/><text x="120" y="148" class="sym" fill="#E58F8F">+</text>
-  <circle cx="215" cy="140" r="11" class="tc"/><text x="215" y="145" text-anchor="middle" font-size="12" fill="#E8B65A">+</text>
-  <line class="mv" x1="230" y1="140" x2="275" y2="140" marker-end="url(#ah4)"/>
-  <text x="222" y="175" font-size="12" fill="#E8B65A">moves away</text>
-  <text x="170" y="225" text-anchor="middle" font-size="12" fill="#9AA0A6">positive test charge repelled</text>
+  <text data-step="1" x="170" y="30" text-anchor="middle" font-size="14">Near a positive charge</text>
+  <circle data-step="1" cx="120" cy="140" r="26" class="pos"/><text data-step="1" x="120" y="148" class="sym" fill="#E58F8F">+</text>
+  <circle data-step="1" cx="215" cy="140" r="11" class="tc"/><text data-step="1" x="215" y="145" text-anchor="middle" font-size="12" fill="#E8B65A">+</text>
+  <line data-step="1" class="mv" x1="230" y1="140" x2="275" y2="140" marker-end="url(#ah4)"/>
+  <text data-step="1" x="222" y="175" font-size="12" fill="#E8B65A">moves away</text>
+  <text data-step="1" x="170" y="225" text-anchor="middle" font-size="12" fill="#9AA0A6">positive test charge repelled</text>
   <!-- Panel 2: positive test charge attracted to - (moves towards) -->
-  <text x="170" y="290" text-anchor="middle" font-size="14">Near a negative charge</text>
-  <circle cx="120" cy="390" r="26" class="neg"/><text x="120" y="398" class="sym" fill="#6FB7E0">−</text>
-  <circle cx="215" cy="390" r="11" class="tc"/><text x="215" y="395" text-anchor="middle" font-size="12" fill="#E8B65A">+</text>
-  <line class="mv" x1="200" y1="390" x2="160" y2="390" marker-end="url(#ah4)"/>
-  <text x="185" y="425" font-size="12" fill="#E8B65A">moves towards</text>
-  <text x="170" y="475" text-anchor="middle" font-size="12" fill="#9AA0A6">positive test charge attracted</text>
+  <text data-step="2" x="170" y="290" text-anchor="middle" font-size="14">Near a negative charge</text>
+  <circle data-step="2" cx="120" cy="390" r="26" class="neg"/><text data-step="2" x="120" y="398" class="sym" fill="#6FB7E0">−</text>
+  <circle data-step="2" cx="215" cy="390" r="11" class="tc"/><text data-step="2" x="215" y="395" text-anchor="middle" font-size="12" fill="#E8B65A">+</text>
+  <line data-step="2" class="mv" x1="200" y1="390" x2="160" y2="390" marker-end="url(#ah4)"/>
+  <text data-step="2" x="185" y="425" font-size="12" fill="#E8B65A">moves towards</text>
+  <text data-step="2" x="170" y="475" text-anchor="middle" font-size="12" fill="#9AA0A6">positive test charge attracted</text>
 </svg>

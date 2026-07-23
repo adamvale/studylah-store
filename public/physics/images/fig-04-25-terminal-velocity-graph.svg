@@ -11,25 +11,25 @@
     .pt { fill:#E8B65A; }
   </style>
   <!-- axes -->
-  <line class="axis" x1="70" y1="40" x2="70" y2="270" marker-end="url(#arw)"/>
-  <line class="axis" x1="70" y1="270" x2="520" y2="270" marker-end="url(#arw)"/>
-  <text x="70" y="28" text-anchor="middle" class="lbl">velocity (m/s)</text>
-  <text x="530" y="285" text-anchor="end" class="lbl">time (s)</text>
+  <line data-step="1" class="axis" x1="70" y1="40" x2="70" y2="270" marker-end="url(#arw)"/>
+  <line data-step="1" class="axis" x1="70" y1="270" x2="520" y2="270" marker-end="url(#arw)"/>
+  <text data-step="1" x="70" y="28" text-anchor="middle" class="lbl">velocity (m/s)</text>
+  <text data-step="1" x="530" y="285" text-anchor="end" class="lbl">time (s)</text>
   <!-- curve: A rise, B curving, C terminal, D drop, E new terminal, F land -->
-  <path class="curve" d="M70,270 C110,130 150,105 200,100 L280,100"/>
-  <path class="curve" d="M280,100 C290,150 300,200 305,200 L430,200"/>
-  <path class="curve" d="M430,200 L455,270"/>
+  <path data-step="2" class="curve" d="M70,270 C110,130 150,105 200,100 L280,100"/>
+  <path data-step="2" class="curve" d="M280,100 C290,150 300,200 305,200 L430,200"/>
+  <path data-step="2" class="curve" d="M430,200 L455,270"/>
   <!-- labels -->
-  <circle class="pt" cx="120" cy="180" r="3"/><text x="128" y="185" class="lbl">A</text>
-  <circle class="pt" cx="165" cy="112" r="3"/><text x="150" y="108" class="lbl">B</text>
-  <circle class="pt" cx="245" cy="100" r="3"/><text x="242" y="118" class="lbl">C</text>
-  <circle class="pt" cx="283" cy="120" r="3"/><text x="288" y="118" class="lbl">D</text>
-  <circle class="pt" cx="370" cy="200" r="3"/><text x="366" y="219" class="lbl">E</text>
-  <circle class="pt" cx="453" cy="265" r="3"/><text x="460" y="262" class="lbl">F</text>
-  <line class="guide" x1="200" y1="100" x2="70" y2="100"/>
-  <text x="215" y="88" class="lbl">terminal velocity</text>
-  <line class="guide" x1="305" y1="200" x2="70" y2="200"/>
-  <text x="315" y="192" class="lbl">new (lower) terminal velocity</text>
-  <text x="290" y="300" text-anchor="middle" font-size="12.5">Falling with a parachute: parachute opened at D,</text>
-  <text x="290" y="318" text-anchor="middle" font-size="12.5">a new terminal velocity is reached at E.</text>
+  <circle data-step="3" class="pt" cx="120" cy="180" r="3"/><text data-step="3" x="128" y="185" class="lbl">A</text>
+  <circle data-step="3" class="pt" cx="165" cy="112" r="3"/><text data-step="3" x="150" y="108" class="lbl">B</text>
+  <circle data-step="3" class="pt" cx="245" cy="100" r="3"/><text data-step="3" x="242" y="118" class="lbl">C</text>
+  <circle data-step="3" class="pt" cx="283" cy="120" r="3"/><text data-step="3" x="288" y="118" class="lbl">D</text>
+  <circle data-step="3" class="pt" cx="370" cy="200" r="3"/><text data-step="3" x="366" y="219" class="lbl">E</text>
+  <circle data-step="3" class="pt" cx="453" cy="265" r="3"/><text data-step="3" x="460" y="262" class="lbl">F</text>
+  <line data-step="3" class="guide" x1="200" y1="100" x2="70" y2="100"/>
+  <text data-step="3" x="215" y="88" class="lbl">terminal velocity</text>
+  <line data-step="3" class="guide" x1="305" y1="200" x2="70" y2="200"/>
+  <text data-step="3" x="315" y="192" class="lbl">new (lower) terminal velocity</text>
+  <text data-step="3" x="290" y="300" text-anchor="middle" font-size="12.5">Falling with a parachute: parachute opened at D,</text>
+  <text data-step="3" x="290" y="318" text-anchor="middle" font-size="12.5">a new terminal velocity is reached at E.</text>
 </svg>

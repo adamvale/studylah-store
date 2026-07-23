@@ -7,39 +7,39 @@
     .cur { stroke:#E8B65A; stroke-width:1.6; fill:none; }
   </style>
   <!-- battery top -->
-  <line class="wire" x1="60" y1="60" x2="200" y2="60"/>
-  <line class="wire" x1="240" y1="60" x2="420" y2="60"/>
-  <line class="wire" x1="210" y1="45" x2="210" y2="75"/>
-  <line class="wire" x1="228" y1="52" x2="228" y2="68"/>
-  <text x="219" y="35" text-anchor="middle" font-size="15">12 V</text>
+  <line data-step="1" class="wire" x1="60" y1="60" x2="200" y2="60"/>
+  <line data-step="1" class="wire" x1="240" y1="60" x2="420" y2="60"/>
+  <line data-step="1" class="wire" x1="210" y1="45" x2="210" y2="75"/>
+  <line data-step="1" class="wire" x1="228" y1="52" x2="228" y2="68"/>
+  <text data-step="1" x="219" y="35" text-anchor="middle" font-size="15">12 V</text>
 
   <!-- left side down -->
-  <line class="wire" x1="60" y1="60" x2="60" y2="240"/>
-  <line class="wire" x1="420" y1="60" x2="420" y2="150"/>
+  <line data-step="2" class="wire" x1="60" y1="60" x2="60" y2="240"/>
+  <line data-step="2" class="wire" x1="420" y1="60" x2="420" y2="150"/>
 
   <!-- P resistor (series, bottom left) -->
-  <line class="wire" x1="60" y1="240" x2="110" y2="240"/>
-  <rect class="res" x="110" y="228" width="70" height="24" rx="3"/>
-  <text x="145" y="222" text-anchor="middle" font-size="14">P</text>
-  <text x="145" y="245" text-anchor="middle" font-size="13.5">2 &#937;</text>
-  <line class="wire" x1="180" y1="240" x2="230" y2="240"/>
+  <line data-step="3" class="wire" x1="60" y1="240" x2="110" y2="240"/>
+  <rect data-step="3" class="res" x="110" y="228" width="70" height="24" rx="3"/>
+  <text data-step="3" x="145" y="222" text-anchor="middle" font-size="14">P</text>
+  <text data-step="3" x="145" y="245" text-anchor="middle" font-size="13.5">2 &#937;</text>
+  <line data-step="3" class="wire" x1="180" y1="240" x2="230" y2="240"/>
   <!-- current arrow near P -->
-  <path class="cur" d="M78,240 l14,-6 M78,240 l14,6"/>
-  <text x="70" y="222" text-anchor="middle" font-size="13.5" class="amber">2 A</text>
+  <path data-step="4" class="cur" d="M78,240 l14,-6 M78,240 l14,6"/>
+  <text data-step="4" x="70" y="222" text-anchor="middle" font-size="13.5" class="amber">2 A</text>
 
   <!-- node splits to Q (upper) and R (lower) -->
-  <line class="wire" x1="230" y1="240" x2="230" y2="150"/>
+  <line data-step="5" class="wire" x1="230" y1="240" x2="230" y2="150"/>
   <!-- Q branch -->
-  <line class="wire" x1="230" y1="150" x2="270" y2="150"/>
-  <rect class="res" x="270" y="138" width="70" height="24" rx="3"/>
-  <text x="305" y="132" text-anchor="middle" font-size="14">Q</text>
-  <text x="305" y="155" text-anchor="middle" font-size="13.5">8 &#937;</text>
-  <line class="wire" x1="340" y1="150" x2="420" y2="150"/>
+  <line data-step="6" class="wire" x1="230" y1="150" x2="270" y2="150"/>
+  <rect data-step="6" class="res" x="270" y="138" width="70" height="24" rx="3"/>
+  <text data-step="6" x="305" y="132" text-anchor="middle" font-size="14">Q</text>
+  <text data-step="6" x="305" y="155" text-anchor="middle" font-size="13.5">8 &#937;</text>
+  <line data-step="6" class="wire" x1="340" y1="150" x2="420" y2="150"/>
   <!-- R branch -->
-  <line class="wire" x1="230" y1="240" x2="270" y2="240"/>
-  <rect class="res" x="270" y="228" width="70" height="24" rx="3"/>
-  <text x="305" y="222" text-anchor="middle" font-size="14">R</text>
-  <text x="305" y="245" text-anchor="middle" font-size="13.5">8 &#937;</text>
-  <line class="wire" x1="340" y1="240" x2="420" y2="240"/>
-  <line class="wire" x1="420" y1="150" x2="420" y2="240"/>
+  <line data-step="7" class="wire" x1="230" y1="240" x2="270" y2="240"/>
+  <rect data-step="7" class="res" x="270" y="228" width="70" height="24" rx="3"/>
+  <text data-step="7" x="305" y="222" text-anchor="middle" font-size="14">R</text>
+  <text data-step="7" x="305" y="245" text-anchor="middle" font-size="13.5">8 &#937;</text>
+  <line data-step="7" class="wire" x1="340" y1="240" x2="420" y2="240"/>
+  <line data-step="7" class="wire" x1="420" y1="150" x2="420" y2="240"/>
 </svg>

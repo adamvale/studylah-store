@@ -21,23 +21,23 @@
   </style>
 
   <!-- Top: one force left over, so the block slides -->
-  <text class="ttl" x="210" y="34">Fails the force condition</text>
-  <rect class="obj" x="180" y="76" width="76" height="52"/>
-  <line class="force" x1="92" y1="102" x2="174" y2="102" marker-end="url(#fY)"/>
-  <text class="flbl" x="92" y="64">one force left over</text>
-  <line class="motion" x1="190" y1="152" x2="300" y2="152" marker-end="url(#mB)"/>
-  <text class="mlbl" x="312" y="157">slides</text>
-  <text class="cap" x="210" y="186">The forces do not cancel, so it will not stay put.</text>
+  <text data-step="1" class="ttl" x="210" y="34">Fails the force condition</text>
+  <rect data-step="1" class="obj" x="180" y="76" width="76" height="52"/>
+  <line data-step="1" class="force" x1="92" y1="102" x2="174" y2="102" marker-end="url(#fY)"/>
+  <text data-step="1" class="flbl" x="92" y="64">one force left over</text>
+  <line data-step="1" class="motion" x1="190" y1="152" x2="300" y2="152" marker-end="url(#mB)"/>
+  <text data-step="1" class="mlbl" x="312" y="157">slides</text>
+  <text data-step="1" class="cap" x="210" y="186">The forces do not cancel, so it will not stay put.</text>
 
-  <line class="div" x1="40" y1="214" x2="380" y2="214"/>
+  <line data-step="1" class="div" x1="40" y1="214" x2="380" y2="214"/>
 
   <!-- Bottom: one moment left over, so the beam turns -->
-  <text class="ttl" x="210" y="250">Fails the moment condition</text>
-  <rect class="obj" x="104" y="316" width="212" height="14"/>
-  <path class="pivot" d="M210,332 L230,366 L190,366 Z"/>
-  <line class="force" x1="296" y1="274" x2="296" y2="310" marker-end="url(#fY)"/>
-  <text class="flbl" x="286" y="300" text-anchor="end">one moment left</text>
-  <path class="motion" d="M116,300 A60,60 0 0 1 158,272" marker-end="url(#mB)"/>
-  <text class="mlbl" x="110" y="286" text-anchor="end">turns</text>
-  <text class="cap" x="210" y="400">The moments do not cancel, so it will not stay still.</text>
+  <text data-step="2" class="ttl" x="210" y="250">Fails the moment condition</text>
+  <rect data-step="2" class="obj" x="104" y="316" width="212" height="14"/>
+  <path data-step="2" class="pivot" d="M210,332 L230,366 L190,366 Z"/>
+  <line data-step="2" class="force" x1="296" y1="274" x2="296" y2="310" marker-end="url(#fY)"/>
+  <text data-step="2" class="flbl" x="286" y="300" text-anchor="end">one moment left</text>
+  <path data-step="2" class="motion" d="M116,300 A60,60 0 0 1 158,272" marker-end="url(#mB)"/>
+  <text data-step="2" class="mlbl" x="110" y="286" text-anchor="end">turns</text>
+  <text data-step="2" class="cap" x="210" y="400">The moments do not cancel, so it will not stay still.</text>
 </svg>

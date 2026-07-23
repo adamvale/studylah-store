@@ -15,41 +15,41 @@
     <marker id="d1ax" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L6,3 L0,6 Z" fill="#EAEAEA"/></marker>
   </defs>
 
-  <line class="axis" x1="65" y1="235" x2="65" y2="35" marker-end="url(#d1ax)"/>
-  <line class="axis" x1="65" y1="235" x2="345" y2="235" marker-end="url(#d1ax)"/>
-  <text x="36" y="28">r / p</text>
-  <text x="255" y="266" text-anchor="middle">q / p</text>
-  <text class="lbl-guide" x="255" y="282" text-anchor="middle">ratios, no units</text>
+  <line data-step="1" class="axis" x1="65" y1="235" x2="65" y2="35" marker-end="url(#d1ax)"/>
+  <line data-step="1" class="axis" x1="65" y1="235" x2="345" y2="235" marker-end="url(#d1ax)"/>
+  <text data-step="1" x="36" y="28">r / p</text>
+  <text data-step="1" x="255" y="266" text-anchor="middle">q / p</text>
+  <text data-step="1" class="lbl-guide" x="255" y="282" text-anchor="middle">ratios, no units</text>
 
-  <path class="tick" d="M117,235 L117,241 M169,235 L169,241 M221,235 L221,241 M273,235 L273,241"/>
-  <path class="tick" d="M65,181 L59,181 M65,127 L59,127 M65,72 L59,72"/>
-  <text class="num" x="57" y="249" text-anchor="end">0</text>
-  <text class="num" x="117" y="249" text-anchor="middle">2</text>
-  <text class="num" x="169" y="249" text-anchor="middle">4</text>
-  <text class="num" x="221" y="249" text-anchor="middle">6</text>
-  <text class="num" x="273" y="249" text-anchor="middle">8</text>
-  <text class="num" x="57" y="185" text-anchor="end">2</text>
-  <text class="num" x="57" y="131" text-anchor="end">4</text>
-  <text class="num" x="57" y="76" text-anchor="end">6</text>
+  <path data-step="1" class="tick" d="M117,235 L117,241 M169,235 L169,241 M221,235 L221,241 M273,235 L273,241"/>
+  <path data-step="1" class="tick" d="M65,181 L59,181 M65,127 L59,127 M65,72 L59,72"/>
+  <text data-step="1" class="num" x="57" y="249" text-anchor="end">0</text>
+  <text data-step="1" class="num" x="117" y="249" text-anchor="middle">2</text>
+  <text data-step="1" class="num" x="169" y="249" text-anchor="middle">4</text>
+  <text data-step="1" class="num" x="221" y="249" text-anchor="middle">6</text>
+  <text data-step="1" class="num" x="273" y="249" text-anchor="middle">8</text>
+  <text data-step="1" class="num" x="57" y="185" text-anchor="end">2</text>
+  <text data-step="1" class="num" x="57" y="131" text-anchor="end">4</text>
+  <text data-step="1" class="num" x="57" y="76" text-anchor="end">6</text>
 
   <!-- best-fit line: positive intercept, gradient 0.5 -->
-  <path class="bestfit" d="M65,208 L320,75"/>
+  <path data-step="1" class="bestfit" d="M65,208 L320,75"/>
 
   <!-- plotted points -->
-  <path class="cross" d="M99,185 L109,195 M109,185 L99,195"/>
-  <path class="cross" d="M138,161 L148,171 M148,161 L138,171"/>
-  <path class="cross" d="M177,143 L187,153 M187,143 L177,153"/>
-  <path class="cross" d="M216,120 L226,130 M226,120 L216,130"/>
-  <path class="cross" d="M255,102 L265,112 M265,102 L255,112"/>
-  <path class="cross" d="M294,80 L304,90 M304,80 L294,90"/>
+  <path data-step="2" class="cross" d="M99,185 L109,195 M109,185 L99,195"/>
+  <path data-step="2" class="cross" d="M138,161 L148,171 M148,161 L138,171"/>
+  <path data-step="2" class="cross" d="M177,143 L187,153 M187,143 L177,153"/>
+  <path data-step="2" class="cross" d="M216,120 L226,130 M226,120 L216,130"/>
+  <path data-step="2" class="cross" d="M255,102 L265,112 M265,102 L255,112"/>
+  <path data-step="2" class="cross" d="M294,80 L304,90 M304,80 L294,90"/>
 
   <!-- gradient triangle -->
-  <path class="grad" d="M143,167 L259,167 L259,107 Z"/>
-  <text class="lbl-grad" x="201" y="183" text-anchor="middle">Δ(q/p)</text>
-  <text class="lbl-grad" x="267" y="140">Δ(r/p)</text>
-  <text class="lbl-grad" x="150" y="80">gradient = 0.5</text>
+  <path data-step="3" class="grad" d="M143,167 L259,167 L259,107 Z"/>
+  <text data-step="3" class="lbl-grad" x="201" y="183" text-anchor="middle">Δ(q/p)</text>
+  <text data-step="3" class="lbl-grad" x="267" y="140">Δ(r/p)</text>
+  <text data-step="3" class="lbl-grad" x="150" y="80">gradient = 0.5</text>
 
   <!-- intercept -->
-  <path class="leader" d="M93,220 L69,210"/>
-  <text class="lbl-guide" x="95" y="225">intercept = M/100</text>
+  <path data-step="4" class="leader" d="M93,220 L69,210"/>
+  <text data-step="4" class="lbl-guide" x="95" y="225">intercept = M/100</text>
 </svg>

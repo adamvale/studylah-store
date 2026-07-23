@@ -6,20 +6,20 @@
     .cap { font-size:13.5; }
   </style>
   <!-- (a) box on floor -->
-  <text x="210" y="30" text-anchor="middle" class="cap">(a) constant speed on floor</text>
-  <line class="ground" x1="110" y1="125" x2="310" y2="125"/>
-  <rect class="box" x="185" y="93" width="55" height="32"/>
+  <text data-step="1" x="210" y="30" text-anchor="middle" class="cap">(a) constant speed on floor</text>
+  <line data-step="1" class="ground" x1="110" y1="125" x2="310" y2="125"/>
+  <rect data-step="1" class="box" x="185" y="93" width="55" height="32"/>
   <!-- (b) rough incline -->
-  <text x="210" y="180" text-anchor="middle" class="cap">(b) sliding down a rough incline</text>
-  <line class="ground" x1="120" y1="305" x2="300" y2="230"/>
-  <g transform="translate(210,255) rotate(-23)">
+  <text data-step="2" x="210" y="180" text-anchor="middle" class="cap">(b) sliding down a rough incline</text>
+  <line data-step="2" class="ground" x1="120" y1="305" x2="300" y2="230"/>
+  <g data-step="2" transform="translate(210,255) rotate(-23)">
     <rect class="box" x="-27" y="-18" width="54" height="30"/>
   </g>
   <!-- (c) smooth incline -->
-  <text x="210" y="360" text-anchor="middle" class="cap">(c) sliding down a smooth incline</text>
-  <line class="ground" x1="120" y1="485" x2="300" y2="410"/>
-  <g transform="translate(210,435) rotate(-23)">
+  <text data-step="3" x="210" y="360" text-anchor="middle" class="cap">(c) sliding down a smooth incline</text>
+  <line data-step="3" class="ground" x1="120" y1="485" x2="300" y2="410"/>
+  <g data-step="3" transform="translate(210,435) rotate(-23)">
     <rect class="box" x="-27" y="-18" width="54" height="30"/>
   </g>
-  <text x="210" y="535" text-anchor="middle" class="cap">Draw and label all forces acting on each block.</text>
+  <text data-step="3" x="210" y="535" text-anchor="middle" class="cap">Draw and label all forces acting on each block.</text>
 </svg>

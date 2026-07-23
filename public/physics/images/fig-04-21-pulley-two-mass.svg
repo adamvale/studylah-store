@@ -14,28 +14,28 @@
     .w { stroke:#E58F8F; stroke-width:2.2; }
   </style>
   <!-- setup on left -->
-  <line class="support" x1="70" y1="40" x2="150" y2="40"/>
-  <circle class="pulley" cx="110" cy="55" r="14"/>
-  <path class="rope" d="M96,55 L96,120"/>
-  <path class="rope" d="M124,55 L124,175"/>
-  <rect class="box" x="72" y="120" width="48" height="38"/>
-  <text x="96" y="144" text-anchor="middle" font-size="12">6 kg</text>
-  <rect class="box" x="100" y="175" width="48" height="38"/>
-  <text x="124" y="199" text-anchor="middle" font-size="12">4 kg</text>
-  <text x="110" y="245" text-anchor="middle" font-size="12">g = 10 N/kg</text>
+  <line data-step="1" class="support" x1="70" y1="40" x2="150" y2="40"/>
+  <circle data-step="1" class="pulley" cx="110" cy="55" r="14"/>
+  <path data-step="1" class="rope" d="M96,55 L96,120"/>
+  <path data-step="1" class="rope" d="M124,55 L124,175"/>
+  <rect data-step="1" class="box" x="72" y="120" width="48" height="38"/>
+  <text data-step="1" x="96" y="144" text-anchor="middle" font-size="12">6 kg</text>
+  <rect data-step="1" class="box" x="100" y="175" width="48" height="38"/>
+  <text data-step="1" x="124" y="199" text-anchor="middle" font-size="12">4 kg</text>
+  <text data-step="1" x="110" y="245" text-anchor="middle" font-size="12">g = 10 N/kg</text>
   <!-- free body diagrams right -->
-  <text x="300" y="32" text-anchor="middle" font-size="13" font-weight="bold">6 kg (falls)</text>
-  <rect class="box2" x="272" y="78" width="55" height="40"/>
-  <text x="299" y="103" text-anchor="middle" font-size="12">6 kg</text>
-  <line class="t" x1="299" y1="78" x2="299" y2="44" marker-end="url(#arwA)"/>
-  <text x="307" y="60" font-size="12" fill="#E8B65A">T</text>
-  <line class="w" x1="299" y1="118" x2="299" y2="162" marker-end="url(#arwR)"/>
-  <text x="307" y="150" font-size="12" fill="#E58F8F">60 N</text>
-  <text x="405" y="32" text-anchor="middle" font-size="13" font-weight="bold">4 kg (rises)</text>
-  <rect class="box2" x="377" y="78" width="55" height="40"/>
-  <text x="404" y="103" text-anchor="middle" font-size="12">4 kg</text>
-  <line class="t" x1="404" y1="78" x2="404" y2="44" marker-end="url(#arwA)"/>
-  <text x="412" y="60" font-size="12" fill="#E8B65A">T</text>
-  <line class="w" x1="404" y1="118" x2="404" y2="162" marker-end="url(#arwR)"/>
-  <text x="412" y="150" font-size="12" fill="#E58F8F">40 N</text>
+  <text data-step="2" x="300" y="32" text-anchor="middle" font-size="13" font-weight="bold">6 kg (falls)</text>
+  <rect data-step="2" class="box2" x="272" y="78" width="55" height="40"/>
+  <text data-step="2" x="299" y="103" text-anchor="middle" font-size="12">6 kg</text>
+  <line data-step="2" class="t" x1="299" y1="78" x2="299" y2="44" marker-end="url(#arwA)"/>
+  <text data-step="2" x="307" y="60" font-size="12" fill="#E8B65A">T</text>
+  <line data-step="2" class="w" x1="299" y1="118" x2="299" y2="162" marker-end="url(#arwR)"/>
+  <text data-step="2" x="307" y="150" font-size="12" fill="#E58F8F">60 N</text>
+  <text data-step="2" x="405" y="32" text-anchor="middle" font-size="13" font-weight="bold">4 kg (rises)</text>
+  <rect data-step="2" class="box2" x="377" y="78" width="55" height="40"/>
+  <text data-step="2" x="404" y="103" text-anchor="middle" font-size="12">4 kg</text>
+  <line data-step="2" class="t" x1="404" y1="78" x2="404" y2="44" marker-end="url(#arwA)"/>
+  <text data-step="2" x="412" y="60" font-size="12" fill="#E8B65A">T</text>
+  <line data-step="2" class="w" x1="404" y1="118" x2="404" y2="162" marker-end="url(#arwR)"/>
+  <text data-step="2" x="412" y="150" font-size="12" fill="#E58F8F">40 N</text>
 </svg>

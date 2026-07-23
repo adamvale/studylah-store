@@ -14,35 +14,35 @@
   </style>
 
   <!-- lagging wrapped all around -->
-  <rect class="lagging" x="96" y="86" width="204" height="200" rx="10"/>
-  <rect class="lagging" x="108" y="98" width="180" height="176" rx="8"/>
+  <rect data-step="1" class="lagging" x="96" y="86" width="204" height="200" rx="10"/>
+  <rect data-step="1" class="lagging" x="108" y="98" width="180" height="176" rx="8"/>
 
   <!-- aluminium block -->
-  <rect class="block" x="118" y="108" width="160" height="156" rx="4"/>
+  <rect data-step="2" class="block" x="118" y="108" width="160" height="156" rx="4"/>
 
   <!-- 2 drilled holes -->
-  <path class="hole" d="M158,108 V250 H182 V108"/>
-  <path class="hole" d="M214,108 V220 H234 V108"/>
+  <path data-step="3" class="hole" d="M158,108 V250 H182 V108"/>
+  <path data-step="3" class="hole" d="M214,108 V220 H234 V108"/>
 
   <!-- immersion heater down inside the first hole -->
-  <path class="heater" d="M170,50 V200"/>
-  <path class="heater" d="M170,200 l-8,7 l16,9 l-16,9 l16,9 l-8,7"/>
+  <path data-step="4" class="heater" d="M170,50 V200"/>
+  <path data-step="4" class="heater" d="M170,200 l-8,7 l16,9 l-16,9 l16,9 l-8,7"/>
 
   <!-- thermometer in the second hole -->
-  <path class="glass" d="M224,44 V214"/>
-  <circle class="glass" cx="224" cy="218" r="5" fill="#EAEAEA" fill-opacity="0.5"/>
+  <path data-step="5" class="glass" d="M224,44 V214"/>
+  <circle data-step="5" class="glass" cx="224" cy="218" r="5" fill="#EAEAEA" fill-opacity="0.5"/>
 
-  <text class="heaterlbl" x="150" y="48" text-anchor="end">heater</text>
-  <path class="leader" d="M154,44 H164"/>
+  <text data-step="5" class="heaterlbl" x="150" y="48" text-anchor="end">heater</text>
+  <path data-step="5" class="leader" d="M154,44 H164"/>
 
-  <text x="240" y="44">thermometer</text>
-  <path class="leader" d="M236,40 H228"/>
+  <text data-step="5" x="240" y="44">thermometer</text>
+  <path data-step="5" class="leader" d="M236,40 H228"/>
 
-  <text class="lagginglbl" x="310" y="170">lagging</text>
-  <path class="leader" d="M306,166 H301"/>
+  <text data-step="5" class="lagginglbl" x="310" y="170">lagging</text>
+  <path data-step="5" class="leader" d="M306,166 H301"/>
 
-  <text class="blocklbl" x="200" y="310" text-anchor="middle">aluminium block</text>
-  <path class="leader" d="M200,296 V288"/>
+  <text data-step="5" class="blocklbl" x="200" y="310" text-anchor="middle">aluminium block</text>
+  <path data-step="5" class="leader" d="M200,296 V288"/>
 
-  <text class="eq" x="200" y="336" text-anchor="middle">P t = m c Δθ</text>
+  <text data-step="5" class="eq" x="200" y="336" text-anchor="middle">P t = m c Δθ</text>
 </svg>

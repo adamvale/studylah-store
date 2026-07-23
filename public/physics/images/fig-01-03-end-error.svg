@@ -7,24 +7,24 @@
     .bad { fill:#E58F8F; }
   </style>
   <!-- ruler with worn left end -->
-  <rect class="rule" x="80" y="70" width="300" height="36" rx="3"/>
+  <rect data-step="1" class="rule" x="80" y="70" width="300" height="36" rx="3"/>
   <!-- worn/damaged left end -->
-  <path class="worn" d="M80,70 q-14,4 -18,18 q6,14 18,18 Z"/>
-  <path d="M80,70 l-6,4 l6,3 l-7,4 l7,4 l-6,4 l6,7" fill="none" stroke="#E58F8F" stroke-width="1.4"/>
-  <g class="tick">
+  <path data-step="2" class="worn" d="M80,70 q-14,4 -18,18 q6,14 18,18 Z"/>
+  <path data-step="2" d="M80,70 l-6,4 l6,3 l-7,4 l7,4 l-6,4 l6,7" fill="none" stroke="#E58F8F" stroke-width="1.4"/>
+  <g data-step="2" class="tick">
     <line x1="120" y1="70" x2="120" y2="90"/>
     <line x1="185" y1="70" x2="185" y2="90"/>
     <line x1="250" y1="70" x2="250" y2="90"/>
     <line x1="315" y1="70" x2="315" y2="90"/>
   </g>
-  <g font-size="14" text-anchor="middle">
+  <g data-step="2" font-size="14" text-anchor="middle">
     <text x="120" y="124">1</text>
     <text x="185" y="124">2</text>
     <text x="250" y="124">3</text>
     <text x="315" y="124">4</text>
   </g>
-  <text x="405" y="92" font-size="14">cm</text>
-  <text x="70" y="40" text-anchor="middle" font-size="14" class="bad">end error</text>
-  <path d="M70,46 L64,68" fill="none" stroke="#9AA0A6" stroke-width="1.3"/>
-  <text x="240" y="150" text-anchor="middle" font-size="14">The end of the rule is worn / damaged</text>
+  <text data-step="2" x="405" y="92" font-size="14">cm</text>
+  <text data-step="2" x="70" y="40" text-anchor="middle" font-size="14" class="bad">end error</text>
+  <path data-step="2" d="M70,46 L64,68" fill="none" stroke="#9AA0A6" stroke-width="1.3"/>
+  <text data-step="2" x="240" y="150" text-anchor="middle" font-size="14">The end of the rule is worn / damaged</text>
 </svg>

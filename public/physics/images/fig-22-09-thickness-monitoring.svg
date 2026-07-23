@@ -16,28 +16,28 @@
   </defs>
 
   <!-- detector at top -->
-  <path class="det" d="M215,55 a30,18 0 1 1 60,0"/>
-  <rect class="det" x="235" y="70" width="20" height="16"/>
-  <text x="290" y="60">detector (GM tube)</text>
-  <path class="lead" d="M288,56 L268,52"/>
+  <path data-step="1" class="det" d="M215,55 a30,18 0 1 1 60,0"/>
+  <rect data-step="1" class="det" x="235" y="70" width="20" height="16"/>
+  <text data-step="1" x="290" y="60">detector (GM tube)</text>
+  <path data-step="1" class="lead" d="M288,56 L268,52"/>
 
   <!-- moving material sheet -->
-  <rect class="metal" x="60" y="160" width="400" height="16"/>
-  <text x="505" y="150" text-anchor="end">material</text>
-  <path class="lead" d="M445,147 L420,160"/>
+  <rect data-step="2" class="metal" x="60" y="160" width="400" height="16"/>
+  <text data-step="2" x="505" y="150" text-anchor="end">material</text>
+  <path data-step="2" class="lead" d="M445,147 L420,160"/>
 
   <!-- rollers -->
-  <circle class="roller" cx="95" cy="185" r="14"/>
-  <circle class="roller" cx="425" cy="185" r="14"/>
-  <text x="70" y="225" class="cap">conveyor rollers</text>
+  <circle data-step="3" class="roller" cx="95" cy="185" r="14"/>
+  <circle data-step="3" class="roller" cx="425" cy="185" r="14"/>
+  <text data-step="3" x="70" y="225" class="cap">conveyor rollers</text>
 
   <!-- radioactive source below -->
-  <rect class="box" x="228" y="235" width="34" height="40" rx="3"/>
-  <text x="290" y="262">radioactive source</text>
-  <path class="lead" d="M288,258 L264,255"/>
+  <rect data-step="4" class="box" x="228" y="235" width="34" height="40" rx="3"/>
+  <text data-step="4" x="290" y="262">radioactive source</text>
+  <path data-step="4" class="lead" d="M288,258 L264,255"/>
 
   <!-- radiation beam through material to detector -->
-  <path class="ray" d="M245,233 L245,90"/>
+  <path data-step="5" class="ray" d="M245,233 L245,90"/>
 
-  <text x="260" y="305" text-anchor="middle" fill="#E8B65A" font-size="13">Thin material → higher count; thick material → lower count.</text>
+  <text data-step="5" x="260" y="305" text-anchor="middle" fill="#E8B65A" font-size="13">Thin material → higher count; thick material → lower count.</text>
 </svg>

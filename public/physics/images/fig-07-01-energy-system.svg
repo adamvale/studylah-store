@@ -10,22 +10,22 @@
     .lbl { fill:#E8B65A; font-size:13px; }
   </style>
   <!-- system boundary -->
-  <rect class="boundary" x="70" y="40" width="200" height="230" rx="10"/>
-  <text x="170" y="30" text-anchor="middle" font-size="12" fill="#86C98B">system boundary</text>
+  <rect data-step="1" class="boundary" x="70" y="40" width="200" height="230" rx="10"/>
+  <text data-step="1" x="170" y="30" text-anchor="middle" font-size="12" fill="#86C98B">system boundary</text>
   <!-- metal container -->
-  <path class="can" d="M120,70 L120,150 L200,150 L200,70"/>
+  <path data-step="2" class="can" d="M120,70 L120,150 L200,150 L200,70"/>
   <!-- water inside -->
-  <rect class="water" x="122" y="100" width="76" height="48"/>
+  <rect data-step="3" class="water" x="122" y="100" width="76" height="48"/>
   <!-- Bunsen burner tube -->
-  <rect class="metal" x="153" y="205" width="14" height="45"/>
-  <ellipse cx="160" cy="252" rx="30" ry="7" fill="none" stroke="#EAEAEA" stroke-width="2"/>
+  <rect data-step="4" class="metal" x="153" y="205" width="14" height="45"/>
+  <ellipse data-step="4" cx="160" cy="252" rx="30" ry="7" fill="none" stroke="#EAEAEA" stroke-width="2"/>
   <!-- flame -->
-  <path class="flame" d="M153,205 Q160,180 167,205 Z"/>
+  <path data-step="5" class="flame" d="M153,205 Q160,180 167,205 Z"/>
   <!-- labels -->
-  <text class="lbl" x="290" y="80">metal container</text>
-  <path class="lead" d="M285,76 L200,80"/>
-  <text class="lbl" x="290" y="125">water</text>
-  <path class="lead" d="M285,121 L198,124"/>
-  <text class="lbl" x="290" y="215">Bunsen burner</text>
-  <path class="lead" d="M285,211 L168,220"/>
+  <text data-step="6" class="lbl" x="290" y="80">metal container</text>
+  <path data-step="6" class="lead" d="M285,76 L200,80"/>
+  <text data-step="6" class="lbl" x="290" y="125">water</text>
+  <path data-step="6" class="lead" d="M285,121 L198,124"/>
+  <text data-step="6" class="lbl" x="290" y="215">Bunsen burner</text>
+  <path data-step="6" class="lead" d="M285,211 L168,220"/>
 </svg>

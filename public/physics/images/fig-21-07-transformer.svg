@@ -14,7 +14,7 @@
   </style>
 
   <!-- laminated soft-iron core (frame of four bars) -->
-  <g>
+  <g data-step="1">
     <rect class="core" x="190" y="60" width="60" height="220"/>
     <rect class="core" x="390" y="60" width="60" height="220"/>
     <rect class="core" x="190" y="60" width="260" height="60"/>
@@ -30,44 +30,44 @@
     <line class="lam" x1="420" y1="60" x2="420" y2="280"/>
     <line class="lam" x1="435" y1="60" x2="435" y2="280"/>
   </g>
-  <text class="lbl3" x="320" y="308" text-anchor="middle" fill="#9AA0A6">laminated soft-iron core</text>
+  <text data-step="1" class="lbl3" x="320" y="308" text-anchor="middle" fill="#9AA0A6">laminated soft-iron core</text>
 
   <!-- primary coil around left limb -->
-  <g class="pc">
+  <g data-step="2" class="pc">
     <ellipse cx="220" cy="118" rx="40" ry="9"/>
     <ellipse cx="220" cy="140" rx="40" ry="9"/>
     <ellipse cx="220" cy="162" rx="40" ry="9"/>
     <ellipse cx="220" cy="184" rx="40" ry="9"/>
     <ellipse cx="220" cy="206" rx="40" ry="9"/>
   </g>
-  <text class="lbl" x="30" y="258">primary coil (N&#8346;)</text>
-  <path class="lead2" d="M150,252 L192,212"/>
+  <text data-step="2" class="lbl" x="30" y="258">primary coil (N&#8346;)</text>
+  <path data-step="2" class="lead2" d="M150,252 L192,212"/>
 
   <!-- secondary coil around right limb -->
-  <g class="sc">
+  <g data-step="3" class="sc">
     <ellipse cx="420" cy="118" rx="40" ry="9"/>
     <ellipse cx="420" cy="140" rx="40" ry="9"/>
     <ellipse cx="420" cy="162" rx="40" ry="9"/>
     <ellipse cx="420" cy="184" rx="40" ry="9"/>
     <ellipse cx="420" cy="206" rx="40" ry="9"/>
   </g>
-  <text class="lbl2" x="470" y="258">secondary coil (N&#8347;)</text>
-  <path class="lead2" d="M468,252 L430,215"/>
+  <text data-step="3" class="lbl2" x="470" y="258">secondary coil (N&#8347;)</text>
+  <path data-step="3" class="lead2" d="M468,252 L430,215"/>
 
   <!-- primary circuit: a.c. supply -->
-  <path class="wire" d="M180,118 L90,118 L90,150"/>
-  <path class="wire" d="M180,206 L90,206 L90,190"/>
-  <circle cx="90" cy="170" r="20" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
-  <path d="M80,170 q5,-8 10,0 q5,8 10,0" fill="none" stroke="#EAEAEA" stroke-width="1.4"/>
-  <text class="lbl3" x="90" y="228" text-anchor="middle">a.c. supply</text>
-  <text class="lbl3" x="24" y="176" fill="#E8B65A">V&#8346;</text>
-  <text class="lbl3" x="120" y="108" fill="#E8B65A">I&#8346;</text>
+  <path data-step="4" class="wire" d="M180,118 L90,118 L90,150"/>
+  <path data-step="4" class="wire" d="M180,206 L90,206 L90,190"/>
+  <circle data-step="4" cx="90" cy="170" r="20" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
+  <path data-step="4" d="M80,170 q5,-8 10,0 q5,8 10,0" fill="none" stroke="#EAEAEA" stroke-width="1.4"/>
+  <text data-step="4" class="lbl3" x="90" y="228" text-anchor="middle">a.c. supply</text>
+  <text data-step="4" class="lbl3" x="24" y="176" fill="#E8B65A">V&#8346;</text>
+  <text data-step="4" class="lbl3" x="120" y="108" fill="#E8B65A">I&#8346;</text>
 
   <!-- secondary circuit: load -->
-  <path class="wire" d="M460,118 L560,118 L560,150"/>
-  <path class="wire" d="M460,206 L560,206 L560,190"/>
-  <rect x="551" y="150" width="18" height="40" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
-  <text class="lbl3" x="580" y="174">load</text>
-  <text class="lbl3" x="524" y="176" fill="#6FB7E0">V&#8347;</text>
-  <text class="lbl3" x="500" y="108" fill="#6FB7E0">I&#8347;</text>
+  <path data-step="5" class="wire" d="M460,118 L560,118 L560,150"/>
+  <path data-step="5" class="wire" d="M460,206 L560,206 L560,190"/>
+  <rect data-step="5" x="551" y="150" width="18" height="40" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
+  <text data-step="5" class="lbl3" x="580" y="174">load</text>
+  <text data-step="5" class="lbl3" x="524" y="176" fill="#6FB7E0">V&#8347;</text>
+  <text data-step="5" class="lbl3" x="500" y="108" fill="#6FB7E0">I&#8347;</text>
 </svg>

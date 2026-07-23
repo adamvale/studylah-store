@@ -24,29 +24,29 @@
   </defs>
 
   <!-- bench -->
-  <path class="bench" d="M40,225 L385,225"/>
-  <path class="hatch" d="M55,225 L47,236 M75,225 L67,236 M95,225 L87,236 M115,225 L107,236 M135,225 L127,236 M155,225 L147,236 M175,225 L167,236 M260,225 L252,236 M280,225 L272,236 M300,225 L292,236 M320,225 L312,236"/>
-  <text class="lbl-guide" x="350" y="244">bench</text>
+  <path data-step="1" class="bench" d="M40,225 L385,225"/>
+  <path data-step="1" class="hatch" d="M55,225 L47,236 M75,225 L67,236 M95,225 L87,236 M115,225 L107,236 M135,225 L127,236 M155,225 L147,236 M175,225 L167,236 M260,225 L252,236 M280,225 L272,236 M300,225 L292,236 M320,225 L312,236"/>
+  <text data-step="1" class="lbl-guide" x="350" y="244">bench</text>
 
   <!-- block -->
-  <rect class="block" x="140" y="170" width="95" height="55"/>
+  <rect data-step="2" class="block" x="140" y="170" width="95" height="55"/>
 
   <!-- normal reaction, perpendicular to the surface -->
-  <path class="force-normal" d="M178,222 L178,98" marker-end="url(#c1grn)"/>
-  <path class="guide" d="M164,225 L164,211 L178,211"/>
-  <text class="lbl-normal" x="190" y="92">normal reaction N</text>
-  <text class="lbl-guide" x="190" y="112">perpendicular to the surface</text>
+  <path data-step="3" class="force-normal" d="M178,222 L178,98" marker-end="url(#c1grn)"/>
+  <path data-step="3" class="guide" d="M164,225 L164,211 L178,211"/>
+  <text data-step="3" class="lbl-normal" x="190" y="92">normal reaction N</text>
+  <text data-step="3" class="lbl-guide" x="190" y="112">perpendicular to the surface</text>
 
   <!-- weight -->
-  <path class="force-weight" d="M205,197 L205,288" marker-end="url(#c1red)"/>
-  <text class="lbl-weight" x="213" y="266">weight W</text>
+  <path data-step="4" class="force-weight" d="M205,197 L205,288" marker-end="url(#c1red)"/>
+  <text data-step="4" class="lbl-weight" x="213" y="266">weight W</text>
 
   <!-- string and tension -->
-  <path class="string" d="M235,190 L300,158"/>
-  <path class="force-tension" d="M300,158 L368,124" marker-end="url(#c1amb)"/>
-  <text class="lbl-tension" x="318" y="178">tension T</text>
+  <path data-step="5" class="string" d="M235,190 L300,158"/>
+  <path data-step="5" class="force-tension" d="M300,158 L368,124" marker-end="url(#c1amb)"/>
+  <text data-step="5" class="lbl-tension" x="318" y="178">tension T</text>
 
   <!-- friction -->
-  <path class="force-friction" d="M148,213 L68,213" marker-end="url(#c1blu)"/>
-  <text class="lbl-friction" x="100" y="201" text-anchor="middle">friction f</text>
+  <path data-step="6" class="force-friction" d="M148,213 L68,213" marker-end="url(#c1blu)"/>
+  <text data-step="6" class="lbl-friction" x="100" y="201" text-anchor="middle">friction f</text>
 </svg>

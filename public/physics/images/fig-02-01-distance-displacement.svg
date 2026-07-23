@@ -13,16 +13,16 @@
     </marker>
   </defs>
   <!-- distance label sits ABOVE, clearly with the blue curve -->
-  <text class="blue" x="40" y="40">distance: the actual path</text>
+  <text data-step="1" class="blue" x="40" y="40">distance: the actual path</text>
   <!-- winding blue path from A to B, arcing well above the straight line -->
-  <path class="path" d="M55,235 C110,100 200,60 280,95 S360,120 368,142"/>
+  <path data-step="2" class="path" d="M55,235 C110,100 200,60 280,95 S360,120 368,142"/>
   <!-- straight yellow displacement arrow A to B -->
-  <line class="disp" x1="55" y1="235" x2="360" y2="149" marker-end="url(#ah)"/>
+  <line data-step="3" class="disp" x1="55" y1="235" x2="360" y2="149" marker-end="url(#ah)"/>
   <!-- displacement label sits BELOW, clearly with the yellow line -->
-  <text class="yellow" x="90" y="284">displacement: straight line A to B</text>
+  <text data-step="4" class="yellow" x="90" y="284">displacement: straight line A to B</text>
   <!-- start and end points drawn last, on top -->
-  <circle class="pt" cx="55" cy="235" r="6"/>
-  <circle class="pt" cx="370" cy="145" r="6"/>
-  <text x="38" y="262">A</text>
-  <text x="384" y="148">B</text>
+  <circle data-step="5" class="pt" cx="55" cy="235" r="6"/>
+  <circle data-step="5" class="pt" cx="370" cy="145" r="6"/>
+  <text data-step="5" x="38" y="262">A</text>
+  <text data-step="5" x="384" y="148">B</text>
 </svg>

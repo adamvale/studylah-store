@@ -27,57 +27,57 @@
     <marker id="aw" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#EAEAEA"/></marker>
   </defs>
 
-  <path class="axisline" d="M30,150 H410"/>
-  <path class="lens" d="M200,75 C222,115 222,185 200,225 C178,185 178,115 200,75 Z"/>
+  <path data-step="1" class="axisline" d="M30,150 H410"/>
+  <path data-step="1" class="lens" d="M200,75 C222,115 222,185 200,225 C178,185 178,115 200,75 Z"/>
 
-  <path class="obj" d="M80,150 V108" marker-end="url(#an)"/>
-  <path class="img" d="M320,150 V192" marker-end="url(#am)"/>
+  <path data-step="1" class="obj" d="M80,150 V108" marker-end="url(#an)"/>
+  <path data-step="1" class="img" d="M320,150 V192" marker-end="url(#am)"/>
 
-  <path class="ray" d="M80,105 H150" marker-end="url(#ab)"/>
-  <path class="ray" d="M150,105 H200 L240,135" marker-end="url(#ab)"/>
-  <path class="ray" d="M240,135 L320,195"/>
+  <path data-step="1" class="ray" d="M80,105 H150" marker-end="url(#ab)"/>
+  <path data-step="1" class="ray" d="M150,105 H200 L240,135" marker-end="url(#ab)"/>
+  <path data-step="1" class="ray" d="M240,135 L320,195"/>
 
-  <path class="ray" d="M80,105 L145,129.4" marker-end="url(#ab)"/>
-  <path class="ray" d="M145,129.4 L200,150 L260,172.5" marker-end="url(#ab)"/>
-  <path class="ray" d="M260,172.5 L320,195"/>
+  <path data-step="1" class="ray" d="M80,105 L145,129.4" marker-end="url(#ab)"/>
+  <path data-step="1" class="ray" d="M145,129.4 L200,150 L260,172.5" marker-end="url(#ab)"/>
+  <path data-step="1" class="ray" d="M260,172.5 L320,195"/>
 
-  <path class="ray" d="M80,105 L120,135" marker-end="url(#ab)"/>
-  <path class="ray" d="M120,135 L200,195 H260" marker-end="url(#ab)"/>
-  <path class="ray" d="M260,195 H320"/>
+  <path data-step="1" class="ray" d="M80,105 L120,135" marker-end="url(#ab)"/>
+  <path data-step="1" class="ray" d="M120,135 L200,195 H260" marker-end="url(#ab)"/>
+  <path data-step="1" class="ray" d="M260,195 H320"/>
 
-  <path class="focus" d="M255,145 L265,155 M255,155 L265,145"/>
-  <path class="focus" d="M135,145 L145,155 M135,155 L145,145"/>
-  <text class="sym" x="266" y="140">F</text>
-  <text class="sym" x="134" y="172">F</text>
+  <path data-step="1" class="focus" d="M255,145 L265,155 M255,155 L265,145"/>
+  <path data-step="1" class="focus" d="M135,145 L145,155 M135,155 L145,145"/>
+  <text data-step="3" class="sym" x="266" y="140">F</text>
+  <text data-step="3" class="sym" x="134" y="172">F</text>
 
-  <text class="green" x="80" y="96" text-anchor="middle">object</text>
-  <text class="lbl" x="320" y="212" text-anchor="middle">image</text>
+  <text data-step="3" class="green" x="80" y="96" text-anchor="middle">object</text>
+  <text data-step="3" class="lbl" x="320" y="212" text-anchor="middle">image</text>
 
-  <path class="tick" d="M200,228 V248"/>
-  <path class="tick" d="M320,200 V248"/>
-  <path class="dim" d="M260,240 H202" marker-end="url(#ag)"/>
-  <path class="dim" d="M260,240 H318" marker-end="url(#ag)"/>
-  <text class="sym" x="260" y="234" text-anchor="middle">v</text>
-  <text class="lbl" x="30" y="265">m = image height / object height</text>
+  <path data-step="2" class="tick" d="M200,228 V248"/>
+  <path data-step="2" class="tick" d="M320,200 V248"/>
+  <path data-step="2" class="dim" d="M260,240 H202" marker-end="url(#ag)"/>
+  <path data-step="2" class="dim" d="M260,240 H318" marker-end="url(#ag)"/>
+  <text data-step="3" class="sym" x="260" y="234" text-anchor="middle">v</text>
+  <text data-step="3" class="lbl" x="30" y="265">m = image height / object height</text>
 
-  <line class="axis" x1="90" y1="520" x2="90" y2="330" marker-end="url(#aw)"/>
-  <line class="axis" x1="90" y1="520" x2="400" y2="520" marker-end="url(#aw)"/>
+  <line data-step="2" class="axis" x1="90" y1="520" x2="90" y2="330" marker-end="url(#aw)"/>
+  <line data-step="2" class="axis" x1="90" y1="520" x2="400" y2="520" marker-end="url(#aw)"/>
 
-  <path class="bestfit" d="M120,500 L370,355"/>
-  <path class="tri" d="M170,471 H320"/>
-  <path class="tri" d="M320,471 V384"/>
+  <path data-step="2" class="bestfit" d="M120,500 L370,355"/>
+  <path data-step="2" class="tri" d="M170,471 H320"/>
+  <path data-step="2" class="tri" d="M320,471 V384"/>
 
-  <path class="cross" d="M135,486 L145,496 M135,496 L145,486"/>
-  <path class="cross" d="M175,458 L185,468 M175,468 L185,458"/>
-  <path class="cross" d="M215,439 L225,449 M215,449 L225,439"/>
-  <path class="cross" d="M255,412 L265,422 M255,422 L265,412"/>
-  <path class="cross" d="M295,392 L305,402 M295,402 L305,392"/>
-  <path class="cross" d="M335,366 L345,376 M335,376 L345,366"/>
+  <path data-step="2" class="cross" d="M135,486 L145,496 M135,496 L145,486"/>
+  <path data-step="2" class="cross" d="M175,458 L185,468 M175,468 L185,458"/>
+  <path data-step="2" class="cross" d="M215,439 L225,449 M215,449 L225,439"/>
+  <path data-step="2" class="cross" d="M255,412 L265,422 M255,422 L265,412"/>
+  <path data-step="2" class="cross" d="M295,392 L305,402 M295,402 L305,392"/>
+  <path data-step="2" class="cross" d="M335,366 L345,376 M335,376 L345,366"/>
 
-  <text x="36" y="322">magnification m</text>
-  <text x="245" y="548" text-anchor="middle">image distance v / cm</text>
-  <text class="lbl" x="140" y="370">gradient = 1/f</text>
-  <text class="blue" x="150" y="400">best-fit line</text>
-  <text class="lbl" x="245" y="489" text-anchor="middle">&#916;v</text>
-  <text class="lbl" x="330" y="430">&#916;m</text>
+  <text data-step="4" x="36" y="322">magnification m</text>
+  <text data-step="4" x="245" y="548" text-anchor="middle">image distance v / cm</text>
+  <text data-step="4" class="lbl" x="140" y="370">gradient = 1/f</text>
+  <text data-step="4" class="blue" x="150" y="400">best-fit line</text>
+  <text data-step="4" class="lbl" x="245" y="489" text-anchor="middle">&#916;v</text>
+  <text data-step="4" class="lbl" x="330" y="430">&#916;m</text>
 </svg>

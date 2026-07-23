@@ -6,17 +6,17 @@
     .bob { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
     .lbl { fill:#E8B65A; font-size:14px; }
   </style>
-  <circle cx="180" cy="40" r="4" fill="#EAEAEA"/>
+  <circle data-step="1" cx="180" cy="40" r="4" fill="#EAEAEA"/>
   <!-- two extreme strings -->
-  <line class="string" x1="180" y1="40" x2="120" y2="210"/>
-  <line class="string" x1="180" y1="40" x2="240" y2="210"/>
+  <line data-step="1" class="string" x1="180" y1="40" x2="120" y2="210"/>
+  <line data-step="1" class="string" x1="180" y1="40" x2="240" y2="210"/>
   <!-- swing arc P to Q -->
-  <path class="arc" d="M120,214 A64,64 0 0 0 240,214"/>
+  <path data-step="2" class="arc" d="M120,214 A64,64 0 0 0 240,214"/>
   <!-- arrow -->
-  <path d="M150,222 L210,222" stroke="#6FB7E0" stroke-width="1.6" fill="none" marker-end="url(#a)"/>
+  <path data-step="3" d="M150,222 L210,222" stroke="#6FB7E0" stroke-width="1.6" fill="none" marker-end="url(#a)"/>
   <defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#6FB7E0"/></marker></defs>
-  <circle class="bob" cx="120" cy="214" r="11"/>
-  <circle class="bob" cx="240" cy="214" r="11"/>
-  <text class="lbl" x="112" y="250">P</text>
-  <text class="lbl" x="236" y="250">Q</text>
+  <circle data-step="3" class="bob" cx="120" cy="214" r="11"/>
+  <circle data-step="3" class="bob" cx="240" cy="214" r="11"/>
+  <text data-step="3" class="lbl" x="112" y="250">P</text>
+  <text data-step="3" class="lbl" x="236" y="250">Q</text>
 </svg>

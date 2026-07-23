@@ -18,19 +18,19 @@
     .fr { stroke:#6FB7E0; stroke-width:2.4; }
     .vel { stroke:#9AA0A6; stroke-width:2; }
   </style>
-  <line class="ground" x1="40" y1="150" x2="420" y2="150"/>
-  <text x="360" y="170" font-size="12.5">surface</text>
-  <circle class="ball" cx="230" cy="122" r="28"/>
-  <text x="230" y="126" text-anchor="middle" font-size="12.5">ball</text>
+  <line data-step="1" class="ground" x1="40" y1="150" x2="420" y2="150"/>
+  <text data-step="1" x="360" y="170" font-size="12.5">surface</text>
+  <circle data-step="1" class="ball" cx="230" cy="122" r="28"/>
+  <text data-step="1" x="230" y="126" text-anchor="middle" font-size="12.5">ball</text>
   <!-- driving force (applied) to the right -->
-  <line class="f" x1="260" y1="122" x2="345" y2="122" marker-end="url(#arwY)"/>
-  <text x="305" y="112" text-anchor="middle" font-size="14" fill="#E8B65A">F</text>
+  <line data-step="1" class="f" x1="260" y1="122" x2="345" y2="122" marker-end="url(#arwY)"/>
+  <text data-step="1" x="305" y="112" text-anchor="middle" font-size="14" fill="#E8B65A">F</text>
   <!-- friction f to the left -->
-  <line class="fr" x1="200" y1="122" x2="115" y2="122" marker-end="url(#arwF)"/>
-  <text x="155" y="112" text-anchor="middle" font-size="14" fill="#6FB7E0">f</text>
+  <line data-step="2" class="fr" x1="200" y1="122" x2="115" y2="122" marker-end="url(#arwF)"/>
+  <text data-step="2" x="155" y="112" text-anchor="middle" font-size="14" fill="#6FB7E0">f</text>
   <!-- constant velocity indicator -->
-  <line class="vel" x1="230" y1="70" x2="320" y2="70" marker-end="url(#arwM)"/>
-  <text x="275" y="60" text-anchor="middle" font-size="13" fill="#9AA0A6">constant velocity</text>
-  <text x="230" y="200" text-anchor="middle" font-size="13">F = f, resultant force is zero.</text>
-  <text x="230" y="218" text-anchor="middle" font-size="13">The ball keeps the same speed and direction.</text>
+  <line data-step="3" class="vel" x1="230" y1="70" x2="320" y2="70" marker-end="url(#arwM)"/>
+  <text data-step="3" x="275" y="60" text-anchor="middle" font-size="13" fill="#9AA0A6">constant velocity</text>
+  <text data-step="3" x="230" y="200" text-anchor="middle" font-size="13">F = f, resultant force is zero.</text>
+  <text data-step="3" x="230" y="218" text-anchor="middle" font-size="13">The ball keeps the same speed and direction.</text>
 </svg>

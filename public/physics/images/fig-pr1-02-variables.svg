@@ -13,18 +13,18 @@
     </marker>
   </defs>
 
-  <text x="210" y="34" text-anchor="middle" class="ctrl-lbl">Controlled variables: kept constant</text>
-  <rect class="controlled" x="22" y="48" width="376" height="120" rx="8"/>
+  <text data-step="3" x="210" y="34" text-anchor="middle" class="ctrl-lbl">Controlled variables: kept constant</text>
+  <rect data-step="1" class="controlled" x="22" y="48" width="376" height="120" rx="8"/>
 
-  <rect class="varbox" x="40" y="76" width="130" height="84" rx="7"/>
-  <text x="105" y="104" text-anchor="middle">Independent</text>
-  <text x="105" y="122" text-anchor="middle">variable</text>
-  <text x="105" y="144" text-anchor="middle" class="sub">you change it</text>
+  <rect data-step="1" class="varbox" x="40" y="76" width="130" height="84" rx="7"/>
+  <text data-step="3" x="105" y="104" text-anchor="middle">Independent</text>
+  <text data-step="3" x="105" y="122" text-anchor="middle">variable</text>
+  <text data-step="3" x="105" y="144" text-anchor="middle" class="sub">you change it</text>
 
-  <line class="link" x1="176" y1="118" x2="244" y2="118" marker-end="url(#vr1)"/>
+  <line data-step="2" class="link" x1="176" y1="118" x2="244" y2="118" marker-end="url(#vr1)"/>
 
-  <rect class="varbox" x="250" y="76" width="130" height="84" rx="7"/>
-  <text x="315" y="104" text-anchor="middle">Dependent</text>
-  <text x="315" y="122" text-anchor="middle">variable</text>
-  <text x="315" y="144" text-anchor="middle" class="sub">you measure it</text>
+  <rect data-step="2" class="varbox" x="250" y="76" width="130" height="84" rx="7"/>
+  <text data-step="4" x="315" y="104" text-anchor="middle">Dependent</text>
+  <text data-step="4" x="315" y="122" text-anchor="middle">variable</text>
+  <text data-step="4" x="315" y="144" text-anchor="middle" class="sub">you measure it</text>
 </svg>

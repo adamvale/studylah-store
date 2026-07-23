@@ -10,22 +10,22 @@
     .lbl { font-size:12px; }
   </style>
   <!-- narrow left limb, wide right limb -->
-  <path class="liq" d="M70,120 L70,220 L420,220 L420,108 L330,108 L330,182 L100,182 L100,120 Z"/>
-  <path class="tube" d="M70,90 L70,220 L420,220 L420,72"/>
-  <path class="tube" d="M100,90 L100,182 L330,182 L330,72"/>
+  <path data-step="1" class="liq" d="M70,120 L70,220 L420,220 L420,108 L330,108 L330,182 L100,182 L100,120 Z"/>
+  <path data-step="1" class="tube" d="M70,90 L70,220 L420,220 L420,72"/>
+  <path data-step="1" class="tube" d="M100,90 L100,182 L330,182 L330,72"/>
   <!-- small piston (narrow limb) -->
-  <rect class="piston" x="70" y="112" width="30" height="12"/>
-  <line class="force" x1="85" y1="68" x2="85" y2="108" marker-end="url(#lf)"/>
-  <text x="95" y="82" class="lbl">applied force</text>
-  <line class="lead" x1="100" y1="118" x2="118" y2="132"/>
-  <text x="122" y="140" class="lbl">area A&#8321; (small)</text>
+  <rect data-step="2" class="piston" x="70" y="112" width="30" height="12"/>
+  <line data-step="2" class="force" x1="85" y1="68" x2="85" y2="108" marker-end="url(#lf)"/>
+  <text data-step="2" x="95" y="82" class="lbl">applied force</text>
+  <line data-step="2" class="lead" x1="100" y1="118" x2="118" y2="132"/>
+  <text data-step="2" x="122" y="140" class="lbl">area A&#8321; (small)</text>
   <!-- large piston with load (wide limb) -->
-  <rect class="piston" x="330" y="96" width="90" height="12"/>
-  <rect class="load" x="352" y="66" width="46" height="30"/>
-  <text x="375" y="86" text-anchor="middle" class="lbl">load L</text>
-  <line class="lead" x1="330" y1="106" x2="305" y2="156"/>
-  <text x="300" y="168" text-anchor="end" class="lbl">area A&#8322; (large)</text>
-  <text x="240" y="252" text-anchor="middle" class="lbl">F&#8321;/A&#8321; = F&#8322;/A&#8322;</text>
+  <rect data-step="3" class="piston" x="330" y="96" width="90" height="12"/>
+  <rect data-step="3" class="load" x="352" y="66" width="46" height="30"/>
+  <text data-step="3" x="375" y="86" text-anchor="middle" class="lbl">load L</text>
+  <line data-step="3" class="lead" x1="330" y1="106" x2="305" y2="156"/>
+  <text data-step="3" x="300" y="168" text-anchor="end" class="lbl">area A&#8322; (large)</text>
+  <text data-step="3" x="240" y="252" text-anchor="middle" class="lbl">F&#8321;/A&#8321; = F&#8322;/A&#8322;</text>
   <defs>
     <marker id="lf" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#E58F8F"/></marker>
   </defs>

@@ -18,7 +18,7 @@
   </defs>
 
   <!-- ===== Panel (a): moving towards ===== -->
-  <g transform="translate(10,10)">
+  <g data-step="1" transform="translate(10,10)">
     <text class="lbl" x="60" y="60">moving towards</text>
     <path class="mot" d="M60,72 L140,72"/>
     <!-- bar magnet S | N -->
@@ -43,7 +43,7 @@
   </g>
 
   <!-- ===== Panel (b): moving away ===== -->
-  <g transform="translate(10,270)">
+  <g data-step="2" transform="translate(10,270)">
     <text class="lbl" x="60" y="60">moving away</text>
     <path class="mot" d="M140,72 L60,72"/>
     <rect class="mag magS" x="30" y="86" width="45" height="34"/>
@@ -65,7 +65,7 @@
   </g>
 
   <!-- ===== Panel (c): stationary ===== -->
-  <g transform="translate(10,530)">
+  <g data-step="3" transform="translate(10,530)">
     <text class="lbl" x="60" y="60">stationary</text>
     <rect class="mag magS" x="30" y="86" width="45" height="34"/>
     <rect class="mag magN" x="75" y="86" width="45" height="34"/>

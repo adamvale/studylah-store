@@ -14,27 +14,27 @@
     <marker id="i2" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#9AA0A6"/></marker>
   </defs>
   <!-- triangle P (bottom-left), Q (bottom-right), R (top-right) -->
-  <polygon class="fill" points="60,205 320,205 320,85"/>
-  <polyline class="slope" points="60,205 320,85"/>
-  <line class="slope" x1="60" y1="205" x2="320" y2="205"/>
-  <line class="slope" x1="320" y1="205" x2="320" y2="85"/>
+  <polygon data-step="1" class="fill" points="60,205 320,205 320,85"/>
+  <polyline data-step="1" class="slope" points="60,205 320,85"/>
+  <line data-step="1" class="slope" x1="60" y1="205" x2="320" y2="205"/>
+  <line data-step="1" class="slope" x1="320" y1="205" x2="320" y2="85"/>
   <!-- block on slope -->
-  <g transform="translate(175,155) rotate(-25)">
+  <g data-step="2" transform="translate(175,155) rotate(-25)">
     <rect class="block" x="-22" y="-16" width="44" height="30"/>
   </g>
   <!-- force F up the slope -->
-  <line class="force" x1="108" y1="176" x2="146" y2="158" marker-end="url(#if)"/>
-  <text class="lbl" x="112" y="150"><tspan font-style="italic">F</tspan></text>
+  <line data-step="3" class="force" x1="108" y1="176" x2="146" y2="158" marker-end="url(#if)"/>
+  <text data-step="3" class="lbl" x="112" y="150"><tspan font-style="italic">F</tspan></text>
   <!-- corner labels -->
-  <text x="48" y="222" fill="#EAEAEA">P</text>
-  <text x="326" y="222" fill="#EAEAEA">Q</text>
-  <text x="326" y="82" fill="#EAEAEA">R</text>
+  <text data-step="4" x="48" y="222" fill="#EAEAEA">P</text>
+  <text data-step="4" x="326" y="222" fill="#EAEAEA">Q</text>
+  <text data-step="4" x="326" y="82" fill="#EAEAEA">R</text>
   <!-- slope length 13 m -->
-  <text class="lbl" x="185" y="128" transform="rotate(-25 185 128)">13 m</text>
+  <text data-step="5" class="lbl" x="185" y="128" transform="rotate(-25 185 128)">13 m</text>
   <!-- base 12 m -->
-  <text x="190" y="222" text-anchor="middle">12 m</text>
+  <text data-step="6" x="190" y="222" text-anchor="middle">12 m</text>
   <!-- height 5 m -->
-  <line class="dim" x1="350" y1="85" x2="350" y2="205" marker-start="url(#i1)" marker-end="url(#i2)"/>
-  <text class="lbl" x="358" y="150">5 m</text>
-  <line class="dim" x1="320" y1="85" x2="355" y2="85" stroke-dasharray="3 3"/>
+  <line data-step="7" class="dim" x1="350" y1="85" x2="350" y2="205" marker-start="url(#i1)" marker-end="url(#i2)"/>
+  <text data-step="7" class="lbl" x="358" y="150">5 m</text>
+  <line data-step="7" class="dim" x1="320" y1="85" x2="355" y2="85" stroke-dasharray="3 3"/>
 </svg>

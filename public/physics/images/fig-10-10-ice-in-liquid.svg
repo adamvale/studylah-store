@@ -9,19 +9,19 @@
     .tagb { fill:#6FB7E0; }
   </style>
   <!-- beaker -->
-  <path class="beaker" d="M110,50 L110,220 Q110,238 132,238 L268,238 Q290,238 290,220 L290,50"/>
+  <path data-step="1" class="beaker" d="M110,50 L110,220 Q110,238 132,238 L268,238 Q290,238 290,220 L290,50"/>
   <!-- liquid X -->
-  <rect class="liq" x="112" y="90" width="176" height="148"/>
-  <g stroke="#E8B65A" stroke-width="0.9" opacity="0.7">
+  <rect data-step="2" class="liq" x="112" y="90" width="176" height="148"/>
+  <g data-step="2" stroke="#E8B65A" stroke-width="0.9" opacity="0.7">
     <line x1="120" y1="105" x2="280" y2="105"/><line x1="120" y1="120" x2="280" y2="120"/>
     <line x1="120" y1="135" x2="280" y2="135"/><line x1="120" y1="150" x2="280" y2="150"/>
   </g>
   <!-- ice cube floating -->
-  <rect class="ice" x="165" y="72" width="70" height="42" rx="3"/>
+  <rect data-step="3" class="ice" x="165" y="72" width="70" height="42" rx="3"/>
   <!-- labels -->
-  <text class="tagb" x="250" y="70">ice cube, 0&#176;C</text>
-  <path class="lead" d="M248,74 L236,90"/>
-  <text class="tag" x="300" y="160">hot liquid X</text>
-  <text class="tag" x="300" y="177">at 90&#176;C</text>
-  <path class="lead" d="M298,156 L288,150"/>
+  <text data-step="4" class="tagb" x="250" y="70">ice cube, 0&#176;C</text>
+  <path data-step="4" class="lead" d="M248,74 L236,90"/>
+  <text data-step="4" class="tag" x="300" y="160">hot liquid X</text>
+  <text data-step="4" class="tag" x="300" y="177">at 90&#176;C</text>
+  <path data-step="4" class="lead" d="M298,156 L288,150"/>
 </svg>

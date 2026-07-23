@@ -14,25 +14,25 @@
     <marker id="ab" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#6FB7E0"/></marker>
   </defs>
 
-  <path class="mirror" d="M60,190 H380"/>
-  <path class="hatch" d="M66,190 l-9,10 M86,190 l-9,10 M106,190 l-9,10 M126,190 l-9,10 M146,190 l-9,10 M166,190 l-9,10 M186,190 l-9,10 M266,190 l-9,10 M286,190 l-9,10 M306,190 l-9,10 M326,190 l-9,10 M346,190 l-9,10 M366,190 l-9,10"/>
+  <path data-step="1" class="mirror" d="M60,190 H380"/>
+  <path data-step="1" class="hatch" d="M66,190 l-9,10 M86,190 l-9,10 M106,190 l-9,10 M126,190 l-9,10 M146,190 l-9,10 M166,190 l-9,10 M186,190 l-9,10 M266,190 l-9,10 M286,190 l-9,10 M306,190 l-9,10 M326,190 l-9,10 M346,190 l-9,10 M366,190 l-9,10"/>
 
-  <path class="normal" d="M220,190 V70"/>
+  <path data-step="1" class="normal" d="M220,190 V70"/>
 
-  <path class="ray" d="M123.6,75.1 L171.8,132.6" marker-end="url(#ab)"/>
-  <path class="ray" d="M171.8,132.6 L220,190"/>
-  <path class="ray" d="M220,190 L268.2,132.6"/>
-  <path class="ray" d="M268.2,132.6 L316.4,75.1" marker-end="url(#ab)"/>
+  <path data-step="1" class="ray" d="M123.6,75.1 L171.8,132.6" marker-end="url(#ab)"/>
+  <path data-step="1" class="ray" d="M171.8,132.6 L220,190"/>
+  <path data-step="2" class="ray" d="M220,190 L268.2,132.6"/>
+  <path data-step="2" class="ray" d="M268.2,132.6 L316.4,75.1" marker-end="url(#ab)"/>
 
-  <path class="arc" d="M190.4,154.8 A46,46 0 0 1 220,144"/>
-  <path class="arc" d="M220,144 A46,46 0 0 1 249.6,154.8"/>
+  <path data-step="2" class="arc" d="M190.4,154.8 A46,46 0 0 1 220,144"/>
+  <path data-step="2" class="arc" d="M220,144 A46,46 0 0 1 249.6,154.8"/>
 
-  <text class="sym" x="206" y="166" text-anchor="middle">i</text>
-  <text class="sym" x="234" y="166" text-anchor="middle">r</text>
+  <text data-step="3" class="sym" x="206" y="166" text-anchor="middle">i</text>
+  <text data-step="3" class="sym" x="234" y="166" text-anchor="middle">r</text>
 
-  <text class="blue" x="56" y="62">incident ray</text>
-  <text class="blue" x="330" y="62">reflected ray</text>
-  <text class="grey" x="226" y="68">normal</text>
-  <text class="grey" x="62" y="220">mirror</text>
-  <text x="216" y="208">O</text>
+  <text data-step="3" class="blue" x="56" y="62">incident ray</text>
+  <text data-step="3" class="blue" x="330" y="62">reflected ray</text>
+  <text data-step="4" class="grey" x="226" y="68">normal</text>
+  <text data-step="4" class="grey" x="62" y="220">mirror</text>
+  <text data-step="4" x="216" y="208">O</text>
 </svg>

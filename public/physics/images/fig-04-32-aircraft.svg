@@ -4,9 +4,9 @@
     .plane { fill:#6FB7E0; opacity:0.22; stroke:#6FB7E0; stroke-width:1.6; }
   </style>
   <!-- simple airliner silhouette -->
-  <path class="plane" d="M70,110 Q120,96 300,98 L360,92 Q380,94 372,104 L300,112 Q200,120 90,120 Q60,120 70,110 Z"/>
-  <path class="plane" d="M180,100 L230,55 L245,58 L215,102 Z"/>
-  <path class="plane" d="M180,116 L225,150 L240,146 L212,113 Z"/>
-  <path class="plane" d="M320,96 L345,74 L354,76 L338,98 Z"/>
-  <text x="210" y="185" text-anchor="middle" font-size="13">A cargo aircraft cruising at constant speed and altitude.</text>
+  <path data-step="1" class="plane" d="M70,110 Q120,96 300,98 L360,92 Q380,94 372,104 L300,112 Q200,120 90,120 Q60,120 70,110 Z"/>
+  <path data-step="1" class="plane" d="M180,100 L230,55 L245,58 L215,102 Z"/>
+  <path data-step="2" class="plane" d="M180,116 L225,150 L240,146 L212,113 Z"/>
+  <path data-step="2" class="plane" d="M320,96 L345,74 L354,76 L338,98 Z"/>
+  <text data-step="3" x="210" y="185" text-anchor="middle" font-size="13">A cargo aircraft cruising at constant speed and altitude.</text>
 </svg>

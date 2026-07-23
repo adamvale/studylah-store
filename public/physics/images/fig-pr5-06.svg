@@ -12,18 +12,18 @@
     <marker id="ab" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#6FB7E0"/></marker>
   </defs>
 
-  <rect class="glass" x="60" y="130" width="320" height="100" rx="3"/>
+  <rect data-step="1" class="glass" x="60" y="130" width="320" height="100" rx="3"/>
 
-  <path class="normal" d="M200,80 V190"/>
+  <path data-step="1" class="normal" d="M200,80 V190"/>
 
-  <path class="ray" d="M118.1,187.4 L159,158.7" marker-end="url(#ab)"/>
-  <path class="ray" d="M159,158.7 L200,130"/>
+  <path data-step="1" class="ray" d="M118.1,187.4 L159,158.7" marker-end="url(#ab)"/>
+  <path data-step="2" class="ray" d="M159,158.7 L200,130"/>
 
-  <path class="arc" d="M200,178 A48,48 0 0 1 160.7,157.5"/>
-  <text class="sym" x="180" y="166" text-anchor="middle">&#952;</text>
+  <path data-step="2" class="arc" d="M200,178 A48,48 0 0 1 160.7,157.5"/>
+  <text data-step="3" class="sym" x="180" y="166" text-anchor="middle">&#952;</text>
 
-  <text x="75" y="112">air</text>
-  <text x="75" y="155">glass</text>
-  <text class="grey" x="206" y="78">normal</text>
-  <text class="grey" x="300" y="122">boundary with air</text>
+  <text data-step="3" x="75" y="112">air</text>
+  <text data-step="3" x="75" y="155">glass</text>
+  <text data-step="4" class="grey" x="206" y="78">normal</text>
+  <text data-step="4" class="grey" x="300" y="122">boundary with air</text>
 </svg>

@@ -11,21 +11,21 @@
     .bub { fill:none; stroke:#6FB7E0; stroke-width:1; }
   </style>
   <!-- thermometer -->
-  <line class="therm" x1="190" y1="40" x2="190" y2="210"/>
-  <line class="therm" x1="184" y1="40" x2="184" y2="205"/>
-  <circle class="bulb" cx="187" cy="212" r="8"/>
+  <line data-step="1" class="therm" x1="190" y1="40" x2="190" y2="210"/>
+  <line data-step="1" class="therm" x1="184" y1="40" x2="184" y2="205"/>
+  <circle data-step="1" class="bulb" cx="187" cy="212" r="8"/>
   <!-- beaker -->
-  <path class="beaker" d="M120,120 L120,235 Q120,252 142,252 L238,252 Q260,252 260,235 L260,120"/>
-  <rect class="liq" x="122" y="160" width="136" height="92"/>
+  <path data-step="2" class="beaker" d="M120,120 L120,235 Q120,252 142,252 L238,252 Q260,252 260,235 L260,120"/>
+  <rect data-step="2" class="liq" x="122" y="160" width="136" height="92"/>
   <!-- bubbles -->
-  <g class="bub"><circle cx="150" cy="230" r="4"/><circle cx="175" cy="215" r="5"/><circle cx="210" cy="228" r="4"/><circle cx="230" cy="210" r="5"/><circle cx="165" cy="240" r="3"/></g>
+  <g data-step="3" class="bub"><circle cx="150" cy="230" r="4"/><circle cx="175" cy="215" r="5"/><circle cx="210" cy="228" r="4"/><circle cx="230" cy="210" r="5"/><circle cx="165" cy="240" r="3"/></g>
   <!-- flame -->
-  <path class="flame" d="M175,300 Q185,270 190,262 Q195,270 205,300 Q190,290 175,300 Z"/>
-  <line x1="150" y1="300" x2="230" y2="300" stroke="#EAEAEA" stroke-width="2"/>
+  <path data-step="4" class="flame" d="M175,300 Q185,270 190,262 Q195,270 205,300 Q190,290 175,300 Z"/>
+  <line data-step="4" x1="150" y1="300" x2="230" y2="300" stroke="#EAEAEA" stroke-width="2"/>
   <!-- labels -->
-  <text class="tag" x="230" y="60">thermometer</text>
-  <path class="lead" d="M228,64 L192,80"/>
-  <text class="tag" x="278" y="200">liquid</text>
-  <path class="lead" d="M276,196 L258,190"/>
-  <text class="tag" x="190" y="325" text-anchor="middle">heat</text>
+  <text data-step="5" class="tag" x="230" y="60">thermometer</text>
+  <path data-step="5" class="lead" d="M228,64 L192,80"/>
+  <text data-step="5" class="tag" x="278" y="200">liquid</text>
+  <path data-step="5" class="lead" d="M276,196 L258,190"/>
+  <text data-step="5" class="tag" x="190" y="325" text-anchor="middle">heat</text>
 </svg>

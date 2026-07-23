@@ -10,31 +10,31 @@
     .lead { stroke:#9AA0A6; stroke-width:1; }
   </style>
   <!-- air region -->
-  <text x="80" y="40" class="lbl">air</text>
-  <g class="arrow">
+  <text data-step="1" x="80" y="40" class="lbl">air</text>
+  <g data-step="1" class="arrow">
     <line x1="150" y1="20" x2="150" y2="60" marker-end="url(#a2)"/>
     <line x1="185" y1="20" x2="185" y2="60" marker-end="url(#a2)"/>
     <line x1="220" y1="20" x2="220" y2="60" marker-end="url(#a2)"/>
   </g>
-  <text x="240" y="38" class="lbl">atmospheric pressure P_atm</text>
+  <text data-step="1" x="240" y="38" class="lbl">atmospheric pressure P_atm</text>
 
   <!-- liquid -->
-  <rect class="liq" x="60" y="60" width="200" height="160"/>
-  <path class="tank" d="M60,60 L60,220 L260,220 L260,60"/>
-  <line x1="60" y1="60" x2="260" y2="60" stroke="#6FB7E0" stroke-width="1.4"/>
-  <text x="70" y="80" class="lbl">liquid</text>
+  <rect data-step="2" class="liq" x="60" y="60" width="200" height="160"/>
+  <path data-step="2" class="tank" d="M60,60 L60,220 L260,220 L260,60"/>
+  <line data-step="2" x1="60" y1="60" x2="260" y2="60" stroke="#6FB7E0" stroke-width="1.4"/>
+  <text data-step="2" x="70" y="80" class="lbl">liquid</text>
 
   <!-- depth h to object -->
-  <line class="depth" x1="120" y1="60" x2="120" y2="175"/>
-  <line class="depth" x1="115" y1="60" x2="125" y2="60"/>
-  <line class="depth" x1="115" y1="175" x2="125" y2="175"/>
-  <text x="128" y="120" class="lbl" fill="#E8B65A">h</text>
+  <line data-step="3" class="depth" x1="120" y1="60" x2="120" y2="175"/>
+  <line data-step="3" class="depth" x1="115" y1="60" x2="125" y2="60"/>
+  <line data-step="3" class="depth" x1="115" y1="175" x2="125" y2="175"/>
+  <text data-step="3" x="128" y="120" class="lbl" fill="#E8B65A">h</text>
 
-  <rect class="obj" x="150" y="170" width="50" height="14"/>
-  <text x="205" y="181" class="lbl">object X</text>
+  <rect data-step="3" class="obj" x="150" y="170" width="50" height="14"/>
+  <text data-step="3" x="205" y="181" class="lbl">object X</text>
 
-  <text x="300" y="120" class="lbl">Total pressure on X</text>
-  <text x="300" y="140" class="lbl" fill="#E8B65A">= P_atm + h&#961;g</text>
+  <text data-step="3" x="300" y="120" class="lbl">Total pressure on X</text>
+  <text data-step="3" x="300" y="140" class="lbl" fill="#E8B65A">= P_atm + h&#961;g</text>
   <defs>
     <marker id="a2" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
       <path d="M0,0 L7,3.5 L0,7 Z" fill="#E58F8F"/>

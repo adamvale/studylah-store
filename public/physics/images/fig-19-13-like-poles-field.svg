@@ -14,7 +14,7 @@
   <!-- Two N poles face each other. Field lines from each N sweep away up & down;
        they do NOT meet in the middle -> neutral point X between them. -->
   <!-- lines from LEFT N pole (at x=270) curving up-left and down-left, plus splaying away from gap -->
-  <g class="fl">
+  <g data-step="1" class="fl">
     <!-- left magnet's own loops going back to its S end -->
     <path d="M270,165 C260,110 150,110 90,150"/>
     <path d="M270,195 C260,250 150,250 90,210"/>
@@ -29,7 +29,7 @@
   </g>
 
   <!-- arrowheads leaving each N pole -->
-  <g class="fhead">
+  <g data-step="2" class="fhead">
     <polygon points="299,90 293,98 303,99"/>
     <polygon points="299,270 293,262 303,261"/>
     <polygon points="341,90 347,98 337,99"/>
@@ -41,24 +41,24 @@
   </g>
 
   <!-- neutral point X in the middle of the gap -->
-  <circle cx="320" cy="180" r="3.5" class="np"/>
-  <text x="320" y="150" text-anchor="middle" class="lbl">X</text>
-  <text x="320" y="332" text-anchor="middle" class="lbl">neutral point X: the two fields cancel, no net force</text>
-  <path class="lead" d="M320,158 L320,176"/>
+  <circle data-step="3" cx="320" cy="180" r="3.5" class="np"/>
+  <text data-step="3" x="320" y="150" text-anchor="middle" class="lbl">X</text>
+  <text data-step="3" x="320" y="332" text-anchor="middle" class="lbl">neutral point X: the two fields cancel, no net force</text>
+  <path data-step="3" class="lead" d="M320,158 L320,176"/>
 
   <!-- magnets: both N facing the gap -->
-  <g transform="translate(90,165)">
+  <g data-step="4" transform="translate(90,165)">
     <rect class="magS" x="0" y="0" width="90" height="30" rx="2"/>
     <rect class="magN" x="90" y="0" width="90" height="30" rx="2"/>
     <text class="pole" x="14" y="21">S</text>
     <text class="pole" x="168" y="21">N</text>
   </g>
-  <g transform="translate(370,165)">
+  <g data-step="4" transform="translate(370,165)">
     <rect class="magN" x="0" y="0" width="90" height="30" rx="2"/>
     <rect class="magS" x="90" y="0" width="90" height="30" rx="2"/>
     <text class="pole" x="14" y="21">N</text>
     <text class="pole" x="168" y="21">S</text>
   </g>
 
-  <text x="320" y="40" text-anchor="middle" class="lbl">Like poles facing: repulsion</text>
+  <text data-step="4" x="320" y="40" text-anchor="middle" class="lbl">Like poles facing: repulsion</text>
 </svg>

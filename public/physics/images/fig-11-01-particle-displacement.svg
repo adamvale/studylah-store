@@ -12,32 +12,32 @@
   </defs>
 
   <!-- TOP: transverse -->
-  <text x="210" y="26" text-anchor="middle" font-size="15" fill="#6FB7E0">transverse wave</text>
-  <line x1="130" y1="54" x2="290" y2="54" class="axis" marker-end="url(#ah)"/>
-  <text x="210" y="46" text-anchor="middle" font-size="13">direction of wave</text>
-  <line x1="40" y1="132" x2="310" y2="132" class="rest"/>
-  <text x="316" y="136" font-size="13" fill="#9AA0A6">rest position</text>
-  <circle cx="110" cy="102" r="10" fill="#6FB7E0" opacity="0.32" stroke="#6FB7E0" stroke-width="1.4"/>
-  <line x1="126" y1="86" x2="126" y2="118" class="axis" marker-start="url(#ah)" marker-end="url(#ah)" stroke-width="1.3"/>
-  <circle cx="160" cy="132" r="10" fill="#6FB7E0" opacity="0.32" stroke="#6FB7E0" stroke-width="1.4"/>
-  <line x1="176" y1="116" x2="176" y2="148" class="axis" marker-start="url(#ah)" marker-end="url(#ah)" stroke-width="1.3"/>
-  <circle cx="210" cy="162" r="10" fill="#6FB7E0" opacity="0.32" stroke="#6FB7E0" stroke-width="1.4"/>
-  <line x1="226" y1="146" x2="226" y2="178" class="axis" marker-start="url(#ah)" marker-end="url(#ah)" stroke-width="1.3"/>
-  <text class="cap" x="210" y="206">particle vibrates up and down,</text>
-  <text class="cap" x="210" y="222">across the direction of travel</text>
+  <text data-step="1" x="210" y="26" text-anchor="middle" font-size="15" fill="#6FB7E0">transverse wave</text>
+  <line data-step="1" x1="130" y1="54" x2="290" y2="54" class="axis" marker-end="url(#ah)"/>
+  <text data-step="1" x="210" y="46" text-anchor="middle" font-size="13">direction of wave</text>
+  <line data-step="1" x1="40" y1="132" x2="310" y2="132" class="rest"/>
+  <text data-step="1" x="316" y="136" font-size="13" fill="#9AA0A6">rest position</text>
+  <circle data-step="1" cx="110" cy="102" r="10" fill="#6FB7E0" opacity="0.32" stroke="#6FB7E0" stroke-width="1.4"/>
+  <line data-step="1" x1="126" y1="86" x2="126" y2="118" class="axis" marker-start="url(#ah)" marker-end="url(#ah)" stroke-width="1.3"/>
+  <circle data-step="1" cx="160" cy="132" r="10" fill="#6FB7E0" opacity="0.32" stroke="#6FB7E0" stroke-width="1.4"/>
+  <line data-step="1" x1="176" y1="116" x2="176" y2="148" class="axis" marker-start="url(#ah)" marker-end="url(#ah)" stroke-width="1.3"/>
+  <circle data-step="1" cx="210" cy="162" r="10" fill="#6FB7E0" opacity="0.32" stroke="#6FB7E0" stroke-width="1.4"/>
+  <line data-step="1" x1="226" y1="146" x2="226" y2="178" class="axis" marker-start="url(#ah)" marker-end="url(#ah)" stroke-width="1.3"/>
+  <text data-step="1" class="cap" x="210" y="206">particle vibrates up and down,</text>
+  <text data-step="1" class="cap" x="210" y="222">across the direction of travel</text>
 
   <!-- BOTTOM: longitudinal -->
-  <text x="210" y="266" text-anchor="middle" font-size="15" fill="#86C98B">longitudinal wave</text>
-  <line x1="130" y1="294" x2="290" y2="294" class="axis" marker-end="url(#ah)"/>
-  <text x="210" y="286" text-anchor="middle" font-size="13">direction of wave</text>
-  <line x1="180" y1="308" x2="180" y2="366" class="rest"/>
-  <text x="196" y="318" font-size="13" fill="#9AA0A6">rest position</text>
-  <circle cx="110" cy="340" r="10" fill="#86C98B" opacity="0.32" stroke="#86C98B" stroke-width="1.4"/>
-  <circle cx="145" cy="340" r="10" fill="#86C98B" opacity="0.32" stroke="#86C98B" stroke-width="1.4"/>
-  <circle cx="180" cy="340" r="10" fill="#86C98B" opacity="0.32" stroke="#86C98B" stroke-width="1.4"/>
-  <circle cx="215" cy="340" r="10" fill="#86C98B" opacity="0.32" stroke="#86C98B" stroke-width="1.4"/>
-  <circle cx="250" cy="340" r="10" fill="#86C98B" opacity="0.32" stroke="#86C98B" stroke-width="1.4"/>
-  <line x1="155" y1="368" x2="205" y2="368" class="axis" marker-start="url(#ah)" marker-end="url(#ah)" stroke-width="1.3"/>
-  <text class="cap" x="210" y="408">particle vibrates back and forth,</text>
-  <text class="cap" x="210" y="424">along the direction of travel</text>
+  <text data-step="2" x="210" y="266" text-anchor="middle" font-size="15" fill="#86C98B">longitudinal wave</text>
+  <line data-step="2" x1="130" y1="294" x2="290" y2="294" class="axis" marker-end="url(#ah)"/>
+  <text data-step="2" x="210" y="286" text-anchor="middle" font-size="13">direction of wave</text>
+  <line data-step="2" x1="180" y1="308" x2="180" y2="366" class="rest"/>
+  <text data-step="2" x="196" y="318" font-size="13" fill="#9AA0A6">rest position</text>
+  <circle data-step="2" cx="110" cy="340" r="10" fill="#86C98B" opacity="0.32" stroke="#86C98B" stroke-width="1.4"/>
+  <circle data-step="2" cx="145" cy="340" r="10" fill="#86C98B" opacity="0.32" stroke="#86C98B" stroke-width="1.4"/>
+  <circle data-step="2" cx="180" cy="340" r="10" fill="#86C98B" opacity="0.32" stroke="#86C98B" stroke-width="1.4"/>
+  <circle data-step="2" cx="215" cy="340" r="10" fill="#86C98B" opacity="0.32" stroke="#86C98B" stroke-width="1.4"/>
+  <circle data-step="2" cx="250" cy="340" r="10" fill="#86C98B" opacity="0.32" stroke="#86C98B" stroke-width="1.4"/>
+  <line data-step="2" x1="155" y1="368" x2="205" y2="368" class="axis" marker-start="url(#ah)" marker-end="url(#ah)" stroke-width="1.3"/>
+  <text data-step="2" class="cap" x="210" y="408">particle vibrates back and forth,</text>
+  <text data-step="2" class="cap" x="210" y="424">along the direction of travel</text>
 </svg>

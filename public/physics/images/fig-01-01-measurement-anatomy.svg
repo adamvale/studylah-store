@@ -7,22 +7,22 @@
     .green { fill:#86C98B; }
   </style>
   <!-- central expression, split into parts so each leader lines up exactly -->
-  <g font-size="24" font-weight="700">
+  <g data-step="1" font-size="24" font-weight="700">
     <text x="160" y="64" text-anchor="middle">Mass of copper</text>
     <text x="265" y="64" text-anchor="middle">=</text>
     <text x="305" y="64" text-anchor="middle" class="amber">10</text>
     <text x="355" y="64" text-anchor="middle" class="blue">kg</text>
   </g>
   <!-- leader to physical quantity -->
-  <path class="lead" d="M160,74 L120,140"/>
-  <text x="120" y="162" text-anchor="middle" font-size="15" class="green">physical quantity</text>
-  <text x="120" y="182" text-anchor="middle" font-size="13">(what is measured)</text>
+  <path data-step="2" class="lead" d="M160,74 L120,140"/>
+  <text data-step="2" x="120" y="162" text-anchor="middle" font-size="15" class="green">physical quantity</text>
+  <text data-step="2" x="120" y="182" text-anchor="middle" font-size="13">(what is measured)</text>
   <!-- leader to numerical magnitude -->
-  <path class="lead" d="M305,74 L280,140"/>
-  <text x="280" y="162" text-anchor="middle" font-size="15" class="amber">numerical magnitude</text>
-  <text x="273" y="182" text-anchor="middle" font-size="13">(the size of the value)</text>
+  <path data-step="3" class="lead" d="M305,74 L280,140"/>
+  <text data-step="3" x="280" y="162" text-anchor="middle" font-size="15" class="amber">numerical magnitude</text>
+  <text data-step="3" x="273" y="182" text-anchor="middle" font-size="13">(the size of the value)</text>
   <!-- leader to unit -->
-  <path class="lead" d="M355,74 L430,140"/>
-  <text x="430" y="162" text-anchor="middle" font-size="15" class="blue">unit</text>
-  <text x="430" y="182" text-anchor="middle" font-size="13">(the standard used)</text>
+  <path data-step="4" class="lead" d="M355,74 L430,140"/>
+  <text data-step="4" x="430" y="162" text-anchor="middle" font-size="15" class="blue">unit</text>
+  <text data-step="4" x="430" y="182" text-anchor="middle" font-size="13">(the standard used)</text>
 </svg>

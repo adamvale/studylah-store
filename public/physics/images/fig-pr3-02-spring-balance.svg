@@ -16,41 +16,41 @@
   </defs>
 
   <!-- top ring -->
-  <circle class="body" cx="160" cy="28" r="9"/>
-  <path class="body" d="M160,37 L160,48"/>
+  <circle data-step="1" class="body" cx="160" cy="28" r="9"/>
+  <path data-step="1" class="body" d="M160,37 L160,48"/>
 
   <!-- barrel -->
-  <rect class="body" x="128" y="48" width="64" height="250"/>
+  <rect data-step="2" class="body" x="128" y="48" width="64" height="250"/>
 
   <!-- spring inside -->
-  <path class="spring" d="M160,55 L176,66 L144,80 L176,94 L144,108 L176,122 L144,136 L176,150 L144,164 L176,178 L160,190"/>
+  <path data-step="3" class="spring" d="M160,55 L176,66 L144,80 L176,94 L144,108 L176,122 L144,136 L176,150 L144,164 L176,178 L160,190"/>
 
   <!-- pointer -->
-  <path class="pointer" d="M144,196 L200,196" marker-end="url(#c2wht)"/>
+  <path data-step="4" class="pointer" d="M144,196 L200,196" marker-end="url(#c2wht)"/>
 
   <!-- evenly spaced scale -->
-  <path class="tick" d="M192,76 L206,76 M192,106 L206,106 M192,136 L206,136 M192,166 L206,166 M192,196 L206,196 M192,226 L206,226"/>
-  <path class="tick-minor" d="M192,91 L200,91 M192,121 L200,121 M192,151 L200,151 M192,181 L200,181 M192,211 L200,211"/>
-  <text class="unit" x="206" y="62">newtons</text>
-  <text class="scale-lbl" x="212" y="80">0</text>
-  <text class="scale-lbl" x="212" y="110">1</text>
-  <text class="scale-lbl" x="212" y="140">2</text>
-  <text class="scale-lbl" x="212" y="170">3</text>
-  <text class="scale-lbl" x="212" y="200">4</text>
-  <text class="scale-lbl" x="212" y="230">5</text>
+  <path data-step="5" class="tick" d="M192,76 L206,76 M192,106 L206,106 M192,136 L206,136 M192,166 L206,166 M192,196 L206,196 M192,226 L206,226"/>
+  <path data-step="5" class="tick-minor" d="M192,91 L200,91 M192,121 L200,121 M192,151 L200,151 M192,181 L200,181 M192,211 L200,211"/>
+  <text data-step="5" class="unit" x="206" y="62">newtons</text>
+  <text data-step="5" class="scale-lbl" x="212" y="80">0</text>
+  <text data-step="5" class="scale-lbl" x="212" y="110">1</text>
+  <text data-step="5" class="scale-lbl" x="212" y="140">2</text>
+  <text data-step="5" class="scale-lbl" x="212" y="170">3</text>
+  <text data-step="5" class="scale-lbl" x="212" y="200">4</text>
+  <text data-step="5" class="scale-lbl" x="212" y="230">5</text>
 
   <!-- labels -->
-  <text x="98" y="126" text-anchor="end">spring</text>
-  <path class="leader" d="M102,122 L140,114"/>
-  <text x="98" y="200" text-anchor="end">pointer</text>
-  <path class="leader" d="M102,196 L138,196"/>
+  <text data-step="6" x="98" y="126" text-anchor="end">spring</text>
+  <path data-step="6" class="leader" d="M102,122 L140,114"/>
+  <text data-step="6" x="98" y="200" text-anchor="end">pointer</text>
+  <path data-step="6" class="leader" d="M102,196 L138,196"/>
 
   <!-- hook and load -->
-  <path class="body" d="M160,298 L160,312"/>
-  <path class="body" d="M160,312 A 9,9 0 1 0 151,321"/>
-  <path class="body" d="M160,321 L160,330"/>
-  <rect class="load" x="134" y="330" width="52" height="42"/>
-  <text x="196" y="354">load</text>
+  <path data-step="7" class="body" d="M160,298 L160,312"/>
+  <path data-step="7" class="body" d="M160,312 A 9,9 0 1 0 151,321"/>
+  <path data-step="7" class="body" d="M160,321 L160,330"/>
+  <rect data-step="7" class="load" x="134" y="330" width="52" height="42"/>
+  <text data-step="7" x="196" y="354">load</text>
 
-  <text x="160" y="392" text-anchor="middle">spring balance</text>
+  <text data-step="7" x="160" y="392" text-anchor="middle">spring balance</text>
 </svg>

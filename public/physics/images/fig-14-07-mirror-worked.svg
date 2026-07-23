@@ -12,8 +12,8 @@
     .pt { fill:#EAEAEA; }
   </style>
   <!-- horizontal mirror at y=150, hatched below -->
-  <line class="mirror" x1="100" y1="150" x2="440" y2="150"/>
-  <g stroke="#9AA0A6" stroke-width="1">
+  <line data-step="1" class="mirror" x1="100" y1="150" x2="440" y2="150"/>
+  <g data-step="1" stroke="#9AA0A6" stroke-width="1">
     <line x1="120" y1="150" x2="108" y2="164"/><line x1="150" y1="150" x2="138" y2="164"/>
     <line x1="180" y1="150" x2="168" y2="164"/><line x1="210" y1="150" x2="198" y2="164"/>
     <line x1="240" y1="150" x2="228" y2="164"/><line x1="270" y1="150" x2="258" y2="164"/>
@@ -21,20 +21,20 @@
     <line x1="360" y1="150" x2="348" y2="164"/><line x1="390" y1="150" x2="378" y2="164"/>
     <line x1="420" y1="150" x2="408" y2="164"/>
   </g>
-  <text x="445" y="145" font-size="12">mirror</text>
+  <text data-step="1" x="445" y="145" font-size="12">mirror</text>
   <!-- object -->
-  <circle class="pt" cx="400" cy="80" r="4"/>
-  <text x="412" y="78" font-size="13" fill="#E8B65A">object</text>
+  <circle data-step="2" class="pt" cx="400" cy="80" r="4"/>
+  <text data-step="2" x="412" y="78" font-size="13" fill="#E8B65A">object</text>
   <!-- incident rays object -> M1(230,150), M2(280,150) -->
-  <path class="inc" marker-end="url(#a1)" d="M400,80 L232,149"/>
-  <path class="inc" marker-end="url(#a1)" d="M400,80 L282,149"/>
+  <path data-step="3" class="inc" marker-end="url(#a1)" d="M400,80 L232,149"/>
+  <path data-step="3" class="inc" marker-end="url(#a1)" d="M400,80 L282,149"/>
   <!-- reflected rays up-left -->
-  <path class="out" marker-end="url(#a2)" d="M230,150 L128,108"/>
-  <path class="out" marker-end="url(#a2)" d="M280,150 L208,108"/>
+  <path data-step="4" class="out" marker-end="url(#a2)" d="M230,150 L128,108"/>
+  <path data-step="4" class="out" marker-end="url(#a2)" d="M280,150 L208,108"/>
   <!-- virtual extensions to image -->
-  <path class="virt" d="M230,150 L400,220"/>
-  <path class="virt" d="M280,150 L400,220"/>
+  <path data-step="5" class="virt" d="M230,150 L400,220"/>
+  <path data-step="5" class="virt" d="M280,150 L400,220"/>
   <!-- image -->
-  <circle cx="400" cy="220" r="4" fill="none" stroke="#9AA0A6" stroke-width="1.5"/>
-  <text x="412" y="224" font-size="13">image</text>
+  <circle data-step="6" cx="400" cy="220" r="4" fill="none" stroke="#9AA0A6" stroke-width="1.5"/>
+  <text data-step="6" x="412" y="224" font-size="13">image</text>
 </svg>

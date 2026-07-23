@@ -13,18 +13,18 @@
     .app { stroke:#E8B65A; stroke-width:2.4; }
     .fric { stroke:#6FB7E0; stroke-width:2.4; }
   </style>
-  <rect class="box" x="175" y="130" width="70" height="55"/>
+  <rect data-step="1" class="box" x="175" y="130" width="70" height="55"/>
   <!-- normal up -->
-  <line class="norm" x1="210" y1="130" x2="210" y2="55" marker-end="url(#arwG)"/>
-  <text x="218" y="72" font-size="13.5" fill="#86C98B">F(normal)</text>
+  <line data-step="1" class="norm" x1="210" y1="130" x2="210" y2="55" marker-end="url(#arwG)"/>
+  <text data-step="1" x="218" y="72" font-size="13.5" fill="#86C98B">F(normal)</text>
   <!-- weight down -->
-  <line class="weight" x1="210" y1="185" x2="210" y2="260" marker-end="url(#arwR)"/>
-  <text x="218" y="245" font-size="13.5" fill="#E58F8F">W (weight)</text>
+  <line data-step="2" class="weight" x1="210" y1="185" x2="210" y2="260" marker-end="url(#arwR)"/>
+  <text data-step="2" x="218" y="245" font-size="13.5" fill="#E58F8F">W (weight)</text>
   <!-- applied right -->
-  <line class="app" x1="245" y1="157" x2="345" y2="157" marker-end="url(#arwB)"/>
-  <text x="270" y="147" font-size="13.5" fill="#E8B65A">F(applied)</text>
+  <line data-step="3" class="app" x1="245" y1="157" x2="345" y2="157" marker-end="url(#arwB)"/>
+  <text data-step="3" x="270" y="147" font-size="13.5" fill="#E8B65A">F(applied)</text>
   <!-- friction left -->
-  <line class="fric" x1="175" y1="157" x2="75" y2="157" marker-end="url(#arwA)"/>
-  <text x="95" y="147" font-size="13.5" fill="#6FB7E0">F(friction)</text>
-  <text x="210" y="290" text-anchor="middle" font-size="12.5">Free-body diagram of a crate pulled across the floor.</text>
+  <line data-step="4" class="fric" x1="175" y1="157" x2="75" y2="157" marker-end="url(#arwA)"/>
+  <text data-step="4" x="95" y="147" font-size="13.5" fill="#6FB7E0">F(friction)</text>
+  <text data-step="4" x="210" y="290" text-anchor="middle" font-size="12.5">Free-body diagram of a crate pulled across the floor.</text>
 </svg>

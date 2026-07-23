@@ -9,30 +9,30 @@
     .lbl { font-size:12px; }
   </style>
   <!-- reservoir -->
-  <path class="glass" d="M150,300 L150,270 Q150,260 160,260 L280,260 Q290,260 290,270 L290,300"/>
-  <rect class="merc" x="152" y="268" width="136" height="30"/>
+  <path data-step="1" class="glass" d="M150,300 L150,270 Q150,260 160,260 L280,260 Q290,260 290,270 L290,300"/>
+  <rect data-step="1" class="merc" x="152" y="268" width="136" height="30"/>
   <!-- tube -->
-  <path class="glass" d="M200,268 L200,70 Q200,58 212,58 Q224,58 224,70 L224,268"/>
+  <path data-step="2" class="glass" d="M200,268 L200,70 Q200,58 212,58 Q224,58 224,70 L224,268"/>
   <!-- mercury column in tube -->
-  <rect class="merc" x="201" y="100" width="22" height="168"/>
+  <rect data-step="3" class="merc" x="201" y="100" width="22" height="168"/>
   <!-- vacuum at top -->
-  <text x="248" y="80" class="lbl">vacuum</text>
-  <text x="248" y="94" class="lbl">(zero pressure)</text>
-  <line class="lead" x1="218" y1="82" x2="240" y2="80"/>
+  <text data-step="4" x="248" y="80" class="lbl">vacuum</text>
+  <text data-step="4" x="248" y="94" class="lbl">(zero pressure)</text>
+  <line data-step="4" class="lead" x1="218" y1="82" x2="240" y2="80"/>
 
   <!-- height marker 76 cm -->
-  <line class="height" x1="160" y1="100" x2="160" y2="268"/>
-  <line class="height" x1="155" y1="100" x2="165" y2="100"/>
-  <line class="height" x1="155" y1="268" x2="165" y2="268"/>
-  <text x="100" y="195" class="lbl" fill="#E8B65A">76 cm</text>
-  <text x="100" y="210" class="lbl" fill="#E8B65A">(760 mm)</text>
+  <line data-step="5" class="height" x1="160" y1="100" x2="160" y2="268"/>
+  <line data-step="5" class="height" x1="155" y1="100" x2="165" y2="100"/>
+  <line data-step="5" class="height" x1="155" y1="268" x2="165" y2="268"/>
+  <text data-step="5" x="100" y="195" class="lbl" fill="#E8B65A">76 cm</text>
+  <text data-step="5" x="100" y="210" class="lbl" fill="#E8B65A">(760 mm)</text>
 
   <!-- atmospheric pressure pushing on reservoir -->
-  <line class="arrow" x1="265" y1="240" x2="265" y2="262" marker-end="url(#ba)"/>
-  <text x="278" y="248" class="lbl">atmospheric</text>
-  <text x="278" y="262" class="lbl">pressure</text>
+  <line data-step="6" class="arrow" x1="265" y1="240" x2="265" y2="262" marker-end="url(#ba)"/>
+  <text data-step="6" x="278" y="248" class="lbl">atmospheric</text>
+  <text data-step="6" x="278" y="262" class="lbl">pressure</text>
 
-  <text x="125" y="314" class="lbl">mercury reservoir</text>
+  <text data-step="6" x="125" y="314" class="lbl">mercury reservoir</text>
   <defs>
     <marker id="ba" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#E8B65A"/></marker>
   </defs>

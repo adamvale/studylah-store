@@ -5,8 +5,8 @@
     .magS { fill:#6FB7E0; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
     .pole { font-size:16px; font-weight:bold; fill:#EAEAEA; }
   </style>
-  <rect class="magN" x="110" y="60" width="100" height="34" rx="2"/>
-  <rect class="magS" x="210" y="60" width="100" height="34" rx="2"/>
-  <text class="pole" x="125" y="83">N</text>
-  <text class="pole" x="285" y="83">S</text>
+  <rect data-step="1" class="magN" x="110" y="60" width="100" height="34" rx="2"/>
+  <rect data-step="2" class="magS" x="210" y="60" width="100" height="34" rx="2"/>
+  <text data-step="3" class="pole" x="125" y="83">N</text>
+  <text data-step="4" class="pole" x="285" y="83">S</text>
 </svg>

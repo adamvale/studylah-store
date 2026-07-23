@@ -14,7 +14,7 @@
   </defs>
 
   <!-- SOLID: regular close-packed lattice, vibrating -->
-  <g>
+  <g data-step="1">
     <text class="cap" x="210" y="22">strong bonds, particles vibrate in fixed positions</text>
     <rect class="box" x="40" y="32" width="340" height="132" rx="6"/>
     <g class="p">
@@ -33,7 +33,7 @@
   </g>
 
   <!-- LIQUID: close but disordered, can slide -->
-  <g>
+  <g data-step="2">
     <text class="cap" x="210" y="262">particles close but free to move past one another</text>
     <rect class="box" x="40" y="272" width="340" height="132" rx="6"/>
     <g class="p">
@@ -50,7 +50,7 @@
   </g>
 
   <!-- GAS: far apart, fast random -->
-  <g>
+  <g data-step="3">
     <text class="cap" x="210" y="502">particles far apart, moving fast in all directions</text>
     <rect class="box" x="40" y="512" width="340" height="132" rx="6"/>
     <g class="p">

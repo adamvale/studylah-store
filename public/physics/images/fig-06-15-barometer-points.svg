@@ -7,35 +7,35 @@
     .lbl { font-size:12px; }
   </style>
   <!-- reservoir -->
-  <path class="glass" d="M120,300 L120,272 Q120,262 130,262 L270,262 Q280,262 280,272 L280,300"/>
-  <rect class="merc" x="122" y="270" width="156" height="30"/>
+  <path data-step="1" class="glass" d="M120,300 L120,272 Q120,262 130,262 L270,262 Q280,262 280,272 L280,300"/>
+  <rect data-step="1" class="merc" x="122" y="270" width="156" height="30"/>
   <!-- tube -->
-  <path class="glass" d="M175,270 L175,70 Q175,58 187,58 Q199,58 199,70 L199,270"/>
-  <rect class="merc" x="176" y="105" width="22" height="165"/>
-  <text x="215" y="80" class="lbl">vacuum</text>
+  <path data-step="2" class="glass" d="M175,270 L175,70 Q175,58 187,58 Q199,58 199,70 L199,270"/>
+  <rect data-step="2" class="merc" x="176" y="105" width="22" height="165"/>
+  <text data-step="2" x="215" y="80" class="lbl">vacuum</text>
 
   <!-- point A: 22 cm below column top (22/76 of column height) -->
-  <circle cx="187" cy="153" r="3.5" fill="#E8B65A"/>
-  <text x="205" y="157" class="lbl" fill="#E8B65A">A</text>
+  <circle data-step="3" cx="187" cy="153" r="3.5" fill="#E8B65A"/>
+  <text data-step="3" x="205" y="157" class="lbl" fill="#E8B65A">A</text>
   <!-- height from top surface (105) down to A (153) = 22 cm -->
-  <line class="height" x1="150" y1="105" x2="150" y2="153"/>
-  <line class="height" x1="145" y1="105" x2="155" y2="105"/><line class="height" x1="145" y1="153" x2="155" y2="153"/>
-  <text x="112" y="133" class="lbl" fill="#E8B65A">22 cm</text>
+  <line data-step="4" class="height" x1="150" y1="105" x2="150" y2="153"/>
+  <line data-step="4" class="height" x1="145" y1="105" x2="155" y2="105"/><line data-step="4" class="height" x1="145" y1="153" x2="155" y2="153"/>
+  <text data-step="4" x="112" y="133" class="lbl" fill="#E8B65A">22 cm</text>
 
   <!-- point B: at reservoir surface level (270) -->
-  <circle cx="187" cy="270" r="3.5" fill="#E8B65A"/>
-  <text x="205" y="266" class="lbl" fill="#E8B65A">B</text>
-  <text x="215" y="282" class="lbl">(reservoir level)</text>
+  <circle data-step="5" cx="187" cy="270" r="3.5" fill="#E8B65A"/>
+  <text data-step="5" x="205" y="266" class="lbl" fill="#E8B65A">B</text>
+  <text data-step="5" x="215" y="282" class="lbl">(reservoir level)</text>
 
   <!-- point C: 4 cm below reservoir surface (4/76 of column height) -->
-  <circle cx="187" cy="279" r="3.5" fill="#E8B65A"/>
-  <text x="205" y="292" class="lbl" fill="#E8B65A">C</text>
-  <line class="height" x1="150" y1="270" x2="150" y2="279"/>
-  <line class="height" x1="145" y1="270" x2="155" y2="270"/><line class="height" x1="145" y1="279" x2="155" y2="279"/>
-  <text x="112" y="281" class="lbl" fill="#E8B65A">4 cm</text>
+  <circle data-step="6" cx="187" cy="279" r="3.5" fill="#E8B65A"/>
+  <text data-step="6" x="205" y="292" class="lbl" fill="#E8B65A">C</text>
+  <line data-step="6" class="height" x1="150" y1="270" x2="150" y2="279"/>
+  <line data-step="6" class="height" x1="145" y1="270" x2="155" y2="270"/><line data-step="6" class="height" x1="145" y1="279" x2="155" y2="279"/>
+  <text data-step="6" x="112" y="281" class="lbl" fill="#E8B65A">4 cm</text>
 
   <!-- full column height -->
-  <line class="height" x1="300" y1="105" x2="300" y2="270"/>
-  <line class="height" x1="295" y1="105" x2="305" y2="105"/><line class="height" x1="295" y1="270" x2="305" y2="270"/>
-  <text x="308" y="192" class="lbl" fill="#E8B65A">76 cm</text>
+  <line data-step="7" class="height" x1="300" y1="105" x2="300" y2="270"/>
+  <line data-step="7" class="height" x1="295" y1="105" x2="305" y2="105"/><line data-step="7" class="height" x1="295" y1="270" x2="305" y2="270"/>
+  <text data-step="7" x="308" y="192" class="lbl" fill="#E8B65A">76 cm</text>
 </svg>

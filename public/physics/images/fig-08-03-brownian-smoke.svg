@@ -9,12 +9,12 @@
     .amber { fill:#E8B65A; }
   </style>
   <!-- microscope field of view -->
-  <circle class="view" cx="180" cy="150" r="120"/>
+  <circle data-step="1" class="view" cx="180" cy="150" r="120"/>
 
   <!-- a zigzag path with a smoke particle at each vertex -->
-  <path class="path" d="M110,110 L150,95 L135,140 L185,130 L165,180 L215,160 L200,205 L250,185"
+  <path data-step="2" class="path" d="M110,110 L150,95 L135,140 L185,130 L165,180 L215,160 L200,205 L250,185"
         marker-end="url(#arw)"/>
-  <g class="smoke">
+  <g data-step="2" class="smoke">
     <circle cx="110" cy="110" r="3.5"/>
     <circle cx="150" cy="95" r="3.5"/>
     <circle cx="135" cy="140" r="3.5"/>
@@ -26,17 +26,17 @@
   </g>
 
   <!-- a couple more scattered smoke dots -->
-  <circle class="smoke" cx="130" cy="220" r="3.5"/>
-  <circle class="smoke" cx="235" cy="105" r="3.5"/>
+  <circle data-step="3" class="smoke" cx="130" cy="220" r="3.5"/>
+  <circle data-step="3" class="smoke" cx="235" cy="105" r="3.5"/>
 
   <!-- labels -->
-  <text class="lbl amber" x="105" y="290" text-anchor="middle">smoke particle</text>
-  <path class="lead" d="M115,276 L129,226"/>
+  <text data-step="4" class="lbl amber" x="105" y="290" text-anchor="middle">smoke particle</text>
+  <path data-step="4" class="lead" d="M115,276 L129,226"/>
 
-  <text class="lbl amber" x="330" y="104">bright specks</text>
-  <text class="lbl amber" x="330" y="123">move in a jerky,</text>
-  <text class="lbl amber" x="330" y="142">zigzag path</text>
-  <path class="lead" d="M325,130 L252,162"/>
+  <text data-step="4" class="lbl amber" x="330" y="104">bright specks</text>
+  <text data-step="4" class="lbl amber" x="330" y="123">move in a jerky,</text>
+  <text data-step="4" class="lbl amber" x="330" y="142">zigzag path</text>
+  <path data-step="4" class="lead" d="M325,130 L252,162"/>
 
   <defs>
     <marker id="arw" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">

@@ -11,22 +11,22 @@
     <marker id="p2" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#9AA0A6"/></marker>
   </defs>
   <!-- terrain: P high left, dip, small bump Q, down to R ground right -->
-  <path class="hill" d="M70,70 C120,90 150,200 200,205 C235,208 250,150 280,150 C330,150 360,240 440,240"/>
+  <path data-step="1" class="hill" d="M70,70 C120,90 150,200 200,205 C235,208 250,150 280,150 C330,150 360,240 440,240"/>
   <!-- ground line at R level -->
-  <line class="dim" x1="70" y1="240" x2="440" y2="240" stroke-dasharray="4 4"/>
+  <line data-step="2" class="dim" x1="70" y1="240" x2="440" y2="240" stroke-dasharray="4 4"/>
   <!-- ball at P -->
-  <circle class="ball" cx="70" cy="60" r="12"/>
-  <text x="52" y="55" fill="#EAEAEA">P</text>
+  <circle data-step="3" class="ball" cx="70" cy="60" r="12"/>
+  <text data-step="3" x="52" y="55" fill="#EAEAEA">P</text>
   <!-- Q bump top -->
-  <circle cx="280" cy="150" r="3.5" fill="#E8B65A"/>
-  <text x="286" y="145" fill="#EAEAEA">Q</text>
+  <circle data-step="4" cx="280" cy="150" r="3.5" fill="#E8B65A"/>
+  <text data-step="4" x="286" y="145" fill="#EAEAEA">Q</text>
   <!-- R -->
-  <text x="448" y="245" fill="#EAEAEA">R</text>
+  <text data-step="5" x="448" y="245" fill="#EAEAEA">R</text>
   <!-- height P above R = 45 m -->
-  <line class="dim" x1="45" y1="60" x2="45" y2="240" marker-start="url(#p1)" marker-end="url(#p2)"/>
-  <text class="lbl" x="12" y="155">45 m</text>
+  <line data-step="6" class="dim" x1="45" y1="60" x2="45" y2="240" marker-start="url(#p1)" marker-end="url(#p2)"/>
+  <text data-step="6" class="lbl" x="12" y="155">45 m</text>
   <!-- Q above R = 6 m -->
-  <line class="dim" x1="310" y1="150" x2="310" y2="240" marker-start="url(#p1)" marker-end="url(#p2)"/>
-  <text class="lbl" x="318" y="200">6 m</text>
-  <text x="240" y="290" text-anchor="middle" font-size="12" fill="#9AA0A6">(not to scale)</text>
+  <line data-step="7" class="dim" x1="310" y1="150" x2="310" y2="240" marker-start="url(#p1)" marker-end="url(#p2)"/>
+  <text data-step="7" class="lbl" x="318" y="200">6 m</text>
+  <text data-step="7" x="240" y="290" text-anchor="middle" font-size="12" fill="#9AA0A6">(not to scale)</text>
 </svg>

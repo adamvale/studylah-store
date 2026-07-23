@@ -16,36 +16,36 @@
     .hd { font-size:13px; font-weight:bold; }
   </style>
   <!-- TOP: hose / pipe charging (hazard) -->
-  <text x="40" y="26" class="hd">Hazard: fluid or dry bulk flowing through a pipe</text>
-  <rect class="pipe" x="60" y="55" width="360" height="60" rx="4"/>
+  <text data-step="1" x="40" y="26" class="hd">Hazard: fluid or dry bulk flowing through a pipe</text>
+  <rect data-step="1" class="pipe" x="60" y="55" width="360" height="60" rx="4"/>
   <!-- wall charges negative on inner wall -->
-  <g class="neg">
+  <g data-step="2" class="neg">
     <text x="90" y="72">−</text><text x="140" y="72">−</text><text x="190" y="72">−</text><text x="240" y="72">−</text><text x="290" y="72">−</text><text x="340" y="72">−</text>
   </g>
-  <rect class="flow" x="60" y="80" width="360" height="35"/>
+  <rect data-step="2" class="flow" x="60" y="80" width="360" height="35"/>
   <!-- flowing material positive -->
-  <g class="pos">
+  <g data-step="3" class="pos">
     <text x="100" y="103">+</text><text x="150" y="103">+</text><text x="200" y="103">+</text><text x="250" y="103">+</text><text x="300" y="103">+</text><text x="350" y="103">+</text>
   </g>
-  <line class="move" x1="80" y1="97" x2="400" y2="97" marker-end="url(#ah15)"/>
-  <text x="430" y="70" fill="#6FB7E0">pipe wall</text>
-  <text x="430" y="100" fill="#E58F8F">flow of fuel / dry bulk</text>
-  <text x="60" y="140" font-size="12" fill="#9AA0A6">friction transfers electrons → opposite charges build up → a spark can ignite fuel</text>
+  <line data-step="3" class="move" x1="80" y1="97" x2="400" y2="97" marker-end="url(#ah15)"/>
+  <text data-step="3" x="430" y="70" fill="#6FB7E0">pipe wall</text>
+  <text data-step="3" x="430" y="100" fill="#E58F8F">flow of fuel / dry bulk</text>
+  <text data-step="3" x="60" y="140" font-size="12" fill="#9AA0A6">friction transfers electrons → opposite charges build up → a spark can ignite fuel</text>
 
   <!-- BOTTOM: truck earthed by metal chain (safety) -->
-  <text x="40" y="200" class="hd">Safety: earth the tanker with a metal chain</text>
+  <text data-step="4" x="40" y="200" class="hd">Safety: earth the tanker with a metal chain</text>
   <!-- tanker -->
-  <rect class="truck" x="60" y="220" width="150" height="55" rx="18"/>
-  <rect class="truck" x="210" y="235" width="55" height="40" rx="4"/>
-  <circle class="truck" cx="100" cy="285" r="16"/>
-  <circle class="truck" cx="175" cy="285" r="16"/>
-  <circle class="truck" cx="240" cy="285" r="16"/>
+  <rect data-step="5" class="truck" x="60" y="220" width="150" height="55" rx="18"/>
+  <rect data-step="5" class="truck" x="210" y="235" width="55" height="40" rx="4"/>
+  <circle data-step="5" class="truck" cx="100" cy="285" r="16"/>
+  <circle data-step="5" class="truck" cx="175" cy="285" r="16"/>
+  <circle data-step="5" class="truck" cx="240" cy="285" r="16"/>
   <!-- ground line -->
-  <line stroke="#9AA0A6" stroke-width="1.5" x1="40" y1="308" x2="420" y2="308"/>
+  <line data-step="6" stroke="#9AA0A6" stroke-width="1.5" x1="40" y1="308" x2="420" y2="308"/>
   <!-- chain from body to ground -->
-  <path class="chain" d="M70,275 L70,308"/>
-  <line class="move" x1="70" y1="248" x2="70" y2="302" marker-end="url(#ah15)"/>
-  <text x="60" y="330" fill="#E8B65A">electrons flow to ground</text>
-  <text x="300" y="260" font-size="12" fill="#9AA0A6">charge does not build up,</text>
-  <text x="300" y="276" font-size="12" fill="#9AA0A6">so no dangerous spark</text>
+  <path data-step="7" class="chain" d="M70,275 L70,308"/>
+  <line data-step="7" class="move" x1="70" y1="248" x2="70" y2="302" marker-end="url(#ah15)"/>
+  <text data-step="7" x="60" y="330" fill="#E8B65A">electrons flow to ground</text>
+  <text data-step="7" x="300" y="260" font-size="12" fill="#9AA0A6">charge does not build up,</text>
+  <text data-step="7" x="300" y="276" font-size="12" fill="#9AA0A6">so no dangerous spark</text>
 </svg>

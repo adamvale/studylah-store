@@ -11,14 +11,14 @@
   </style>
 
   <!-- permanent magnet S..N (N faces the iron bar) -->
-  <g transform="translate(60,110)">
+  <g data-step="1" transform="translate(60,110)">
     <rect class="magS" x="0" y="0" width="90" height="30" rx="2"/>
     <rect class="magN" x="90" y="0" width="90" height="30" rx="2"/>
     <text class="pole" x="14" y="21">S</text>
     <text class="pole" x="168" y="21">N</text>
   </g>
   <!-- soft iron bar, near end induced to S, far end X (N) -->
-  <g transform="translate(360,110)">
+  <g data-step="2" transform="translate(360,110)">
     <rect class="iron" x="0" y="0" width="90" height="30" rx="2"/>
     <rect class="iron" x="90" y="0" width="90" height="30" rx="2"/>
     <text class="pole" x="30" y="21">S</text>
@@ -26,14 +26,14 @@
   </g>
 
   <!-- field lines from magnet N into iron bar's induced S -->
-  <g class="fl">
+  <g data-step="3" class="fl">
     <line x1="240" y1="125" x2="360" y2="125"/>
     <path d="M240,113 C280,105 320,105 360,113"/>
     <path d="M240,137 C280,145 320,145 360,137"/>
     <path d="M240,100 C280,75 320,75 360,100"/>
     <path d="M240,150 C280,175 320,175 360,150"/>
   </g>
-  <g class="fhead">
+  <g data-step="3" class="fhead">
     <polygon points="298,120 298,130 311,125"/>
     <polygon points="298,105 298,115 311,108"/>
     <polygon points="298,135 298,145 311,142"/>
@@ -41,8 +41,8 @@
     <polygon points="298,170 299,160 312,166"/>
   </g>
 
-  <text x="80" y="90" class="lbl">permanent magnet</text>
-  <text x="380" y="90" class="lbl">soft iron bar (induced)</text>
-  <text x="300" y="214" text-anchor="middle" font-size="14.5">Lines run from the magnet's N pole into</text>
-  <text x="300" y="232" text-anchor="middle" font-size="14.5">the near (S) end of the induced bar.</text>
+  <text data-step="3" x="80" y="90" class="lbl">permanent magnet</text>
+  <text data-step="3" x="380" y="90" class="lbl">soft iron bar (induced)</text>
+  <text data-step="3" x="300" y="214" text-anchor="middle" font-size="14.5">Lines run from the magnet's N pole into</text>
+  <text data-step="3" x="300" y="232" text-anchor="middle" font-size="14.5">the near (S) end of the induced bar.</text>
 </svg>

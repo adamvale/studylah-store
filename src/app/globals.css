@@ -887,3 +887,11 @@ body:has([data-bottom-cta]) .gugu-panel {
     radial-gradient(70% 90% at 72% 18%, rgba(139, 92, 246, 0.26), transparent 70%);
   filter: blur(28px);
 }
+
+/* Inlined figures (AnimatedFigure). The files carry a viewBox and no width, so
+   they need to be told to fill the card the way the old <img> did. */
+.sl-figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}

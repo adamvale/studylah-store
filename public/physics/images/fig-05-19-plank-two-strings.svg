@@ -9,8 +9,8 @@
     .lbl { font-size:14px; }
   </style>
   <!-- ceiling -->
-  <line x1="60" y1="30" x2="420" y2="30" stroke="#EAEAEA" stroke-width="2.4"/>
-  <g stroke="#EAEAEA" stroke-width="1">
+  <line data-step="1" x1="60" y1="30" x2="420" y2="30" stroke="#EAEAEA" stroke-width="2.4"/>
+  <g data-step="1" stroke="#EAEAEA" stroke-width="1">
     <line x1="70" y1="30" x2="62" y2="40"/><line x1="100" y1="30" x2="92" y2="40"/>
     <line x1="130" y1="30" x2="122" y2="40"/><line x1="160" y1="30" x2="152" y2="40"/>
     <line x1="190" y1="30" x2="182" y2="40"/><line x1="220" y1="30" x2="212" y2="40"/>
@@ -19,30 +19,30 @@
     <line x1="370" y1="30" x2="362" y2="40"/><line x1="400" y1="30" x2="392" y2="40"/>
   </g>
   <!-- strings P and Q -->
-  <line class="string" x1="110" y1="30" x2="110" y2="150"/>
-  <text class="lbl" x="98" y="95" fill="#86C98B">P</text>
-  <line class="string" x1="360" y1="30" x2="360" y2="150"/>
-  <text class="lbl" x="366" y="95" fill="#86C98B">Q</text>
+  <line data-step="2" class="string" x1="110" y1="30" x2="110" y2="150"/>
+  <text data-step="2" class="lbl" x="98" y="95" fill="#86C98B">P</text>
+  <line data-step="2" class="string" x1="360" y1="30" x2="360" y2="150"/>
+  <text data-step="2" class="lbl" x="366" y="95" fill="#86C98B">Q</text>
   <!-- plank -->
-  <rect class="plank" x="70" y="150" width="330" height="11"/>
+  <rect data-step="3" class="plank" x="70" y="150" width="330" height="11"/>
   <!-- load box -->
-  <rect class="load" x="255" y="126" width="26" height="24"/>
-  <text class="lbl" x="268" y="120" text-anchor="middle">load 60 N</text>
+  <rect data-step="4" class="load" x="255" y="126" width="26" height="24"/>
+  <text data-step="4" class="lbl" x="268" y="120" text-anchor="middle">load 60 N</text>
   <!-- weight of plank at centre -->
-  <line class="force" x1="235" y1="161" x2="235" y2="205"/>
-  <path class="force" d="M235,205 l-5,-10 M235,205 l5,-10"/>
-  <text class="lbl" x="235" y="222" text-anchor="middle" fill="#E58F8F">300 N (weight)</text>
+  <line data-step="5" class="force" x1="235" y1="161" x2="235" y2="205"/>
+  <path data-step="5" class="force" d="M235,205 l-5,-10 M235,205 l5,-10"/>
+  <text data-step="5" class="lbl" x="235" y="222" text-anchor="middle" fill="#E58F8F">300 N (weight)</text>
   <!-- distances -->
-  <line class="dim" x1="110" y1="185" x2="235" y2="185"/>
-  <path class="dim" d="M110,185 l8,-4 M110,185 l8,4"/>
-  <path class="dim" d="M235,185 l-8,-4 M235,185 l-8,4"/>
-  <text class="lbl" x="172" y="179" text-anchor="middle">1.5 m</text>
-  <text class="lbl" x="235" y="244" text-anchor="middle">load is 2.0 m from P, 1.0 m from Q</text>
-  <line class="dim" x1="110" y1="161" x2="110" y2="185" stroke-dasharray="3 3"/>
-  <line class="dim" x1="235" y1="161" x2="235" y2="185" stroke-dasharray="3 3"/>
-  <line class="dim" x1="360" y1="161" x2="360" y2="185" stroke-dasharray="3 3"/>
-  <line class="dim" x1="235" y1="185" x2="360" y2="185"/>
-  <path class="dim" d="M235,185 l8,-4 M235,185 l8,4"/>
-  <path class="dim" d="M360,185 l-8,-4 M360,185 l-8,4"/>
-  <text class="lbl" x="297" y="179" text-anchor="middle">1.5 m</text>
+  <line data-step="6" class="dim" x1="110" y1="185" x2="235" y2="185"/>
+  <path data-step="6" class="dim" d="M110,185 l8,-4 M110,185 l8,4"/>
+  <path data-step="6" class="dim" d="M235,185 l-8,-4 M235,185 l-8,4"/>
+  <text data-step="6" class="lbl" x="172" y="179" text-anchor="middle">1.5 m</text>
+  <text data-step="6" class="lbl" x="235" y="244" text-anchor="middle">load is 2.0 m from P, 1.0 m from Q</text>
+  <line data-step="6" class="dim" x1="110" y1="161" x2="110" y2="185" stroke-dasharray="3 3"/>
+  <line data-step="6" class="dim" x1="235" y1="161" x2="235" y2="185" stroke-dasharray="3 3"/>
+  <line data-step="6" class="dim" x1="360" y1="161" x2="360" y2="185" stroke-dasharray="3 3"/>
+  <line data-step="6" class="dim" x1="235" y1="185" x2="360" y2="185"/>
+  <path data-step="6" class="dim" d="M235,185 l8,-4 M235,185 l8,4"/>
+  <path data-step="6" class="dim" d="M360,185 l-8,-4 M360,185 l-8,4"/>
+  <text data-step="6" class="lbl" x="297" y="179" text-anchor="middle">1.5 m</text>
 </svg>

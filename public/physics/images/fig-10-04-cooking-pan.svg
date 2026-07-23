@@ -7,16 +7,16 @@
     .tag { fill:#E8B65A; }
   </style>
   <!-- pan body (ellipse bowl) -->
-  <ellipse class="pan" cx="160" cy="140" rx="110" ry="34"/>
-  <ellipse cx="160" cy="132" rx="110" ry="30" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
-  <path class="m" d="M50,132 Q50,168 160,178 Q270,168 270,132"/>
+  <ellipse data-step="1" class="pan" cx="160" cy="140" rx="110" ry="34"/>
+  <ellipse data-step="1" cx="160" cy="132" rx="110" ry="30" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
+  <path data-step="1" class="m" d="M50,132 Q50,168 160,178 Q270,168 270,132"/>
   <!-- handle -->
-  <line class="m" x1="270" y1="128" x2="360" y2="96"/>
-  <line class="m" x1="272" y1="136" x2="362" y2="104"/>
-  <line class="m" x1="360" y1="96" x2="362" y2="104"/>
+  <line data-step="2" class="m" x1="270" y1="128" x2="360" y2="96"/>
+  <line data-step="2" class="m" x1="272" y1="136" x2="362" y2="104"/>
+  <line data-step="2" class="m" x1="360" y1="96" x2="362" y2="104"/>
   <!-- labels -->
-  <text class="tag" x="330" y="80">handle</text>
-  <path class="lead" d="M340,84 L330,98"/>
-  <text class="tag" x="180" y="205">base</text>
-  <path class="lead" d="M185,201 L170,180"/>
+  <text data-step="3" class="tag" x="330" y="80">handle</text>
+  <path data-step="3" class="lead" d="M340,84 L330,98"/>
+  <text data-step="3" class="tag" x="180" y="205">base</text>
+  <path data-step="3" class="lead" d="M185,201 L170,180"/>
 </svg>

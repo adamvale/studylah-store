@@ -11,10 +11,10 @@
   </style>
 
   <!-- container -->
-  <rect class="box" x="40" y="50" width="230" height="200"/>
+  <rect data-step="1" class="box" x="40" y="50" width="230" height="200"/>
 
   <!-- particles bouncing around -->
-  <g class="p">
+  <g data-step="2" class="p">
     <circle cx="90" cy="90" r="9"/>
     <circle cx="150" cy="130" r="9"/>
     <circle cx="110" cy="200" r="9"/>
@@ -23,29 +23,29 @@
   </g>
 
   <!-- a particle approaching the right wall and rebounding -->
-  <path class="in" d="M150,130 L258,110" marker-end="url(#gi)"/>
-  <path class="out" d="M258,110 L170,90" marker-end="url(#go)"/>
-  <circle class="p" cx="258" cy="110" r="9"/>
+  <path data-step="3" class="in" d="M150,130 L258,110" marker-end="url(#gi)"/>
+  <path data-step="3" class="out" d="M258,110 L170,90" marker-end="url(#go)"/>
+  <circle data-step="3" class="p" cx="258" cy="110" r="9"/>
 
   <!-- reaction force from wall on particle -->
-  <path class="out" d="M268,130 L235,130" marker-end="url(#go)"/>
-  <path class="in" d="M235,150 L268,150" marker-end="url(#gi)"/>
+  <path data-step="4" class="out" d="M268,130 L235,130" marker-end="url(#go)"/>
+  <path data-step="4" class="in" d="M235,150 L268,150" marker-end="url(#gi)"/>
 
   <!-- labels -->
-  <text class="lbl amber" x="300" y="68">inner wall</text>
-  <path class="lead" d="M295,64 L272,80"/>
+  <text data-step="5" class="lbl amber" x="300" y="68">inner wall</text>
+  <path data-step="5" class="lead" d="M295,64 L272,80"/>
 
-  <text class="lbl amber" x="300" y="96">particle hits wall</text>
-  <path class="lead" d="M295,92 L264,106"/>
+  <text data-step="5" class="lbl amber" x="300" y="96">particle hits wall</text>
+  <path data-step="5" class="lead" d="M295,92 L264,106"/>
 
-  <text class="lbl" x="300" y="126" style="fill:#E58F8F">reaction force</text>
-  <text class="lbl" x="300" y="144" style="fill:#E58F8F">on particle</text>
-  <path class="lead" d="M295,124 L272,129"/>
+  <text data-step="5" class="lbl" x="300" y="126" style="fill:#E58F8F">reaction force</text>
+  <text data-step="5" class="lbl" x="300" y="144" style="fill:#E58F8F">on particle</text>
+  <path data-step="5" class="lead" d="M295,124 L272,129"/>
 
-  <text class="lbl" x="300" y="176" style="fill:#86C98B">force on wall</text>
-  <path class="lead" d="M295,170 L272,152"/>
+  <text data-step="5" class="lbl" x="300" y="176" style="fill:#86C98B">force on wall</text>
+  <path data-step="5" class="lead" d="M295,170 L272,152"/>
 
-  <text class="lbl" x="240" y="278" text-anchor="middle" font-size="14" fill="#9AA0A6" font-style="italic">particles collide with and rebound off the walls</text>
+  <text data-step="5" class="lbl" x="240" y="278" text-anchor="middle" font-size="14" fill="#9AA0A6" font-style="italic">particles collide with and rebound off the walls</text>
 
   <defs>
     <marker id="gi" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">

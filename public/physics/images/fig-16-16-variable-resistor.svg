@@ -9,23 +9,23 @@
     .lbl { font-size:14px; }
   </style>
   <!-- metal rod carrying the resistance coil -->
-  <rect class="rod" x="90" y="150" width="260" height="26"/>
+  <rect data-step="1" class="rod" x="90" y="150" width="260" height="26"/>
   <!-- coil of resistance wire -->
-  <path class="coil" d="M110,176 q10,-22 20,0 q10,-22 20,0 q10,-22 20,0 q10,-22 20,0 q10,-22 20,0 q10,-22 20,0 q10,-22 20,0 q10,-22 20,0"/>
+  <path data-step="2" class="coil" d="M110,176 q10,-22 20,0 q10,-22 20,0 q10,-22 20,0 q10,-22 20,0 q10,-22 20,0 q10,-22 20,0 q10,-22 20,0 q10,-22 20,0"/>
   <!-- sliding contact -->
-  <rect class="slide" x="205" y="96" width="30" height="30"/>
-  <line class="wire" x1="220" y1="126" x2="220" y2="150"/>
-  <line class="wire" x1="220" y1="96" x2="220" y2="70"/>
-  <line class="wire" x1="180" y1="70" x2="260" y2="70"/>
+  <rect data-step="3" class="slide" x="205" y="96" width="30" height="30"/>
+  <line data-step="3" class="wire" x1="220" y1="126" x2="220" y2="150"/>
+  <line data-step="3" class="wire" x1="220" y1="96" x2="220" y2="70"/>
+  <line data-step="3" class="wire" x1="180" y1="70" x2="260" y2="70"/>
 
   <!-- current terminals -->
-  <line class="wire" x1="50" y1="163" x2="90" y2="163"/>
-  <line class="wire" x1="350" y1="163" x2="390" y2="163"/>
+  <line data-step="4" class="wire" x1="50" y1="163" x2="90" y2="163"/>
+  <line data-step="4" class="wire" x1="350" y1="163" x2="390" y2="163"/>
 
-  <text x="70" y="200" class="lbl" text-anchor="middle">current in</text>
-  <text x="370" y="200" class="lbl" text-anchor="middle">current out</text>
-  <line class="lead" x1="220" y1="96" x2="270" y2="50"/>
-  <text x="275" y="48" class="lbl">sliding contact</text>
-  <line class="lead" x1="150" y1="150" x2="120" y2="120"/>
-  <text x="55" y="116" class="lbl">resistance wire</text>
+  <text data-step="4" x="70" y="200" class="lbl" text-anchor="middle">current in</text>
+  <text data-step="4" x="370" y="200" class="lbl" text-anchor="middle">current out</text>
+  <line data-step="4" class="lead" x1="220" y1="96" x2="270" y2="50"/>
+  <text data-step="4" x="275" y="48" class="lbl">sliding contact</text>
+  <line data-step="4" class="lead" x1="150" y1="150" x2="120" y2="120"/>
+  <text data-step="4" x="55" y="116" class="lbl">resistance wire</text>
 </svg>

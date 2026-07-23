@@ -11,49 +11,49 @@
   </style>
 
   <!-- PANEL 1: magnet holding a chain of induced nails -->
-  <text x="24" y="28" font-size="15" font-weight="bold">Magnet attached: nails hang in a chain</text>
+  <text data-step="1" x="24" y="28" font-size="15" font-weight="bold">Magnet attached: nails hang in a chain</text>
   <!-- horizontal magnet, S left N right, chain hangs below the N end -->
-  <g transform="translate(40,48)">
+  <g data-step="2" transform="translate(40,48)">
     <rect class="magS" x="0" y="0" width="80" height="30" rx="2"/>
     <rect class="magN" x="80" y="0" width="80" height="30" rx="2"/>
     <text class="pole" x="12" y="20">S</text>
     <text class="pole" x="148" y="20">N</text>
   </g>
   <!-- nail 1: top end (next to the magnet's N pole) is induced S -->
-  <line class="nail" x1="160" y1="78" x2="160" y2="118"/>
-  <text class="small" x="168" y="90">S</text>
-  <text class="small" x="168" y="116">N</text>
+  <line data-step="3" class="nail" x1="160" y1="78" x2="160" y2="118"/>
+  <text data-step="3" class="small" x="168" y="90">S</text>
+  <text data-step="3" class="small" x="168" y="116">N</text>
   <!-- nail 2 -->
-  <line class="nail" x1="160" y1="123" x2="160" y2="163"/>
-  <text class="small" x="168" y="135">S</text>
-  <text class="small" x="168" y="161">N</text>
+  <line data-step="4" class="nail" x1="160" y1="123" x2="160" y2="163"/>
+  <text data-step="4" class="small" x="168" y="135">S</text>
+  <text data-step="4" class="small" x="168" y="161">N</text>
   <!-- nail 3 -->
-  <line class="nail" x1="160" y1="168" x2="160" y2="208"/>
-  <text class="small" x="168" y="180">S</text>
-  <text class="small" x="168" y="206">N</text>
-  <text x="200" y="140" class="lbl">each nail becomes an</text>
-  <text x="200" y="156" class="lbl">induced magnet and holds</text>
-  <text x="200" y="172" class="lbl">up the next nail</text>
+  <line data-step="5" class="nail" x1="160" y1="168" x2="160" y2="208"/>
+  <text data-step="5" class="small" x="168" y="180">S</text>
+  <text data-step="5" class="small" x="168" y="206">N</text>
+  <text data-step="5" x="200" y="140" class="lbl">each nail becomes an</text>
+  <text data-step="5" x="200" y="156" class="lbl">induced magnet and holds</text>
+  <text data-step="5" x="200" y="172" class="lbl">up the next nail</text>
 
   <!-- arrow down -->
-  <g class="flow">
+  <g data-step="6" class="flow">
     <line x1="160" y1="228" x2="160" y2="272"/>
     <polygon fill="#86C98B" points="153,272 167,272 160,286"/>
   </g>
-  <text x="180" y="258" font-size="14" fill="#86C98B">magnet removed</text>
+  <text data-step="6" x="180" y="258" font-size="14" fill="#86C98B">magnet removed</text>
 
   <!-- PANEL 2: nails fall apart -->
-  <text x="24" y="330" font-size="15" font-weight="bold">Magnet removed: nails fall apart</text>
-  <g class="nail" transform="translate(90,365)">
+  <text data-step="7" x="24" y="330" font-size="15" font-weight="bold">Magnet removed: nails fall apart</text>
+  <g data-step="7" class="nail" transform="translate(90,365)">
     <line x1="0" y1="0" x2="30" y2="18" transform="rotate(-20)"/>
   </g>
-  <g class="nail" transform="translate(160,395)">
+  <g data-step="7" class="nail" transform="translate(160,395)">
     <line x1="0" y1="0" x2="32" y2="0" transform="rotate(35)"/>
   </g>
-  <g class="nail" transform="translate(110,430)">
+  <g data-step="7" class="nail" transform="translate(110,430)">
     <line x1="0" y1="0" x2="34" y2="0" transform="rotate(-10)"/>
   </g>
-  <text x="30" y="478" class="lbl">the induced magnetism is lost, so</text>
-  <text x="30" y="494" class="lbl">the nails separate, induction is</text>
-  <text x="30" y="510" class="lbl">only temporary</text>
+  <text data-step="7" x="30" y="478" class="lbl">the induced magnetism is lost, so</text>
+  <text data-step="7" x="30" y="494" class="lbl">the nails separate, induction is</text>
+  <text data-step="7" x="30" y="510" class="lbl">only temporary</text>
 </svg>

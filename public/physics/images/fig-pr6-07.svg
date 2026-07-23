@@ -10,14 +10,14 @@
   </style>
 
   <!-- straight wire seen end-on, current coming out of the page -->
-  <circle class="wire" cx="210" cy="120" r="16"/>
-  <circle class="dot" cx="210" cy="120" r="5"/>
+  <circle data-step="1" class="wire" cx="210" cy="120" r="16"/>
+  <circle data-step="1" class="dot" cx="210" cy="120" r="5"/>
 
-  <text class="curl" x="210" y="56" text-anchor="middle">current out of the page</text>
-  <path class="lead" d="M210,64 L210,100"/>
+  <text data-step="3" class="curl" x="210" y="56" text-anchor="middle">current out of the page</text>
+  <path data-step="2" class="lead" d="M210,64 L210,100"/>
 
-  <text class="qm" x="120" y="130" text-anchor="middle">?</text>
-  <text class="qm" x="300" y="130" text-anchor="middle">?</text>
+  <text data-step="3" class="qm" x="120" y="130" text-anchor="middle">?</text>
+  <text data-step="4" class="qm" x="300" y="130" text-anchor="middle">?</text>
 
-  <text class="note" x="210" y="200" text-anchor="middle">field pattern = ?</text>
+  <text data-step="4" class="note" x="210" y="200" text-anchor="middle">field pattern = ?</text>
 </svg>

@@ -10,13 +10,13 @@
   </style>
 
   <!-- key -->
-  <path class="shot" d="M26,14 l8,8 M34,14 l-8,8"/>
-  <text x="44" y="23" class="key-shot">readings</text>
-  <circle class="bull" cx="196" cy="18" r="8"/>
-  <text x="212" y="23" class="key-true">true value</text>
+  <path data-step="1" class="shot" d="M26,14 l8,8 M34,14 l-8,8"/>
+  <text data-step="1" x="44" y="23" class="key-shot">readings</text>
+  <circle data-step="1" class="bull" cx="196" cy="18" r="8"/>
+  <text data-step="1" x="212" y="23" class="key-true">true value</text>
 
   <!-- top left: accurate and precise -->
-  <g transform="translate(110,110)">
+  <g data-step="2" transform="translate(110,110)">
     <circle class="ring" cx="0" cy="0" r="50"/>
     <circle class="ring" cx="0" cy="0" r="33"/>
     <circle class="bull" cx="0" cy="0" r="17"/>
@@ -27,11 +27,11 @@
     <path class="shot" d="M4,5 l8,8 M12,5 l-8,8"/>
     <path class="shot" d="M-12,-13 l8,8 M-4,-13 l-8,8"/>
   </g>
-  <text x="110" y="180" text-anchor="middle">Accurate and</text>
-  <text x="110" y="198" text-anchor="middle">precise</text>
+  <text data-step="2" x="110" y="180" text-anchor="middle">Accurate and</text>
+  <text data-step="2" x="110" y="198" text-anchor="middle">precise</text>
 
   <!-- top right: precise but not accurate -->
-  <g transform="translate(310,110)">
+  <g data-step="3" transform="translate(310,110)">
     <circle class="ring" cx="0" cy="0" r="50"/>
     <circle class="ring" cx="0" cy="0" r="33"/>
     <circle class="bull" cx="0" cy="0" r="17"/>
@@ -42,11 +42,11 @@
     <path class="shot" d="M29,-21 l8,8 M37,-21 l-8,8"/>
     <path class="shot" d="M15,-21 l8,8 M23,-21 l-8,8"/>
   </g>
-  <text x="310" y="180" text-anchor="middle">Precise but</text>
-  <text x="310" y="198" text-anchor="middle">not accurate</text>
+  <text data-step="3" x="310" y="180" text-anchor="middle">Precise but</text>
+  <text data-step="3" x="310" y="198" text-anchor="middle">not accurate</text>
 
   <!-- bottom left: accurate on average but not precise -->
-  <g transform="translate(110,282)">
+  <g data-step="4" transform="translate(110,282)">
     <circle class="ring" cx="0" cy="0" r="50"/>
     <circle class="ring" cx="0" cy="0" r="33"/>
     <circle class="bull" cx="0" cy="0" r="17"/>
@@ -58,11 +58,11 @@
     <path class="shot" d="M-10,26 l8,8 M-2,26 l-8,8"/>
     <path class="shot" d="M22,16 l8,8 M30,16 l-8,8"/>
   </g>
-  <text x="110" y="352" text-anchor="middle">Accurate but</text>
-  <text x="110" y="370" text-anchor="middle">not precise</text>
+  <text data-step="4" x="110" y="352" text-anchor="middle">Accurate but</text>
+  <text data-step="4" x="110" y="370" text-anchor="middle">not precise</text>
 
   <!-- bottom right: neither -->
-  <g transform="translate(310,282)">
+  <g data-step="5" transform="translate(310,282)">
     <circle class="ring" cx="0" cy="0" r="50"/>
     <circle class="ring" cx="0" cy="0" r="33"/>
     <circle class="bull" cx="0" cy="0" r="17"/>
@@ -73,6 +73,6 @@
     <path class="shot" d="M34,6 l8,8 M42,6 l-8,8"/>
     <path class="shot" d="M6,22 l8,8 M14,22 l-8,8"/>
   </g>
-  <text x="310" y="352" text-anchor="middle">Not accurate,</text>
-  <text x="310" y="370" text-anchor="middle">not precise</text>
+  <text data-step="5" x="310" y="352" text-anchor="middle">Not accurate,</text>
+  <text data-step="5" x="310" y="370" text-anchor="middle">not precise</text>
 </svg>

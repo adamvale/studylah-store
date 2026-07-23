@@ -12,30 +12,30 @@
     .cap { font-size:13px; }
   </style>
   <!-- pivot at top -->
-  <circle class="pin" cx="230" cy="50" r="4"/>
-  <text class="lbl" x="245" y="48">pivot</text>
+  <circle data-step="1" class="pin" cx="230" cy="50" r="4"/>
+  <text data-step="1" class="lbl" x="245" y="48">pivot</text>
   <!-- tilted rectangular board, pinned at one corner -->
-  <polygon class="shape" points="230,50 343,91 319,157 206,116"/>
+  <polygon data-step="2" class="shape" points="230,50 343,91 319,157 206,116"/>
   <!-- vertical through pivot -->
-  <line class="plumb" x1="230" y1="50" x2="230" y2="250"/>
+  <line data-step="3" class="plumb" x1="230" y1="50" x2="230" y2="250"/>
   <!-- CG at the centre of the board -->
-  <circle class="cg" cx="274.5" cy="103.5" r="3.6"/>
-  <text class="lbl" x="268" y="99" text-anchor="end" fill="#E58F8F">CG</text>
+  <circle data-step="4" class="cg" cx="274.5" cy="103.5" r="3.6"/>
+  <text data-step="4" class="lbl" x="268" y="99" text-anchor="end" fill="#E58F8F">CG</text>
   <!-- line of action of weight -->
-  <line class="plumb" x1="274.5" y1="103.5" x2="274.5" y2="250"/>
+  <line data-step="5" class="plumb" x1="274.5" y1="103.5" x2="274.5" y2="250"/>
   <!-- weight arrow -->
-  <line class="force" x1="274.5" y1="103.5" x2="274.5" y2="185"/>
-  <path class="force" d="M274.5,185 l-5,-10 M274.5,185 l5,-10"/>
-  <text class="lbl" x="286" y="175" fill="#E58F8F">weight, W</text>
+  <line data-step="6" class="force" x1="274.5" y1="103.5" x2="274.5" y2="185"/>
+  <path data-step="6" class="force" d="M274.5,185 l-5,-10 M274.5,185 l5,-10"/>
+  <text data-step="6" class="lbl" x="286" y="175" fill="#E58F8F">weight, W</text>
   <!-- clockwise turning arrow -->
-  <path class="turn" d="M340,160 A45,45 0 0 1 310,205"/>
-  <path class="turn" d="M310,205 l9,-3 M310,205 l3,-9"/>
+  <path data-step="7" class="turn" d="M340,160 A45,45 0 0 1 310,205"/>
+  <path data-step="7" class="turn" d="M310,205 l9,-3 M310,205 l3,-9"/>
   <!-- perpendicular distance d between the two verticals -->
-  <line class="dim" x1="230" y1="240" x2="274.5" y2="240"/>
-  <path class="dim" d="M230,240 l8,-4 M230,240 l8,4"/>
-  <path class="dim" d="M274.5,240 l-8,-4 M274.5,240 l-8,4"/>
-  <text class="lbl" x="252" y="232" text-anchor="middle">d</text>
+  <line data-step="8" class="dim" x1="230" y1="240" x2="274.5" y2="240"/>
+  <path data-step="8" class="dim" d="M230,240 l8,-4 M230,240 l8,4"/>
+  <path data-step="8" class="dim" d="M274.5,240 l-8,-4 M274.5,240 l-8,4"/>
+  <text data-step="8" class="lbl" x="252" y="232" text-anchor="middle">d</text>
   <!-- caption -->
-  <text class="cap" x="230" y="272" text-anchor="middle">CG is not vertically below the pivot, so d is not zero.</text>
-  <text class="cap" x="230" y="290" text-anchor="middle">Resultant moment = W × d: the object turns, not in equilibrium.</text>
+  <text data-step="9" class="cap" x="230" y="272" text-anchor="middle">CG is not vertically below the pivot, so d is not zero.</text>
+  <text data-step="9" class="cap" x="230" y="290" text-anchor="middle">Resultant moment = W × d: the object turns, not in equilibrium.</text>
 </svg>

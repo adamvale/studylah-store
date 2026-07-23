@@ -6,26 +6,26 @@
     .node { font-size:13px; fill:#6FB7E0; }
   </style>
   <!-- cell top -->
-  <path class="wire" d="M60,45 L175,45 M191,45 L320,45"/>
-  <line class="wire" x1="175" y1="29" x2="175" y2="61" stroke-width="2.4"/>
-  <line class="wire" x1="191" y1="37" x2="191" y2="53" stroke-width="5"/>
+  <path data-step="1" class="wire" d="M60,45 L175,45 M191,45 L320,45"/>
+  <line data-step="1" class="wire" x1="175" y1="29" x2="175" y2="61" stroke-width="2.4"/>
+  <line data-step="1" class="wire" x1="191" y1="37" x2="191" y2="53" stroke-width="5"/>
   <!-- left rail with R -->
-  <path class="wire" d="M60,45 L60,210"/>
-  <rect class="wire" x="48" y="105" width="24" height="46"/>
-  <text x="26" y="131" class="lbl">R</text>
+  <path data-step="2" class="wire" d="M60,45 L60,210"/>
+  <rect data-step="2" class="wire" x="48" y="105" width="24" height="46"/>
+  <text data-step="2" x="26" y="131" class="lbl">R</text>
   <!-- bottom rail to node P -->
-  <path class="wire" d="M60,210 L110,210"/>
+  <path data-step="3" class="wire" d="M60,210 L110,210"/>
   <!-- right rail with P-resistor -->
-  <path class="wire" d="M320,45 L320,210"/>
-  <rect class="wire" x="308" y="105" width="24" height="46"/>
-  <text x="338" y="131" class="lbl">P</text>
-  <path class="wire" d="M320,210 L270,210"/>
+  <path data-step="4" class="wire" d="M320,45 L320,210"/>
+  <rect data-step="4" class="wire" x="308" y="105" width="24" height="46"/>
+  <text data-step="4" x="338" y="131" class="lbl">P</text>
+  <path data-step="4" class="wire" d="M320,210 L270,210"/>
   <!-- parallel pair Q (upper) and S (lower) between the two mid nodes -->
-  <path class="wire" d="M110,210 L110,150 L150,150"/>
-  <rect class="wire" x="150" y="138" width="46" height="24"/>
-  <path class="wire" d="M196,150 L270,150 L270,210"/>
-  <text x="173" y="132" class="lbl" text-anchor="middle">Q</text>
-  <path class="wire" d="M110,210 L270,210"/>
-  <rect class="wire" x="167" y="198" width="46" height="24"/>
-  <text x="190" y="240" class="lbl" text-anchor="middle">S</text>
+  <path data-step="5" class="wire" d="M110,210 L110,150 L150,150"/>
+  <rect data-step="5" class="wire" x="150" y="138" width="46" height="24"/>
+  <path data-step="5" class="wire" d="M196,150 L270,150 L270,210"/>
+  <text data-step="5" x="173" y="132" class="lbl" text-anchor="middle">Q</text>
+  <path data-step="5" class="wire" d="M110,210 L270,210"/>
+  <rect data-step="5" class="wire" x="167" y="198" width="46" height="24"/>
+  <text data-step="5" x="190" y="240" class="lbl" text-anchor="middle">S</text>
 </svg>

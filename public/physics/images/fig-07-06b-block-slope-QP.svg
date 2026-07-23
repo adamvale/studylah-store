@@ -12,21 +12,21 @@
     <marker id="q2" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#9AA0A6"/></marker>
   </defs>
   <!-- P bottom-left, Q top-right; base and right vertical -->
-  <polygon class="fill" points="60,195 330,195 330,75"/>
-  <polyline class="slope" points="60,195 330,75"/>
-  <line class="slope" x1="60" y1="195" x2="330" y2="195"/>
-  <line class="slope" x1="330" y1="195" x2="330" y2="75"/>
+  <polygon data-step="1" class="fill" points="60,195 330,195 330,75"/>
+  <polyline data-step="1" class="slope" points="60,195 330,75"/>
+  <line data-step="1" class="slope" x1="60" y1="195" x2="330" y2="195"/>
+  <line data-step="1" class="slope" x1="330" y1="195" x2="330" y2="75"/>
   <!-- block near top (at Q) -->
-  <g transform="translate(275,102) rotate(-24)">
+  <g data-step="2" transform="translate(275,102) rotate(-24)">
     <rect class="block" x="-22" y="-16" width="44" height="30"/>
   </g>
   <!-- labels -->
-  <text x="48" y="212" fill="#EAEAEA">P</text>
-  <text x="336" y="74" fill="#EAEAEA">Q</text>
+  <text data-step="3" x="48" y="212" fill="#EAEAEA">P</text>
+  <text data-step="3" x="336" y="74" fill="#EAEAEA">Q</text>
   <!-- slope length 8 m -->
-  <text class="lbl" x="185" y="120" transform="rotate(-24 185 120)">8 m</text>
+  <text data-step="4" class="lbl" x="185" y="120" transform="rotate(-24 185 120)">8 m</text>
   <!-- height 4 m -->
-  <line class="dim" x1="360" y1="75" x2="360" y2="195" marker-start="url(#q1)" marker-end="url(#q2)"/>
-  <text class="lbl" x="368" y="140">4 m</text>
-  <line class="dim" x1="330" y1="75" x2="365" y2="75" stroke-dasharray="3 3"/>
+  <line data-step="5" class="dim" x1="360" y1="75" x2="360" y2="195" marker-start="url(#q1)" marker-end="url(#q2)"/>
+  <text data-step="5" class="lbl" x="368" y="140">4 m</text>
+  <line data-step="5" class="dim" x1="330" y1="75" x2="365" y2="75" stroke-dasharray="3 3"/>
 </svg>

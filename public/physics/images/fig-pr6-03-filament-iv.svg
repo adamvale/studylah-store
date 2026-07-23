@@ -12,18 +12,18 @@
   </defs>
 
   <!-- axes: x-axis, then the y-axis above and below the origin -->
-  <line class="axis" x1="45" y1="150" x2="395" y2="150" marker-end="url(#a3)"/>
-  <line class="axis" x1="215" y1="150" x2="215" y2="40" marker-end="url(#a3)"/>
-  <line class="axis" x1="215" y1="150" x2="215" y2="248"/>
-  <text class="ax" x="228" y="37">I / A</text>
-  <text class="ax" x="392" y="172" text-anchor="end">V / V</text>
-  <text x="207" y="166" text-anchor="end">O</text>
+  <line data-step="1" class="axis" x1="45" y1="150" x2="395" y2="150" marker-end="url(#a3)"/>
+  <line data-step="1" class="axis" x1="215" y1="150" x2="215" y2="40" marker-end="url(#a3)"/>
+  <line data-step="1" class="axis" x1="215" y1="150" x2="215" y2="248"/>
+  <text data-step="1" class="ax" x="228" y="37">I / A</text>
+  <text data-step="1" class="ax" x="392" y="172" text-anchor="end">V / V</text>
+  <text data-step="1" x="207" y="166" text-anchor="end">O</text>
 
   <!-- S-shaped curve: steep at the origin, flattening as V grows -->
-  <path class="fit" d="M215,150 C231,117 248,97 278,86 C308,75 340,70 370,67"/>
-  <path class="fit" d="M215,150 C199,183 182,203 152,214 C122,225 90,230 60,233"/>
+  <path data-step="2" class="fit" d="M215,150 C231,117 248,97 278,86 C308,75 340,70 370,67"/>
+  <path data-step="2" class="fit" d="M215,150 C199,183 182,203 152,214 C122,225 90,230 60,233"/>
 
-  <text class="cap" x="55" y="70">filament lamp</text>
-  <text class="note" x="250" y="118">flattens: R rises</text>
-  <text class="note" x="210" y="272" text-anchor="middle">non-ohmic</text>
+  <text data-step="2" class="cap" x="55" y="70">filament lamp</text>
+  <text data-step="2" class="note" x="250" y="118">flattens: R rises</text>
+  <text data-step="2" class="note" x="210" y="272" text-anchor="middle">non-ohmic</text>
 </svg>

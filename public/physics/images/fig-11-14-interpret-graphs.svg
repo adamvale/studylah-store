@@ -18,38 +18,38 @@
   </defs>
 
   <!-- TOP: displacement-distance -->
-  <text x="210" y="22" text-anchor="middle" font-size="14.5" fill="#6FB7E0">displacement-distance graph</text>
-  <line x1="70" y1="170" x2="70" y2="52" class="axis" marker-end="url(#ah)"/>
-  <line x1="56" y1="112" x2="395" y2="112" class="axis" marker-end="url(#ah)"/>
-  <text x="14" y="42" font-size="13">displacement</text>
-  <text x="395" y="130" text-anchor="end" font-size="13">distance</text>
-  <text x="64" y="126" text-anchor="end" font-size="13">0</text>
-  <text x="64" y="78" text-anchor="end" font-size="13" font-style="italic">A</text>
-  <line x1="67" y1="74" x2="73" y2="74" class="tick"/>
-  <text x="64" y="154" text-anchor="end" font-size="13" font-style="italic">-A</text>
-  <line x1="67" y1="150" x2="73" y2="150" class="tick"/>
-  <path class="wave" d="M70,112 Q97.5,36 125,112 Q152.5,188 180,112 Q207.5,36 235,112 Q262.5,188 290,112 Q317.5,36 345,112"/>
-  <line x1="97.5" y1="58" x2="207.5" y2="58" class="dim" marker-start="url(#aha)" marker-end="url(#aha)"/>
-  <text x="152" y="52" text-anchor="middle" class="lbl" font-style="italic">&#955;</text>
-  <line x1="97.5" y1="112" x2="97.5" y2="74" class="dim"/>
-  <text x="104" y="96" class="lbl" font-style="italic">A</text>
-  <text x="210" y="200" text-anchor="middle" font-size="13" fill="#9AA0A6">gives wavelength &#955; and amplitude A</text>
+  <text data-step="1" x="210" y="22" text-anchor="middle" font-size="14.5" fill="#6FB7E0">displacement-distance graph</text>
+  <line data-step="1" x1="70" y1="170" x2="70" y2="52" class="axis" marker-end="url(#ah)"/>
+  <line data-step="1" x1="56" y1="112" x2="395" y2="112" class="axis" marker-end="url(#ah)"/>
+  <text data-step="1" x="14" y="42" font-size="13">displacement</text>
+  <text data-step="1" x="395" y="130" text-anchor="end" font-size="13">distance</text>
+  <text data-step="1" x="64" y="126" text-anchor="end" font-size="13">0</text>
+  <text data-step="1" x="64" y="78" text-anchor="end" font-size="13" font-style="italic">A</text>
+  <line data-step="1" x1="67" y1="74" x2="73" y2="74" class="tick"/>
+  <text data-step="1" x="64" y="154" text-anchor="end" font-size="13" font-style="italic">-A</text>
+  <line data-step="1" x1="67" y1="150" x2="73" y2="150" class="tick"/>
+  <path data-step="1" class="wave" d="M70,112 Q97.5,36 125,112 Q152.5,188 180,112 Q207.5,36 235,112 Q262.5,188 290,112 Q317.5,36 345,112"/>
+  <line data-step="1" x1="97.5" y1="58" x2="207.5" y2="58" class="dim" marker-start="url(#aha)" marker-end="url(#aha)"/>
+  <text data-step="1" x="152" y="52" text-anchor="middle" class="lbl" font-style="italic">&#955;</text>
+  <line data-step="1" x1="97.5" y1="112" x2="97.5" y2="74" class="dim"/>
+  <text data-step="1" x="104" y="96" class="lbl" font-style="italic">A</text>
+  <text data-step="1" x="210" y="200" text-anchor="middle" font-size="13" fill="#9AA0A6">gives wavelength &#955; and amplitude A</text>
 
   <!-- BOTTOM: displacement-time -->
-  <text x="210" y="262" text-anchor="middle" font-size="14.5" fill="#86C98B">displacement-time graph</text>
-  <line x1="70" y1="410" x2="70" y2="292" class="axis" marker-end="url(#ah)"/>
-  <line x1="56" y1="352" x2="395" y2="352" class="axis" marker-end="url(#ah)"/>
-  <text x="14" y="282" font-size="13">displacement</text>
-  <text x="395" y="370" text-anchor="end" font-size="13">time</text>
-  <text x="64" y="366" text-anchor="end" font-size="13">0</text>
-  <text x="64" y="318" text-anchor="end" font-size="13" font-style="italic">A</text>
-  <line x1="67" y1="314" x2="73" y2="314" class="tick"/>
-  <text x="64" y="394" text-anchor="end" font-size="13" font-style="italic">-A</text>
-  <line x1="67" y1="390" x2="73" y2="390" class="tick"/>
-  <path class="wave2" d="M70,352 Q97.5,276 125,352 Q152.5,428 180,352 Q207.5,276 235,352 Q262.5,428 290,352 Q317.5,276 345,352"/>
-  <line x1="97.5" y1="298" x2="207.5" y2="298" class="dim" marker-start="url(#aha)" marker-end="url(#aha)"/>
-  <text x="152" y="292" text-anchor="middle" class="lbl" font-style="italic">T</text>
-  <line x1="97.5" y1="352" x2="97.5" y2="314" class="dim"/>
-  <text x="104" y="336" class="lbl" font-style="italic">A</text>
-  <text x="210" y="440" text-anchor="middle" font-size="13" fill="#9AA0A6">gives period T (then f = 1/T) and amplitude A</text>
+  <text data-step="2" x="210" y="262" text-anchor="middle" font-size="14.5" fill="#86C98B">displacement-time graph</text>
+  <line data-step="2" x1="70" y1="410" x2="70" y2="292" class="axis" marker-end="url(#ah)"/>
+  <line data-step="2" x1="56" y1="352" x2="395" y2="352" class="axis" marker-end="url(#ah)"/>
+  <text data-step="2" x="14" y="282" font-size="13">displacement</text>
+  <text data-step="2" x="395" y="370" text-anchor="end" font-size="13">time</text>
+  <text data-step="2" x="64" y="366" text-anchor="end" font-size="13">0</text>
+  <text data-step="2" x="64" y="318" text-anchor="end" font-size="13" font-style="italic">A</text>
+  <line data-step="2" x1="67" y1="314" x2="73" y2="314" class="tick"/>
+  <text data-step="2" x="64" y="394" text-anchor="end" font-size="13" font-style="italic">-A</text>
+  <line data-step="2" x1="67" y1="390" x2="73" y2="390" class="tick"/>
+  <path data-step="2" class="wave2" d="M70,352 Q97.5,276 125,352 Q152.5,428 180,352 Q207.5,276 235,352 Q262.5,428 290,352 Q317.5,276 345,352"/>
+  <line data-step="2" x1="97.5" y1="298" x2="207.5" y2="298" class="dim" marker-start="url(#aha)" marker-end="url(#aha)"/>
+  <text data-step="2" x="152" y="292" text-anchor="middle" class="lbl" font-style="italic">T</text>
+  <line data-step="2" x1="97.5" y1="352" x2="97.5" y2="314" class="dim"/>
+  <text data-step="2" x="104" y="336" class="lbl" font-style="italic">A</text>
+  <text data-step="2" x="210" y="440" text-anchor="middle" font-size="13" fill="#9AA0A6">gives period T (then f = 1/T) and amplitude A</text>
 </svg>

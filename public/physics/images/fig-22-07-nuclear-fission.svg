@@ -16,40 +16,40 @@
   </defs>
 
   <!-- incoming neutron -->
-  <circle class="neutron" cx="40" cy="170" r="8"/>
-  <path class="arrow" d="M52,170 L120,170"/>
-  <text x="40" y="195" text-anchor="middle" class="cap">neutron</text>
+  <circle data-step="1" class="neutron" cx="40" cy="170" r="8"/>
+  <path data-step="1" class="arrow" d="M52,170 L120,170"/>
+  <text data-step="1" x="40" y="195" text-anchor="middle" class="cap">neutron</text>
 
   <!-- parent nucleus U-235 -->
-  <circle class="nuc" cx="175" cy="170" r="42"/>
-  <text x="175" y="235" text-anchor="middle" class="cap">uranium-235</text>
-  <text x="175" y="253" text-anchor="middle" class="cap">(parent nucleus)</text>
+  <circle data-step="2" class="nuc" cx="175" cy="170" r="42"/>
+  <text data-step="2" x="175" y="235" text-anchor="middle" class="cap">uranium-235</text>
+  <text data-step="2" x="175" y="253" text-anchor="middle" class="cap">(parent nucleus)</text>
 
   <!-- split arrows -->
-  <path class="arrow" d="M222,150 L300,105"/>
-  <path class="arrow" d="M222,190 L300,235"/>
+  <path data-step="3" class="arrow" d="M222,150 L300,105"/>
+  <path data-step="3" class="arrow" d="M222,190 L300,235"/>
 
   <!-- daughter nuclei -->
-  <circle class="daughter" cx="335" cy="95" r="30"/>
-  <text x="335" y="55" text-anchor="middle" class="cap">daughter</text>
-  <text x="335" y="292" text-anchor="middle" class="cap">daughter</text>
-  <circle class="daughter" cx="335" cy="245" r="30"/>
+  <circle data-step="4" class="daughter" cx="335" cy="95" r="30"/>
+  <text data-step="4" x="335" y="55" text-anchor="middle" class="cap">daughter</text>
+  <text data-step="4" x="335" y="292" text-anchor="middle" class="cap">daughter</text>
+  <circle data-step="4" class="daughter" cx="335" cy="245" r="30"/>
 
   <!-- released neutrons -->
-  <circle class="neutron" cx="430" cy="70" r="8"/>
-  <circle class="neutron" cx="450" cy="105" r="8"/>
-  <circle class="neutron" cx="430" cy="140" r="8"/>
-  <path class="arrow" d="M365,88 L418,72"/>
-  <path class="arrow" d="M365,100 L438,105"/>
-  <path class="arrow" d="M365,112 L418,138"/>
-  <text x="500" y="105" class="cap">more neutrons</text>
-  <text x="500" y="123" class="cap">released</text>
+  <circle data-step="5" class="neutron" cx="430" cy="70" r="8"/>
+  <circle data-step="5" class="neutron" cx="450" cy="105" r="8"/>
+  <circle data-step="5" class="neutron" cx="430" cy="140" r="8"/>
+  <path data-step="5" class="arrow" d="M365,88 L418,72"/>
+  <path data-step="5" class="arrow" d="M365,100 L438,105"/>
+  <path data-step="5" class="arrow" d="M365,112 L418,138"/>
+  <text data-step="5" x="500" y="105" class="cap">more neutrons</text>
+  <text data-step="5" x="500" y="123" class="cap">released</text>
 
   <!-- energy waves -->
-  <path class="wave" d="M368,230 q8,-8 16,0 q8,8 16,0 q8,-8 16,0"/>
-  <path class="wave" d="M368,250 q8,-8 16,0 q8,8 16,0 q8,-8 16,0"/>
-  <text x="455" y="264" text-anchor="middle" class="amber">energy released</text>
-  <path class="arrow" d="M420,240 L478,240" stroke="#E8B65A"/>
+  <path data-step="6" class="wave" d="M368,230 q8,-8 16,0 q8,8 16,0 q8,-8 16,0"/>
+  <path data-step="6" class="wave" d="M368,250 q8,-8 16,0 q8,8 16,0 q8,-8 16,0"/>
+  <text data-step="6" x="455" y="264" text-anchor="middle" class="amber">energy released</text>
+  <path data-step="6" class="arrow" d="M420,240 L478,240" stroke="#E8B65A"/>
 
-  <text x="300" y="320" text-anchor="middle" class="amber" font-size="13">A heavy nucleus splits into two lighter nuclei plus neutrons and energy.</text>
+  <text data-step="6" x="300" y="320" text-anchor="middle" class="amber" font-size="13">A heavy nucleus splits into two lighter nuclei plus neutrons and energy.</text>
 </svg>

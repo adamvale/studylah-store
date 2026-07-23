@@ -12,36 +12,36 @@
     .pt { fill:#EAEAEA; }
   </style>
   <!-- mirror vertical at x=300 -->
-  <line class="mirror" x1="300" y1="40" x2="300" y2="290"/>
-  <g stroke="#9AA0A6" stroke-width="1">
+  <line data-step="1" class="mirror" x1="300" y1="40" x2="300" y2="290"/>
+  <g data-step="1" stroke="#9AA0A6" stroke-width="1">
     <line x1="300" y1="55" x2="312" y2="43"/><line x1="300" y1="80" x2="312" y2="68"/>
     <line x1="300" y1="105" x2="312" y2="93"/><line x1="300" y1="130" x2="312" y2="118"/>
     <line x1="300" y1="155" x2="312" y2="143"/><line x1="300" y1="180" x2="312" y2="168"/>
     <line x1="300" y1="205" x2="312" y2="193"/><line x1="300" y1="230" x2="312" y2="218"/>
     <line x1="300" y1="255" x2="312" y2="243"/><line x1="300" y1="280" x2="312" y2="268"/>
   </g>
-  <text x="300" y="308" text-anchor="middle" font-size="12">plane mirror</text>
+  <text data-step="1" x="300" y="308" text-anchor="middle" font-size="12">plane mirror</text>
   <!-- object O -->
-  <circle class="pt" cx="150" cy="110" r="4"/>
-  <text x="150" y="100" text-anchor="middle" font-size="13" fill="#E8B65A">object</text>
+  <circle data-step="2" class="pt" cx="150" cy="110" r="4"/>
+  <text data-step="2" x="150" y="100" text-anchor="middle" font-size="13" fill="#E8B65A">object</text>
   <!-- image I behind mirror (dashed outline) -->
-  <circle cx="450" cy="110" r="4" fill="none" stroke="#9AA0A6" stroke-width="1.5"/>
-  <text x="450" y="100" text-anchor="middle" font-size="13">image</text>
+  <circle data-step="3" cx="450" cy="110" r="4" fill="none" stroke="#9AA0A6" stroke-width="1.5"/>
+  <text data-step="3" x="450" y="100" text-anchor="middle" font-size="13">image</text>
   <!-- incident rays: object -> M1(300,178), M2(300,186) -->
-  <path class="inc" marker-end="url(#a1)" d="M150,110 L299,177"/>
-  <path class="inc" marker-end="url(#a1)" d="M150,110 L299,186"/>
+  <path data-step="4" class="inc" marker-end="url(#a1)" d="M150,110 L299,177"/>
+  <path data-step="4" class="inc" marker-end="url(#a1)" d="M150,110 L299,186"/>
   <!-- reflected rays: M1 -> eye(140,250), M2 -> eye(160,258) -->
-  <path class="out" marker-end="url(#a2)" d="M300,178 L150,250"/>
-  <path class="out" marker-end="url(#a2)" d="M300,186 L168,258"/>
+  <path data-step="5" class="out" marker-end="url(#a2)" d="M300,178 L150,250"/>
+  <path data-step="5" class="out" marker-end="url(#a2)" d="M300,186 L168,258"/>
   <!-- virtual rays behind mirror: M1 -> I, M2 -> I -->
-  <path class="virt" d="M300,178 L450,110"/>
-  <path class="virt" d="M300,186 L450,110"/>
+  <path data-step="6" class="virt" d="M300,178 L450,110"/>
+  <path data-step="6" class="virt" d="M300,186 L450,110"/>
   <!-- eye -->
-  <g transform="translate(120,252)">
+  <g data-step="7" transform="translate(120,252)">
     <path d="M0,0 Q22,-14 44,0 Q22,14 0,0 Z" fill="none" stroke="#E8B65A" stroke-width="1.6"/>
     <circle cx="22" cy="0" r="5" fill="#E8B65A"/>
   </g>
-  <text x="140" y="290" text-anchor="middle" font-size="12" fill="#E8B65A">observer</text>
-  <text x="210" y="272" font-size="12" fill="#6FB7E0">reflected ray</text>
-  <text x="370" y="168" font-size="12">virtual ray</text>
+  <text data-step="7" x="140" y="290" text-anchor="middle" font-size="12" fill="#E8B65A">observer</text>
+  <text data-step="7" x="210" y="272" font-size="12" fill="#6FB7E0">reflected ray</text>
+  <text data-step="7" x="370" y="168" font-size="12">virtual ray</text>
 </svg>

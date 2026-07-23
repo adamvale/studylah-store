@@ -9,13 +9,13 @@
     .air { stroke:#6FB7E0; stroke-width:2.4; }
     .w { stroke:#E58F8F; stroke-width:2.8; }
   </style>
-  <rect class="box" x="175" y="115" width="60" height="50"/>
+  <rect data-step="1" class="box" x="175" y="115" width="60" height="50"/>
   <!-- air resistance up (smaller) -->
-  <line class="air" x1="205" y1="115" x2="205" y2="60" marker-end="url(#arwG)"/>
-  <text x="215" y="80" font-size="13" fill="#6FB7E0">air resistance (up)</text>
+  <line data-step="1" class="air" x1="205" y1="115" x2="205" y2="60" marker-end="url(#arwG)"/>
+  <text data-step="1" x="215" y="80" font-size="13" fill="#6FB7E0">air resistance (up)</text>
   <!-- weight down (larger) -->
-  <line class="w" x1="205" y1="165" x2="205" y2="235" marker-end="url(#arwR)"/>
-  <text x="215" y="215" font-size="13" fill="#E58F8F">weight (down)</text>
-  <text x="205" y="262" text-anchor="middle" font-size="12.5">Taking down as positive:</text>
-  <text x="205" y="280" text-anchor="middle" font-size="12.5">resultant = weight &#8722; air resistance.</text>
+  <line data-step="2" class="w" x1="205" y1="165" x2="205" y2="235" marker-end="url(#arwR)"/>
+  <text data-step="2" x="215" y="215" font-size="13" fill="#E58F8F">weight (down)</text>
+  <text data-step="2" x="205" y="262" text-anchor="middle" font-size="12.5">Taking down as positive:</text>
+  <text data-step="2" x="205" y="280" text-anchor="middle" font-size="12.5">resultant = weight &#8722; air resistance.</text>
 </svg>

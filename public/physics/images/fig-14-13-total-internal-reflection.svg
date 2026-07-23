@@ -11,21 +11,21 @@
     .norm { stroke:#9AA0A6; stroke-width:1.4; stroke-dasharray:6 4; }
     .arc { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
   </style>
-  <rect class="dense" x="60" y="160" width="440" height="110"/>
-  <line x1="60" y1="160" x2="500" y2="160" stroke="#EAEAEA" stroke-width="1.6"/>
-  <path class="norm" d="M300,70 L300,250"/>
+  <rect data-step="1" class="dense" x="60" y="160" width="440" height="110"/>
+  <line data-step="1" x1="60" y1="160" x2="500" y2="160" stroke="#EAEAEA" stroke-width="1.6"/>
+  <path data-step="1" class="norm" d="M300,70 L300,250"/>
   <!-- incident ray in denser, i>c -->
-  <path class="inc" marker-end="url(#a1)" d="M218,217 L298,162"/>
-  <text x="205" y="228" text-anchor="end" font-size="12" fill="#E8B65A">incident ray</text>
+  <path data-step="1" class="inc" marker-end="url(#a1)" d="M218,217 L298,162"/>
+  <text data-step="1" x="205" y="228" text-anchor="end" font-size="12" fill="#E8B65A">incident ray</text>
   <!-- totally reflected ray back into denser medium, angle = i -->
-  <path class="ref" marker-end="url(#a2)" d="M300,160 L382,217"/>
-  <text x="392" y="215" font-size="12" fill="#6FB7E0">reflected ray</text>
+  <path data-step="2" class="ref" marker-end="url(#a2)" d="M300,160 L382,217"/>
+  <text data-step="2" x="392" y="215" font-size="12" fill="#6FB7E0">reflected ray</text>
   <!-- no refracted ray -->
-  <path class="arc" d="M300,210 A50,50 0 0,1 268,197"/>
-  <text x="262" y="216" font-size="12" font-style="italic">i</text>
-  <path class="arc" d="M300,210 A50,50 0 0,0 332,197"/>
-  <text x="326" y="216" font-size="12" font-style="italic">i</text>
-  <text x="70" y="150" font-size="12">optically less dense medium</text>
-  <text x="70" y="185" font-size="12">optically denser medium</text>
-  <text x="300" y="290" text-anchor="middle" font-size="12">When <tspan font-style="italic">i</tspan> &gt; <tspan font-style="italic">c</tspan>, all light is reflected back: no refracted ray.</text>
+  <path data-step="3" class="arc" d="M300,210 A50,50 0 0,1 268,197"/>
+  <text data-step="3" x="262" y="216" font-size="12" font-style="italic">i</text>
+  <path data-step="3" class="arc" d="M300,210 A50,50 0 0,0 332,197"/>
+  <text data-step="3" x="326" y="216" font-size="12" font-style="italic">i</text>
+  <text data-step="3" x="70" y="150" font-size="12">optically less dense medium</text>
+  <text data-step="3" x="70" y="185" font-size="12">optically denser medium</text>
+  <text data-step="3" x="300" y="290" text-anchor="middle" font-size="12">When <tspan font-style="italic">i</tspan> &gt; <tspan font-style="italic">c</tspan>, all light is reflected back: no refracted ray.</text>
 </svg>

@@ -12,11 +12,11 @@
     </marker>
   </defs>
   <!-- only the straight arrow from start to finish, with its direction -->
-  <text class="yellow" x="46" y="40">displacement = straight line, A to B</text>
-  <line class="disp" x1="55" y1="235" x2="360" y2="149" marker-end="url(#ah)"/>
-  <circle class="pt" cx="55" cy="235" r="6"/>
-  <circle class="pt" cx="370" cy="145" r="6"/>
-  <text x="38" y="262">A</text>
-  <text x="384" y="148">B</text>
-  <text class="dim" x="70" y="284">shortest route, with a stated direction</text>
+  <text data-step="3" class="yellow" x="46" y="40">displacement = straight line, A to B</text>
+  <line data-step="1" class="disp" x1="55" y1="235" x2="360" y2="149" marker-end="url(#ah)"/>
+  <circle data-step="1" class="pt" cx="55" cy="235" r="6"/>
+  <circle data-step="2" class="pt" cx="370" cy="145" r="6"/>
+  <text data-step="3" x="38" y="262">A</text>
+  <text data-step="4" x="384" y="148">B</text>
+  <text data-step="4" class="dim" x="70" y="284">shortest route, with a stated direction</text>
 </svg>

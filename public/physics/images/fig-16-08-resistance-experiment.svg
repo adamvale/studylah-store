@@ -7,37 +7,37 @@
     .accent { stroke:#6FB7E0; stroke-width:2; fill:none; }
   </style>
   <!-- main loop -->
-  <path class="wire" d="M90,70 L430,70 L430,152 M430,188 L430,270 L90,270 L90,70"/>
+  <path data-step="1" class="wire" d="M90,70 L430,70 L430,152 M430,188 L430,270 L90,270 L90,70"/>
 
   <!-- cells on top edge -->
-  <line class="wire" x1="230" y1="52" x2="230" y2="88" stroke-width="2.4"/>
-  <line class="wire" x1="246" y1="62" x2="246" y2="78" stroke-width="5"/>
-  <line class="wire" x1="258" y1="52" x2="258" y2="88" stroke-width="2.4"/>
-  <line class="wire" x1="274" y1="62" x2="274" y2="78" stroke-width="5"/>
-  <text x="252" y="42" class="lbl" text-anchor="middle">cells</text>
+  <line data-step="2" class="wire" x1="230" y1="52" x2="230" y2="88" stroke-width="2.4"/>
+  <line data-step="2" class="wire" x1="246" y1="62" x2="246" y2="78" stroke-width="5"/>
+  <line data-step="2" class="wire" x1="258" y1="52" x2="258" y2="88" stroke-width="2.4"/>
+  <line data-step="2" class="wire" x1="274" y1="62" x2="274" y2="78" stroke-width="5"/>
+  <text data-step="2" x="252" y="42" class="lbl" text-anchor="middle">cells</text>
 
   <!-- variable resistor on left edge -->
-  <rect class="wire" x="78" y="150" width="24" height="48"/>
-  <line class="accent" x1="70" y1="205" x2="110" y2="143"/>
-  <path class="accent" d="M110,143 l-8,3 3,6" fill="#6FB7E0"/>
-  <text x="64" y="132" class="lbl" text-anchor="end">variable</text>
-  <text x="64" y="150" class="lbl" text-anchor="end">resistor</text>
+  <rect data-step="3" class="wire" x="78" y="150" width="24" height="48"/>
+  <line data-step="3" class="accent" x1="70" y1="205" x2="110" y2="143"/>
+  <path data-step="3" class="accent" d="M110,143 l-8,3 3,6" fill="#6FB7E0"/>
+  <text data-step="3" x="64" y="132" class="lbl" text-anchor="end">variable</text>
+  <text data-step="3" x="64" y="150" class="lbl" text-anchor="end">resistor</text>
 
   <!-- metallic conductor on bottom edge -->
-  <rect class="wire" x="200" y="258" width="120" height="24" fill="#6FB7E0" fill-opacity="0.22"/>
-  <text x="260" y="248" class="lbl" text-anchor="middle">metallic conductor</text>
+  <rect data-step="4" class="wire" x="200" y="258" width="120" height="24" fill="#6FB7E0" fill-opacity="0.22"/>
+  <text data-step="4" x="260" y="248" class="lbl" text-anchor="middle">metallic conductor</text>
 
   <!-- ammeter in series on right edge -->
-  <circle class="wire" cx="430" cy="170" r="18"/>
-  <text x="430" y="176" font-size="15" text-anchor="middle">A</text>
-  <text x="404" y="176" class="lbl" text-anchor="end">ammeter (series)</text>
+  <circle data-step="5" class="wire" cx="430" cy="170" r="18"/>
+  <text data-step="5" x="430" y="176" font-size="15" text-anchor="middle">A</text>
+  <text data-step="5" x="404" y="176" class="lbl" text-anchor="end">ammeter (series)</text>
 
   <!-- voltmeter in parallel across conductor -->
-  <line class="wire" x1="230" y1="282" x2="230" y2="320"/>
-  <line class="wire" x1="290" y1="282" x2="290" y2="320"/>
-  <line class="wire" x1="230" y1="320" x2="242" y2="320"/>
-  <line class="wire" x1="278" y1="320" x2="290" y2="320"/>
-  <circle class="wire" cx="260" cy="320" r="18"/>
-  <text x="260" y="326" font-size="15" text-anchor="middle">V</text>
-  <text x="300" y="325" class="lbl">voltmeter (parallel)</text>
+  <line data-step="6" class="wire" x1="230" y1="282" x2="230" y2="320"/>
+  <line data-step="6" class="wire" x1="290" y1="282" x2="290" y2="320"/>
+  <line data-step="6" class="wire" x1="230" y1="320" x2="242" y2="320"/>
+  <line data-step="6" class="wire" x1="278" y1="320" x2="290" y2="320"/>
+  <circle data-step="6" class="wire" cx="260" cy="320" r="18"/>
+  <text data-step="6" x="260" y="326" font-size="15" text-anchor="middle">V</text>
+  <text data-step="6" x="300" y="325" class="lbl">voltmeter (parallel)</text>
 </svg>

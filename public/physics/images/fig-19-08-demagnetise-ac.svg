@@ -11,21 +11,21 @@
   </style>
 
   <!-- magnet with randomised domains inside solenoid -->
-  <rect class="bar" x="160" y="90" width="230" height="40" rx="2"/>
+  <rect data-step="1" class="bar" x="160" y="90" width="230" height="40" rx="2"/>
   <!-- random domain arrows inside -->
-  <g class="arr">
+  <g data-step="2" class="arr">
     <line x1="180" y1="110" x2="205" y2="100"/><polygon fill="#9AA0A6" points="205,100 197,100 202,107"/>
     <line x1="225" y1="102" x2="250" y2="120"/><polygon fill="#9AA0A6" points="250,120 242,119 247,113"/>
     <line x1="270" y1="118" x2="295" y2="102"/><polygon fill="#9AA0A6" points="295,102 287,103 292,109"/>
     <line x1="315" y1="105" x2="340" y2="122"/><polygon fill="#9AA0A6" points="340,122 332,121 337,115"/>
     <line x1="355" y1="120" x2="378" y2="104"/><polygon fill="#9AA0A6" points="378,104 370,105 375,111"/>
   </g>
-  <text x="30" y="58" class="lbl">domains left</text>
-  <text x="30" y="74" class="lbl">pointing randomly</text>
-  <path class="lead" d="M135,72 L180,103"/>
+  <text data-step="2" x="30" y="58" class="lbl">domains left</text>
+  <text data-step="2" x="30" y="74" class="lbl">pointing randomly</text>
+  <path data-step="2" class="lead" d="M135,72 L180,103"/>
 
   <!-- coils -->
-  <g class="coil">
+  <g data-step="3" class="coil">
     <path d="M170,90 C165,74 195,74 190,90"/>
     <path d="M195,90 C190,74 220,74 215,90"/>
     <path d="M220,90 C215,74 245,74 240,90"/>
@@ -38,20 +38,20 @@
   </g>
 
   <!-- withdraw arrow -->
-  <g class="mv">
+  <g data-step="4" class="mv">
     <line x1="390" y1="60" x2="470" y2="60"/>
     <polygon fill="#86C98B" points="470,53 470,67 484,60"/>
   </g>
-  <text x="400" y="45" class="lbl">magnet slowly withdrawn</text>
+  <text data-step="4" x="400" y="45" class="lbl">magnet slowly withdrawn</text>
 
   <!-- leads to a.c. supply -->
-  <path class="wire" d="M185,130 L185,180 L270,180"/>
-  <path class="wire" d="M375,130 L375,180 L310,180"/>
+  <path data-step="5" class="wire" d="M185,130 L185,180 L270,180"/>
+  <path data-step="5" class="wire" d="M375,130 L375,180 L310,180"/>
   <!-- a.c. source symbol -->
-  <circle cx="290" cy="180" r="16" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
-  <path d="M282,180 q4,-8 8,0 q4,8 8,0" fill="none" stroke="#E8B65A" stroke-width="1.6"/>
-  <text x="290" y="215" text-anchor="middle" class="lbl">a.c. supply</text>
+  <circle data-step="6" cx="290" cy="180" r="16" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
+  <path data-step="6" d="M282,180 q4,-8 8,0 q4,8 8,0" fill="none" stroke="#E8B65A" stroke-width="1.6"/>
+  <text data-step="6" x="290" y="215" text-anchor="middle" class="lbl">a.c. supply</text>
 
-  <text x="120" y="255" class="lbl">The reversing current keeps flipping the field, shaking the</text>
-  <text x="120" y="272" class="lbl">domains out of alignment as the magnet is drawn away.</text>
+  <text data-step="6" x="120" y="255" class="lbl">The reversing current keeps flipping the field, shaking the</text>
+  <text data-step="6" x="120" y="272" class="lbl">domains out of alignment as the magnet is drawn away.</text>
 </svg>

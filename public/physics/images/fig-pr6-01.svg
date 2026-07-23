@@ -13,24 +13,24 @@
   </defs>
 
   <!-- thin wire: area A -->
-  <path class="cond" d="M130,56 L330,56 M130,84 L330,84"/>
-  <path class="cond" d="M330,56 A9,14 0 0 1 330,84"/>
-  <ellipse class="face" cx="130" cy="70" rx="9" ry="14"/>
-  <path class="lead" d="M112,70 L119,70"/>
-  <text x="108" y="74" text-anchor="end">area A</text>
-  <text x="352" y="75">R</text>
-  <path class="dim" d="M130,88 L130,110 M330,88 L330,110"/>
-  <path class="dim" d="M130,104 L330,104" marker-start="url(#p1b)" marker-end="url(#p1a)"/>
-  <text x="230" y="126" text-anchor="middle" class="note">length L</text>
+  <path data-step="1" class="cond" d="M130,56 L330,56 M130,84 L330,84"/>
+  <path data-step="1" class="cond" d="M330,56 A9,14 0 0 1 330,84"/>
+  <ellipse data-step="1" class="face" cx="130" cy="70" rx="9" ry="14"/>
+  <path data-step="1" class="lead" d="M112,70 L119,70"/>
+  <text data-step="1" x="108" y="74" text-anchor="end">area A</text>
+  <text data-step="1" x="352" y="75">R</text>
+  <path data-step="1" class="dim" d="M130,88 L130,110 M330,88 L330,110"/>
+  <path data-step="1" class="dim" d="M130,104 L330,104" marker-start="url(#p1b)" marker-end="url(#p1a)"/>
+  <text data-step="1" x="230" y="126" text-anchor="middle" class="note">length L</text>
 
   <!-- thick wire: area doubled, same length -->
-  <path class="cond" d="M130,160 L330,160 M130,212 L330,212"/>
-  <path class="cond" d="M330,160 A9,26 0 0 1 330,212"/>
-  <ellipse class="face" cx="130" cy="186" rx="9" ry="26"/>
-  <path class="lead" d="M112,186 L119,186"/>
-  <text x="108" y="190" text-anchor="end">area 2A</text>
-  <text x="352" y="191">R = ?</text>
-  <path class="dim" d="M130,216 L130,236 M330,216 L330,236"/>
-  <path class="dim" d="M130,230 L330,230" marker-start="url(#p1b)" marker-end="url(#p1a)"/>
-  <text x="230" y="252" text-anchor="middle" class="note">same length L</text>
+  <path data-step="2" class="cond" d="M130,160 L330,160 M130,212 L330,212"/>
+  <path data-step="2" class="cond" d="M330,160 A9,26 0 0 1 330,212"/>
+  <ellipse data-step="2" class="face" cx="130" cy="186" rx="9" ry="26"/>
+  <path data-step="2" class="lead" d="M112,186 L119,186"/>
+  <text data-step="2" x="108" y="190" text-anchor="end">area 2A</text>
+  <text data-step="2" x="352" y="191">R = ?</text>
+  <path data-step="2" class="dim" d="M130,216 L130,236 M330,216 L330,236"/>
+  <path data-step="2" class="dim" d="M130,230 L330,230" marker-start="url(#p1b)" marker-end="url(#p1a)"/>
+  <text data-step="2" x="230" y="252" text-anchor="middle" class="note">same length L</text>
 </svg>

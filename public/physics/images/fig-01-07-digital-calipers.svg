@@ -8,30 +8,30 @@
     .disp { fill:#86C98B; font-size:18px; font-family:monospace; }
   </style>
   <!-- main beam -->
-  <rect class="fillg" x="150" y="150" width="360" height="20"/>
+  <rect data-step="1" class="fillg" x="150" y="150" width="360" height="20"/>
   <!-- fixed jaw (left): small inside jaw on top, large outside jaw below -->
-  <path class="fillg" d="M150,150 v-50 h18 v50 Z"/>
-  <path class="fillg" d="M150,170 v65 h18 v-65 Z"/>
+  <path data-step="2" class="fillg" d="M150,150 v-50 h18 v50 Z"/>
+  <path data-step="2" class="fillg" d="M150,170 v65 h18 v-65 Z"/>
   <!-- sliding head with display -->
-  <rect class="fillg" x="250" y="120" width="120" height="80" rx="4"/>
-  <rect x="262" y="132" width="96" height="30" rx="3" fill="#0d1b12" stroke="#86C98B" stroke-width="1.2"/>
-  <text x="352" y="154" text-anchor="end" class="disp">0.00</text>
+  <rect data-step="3" class="fillg" x="250" y="120" width="120" height="80" rx="4"/>
+  <rect data-step="3" x="262" y="132" width="96" height="30" rx="3" fill="#0d1b12" stroke="#86C98B" stroke-width="1.2"/>
+  <text data-step="3" x="352" y="154" text-anchor="end" class="disp">0.00</text>
   <!-- moving jaws attached to head -->
-  <path class="fillg" d="M250,150 v-50 h16 v50 Z"/>
-  <path class="fillg" d="M250,170 v65 h16 v-65 Z"/>
+  <path data-step="4" class="fillg" d="M250,150 v-50 h16 v50 Z"/>
+  <path data-step="4" class="fillg" d="M250,170 v65 h16 v-65 Z"/>
   <!-- depth tail (right) -->
-  <rect class="fillg" x="510" y="156" width="70" height="8"/>
+  <rect data-step="5" class="fillg" x="510" y="156" width="70" height="8"/>
   <!-- thumb roller -->
-  <circle class="fillg" cx="300" cy="210" r="10"/>
+  <circle data-step="6" class="fillg" cx="300" cy="210" r="10"/>
   <!-- labels -->
-  <text class="lbl" x="120" y="60" text-anchor="middle">inside jaws</text>
-  <path class="lead" d="M120,66 L159,120"/>
-  <text class="lbl" x="120" y="280" text-anchor="middle">outside jaws</text>
-  <path class="lead" d="M120,268 L158,225"/>
-  <text class="lbl" x="310" y="105" text-anchor="middle">digital display</text>
-  <path class="lead" d="M310,110 L310,130"/>
-  <text class="lbl" x="450" y="120" text-anchor="middle">locking screw</text>
-  <path class="lead" d="M450,126 L360,150"/>
-  <text class="lbl" x="545" y="196" text-anchor="middle">tail (depth)</text>
-  <path class="lead" d="M545,182 L550,166"/>
+  <text data-step="7" class="lbl" x="120" y="60" text-anchor="middle">inside jaws</text>
+  <path data-step="7" class="lead" d="M120,66 L159,120"/>
+  <text data-step="7" class="lbl" x="120" y="280" text-anchor="middle">outside jaws</text>
+  <path data-step="7" class="lead" d="M120,268 L158,225"/>
+  <text data-step="7" class="lbl" x="310" y="105" text-anchor="middle">digital display</text>
+  <path data-step="7" class="lead" d="M310,110 L310,130"/>
+  <text data-step="7" class="lbl" x="450" y="120" text-anchor="middle">locking screw</text>
+  <path data-step="7" class="lead" d="M450,126 L360,150"/>
+  <text data-step="7" class="lbl" x="545" y="196" text-anchor="middle">tail (depth)</text>
+  <path data-step="7" class="lead" d="M545,182 L550,166"/>
 </svg>

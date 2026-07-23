@@ -147,7 +147,19 @@ async function main(): Promise<void> {
   const outDir = path.join(baseDir, voice);
   fs.mkdirSync(outDir, { recursive: true });
 
-  const lines = collectLines();
+  let lines = collectLines();
+
+  // Narrow to lines containing a phrase. Editing one fixed line (a greeting,
+  // say) changes only its hash, but the pool it sits in also holds every line
+  // that has never been generated, and a plain re-run would bill for all of
+  // them. This keeps a one-line fix to one line.
+  //
+  //   GUGU_TTS_MATCH="I am Amy" npm run gugu:tts
+  const match = process.env.GUGU_TTS_MATCH;
+  if (match) {
+    lines = lines.filter((l) => l.includes(match));
+    console.log(`Scoped to lines containing ${JSON.stringify(match)}: ${lines.length} matched.`);
+  }
 
   // Dry run: report what WOULD be generated (line count + characters, which is
   // what ElevenLabs bills on) and stop, without touching the API.

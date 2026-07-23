@@ -13,26 +13,26 @@
     .lead { stroke:#9AA0A6; stroke-width:1.1; }
     .etrans { stroke:#E8B65A; stroke-width:1.8; fill:none; }
   </style>
-  <text x="300" y="26" text-anchor="middle" font-size="15">Rubbing a polythene rod with a cloth</text>
+  <text data-step="1" x="300" y="26" text-anchor="middle" font-size="15">Rubbing a polythene rod with a cloth</text>
   <!-- cloth blob (left) with + charges -->
-  <path class="cloth" d="M70,150 Q60,90 130,95 Q190,90 190,150 Q195,215 130,210 Q65,215 70,150 Z"/>
-  <text class="pos" x="105" y="135">+</text>
-  <text class="pos" x="150" y="135">+</text>
-  <text class="pos" x="105" y="170">+</text>
-  <text class="pos" x="150" y="170">+</text>
-  <text class="pos" x="128" y="200">+</text>
-  <text x="130" y="245" text-anchor="middle" font-size="13">cloth: loses electrons</text>
-  <text x="130" y="262" text-anchor="middle" font-size="13" fill="#E58F8F">becomes positive (deficit of e⁻)</text>
+  <path data-step="1" class="cloth" d="M70,150 Q60,90 130,95 Q190,90 190,150 Q195,215 130,210 Q65,215 70,150 Z"/>
+  <text data-step="1" class="pos" x="105" y="135">+</text>
+  <text data-step="1" class="pos" x="150" y="135">+</text>
+  <text data-step="1" class="pos" x="105" y="170">+</text>
+  <text data-step="1" class="pos" x="150" y="170">+</text>
+  <text data-step="1" class="pos" x="128" y="200">+</text>
+  <text data-step="1" x="130" y="245" text-anchor="middle" font-size="13">cloth: loses electrons</text>
+  <text data-step="1" x="130" y="262" text-anchor="middle" font-size="13" fill="#E58F8F">becomes positive (deficit of e⁻)</text>
   <!-- polythene rod (right) with - charges -->
-  <rect class="rod" x="360" y="135" width="180" height="34" rx="8"/>
-  <text class="neg" x="385" y="157">−</text>
-  <text class="neg" x="415" y="157">−</text>
-  <text class="neg" x="445" y="157">−</text>
-  <text class="neg" x="475" y="157">−</text>
-  <text class="neg" x="505" y="157">−</text>
-  <text x="450" y="200" text-anchor="middle" font-size="13">polythene rod: gains electrons</text>
-  <text x="450" y="217" text-anchor="middle" font-size="13" fill="#6FB7E0">becomes negative (excess of e⁻)</text>
+  <rect data-step="2" class="rod" x="360" y="135" width="180" height="34" rx="8"/>
+  <text data-step="2" class="neg" x="385" y="157">−</text>
+  <text data-step="2" class="neg" x="415" y="157">−</text>
+  <text data-step="2" class="neg" x="445" y="157">−</text>
+  <text data-step="2" class="neg" x="475" y="157">−</text>
+  <text data-step="2" class="neg" x="505" y="157">−</text>
+  <text data-step="2" x="450" y="200" text-anchor="middle" font-size="13">polythene rod: gains electrons</text>
+  <text data-step="2" x="450" y="217" text-anchor="middle" font-size="13" fill="#6FB7E0">becomes negative (excess of e⁻)</text>
   <!-- electron transfer arrow cloth -> rod -->
-  <path class="etrans" d="M195,120 Q290,80 380,120" marker-end="url(#ah9)"/>
-  <text x="288" y="78" text-anchor="middle" font-size="13" fill="#E8B65A">electrons transferred from cloth to rod</text>
+  <path data-step="3" class="etrans" d="M195,120 Q290,80 380,120" marker-end="url(#ah9)"/>
+  <text data-step="3" x="288" y="78" text-anchor="middle" font-size="13" fill="#E8B65A">electrons transferred from cloth to rod</text>
 </svg>

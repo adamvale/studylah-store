@@ -19,41 +19,41 @@
   </defs>
 
   <!-- stand -->
-  <path class="base" d="M50,376 L190,376"/>
-  <path class="stand" d="M100,376 L100,60"/>
-  <rect class="clamp" x="90" y="80" width="20" height="16"/>
-  <path class="stand" d="M100,88 L172,88"/>
-  <text x="114" y="72" font-size="11.5">clamp</text>
+  <path data-step="1" class="base" d="M50,376 L190,376"/>
+  <path data-step="1" class="stand" d="M100,376 L100,60"/>
+  <rect data-step="1" class="clamp" x="90" y="80" width="20" height="16"/>
+  <path data-step="1" class="stand" d="M100,88 L172,88"/>
+  <text data-step="1" x="114" y="72" font-size="11.5">clamp</text>
 
   <!-- spring -->
-  <path class="spring" d="M172,90 L186,100 L158,112 L186,124 L158,136 L186,148 L158,160 L186,172 L158,184 L186,196 L172,208 L172,215"/>
-  <text x="192" y="126">spring</text>
+  <path data-step="2" class="spring" d="M172,90 L186,100 L158,112 L186,124 L158,136 L186,148 L158,160 L186,172 L158,184 L186,196 L172,208 L172,215"/>
+  <text data-step="2" x="192" y="126">spring</text>
 
   <!-- slotted masses -->
-  <path class="spring" d="M172,215 L172,224"/>
-  <rect class="mass" x="152" y="224" width="40" height="11"/>
-  <rect class="mass" x="152" y="237" width="40" height="11"/>
-  <rect class="mass" x="152" y="250" width="40" height="11"/>
-  <text x="200" y="252">slotted masses</text>
+  <path data-step="3" class="spring" d="M172,215 L172,224"/>
+  <rect data-step="3" class="mass" x="152" y="224" width="40" height="11"/>
+  <rect data-step="3" class="mass" x="152" y="237" width="40" height="11"/>
+  <rect data-step="3" class="mass" x="152" y="250" width="40" height="11"/>
+  <text data-step="3" x="200" y="252">slotted masses</text>
 
   <!-- vertical rule -->
-  <rect class="rule" x="300" y="60" width="24" height="300"/>
-  <path class="tick" d="M300,80 L312,80 M300,110 L308,110 M300,140 L312,140 M300,170 L308,170 M300,200 L312,200 M300,230 L308,230 M300,260 L312,260 M300,290 L308,290 M300,320 L312,320 M300,350 L308,350"/>
-  <text class="lbl-guide" x="296" y="48">vertical rule / cm</text>
-  <text class="scale-lbl" x="330" y="84">0</text>
-  <text class="scale-lbl" x="330" y="144">10</text>
-  <text class="scale-lbl" x="330" y="204">20</text>
-  <text class="scale-lbl" x="330" y="264">30</text>
-  <text class="scale-lbl" x="330" y="324">40</text>
+  <rect data-step="4" class="rule" x="300" y="60" width="24" height="300"/>
+  <path data-step="4" class="tick" d="M300,80 L312,80 M300,110 L308,110 M300,140 L312,140 M300,170 L308,170 M300,200 L312,200 M300,230 L308,230 M300,260 L312,260 M300,290 L308,290 M300,320 L312,320 M300,350 L308,350"/>
+  <text data-step="4" class="lbl-guide" x="296" y="48">vertical rule / cm</text>
+  <text data-step="4" class="scale-lbl" x="330" y="84">0</text>
+  <text data-step="4" class="scale-lbl" x="330" y="144">10</text>
+  <text data-step="4" class="scale-lbl" x="330" y="204">20</text>
+  <text data-step="4" class="scale-lbl" x="330" y="264">30</text>
+  <text data-step="4" class="scale-lbl" x="330" y="324">40</text>
 
   <!-- natural length, stretched length and the extension between them -->
-  <path class="guide-dash" d="M146,150 L300,150"/>
-  <path class="guide-dash" d="M146,215 L300,215"/>
-  <path class="guide" d="M250,150 L250,215" marker-start="url(#c5gry)" marker-end="url(#c5gry)"/>
-  <text class="lbl-guide" x="258" y="186">e</text>
-  <text class="lbl-guide-s" x="198" y="145">natural length</text>
-  <text class="lbl-guide-s" x="198" y="231">stretched length</text>
+  <path data-step="5" class="guide-dash" d="M146,150 L300,150"/>
+  <path data-step="5" class="guide-dash" d="M146,215 L300,215"/>
+  <path data-step="5" class="guide" d="M250,150 L250,215" marker-start="url(#c5gry)" marker-end="url(#c5gry)"/>
+  <text data-step="5" class="lbl-guide" x="258" y="186">e</text>
+  <text data-step="5" class="lbl-guide-s" x="198" y="145">natural length</text>
+  <text data-step="5" class="lbl-guide-s" x="198" y="231">stretched length</text>
 
-  <text x="52" y="394">stand</text>
-  <text x="210" y="410" text-anchor="middle">extension e = stretched length minus natural length</text>
+  <text data-step="5" x="52" y="394">stand</text>
+  <text data-step="5" x="210" y="410" text-anchor="middle">extension e = stretched length minus natural length</text>
 </svg>

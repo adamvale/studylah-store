@@ -8,16 +8,16 @@
     .small { font-size:13px; text-anchor:middle; fill:#9AA0A6; }
   </style>
   <!-- hot block -->
-  <rect class="hot" x="30" y="55" width="130" height="80" rx="6"/>
-  <text class="lbl" x="95" y="95">higher</text>
-  <text class="lbl" x="95" y="112">temperature</text>
+  <rect data-step="1" class="hot" x="30" y="55" width="130" height="80" rx="6"/>
+  <text data-step="1" class="lbl" x="95" y="95">higher</text>
+  <text data-step="1" class="lbl" x="95" y="112">temperature</text>
   <!-- cold block -->
-  <rect class="cold" x="320" y="55" width="130" height="80" rx="6"/>
-  <text class="lbl" x="385" y="95">lower</text>
-  <text class="lbl" x="385" y="112">temperature</text>
+  <rect data-step="2" class="cold" x="320" y="55" width="130" height="80" rx="6"/>
+  <text data-step="2" class="lbl" x="385" y="95">lower</text>
+  <text data-step="2" class="lbl" x="385" y="112">temperature</text>
   <!-- arrow -->
-  <path class="arrow" d="M170,95 L300,95"/>
-  <path class="arrow" d="M290,88 L302,95 L290,102"/>
-  <text class="small" x="235" y="66">energy transfer</text>
-  <text class="small" x="235" y="84">by heating</text>
+  <path data-step="3" class="arrow" d="M170,95 L300,95"/>
+  <path data-step="3" class="arrow" d="M290,88 L302,95 L290,102"/>
+  <text data-step="3" class="small" x="235" y="66">energy transfer</text>
+  <text data-step="3" class="small" x="235" y="84">by heating</text>
 </svg>

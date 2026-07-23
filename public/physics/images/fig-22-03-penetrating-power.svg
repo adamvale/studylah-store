@@ -13,35 +13,35 @@
     .stop { fill:#E58F8F; }
   </style>
   <!-- source -->
-  <rect class="src" x="40" y="120" width="34" height="70" rx="4"/>
-  <text x="57" y="210" text-anchor="middle" class="cap">source</text>
+  <rect data-step="1" class="src" x="40" y="120" width="34" height="70" rx="4"/>
+  <text data-step="1" x="57" y="210" text-anchor="middle" class="cap">source</text>
 
   <!-- barriers -->
-  <rect class="paper" x="205" y="70" width="8" height="150"/>
-  <rect class="alum" x="360" y="60" width="20" height="170"/>
-  <rect class="pb" x="510" y="45" width="40" height="200"/>
+  <rect data-step="2" class="paper" x="205" y="70" width="8" height="150"/>
+  <rect data-step="2" class="alum" x="360" y="60" width="20" height="170"/>
+  <rect data-step="2" class="pb" x="510" y="45" width="40" height="200"/>
 
   <!-- alpha: stops at paper -->
-  <line class="alpha" x1="74" y1="105" x2="205" y2="105"/>
-  <circle class="stop" cx="207" cy="105" r="4"/>
-  <text x="80" y="98" fill="#E58F8F">&#945;-particle</text>
+  <line data-step="3" class="alpha" x1="74" y1="105" x2="205" y2="105"/>
+  <circle data-step="3" class="stop" cx="207" cy="105" r="4"/>
+  <text data-step="3" x="80" y="98" fill="#E58F8F">&#945;-particle</text>
 
   <!-- beta: through paper, stops at aluminium -->
-  <line class="beta" x1="74" y1="150" x2="360" y2="150"/>
-  <circle cx="362" cy="150" r="4" fill="#6FB7E0"/>
-  <text x="80" y="143" fill="#6FB7E0">&#946;-particle</text>
+  <line data-step="4" class="beta" x1="74" y1="150" x2="360" y2="150"/>
+  <circle data-step="4" cx="362" cy="150" r="4" fill="#6FB7E0"/>
+  <text data-step="4" x="80" y="143" fill="#6FB7E0">&#946;-particle</text>
 
   <!-- gamma: through paper and aluminium, attenuated by lead -->
-  <line class="gamma" x1="74" y1="195" x2="530" y2="195"/>
-  <line class="gamma" x1="530" y1="195" x2="560" y2="195" stroke-dasharray="4 4" stroke-opacity="0.5"/>
-  <text x="80" y="188" fill="#86C98B">&#947;-ray</text>
+  <line data-step="5" class="gamma" x1="74" y1="195" x2="530" y2="195"/>
+  <line data-step="5" class="gamma" x1="530" y1="195" x2="560" y2="195" stroke-dasharray="4 4" stroke-opacity="0.5"/>
+  <text data-step="5" x="80" y="188" fill="#86C98B">&#947;-ray</text>
 
   <!-- barrier labels -->
-  <text x="209" y="245" text-anchor="middle" class="cap">paper</text>
-  <text x="370" y="248" text-anchor="middle" class="cap">a few mm of</text>
-  <text x="370" y="263" text-anchor="middle" class="cap">aluminium</text>
-  <text x="530" y="268" text-anchor="middle" class="cap">a few cm of</text>
-  <text x="530" y="283" text-anchor="middle" class="cap">lead</text>
+  <text data-step="6" x="209" y="245" text-anchor="middle" class="cap">paper</text>
+  <text data-step="6" x="370" y="248" text-anchor="middle" class="cap">a few mm of</text>
+  <text data-step="6" x="370" y="263" text-anchor="middle" class="cap">aluminium</text>
+  <text data-step="6" x="530" y="268" text-anchor="middle" class="cap">a few cm of</text>
+  <text data-step="6" x="530" y="283" text-anchor="middle" class="cap">lead</text>
 
-  <text x="320" y="30" text-anchor="middle" font-size="14" fill="#E8B65A">Penetrating power: &#947; &gt; &#946; &gt; &#945;</text>
+  <text data-step="6" x="320" y="30" text-anchor="middle" font-size="14" fill="#E8B65A">Penetrating power: &#947; &gt; &#946; &gt; &#945;</text>
 </svg>

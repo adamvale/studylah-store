@@ -8,16 +8,16 @@
     .lbl { fill:#E8B65A; font-size:14.5px; }
   </style>
   <!-- five empty compass circles around the magnet -->
-  <circle class="comp" cx="130" cy="150" r="17"/>
-  <circle class="comp" cx="185" cy="95"  r="17"/>
-  <circle class="comp" cx="330" cy="70"  r="17"/>
-  <circle class="comp" cx="380" cy="150" r="17"/>
-  <circle class="comp" cx="260" cy="200" r="17"/>
+  <circle data-step="1" class="comp" cx="130" cy="150" r="17"/>
+  <circle data-step="1" class="comp" cx="185" cy="95"  r="17"/>
+  <circle data-step="1" class="comp" cx="330" cy="70"  r="17"/>
+  <circle data-step="1" class="comp" cx="380" cy="150" r="17"/>
+  <circle data-step="2" class="comp" cx="260" cy="200" r="17"/>
 
-  <rect class="magN" x="160" y="135" width="95" height="30" rx="2"/>
-  <rect class="magS" x="255" y="135" width="95" height="30" rx="2"/>
-  <text class="pole" x="175" y="156">N</text>
-  <text class="pole" x="330" y="156">S</text>
+  <rect data-step="2" class="magN" x="160" y="135" width="95" height="30" rx="2"/>
+  <rect data-step="2" class="magS" x="255" y="135" width="95" height="30" rx="2"/>
+  <text data-step="3" class="pole" x="175" y="156">N</text>
+  <text data-step="3" class="pole" x="330" y="156">S</text>
 
-  <text x="255" y="35" text-anchor="middle" class="lbl">The circles are plotting compasses. Draw the needle in each.</text>
+  <text data-step="4" x="255" y="35" text-anchor="middle" class="lbl">The circles are plotting compasses. Draw the needle in each.</text>
 </svg>

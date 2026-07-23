@@ -48,7 +48,7 @@ const PAGE_LINES: Record<string, string> = {
 // back to the robotic device voice. The on-screen hero still greets the
 // student by name; only the spoken line is generic.
 const TODAY_FIRST =
-  "Welcome to StudyLand. I am Gugu, your guide. Let us start small with your daily three, three quick questions to warm up.";
+  "Welcome to StudyLand. I am Amy, your guide. Let us start small with your daily three, three quick questions to warm up.";
 const TODAY_DONE =
   "Welcome back. Your streak is safe for today. If you have a few minutes, we can clear a mistake or try some bonus practice.";
 const TODAY_RETURN =

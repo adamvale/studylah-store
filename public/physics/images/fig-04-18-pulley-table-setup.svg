@@ -7,21 +7,21 @@
     .pulley { fill:none; stroke:#9AA0A6; stroke-width:2; }
   </style>
   <!-- table -->
-  <line class="table" x1="60" y1="120" x2="340" y2="120"/>
-  <line class="table" x1="90" y1="120" x2="90" y2="230"/>
-  <line class="table" x1="300" y1="120" x2="300" y2="230"/>
+  <line data-step="1" class="table" x1="60" y1="120" x2="340" y2="120"/>
+  <line data-step="1" class="table" x1="90" y1="120" x2="90" y2="230"/>
+  <line data-step="1" class="table" x1="300" y1="120" x2="300" y2="230"/>
   <!-- block on table -->
-  <rect class="box" x="150" y="82" width="60" height="38"/>
-  <text x="180" y="106" text-anchor="middle" font-size="13">8 kg</text>
-  <text x="200" y="150" font-size="12.5">smooth table</text>
+  <rect data-step="2" class="box" x="150" y="82" width="60" height="38"/>
+  <text data-step="2" x="180" y="106" text-anchor="middle" font-size="13">8 kg</text>
+  <text data-step="2" x="200" y="150" font-size="12.5">smooth table</text>
   <!-- pulley at edge -->
-  <circle class="pulley" cx="345" cy="120" r="12"/>
-  <text x="360" y="112" font-size="12.5">pulley</text>
+  <circle data-step="3" class="pulley" cx="345" cy="120" r="12"/>
+  <text data-step="3" x="360" y="112" font-size="12.5">pulley</text>
   <!-- rope -->
-  <path class="rope" d="M210,101 L333,110"/>
-  <path class="rope" d="M357,120 L357,190"/>
+  <path data-step="4" class="rope" d="M210,101 L333,110"/>
+  <path data-step="4" class="rope" d="M357,120 L357,190"/>
   <!-- hanging block -->
-  <rect class="box" x="332" y="190" width="50" height="40"/>
-  <text x="357" y="215" text-anchor="middle" font-size="13">2 kg</text>
-  <text x="230" y="265" text-anchor="middle" font-size="13">g = 10 N/kg; ignore friction and air resistance.</text>
+  <rect data-step="5" class="box" x="332" y="190" width="50" height="40"/>
+  <text data-step="5" x="357" y="215" text-anchor="middle" font-size="13">2 kg</text>
+  <text data-step="5" x="230" y="265" text-anchor="middle" font-size="13">g = 10 N/kg; ignore friction and air resistance.</text>
 </svg>

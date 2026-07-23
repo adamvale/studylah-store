@@ -13,7 +13,7 @@
     </marker>
   </defs>
   <!-- TOP: Block P, large base, small pressure -->
-  <g transform="translate(25,0)">
+  <g data-step="1" transform="translate(25,0)">
     <text x="120" y="30" text-anchor="middle" font-size="15" class="amber">Block P</text>
     <line class="arrow" x1="120" y1="42" x2="120" y2="92" marker-end="url(#ah)"/>
     <text x="132" y="72" class="lbl">F</text>
@@ -24,7 +24,7 @@
     <text x="120" y="218" text-anchor="middle" class="lbl">&#8594; smaller pressure</text>
   </g>
   <!-- BOTTOM: Block Q, small base, large pressure -->
-  <g transform="translate(-265,230)">
+  <g data-step="2" transform="translate(-265,230)">
     <text x="420" y="30" text-anchor="middle" font-size="15" class="amber">Block Q</text>
     <line class="arrow" x1="420" y1="42" x2="420" y2="92" marker-end="url(#ah)"/>
     <text x="432" y="72" class="lbl">F</text>
@@ -34,5 +34,5 @@
     <text x="420" y="200" text-anchor="middle" class="lbl">small contact area A</text>
     <text x="420" y="218" text-anchor="middle" class="lbl">&#8594; greater pressure</text>
   </g>
-  <text x="150" y="472" text-anchor="middle" font-size="12">Same force F, smaller area &#8594; more pressure</text>
+  <text data-step="2" x="150" y="472" text-anchor="middle" font-size="12">Same force F, smaller area &#8594; more pressure</text>
 </svg>

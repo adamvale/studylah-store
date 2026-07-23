@@ -6,6 +6,7 @@ import { Sci } from "@/components/sci-text";
 import { NamedIcon } from "@/components/icons";
 import { speak, stopSpeaking } from "@/lib/speak";
 import { physicsFigureSrc, type TeachingPack } from "@/lib/teaching";
+import { AnimatedFigure } from "@/components/animated-figure";
 
 // The teaching-moment player. Runs a topic's question bank; when a student picks
 // a wrong option, it looks up the misconception that answer reveals and has Gugu
@@ -18,8 +19,7 @@ function Figure({ figure }: { figure: string | null | undefined }) {
   if (!src) return null;
   return (
     <div className="mt-3 overflow-hidden rounded-xl border border-hairline bg-white/5 p-2">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt="" className="mx-auto max-h-52 w-full object-contain" />
+      <AnimatedFigure src={src} />
     </div>
   );
 }

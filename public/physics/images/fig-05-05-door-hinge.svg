@@ -8,19 +8,19 @@
     .lbl { font-size:14px; }
   </style>
   <!-- door as top-view horizontal bar, hinge at right -->
-  <rect class="door" x="80" y="70" width="300" height="16"/>
+  <rect data-step="1" class="door" x="80" y="70" width="300" height="16"/>
   <!-- hinge -->
-  <circle class="hinge" cx="378" cy="78" r="6"/>
-  <text class="lbl" x="378" y="52" text-anchor="middle">hinge (pivot)</text>
+  <circle data-step="2" class="hinge" cx="378" cy="78" r="6"/>
+  <text data-step="2" class="lbl" x="378" y="52" text-anchor="middle">hinge (pivot)</text>
   <!-- force F at left end, downward (push) -->
-  <line class="force" x1="95" y1="55" x2="95" y2="100"/>
-  <path class="force" d="M95,100 l-5,-10 M95,100 l5,-10"/>
-  <text class="lbl" x="70" y="60" fill="#E58F8F">F</text>
+  <line data-step="3" class="force" x1="95" y1="55" x2="95" y2="100"/>
+  <path data-step="3" class="force" d="M95,100 l-5,-10 M95,100 l5,-10"/>
+  <text data-step="3" class="lbl" x="70" y="60" fill="#E58F8F">F</text>
   <!-- distance -->
-  <line class="dim" x1="95" y1="130" x2="378" y2="130"/>
-  <path class="dim" d="M95,130 l8,-4 M95,130 l8,4"/>
-  <path class="dim" d="M378,130 l-8,-4 M378,130 l-8,4"/>
-  <line class="dim" x1="95" y1="100" x2="95" y2="130" stroke-dasharray="3 3"/>
-  <line class="dim" x1="378" y1="86" x2="378" y2="130" stroke-dasharray="3 3"/>
-  <text class="lbl" x="236" y="150" text-anchor="middle">distance, d</text>
+  <line data-step="4" class="dim" x1="95" y1="130" x2="378" y2="130"/>
+  <path data-step="4" class="dim" d="M95,130 l8,-4 M95,130 l8,4"/>
+  <path data-step="4" class="dim" d="M378,130 l-8,-4 M378,130 l-8,4"/>
+  <line data-step="4" class="dim" x1="95" y1="100" x2="95" y2="130" stroke-dasharray="3 3"/>
+  <line data-step="4" class="dim" x1="378" y1="86" x2="378" y2="130" stroke-dasharray="3 3"/>
+  <text data-step="4" class="lbl" x="236" y="150" text-anchor="middle">distance, d</text>
 </svg>

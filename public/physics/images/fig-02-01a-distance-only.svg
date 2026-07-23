@@ -7,11 +7,11 @@
     .dim { fill:#B9BDC7; font-size:15px; }
   </style>
   <!-- the winding walk from A to B: every step of the path counts -->
-  <text class="blue" x="52" y="40">distance = length of the whole path</text>
-  <path class="path" d="M55,235 C110,100 200,60 280,95 S360,120 368,142"/>
-  <circle class="pt" cx="55" cy="235" r="6"/>
-  <circle class="pt" cx="370" cy="145" r="6"/>
-  <text x="38" y="262">A</text>
-  <text x="384" y="148">B</text>
-  <text class="dim" x="80" y="284">every bend and detour is counted</text>
+  <text data-step="3" class="blue" x="52" y="40">distance = length of the whole path</text>
+  <path data-step="1" class="path" d="M55,235 C110,100 200,60 280,95 S360,120 368,142"/>
+  <circle data-step="1" class="pt" cx="55" cy="235" r="6"/>
+  <circle data-step="2" class="pt" cx="370" cy="145" r="6"/>
+  <text data-step="3" x="38" y="262">A</text>
+  <text data-step="4" x="384" y="148">B</text>
+  <text data-step="4" class="dim" x="80" y="284">every bend and detour is counted</text>
 </svg>

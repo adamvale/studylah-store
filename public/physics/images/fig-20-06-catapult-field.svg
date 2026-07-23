@@ -18,38 +18,38 @@
   </defs>
 
   <!-- poles -->
-  <rect class="pole" x="40" y="70" width="46" height="200"/>
-  <rect class="pole" x="554" y="70" width="46" height="200"/>
-  <text class="plbl" x="63" y="178">N</text>
-  <text class="plbl" x="577" y="178">S</text>
+  <rect data-step="1" class="pole" x="40" y="70" width="46" height="200"/>
+  <rect data-step="1" class="pole" x="554" y="70" width="46" height="200"/>
+  <text data-step="1" class="plbl" x="63" y="178">N</text>
+  <text data-step="1" class="plbl" x="577" y="178">S</text>
 
   <!-- resultant catapult field: bunched below the wire, sparse above -->
   <!-- top (weak / spread) -->
-  <path class="fld" d="M86,110 C240,102 440,102 554,110" marker-end="url(#f6)"/>
-  <path class="fld" d="M86,140 C240,132 300,150 320,150" marker-end="url(#f6)"/>
-  <path class="fld" d="M340,150 C360,150 440,132 554,140" marker-end="url(#f6)"/>
+  <path data-step="2" class="fld" d="M86,110 C240,102 440,102 554,110" marker-end="url(#f6)"/>
+  <path data-step="2" class="fld" d="M86,140 C240,132 300,150 320,150" marker-end="url(#f6)"/>
+  <path data-step="2" class="fld" d="M340,150 C360,150 440,132 554,140" marker-end="url(#f6)"/>
   <!-- bottom (strong / bunched, curving around wire) -->
-  <path class="fld" d="M86,200 C240,210 300,196 320,192" marker-end="url(#f6)"/>
-  <path class="fld" d="M340,192 C360,196 440,210 554,200" marker-end="url(#f6)"/>
-  <path class="fld" d="M86,225 C240,235 440,235 554,225" marker-end="url(#f6)"/>
-  <path class="fld" d="M86,250 C240,258 440,258 554,250" marker-end="url(#f6)"/>
+  <path data-step="3" class="fld" d="M86,200 C240,210 300,196 320,192" marker-end="url(#f6)"/>
+  <path data-step="3" class="fld" d="M340,192 C360,196 440,210 554,200" marker-end="url(#f6)"/>
+  <path data-step="3" class="fld" d="M86,225 C240,235 440,235 554,225" marker-end="url(#f6)"/>
+  <path data-step="3" class="fld" d="M86,250 C240,258 440,258 554,250" marker-end="url(#f6)"/>
 
   <!-- wire, current out of page -->
-  <circle cx="330" cy="180" r="11" fill="none" stroke="#EAEAEA" stroke-width="1.8"/>
-  <circle cx="330" cy="180" r="3" fill="#EAEAEA"/>
-  <text class="lbl" x="330" y="300" text-anchor="middle">current out of page (&#8857;)</text>
-  <path class="lead" d="M330,288 L330,193"/>
+  <circle data-step="4" cx="330" cy="180" r="11" fill="none" stroke="#EAEAEA" stroke-width="1.8"/>
+  <circle data-step="4" cx="330" cy="180" r="3" fill="#EAEAEA"/>
+  <text data-step="4" class="lbl" x="330" y="300" text-anchor="middle">current out of page (&#8857;)</text>
+  <path data-step="4" class="lead" d="M330,288 L330,193"/>
 
   <!-- force up -->
-  <line class="force" x1="330" y1="168" x2="330" y2="112" marker-end="url(#ff)"/>
-  <text fill="#E58F8F" x="238" y="124" font-weight="bold">force, F</text>
+  <line data-step="5" class="force" x1="330" y1="168" x2="330" y2="112" marker-end="url(#ff)"/>
+  <text data-step="5" fill="#E58F8F" x="238" y="124" font-weight="bold">force, F</text>
 
   <!-- neutral point -->
-  <line x1="345" y1="145" x2="357" y2="133" stroke="#E8B65A" stroke-width="1.6"/>
-  <line x1="357" y1="145" x2="345" y2="133" stroke="#E8B65A" stroke-width="1.6"/>
-  <text class="lbl" x="330" y="50">neutral point (fields cancel)</text>
-  <path class="lead" d="M352,56 L352,128"/>
+  <line data-step="6" x1="345" y1="145" x2="357" y2="133" stroke="#E8B65A" stroke-width="1.6"/>
+  <line data-step="6" x1="357" y1="145" x2="345" y2="133" stroke="#E8B65A" stroke-width="1.6"/>
+  <text data-step="6" class="lbl" x="330" y="50">neutral point (fields cancel)</text>
+  <path data-step="6" class="lead" d="M352,56 L352,128"/>
 
-  <text class="lbl" x="90" y="60">magnet field: N &#8594; S</text>
-  <text fill="#86C98B" x="80" y="278" font-size="14">strong (field reinforced)</text>
+  <text data-step="6" class="lbl" x="90" y="60">magnet field: N &#8594; S</text>
+  <text data-step="6" fill="#86C98B" x="80" y="278" font-size="14">strong (field reinforced)</text>
 </svg>

@@ -18,7 +18,7 @@
   </defs>
 
   <!-- Panel A: N-pole moving towards -> induced N-pole (repels) -->
-  <g transform="translate(10,10)">
+  <g data-step="1" transform="translate(10,10)">
     <text x="60" y="46" font-size="14">towards</text>
     <path class="mot" d="M50,58 L130,58"/>
     <rect class="mag magS" x="30" y="72" width="45" height="34"/>
@@ -43,7 +43,7 @@
   </g>
 
   <!-- Panel B: N-pole moving away -> induced S-pole (attracts) -->
-  <g transform="translate(10,320)">
+  <g data-step="2" transform="translate(10,320)">
     <text x="60" y="46" font-size="14">away</text>
     <path class="mot" d="M130,58 L50,58"/>
     <rect class="mag magS" x="30" y="72" width="45" height="34"/>

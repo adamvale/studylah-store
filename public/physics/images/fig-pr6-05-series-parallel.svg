@@ -14,39 +14,39 @@
   </defs>
 
   <!-- ===== left: series ===== -->
-  <text class="head" x="120" y="38" text-anchor="middle">series</text>
-  <path class="wire" d="M40,70 L40,138 M40,150 L40,220 M40,220 L200,220"/>
-  <line class="plate" x1="26" y1="138" x2="54" y2="138" stroke-width="2"/>
-  <line class="plate" x1="33" y1="150" x2="47" y2="150" stroke-width="5"/>
-  <path class="wire" d="M40,70 L80,70 M120,70 L200,70"/>
-  <rect class="res" x="80" y="58" width="40" height="24"/>
-  <path class="wire" d="M200,70 L200,125 M200,165 L200,220"/>
-  <rect class="res" x="188" y="125" width="24" height="40"/>
+  <text data-step="1" class="head" x="120" y="38" text-anchor="middle">series</text>
+  <path data-step="1" class="wire" d="M40,70 L40,138 M40,150 L40,220 M40,220 L200,220"/>
+  <line data-step="1" class="plate" x1="26" y1="138" x2="54" y2="138" stroke-width="2"/>
+  <line data-step="1" class="plate" x1="33" y1="150" x2="47" y2="150" stroke-width="5"/>
+  <path data-step="1" class="wire" d="M40,70 L80,70 M120,70 L200,70"/>
+  <rect data-step="1" class="res" x="80" y="58" width="40" height="24"/>
+  <path data-step="1" class="wire" d="M200,70 L200,125 M200,165 L200,220"/>
+  <rect data-step="1" class="res" x="188" y="125" width="24" height="40"/>
   <!-- current: one path all the way round -->
-  <path class="cur" d="M138,70 L172,70" marker-end="url(#c5)"/>
-  <path class="cur" d="M130,220 L94,220" marker-end="url(#c5)"/>
-  <path class="cur" d="M40,120 L40,90" marker-end="url(#c5)"/>
-  <text class="curl" x="152" y="60">I</text>
-  <text class="note" x="120" y="250" text-anchor="middle">same current I</text>
-  <text class="note" x="120" y="272" text-anchor="middle">V splits by R</text>
+  <path data-step="2" class="cur" d="M138,70 L172,70" marker-end="url(#c5)"/>
+  <path data-step="2" class="cur" d="M130,220 L94,220" marker-end="url(#c5)"/>
+  <path data-step="2" class="cur" d="M40,120 L40,90" marker-end="url(#c5)"/>
+  <text data-step="2" class="curl" x="152" y="60">I</text>
+  <text data-step="2" class="note" x="120" y="250" text-anchor="middle">same current I</text>
+  <text data-step="2" class="note" x="120" y="272" text-anchor="middle">V splits by R</text>
 
   <!-- ===== right: parallel ===== -->
-  <text class="head" x="315" y="38" text-anchor="middle">parallel</text>
-  <path class="wire" d="M250,70 L250,138 M250,150 L250,220"/>
-  <line class="plate" x1="236" y1="138" x2="264" y2="138" stroke-width="2"/>
-  <line class="plate" x1="243" y1="150" x2="257" y2="150" stroke-width="5"/>
-  <path class="wire" d="M250,70 L380,70 M250,220 L380,220"/>
-  <path class="wire" d="M320,70 L320,125 M320,165 L320,220"/>
-  <rect class="res" x="308" y="125" width="24" height="40"/>
-  <path class="wire" d="M380,70 L380,125 M380,165 L380,220"/>
-  <rect class="res" x="368" y="125" width="24" height="40"/>
-  <path class="cur" d="M262,70 L296,70" marker-end="url(#c5)"/>
-  <path class="cur" d="M320,86 L320,114" marker-end="url(#c5)"/>
-  <path class="cur" d="M380,86 L380,114" marker-end="url(#c5)"/>
-  <path class="cur" d="M250,120 L250,90" marker-end="url(#c5)"/>
-  <text class="curl" x="278" y="60" text-anchor="middle">I</text>
-  <text class="curl" x="302" y="105" text-anchor="end">I&#8321;</text>
-  <text class="curl" x="396" y="105">I&#8322;</text>
-  <text class="note" x="315" y="250" text-anchor="middle">same voltage V</text>
-  <text class="note" x="315" y="272" text-anchor="middle">I splits by 1/R</text>
+  <text data-step="3" class="head" x="315" y="38" text-anchor="middle">parallel</text>
+  <path data-step="3" class="wire" d="M250,70 L250,138 M250,150 L250,220"/>
+  <line data-step="3" class="plate" x1="236" y1="138" x2="264" y2="138" stroke-width="2"/>
+  <line data-step="3" class="plate" x1="243" y1="150" x2="257" y2="150" stroke-width="5"/>
+  <path data-step="3" class="wire" d="M250,70 L380,70 M250,220 L380,220"/>
+  <path data-step="3" class="wire" d="M320,70 L320,125 M320,165 L320,220"/>
+  <rect data-step="3" class="res" x="308" y="125" width="24" height="40"/>
+  <path data-step="3" class="wire" d="M380,70 L380,125 M380,165 L380,220"/>
+  <rect data-step="3" class="res" x="368" y="125" width="24" height="40"/>
+  <path data-step="3" class="cur" d="M262,70 L296,70" marker-end="url(#c5)"/>
+  <path data-step="3" class="cur" d="M320,86 L320,114" marker-end="url(#c5)"/>
+  <path data-step="3" class="cur" d="M380,86 L380,114" marker-end="url(#c5)"/>
+  <path data-step="3" class="cur" d="M250,120 L250,90" marker-end="url(#c5)"/>
+  <text data-step="3" class="curl" x="278" y="60" text-anchor="middle">I</text>
+  <text data-step="3" class="curl" x="302" y="105" text-anchor="end">I&#8321;</text>
+  <text data-step="3" class="curl" x="396" y="105">I&#8322;</text>
+  <text data-step="3" class="note" x="315" y="250" text-anchor="middle">same voltage V</text>
+  <text data-step="3" class="note" x="315" y="272" text-anchor="middle">I splits by 1/R</text>
 </svg>

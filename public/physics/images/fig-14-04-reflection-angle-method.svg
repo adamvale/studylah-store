@@ -11,19 +11,19 @@
     .norm { stroke:#9AA0A6; stroke-width:1.4; stroke-dasharray:6 4; }
     .arc { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
   </style>
-  <line class="mirror" x1="70" y1="220" x2="450" y2="220"/>
-  <path class="norm" d="M260,220 L260,60"/>
-  <text x="260" y="50" text-anchor="middle" font-size="13">normal</text>
+  <line data-step="1" class="mirror" x1="70" y1="220" x2="450" y2="220"/>
+  <path data-step="1" class="norm" d="M260,220 L260,60"/>
+  <text data-step="1" x="260" y="50" text-anchor="middle" font-size="13">normal</text>
   <!-- incident ray making 55 deg with the surface (so i = 35 from normal) -->
-  <path class="inc" marker-end="url(#a1)" d="M183,110 L258,218"/>
-  <path class="out" marker-end="url(#a2)" d="M262,218 L337,110"/>
+  <path data-step="1" class="inc" marker-end="url(#a1)" d="M183,110 L258,218"/>
+  <path data-step="1" class="out" marker-end="url(#a2)" d="M262,218 L337,110"/>
   <!-- angle to surface (between ray and mirror) -->
-  <path class="arc" d="M205,220 A55,55 0 0,0 229,175"/>
-  <text x="188" y="207" font-size="13">55&#176;</text>
+  <path data-step="2" class="arc" d="M205,220 A55,55 0 0,0 229,175"/>
+  <text data-step="2" x="188" y="207" font-size="13">55&#176;</text>
   <!-- angle from normal -->
-  <path class="arc" d="M260,150 A70,70 0 0,0 220,163"/>
-  <text x="231" y="148" font-size="14" font-style="italic">i</text>
-  <path class="arc" d="M260,150 A70,70 0 0,1 300,163"/>
-  <text x="283" y="148" font-size="14" font-style="italic">r</text>
-  <text x="260" y="270" text-anchor="middle" font-size="14"><tspan font-style="italic">i</tspan> = 90&#176; &#8722; 55&#176; = 35&#176;, so <tspan font-style="italic">r</tspan> = 35&#176;</text>
+  <path data-step="3" class="arc" d="M260,150 A70,70 0 0,0 220,163"/>
+  <text data-step="3" x="231" y="148" font-size="14" font-style="italic">i</text>
+  <path data-step="3" class="arc" d="M260,150 A70,70 0 0,1 300,163"/>
+  <text data-step="3" x="283" y="148" font-size="14" font-style="italic">r</text>
+  <text data-step="3" x="260" y="270" text-anchor="middle" font-size="14"><tspan font-style="italic">i</tspan> = 90&#176; &#8722; 55&#176; = 35&#176;, so <tspan font-style="italic">r</tspan> = 35&#176;</text>
 </svg>

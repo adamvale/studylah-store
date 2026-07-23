@@ -11,7 +11,7 @@
 
   <!-- Field lines run from the N pole (left) across the gap into the S pole (right): ATTRACTION -->
   <!-- straight axial lines across the gap -->
-  <g class="fl">
+  <g data-step="1" class="fl">
     <line x1="270" y1="170" x2="370" y2="170"/>
     <path d="M270,158 C305,150 335,150 370,158"/>
     <path d="M270,182 C305,190 335,190 370,182"/>
@@ -19,11 +19,11 @@
     <path d="M270,195 C305,220 335,220 370,195"/>
   </g>
   <!-- outer looping lines that leave far end N, sweep around, into far end S -->
-  <path class="fl" d="M270,150 C210,90 430,90 370,150"/>
-  <path class="fl" d="M270,190 C210,250 430,250 370,190"/>
+  <path data-step="2" class="fl" d="M270,150 C210,90 430,90 370,150"/>
+  <path data-step="2" class="fl" d="M270,190 C210,250 430,250 370,190"/>
 
   <!-- arrowheads: N(left) -> S(right), pointing right across the gap -->
-  <g class="fhead">
+  <g data-step="3" class="fhead">
     <polygon points="315,165 315,175 328,170"/>
     <polygon points="315,150 315,160 328,152"/>
     <polygon points="315,183 315,193 328,190"/>
@@ -32,20 +32,20 @@
   </g>
 
   <!-- magnets -->
-  <g transform="translate(90,155)">
+  <g data-step="4" transform="translate(90,155)">
     <rect class="magS" x="0" y="0" width="90" height="30" rx="2"/>
     <rect class="magN" x="90" y="0" width="90" height="30" rx="2"/>
     <text class="pole" x="14" y="21">S</text>
     <text class="pole" x="168" y="21">N</text>
   </g>
-  <g transform="translate(370,155)">
+  <g data-step="4" transform="translate(370,155)">
     <rect class="magS" x="0" y="0" width="90" height="30" rx="2"/>
     <rect class="magN" x="90" y="0" width="90" height="30" rx="2"/>
     <text class="pole" x="14" y="21">S</text>
     <text class="pole" x="168" y="21">N</text>
   </g>
 
-  <text x="320" y="40" text-anchor="middle" class="lbl">Unlike poles facing: attraction</text>
-  <text x="320" y="300" text-anchor="middle" font-size="14.5">Field lines run straight across the gap from N into S,</text>
-  <text x="320" y="318" text-anchor="middle" font-size="14.5">pulling the two magnets together.</text>
+  <text data-step="4" x="320" y="40" text-anchor="middle" class="lbl">Unlike poles facing: attraction</text>
+  <text data-step="4" x="320" y="300" text-anchor="middle" font-size="14.5">Field lines run straight across the gap from N into S,</text>
+  <text data-step="4" x="320" y="318" text-anchor="middle" font-size="14.5">pulling the two magnets together.</text>
 </svg>

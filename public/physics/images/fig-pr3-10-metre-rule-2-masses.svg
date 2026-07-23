@@ -23,44 +23,44 @@
   </defs>
 
   <!-- turning effects about the knife-edge -->
-  <path class="turn" d="M148,50 A 34,34 0 0 0 100,83" marker-end="url(#d0amb)"/>
-  <path class="turn" d="M272,50 A 34,34 0 0 1 320,83" marker-end="url(#d0amb)"/>
+  <path data-step="1" class="turn" d="M148,50 A 34,34 0 0 0 100,83" marker-end="url(#d0amb)"/>
+  <path data-step="1" class="turn" d="M272,50 A 34,34 0 0 1 320,83" marker-end="url(#d0amb)"/>
 
   <!-- perpendicular distances -->
-  <path class="guide" d="M176,95 L210,95" marker-start="url(#d0gry)" marker-end="url(#d0gry)"/>
-  <text class="lbl-guide" x="193" y="87" text-anchor="middle">p</text>
-  <path class="guide" d="M57,118 L176,118" marker-start="url(#d0gry)" marker-end="url(#d0gry)"/>
-  <path class="guide" d="M176,118 L346,118" marker-start="url(#d0gry)" marker-end="url(#d0gry)"/>
-  <text class="lbl-guide" x="116" y="110" text-anchor="middle">r</text>
-  <text class="lbl-guide" x="261" y="110" text-anchor="middle">q</text>
-  <path class="guide-dash" d="M57,120 L57,150 M176,97 L176,150 M210,97 L210,150 M346,120 L346,150"/>
+  <path data-step="2" class="guide" d="M176,95 L210,95" marker-start="url(#d0gry)" marker-end="url(#d0gry)"/>
+  <text data-step="2" class="lbl-guide" x="193" y="87" text-anchor="middle">p</text>
+  <path data-step="2" class="guide" d="M57,118 L176,118" marker-start="url(#d0gry)" marker-end="url(#d0gry)"/>
+  <path data-step="2" class="guide" d="M176,118 L346,118" marker-start="url(#d0gry)" marker-end="url(#d0gry)"/>
+  <text data-step="2" class="lbl-guide" x="116" y="110" text-anchor="middle">r</text>
+  <text data-step="2" class="lbl-guide" x="261" y="110" text-anchor="middle">q</text>
+  <path data-step="2" class="guide-dash" d="M57,120 L57,150 M176,97 L176,150 M210,97 L210,150 M346,120 L346,150"/>
 
   <!-- metre rule -->
-  <rect class="rule" x="40" y="150" width="340" height="12"/>
-  <path class="rule-tick" d="M74,150 L74,156 M108,150 L108,156 M142,150 L142,156 M244,150 L244,156 M278,150 L278,156 M312,150 L312,156"/>
-  <text x="250" y="140" text-anchor="middle">metre rule</text>
+  <rect data-step="3" class="rule" x="40" y="150" width="340" height="12"/>
+  <path data-step="3" class="rule-tick" d="M74,150 L74,156 M108,150 L108,156 M142,150 L142,156 M244,150 L244,156 M278,150 L278,156 M312,150 L312,156"/>
+  <text data-step="3" x="250" y="140" text-anchor="middle">metre rule</text>
 
   <!-- knife edge -->
-  <path class="pivot" d="M176,162 L162,188 L190,188 Z"/>
-  <path class="base" d="M146,188 L206,188"/>
-  <text class="lbl-guide-s" x="170" y="207" text-anchor="middle">knife-edge</text>
+  <path data-step="4" class="pivot" d="M176,162 L162,188 L190,188 Z"/>
+  <path data-step="4" class="base" d="M146,188 L206,188"/>
+  <text data-step="4" class="lbl-guide-s" x="170" y="207" text-anchor="middle">knife-edge</text>
 
   <!-- 100 g mass -->
-  <path class="string" d="M57,162 L57,182"/>
-  <rect class="mass" x="43" y="182" width="28" height="20"/>
-  <text class="num" x="38" y="196" text-anchor="end">100 g</text>
-  <path class="force-weight" d="M57,204 L57,252" marker-end="url(#d0red)"/>
+  <path data-step="5" class="string" d="M57,162 L57,182"/>
+  <rect data-step="5" class="mass" x="43" y="182" width="28" height="20"/>
+  <text data-step="5" class="num" x="38" y="196" text-anchor="end">100 g</text>
+  <path data-step="5" class="force-weight" d="M57,204 L57,252" marker-end="url(#d0red)"/>
 
   <!-- 50 g mass -->
-  <path class="string" d="M346,162 L346,182"/>
-  <rect class="mass" x="334" y="182" width="24" height="18"/>
-  <text class="num" x="364" y="196">50 g</text>
-  <path class="force-weight" d="M346,202 L346,248" marker-end="url(#d0red)"/>
+  <path data-step="6" class="string" d="M346,162 L346,182"/>
+  <rect data-step="6" class="mass" x="334" y="182" width="24" height="18"/>
+  <text data-step="6" class="num" x="364" y="196">50 g</text>
+  <path data-step="6" class="force-weight" d="M346,202 L346,248" marker-end="url(#d0red)"/>
 
   <!-- weight of the rule at its centre of gravity -->
-  <circle cx="210" cy="156" r="3" fill="#EAEAEA"/>
-  <path class="force-weight" d="M210,164 L210,240" marker-end="url(#d0red)"/>
-  <text class="lbl-weight" x="218" y="232">rule's weight</text>
+  <circle data-step="7" cx="210" cy="156" r="3" fill="#EAEAEA"/>
+  <path data-step="7" class="force-weight" d="M210,164 L210,240" marker-end="url(#d0red)"/>
+  <text data-step="7" class="lbl-weight" x="218" y="232">rule's weight</text>
 
-  <text x="210" y="290" text-anchor="middle" font-size="13">100 r = 50 q + M p</text>
+  <text data-step="7" x="210" y="290" text-anchor="middle" font-size="13">100 r = 50 q + M p</text>
 </svg>

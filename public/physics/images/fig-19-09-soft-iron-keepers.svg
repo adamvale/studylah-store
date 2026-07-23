@@ -11,14 +11,14 @@
 
   <!-- two bar magnets placed side by side, antiparallel -->
   <!-- top magnet: N right, S left -->
-  <g transform="translate(150,90)">
+  <g data-step="1" transform="translate(150,90)">
     <rect class="magS" x="0" y="0" width="80" height="30" rx="2"/>
     <rect class="magN" x="80" y="0" width="80" height="30" rx="2"/>
     <text class="pole" x="12" y="21">S</text>
     <text class="pole" x="148" y="21">N</text>
   </g>
   <!-- bottom magnet: N left, S right (antiparallel) -->
-  <g transform="translate(150,200)">
+  <g data-step="2" transform="translate(150,200)">
     <rect class="magN" x="0" y="0" width="80" height="30" rx="2"/>
     <rect class="magS" x="80" y="0" width="80" height="30" rx="2"/>
     <text class="pole" x="12" y="21">N</text>
@@ -26,16 +26,16 @@
   </g>
 
   <!-- keepers (soft iron) across the ends -->
-  <rect class="keeper" x="120" y="90" width="26" height="140" rx="2"/>
-  <rect class="keeper" x="314" y="90" width="26" height="140" rx="2"/>
+  <rect data-step="3" class="keeper" x="120" y="90" width="26" height="140" rx="2"/>
+  <rect data-step="3" class="keeper" x="314" y="90" width="26" height="140" rx="2"/>
 
-  <text x="60" y="80" class="lbl">soft iron keeper</text>
-  <path class="lead" d="M120,95 L133,120"/>
-  <text x="430" y="80" text-anchor="end" class="lbl">soft iron keeper</text>
-  <path class="lead" d="M360,86 L328,116"/>
-  <text x="230" y="164" text-anchor="middle" class="lbl">permanent bar magnets</text>
+  <text data-step="3" x="60" y="80" class="lbl">soft iron keeper</text>
+  <path data-step="3" class="lead" d="M120,95 L133,120"/>
+  <text data-step="3" x="430" y="80" text-anchor="end" class="lbl">soft iron keeper</text>
+  <path data-step="3" class="lead" d="M360,86 L328,116"/>
+  <text data-step="3" x="230" y="164" text-anchor="middle" class="lbl">permanent bar magnets</text>
 
-  <text x="230" y="270" text-anchor="middle" font-size="14">The keepers become induced magnets and</text>
-  <text x="230" y="288" text-anchor="middle" font-size="14">complete a closed loop of poles (N-S-N-S),</text>
-  <text x="230" y="306" text-anchor="middle" font-size="14">so the magnets keep their strength.</text>
+  <text data-step="3" x="230" y="270" text-anchor="middle" font-size="14">The keepers become induced magnets and</text>
+  <text data-step="3" x="230" y="288" text-anchor="middle" font-size="14">complete a closed loop of poles (N-S-N-S),</text>
+  <text data-step="3" x="230" y="306" text-anchor="middle" font-size="14">so the magnets keep their strength.</text>
 </svg>

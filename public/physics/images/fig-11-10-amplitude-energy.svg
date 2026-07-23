@@ -17,26 +17,26 @@
   </defs>
 
   <!-- TOP: lower amplitude -->
-  <line x1="70" y1="178" x2="70" y2="28" class="axis" marker-end="url(#ah)"/>
-  <line x1="56" y1="108" x2="395" y2="108" class="axis" marker-end="url(#ah)"/>
-  <text x="14" y="18" font-size="13">displacement</text>
-  <text x="395" y="126" text-anchor="end" font-size="13">distance</text>
-  <text x="64" y="122" text-anchor="end" font-size="13">0</text>
-  <path class="wave" d="M70,108 Q105,58 140,108 Q175,158 210,108 Q245,58 280,108 Q315,158 350,108"/>
-  <line x1="105" y1="108" x2="105" y2="83" class="dim" marker-start="url(#aha)" marker-end="url(#aha)"/>
-  <text x="105" y="74" text-anchor="middle" class="lbl">amplitude</text>
-  <text x="210" y="200" text-anchor="middle" font-size="14" fill="#6FB7E0">lower amplitude</text>
-  <text x="210" y="217" text-anchor="middle" font-size="13" fill="#9AA0A6">wave carries less energy</text>
+  <line data-step="1" x1="70" y1="178" x2="70" y2="28" class="axis" marker-end="url(#ah)"/>
+  <line data-step="1" x1="56" y1="108" x2="395" y2="108" class="axis" marker-end="url(#ah)"/>
+  <text data-step="1" x="14" y="18" font-size="13">displacement</text>
+  <text data-step="1" x="395" y="126" text-anchor="end" font-size="13">distance</text>
+  <text data-step="1" x="64" y="122" text-anchor="end" font-size="13">0</text>
+  <path data-step="1" class="wave" d="M70,108 Q105,58 140,108 Q175,158 210,108 Q245,58 280,108 Q315,158 350,108"/>
+  <line data-step="1" x1="105" y1="108" x2="105" y2="83" class="dim" marker-start="url(#aha)" marker-end="url(#aha)"/>
+  <text data-step="1" x="105" y="74" text-anchor="middle" class="lbl">amplitude</text>
+  <text data-step="1" x="210" y="200" text-anchor="middle" font-size="14" fill="#6FB7E0">lower amplitude</text>
+  <text data-step="1" x="210" y="217" text-anchor="middle" font-size="13" fill="#9AA0A6">wave carries less energy</text>
 
   <!-- BOTTOM: higher amplitude, same wavelength -->
-  <line x1="70" y1="403" x2="70" y2="253" class="axis" marker-end="url(#ah)"/>
-  <line x1="56" y1="333" x2="395" y2="333" class="axis" marker-end="url(#ah)"/>
-  <text x="14" y="243" font-size="13">displacement</text>
-  <text x="395" y="351" text-anchor="end" font-size="13">distance</text>
-  <text x="64" y="347" text-anchor="end" font-size="13">0</text>
-  <path class="wave2" d="M70,333 Q105,233 140,333 Q175,433 210,333 Q245,233 280,333 Q315,433 350,333"/>
-  <line x1="105" y1="333" x2="105" y2="283" class="dim" marker-start="url(#aha)" marker-end="url(#aha)"/>
-  <text x="105" y="274" text-anchor="middle" class="lbl">amplitude</text>
-  <text x="210" y="425" text-anchor="middle" font-size="14" fill="#E8B65A">higher amplitude</text>
-  <text x="210" y="442" text-anchor="middle" font-size="13" fill="#9AA0A6">wave carries more energy</text>
+  <line data-step="2" x1="70" y1="403" x2="70" y2="253" class="axis" marker-end="url(#ah)"/>
+  <line data-step="2" x1="56" y1="333" x2="395" y2="333" class="axis" marker-end="url(#ah)"/>
+  <text data-step="2" x="14" y="243" font-size="13">displacement</text>
+  <text data-step="2" x="395" y="351" text-anchor="end" font-size="13">distance</text>
+  <text data-step="2" x="64" y="347" text-anchor="end" font-size="13">0</text>
+  <path data-step="2" class="wave2" d="M70,333 Q105,233 140,333 Q175,433 210,333 Q245,233 280,333 Q315,433 350,333"/>
+  <line data-step="2" x1="105" y1="333" x2="105" y2="283" class="dim" marker-start="url(#aha)" marker-end="url(#aha)"/>
+  <text data-step="2" x="105" y="274" text-anchor="middle" class="lbl">amplitude</text>
+  <text data-step="2" x="210" y="425" text-anchor="middle" font-size="14" fill="#E8B65A">higher amplitude</text>
+  <text data-step="2" x="210" y="442" text-anchor="middle" font-size="13" fill="#9AA0A6">wave carries more energy</text>
 </svg>

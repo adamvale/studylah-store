@@ -19,53 +19,53 @@
   </defs>
 
   <!-- magnet poles -->
-  <rect class="pole poleN" x="40" y="90" width="70" height="120"/>
-  <rect class="pole" x="40" y="90" width="70" height="120"/>
-  <text x="75" y="156" font-size="20" text-anchor="middle">N</text>
-  <rect class="pole poleS" x="500" y="90" width="70" height="120"/>
-  <rect class="pole" x="500" y="90" width="70" height="120"/>
-  <text x="535" y="156" font-size="20" text-anchor="middle">S</text>
+  <rect data-step="1" class="pole poleN" x="40" y="90" width="70" height="120"/>
+  <rect data-step="1" class="pole" x="40" y="90" width="70" height="120"/>
+  <text data-step="1" x="75" y="156" font-size="20" text-anchor="middle">N</text>
+  <rect data-step="1" class="pole poleS" x="500" y="90" width="70" height="120"/>
+  <rect data-step="1" class="pole" x="500" y="90" width="70" height="120"/>
+  <text data-step="1" x="535" y="156" font-size="20" text-anchor="middle">S</text>
 
   <!-- rectangular rotating coil A B C D -->
-  <rect class="coil" x="200" y="110" width="210" height="90"/>
-  <text class="corner" x="184" y="205">A</text>
-  <text class="corner" x="184" y="112">B</text>
-  <text class="corner" x="414" y="112">C</text>
-  <text class="corner" x="414" y="205">D</text>
-  <text class="lbl" x="305" y="100" text-anchor="middle">rectangular rotating coil</text>
+  <rect data-step="2" class="coil" x="200" y="110" width="210" height="90"/>
+  <text data-step="2" class="corner" x="184" y="205">A</text>
+  <text data-step="2" class="corner" x="184" y="112">B</text>
+  <text data-step="2" class="corner" x="414" y="112">C</text>
+  <text data-step="2" class="corner" x="414" y="205">D</text>
+  <text data-step="2" class="lbl" x="305" y="100" text-anchor="middle">rectangular rotating coil</text>
 
   <!-- leads from coil ends A and D down to the two slip rings -->
-  <path class="lead" d="M200,200 L200,255 L300,300"/>
-  <path class="lead" d="M410,200 L410,255 L372,290"/>
+  <path data-step="3" class="lead" d="M200,200 L200,255 L300,300"/>
+  <path data-step="3" class="lead" d="M410,200 L410,255 L372,290"/>
 
   <!-- axle -->
-  <line class="axle" x1="270" y1="300" x2="600" y2="300"/>
+  <line data-step="4" class="axle" x1="270" y1="300" x2="600" y2="300"/>
 
   <!-- two COMPLETE slip rings (not a split commutator) -->
-  <circle class="ring" cx="305" cy="300" r="26"/>
-  <circle class="ring" cx="372" cy="300" r="26"/>
-  <text class="lbl" x="320" y="250" text-anchor="middle">two complete slip rings</text>
-  <path class="lead2" d="M312,255 L305,278"/>
-  <path class="lead2" d="M330,255 L372,278"/>
+  <circle data-step="5" class="ring" cx="305" cy="300" r="26"/>
+  <circle data-step="5" class="ring" cx="372" cy="300" r="26"/>
+  <text data-step="5" class="lbl" x="320" y="250" text-anchor="middle">two complete slip rings</text>
+  <path data-step="5" class="lead2" d="M312,255 L305,278"/>
+  <path data-step="5" class="lead2" d="M330,255 L372,278"/>
 
   <!-- carbon brushes pressing on the rings from below -->
-  <rect class="brush" x="296" y="330" width="18" height="26"/>
-  <rect class="brush" x="363" y="330" width="18" height="26"/>
-  <text class="lbl" x="250" y="380">carbon brushes</text>
-  <path class="lead2" d="M280,376 L302,352"/>
-  <path class="lead2" d="M300,384 L369,352"/>
+  <rect data-step="6" class="brush" x="296" y="330" width="18" height="26"/>
+  <rect data-step="6" class="brush" x="363" y="330" width="18" height="26"/>
+  <text data-step="6" class="lbl" x="250" y="380">carbon brushes</text>
+  <path data-step="6" class="lead2" d="M280,376 L302,352"/>
+  <path data-step="6" class="lead2" d="M300,384 L369,352"/>
 
   <!-- output wires to a lamp -->
-  <path class="lead" d="M305,356 L305,410 L420,410"/>
-  <path class="lead" d="M372,356 L440,356 L440,410 L470,410"/>
-  <circle cx="445" cy="410" r="16" fill="none" stroke="#EAEAEA" stroke-width="1.8"/>
-  <line x1="434" y1="399" x2="456" y2="421" stroke="#EAEAEA" stroke-width="1.6"/>
-  <line x1="456" y1="399" x2="434" y2="421" stroke="#EAEAEA" stroke-width="1.6"/>
-  <text x="445" y="444" font-size="14" text-anchor="middle">electrical output (lamp)</text>
+  <path data-step="7" class="lead" d="M305,356 L305,410 L420,410"/>
+  <path data-step="7" class="lead" d="M372,356 L440,356 L440,410 L470,410"/>
+  <circle data-step="7" cx="445" cy="410" r="16" fill="none" stroke="#EAEAEA" stroke-width="1.8"/>
+  <line data-step="7" x1="434" y1="399" x2="456" y2="421" stroke="#EAEAEA" stroke-width="1.6"/>
+  <line data-step="7" x1="456" y1="399" x2="434" y2="421" stroke="#EAEAEA" stroke-width="1.6"/>
+  <text data-step="7" x="445" y="444" font-size="14" text-anchor="middle">electrical output (lamp)</text>
 
   <!-- mechanical rotation input -->
-  <line class="axle" x1="600" y1="300" x2="620" y2="280"/>
-  <path class="rot" d="M600,250 A34,34 0 0 1 638,278"/>
-  <text class="lbl" x="600" y="230" text-anchor="middle">mechanical input</text>
-  <text class="lbl" x="600" y="248" text-anchor="middle">(coil is turned)</text>
+  <line data-step="8" class="axle" x1="600" y1="300" x2="620" y2="280"/>
+  <path data-step="8" class="rot" d="M600,250 A34,34 0 0 1 638,278"/>
+  <text data-step="8" class="lbl" x="600" y="230" text-anchor="middle">mechanical input</text>
+  <text data-step="8" class="lbl" x="600" y="248" text-anchor="middle">(coil is turned)</text>
 </svg>

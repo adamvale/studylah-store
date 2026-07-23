@@ -13,21 +13,21 @@
   </defs>
 
   <!-- axes -->
-  <line class="axis" x1="70" y1="235" x2="70" y2="46" marker-end="url(#a16)"/>
-  <line class="axis" x1="70" y1="235" x2="385" y2="235" marker-end="url(#a16)"/>
-  <text class="ax" x="62" y="36" text-anchor="end">I / A</text>
-  <text class="ax" x="383" y="258" text-anchor="end">V / V</text>
-  <text x="62" y="251" text-anchor="end">O</text>
+  <line data-step="1" class="axis" x1="70" y1="235" x2="70" y2="46" marker-end="url(#a16)"/>
+  <line data-step="1" class="axis" x1="70" y1="235" x2="385" y2="235" marker-end="url(#a16)"/>
+  <text data-step="1" class="ax" x="62" y="36" text-anchor="end">I / A</text>
+  <text data-step="1" class="ax" x="383" y="258" text-anchor="end">V / V</text>
+  <text data-step="1" x="62" y="251" text-anchor="end">O</text>
 
   <!-- best-fit line: straight, through the origin -->
-  <path class="fit" d="M70,235 L320,80"/>
-  <text class="cx" x="95" y="80">component X</text>
+  <path data-step="2" class="fit" d="M70,235 L320,80"/>
+  <text data-step="2" class="cx" x="95" y="80">component X</text>
 
   <!-- gradient triangle -->
-  <path class="guide" d="M140,191.6 L250,191.6 L250,123.4"/>
-  <text class="note" x="195" y="209" text-anchor="middle">&#916;V</text>
-  <text class="note" x="258" y="162">&#916;I</text>
+  <path data-step="3" class="guide" d="M140,191.6 L250,191.6 L250,123.4"/>
+  <text data-step="3" class="note" x="195" y="209" text-anchor="middle">&#916;V</text>
+  <text data-step="3" class="note" x="258" y="162">&#916;I</text>
 
-  <text class="note" x="250" y="60">gradient = 1/R</text>
-  <text class="note" x="100" y="258">straight through O: ohmic</text>
+  <text data-step="3" class="note" x="250" y="60">gradient = 1/R</text>
+  <text data-step="3" class="note" x="100" y="258">straight through O: ohmic</text>
 </svg>

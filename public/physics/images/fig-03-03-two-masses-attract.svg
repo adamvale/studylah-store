@@ -11,18 +11,18 @@
     </marker>
   </defs>
   <!-- small mass -->
-  <circle class="mass" cx="120" cy="120" r="42"/>
-  <line x1="120" y1="120" x2="162" y2="120" stroke="#6FB7E0" stroke-width="1.2"/>
+  <circle data-step="1" class="mass" cx="120" cy="120" r="42"/>
+  <line data-step="1" x1="120" y1="120" x2="162" y2="120" stroke="#6FB7E0" stroke-width="1.2"/>
   <!-- large mass -->
-  <circle class="mass" cx="410" cy="120" r="70"/>
-  <line x1="410" y1="120" x2="340" y2="120" stroke="#6FB7E0" stroke-width="1.2"/>
+  <circle data-step="2" class="mass" cx="410" cy="120" r="70"/>
+  <line data-step="2" x1="410" y1="120" x2="340" y2="120" stroke="#6FB7E0" stroke-width="1.2"/>
   <!-- attractive forces pointing toward each other -->
-  <path class="force" d="M175,120 L245,120" marker-end="url(#ah-m)"/>
-  <path class="force" d="M355,120 L285,120" marker-end="url(#ah-m)"/>
+  <path data-step="3" class="force" d="M175,120 L245,120" marker-end="url(#ah-m)"/>
+  <path data-step="3" class="force" d="M355,120 L285,120" marker-end="url(#ah-m)"/>
   <!-- central label -->
-  <text x="255" y="80" text-anchor="middle" font-size="15" fill="#E58F8F">gravitational force</text>
-  <text x="250" y="100" text-anchor="middle" font-size="13" fill="#E58F8F">(force due to gravity)</text>
+  <text data-step="4" x="255" y="80" text-anchor="middle" font-size="15" fill="#E58F8F">gravitational force</text>
+  <text data-step="4" x="250" y="100" text-anchor="middle" font-size="13" fill="#E58F8F">(force due to gravity)</text>
   <!-- object labels -->
-  <text x="120" y="192" text-anchor="middle" font-size="15">object with mass</text>
-  <text x="410" y="218" text-anchor="middle" font-size="15">object with mass</text>
+  <text data-step="5" x="120" y="192" text-anchor="middle" font-size="15">object with mass</text>
+  <text data-step="5" x="410" y="218" text-anchor="middle" font-size="15">object with mass</text>
 </svg>

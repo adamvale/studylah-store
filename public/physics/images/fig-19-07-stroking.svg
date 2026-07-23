@@ -12,51 +12,51 @@
   </style>
 
   <!-- ===== PANEL 1: Single touch ===== -->
-  <text x="24" y="28" class="title">Single-touch method</text>
-  <text x="24" y="90" class="lbl">stroke one way only,</text>
-  <text x="24" y="106" class="lbl">same pole down</text>
+  <text data-step="1" x="24" y="28" class="title">Single-touch method</text>
+  <text data-step="1" x="24" y="90" class="lbl">stroke one way only,</text>
+  <text data-step="1" x="24" y="106" class="lbl">same pole down</text>
   <!-- stroking magnet tilted, moving left to right, N pole (lower end) touching -->
-  <g transform="translate(180,70)"><g transform="rotate(20)">
+  <g data-step="2" transform="translate(180,70)"><g transform="rotate(20)">
     <rect class="magS" x="0" y="0" width="45" height="24" rx="2"/>
     <rect class="magN" x="45" y="0" width="45" height="24" rx="2"/>
     <text class="pole" x="12" y="17">S</text>
     <text class="pole" x="72" y="17">N</text>
   </g></g>
   <!-- motion path arrow -->
-  <path class="mv" d="M100,60 C170,30 220,30 280,60"/>
-  <polygon class="mhead" points="280,60 270,53 272,64"/>
+  <path data-step="3" class="mv" d="M100,60 C170,30 220,30 280,60"/>
+  <polygon data-step="3" class="mhead" points="280,60 270,53 272,64"/>
   <!-- steel bar: starting end takes the stroking pole, lift-off end takes the opposite pole -->
-  <g transform="translate(60,150)">
+  <g data-step="4" transform="translate(60,150)">
     <rect class="bar" x="0" y="0" width="220" height="30" rx="2"/>
     <text class="pole" x="10" y="20">N</text>
     <text class="pole" x="200" y="20">S</text>
   </g>
-  <text x="60" y="207" class="lbl">steel bar to be magnetised</text>
+  <text data-step="4" x="60" y="207" class="lbl">steel bar to be magnetised</text>
 
   <!-- ===== PANEL 2: Double touch ===== -->
-  <text x="24" y="278" class="title">Double-touch method</text>
+  <text data-step="5" x="24" y="278" class="title">Double-touch method</text>
   <!-- two magnets, opposite poles down, stroked outward from the centre -->
-  <g transform="translate(110,330)"><g transform="rotate(-20)">
+  <g data-step="6" transform="translate(110,330)"><g transform="rotate(-20)">
     <rect class="magS" x="0" y="0" width="40" height="22" rx="2"/>
     <rect class="magN" x="40" y="0" width="40" height="22" rx="2"/>
     <text class="pole" x="10" y="16">S</text>
     <text class="pole" x="62" y="16">N</text>
   </g></g>
-  <g transform="translate(190,330)"><g transform="rotate(20)">
+  <g data-step="6" transform="translate(190,330)"><g transform="rotate(20)">
     <rect class="magS" x="0" y="0" width="40" height="22" rx="2"/>
     <rect class="magN" x="40" y="0" width="40" height="22" rx="2"/>
     <text class="pole" x="10" y="16">S</text>
     <text class="pole" x="62" y="16">N</text>
   </g></g>
-  <path class="mv" d="M160,305 C130,290 100,295 80,310"/>
-  <polygon class="mhead" points="80,310 92,306 87,316"/>
-  <path class="mv" d="M230,305 C260,290 290,295 305,310"/>
-  <polygon class="mhead" points="305,310 293,306 298,316"/>
-  <g transform="translate(60,400)">
+  <path data-step="6" class="mv" d="M160,305 C130,290 100,295 80,310"/>
+  <polygon data-step="6" class="mhead" points="80,310 92,306 87,316"/>
+  <path data-step="6" class="mv" d="M230,305 C260,290 290,295 305,310"/>
+  <polygon data-step="6" class="mhead" points="305,310 293,306 298,316"/>
+  <g data-step="6" transform="translate(60,400)">
     <rect class="bar" x="0" y="0" width="220" height="30" rx="2"/>
     <text class="pole" x="10" y="20">N</text>
     <text class="pole" x="200" y="20">S</text>
   </g>
-  <text x="60" y="457" class="lbl">steel bar to be magnetised</text>
-  <text x="40" y="492" class="lbl">two magnets stroke outward from the centre</text>
+  <text data-step="6" x="60" y="457" class="lbl">steel bar to be magnetised</text>
+  <text data-step="6" x="40" y="492" class="lbl">two magnets stroke outward from the centre</text>
 </svg>

@@ -17,29 +17,29 @@
     <marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#9AA0A6"/></marker>
   </defs>
 
-  <path class="axisline" d="M40,140 H390"/>
-  <path class="lens" d="M200,70 C221,108 221,172 200,210 C179,172 179,108 200,70 Z"/>
+  <path data-step="1" class="axisline" d="M40,140 H390"/>
+  <path data-step="1" class="lens" d="M200,70 C221,108 221,172 200,210 C179,172 179,108 200,70 Z"/>
 
-  <path class="ray" d="M45,88 H130" marker-end="url(#ab)"/>
-  <path class="ray" d="M130,88 H200 L300,140 L380,181.6"/>
-  <path class="ray" d="M45,113 H130" marker-end="url(#ab)"/>
-  <path class="ray" d="M130,113 H200 L300,140 L380,161.6"/>
-  <path class="ray" d="M45,167 H130" marker-end="url(#ab)"/>
-  <path class="ray" d="M130,167 H200 L300,140 L380,118.4"/>
-  <path class="ray" d="M45,192 H130" marker-end="url(#ab)"/>
-  <path class="ray" d="M130,192 H200 L300,140 L380,98.4"/>
+  <path data-step="1" class="ray" d="M45,88 H130" marker-end="url(#ab)"/>
+  <path data-step="1" class="ray" d="M130,88 H200 L300,140 L380,181.6"/>
+  <path data-step="1" class="ray" d="M45,113 H130" marker-end="url(#ab)"/>
+  <path data-step="1" class="ray" d="M130,113 H200 L300,140 L380,161.6"/>
+  <path data-step="1" class="ray" d="M45,167 H130" marker-end="url(#ab)"/>
+  <path data-step="1" class="ray" d="M130,167 H200 L300,140 L380,118.4"/>
+  <path data-step="2" class="ray" d="M45,192 H130" marker-end="url(#ab)"/>
+  <path data-step="2" class="ray" d="M130,192 H200 L300,140 L380,98.4"/>
 
-  <path class="focus" d="M294,134 L306,146 M294,146 L306,134"/>
-  <text class="sym" x="300" y="166" text-anchor="middle">F</text>
+  <path data-step="2" class="focus" d="M294,134 L306,146 M294,146 L306,134"/>
+  <text data-step="3" class="sym" x="300" y="166" text-anchor="middle">F</text>
 
-  <path class="tick" d="M200,212 V236"/>
-  <path class="tick" d="M300,148 V236"/>
-  <path class="dim" d="M250,228 H202" marker-end="url(#ag)"/>
-  <path class="dim" d="M250,228 H298" marker-end="url(#ag)"/>
-  <text class="sym" x="250" y="222" text-anchor="middle">f</text>
-  <text class="lbl" x="250" y="252" text-anchor="middle">focal length</text>
+  <path data-step="2" class="tick" d="M200,212 V236"/>
+  <path data-step="2" class="tick" d="M300,148 V236"/>
+  <path data-step="2" class="dim" d="M250,228 H202" marker-end="url(#ag)"/>
+  <path data-step="2" class="dim" d="M250,228 H298" marker-end="url(#ag)"/>
+  <text data-step="3" class="sym" x="250" y="222" text-anchor="middle">f</text>
+  <text data-step="3" class="lbl" x="250" y="252" text-anchor="middle">focal length</text>
 
-  <text x="200" y="58" text-anchor="middle">converging lens</text>
-  <text class="blue" x="45" y="76">parallel rays</text>
-  <text class="grey" x="30" y="155">principal axis</text>
+  <text data-step="4" x="200" y="58" text-anchor="middle">converging lens</text>
+  <text data-step="4" class="blue" x="45" y="76">parallel rays</text>
+  <text data-step="4" class="grey" x="30" y="155">principal axis</text>
 </svg>

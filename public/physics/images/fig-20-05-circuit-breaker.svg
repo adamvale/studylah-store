@@ -19,7 +19,7 @@
   </defs>
 
   <!-- ===== NORMAL ===== -->
-  <g>
+  <g data-step="1">
     <text class="ttl" x="185" y="26">Under normal conditions</text>
     <!-- coil + core -->
     <rect class="core" x="70" y="150" width="80" height="26"/>
@@ -49,7 +49,7 @@
   </g>
 
   <!-- ===== FAULT ===== -->
-  <g transform="translate(-366,320)">
+  <g data-step="2" transform="translate(-366,320)">
     <text class="ttl" x="551" y="26">When a fault occurs</text>
     <rect class="core" x="430" y="150" width="80" height="26"/>
     <path class="coil" d="M434,150 q10,-16 20,0"/><path class="coil" d="M454,150 q10,-16 20,0"/><path class="coil" d="M474,150 q10,-16 20,0"/>

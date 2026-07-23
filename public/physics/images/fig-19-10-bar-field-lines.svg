@@ -11,16 +11,16 @@
   </style>
 
   <!-- field lines: TOP loops (N left -> over the top -> S right) -->
-  <path class="fl" d="M250,185 C285,150 415,150 450,185"/>
-  <path class="fl" d="M250,185 C285,110 415,110 450,185"/>
-  <path class="fl" d="M250,185 C285,72  415,72  450,185"/>
+  <path data-step="1" class="fl" d="M250,185 C285,150 415,150 450,185"/>
+  <path data-step="1" class="fl" d="M250,185 C285,110 415,110 450,185"/>
+  <path data-step="1" class="fl" d="M250,185 C285,72  415,72  450,185"/>
   <!-- BOTTOM loops -->
-  <path class="fl" d="M250,215 C285,250 415,250 450,215"/>
-  <path class="fl" d="M250,215 C285,290 415,290 450,215"/>
-  <path class="fl" d="M250,215 C285,328 415,328 450,215"/>
+  <path data-step="2" class="fl" d="M250,215 C285,250 415,250 450,215"/>
+  <path data-step="2" class="fl" d="M250,215 C285,290 415,290 450,215"/>
+  <path data-step="2" class="fl" d="M250,215 C285,328 415,328 450,215"/>
 
   <!-- apex arrowheads: all point RIGHT = from N toward S -->
-  <g class="fhead">
+  <g data-step="3" class="fhead">
     <polygon points="345,154 345,164 358,159"/>
     <polygon points="345,124 345,134 358,129"/>
     <polygon points="345,95  345,105 358,100"/>
@@ -29,7 +29,7 @@
     <polygon points="345,295 345,305 358,300"/>
   </g>
   <!-- extra arrowheads near the poles on inner loops to show OUT of N / INTO S -->
-  <g class="fhead">
+  <g data-step="4" class="fhead">
     <!-- leaving N (top-left, up-right) -->
     <polygon points="286,163 296,161 291,171"/>
     <!-- entering S (top-right, down-right) -->
@@ -41,21 +41,21 @@
   </g>
 
   <!-- the magnet -->
-  <rect class="magN" x="250" y="185" width="100" height="30" rx="2"/>
-  <rect class="magS" x="350" y="185" width="100" height="30" rx="2"/>
-  <text class="pole" x="265" y="207">N</text>
-  <text class="pole" x="425" y="207">S</text>
+  <rect data-step="5" class="magN" x="250" y="185" width="100" height="30" rx="2"/>
+  <rect data-step="5" class="magS" x="350" y="185" width="100" height="30" rx="2"/>
+  <text data-step="5" class="pole" x="265" y="207">N</text>
+  <text data-step="5" class="pole" x="425" y="207">S</text>
 
   <!-- labels -->
-  <text x="350" y="34" text-anchor="middle" class="lbl">field lines point OUT of the N pole and INTO the S pole</text>
-  <text x="30" y="196" class="lbl">lines crowd</text>
-  <text x="30" y="215" class="lbl">near the poles</text>
-  <text x="30" y="234" class="lbl">(field strongest)</text>
-  <path class="lead" d="M140,218 L248,202"/>
+  <text data-step="6" x="350" y="34" text-anchor="middle" class="lbl">field lines point OUT of the N pole and INTO the S pole</text>
+  <text data-step="6" x="30" y="196" class="lbl">lines crowd</text>
+  <text data-step="6" x="30" y="215" class="lbl">near the poles</text>
+  <text data-step="6" x="30" y="234" class="lbl">(field strongest)</text>
+  <path data-step="6" class="lead" d="M140,218 L248,202"/>
 
-  <text x="470" y="358" class="lbl">lines spread out here</text>
-  <text x="470" y="377" class="lbl">(field weakest)</text>
-  <path class="lead" d="M468,368 L420,330"/>
+  <text data-step="6" x="470" y="358" class="lbl">lines spread out here</text>
+  <text data-step="6" x="470" y="377" class="lbl">(field weakest)</text>
+  <path data-step="6" class="lead" d="M468,368 L420,330"/>
 
-  <text x="350" y="405" text-anchor="middle" font-size="14.5">Field lines form continuous closed loops and never cross.</text>
+  <text data-step="6" x="350" y="405" text-anchor="middle" font-size="14.5">Field lines form continuous closed loops and never cross.</text>
 </svg>

@@ -9,18 +9,18 @@
   <defs>
     <marker id="fb" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#86C98B"/></marker>
   </defs>
-  <line class="drop" x1="90" y1="30" x2="90" y2="300"/>
+  <line data-step="1" class="drop" x1="90" y1="30" x2="90" y2="300"/>
   <!-- balls increasingly spaced -->
-  <circle class="ball" cx="90" cy="45" r="9"/>
-  <circle class="ball" cx="90" cy="90" r="9"/>
-  <circle class="ball" cx="90" cy="165" r="9"/>
-  <circle class="ball" cx="90" cy="275" r="9"/>
-  <g class="lb">
+  <circle data-step="1" class="ball" cx="90" cy="45" r="9"/>
+  <circle data-step="1" class="ball" cx="90" cy="90" r="9"/>
+  <circle data-step="2" class="ball" cx="90" cy="165" r="9"/>
+  <circle data-step="2" class="ball" cx="90" cy="275" r="9"/>
+  <g data-step="3" class="lb">
     <text x="115" y="49">t = 0, v = 0</text>
     <text x="115" y="94">t = 1 s, v = 10 m/s</text>
     <text x="115" y="169">t = 2 s, v = 20 m/s</text>
     <text x="115" y="279">t = 3 s, v = 30 m/s</text>
   </g>
-  <line class="arr" x1="40" y1="60" x2="40" y2="280" marker-end="url(#fb)"/>
-  <text x="10" y="175" fill="#86C98B" transform="rotate(-90 20,175)">velocity increases</text>
+  <line data-step="2" class="arr" x1="40" y1="60" x2="40" y2="280" marker-end="url(#fb)"/>
+  <text data-step="4" x="10" y="175" fill="#86C98B" transform="rotate(-90 20,175)">velocity increases</text>
 </svg>

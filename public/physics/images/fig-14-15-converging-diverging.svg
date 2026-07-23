@@ -11,31 +11,31 @@
     .pf { fill:#E8B65A; }
   </style>
   <!-- Panel 1: converging lens -->
-  <text x="230" y="28" text-anchor="middle" font-size="15" font-weight="bold">Converging (convex) lens</text>
-  <line class="axis" x1="60" y1="150" x2="420" y2="150"/>
-  <path class="lens" d="M230,90 Q258,150 230,210 Q202,150 230,90 Z"/>
-  <path class="ray" d="M70,110 L230,110"/>
-  <path class="ray" d="M70,150 L230,150"/>
-  <path class="ray" d="M70,190 L230,190"/>
-  <path class="ray" marker-end="url(#a2)" d="M230,110 L420,168"/>
-  <path class="ray" marker-end="url(#a2)" d="M230,150 L420,150"/>
-  <path class="ray" marker-end="url(#a2)" d="M230,190 L420,132"/>
-  <circle class="pf" cx="360" cy="150" r="3.5"/>
-  <text x="360" y="140" text-anchor="middle" font-size="13" fill="#E8B65A">F</text>
-  <text x="230" y="248" text-anchor="middle" font-size="14">Parallel rays converge to F.</text>
+  <text data-step="1" x="230" y="28" text-anchor="middle" font-size="15" font-weight="bold">Converging (convex) lens</text>
+  <line data-step="1" class="axis" x1="60" y1="150" x2="420" y2="150"/>
+  <path data-step="1" class="lens" d="M230,90 Q258,150 230,210 Q202,150 230,90 Z"/>
+  <path data-step="1" class="ray" d="M70,110 L230,110"/>
+  <path data-step="1" class="ray" d="M70,150 L230,150"/>
+  <path data-step="1" class="ray" d="M70,190 L230,190"/>
+  <path data-step="1" class="ray" marker-end="url(#a2)" d="M230,110 L420,168"/>
+  <path data-step="1" class="ray" marker-end="url(#a2)" d="M230,150 L420,150"/>
+  <path data-step="1" class="ray" marker-end="url(#a2)" d="M230,190 L420,132"/>
+  <circle data-step="1" class="pf" cx="360" cy="150" r="3.5"/>
+  <text data-step="1" x="360" y="140" text-anchor="middle" font-size="13" fill="#E8B65A">F</text>
+  <text data-step="1" x="230" y="248" text-anchor="middle" font-size="14">Parallel rays converge to F.</text>
   <!-- Panel 2: diverging lens -->
-  <text x="230" y="306" text-anchor="middle" font-size="15" font-weight="bold">Diverging (concave) lens</text>
-  <line class="axis" x1="60" y1="430" x2="420" y2="430"/>
-  <path class="lens" d="M212,370 Q226,430 212,490 L228,490 Q214,430 228,370 Z"/>
-  <path class="ray" d="M70,390 L220,390"/>
-  <path class="ray" d="M70,430 L220,430"/>
-  <path class="ray" d="M70,470 L220,470"/>
-  <path class="ray" marker-end="url(#a2)" d="M222,390 L360,330"/>
-  <path class="ray" marker-end="url(#a2)" d="M222,430 L360,430"/>
-  <path class="ray" marker-end="url(#a2)" d="M222,470 L360,530"/>
-  <path class="virt" d="M222,390 L130,430"/>
-  <path class="virt" d="M222,470 L130,430"/>
-  <circle class="pf" cx="130" cy="430" r="3.5"/>
-  <text x="130" y="418" text-anchor="middle" font-size="13" fill="#E8B65A">F</text>
-  <text x="230" y="558" text-anchor="middle" font-size="14">Parallel rays diverge (from a virtual F).</text>
+  <text data-step="2" x="230" y="306" text-anchor="middle" font-size="15" font-weight="bold">Diverging (concave) lens</text>
+  <line data-step="2" class="axis" x1="60" y1="430" x2="420" y2="430"/>
+  <path data-step="2" class="lens" d="M212,370 Q226,430 212,490 L228,490 Q214,430 228,370 Z"/>
+  <path data-step="2" class="ray" d="M70,390 L220,390"/>
+  <path data-step="2" class="ray" d="M70,430 L220,430"/>
+  <path data-step="2" class="ray" d="M70,470 L220,470"/>
+  <path data-step="2" class="ray" marker-end="url(#a2)" d="M222,390 L360,330"/>
+  <path data-step="2" class="ray" marker-end="url(#a2)" d="M222,430 L360,430"/>
+  <path data-step="2" class="ray" marker-end="url(#a2)" d="M222,470 L360,530"/>
+  <path data-step="2" class="virt" d="M222,390 L130,430"/>
+  <path data-step="2" class="virt" d="M222,470 L130,430"/>
+  <circle data-step="2" class="pf" cx="130" cy="430" r="3.5"/>
+  <text data-step="2" x="130" y="418" text-anchor="middle" font-size="13" fill="#E8B65A">F</text>
+  <text data-step="2" x="230" y="558" text-anchor="middle" font-size="14">Parallel rays diverge (from a virtual F).</text>
 </svg>

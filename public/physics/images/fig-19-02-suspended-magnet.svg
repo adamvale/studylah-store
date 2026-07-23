@@ -10,29 +10,29 @@
     .axis { stroke:#9AA0A6; stroke-width:1.6; }
   </style>
   <!-- support -->
-  <line x1="120" y1="30" x2="340" y2="30" stroke="#EAEAEA" stroke-width="3"/>
-  <line class="thread" x1="230" y1="30" x2="230" y2="110"/>
-  <text x="252" y="72" class="lbl">thread (free to turn)</text>
-  <path class="lead" d="M250,68 L233,64"/>
+  <line data-step="1" x1="120" y1="30" x2="340" y2="30" stroke="#EAEAEA" stroke-width="3"/>
+  <line data-step="1" class="thread" x1="230" y1="30" x2="230" y2="110"/>
+  <text data-step="1" x="252" y="72" class="lbl">thread (free to turn)</text>
+  <path data-step="1" class="lead" d="M250,68 L233,64"/>
 
   <!-- suspended magnet, at rest along the N-S line -->
-  <rect class="magN" x="130" y="110" width="100" height="34" rx="2"/>
-  <rect class="magS" x="230" y="110" width="100" height="34" rx="2"/>
-  <text class="pole" x="150" y="133">N</text>
-  <text class="pole" x="303" y="133">S</text>
+  <rect data-step="2" class="magN" x="130" y="110" width="100" height="34" rx="2"/>
+  <rect data-step="2" class="magS" x="230" y="110" width="100" height="34" rx="2"/>
+  <text data-step="2" class="pole" x="150" y="133">N</text>
+  <text data-step="2" class="pole" x="303" y="133">S</text>
 
   <!-- pole callouts -->
-  <text x="30" y="178" class="lbl">north-seeking (N) pole</text>
-  <path class="lead" d="M96,170 L155,148"/>
-  <text x="430" y="178" text-anchor="end" class="lbl">south-seeking (S) pole</text>
-  <path class="lead" d="M366,170 L302,148"/>
+  <text data-step="3" x="30" y="178" class="lbl">north-seeking (N) pole</text>
+  <path data-step="3" class="lead" d="M96,170 L155,148"/>
+  <text data-step="3" x="430" y="178" text-anchor="end" class="lbl">south-seeking (S) pole</text>
+  <path data-step="3" class="lead" d="M366,170 L302,148"/>
 
   <!-- geographic axis, parallel to the resting magnet -->
-  <text x="130" y="212" text-anchor="middle" font-size="14" fill="#E58F8F">geographic North</text>
-  <text x="330" y="212" text-anchor="middle" font-size="14" fill="#6FB7E0">geographic South</text>
-  <line class="axis" x1="112" y1="228" x2="348" y2="228"/>
-  <polygon points="114,222 100,228 114,234" fill="#E58F8F"/>
-  <polygon points="346,222 360,228 346,234" fill="#6FB7E0"/>
+  <text data-step="4" x="130" y="212" text-anchor="middle" font-size="14" fill="#E58F8F">geographic North</text>
+  <text data-step="4" x="330" y="212" text-anchor="middle" font-size="14" fill="#6FB7E0">geographic South</text>
+  <line data-step="4" class="axis" x1="112" y1="228" x2="348" y2="228"/>
+  <polygon data-step="4" points="114,222 100,228 114,234" fill="#E58F8F"/>
+  <polygon data-step="4" points="346,222 360,228 346,234" fill="#6FB7E0"/>
 
-  <text x="230" y="278" text-anchor="middle" font-size="13.5">A freely suspended magnet comes to rest along the N-S line</text>
+  <text data-step="4" x="230" y="278" text-anchor="middle" font-size="13.5">A freely suspended magnet comes to rest along the N-S line</text>
 </svg>

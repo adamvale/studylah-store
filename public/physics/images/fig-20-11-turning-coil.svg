@@ -16,35 +16,35 @@
   </defs>
 
   <!-- poles -->
-  <rect class="pole" x="40" y="70" width="46" height="190"/>
-  <rect class="pole" x="534" y="70" width="46" height="190"/>
-  <text class="plbl" x="63" y="172">N</text>
-  <text class="plbl" x="557" y="172">S</text>
+  <rect data-step="1" class="pole" x="40" y="70" width="46" height="190"/>
+  <rect data-step="1" class="pole" x="534" y="70" width="46" height="190"/>
+  <text data-step="1" class="plbl" x="63" y="172">N</text>
+  <text data-step="1" class="plbl" x="557" y="172">S</text>
 
   <!-- field lines left(N) -> right(S), distorted around conductors -->
-  <path class="fld" d="M86,110 C240,102 380,102 534,110" marker-end="url(#fb)"/>
-  <path class="fld" d="M86,165 C180,165 200,140 250,150" marker-end="url(#fb)"/>
-  <path class="fld" d="M270,152 C320,160 340,180 390,175" marker-end="url(#fb)"/>
-  <path class="fld" d="M410,178 C460,182 500,165 534,165" marker-end="url(#fb)"/>
-  <path class="fld" d="M86,220 C240,228 380,228 534,220" marker-end="url(#fb)"/>
+  <path data-step="2" class="fld" d="M86,110 C240,102 380,102 534,110" marker-end="url(#fb)"/>
+  <path data-step="2" class="fld" d="M86,165 C180,165 200,140 250,150" marker-end="url(#fb)"/>
+  <path data-step="2" class="fld" d="M270,152 C320,160 340,180 390,175" marker-end="url(#fb)"/>
+  <path data-step="2" class="fld" d="M410,178 C460,182 500,165 534,165" marker-end="url(#fb)"/>
+  <path data-step="2" class="fld" d="M86,220 C240,228 380,228 534,220" marker-end="url(#fb)"/>
 
   <!-- left conductor: current out -> force up -->
-  <circle cx="255" cy="165" r="12" fill="#6FB7E0" fill-opacity="0.32" stroke="#EAEAEA" stroke-width="1.8"/>
-  <circle cx="255" cy="165" r="3.2" fill="#EAEAEA"/>
-  <line class="force" x1="255" y1="152" x2="255" y2="96" marker-end="url(#fp)"/>
-  <text fill="#E58F8F" x="230" y="90" font-weight="bold">F</text>
+  <circle data-step="3" cx="255" cy="165" r="12" fill="#6FB7E0" fill-opacity="0.32" stroke="#EAEAEA" stroke-width="1.8"/>
+  <circle data-step="3" cx="255" cy="165" r="3.2" fill="#EAEAEA"/>
+  <line data-step="3" class="force" x1="255" y1="152" x2="255" y2="96" marker-end="url(#fp)"/>
+  <text data-step="3" fill="#E58F8F" x="230" y="90" font-weight="bold">F</text>
 
   <!-- right conductor: current in -> force down -->
-  <circle cx="400" cy="165" r="12" fill="#6FB7E0" fill-opacity="0.32" stroke="#EAEAEA" stroke-width="1.8"/>
-  <line x1="393" y1="158" x2="407" y2="172" stroke="#EAEAEA" stroke-width="1.6"/>
-  <line x1="407" y1="158" x2="393" y2="172" stroke="#EAEAEA" stroke-width="1.6"/>
-  <line class="force" x1="400" y1="178" x2="400" y2="238" marker-end="url(#fp)"/>
-  <text fill="#E58F8F" x="408" y="238" font-weight="bold">F</text>
+  <circle data-step="4" cx="400" cy="165" r="12" fill="#6FB7E0" fill-opacity="0.32" stroke="#EAEAEA" stroke-width="1.8"/>
+  <line data-step="4" x1="393" y1="158" x2="407" y2="172" stroke="#EAEAEA" stroke-width="1.6"/>
+  <line data-step="4" x1="407" y1="158" x2="393" y2="172" stroke="#EAEAEA" stroke-width="1.6"/>
+  <line data-step="4" class="force" x1="400" y1="178" x2="400" y2="238" marker-end="url(#fp)"/>
+  <text data-step="4" fill="#E58F8F" x="408" y="238" font-weight="bold">F</text>
 
-  <text class="lbl" x="255" y="290" text-anchor="middle">current out (&#8857;)</text>
-  <text class="lbl" x="400" y="290" text-anchor="middle">current in (&#8855;)</text>
+  <text data-step="4" class="lbl" x="255" y="290" text-anchor="middle">current out (&#8857;)</text>
+  <text data-step="4" class="lbl" x="400" y="290" text-anchor="middle">current in (&#8855;)</text>
 
   <!-- rotation indicator -->
-  <path class="rot" d="M300,120 A40,40 0 0 1 355,120" marker-end="url(#rr)"/>
-  <text fill="#86C98B" x="327" y="84" text-anchor="middle">turning effect (couple)</text>
+  <path data-step="5" class="rot" d="M300,120 A40,40 0 0 1 355,120" marker-end="url(#rr)"/>
+  <text data-step="5" fill="#86C98B" x="327" y="84" text-anchor="middle">turning effect (couple)</text>
 </svg>

@@ -13,29 +13,29 @@
     .cool { fill:#6FB7E0; }
   </style>
   <!-- ground -->
-  <path class="land" d="M20,215 L230,215 L230,275 L20,275 Z"/>
-  <path class="sea" d="M230,225 L440,225 L440,275 L230,275 Z"/>
-  <text class="lbl" x="120" y="255" text-anchor="middle">land (warmer)</text>
-  <text class="lbl" x="335" y="255" text-anchor="middle">sea (cooler)</text>
+  <path data-step="1" class="land" d="M20,215 L230,215 L230,275 L20,275 Z"/>
+  <path data-step="1" class="sea" d="M230,225 L440,225 L440,275 L230,275 Z"/>
+  <text data-step="1" class="lbl" x="120" y="255" text-anchor="middle">land (warmer)</text>
+  <text data-step="1" class="lbl" x="335" y="255" text-anchor="middle">sea (cooler)</text>
   <!-- sun -->
-  <circle class="sun" cx="90" cy="55" r="14"/>
-  <g stroke="#E8B65A" stroke-width="1.6">
+  <circle data-step="2" class="sun" cx="90" cy="55" r="14"/>
+  <g data-step="2" stroke="#E8B65A" stroke-width="1.6">
     <line x1="90" y1="30" x2="90" y2="18"/><line x1="90" y1="80" x2="90" y2="92"/>
     <line x1="65" y1="55" x2="53" y2="55"/><line x1="115" y1="55" x2="127" y2="55"/>
     <line x1="72" y1="37" x2="63" y2="28"/><line x1="108" y1="73" x2="117" y2="82"/>
     <line x1="108" y1="37" x2="117" y2="28"/><line x1="72" y1="73" x2="63" y2="82"/>
   </g>
   <!-- convection loop: warm air rises over land, cool air sinks over sea, sea->land at surface -->
-  <path class="rise warm" d="M120,210 C112,160 116,120 130,105" fill="none" stroke="#E58F8F"/>
-  <path class="warm" d="M123,120 L130,102 L138,119" fill="#E58F8F" stroke="#E58F8F"/>
-  <path class="flow" d="M140,100 C210,80 280,90 330,105"/>
-  <path class="flow" d="M312,98 L332,106 L314,113" fill="#EAEAEA"/>
-  <path class="sink cool" d="M340,110 C352,155 348,185 335,210" fill="none" stroke="#6FB7E0"/>
-  <path class="cool" d="M327,196 L335,214 L344,196" fill="#6FB7E0" stroke="#6FB7E0"/>
+  <path data-step="3" class="rise warm" d="M120,210 C112,160 116,120 130,105" fill="none" stroke="#E58F8F"/>
+  <path data-step="3" class="warm" d="M123,120 L130,102 L138,119" fill="#E58F8F" stroke="#E58F8F"/>
+  <path data-step="3" class="flow" d="M140,100 C210,80 280,90 330,105"/>
+  <path data-step="3" class="flow" d="M312,98 L332,106 L314,113" fill="#EAEAEA"/>
+  <path data-step="3" class="sink cool" d="M340,110 C352,155 348,185 335,210" fill="none" stroke="#6FB7E0"/>
+  <path data-step="3" class="cool" d="M327,196 L335,214 L344,196" fill="#6FB7E0" stroke="#6FB7E0"/>
   <!-- cool sea breeze along surface toward land -->
-  <path class="flow" d="M320,205 C260,222 190,220 135,208"/>
-  <path class="flow" d="M152,201 L132,208 L151,215" fill="#EAEAEA"/>
-  <text class="warm" x="142" y="150">warm air rises</text>
-  <text class="cool" x="355" y="150">cool air sinks</text>
-  <text class="lbl" x="230" y="200" text-anchor="middle">sea breeze (sea &#8594; land)</text>
+  <path data-step="4" class="flow" d="M320,205 C260,222 190,220 135,208"/>
+  <path data-step="4" class="flow" d="M152,201 L132,208 L151,215" fill="#EAEAEA"/>
+  <text data-step="4" class="warm" x="142" y="150">warm air rises</text>
+  <text data-step="4" class="cool" x="355" y="150">cool air sinks</text>
+  <text data-step="4" class="lbl" x="230" y="200" text-anchor="middle">sea breeze (sea &#8594; land)</text>
 </svg>

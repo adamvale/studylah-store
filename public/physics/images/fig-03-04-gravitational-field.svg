@@ -15,46 +15,46 @@
     </marker>
   </defs>
   <!-- radial field lines pointing inward -->
-    <path class="field" d="M450.0,210.0 L386.0,210.0" marker-end="url(#ah-f)"/>
-    <path class="field" d="M444.9,248.8 L383.1,232.3" marker-end="url(#ah-f)"/>
-    <path class="field" d="M429.9,285.0 L374.5,253.0" marker-end="url(#ah-f)"/>
-    <path class="field" d="M406.1,316.1 L360.8,270.8" marker-end="url(#ah-f)"/>
-    <path class="field" d="M375.0,339.9 L343.0,284.5" marker-end="url(#ah-f)"/>
-    <path class="field" d="M338.8,354.9 L322.3,293.1" marker-end="url(#ah-f)"/>
-    <path class="field" d="M300.0,360.0 L300.0,296.0" marker-end="url(#ah-f)"/>
-    <path class="field" d="M261.2,354.9 L277.7,293.1" marker-end="url(#ah-f)"/>
-    <path class="field" d="M225.0,339.9 L257.0,284.5" marker-end="url(#ah-f)"/>
-    <path class="field" d="M193.9,316.1 L239.2,270.8" marker-end="url(#ah-f)"/>
-    <path class="field" d="M170.1,285.0 L225.5,253.0" marker-end="url(#ah-f)"/>
-    <path class="field" d="M155.1,248.8 L216.9,232.3" marker-end="url(#ah-f)"/>
-    <path class="field" d="M150.0,210.0 L214.0,210.0" marker-end="url(#ah-f)"/>
-    <path class="field" d="M155.1,171.2 L216.9,187.7" marker-end="url(#ah-f)"/>
-    <path class="field" d="M170.1,135.0 L225.5,167.0" marker-end="url(#ah-f)"/>
-    <path class="field" d="M193.9,103.9 L239.2,149.2" marker-end="url(#ah-f)"/>
-    <path class="field" d="M225.0,80.1 L257.0,135.5" marker-end="url(#ah-f)"/>
-    <path class="field" d="M261.2,65.1 L277.7,126.9" marker-end="url(#ah-f)"/>
-    <path class="field" d="M300.0,60.0 L300.0,124.0" marker-end="url(#ah-f)"/>
-    <path class="field" d="M338.8,65.1 L322.3,126.9" marker-end="url(#ah-f)"/>
-    <path class="field" d="M375.0,80.1 L343.0,135.5" marker-end="url(#ah-f)"/>
-    <path class="field" d="M406.1,103.9 L360.8,149.2" marker-end="url(#ah-f)"/>
-    <path class="field" d="M429.9,135.0 L374.5,167.0" marker-end="url(#ah-f)"/>
-    <path class="field" d="M444.9,171.2 L383.1,187.7" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M450.0,210.0 L386.0,210.0" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M444.9,248.8 L383.1,232.3" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M429.9,285.0 L374.5,253.0" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M406.1,316.1 L360.8,270.8" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M375.0,339.9 L343.0,284.5" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M338.8,354.9 L322.3,293.1" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M300.0,360.0 L300.0,296.0" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M261.2,354.9 L277.7,293.1" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M225.0,339.9 L257.0,284.5" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M193.9,316.1 L239.2,270.8" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M170.1,285.0 L225.5,253.0" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M155.1,248.8 L216.9,232.3" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M150.0,210.0 L214.0,210.0" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M155.1,171.2 L216.9,187.7" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M170.1,135.0 L225.5,167.0" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M193.9,103.9 L239.2,149.2" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M225.0,80.1 L257.0,135.5" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M261.2,65.1 L277.7,126.9" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M300.0,60.0 L300.0,124.0" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M338.8,65.1 L322.3,126.9" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M375.0,80.1 L343.0,135.5" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M406.1,103.9 L360.8,149.2" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M429.9,135.0 L374.5,167.0" marker-end="url(#ah-f)"/>
+    <path data-step="1" class="field" d="M444.9,171.2 L383.1,187.7" marker-end="url(#ah-f)"/>
   <!-- object X -->
-  <circle class="planet" cx="300" cy="210" r="78"/>
-  <text x="300" y="216" text-anchor="middle" font-size="18">object X</text>
+  <circle data-step="2" class="planet" cx="300" cy="210" r="78"/>
+  <text data-step="2" x="300" y="216" text-anchor="middle" font-size="18">object X</text>
   <!-- object Y placed in the field -->
-  <circle cx="392" cy="150" r="8" fill="#E8B65A" stroke="#E8B65A"/>
+  <circle data-step="3" cx="392" cy="150" r="8" fill="#E8B65A" stroke="#E8B65A"/>
   <!-- force on Y toward X -->
-  <path class="force" d="M382,158 L344,183" marker-end="url(#ah-y)"/>
+  <path data-step="4" class="force" d="M382,158 L344,183" marker-end="url(#ah-y)"/>
   <!-- labels -->
-  <path class="lead" d="M400,146 L470,120"/>
-  <text x="475" y="126" font-size="17" fill="#E8B65A">object Y</text>
-  <path class="lead" d="M360,175 L470,175"/>
-  <text x="475" y="170" font-size="17" fill="#E58F8F">gravitational</text>
-  <text x="475" y="190" font-size="17" fill="#E58F8F">force</text>
-  <path class="lead" d="M185,300 L213,293"/>
-  <text x="20" y="302" font-size="17">gravitational field</text>
-  <text x="20" y="322" font-size="17">of object X</text>
+  <path data-step="5" class="lead" d="M400,146 L470,120"/>
+  <text data-step="5" x="475" y="126" font-size="17" fill="#E8B65A">object Y</text>
+  <path data-step="5" class="lead" d="M360,175 L470,175"/>
+  <text data-step="5" x="475" y="170" font-size="17" fill="#E58F8F">gravitational</text>
+  <text data-step="5" x="475" y="190" font-size="17" fill="#E58F8F">force</text>
+  <path data-step="5" class="lead" d="M185,300 L213,293"/>
+  <text data-step="5" x="20" y="302" font-size="17">gravitational field</text>
+  <text data-step="5" x="20" y="322" font-size="17">of object X</text>
   <!-- caption -->
-  <text x="310" y="405" text-anchor="middle" font-size="15" fill="#9AA0A6">Object X exerts a gravitational force on object Y placed in its field.</text>
+  <text data-step="6" x="310" y="405" text-anchor="middle" font-size="15" fill="#9AA0A6">Object X exerts a gravitational force on object Y placed in its field.</text>
 </svg>

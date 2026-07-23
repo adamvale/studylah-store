@@ -17,36 +17,36 @@
   </defs>
 
   <!-- LEFT: good line of best fit -->
-  <line class="axis" x1="50" y1="210" x2="50" y2="40" marker-end="url(#bf1)"/>
-  <line class="axis" x1="50" y1="210" x2="195" y2="210" marker-end="url(#bf1)"/>
-  <text x="14" y="30" class="axlbl">T&#178; / s&#178;</text>
-  <text x="195" y="233" text-anchor="end" class="axlbl">l / cm</text>
+  <line data-step="1" class="axis" x1="50" y1="210" x2="50" y2="40" marker-end="url(#bf1)"/>
+  <line data-step="1" class="axis" x1="50" y1="210" x2="195" y2="210" marker-end="url(#bf1)"/>
+  <text data-step="1" x="14" y="30" class="axlbl">T&#178; / s&#178;</text>
+  <text data-step="1" x="195" y="233" text-anchor="end" class="axlbl">l / cm</text>
 
-  <path class="bestfit" d="M65,190 L175,74"/>
-  <path class="point" d="M65,185 l10,10 M75,185 l-10,10"/>
-  <path class="point" d="M77,161 l10,10 M87,161 l-10,10"/>
-  <path class="point" d="M90,146 l10,10 M100,146 l-10,10"/>
-  <path class="point" d="M115,133 l10,10 M125,133 l-10,10"/>
-  <path class="point" d="M140,94 l10,10 M150,94 l-10,10"/>
-  <path class="point" d="M165,79 l10,10 M175,79 l-10,10"/>
+  <path data-step="1" class="bestfit" d="M65,190 L175,74"/>
+  <path data-step="1" class="point" d="M65,185 l10,10 M75,185 l-10,10"/>
+  <path data-step="1" class="point" d="M77,161 l10,10 M87,161 l-10,10"/>
+  <path data-step="1" class="point" d="M90,146 l10,10 M100,146 l-10,10"/>
+  <path data-step="1" class="point" d="M115,133 l10,10 M125,133 l-10,10"/>
+  <path data-step="1" class="point" d="M140,94 l10,10 M150,94 l-10,10"/>
+  <path data-step="1" class="point" d="M165,79 l10,10 M175,79 l-10,10"/>
 
-  <text x="50" y="262" class="good-lbl">Good: one ruled line</text>
-  <text x="50" y="280" class="sub">points even on both sides</text>
+  <text data-step="1" x="50" y="262" class="good-lbl">Good: one ruled line</text>
+  <text data-step="1" x="50" y="280" class="sub">points even on both sides</text>
 
   <!-- RIGHT: poor attempt -->
-  <line class="axis" x1="270" y1="210" x2="270" y2="40" marker-end="url(#bf1)"/>
-  <line class="axis" x1="270" y1="210" x2="415" y2="210" marker-end="url(#bf1)"/>
-  <text x="234" y="30" class="axlbl">T&#178; / s&#178;</text>
-  <text x="415" y="233" text-anchor="end" class="axlbl">l / cm</text>
+  <line data-step="2" class="axis" x1="270" y1="210" x2="270" y2="40" marker-end="url(#bf1)"/>
+  <line data-step="2" class="axis" x1="270" y1="210" x2="415" y2="210" marker-end="url(#bf1)"/>
+  <text data-step="2" x="234" y="30" class="axlbl">T&#178; / s&#178;</text>
+  <text data-step="2" x="415" y="233" text-anchor="end" class="axlbl">l / cm</text>
 
-  <path class="poorline" d="M290,190 L302,166 L315,151 L340,138 L365,99 L390,84"/>
-  <path class="point" d="M285,185 l10,10 M295,185 l-10,10"/>
-  <path class="point" d="M297,161 l10,10 M307,161 l-10,10"/>
-  <path class="point" d="M310,146 l10,10 M320,146 l-10,10"/>
-  <path class="point" d="M335,133 l10,10 M345,133 l-10,10"/>
-  <path class="point" d="M360,94 l10,10 M370,94 l-10,10"/>
-  <path class="point" d="M385,79 l10,10 M395,79 l-10,10"/>
+  <path data-step="2" class="poorline" d="M290,190 L302,166 L315,151 L340,138 L365,99 L390,84"/>
+  <path data-step="2" class="point" d="M285,185 l10,10 M295,185 l-10,10"/>
+  <path data-step="2" class="point" d="M297,161 l10,10 M307,161 l-10,10"/>
+  <path data-step="2" class="point" d="M310,146 l10,10 M320,146 l-10,10"/>
+  <path data-step="2" class="point" d="M335,133 l10,10 M345,133 l-10,10"/>
+  <path data-step="2" class="point" d="M360,94 l10,10 M370,94 l-10,10"/>
+  <path data-step="2" class="point" d="M385,79 l10,10 M395,79 l-10,10"/>
 
-  <text x="270" y="262" class="poor-lbl">Poor: joins the dots</text>
-  <text x="270" y="280" class="sub">or forced through a point</text>
+  <text data-step="2" x="270" y="262" class="poor-lbl">Poor: joins the dots</text>
+  <text data-step="2" x="270" y="280" class="sub">or forced through a point</text>
 </svg>

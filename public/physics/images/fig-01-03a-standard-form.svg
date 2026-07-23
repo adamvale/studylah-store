@@ -15,17 +15,17 @@
   </style>
 
   <!-- the decimal point hops 6 places to the left -->
-  <text class="note" x="210" y="34" text-anchor="middle">the point hops 6 places left</text>
-  <path class="hop" d="M312,58 Q210,20 150,58" marker-end="url(#hop)"/>
+  <text data-step="1" class="note" x="210" y="34" text-anchor="middle">the point hops 6 places left</text>
+  <path data-step="1" class="hop" d="M312,58 Q210,20 150,58" marker-end="url(#hop)"/>
 
-  <text class="num" x="210" y="100">5 280 000.</text>
+  <text data-step="1" class="num" x="210" y="100">5 280 000.</text>
 
-  <text class="note" x="210" y="140" text-anchor="middle">becomes</text>
+  <text data-step="1" class="note" x="210" y="140" text-anchor="middle">becomes</text>
 
-  <text class="num" x="210" y="190"><tspan class="a">5.28</tspan> &#215; 10&#8310;</text>
+  <text data-step="1" class="num" x="210" y="190"><tspan class="a">5.28</tspan> &#215; 10&#8310;</text>
 
   <!-- the rule that fixes what A may be -->
-  <rect class="callout" x="70" y="230" width="280" height="56" rx="10"/>
-  <text class="ctext" x="210" y="255">A must be at least 1</text>
-  <text class="ctext" x="210" y="275">and less than 10</text>
+  <rect data-step="2" class="callout" x="70" y="230" width="280" height="56" rx="10"/>
+  <text data-step="2" class="ctext" x="210" y="255">A must be at least 1</text>
+  <text data-step="2" class="ctext" x="210" y="275">and less than 10</text>
 </svg>

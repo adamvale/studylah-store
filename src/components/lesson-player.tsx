@@ -7,7 +7,7 @@ import type { Formula as FormulaSpec, LessonStep } from "@/lib/lesson-steps";
 import { NamedIcon } from "@/components/icons";
 import { Sci } from "@/components/sci-text";
 import { ImmersiveShell } from "@/components/immersive-shell";
-import { FigureZoom } from "@/components/figure-zoom";
+import { AnimatedFigure } from "@/components/animated-figure";
 import { TutorHead } from "@/components/tutor-head";
 import { physicsFigureSrc } from "@/lib/teaching";
 import {
@@ -261,31 +261,9 @@ function Formula({ latex, where }: FormulaSpec) {
 // Renders nothing if the figure name is unknown, so content never shows a break.
 function Figure({ name }: { name?: string }) {
   const src = physicsFigureSrc(name);
-  const [zoom, setZoom] = useState(false);
   if (!src) return null;
-  return (
-    <>
-      {/* Tap to open it full screen and pinch. Diagrams no longer have to be
-          legible at card size, so they can carry the detail the physics needs. */}
-      <button
-        type="button"
-        aria-label="Open the diagram to zoom in"
-        onClick={() => setZoom(true)}
-        className="mb-3 block w-full"
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={src}
-          alt=""
-          className="block h-auto w-full object-contain"
-          onError={(e) => {
-            e.currentTarget.style.display = "none";
-          }}
-        />
-      </button>
-      {zoom && <FigureZoom src={src} onClose={() => setZoom(false)} />}
-    </>
-  );
+  // Draws itself in step with Gugu, and is still tap-to-pinch.
+  return <AnimatedFigure src={src} />;
 }
 
 // The interactive lesson player: Brilliant-style, one step at a time, hands-on,

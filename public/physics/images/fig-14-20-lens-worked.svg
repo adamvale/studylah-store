@@ -15,10 +15,10 @@
     .tick { stroke:#9AA0A6; stroke-width:1; }
     .pf { fill:#EAEAEA; }
   </style>
-  <line class="axis" x1="60" y1="170" x2="520" y2="170"/>
-  <path class="lens" d="M350,100 Q378,170 350,240 Q322,170 350,100 Z"/>
+  <line data-step="1" class="axis" x1="60" y1="170" x2="520" y2="170"/>
+  <path data-step="1" class="lens" d="M350,100 Q378,170 350,240 Q322,170 350,100 Z"/>
   <!-- scale ticks every 3 cm -->
-  <g class="tick">
+  <g data-step="1" class="tick">
     <line x1="80" y1="166" x2="80" y2="174"/><line x1="125" y1="166" x2="125" y2="174"/>
     <line x1="170" y1="166" x2="170" y2="174"/><line x1="215" y1="166" x2="215" y2="174"/>
     <line x1="260" y1="164" x2="260" y2="176"/><line x1="305" y1="166" x2="305" y2="174"/>
@@ -26,16 +26,16 @@
     <line x1="485" y1="166" x2="485" y2="174"/>
   </g>
   <!-- object -->
-  <path class="obj" marker-end="url(#ao)" d="M80,170 L80,113"/>
-  <text x="80" y="104" text-anchor="middle" font-size="12" fill="#E8B65A">object (18 cm)</text>
+  <path data-step="2" class="obj" marker-end="url(#ao)" d="M80,170 L80,113"/>
+  <text data-step="2" x="80" y="104" text-anchor="middle" font-size="12" fill="#E8B65A">object (18 cm)</text>
   <!-- ray 1 -->
-  <path class="r1" d="M80,110 L350,110"/>
-  <path class="r1" marker-end="url(#ar)" d="M350,110 L500,210"/>
+  <path data-step="3" class="r1" d="M80,110 L350,110"/>
+  <path data-step="3" class="r1" marker-end="url(#ar)" d="M350,110 L500,210"/>
   <!-- ray 2 through centre -->
-  <path class="r2" marker-end="url(#ao)" d="M80,110 L500,207"/>
+  <path data-step="4" class="r2" marker-end="url(#ao)" d="M80,110 L500,207"/>
   <!-- image -->
-  <path class="img" marker-end="url(#ai)" d="M485,170 L485,197"/>
-  <text x="485" y="215" text-anchor="middle" font-size="12" fill="#86C98B">image (9 cm)</text>
-  <circle class="pf" cx="260" cy="170" r="2.8"/><text x="260" y="190" text-anchor="middle" font-size="12" font-style="italic">F</text>
-  <circle class="pf" cx="440" cy="170" r="2.8"/><text x="440" y="190" text-anchor="middle" font-size="12" font-style="italic">F</text>
+  <path data-step="5" class="img" marker-end="url(#ai)" d="M485,170 L485,197"/>
+  <text data-step="5" x="485" y="215" text-anchor="middle" font-size="12" fill="#86C98B">image (9 cm)</text>
+  <circle data-step="5" class="pf" cx="260" cy="170" r="2.8"/><text data-step="5" x="260" y="190" text-anchor="middle" font-size="12" font-style="italic">F</text>
+  <circle data-step="5" class="pf" cx="440" cy="170" r="2.8"/><text data-step="5" x="440" y="190" text-anchor="middle" font-size="12" font-style="italic">F</text>
 </svg>

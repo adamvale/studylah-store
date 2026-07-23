@@ -5,52 +5,52 @@
       <path d="M0,0 L6,3 L0,6 Z" fill="#EAEAEA"/>
     </marker>
   </defs>
-  <line x1="34" y1="40" x2="34" y2="620" stroke="#EAEAEA" stroke-width="1.5" marker-end="url(#ar)"/>
-  <text transform="translate(16,330) rotate(-90)" font-size="13" text-anchor="middle">frequency and energy increase</text>
-  <line x1="414" y1="620" x2="414" y2="40" stroke="#EAEAEA" stroke-width="1.5" marker-end="url(#ar)"/>
-  <text transform="translate(432,330) rotate(-90)" font-size="13" text-anchor="middle">wavelength increases</text>
-  <rect x="60" y="40" width="340" height="66" fill="#6FB7E0" fill-opacity="0.16" stroke="#6FB7E0" stroke-width="1.4"/>
-  <text x="74" y="66" font-size="15" fill="#6FB7E0">Radiowaves</text>
-  <text x="74" y="90" font-size="12.5" fill="#9AA0A6">&gt; 10⁻¹ m</text>
-  <path d="M244.0,74 Q264.0,52.0 284.0,74 Q304.0,96.0 324.0,74 Q344.0,52.0 364.0,74" fill="none" stroke="#6FB7E0" stroke-width="1.6"/>
-  <rect x="60" y="116" width="340" height="66" fill="#86C98B" fill-opacity="0.16" stroke="#86C98B" stroke-width="1.4"/>
-  <text x="74" y="142" font-size="15" fill="#86C98B">Microwaves</text>
-  <text x="74" y="166" font-size="12.5" fill="#9AA0A6">10⁻⁴ to 10⁻¹ m</text>
-  <path d="M244.0,150 Q255.0,128.0 266.0,150 Q277.0,172.0 288.0,150 Q299.0,128.0 310.0,150 Q321.0,172.0 332.0,150 Q343.0,128.0 354.0,150 Q365.0,172.0 376.0,150" fill="none" stroke="#86C98B" stroke-width="1.6"/>
-  <rect x="60" y="192" width="340" height="66" fill="#E58F8F" fill-opacity="0.16" stroke="#E58F8F" stroke-width="1.4"/>
-  <text x="74" y="218" font-size="15" fill="#E58F8F">Infrared</text>
-  <text x="74" y="242" font-size="12.5" fill="#9AA0A6">7×10⁻⁷ to 10⁻⁴ m</text>
-  <path d="M244.0,226 Q251.0,204.0 258.0,226 Q265.0,248.0 272.0,226 Q279.0,204.0 286.0,226 Q293.0,248.0 300.0,226 Q307.0,204.0 314.0,226 Q321.0,248.0 328.0,226 Q335.0,204.0 342.0,226 Q349.0,248.0 356.0,226 Q363.0,204.0 370.0,226 Q377.0,248.0 384.0,226" fill="none" stroke="#E58F8F" stroke-width="1.6"/>
-  <rect x="60" y="268" width="340" height="124" fill="#E8B65A" fill-opacity="0.16" stroke="#E8B65A" stroke-width="1.4"/>
-  <text x="74" y="294" font-size="15" fill="#E8B65A">Visible light</text>
-  <text x="74" y="318" font-size="12.5" fill="#9AA0A6">4×10⁻⁷ to 7×10⁻⁷ m</text>
-  <path d="M244.0,302 Q249.0,280.0 254.0,302 Q259.0,324.0 264.0,302 Q269.0,280.0 274.0,302 Q279.0,324.0 284.0,302 Q289.0,280.0 294.0,302 Q299.0,324.0 304.0,302 Q309.0,280.0 314.0,302 Q319.0,324.0 324.0,302 Q329.0,280.0 334.0,302 Q339.0,324.0 344.0,302 Q349.0,280.0 354.0,302 Q359.0,324.0 364.0,302 Q369.0,280.0 374.0,302 Q379.0,324.0 384.0,302" fill="none" stroke="#E8B65A" stroke-width="1.6"/>
-  <rect x="72.0" y="330" width="45.1" height="30" fill="#E58F8F" fill-opacity="0.55" stroke="#E58F8F" stroke-width="0.8"/>
-  <text x="94.6" y="350" font-size="13" text-anchor="middle" fill="#0d0d0d" font-weight="bold">R</text>
-  <rect x="117.1" y="330" width="45.1" height="30" fill="#E8A55A" fill-opacity="0.55" stroke="#E8A55A" stroke-width="0.8"/>
-  <text x="139.7" y="350" font-size="13" text-anchor="middle" fill="#0d0d0d" font-weight="bold">O</text>
-  <rect x="162.3" y="330" width="45.1" height="30" fill="#E8D45A" fill-opacity="0.55" stroke="#E8D45A" stroke-width="0.8"/>
-  <text x="184.9" y="350" font-size="13" text-anchor="middle" fill="#0d0d0d" font-weight="bold">Y</text>
-  <rect x="207.4" y="330" width="45.1" height="30" fill="#86C98B" fill-opacity="0.55" stroke="#86C98B" stroke-width="0.8"/>
-  <text x="230.0" y="350" font-size="13" text-anchor="middle" fill="#0d0d0d" font-weight="bold">G</text>
-  <rect x="252.6" y="330" width="45.1" height="30" fill="#6FB7E0" fill-opacity="0.55" stroke="#6FB7E0" stroke-width="0.8"/>
-  <text x="275.1" y="350" font-size="13" text-anchor="middle" fill="#0d0d0d" font-weight="bold">B</text>
-  <rect x="297.7" y="330" width="45.1" height="30" fill="#5A7FE0" fill-opacity="0.55" stroke="#5A7FE0" stroke-width="0.8"/>
-  <text x="320.3" y="350" font-size="13" text-anchor="middle" fill="#0d0d0d" font-weight="bold">I</text>
-  <rect x="342.9" y="330" width="45.1" height="30" fill="#B79AE0" fill-opacity="0.55" stroke="#B79AE0" stroke-width="0.8"/>
-  <text x="365.4" y="350" font-size="13" text-anchor="middle" fill="#0d0d0d" font-weight="bold">V</text>
-  <text x="72" y="382" font-size="12" fill="#9AA0A6">red: longest λ</text>
-  <text x="388" y="382" font-size="12" fill="#9AA0A6" text-anchor="end">violet: shortest λ</text>
-  <rect x="60" y="402" width="340" height="66" fill="#B79AE0" fill-opacity="0.16" stroke="#B79AE0" stroke-width="1.4"/>
-  <text x="74" y="428" font-size="15" fill="#B79AE0">Ultraviolet</text>
-  <text x="74" y="452" font-size="12.5" fill="#9AA0A6">10⁻⁸ to 4×10⁻⁷ m</text>
-  <path d="M244.0,436 Q247.5,414.0 251.0,436 Q254.5,458.0 258.0,436 Q261.5,414.0 265.0,436 Q268.5,458.0 272.0,436 Q275.5,414.0 279.0,436 Q282.5,458.0 286.0,436 Q289.5,414.0 293.0,436 Q296.5,458.0 300.0,436 Q303.5,414.0 307.0,436 Q310.5,458.0 314.0,436 Q317.5,414.0 321.0,436 Q324.5,458.0 328.0,436 Q331.5,414.0 335.0,436 Q338.5,458.0 342.0,436 Q345.5,414.0 349.0,436 Q352.5,458.0 356.0,436 Q359.5,414.0 363.0,436 Q366.5,458.0 370.0,436 Q373.5,414.0 377.0,436 Q380.5,458.0 384.0,436" fill="none" stroke="#B79AE0" stroke-width="1.6"/>
-  <rect x="60" y="478" width="340" height="66" fill="#9AA0A6" fill-opacity="0.16" stroke="#9AA0A6" stroke-width="1.4"/>
-  <text x="74" y="504" font-size="15" fill="#9AA0A6">X-rays</text>
-  <text x="74" y="528" font-size="12.5" fill="#9AA0A6">10⁻⁹ to 10⁻⁸ m</text>
-  <path d="M244.0,512 Q246.3,490.0 248.5,512 Q250.8,534.0 253.0,512 Q255.3,490.0 257.5,512 Q259.8,534.0 262.0,512 Q264.3,490.0 266.5,512 Q268.8,534.0 271.0,512 Q273.3,490.0 275.5,512 Q277.8,534.0 280.0,512 Q282.3,490.0 284.5,512 Q286.8,534.0 289.0,512 Q291.3,490.0 293.5,512 Q295.8,534.0 298.0,512 Q300.3,490.0 302.5,512 Q304.8,534.0 307.0,512 Q309.3,490.0 311.5,512 Q313.8,534.0 316.0,512 Q318.3,490.0 320.5,512 Q322.8,534.0 325.0,512 Q327.3,490.0 329.5,512 Q331.8,534.0 334.0,512 Q336.3,490.0 338.5,512 Q340.8,534.0 343.0,512 Q345.3,490.0 347.5,512 Q349.8,534.0 352.0,512 Q354.3,490.0 356.5,512 Q358.8,534.0 361.0,512 Q363.3,490.0 365.5,512 Q367.8,534.0 370.0,512 Q372.3,490.0 374.5,512 Q376.8,534.0 379.0,512 Q381.3,490.0 383.5,512 Q385.8,534.0 388.0,512" fill="none" stroke="#9AA0A6" stroke-width="1.6"/>
-  <rect x="60" y="554" width="340" height="66" fill="#E58F8F" fill-opacity="0.16" stroke="#E58F8F" stroke-width="1.4"/>
-  <text x="74" y="580" font-size="15" fill="#E58F8F">Gamma rays</text>
-  <text x="74" y="604" font-size="12.5" fill="#9AA0A6">&lt; 10⁻⁹ m</text>
-  <path d="M244.0,588 Q245.5,566.0 247.0,588 Q248.5,610.0 250.0,588 Q251.5,566.0 253.0,588 Q254.5,610.0 256.0,588 Q257.5,566.0 259.0,588 Q260.5,610.0 262.0,588 Q263.5,566.0 265.0,588 Q266.5,610.0 268.0,588 Q269.5,566.0 271.0,588 Q272.5,610.0 274.0,588 Q275.5,566.0 277.0,588 Q278.5,610.0 280.0,588 Q281.5,566.0 283.0,588 Q284.5,610.0 286.0,588 Q287.5,566.0 289.0,588 Q290.5,610.0 292.0,588 Q293.5,566.0 295.0,588 Q296.5,610.0 298.0,588 Q299.5,566.0 301.0,588 Q302.5,610.0 304.0,588 Q305.5,566.0 307.0,588 Q308.5,610.0 310.0,588 Q311.5,566.0 313.0,588 Q314.5,610.0 316.0,588 Q317.5,566.0 319.0,588 Q320.5,610.0 322.0,588 Q323.5,566.0 325.0,588 Q326.5,610.0 328.0,588 Q329.5,566.0 331.0,588 Q332.5,610.0 334.0,588 Q335.5,566.0 337.0,588 Q338.5,610.0 340.0,588 Q341.5,566.0 343.0,588 Q344.5,610.0 346.0,588 Q347.5,566.0 349.0,588 Q350.5,610.0 352.0,588 Q353.5,566.0 355.0,588 Q356.5,610.0 358.0,588 Q359.5,566.0 361.0,588 Q362.5,610.0 364.0,588 Q365.5,566.0 367.0,588 Q368.5,610.0 370.0,588 Q371.5,566.0 373.0,588 Q374.5,610.0 376.0,588 Q377.5,566.0 379.0,588 Q380.5,610.0 382.0,588 Q383.5,566.0 385.0,588 Q386.5,610.0 388.0,588" fill="none" stroke="#E58F8F" stroke-width="1.6"/>
+  <line data-step="1" x1="34" y1="40" x2="34" y2="620" stroke="#EAEAEA" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text data-step="3" transform="translate(16,330) rotate(-90)" font-size="13" text-anchor="middle">frequency and energy increase</text>
+  <line data-step="1" x1="414" y1="620" x2="414" y2="40" stroke="#EAEAEA" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text data-step="3" transform="translate(432,330) rotate(-90)" font-size="13" text-anchor="middle">wavelength increases</text>
+  <rect data-step="1" x="60" y="40" width="340" height="66" fill="#6FB7E0" fill-opacity="0.16" stroke="#6FB7E0" stroke-width="1.4"/>
+  <text data-step="3" x="74" y="66" font-size="15" fill="#6FB7E0">Radiowaves</text>
+  <text data-step="3" x="74" y="90" font-size="12.5" fill="#9AA0A6">&gt; 10⁻¹ m</text>
+  <path data-step="1" d="M244.0,74 Q264.0,52.0 284.0,74 Q304.0,96.0 324.0,74 Q344.0,52.0 364.0,74" fill="none" stroke="#6FB7E0" stroke-width="1.6"/>
+  <rect data-step="1" x="60" y="116" width="340" height="66" fill="#86C98B" fill-opacity="0.16" stroke="#86C98B" stroke-width="1.4"/>
+  <text data-step="3" x="74" y="142" font-size="15" fill="#86C98B">Microwaves</text>
+  <text data-step="3" x="74" y="166" font-size="12.5" fill="#9AA0A6">10⁻⁴ to 10⁻¹ m</text>
+  <path data-step="1" d="M244.0,150 Q255.0,128.0 266.0,150 Q277.0,172.0 288.0,150 Q299.0,128.0 310.0,150 Q321.0,172.0 332.0,150 Q343.0,128.0 354.0,150 Q365.0,172.0 376.0,150" fill="none" stroke="#86C98B" stroke-width="1.6"/>
+  <rect data-step="1" x="60" y="192" width="340" height="66" fill="#E58F8F" fill-opacity="0.16" stroke="#E58F8F" stroke-width="1.4"/>
+  <text data-step="3" x="74" y="218" font-size="15" fill="#E58F8F">Infrared</text>
+  <text data-step="3" x="74" y="242" font-size="12.5" fill="#9AA0A6">7×10⁻⁷ to 10⁻⁴ m</text>
+  <path data-step="1" d="M244.0,226 Q251.0,204.0 258.0,226 Q265.0,248.0 272.0,226 Q279.0,204.0 286.0,226 Q293.0,248.0 300.0,226 Q307.0,204.0 314.0,226 Q321.0,248.0 328.0,226 Q335.0,204.0 342.0,226 Q349.0,248.0 356.0,226 Q363.0,204.0 370.0,226 Q377.0,248.0 384.0,226" fill="none" stroke="#E58F8F" stroke-width="1.6"/>
+  <rect data-step="1" x="60" y="268" width="340" height="124" fill="#E8B65A" fill-opacity="0.16" stroke="#E8B65A" stroke-width="1.4"/>
+  <text data-step="3" x="74" y="294" font-size="15" fill="#E8B65A">Visible light</text>
+  <text data-step="3" x="74" y="318" font-size="12.5" fill="#9AA0A6">4×10⁻⁷ to 7×10⁻⁷ m</text>
+  <path data-step="1" d="M244.0,302 Q249.0,280.0 254.0,302 Q259.0,324.0 264.0,302 Q269.0,280.0 274.0,302 Q279.0,324.0 284.0,302 Q289.0,280.0 294.0,302 Q299.0,324.0 304.0,302 Q309.0,280.0 314.0,302 Q319.0,324.0 324.0,302 Q329.0,280.0 334.0,302 Q339.0,324.0 344.0,302 Q349.0,280.0 354.0,302 Q359.0,324.0 364.0,302 Q369.0,280.0 374.0,302 Q379.0,324.0 384.0,302" fill="none" stroke="#E8B65A" stroke-width="1.6"/>
+  <rect data-step="1" x="72.0" y="330" width="45.1" height="30" fill="#E58F8F" fill-opacity="0.55" stroke="#E58F8F" stroke-width="0.8"/>
+  <text data-step="3" x="94.6" y="350" font-size="13" text-anchor="middle" fill="#0d0d0d" font-weight="bold">R</text>
+  <rect data-step="1" x="117.1" y="330" width="45.1" height="30" fill="#E8A55A" fill-opacity="0.55" stroke="#E8A55A" stroke-width="0.8"/>
+  <text data-step="3" x="139.7" y="350" font-size="13" text-anchor="middle" fill="#0d0d0d" font-weight="bold">O</text>
+  <rect data-step="2" x="162.3" y="330" width="45.1" height="30" fill="#E8D45A" fill-opacity="0.55" stroke="#E8D45A" stroke-width="0.8"/>
+  <text data-step="3" x="184.9" y="350" font-size="13" text-anchor="middle" fill="#0d0d0d" font-weight="bold">Y</text>
+  <rect data-step="2" x="207.4" y="330" width="45.1" height="30" fill="#86C98B" fill-opacity="0.55" stroke="#86C98B" stroke-width="0.8"/>
+  <text data-step="4" x="230.0" y="350" font-size="13" text-anchor="middle" fill="#0d0d0d" font-weight="bold">G</text>
+  <rect data-step="2" x="252.6" y="330" width="45.1" height="30" fill="#6FB7E0" fill-opacity="0.55" stroke="#6FB7E0" stroke-width="0.8"/>
+  <text data-step="4" x="275.1" y="350" font-size="13" text-anchor="middle" fill="#0d0d0d" font-weight="bold">B</text>
+  <rect data-step="2" x="297.7" y="330" width="45.1" height="30" fill="#5A7FE0" fill-opacity="0.55" stroke="#5A7FE0" stroke-width="0.8"/>
+  <text data-step="4" x="320.3" y="350" font-size="13" text-anchor="middle" fill="#0d0d0d" font-weight="bold">I</text>
+  <rect data-step="2" x="342.9" y="330" width="45.1" height="30" fill="#B79AE0" fill-opacity="0.55" stroke="#B79AE0" stroke-width="0.8"/>
+  <text data-step="4" x="365.4" y="350" font-size="13" text-anchor="middle" fill="#0d0d0d" font-weight="bold">V</text>
+  <text data-step="4" x="72" y="382" font-size="12" fill="#9AA0A6">red: longest λ</text>
+  <text data-step="4" x="388" y="382" font-size="12" fill="#9AA0A6" text-anchor="end">violet: shortest λ</text>
+  <rect data-step="2" x="60" y="402" width="340" height="66" fill="#B79AE0" fill-opacity="0.16" stroke="#B79AE0" stroke-width="1.4"/>
+  <text data-step="4" x="74" y="428" font-size="15" fill="#B79AE0">Ultraviolet</text>
+  <text data-step="4" x="74" y="452" font-size="12.5" fill="#9AA0A6">10⁻⁸ to 4×10⁻⁷ m</text>
+  <path data-step="2" d="M244.0,436 Q247.5,414.0 251.0,436 Q254.5,458.0 258.0,436 Q261.5,414.0 265.0,436 Q268.5,458.0 272.0,436 Q275.5,414.0 279.0,436 Q282.5,458.0 286.0,436 Q289.5,414.0 293.0,436 Q296.5,458.0 300.0,436 Q303.5,414.0 307.0,436 Q310.5,458.0 314.0,436 Q317.5,414.0 321.0,436 Q324.5,458.0 328.0,436 Q331.5,414.0 335.0,436 Q338.5,458.0 342.0,436 Q345.5,414.0 349.0,436 Q352.5,458.0 356.0,436 Q359.5,414.0 363.0,436 Q366.5,458.0 370.0,436 Q373.5,414.0 377.0,436 Q380.5,458.0 384.0,436" fill="none" stroke="#B79AE0" stroke-width="1.6"/>
+  <rect data-step="2" x="60" y="478" width="340" height="66" fill="#9AA0A6" fill-opacity="0.16" stroke="#9AA0A6" stroke-width="1.4"/>
+  <text data-step="4" x="74" y="504" font-size="15" fill="#9AA0A6">X-rays</text>
+  <text data-step="4" x="74" y="528" font-size="12.5" fill="#9AA0A6">10⁻⁹ to 10⁻⁸ m</text>
+  <path data-step="2" d="M244.0,512 Q246.3,490.0 248.5,512 Q250.8,534.0 253.0,512 Q255.3,490.0 257.5,512 Q259.8,534.0 262.0,512 Q264.3,490.0 266.5,512 Q268.8,534.0 271.0,512 Q273.3,490.0 275.5,512 Q277.8,534.0 280.0,512 Q282.3,490.0 284.5,512 Q286.8,534.0 289.0,512 Q291.3,490.0 293.5,512 Q295.8,534.0 298.0,512 Q300.3,490.0 302.5,512 Q304.8,534.0 307.0,512 Q309.3,490.0 311.5,512 Q313.8,534.0 316.0,512 Q318.3,490.0 320.5,512 Q322.8,534.0 325.0,512 Q327.3,490.0 329.5,512 Q331.8,534.0 334.0,512 Q336.3,490.0 338.5,512 Q340.8,534.0 343.0,512 Q345.3,490.0 347.5,512 Q349.8,534.0 352.0,512 Q354.3,490.0 356.5,512 Q358.8,534.0 361.0,512 Q363.3,490.0 365.5,512 Q367.8,534.0 370.0,512 Q372.3,490.0 374.5,512 Q376.8,534.0 379.0,512 Q381.3,490.0 383.5,512 Q385.8,534.0 388.0,512" fill="none" stroke="#9AA0A6" stroke-width="1.6"/>
+  <rect data-step="2" x="60" y="554" width="340" height="66" fill="#E58F8F" fill-opacity="0.16" stroke="#E58F8F" stroke-width="1.4"/>
+  <text data-step="4" x="74" y="580" font-size="15" fill="#E58F8F">Gamma rays</text>
+  <text data-step="4" x="74" y="604" font-size="12.5" fill="#9AA0A6">&lt; 10⁻⁹ m</text>
+  <path data-step="2" d="M244.0,588 Q245.5,566.0 247.0,588 Q248.5,610.0 250.0,588 Q251.5,566.0 253.0,588 Q254.5,610.0 256.0,588 Q257.5,566.0 259.0,588 Q260.5,610.0 262.0,588 Q263.5,566.0 265.0,588 Q266.5,610.0 268.0,588 Q269.5,566.0 271.0,588 Q272.5,610.0 274.0,588 Q275.5,566.0 277.0,588 Q278.5,610.0 280.0,588 Q281.5,566.0 283.0,588 Q284.5,610.0 286.0,588 Q287.5,566.0 289.0,588 Q290.5,610.0 292.0,588 Q293.5,566.0 295.0,588 Q296.5,610.0 298.0,588 Q299.5,566.0 301.0,588 Q302.5,610.0 304.0,588 Q305.5,566.0 307.0,588 Q308.5,610.0 310.0,588 Q311.5,566.0 313.0,588 Q314.5,610.0 316.0,588 Q317.5,566.0 319.0,588 Q320.5,610.0 322.0,588 Q323.5,566.0 325.0,588 Q326.5,610.0 328.0,588 Q329.5,566.0 331.0,588 Q332.5,610.0 334.0,588 Q335.5,566.0 337.0,588 Q338.5,610.0 340.0,588 Q341.5,566.0 343.0,588 Q344.5,610.0 346.0,588 Q347.5,566.0 349.0,588 Q350.5,610.0 352.0,588 Q353.5,566.0 355.0,588 Q356.5,610.0 358.0,588 Q359.5,566.0 361.0,588 Q362.5,610.0 364.0,588 Q365.5,566.0 367.0,588 Q368.5,610.0 370.0,588 Q371.5,566.0 373.0,588 Q374.5,610.0 376.0,588 Q377.5,566.0 379.0,588 Q380.5,610.0 382.0,588 Q383.5,566.0 385.0,588 Q386.5,610.0 388.0,588" fill="none" stroke="#E58F8F" stroke-width="1.6"/>
 </svg>

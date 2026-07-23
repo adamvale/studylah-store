@@ -20,26 +20,26 @@
     .cap { font-size:14; font-weight:bold; }
   </style>
   <!-- Panel A: Newton's First Law (two forces on apple) -->
-  <text x="210" y="28" text-anchor="middle" class="cap">Two forces on the apple &#8594; 1st Law</text>
-  <rect class="book" x="145" y="175" width="130" height="16"/>
-  <text x="283" y="188" font-size="12.5">book</text>
-  <circle class="apple" cx="205" cy="150" r="24"/>
-  <text x="237" y="148" font-size="12.5">apple</text>
-  <line class="up" x1="205" y1="150" x2="205" y2="80" marker-end="url(#arwG)"/>
-  <text x="213" y="95" font-size="13" fill="#86C98B">normal force</text>
-  <line class="dn" x1="205" y1="150" x2="205" y2="240" marker-end="url(#arwR)"/>
-  <text x="213" y="230" font-size="13" fill="#E58F8F">weight</text>
-  <text x="210" y="272" text-anchor="middle" font-size="13">They balance &#8594; apple stays at rest.</text>
-  <line x1="40" y1="295" x2="380" y2="295" stroke="#9AA0A6" stroke-width="1" stroke-dasharray="4 4"/>
+  <text data-step="1" x="210" y="28" text-anchor="middle" class="cap">Two forces on the apple &#8594; 1st Law</text>
+  <rect data-step="1" class="book" x="145" y="175" width="130" height="16"/>
+  <text data-step="1" x="283" y="188" font-size="12.5">book</text>
+  <circle data-step="1" class="apple" cx="205" cy="150" r="24"/>
+  <text data-step="1" x="237" y="148" font-size="12.5">apple</text>
+  <line data-step="1" class="up" x1="205" y1="150" x2="205" y2="80" marker-end="url(#arwG)"/>
+  <text data-step="1" x="213" y="95" font-size="13" fill="#86C98B">normal force</text>
+  <line data-step="1" class="dn" x1="205" y1="150" x2="205" y2="240" marker-end="url(#arwR)"/>
+  <text data-step="1" x="213" y="230" font-size="13" fill="#E58F8F">weight</text>
+  <text data-step="1" x="210" y="272" text-anchor="middle" font-size="13">They balance &#8594; apple stays at rest.</text>
+  <line data-step="1" x1="40" y1="295" x2="380" y2="295" stroke="#9AA0A6" stroke-width="1" stroke-dasharray="4 4"/>
   <!-- Panel B: Newton's Third Law (action-reaction pairs on different bodies) -->
-  <text x="210" y="328" text-anchor="middle" class="cap">Action-reaction pairs &#8594; 3rd Law</text>
-  <rect class="book" x="145" y="475" width="130" height="16"/>
-  <text x="283" y="488" font-size="12.5">book</text>
-  <circle class="apple" cx="205" cy="450" r="24"/>
-  <text x="237" y="448" font-size="12.5">apple</text>
-  <line class="up" x1="205" y1="450" x2="205" y2="380" marker-end="url(#arwG)"/>
-  <text x="213" y="395" font-size="13" fill="#86C98B">book on apple</text>
-  <line class="bl" x1="205" y1="491" x2="205" y2="540" marker-end="url(#arwB)"/>
-  <text x="213" y="530" font-size="13" fill="#6FB7E0">apple on book</text>
-  <text x="210" y="572" text-anchor="middle" font-size="13">Equal, opposite, on two different bodies.</text>
+  <text data-step="2" x="210" y="328" text-anchor="middle" class="cap">Action-reaction pairs &#8594; 3rd Law</text>
+  <rect data-step="2" class="book" x="145" y="475" width="130" height="16"/>
+  <text data-step="2" x="283" y="488" font-size="12.5">book</text>
+  <circle data-step="2" class="apple" cx="205" cy="450" r="24"/>
+  <text data-step="2" x="237" y="448" font-size="12.5">apple</text>
+  <line data-step="2" class="up" x1="205" y1="450" x2="205" y2="380" marker-end="url(#arwG)"/>
+  <text data-step="2" x="213" y="395" font-size="13" fill="#86C98B">book on apple</text>
+  <line data-step="2" class="bl" x1="205" y1="491" x2="205" y2="540" marker-end="url(#arwB)"/>
+  <text data-step="2" x="213" y="530" font-size="13" fill="#6FB7E0">apple on book</text>
+  <text data-step="2" x="210" y="572" text-anchor="middle" font-size="13">Equal, opposite, on two different bodies.</text>
 </svg>

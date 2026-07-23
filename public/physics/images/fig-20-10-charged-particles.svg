@@ -15,10 +15,10 @@
     <marker id="mf" markerWidth="12" markerHeight="12" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#E58F8F"/></marker>
   </defs>
 
-  <text x="180" y="24" text-anchor="middle" fill="#9AA0A6">magnetic field into the page (&#8855;)</text>
+  <text data-step="1" x="180" y="24" text-anchor="middle" fill="#9AA0A6">magnetic field into the page (&#8855;)</text>
 
   <!-- PANEL A: positive charge deflects up -->
-  <g transform="translate(5,20)">
+  <g data-step="1" transform="translate(5,20)">
     <text class="ttl" x="175" y="46">Positive charge</text>
     <rect class="box" x="55" y="60" width="240" height="200"/>
     <text class="cross" x="90" y="95">&#215;</text><text class="cross" x="150" y="95">&#215;</text><text class="cross" x="210" y="95">&#215;</text><text class="cross" x="265" y="95">&#215;</text>
@@ -35,7 +35,7 @@
   </g>
 
   <!-- PANEL B: electron deflects down -->
-  <g transform="translate(-325,270)">
+  <g data-step="2" transform="translate(-325,270)">
     <text class="ttl" x="505" y="46">Electron (negative)</text>
     <rect class="box" x="385" y="60" width="240" height="200"/>
     <text class="cross" x="420" y="95">&#215;</text><text class="cross" x="480" y="95">&#215;</text><text class="cross" x="540" y="95">&#215;</text><text class="cross" x="595" y="95">&#215;</text>
@@ -50,6 +50,6 @@
     <text fill="#E58F8F" x="512" y="150">F</text>
   </g>
 
-  <text x="180" y="570" text-anchor="middle" fill="#9AA0A6">Opposite charges deflect in opposite</text>
-  <text x="180" y="590" text-anchor="middle" fill="#9AA0A6">directions in the same field.</text>
+  <text data-step="2" x="180" y="570" text-anchor="middle" fill="#9AA0A6">Opposite charges deflect in opposite</text>
+  <text data-step="2" x="180" y="590" text-anchor="middle" fill="#9AA0A6">directions in the same field.</text>
 </svg>

@@ -9,36 +9,36 @@
     .sym { stroke:#EAEAEA; stroke-width:2; fill:none; }
   </style>
   <!-- consumer unit outer box -->
-  <rect class="box" x="120" y="80" width="400" height="120" rx="4"/>
+  <rect data-step="1" class="box" x="120" y="80" width="400" height="120" rx="4"/>
   <!-- main switch -->
-  <rect class="switch" x="140" y="100" width="60" height="80" rx="3"/>
-  <text x="170" y="145" text-anchor="middle" font-size="13">MAIN</text>
+  <rect data-step="2" class="switch" x="140" y="100" width="60" height="80" rx="3"/>
+  <text data-step="2" x="170" y="145" text-anchor="middle" font-size="13">MAIN</text>
   <!-- MCB row -->
-  <g>
+  <g data-step="3">
     <rect class="unit" x="230" y="100" width="34" height="80" rx="2"/>
     <rect class="unit" x="272" y="100" width="34" height="80" rx="2"/>
     <rect class="unit" x="314" y="100" width="34" height="80" rx="2"/>
     <rect class="unit" x="356" y="100" width="34" height="80" rx="2"/>
   </g>
   <!-- ELCB -->
-  <rect class="unit" x="420" y="100" width="80" height="80" rx="2" stroke="#86C98B" style="stroke:#86C98B"/>
-  <text x="460" y="145" text-anchor="middle" font-size="13" style="fill:#86C98B">ELCB</text>
+  <rect data-step="4" class="unit" x="420" y="100" width="80" height="80" rx="2" stroke="#86C98B" style="stroke:#86C98B"/>
+  <text data-step="4" x="460" y="145" text-anchor="middle" font-size="13" style="fill:#86C98B">ELCB</text>
 
   <!-- callout: MCB (upper line) -->
-  <line class="lead" x1="290" y1="80" x2="290" y2="36"/>
-  <text x="300" y="26" text-anchor="middle" font-size="15">miniature circuit breakers (MCB)</text>
+  <line data-step="5" class="lead" x1="290" y1="80" x2="290" y2="36"/>
+  <text data-step="5" x="300" y="26" text-anchor="middle" font-size="15">miniature circuit breakers (MCB)</text>
   <!-- callout: main switch (lower line, staggered to avoid overlap) -->
-  <line class="lead" x1="170" y1="80" x2="170" y2="62"/>
-  <text x="170" y="54" text-anchor="middle" font-size="15" class="amber">main switch</text>
+  <line data-step="6" class="lead" x1="170" y1="80" x2="170" y2="62"/>
+  <text data-step="6" x="170" y="54" text-anchor="middle" font-size="15" class="amber">main switch</text>
   <!-- callout: ELCB -->
-  <line class="lead" x1="460" y1="200" x2="460" y2="226"/>
-  <text x="460" y="244" text-anchor="middle" font-size="14.5" style="fill:#86C98B">earth leakage circuit</text>
-  <text x="460" y="262" text-anchor="middle" font-size="14.5" style="fill:#86C98B">breaker (ELCB)</text>
+  <line data-step="7" class="lead" x1="460" y1="200" x2="460" y2="226"/>
+  <text data-step="7" x="460" y="244" text-anchor="middle" font-size="14.5" style="fill:#86C98B">earth leakage circuit</text>
+  <text data-step="7" x="460" y="262" text-anchor="middle" font-size="14.5" style="fill:#86C98B">breaker (ELCB)</text>
 
   <!-- circuit breaker symbol -->
-  <text x="300" y="296" text-anchor="middle" font-size="14.5">circuit-breaker symbol</text>
-  <line class="sym" x1="230" y1="313" x2="270" y2="313"/>
-  <path class="sym" d="M270,313 A26 26 0 0 1 330 313"/>
-  <line class="sym" x1="330" y1="313" x2="370" y2="313"/>
-  <circle cx="270" cy="313" r="3" class="amber"/>
+  <text data-step="8" x="300" y="296" text-anchor="middle" font-size="14.5">circuit-breaker symbol</text>
+  <line data-step="8" class="sym" x1="230" y1="313" x2="270" y2="313"/>
+  <path data-step="8" class="sym" d="M270,313 A26 26 0 0 1 330 313"/>
+  <line data-step="8" class="sym" x1="330" y1="313" x2="370" y2="313"/>
+  <circle data-step="8" cx="270" cy="313" r="3" class="amber"/>
 </svg>

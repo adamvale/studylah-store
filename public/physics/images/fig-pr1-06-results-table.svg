@@ -16,37 +16,37 @@
     </marker>
   </defs>
 
-  <text x="40" y="36" class="note">The unit is written once, in the heading</text>
-  <path class="callout" d="M96,42 V54" marker-end="url(#tb1)"/>
+  <text data-step="3" x="40" y="36" class="note">The unit is written once, in the heading</text>
+  <path data-step="1" class="callout" d="M96,42 V54" marker-end="url(#tb1)"/>
 
-  <rect class="headfill" x="40" y="60" width="340" height="32"/>
-  <rect class="border" x="40" y="60" width="340" height="182"/>
-  <path class="grid" d="M40,92 H380 M40,122 H380 M40,152 H380 M40,182 H380 M40,212 H380"/>
-  <path class="grid" d="M153,60 V242 M267,60 V242"/>
+  <rect data-step="1" class="headfill" x="40" y="60" width="340" height="32"/>
+  <rect data-step="1" class="border" x="40" y="60" width="340" height="182"/>
+  <path data-step="2" class="grid" d="M40,92 H380 M40,122 H380 M40,152 H380 M40,182 H380 M40,212 H380"/>
+  <path data-step="2" class="grid" d="M153,60 V242 M267,60 V242"/>
 
-  <text x="96" y="82" text-anchor="middle" class="head">l / cm</text>
-  <text x="210" y="82" text-anchor="middle" class="head">T / s</text>
-  <text x="323" y="82" text-anchor="middle" class="head">T&#178; / s&#178;</text>
+  <text data-step="3" x="96" y="82" text-anchor="middle" class="head">l / cm</text>
+  <text data-step="3" x="210" y="82" text-anchor="middle" class="head">T / s</text>
+  <text data-step="3" x="323" y="82" text-anchor="middle" class="head">T&#178; / s&#178;</text>
 
-  <text x="96" y="113" text-anchor="middle" class="cell">40.0</text>
-  <text x="210" y="113" text-anchor="middle" class="cell">1.27</text>
-  <text x="323" y="113" text-anchor="middle" class="cell">1.61</text>
+  <text data-step="3" x="96" y="113" text-anchor="middle" class="cell">40.0</text>
+  <text data-step="3" x="210" y="113" text-anchor="middle" class="cell">1.27</text>
+  <text data-step="3" x="323" y="113" text-anchor="middle" class="cell">1.61</text>
 
-  <text x="96" y="143" text-anchor="middle" class="cell">60.0</text>
-  <text x="210" y="143" text-anchor="middle" class="cell">1.55</text>
-  <text x="323" y="143" text-anchor="middle" class="cell">2.40</text>
+  <text data-step="3" x="96" y="143" text-anchor="middle" class="cell">60.0</text>
+  <text data-step="3" x="210" y="143" text-anchor="middle" class="cell">1.55</text>
+  <text data-step="3" x="323" y="143" text-anchor="middle" class="cell">2.40</text>
 
-  <text x="96" y="173" text-anchor="middle" class="cell">80.0</text>
-  <text x="210" y="173" text-anchor="middle" class="cell">1.79</text>
-  <text x="323" y="173" text-anchor="middle" class="cell">3.20</text>
+  <text data-step="4" x="96" y="173" text-anchor="middle" class="cell">80.0</text>
+  <text data-step="4" x="210" y="173" text-anchor="middle" class="cell">1.79</text>
+  <text data-step="4" x="323" y="173" text-anchor="middle" class="cell">3.20</text>
 
-  <text x="96" y="203" text-anchor="middle" class="cell">100.0</text>
-  <text x="210" y="203" text-anchor="middle" class="cell">2.01</text>
-  <text x="323" y="203" text-anchor="middle" class="cell">4.04</text>
+  <text data-step="4" x="96" y="203" text-anchor="middle" class="cell">100.0</text>
+  <text data-step="4" x="210" y="203" text-anchor="middle" class="cell">2.01</text>
+  <text data-step="4" x="323" y="203" text-anchor="middle" class="cell">4.04</text>
 
-  <text x="96" y="233" text-anchor="middle" class="cell">120.0</text>
-  <text x="210" y="233" text-anchor="middle" class="cell">2.20</text>
-  <text x="323" y="233" text-anchor="middle" class="cell">4.84</text>
+  <text data-step="4" x="96" y="233" text-anchor="middle" class="cell">120.0</text>
+  <text data-step="4" x="210" y="233" text-anchor="middle" class="cell">2.20</text>
+  <text data-step="4" x="323" y="233" text-anchor="middle" class="cell">4.84</text>
 
-  <text x="40" y="268" class="foot">Each cell holds a bare number, no unit</text>
+  <text data-step="4" x="40" y="268" class="foot">Each cell holds a bare number, no unit</text>
 </svg>

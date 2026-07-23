@@ -11,25 +11,25 @@
     .rough { stroke:#9AA0A6; stroke-width:2; fill:none; }
   </style>
   <!-- Panel 1: regular reflection -->
-  <text x="230" y="28" text-anchor="middle" font-size="15" font-weight="bold">Regular reflection</text>
-  <line class="smooth" x1="135" y1="200" x2="345" y2="200"/>
-  <path class="inc" marker-end="url(#a1)" d="M145,70 L195,198"/>
-  <path class="inc" marker-end="url(#a1)" d="M215,70 L265,198"/>
-  <path class="inc" marker-end="url(#a1)" d="M285,70 L335,198"/>
-  <path class="out" marker-end="url(#a2)" d="M195,200 L245,72"/>
-  <path class="out" marker-end="url(#a2)" d="M265,200 L315,72"/>
-  <path class="out" marker-end="url(#a2)" d="M335,200 L385,72"/>
-  <text x="230" y="245" text-anchor="middle" font-size="14">Smooth surface: reflected rays</text>
-  <text x="230" y="263" text-anchor="middle" font-size="14">stay parallel.</text>
+  <text data-step="1" x="230" y="28" text-anchor="middle" font-size="15" font-weight="bold">Regular reflection</text>
+  <line data-step="1" class="smooth" x1="135" y1="200" x2="345" y2="200"/>
+  <path data-step="1" class="inc" marker-end="url(#a1)" d="M145,70 L195,198"/>
+  <path data-step="1" class="inc" marker-end="url(#a1)" d="M215,70 L265,198"/>
+  <path data-step="1" class="inc" marker-end="url(#a1)" d="M285,70 L335,198"/>
+  <path data-step="1" class="out" marker-end="url(#a2)" d="M195,200 L245,72"/>
+  <path data-step="1" class="out" marker-end="url(#a2)" d="M265,200 L315,72"/>
+  <path data-step="1" class="out" marker-end="url(#a2)" d="M335,200 L385,72"/>
+  <text data-step="1" x="230" y="245" text-anchor="middle" font-size="14">Smooth surface: reflected rays</text>
+  <text data-step="1" x="230" y="263" text-anchor="middle" font-size="14">stay parallel.</text>
   <!-- Panel 2: diffuse reflection -->
-  <text x="230" y="308" text-anchor="middle" font-size="15" font-weight="bold">Diffuse (irregular) reflection</text>
-  <path class="rough" d="M105,485 L135,472 L165,488 L195,470 L225,486 L255,473 L285,485 L315,471"/>
-  <path class="inc" marker-end="url(#a1)" d="M125,350 L148,476"/>
-  <path class="inc" marker-end="url(#a1)" d="M185,350 L193,476"/>
-  <path class="inc" marker-end="url(#a1)" d="M245,350 L258,476"/>
-  <path class="out" marker-end="url(#a2)" d="M150,476 L195,354"/>
-  <path class="out" marker-end="url(#a2)" d="M193,476 L285,370"/>
-  <path class="out" marker-end="url(#a2)" d="M258,476 L230,352"/>
-  <text x="230" y="525" text-anchor="middle" font-size="14">Rough surface: reflected rays</text>
-  <text x="230" y="543" text-anchor="middle" font-size="14">scatter in different directions.</text>
+  <text data-step="2" x="230" y="308" text-anchor="middle" font-size="15" font-weight="bold">Diffuse (irregular) reflection</text>
+  <path data-step="2" class="rough" d="M105,485 L135,472 L165,488 L195,470 L225,486 L255,473 L285,485 L315,471"/>
+  <path data-step="2" class="inc" marker-end="url(#a1)" d="M125,350 L148,476"/>
+  <path data-step="2" class="inc" marker-end="url(#a1)" d="M185,350 L193,476"/>
+  <path data-step="2" class="inc" marker-end="url(#a1)" d="M245,350 L258,476"/>
+  <path data-step="2" class="out" marker-end="url(#a2)" d="M150,476 L195,354"/>
+  <path data-step="2" class="out" marker-end="url(#a2)" d="M193,476 L285,370"/>
+  <path data-step="2" class="out" marker-end="url(#a2)" d="M258,476 L230,352"/>
+  <text data-step="2" x="230" y="525" text-anchor="middle" font-size="14">Rough surface: reflected rays</text>
+  <text data-step="2" x="230" y="543" text-anchor="middle" font-size="14">scatter in different directions.</text>
 </svg>

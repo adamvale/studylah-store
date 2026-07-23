@@ -15,35 +15,35 @@
     .cur { stroke:#6FB7E0; stroke-width:2; fill:none; }
   </style>
   <!-- top with cell -->
-  <path class="wire" d="M70,50 L235,50"/>
-  <path class="wire" d="M285,50 L470,50"/>
-  <line class="cellL" x1="248" y1="32" x2="248" y2="68"/>
-  <line class="cellS" x1="262" y1="42" x2="262" y2="58"/>
-  <text x="255" y="26" text-anchor="middle" font-size="14" class="val">6 V</text>
+  <path data-step="1" class="wire" d="M70,50 L235,50"/>
+  <path data-step="1" class="wire" d="M285,50 L470,50"/>
+  <line data-step="1" class="cellL" x1="248" y1="32" x2="248" y2="68"/>
+  <line data-step="1" class="cellS" x1="262" y1="42" x2="262" y2="58"/>
+  <text data-step="1" x="255" y="26" text-anchor="middle" font-size="14" class="val">6 V</text>
   <!-- left rail down to P -->
-  <path class="wire" d="M70,50 L70,210"/>
+  <path data-step="2" class="wire" d="M70,50 L70,210"/>
   <!-- bottom wire from left, P resistor, to junction -->
-  <path class="wire" d="M70,210 L120,210"/>
-  <rect class="res" x="120" y="196" width="60" height="28"/>
-  <text x="150" y="190" text-anchor="middle" font-size="14">P</text>
-  <text x="150" y="245" text-anchor="middle" font-size="14" class="val">2 Ω</text>
-  <path class="wire" d="M180,210 L260,210"/>
+  <path data-step="3" class="wire" d="M70,210 L120,210"/>
+  <rect data-step="3" class="res" x="120" y="196" width="60" height="28"/>
+  <text data-step="3" x="150" y="190" text-anchor="middle" font-size="14">P</text>
+  <text data-step="3" x="150" y="245" text-anchor="middle" font-size="14" class="val">2 Ω</text>
+  <path data-step="3" class="wire" d="M180,210 L260,210"/>
   <!-- junction node, splits into Q (upper) and R (lower) -->
-  <circle cx="260" cy="210" r="3" fill="#EAEAEA"/>
+  <circle data-step="4" cx="260" cy="210" r="3" fill="#EAEAEA"/>
   <!-- Q branch upper -->
-  <path class="wire" d="M260,210 L260,150 L300,150"/>
-  <rect class="res" x="300" y="136" width="60" height="28"/>
-  <text x="330" y="130" text-anchor="middle" font-size="14">Q  <tspan class="val">6 Ω</tspan></text>
-  <path class="wire" d="M360,150 L420,150 L420,210"/>
+  <path data-step="5" class="wire" d="M260,210 L260,150 L300,150"/>
+  <rect data-step="5" class="res" x="300" y="136" width="60" height="28"/>
+  <text data-step="5" x="330" y="130" text-anchor="middle" font-size="14">Q  <tspan class="val">6 Ω</tspan></text>
+  <path data-step="5" class="wire" d="M360,150 L420,150 L420,210"/>
   <!-- R branch lower -->
-  <path class="wire" d="M260,210 L300,210"/>
-  <rect class="res" x="300" y="196" width="60" height="28"/>
-  <text x="330" y="245" text-anchor="middle" font-size="14">R  <tspan class="val">3 Ω</tspan></text>
-  <path class="wire" d="M360,210 L420,210"/>
+  <path data-step="6" class="wire" d="M260,210 L300,210"/>
+  <rect data-step="6" class="res" x="300" y="196" width="60" height="28"/>
+  <text data-step="6" x="330" y="245" text-anchor="middle" font-size="14">R  <tspan class="val">3 Ω</tspan></text>
+  <path data-step="6" class="wire" d="M360,210 L420,210"/>
   <!-- right junction to top-right rail -->
-  <circle cx="420" cy="210" r="3" fill="#EAEAEA"/>
-  <path class="wire" d="M420,210 L470,210 L470,50"/>
+  <circle data-step="7" cx="420" cy="210" r="3" fill="#EAEAEA"/>
+  <path data-step="7" class="wire" d="M420,210 L470,210 L470,50"/>
   <!-- main current arrow -->
-  <line class="cur" x1="70" y1="150" x2="70" y2="180" marker-end="url(#ah7)"/>
-  <text x="52" y="168" font-size="14" class="lbl">I</text>
+  <line data-step="8" class="cur" x1="70" y1="150" x2="70" y2="180" marker-end="url(#ah7)"/>
+  <text data-step="8" x="52" y="168" font-size="14" class="lbl">I</text>
 </svg>

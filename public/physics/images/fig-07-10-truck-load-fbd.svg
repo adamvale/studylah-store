@@ -11,29 +11,29 @@
   </style>
   <defs><marker id="ff" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#86C98B"/></marker></defs>
   <!-- ground -->
-  <line class="ground" x1="20" y1="150" x2="460" y2="150"/>
+  <line data-step="1" class="ground" x1="20" y1="150" x2="460" y2="150"/>
   <!-- load (left) -->
-  <rect class="body" x="55" y="105" width="90" height="40"/>
-  <text x="100" y="130" text-anchor="middle" font-size="13">600 kg</text>
-  <circle class="wheel" cx="80" cy="150" r="9"/>
-  <circle class="wheel" cx="120" cy="150" r="9"/>
+  <rect data-step="2" class="body" x="55" y="105" width="90" height="40"/>
+  <text data-step="2" x="100" y="130" text-anchor="middle" font-size="13">600 kg</text>
+  <circle data-step="2" class="wheel" cx="80" cy="150" r="9"/>
+  <circle data-step="2" class="wheel" cx="120" cy="150" r="9"/>
   <!-- rope -->
-  <line class="rope" x1="145" y1="125" x2="225" y2="125"/>
-  <text class="lbl" x="165" y="118">rope</text>
+  <line data-step="3" class="rope" x1="145" y1="125" x2="225" y2="125"/>
+  <text data-step="3" class="lbl" x="165" y="118">rope</text>
   <!-- truck (right) -->
-  <path class="body" d="M225,145 L225,110 L325,110 L345,85 L395,85 L415,110 L425,110 L425,145 Z"/>
-  <rect class="body" x="353" y="90" width="34" height="20"/>
-  <circle class="wheel" cx="260" cy="150" r="11"/>
-  <circle class="wheel" cx="395" cy="150" r="11"/>
+  <path data-step="4" class="body" d="M225,145 L225,110 L325,110 L345,85 L395,85 L415,110 L425,110 L425,145 Z"/>
+  <rect data-step="4" class="body" x="353" y="90" width="34" height="20"/>
+  <circle data-step="4" class="wheel" cx="260" cy="150" r="11"/>
+  <circle data-step="4" class="wheel" cx="395" cy="150" r="11"/>
   <!-- free body diagram -->
-  <text x="120" y="212" text-anchor="middle" font-size="13" fill="#9AA0A6">free-body diagram of the load</text>
-  <rect class="fbd" x="95" y="250" width="40" height="30"/>
-  <line class="force" x1="115" y1="250" x2="115" y2="222" marker-end="url(#ff)"/>
-  <text class="lbl" x="123" y="234">normal</text>
-  <line class="force" x1="115" y1="280" x2="115" y2="308" marker-end="url(#ff)"/>
-  <text class="lbl" x="123" y="304">weight</text>
-  <line class="force" x1="135" y1="265" x2="180" y2="265" marker-end="url(#ff)"/>
-  <text class="lbl" x="145" y="258">tension</text>
-  <line class="force" x1="95" y1="265" x2="50" y2="265" marker-end="url(#ff)"/>
-  <text class="lbl" x="14" y="258">friction</text>
+  <text data-step="5" x="120" y="212" text-anchor="middle" font-size="13" fill="#9AA0A6">free-body diagram of the load</text>
+  <rect data-step="5" class="fbd" x="95" y="250" width="40" height="30"/>
+  <line data-step="5" class="force" x1="115" y1="250" x2="115" y2="222" marker-end="url(#ff)"/>
+  <text data-step="5" class="lbl" x="123" y="234">normal</text>
+  <line data-step="5" class="force" x1="115" y1="280" x2="115" y2="308" marker-end="url(#ff)"/>
+  <text data-step="5" class="lbl" x="123" y="304">weight</text>
+  <line data-step="5" class="force" x1="135" y1="265" x2="180" y2="265" marker-end="url(#ff)"/>
+  <text data-step="5" class="lbl" x="145" y="258">tension</text>
+  <line data-step="5" class="force" x1="95" y1="265" x2="50" y2="265" marker-end="url(#ff)"/>
+  <text data-step="5" class="lbl" x="14" y="258">friction</text>
 </svg>

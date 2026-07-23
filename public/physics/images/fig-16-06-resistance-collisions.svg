@@ -8,7 +8,7 @@
     .lbl { font-size:14px; }
   </style>
   <!-- lattice of ions -->
-  <g>
+  <g data-step="1">
     <circle class="ion" cx="120" cy="70" r="18"/>
     <circle class="ion" cx="220" cy="70" r="18"/>
     <circle class="ion" cx="320" cy="70" r="18"/>
@@ -17,20 +17,20 @@
     <circle class="ion" cx="370" cy="140" r="18"/>
   </g>
   <!-- small electrons -->
-  <g>
+  <g data-step="2">
     <circle class="e" cx="90" cy="120" r="7"/>
     <circle class="e" cx="200" cy="105" r="7"/>
     <circle class="e" cx="300" cy="120" r="7"/>
     <circle class="e" cx="360" cy="95" r="7"/>
   </g>
   <!-- zig-zag electron path showing collisions -->
-  <path class="path" d="M70,120 L120,88 L175,120 L270,92 L340,125 L400,100"/>
+  <path data-step="3" class="path" d="M70,120 L120,88 L175,120 L270,92 L340,125 L400,100"/>
 
-  <line class="lead" x1="120" y1="52" x2="120" y2="30"/>
-  <text x="120" y="24" class="lbl" text-anchor="middle">metal ion</text>
-  <line class="lead" x1="90" y1="128" x2="70" y2="165"/>
-  <text x="60" y="180" class="lbl" text-anchor="middle" fill="#6FB7E0">electron</text>
-  <text x="510" y="180" class="lbl" text-anchor="end">colliding path</text>
-  <text x="250" y="208" font-size="14" text-anchor="middle" fill="#9AA0A6">Collisions between electrons and ions</text>
-  <text x="250" y="226" font-size="14" text-anchor="middle" fill="#9AA0A6">oppose the flow &#8594; resistance.</text>
+  <line data-step="3" class="lead" x1="120" y1="52" x2="120" y2="30"/>
+  <text data-step="3" x="120" y="24" class="lbl" text-anchor="middle">metal ion</text>
+  <line data-step="3" class="lead" x1="90" y1="128" x2="70" y2="165"/>
+  <text data-step="3" x="60" y="180" class="lbl" text-anchor="middle" fill="#6FB7E0">electron</text>
+  <text data-step="3" x="510" y="180" class="lbl" text-anchor="end">colliding path</text>
+  <text data-step="3" x="250" y="208" font-size="14" text-anchor="middle" fill="#9AA0A6">Collisions between electrons and ions</text>
+  <text data-step="3" x="250" y="226" font-size="14" text-anchor="middle" fill="#9AA0A6">oppose the flow &#8594; resistance.</text>
 </svg>

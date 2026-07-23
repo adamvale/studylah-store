@@ -7,7 +7,7 @@
     .amber { fill:#E8B65A; }
   </style>
   <!-- TOP: positive zero error (object starts after 0) -->
-  <g>
+  <g data-step="1">
     <rect class="obj" x="125" y="40" width="120" height="26"/>
     <rect class="rule" x="90" y="70" width="220" height="34" rx="3"/>
     <g class="tick">
@@ -25,7 +25,7 @@
     <text x="200" y="170" text-anchor="middle" font-size="13">object edge starts after 0 &#8594; reads too large</text>
   </g>
   <!-- BOTTOM: negative zero error (object before 0) -->
-  <g>
+  <g data-step="2">
     <rect class="obj" x="82" y="240" width="120" height="26"/>
     <rect class="rule" x="90" y="270" width="220" height="34" rx="3"/>
     <g class="tick">

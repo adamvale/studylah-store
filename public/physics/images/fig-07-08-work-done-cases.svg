@@ -15,19 +15,19 @@
     <marker id="db" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 Z" fill="#9AA0A6"/></marker>
   </defs>
   <!-- TOP CASE: force moves box -->
-  <text x="140" y="30" text-anchor="middle" class="verdict" fill="#86C98B">work is done</text>
-  <line class="ground" x1="30" y1="120" x2="260" y2="120"/>
-  <rect class="ghost" x="55" y="88" width="42" height="30"/>
-  <rect class="block" x="175" y="88" width="42" height="30"/>
-  <line class="force" x1="30" y1="103" x2="70" y2="103" marker-end="url(#fm2)"/>
-  <text class="lbl" x="30" y="80">force</text>
-  <line class="dim" x1="76" y1="135" x2="196" y2="135" marker-start="url(#db)" marker-end="url(#da)"/>
-  <text x="136" y="152" text-anchor="middle" fill="#9AA0A6">distance moved</text>
-  <text x="140" y="200" text-anchor="middle" font-size="11" fill="#9AA0A6">a force moves the box a distance,</text>
-  <text x="140" y="217" text-anchor="middle" font-size="11" fill="#9AA0A6">so energy is transferred</text>
+  <text data-step="1" x="140" y="30" text-anchor="middle" class="verdict" fill="#86C98B">work is done</text>
+  <line data-step="1" class="ground" x1="30" y1="120" x2="260" y2="120"/>
+  <rect data-step="1" class="ghost" x="55" y="88" width="42" height="30"/>
+  <rect data-step="1" class="block" x="175" y="88" width="42" height="30"/>
+  <line data-step="1" class="force" x1="30" y1="103" x2="70" y2="103" marker-end="url(#fm2)"/>
+  <text data-step="1" class="lbl" x="30" y="80">force</text>
+  <line data-step="1" class="dim" x1="76" y1="135" x2="196" y2="135" marker-start="url(#db)" marker-end="url(#da)"/>
+  <text data-step="1" x="136" y="152" text-anchor="middle" fill="#9AA0A6">distance moved</text>
+  <text data-step="1" x="140" y="200" text-anchor="middle" font-size="11" fill="#9AA0A6">a force moves the box a distance,</text>
+  <text data-step="1" x="140" y="217" text-anchor="middle" font-size="11" fill="#9AA0A6">so energy is transferred</text>
 
   <!-- BOTTOM CASE: force, no movement -->
-  <g transform="translate(-270,235)">
+  <g data-step="2" transform="translate(-270,235)">
     <text x="400" y="30" text-anchor="middle" class="verdict" fill="#E58F8F">no work is done</text>
     <line class="ground" x1="300" y1="120" x2="500" y2="120"/>
     <rect class="block" x="380" y="88" width="42" height="30"/>

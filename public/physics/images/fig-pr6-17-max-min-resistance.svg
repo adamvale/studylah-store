@@ -10,28 +10,28 @@
   </style>
 
   <!-- top: three in series, maximum resistance -->
-  <text class="head" x="210" y="44" text-anchor="middle">series: maximum R</text>
-  <path class="wire" d="M50,80 L90,80 M130,80 L190,80 M230,80 L290,80 M330,80 L370,80"/>
-  <rect class="res" x="90" y="68" width="40" height="24"/>
-  <rect class="res" x="190" y="68" width="40" height="24"/>
-  <rect class="res" x="290" y="68" width="40" height="24"/>
-  <circle class="node" cx="50" cy="80" r="4"/>
-  <circle class="node" cx="370" cy="80" r="4"/>
-  <text class="note" x="210" y="120" text-anchor="middle">R = R&#8321; + R&#8322; + R&#8323;</text>
+  <text data-step="1" class="head" x="210" y="44" text-anchor="middle">series: maximum R</text>
+  <path data-step="1" class="wire" d="M50,80 L90,80 M130,80 L190,80 M230,80 L290,80 M330,80 L370,80"/>
+  <rect data-step="1" class="res" x="90" y="68" width="40" height="24"/>
+  <rect data-step="1" class="res" x="190" y="68" width="40" height="24"/>
+  <rect data-step="1" class="res" x="290" y="68" width="40" height="24"/>
+  <circle data-step="1" class="node" cx="50" cy="80" r="4"/>
+  <circle data-step="1" class="node" cx="370" cy="80" r="4"/>
+  <text data-step="1" class="note" x="210" y="120" text-anchor="middle">R = R&#8321; + R&#8322; + R&#8323;</text>
 
   <!-- bottom: three in parallel, minimum resistance -->
-  <text class="head" x="210" y="168" text-anchor="middle">parallel: minimum R</text>
-  <path class="wire" d="M50,230 L110,230 M310,230 L370,230"/>
-  <path class="wire" d="M110,190 L110,270 M310,190 L310,270"/>
-  <path class="wire" d="M110,190 L190,190 M230,190 L310,190"/>
-  <path class="wire" d="M110,230 L190,230 M230,230 L310,230"/>
-  <path class="wire" d="M110,270 L190,270 M230,270 L310,270"/>
-  <rect class="res" x="190" y="178" width="40" height="24"/>
-  <rect class="res" x="190" y="218" width="40" height="24"/>
-  <rect class="res" x="190" y="258" width="40" height="24"/>
-  <circle class="node" cx="50" cy="230" r="4"/>
-  <circle class="node" cx="370" cy="230" r="4"/>
+  <text data-step="2" class="head" x="210" y="168" text-anchor="middle">parallel: minimum R</text>
+  <path data-step="2" class="wire" d="M50,230 L110,230 M310,230 L370,230"/>
+  <path data-step="2" class="wire" d="M110,190 L110,270 M310,190 L310,270"/>
+  <path data-step="2" class="wire" d="M110,190 L190,190 M230,190 L310,190"/>
+  <path data-step="2" class="wire" d="M110,230 L190,230 M230,230 L310,230"/>
+  <path data-step="2" class="wire" d="M110,270 L190,270 M230,270 L310,270"/>
+  <rect data-step="2" class="res" x="190" y="178" width="40" height="24"/>
+  <rect data-step="2" class="res" x="190" y="218" width="40" height="24"/>
+  <rect data-step="2" class="res" x="190" y="258" width="40" height="24"/>
+  <circle data-step="2" class="node" cx="50" cy="230" r="4"/>
+  <circle data-step="2" class="node" cx="370" cy="230" r="4"/>
 
-  <text class="note" x="210" y="306" text-anchor="middle">1/R = 1/R&#8321; + 1/R&#8322; + 1/R&#8323;</text>
-  <text class="small" x="210" y="328" text-anchor="middle">always less than the smallest branch</text>
+  <text data-step="2" class="note" x="210" y="306" text-anchor="middle">1/R = 1/R&#8321; + 1/R&#8322; + 1/R&#8323;</text>
+  <text data-step="2" class="small" x="210" y="328" text-anchor="middle">always less than the smallest branch</text>
 </svg>

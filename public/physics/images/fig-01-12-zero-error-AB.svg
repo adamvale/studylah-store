@@ -6,7 +6,7 @@
     .obj { fill:#6FB7E0; opacity:0.35; stroke:#6FB7E0; stroke-width:1.5; }
   </style>
   <!-- Diagram A: box edge starts a little after 0 -->
-  <g>
+  <g data-step="1">
     <rect class="obj" x="122" y="40" width="110" height="24"/>
     <rect class="rule" x="90" y="68" width="220" height="32" rx="3"/>
     <g class="tick">
@@ -21,7 +21,7 @@
     <text x="200" y="146" text-anchor="middle" font-size="16" font-weight="600">Diagram A</text>
   </g>
   <!-- Diagram B: box edge starts a little before 0 -->
-  <g>
+  <g data-step="2">
     <rect class="obj" x="82" y="220" width="110" height="24"/>
     <rect class="rule" x="90" y="248" width="220" height="32" rx="3"/>
     <g class="tick">

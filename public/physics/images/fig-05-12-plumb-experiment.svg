@@ -12,25 +12,25 @@
     .lbl { font-size:13px; }
   </style>
   <!-- irregular lamina -->
-  <path class="lamina" d="M120,60 C200,40 300,55 320,120 C335,175 300,230 220,235 C150,240 95,200 100,140 C103,100 100,72 120,60 Z"/>
+  <path data-step="1" class="lamina" d="M120,60 C200,40 300,55 320,120 C335,175 300,230 220,235 C150,240 95,200 100,140 C103,100 100,72 120,60 Z"/>
   <!-- hole 1 (top) with pin -->
-  <circle class="pin" cx="150" cy="70" r="4"/>
+  <circle data-step="2" class="pin" cx="150" cy="70" r="4"/>
   <!-- hole 2 (right) with pin -->
-  <circle class="pin" cx="300" cy="120" r="4"/>
+  <circle data-step="3" class="pin" cx="300" cy="120" r="4"/>
   <!-- traced line 1: vertical, along the plumb line from pin 1 -->
-  <line class="trace" x1="150" y1="70" x2="150" y2="258"/>
+  <line data-step="4" class="trace" x1="150" y1="70" x2="150" y2="258"/>
   <!-- traced line 2: from pin 2, tilted now the lamina hangs from pin 1 -->
-  <line class="trace" x1="300" y1="120" x2="120" y2="210"/>
+  <line data-step="5" class="trace" x1="300" y1="120" x2="120" y2="210"/>
   <!-- intersection = CG -->
-  <circle class="cg" cx="150" cy="195" r="4"/>
-  <text class="lbl" x="165" y="215" fill="#E58F8F">CG (intersection)</text>
+  <circle data-step="6" class="cg" cx="150" cy="195" r="4"/>
+  <text data-step="6" class="lbl" x="165" y="215" fill="#E58F8F">CG (intersection)</text>
   <!-- plumb line hanging from pin 1: string + mass -->
-  <line class="string" x1="150" y1="70" x2="150" y2="270"/>
-  <circle class="mass" cx="150" cy="278" r="9"/>
-  <text class="lbl" x="167" y="282">mass (plumb bob)</text>
+  <line data-step="7" class="string" x1="150" y1="70" x2="150" y2="270"/>
+  <circle data-step="7" class="mass" cx="150" cy="278" r="9"/>
+  <text data-step="7" class="lbl" x="167" y="282">mass (plumb bob)</text>
   <!-- labels -->
-  <text class="lbl" x="240" y="26" text-anchor="middle">pin through a small hole</text>
-  <path class="lead" d="M235,30 L156,66"/>
-  <text class="lbl" x="445" y="262" text-anchor="end">plumb line hangs vertically</text>
-  <path class="lead" d="M265,258 L154,250"/>
+  <text data-step="8" class="lbl" x="240" y="26" text-anchor="middle">pin through a small hole</text>
+  <path data-step="8" class="lead" d="M235,30 L156,66"/>
+  <text data-step="8" class="lbl" x="445" y="262" text-anchor="end">plumb line hangs vertically</text>
+  <path data-step="8" class="lead" d="M265,258 L154,250"/>
 </svg>

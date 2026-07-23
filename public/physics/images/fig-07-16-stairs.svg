@@ -11,14 +11,14 @@
     <marker id="s2" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#9AA0A6"/></marker>
   </defs>
   <!-- staircase steps -->
-  <polygon class="stair" points="40,230 40,190 90,190 90,150 140,150 140,110 190,110 190,70 240,70 240,230"/>
+  <polygon data-step="1" class="stair" points="40,230 40,190 90,190 90,150 140,150 140,110 190,110 190,70 240,70 240,230"/>
   <!-- base line -->
-  <line class="edge" x1="40" y1="230" x2="290" y2="230"/>
+  <line data-step="2" class="edge" x1="40" y1="230" x2="290" y2="230"/>
   <!-- point X top -->
-  <text x="248" y="62" fill="#EAEAEA">X</text>
-  <circle cx="240" cy="70" r="3.5" fill="#E8B65A"/>
+  <text data-step="3" x="248" y="62" fill="#EAEAEA">X</text>
+  <circle data-step="3" cx="240" cy="70" r="3.5" fill="#E8B65A"/>
   <!-- height 4 m -->
-  <line class="dim" x1="290" y1="70" x2="290" y2="230" marker-start="url(#s1)" marker-end="url(#s2)"/>
-  <text class="lbl" x="300" y="155">4 m</text>
-  <line class="dim" x1="240" y1="70" x2="295" y2="70" stroke-dasharray="3 3"/>
+  <line data-step="4" class="dim" x1="290" y1="70" x2="290" y2="230" marker-start="url(#s1)" marker-end="url(#s2)"/>
+  <text data-step="4" class="lbl" x="300" y="155">4 m</text>
+  <line data-step="4" class="dim" x1="240" y1="70" x2="295" y2="70" stroke-dasharray="3 3"/>
 </svg>

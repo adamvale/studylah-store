@@ -15,58 +15,58 @@
     .mid { font-size:12px; fill:#EAEAEA; }
   </style>
 
-  <text class="heaterlbl" x="115" y="26" text-anchor="middle">heated funnel</text>
-  <text class="sub" x="115" y="46" text-anchor="middle">heater melts ice</text>
-  <text x="325" y="26" text-anchor="middle">control funnel, heater off</text>
-  <text class="sub" x="318" y="46" text-anchor="middle">warm room only</text>
+  <text data-step="1" class="heaterlbl" x="115" y="26" text-anchor="middle">heated funnel</text>
+  <text data-step="1" class="sub" x="115" y="46" text-anchor="middle">heater melts ice</text>
+  <text data-step="1" x="325" y="26" text-anchor="middle">control funnel, heater off</text>
+  <text data-step="1" class="sub" x="318" y="46" text-anchor="middle">warm room only</text>
 
   <!-- LEFT: heated funnel, heater on -->
-  <rect class="term" x="96" y="64" width="54" height="8" rx="2"/>
-  <path class="lead" d="M102,72 V138"/>
-  <path class="lead" d="M144,72 V138"/>
-  <path class="glass" d="M60,100 H170 L124,172 V216 H106 V172 Z"/>
-  <polygon class="ice" points="78,108 100,108 96,126 80,124"/>
-  <polygon class="ice" points="104,108 128,108 130,128 104,130"/>
-  <polygon class="ice" points="132,108 154,108 146,126 132,128"/>
-  <polygon class="ice" points="92,132 112,134 106,150 92,146"/>
-  <polygon class="ice" points="116,132 138,130 134,148 114,150"/>
-  <polygon class="ice" points="102,152 124,152 118,166 104,166"/>
-  <path class="heater" d="M102,138 l6,-8 l10,16 l10,-16 l10,16 l6,-8"/>
-  <circle class="drip" cx="115" cy="228" r="3"/>
-  <circle class="drip" cx="115" cy="242" r="3"/>
-  <circle class="drip" cx="115" cy="254" r="3"/>
-  <rect class="melt" x="74" y="302" width="82" height="26"/>
-  <path class="glass" d="M70,260 V330 H160 V260"/>
+  <rect data-step="1" class="term" x="96" y="64" width="54" height="8" rx="2"/>
+  <path data-step="1" class="lead" d="M102,72 V138"/>
+  <path data-step="1" class="lead" d="M144,72 V138"/>
+  <path data-step="1" class="glass" d="M60,100 H170 L124,172 V216 H106 V172 Z"/>
+  <polygon data-step="1" class="ice" points="78,108 100,108 96,126 80,124"/>
+  <polygon data-step="1" class="ice" points="104,108 128,108 130,128 104,130"/>
+  <polygon data-step="1" class="ice" points="132,108 154,108 146,126 132,128"/>
+  <polygon data-step="1" class="ice" points="92,132 112,134 106,150 92,146"/>
+  <polygon data-step="1" class="ice" points="116,132 138,130 134,148 114,150"/>
+  <polygon data-step="1" class="ice" points="102,152 124,152 118,166 104,166"/>
+  <path data-step="1" class="heater" d="M102,138 l6,-8 l10,16 l10,-16 l10,16 l6,-8"/>
+  <circle data-step="1" class="drip" cx="115" cy="228" r="3"/>
+  <circle data-step="1" class="drip" cx="115" cy="242" r="3"/>
+  <circle data-step="1" class="drip" cx="115" cy="254" r="3"/>
+  <rect data-step="1" class="melt" x="74" y="302" width="82" height="26"/>
+  <path data-step="1" class="glass" d="M70,260 V330 H160 V260"/>
 
   <!-- RIGHT: control funnel, heater switched off -->
-  <rect class="term" x="306" y="64" width="54" height="8" rx="2"/>
-  <path class="lead" d="M312,72 V148"/>
-  <path class="lead" d="M354,72 V80"/>
-  <path class="lead" d="M354,92 V148"/>
-  <path class="lead" d="M354,92 L366,80"/>
-  <text class="sub" x="372" y="86">off</text>
-  <path class="glass" d="M270,100 H380 L334,172 V216 H316 V172 Z"/>
-  <polygon class="ice" points="288,108 310,108 306,126 290,124"/>
-  <polygon class="ice" points="314,108 338,108 340,128 314,130"/>
-  <polygon class="ice" points="342,108 364,108 356,126 342,128"/>
-  <polygon class="ice" points="302,132 322,134 316,150 302,146"/>
-  <polygon class="ice" points="326,132 348,130 344,148 324,150"/>
-  <polygon class="ice" points="312,152 334,152 328,166 314,166"/>
-  <path class="heater" d="M312,138 l6,-8 l10,16 l10,-16 l10,16 l6,-8"/>
-  <circle class="drip" cx="325" cy="230" r="3"/>
-  <circle class="drip" cx="325" cy="246" r="3"/>
-  <rect class="melt" x="284" y="312" width="82" height="16"/>
-  <path class="glass" d="M280,260 V330 H370 V260"/>
+  <rect data-step="2" class="term" x="306" y="64" width="54" height="8" rx="2"/>
+  <path data-step="2" class="lead" d="M312,72 V148"/>
+  <path data-step="2" class="lead" d="M354,72 V80"/>
+  <path data-step="2" class="lead" d="M354,92 V148"/>
+  <path data-step="2" class="lead" d="M354,92 L366,80"/>
+  <text data-step="2" class="sub" x="372" y="86">off</text>
+  <path data-step="2" class="glass" d="M270,100 H380 L334,172 V216 H316 V172 Z"/>
+  <polygon data-step="2" class="ice" points="288,108 310,108 306,126 290,124"/>
+  <polygon data-step="2" class="ice" points="314,108 338,108 340,128 314,130"/>
+  <polygon data-step="2" class="ice" points="342,108 364,108 356,126 342,128"/>
+  <polygon data-step="2" class="ice" points="302,132 322,134 316,150 302,146"/>
+  <polygon data-step="2" class="ice" points="326,132 348,130 344,148 324,150"/>
+  <polygon data-step="2" class="ice" points="312,152 334,152 328,166 314,166"/>
+  <path data-step="2" class="heater" d="M312,138 l6,-8 l10,16 l10,-16 l10,16 l6,-8"/>
+  <circle data-step="2" class="drip" cx="325" cy="230" r="3"/>
+  <circle data-step="2" class="drip" cx="325" cy="246" r="3"/>
+  <rect data-step="2" class="melt" x="284" y="312" width="82" height="16"/>
+  <path data-step="2" class="glass" d="M280,260 V330 H370 V260"/>
 
   <!-- middle labels -->
-  <text class="icelbl" x="220" y="130" text-anchor="middle">ice</text>
-  <path class="leader" d="M206,126 H152"/>
-  <path class="leader" d="M234,126 H290"/>
-  <text class="mid" x="220" y="180" text-anchor="middle">funnel</text>
-  <path class="leader" d="M196,176 H126"/>
-  <text class="sub" x="220" y="320" text-anchor="middle">subtract</text>
+  <text data-step="3" class="icelbl" x="220" y="130" text-anchor="middle">ice</text>
+  <path data-step="3" class="leader" d="M206,126 H152"/>
+  <path data-step="3" class="leader" d="M234,126 H290"/>
+  <text data-step="3" class="mid" x="220" y="180" text-anchor="middle">funnel</text>
+  <path data-step="3" class="leader" d="M196,176 H126"/>
+  <text data-step="3" class="sub" x="220" y="320" text-anchor="middle">subtract</text>
 
-  <text x="115" y="356" text-anchor="middle">melted mass m₁</text>
-  <text x="325" y="356" text-anchor="middle">control mass m₂</text>
-  <text x="220" y="384" text-anchor="middle">P t = l_f (m₁ - m₂)</text>
+  <text data-step="3" x="115" y="356" text-anchor="middle">melted mass m₁</text>
+  <text data-step="3" x="325" y="356" text-anchor="middle">control mass m₂</text>
+  <text data-step="3" x="220" y="384" text-anchor="middle">P t = l_f (m₁ - m₂)</text>
 </svg>

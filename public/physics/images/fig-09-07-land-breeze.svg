@@ -10,23 +10,23 @@
     .moon { fill:#9AA0A6; }
   </style>
   <!-- ground -->
-  <path class="land" d="M20,215 L230,215 L230,275 L20,275 Z"/>
-  <path class="sea" d="M230,225 L440,225 L440,275 L230,275 Z"/>
-  <text class="lbl" x="120" y="255" text-anchor="middle">land (cooler)</text>
-  <text class="lbl" x="335" y="255" text-anchor="middle">sea (warmer)</text>
+  <path data-step="1" class="land" d="M20,215 L230,215 L230,275 L20,275 Z"/>
+  <path data-step="1" class="sea" d="M230,225 L440,225 L440,275 L230,275 Z"/>
+  <text data-step="1" class="lbl" x="120" y="255" text-anchor="middle">land (cooler)</text>
+  <text data-step="1" class="lbl" x="335" y="255" text-anchor="middle">sea (warmer)</text>
   <!-- moon (night) -->
-  <path class="moon" d="M95,45 A18,18 0 1 0 95,81 A14,14 0 1 1 95,45 Z"/>
+  <path data-step="2" class="moon" d="M95,45 A18,18 0 1 0 95,81 A14,14 0 1 1 95,45 Z"/>
   <!-- warm air rises over sea, cool air sinks over land, land->sea at surface -->
-  <path d="M330,210 C322,160 326,120 340,105" fill="none" stroke="#E58F8F" stroke-width="2.2"/>
-  <path d="M333,120 L340,102 L348,119" fill="#E58F8F" stroke="#E58F8F"/>
-  <path class="flow" d="M330,100 C260,80 190,90 130,105"/>
-  <path class="flow" d="M148,98 L128,106 L147,113" fill="#EAEAEA"/>
-  <path d="M120,110 C108,155 112,185 125,210" fill="none" stroke="#6FB7E0" stroke-width="2.2"/>
-  <path d="M117,196 L125,214 L134,196" fill="#6FB7E0" stroke="#6FB7E0"/>
+  <path data-step="3" d="M330,210 C322,160 326,120 340,105" fill="none" stroke="#E58F8F" stroke-width="2.2"/>
+  <path data-step="3" d="M333,120 L340,102 L348,119" fill="#E58F8F" stroke="#E58F8F"/>
+  <path data-step="3" class="flow" d="M330,100 C260,80 190,90 130,105"/>
+  <path data-step="3" class="flow" d="M148,98 L128,106 L147,113" fill="#EAEAEA"/>
+  <path data-step="3" d="M120,110 C108,155 112,185 125,210" fill="none" stroke="#6FB7E0" stroke-width="2.2"/>
+  <path data-step="3" d="M117,196 L125,214 L134,196" fill="#6FB7E0" stroke="#6FB7E0"/>
   <!-- cool land breeze along surface toward sea -->
-  <path class="flow" d="M140,205 C200,222 270,220 325,208"/>
-  <path class="flow" d="M308,201 L328,208 L309,215" fill="#EAEAEA"/>
-  <text class="warm" x="350" y="150">warm air rises</text>
-  <text class="cool" x="140" y="150">cool air sinks</text>
-  <text class="lbl" x="230" y="200" text-anchor="middle">land breeze (land &#8594; sea)</text>
+  <path data-step="4" class="flow" d="M140,205 C200,222 270,220 325,208"/>
+  <path data-step="4" class="flow" d="M308,201 L328,208 L309,215" fill="#EAEAEA"/>
+  <text data-step="4" class="warm" x="350" y="150">warm air rises</text>
+  <text data-step="4" class="cool" x="140" y="150">cool air sinks</text>
+  <text data-step="4" class="lbl" x="230" y="200" text-anchor="middle">land breeze (land &#8594; sea)</text>
 </svg>

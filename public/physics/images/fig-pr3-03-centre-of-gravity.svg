@@ -12,31 +12,31 @@
   </style>
 
   <!-- TOP: lamina hanging from one hole -->
-  <path class="base" d="M18,215 L78,215"/>
-  <path class="stand" d="M48,215 L48,60"/>
-  <path class="stand" d="M48,68 L148,68"/>
-  <polygon class="lamina" points="135,70 200,50 262,90 250,160 170,175 140,130"/>
-  <circle cx="150" cy="68" r="3.5" fill="#EAEAEA"/>
-  <path class="plumb" d="M150,68 L150,196"/>
-  <circle cx="150" cy="202" r="6" fill="#EAEAEA"/>
-  <text x="150" y="44" text-anchor="middle">hole</text>
-  <text x="215" y="112" text-anchor="middle">lamina</text>
-  <path class="leader" d="M182,209 L159,201"/>
-  <text x="185" y="213">plumb line</text>
-  <text x="20" y="235">stand</text>
-  <text class="note" x="230" y="248" text-anchor="middle">hang from each hole in turn</text>
+  <path data-step="1" class="base" d="M18,215 L78,215"/>
+  <path data-step="1" class="stand" d="M48,215 L48,60"/>
+  <path data-step="1" class="stand" d="M48,68 L148,68"/>
+  <polygon data-step="1" class="lamina" points="135,70 200,50 262,90 250,160 170,175 140,130"/>
+  <circle data-step="1" cx="150" cy="68" r="3.5" fill="#EAEAEA"/>
+  <path data-step="1" class="plumb" d="M150,68 L150,196"/>
+  <circle data-step="1" cx="150" cy="202" r="6" fill="#EAEAEA"/>
+  <text data-step="1" x="150" y="44" text-anchor="middle">hole</text>
+  <text data-step="1" x="215" y="112" text-anchor="middle">lamina</text>
+  <path data-step="1" class="leader" d="M182,209 L159,201"/>
+  <text data-step="1" x="185" y="213">plumb line</text>
+  <text data-step="1" x="20" y="235">stand</text>
+  <text data-step="1" class="note" x="230" y="248" text-anchor="middle">hang from each hole in turn</text>
 
   <!-- BOTTOM: the 3 drawn lines cross at the centre of gravity -->
-  <polygon class="lamina" points="135,282 200,262 262,302 250,372 170,387 140,342"/>
-  <path class="drawn-line" d="M150,280 L241,369"/>
-  <path class="drawn-line" d="M252,312 L148,341"/>
-  <path class="drawn-line" d="M180,377 L214,282"/>
-  <circle class="hole" cx="150" cy="280" r="3"/>
-  <circle class="hole" cx="252" cy="312" r="3"/>
-  <circle class="hole" cx="180" cy="377" r="3"/>
-  <circle cx="198" cy="327" r="4.5" fill="#EAEAEA"/>
-  <text x="207" y="321">G</text>
-  <path class="leader" d="M131,270 L146,278"/>
-  <text class="note" x="128" y="272" text-anchor="end">holes</text>
-  <text x="210" y="412" text-anchor="middle">the 3 lines cross at the centre of gravity G</text>
+  <polygon data-step="2" class="lamina" points="135,282 200,262 262,302 250,372 170,387 140,342"/>
+  <path data-step="2" class="drawn-line" d="M150,280 L241,369"/>
+  <path data-step="2" class="drawn-line" d="M252,312 L148,341"/>
+  <path data-step="2" class="drawn-line" d="M180,377 L214,282"/>
+  <circle data-step="2" class="hole" cx="150" cy="280" r="3"/>
+  <circle data-step="2" class="hole" cx="252" cy="312" r="3"/>
+  <circle data-step="2" class="hole" cx="180" cy="377" r="3"/>
+  <circle data-step="2" cx="198" cy="327" r="4.5" fill="#EAEAEA"/>
+  <text data-step="2" x="207" y="321">G</text>
+  <path data-step="2" class="leader" d="M131,270 L146,278"/>
+  <text data-step="2" class="note" x="128" y="272" text-anchor="end">holes</text>
+  <text data-step="2" x="210" y="412" text-anchor="middle">the 3 lines cross at the centre of gravity G</text>
 </svg>

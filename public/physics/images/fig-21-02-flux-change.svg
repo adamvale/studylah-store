@@ -18,7 +18,7 @@
   </defs>
 
   <!-- Panel: increasing flux (towards) -->
-  <g transform="translate(10,10)">
+  <g data-step="1" transform="translate(10,10)">
     <text x="150" y="40" font-size="14" text-anchor="middle" fill="#86C98B">increasing magnetic flux</text>
     <path class="mot" d="M55,70 L130,70"/>
     <text x="70" y="62" font-size="14">towards</text>
@@ -41,7 +41,7 @@
   </g>
 
   <!-- Panel: decreasing flux (away) -->
-  <g transform="translate(10,300)">
+  <g data-step="2" transform="translate(10,300)">
     <text x="150" y="40" font-size="14" text-anchor="middle" fill="#86C98B">decreasing magnetic flux</text>
     <path class="mot" d="M130,70 L55,70"/>
     <text x="70" y="62" font-size="14">away</text>

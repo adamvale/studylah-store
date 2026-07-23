@@ -16,44 +16,44 @@
   </defs>
 
   <!-- Panel 1: the ball's journey (labels kept clear of every ball) -->
-  <text class="cap" x="30" y="32">Ball thrown up (up = positive)</text>
-  <line class="axis" x1="110" y1="300" x2="110" y2="70"/>
-  <circle class="ball" cx="110" cy="90" r="10"/>
-  <text class="lb" x="135" y="96">B: v = 0</text>
-  <circle class="ball" cx="110" cy="190" r="10"/>
-  <line class="vel" x1="110" y1="258" x2="110" y2="218" marker-end="url(#bv)"/>
-  <circle class="ball" cx="110" cy="290" r="10"/>
-  <text class="lb" x="135" y="330">A: v = +5 m/s (up)</text>
+  <text data-step="1" class="cap" x="30" y="32">Ball thrown up (up = positive)</text>
+  <line data-step="1" class="axis" x1="110" y1="300" x2="110" y2="70"/>
+  <circle data-step="1" class="ball" cx="110" cy="90" r="10"/>
+  <text data-step="1" class="lb" x="135" y="96">B: v = 0</text>
+  <circle data-step="1" class="ball" cx="110" cy="190" r="10"/>
+  <line data-step="1" class="vel" x1="110" y1="258" x2="110" y2="218" marker-end="url(#bv)"/>
+  <circle data-step="1" class="ball" cx="110" cy="290" r="10"/>
+  <text data-step="1" class="lb" x="135" y="330">A: v = +5 m/s (up)</text>
   <!-- falling ball, its own column, label above so nothing overlaps -->
-  <circle class="ball" cx="330" cy="290" r="10"/>
-  <line class="vel" x1="330" y1="235" x2="330" y2="272" marker-end="url(#bv)"/>
-  <text class="lb" x="185" y="215">C: v = &#8722;5 m/s (down)</text>
+  <circle data-step="2" class="ball" cx="330" cy="290" r="10"/>
+  <line data-step="2" class="vel" x1="330" y1="235" x2="330" y2="272" marker-end="url(#bv)"/>
+  <text data-step="2" class="lb" x="185" y="215">C: v = &#8722;5 m/s (down)</text>
 
   <!-- Panel 2: speed-time (speed can never be negative) -->
-  <text class="cap" x="30" y="392">Speed-time graph</text>
-  <line class="axis" x1="70" y1="600" x2="70" y2="420" marker-end="url(#bt)"/>
-  <line class="axis" x1="70" y1="600" x2="370" y2="600" marker-end="url(#bt)"/>
-  <text x="58" y="452" text-anchor="end">5</text>
-  <text x="58" y="605" text-anchor="end">0</text>
-  <line class="line" x1="70" y1="447" x2="215" y2="600"/>
-  <line class="line" x1="215" y1="600" x2="360" y2="447"/>
-  <text class="lb" x="52" y="436">A</text>
-  <text class="lb" x="210" y="622">B</text>
-  <text class="lb" x="366" y="442">C</text>
-  <text x="322" y="622">time</text>
+  <text data-step="3" class="cap" x="30" y="392">Speed-time graph</text>
+  <line data-step="3" class="axis" x1="70" y1="600" x2="70" y2="420" marker-end="url(#bt)"/>
+  <line data-step="3" class="axis" x1="70" y1="600" x2="370" y2="600" marker-end="url(#bt)"/>
+  <text data-step="3" x="58" y="452" text-anchor="end">5</text>
+  <text data-step="3" x="58" y="605" text-anchor="end">0</text>
+  <line data-step="3" class="line" x1="70" y1="447" x2="215" y2="600"/>
+  <line data-step="3" class="line" x1="215" y1="600" x2="360" y2="447"/>
+  <text data-step="3" class="lb" x="52" y="436">A</text>
+  <text data-step="3" class="lb" x="210" y="622">B</text>
+  <text data-step="3" class="lb" x="366" y="442">C</text>
+  <text data-step="3" x="322" y="622">time</text>
 
   <!-- Panel 3: velocity-time (goes negative when the ball falls) -->
-  <text class="cap" x="30" y="672">Velocity-time graph</text>
-  <line class="axis" x1="70" y1="880" x2="70" y2="700" marker-end="url(#bt)"/>
-  <line class="axis" x1="70" y1="790" x2="370" y2="790" marker-end="url(#bt)"/>
-  <text x="58" y="722" text-anchor="end">+5</text>
-  <text x="58" y="794" text-anchor="end">0</text>
-  <text x="58" y="868" text-anchor="end">&#8722;5</text>
-  <polygon class="posf" points="70,790 70,717 215,790"/>
-  <polygon class="negf" points="215,790 360,790 360,863"/>
-  <line class="line" x1="70" y1="717" x2="360" y2="863"/>
-  <text class="lb" x="52" y="706">A</text>
-  <text class="lb" x="222" y="782">B</text>
-  <text class="lb" x="366" y="876">C</text>
-  <text x="300" y="782">time</text>
+  <text data-step="4" class="cap" x="30" y="672">Velocity-time graph</text>
+  <line data-step="4" class="axis" x1="70" y1="880" x2="70" y2="700" marker-end="url(#bt)"/>
+  <line data-step="4" class="axis" x1="70" y1="790" x2="370" y2="790" marker-end="url(#bt)"/>
+  <text data-step="4" x="58" y="722" text-anchor="end">+5</text>
+  <text data-step="4" x="58" y="794" text-anchor="end">0</text>
+  <text data-step="4" x="58" y="868" text-anchor="end">&#8722;5</text>
+  <polygon data-step="4" class="posf" points="70,790 70,717 215,790"/>
+  <polygon data-step="4" class="negf" points="215,790 360,790 360,863"/>
+  <line data-step="4" class="line" x1="70" y1="717" x2="360" y2="863"/>
+  <text data-step="4" class="lb" x="52" y="706">A</text>
+  <text data-step="4" class="lb" x="222" y="782">B</text>
+  <text data-step="4" class="lb" x="366" y="876">C</text>
+  <text data-step="4" x="300" y="782">time</text>
 </svg>

@@ -12,16 +12,16 @@
     .norm { stroke:#9AA0A6; stroke-width:1.2; stroke-dasharray:5 4; }
   </style>
   <!-- Panel 1: reflection off opaque surface -->
-  <rect class="opaque" x="120" y="150" width="220" height="14" rx="2"/>
-  <path class="inc" marker-end="url(#a1)" d="M140,50 L228,148"/>
-  <path class="out" marker-end="url(#a2)" d="M232,148 L320,50"/>
-  <text x="230" y="196" text-anchor="middle" font-size="14">Light is <tspan fill="#6FB7E0">reflected</tspan> at an</text>
-  <text x="230" y="215" text-anchor="middle" font-size="14">opaque surface.</text>
+  <rect data-step="1" class="opaque" x="120" y="150" width="220" height="14" rx="2"/>
+  <path data-step="1" class="inc" marker-end="url(#a1)" d="M140,50 L228,148"/>
+  <path data-step="1" class="out" marker-end="url(#a2)" d="M232,148 L320,50"/>
+  <text data-step="1" x="230" y="196" text-anchor="middle" font-size="14">Light is <tspan fill="#6FB7E0">reflected</tspan> at an</text>
+  <text data-step="1" x="230" y="215" text-anchor="middle" font-size="14">opaque surface.</text>
   <!-- Panel 2: refraction into transparent medium -->
-  <rect class="glass" x="130" y="305" width="200" height="115"/>
-  <path class="norm" d="M220,270 L220,360"/>
-  <path class="inc" marker-end="url(#a1)" d="M160,270 L218,305"/>
-  <path class="out" marker-end="url(#a2)" d="M220,305 L262,395"/>
-  <text x="230" y="446" text-anchor="middle" font-size="14">Light is <tspan fill="#6FB7E0">refracted</tspan> entering</text>
-  <text x="230" y="465" text-anchor="middle" font-size="14">a transparent medium.</text>
+  <rect data-step="2" class="glass" x="130" y="305" width="200" height="115"/>
+  <path data-step="2" class="norm" d="M220,270 L220,360"/>
+  <path data-step="2" class="inc" marker-end="url(#a1)" d="M160,270 L218,305"/>
+  <path data-step="2" class="out" marker-end="url(#a2)" d="M220,305 L262,395"/>
+  <text data-step="2" x="230" y="446" text-anchor="middle" font-size="14">Light is <tspan fill="#6FB7E0">refracted</tspan> entering</text>
+  <text data-step="2" x="230" y="465" text-anchor="middle" font-size="14">a transparent medium.</text>
 </svg>

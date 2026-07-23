@@ -20,25 +20,25 @@
     .frcR { stroke:#E58F8F; stroke-width:2; }
     .lead { stroke:#9AA0A6; stroke-width:1.1; }
   </style>
-  <text x="300" y="24" text-anchor="middle" font-size="14">A charged rod induces charges in a neutral object</text>
+  <text data-step="1" x="300" y="24" text-anchor="middle" font-size="14">A charged rod induces charges in a neutral object</text>
   <!-- positively charged rod on top -->
-  <rect class="rodp" x="150" y="55" width="300" height="26" rx="6"/>
-  <g class="pos">
+  <rect data-step="1" class="rodp" x="150" y="55" width="300" height="26" rx="6"/>
+  <g data-step="1" class="pos">
     <text x="180" y="73">+</text><text x="220" y="73">+</text><text x="260" y="73">+</text>
     <text x="300" y="73">+</text><text x="340" y="73">+</text><text x="380" y="73">+</text><text x="420" y="73">+</text>
   </g>
-  <text x="445" y="98" font-size="12" fill="#E58F8F">positively charged rod</text>
+  <text data-step="1" x="445" y="98" font-size="12" fill="#E58F8F">positively charged rod</text>
   <!-- neutral object below: near side negative, far side positive -->
-  <ellipse class="obj" cx="300" cy="170" rx="70" ry="45"/>
-  <text class="neg" x="270" y="150">−</text><text class="neg" x="300" y="150">−</text><text class="neg" x="330" y="150">−</text>
-  <text class="pos" x="270" y="200">+</text><text class="pos" x="300" y="200">+</text><text class="pos" x="330" y="200">+</text>
-  <text x="300" y="245" text-anchor="middle" font-size="13">neutral object</text>
+  <ellipse data-step="2" class="obj" cx="300" cy="170" rx="70" ry="45"/>
+  <text data-step="2" class="neg" x="270" y="150">−</text><text data-step="2" class="neg" x="300" y="150">−</text><text data-step="2" class="neg" x="330" y="150">−</text>
+  <text data-step="2" class="pos" x="270" y="200">+</text><text data-step="2" class="pos" x="300" y="200">+</text><text data-step="2" class="pos" x="330" y="200">+</text>
+  <text data-step="2" x="300" y="245" text-anchor="middle" font-size="13">neutral object</text>
   <!-- near (unlike) charges closer -> stronger attractive force -->
-  <line class="frcA" x1="300" y1="128" x2="300" y2="92" marker-end="url(#ah10-86c98b)"/>
-  <text x="360" y="112" font-size="12" fill="#86C98B">strong attraction (unlike, closer)</text>
+  <line data-step="3" class="frcA" x1="300" y1="128" x2="300" y2="92" marker-end="url(#ah10-86c98b)"/>
+  <text data-step="3" x="360" y="112" font-size="12" fill="#86C98B">strong attraction (unlike, closer)</text>
   <!-- far (like) charges further -> weaker repulsive force -->
-  <line class="frcR" x1="300" y1="205" x2="300" y2="235" marker-end="url(#ah10-e58f8f)"/>
-  <text x="360" y="228" font-size="12" fill="#E58F8F">weak repulsion (like, further)</text>
-  <text x="60" y="175" font-size="12" fill="#9AA0A6">net force:</text>
-  <text x="60" y="190" font-size="12" fill="#9AA0A6">attraction</text>
+  <line data-step="4" class="frcR" x1="300" y1="205" x2="300" y2="235" marker-end="url(#ah10-e58f8f)"/>
+  <text data-step="4" x="360" y="228" font-size="12" fill="#E58F8F">weak repulsion (like, further)</text>
+  <text data-step="4" x="60" y="175" font-size="12" fill="#9AA0A6">net force:</text>
+  <text data-step="4" x="60" y="190" font-size="12" fill="#9AA0A6">attraction</text>
 </svg>

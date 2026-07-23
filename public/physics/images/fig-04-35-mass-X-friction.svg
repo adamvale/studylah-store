@@ -8,10 +8,10 @@
     .ground { stroke:#9AA0A6; stroke-width:1.6; }
     .f { stroke:#6FB7E0; stroke-width:2.6; }
   </style>
-  <line class="ground" x1="50" y1="110" x2="360" y2="110"/>
-  <rect class="box" x="140" y="72" width="80" height="38"/>
-  <text x="180" y="89" text-anchor="middle" font-size="13">X</text>
-  <text x="180" y="104" text-anchor="middle" font-size="12">4 kg</text>
-  <line class="f" x1="222" y1="88" x2="315" y2="88" marker-end="url(#arw)"/>
-  <text x="290" y="80" text-anchor="middle" font-size="14" fill="#6FB7E0">F</text>
+  <line data-step="1" class="ground" x1="50" y1="110" x2="360" y2="110"/>
+  <rect data-step="1" class="box" x="140" y="72" width="80" height="38"/>
+  <text data-step="3" x="180" y="89" text-anchor="middle" font-size="13">X</text>
+  <text data-step="3" x="180" y="104" text-anchor="middle" font-size="12">4 kg</text>
+  <line data-step="2" class="f" x1="222" y1="88" x2="315" y2="88" marker-end="url(#arw)"/>
+  <text data-step="4" x="290" y="80" text-anchor="middle" font-size="14" fill="#6FB7E0">F</text>
 </svg>

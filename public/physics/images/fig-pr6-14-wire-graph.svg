@@ -14,22 +14,22 @@
   </defs>
 
   <!-- axes -->
-  <line class="axis" x1="75" y1="235" x2="75" y2="46" marker-end="url(#a14)"/>
-  <line class="axis" x1="75" y1="235" x2="385" y2="235" marker-end="url(#a14)"/>
-  <text class="ax" x="66" y="36" text-anchor="end">R/L (&#937;/m)</text>
-  <text class="ax" x="383" y="262" text-anchor="end">1/L (1/m)</text>
-  <text x="67" y="251" text-anchor="end">O</text>
+  <line data-step="1" class="axis" x1="75" y1="235" x2="75" y2="46" marker-end="url(#a14)"/>
+  <line data-step="1" class="axis" x1="75" y1="235" x2="385" y2="235" marker-end="url(#a14)"/>
+  <text data-step="1" class="ax" x="66" y="36" text-anchor="end">R/L (&#937;/m)</text>
+  <text data-step="1" class="ax" x="383" y="262" text-anchor="end">1/L (1/m)</text>
+  <text data-step="1" x="67" y="251" text-anchor="end">O</text>
 
   <!-- best-fit line with a positive intercept -->
-  <path class="fit" d="M75,190 L330,70"/>
-  <circle class="mark" cx="75" cy="190" r="3.5"/>
+  <path data-step="2" class="fit" d="M75,190 L330,70"/>
+  <circle data-step="2" class="mark" cx="75" cy="190" r="3.5"/>
 
   <!-- gradient triangle -->
-  <path class="guide" d="M150,154.7 L270,154.7 L270,98.2"/>
-  <text class="note" x="210" y="174" text-anchor="middle">&#916;(1/L)</text>
-  <text class="note" x="278" y="132">&#916;(R/L)</text>
+  <path data-step="3" class="guide" d="M150,154.7 L270,154.7 L270,98.2"/>
+  <text data-step="3" class="note" x="210" y="174" text-anchor="middle">&#916;(1/L)</text>
+  <text data-step="3" class="note" x="278" y="132">&#916;(R/L)</text>
 
-  <text class="note" x="250" y="52">gradient = R_X</text>
-  <path class="lead" d="M86,199 L78,192"/>
-  <text class="note" x="88" y="208">intercept = &#961;/A</text>
+  <text data-step="3" class="note" x="250" y="52">gradient = R_X</text>
+  <path data-step="3" class="lead" d="M86,199 L78,192"/>
+  <text data-step="3" class="note" x="88" y="208">intercept = &#961;/A</text>
 </svg>

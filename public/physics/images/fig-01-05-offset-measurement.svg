@@ -7,10 +7,10 @@
     .green { fill:#86C98B; }
   </style>
   <!-- object from 2.0 cm (x=150) to 4.6 cm (x=306), 60 units per cm -->
-  <rect class="obj" x="150" y="46" width="156" height="26"/>
-  <text x="228" y="64" text-anchor="middle" font-size="13">object</text>
-  <rect class="rule" x="60" y="80" width="360" height="34" rx="3"/>
-  <g class="tick">
+  <rect data-step="1" class="obj" x="150" y="46" width="156" height="26"/>
+  <text data-step="3" x="228" y="64" text-anchor="middle" font-size="13">object</text>
+  <rect data-step="1" class="rule" x="60" y="80" width="360" height="34" rx="3"/>
+  <g data-step="2" class="tick">
     <line x1="90" y1="80" x2="90" y2="98"/>
     <line x1="150" y1="80" x2="150" y2="100"/>
     <line x1="210" y1="80" x2="210" y2="98"/>
@@ -18,11 +18,11 @@
     <line x1="306" y1="80" x2="306" y2="100"/>
     <line x1="330" y1="80" x2="330" y2="98"/>
   </g>
-  <g font-size="14" text-anchor="middle">
+  <g data-step="3" font-size="14" text-anchor="middle">
     <text x="90" y="130">1</text><text x="150" y="130">2</text><text x="210" y="130">3</text><text x="270" y="130">4</text><text x="330" y="130">5</text>
   </g>
-  <text x="435" y="102" font-size="14">cm</text>
-  <text x="150" y="160" font-size="14" class="green">initial reading = 2.0 cm</text>
-  <text x="150" y="180" font-size="14" class="green">final reading = 4.6 cm</text>
-  <text x="150" y="200" font-size="14">length = 4.6 &#8722; 2.0 = 2.6 cm</text>
+  <text data-step="3" x="435" y="102" font-size="14">cm</text>
+  <text data-step="4" x="150" y="160" font-size="14" class="green">initial reading = 2.0 cm</text>
+  <text data-step="4" x="150" y="180" font-size="14" class="green">final reading = 4.6 cm</text>
+  <text data-step="4" x="150" y="200" font-size="14">length = 4.6 &#8722; 2.0 = 2.6 cm</text>
 </svg>

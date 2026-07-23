@@ -12,25 +12,25 @@
     .lbl { fill:#E8B65A; }
   </style>
   <!-- beaker -->
-  <path class="fluid" d="M110,70 L110,240 L300,240 L300,70 Z"/>
-  <path class="beaker" d="M100,60 L110,70 L110,240 L300,240 L300,70 L310,60"/>
+  <path data-step="1" class="fluid" d="M110,70 L110,240 L300,240 L300,70 Z"/>
+  <path data-step="1" class="beaker" d="M100,60 L110,70 L110,240 L300,240 L300,70 L310,60"/>
   <!-- convection loop (rise in centre-left over heat, sink at right) -->
-  <path class="rise" d="M175,235 C165,180 165,120 185,95"/>
-  <path class="rise" d="M178,110 L185,92 L194,108"/>
-  <path class="sink" d="M235,95 C265,120 265,190 240,232"/>
-  <path class="sink" d="M232,220 L240,236 L249,221"/>
+  <path data-step="2" class="rise" d="M175,235 C165,180 165,120 185,95"/>
+  <path data-step="2" class="rise" d="M178,110 L185,92 L194,108"/>
+  <path data-step="2" class="sink" d="M235,95 C265,120 265,190 240,232"/>
+  <path data-step="2" class="sink" d="M232,220 L240,236 L249,221"/>
   <!-- top and bottom connectors -->
-  <path class="loop" d="M185,95 C200,80 220,80 235,95"/>
-  <path class="loop" d="M175,235 C195,248 220,248 240,232"/>
+  <path data-step="3" class="loop" d="M185,95 C200,80 220,80 235,95"/>
+  <path data-step="3" class="loop" d="M175,235 C195,248 220,248 240,232"/>
   <!-- numbered stages -->
-  <text class="num" x="160" y="165">1</text>
-  <text class="num" x="258" y="165">2</text>
-  <text class="num" x="210" y="78">3</text>
+  <text data-step="4" class="num" x="160" y="165">1</text>
+  <text data-step="4" class="num" x="258" y="165">2</text>
+  <text data-step="4" class="num" x="210" y="78">3</text>
   <!-- heat source arrow -->
-  <path class="heat" d="M175,300 L175,248"/>
-  <path class="heat" d="M167,262 L175,246 L183,262"/>
-  <text x="175" y="315" text-anchor="middle">heat source</text>
+  <path data-step="5" class="heat" d="M175,300 L175,248"/>
+  <path data-step="5" class="heat" d="M167,262 L175,246 L183,262"/>
+  <text data-step="5" x="175" y="315" text-anchor="middle">heat source</text>
   <!-- label -->
-  <text class="lbl" x="330" y="100">fluid</text>
-  <path class="lead" d="M328,96 L300,110"/>
+  <text data-step="6" class="lbl" x="330" y="100">fluid</text>
+  <path data-step="6" class="lead" d="M328,96 L300,110"/>
 </svg>

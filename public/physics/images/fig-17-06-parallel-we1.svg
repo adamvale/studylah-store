@@ -10,26 +10,26 @@
     .lbl { fill:#6FB7E0; font-style:italic; }
   </style>
   <!-- top with cell -->
-  <path class="wire" d="M110,55 L285,55"/>
-  <path class="wire" d="M335,55 L440,55"/>
-  <line class="cellL" x1="298" y1="37" x2="298" y2="73"/>
-  <line class="cellS" x1="312" y1="47" x2="312" y2="63"/>
-  <text x="305" y="30" text-anchor="middle" font-size="12" class="val">12 V</text>
+  <path data-step="1" class="wire" d="M110,55 L285,55"/>
+  <path data-step="1" class="wire" d="M335,55 L440,55"/>
+  <line data-step="1" class="cellL" x1="298" y1="37" x2="298" y2="73"/>
+  <line data-step="1" class="cellS" x1="312" y1="47" x2="312" y2="63"/>
+  <text data-step="1" x="305" y="30" text-anchor="middle" font-size="12" class="val">12 V</text>
   <!-- rails -->
-  <path class="wire" d="M110,55 L110,70 M110,100 L110,190"/>
-  <path class="wire" d="M440,55 L440,190"/>
+  <path data-step="2" class="wire" d="M110,55 L110,70 M110,100 L110,190"/>
+  <path data-step="2" class="wire" d="M440,55 L440,190"/>
   <!-- ammeter on left rail, before the junction -->
-  <circle class="meter" cx="110" cy="85" r="15"/>
-  <text x="110" y="90" text-anchor="middle" font-size="13">A</text>
+  <circle data-step="3" class="meter" cx="110" cy="85" r="15"/>
+  <text data-step="3" x="110" y="90" text-anchor="middle" font-size="13">A</text>
   <!-- branch P -->
-  <path class="wire" d="M110,110 L215,110"/>
-  <path class="wire" d="M275,110 L440,110"/>
-  <rect class="res" x="215" y="96" width="60" height="28"/>
-  <text x="245" y="90" text-anchor="middle" font-size="12">P</text>
-  <text x="245" y="140" text-anchor="middle" font-size="12" class="val">4 Ω</text>
+  <path data-step="4" class="wire" d="M110,110 L215,110"/>
+  <path data-step="4" class="wire" d="M275,110 L440,110"/>
+  <rect data-step="4" class="res" x="215" y="96" width="60" height="28"/>
+  <text data-step="4" x="245" y="90" text-anchor="middle" font-size="12">P</text>
+  <text data-step="4" x="245" y="140" text-anchor="middle" font-size="12" class="val">4 Ω</text>
   <!-- branch Q -->
-  <path class="wire" d="M110,190 L215,190"/>
-  <path class="wire" d="M275,190 L440,190"/>
-  <rect class="res" x="215" y="176" width="60" height="28"/>
-  <text x="245" y="228" text-anchor="middle" font-size="12" class="val">Q  12 Ω</text>
+  <path data-step="5" class="wire" d="M110,190 L215,190"/>
+  <path data-step="5" class="wire" d="M275,190 L440,190"/>
+  <rect data-step="5" class="res" x="215" y="176" width="60" height="28"/>
+  <text data-step="5" x="245" y="228" text-anchor="middle" font-size="12" class="val">Q  12 Ω</text>
 </svg>

@@ -8,31 +8,31 @@
     .lbl { font-size:12px; }
   </style>
   <!-- reservoir -->
-  <path class="glass" d="M40,220 L40,195 L420,195 L420,220"/>
-  <rect class="merc" x="42" y="200" width="376" height="20"/>
+  <path data-step="1" class="glass" d="M40,220 L40,195 L420,195 L420,220"/>
+  <rect data-step="1" class="merc" x="42" y="200" width="376" height="20"/>
 
   <!-- vertical tube -->
-  <path class="glass" d="M80,200 L80,70 Q80,60 90,60 Q100,60 100,70 L100,200"/>
-  <rect class="merc" x="81" y="90" width="19" height="110"/>
+  <path data-step="2" class="glass" d="M80,200 L80,70 Q80,60 90,60 Q100,60 100,70 L100,200"/>
+  <rect data-step="2" class="merc" x="81" y="90" width="19" height="110"/>
 
   <!-- slightly tilted tube: longer mercury column, same vertical height -->
-  <g transform="rotate(-18 210 200)">
+  <g data-step="3" transform="rotate(-18 210 200)">
     <path class="glass" d="M195,200 L195,70 Q195,60 205,60 Q215,60 215,70 L215,200"/>
     <rect class="merc" x="196" y="84" width="19" height="116"/>
   </g>
 
   <!-- more tilted tube: even longer column, same vertical height -->
-  <g transform="rotate(-34 340 200)">
+  <g data-step="4" transform="rotate(-34 340 200)">
     <path class="glass" d="M325,200 L325,50 Q325,40 335,40 Q345,40 345,50 L345,200"/>
     <rect class="merc" x="326" y="64" width="19" height="136"/>
   </g>
 
   <!-- same vertical height line -->
-  <line class="level" x1="60" y1="90" x2="440" y2="90"/>
-  <line class="height" x1="430" y1="90" x2="430" y2="200"/>
-  <line class="height" x1="425" y1="90" x2="435" y2="90"/>
-  <line class="height" x1="425" y1="200" x2="435" y2="200"/>
-  <text x="415" y="150" class="lbl" fill="#E8B65A" transform="rotate(90 415 150)">76 cm (vertical)</text>
+  <line data-step="5" class="level" x1="60" y1="90" x2="440" y2="90"/>
+  <line data-step="5" class="height" x1="430" y1="90" x2="430" y2="200"/>
+  <line data-step="5" class="height" x1="425" y1="90" x2="435" y2="90"/>
+  <line data-step="5" class="height" x1="425" y1="200" x2="435" y2="200"/>
+  <text data-step="5" x="415" y="150" class="lbl" fill="#E8B65A" transform="rotate(90 415 150)">76 cm (vertical)</text>
 
-  <text x="230" y="245" text-anchor="middle" class="lbl">Tilting does not change the vertical height of the column</text>
+  <text data-step="5" x="230" y="245" text-anchor="middle" class="lbl">Tilting does not change the vertical height of the column</text>
 </svg>

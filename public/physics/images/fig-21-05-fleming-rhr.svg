@@ -14,25 +14,25 @@
   </defs>
 
   <!-- stylised palm -->
-  <path class="hand" d="M205,235 q-20,-6 -22,-30 q-2,-24 6,-40 q6,-10 14,-6 l0,50 q10,6 20,8 l30,4 q10,2 6,12 q-4,10 -18,10 z"/>
+  <path data-step="1" class="hand" d="M205,235 q-20,-6 -22,-30 q-2,-24 6,-40 q6,-10 14,-6 l0,50 q10,6 20,8 l30,4 q10,2 6,12 q-4,10 -18,10 z"/>
 
   <!-- origin -->
-  <circle cx="205" cy="210" r="3" fill="#EAEAEA"/>
+  <circle data-step="2" cx="205" cy="210" r="3" fill="#EAEAEA"/>
 
   <!-- thumb: motion / force F (up) -->
-  <line class="axF" x1="205" y1="210" x2="205" y2="70"/>
-  <text class="lbl" x="215" y="66" fill="#E8B65A">thumb &#8594; motion / force, F</text>
+  <line data-step="3" class="axF" x1="205" y1="210" x2="205" y2="70"/>
+  <text data-step="3" class="lbl" x="215" y="66" fill="#E8B65A">thumb &#8594; motion / force, F</text>
 
   <!-- first finger: magnetic field B (to the left, N to S) -->
-  <line class="axB" x1="205" y1="210" x2="60" y2="180"/>
-  <text class="lbl" x="20" y="152" fill="#6FB7E0">first finger &#8594;</text>
-  <text class="lbl" x="20" y="170" fill="#6FB7E0">field, B (N to S)</text>
+  <line data-step="4" class="axB" x1="205" y1="210" x2="60" y2="180"/>
+  <text data-step="4" class="lbl" x="20" y="152" fill="#6FB7E0">first finger &#8594;</text>
+  <text data-step="4" class="lbl" x="20" y="170" fill="#6FB7E0">field, B (N to S)</text>
 
   <!-- second finger: induced current I (down-right, out toward viewer) -->
-  <line class="axI" x1="205" y1="210" x2="330" y2="320"/>
-  <text class="lbl" x="300" y="345" fill="#86C98B">second finger &#8594;</text>
-  <text class="lbl" x="300" y="361" fill="#86C98B">induced current, I</text>
+  <line data-step="5" class="axI" x1="205" y1="210" x2="330" y2="320"/>
+  <text data-step="5" class="lbl" x="300" y="345" fill="#86C98B">second finger &#8594;</text>
+  <text data-step="5" class="lbl" x="300" y="361" fill="#86C98B">induced current, I</text>
 
-  <text x="230" y="240" font-size="13" fill="#9AA0A6">right hand, three fingers</text>
-  <text x="230" y="258" font-size="13" fill="#9AA0A6">held at right angles</text>
+  <text data-step="5" x="230" y="240" font-size="13" fill="#9AA0A6">right hand, three fingers</text>
+  <text data-step="5" x="230" y="258" font-size="13" fill="#9AA0A6">held at right angles</text>
 </svg>

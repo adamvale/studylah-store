@@ -12,19 +12,19 @@
       <path d="M0,0 L6,3 L0,6 Z" fill="#86C98B"/>
     </marker>
   </defs>
-  <text class="tag" x="220" y="30" text-anchor="middle">cold room at 10&#176;C</text>
+  <text data-step="1" class="tag" x="220" y="30" text-anchor="middle">cold room at 10&#176;C</text>
   <!-- floor line -->
-  <path class="floor" d="M60,140 L380,140"/>
-  <path class="floor" d="M75,140 L75,150 M365,140 L365,150"/>
+  <path data-step="1" class="floor" d="M60,140 L380,140"/>
+  <path data-step="1" class="floor" d="M75,140 L75,150 M365,140 L365,150"/>
   <!-- pool of water (thin lens) -->
-  <path class="pool" d="M150,140 Q220,110 290,140 Z"/>
+  <path data-step="2" class="pool" d="M150,140 Q220,110 290,140 Z"/>
   <!-- evaporation arrows -->
-  <g class="arr" marker-end="url(#a3)">
+  <g data-step="3" class="arr" marker-end="url(#a3)">
     <path d="M190,120 C188,105 190,95 190,90"/>
     <path d="M250,120 C252,105 250,95 250,90"/>
   </g>
-  <text class="tag" x="220" y="75" text-anchor="middle">slow evaporation</text>
-  <text class="tag" x="110" y="115">pool of water</text>
-  <path class="lead" d="M150,118 L200,132"/>
-  <text x="70" y="165">floor</text>
+  <text data-step="3" class="tag" x="220" y="75" text-anchor="middle">slow evaporation</text>
+  <text data-step="3" class="tag" x="110" y="115">pool of water</text>
+  <path data-step="3" class="lead" d="M150,118 L200,132"/>
+  <text data-step="3" x="70" y="165">floor</text>
 </svg>

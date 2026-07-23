@@ -9,17 +9,17 @@
     .lead { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
   </style>
   <!-- door leaf (left) with soft iron plate -->
-  <rect class="door" x="60" y="40" width="70" height="180" rx="2"/>
-  <rect class="iron" x="118" y="100" width="16" height="60" rx="2"/>
+  <rect data-step="1" class="door" x="60" y="40" width="70" height="180" rx="2"/>
+  <rect data-step="1" class="iron" x="118" y="100" width="16" height="60" rx="2"/>
   <!-- frame (right) with permanent magnet -->
-  <rect class="frame" x="330" y="40" width="70" height="180" rx="2"/>
-  <rect class="magnet" x="326" y="100" width="16" height="60" rx="2"/>
+  <rect data-step="2" class="frame" x="330" y="40" width="70" height="180" rx="2"/>
+  <rect data-step="2" class="magnet" x="326" y="100" width="16" height="60" rx="2"/>
 
-  <text x="60" y="30" class="lbl">door</text>
-  <text x="330" y="30" class="lbl">frame</text>
-  <text x="230" y="112" text-anchor="middle" class="lbl">soft iron plate</text>
-  <path class="lead" d="M178,108 L136,118"/>
-  <text x="230" y="158" text-anchor="middle" class="lbl">permanent magnet</text>
-  <path class="lead" d="M284,154 L324,142"/>
-  <text x="230" y="245" text-anchor="middle" font-size="14">When the door closes, the plate meets the magnet.</text>
+  <text data-step="2" x="60" y="30" class="lbl">door</text>
+  <text data-step="2" x="330" y="30" class="lbl">frame</text>
+  <text data-step="2" x="230" y="112" text-anchor="middle" class="lbl">soft iron plate</text>
+  <path data-step="2" class="lead" d="M178,108 L136,118"/>
+  <text data-step="2" x="230" y="158" text-anchor="middle" class="lbl">permanent magnet</text>
+  <path data-step="2" class="lead" d="M284,154 L324,142"/>
+  <text data-step="2" x="230" y="245" text-anchor="middle" font-size="14">When the door closes, the plate meets the magnet.</text>
 </svg>

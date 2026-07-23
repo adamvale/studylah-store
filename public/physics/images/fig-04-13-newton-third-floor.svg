@@ -14,22 +14,22 @@
     .up { stroke:#86C98B; stroke-width:2.4; }
     .down { stroke:#E58F8F; stroke-width:2.4; }
   </style>
-  <line class="floor" x1="60" y1="150" x2="360" y2="150"/>
-  <g stroke="#9AA0A6" stroke-width="1">
+  <line data-step="1" class="floor" x1="60" y1="150" x2="360" y2="150"/>
+  <g data-step="1" stroke="#9AA0A6" stroke-width="1">
     <line x1="80" y1="150" x2="70" y2="162"/><line x1="120" y1="150" x2="110" y2="162"/>
     <line x1="160" y1="150" x2="150" y2="162"/><line x1="200" y1="150" x2="190" y2="162"/>
     <line x1="240" y1="150" x2="230" y2="162"/><line x1="280" y1="150" x2="270" y2="162"/>
     <line x1="320" y1="150" x2="310" y2="162"/>
   </g>
-  <circle class="ball" cx="200" cy="120" r="30"/>
-  <text x="126" y="104" font-size="13">ball</text>
-  <text x="60" y="185" font-size="13">floor</text>
+  <circle data-step="1" class="ball" cx="200" cy="120" r="30"/>
+  <text data-step="1" x="126" y="104" font-size="13">ball</text>
+  <text data-step="1" x="60" y="185" font-size="13">floor</text>
   <!-- normal force floor on ball (up) -->
-  <line class="up" x1="200" y1="120" x2="200" y2="55" marker-end="url(#arwG)"/>
-  <text x="210" y="70" font-size="13.5" fill="#86C98B">F&#8321; (floor on ball)</text>
+  <line data-step="1" class="up" x1="200" y1="120" x2="200" y2="55" marker-end="url(#arwG)"/>
+  <text data-step="1" x="210" y="70" font-size="13.5" fill="#86C98B">F&#8321; (floor on ball)</text>
   <!-- ball on floor (down) into floor -->
-  <line class="down" x1="200" y1="150" x2="200" y2="215" marker-end="url(#arwR)"/>
-  <text x="210" y="205" font-size="13.5" fill="#E58F8F">F&#8322; (ball on floor)</text>
-  <text x="210" y="252" text-anchor="middle" font-size="12.5">F&#8321; and F&#8322; are equal and opposite,</text>
-  <text x="210" y="270" text-anchor="middle" font-size="12.5">but act on different bodies.</text>
+  <line data-step="2" class="down" x1="200" y1="150" x2="200" y2="215" marker-end="url(#arwR)"/>
+  <text data-step="2" x="210" y="205" font-size="13.5" fill="#E58F8F">F&#8322; (ball on floor)</text>
+  <text data-step="2" x="210" y="252" text-anchor="middle" font-size="12.5">F&#8321; and F&#8322; are equal and opposite,</text>
+  <text data-step="2" x="210" y="270" text-anchor="middle" font-size="12.5">but act on different bodies.</text>
 </svg>

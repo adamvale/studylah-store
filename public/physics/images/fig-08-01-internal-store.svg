@@ -11,22 +11,22 @@
   <!-- four particles in a square -->
   <!-- centres -->
   <!-- top-left (200,90) top-right (330,90) bottom-left (200,210) bottom-right (330,210) -->
-  <line class="bond" x1="200" y1="90" x2="330" y2="90"/>
-  <line class="bond" x1="200" y1="210" x2="330" y2="210"/>
-  <line class="bond" x1="200" y1="90" x2="200" y2="210"/>
-  <line class="bond" x1="330" y1="90" x2="330" y2="210"/>
-  <line class="bond" x1="200" y1="90" x2="330" y2="210"/>
-  <line class="bond" x1="330" y1="90" x2="200" y2="210"/>
+  <line data-step="1" class="bond" x1="200" y1="90" x2="330" y2="90"/>
+  <line data-step="1" class="bond" x1="200" y1="210" x2="330" y2="210"/>
+  <line data-step="1" class="bond" x1="200" y1="90" x2="200" y2="210"/>
+  <line data-step="1" class="bond" x1="330" y1="90" x2="330" y2="210"/>
+  <line data-step="1" class="bond" x1="200" y1="90" x2="330" y2="210"/>
+  <line data-step="1" class="bond" x1="330" y1="90" x2="200" y2="210"/>
 
   <!-- particles -->
-  <g>
+  <g data-step="2">
     <circle class="particle" cx="200" cy="90" r="17"/>
     <circle class="particle" cx="330" cy="90" r="17"/>
     <circle class="particle" cx="200" cy="210" r="17"/>
     <circle class="particle" cx="330" cy="210" r="17"/>
   </g>
   <!-- vibration marks (small arcs) beside each particle -->
-  <g class="vib">
+  <g data-step="3" class="vib">
     <path d="M176,78 q-8,12 0,24"/>
     <path d="M354,78 q8,12 0,24"/>
     <path d="M176,198 q-8,12 0,24"/>
@@ -34,22 +34,22 @@
   </g>
 
   <!-- labels -->
-  <text class="lbl amber" x="70" y="70">particle</text>
-  <path class="lead" d="M136,72 L183,84"/>
+  <text data-step="4" class="lbl amber" x="70" y="70">particle</text>
+  <path data-step="4" class="lead" d="M136,72 L183,84"/>
 
-  <text class="lbl amber" x="390" y="72">kinetic store</text>
-  <text class="lbl" x="390" y="91" font-size="13">(due to vibration)</text>
-  <path class="lead" d="M385,72 L350,84"/>
+  <text data-step="4" class="lbl amber" x="390" y="72">kinetic store</text>
+  <text data-step="4" class="lbl" x="390" y="91" font-size="13">(due to vibration)</text>
+  <path data-step="4" class="lead" d="M385,72 L350,84"/>
 
-  <text class="lbl amber" x="390" y="150">potential energy</text>
-  <text class="lbl amber" x="390" y="169">store</text>
-  <text class="lbl" x="390" y="188" font-size="13">(due to attractive force)</text>
-  <path class="lead" d="M385,150 L335,150"/>
+  <text data-step="4" class="lbl amber" x="390" y="150">potential energy</text>
+  <text data-step="4" class="lbl amber" x="390" y="169">store</text>
+  <text data-step="4" class="lbl" x="390" y="188" font-size="13">(due to attractive force)</text>
+  <path data-step="4" class="lead" d="M385,150 L335,150"/>
 
-  <text class="lbl amber" x="40" y="200">attractive</text>
-  <text class="lbl amber" x="40" y="218">force</text>
-  <path class="lead" d="M105,206 L200,150"/>
+  <text data-step="4" class="lbl amber" x="40" y="200">attractive</text>
+  <text data-step="4" class="lbl amber" x="40" y="218">force</text>
+  <path data-step="4" class="lead" d="M105,206 L200,150"/>
 
   <!-- caption -->
-  <text x="280" y="290" text-anchor="middle" font-size="16">internal store = kinetic store + potential energy store</text>
+  <text data-step="5" x="280" y="290" text-anchor="middle" font-size="16">internal store = kinetic store + potential energy store</text>
 </svg>

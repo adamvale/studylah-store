@@ -15,29 +15,29 @@
   </defs>
 
   <!-- poles -->
-  <rect class="pole" x="150" y="40" width="220" height="40"/>
-  <rect class="pole" x="150" y="250" width="220" height="40"/>
-  <text class="plbl" x="260" y="66">N</text>
-  <text class="plbl" x="260" y="276">S</text>
+  <rect data-step="1" class="pole" x="150" y="40" width="220" height="40"/>
+  <rect data-step="1" class="pole" x="150" y="250" width="220" height="40"/>
+  <text data-step="1" class="plbl" x="260" y="66">N</text>
+  <text data-step="1" class="plbl" x="260" y="276">S</text>
 
   <!-- field lines pointing down (N -> S) -->
-  <line class="fld" x1="180" y1="82" x2="180" y2="248" marker-end="url(#f9)"/>
-  <line class="fld" x1="220" y1="82" x2="220" y2="248" marker-end="url(#f9)"/>
-  <line class="fld" x1="300" y1="82" x2="300" y2="248" marker-end="url(#f9)"/>
-  <line class="fld" x1="340" y1="82" x2="340" y2="248" marker-end="url(#f9)"/>
-  <text class="lbl" x="384" y="225">field, B (down)</text>
-  <path class="lead" d="M382,220 L344,214"/>
+  <line data-step="2" class="fld" x1="180" y1="82" x2="180" y2="248" marker-end="url(#f9)"/>
+  <line data-step="2" class="fld" x1="220" y1="82" x2="220" y2="248" marker-end="url(#f9)"/>
+  <line data-step="2" class="fld" x1="300" y1="82" x2="300" y2="248" marker-end="url(#f9)"/>
+  <line data-step="2" class="fld" x1="340" y1="82" x2="340" y2="248" marker-end="url(#f9)"/>
+  <text data-step="2" class="lbl" x="384" y="225">field, B (down)</text>
+  <path data-step="2" class="lead" d="M382,220 L344,214"/>
 
   <!-- conductor end-on, current out of page -->
-  <circle cx="260" cy="165" r="13" fill="#6FB7E0" fill-opacity="0.32" stroke="#EAEAEA" stroke-width="1.8"/>
-  <circle cx="260" cy="165" r="3.4" fill="#EAEAEA"/>
-  <text class="lbl" x="10" y="126">current out of page (&#8857;)</text>
-  <path class="lead" d="M120,132 L245,158"/>
+  <circle data-step="3" cx="260" cy="165" r="13" fill="#6FB7E0" fill-opacity="0.32" stroke="#EAEAEA" stroke-width="1.8"/>
+  <circle data-step="3" cx="260" cy="165" r="3.4" fill="#EAEAEA"/>
+  <text data-step="3" class="lbl" x="10" y="126">current out of page (&#8857;)</text>
+  <path data-step="3" class="lead" d="M120,132 L245,158"/>
 
   <!-- force to the right -->
-  <line class="force" x1="275" y1="165" x2="360" y2="165" marker-end="url(#x9)"/>
-  <text fill="#E58F8F" x="366" y="169" font-weight="bold">force, F</text>
+  <line data-step="4" class="force" x1="275" y1="165" x2="360" y2="165" marker-end="url(#x9)"/>
+  <text data-step="4" fill="#E58F8F" x="366" y="169" font-weight="bold">force, F</text>
 
-  <text class="note" x="40" y="306" font-size="13">Reversing the current OR the field reverses the force;</text>
-  <text class="note" x="40" y="324" font-size="13">reversing both leaves the force unchanged.</text>
+  <text data-step="4" class="note" x="40" y="306" font-size="13">Reversing the current OR the field reverses the force;</text>
+  <text data-step="4" class="note" x="40" y="324" font-size="13">reversing both leaves the force unchanged.</text>
 </svg>

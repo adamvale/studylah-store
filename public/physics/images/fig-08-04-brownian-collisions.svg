@@ -9,13 +9,13 @@
     .lbl { font-size:15px; }
     .amber { fill:#E8B65A; }
   </style>
-  <circle class="view" cx="200" cy="160" r="130"/>
+  <circle data-step="1" class="view" cx="200" cy="160" r="130"/>
 
   <!-- large smoke particle in centre -->
-  <circle class="smoke" cx="200" cy="160" r="24"/>
+  <circle data-step="1" class="smoke" cx="200" cy="160" r="24"/>
 
   <!-- tiny air molecules around, with arrows showing collisions -->
-  <g class="air">
+  <g data-step="2" class="air">
     <circle cx="140" cy="110" r="4"/>
     <circle cx="255" cy="105" r="4"/>
     <circle cx="285" cy="185" r="4"/>
@@ -25,7 +25,7 @@
     <circle cx="205" cy="80" r="4"/>
   </g>
   <!-- collision arrows pointing toward the smoke particle -->
-  <g class="hit">
+  <g data-step="3" class="hit">
     <path d="M148,118 L178,145" marker-end="url(#h)"/>
     <path d="M247,113 L218,143" marker-end="url(#h)"/>
     <path d="M277,180 L222,167" marker-end="url(#h)"/>
@@ -35,15 +35,15 @@
     <path d="M205,88 L200,136" marker-end="url(#h)"/>
   </g>
 
-  <text class="lbl" x="200" y="308" text-anchor="middle" font-style="italic" fill="#9AA0A6">enlarged view</text>
+  <text data-step="3" class="lbl" x="200" y="308" text-anchor="middle" font-style="italic" fill="#9AA0A6">enlarged view</text>
 
-  <text class="lbl amber" x="345" y="90">air molecules</text>
-  <text class="lbl" x="345" y="108" font-size="13">(tiny, invisible)</text>
-  <path class="lead" d="M340,96 L262,105"/>
+  <text data-step="3" class="lbl amber" x="345" y="90">air molecules</text>
+  <text data-step="3" class="lbl" x="345" y="108" font-size="13">(tiny, invisible)</text>
+  <path data-step="3" class="lead" d="M340,96 L262,105"/>
 
-  <text class="lbl amber" x="345" y="200">smoke particle</text>
-  <text class="lbl" x="345" y="218" font-size="13">(large, visible)</text>
-  <path class="lead" d="M340,206 L226,175"/>
+  <text data-step="3" class="lbl amber" x="345" y="200">smoke particle</text>
+  <text data-step="3" class="lbl" x="345" y="218" font-size="13">(large, visible)</text>
+  <path data-step="3" class="lead" d="M340,206 L226,175"/>
 
   <defs>
     <marker id="h" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">

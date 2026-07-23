@@ -12,26 +12,26 @@
     .arc { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
   </style>
   <!-- glass block (medium B) from y=170 to y=270 -->
-  <rect class="glass" x="110" y="170" width="360" height="100"/>
+  <rect data-step="1" class="glass" x="110" y="170" width="360" height="100"/>
   <!-- boundary line at y=170 -->
-  <line x1="110" y1="170" x2="470" y2="170" stroke="#EAEAEA" stroke-width="1.6"/>
+  <line data-step="2" x1="110" y1="170" x2="470" y2="170" stroke="#EAEAEA" stroke-width="1.6"/>
   <!-- normal through P(300,170) -->
-  <path class="norm" d="M300,80 L300,330"/>
-  <text x="300" y="72" text-anchor="middle" font-size="12">normal</text>
+  <path data-step="3" class="norm" d="M300,80 L300,330"/>
+  <text data-step="3" x="300" y="72" text-anchor="middle" font-size="12">normal</text>
   <!-- incident ray i=45 in air -->
-  <path class="inc" marker-end="url(#a1)" d="M215,85 L298,168"/>
-  <text x="150" y="120" font-size="13" fill="#E8B65A">incident ray</text>
+  <path data-step="4" class="inc" marker-end="url(#a1)" d="M215,85 L298,168"/>
+  <text data-step="4" x="150" y="120" font-size="13" fill="#E8B65A">incident ray</text>
   <!-- refracted ray r=28 in glass (bends toward normal) exiting bottom at (353,270) -->
-  <path class="ref" marker-end="url(#a2)" d="M300,170 L352,268"/>
-  <text x="360" y="235" font-size="13" fill="#6FB7E0">refracted ray</text>
+  <path data-step="5" class="ref" marker-end="url(#a2)" d="M300,170 L352,268"/>
+  <text data-step="5" x="360" y="235" font-size="13" fill="#6FB7E0">refracted ray</text>
   <!-- emergent ray below, parallel to incident -->
-  <path class="ref" marker-end="url(#a2)" d="M353,270 L423,340"/>
-  <text x="430" y="330" font-size="13" fill="#6FB7E0">emergent ray</text>
+  <path data-step="6" class="ref" marker-end="url(#a2)" d="M353,270 L423,340"/>
+  <text data-step="6" x="430" y="330" font-size="13" fill="#6FB7E0">emergent ray</text>
   <!-- angle arcs -->
-  <path class="arc" d="M300,120 A50,50 0 0,0 265,135"/>
-  <text x="270" y="128" font-size="13" font-style="italic">i</text>
-  <path class="arc" d="M300,220 A50,50 0 0,1 326,213"/>
-  <text x="316" y="215" font-size="13" font-style="italic">r</text>
-  <text x="452" y="150" font-size="12">air (less dense)</text>
-  <text x="452" y="200" font-size="12">glass (denser)</text>
+  <path data-step="7" class="arc" d="M300,120 A50,50 0 0,0 265,135"/>
+  <text data-step="7" x="270" y="128" font-size="13" font-style="italic">i</text>
+  <path data-step="7" class="arc" d="M300,220 A50,50 0 0,1 326,213"/>
+  <text data-step="7" x="316" y="215" font-size="13" font-style="italic">r</text>
+  <text data-step="7" x="452" y="150" font-size="12">air (less dense)</text>
+  <text data-step="7" x="452" y="200" font-size="12">glass (denser)</text>
 </svg>

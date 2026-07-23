@@ -9,30 +9,30 @@
   </style>
 
   <!-- top: narrow spread, small random error -->
-  <line class="truevalue" x1="40" y1="60" x2="300" y2="60"/>
-  <text x="308" y="64" class="true-lbl">true value</text>
-  <path class="dev" d="M60,60 V52 M90,60 V66 M120,60 V55 M150,60 V69 M180,60 V57 M210,60 V67 M240,60 V51 M270,60 V64"/>
-  <path class="reading" d="M55,47 l10,10 M65,47 l-10,10"/>
-  <path class="reading" d="M85,61 l10,10 M95,61 l-10,10"/>
-  <path class="reading" d="M115,50 l10,10 M125,50 l-10,10"/>
-  <path class="reading" d="M145,64 l10,10 M155,64 l-10,10"/>
-  <path class="reading" d="M175,52 l10,10 M185,52 l-10,10"/>
-  <path class="reading" d="M205,62 l10,10 M215,62 l-10,10"/>
-  <path class="reading" d="M235,46 l10,10 M245,46 l-10,10"/>
-  <path class="reading" d="M265,59 l10,10 M275,59 l-10,10"/>
-  <text x="40" y="108" class="cap">Narrow spread: small random error, precise</text>
+  <line data-step="1" class="truevalue" x1="40" y1="60" x2="300" y2="60"/>
+  <text data-step="1" x="308" y="64" class="true-lbl">true value</text>
+  <path data-step="1" class="dev" d="M60,60 V52 M90,60 V66 M120,60 V55 M150,60 V69 M180,60 V57 M210,60 V67 M240,60 V51 M270,60 V64"/>
+  <path data-step="1" class="reading" d="M55,47 l10,10 M65,47 l-10,10"/>
+  <path data-step="1" class="reading" d="M85,61 l10,10 M95,61 l-10,10"/>
+  <path data-step="1" class="reading" d="M115,50 l10,10 M125,50 l-10,10"/>
+  <path data-step="1" class="reading" d="M145,64 l10,10 M155,64 l-10,10"/>
+  <path data-step="1" class="reading" d="M175,52 l10,10 M185,52 l-10,10"/>
+  <path data-step="1" class="reading" d="M205,62 l10,10 M215,62 l-10,10"/>
+  <path data-step="1" class="reading" d="M235,46 l10,10 M245,46 l-10,10"/>
+  <path data-step="1" class="reading" d="M265,59 l10,10 M275,59 l-10,10"/>
+  <text data-step="1" x="40" y="108" class="cap">Narrow spread: small random error, precise</text>
 
   <!-- bottom: wide spread, large random error -->
-  <line class="truevalue" x1="40" y1="190" x2="300" y2="190"/>
-  <text x="308" y="194" class="true-lbl">true value</text>
-  <path class="dev" d="M60,190 V158 M90,190 V218 M120,190 V166 M150,190 V226 M180,190 V176 M210,190 V220 M240,190 V154 M270,190 V210"/>
-  <path class="reading" d="M55,153 l10,10 M65,153 l-10,10"/>
-  <path class="reading" d="M85,213 l10,10 M95,213 l-10,10"/>
-  <path class="reading" d="M115,161 l10,10 M125,161 l-10,10"/>
-  <path class="reading" d="M145,221 l10,10 M155,221 l-10,10"/>
-  <path class="reading" d="M175,171 l10,10 M185,171 l-10,10"/>
-  <path class="reading" d="M205,215 l10,10 M215,215 l-10,10"/>
-  <path class="reading" d="M235,149 l10,10 M245,149 l-10,10"/>
-  <path class="reading" d="M265,205 l10,10 M275,205 l-10,10"/>
-  <text x="40" y="258" class="cap">Wide spread: large random error</text>
+  <line data-step="2" class="truevalue" x1="40" y1="190" x2="300" y2="190"/>
+  <text data-step="2" x="308" y="194" class="true-lbl">true value</text>
+  <path data-step="2" class="dev" d="M60,190 V158 M90,190 V218 M120,190 V166 M150,190 V226 M180,190 V176 M210,190 V220 M240,190 V154 M270,190 V210"/>
+  <path data-step="2" class="reading" d="M55,153 l10,10 M65,153 l-10,10"/>
+  <path data-step="2" class="reading" d="M85,213 l10,10 M95,213 l-10,10"/>
+  <path data-step="2" class="reading" d="M115,161 l10,10 M125,161 l-10,10"/>
+  <path data-step="2" class="reading" d="M145,221 l10,10 M155,221 l-10,10"/>
+  <path data-step="2" class="reading" d="M175,171 l10,10 M185,171 l-10,10"/>
+  <path data-step="2" class="reading" d="M205,215 l10,10 M215,215 l-10,10"/>
+  <path data-step="2" class="reading" d="M235,149 l10,10 M245,149 l-10,10"/>
+  <path data-step="2" class="reading" d="M265,205 l10,10 M275,205 l-10,10"/>
+  <text data-step="2" x="40" y="258" class="cap">Wide spread: large random error</text>
 </svg>

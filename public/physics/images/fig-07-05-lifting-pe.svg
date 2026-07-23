@@ -14,18 +14,18 @@
     <marker id="d2" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#9AA0A6"/></marker>
   </defs>
   <!-- ground -->
-  <line class="ground" x1="60" y1="290" x2="320" y2="290"/>
+  <line data-step="1" class="ground" x1="60" y1="290" x2="320" y2="290"/>
   <!-- crate at ground (ghost) -->
-  <rect class="ghost" x="120" y="250" width="60" height="40"/>
+  <rect data-step="2" class="ghost" x="120" y="250" width="60" height="40"/>
   <!-- crate raised -->
-  <rect class="crate" x="120" y="90" width="60" height="40"/>
+  <rect data-step="3" class="crate" x="120" y="90" width="60" height="40"/>
   <!-- lift force arrow -->
-  <line class="force" x1="150" y1="88" x2="150" y2="40" marker-end="url(#up)"/>
-  <text class="lbl" x="160" y="55">lifting force</text>
+  <line data-step="4" class="force" x1="150" y1="88" x2="150" y2="40" marker-end="url(#up)"/>
+  <text data-step="4" class="lbl" x="160" y="55">lifting force</text>
   <!-- height dimension -->
-  <line class="dim" x1="250" y1="110" x2="250" y2="270" marker-start="url(#d1)" marker-end="url(#d2)"/>
-  <text class="lbl" x="262" y="195">height <tspan font-style="italic">h</tspan></text>
-  <line class="dim" x1="180" y1="110" x2="255" y2="110" stroke-dasharray="3 3"/>
-  <line class="dim" x1="180" y1="270" x2="255" y2="270" stroke-dasharray="3 3"/>
-  <text x="190" y="315" text-anchor="middle" font-size="12" fill="#9AA0A6">work done on the crate &#8594; gravitational potential store</text>
+  <line data-step="5" class="dim" x1="250" y1="110" x2="250" y2="270" marker-start="url(#d1)" marker-end="url(#d2)"/>
+  <text data-step="5" class="lbl" x="262" y="195">height <tspan font-style="italic">h</tspan></text>
+  <line data-step="5" class="dim" x1="180" y1="110" x2="255" y2="110" stroke-dasharray="3 3"/>
+  <line data-step="5" class="dim" x1="180" y1="270" x2="255" y2="270" stroke-dasharray="3 3"/>
+  <text data-step="5" x="190" y="315" text-anchor="middle" font-size="12" fill="#9AA0A6">work done on the crate &#8594; gravitational potential store</text>
 </svg>

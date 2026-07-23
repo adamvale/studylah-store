@@ -11,23 +11,23 @@
     .lbl { font-size:14px; }
   </style>
   <!-- irregular lamina -->
-  <path class="lamina" d="M120,70 C190,50 285,70 290,140 C295,205 235,245 165,240 C105,236 80,185 88,135 C92,100 95,80 120,70 Z"/>
+  <path data-step="1" class="lamina" d="M120,70 C190,50 285,70 290,140 C295,205 235,245 165,240 C105,236 80,185 88,135 C92,100 95,80 120,70 Z"/>
   <!-- pivot X near top -->
-  <circle class="pin" cx="180" cy="90" r="4"/>
-  <text class="lbl" x="165" y="88" fill="#EAEAEA">X</text>
+  <circle data-step="2" class="pin" cx="180" cy="90" r="4"/>
+  <text data-step="2" class="lbl" x="165" y="88" fill="#EAEAEA">X</text>
   <!-- vertical line through X -->
-  <line class="plumb" x1="180" y1="60" x2="180" y2="255"/>
+  <line data-step="3" class="plumb" x1="180" y1="60" x2="180" y2="255"/>
   <!-- CG at C below X -->
-  <circle class="cg" cx="180" cy="150" r="4"/>
-  <text class="lbl" x="164" y="154" fill="#E8B65A">C</text>
+  <circle data-step="4" class="cg" cx="180" cy="150" r="4"/>
+  <text data-step="4" class="lbl" x="164" y="154" fill="#E8B65A">C</text>
   <!-- distance CY -->
-  <line class="dim" x1="180" y1="150" x2="270" y2="150"/>
-  <path class="dim" d="M180,150 l8,-4 M180,150 l8,4"/>
-  <path class="dim" d="M270,150 l-8,-4 M270,150 l-8,4"/>
-  <text class="lbl" x="222" y="144" text-anchor="middle">0.15 m</text>
+  <line data-step="5" class="dim" x1="180" y1="150" x2="270" y2="150"/>
+  <path data-step="5" class="dim" d="M180,150 l8,-4 M180,150 l8,4"/>
+  <path data-step="5" class="dim" d="M270,150 l-8,-4 M270,150 l-8,4"/>
+  <text data-step="5" class="lbl" x="222" y="144" text-anchor="middle">0.15 m</text>
   <!-- Y point with load -->
-  <text class="lbl" x="278" y="154" fill="#EAEAEA">Y</text>
-  <line class="force" x1="270" y1="150" x2="270" y2="200"/>
-  <path class="force" d="M270,200 l-5,-10 M270,200 l5,-10"/>
-  <text class="lbl" x="270" y="217" text-anchor="middle" fill="#E58F8F">5 N</text>
+  <text data-step="6" class="lbl" x="278" y="154" fill="#EAEAEA">Y</text>
+  <line data-step="6" class="force" x1="270" y1="150" x2="270" y2="200"/>
+  <path data-step="6" class="force" d="M270,200 l-5,-10 M270,200 l5,-10"/>
+  <text data-step="6" class="lbl" x="270" y="217" text-anchor="middle" fill="#E58F8F">5 N</text>
 </svg>

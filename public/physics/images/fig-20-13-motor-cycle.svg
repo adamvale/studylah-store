@@ -18,7 +18,7 @@
   </defs>
 
   <!-- ===== PANEL 1: horizontal ===== -->
-  <g transform="translate(15,10)">
+  <g data-step="1" transform="translate(15,10)">
     <text class="ttl" x="170" y="24">Coil horizontal: maximum turning</text>
     <rect class="pole" x="40" y="70" width="34" height="120"/>
     <rect class="pole" x="266" y="70" width="34" height="120"/>
@@ -44,7 +44,7 @@
   </g>
 
   <!-- ===== PANEL 2: vertical ===== -->
-  <g transform="translate(-325,320)">
+  <g data-step="2" transform="translate(-325,320)">
     <text class="ttl" x="510" y="24">Coil vertical: current cut off</text>
     <rect class="pole" x="380" y="70" width="34" height="120"/>
     <rect class="pole" x="606" y="70" width="34" height="120"/>

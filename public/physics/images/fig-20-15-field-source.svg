@@ -3,15 +3,15 @@
     .fld { stroke:#6FB7E0; stroke-width:1.6; fill:none; }
     .ah  { fill:#6FB7E0; }
   </style>
-  <circle class="fld" cx="130" cy="130" r="30"/>
-  <circle class="fld" cx="130" cy="130" r="55"/>
-  <circle class="fld" cx="130" cy="130" r="80"/>
+  <circle data-step="1" class="fld" cx="130" cy="130" r="30"/>
+  <circle data-step="1" class="fld" cx="130" cy="130" r="55"/>
+  <circle data-step="1" class="fld" cx="130" cy="130" r="80"/>
   <!-- centre: current out of page -->
-  <circle cx="130" cy="130" r="9" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
-  <circle cx="130" cy="130" r="2.8" fill="#EAEAEA"/>
+  <circle data-step="1" cx="130" cy="130" r="9" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
+  <circle data-step="1" cx="130" cy="130" r="2.8" fill="#EAEAEA"/>
   <!-- anticlockwise arrowheads -->
-  <path class="ah" d="M134,100 L126,96 L134,92 z"/>
-  <path class="ah" d="M126,160 L134,164 L126,168 z"/>
-  <path class="ah" d="M100,126 L96,134 L92,126 z"/>
-  <path class="ah" d="M164,134 L168,126 L172,134 z"/>
+  <path data-step="2" class="ah" d="M134,100 L126,96 L134,92 z"/>
+  <path data-step="2" class="ah" d="M126,160 L134,164 L126,168 z"/>
+  <path data-step="2" class="ah" d="M100,126 L96,134 L92,126 z"/>
+  <path data-step="2" class="ah" d="M164,134 L168,126 L172,134 z"/>
 </svg>

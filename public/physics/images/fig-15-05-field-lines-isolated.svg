@@ -12,37 +12,37 @@
     .sym { font-size:22px; text-anchor:middle; }
   </style>
   <!-- Panel 1: isolated positive charge -->
-  <text x="170" y="30" text-anchor="middle" font-size="14">Isolated positive charge</text>
-  <line class="fl" x1="192.0" y1="175.0" x2="265.0" y2="175.0" marker-end="url(#ah)"/>
-  <line class="fl" x1="189.1" y1="186.0" x2="252.3" y2="222.5" marker-end="url(#ah)"/>
-  <line class="fl" x1="181.0" y1="194.1" x2="217.5" y2="257.3" marker-end="url(#ah)"/>
-  <line class="fl" x1="170.0" y1="197.0" x2="170.0" y2="270.0" marker-end="url(#ah)"/>
-  <line class="fl" x1="159.0" y1="194.1" x2="122.5" y2="257.3" marker-end="url(#ah)"/>
-  <line class="fl" x1="150.9" y1="186.0" x2="87.7" y2="222.5" marker-end="url(#ah)"/>
-  <line class="fl" x1="148.0" y1="175.0" x2="75.0" y2="175.0" marker-end="url(#ah)"/>
-  <line class="fl" x1="150.9" y1="164.0" x2="87.7" y2="127.5" marker-end="url(#ah)"/>
-  <line class="fl" x1="159.0" y1="155.9" x2="122.5" y2="92.7" marker-end="url(#ah)"/>
-  <line class="fl" x1="170.0" y1="153.0" x2="170.0" y2="80.0" marker-end="url(#ah)"/>
-  <line class="fl" x1="181.0" y1="155.9" x2="217.5" y2="92.7" marker-end="url(#ah)"/>
-  <line class="fl" x1="189.1" y1="164.0" x2="252.3" y2="127.5" marker-end="url(#ah)"/>
-  <circle cx="170" cy="175" r="22" class="pos"/>
-  <text x="170" y="183" class="sym" fill="#E58F8F">+</text>
-  <text x="170" y="303" text-anchor="middle" font-size="13" fill="#9AA0A6">field lines point outward</text>
+  <text data-step="1" x="170" y="30" text-anchor="middle" font-size="14">Isolated positive charge</text>
+  <line data-step="1" class="fl" x1="192.0" y1="175.0" x2="265.0" y2="175.0" marker-end="url(#ah)"/>
+  <line data-step="1" class="fl" x1="189.1" y1="186.0" x2="252.3" y2="222.5" marker-end="url(#ah)"/>
+  <line data-step="1" class="fl" x1="181.0" y1="194.1" x2="217.5" y2="257.3" marker-end="url(#ah)"/>
+  <line data-step="1" class="fl" x1="170.0" y1="197.0" x2="170.0" y2="270.0" marker-end="url(#ah)"/>
+  <line data-step="1" class="fl" x1="159.0" y1="194.1" x2="122.5" y2="257.3" marker-end="url(#ah)"/>
+  <line data-step="1" class="fl" x1="150.9" y1="186.0" x2="87.7" y2="222.5" marker-end="url(#ah)"/>
+  <line data-step="1" class="fl" x1="148.0" y1="175.0" x2="75.0" y2="175.0" marker-end="url(#ah)"/>
+  <line data-step="1" class="fl" x1="150.9" y1="164.0" x2="87.7" y2="127.5" marker-end="url(#ah)"/>
+  <line data-step="1" class="fl" x1="159.0" y1="155.9" x2="122.5" y2="92.7" marker-end="url(#ah)"/>
+  <line data-step="1" class="fl" x1="170.0" y1="153.0" x2="170.0" y2="80.0" marker-end="url(#ah)"/>
+  <line data-step="1" class="fl" x1="181.0" y1="155.9" x2="217.5" y2="92.7" marker-end="url(#ah)"/>
+  <line data-step="1" class="fl" x1="189.1" y1="164.0" x2="252.3" y2="127.5" marker-end="url(#ah)"/>
+  <circle data-step="1" cx="170" cy="175" r="22" class="pos"/>
+  <text data-step="1" x="170" y="183" class="sym" fill="#E58F8F">+</text>
+  <text data-step="1" x="170" y="303" text-anchor="middle" font-size="13" fill="#9AA0A6">field lines point outward</text>
   <!-- Panel 2: isolated negative charge -->
-  <text x="170" y="350" text-anchor="middle" font-size="14">Isolated negative charge</text>
-  <line class="fl" x1="265.0" y1="495.0" x2="192.0" y2="495.0" marker-end="url(#ah)"/>
-  <line class="fl" x1="252.3" y1="542.5" x2="189.1" y2="506.0" marker-end="url(#ah)"/>
-  <line class="fl" x1="217.5" y1="577.3" x2="181.0" y2="514.1" marker-end="url(#ah)"/>
-  <line class="fl" x1="170.0" y1="590.0" x2="170.0" y2="517.0" marker-end="url(#ah)"/>
-  <line class="fl" x1="122.5" y1="577.3" x2="159.0" y2="514.1" marker-end="url(#ah)"/>
-  <line class="fl" x1="87.7" y1="542.5" x2="150.9" y2="506.0" marker-end="url(#ah)"/>
-  <line class="fl" x1="75.0" y1="495.0" x2="148.0" y2="495.0" marker-end="url(#ah)"/>
-  <line class="fl" x1="87.7" y1="447.5" x2="150.9" y2="484.0" marker-end="url(#ah)"/>
-  <line class="fl" x1="122.5" y1="412.7" x2="159.0" y2="475.9" marker-end="url(#ah)"/>
-  <line class="fl" x1="170.0" y1="400.0" x2="170.0" y2="473.0" marker-end="url(#ah)"/>
-  <line class="fl" x1="217.5" y1="412.7" x2="181.0" y2="475.9" marker-end="url(#ah)"/>
-  <line class="fl" x1="252.3" y1="447.5" x2="189.1" y2="484.0" marker-end="url(#ah)"/>
-  <circle cx="170" cy="495" r="22" class="neg"/>
-  <text x="170" y="503" class="sym" fill="#6FB7E0">−</text>
-  <text x="170" y="623" text-anchor="middle" font-size="13" fill="#9AA0A6">field lines point inward</text>
+  <text data-step="2" x="170" y="350" text-anchor="middle" font-size="14">Isolated negative charge</text>
+  <line data-step="2" class="fl" x1="265.0" y1="495.0" x2="192.0" y2="495.0" marker-end="url(#ah)"/>
+  <line data-step="2" class="fl" x1="252.3" y1="542.5" x2="189.1" y2="506.0" marker-end="url(#ah)"/>
+  <line data-step="2" class="fl" x1="217.5" y1="577.3" x2="181.0" y2="514.1" marker-end="url(#ah)"/>
+  <line data-step="2" class="fl" x1="170.0" y1="590.0" x2="170.0" y2="517.0" marker-end="url(#ah)"/>
+  <line data-step="2" class="fl" x1="122.5" y1="577.3" x2="159.0" y2="514.1" marker-end="url(#ah)"/>
+  <line data-step="2" class="fl" x1="87.7" y1="542.5" x2="150.9" y2="506.0" marker-end="url(#ah)"/>
+  <line data-step="2" class="fl" x1="75.0" y1="495.0" x2="148.0" y2="495.0" marker-end="url(#ah)"/>
+  <line data-step="2" class="fl" x1="87.7" y1="447.5" x2="150.9" y2="484.0" marker-end="url(#ah)"/>
+  <line data-step="2" class="fl" x1="122.5" y1="412.7" x2="159.0" y2="475.9" marker-end="url(#ah)"/>
+  <line data-step="2" class="fl" x1="170.0" y1="400.0" x2="170.0" y2="473.0" marker-end="url(#ah)"/>
+  <line data-step="2" class="fl" x1="217.5" y1="412.7" x2="181.0" y2="475.9" marker-end="url(#ah)"/>
+  <line data-step="2" class="fl" x1="252.3" y1="447.5" x2="189.1" y2="484.0" marker-end="url(#ah)"/>
+  <circle data-step="2" cx="170" cy="495" r="22" class="neg"/>
+  <text data-step="2" x="170" y="503" class="sym" fill="#6FB7E0">−</text>
+  <text data-step="2" x="170" y="623" text-anchor="middle" font-size="13" fill="#9AA0A6">field lines point inward</text>
 </svg>

@@ -8,34 +8,34 @@
     .lbl { font-size:12px; }
   </style>
   <!-- main reservoir body -->
-  <rect class="liq" x="40" y="70" width="400" height="110"/>
+  <rect data-step="1" class="liq" x="40" y="70" width="400" height="110"/>
   <!-- rising columns of different shapes filled to same level (y=70) -->
-  <rect class="liq" x="60" y="52" width="40" height="18"/>
-  <rect class="liq" x="150" y="42" width="50" height="28"/>
-  <polygon class="liq" points="255,70 262,40 278,40 285,70"/>
-  <path class="liq" d="M345,70 L345,52 Q380,34 415,52 L415,70 Z"/>
+  <rect data-step="2" class="liq" x="60" y="52" width="40" height="18"/>
+  <rect data-step="2" class="liq" x="150" y="42" width="50" height="28"/>
+  <polygon data-step="2" class="liq" points="255,70 262,40 278,40 285,70"/>
+  <path data-step="2" class="liq" d="M345,70 L345,52 Q380,34 415,52 L415,70 Z"/>
 
   <!-- outlines -->
-  <path class="vessel" d="M40,70 L40,180 L440,180 L440,70"/>
-  <path class="vessel" d="M60,70 L60,52 L100,52 L100,70"/>
-  <path class="vessel" d="M150,70 L150,42 L200,42 L200,70"/>
-  <path class="vessel" d="M255,70 L262,40 L278,40 L285,70"/>
-  <path class="vessel" d="M345,70 L345,52 Q380,34 415,52 L415,70"/>
+  <path data-step="3" class="vessel" d="M40,70 L40,180 L440,180 L440,70"/>
+  <path data-step="3" class="vessel" d="M60,70 L60,52 L100,52 L100,70"/>
+  <path data-step="3" class="vessel" d="M150,70 L150,42 L200,42 L200,70"/>
+  <path data-step="3" class="vessel" d="M255,70 L262,40 L278,40 L285,70"/>
+  <path data-step="3" class="vessel" d="M345,70 L345,52 Q380,34 415,52 L415,70"/>
   <!-- surface line across the top of the body between columns -->
-  <line x1="40" y1="70" x2="440" y2="70" stroke="#6FB7E0" stroke-width="1"/>
+  <line data-step="4" x1="40" y1="70" x2="440" y2="70" stroke="#6FB7E0" stroke-width="1"/>
 
   <!-- same depth line -->
-  <line class="level" x1="40" y1="150" x2="440" y2="150"/>
-  <circle cx="90" cy="150" r="3.5" fill="#E8B65A"/>
-  <circle cx="175" cy="150" r="3.5" fill="#E8B65A"/>
-  <circle cx="270" cy="150" r="3.5" fill="#E8B65A"/>
-  <circle cx="380" cy="150" r="3.5" fill="#E8B65A"/>
+  <line data-step="5" class="level" x1="40" y1="150" x2="440" y2="150"/>
+  <circle data-step="5" cx="90" cy="150" r="3.5" fill="#E8B65A"/>
+  <circle data-step="5" cx="175" cy="150" r="3.5" fill="#E8B65A"/>
+  <circle data-step="5" cx="270" cy="150" r="3.5" fill="#E8B65A"/>
+  <circle data-step="5" cx="380" cy="150" r="3.5" fill="#E8B65A"/>
   <!-- depth marker on right -->
-  <line class="depth" x1="458" y1="70" x2="458" y2="150"/>
-  <line class="depth" x1="453" y1="70" x2="463" y2="70"/>
-  <line class="depth" x1="453" y1="150" x2="463" y2="150"/>
-  <text x="445" y="64" class="lbl" fill="#E8B65A">same</text>
-  <text x="445" y="168" class="lbl" fill="#E8B65A">depth</text>
+  <line data-step="6" class="depth" x1="458" y1="70" x2="458" y2="150"/>
+  <line data-step="6" class="depth" x1="453" y1="70" x2="463" y2="70"/>
+  <line data-step="6" class="depth" x1="453" y1="150" x2="463" y2="150"/>
+  <text data-step="6" x="445" y="64" class="lbl" fill="#E8B65A">same</text>
+  <text data-step="6" x="445" y="168" class="lbl" fill="#E8B65A">depth</text>
 
-  <text x="240" y="205" text-anchor="middle" class="lbl">Same depth &#8594; same pressure, whatever the vessel shape</text>
+  <text data-step="6" x="240" y="205" text-anchor="middle" class="lbl">Same depth &#8594; same pressure, whatever the vessel shape</text>
 </svg>

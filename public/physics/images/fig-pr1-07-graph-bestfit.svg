@@ -9,25 +9,9 @@
     .key { font-size:12px; }
     .axlbl { font-size:12.5px; }
 
-    /* The figure builds itself in teaching order, the way it would be drawn on a
-       board: axes, then the readings, then the line through them, then the
-       gradient triangle. It runs ONCE and holds the finished drawing (the still
-       figure is the final frame), so nothing loops or distracts while reading. */
-    .b { opacity:0; animation:appear .9s ease-out forwards; }
-    @keyframes appear { to { opacity:1 } }
-    .d1 { animation-delay:.2s } .d2 { animation-delay:1.6s } .d3 { animation-delay:2.1s }
-    .d4 { animation-delay:2.6s } .d5 { animation-delay:3.1s } .d6 { animation-delay:3.6s }
-    .d7 { animation-delay:4.1s } .d8 { animation-delay:4.6s } .d9 { animation-delay:7.4s }
-
-    /* the line is drawn on rather than faded in */
-    .draw { opacity:1; stroke-dasharray:350; stroke-dashoffset:350;
-            animation:draw 2.4s ease-out 5s forwards; }
-    @keyframes draw { to { stroke-dashoffset:0 } }
-
-    /* a student who has asked for less motion sees the finished figure at once */
-    @media (prefers-reduced-motion: reduce) {
-      .b, .draw { opacity:1; stroke-dashoffset:0; animation:none }
-    }
+    /* The build order lives in the data-step attributes below, and the
+       player drives it against Gugu's voice. Nothing is animated in this
+       file: a figure opened on its own is simply the finished drawing. */
   </style>
   <defs>
     <marker id="gb1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
@@ -36,31 +20,31 @@
   </defs>
 
   <!-- 1. the axes -->
-  <line class="axis b d1" x1="60" y1="280" x2="60" y2="40" marker-end="url(#gb1)"/>
-  <line class="axis b d1" x1="60" y1="280" x2="390" y2="280" marker-end="url(#gb1)"/>
-  <text x="30" y="30" class="axlbl b d1">T&#178; / s&#178;</text>
-  <text x="340" y="305" class="axlbl b d1">l / cm</text>
+  <line data-step="1" class="axis" x1="60" y1="280" x2="60" y2="40" marker-end="url(#gb1)"/>
+  <line data-step="1" class="axis" x1="60" y1="280" x2="390" y2="280" marker-end="url(#gb1)"/>
+  <text data-step="1" x="30" y="30" class="axlbl">T&#178; / s&#178;</text>
+  <text data-step="1" x="340" y="305" class="axlbl">l / cm</text>
 
   <!-- key -->
-  <path class="point b d1" d="M100,50 l10,10 M110,50 l-10,10"/>
-  <text x="118" y="60" class="key b d1">= readings</text>
-  <path class="bestfit b d1" d="M100,80 H130"/>
-  <text x="138" y="85" class="key b d1">= best fit line</text>
+  <path data-step="2" class="point" d="M100,50 l10,10 M110,50 l-10,10"/>
+  <text data-step="2" x="118" y="60" class="key">= readings</text>
+  <path data-step="2" class="bestfit" d="M100,80 H130"/>
+  <text data-step="2" x="138" y="85" class="key">= best fit line</text>
 
   <!-- 2. the readings, plotted one after another -->
-  <path class="point b d2" d="M95,250 l10,10 M105,250 l-10,10"/>
-  <path class="point b d3" d="M145,202 l10,10 M155,202 l-10,10"/>
-  <path class="point b d4" d="M195,174 l10,10 M205,174 l-10,10"/>
-  <path class="point b d5" d="M245,126 l10,10 M255,126 l-10,10"/>
-  <path class="point b d6" d="M295,97 l10,10 M305,97 l-10,10"/>
-  <path class="point b d7" d="M340,54 l10,10 M350,54 l-10,10"/>
+  <path data-step="3" class="point" d="M95,250 l10,10 M105,250 l-10,10"/>
+  <path data-step="3" class="point" d="M145,202 l10,10 M155,202 l-10,10"/>
+  <path data-step="3" class="point" d="M195,174 l10,10 M205,174 l-10,10"/>
+  <path data-step="3" class="point" d="M245,126 l10,10 M255,126 l-10,10"/>
+  <path data-step="3" class="point" d="M295,97 l10,10 M305,97 l-10,10"/>
+  <path data-step="3" class="point" d="M340,54 l10,10 M350,54 l-10,10"/>
 
   <!-- 3. the best fit line drawn through them -->
-  <path class="bestfit draw" d="M85,262 L360,52"/>
+  <path data-step="4" class="bestfit" d="M85,262 L360,52"/>
 
   <!-- 4. and only then the gradient read off it -->
-  <path class="tri b d9" d="M120,235 H330 V75"/>
-  <text x="338" y="160" class="tri-lbl b d9">rise</text>
-  <text x="200" y="253" text-anchor="middle" class="tri-lbl b d9">run</text>
-  <text x="70" y="305" class="tri-lbl b d9">gradient = rise / run</text>
+  <path data-step="5" class="tri" d="M120,235 H330 V75"/>
+  <text data-step="5" x="338" y="160" class="tri-lbl">rise</text>
+  <text data-step="5" x="200" y="253" text-anchor="middle" class="tri-lbl">run</text>
+  <text data-step="5" x="70" y="305" class="tri-lbl">gradient = rise / run</text>
 </svg>

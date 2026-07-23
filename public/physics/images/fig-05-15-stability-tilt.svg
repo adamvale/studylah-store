@@ -13,47 +13,47 @@
   </style>
 
   <!-- CASE 1: tilted a little, line inside base -->
-  <line class="ground" x1="25" y1="150" x2="205" y2="150"/>
-  <polygon class="box" points="95,150 162.6,131.9 144.5,64.3 76.9,82.4"/>
-  <line class="base" x1="95" y1="150" x2="162.6" y2="131.9"/>
-  <circle class="pivot" cx="95" cy="150" r="3.6"/>
-  <text class="lbl" x="70" y="167" text-anchor="middle">pivot</text>
-  <circle class="cg" cx="119.7" cy="107.1" r="3.6"/>
-  <line class="plumb" x1="119.7" y1="107.1" x2="119.7" y2="166"/>
-  <line class="force" x1="119.7" y1="107.1" x2="119.7" y2="146"/>
-  <path class="force" d="M119.7,146 l-4,-9 M119.7,146 l4,-9"/>
-  <text class="lbl" x="132" y="140" fill="#E58F8F">W</text>
-  <text class="ttl" x="290" y="80" text-anchor="middle" fill="#86C98B">stable</text>
-  <text class="lbl" x="290" y="105" text-anchor="middle">plumb line inside base:</text>
-  <text class="lbl" x="290" y="124" text-anchor="middle">weight rights it</text>
+  <line data-step="1" class="ground" x1="25" y1="150" x2="205" y2="150"/>
+  <polygon data-step="1" class="box" points="95,150 162.6,131.9 144.5,64.3 76.9,82.4"/>
+  <line data-step="1" class="base" x1="95" y1="150" x2="162.6" y2="131.9"/>
+  <circle data-step="1" class="pivot" cx="95" cy="150" r="3.6"/>
+  <text data-step="1" class="lbl" x="70" y="167" text-anchor="middle">pivot</text>
+  <circle data-step="1" class="cg" cx="119.7" cy="107.1" r="3.6"/>
+  <line data-step="1" class="plumb" x1="119.7" y1="107.1" x2="119.7" y2="166"/>
+  <line data-step="1" class="force" x1="119.7" y1="107.1" x2="119.7" y2="146"/>
+  <path data-step="1" class="force" d="M119.7,146 l-4,-9 M119.7,146 l4,-9"/>
+  <text data-step="1" class="lbl" x="132" y="140" fill="#E58F8F">W</text>
+  <text data-step="1" class="ttl" x="290" y="80" text-anchor="middle" fill="#86C98B">stable</text>
+  <text data-step="1" class="lbl" x="290" y="105" text-anchor="middle">plumb line inside base:</text>
+  <text data-step="1" class="lbl" x="290" y="124" text-anchor="middle">weight rights it</text>
 
   <!-- CASE 2: tilted too far, line outside base -->
-  <line class="ground" x1="25" y1="330" x2="205" y2="330"/>
-  <polygon class="box" points="95,330 135.2,272.7 77.9,232.5 37.7,289.8"/>
-  <line class="base" x1="95" y1="330" x2="135.2" y2="272.7"/>
-  <circle class="pivot" cx="95" cy="330" r="3.6"/>
-  <text class="lbl" x="122" y="347" text-anchor="middle">pivot</text>
-  <circle class="cg" cx="86.4" cy="281.2" r="3.6"/>
-  <line class="plumb" x1="86.4" y1="281.2" x2="86.4" y2="346"/>
-  <line class="force" x1="86.4" y1="281.2" x2="86.4" y2="320"/>
-  <path class="force" d="M86.4,320 l-4,-9 M86.4,320 l4,-9"/>
-  <text class="lbl" x="70" y="315" text-anchor="end" fill="#E58F8F">W</text>
-  <text class="ttl" x="290" y="260" text-anchor="middle" fill="#E58F8F">topples</text>
-  <text class="lbl" x="290" y="285" text-anchor="middle">plumb line outside base:</text>
-  <text class="lbl" x="290" y="304" text-anchor="middle">weight topples it</text>
+  <line data-step="2" class="ground" x1="25" y1="330" x2="205" y2="330"/>
+  <polygon data-step="2" class="box" points="95,330 135.2,272.7 77.9,232.5 37.7,289.8"/>
+  <line data-step="2" class="base" x1="95" y1="330" x2="135.2" y2="272.7"/>
+  <circle data-step="2" class="pivot" cx="95" cy="330" r="3.6"/>
+  <text data-step="2" class="lbl" x="122" y="347" text-anchor="middle">pivot</text>
+  <circle data-step="2" class="cg" cx="86.4" cy="281.2" r="3.6"/>
+  <line data-step="2" class="plumb" x1="86.4" y1="281.2" x2="86.4" y2="346"/>
+  <line data-step="2" class="force" x1="86.4" y1="281.2" x2="86.4" y2="320"/>
+  <path data-step="2" class="force" d="M86.4,320 l-4,-9 M86.4,320 l4,-9"/>
+  <text data-step="2" class="lbl" x="70" y="315" text-anchor="end" fill="#E58F8F">W</text>
+  <text data-step="2" class="ttl" x="290" y="260" text-anchor="middle" fill="#E58F8F">topples</text>
+  <text data-step="2" class="lbl" x="290" y="285" text-anchor="middle">plumb line outside base:</text>
+  <text data-step="2" class="lbl" x="290" y="304" text-anchor="middle">weight topples it</text>
 
   <!-- CASE 3: balanced on the edge, line through pivot -->
-  <line class="ground" x1="25" y1="510" x2="205" y2="510"/>
-  <polygon class="box" points="95,510 144.5,460.5 95,411 45.5,460.5"/>
-  <line class="base" x1="95" y1="510" x2="144.5" y2="460.5"/>
-  <circle class="pivot" cx="95" cy="510" r="3.6"/>
-  <text class="lbl" x="130" y="528" text-anchor="middle">pivot</text>
-  <circle class="cg" cx="95" cy="460.5" r="3.6"/>
-  <line class="plumb" x1="95" y1="460.5" x2="95" y2="526"/>
-  <line class="force" x1="95" y1="460.5" x2="95" y2="500"/>
-  <path class="force" d="M95,500 l-4,-9 M95,500 l4,-9"/>
-  <text class="lbl" x="108" y="495" fill="#E58F8F">W</text>
-  <text class="ttl" x="290" y="440" text-anchor="middle" fill="#F5C542">balances</text>
-  <text class="lbl" x="290" y="465" text-anchor="middle">plumb line through pivot:</text>
-  <text class="lbl" x="290" y="484" text-anchor="middle">no turning effect</text>
+  <line data-step="3" class="ground" x1="25" y1="510" x2="205" y2="510"/>
+  <polygon data-step="3" class="box" points="95,510 144.5,460.5 95,411 45.5,460.5"/>
+  <line data-step="3" class="base" x1="95" y1="510" x2="144.5" y2="460.5"/>
+  <circle data-step="3" class="pivot" cx="95" cy="510" r="3.6"/>
+  <text data-step="3" class="lbl" x="130" y="528" text-anchor="middle">pivot</text>
+  <circle data-step="3" class="cg" cx="95" cy="460.5" r="3.6"/>
+  <line data-step="3" class="plumb" x1="95" y1="460.5" x2="95" y2="526"/>
+  <line data-step="3" class="force" x1="95" y1="460.5" x2="95" y2="500"/>
+  <path data-step="3" class="force" d="M95,500 l-4,-9 M95,500 l4,-9"/>
+  <text data-step="3" class="lbl" x="108" y="495" fill="#E58F8F">W</text>
+  <text data-step="3" class="ttl" x="290" y="440" text-anchor="middle" fill="#F5C542">balances</text>
+  <text data-step="3" class="lbl" x="290" y="465" text-anchor="middle">plumb line through pivot:</text>
+  <text data-step="3" class="lbl" x="290" y="484" text-anchor="middle">no turning effect</text>
 </svg>

@@ -12,36 +12,36 @@
   </style>
 
   <!-- cylinder body (horizontal, open left for rod) -->
-  <path class="cyl" d="M150,70 L400,70 A16,55 0 0 1 400,180 L150,180"/>
-  <ellipse class="gas" cx="322" cy="125" rx="78" ry="55"/>
+  <path data-step="1" class="cyl" d="M150,70 L400,70 A16,55 0 0 1 400,180 L150,180"/>
+  <ellipse data-step="1" class="gas" cx="322" cy="125" rx="78" ry="55"/>
   <!-- right end cap ellipse -->
-  <ellipse class="cyl" cx="400" cy="125" rx="16" ry="55"/>
+  <ellipse data-step="2" class="cyl" cx="400" cy="125" rx="16" ry="55"/>
 
   <!-- confined gas particles -->
-  <g class="p">
+  <g data-step="3" class="p">
     <circle cx="270" cy="100" r="7"/><circle cx="320" cy="120" r="7"/>
     <circle cx="290" cy="150" r="7"/><circle cx="350" cy="105" r="7"/>
     <circle cx="360" cy="150" r="7"/><circle cx="310" cy="90" r="7"/>
   </g>
 
   <!-- piston disc -->
-  <rect class="piston" x="230" y="72" width="14" height="106" rx="2"/>
+  <rect data-step="4" class="piston" x="230" y="72" width="14" height="106" rx="2"/>
   <!-- piston rod extending left -->
-  <rect class="piston" x="120" y="118" width="110" height="14" rx="2"/>
+  <rect data-step="5" class="piston" x="120" y="118" width="110" height="14" rx="2"/>
 
   <!-- applied force arrow -->
-  <line class="force" x1="60" y1="125" x2="115" y2="125" marker-end="url(#f)"/>
-  <text class="lbl amber" x="45" y="106">force applied</text>
+  <line data-step="6" class="force" x1="60" y1="125" x2="115" y2="125" marker-end="url(#f)"/>
+  <text data-step="6" class="lbl amber" x="45" y="106">force applied</text>
 
   <!-- labels -->
-  <text class="lbl amber" x="215" y="45">piston</text>
-  <path class="lead" d="M225,48 L237,72"/>
+  <text data-step="7" class="lbl amber" x="215" y="45">piston</text>
+  <path data-step="7" class="lead" d="M225,48 L237,72"/>
 
-  <text class="lbl amber" x="422" y="120">confined air</text>
-  <path class="lead" d="M418,124 L352,125"/>
+  <text data-step="7" class="lbl amber" x="422" y="120">confined air</text>
+  <path data-step="7" class="lead" d="M418,124 L352,125"/>
 
-  <text class="lbl amber" x="350" y="208">container</text>
-  <path class="lead" d="M365,199 L390,178"/>
+  <text data-step="7" class="lbl amber" x="350" y="208">container</text>
+  <path data-step="7" class="lead" d="M365,199 L390,178"/>
 
   <defs>
     <marker id="f" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">

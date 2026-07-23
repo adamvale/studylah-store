@@ -11,30 +11,30 @@
     .lead { fill:none; stroke:#9AA0A6; stroke-width:1.3; }
   </style>
   <!-- main loop -->
-  <path class="wire" d="M70,55 L235,55"/>
-  <path class="wire" d="M285,55 L410,55 L410,200"/>
-  <path class="wire" d="M70,55 L70,200 L410,200"/>
+  <path data-step="1" class="wire" d="M70,55 L235,55"/>
+  <path data-step="1" class="wire" d="M285,55 L410,55 L410,200"/>
+  <path data-step="1" class="wire" d="M70,55 L70,200 L410,200"/>
   <!-- cell -->
-  <line class="cellL" x1="248" y1="37" x2="248" y2="73"/>
-  <line class="cellS" x1="262" y1="47" x2="262" y2="63"/>
-  <text x="255" y="30" text-anchor="middle" font-size="14" class="lbl">V</text>
+  <line data-step="2" class="cellL" x1="248" y1="37" x2="248" y2="73"/>
+  <line data-step="2" class="cellS" x1="262" y1="47" x2="262" y2="63"/>
+  <text data-step="2" x="255" y="30" text-anchor="middle" font-size="14" class="lbl">V</text>
   <!-- resistor R2 on right side (vertical) -->
-  <rect class="res" x="396" y="105" width="28" height="46"/>
+  <rect data-step="3" class="res" x="396" y="105" width="28" height="46"/>
   <!-- voltmeter V2 across R2 -->
-  <path class="lead" d="M410,90 L470,90 L470,113"/>
-  <path class="lead" d="M410,175 L470,175 L470,143"/>
-  <circle class="meter" cx="470" cy="128" r="15"/>
-  <text x="470" y="133" text-anchor="middle" font-size="13">V</text>
-  <text x="480" y="137" font-size="10" class="lbl">2</text>
+  <path data-step="4" class="lead" d="M410,90 L470,90 L470,113"/>
+  <path data-step="4" class="lead" d="M410,175 L470,175 L470,143"/>
+  <circle data-step="4" class="meter" cx="470" cy="128" r="15"/>
+  <text data-step="4" x="470" y="133" text-anchor="middle" font-size="13">V</text>
+  <text data-step="4" x="480" y="137" font-size="10" class="lbl">2</text>
   <!-- resistor R1 on bottom -->
-  <rect class="res" x="180" y="186" width="46" height="28"/>
+  <rect data-step="5" class="res" x="180" y="186" width="46" height="28"/>
   <!-- voltmeter V1 across R1 -->
-  <path class="lead" d="M180,200 L150,245 L203,245"/>
-  <path class="lead" d="M226,200 L256,245 L217,245"/>
-  <circle class="meter" cx="210" cy="245" r="15"/>
-  <text x="210" y="250" text-anchor="middle" font-size="13">V</text>
-  <text x="220" y="254" font-size="10" class="lbl">1</text>
+  <path data-step="6" class="lead" d="M180,200 L150,245 L203,245"/>
+  <path data-step="6" class="lead" d="M226,200 L256,245 L217,245"/>
+  <circle data-step="6" class="meter" cx="210" cy="245" r="15"/>
+  <text data-step="6" x="210" y="250" text-anchor="middle" font-size="13">V</text>
+  <text data-step="6" x="220" y="254" font-size="10" class="lbl">1</text>
   <!-- identity box -->
-  <rect x="300" y="235" width="110" height="40" rx="4" fill="none" stroke="#9AA0A6" stroke-width="1.2"/>
-  <text x="355" y="260" text-anchor="middle" font-size="14" class="accent">V = V₁ + V₂</text>
+  <rect data-step="7" x="300" y="235" width="110" height="40" rx="4" fill="none" stroke="#9AA0A6" stroke-width="1.2"/>
+  <text data-step="7" x="355" y="260" text-anchor="middle" font-size="14" class="accent">V = V₁ + V₂</text>
 </svg>

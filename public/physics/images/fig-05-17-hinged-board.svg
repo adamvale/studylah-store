@@ -10,29 +10,29 @@
     .lbl { font-size:14px; }
   </style>
   <!-- board -->
-  <rect class="board" x="70" y="110" width="330" height="10"/>
+  <rect data-step="1" class="board" x="70" y="110" width="330" height="10"/>
   <!-- hinge at M (left) -->
-  <circle class="hinge" cx="72" cy="115" r="6"/>
-  <text class="lbl" x="58" y="135">M</text>
+  <circle data-step="2" class="hinge" cx="72" cy="115" r="6"/>
+  <text data-step="2" class="lbl" x="58" y="135">M</text>
   <!-- tension string at N pulling up -->
-  <line class="string" x1="230" y1="110" x2="230" y2="50"/>
-  <path class="string" d="M230,50 l-5,10 M230,50 l5,10"/>
-  <text class="lbl" x="238" y="60" fill="#86C98B">tension, T</text>
-  <text class="lbl" x="220" y="135">N</text>
+  <line data-step="3" class="string" x1="230" y1="110" x2="230" y2="50"/>
+  <path data-step="3" class="string" d="M230,50 l-5,10 M230,50 l5,10"/>
+  <text data-step="3" class="lbl" x="238" y="60" fill="#86C98B">tension, T</text>
+  <text data-step="3" class="lbl" x="220" y="135">N</text>
   <!-- load at O (right end) -->
-  <rect class="load" x="386" y="120" width="26" height="22"/>
-  <line class="force" x1="399" y1="142" x2="399" y2="180"/>
-  <path class="force" d="M399,180 l-5,-10 M399,180 l5,-10"/>
-  <text class="lbl" x="399" y="196" text-anchor="middle" fill="#E58F8F">500 N</text>
+  <rect data-step="4" class="load" x="386" y="120" width="26" height="22"/>
+  <line data-step="4" class="force" x1="399" y1="142" x2="399" y2="180"/>
+  <path data-step="4" class="force" d="M399,180 l-5,-10 M399,180 l5,-10"/>
+  <text data-step="4" class="lbl" x="399" y="196" text-anchor="middle" fill="#E58F8F">500 N</text>
   <!-- distances -->
-  <line class="dim" x1="72" y1="82" x2="230" y2="82"/>
-  <path class="dim" d="M72,82 l8,-4 M72,82 l8,4"/>
-  <path class="dim" d="M230,82 l-8,-4 M230,82 l-8,4"/>
-  <text class="lbl" x="151" y="76" text-anchor="middle">2.5 m</text>
-  <line class="dim" x1="72" y1="160" x2="399" y2="160"/>
-  <path class="dim" d="M72,160 l8,-4 M72,160 l8,4"/>
-  <path class="dim" d="M399,160 l-8,-4 M399,160 l-8,4"/>
-  <text class="lbl" x="235" y="154" text-anchor="middle">6.0 m</text>
-  <line class="dim" x1="72" y1="120" x2="72" y2="160" stroke-dasharray="3 3"/>
-  <line class="dim" x1="399" y1="142" x2="399" y2="160" stroke-dasharray="3 3"/>
+  <line data-step="5" class="dim" x1="72" y1="82" x2="230" y2="82"/>
+  <path data-step="5" class="dim" d="M72,82 l8,-4 M72,82 l8,4"/>
+  <path data-step="5" class="dim" d="M230,82 l-8,-4 M230,82 l-8,4"/>
+  <text data-step="5" class="lbl" x="151" y="76" text-anchor="middle">2.5 m</text>
+  <line data-step="5" class="dim" x1="72" y1="160" x2="399" y2="160"/>
+  <path data-step="5" class="dim" d="M72,160 l8,-4 M72,160 l8,4"/>
+  <path data-step="5" class="dim" d="M399,160 l-8,-4 M399,160 l-8,4"/>
+  <text data-step="5" class="lbl" x="235" y="154" text-anchor="middle">6.0 m</text>
+  <line data-step="5" class="dim" x1="72" y1="120" x2="72" y2="160" stroke-dasharray="3 3"/>
+  <line data-step="5" class="dim" x1="399" y1="142" x2="399" y2="160" stroke-dasharray="3 3"/>
 </svg>

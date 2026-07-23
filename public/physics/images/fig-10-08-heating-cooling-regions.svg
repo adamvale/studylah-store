@@ -11,32 +11,32 @@
   </style>
 
   <!-- TOP: heating curve -->
-  <path class="ax" d="M60,40 L60,265 L440,265"/>
-  <text x="60" y="26" text-anchor="middle">temperature/&#176;C</text>
-  <text x="408" y="286">time</text>
-  <path class="hc" d="M65,235 L130,165 L230,165 L300,85 L360,85"/>
-  <circle cx="130" cy="165" r="3" fill="#EAEAEA"/><circle cx="230" cy="165" r="3" fill="#EAEAEA"/>
-  <text class="pt" x="84" y="210">A</text>
-  <text class="pt" x="116" y="187">B</text>
-  <text class="pt" x="232" y="187">C</text>
-  <text class="ke" x="72" y="105">AB: KE rises</text>
-  <text class="ke" x="72" y="122">&#8594; temp changes</text>
-  <text class="pe" x="128" y="140">BC: PE rises</text>
-  <text class="pe" x="128" y="157">&#8594; temp constant</text>
-  <text class="cap" x="240" y="302">heating curve</text>
+  <path data-step="1" class="ax" d="M60,40 L60,265 L440,265"/>
+  <text data-step="1" x="60" y="26" text-anchor="middle">temperature/&#176;C</text>
+  <text data-step="1" x="408" y="286">time</text>
+  <path data-step="1" class="hc" d="M65,235 L130,165 L230,165 L300,85 L360,85"/>
+  <circle data-step="1" cx="130" cy="165" r="3" fill="#EAEAEA"/><circle data-step="1" cx="230" cy="165" r="3" fill="#EAEAEA"/>
+  <text data-step="1" class="pt" x="84" y="210">A</text>
+  <text data-step="1" class="pt" x="116" y="187">B</text>
+  <text data-step="1" class="pt" x="232" y="187">C</text>
+  <text data-step="1" class="ke" x="72" y="105">AB: KE rises</text>
+  <text data-step="1" class="ke" x="72" y="122">&#8594; temp changes</text>
+  <text data-step="1" class="pe" x="128" y="140">BC: PE rises</text>
+  <text data-step="1" class="pe" x="128" y="157">&#8594; temp constant</text>
+  <text data-step="1" class="cap" x="240" y="302">heating curve</text>
 
   <!-- BOTTOM: cooling curve -->
-  <path class="ax" d="M60,360 L60,585 L440,585"/>
-  <text x="60" y="346" text-anchor="middle">temperature/&#176;C</text>
-  <text x="408" y="606">time</text>
-  <path class="cc" d="M65,405 L125,485 L225,485 L290,558 L350,558"/>
-  <circle cx="125" cy="485" r="3" fill="#EAEAEA"/><circle cx="225" cy="485" r="3" fill="#EAEAEA"/>
-  <text class="pt" x="84" y="418">P</text>
-  <text class="pt" x="110" y="478">Q</text>
-  <text class="pt" x="230" y="478">R</text>
-  <text class="ke" x="155" y="425">PQ: KE falls</text>
-  <text class="ke" x="155" y="442">&#8594; temp changes</text>
-  <text class="pe" x="130" y="520">QR: PE falls</text>
-  <text class="pe" x="130" y="537">&#8594; temp constant</text>
-  <text class="cap" x="240" y="622">cooling curve</text>
+  <path data-step="2" class="ax" d="M60,360 L60,585 L440,585"/>
+  <text data-step="2" x="60" y="346" text-anchor="middle">temperature/&#176;C</text>
+  <text data-step="2" x="408" y="606">time</text>
+  <path data-step="2" class="cc" d="M65,405 L125,485 L225,485 L290,558 L350,558"/>
+  <circle data-step="2" cx="125" cy="485" r="3" fill="#EAEAEA"/><circle data-step="2" cx="225" cy="485" r="3" fill="#EAEAEA"/>
+  <text data-step="2" class="pt" x="84" y="418">P</text>
+  <text data-step="2" class="pt" x="110" y="478">Q</text>
+  <text data-step="2" class="pt" x="230" y="478">R</text>
+  <text data-step="2" class="ke" x="155" y="425">PQ: KE falls</text>
+  <text data-step="2" class="ke" x="155" y="442">&#8594; temp changes</text>
+  <text data-step="2" class="pe" x="130" y="520">QR: PE falls</text>
+  <text data-step="2" class="pe" x="130" y="537">&#8594; temp constant</text>
+  <text data-step="2" class="cap" x="240" y="622">cooling curve</text>
 </svg>

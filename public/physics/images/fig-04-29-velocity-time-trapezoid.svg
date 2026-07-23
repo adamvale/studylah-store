@@ -9,16 +9,16 @@
     .guide { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:4 3; }
     .lbl { font-size:13; }
   </style>
-  <line class="axis" x1="70" y1="40" x2="70" y2="245" marker-end="url(#arw)"/>
-  <line class="axis" x1="70" y1="245" x2="430" y2="245" marker-end="url(#arw)"/>
-  <text x="70" y="30" text-anchor="middle" class="lbl">v (km/h)</text>
-  <text x="440" y="260" text-anchor="end" class="lbl">t (s)</text>
-  <text x="62" y="90" text-anchor="end" class="lbl">72</text>
-  <line class="guide" x1="70" y1="85" x2="170" y2="85"/>
+  <line data-step="1" class="axis" x1="70" y1="40" x2="70" y2="245" marker-end="url(#arw)"/>
+  <line data-step="1" class="axis" x1="70" y1="245" x2="430" y2="245" marker-end="url(#arw)"/>
+  <text data-step="1" x="70" y="30" text-anchor="middle" class="lbl">v (km/h)</text>
+  <text data-step="1" x="440" y="260" text-anchor="end" class="lbl">t (s)</text>
+  <text data-step="1" x="62" y="90" text-anchor="end" class="lbl">72</text>
+  <line data-step="1" class="guide" x1="70" y1="85" x2="170" y2="85"/>
   <!-- x ticks 8, 18, 24 (uniform 12.5 units per second) -->
-  <text x="170" y="262" text-anchor="middle" class="lbl">8</text>
-  <text x="295" y="262" text-anchor="middle" class="lbl">18</text>
-  <text x="370" y="262" text-anchor="middle" class="lbl">24</text>
+  <text data-step="1" x="170" y="262" text-anchor="middle" class="lbl">8</text>
+  <text data-step="1" x="295" y="262" text-anchor="middle" class="lbl">18</text>
+  <text data-step="1" x="370" y="262" text-anchor="middle" class="lbl">24</text>
   <!-- trapezoid: 0-8 rise, 8-18 flat, 18-24 fall -->
-  <path class="line" d="M70,245 L170,85 L295,85 L370,245"/>
+  <path data-step="2" class="line" d="M70,245 L170,85 L295,85 L370,245"/>
 </svg>

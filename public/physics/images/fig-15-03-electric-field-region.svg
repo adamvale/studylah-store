@@ -16,14 +16,14 @@
     .pos { fill:none; stroke:#E58F8F; stroke-width:1.8; }
     .neg { fill:none; stroke:#6FB7E0; stroke-width:1.8; }
   </style>
-  <circle cx="180" cy="150" r="110" fill="url(#gpos)"/>
-  <circle cx="180" cy="150" r="24" class="pos"/><text x="180" y="158" class="sym" fill="#E58F8F">+</text>
-  <circle cx="430" cy="150" r="110" fill="url(#gneg)"/>
-  <circle cx="430" cy="150" r="24" class="neg"/><text x="430" y="158" class="sym" fill="#6FB7E0">−</text>
+  <circle data-step="1" cx="180" cy="150" r="110" fill="url(#gpos)"/>
+  <circle data-step="1" cx="180" cy="150" r="24" class="pos"/><text data-step="3" x="180" y="158" class="sym" fill="#E58F8F">+</text>
+  <circle data-step="1" cx="430" cy="150" r="110" fill="url(#gneg)"/>
+  <circle data-step="2" cx="430" cy="150" r="24" class="neg"/><text data-step="3" x="430" y="158" class="sym" fill="#6FB7E0">−</text>
   <!-- labels -->
-  <line class="lead" x1="180" y1="174" x2="120" y2="270"/>
-  <text x="30" y="285">near the charge → force is stronger</text>
-  <line class="lead" x1="180" y1="60" x2="120" y2="35"/>
-  <text x="10" y="30">away from charge → force is weaker</text>
-  <text x="430" y="292" text-anchor="middle" fill="#9AA0A6">electric field</text>
+  <line data-step="2" class="lead" x1="180" y1="174" x2="120" y2="270"/>
+  <text data-step="3" x="30" y="285">near the charge → force is stronger</text>
+  <line data-step="2" class="lead" x1="180" y1="60" x2="120" y2="35"/>
+  <text data-step="4" x="10" y="30">away from charge → force is weaker</text>
+  <text data-step="4" x="430" y="292" text-anchor="middle" fill="#9AA0A6">electric field</text>
 </svg>

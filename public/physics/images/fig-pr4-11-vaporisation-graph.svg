@@ -15,29 +15,29 @@
     </marker>
   </defs>
 
-  <line class="axis" x1="70" y1="270" x2="70" y2="30" marker-end="url(#ga11)"/>
-  <line class="axis" x1="70" y1="270" x2="410" y2="270" marker-end="url(#ga11)"/>
-  <text class="axlbl" x="14" y="22">mass evaporated / g</text>
-  <text class="axlbl" x="400" y="294" text-anchor="end">time / s</text>
+  <line data-step="1" class="axis" x1="70" y1="270" x2="70" y2="30" marker-end="url(#ga11)"/>
+  <line data-step="1" class="axis" x1="70" y1="270" x2="410" y2="270" marker-end="url(#ga11)"/>
+  <text data-step="1" class="axlbl" x="14" y="22">mass evaporated / g</text>
+  <text data-step="1" class="axlbl" x="400" y="294" text-anchor="end">time / s</text>
 
   <!-- best fit line -->
-  <path class="bestfit" d="M82,242 L392,90"/>
+  <path data-step="1" class="bestfit" d="M82,242 L392,90"/>
 
   <!-- readings -->
-  <path class="cross" d="M94,230 l12,12 M106,230 l-12,12"/>
-  <path class="cross" d="M144,203 l12,12 M156,203 l-12,12"/>
-  <path class="cross" d="M194,178 l12,12 M206,178 l-12,12"/>
-  <path class="cross" d="M244,152 l12,12 M256,152 l-12,12"/>
-  <path class="cross" d="M294,129 l12,12 M306,129 l-12,12"/>
-  <path class="cross" d="M344,103 l12,12 M356,103 l-12,12"/>
-  <path class="cross" d="M379,88 l12,12 M391,88 l-12,12"/>
+  <path data-step="2" class="cross" d="M94,230 l12,12 M106,230 l-12,12"/>
+  <path data-step="2" class="cross" d="M144,203 l12,12 M156,203 l-12,12"/>
+  <path data-step="2" class="cross" d="M194,178 l12,12 M206,178 l-12,12"/>
+  <path data-step="2" class="cross" d="M244,152 l12,12 M256,152 l-12,12"/>
+  <path data-step="2" class="cross" d="M294,129 l12,12 M306,129 l-12,12"/>
+  <path data-step="2" class="cross" d="M344,103 l12,12 M356,103 l-12,12"/>
+  <path data-step="2" class="cross" d="M379,88 l12,12 M391,88 l-12,12"/>
 
   <!-- gradient triangle -->
-  <path class="grad" d="M170,198 H300 V134 Z"/>
-  <text class="gradlbl" x="235" y="216" text-anchor="middle">run</text>
-  <text class="gradlbl" x="308" y="172">rise</text>
+  <path data-step="3" class="grad" d="M170,198 H300 V134 Z"/>
+  <text data-step="3" class="gradlbl" x="235" y="216" text-anchor="middle">run</text>
+  <text data-step="3" class="gradlbl" x="308" y="172">rise</text>
 
-  <text class="note" x="95" y="60">gradient = P / l_v</text>
-  <text class="note" x="95" y="82">l_v = P / gradient</text>
-  <text class="note" x="95" y="104">steady slope, constant power</text>
+  <text data-step="3" class="note" x="95" y="60">gradient = P / l_v</text>
+  <text data-step="3" class="note" x="95" y="82">l_v = P / gradient</text>
+  <text data-step="3" class="note" x="95" y="104">steady slope, constant power</text>
 </svg>

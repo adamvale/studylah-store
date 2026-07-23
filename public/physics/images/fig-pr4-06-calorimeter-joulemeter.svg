@@ -17,48 +17,48 @@
   </style>
 
   <!-- lagging wrapped round the calorimeter -->
-  <path class="lagging" d="M86,156 V326 H264 V156"/>
-  <path class="lagging" d="M96,152 V316 H254 V152"/>
+  <path data-step="1" class="lagging" d="M86,156 V326 H264 V156"/>
+  <path data-step="1" class="lagging" d="M96,152 V316 H254 V152"/>
 
   <!-- calorimeter -->
-  <path class="metal" d="M104,160 V312 H246 V160"/>
-  <rect class="water" x="106" y="200" width="138" height="110"/>
+  <path data-step="2" class="metal" d="M104,160 V312 H246 V160"/>
+  <rect data-step="2" class="water" x="106" y="200" width="138" height="110"/>
 
   <!-- lid -->
-  <rect class="lid" x="96" y="150" width="158" height="10" rx="3"/>
+  <rect data-step="3" class="lid" x="96" y="150" width="158" height="10" rx="3"/>
 
   <!-- immersion heater dipping into the water -->
-  <path class="heater" d="M152,100 V252"/>
-  <path class="heater" d="M152,252 l-10,7 l20,9 l-20,9 l20,9 l-10,7"/>
+  <path data-step="4" class="heater" d="M152,100 V252"/>
+  <path data-step="4" class="heater" d="M152,252 l-10,7 l20,9 l-20,9 l20,9 l-10,7"/>
 
   <!-- thermometer -->
-  <path class="glass" d="M200,110 V268"/>
-  <circle class="glass" cx="200" cy="272" r="5" fill="#EAEAEA" fill-opacity="0.5"/>
+  <path data-step="5" class="glass" d="M200,110 V268"/>
+  <circle data-step="5" class="glass" cx="200" cy="272" r="5" fill="#EAEAEA" fill-opacity="0.5"/>
 
   <!-- stirrer -->
-  <path class="glass" d="M232,120 V286"/>
-  <path class="glass" d="M216,290 h32"/>
+  <path data-step="6" class="glass" d="M232,120 V286"/>
+  <path data-step="6" class="glass" d="M216,290 h32"/>
 
   <!-- leads from the heater to the joulemeter -->
-  <path class="wire" d="M148,100 V70 H306"/>
-  <path class="wire" d="M158,100 V80 H306"/>
+  <path data-step="7" class="wire" d="M148,100 V70 H306"/>
+  <path data-step="7" class="wire" d="M158,100 V80 H306"/>
 
   <!-- joulemeter -->
-  <rect class="metal" x="306" y="52" width="112" height="62" rx="4"/>
-  <rect class="disp" x="316" y="66" width="92" height="26" rx="3"/>
-  <text class="small" x="362" y="85" text-anchor="middle">energy in J</text>
-  <text x="362" y="136" text-anchor="middle">joulemeter</text>
+  <rect data-step="8" class="metal" x="306" y="52" width="112" height="62" rx="4"/>
+  <rect data-step="8" class="disp" x="316" y="66" width="92" height="26" rx="3"/>
+  <text data-step="8" class="small" x="362" y="85" text-anchor="middle">energy in J</text>
+  <text data-step="8" x="362" y="136" text-anchor="middle">joulemeter</text>
 
-  <text class="heaterlbl" x="140" y="96" text-anchor="end">heater</text>
-  <text x="212" y="106">thermometer</text>
-  <text x="270" y="150">stirrer</text>
-  <path class="leader" d="M268,152 L237,192"/>
+  <text data-step="8" class="heaterlbl" x="140" y="96" text-anchor="end">heater</text>
+  <text data-step="8" x="212" y="106">thermometer</text>
+  <text data-step="8" x="270" y="150">stirrer</text>
+  <path data-step="8" class="leader" d="M268,152 L237,192"/>
 
-  <text class="waterlbl" x="108" y="222">water</text>
+  <text data-step="8" class="waterlbl" x="108" y="222">water</text>
 
-  <text class="lagginglbl" x="78" y="246" text-anchor="end">lagging</text>
-  <path class="leader" d="M82,242 H90"/>
+  <text data-step="8" class="lagginglbl" x="78" y="246" text-anchor="end">lagging</text>
+  <path data-step="8" class="leader" d="M82,242 H90"/>
 
-  <text x="274" y="250">calorimeter</text>
-  <path class="leader" d="M270,246 H249"/>
+  <text data-step="8" x="274" y="250">calorimeter</text>
+  <path data-step="8" class="leader" d="M270,246 H249"/>
 </svg>

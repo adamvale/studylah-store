@@ -8,33 +8,33 @@
     .bad { fill:#E58F8F; }
   </style>
   <!-- eye positions -->
-  <text x="130" y="40" text-anchor="middle" font-size="22" class="bad">&#10007;</text>
-  <text x="230" y="34" text-anchor="middle" font-size="22" class="good">&#10003;</text>
-  <text x="330" y="40" text-anchor="middle" font-size="22" class="bad">&#10007;</text>
+  <text data-step="1" x="130" y="40" text-anchor="middle" font-size="22" class="bad">&#10007;</text>
+  <text data-step="1" x="230" y="34" text-anchor="middle" font-size="22" class="good">&#10003;</text>
+  <text data-step="1" x="330" y="40" text-anchor="middle" font-size="22" class="bad">&#10007;</text>
   <!-- lines of sight converge at the 2 cm mark (x=230,y=250) -->
-  <path class="sight" d="M130,48 L230,246"/>
-  <path class="sight" d="M230,44 L230,246"/>
-  <path class="sight" d="M330,48 L230,246"/>
-  <text x="158" y="150" text-anchor="end" font-size="14">line of sight</text>
+  <path data-step="2" class="sight" d="M130,48 L230,246"/>
+  <path data-step="2" class="sight" d="M230,44 L230,246"/>
+  <path data-step="2" class="sight" d="M330,48 L230,246"/>
+  <text data-step="2" x="158" y="150" text-anchor="end" font-size="14">line of sight</text>
   <!-- ruler -->
-  <rect class="rule" x="70" y="250" width="320" height="34" rx="3"/>
+  <rect data-step="3" class="rule" x="70" y="250" width="320" height="34" rx="3"/>
   <!-- ticks -->
-  <g class="tick">
+  <g data-step="4" class="tick">
     <line x1="100" y1="250" x2="100" y2="270"/>
     <line x1="165" y1="250" x2="165" y2="270"/>
     <line x1="230" y1="250" x2="230" y2="272"/>
     <line x1="295" y1="250" x2="295" y2="270"/>
     <line x1="360" y1="250" x2="360" y2="270"/>
   </g>
-  <g font-size="14" text-anchor="middle">
+  <g data-step="4" font-size="14" text-anchor="middle">
     <text x="100" y="302">0</text>
     <text x="165" y="302">1</text>
     <text x="230" y="302">2</text>
     <text x="295" y="302">3</text>
     <text x="360" y="302">4</text>
   </g>
-  <text x="400" y="272" font-size="14">cm</text>
+  <text data-step="4" x="400" y="272" font-size="14">cm</text>
   <!-- legend -->
-  <text x="230" y="330" text-anchor="middle" font-size="14"><tspan class="good">&#10003;</tspan> correct (directly above)</text>
-  <text x="230" y="352" text-anchor="middle" font-size="14"><tspan class="bad">&#10007;</tspan> incorrect (at an angle)</text>
+  <text data-step="5" x="230" y="330" text-anchor="middle" font-size="14"><tspan class="good">&#10003;</tspan> correct (directly above)</text>
+  <text data-step="5" x="230" y="352" text-anchor="middle" font-size="14"><tspan class="bad">&#10007;</tspan> incorrect (at an angle)</text>
 </svg>

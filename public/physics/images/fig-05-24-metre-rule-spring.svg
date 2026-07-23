@@ -10,31 +10,31 @@
     .lbl { font-size:14px; }
   </style>
   <!-- rule -->
-  <rect class="rule" x="70" y="120" width="340" height="10"/>
+  <rect data-step="1" class="rule" x="70" y="120" width="340" height="10"/>
   <!-- pivot at left end -->
-  <circle class="pivot" cx="80" cy="125" r="5"/>
-  <text class="lbl" x="72" y="150">pivot</text>
+  <circle data-step="2" class="pivot" cx="80" cy="125" r="5"/>
+  <text data-step="2" class="lbl" x="72" y="150">pivot</text>
   <!-- 80 N block at 75 cm from pivot -->
-  <rect class="load" x="307" y="130" width="26" height="22"/>
-  <line class="force" x1="320" y1="152" x2="320" y2="190"/>
-  <path class="force" d="M320,190 l-5,-10 M320,190 l5,-10"/>
-  <text class="lbl" x="320" y="206" text-anchor="middle" fill="#E58F8F">80 N</text>
+  <rect data-step="3" class="load" x="307" y="130" width="26" height="22"/>
+  <line data-step="3" class="force" x1="320" y1="152" x2="320" y2="190"/>
+  <path data-step="3" class="force" d="M320,190 l-5,-10 M320,190 l5,-10"/>
+  <text data-step="3" class="lbl" x="320" y="206" text-anchor="middle" fill="#E58F8F">80 N</text>
   <!-- spring balance at right end pulling up -->
-  <g class="spring">
+  <g data-step="4" class="spring">
     <path d="M400,120 l8,-6 -16,-6 16,-6 -16,-6 16,-6 -8,-6"/>
   </g>
-  <line class="spring" x1="400" y1="78" x2="400" y2="60"/>
-  <text class="lbl" x="400" y="50" text-anchor="middle" fill="#86C98B">spring balance</text>
+  <line data-step="4" class="spring" x1="400" y1="78" x2="400" y2="60"/>
+  <text data-step="4" class="lbl" x="400" y="50" text-anchor="middle" fill="#86C98B">spring balance</text>
   <!-- distance -->
-  <line class="dim" x1="80" y1="95" x2="320" y2="95"/>
-  <path class="dim" d="M80,95 l8,-4 M80,95 l8,4"/>
-  <path class="dim" d="M320,95 l-8,-4 M320,95 l-8,4"/>
-  <text class="lbl" x="200" y="89" text-anchor="middle">75 cm</text>
-  <line class="dim" x1="80" y1="95" x2="80" y2="120" stroke-dasharray="3 3"/>
-  <line class="dim" x1="320" y1="95" x2="320" y2="130" stroke-dasharray="3 3"/>
-  <line class="dim" x1="80" y1="175" x2="400" y2="175"/>
-  <path class="dim" d="M80,175 l8,-4 M80,175 l8,4"/>
-  <path class="dim" d="M400,175 l-8,-4 M400,175 l-8,4"/>
-  <text class="lbl" x="340" y="169" text-anchor="middle">100 cm</text>
-  <line class="dim" x1="400" y1="120" x2="400" y2="175" stroke-dasharray="3 3"/>
+  <line data-step="5" class="dim" x1="80" y1="95" x2="320" y2="95"/>
+  <path data-step="5" class="dim" d="M80,95 l8,-4 M80,95 l8,4"/>
+  <path data-step="5" class="dim" d="M320,95 l-8,-4 M320,95 l-8,4"/>
+  <text data-step="5" class="lbl" x="200" y="89" text-anchor="middle">75 cm</text>
+  <line data-step="5" class="dim" x1="80" y1="95" x2="80" y2="120" stroke-dasharray="3 3"/>
+  <line data-step="5" class="dim" x1="320" y1="95" x2="320" y2="130" stroke-dasharray="3 3"/>
+  <line data-step="5" class="dim" x1="80" y1="175" x2="400" y2="175"/>
+  <path data-step="5" class="dim" d="M80,175 l8,-4 M80,175 l8,4"/>
+  <path data-step="5" class="dim" d="M400,175 l-8,-4 M400,175 l-8,4"/>
+  <text data-step="5" class="lbl" x="340" y="169" text-anchor="middle">100 cm</text>
+  <line data-step="5" class="dim" x1="400" y1="120" x2="400" y2="175" stroke-dasharray="3 3"/>
 </svg>

@@ -14,23 +14,23 @@
     <marker id="w2" markerWidth="10" markerHeight="9" refX="8" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#9AA0A6"/></marker>
   </defs>
   <!-- incline: P bottom-left, top-right; vertical right side -->
-  <polygon class="fill" points="55,205 330,205 330,70"/>
-  <polyline class="slope" points="55,205 330,70"/>
-  <line class="slope" x1="55" y1="205" x2="330" y2="205"/>
-  <line class="slope" x1="330" y1="205" x2="330" y2="70"/>
+  <polygon data-step="1" class="fill" points="55,205 330,205 330,70"/>
+  <polyline data-step="1" class="slope" points="55,205 330,70"/>
+  <line data-step="1" class="slope" x1="55" y1="205" x2="330" y2="205"/>
+  <line data-step="1" class="slope" x1="330" y1="205" x2="330" y2="70"/>
   <!-- block on slope -->
-  <g transform="translate(150,157) rotate(-26)">
+  <g data-step="2" transform="translate(150,157) rotate(-26)">
     <rect class="block" x="-22" y="-16" width="44" height="30"/>
   </g>
   <!-- push force up slope -->
-  <line class="force" x1="88" y1="176" x2="124" y2="160" marker-end="url(#fm3)"/>
-  <text class="lbl" x="98" y="150"><tspan font-style="italic">F</tspan></text>
+  <line data-step="3" class="force" x1="88" y1="176" x2="124" y2="160" marker-end="url(#fm3)"/>
+  <text data-step="3" class="lbl" x="98" y="150"><tspan font-style="italic">F</tspan></text>
   <!-- P label -->
-  <text x="45" y="222" fill="#EAEAEA">P</text>
+  <text data-step="4" x="45" y="222" fill="#EAEAEA">P</text>
   <!-- slope length 6 m -->
-  <text class="lbl" x="215" y="118" transform="rotate(-26 215 118)">6 m</text>
+  <text data-step="5" class="lbl" x="215" y="118" transform="rotate(-26 215 118)">6 m</text>
   <!-- height 3 m -->
-  <line class="dim" x1="360" y1="70" x2="360" y2="205" marker-start="url(#w1)" marker-end="url(#w2)"/>
-  <text class="lbl" x="370" y="142">3 m</text>
-  <line class="dim" x1="330" y1="70" x2="365" y2="70" stroke-dasharray="3 3"/>
+  <line data-step="6" class="dim" x1="360" y1="70" x2="360" y2="205" marker-start="url(#w1)" marker-end="url(#w2)"/>
+  <text data-step="6" class="lbl" x="370" y="142">3 m</text>
+  <line data-step="6" class="dim" x1="330" y1="70" x2="365" y2="70" stroke-dasharray="3 3"/>
 </svg>

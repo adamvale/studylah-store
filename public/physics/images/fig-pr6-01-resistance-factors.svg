@@ -14,24 +14,24 @@
   </defs>
 
   <!-- one conductor lying on its side -->
-  <path class="cond" d="M110,60 L330,60 M110,120 L330,120"/>
-  <path class="cond" d="M330,60 A10,30 0 0 1 330,120"/>
-  <ellipse class="face" cx="110" cy="90" rx="10" ry="30"/>
+  <path data-step="1" class="cond" d="M110,60 L330,60 M110,120 L330,120"/>
+  <path data-step="1" class="cond" d="M330,60 A10,30 0 0 1 330,120"/>
+  <ellipse data-step="1" class="face" cx="110" cy="90" rx="10" ry="30"/>
 
   <!-- shaded end face = cross-sectional area A -->
-  <path class="lead" d="M86,90 L98,90"/>
-  <text x="82" y="94" text-anchor="end">area A</text>
+  <path data-step="2" class="lead" d="M86,90 L98,90"/>
+  <text data-step="2" x="82" y="94" text-anchor="end">area A</text>
 
   <!-- resistivity on the body -->
-  <text x="225" y="95" text-anchor="middle">resistivity &#961;</text>
+  <text data-step="3" x="225" y="95" text-anchor="middle">resistivity &#961;</text>
 
   <!-- length along the bar -->
-  <path class="dim" d="M110,124 L110,148 M330,124 L330,148"/>
-  <path class="dim" d="M110,142 L330,142" marker-start="url(#p2b)" marker-end="url(#p2a)"/>
-  <text x="220" y="164" text-anchor="middle" class="note">length L</text>
+  <path data-step="4" class="dim" d="M110,124 L110,148 M330,124 L330,148"/>
+  <path data-step="4" class="dim" d="M110,142 L330,142" marker-start="url(#p2b)" marker-end="url(#p2a)"/>
+  <text data-step="4" x="220" y="164" text-anchor="middle" class="note">length L</text>
 
-  <text x="210" y="198" text-anchor="middle" class="eq">R = &#961; L / A</text>
+  <text data-step="4" x="210" y="198" text-anchor="middle" class="eq">R = &#961; L / A</text>
 
-  <text x="30" y="228" class="note">longer L: bigger R</text>
-  <text x="230" y="228" class="note">bigger A: smaller R</text>
+  <text data-step="4" x="30" y="228" class="note">longer L: bigger R</text>
+  <text data-step="4" x="230" y="228" class="note">bigger A: smaller R</text>
 </svg>

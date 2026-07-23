@@ -18,19 +18,19 @@
     .w { stroke:#E58F8F; stroke-width:2.4; }
   </style>
   <!-- table top -->
-  <line class="table" x1="80" y1="170" x2="320" y2="170"/>
-  <line class="table" x1="110" y1="170" x2="110" y2="240"/>
-  <line class="table" x1="290" y1="170" x2="290" y2="240"/>
+  <line data-step="1" class="table" x1="80" y1="170" x2="320" y2="170"/>
+  <line data-step="1" class="table" x1="110" y1="170" x2="110" y2="240"/>
+  <line data-step="1" class="table" x1="290" y1="170" x2="290" y2="240"/>
   <!-- cup -->
-  <path class="cup" d="M175,150 L225,150 L221,170 L179,170 Z"/>
-  <text x="252" y="145" font-size="13.5">cup</text>
-  <text x="325" y="200" font-size="13.5">table</text>
+  <path data-step="2" class="cup" d="M175,150 L225,150 L221,170 L179,170 Z"/>
+  <text data-step="2" x="252" y="145" font-size="13.5">cup</text>
+  <text data-step="2" x="325" y="200" font-size="13.5">table</text>
   <!-- normal force up -->
-  <line class="f" x1="200" y1="150" x2="200" y2="80" marker-end="url(#arw-86c98b)"/>
-  <text x="210" y="90" font-size="14" fill="#86C98B">F (normal force)</text>
+  <line data-step="3" class="f" x1="200" y1="150" x2="200" y2="80" marker-end="url(#arw-86c98b)"/>
+  <text data-step="3" x="210" y="90" font-size="14" fill="#86C98B">F (normal force)</text>
   <!-- weight down -->
-  <line class="w" x1="200" y1="170" x2="200" y2="240" marker-end="url(#arw-e58f8f)"/>
-  <text x="210" y="225" font-size="14" fill="#E58F8F">W (weight)</text>
-  <text x="200" y="265" text-anchor="middle" font-size="13">F = W, so the resultant force is zero.</text>
-  <text x="200" y="283" text-anchor="middle" font-size="13">The cup stays at rest.</text>
+  <line data-step="4" class="w" x1="200" y1="170" x2="200" y2="240" marker-end="url(#arw-e58f8f)"/>
+  <text data-step="4" x="210" y="225" font-size="14" fill="#E58F8F">W (weight)</text>
+  <text data-step="4" x="200" y="265" text-anchor="middle" font-size="13">F = W, so the resultant force is zero.</text>
+  <text data-step="4" x="200" y="283" text-anchor="middle" font-size="13">The cup stays at rest.</text>
 </svg>

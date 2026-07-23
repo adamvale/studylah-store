@@ -15,14 +15,14 @@
   </defs>
 
   <!-- deuterium: 1p + 1n -->
-  <g>
+  <g data-step="1">
     <circle class="proton" cx="60" cy="80" r="11"/>
     <circle class="neutron" cx="78" cy="88" r="11"/>
     <text x="65" y="45" text-anchor="middle" class="cap">deuterium</text>
     <text x="65" y="120" text-anchor="middle" font-style="italic">²₁H</text>
   </g>
   <!-- tritium: 1p + 2n -->
-  <g>
+  <g data-step="2">
     <circle class="proton" cx="55" cy="215" r="11"/>
     <circle class="neutron" cx="74" cy="207" r="11"/>
     <circle class="neutron" cx="74" cy="228" r="11"/>
@@ -31,20 +31,20 @@
   </g>
 
   <!-- collide arrows -->
-  <path class="arrow" d="M100,90 L250,150"/>
-  <path class="arrow" d="M95,215 L250,160"/>
-  <text x="175" y="130" text-anchor="middle" class="amber">high speed</text>
+  <path data-step="3" class="arrow" d="M100,90 L250,150"/>
+  <path data-step="3" class="arrow" d="M95,215 L250,160"/>
+  <text data-step="3" x="175" y="130" text-anchor="middle" class="amber">high speed</text>
 
   <!-- fusion point -->
-  <circle cx="285" cy="155" r="4" fill="#EAEAEA"/>
-  <text x="285" y="200" text-anchor="middle" class="cap">fusion</text>
+  <circle data-step="4" cx="285" cy="155" r="4" fill="#EAEAEA"/>
+  <text data-step="4" x="285" y="200" text-anchor="middle" class="cap">fusion</text>
 
   <!-- products arrows -->
-  <path class="arrow" d="M310,140 L430,80"/>
-  <path class="arrow" d="M310,175 L430,235"/>
+  <path data-step="5" class="arrow" d="M310,140 L430,80"/>
+  <path data-step="5" class="arrow" d="M310,175 L430,235"/>
 
   <!-- helium nucleus: 2p + 2n -->
-  <g>
+  <g data-step="6">
     <circle class="proton" cx="470" cy="65" r="11"/>
     <circle class="proton" cx="490" cy="75" r="11"/>
     <circle class="neutron" cx="470" cy="86" r="11"/>
@@ -53,12 +53,12 @@
   </g>
 
   <!-- released neutron -->
-  <circle class="neutron" cx="470" cy="235" r="11"/>
-  <text x="490" y="240" class="cap">neutron ¹₀n</text>
+  <circle data-step="7" class="neutron" cx="470" cy="235" r="11"/>
+  <text data-step="7" x="490" y="240" class="cap">neutron ¹₀n</text>
 
   <!-- energy waves -->
-  <path class="wave" d="M320,155 q9,-9 18,0 q9,9 18,0 q9,-9 18,0"/>
-  <text x="390" y="150" class="amber">energy (γ)</text>
+  <path data-step="8" class="wave" d="M320,155 q9,-9 18,0 q9,9 18,0 q9,-9 18,0"/>
+  <text data-step="8" x="390" y="150" class="amber">energy (γ)</text>
 
-  <text x="300" y="300" text-anchor="middle" class="amber" font-size="14">Two light nuclei join to form a heavier nucleus, releasing energy.</text>
+  <text data-step="8" x="300" y="300" text-anchor="middle" class="amber" font-size="14">Two light nuclei join to form a heavier nucleus, releasing energy.</text>
 </svg>

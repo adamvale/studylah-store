@@ -11,7 +11,7 @@
     .lbl { fill:#E8B65A; }
   </style>
   <!-- inclined test tube -->
-  <g transform="rotate(-22 230 130)">
+  <g data-step="1" transform="rotate(-22 230 130)">
     <rect class="tube" x="120" y="110" width="230" height="42" rx="21"/>
     <!-- ice at closed (lower/left) end held by gauze -->
     <circle class="ice" cx="150" cy="131" r="9"/>
@@ -26,19 +26,19 @@
     </g>
   </g>
   <!-- steam from open end (top right) -->
-  <path class="steam" d="M360,70 q10,-16 -2,-30"/>
-  <path class="steam" d="M375,74 q12,-16 0,-32"/>
+  <path data-step="2" class="steam" d="M360,70 q10,-16 -2,-30"/>
+  <path data-step="2" class="steam" d="M375,74 q12,-16 0,-32"/>
   <!-- flame under the boiling-water (upper) part -->
-  <path class="flame" d="M300,175 C293,163 307,158 300,146 C293,158 290,166 300,175 Z"/>
-  <path class="heat" d="M300,200 L300,178"/>
-  <path class="heat" d="M293,188 L300,176 L307,188"/>
-  <text x="300" y="218" text-anchor="middle">heat</text>
+  <path data-step="3" class="flame" d="M300,175 C293,163 307,158 300,146 C293,158 290,166 300,175 Z"/>
+  <path data-step="3" class="heat" d="M300,200 L300,178"/>
+  <path data-step="3" class="heat" d="M293,188 L300,176 L307,188"/>
+  <text data-step="3" x="300" y="218" text-anchor="middle">heat</text>
   <!-- labels -->
-  <text class="lbl" x="405" y="55">steam</text>
-  <path class="lead" d="M400,58 L378,52"/>
-  <text class="lbl" x="450" y="120" text-anchor="end">boiling water</text>
-  <path class="lead" d="M372,117 L328,104"/>
-  <text class="lbl" x="45" y="150">ice held by</text>
-  <text class="lbl" x="45" y="165">wire gauze</text>
-  <path class="lead" d="M100,155 L150,158"/>
+  <text data-step="4" class="lbl" x="405" y="55">steam</text>
+  <path data-step="4" class="lead" d="M400,58 L378,52"/>
+  <text data-step="4" class="lbl" x="450" y="120" text-anchor="end">boiling water</text>
+  <path data-step="4" class="lead" d="M372,117 L328,104"/>
+  <text data-step="4" class="lbl" x="45" y="150">ice held by</text>
+  <text data-step="4" class="lbl" x="45" y="165">wire gauze</text>
+  <path data-step="4" class="lead" d="M100,155 L150,158"/>
 </svg>

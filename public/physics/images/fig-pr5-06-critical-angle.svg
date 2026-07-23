@@ -15,25 +15,25 @@
     <marker id="ab" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#6FB7E0"/></marker>
   </defs>
 
-  <rect class="glass" x="60" y="170" width="320" height="130" rx="3"/>
+  <rect data-step="1" class="glass" x="60" y="170" width="320" height="130" rx="3"/>
 
-  <path class="normal" d="M180,120 V230"/>
+  <path data-step="1" class="normal" d="M180,120 V230"/>
 
-  <path class="ray" d="M93,266.6 L136.5,218.3" marker-end="url(#ab)"/>
-  <path class="ray" d="M136.5,218.3 L180,170"/>
-  <path class="ray" d="M180,170 H255"/>
-  <path class="ray" d="M255,170 H330" marker-end="url(#ab)"/>
+  <path data-step="1" class="ray" d="M93,266.6 L136.5,218.3" marker-end="url(#ab)"/>
+  <path data-step="1" class="ray" d="M136.5,218.3 L180,170"/>
+  <path data-step="2" class="ray" d="M180,170 H255"/>
+  <path data-step="2" class="ray" d="M255,170 H330" marker-end="url(#ab)"/>
 
-  <path class="arc" d="M180,225 A55,55 0 0 1 143.2,210.9"/>
-  <path class="arc" d="M180,128 A42,42 0 0 1 222,170"/>
+  <path data-step="2" class="arc" d="M180,225 A55,55 0 0 1 143.2,210.9"/>
+  <path data-step="2" class="arc" d="M180,128 A42,42 0 0 1 222,170"/>
 
-  <text class="sym" x="163" y="210" text-anchor="middle">c</text>
-  <text class="lbl" x="230" y="132">90 degrees</text>
+  <text data-step="3" class="sym" x="163" y="210" text-anchor="middle">c</text>
+  <text data-step="3" class="lbl" x="230" y="132">90 degrees</text>
 
-  <text x="75" y="150">air</text>
-  <text x="75" y="196">glass</text>
-  <text class="grey" x="186" y="114">normal</text>
-  <text class="blue" x="250" y="158">along the boundary</text>
-  <text class="lbl" x="200" y="255">critical angle</text>
-  <text class="eq" x="240" y="330" text-anchor="middle">sin c = 1 / n</text>
+  <text data-step="3" x="75" y="150">air</text>
+  <text data-step="3" x="75" y="196">glass</text>
+  <text data-step="4" class="grey" x="186" y="114">normal</text>
+  <text data-step="4" class="blue" x="250" y="158">along the boundary</text>
+  <text data-step="4" class="lbl" x="200" y="255">critical angle</text>
+  <text data-step="4" class="eq" x="240" y="330" text-anchor="middle">sin c = 1 / n</text>
 </svg>

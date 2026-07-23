@@ -8,9 +8,9 @@
     .ground { stroke:#9AA0A6; stroke-width:1.6; }
     .f { stroke:#6FB7E0; stroke-width:2.6; }
   </style>
-  <line class="ground" x1="50" y1="115" x2="360" y2="115"/>
-  <rect class="box" x="150" y="70" width="75" height="45"/>
-  <text x="187" y="98" text-anchor="middle" font-size="13">3.0 kg</text>
-  <line class="f" x1="228" y1="92" x2="320" y2="92" marker-end="url(#arw)"/>
-  <text x="285" y="82" text-anchor="middle" font-size="13.5" fill="#6FB7E0">9.0 N</text>
+  <line data-step="1" class="ground" x1="50" y1="115" x2="360" y2="115"/>
+  <rect data-step="1" class="box" x="150" y="70" width="75" height="45"/>
+  <text data-step="3" x="187" y="98" text-anchor="middle" font-size="13">3.0 kg</text>
+  <line data-step="2" class="f" x1="228" y1="92" x2="320" y2="92" marker-end="url(#arw)"/>
+  <text data-step="4" x="285" y="82" text-anchor="middle" font-size="13.5" fill="#6FB7E0">9.0 N</text>
 </svg>

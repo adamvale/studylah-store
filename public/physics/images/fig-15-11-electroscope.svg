@@ -10,29 +10,29 @@
     .posq { fill:#E58F8F; font-size:14px; text-anchor:middle; }
   </style>
   <!-- Panel 1: neutral electroscope -->
-  <text x="170" y="30" text-anchor="middle" font-size="14">Neutral: leaf hangs down</text>
-  <rect class="metal" x="120" y="55" width="100" height="14" rx="3"/>
-  <rect class="metal" x="165" y="69" width="10" height="90"/>
-  <rect class="case" x="130" y="150" width="80" height="120" rx="4"/>
-  <line stroke="#E8B65A" stroke-width="2" x1="170" y1="159" x2="170" y2="255"/>
-  <path class="leaf" d="M170,159 L174,255 L168,255 Z"/>
-  <text x="235" y="63">metal plate</text>
-  <text x="235" y="115">metal stem</text>
-  <text x="235" y="220">gold leaf</text>
-  <line class="lead" x1="230" y1="112" x2="175" y2="112"/>
-  <line class="lead" x1="230" y1="216" x2="178" y2="235"/>
+  <text data-step="1" x="170" y="30" text-anchor="middle" font-size="14">Neutral: leaf hangs down</text>
+  <rect data-step="1" class="metal" x="120" y="55" width="100" height="14" rx="3"/>
+  <rect data-step="1" class="metal" x="165" y="69" width="10" height="90"/>
+  <rect data-step="1" class="case" x="130" y="150" width="80" height="120" rx="4"/>
+  <line data-step="1" stroke="#E8B65A" stroke-width="2" x1="170" y1="159" x2="170" y2="255"/>
+  <path data-step="1" class="leaf" d="M170,159 L174,255 L168,255 Z"/>
+  <text data-step="1" x="235" y="63">metal plate</text>
+  <text data-step="1" x="235" y="115">metal stem</text>
+  <text data-step="1" x="235" y="220">gold leaf</text>
+  <line data-step="1" class="lead" x1="230" y1="112" x2="175" y2="112"/>
+  <line data-step="1" class="lead" x1="230" y1="216" x2="178" y2="235"/>
   <!-- Panel 2: charged rod near, leaf rises -->
-  <text x="170" y="360" text-anchor="middle" font-size="14">Charged rod near: leaf rises</text>
-  <rect class="rodn" x="100" y="372" width="140" height="20" rx="6"/>
-  <text class="neg" x="125" y="387">−</text><text class="neg" x="155" y="387">−</text><text class="neg" x="185" y="387">−</text><text class="neg" x="215" y="387">−</text>
-  <text x="42" y="412" font-size="12" fill="#6FB7E0">negatively charged rod</text>
-  <rect class="metal" x="120" y="422" width="100" height="14" rx="3"/>
-  <text class="posq" x="145" y="434">+</text><text class="posq" x="195" y="434">+</text>
-  <rect class="metal" x="165" y="436" width="10" height="70"/>
-  <rect class="case" x="125" y="506" width="90" height="120" rx="4"/>
-  <line stroke="#E8B65A" stroke-width="2" x1="170" y1="515" x2="148" y2="608"/>
-  <line stroke="#E8B65A" stroke-width="2" x1="170" y1="515" x2="192" y2="608"/>
-  <text class="neg" x="140" y="580">−</text>
-  <text class="neg" x="200" y="580">−</text>
-  <text x="170" y="652" text-anchor="middle" font-size="13" fill="#9AA0A6">like charges on stem &amp; leaf repel</text>
+  <text data-step="2" x="170" y="360" text-anchor="middle" font-size="14">Charged rod near: leaf rises</text>
+  <rect data-step="2" class="rodn" x="100" y="372" width="140" height="20" rx="6"/>
+  <text data-step="2" class="neg" x="125" y="387">−</text><text data-step="2" class="neg" x="155" y="387">−</text><text data-step="2" class="neg" x="185" y="387">−</text><text data-step="2" class="neg" x="215" y="387">−</text>
+  <text data-step="2" x="42" y="412" font-size="12" fill="#6FB7E0">negatively charged rod</text>
+  <rect data-step="2" class="metal" x="120" y="422" width="100" height="14" rx="3"/>
+  <text data-step="2" class="posq" x="145" y="434">+</text><text data-step="2" class="posq" x="195" y="434">+</text>
+  <rect data-step="2" class="metal" x="165" y="436" width="10" height="70"/>
+  <rect data-step="2" class="case" x="125" y="506" width="90" height="120" rx="4"/>
+  <line data-step="2" stroke="#E8B65A" stroke-width="2" x1="170" y1="515" x2="148" y2="608"/>
+  <line data-step="2" stroke="#E8B65A" stroke-width="2" x1="170" y1="515" x2="192" y2="608"/>
+  <text data-step="2" class="neg" x="140" y="580">−</text>
+  <text data-step="2" class="neg" x="200" y="580">−</text>
+  <text data-step="2" x="170" y="652" text-anchor="middle" font-size="13" fill="#9AA0A6">like charges on stem &amp; leaf repel</text>
 </svg>

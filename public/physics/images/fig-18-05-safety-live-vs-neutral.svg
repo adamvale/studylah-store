@@ -10,57 +10,57 @@
     .open { stroke:#E8B65A; stroke-width:1.6; fill:none; }
     .div { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:5 4; }
   </style>
-  <line class="div" x1="40" y1="220" x2="640" y2="220"/>
+  <line data-step="1" class="div" x1="40" y1="220" x2="640" y2="220"/>
   <!-- ===== TOP: safety devices in LIVE wire (safe) ===== -->
-  <text x="40" y="26" font-size="15" class="grn" font-weight="bold">Safety devices in the LIVE wire: user is protected</text>
+  <text data-step="1" x="40" y="26" font-size="15" class="grn" font-weight="bold">Safety devices in the LIVE wire: user is protected</text>
   <!-- mains block -->
-  <rect class="wire" x="70" y="55" width="40" height="60"/>
-  <text x="90" y="50" text-anchor="middle" font-size="13">mains</text>
-  <text x="80" y="72" font-size="12.5">E</text>
-  <text x="80" y="92" font-size="12.5">N</text>
-  <text x="80" y="110" font-size="12.5">L</text>
+  <rect data-step="2" class="wire" x="70" y="55" width="40" height="60"/>
+  <text data-step="2" x="90" y="50" text-anchor="middle" font-size="13">mains</text>
+  <text data-step="2" x="80" y="72" font-size="12.5">E</text>
+  <text data-step="2" x="80" y="92" font-size="12.5">N</text>
+  <text data-step="2" x="80" y="110" font-size="12.5">L</text>
   <!-- live line top with fuse + open switch -->
-  <path class="wire" d="M110,105 L200,105"/>
-  <rect class="fuse" x="200" y="97" width="40" height="16" rx="3"/>
-  <text x="220" y="90" text-anchor="middle" font-size="12.5" style="fill:#E8B65A">fuse</text>
-  <path class="wire" d="M240,105 L290,105"/>
+  <path data-step="3" class="wire" d="M110,105 L200,105"/>
+  <rect data-step="3" class="fuse" x="200" y="97" width="40" height="16" rx="3"/>
+  <text data-step="3" x="220" y="90" text-anchor="middle" font-size="12.5" style="fill:#E8B65A">fuse</text>
+  <path data-step="3" class="wire" d="M240,105 L290,105"/>
   <!-- open switch -->
-  <line class="wire" x1="290" y1="105" x2="315" y2="105"/>
-  <line class="open" x1="315" y1="105" x2="340" y2="90"/>
-  <circle cx="315" cy="105" r="2.5" class="grn"/>
-  <text x="325" y="78" text-anchor="middle" font-size="12.5" style="fill:#E8B65A">switch (open)</text>
-  <path class="wire" d="M345,105 L430,105 L430,150"/>
+  <line data-step="4" class="wire" x1="290" y1="105" x2="315" y2="105"/>
+  <line data-step="4" class="open" x1="315" y1="105" x2="340" y2="90"/>
+  <circle data-step="4" cx="315" cy="105" r="2.5" class="grn"/>
+  <text data-step="4" x="325" y="78" text-anchor="middle" font-size="12.5" style="fill:#E8B65A">switch (open)</text>
+  <path data-step="4" class="wire" d="M345,105 L430,105 L430,150"/>
   <!-- neutral line -->
-  <path class="wire" d="M110,90 L110,175 L500,175 L500,190"/>
+  <path data-step="5" class="wire" d="M110,90 L110,175 L500,175 L500,190"/>
   <!-- appliance -->
-  <rect class="app" x="430" y="150" width="70" height="70" rx="3"/>
-  <text x="465" y="188" text-anchor="middle" font-size="12.5">appliance</text>
+  <rect data-step="6" class="app" x="430" y="150" width="70" height="70" rx="3"/>
+  <text data-step="6" x="465" y="188" text-anchor="middle" font-size="12.5">appliance</text>
   <!-- hand safe -->
-  <path class="wire" d="M500,160 q16,8 4,22"/>
-  <text x="520" y="150" font-size="13.5" class="grn">circuit stays open &#8594;</text>
-  <text x="520" y="166" font-size="13.5" class="grn">no shock</text>
+  <path data-step="7" class="wire" d="M500,160 q16,8 4,22"/>
+  <text data-step="7" x="520" y="150" font-size="13.5" class="grn">circuit stays open &#8594;</text>
+  <text data-step="7" x="520" y="166" font-size="13.5" class="grn">no shock</text>
 
   <!-- ===== BOTTOM: safety devices in NEUTRAL wire (unsafe) ===== -->
-  <text x="40" y="252" font-size="15" class="red" font-weight="bold">Safety devices in the NEUTRAL wire: user still at risk</text>
-  <rect class="wire" x="70" y="285" width="40" height="60"/>
-  <text x="90" y="280" text-anchor="middle" font-size="13">mains</text>
-  <text x="80" y="302" font-size="12.5">E</text>
-  <text x="80" y="322" font-size="12.5">N</text>
-  <text x="80" y="340" font-size="12.5">L</text>
+  <text data-step="8" x="40" y="252" font-size="15" class="red" font-weight="bold">Safety devices in the NEUTRAL wire: user still at risk</text>
+  <rect data-step="8" class="wire" x="70" y="285" width="40" height="60"/>
+  <text data-step="8" x="90" y="280" text-anchor="middle" font-size="13">mains</text>
+  <text data-step="8" x="80" y="302" font-size="12.5">E</text>
+  <text data-step="8" x="80" y="322" font-size="12.5">N</text>
+  <text data-step="8" x="80" y="340" font-size="12.5">L</text>
   <!-- live goes straight to appliance (still live) -->
-  <path class="wire" d="M110,335 L430,335 L430,340" style="stroke:#E58F8F"/>
-  <text x="250" y="326" text-anchor="middle" font-size="12.5" class="red">live wire still connected to appliance</text>
+  <path data-step="9" class="wire" d="M110,335 L430,335 L430,340" style="stroke:#E58F8F"/>
+  <text data-step="9" x="250" y="326" text-anchor="middle" font-size="12.5" class="red">live wire still connected to appliance</text>
   <!-- neutral line with fuse + open switch (broken) -->
-  <path class="wire" d="M110,300 L110,405 L300,405"/>
-  <line class="open" x1="300" y1="405" x2="325" y2="390"/>
-  <circle cx="300" cy="405" r="2.5" class="red"/>
-  <rect class="fuse" x="330" y="397" width="40" height="16" rx="3"/>
-  <path class="wire" d="M370,405 L430,405 L430,410"/>
+  <path data-step="9" class="wire" d="M110,300 L110,405 L300,405"/>
+  <line data-step="9" class="open" x1="300" y1="405" x2="325" y2="390"/>
+  <circle data-step="9" cx="300" cy="405" r="2.5" class="red"/>
+  <rect data-step="9" class="fuse" x="330" y="397" width="40" height="16" rx="3"/>
+  <path data-step="9" class="wire" d="M370,405 L430,405 L430,410"/>
   <!-- appliance -->
-  <rect class="app" x="430" y="340" width="70" height="70" rx="3" style="stroke:#E58F8F"/>
-  <text x="465" y="378" text-anchor="middle" font-size="12.5">appliance</text>
+  <rect data-step="9" class="app" x="430" y="340" width="70" height="70" rx="3" style="stroke:#E58F8F"/>
+  <text data-step="9" x="465" y="378" text-anchor="middle" font-size="12.5">appliance</text>
   <!-- hand shock -->
-  <path class="wire" d="M500,350 q16,8 4,22" style="stroke:#E58F8F"/>
-  <text x="520" y="340" font-size="13.5" class="red">casing still 'live' &#8594;</text>
-  <text x="520" y="356" font-size="13.5" class="red">shock through body</text>
+  <path data-step="9" class="wire" d="M500,350 q16,8 4,22" style="stroke:#E58F8F"/>
+  <text data-step="9" x="520" y="340" font-size="13.5" class="red">casing still 'live' &#8594;</text>
+  <text data-step="9" x="520" y="356" font-size="13.5" class="red">shock through body</text>
 </svg>

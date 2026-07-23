@@ -8,22 +8,22 @@
     .plat { fill:#6FB7E0; font-weight:bold; }
     .st { fill:#86C98B; }
   </style>
-  <path class="ax" d="M70,30 L70,275 L430,275"/>
-  <text x="70" y="20" text-anchor="middle">temperature/&#176;C</text>
-  <text x="400" y="295">time</text>
+  <path data-step="1" class="ax" d="M70,30 L70,275 L430,275"/>
+  <text data-step="3" x="70" y="20" text-anchor="middle">temperature/&#176;C</text>
+  <text data-step="3" x="400" y="295">time</text>
 
-  <line class="g" x1="70" y1="100" x2="300" y2="100"/>
-  <line class="g" x1="70" y1="200" x2="340" y2="200"/>
-  <text class="lbl" x="62" y="90" text-anchor="end">condensation</text>
-  <text class="lbl" x="62" y="107" text-anchor="end">point</text>
-  <text class="lbl" x="62" y="204" text-anchor="end">freezing point</text>
+  <line data-step="1" class="g" x1="70" y1="100" x2="300" y2="100"/>
+  <line data-step="2" class="g" x1="70" y1="200" x2="340" y2="200"/>
+  <text data-step="3" class="lbl" x="62" y="90" text-anchor="end">condensation</text>
+  <text data-step="3" class="lbl" x="62" y="107" text-anchor="end">point</text>
+  <text data-step="3" class="lbl" x="62" y="204" text-anchor="end">freezing point</text>
 
   <!-- cooling curve: gas fall, condense plateau, liquid fall, freeze plateau, solid fall -->
-  <path class="curve" d="M75,55 L120,100 L200,100 L260,200 L340,200 L380,245"/>
+  <path data-step="2" class="curve" d="M75,55 L120,100 L200,100 L260,200 L340,200 L380,245"/>
 
-  <text class="st" x="86" y="72">gas</text>
-  <text class="st" x="205" y="160">liquid</text>
-  <text class="st" x="345" y="238">solid</text>
-  <text class="plat" x="128" y="92">condensation</text>
-  <text class="plat" x="268" y="192">freezing</text>
+  <text data-step="4" class="st" x="86" y="72">gas</text>
+  <text data-step="4" class="st" x="205" y="160">liquid</text>
+  <text data-step="4" class="st" x="345" y="238">solid</text>
+  <text data-step="4" class="plat" x="128" y="92">condensation</text>
+  <text data-step="4" class="plat" x="268" y="192">freezing</text>
 </svg>

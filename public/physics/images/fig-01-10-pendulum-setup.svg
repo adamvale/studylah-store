@@ -10,25 +10,25 @@
     .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
   </style>
   <!-- retort stand -->
-  <line class="stand" x1="70" y1="300" x2="180" y2="300"/>
-  <line class="stand" x1="110" y1="300" x2="110" y2="60"/>
-  <line class="stand" x1="110" y1="60" x2="240" y2="60"/>
+  <line data-step="1" class="stand" x1="70" y1="300" x2="180" y2="300"/>
+  <line data-step="1" class="stand" x1="110" y1="300" x2="110" y2="60"/>
+  <line data-step="1" class="stand" x1="110" y1="60" x2="240" y2="60"/>
   <!-- clamp / pivot -->
-  <circle cx="240" cy="60" r="4" fill="#EAEAEA"/>
+  <circle data-step="2" cx="240" cy="60" r="4" fill="#EAEAEA"/>
   <!-- string to bob (hanging, displaced right) -->
-  <line class="string" x1="240" y1="60" x2="300" y2="230"/>
-  <circle class="bob" cx="300" cy="238" r="12"/>
+  <line data-step="3" class="string" x1="240" y1="60" x2="300" y2="230"/>
+  <circle data-step="3" class="bob" cx="300" cy="238" r="12"/>
   <!-- vertical reference (equilibrium) -->
-  <line class="arc" x1="240" y1="60" x2="240" y2="238"/>
-  <circle class="ghost" cx="240" cy="238" r="12"/>
+  <line data-step="4" class="arc" x1="240" y1="60" x2="240" y2="238"/>
+  <circle data-step="4" class="ghost" cx="240" cy="238" r="12"/>
   <!-- swing arc -->
-  <path class="arc" d="M180,232 A70,70 0 0 1 300,238"/>
-  <circle class="ghost" cx="182" cy="232" r="12"/>
+  <path data-step="5" class="arc" d="M180,232 A70,70 0 0 1 300,238"/>
+  <circle data-step="5" class="ghost" cx="182" cy="232" r="12"/>
   <!-- labels -->
-  <text class="lbl" x="300" y="120">length of pendulum</text>
-  <path class="lead" d="M296,116 L266,122"/>
-  <text class="lbl" x="240" y="290" text-anchor="middle">amplitude (angle of swing)</text>
-  <path class="lead" d="M240,278 L210,250"/>
-  <text class="lbl" x="330" y="238">bob</text>
-  <path class="lead" d="M328,234 L313,236"/>
+  <text data-step="6" class="lbl" x="300" y="120">length of pendulum</text>
+  <path data-step="6" class="lead" d="M296,116 L266,122"/>
+  <text data-step="6" class="lbl" x="240" y="290" text-anchor="middle">amplitude (angle of swing)</text>
+  <path data-step="6" class="lead" d="M240,278 L210,250"/>
+  <text data-step="6" class="lbl" x="330" y="238">bob</text>
+  <path data-step="6" class="lead" d="M328,234 L313,236"/>
 </svg>

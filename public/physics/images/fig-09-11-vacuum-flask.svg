@@ -11,38 +11,38 @@
     .vac { fill:#9AA0A6; opacity:0.12; }
   </style>
   <!-- flask outline -->
-  <path class="body" d="M120,70 L120,300 Q120,320 140,320 L200,320 Q220,320 220,300 L220,70"/>
+  <path data-step="1" class="body" d="M120,70 L120,300 Q120,320 140,320 L200,320 Q220,320 220,300 L220,70"/>
   <!-- inner liquid chamber -->
-  <path class="liquid" d="M138,110 L138,295 Q138,305 148,305 L192,305 Q202,305 202,295 L202,110 Z"/>
+  <path data-step="2" class="liquid" d="M138,110 L138,295 Q138,305 148,305 L192,305 Q202,305 202,295 L202,110 Z"/>
   <!-- double silvered walls (outer + inner lines) -->
-  <path class="wall" d="M128,80 L128,300 Q128,312 138,312"/>
-  <path class="wall" d="M132,95 L132,298"/>
-  <path class="wall" d="M212,80 L212,300 Q212,312 202,312"/>
-  <path class="wall" d="M208,95 L208,298"/>
+  <path data-step="3" class="wall" d="M128,80 L128,300 Q128,312 138,312"/>
+  <path data-step="3" class="wall" d="M132,95 L132,298"/>
+  <path data-step="3" class="wall" d="M212,80 L212,300 Q212,312 202,312"/>
+  <path data-step="3" class="wall" d="M208,95 L208,298"/>
   <!-- vacuum gap shading between walls -->
-  <rect class="vac" x="128" y="95" width="4" height="205"/>
-  <rect class="vac" x="208" y="95" width="4" height="205"/>
+  <rect data-step="4" class="vac" x="128" y="95" width="4" height="205"/>
+  <rect data-step="4" class="vac" x="208" y="95" width="4" height="205"/>
   <!-- stopper + trapped air -->
-  <rect class="stopper" x="130" y="55" width="80" height="30" rx="4"/>
-  <rect class="air" x="138" y="85" width="64" height="25"/>
+  <rect data-step="5" class="stopper" x="130" y="55" width="80" height="30" rx="4"/>
+  <rect data-step="5" class="air" x="138" y="85" width="64" height="25"/>
   <!-- magnified circle showing wall structure -->
-  <circle cx="380" cy="185" r="80" fill="none" stroke="#9AA0A6" stroke-width="1.2" stroke-dasharray="4 4"/>
-  <line class="lead" x1="205" y1="180" x2="302" y2="150"/>
-  <line class="lead" x1="205" y1="210" x2="302" y2="220"/>
+  <circle data-step="6" cx="380" cy="185" r="80" fill="none" stroke="#9AA0A6" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <line data-step="6" class="lead" x1="205" y1="180" x2="302" y2="150"/>
+  <line data-step="6" class="lead" x1="205" y1="210" x2="302" y2="220"/>
   <!-- inside magnifier: two silvered walls with vacuum between -->
-  <rect x="360" y="120" width="10" height="130" fill="#6FB7E0" opacity="0.35" stroke="#6FB7E0"/>
-  <rect x="390" y="120" width="10" height="130" fill="#6FB7E0" opacity="0.35" stroke="#6FB7E0"/>
-  <rect x="370" y="120" width="20" height="130" fill="#9AA0A6" opacity="0.12"/>
+  <rect data-step="7" x="360" y="120" width="10" height="130" fill="#6FB7E0" opacity="0.35" stroke="#6FB7E0"/>
+  <rect data-step="7" x="390" y="120" width="10" height="130" fill="#6FB7E0" opacity="0.35" stroke="#6FB7E0"/>
+  <rect data-step="7" x="370" y="120" width="20" height="130" fill="#9AA0A6" opacity="0.12"/>
   <!-- labels -->
-  <text class="lbl" x="180" y="45" text-anchor="middle">stopper</text>
-  <path class="lead" d="M170,50 L165,58"/>
-  <text class="lbl" x="55" y="100">trapped air</text>
-  <path class="lead" d="M130,97 L140,99"/>
-  <text class="lbl" x="55" y="200">hot liquid</text>
-  <path class="lead" d="M123,197 L155,200"/>
-  <text class="lbl" x="380" y="95" text-anchor="middle">silvered glass walls</text>
-  <path class="lead" d="M352,100 L365,124"/>
-  <path class="lead" d="M408,100 L395,124"/>
-  <text class="lbl" x="380" y="292" text-anchor="middle">vacuum</text>
-  <path class="lead" d="M380,280 L380,254"/>
+  <text data-step="8" class="lbl" x="180" y="45" text-anchor="middle">stopper</text>
+  <path data-step="8" class="lead" d="M170,50 L165,58"/>
+  <text data-step="8" class="lbl" x="55" y="100">trapped air</text>
+  <path data-step="8" class="lead" d="M130,97 L140,99"/>
+  <text data-step="8" class="lbl" x="55" y="200">hot liquid</text>
+  <path data-step="8" class="lead" d="M123,197 L155,200"/>
+  <text data-step="8" class="lbl" x="380" y="95" text-anchor="middle">silvered glass walls</text>
+  <path data-step="8" class="lead" d="M352,100 L365,124"/>
+  <path data-step="8" class="lead" d="M408,100 L395,124"/>
+  <text data-step="8" class="lbl" x="380" y="292" text-anchor="middle">vacuum</text>
+  <path data-step="8" class="lead" d="M380,280 L380,254"/>
 </svg>

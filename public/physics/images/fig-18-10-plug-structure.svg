@@ -9,34 +9,34 @@
     .fuse { fill:#E8B65A; opacity:0.20; stroke:#E8B65A; stroke-width:1.6; }
     .amber { fill:#E8B65A; }
   </style>
-  <path class="body" d="M120,55 Q120,40 145,40 L355,40 Q380,40 380,55 L380,300 Q380,330 330,330 L170,330 Q120,330 120,300 Z"/>
+  <path data-step="1" class="body" d="M120,55 Q120,40 145,40 L355,40 Q380,40 380,55 L380,300 Q380,330 330,330 L170,330 Q120,330 120,300 Z"/>
   <!-- pins -->
-  <rect class="pin" x="242" y="53" width="16" height="46" rx="2"/>
-  <rect class="pin" x="310" y="150" width="16" height="44" rx="2"/>
-  <rect class="pin" x="175" y="150" width="16" height="44" rx="2"/>
+  <rect data-step="1" class="pin" x="242" y="53" width="16" height="46" rx="2"/>
+  <rect data-step="1" class="pin" x="310" y="150" width="16" height="44" rx="2"/>
+  <rect data-step="1" class="pin" x="175" y="150" width="16" height="44" rx="2"/>
   <!-- earth wire and terminal -->
-  <circle class="term" cx="250" cy="112" r="6"/>
-  <path class="wire" d="M250,118 Q232,150 220,180 Q214,215 228,250"/>
+  <circle data-step="2" class="term" cx="250" cy="112" r="6"/>
+  <path data-step="2" class="wire" d="M250,118 Q232,150 220,180 Q214,215 228,250"/>
   <!-- neutral E (left) -->
-  <circle class="term" cx="183" cy="205" r="6"/>
-  <path class="wire" d="M183,211 Q180,240 210,258"/>
+  <circle data-step="3" class="term" cx="183" cy="205" r="6"/>
+  <path data-step="3" class="wire" d="M183,211 Q180,240 210,258"/>
   <!-- fuse D + live wire A (right) -->
-  <rect class="fuse" x="298" y="204" width="46" height="18" rx="3"/>
-  <circle class="term" cx="318" cy="240" r="6"/>
-  <line class="wire" x1="318" y1="222" x2="318" y2="234"/>
-  <path class="wire" d="M298,213 L286,213 L286,235 Q286,255 268,262"/>
+  <rect data-step="4" class="fuse" x="298" y="204" width="46" height="18" rx="3"/>
+  <circle data-step="4" class="term" cx="318" cy="240" r="6"/>
+  <line data-step="4" class="wire" x1="318" y1="222" x2="318" y2="234"/>
+  <path data-step="4" class="wire" d="M298,213 L286,213 L286,235 Q286,255 268,262"/>
   <!-- cord grip C -->
-  <rect class="term" x="220" y="255" width="60" height="18" rx="3"/>
-  <path class="body" d="M232,273 L232,315 Q232,330 250,330 Q268,330 268,315 L268,273 Z"/>
+  <rect data-step="5" class="term" x="220" y="255" width="60" height="18" rx="3"/>
+  <path data-step="5" class="body" d="M232,273 L232,315 Q232,330 250,330 Q268,330 268,315 L268,273 Z"/>
   <!-- labels: A = live wire, B = earth pin, C = cord grip, D = fuse, E = neutral wire -->
-  <line class="lead" x1="283" y1="252" x2="410" y2="272"/>
-  <text x="418" y="276" font-size="16" class="amber">A</text>
-  <line class="lead" x1="250" y1="60" x2="330" y2="30"/>
-  <text x="338" y="30" font-size="16" class="amber">B</text>
-  <line class="lead" x1="220" y1="270" x2="105" y2="300"/>
-  <text x="98" y="304" text-anchor="end" font-size="16" class="amber">C</text>
-  <line class="lead" x1="330" y1="204" x2="420" y2="180"/>
-  <text x="428" y="184" font-size="16" class="amber">D</text>
-  <line class="lead" x1="183" y1="211" x2="90" y2="185"/>
-  <text x="85" y="189" text-anchor="end" font-size="16" class="amber">E</text>
+  <line data-step="6" class="lead" x1="283" y1="252" x2="410" y2="272"/>
+  <text data-step="6" x="418" y="276" font-size="16" class="amber">A</text>
+  <line data-step="6" class="lead" x1="250" y1="60" x2="330" y2="30"/>
+  <text data-step="6" x="338" y="30" font-size="16" class="amber">B</text>
+  <line data-step="6" class="lead" x1="220" y1="270" x2="105" y2="300"/>
+  <text data-step="6" x="98" y="304" text-anchor="end" font-size="16" class="amber">C</text>
+  <line data-step="6" class="lead" x1="330" y1="204" x2="420" y2="180"/>
+  <text data-step="6" x="428" y="184" font-size="16" class="amber">D</text>
+  <line data-step="6" class="lead" x1="183" y1="211" x2="90" y2="185"/>
+  <text data-step="6" x="85" y="189" text-anchor="end" font-size="16" class="amber">E</text>
 </svg>

@@ -8,21 +8,21 @@
     .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
   </style>
   <!-- partial circuit with a component on top -->
-  <path class="wire" d="M80,180 L80,60 L180,60"/>
-  <path class="wire" d="M260,60 L360,60 L360,180"/>
-  <rect class="wire" x="180" y="48" width="80" height="24"/>
-  <text x="220" y="40" class="lbl" text-anchor="middle">component</text>
+  <path data-step="1" class="wire" d="M80,180 L80,60 L180,60"/>
+  <path data-step="1" class="wire" d="M260,60 L360,60 L360,180"/>
+  <rect data-step="1" class="wire" x="180" y="48" width="80" height="24"/>
+  <text data-step="1" x="220" y="40" class="lbl" text-anchor="middle">component</text>
 
   <!-- unit charge moving across the component -->
-  <circle class="q" cx="130" cy="120" r="11"/>
-  <text x="130" y="124" class="lbl" text-anchor="middle" fill="#E8B65A">+</text>
-  <text x="130" y="152" class="lbl" text-anchor="middle">a unit charge</text>
+  <circle data-step="2" class="q" cx="130" cy="120" r="11"/>
+  <text data-step="2" x="130" y="124" class="lbl" text-anchor="middle" fill="#E8B65A">+</text>
+  <text data-step="2" x="130" y="152" class="lbl" text-anchor="middle">a unit charge</text>
 
-  <path class="flow" d="M150,120 C190,120 210,90 232,72"/>
-  <path class="flow" d="M232,72 l-12,3 5,7"/>
-  <text x="300" y="116" class="lbl" text-anchor="middle">moving across</text>
-  <text x="300" y="136" class="lbl" text-anchor="middle">the component</text>
+  <path data-step="2" class="flow" d="M150,120 C190,120 210,90 232,72"/>
+  <path data-step="2" class="flow" d="M232,72 l-12,3 5,7"/>
+  <text data-step="2" x="300" y="116" class="lbl" text-anchor="middle">moving across</text>
+  <text data-step="2" x="300" y="136" class="lbl" text-anchor="middle">the component</text>
 
-  <text x="220" y="214" font-size="14" text-anchor="middle" fill="#9AA0A6">Energy is transferred to the component</text>
-  <text x="220" y="233" font-size="14" text-anchor="middle" fill="#9AA0A6">as the charge passes through it.</text>
+  <text data-step="2" x="220" y="214" font-size="14" text-anchor="middle" fill="#9AA0A6">Energy is transferred to the component</text>
+  <text data-step="2" x="220" y="233" font-size="14" text-anchor="middle" fill="#9AA0A6">as the charge passes through it.</text>
 </svg>

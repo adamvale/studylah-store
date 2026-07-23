@@ -10,20 +10,20 @@
     .div { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:4 4; }
   </style>
   <!-- SERIES (top) -->
-  <text x="150" y="30" text-anchor="middle" font-size="16" class="head">Series</text>
-  <path class="wire" d="M60,55 L120,55"/>
-  <path class="wire" d="M150,55 L240,55 L240,150"/>
-  <path class="wire" d="M60,55 L60,150 L240,150"/>
-  <line class="cellL" x1="130" y1="42" x2="130" y2="68"/>
-  <line class="cellS" x1="140" y1="48" x2="140" y2="62"/>
-  <rect class="res" x="226" y="85" width="28" height="40"/>
-  <text x="270" y="110" class="lbl">R₂</text>
-  <rect class="res" x="110" y="136" width="46" height="28"/>
-  <text x="133" y="185" text-anchor="middle" class="lbl">R₁</text>
-  <text x="150" y="212" text-anchor="middle" font-size="14">Rₑ = R₁ + R₂ + …</text>
-  <line class="div" x1="60" y1="228" x2="290" y2="228"/>
+  <text data-step="1" x="150" y="30" text-anchor="middle" font-size="16" class="head">Series</text>
+  <path data-step="1" class="wire" d="M60,55 L120,55"/>
+  <path data-step="1" class="wire" d="M150,55 L240,55 L240,150"/>
+  <path data-step="1" class="wire" d="M60,55 L60,150 L240,150"/>
+  <line data-step="1" class="cellL" x1="130" y1="42" x2="130" y2="68"/>
+  <line data-step="1" class="cellS" x1="140" y1="48" x2="140" y2="62"/>
+  <rect data-step="1" class="res" x="226" y="85" width="28" height="40"/>
+  <text data-step="1" x="270" y="110" class="lbl">R₂</text>
+  <rect data-step="1" class="res" x="110" y="136" width="46" height="28"/>
+  <text data-step="1" x="133" y="185" text-anchor="middle" class="lbl">R₁</text>
+  <text data-step="1" x="150" y="212" text-anchor="middle" font-size="14">Rₑ = R₁ + R₂ + …</text>
+  <line data-step="1" class="div" x1="60" y1="228" x2="290" y2="228"/>
   <!-- PARALLEL (bottom) -->
-  <g transform="translate(-300,215)">
+  <g data-step="2" transform="translate(-300,215)">
   <text x="460" y="30" text-anchor="middle" font-size="16" class="head">Parallel</text>
   <path class="wire" d="M360,55 L410,55"/>
   <path class="wire" d="M440,55 L560,55"/>

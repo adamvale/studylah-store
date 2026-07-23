@@ -11,26 +11,26 @@
     .res { fill:#86C98B; }
   </style>
   <!-- Row 1: same direction -->
-  <rect class="box" x="185" y="40" width="70" height="44"/>
-  <line class="f" x1="110" y1="62" x2="181" y2="62" marker-end="url(#arw)"/>
-  <text x="140" y="52" text-anchor="middle" font-size="13">10 N</text>
-  <line class="f" x1="259" y1="62" x2="330" y2="62" marker-end="url(#arw)"/>
-  <text x="295" y="52" text-anchor="middle" font-size="13">10 N</text>
-  <text x="220" y="112" text-anchor="middle" font-size="13.5" class="res">Resultant = 10 N + 10 N = 20 N to the right</text>
+  <rect data-step="1" class="box" x="185" y="40" width="70" height="44"/>
+  <line data-step="1" class="f" x1="110" y1="62" x2="181" y2="62" marker-end="url(#arw)"/>
+  <text data-step="1" x="140" y="52" text-anchor="middle" font-size="13">10 N</text>
+  <line data-step="1" class="f" x1="259" y1="62" x2="330" y2="62" marker-end="url(#arw)"/>
+  <text data-step="1" x="295" y="52" text-anchor="middle" font-size="13">10 N</text>
+  <text data-step="1" x="220" y="112" text-anchor="middle" font-size="13.5" class="res">Resultant = 10 N + 10 N = 20 N to the right</text>
   <!-- Row 2: opposite equal -->
-  <rect class="box" x="185" y="160" width="70" height="44"/>
-  <line class="f" x1="110" y1="182" x2="181" y2="182" marker-end="url(#arw)"/>
-  <text x="140" y="172" text-anchor="middle" font-size="13">10 N</text>
-  <line class="f" x1="330" y1="182" x2="259" y2="182" marker-end="url(#arw)"/>
-  <text x="300" y="172" text-anchor="middle" font-size="13">10 N</text>
-  <text x="220" y="232" text-anchor="middle" font-size="13.5" class="res">Resultant = 10 N + (&#8722;10 N) = 0 N</text>
+  <rect data-step="2" class="box" x="185" y="160" width="70" height="44"/>
+  <line data-step="2" class="f" x1="110" y1="182" x2="181" y2="182" marker-end="url(#arw)"/>
+  <text data-step="2" x="140" y="172" text-anchor="middle" font-size="13">10 N</text>
+  <line data-step="2" class="f" x1="330" y1="182" x2="259" y2="182" marker-end="url(#arw)"/>
+  <text data-step="2" x="300" y="172" text-anchor="middle" font-size="13">10 N</text>
+  <text data-step="2" x="220" y="232" text-anchor="middle" font-size="13.5" class="res">Resultant = 10 N + (&#8722;10 N) = 0 N</text>
   <!-- Row 3: opposite unequal -->
-  <rect class="box" x="185" y="280" width="70" height="44"/>
-  <line class="f" x1="110" y1="302" x2="181" y2="302" marker-end="url(#arw)"/>
-  <text x="140" y="292" text-anchor="middle" font-size="13">10 N</text>
-  <line class="f" x1="310" y1="302" x2="259" y2="302" marker-end="url(#arw)"/>
-  <text x="290" y="292" text-anchor="middle" font-size="13">6 N</text>
-  <text x="220" y="352" text-anchor="middle" font-size="13.5" class="res">Resultant = 10 N + (&#8722;6 N) = 4 N to the right</text>
-  <text x="220" y="400" text-anchor="middle" font-size="13">The + and &#8722; signs record the two</text>
-  <text x="220" y="418" text-anchor="middle" font-size="13">opposite directions of the forces.</text>
+  <rect data-step="3" class="box" x="185" y="280" width="70" height="44"/>
+  <line data-step="3" class="f" x1="110" y1="302" x2="181" y2="302" marker-end="url(#arw)"/>
+  <text data-step="3" x="140" y="292" text-anchor="middle" font-size="13">10 N</text>
+  <line data-step="3" class="f" x1="310" y1="302" x2="259" y2="302" marker-end="url(#arw)"/>
+  <text data-step="3" x="290" y="292" text-anchor="middle" font-size="13">6 N</text>
+  <text data-step="3" x="220" y="352" text-anchor="middle" font-size="13.5" class="res">Resultant = 10 N + (&#8722;6 N) = 4 N to the right</text>
+  <text data-step="3" x="220" y="400" text-anchor="middle" font-size="13">The + and &#8722; signs record the two</text>
+  <text data-step="3" x="220" y="418" text-anchor="middle" font-size="13">opposite directions of the forces.</text>
 </svg>

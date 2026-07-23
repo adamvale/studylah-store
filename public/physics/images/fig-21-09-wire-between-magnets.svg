@@ -18,31 +18,31 @@
   </defs>
 
   <!-- N magnet (block) -->
-  <rect class="mag magN" x="50" y="110" width="90" height="90"/>
-  <rect class="mag" x="50" y="110" width="90" height="90"/>
-  <text x="95" y="162" font-size="18" text-anchor="middle">N</text>
+  <rect data-step="1" class="mag magN" x="50" y="110" width="90" height="90"/>
+  <rect data-step="1" class="mag" x="50" y="110" width="90" height="90"/>
+  <text data-step="1" x="95" y="162" font-size="18" text-anchor="middle">N</text>
 
   <!-- S magnet (block) -->
-  <rect class="mag magS" x="320" y="110" width="90" height="90"/>
-  <rect class="mag" x="320" y="110" width="90" height="90"/>
-  <text x="365" y="162" font-size="18" text-anchor="middle">S</text>
+  <rect data-step="2" class="mag magS" x="320" y="110" width="90" height="90"/>
+  <rect data-step="2" class="mag" x="320" y="110" width="90" height="90"/>
+  <text data-step="2" x="365" y="162" font-size="18" text-anchor="middle">S</text>
 
   <!-- copper wire (conductor in the field) -->
-  <line class="fl" x1="144" y1="124" x2="314" y2="124" marker-end="url(#afl)"/>
-  <line class="fl" x1="144" y1="140" x2="314" y2="140" marker-end="url(#afl)"/>
-  <line class="fl" x1="144" y1="172" x2="314" y2="172" marker-end="url(#afl)"/>
-  <line class="fl" x1="144" y1="188" x2="314" y2="188" marker-end="url(#afl)"/>
-  <line class="wire" x1="140" y1="155" x2="320" y2="155"/>
-  <text class="lbl" x="230" y="120" text-anchor="middle" fill="#E8B65A">copper wire</text>
+  <line data-step="3" class="fl" x1="144" y1="124" x2="314" y2="124" marker-end="url(#afl)"/>
+  <line data-step="3" class="fl" x1="144" y1="140" x2="314" y2="140" marker-end="url(#afl)"/>
+  <line data-step="3" class="fl" x1="144" y1="172" x2="314" y2="172" marker-end="url(#afl)"/>
+  <line data-step="3" class="fl" x1="144" y1="188" x2="314" y2="188" marker-end="url(#afl)"/>
+  <line data-step="3" class="wire" x1="140" y1="155" x2="320" y2="155"/>
+  <text data-step="3" class="lbl" x="230" y="120" text-anchor="middle" fill="#E8B65A">copper wire</text>
 
   <!-- downward motion -->
-  <line class="mot" x1="230" y1="140" x2="230" y2="205"/>
-  <text class="lbl" x="244" y="200" fill="#86C98B">moved down</text>
+  <line data-step="4" class="mot" x1="230" y1="140" x2="230" y2="205"/>
+  <text data-step="4" class="lbl" x="244" y="200" fill="#86C98B">moved down</text>
 
   <!-- leads to galvanometer -->
-  <path class="lead" d="M140,155 L120,220 L205,262"/>
-  <path class="lead" d="M320,155 L340,220 L255,262"/>
-  <circle cx="230" cy="262" r="16" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
-  <text x="230" y="267" font-size="14" text-anchor="middle" fill="#E8B65A">G</text>
-  <text x="230" y="300" font-size="14" text-anchor="middle">galvanometer</text>
+  <path data-step="5" class="lead" d="M140,155 L120,220 L205,262"/>
+  <path data-step="5" class="lead" d="M320,155 L340,220 L255,262"/>
+  <circle data-step="5" cx="230" cy="262" r="16" fill="none" stroke="#EAEAEA" stroke-width="1.6"/>
+  <text data-step="5" x="230" y="267" font-size="14" text-anchor="middle" fill="#E8B65A">G</text>
+  <text data-step="5" x="230" y="300" font-size="14" text-anchor="middle">galvanometer</text>
 </svg>

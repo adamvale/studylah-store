@@ -12,43 +12,43 @@
   </style>
   <!-- outer loop with cell + voltmeter V across source -->
   <!-- top voltmeter branch -->
-  <circle class="meter" cx="280" cy="55" r="15"/>
-  <text x="280" y="60" text-anchor="middle" font-size="13">V</text>
-  <text x="280" y="34" text-anchor="middle" font-size="12" class="val">12 V</text>
-  <path class="wire" d="M180,120 L180,70 L265,70"/>
-  <path class="wire" d="M295,70 L380,70 L380,120"/>
+  <circle data-step="1" class="meter" cx="280" cy="55" r="15"/>
+  <text data-step="1" x="280" y="60" text-anchor="middle" font-size="13">V</text>
+  <text data-step="1" x="280" y="34" text-anchor="middle" font-size="12" class="val">12 V</text>
+  <path data-step="1" class="wire" d="M180,120 L180,70 L265,70"/>
+  <path data-step="1" class="wire" d="M295,70 L380,70 L380,120"/>
   <!-- cell just below on the inner top wire -->
-  <path class="wire" d="M120,120 L268,120"/>
-  <path class="wire" d="M292,120 L440,120"/>
-  <line class="cellL" x1="274" y1="104" x2="274" y2="136"/>
-  <line class="cellS" x1="286" y1="112" x2="286" y2="128"/>
+  <path data-step="2" class="wire" d="M120,120 L268,120"/>
+  <path data-step="2" class="wire" d="M292,120 L440,120"/>
+  <line data-step="2" class="cellL" x1="274" y1="104" x2="274" y2="136"/>
+  <line data-step="2" class="cellS" x1="286" y1="112" x2="286" y2="128"/>
   <!-- left and right verticals -->
-  <path class="wire" d="M120,120 L120,160 M120,190 L120,230"/>
-  <path class="wire" d="M440,120 L440,230"/>
+  <path data-step="3" class="wire" d="M120,120 L120,160 M120,190 L120,230"/>
+  <path data-step="3" class="wire" d="M440,120 L440,230"/>
   <!-- bottom wire with resistors -->
-  <path class="wire" d="M120,230 L175,230"/>
-  <path class="wire" d="M235,230 L325,230"/>
-  <path class="wire" d="M385,230 L440,230"/>
+  <path data-step="4" class="wire" d="M120,230 L175,230"/>
+  <path data-step="4" class="wire" d="M235,230 L325,230"/>
+  <path data-step="4" class="wire" d="M385,230 L440,230"/>
   <!-- resistor R1 3 ohm -->
-  <rect class="res" x="175" y="216" width="60" height="28"/>
-  <text x="205" y="266" text-anchor="middle" font-size="12" class="val">3 Ω</text>
+  <rect data-step="5" class="res" x="175" y="216" width="60" height="28"/>
+  <text data-step="5" x="205" y="266" text-anchor="middle" font-size="12" class="val">3 Ω</text>
   <!-- resistor R2 8... 9 ohm -->
-  <rect class="res" x="325" y="216" width="60" height="28"/>
-  <text x="355" y="266" text-anchor="middle" font-size="12" class="val">9 Ω</text>
+  <rect data-step="6" class="res" x="325" y="216" width="60" height="28"/>
+  <text data-step="6" x="355" y="266" text-anchor="middle" font-size="12" class="val">9 Ω</text>
   <!-- V1 voltmeter across R1 -->
-  <path class="lead" d="M175,230 L150,200 L188,200"/>
-  <path class="lead" d="M235,230 L260,200 L222,200"/>
-  <circle class="meter" cx="205" cy="185" r="15"/>
-  <text x="205" y="190" text-anchor="middle" font-size="12">V</text>
-  <text x="215" y="194" font-size="9" class="lbl">1</text>
-  <text x="205" y="158" text-anchor="middle" font-size="12" class="val">3 V</text>
+  <path data-step="7" class="lead" d="M175,230 L150,200 L188,200"/>
+  <path data-step="7" class="lead" d="M235,230 L260,200 L222,200"/>
+  <circle data-step="7" class="meter" cx="205" cy="185" r="15"/>
+  <text data-step="7" x="205" y="190" text-anchor="middle" font-size="12">V</text>
+  <text data-step="7" x="215" y="194" font-size="9" class="lbl">1</text>
+  <text data-step="7" x="205" y="158" text-anchor="middle" font-size="12" class="val">3 V</text>
   <!-- V2 voltmeter across R2 -->
-  <path class="lead" d="M325,230 L300,200 L338,200"/>
-  <path class="lead" d="M385,230 L410,200 L372,200"/>
-  <circle class="meter" cx="355" cy="185" r="15"/>
-  <text x="355" y="190" text-anchor="middle" font-size="12">V</text>
-  <text x="365" y="194" font-size="9" class="lbl">2</text>
+  <path data-step="8" class="lead" d="M325,230 L300,200 L338,200"/>
+  <path data-step="8" class="lead" d="M385,230 L410,200 L372,200"/>
+  <circle data-step="8" class="meter" cx="355" cy="185" r="15"/>
+  <text data-step="8" x="355" y="190" text-anchor="middle" font-size="12">V</text>
+  <text data-step="8" x="365" y="194" font-size="9" class="lbl">2</text>
   <!-- ammeter on left vertical -->
-  <circle class="meter" cx="120" cy="175" r="15"/>
-  <text x="120" y="180" text-anchor="middle" font-size="13">A</text>
+  <circle data-step="9" class="meter" cx="120" cy="175" r="15"/>
+  <text data-step="9" x="120" y="180" text-anchor="middle" font-size="13">A</text>
 </svg>

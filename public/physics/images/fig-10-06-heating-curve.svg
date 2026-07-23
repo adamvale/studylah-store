@@ -8,24 +8,24 @@
     .plat { fill:#E8B65A; font-weight:bold; }
     .st { fill:#86C98B; }
   </style>
-  <path class="ax" d="M70,30 L70,275 L430,275"/>
-  <text x="70" y="20" text-anchor="middle">temperature/&#176;C</text>
-  <text x="400" y="295">time</text>
+  <path data-step="1" class="ax" d="M70,30 L70,275 L430,275"/>
+  <text data-step="1" x="70" y="20" text-anchor="middle">temperature/&#176;C</text>
+  <text data-step="1" x="400" y="295">time</text>
 
   <!-- guide lines -->
-  <line class="g" x1="70" y1="100" x2="320" y2="100"/>
-  <line class="g" x1="70" y1="190" x2="180" y2="190"/>
-  <text class="lbl" x="62" y="104" text-anchor="end">boiling point</text>
-  <text class="lbl" x="62" y="194" text-anchor="end">melting point</text>
+  <line data-step="1" class="g" x1="70" y1="100" x2="320" y2="100"/>
+  <line data-step="1" class="g" x1="70" y1="190" x2="180" y2="190"/>
+  <text data-step="1" class="lbl" x="62" y="104" text-anchor="end">boiling point</text>
+  <text data-step="1" class="lbl" x="62" y="194" text-anchor="end">melting point</text>
 
   <!-- heating curve: solid rise, melt plateau, liquid rise, boil plateau, gas rise -->
-  <path class="curve" d="M75,250 L110,190 L180,190 L230,100 L320,100 L375,55"/>
+  <path data-step="2" class="curve" d="M75,250 L110,190 L180,190 L230,100 L320,100 L375,55"/>
 
   <!-- state labels -->
-  <text class="st" x="86" y="235">solid</text>
-  <text class="st" x="200" y="150">liquid</text>
-  <text class="st" x="345" y="72">gas</text>
+  <text data-step="3" class="st" x="86" y="235">solid</text>
+  <text data-step="3" class="st" x="200" y="150">liquid</text>
+  <text data-step="3" class="st" x="345" y="72">gas</text>
   <!-- plateau labels -->
-  <text class="plat" x="118" y="182">melting</text>
-  <text class="plat" x="250" y="92">boiling</text>
+  <text data-step="4" class="plat" x="118" y="182">melting</text>
+  <text data-step="4" class="plat" x="250" y="92">boiling</text>
 </svg>

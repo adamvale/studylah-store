@@ -14,8 +14,8 @@
     </marker>
   </defs>
   <!-- support / ceiling -->
-  <line class="sup" x1="70" y1="30" x2="230" y2="30"/>
-  <g class="hatch">
+  <line data-step="1" class="sup" x1="70" y1="30" x2="230" y2="30"/>
+  <g data-step="1" class="hatch">
     <line x1="82" y1="30" x2="70" y2="18"/>
     <line x1="110" y1="30" x2="98" y2="18"/>
     <line x1="138" y1="30" x2="126" y2="18"/>
@@ -24,16 +24,16 @@
     <line x1="222" y1="30" x2="210" y2="18"/>
   </g>
   <!-- spring -->
-  <path class="spring" d="M150,30 L150,50
+  <path data-step="2" class="spring" d="M150,30 L150,50
     L172,58 L128,72 L172,86 L128,100 L172,114 L128,128 L172,142 L128,156 L150,164 L150,182"/>
   <!-- object -->
-  <rect class="obj" x="112" y="182" width="76" height="60"/>
-  <text x="150" y="217" text-anchor="middle" font-size="13">object</text>
+  <rect data-step="3" class="obj" x="112" y="182" width="76" height="60"/>
+  <text data-step="3" x="150" y="217" text-anchor="middle" font-size="13">object</text>
   <!-- tension arrow (spring pulls object up) -->
-  <path class="force" d="M210,182 L210,120" marker-end="url(#ah-t)"/>
-  <path class="lead" d="M210,182 L188,196"/>
-  <text x="222" y="150" font-size="13" fill="#86C98B">tension</text>
+  <path data-step="4" class="force" d="M210,182 L210,120" marker-end="url(#ah-t)"/>
+  <path data-step="4" class="lead" d="M210,182 L188,196"/>
+  <text data-step="4" x="222" y="150" font-size="13" fill="#86C98B">tension</text>
   <!-- spring label -->
-  <path class="lead" d="M128,100 L96,100"/>
-  <text x="90" y="104" text-anchor="end" font-size="13" fill="#E8B65A">spring</text>
+  <path data-step="5" class="lead" d="M128,100 L96,100"/>
+  <text data-step="5" x="90" y="104" text-anchor="end" font-size="13" fill="#E8B65A">spring</text>
 </svg>

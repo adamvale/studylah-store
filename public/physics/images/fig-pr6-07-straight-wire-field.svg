@@ -15,32 +15,32 @@
   </defs>
 
   <!-- ===== top: current OUT of the page, anticlockwise field ===== -->
-  <circle class="fieldline" cx="210" cy="105" r="32"/>
-  <circle class="fieldline" cx="210" cy="105" r="52"/>
-  <circle class="fieldline" cx="210" cy="105" r="74"/>
-  <path class="fieldarrow" d="M219.9,74.6 A32,32 0 0 0 200.1,74.6" marker-end="url(#f7)"/>
-  <path class="fieldarrow" d="M226.1,55.6 A52,52 0 0 0 193.9,55.6" marker-end="url(#f7)"/>
-  <path class="fieldarrow" d="M232.9,34.6 A74,74 0 0 0 187.1,34.6" marker-end="url(#f7)"/>
-  <circle class="wire" cx="210" cy="105" r="9"/>
-  <circle class="dot" cx="210" cy="105" r="4"/>
-  <text class="curl" x="223" y="100">I</text>
-  <text class="curl" x="296" y="101">current out (dot)</text>
-  <text class="fl" x="296" y="130">field runs</text>
-  <text class="fl" x="296" y="146">anticlockwise</text>
+  <circle data-step="1" class="fieldline" cx="210" cy="105" r="32"/>
+  <circle data-step="1" class="fieldline" cx="210" cy="105" r="52"/>
+  <circle data-step="1" class="fieldline" cx="210" cy="105" r="74"/>
+  <path data-step="1" class="fieldarrow" d="M219.9,74.6 A32,32 0 0 0 200.1,74.6" marker-end="url(#f7)"/>
+  <path data-step="1" class="fieldarrow" d="M226.1,55.6 A52,52 0 0 0 193.9,55.6" marker-end="url(#f7)"/>
+  <path data-step="1" class="fieldarrow" d="M232.9,34.6 A74,74 0 0 0 187.1,34.6" marker-end="url(#f7)"/>
+  <circle data-step="1" class="wire" cx="210" cy="105" r="9"/>
+  <circle data-step="1" class="dot" cx="210" cy="105" r="4"/>
+  <text data-step="1" class="curl" x="223" y="100">I</text>
+  <text data-step="1" class="curl" x="296" y="101">current out (dot)</text>
+  <text data-step="1" class="fl" x="296" y="130">field runs</text>
+  <text data-step="1" class="fl" x="296" y="146">anticlockwise</text>
 
   <!-- ===== bottom: current INTO the page, clockwise field ===== -->
-  <circle class="fieldline" cx="210" cy="300" r="26"/>
-  <circle class="fieldline" cx="210" cy="300" r="44"/>
-  <circle class="fieldline" cx="210" cy="300" r="62"/>
-  <path class="fieldarrow" d="M201.97,275.3 A26,26 0 0 1 218.03,275.3" marker-end="url(#f7)"/>
-  <path class="fieldarrow" d="M196.4,258.2 A44,44 0 0 1 223.6,258.2" marker-end="url(#f7)"/>
-  <path class="fieldarrow" d="M190.8,241 A62,62 0 0 1 229.2,241" marker-end="url(#f7)"/>
-  <circle class="wire" cx="210" cy="300" r="9"/>
-  <path class="cross" d="M204,294 L216,306 M216,294 L204,306"/>
-  <text class="curl" x="224" y="296">I</text>
-  <text class="curl" x="288" y="296">current in (cross)</text>
-  <text class="fl" x="288" y="322">field runs</text>
-  <text class="fl" x="288" y="338">clockwise</text>
+  <circle data-step="2" class="fieldline" cx="210" cy="300" r="26"/>
+  <circle data-step="2" class="fieldline" cx="210" cy="300" r="44"/>
+  <circle data-step="2" class="fieldline" cx="210" cy="300" r="62"/>
+  <path data-step="2" class="fieldarrow" d="M201.97,275.3 A26,26 0 0 1 218.03,275.3" marker-end="url(#f7)"/>
+  <path data-step="2" class="fieldarrow" d="M196.4,258.2 A44,44 0 0 1 223.6,258.2" marker-end="url(#f7)"/>
+  <path data-step="2" class="fieldarrow" d="M190.8,241 A62,62 0 0 1 229.2,241" marker-end="url(#f7)"/>
+  <circle data-step="2" class="wire" cx="210" cy="300" r="9"/>
+  <path data-step="2" class="cross" d="M204,294 L216,306 M216,294 L204,306"/>
+  <text data-step="2" class="curl" x="224" y="296">I</text>
+  <text data-step="2" class="curl" x="288" y="296">current in (cross)</text>
+  <text data-step="2" class="fl" x="288" y="322">field runs</text>
+  <text data-step="2" class="fl" x="288" y="338">clockwise</text>
 
-  <text class="note" x="210" y="386" text-anchor="middle">right-hand grip rule: thumb = current, fingers = field</text>
+  <text data-step="2" class="note" x="210" y="386" text-anchor="middle">right-hand grip rule: thumb = current, fingers = field</text>
 </svg>

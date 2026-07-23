@@ -13,51 +13,51 @@
   </style>
 
   <!-- ============ PANEL 1: without earth ============ -->
-  <text x="24" y="28" font-size="15" class="red" font-weight="bold">Appliance WITHOUT earth wire</text>
-  <rect class="case" x="150" y="70" width="120" height="90" rx="4"/>
-  <text x="210" y="118" text-anchor="middle" font-size="13.5">metal casing</text>
+  <text data-step="1" x="24" y="28" font-size="15" class="red" font-weight="bold">Appliance WITHOUT earth wire</text>
+  <rect data-step="1" class="case" x="150" y="70" width="120" height="90" rx="4"/>
+  <text data-step="1" x="210" y="118" text-anchor="middle" font-size="13.5">metal casing</text>
   <!-- live wire faults onto casing -->
-  <path class="flow" d="M60,140 L150,140"/>
-  <text x="52" y="144" text-anchor="end" font-size="13.5">L</text>
-  <text x="52" y="170" text-anchor="end" font-size="13.5">N</text>
-  <path class="wire" d="M60,166 L140,166"/>
-  <circle cx="150" cy="140" r="3" class="red"/>
-  <text x="96" y="58" font-size="13" class="red">fault: live touches casing</text>
-  <line class="lead" x1="150" y1="63" x2="150" y2="132"/>
+  <path data-step="2" class="flow" d="M60,140 L150,140"/>
+  <text data-step="2" x="52" y="144" text-anchor="end" font-size="13.5">L</text>
+  <text data-step="2" x="52" y="170" text-anchor="end" font-size="13.5">N</text>
+  <path data-step="2" class="wire" d="M60,166 L140,166"/>
+  <circle data-step="2" cx="150" cy="140" r="3" class="red"/>
+  <text data-step="2" x="96" y="58" font-size="13" class="red">fault: live touches casing</text>
+  <line data-step="2" class="lead" x1="150" y1="63" x2="150" y2="132"/>
   <!-- current through hand -->
-  <path class="flow" d="M270,130 C300,140 305,170 290,195"/>
-  <path class="wire" d="M285,195 q10,8 -4,16"/>
-  <text x="300" y="182" font-size="13.5" class="red">shock through</text>
-  <text x="300" y="198" font-size="13.5" class="red">the body</text>
-  <line class="wire" x1="290" y1="225" x2="290" y2="243"/>
-  <text x="290" y="262" text-anchor="middle" font-size="13">to the ground</text>
+  <path data-step="3" class="flow" d="M270,130 C300,140 305,170 290,195"/>
+  <path data-step="3" class="wire" d="M285,195 q10,8 -4,16"/>
+  <text data-step="3" x="300" y="182" font-size="13.5" class="red">shock through</text>
+  <text data-step="3" x="300" y="198" font-size="13.5" class="red">the body</text>
+  <line data-step="3" class="wire" x1="290" y1="225" x2="290" y2="243"/>
+  <text data-step="3" x="290" y="262" text-anchor="middle" font-size="13">to the ground</text>
 
-  <line class="div" x1="20" y1="288" x2="380" y2="288"/>
+  <line data-step="3" class="div" x1="20" y1="288" x2="380" y2="288"/>
 
   <!-- ============ PANEL 2: with earth ============ -->
-  <text x="24" y="322" font-size="15" class="grn" font-weight="bold">Appliance WITH earth wire</text>
-  <rect class="case" x="150" y="350" width="120" height="90" rx="4"/>
-  <text x="210" y="398" text-anchor="middle" font-size="13.5">metal casing</text>
-  <path class="flow" d="M60,420 L150,420"/>
-  <text x="52" y="424" text-anchor="end" font-size="13.5">L</text>
-  <text x="52" y="450" text-anchor="end" font-size="13.5">N</text>
-  <path class="wire" d="M60,446 L140,446"/>
-  <circle cx="150" cy="420" r="3" class="red"/>
-  <text x="96" y="338" font-size="13" class="red">fault: live touches casing</text>
-  <line class="lead" x1="150" y1="343" x2="150" y2="412"/>
+  <text data-step="4" x="24" y="322" font-size="15" class="grn" font-weight="bold">Appliance WITH earth wire</text>
+  <rect data-step="4" class="case" x="150" y="350" width="120" height="90" rx="4"/>
+  <text data-step="4" x="210" y="398" text-anchor="middle" font-size="13.5">metal casing</text>
+  <path data-step="4" class="flow" d="M60,420 L150,420"/>
+  <text data-step="4" x="52" y="424" text-anchor="end" font-size="13.5">L</text>
+  <text data-step="4" x="52" y="450" text-anchor="end" font-size="13.5">N</text>
+  <path data-step="4" class="wire" d="M60,446 L140,446"/>
+  <circle data-step="4" cx="150" cy="420" r="3" class="red"/>
+  <text data-step="4" x="96" y="338" font-size="13" class="red">fault: live touches casing</text>
+  <line data-step="4" class="lead" x1="150" y1="343" x2="150" y2="412"/>
   <!-- earth wire diverts to ground -->
-  <path class="flowg" d="M210,440 L210,516"/>
-  <text x="222" y="482" font-size="13.5" class="grn">current diverted</text>
-  <text x="222" y="498" font-size="13.5" class="grn">by earth wire</text>
+  <path data-step="5" class="flowg" d="M210,440 L210,516"/>
+  <text data-step="5" x="222" y="482" font-size="13.5" class="grn">current diverted</text>
+  <text data-step="5" x="222" y="498" font-size="13.5" class="grn">by earth wire</text>
   <!-- earth symbol -->
-  <line class="earth" x1="210" y1="516" x2="210" y2="528"/>
-  <line class="earth" x1="192" y1="528" x2="228" y2="528"/>
-  <line class="earth" x1="198" y1="536" x2="222" y2="536"/>
-  <line class="earth" x1="204" y1="544" x2="216" y2="544"/>
-  <text x="240" y="532" font-size="13.5" class="grn">E</text>
+  <line data-step="6" class="earth" x1="210" y1="516" x2="210" y2="528"/>
+  <line data-step="6" class="earth" x1="192" y1="528" x2="228" y2="528"/>
+  <line data-step="6" class="earth" x1="198" y1="536" x2="222" y2="536"/>
+  <line data-step="6" class="earth" x1="204" y1="544" x2="216" y2="544"/>
+  <text data-step="6" x="240" y="532" font-size="13.5" class="grn">E</text>
   <!-- hand safe -->
-  <path class="wire" d="M270,410 q18,10 6,26"/>
-  <text x="295" y="400" font-size="13.5" class="grn">no shock:</text>
-  <text x="295" y="416" font-size="13.5" class="grn">low-resistance</text>
-  <text x="295" y="432" font-size="13.5" class="grn">path to earth</text>
+  <path data-step="7" class="wire" d="M270,410 q18,10 6,26"/>
+  <text data-step="7" x="295" y="400" font-size="13.5" class="grn">no shock:</text>
+  <text data-step="7" x="295" y="416" font-size="13.5" class="grn">low-resistance</text>
+  <text data-step="7" x="295" y="432" font-size="13.5" class="grn">path to earth</text>
 </svg>

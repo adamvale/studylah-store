@@ -7,19 +7,19 @@
     .line3 { stroke:#86C98B; stroke-width:2.2; fill:none; }
     .lbl { font-size:14px; }
   </style>
-  <line class="axis" x1="70" y1="250" x2="380" y2="250"/>
-  <line class="axis" x1="70" y1="250" x2="70" y2="40"/>
-  <path class="axis" d="M70,40 l-5,10 M70,40 l5,10"/>
-  <path class="axis" d="M380,250 l-10,-5 M380,250 l-10,5"/>
-  <text x="30" y="60" class="lbl">resistance</text>
-  <text x="330" y="275" class="lbl">temperature</text>
+  <line data-step="1" class="axis" x1="70" y1="250" x2="380" y2="250"/>
+  <line data-step="1" class="axis" x1="70" y1="250" x2="70" y2="40"/>
+  <path data-step="1" class="axis" d="M70,40 l-5,10 M70,40 l5,10"/>
+  <path data-step="1" class="axis" d="M380,250 l-10,-5 M380,250 l-10,5"/>
+  <text data-step="3" x="30" y="60" class="lbl">resistance</text>
+  <text data-step="3" x="330" y="275" class="lbl">temperature</text>
 
   <!-- three lines with different gradients rising from same origin -->
-  <line class="line1" x1="70" y1="250" x2="330" y2="70"/>
-  <line class="line2" x1="70" y1="250" x2="345" y2="130"/>
-  <line class="line3" x1="70" y1="250" x2="355" y2="180"/>
+  <line data-step="2" class="line1" x1="70" y1="250" x2="330" y2="70"/>
+  <line data-step="2" class="line2" x1="70" y1="250" x2="345" y2="130"/>
+  <line data-step="2" class="line3" x1="70" y1="250" x2="355" y2="180"/>
 
-  <text x="335" y="66" class="lbl" fill="#6FB7E0">lead</text>
-  <text x="350" y="128" class="lbl" fill="#E8B65A">aluminium</text>
-  <text x="360" y="182" class="lbl" fill="#86C98B">copper</text>
+  <text data-step="3" x="335" y="66" class="lbl" fill="#6FB7E0">lead</text>
+  <text data-step="4" x="350" y="128" class="lbl" fill="#E8B65A">aluminium</text>
+  <text data-step="4" x="360" y="182" class="lbl" fill="#86C98B">copper</text>
 </svg>

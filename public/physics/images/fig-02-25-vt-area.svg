@@ -10,21 +10,21 @@
   <defs>
     <marker id="va" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#EAEAEA"/></marker>
   </defs>
-  <line class="axis" x1="60" y1="250" x2="60" y2="25" marker-end="url(#va)"/>
-  <line class="axis" x1="60" y1="140" x2="360" y2="140" marker-end="url(#va)"/>
-  <text x="30" y="30">velocity</text>
-  <text x="335" y="160" class="cap">time</text>
-  <text x="50" y="45" class="cap">+</text>
-  <text x="50" y="245" class="cap">−</text>
-  <text x="50" y="144" text-anchor="end" class="cap">0</text>
+  <line data-step="1" class="axis" x1="60" y1="250" x2="60" y2="25" marker-end="url(#va)"/>
+  <line data-step="1" class="axis" x1="60" y1="140" x2="360" y2="140" marker-end="url(#va)"/>
+  <text data-step="1" x="30" y="30">velocity</text>
+  <text data-step="1" x="335" y="160" class="cap">time</text>
+  <text data-step="1" x="50" y="45" class="cap">+</text>
+  <text data-step="1" x="50" y="245" class="cap">−</text>
+  <text data-step="1" x="50" y="144" text-anchor="end" class="cap">0</text>
   <!-- positive triangle above -->
-  <polygon class="posf" points="60,140 60,55 180,140"/>
-  <line class="line" x1="60" y1="55" x2="180" y2="140"/>
+  <polygon data-step="1" class="posf" points="60,140 60,55 180,140"/>
+  <line data-step="1" class="line" x1="60" y1="55" x2="180" y2="140"/>
   <!-- negative triangle below -->
-  <polygon class="negf" points="180,140 300,140 300,225"/>
-  <line class="line" x1="180" y1="140" x2="300" y2="225"/>
-  <text x="110" y="90" fill="#6FB7E0" class="cap">area = positive</text>
-  <text x="110" y="105" fill="#6FB7E0" class="cap">displacement (forward)</text>
-  <text x="215" y="195" fill="#E58F8F" class="cap">area = negative</text>
-  <text x="215" y="210" fill="#E58F8F" class="cap">displacement (backward)</text>
+  <polygon data-step="2" class="negf" points="180,140 300,140 300,225"/>
+  <line data-step="2" class="line" x1="180" y1="140" x2="300" y2="225"/>
+  <text data-step="2" x="110" y="90" fill="#6FB7E0" class="cap">area = positive</text>
+  <text data-step="2" x="110" y="105" fill="#6FB7E0" class="cap">displacement (forward)</text>
+  <text data-step="2" x="215" y="195" fill="#E58F8F" class="cap">area = negative</text>
+  <text data-step="2" x="215" y="210" fill="#E58F8F" class="cap">displacement (backward)</text>
 </svg>

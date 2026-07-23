@@ -8,38 +8,38 @@
     .turn { stroke:#6FB7E0; stroke-width:1.8; fill:none; }
     .lbl { font-size:14px; }
   </style>
-  <rect class="beam" x="50" y="110" width="380" height="11"/>
+  <rect data-step="1" class="beam" x="50" y="110" width="380" height="11"/>
   <!-- central pivot -->
-  <polygon class="pivot" points="228,150 252,150 240,121"/>
-  <text class="lbl" x="240" y="170" text-anchor="middle">pivot</text>
+  <polygon data-step="1" class="pivot" points="228,150 252,150 240,121"/>
+  <text data-step="1" class="lbl" x="240" y="170" text-anchor="middle">pivot</text>
   <!-- vertical centre line -->
-  <line class="dim" x1="240" y1="60" x2="240" y2="121" stroke-dasharray="4 3"/>
+  <line data-step="2" class="dim" x1="240" y1="60" x2="240" y2="121" stroke-dasharray="4 3"/>
   <!-- d1 left -->
-  <line class="dim" x1="100" y1="80" x2="240" y2="80"/>
-  <path class="dim" d="M100,80 l8,-4 M100,80 l8,4"/>
-  <path class="dim" d="M240,80 l-8,-4 M240,80 l-8,4"/>
-  <text class="lbl" x="170" y="74" text-anchor="middle">distance, d₁</text>
+  <line data-step="3" class="dim" x1="100" y1="80" x2="240" y2="80"/>
+  <path data-step="3" class="dim" d="M100,80 l8,-4 M100,80 l8,4"/>
+  <path data-step="3" class="dim" d="M240,80 l-8,-4 M240,80 l-8,4"/>
+  <text data-step="3" class="lbl" x="170" y="74" text-anchor="middle">distance, d₁</text>
   <!-- d2 right -->
-  <line class="dim" x1="240" y1="80" x2="370" y2="80"/>
-  <path class="dim" d="M240,80 l8,-4 M240,80 l8,4"/>
-  <path class="dim" d="M370,80 l-8,-4 M370,80 l-8,4"/>
-  <text class="lbl" x="305" y="74" text-anchor="middle">distance, d₂</text>
+  <line data-step="4" class="dim" x1="240" y1="80" x2="370" y2="80"/>
+  <path data-step="4" class="dim" d="M240,80 l8,-4 M240,80 l8,4"/>
+  <path data-step="4" class="dim" d="M370,80 l-8,-4 M370,80 l-8,4"/>
+  <text data-step="4" class="lbl" x="305" y="74" text-anchor="middle">distance, d₂</text>
   <!-- F1 down left -->
-  <line class="dim" x1="100" y1="80" x2="100" y2="110" stroke-dasharray="3 3"/>
-  <line class="force" x1="100" y1="98" x2="100" y2="145"/>
-  <path class="force" d="M100,145 l-5,-10 M100,145 l5,-10"/>
-  <text class="lbl" x="100" y="165" text-anchor="middle" fill="#E8B65A">F₁</text>
+  <line data-step="5" class="dim" x1="100" y1="80" x2="100" y2="110" stroke-dasharray="3 3"/>
+  <line data-step="5" class="force" x1="100" y1="98" x2="100" y2="145"/>
+  <path data-step="5" class="force" d="M100,145 l-5,-10 M100,145 l5,-10"/>
+  <text data-step="5" class="lbl" x="100" y="165" text-anchor="middle" fill="#E8B65A">F₁</text>
   <!-- F2 down right -->
-  <line class="dim" x1="370" y1="80" x2="370" y2="110" stroke-dasharray="3 3"/>
-  <line class="force" x1="370" y1="98" x2="370" y2="145"/>
-  <path class="force" d="M370,145 l-5,-10 M370,145 l5,-10"/>
-  <text class="lbl" x="370" y="165" text-anchor="middle" fill="#E8B65A">F₂</text>
+  <line data-step="6" class="dim" x1="370" y1="80" x2="370" y2="110" stroke-dasharray="3 3"/>
+  <line data-step="6" class="force" x1="370" y1="98" x2="370" y2="145"/>
+  <path data-step="6" class="force" d="M370,145 l-5,-10 M370,145 l5,-10"/>
+  <text data-step="6" class="lbl" x="370" y="165" text-anchor="middle" fill="#E8B65A">F₂</text>
   <!-- turning labels -->
-  <path class="turn" d="M150,200 A26,26 0 0 1 176,178"/>
-  <path class="turn" d="M150,200 l1,-9 M150,200 l9,1"/>
-  <text class="lbl" x="150" y="222" text-anchor="middle" fill="#6FB7E0">anticlockwise</text>
-  <path class="turn" d="M330,200 A26,26 0 0 0 304,178"/>
-  <path class="turn" d="M330,200 l-1,-9 M330,200 l-9,1"/>
-  <text class="lbl" x="330" y="222" text-anchor="middle" fill="#6FB7E0">clockwise</text>
-  <text class="lbl" x="240" y="242" text-anchor="middle" font-size="13">Balanced when  F₁ × d₁ = F₂ × d₂</text>
+  <path data-step="7" class="turn" d="M150,200 A26,26 0 0 1 176,178"/>
+  <path data-step="7" class="turn" d="M150,200 l1,-9 M150,200 l9,1"/>
+  <text data-step="7" class="lbl" x="150" y="222" text-anchor="middle" fill="#6FB7E0">anticlockwise</text>
+  <path data-step="7" class="turn" d="M330,200 A26,26 0 0 0 304,178"/>
+  <path data-step="7" class="turn" d="M330,200 l-1,-9 M330,200 l-9,1"/>
+  <text data-step="7" class="lbl" x="330" y="222" text-anchor="middle" fill="#6FB7E0">clockwise</text>
+  <text data-step="7" class="lbl" x="240" y="242" text-anchor="middle" font-size="13">Balanced when  F₁ × d₁ = F₂ × d₂</text>
 </svg>

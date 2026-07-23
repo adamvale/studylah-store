@@ -11,18 +11,18 @@
     .norm { stroke:#9AA0A6; stroke-width:1.4; stroke-dasharray:6 4; }
     .arc { stroke:#9AA0A6; stroke-width:1.1; fill:none; }
   </style>
-  <rect class="dense" x="60" y="160" width="440" height="110"/>
-  <line x1="60" y1="160" x2="500" y2="160" stroke="#EAEAEA" stroke-width="1.6"/>
-  <path class="norm" d="M300,70 L300,250"/>
+  <rect data-step="1" class="dense" x="60" y="160" width="440" height="110"/>
+  <line data-step="1" x1="60" y1="160" x2="500" y2="160" stroke="#EAEAEA" stroke-width="1.6"/>
+  <path data-step="1" class="norm" d="M300,70 L300,250"/>
   <!-- incident ray in denser medium, at critical angle c -->
-  <path class="inc" marker-end="url(#a1)" d="M233,234 L298,162"/>
-  <text x="215" y="245" text-anchor="end" font-size="12" fill="#E8B65A">incident ray</text>
+  <path data-step="1" class="inc" marker-end="url(#a1)" d="M233,234 L298,162"/>
+  <text data-step="1" x="215" y="245" text-anchor="end" font-size="12" fill="#E8B65A">incident ray</text>
   <!-- refracted ray grazing along boundary, r=90 -->
-  <path class="ref" marker-end="url(#a2)" d="M300,160 L440,160"/>
-  <text x="380" y="152" font-size="12" fill="#6FB7E0">refracted ray (r = 90&#176;)</text>
-  <path class="arc" d="M300,215 A55,55 0 0,1 263,201"/>
-  <text x="258" y="222" font-size="13" font-style="italic">c</text>
-  <text x="70" y="150" font-size="12">optically less dense medium</text>
-  <text x="70" y="185" font-size="12">optically denser medium</text>
-  <text x="300" y="290" text-anchor="middle" font-size="12">At the critical angle <tspan font-style="italic">c</tspan>, the refracted ray runs along the boundary.</text>
+  <path data-step="2" class="ref" marker-end="url(#a2)" d="M300,160 L440,160"/>
+  <text data-step="2" x="380" y="152" font-size="12" fill="#6FB7E0">refracted ray (r = 90&#176;)</text>
+  <path data-step="2" class="arc" d="M300,215 A55,55 0 0,1 263,201"/>
+  <text data-step="2" x="258" y="222" font-size="13" font-style="italic">c</text>
+  <text data-step="2" x="70" y="150" font-size="12">optically less dense medium</text>
+  <text data-step="2" x="70" y="185" font-size="12">optically denser medium</text>
+  <text data-step="2" x="300" y="290" text-anchor="middle" font-size="12">At the critical angle <tspan font-style="italic">c</tspan>, the refracted ray runs along the boundary.</text>
 </svg>

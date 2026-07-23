@@ -8,7 +8,7 @@
     .lbl { font-size:14px; text-anchor:middle; }
   </style>
   <!-- forward -->
-  <g>
+  <g data-step="1">
     <line class="wire" x1="40" y1="70" x2="120" y2="70"/>
     <polygon class="tri" points="120,54 120,86 148,70"/>
     <line class="wire" x1="148" y1="54" x2="148" y2="86" stroke-width="2.6"/>
@@ -23,7 +23,7 @@
     <text x="134" y="134" class="lbl" fill="#9AA0A6">current flows, R very low</text>
   </g>
   <!-- reverse : same diode, current tries to flow against the arrow -->
-  <g>
+  <g data-step="2">
     <line class="wire" x1="40" y1="230" x2="120" y2="230"/>
     <polygon class="tri" points="120,214 120,246 148,230"/>
     <line class="wire" x1="148" y1="214" x2="148" y2="246" stroke-width="2.6"/>

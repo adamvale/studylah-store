@@ -10,22 +10,22 @@
     </marker>
   </defs>
 
-  <rect class="stage" x="45" y="16" width="330" height="56" rx="7"/>
-  <text x="210" y="50" text-anchor="middle">1. Planning</text>
+  <rect data-step="1" class="stage" x="45" y="16" width="330" height="56" rx="7"/>
+  <text data-step="3" x="210" y="50" text-anchor="middle">1. Planning</text>
 
-  <line class="flow" x1="210" y1="74" x2="210" y2="90" marker-end="url(#fl1)"/>
+  <line data-step="1" class="flow" x1="210" y1="74" x2="210" y2="90" marker-end="url(#fl1)"/>
 
-  <rect class="stage" x="45" y="94" width="330" height="56" rx="7"/>
-  <text x="210" y="128" text-anchor="middle">2. Manipulation and measurement</text>
+  <rect data-step="1" class="stage" x="45" y="94" width="330" height="56" rx="7"/>
+  <text data-step="3" x="210" y="128" text-anchor="middle">2. Manipulation and measurement</text>
 
-  <line class="flow" x1="210" y1="152" x2="210" y2="168" marker-end="url(#fl1)"/>
+  <line data-step="1" class="flow" x1="210" y1="152" x2="210" y2="168" marker-end="url(#fl1)"/>
 
-  <rect class="stage" x="45" y="172" width="330" height="56" rx="7"/>
-  <text x="210" y="206" text-anchor="middle">3. Presentation of data</text>
+  <rect data-step="2" class="stage" x="45" y="172" width="330" height="56" rx="7"/>
+  <text data-step="3" x="210" y="206" text-anchor="middle">3. Presentation of data</text>
 
-  <line class="flow" x1="210" y1="230" x2="210" y2="246" marker-end="url(#fl1)"/>
+  <line data-step="2" class="flow" x1="210" y1="230" x2="210" y2="246" marker-end="url(#fl1)"/>
 
-  <rect class="stage" x="45" y="250" width="330" height="76" rx="7"/>
-  <text x="210" y="282" text-anchor="middle">4. Analysis, conclusions</text>
-  <text x="210" y="304" text-anchor="middle">and evaluation</text>
+  <rect data-step="2" class="stage" x="45" y="250" width="330" height="76" rx="7"/>
+  <text data-step="4" x="210" y="282" text-anchor="middle">4. Analysis, conclusions</text>
+  <text data-step="4" x="210" y="304" text-anchor="middle">and evaluation</text>
 </svg>

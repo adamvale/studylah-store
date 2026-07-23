@@ -11,32 +11,32 @@
     .amber { fill:#E8B65A; }
   </style>
   <!-- socket on left -->
-  <rect class="wire" x="60" y="120" width="60" height="70" rx="4"/>
-  <rect class="wire" x="72" y="140" width="8" height="18"/>
-  <rect class="wire" x="100" y="140" width="8" height="18"/>
-  <text x="90" y="210" text-anchor="middle" font-size="12.5">socket</text>
+  <rect data-step="1" class="wire" x="60" y="120" width="60" height="70" rx="4"/>
+  <rect data-step="1" class="wire" x="72" y="140" width="8" height="18"/>
+  <rect data-step="1" class="wire" x="100" y="140" width="8" height="18"/>
+  <text data-step="1" x="90" y="210" text-anchor="middle" font-size="12.5">socket</text>
 
   <!-- metal casing (appliance) on right -->
-  <rect class="case" x="430" y="95" width="90" height="110" rx="4"/>
-  <text x="475" y="120" text-anchor="middle" font-size="12.5">metal casing</text>
+  <rect data-step="2" class="case" x="430" y="95" width="90" height="110" rx="4"/>
+  <text data-step="2" x="475" y="120" text-anchor="middle" font-size="12.5">metal casing</text>
 
   <!-- green/yellow (earth) top wire A -->
-  <path class="gy" d="M120,135 L300,110 L430,110"/>
-  <text x="300" y="90" text-anchor="middle" font-size="13.5" style="fill:#86C98B">green and yellow wire</text>
-  <circle cx="300" cy="110" r="3.5" class="pt"/>
-  <text x="300" y="128" text-anchor="middle" font-size="14" class="amber">A</text>
+  <path data-step="3" class="gy" d="M120,135 L300,110 L430,110"/>
+  <text data-step="3" x="300" y="90" text-anchor="middle" font-size="13.5" style="fill:#86C98B">green and yellow wire</text>
+  <circle data-step="3" cx="300" cy="110" r="3.5" class="pt"/>
+  <text data-step="3" x="300" y="128" text-anchor="middle" font-size="14" class="amber">A</text>
 
   <!-- brown (live) middle wire, points B, C, D -->
-  <path class="brown" d="M120,160 L200,160 L300,180 L430,180"/>
-  <circle cx="200" cy="160" r="3.5" class="pt"/>
-  <text x="200" y="150" text-anchor="middle" font-size="14" class="amber">B</text>
-  <circle cx="300" cy="180" r="3.5" class="pt"/>
-  <text x="300" y="200" text-anchor="middle" font-size="14" class="amber">C</text>
-  <circle cx="430" cy="180" r="3.5" class="pt"/>
-  <text x="446" y="184" text-anchor="middle" font-size="14" class="amber">D</text>
-  <text x="300" y="240" text-anchor="middle" font-size="13.5" style="fill:#E8B65A">brown wire (live)</text>
+  <path data-step="4" class="brown" d="M120,160 L200,160 L300,180 L430,180"/>
+  <circle data-step="4" cx="200" cy="160" r="3.5" class="pt"/>
+  <text data-step="4" x="200" y="150" text-anchor="middle" font-size="14" class="amber">B</text>
+  <circle data-step="4" cx="300" cy="180" r="3.5" class="pt"/>
+  <text data-step="4" x="300" y="200" text-anchor="middle" font-size="14" class="amber">C</text>
+  <circle data-step="4" cx="430" cy="180" r="3.5" class="pt"/>
+  <text data-step="4" x="446" y="184" text-anchor="middle" font-size="14" class="amber">D</text>
+  <text data-step="4" x="300" y="240" text-anchor="middle" font-size="13.5" style="fill:#E8B65A">brown wire (live)</text>
 
   <!-- blue (neutral) lower wire -->
-  <path class="blue" d="M120,180 L150,180 L150,255 L475,255 L475,205"/>
-  <text x="150" y="275" text-anchor="middle" font-size="13.5" style="fill:#6FB7E0">blue wire (neutral)</text>
+  <path data-step="5" class="blue" d="M120,180 L150,180 L150,255 L475,255 L475,205"/>
+  <text data-step="5" x="150" y="275" text-anchor="middle" font-size="13.5" style="fill:#6FB7E0">blue wire (neutral)</text>
 </svg>

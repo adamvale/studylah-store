@@ -13,26 +13,26 @@
     <marker id="aw" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#EAEAEA"/></marker>
   </defs>
 
-  <line class="axis" x1="70" y1="280" x2="70" y2="40" marker-end="url(#aw)"/>
-  <line class="axis" x1="70" y1="280" x2="360" y2="280" marker-end="url(#aw)"/>
+  <line data-step="1" class="axis" x1="70" y1="280" x2="70" y2="40" marker-end="url(#aw)"/>
+  <line data-step="1" class="axis" x1="70" y1="280" x2="360" y2="280" marker-end="url(#aw)"/>
 
-  <path class="bestfit" d="M70,280 L230,40"/>
+  <path data-step="1" class="bestfit" d="M70,280 L230,40"/>
 
-  <path class="tri" d="M120,205 H200"/>
-  <path class="tri" d="M200,205 V85"/>
+  <path data-step="1" class="tri" d="M120,205 H200"/>
+  <path data-step="1" class="tri" d="M200,205 V85"/>
 
-  <path class="cross" d="M89,240 L101,252 M89,252 L101,240"/>
-  <path class="cross" d="M114,196 L126,208 M114,208 L126,196"/>
-  <path class="cross" d="M139,164 L151,176 M139,176 L151,164"/>
-  <path class="cross" d="M164,121 L176,133 M164,133 L176,121"/>
-  <path class="cross" d="M189,89 L201,101 M189,101 L201,89"/>
-  <path class="cross" d="M214,46 L226,58 M214,58 L226,46"/>
+  <path data-step="1" class="cross" d="M89,240 L101,252 M89,252 L101,240"/>
+  <path data-step="2" class="cross" d="M114,196 L126,208 M114,208 L126,196"/>
+  <path data-step="2" class="cross" d="M139,164 L151,176 M139,176 L151,164"/>
+  <path data-step="2" class="cross" d="M164,121 L176,133 M164,133 L176,121"/>
+  <path data-step="2" class="cross" d="M189,89 L201,101 M189,101 L201,89"/>
+  <path data-step="2" class="cross" d="M214,46 L226,58 M214,58 L226,46"/>
 
-  <text x="48" y="30">sin i</text>
-  <text x="215" y="306" text-anchor="middle">sin r</text>
-  <text class="lbl" x="240" y="120">gradient = n</text>
-  <text class="blue" x="250" y="190">best-fit line</text>
-  <text class="lbl" x="160" y="222" text-anchor="middle">&#916; sin r</text>
-  <text class="lbl" x="208" y="150">&#916; sin i</text>
-  <text class="red" x="250" y="240">measured points</text>
+  <text data-step="3" x="48" y="30">sin i</text>
+  <text data-step="3" x="215" y="306" text-anchor="middle">sin r</text>
+  <text data-step="3" class="lbl" x="240" y="120">gradient = n</text>
+  <text data-step="3" class="blue" x="250" y="190">best-fit line</text>
+  <text data-step="4" class="lbl" x="160" y="222" text-anchor="middle">&#916; sin r</text>
+  <text data-step="4" class="lbl" x="208" y="150">&#916; sin i</text>
+  <text data-step="4" class="red" x="250" y="240">measured points</text>
 </svg>

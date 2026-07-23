@@ -16,18 +16,18 @@
       <stop offset="1" stop-color="#6FB7E0" stop-opacity="0.28"/>
     </linearGradient>
   </defs>
-  <rect x="120" y="95" width="330" height="26" fill="url(#heat)" stroke="#EAEAEA" stroke-width="1.6" rx="3"/>
-  <text x="285" y="88" text-anchor="middle" class="lbl">energy transfer along the metal rod</text>
+  <rect data-step="1" x="120" y="95" width="330" height="26" fill="url(#heat)" stroke="#EAEAEA" stroke-width="1.6" rx="3"/>
+  <text data-step="1" x="285" y="88" text-anchor="middle" class="lbl">energy transfer along the metal rod</text>
   <!-- energy flow arrow along rod -->
-  <path class="flow" d="M150,108 L420,108"/>
-  <path class="flow" d="M410,101 L422,108 L410,115"/>
+  <path data-step="2" class="flow" d="M150,108 L420,108"/>
+  <path data-step="2" class="flow" d="M410,101 L422,108 L410,115"/>
   <!-- hot / cool end labels -->
-  <text x="175" y="145" text-anchor="middle" fill="#E58F8F">hotter end</text>
-  <text x="435" y="145" text-anchor="middle" fill="#6FB7E0">cooler end</text>
+  <text data-step="3" x="175" y="145" text-anchor="middle" fill="#E58F8F">hotter end</text>
+  <text data-step="3" x="435" y="145" text-anchor="middle" fill="#6FB7E0">cooler end</text>
   <!-- bunsen burner under left end -->
-  <path class="flame" d="M120,150 C112,138 126,132 120,123 C114,132 108,140 120,150 Z"/>
-  <rect class="burner" x="112" y="150" width="16" height="55"/>
-  <line class="burner" x1="105" y1="205" x2="135" y2="205"/>
-  <text x="120" y="223" text-anchor="middle">Bunsen burner</text>
-  <text x="120" y="242" text-anchor="middle">(heat source)</text>
+  <path data-step="4" class="flame" d="M120,150 C112,138 126,132 120,123 C114,132 108,140 120,150 Z"/>
+  <rect data-step="4" class="burner" x="112" y="150" width="16" height="55"/>
+  <line data-step="4" class="burner" x1="105" y1="205" x2="135" y2="205"/>
+  <text data-step="4" x="120" y="223" text-anchor="middle">Bunsen burner</text>
+  <text data-step="4" x="120" y="242" text-anchor="middle">(heat source)</text>
 </svg>

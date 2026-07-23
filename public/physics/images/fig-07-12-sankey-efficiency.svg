@@ -7,15 +7,15 @@
     .lbl { font-size:12px; }
   </style>
   <!-- input band (height 120) -->
-  <path class="input" d="M40,70 L200,70 L200,190 L40,190 Z"/>
-  <text x="120" y="55" text-anchor="middle" fill="#6FB7E0">total energy input</text>
+  <path data-step="1" class="input" d="M40,70 L200,70 L200,190 L40,190 Z"/>
+  <text data-step="1" x="120" y="55" text-anchor="middle" fill="#6FB7E0">total energy input</text>
   <!-- split: useful goes straight (height 80), waste goes down (height 40) -->
   <!-- useful band -->
-  <path class="useful" d="M200,70 L440,70 L440,150 L200,150 Z"/>
-  <text x="330" y="115" text-anchor="middle" fill="#86C98B" font-weight="bold">useful output</text>
+  <path data-step="2" class="useful" d="M200,70 L440,70 L440,150 L200,150 Z"/>
+  <text data-step="2" x="330" y="115" text-anchor="middle" fill="#86C98B" font-weight="bold">useful output</text>
   <!-- waste band turning downward -->
-  <path class="waste" d="M200,150 L200,190 C280,190 300,190 320,230 L360,230 L360,190 C340,190 280,190 240,150 Z"/>
-  <text x="330" y="252" fill="#E58F8F">dissipated (wasted)</text>
+  <path data-step="3" class="waste" d="M200,150 L200,190 C280,190 300,190 320,230 L360,230 L360,190 C340,190 280,190 240,150 Z"/>
+  <text data-step="3" x="330" y="252" fill="#E58F8F">dissipated (wasted)</text>
   <!-- caption -->
-  <text x="250" y="30" text-anchor="middle" font-size="13" fill="#EAEAEA">Energy flow through a device (Sankey diagram)</text>
+  <text data-step="4" x="250" y="30" text-anchor="middle" font-size="13" fill="#EAEAEA">Energy flow through a device (Sankey diagram)</text>
 </svg>
