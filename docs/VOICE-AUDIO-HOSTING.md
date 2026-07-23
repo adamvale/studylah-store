@@ -28,6 +28,40 @@ From that base it fetches three things:
 <base>/<voice>/<hash>.mp3       one line of speech
 ```
 
+## Current state (read this first)
+
+The switch is **wired but not thrown**. `NEXT_PUBLIC_AUDIO_BASE_URL`, the upload
+script and this document are all in place, but `public/audio/gugu` is still
+tracked and still served from the repo, so nothing has changed for production yet.
+
+That is deliberate. Untracking the folder also removes it from the deployed tree,
+so doing it before the bucket is live would leave the site with no audio and every
+line falling back to the device voice, which reads like a broken voice rather than
+a missing bucket.
+
+Note the ~900 MB already in the repo is also already on GitHub, and this change
+cannot remove it: git keeps binaries forever. What it does is stop the repo
+growing. Coddy has roughly ten more Physics topics to deliver, then Chemistry and
+Biology; at today's rate (10 topics produced about 6,000 files and 795 MB) the
+repo would otherwise run into GitHub's hard limits.
+
+## Cutover, in this order
+
+Doing these out of order is what breaks production.
+
+1. Create the bucket, allow cross-origin GETs, and upload:
+   ```bash
+   AUDIO_REMOTE=r2:studylah-audio/gugu npm run audio:upload
+   ```
+2. Set `NEXT_PUBLIC_AUDIO_BASE_URL` in the deploy environment and **redeploy**.
+   Confirm on the live site that a lesson still speaks in Amy's voice: that
+   proves the bucket, the CORS headers and the variable are all right.
+3. Only then untrack the folder, by uncommenting the `public/audio/gugu/` line in
+   `.gitignore` and running:
+   ```bash
+   git rm -r --cached public/audio/gugu && git commit -m "Serve voice from the bucket"
+   ```
+
 ## Setting it up once
 
 1. Make a bucket (Cloudflare R2 is a good fit: no egress charges) and give it a
