@@ -1,0 +1,79 @@
+HANDOFF: TP4 Heat (Tuition teach-then-test lesson content)
+App topic: TP4 Heat  <-  Practical Chapter 4 (Heat)
+Date: 2026-07-23. From: Coddy Cowork.  FOURTH of the 6-chapter PHYSICS PRACTICAL run.
+
+SOURCE: /root/work/practical-export/Practical Chapter 04 - Heat.md (copyright-free recreation).
+Authored ORIGINALLY with fresh verified sample numbers. Topic code "TP4", ids tp4.*, files p4-*.ts
+(Dev-Claude may remap).
+
+SUBCONCEPT COUNT AND CODES
+9 boxes: 6 teaching subconcepts + 2 revision checkpoints + 1 topical quiz. One box per file:
+  p4-1.ts  TP4.1  Heat transfer and thermometry                              (heat transfer, thermometry)
+  p4-2.ts  TP4.2  Heat capacity, specific heat capacity and Q = mcDeltaTheta (heat capacity)
+  p4-3.ts  TP4.3  Latent heat and changes of state                           (latent heat)
+  p4-4.ts  TP4.4  Specific heat capacity by electrical heating               (Exp 1)
+  p4-5.ts  TP4.5  Specific heat capacity: joulemeter and method of mixtures  (Exp 2, 3)
+  p4-6.ts  TP4.6  Specific latent heat by electrical methods                 (Exp 4, 5)
+  p4-rev1.ts R1   Revision 1 (TP4.1 to TP4.3)
+  p4-rev2.ts R2   Revision 2 (TP4.4 to TP4.6)
+  p4-quiz.ts Quiz whole-topic quiz
+Totals: 112 steps, 79 questions.
+
+CALCULATION-HEAVY: thermometry, Q = mcDeltaTheta, L = lm and the gradient methods for c and l all
+carry a `formula` field on the teach cards and a `working` block [Formula / Substitute / Answer
+(-with-unit)] on the calc questions. (`formula` is on concept/insight cards ONLY - the two revisions
+and the quiz carry no `formula` fields; equations live in each question's `working` Formula step.)
+
+*** SOURCE CORRECTION (please note in the app's Chapter-4 theory too) ***
+Experiment 1 in the source markdown states that heat loss makes the electrical specific-heat-capacity
+result come out "too LOW". That is physically incorrect for this method, and I corrected it in the
+lesson content. Energy accounting: you supply E = Pt and compute c = Pt / (m DeltaTheta), crediting
+ALL the supplied energy to the block; but Pt = mc DeltaTheta + heat lost, so the real m c DeltaTheta
+is LESS than Pt, which makes the measured c an OVERESTIMATE - it comes out TOO HIGH. The TP4 content
+(p4-4 teach card, choice and open; p4-rev2 open; p4-quiz spoterror and open) all now say TOO HIGH.
+Recommend the source's Experiment-1 wording ("too low") be fixed to "too high" for consistency.
+(Unrelated and left as-is: in the FUSION experiment, WITHOUT the control funnel l_f comes out too
+SMALL - that direction is correct and is a different experiment.)
+
+ANSWER KEYS (owner's priority - all independently re-derived and confirmed correct):
+  - Thermometry theta = (X_theta - X_0)/(X_100 - X_0) x 100: thermistor 510/820/200 -> 50 degC;
+    wire 77/50/95 -> 60 degC.
+  - Q = mc DeltaTheta: 0.50 kg water, 60 degC rise -> 1.26 x 10^5 J; DeltaTheta = Pt/(mc) =
+    18000/(2.0 x 385) = 23 degC; oil c = (9400 - 1600)/(0.10 x 40) = 1950 J/(kg degC).
+  - L = l m: 0.20 kg ice -> 6.68 x 10^4 J; 0.30 kg water -> 1.0 x 10^5 J.
+  - SHC electrical: c = P/(m x gradient) = 48/(1.00 x 0.056) = 8.6 x 10^2 J/(kg degC). Heat loss ->
+    measured c TOO HIGH (see correction above).
+  - Joulemeter: c_w = (17400 - 616)/(0.200 x 20.0) = 4.2 x 10^3. Mixtures: c_m = 4006/(0.150 x
+    70.4) = 3.8 x 10^2.
+  - Latent electrical: l_f = 100/2.99 x 10^-4 = 3.3 x 10^5 J/kg; l_v = 100/4.39 x 10^-5 = 2.3 x 10^6.
+  - Standard c: water 4200, aluminium 900, copper 385, brass 380, ice 2100. l_f water 3.34 x 10^5,
+    l_v water 2.26 x 10^6 J/kg.
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit: 0 type errors across all 9 files.
+2. Structural validator: 6 lessons each >= 3 questions with a say + 2 to 4 starred keywords; revisions
+   EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5; figure only on
+   concept/insight/choice/open; all indices in range. PASSED.
+3. Calc audit + independent answer-key check: every temperature, Q, L, c and l recomputed and matched
+   to the marked option/target; every choice `correct` confirmed; the quiz spoterror `errorLine`
+   (0-based) confirmed to mark the genuinely false line ("heat loss makes the measured c come out too
+   low"); classify (the 3 heat transfers), match, order (method-of-mixtures / boiling steps) and
+   graphpick (heating curve) answers confirmed; the electrical-SHC "too high" direction and the
+   fusion-control "too small" direction both verified. No errors found.
+4. Compliance scan: digits in spoken fields; spoken powers as digits ("3.34 times 10 to the power 5",
+   "2.99 times 10 to the power negative 4"); on-screen fields use _/^ (10^5, s^-1, c_w,
+   Q = mc\Delta\theta); equations only in `formula`/`working`; no em/en dashes; no emojis; no grade or
+   pass promises. Clean.
+Correct-option positions spread across 0 to 3 (quiz choice indices 2,0,3,1,2,0,3,1,2,0; revisions
+2,0,3,1,2 and 1,3,0,2,3).
+
+FIGURES: no NEW art - references the EXISTING practical Chapter-4 SVG library (fig-pr4-01 to
+fig-pr4-11). Colour words in each `say` follow the current fig-pr4 art / house dark-theme palette: the
+HEATER / heating element / a hot region red; LAGGING (insulation) amber (dashed); the WATER / liquid
+/ melt / the temperature curve and the graph best-fit LINE blue; a metal BLOCK or ICE a pale blue
+solid; the thermometer, calorimeter, joulemeter, circuit wires, beaker, funnel, balance and labels
+white/grey; grid/guides grey. On graphs the best-fit line is blue, the plotted crosses amber, the
+gradient triangle a green dashed triangle; on the heating curve the solid/liquid/gas labels are green
+and the melting/boiling labels amber. Stacked panels described top/bottom.
+
+NEXT: TP5 Practical Chapter 5 (Waves).

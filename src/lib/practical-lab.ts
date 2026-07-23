@@ -2,6 +2,7 @@ import type { IconName } from "@/components/icons";
 import type { LessonStep } from "@/lib/lesson-steps";
 import { PLAYGROUND_SCIENCE } from "@/lib/playground-lessons";
 import { SCIENCE_EXPANSION } from "@/lib/playground-science-expansion";
+import { PHYSICS_PRACTICAL } from "@/lib/teaching/physics-practical";
 
 // Practical Lab: trains the PRACTICAL paper for the sciences (the skills a lab
 // exam tests, which are the hardest to self-study: apparatus, measurement,
@@ -210,6 +211,23 @@ for (const subject of PRACTICAL_SUBJECTS) {
   if (extra) subject.lessons.push(...extra);
   const more = SCIENCE_EXPANSION[subject.slug as keyof typeof SCIENCE_EXPANSION];
   if (more) subject.lessons.push(...more);
+}
+
+// The full Physics Paper-3 practical run (TP1-TP4, authored by Coddy in the
+// teach-then-test subconcept shape). Each box (a micro-lesson, a revision
+// checkpoint or a quiz) becomes one Practical Lab lesson on the same engine as
+// everything else, so the whole practical paper is trainable here. Minutes are
+// estimated from the step count.
+for (const box of PHYSICS_PRACTICAL) {
+  const subject = PRACTICAL_SUBJECTS.find((s) => s.slug === "physics");
+  if (!subject) break;
+  subject.lessons.push({
+    key: `phys-practical-${box.id}`,
+    title: `${box.code} ${box.title}`,
+    minutes: Math.max(4, Math.round(box.steps.length * 0.6)),
+    steps: box.steps,
+    talkPrompt: "Coach me on this practical: set a lab task, check my method, my readings and where the marks are.",
+  });
 }
 
 export function practicalSubject(slug: string): PracticalSubject | undefined {

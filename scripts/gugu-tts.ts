@@ -104,7 +104,12 @@ function collectLines(): string[] {
         for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(norm(x));
     for (const subject of PRACTICAL_SUBJECTS)
       for (const lesson of subject.lessons)
-        for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(norm(x));
+        for (const step of lesson.steps) {
+          for (const x of stepSpokenLines(step)) set.add(norm(x));
+          // Practical Lab runs the same player, so choice steps speak the same
+          // composed wrong-answer retry lines; pre-generate them too.
+          if (FIELDS.has("hints")) for (const x of retryLinesFor(step)) set.add(norm(x));
+        }
     for (const arr of Object.values(PLAYGROUND_MATHS))
       for (const lesson of arr)
         for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(norm(x));

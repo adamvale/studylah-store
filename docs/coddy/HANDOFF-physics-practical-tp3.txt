@@ -1,0 +1,68 @@
+HANDOFF: TP3 Dynamics (Tuition teach-then-test lesson content)
+App topic: TP3 Dynamics  <-  Practical Chapter 3 (Dynamics)
+Date: 2026-07-23. From: Coddy Cowork.  THIRD of the 6-chapter PHYSICS PRACTICAL run.
+
+SOURCE: /root/work/practical-export/Practical Chapter 03 - Dynamics.md (copyright-free recreation).
+Authored ORIGINALLY with fresh verified sample numbers. Topic code "TP3", ids tp3.*, files p3-*.ts
+(Dev-Claude may remap). g = 10 N/kg throughout.
+
+SUBCONCEPT COUNT AND CODES
+9 boxes: 6 teaching subconcepts + 2 revision checkpoints + 1 topical quiz. One box per file:
+  p3-1.ts  TP3.1  Forces and Newton's laws                                    (forces, Newton)
+  p3-2.ts  TP3.2  Mass, weight and density                                    (mass/weight, density)
+  p3-3.ts  TP3.3  Hooke's law and the spring balance                          (Hooke, Exp 1)
+  p3-4.ts  TP3.4  Moments and the principle of moments                        (moments)
+  p3-5.ts  TP3.5  Finding a mass by moments: knife-edge and graphical methods (Exp 3, 4, 5)
+  p3-6.ts  TP3.6  Density and friction of a block                             (Exp 7)
+  p3-rev1.ts R1   Revision 1 (TP3.1 to TP3.3)
+  p3-rev2.ts R2   Revision 2 (TP3.4 to TP3.6)
+  p3-quiz.ts Quiz whole-topic quiz
+Totals: 110 steps, 79 questions.
+
+CALCULATION-HEAVY: Hooke's law, density, moments and friction all carry a `formula` field on the
+teach cards and a `working` block [Formula / Substitute / Answer(-with-unit)] on the calc questions.
+(`formula` is on concept/insight cards ONLY - never on a question step; the two revisions and the quiz
+carry no `formula` fields at all, the equations living in each question's `working` Formula step.)
+
+ANSWER KEYS (owner's priority - all independently re-derived and confirmed correct):
+  - Weight W = mg: 0.650 kg -> 6.50 N; 2.5 kg -> 25 N; 0.300 kg -> 3.0 N; 0.250 kg -> 2.5 N. Mass is a
+    scalar (same everywhere); weight is a vector, smaller where g is smaller (e.g. the Moon).
+  - Density rho = m/V: 384 g / 480 cm^3 = 0.80 g/cm^3 (floats, < 1.0); 421.4 g / 490 cm^3 = 0.86.
+  - Hooke: e = L - L_0 = 9.0 - 4.0 = 5.0 cm = 0.050 m; k = F/e = 2.0/0.050 = 40 N/m; load-extension
+    graph gradient = k = 2.0 N / 4.0 cm = 0.50 N/cm = 50 N/m. Law fails past the limit of proportionality.
+  - Moments: uniform rule, 2.0 N at the 20 cm mark, pivot 40 cm, centre of gravity 50 cm ->
+    2.0 x (40-20) = W x (50-40) -> W = 4.0 N. Sum of clockwise = sum of anticlockwise; a weight above
+    the pivot has zero moment.
+  - Mass by moments: M = m(x/y) = 0.050 x 6.05/6.10 = 0.050 kg. Graphical: r/p = 0.5(q/p) + M/100, so
+    gradient 0.5 (the 50g/100g ratio) and intercept M/100; intercept 0.90 -> M = 90 g (0.98 -> 98 g).
+  - Friction: at constant velocity the resultant force is zero so pull = friction; W = Mg (0.300 ->
+    3.0 N; 0.250 -> 2.5 N); mu = W/(L + mg) = 3.0/6.214 = 0.48; graph of pull vs load has gradient mu
+    = 0.48 and intercept mu m g. mu is a ratio of forces, so dimensionless.
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit: 0 type errors across all 9 files.
+2. Structural validator: 6 lessons each >= 3 questions with a say + 2 to 4 starred keywords; revisions
+   EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5; figure only on
+   concept/insight/choice/open; all indices in range. PASSED.
+3. Calc audit + independent answer-key check: every weight, density, extension, spring constant,
+   moment, unknown mass and coefficient of friction recomputed and matched to the marked option/
+   target; every choice `correct` index confirmed; every spoterror `errorLine` (0-based) confirmed to
+   target the genuinely false line ("weight is a scalar that is the same everywhere"; "at constant
+   velocity the pull is greater than the friction"; "the spring constant stays valid past the limit of
+   proportionality"); classify/match/order/graphpick answers confirmed. No errors found.
+4. Compliance scan: digits in spoken fields; on-screen fields use _/^ (m/s^2, g/cm^3, N/m, L^3, L_0,
+   r/p); equations only in `formula`/`working`; no em/en dashes; no emojis; no grade or pass promises.
+   Clean.
+Correct-option positions spread across 0 to 3 (quiz choice indices 2,0,3,1,2,0,3,1,0,2; revisions
+2,0,3,1,2 and 1,3,0,2,3).
+
+FIGURES: no NEW art - references the EXISTING practical Chapter-3 SVG library (fig-pr3-01 to
+fig-pr3-15). Colour words in each `say` follow the current fig-pr3 art / house dark-theme palette:
+WEIGHT W red (#E58F8F); NORMAL reaction N green (#86C98B); TENSION / an applied pull / a spring's
+force amber (#E8B65A); FRICTION and the direction of MOTION blue (#6FB7E0); the block a pale blue
+solid; ground, bench, pivot, rule, masses, stand, string and spring body white/grey (#EAEAEA);
+labels white/grey; grid/guides grey (#9AA0A6). On graphs the best-fit line is blue, the gradient
+triangle amber, plotted crosses white; on a moments diagram the force arrows are blue and the turning
+arc amber. Stacked panels described top/bottom.
+
+NEXT: TP4 Practical Chapter 4 (Heat).

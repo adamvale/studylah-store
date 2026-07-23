@@ -1,0 +1,256 @@
+import type { Subconcept } from "@/lib/teaching/subconcepts";
+
+// TP4 Heat, Revision 2. Checkpoint over Practical Chapter 04 sections TP4.4 to
+// TP4.6: specific heat capacity by electrical heating, the joulemeter and the
+// method of mixtures, and specific latent heat by electrical methods.
+// Question-only. No formula fields (teach-card only); calc questions carry working.
+
+export const BOXES: Subconcept[] = [
+  {
+    id: "tp4.rev2",
+    code: "R2",
+    title: "Revision 2",
+    blurb: "Checkpoint: measuring c and l by electrical and mixtures methods",
+    kind: "revision",
+    steps: [
+      {
+        kind: "choice",
+        question: "A lagged 1.00 kg block is heated at 12.0 V and 4.0 A. Its temperature-time graph has gradient 0.056 degC/s. Find the specific heat capacity c.",
+        figure: "fig-pr4-05-shc-block-graph",
+        options: [
+          "8.6 x 10^1 J/(kg degC)",
+          "8.6 x 10^2 J/(kg degC)",
+          "1.5 x 10^2 J/(kg degC)",
+          "4.3 x 10^3 J/(kg degC)",
+        ],
+        correct: 1,
+        ask: "First get the power from P equals V times I, so 12.0 times 4.0. Then divide that power by the mass times the gradient.",
+        hints: [
+          "The power is 12.0 times 4.0, which is 48 watts.",
+          "c equals P divided by mass times gradient, so 48 divided by 1.00 times 0.056.",
+        ],
+        working: [
+          { label: "Formula", latex: "c = \\dfrac{P}{m \\times \\text{gradient}},\\quad P = VI" },
+          { label: "Substitute", latex: "c = \\dfrac{12.0 \\times 4.0}{1.00 \\times 0.056}" },
+          { label: "Answer", latex: "c = 8.6 \\times 10^{2}\\ \\text{J/(kg}\\,^{\\circ}\\text{C)}" },
+        ],
+        explain: "The specific heat capacity is 8.6 times 10 to the power 2 joules per kilogram per degree Celsius. The power is 12.0 times 4.0, which is 48 watts, and 48 divided by 1.00 times 0.056 is about 860.",
+      },
+      {
+        kind: "choice",
+        question: "In the circuit for measuring c by electrical heating, how are the ammeter and voltmeter connected?",
+        figure: "fig-pr4-04-heater-circuit",
+        options: [
+          "The ammeter in parallel with the heater and the voltmeter in series",
+          "Both the ammeter and voltmeter in series with the heater",
+          "Both the ammeter and voltmeter in parallel across the heater",
+          "The ammeter in series with the heater and the voltmeter in parallel across it",
+        ],
+        correct: 3,
+        ask: "The ammeter must carry the same current as the heater, and the voltmeter must read the voltage across the heater. Which connection does both?",
+        hints: [
+          "An ammeter reads the current through a component, so it goes in series with the heater.",
+          "A voltmeter reads the voltage across a component, so it goes in parallel across the heater.",
+        ],
+        explain: "The ammeter goes in series with the heater so it carries the same current, and the voltmeter goes in parallel across the heater so it reads the voltage across it. Their product V times I gives the power.",
+      },
+      {
+        kind: "choice",
+        question: "A joulemeter reads 17400 J supplied to water in a calorimeter. The calorimeter alone takes 616 J for the 20.0 degC rise, and there is 0.200 kg of water. Find c_w.",
+        figure: "fig-pr4-06-calorimeter-joulemeter",
+        options: [
+          "4.2 x 10^3 J/(kg degC)",
+          "8.7 x 10^4 J/(kg degC)",
+          "4.4 x 10^3 J/(kg degC)",
+          "1.7 x 10^4 J/(kg degC)",
+        ],
+        correct: 0,
+        ask: "First take the 616 joules that warmed the calorimeter away from the 17400 joules. Then divide by the water mass times the temperature rise.",
+        hints: [
+          "The energy that warmed the water is 17400 minus 616, which is 16784 joules.",
+          "c_w equals that energy divided by 0.200 times 20.0, so 16784 divided by 4.",
+        ],
+        working: [
+          { label: "Formula", latex: "c_w = \\dfrac{E - m_c c_c \\Delta\\theta}{m_w \\Delta\\theta}" },
+          { label: "Substitute", latex: "c_w = \\dfrac{17400 - 616}{0.200 \\times 20.0}" },
+          { label: "Answer", latex: "c_w = 4.2 \\times 10^{3}\\ \\text{J/(kg}\\,^{\\circ}\\text{C)}" },
+        ],
+        explain: "The specific heat capacity of the water is 4.2 times 10 to the power 3 joules per kilogram per degree Celsius. Take 616 from 17400 to get 16784 joules into the water, then divide by 0.200 times 20.0, which is 4.",
+      },
+      {
+        kind: "choice",
+        question: "In a fusion experiment the corrected melted-mass against time graph has gradient 2.99 x 10^-4 kg/s with a heater power of 100 W. Find the specific latent heat of fusion l_f.",
+        figure: "fig-pr4-09-fusion-graph",
+        options: [
+          "2.99 x 10^-4 J/kg",
+          "3.3 x 10^6 J/kg",
+          "3.3 x 10^5 J/kg",
+          "3.0 x 10^4 J/kg",
+        ],
+        correct: 2,
+        ask: "The gradient of the mass-time line equals power divided by l_f, so l_f is power divided by the gradient. Divide 100 by 2.99 times 10 to the power negative 4.",
+        hints: [
+          "Rearrange gradient equals P over l_f to get l_f equals P divided by gradient.",
+          "100 divided by 2.99 times 10 to the power negative 4 is about 3.3 times 10 to the power 5.",
+        ],
+        working: [
+          { label: "Formula", latex: "l_f = \\dfrac{P}{\\text{gradient}}" },
+          { label: "Substitute", latex: "l_f = \\dfrac{100}{2.99 \\times 10^{-4}}" },
+          { label: "Answer", latex: "l_f = 3.3 \\times 10^{5}\\ \\text{J/kg}" },
+        ],
+        explain: "The specific latent heat of fusion is 3.3 times 10 to the power 5 joules per kilogram, because 100 watts divided by 2.99 times 10 to the power negative 4 kilograms per second is about 3.3 times 10 to the power 5.",
+      },
+      {
+        kind: "choice",
+        question: "In the method of mixtures, which statement follows from conservation of energy?",
+        figure: "fig-pr4-07-method-of-mixtures",
+        options: [
+          "Heat gained by the metal equals heat gained by the water",
+          "The metal and the water end at different final temperatures",
+          "Heat lost by the water equals heat lost by the metal",
+          "Heat lost by the hot metal equals heat gained by the water and calorimeter",
+        ],
+        correct: 3,
+        ask: "The hot metal cools while the cool water and calorimeter warm. Energy is conserved, so where does the energy the metal loses go?",
+        hints: [
+          "No energy is created or destroyed, so the metal's lost energy must reappear elsewhere.",
+          "That energy is shared by the water and the calorimeter around it.",
+        ],
+        explain: "By conservation of energy, the heat lost by the hot metal equals the heat gained by the water and the calorimeter together. Setting those equal lets you solve for the metal's specific heat capacity.",
+      },
+      {
+        kind: "order",
+        prompt: "Put the steps of the method of mixtures in the correct order.",
+        items: [
+          "Heat the metal block in boiling water until it is at 100 degC",
+          "Weigh the cold water and record its starting temperature",
+          "Quickly transfer the hot metal into the calorimeter of cold water",
+          "Stir the water and record the highest temperature reached",
+          "Apply heat lost by the metal = heat gained by the water and calorimeter",
+        ],
+        ask: "The metal must be at a known hot temperature and the water at a known cold temperature before they meet. Only after mixing can you read the final temperature and calculate.",
+        hints: [
+          "You cannot calculate until you have the hot metal's temperature, the cold water's temperature, and the final mixed temperature.",
+          "Transfer quickly and stir so little heat is lost before you read the final temperature.",
+        ],
+        explain: "Heat the metal to 100 degrees Celsius and note the cold water's mass and temperature, then transfer the metal quickly, stir and read the highest temperature, and finally set heat lost by the metal equal to heat gained by the water and calorimeter.",
+      },
+      {
+        kind: "match",
+        prompt: "Match each set of apparatus to the quantity it is used to measure.",
+        pairs: [
+          { left: "Immersion heater in a lagged metal block with an ammeter and voltmeter", right: "Specific heat capacity by electrical heating" },
+          { left: "Lagged calorimeter with a stirrer and a joulemeter", right: "Specific heat capacity by the joulemeter method" },
+          { left: "2 funnels of crushed ice, one heater on and one heater off", right: "Specific latent heat of fusion" },
+          { left: "Beaker of boiling water on a top-pan balance", right: "Specific latent heat of vaporisation" },
+        ],
+        ask: "Look at whether the apparatus warms a solid block, warms water in a calorimeter, melts ice, or boils water away. Each of those measures a different quantity.",
+        hints: [
+          "A joulemeter reads energy directly, so it belongs with the calorimeter method for specific heat capacity.",
+          "Melting ice measures fusion; boiling water off a balance measures vaporisation.",
+        ],
+        explain: "The lagged block with meters measures specific heat capacity by electrical heating, the calorimeter with a joulemeter measures it by the joulemeter method, the 2 ice funnels measure the latent heat of fusion, and the boiling water on a balance measures the latent heat of vaporisation.",
+      },
+      {
+        kind: "graphpick",
+        prompt: "In the fusion experiment, which line shows how the corrected melted mass (m_1 - m_2) changes with time at a steady heater power?",
+        xLabel: "time / s",
+        yLabel: "melted mass (m_1 - m_2) / kg",
+        options: [
+          { points: [[0, 0], [1, 1], [2, 2], [3, 3], [4, 4]], caption: "A straight line from the origin" },
+          { points: [[0, 0], [1, 0.3], [2, 1.0], [3, 2.2], [4, 4.0]], caption: "A curve that gets steeper" },
+          { points: [[0, 2], [1, 2], [2, 2], [3, 2], [4, 2]], caption: "A flat horizontal line" },
+          { points: [[0, 4], [1, 3], [2, 2], [3, 1], [4, 0]], caption: "A line sloping downwards" },
+        ],
+        correct: 0,
+        ask: "The heater delivers energy at a steady rate, so the ice melts at a steady rate. Equal masses melt in equal times, starting from zero.",
+        hints: [
+          "A steady power means the melted mass grows by the same amount each second.",
+          "Equal steps each second, starting from the origin, give a straight line through the origin.",
+        ],
+        explain: "The correct line is the straight line rising from the origin. A steady heater power melts equal masses of ice in equal times, so the corrected mass increases at a constant rate and its gradient equals power divided by l_f.",
+      },
+      {
+        kind: "slider",
+        prompt: "A hot metal block loses 4006 J as it cools by 70.4 degC. It has a mass of 0.150 kg. Set the slider to its specific heat capacity c_m.",
+        min: 0,
+        max: 800,
+        step: 1,
+        unit: "J/(kg degC)",
+        start: 0,
+        targetMin: 375,
+        targetMax: 385,
+        ask: "Specific heat capacity is the energy divided by the mass times the temperature change, so work out 4006 divided by 0.150 times 70.4.",
+        hints: [
+          "c equals Q divided by mass times temperature change.",
+          "4006 divided by 0.150 times 70.4 is about 380.",
+        ],
+        working: [
+          { label: "Formula", latex: "c_m = \\dfrac{Q}{m(\\theta_{hot} - \\theta_f)}" },
+          { label: "Substitute", latex: "c_m = \\dfrac{4006}{0.150 \\times 70.4}" },
+          { label: "Answer", latex: "c_m = 3.8 \\times 10^{2}\\ \\text{J/(kg}\\,^{\\circ}\\text{C)}" },
+        ],
+        explain: "The specific heat capacity is 3.8 times 10 to the power 2 joules per kilogram per degree Celsius, because 4006 joules divided by 0.150 times 70.4 is about 380. That is close to the value for brass.",
+      },
+      {
+        kind: "tiles",
+        prompt: "Water boils steadily at 100 W. The mass-time graph has gradient 4.39 x 10^-5 kg/s. Build the working line for the specific latent heat of vaporisation l_v.",
+        tiles: [
+          "l_v =",
+          "100",
+          "\\div",
+          "4.39 \\times 10^{-5}",
+          "=",
+          "2.3 \\times 10^6",
+          "J/kg",
+          "6.0 \\times 10^5",
+          "\\times",
+        ],
+        answer: [
+          "l_v =",
+          "100",
+          "\\div",
+          "4.39 \\times 10^{-5}",
+          "=",
+          "2.3 \\times 10^6",
+          "J/kg",
+        ],
+        ask: "The gradient of the mass-time line equals power divided by l_v, so l_v is power divided by the gradient. Divide 100 by 4.39 times 10 to the power negative 5.",
+        hints: [
+          "Start the line with l_v equals, then 100 divided by 4.39 times 10 to the power negative 5.",
+          "100 divided by 4.39 times 10 to the power negative 5 is about 2.3 times 10 to the power 6 joules per kilogram.",
+        ],
+        working: [
+          { label: "Formula", latex: "l_v = \\dfrac{P}{\\text{gradient}}" },
+          { label: "Substitute", latex: "l_v = \\dfrac{100}{4.39 \\times 10^{-5}}" },
+          { label: "Answer", latex: "l_v = 2.3 \\times 10^{6}\\ \\text{J/kg}" },
+        ],
+        explain: "The specific latent heat of vaporisation is 2.3 times 10 to the power 6 joules per kilogram, because 100 watts divided by 4.39 times 10 to the power negative 5 kilograms per second is about 2.3 times 10 to the power 6.",
+      },
+      {
+        kind: "open",
+        prompt: "In the electrical method for specific heat capacity, explain the effect of heat loss to the surroundings on the measured value of c, and state one way to reduce it.",
+        figure: "fig-pr4-03-immersion-heater-block",
+        modelAnswer: "Not all of the electrical energy supplied stays in the block. Some of it leaks away to the cooler surroundings, so the real temperature rise is smaller than the supplied energy would give. But the calculation still credits all of the supplied energy to the block, so dividing that full energy by the smaller rise makes the measured specific heat capacity come out a little above the accepted value for the material. The loss can be reduced by lagging the block well with insulation, fitting a lid, and starting near room temperature so that less heat escapes during the heating.",
+        marks: [
+          "Some electrical energy is lost to the cooler surroundings, so not all of it warms the block.",
+          "Because all the supplied energy is credited to the block, the measured c comes out higher than the accepted value.",
+          "Reduce the loss by lagging well, or by starting near room temperature.",
+        ],
+        ask: "Think about whether all the electrical energy actually stays in the block, and what the lagging is there to stop.",
+      },
+      {
+        kind: "open",
+        prompt: "In the experiment to measure the specific latent heat of fusion of ice, explain the purpose of the second funnel of ice whose heater is switched off.",
+        figure: "fig-pr4-08-latent-fusion",
+        modelAnswer: "The warm room melts some of the ice on its own, not just the heater. The second funnel is a control: its heater is off, so the mass of melt it collects, m2, is the ice that the room alone melts in the same time. Subtracting this from the mass melted in the heated funnel, m1, gives m1 minus m2, the mass melted by the heater only. Using Pt equal to l_f times the quantity m1 minus m2 then gives a fair value of l_f. Without the control, the room melting would be counted as the heater's, so l_f would come out too small.",
+        marks: [
+          "The warm room melts some ice as well as the heater.",
+          "The control funnel (heater off) measures the mass the room melts, m2.",
+          "Subtracting gives m1 minus m2, the ice melted by the heater, used in Pt = l_f (m1 - m2).",
+        ],
+        ask: "Ask what else, besides the heater, could be melting the ice, and how a funnel with its heater off lets you measure and remove that.",
+      },
+    ],
+  },
+];

@@ -1,0 +1,66 @@
+HANDOFF: TP1 Practical Skills (Tuition teach-then-test lesson content)
+App topic: TP1 Practical Skills  <-  Practical Chapter 1 (Skills and Knowledge for Experiments)
+Date: 2026-07-23. From: Coddy Cowork.  FIRST of the 6-chapter PHYSICS PRACTICAL run.
+
+SOURCE: /root/work/practical-export/Practical Chapter 01 - Skills and Knowledge for Experiments.md
+(the copyright-free recreation). Content authored ORIGINALLY from it; sample numbers are fresh
+verified values. This is Paper-3 practical-skills content, kept in the same teach-then-test shape as
+the theory topics T1-T20 so it can be wired in the same way. NOTE ON IDS: I used topic code "TP1" and
+ids tp1.* / files p1-*.ts to keep the practical run distinct from the theory T1-T20; Dev-Claude can
+remap the ids/codes to whatever the app's practical section expects.
+
+SUBCONCEPT COUNT AND CODES
+9 boxes: 6 teaching subconcepts + 2 revision checkpoints + 1 topical quiz. One box per file:
+  p1-1.ts  TP1.1  The four skill stages and laboratory safety            (source 1.1, 1.2)
+  p1-2.ts  TP1.2  Variables and apparatus                                (source 1.3, 1.4)
+  p1-3.ts  TP1.3  Recording readings, significant figures, standard form (source 1.5, 1.6)
+  p1-4.ts  TP1.4  Accuracy, precision, random vs systematic errors       (source 1.7, 1.8)
+  p1-5.ts  TP1.5  Presenting data in a table                             (source 1.9)
+  p1-6.ts  TP1.6  Drawing graphs; gradient, intercept and evaluation     (source 1.10, 1.11)
+  p1-rev1.ts R1   Revision 1 (TP1.1 to TP1.3)
+  p1-rev2.ts R2   Revision 2 (TP1.4 to TP1.6)
+  p1-quiz.ts Quiz whole-topic quiz
+Totals: 115 steps, 82 questions.
+
+MIXED: mostly CONCEPTUAL (skills, safety, variables, apparatus, errors, tables, graph rules). The
+CALCULATION items (significant-figure counts, averaging, period, gradient/intercept) carry a
+`formula` field and a `working` block [Formula / Substitute / Answer(-with-unit)].
+
+ANSWER KEYS (owner's priority - every one independently re-derived and confirmed correct):
+  - Significant figures: 0.0450 -> 3; 1.007 -> 4; 3200 -> 2; 0.0308 -> 3; 12.0 -> 3. Decimal places:
+    1.415 -> 3 dp. 8 cm on a millimetre rule -> written 8.0 cm.
+  - Gradient/intercept (y = mx + c): line through (0, 2.0) and (5.0, 12.0) -> gradient 2.0, intercept
+    2.0; line through (2.0, 5.0) and (6.0, 13.0) -> gradient 2.0, intercept 1.0.
+  - Averaging: mean of 30.2, 30.5, 30.2 = 90.9/3 = 30.3 s. Period T = 30.0/20 = 1.5 s.
+  - Accuracy = closeness to the TRUE value (spoiled by SYSTEMATIC error); precision = closeness of
+    repeats (spoiled by RANDOM error). Random errors reduced by repeating/averaging; systematic
+    errors are NOT (fix the method/instrument). Standard form: 1 mm = 1 x 10^-3 m.
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit: 0 type errors across all 9 files.
+2. Structural validator: 6 lessons each >= 3 questions with a say + 2 to 4 starred keywords; revisions
+   EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5; figure only on
+   concept/insight/choice/open; all indices in range. PASSED.
+3. Calc audit + independent answer-key check: every significant-figure count, average, period,
+   gradient and intercept recomputed and matched to the marked option/target; every choice `correct`
+   index confirmed; every spoterror `errorLine` (0-based) confirmed to target the genuinely false
+   line ("averaging removes a systematic error"; "the dependent variable is the one you change");
+   classify bins confirmed (reaction time / estimating between marks / inconsistent parallax =
+   RANDOM; zero error / wrong calibration / consistent parallax = SYSTEMATIC); apparatus-to-use
+   matches and the 4-stage order confirmed. No errors found.
+4. Compliance scan: digits in spoken fields; on-screen fields use _/^ (s^2, T^2, 10^-3); equations
+   only in `formula`/`working`; no em/en dashes; no emojis; no grade or pass promises. Clean.
+Correct-option positions spread across 0 to 3 (quiz choice indices 2,0,3,1,2,0,3,1,2,0; revisions
+2,0,3,1,2 and 1,3,0,2,3).
+
+FIGURES: no NEW art needed - references the EXISTING practical Chapter-1 SVG library that was drawn
+with the markdown recreation: fig-pr1-01-skills-flow, fig-pr1-02-variables,
+fig-pr1-03-accuracy-precision, fig-pr1-04-random-error, fig-pr1-05-systematic-error,
+fig-pr1-06-results-table, fig-pr1-07-graph-bestfit, fig-pr1-08-bestfit-good-bad. Colour words in each
+`say` follow the house dark-theme palette used in those SVGs: primary lines/apparatus/point crosses
+and labels white/grey (#EAEAEA); grid, guides and the true-value line grey (#9AA0A6); the best-fit
+line blue (#6FB7E0); the gradient triangle and highlighted/calculated column amber (#E8B65A); the
+accurate cluster / "good" marker green (#86C98B); an anomalous point / "poor" line / off-centre shot
+red (#E58F8F). Multi-panel figures described top/bottom, never left/right.
+
+NEXT: TP2 Practical Chapter 2 (Measurements and Kinematics).
