@@ -8,6 +8,16 @@ import { NamedIcon } from "@/components/icons";
 import { Sci } from "@/components/sci-text";
 import { ImmersiveShell } from "@/components/immersive-shell";
 import { physicsFigureSrc } from "@/lib/teaching";
+import {
+  CORRECT_PRAISE,
+  NEXT_NUDGE,
+  RETRY_NUDGE,
+  WRONG_LEAD,
+  isProblem,
+  isQuestion,
+  openerFor,
+  pick,
+} from "@/lib/lesson-voice";
 import { speak, stopSpeaking } from "@/lib/speak";
 
 // Render LaTeX with KaTeX (fonts bundled, no network). Falls back to the raw
@@ -202,71 +212,8 @@ function Figure({ name }: { name?: string }) {
 // gives escalating `hints` on Help, and reads the teaching summary at the end,
 // all on-device speech (no AI, no cost). Runs inside the ImmersiveShell.
 
-const PROBLEM_KINDS = ["slider", "order", "match", "tiles", "plot", "circuit", "cloze", "spoterror", "classify", "graphpick"] as const;
-function isProblem(kind: LessonStep["kind"]): boolean {
-  return (PROBLEM_KINDS as readonly string[]).includes(kind);
-}
-function isQuestion(kind: LessonStep["kind"]): boolean {
-  return kind === "choice" || kind === "open" || isProblem(kind);
-}
-
-// Gugu talks like a person, not a script. All her spoken reactions are drawn
-// from rotating pools (varied by step index) so she never says the same line
-// twice in a row, and she gives NO hint on the opener (a tutor helps when asked).
-function pick<T>(pool: T[], n: number): T {
-  return pool[((n % pool.length) + pool.length) % pool.length];
-}
-
-// A warm, natural lead-in to a question. Rotates so consecutive questions differ.
-const OPENER_LEADS = [
-  "Alright, let's look at this one.",
-  "Okay, how about this one?",
-  "Here is another for you.",
-  "Let's try this next.",
-  "Now, see what you make of this.",
-  "Good, on we go. Take a look at this one.",
-  "Right then, have a read of this.",
-  "This one next. Take your time.",
-];
-// A short, natural cue for interactions that need direction (choice needs none).
-const INTERACTION_CUE: Partial<Record<LessonStep["kind"], string>> = {
-  slider: "Slide across to the value you think is right.",
-  order: "Put these in the right order.",
-  match: "Match up each one to its pair.",
-  tiles: "Build the answer from the pieces.",
-  plot: "Tap the spot on the grid.",
-  circuit: "Close the switches you need.",
-  cloze: "Fill in each blank.",
-  spoterror: "See if you can spot the slip.",
-  classify: "Sort each one into its group.",
-  graphpick: "Pick the graph that fits.",
-  open: "Have a go at writing your answer.",
-};
-function openerFor(kind: LessonStep["kind"], n: number): string | undefined {
-  if (!isQuestion(kind)) return undefined;
-  const lead = pick(OPENER_LEADS, n);
-  const cue = INTERACTION_CUE[kind];
-  return cue ? `${lead} ${cue}` : lead;
-}
-
-// Warm praise when a student answers correctly, and a natural on-you-go nudge.
-const CORRECT_PRAISE = [
-  "Yes, that is it.",
-  "Exactly right, well done.",
-  "Good job, that is correct.",
-  "Nice, you have got it.",
-  "Lovely, spot on.",
-  "That is the one, nicely done.",
-];
-const NEXT_NUDGE = [
-  "Let's try the next one.",
-  "On to the next.",
-  "How about this next one.",
-  "Right, let's keep going.",
-];
-// A gentle lead-in when a pick is wrong, and an encouraging invitation to retry.
-const WRONG_LEAD = ["Not quite.", "Hmm, not this time.", "Close, but not that one.", "Not quite that one."];
-const RETRY_NUDGE = ["Have another go.", "Give it another try.", "Want to try once more?", "Have another look."];
+// Gugu's spoken personality (openers, praise, retry nudges) lives in one shared
+// module so the pre-generated premium audio never drifts from what plays live.
 
 export function LessonPlayer({
   steps,

@@ -5,8 +5,22 @@ import { fixedGuguLines } from "@/lib/gugu-lines";
 import { LIFE_TRACKS } from "@/lib/life-skills";
 import { PRACTICAL_SUBJECTS } from "@/lib/practical-lab";
 import { PLAYGROUND_MATHS } from "@/lib/playground-maths";
+import { fixedVoiceLines } from "@/lib/lesson-voice";
+import { subconceptsFor } from "@/lib/teaching/subconcepts";
 import { hashLine, normalizeLine } from "@/lib/speak";
 import type { LessonStep } from "@/lib/lesson-steps";
+
+// Optional scope filter: which spoken fields to generate. Default is everything.
+// e.g.  GUGU_TTS_FIELDS=say,explain,modelAnswer npm run gugu:tts   (skip hints/asks)
+const FIELDS = new Set(
+  (process.env.GUGU_TTS_FIELDS ?? "say,ask,hints,explain,modelAnswer,system")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean),
+);
+
+// The Tuition subconcept topics whose spoken lines to include (grows per topic).
+const SUBCONCEPT_TOPICS = ["t2-kinematics"];
 
 // Pre-generate Gugu's voice with ElevenLabs (or any TTS you point it at). Every
 // scripted line becomes public/audio/gugu/<hash>.mp3, plus a manifest. The app
@@ -24,9 +38,11 @@ const API = "https://api.elevenlabs.io/v1/text-to-speech";
 
 function stepSpokenLines(step: LessonStep): string[] {
   const out: string[] = [];
-  if ("ask" in step && step.ask) out.push(step.ask);
-  if ("hints" in step && step.hints) out.push(...step.hints);
-  if ("explain" in step && step.explain) out.push(step.explain);
+  if (FIELDS.has("ask") && "ask" in step && step.ask) out.push(step.ask);
+  if (FIELDS.has("hints") && "hints" in step && step.hints) out.push(...step.hints);
+  if (FIELDS.has("explain") && "explain" in step && step.explain) out.push(step.explain);
+  if (FIELDS.has("say") && "say" in step && step.say) out.push(step.say);
+  if (FIELDS.has("modelAnswer") && "modelAnswer" in step && step.modelAnswer) out.push(step.modelAnswer);
   return out;
 }
 
@@ -43,6 +59,12 @@ function collectLines(): string[] {
   for (const arr of Object.values(PLAYGROUND_MATHS))
     for (const lesson of arr)
       for (const step of lesson.steps) for (const x of stepSpokenLines(step)) set.add(normalizeLine(x));
+  // Tuition subconcept lessons (Kinematics, then more as topics land).
+  for (const topic of SUBCONCEPT_TOPICS)
+    for (const box of subconceptsFor(topic) ?? [])
+      for (const step of box.steps) for (const x of stepSpokenLines(step)) set.add(normalizeLine(x));
+  // The engine's fixed question openers and correct-answer reactions.
+  if (FIELDS.has("system")) for (const l of fixedVoiceLines()) set.add(normalizeLine(l));
   return [...set].filter((x) => x.length > 0 && !x.includes("{"));
 }
 
@@ -99,9 +121,16 @@ async function main(): Promise<void> {
     }
   }
 
-  fs.writeFileSync(path.join(outDir, "manifest.json"), JSON.stringify(hashes));
+  // Build the manifest from the audio that ACTUALLY exists on disk, so a scoped
+  // run (e.g. GUGU_TTS_FIELDS=say) never drops previously generated lines, and a
+  // line whose generation failed is not falsely listed as available.
+  const onDisk = fs
+    .readdirSync(outDir)
+    .filter((f) => f.endsWith(".mp3"))
+    .map((f) => f.replace(/\.mp3$/, ""));
+  fs.writeFileSync(path.join(outDir, "manifest.json"), JSON.stringify(onDisk));
   console.log(
-    `\nDone. ${made} generated, ${skipped} already existed, ${failed} failed. ${hashes.length} lines in the manifest.`
+    `\nDone. ${made} generated, ${skipped} already existed, ${failed} failed. ${onDisk.length} files in the manifest (${hashes.length} lines collected this run).`
   );
   if (failed > 0) process.exitCode = 1;
 }
