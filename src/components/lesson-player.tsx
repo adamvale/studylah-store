@@ -88,31 +88,63 @@ function isQuestion(kind: LessonStep["kind"]): boolean {
   return kind === "choice" || kind === "open" || isProblem(kind);
 }
 
-// What Gugu says when a question first appears: a light nudge that tells the
-// student to read and think, and names the interaction in a few words. It gives
-// NO hint (a human tutor only helps when asked) so the student thinks first.
-const OPENERS: Partial<Record<LessonStep["kind"], string>> = {
-  choice: "Take a moment to read this and think about it, then choose your answer.",
-  open: "Read this and take a moment to think, then write your answer.",
-  slider: "Read this and think about it, then slide to the value you think is right.",
-  order: "Read this and think about it, then put the steps in the right order.",
-  match: "Read this and think about it, then match each one to its pair.",
-  tiles: "Read this and think about it, then build your answer from the tiles.",
-  plot: "Read this and think about it, then tap the point on the grid.",
-  circuit: "Read this and think about it, then close the switches you need.",
-  cloze: "Read this and think about it, then fill in each blank.",
-  spoterror: "Read the working carefully and think about it, then tap the line with the mistake.",
-  classify: "Read this and think about it, then sort each one into its group.",
-  graphpick: "Read this and think about it, then pick the graph that matches.",
-};
+// Gugu talks like a person, not a script. All her spoken reactions are drawn
+// from rotating pools (varied by step index) so she never says the same line
+// twice in a row, and she gives NO hint on the opener (a tutor helps when asked).
+function pick<T>(pool: T[], n: number): T {
+  return pool[((n % pool.length) + pool.length) % pool.length];
+}
 
-// What Gugu says the moment a student answers correctly, like any warm tutor.
-const CORRECT_PRAISE = [
-  "Good job, that is exactly right.",
-  "Well done, that is correct.",
-  "Nice work, you have got it.",
-  "Lovely, that is the right answer.",
+// A warm, natural lead-in to a question. Rotates so consecutive questions differ.
+const OPENER_LEADS = [
+  "Alright, let's look at this one.",
+  "Okay, how about this one?",
+  "Here is another for you.",
+  "Let's try this next.",
+  "Now, see what you make of this.",
+  "Good, on we go. Take a look at this one.",
+  "Right then, have a read of this.",
+  "This one next. Take your time.",
 ];
+// A short, natural cue for interactions that need direction (choice needs none).
+const INTERACTION_CUE: Partial<Record<LessonStep["kind"], string>> = {
+  slider: "Slide across to the value you think is right.",
+  order: "Put these in the right order.",
+  match: "Match up each one to its pair.",
+  tiles: "Build the answer from the pieces.",
+  plot: "Tap the spot on the grid.",
+  circuit: "Close the switches you need.",
+  cloze: "Fill in each blank.",
+  spoterror: "See if you can spot the slip.",
+  classify: "Sort each one into its group.",
+  graphpick: "Pick the graph that fits.",
+  open: "Have a go at writing your answer.",
+};
+function openerFor(kind: LessonStep["kind"], n: number): string | undefined {
+  if (!isQuestion(kind)) return undefined;
+  const lead = pick(OPENER_LEADS, n);
+  const cue = INTERACTION_CUE[kind];
+  return cue ? `${lead} ${cue}` : lead;
+}
+
+// Warm praise when a student answers correctly, and a natural on-you-go nudge.
+const CORRECT_PRAISE = [
+  "Yes, that is it.",
+  "Exactly right, well done.",
+  "Good job, that is correct.",
+  "Nice, you have got it.",
+  "Lovely, spot on.",
+  "That is the one, nicely done.",
+];
+const NEXT_NUDGE = [
+  "Let's try the next one.",
+  "On to the next.",
+  "How about this next one.",
+  "Right, let's keep going.",
+];
+// A gentle lead-in when a pick is wrong, and an encouraging invitation to retry.
+const WRONG_LEAD = ["Not quite.", "Hmm, not this time.", "Close, but not that one.", "Not quite that one."];
+const RETRY_NUDGE = ["Have another go.", "Give it another try.", "Want to try once more?", "Have another look."];
 
 export function LessonPlayer({
   steps,
@@ -142,17 +174,17 @@ export function LessonPlayer({
   const ask = "ask" in step ? step.ask : undefined;
   const hints = ("hints" in step ? step.hints : undefined) ?? [];
   const explain = "explain" in step ? step.explain : undefined;
-  // Gugu's opening line for a question (a nudge to read and think, no hint yet).
-  const opener = OPENERS[step.kind];
+  // Gugu's opening line for a question: a varied, natural lead-in (no hint yet).
+  const opener = openerFor(step.kind, i);
   // Help ladder, on demand only: the scripted `ask` guidance first, then hints.
   const helpItems = ask ? [ask, ...hints] : hints;
 
   // A warm spoken reaction after a correct answer: praise, plus "let's try the
   // next one" only when a question actually follows.
   function praiseLine(): string {
-    const base = CORRECT_PRAISE[i % CORRECT_PRAISE.length];
+    const base = pick(CORRECT_PRAISE, i);
     const nextIsQuestion = !last && isQuestion(steps[i + 1].kind);
-    return nextIsQuestion ? `${base} Let's try the next one.` : base;
+    return nextIsQuestion ? `${base} ${pick(NEXT_NUDGE, i)}` : base;
   }
 
   // Teaching steps: Gugu speaks `say` (falling back to the body) to teach the
@@ -349,7 +381,7 @@ export function LessonPlayer({
                       const hi = Math.min(hintsShown, Math.max(helpItems.length - 1, 0));
                       const hint = helpItems[hi] ?? "Think it through once more.";
                       setHintsShown((n) => Math.min(n + 1, helpItems.length));
-                      speak(`Not quite. ${hint} Have another go.`);
+                      speak(`${pick(WRONG_LEAD, hintsShown)} ${hint} ${pick(RETRY_NUDGE, hintsShown)}`);
                     }
                   }}
                   className={`flex w-full items-center gap-3 rounded-xl border-2 px-4 py-3 text-left text-sm text-ink transition-colors ${tone}`}
