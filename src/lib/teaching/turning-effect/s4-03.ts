@@ -14,8 +14,9 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Two conditions, both needed",
+        figure: "fig-05-08a-out-of-equilibrium",
         body: "A body is in *equilibrium* when it is at rest and not turning. For that, *two conditions* must both hold at once: there is *no resultant force*, and there is *no resultant moment*.",
-        say: "Equilibrium means a body just stays put. It does not drift off in any direction, and it does not spin. For that to happen, 2 separate conditions have to be true at the same time. The forces must cancel out, and the turning effects must cancel out too. Miss either one and the body will not stay still.",
+        say: "Equilibrium means a body just stays put. It does not drift off in any direction, and it does not spin. For that to happen, 2 separate conditions have to be true at the same time. The forces must cancel out, and the turning effects must cancel out too. Miss either one and the body will not stay still. The picture shows what happens when each condition fails. In the top half a single yellow force is left over on a white block, and a blue dashed arrow shows it sliding away. In the bottom half the forces balance but a yellow force still acts off to one side of the grey pivot, so a blue curved arrow shows the white beam turning.",
       },
       {
         kind: "concept",

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 600" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="eff" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/>
+    </marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .obj { fill:#EAEAEA; opacity:0.22; stroke:#EAEAEA; stroke-width:1.6; }
+    .pivot { fill:#9AA0A6; opacity:0.5; stroke:#9AA0A6; stroke-width:1.4; }
+    .effort { stroke:#E8B65A; stroke-width:2.6; }
+    .elbl { fill:#E8B65A; font-size:13px; }
+    .cap { fill:#9AA0A6; font-size:13.5px; text-anchor:middle; }
+    .div { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:4 4; }
+  </style>
+
+  <!-- 1. a door swinging on its hinge, seen from above -->
+  <circle class="pivot" cx="80" cy="96" r="9"/>
+  <text class="cap" x="80" y="72">hinge</text>
+  <rect class="obj" x="80" y="87" width="212" height="18"/>
+  <line class="effort" x1="292" y1="52" x2="292" y2="84" marker-end="url(#eff)"/>
+  <text class="elbl" x="304" y="66">effort</text>
+  <text class="cap" x="210" y="146">A door turns about its hinge.</text>
+  <line class="div" x1="40" y1="176" x2="380" y2="176"/>
+
+  <!-- 2. a spanner turning a nut -->
+  <circle class="pivot" cx="80" cy="272" r="16"/>
+  <text class="cap" x="80" y="242">nut</text>
+  <rect class="obj" x="88" y="264" width="196" height="16"/>
+  <line class="effort" x1="284" y1="228" x2="284" y2="260" marker-end="url(#eff)"/>
+  <text class="elbl" x="296" y="242">effort</text>
+  <text class="cap" x="210" y="322">A spanner turns about the nut.</text>
+  <line class="div" x1="40" y1="352" x2="380" y2="352"/>
+
+  <!-- 3. a child on a see-saw -->
+  <rect class="obj" x="96" y="452" width="228" height="14"/>
+  <path class="pivot" d="M210,468 L232,506 L188,506 Z"/>
+  <text class="cap" x="210" y="530">pivot</text>
+  <line class="effort" x1="120" y1="410" x2="120" y2="446" marker-end="url(#eff)"/>
+  <text class="elbl" x="132" y="424">effort</text>
+  <text class="cap" x="210" y="566">A see-saw turns about its pivot.</text>
+</svg>

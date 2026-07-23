@@ -14,8 +14,9 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "A force can turn things",
+        figure: "fig-05-01a-everyday-turning",
         body: "A force does not only push an object along, it can also make it *turn* about a fixed point called the *pivot* (or fulcrum). The *moment of a force* measures the size of that *turning effect*.",
-        say: "A force can do more than shove something in a straight line. Push a door, loosen a nut with a spanner, or sit on a see-saw, and the object swings about a fixed point we call the pivot. The moment of a force is just our measure of how strong that turning effect is.",
+        say: "A force can do more than shove something in a straight line. Push a door, loosen a nut with a spanner, or sit on a see-saw, and the object swings about a fixed point we call the pivot. The moment of a force is just our measure of how strong that turning effect is. The picture stacks the 3 everyday examples. In the top panel a yellow effort arrow swings a white door about its grey hinge. In the middle a yellow arrow turns a white spanner about the grey nut. In the bottom panel a yellow arrow presses down on one end of a white see-saw, which turns about the grey pivot underneath.",
       },
       {
         kind: "concept",

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 320" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="hop" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#9AA0A6"/>
+    </marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .num { font-size:30px; text-anchor:middle; }
+    .hop { stroke:#9AA0A6; stroke-width:1.6; fill:none; stroke-dasharray:5 3; }
+    .note { fill:#9AA0A6; font-size:13px; }
+    .callout { fill:none; stroke:#E8B65A; stroke-width:1.4; }
+    .ctext { fill:#E8B65A; font-size:15px; text-anchor:middle; }
+    .a { fill:#E8B65A; }
+  </style>
+
+  <!-- the decimal point hops 6 places to the left -->
+  <text class="note" x="210" y="34" text-anchor="middle">the point hops 6 places left</text>
+  <path class="hop" d="M312,58 Q210,20 150,58" marker-end="url(#hop)"/>
+
+  <text class="num" x="210" y="100">5 280 000.</text>
+
+  <text class="note" x="210" y="140" text-anchor="middle">becomes</text>
+
+  <text class="num" x="210" y="190"><tspan class="a">5.28</tspan> &#215; 10&#8310;</text>
+
+  <!-- the rule that fixes what A may be -->
+  <rect class="callout" x="70" y="230" width="280" height="56" rx="10"/>
+  <text class="ctext" x="210" y="255">A must be at least 1</text>
+  <text class="ctext" x="210" y="275">and less than 10</text>
+</svg>

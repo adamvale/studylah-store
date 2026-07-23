@@ -13,11 +13,12 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Prefixes",
+        figure: "fig-01-02a-prefix-ladder",
         body: "A *prefix* is a factor placed in front of a *unit* so we can write very large or very small numbers neatly. Each prefix stands for a fixed power of *ten*.",
         formula: {
           latex: "\\text{kilo } k = 10^{3}, \\quad \\text{milli } m = 10^{-3}, \\quad \\text{mega } M = 10^{6}, \\quad \\text{nano } n = 10^{-9}",
         },
-        say: "A prefix is a shorthand factor we stick in front of a unit so we do not have to write out long strings of zeros. Kilo means 10 to the power 3, so a kilometre is 1000 metres. Milli means 10 to the power minus 3, mega means 10 to the power 6, and nano means 10 to the power minus 9. Each prefix always stands for the same power of 10.",
+        say: "A prefix is a shorthand factor we stick in front of a unit so we do not have to write out long strings of zeros. Kilo means 10 to the power 3, so a kilometre is 1000 metres. Milli means 10 to the power minus 3, mega means 10 to the power 6, and nano means 10 to the power minus 9. Each prefix always stands for the same power of 10. In the picture the prefixes sit on a ladder, giga at the top down to nano at the bottom, each rung giving the name, the symbol and the power of 10, with the plain unit picked out in amber in the middle. A grey arrow down the left says divide, and a grey arrow up the right says multiply.",
       },
       {
         kind: "concept",
@@ -28,6 +29,7 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Standard form",
+        figure: "fig-01-03a-standard-form",
         body: "*Standard form* writes any value as a *number* A times a *power of 10*, where A is at least 1 and less than 10.",
         formula: {
           latex: "A \\times 10^{n}, \\quad 1 \\le A < 10",
@@ -36,7 +38,7 @@ export const BOXES: Subconcept[] = [
             { sym: "n", meaning: "a whole number, the power of 10" },
           ],
         },
-        say: "Standard form is a tidy way to write very big or very small numbers. You write one number, called A, times 10 to the power n. The rule is that A must be at least 1 and less than 10, so there is exactly one digit before the decimal point. The power n tells you how many places the decimal point has moved. A positive n means a large number, and a negative n means a small number.",
+        say: "Standard form is a tidy way to write very big or very small numbers. You write one number, called A, times 10 to the power n. The rule is that A must be at least 1 and less than 10, so there is exactly one digit before the decimal point. The power n tells you how many places the decimal point has moved. A positive n means a large number, and a negative n means a small number. The picture works one through. 5 280 000 sits at the top, a grey dashed arrow shows the decimal point hopping 6 places to the left, and underneath you get 5.28 times 10 to the power 6, with the 5.28 picked out in amber. An amber note repeats the rule that A must be at least 1 and less than 10.",
       },
       {
         kind: "choice",

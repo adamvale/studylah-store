@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 440" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="fY" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/>
+    </marker>
+    <marker id="mB" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6FB7E0"/>
+    </marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .obj { fill:#EAEAEA; opacity:0.22; stroke:#EAEAEA; stroke-width:1.6; }
+    .pivot { fill:#9AA0A6; opacity:0.5; stroke:#9AA0A6; stroke-width:1.4; }
+    .force { stroke:#E8B65A; stroke-width:2.6; }
+    .flbl { fill:#E8B65A; font-size:13px; }
+    .motion { stroke:#6FB7E0; stroke-width:2; stroke-dasharray:6 4; fill:none; }
+    .mlbl { fill:#6FB7E0; font-size:13px; }
+    .ttl { font-size:15px; font-weight:bold; text-anchor:middle; }
+    .cap { fill:#9AA0A6; font-size:13px; text-anchor:middle; }
+    .div { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:4 4; }
+  </style>
+
+  <!-- Top: one force left over, so the block slides -->
+  <text class="ttl" x="210" y="34">Fails the force condition</text>
+  <rect class="obj" x="180" y="76" width="76" height="52"/>
+  <line class="force" x1="92" y1="102" x2="174" y2="102" marker-end="url(#fY)"/>
+  <text class="flbl" x="92" y="64">one force left over</text>
+  <line class="motion" x1="190" y1="152" x2="300" y2="152" marker-end="url(#mB)"/>
+  <text class="mlbl" x="312" y="157">slides</text>
+  <text class="cap" x="210" y="186">The forces do not cancel, so it will not stay put.</text>
+
+  <line class="div" x1="40" y1="214" x2="380" y2="214"/>
+
+  <!-- Bottom: one moment left over, so the beam turns -->
+  <text class="ttl" x="210" y="250">Fails the moment condition</text>
+  <rect class="obj" x="104" y="316" width="212" height="14"/>
+  <path class="pivot" d="M210,332 L230,366 L190,366 Z"/>
+  <line class="force" x1="296" y1="274" x2="296" y2="310" marker-end="url(#fY)"/>
+  <text class="flbl" x="286" y="300" text-anchor="end">one moment left</text>
+  <path class="motion" d="M116,300 A60,60 0 0 1 158,272" marker-end="url(#mB)"/>
+  <text class="mlbl" x="110" y="286" text-anchor="end">turns</text>
+  <text class="cap" x="210" y="400">The moments do not cancel, so it will not stay still.</text>
+</svg>

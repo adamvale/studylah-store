@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 512" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="dn" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#9AA0A6"/>
+    </marker>
+    <marker id="up" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#9AA0A6"/>
+    </marker>
+  </defs>
+  <style>
+    text { fill:#EAEAEA; }
+    .hdr { fill:#9AA0A6; font-size:13px; }
+    .guide { stroke:#9AA0A6; stroke-width:1.8; fill:none; }
+    .rule { stroke:#9AA0A6; stroke-width:1; }
+    .row { font-size:16px; }
+    .base { fill:#E8B65A; font-size:16px; font-weight:bold; }
+    .cap { fill:#9AA0A6; font-size:13px; }
+  </style>
+
+  <!-- column headings -->
+  <text class="hdr" x="96" y="62">prefix</text>
+  <text class="hdr" x="214" y="62" text-anchor="middle">symbol</text>
+  <text class="hdr" x="330" y="62" text-anchor="end">factor</text>
+  <line class="rule" x1="90" y1="72" x2="336" y2="72"/>
+
+  <!-- the two directions of the swap -->
+  <text class="cap" x="40" y="62" text-anchor="middle">divide</text>
+  <line class="guide" x1="40" y1="86" x2="40" y2="430" marker-end="url(#dn)"/>
+  <text class="cap" x="380" y="62" text-anchor="middle">multiply</text>
+  <line class="guide" x1="380" y1="430" x2="380" y2="86" marker-end="url(#up)"/>
+
+  <!-- rungs: giga at the top down to nano -->
+  <text class="row" x="96" y="104">giga</text>
+  <text class="row" x="214" y="104" text-anchor="middle">G</text>
+  <text class="row" x="330" y="104" text-anchor="end">10&#8313;</text>
+
+  <text class="row" x="96" y="146">mega</text>
+  <text class="row" x="214" y="146" text-anchor="middle">M</text>
+  <text class="row" x="330" y="146" text-anchor="end">10&#8310;</text>
+
+  <text class="row" x="96" y="188">kilo</text>
+  <text class="row" x="214" y="188" text-anchor="middle">k</text>
+  <text class="row" x="330" y="188" text-anchor="end">10&#179;</text>
+
+  <text class="base" x="96" y="230">the unit</text>
+  <text class="base" x="214" y="230" text-anchor="middle">&#8212;</text>
+  <text class="base" x="330" y="230" text-anchor="end">10&#8304;</text>
+
+  <text class="row" x="96" y="272">centi</text>
+  <text class="row" x="214" y="272" text-anchor="middle">c</text>
+  <text class="row" x="330" y="272" text-anchor="end">10&#8315;&#178;</text>
+
+  <text class="row" x="96" y="314">milli</text>
+  <text class="row" x="214" y="314" text-anchor="middle">m</text>
+  <text class="row" x="330" y="314" text-anchor="end">10&#8315;&#179;</text>
+
+  <text class="row" x="96" y="356">micro</text>
+  <text class="row" x="214" y="356" text-anchor="middle">&#181;</text>
+  <text class="row" x="330" y="356" text-anchor="end">10&#8315;&#8310;</text>
+
+  <text class="row" x="96" y="398">nano</text>
+  <text class="row" x="214" y="398" text-anchor="middle">n</text>
+  <text class="row" x="330" y="398" text-anchor="end">10&#8315;&#8313;</text>
+
+  <line class="rule" x1="90" y1="416" x2="336" y2="416"/>
+  <text class="cap" x="210" y="466" text-anchor="middle">Going down to a prefixed unit you divide by the factor;</text>
+  <text class="cap" x="210" y="486" text-anchor="middle">coming back up to the unit you multiply by it.</text>
+</svg>
