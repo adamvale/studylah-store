@@ -2,45 +2,62 @@
   <style>
     text { fill:#EAEAEA; font-size:12px; }
     .rule { fill:#EAEAEA; fill-opacity:0.10; stroke:#EAEAEA; stroke-width:1.6; }
-    .pivot { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
-    .base { fill:none; stroke:#EAEAEA; stroke-width:2.4; }
-    .force-weight { fill:none; stroke:#E58F8F; stroke-width:2.4; }
-    .guide { fill:none; stroke:#9AA0A6; stroke-width:1.2; }
-    .guide-dash { fill:none; stroke:#9AA0A6; stroke-width:1.2; stroke-dasharray:4 3; }
+    .pivot { fill:#9AA0A6; fill-opacity:0.35; stroke:#9AA0A6; stroke-width:1.6; }
+    .base { fill:none; stroke:#9AA0A6; stroke-width:2.4; }
+    .force { fill:none; stroke:#6FB7E0; stroke-width:2.4; }
+    .lbl-force { fill:#6FB7E0; font-size:13px; }
+    .turn { fill:none; stroke:#E8B65A; stroke-width:2; }
+    .lbl-turn { fill:#E8B65A; font-size:11.5px; }
+    .weight { fill:none; stroke:#E58F8F; stroke-width:2.4; }
     .lbl-weight { fill:#E58F8F; font-size:13px; }
+    .guide { fill:none; stroke:#9AA0A6; stroke-width:1.2; }
+    .guide-dash { fill:none; stroke:#9AA0A6; stroke-width:1.1; stroke-dasharray:4 3; }
     .lbl-guide { fill:#9AA0A6; }
+    .cap { fill:#9AA0A6; font-size:12px; }
   </style>
   <defs>
-    <marker id="c4red" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#E58F8F"/></marker>
-    <marker id="c4gry" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto-start-reverse" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#9AA0A6"/></marker>
+    <marker id="m4b" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#6FB7E0"/></marker>
+    <marker id="m4a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/></marker>
+    <marker id="m4r" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L7,3 L0,6 Z" fill="#E58F8F"/></marker>
+    <marker id="m4g" markerWidth="8" markerHeight="8" refX="6.5" refY="3" orient="auto-start-reverse" markerUnits="strokeWidth"><path d="M0,0 L6.5,3 L0,6 Z" fill="#9AA0A6"/></marker>
   </defs>
 
-  <!-- TOP: pivot under the centre of gravity, zero perpendicular distance -->
-  <rect class="rule" x="70" y="95" width="280" height="12"/>
-  <text x="300" y="88">uniform rule</text>
-  <path class="pivot" d="M210,107 L196,131 L224,131 Z"/>
-  <path class="base" d="M168,131 L252,131"/>
-  <path class="guide-dash" d="M210,107 L210,134"/>
-  <path class="force-weight" d="M210,40 L210,92" marker-end="url(#c4red)"/>
-  <circle cx="210" cy="101" r="3" fill="#EAEAEA"/>
-  <text class="lbl-weight" x="218" y="58">weight W</text>
-  <text class="lbl-guide" x="236" y="126">d = 0</text>
-  <text class="lbl-guide" x="210" y="152" text-anchor="middle">pivot</text>
-  <text x="210" y="178" text-anchor="middle">weight acts through the pivot, so the moment is zero</text>
+  <!-- TOP: two forces either side of the pivot, and the way each one turns the rule -->
+  <text class="lbl-turn" x="132" y="40" text-anchor="middle">anticlockwise</text>
+  <text class="lbl-turn" x="292" y="40" text-anchor="middle">clockwise</text>
+  <!-- turning arcs: left force lifts the right end, right force lifts the left end -->
+  <path class="turn" d="M160,74 A34,34 0 0 0 116,62" marker-end="url(#m4a)"/>
+  <path class="turn" d="M264,62 A34,34 0 0 0 308,74" marker-end="url(#m4a)"/>
 
-  <!-- BOTTOM: pivot away from the centre of gravity -->
-  <rect class="rule" x="70" y="265" width="280" height="12"/>
-  <path class="pivot" d="M140,277 L126,301 L154,301 Z"/>
-  <path class="base" d="M98,301 L182,301"/>
-  <path class="guide" d="M140,250 L210,250" marker-start="url(#c4gry)" marker-end="url(#c4gry)"/>
-  <path class="guide" d="M90,250 L140,250" marker-start="url(#c4gry)" marker-end="url(#c4gry)"/>
-  <path class="guide-dash" d="M140,252 L140,276"/>
-  <text class="lbl-guide" x="175" y="244" text-anchor="middle">d</text>
-  <text class="lbl-guide" x="115" y="244" text-anchor="middle">d₂</text>
-  <path class="force-weight" d="M210,215 L210,262" marker-end="url(#c4red)"/>
-  <circle cx="210" cy="271" r="3" fill="#EAEAEA"/>
-  <text class="lbl-weight" x="218" y="233">weight W</text>
-  <path class="force-weight" d="M90,279 L90,340" marker-end="url(#c4red)"/>
-  <text class="lbl-weight" x="98" y="318">load F</text>
-  <text x="210" y="372" text-anchor="middle">the rule's weight acts a distance d from the pivot</text>
+  <line class="force" x1="110" y1="58" x2="110" y2="97" marker-end="url(#m4b)"/>
+  <text class="lbl-force" x="88" y="72">F₁</text>
+  <line class="force" x1="310" y1="58" x2="310" y2="97" marker-end="url(#m4b)"/>
+  <text class="lbl-force" x="318" y="72">F₂</text>
+
+  <rect class="rule" x="60" y="100" width="300" height="12"/>
+  <path class="pivot" d="M210,112 L196,136 L224,136 Z"/>
+  <path class="base" d="M172,136 L248,136"/>
+  <text class="lbl-guide" x="254" y="140">knife-edge pivot</text>
+
+  <!-- perpendicular distances, on their own rows so nothing crosses -->
+  <path class="guide-dash" d="M110,114 L110,172"/>
+  <path class="guide-dash" d="M210,140 L210,190"/>
+  <path class="guide-dash" d="M310,114 L310,190"/>
+  <path class="guide" d="M110,172 L210,172" marker-start="url(#m4g)" marker-end="url(#m4g)"/>
+  <text class="lbl-guide" x="160" y="167" text-anchor="middle">d₁</text>
+  <path class="guide" d="M210,190 L310,190" marker-start="url(#m4g)" marker-end="url(#m4g)"/>
+  <text class="lbl-guide" x="260" y="185" text-anchor="middle">d₂</text>
+  <text class="cap" x="210" y="214" text-anchor="middle">moment = force × perpendicular distance</text>
+
+  <!-- BOTTOM: the weight acting straight through the pivot gives no moment -->
+  <line class="weight" x1="210" y1="248" x2="210" y2="292" marker-end="url(#m4r)"/>
+  <text class="lbl-weight" x="220" y="266">weight W</text>
+  <rect class="rule" x="60" y="295" width="300" height="12"/>
+  <circle cx="210" cy="301" r="3" fill="#EAEAEA"/>
+  <text class="lbl-guide" x="266" y="292" text-anchor="middle">centre of gravity</text>
+  <path class="pivot" d="M210,307 L196,331 L224,331 Z"/>
+  <path class="base" d="M172,331 L248,331"/>
+  <path class="guide-dash" d="M210,307 L210,344"/>
+  <text class="lbl-guide" x="210" y="358" text-anchor="middle">d = 0</text>
+  <text class="cap" x="210" y="382" text-anchor="middle">the weight acts through the pivot, so its moment is zero</text>
 </svg>
