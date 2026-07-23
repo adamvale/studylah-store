@@ -2,7 +2,7 @@
   <style>
     text { fill:#EAEAEA; }
     .string { stroke:#EAEAEA; stroke-width:1.4; fill:none; }
-    .arc { stroke:#9AA0A6; stroke-width:1.3; stroke-dasharray:5 4; fill:none; }
+    .arc { stroke:#6FB7E0; stroke-width:1.3; stroke-dasharray:5 4; fill:none; }
     .bob { fill:none; stroke:#EAEAEA; stroke-width:1.6; }
     .lbl { fill:#E8B65A; font-size:14px; }
   </style>

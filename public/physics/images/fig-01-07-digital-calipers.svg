@@ -4,7 +4,7 @@
     .body { fill:none; stroke:#EAEAEA; stroke-width:2; }
     .fillg { fill:#EAEAEA; opacity:0.10; stroke:#EAEAEA; stroke-width:1.6; }
     .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
-    .lbl { fill:#6FB7E0; font-size:18px; }
+    .lbl { fill:#9AA0A6; font-size:18px; }
     .disp { fill:#86C98B; font-size:18px; font-family:monospace; }
   </style>
   <!-- main beam -->

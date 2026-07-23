@@ -20,7 +20,13 @@ const FIELDS = new Set(
 );
 
 // The Tuition subconcept topics whose spoken lines to include (grows per topic).
-const SUBCONCEPT_TOPICS = ["t2-kinematics"];
+// One key per topic is enough: the others alias the same Subconcept[] array.
+const SUBCONCEPT_TOPICS = [
+  "t1-physical-quantities-and-measurement",
+  "t2-kinematics",
+  "t3-dynamics",
+  "t4-turning-effect-of-forces",
+];
 
 // Optional: restrict generation to specific subconcept box codes, e.g. one
 // section. When set, ONLY those boxes are generated and the other content pools

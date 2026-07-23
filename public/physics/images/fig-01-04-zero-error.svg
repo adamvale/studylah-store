@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
-    .rule { fill:none; stroke:#EAEAEA; stroke-width:2; }
-    .tick { stroke:#EAEAEA; stroke-width:1.2; }
-    .obj { fill:#6FB7E0; opacity:0.35; stroke:#6FB7E0; stroke-width:1.5; }
+    .rule { fill:none; stroke:#9AA0A6; stroke-width:2; }
+    .tick { stroke:#9AA0A6; stroke-width:1.2; }
+    .obj { fill:#EAEAEA; opacity:0.35; stroke:#EAEAEA; stroke-width:1.5; }
     .amber { fill:#E8B65A; }
   </style>
   <!-- TOP: positive zero error (object starts after 0) -->

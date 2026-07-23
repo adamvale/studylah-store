@@ -1,0 +1,55 @@
+HANDOFF: T1 Measurement (Tuition teach-then-test lesson content)
+App topic: T1 Measurement  <-  KB Chapter 01 (Physical Quantities, Units and Measurement)
+Date: 2026-07-23. From: Coddy Cowork.
+
+SUBCONCEPT COUNT AND CODES
+8 boxes: 5 teaching subconcepts + 2 revisions + 1 quiz (single chapter, lower end).
+  s1-1.ts  T1.1  Physical quantities and units
+  s1-2.ts  T1.2  Prefixes and standard form
+  s1-3.ts  T1.3  Measuring length
+  s1-4.ts  T1.4  Precision of an instrument
+  s1-5.ts  T1.5  Measuring time
+  s1-rev1.ts  T1.rev1  Revision 1 (T1.1 to T1.3)
+  s1-rev2.ts  T1.rev2  Revision 2 (T1.4 to T1.5)
+  s1-quiz.ts  T1.quiz  Measurement topical quiz
+Totals: 89 steps, 68 questions.
+
+RECOMPUTED ANSWERS (all checked in code)
+- Prefixes / standard form: 0.08 m = 8 x 10^7 nm; 32 mm = 3.2 x 10^-5 km; 0.0000473 m =
+  4.73 x 10^-5 m; 5 280 000 J = 5.28 x 10^6 J (coefficient A = 5.28).
+- Length: block from 3.0 cm to 5.4 cm, L = 5.4 - 3.0 = 2.4 cm.
+- Precision order (least to most precise): metre rule 0.1 cm, digital calipers 0.01 mm,
+  digital micrometer 0.001 mm.
+- Time: period T = t / 20; 30 s -> 1.5 s, 34 s -> 1.7 s, 40 s -> 2 s, 36 s -> 1.8 s.
+All marked correct indices, slider targets and tiles answers match; 3 spoterror lines verified.
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit against the Subconcept + LessonStep contract: 0 type errors, 8 files.
+2. Structural validator: every lesson has >= 3 questions and a `say` + 2 to 4 stars per teach
+   card; revisions EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5; all
+   question-only. Indices, cloze blanks, tiles membership, classify bins, slider ranges in range.
+3. Calculation audit: all 20 working blocks recomputed and matched to their marked answer/target.
+4. Compliance: digits for numbers and counts in spoken fields (powers voiced as "10 to the
+   power 7", prefix factors as "1000"), units spelled for the ear; on-screen fields use _ and ^;
+   no em/en dashes; no emojis; no grade or pass promises.
+
+COLOUR KEY
+These are apparatus and scale diagrams, not force diagrams, so no force colours were used. The
+convention applied in every figure `say`, please lock it: white for the object being measured;
+grey for rulers, scales, retort stands, dimension guides and leader lines; blue for a swing or
+motion arrow and the "1 cm = 10 divisions" brace; green for the "correct" eye tick and for a
+digital meter readout; red for the "wrong" eye cross; amber for a small callout note. No new
+force colour was needed for T1.
+
+FIGURES NEEDED (new names, optional but recommended)
+Section T1.2 (Prefixes and standard form) has no figures, and 2 of its cards teach a visual idea:
+- fig-01-02a-prefix-ladder  (T1.2 "prefixes"): a vertical ladder from giga at the top down to
+  nano at the bottom, each rung showing the prefix, symbol and power of 10, with a grey arrow
+  showing "divide by the factor" going down to a prefixed unit and "multiply" going back up.
+- fig-01-03a-standard-form  (T1.2 "standard form"): a number such as 5 280 000 with a curved grey
+  arrow showing the decimal point moving 6 places left to give 5.28 x 10^6, and the rule
+  1 <= A < 10 called out.
+All other figure-less cards are insight takeaways, which are intentionally text-only.
+
+Existing library figures referenced (please redraw to the colour convention above with T1):
+fig-01-01, 01-02, 01-04, 01-07, 01-08, 01-09, 01-10, 01-11.

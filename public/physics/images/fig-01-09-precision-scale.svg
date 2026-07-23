@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 180" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
-    .rule { fill:none; stroke:#EAEAEA; stroke-width:2; }
-    .tick { stroke:#EAEAEA; stroke-width:1.1; }
+    .rule { fill:none; stroke:#9AA0A6; stroke-width:2; }
+    .tick { stroke:#9AA0A6; stroke-width:1.1; }
     .brace { stroke:#6FB7E0; stroke-width:1.6; fill:none; }
     .amber { fill:#E8B65A; }
     .blue { fill:#6FB7E0; }
