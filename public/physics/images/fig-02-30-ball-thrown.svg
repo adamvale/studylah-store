@@ -1,63 +1,59 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 900" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:11px; }
-    .axis { stroke:#EAEAEA; stroke-width:1.5; }
-    .line { fill:none; stroke:#6FB7E0; stroke-width:2.2; }
+    text { fill:#EAEAEA; font-size:16px; }
+    .cap { font-size:17px; font-weight:600; }
+    .axis { stroke:#EAEAEA; stroke-width:1.8; }
+    .line { fill:none; stroke:#6FB7E0; stroke-width:3; }
     .posf { fill:#6FB7E0; opacity:0.28; }
     .negf { fill:#E58F8F; opacity:0.28; }
-    .ball { fill:#6FB7E0; opacity:0.85; stroke:#EAEAEA; stroke-width:1; }
-    .vel { fill:none; stroke:#E8B65A; stroke-width:1.6; }
-    .cap { font-size:10.5px; }
-    .lb { fill:#E8B65A; font-size:11px; }
+    .ball { fill:#6FB7E0; opacity:0.9; stroke:#EAEAEA; stroke-width:1.2; }
+    .vel { fill:none; stroke:#F5C542; stroke-width:3; }
+    .lb { fill:#F5C542; }
   </style>
   <defs>
-    <marker id="bt" markerWidth="7" markerHeight="7" refX="5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#EAEAEA"/></marker>
-    <marker id="bv" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#E8B65A"/></marker>
+    <marker id="bt" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#EAEAEA"/></marker>
+    <marker id="bv" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L8,3.5 L0,7 Z" fill="#F5C542"/></marker>
   </defs>
-  <!-- Panel 1: ball thrown up -->
-  <g transform="translate(0,0)">
-    <text x="60" y="20" class="cap">Ball thrown up (up = positive)</text>
-    <line class="axis" x1="120" y1="270" x2="120" y2="40"/>
-    <circle class="ball" cx="120" cy="55" r="8"/>
-    <text class="lb" x="135" y="52">B: v = 0</text>
-    <circle class="ball" cx="120" cy="120" r="8"/>
-    <circle class="ball" cx="120" cy="250" r="8"/>
-    <line class="vel" x1="120" y1="240" x2="120" y2="200" marker-end="url(#bv)"/>
-    <text class="lb" x="135" y="250">A: v = +6 m/s (up)</text>
-    <!-- falling ball on the right column -->
-    <circle class="ball" cx="170" cy="250" r="8"/>
-    <line class="vel" x1="170" y1="215" x2="170" y2="255" marker-end="url(#bv)"/>
-    <text class="lb" x="185" y="230">C: v = −6 m/s (down)</text>
-  </g>
-  <!-- Panel 2: speed-time -->
-  <g transform="translate(300,20)">
-    <text x="20" y="12" class="cap">Speed-time graph</text>
-    <line class="axis" x1="30" y1="180" x2="30" y2="25" marker-end="url(#bt)"/>
-    <line class="axis" x1="30" y1="180" x2="180" y2="180" marker-end="url(#bt)"/>
-    <text x="24" y="45" text-anchor="end" class="cap">5</text>
-    <text x="24" y="184" text-anchor="end" class="cap">0</text>
-    <!-- V down to 0 at B then up to 5 at C -->
-    <line class="line" x1="30" y1="40" x2="100" y2="180"/>
-    <line class="line" x1="100" y1="180" x2="170" y2="40"/>
-    <text class="lb" x="25" y="38">A</text>
-    <text class="lb" x="98" y="196">B</text>
-    <text class="lb" x="172" y="40">C</text>
-    <text x="150" y="196" class="cap">time</text>
-  </g>
-  <!-- Panel 3: velocity-time -->
-  <g transform="translate(500,20)">
-    <text x="20" y="12" class="cap">Velocity-time graph</text>
-    <line class="axis" x1="30" y1="200" x2="30" y2="25" marker-end="url(#bt)"/>
-    <line class="axis" x1="30" y1="110" x2="180" y2="110" marker-end="url(#bt)"/>
-    <text x="24" y="45" text-anchor="end" class="cap">+5</text>
-    <text x="24" y="185" text-anchor="end" class="cap">−5</text>
-    <text x="24" y="114" text-anchor="end" class="cap">0</text>
-    <polygon class="posf" points="30,110 30,40 100,110"/>
-    <polygon class="negf" points="100,110 170,110 170,180"/>
-    <line class="line" x1="30" y1="40" x2="170" y2="180"/>
-    <text class="lb" x="25" y="38">A</text>
-    <text class="lb" x="102" y="106">B</text>
-    <text class="lb" x="172" y="185">C</text>
-    <text x="150" y="126" class="cap">time</text>
-  </g>
+
+  <!-- Panel 1: the ball's journey (labels kept clear of every ball) -->
+  <text class="cap" x="30" y="32">Ball thrown up (up = positive)</text>
+  <line class="axis" x1="110" y1="300" x2="110" y2="70"/>
+  <circle class="ball" cx="110" cy="90" r="10"/>
+  <text class="lb" x="135" y="96">B: v = 0</text>
+  <circle class="ball" cx="110" cy="190" r="10"/>
+  <line class="vel" x1="110" y1="258" x2="110" y2="218" marker-end="url(#bv)"/>
+  <circle class="ball" cx="110" cy="290" r="10"/>
+  <text class="lb" x="135" y="330">A: v = +5 m/s (up)</text>
+  <!-- falling ball, its own column, label above so nothing overlaps -->
+  <circle class="ball" cx="330" cy="290" r="10"/>
+  <line class="vel" x1="330" y1="235" x2="330" y2="272" marker-end="url(#bv)"/>
+  <text class="lb" x="185" y="215">C: v = &#8722;5 m/s (down)</text>
+
+  <!-- Panel 2: speed-time (speed can never be negative) -->
+  <text class="cap" x="30" y="392">Speed-time graph</text>
+  <line class="axis" x1="70" y1="600" x2="70" y2="420" marker-end="url(#bt)"/>
+  <line class="axis" x1="70" y1="600" x2="370" y2="600" marker-end="url(#bt)"/>
+  <text x="58" y="452" text-anchor="end">5</text>
+  <text x="58" y="605" text-anchor="end">0</text>
+  <line class="line" x1="70" y1="447" x2="215" y2="600"/>
+  <line class="line" x1="215" y1="600" x2="360" y2="447"/>
+  <text class="lb" x="52" y="436">A</text>
+  <text class="lb" x="210" y="622">B</text>
+  <text class="lb" x="366" y="442">C</text>
+  <text x="322" y="622">time</text>
+
+  <!-- Panel 3: velocity-time (goes negative when the ball falls) -->
+  <text class="cap" x="30" y="672">Velocity-time graph</text>
+  <line class="axis" x1="70" y1="880" x2="70" y2="700" marker-end="url(#bt)"/>
+  <line class="axis" x1="70" y1="790" x2="370" y2="790" marker-end="url(#bt)"/>
+  <text x="58" y="722" text-anchor="end">+5</text>
+  <text x="58" y="794" text-anchor="end">0</text>
+  <text x="58" y="868" text-anchor="end">&#8722;5</text>
+  <polygon class="posf" points="70,790 70,717 215,790"/>
+  <polygon class="negf" points="215,790 360,790 360,863"/>
+  <line class="line" x1="70" y1="717" x2="360" y2="863"/>
+  <text class="lb" x="52" y="706">A</text>
+  <text class="lb" x="222" y="782">B</text>
+  <text class="lb" x="366" y="876">C</text>
+  <text x="300" y="782">time</text>
 </svg>

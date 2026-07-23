@@ -1,29 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 250" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" font-family="Segoe UI, Arial, sans-serif">
   <style>
-    text { fill:#EAEAEA; font-size:13px; }
-    .path { fill:none; stroke:#6FB7E0; stroke-width:2.2; }
-    .disp { fill:none; stroke:#E8B65A; stroke-width:2.2; }
+    text { fill:#EAEAEA; font-size:17px; }
+    .path { fill:none; stroke:#6FB7E0; stroke-width:3; }
+    .disp { fill:none; stroke:#F5C542; stroke-width:3; }
     .pt { fill:#EAEAEA; }
-    .lbl { font-size:12px; }
-    .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
+    .blue { fill:#6FB7E0; font-weight:600; }
+    .yellow { fill:#F5C542; font-weight:600; }
   </style>
-  <!-- start and end points -->
-  <circle class="pt" cx="60" cy="185" r="5"/>
-  <circle class="pt" cx="360" cy="90" r="5"/>
-  <text x="48" y="205">A</text>
-  <text x="368" y="88">B</text>
-  <!-- winding path (distance) -->
-  <path class="path" d="M60,185 C120,110 150,230 210,150 S300,60 360,90"/>
-  <!-- straight displacement arrow -->
   <defs>
-    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
-      <path d="M0,0 L7,3 L0,6 Z" fill="#E8B65A"/>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#F5C542"/>
     </marker>
   </defs>
-  <line class="disp" x1="60" y1="185" x2="352" y2="93" marker-end="url(#ah)"/>
-  <!-- labels -->
-  <text class="lbl" x="150" y="90" fill="#6FB7E0">distance (actual path travelled)</text>
-  <path class="lead" d="M175,96 L185,140"/>
-  <text class="lbl" x="120" y="165" fill="#E8B65A">displacement (straight line, A to B)</text>
-  <path class="lead" d="M175,155 L205,140"/>
+  <!-- distance label sits ABOVE, clearly with the blue curve -->
+  <text class="blue" x="40" y="40">distance: the actual path</text>
+  <!-- winding blue path from A to B, arcing well above the straight line -->
+  <path class="path" d="M55,235 C110,100 200,60 280,95 S360,120 368,142"/>
+  <!-- straight yellow displacement arrow A to B -->
+  <line class="disp" x1="55" y1="235" x2="360" y2="149" marker-end="url(#ah)"/>
+  <!-- displacement label sits BELOW, clearly with the yellow line -->
+  <text class="yellow" x="90" y="284">displacement: straight line A to B</text>
+  <!-- start and end points drawn last, on top -->
+  <circle class="pt" cx="55" cy="235" r="6"/>
+  <circle class="pt" cx="370" cy="145" r="6"/>
+  <text x="38" y="262">A</text>
+  <text x="384" y="148">B</text>
 </svg>

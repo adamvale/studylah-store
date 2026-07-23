@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 290" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    text { fill:#EAEAEA; font-size:17px; }
+    .path { fill:none; stroke:#6FB7E0; stroke-width:3.5; }
+    .pt { fill:#EAEAEA; }
+    .blue { fill:#6FB7E0; font-weight:600; }
+    .dim { fill:#B9BDC7; font-size:15px; }
+  </style>
+  <!-- the winding walk from A to B: every step of the path counts -->
+  <text class="blue" x="52" y="40">distance = length of the whole path</text>
+  <path class="path" d="M55,235 C110,100 200,60 280,95 S360,120 368,142"/>
+  <circle class="pt" cx="55" cy="235" r="6"/>
+  <circle class="pt" cx="370" cy="145" r="6"/>
+  <text x="38" y="262">A</text>
+  <text x="384" y="148">B</text>
+  <text class="dim" x="80" y="284">every bend and detour is counted</text>
+</svg>

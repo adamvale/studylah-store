@@ -22,21 +22,23 @@ export const BOXES: Subconcept[] = [
       {
         kind: "concept",
         heading: "Distance",
-        figure: "fig-02-01-distance-displacement",
+        figure: "fig-02-01a-distance-only",
         body: "Distance is the total length of the path actually travelled, no matter which way you go. It is always positive or zero, and never negative.",
-        say: "Distance is how far you actually travel, adding up every part of the path, whichever way you turn. Because it only counts ground covered, distance is always positive or zero. It can never be negative.",
+        say: "Look at the diagram. The blue wavy line is a walk from A to B, with every bend and detour included. Distance is the length of that whole blue path, adding up every part of the journey, whichever way you turn. Because it only counts ground covered, distance is always positive or zero. It can never be negative.",
       },
       {
         kind: "concept",
         heading: "Displacement",
+        figure: "fig-02-01b-displacement-only",
         body: "Displacement is the straight-line distance from start to finish, measured in a stated direction. It can be positive, negative or zero.",
-        say: "Displacement is different. It only cares about where you end up compared to where you began, in a straight line, and it always comes with a direction. Because of that direction, displacement can be positive, negative or even zero.",
+        say: "Now look at this diagram. The yellow arrow is the straight line from A directly to B, and the arrowhead shows its direction. That arrow is the displacement. It ignores the actual route and only cares about where you finished compared to where you started. Because it comes with a direction, displacement can be positive, negative or even zero.",
       },
       {
         kind: "concept",
         heading: "Scalar and vector",
+        figure: "fig-02-01-distance-displacement",
         body: "A scalar has size only. A vector has size and a direction. Distance is a scalar; displacement is a vector.",
-        say: "Here is the pattern that ties it together. A scalar carries size only, while a vector carries size and a direction. Distance is a scalar, and displacement is a vector. The same pattern will return for speed and velocity later.",
+        say: "Now see the two together in one picture. The blue wavy path is the distance, and the straight yellow arrow underneath is the displacement. The blue path has size only, so distance is a scalar. The yellow arrow points a definite way, so displacement is a vector. The same pattern will return for speed and velocity later.",
       },
       {
         kind: "choice",

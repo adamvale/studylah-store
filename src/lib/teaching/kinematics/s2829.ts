@@ -18,7 +18,7 @@ export const BOXES: Subconcept[] = [
         heading: "The four equations",
         figure: "fig-02-32-vt-worked-formulae",
         body: "There are four equations, and each one leaves out exactly one quantity. v = u + at leaves out d. d = 1/2 (u + v) t leaves out a. d = ut + 1/2 a t^2 leaves out v. v^2 = u^2 + 2ad leaves out t. That last one, d = 1/2 (u + v) t, is just the area of the trapezium under a straight velocity-time graph.",
-        say: "There are four of them, and here is the neat pattern. Each equation quietly leaves out one of the five quantities. The first, v equals u plus a t, has no displacement in it. The second, d equals a half times u plus v, all times t, has no acceleration in it. The third, d equals u t plus a half a t squared, has no final velocity. And the fourth, v squared equals u squared plus two a d, has no time in it. That second one is really just the area of the trapezium under a straight velocity-time graph.",
+        say: "Look at the diagram. The blue line on the velocity time graph climbs from a starting velocity u up to a final velocity v after a time t, and the shaded blue area underneath it forms a trapezium. Keep that picture in mind. There are four equations, and here is the neat pattern. Each equation quietly leaves out one of the five quantities. The first, v equals u plus a t, has no displacement in it. The second, d equals a half times u plus v, all times t, has no acceleration in it. The third, d equals u t plus a half a t squared, has no final velocity. And the fourth, v squared equals u squared plus two a d, has no time in it. That second one is really just the area of the trapezium under a straight velocity-time graph.",
       },
       {
         kind: "concept",
@@ -98,7 +98,7 @@ export const BOXES: Subconcept[] = [
         heading: "Ten more every second",
         figure: "fig-02-34-freefall-ball",
         body: "A freely falling object gains 10 m/s of velocity during every second of the fall. Because the velocity increases by the same amount each second, its velocity-time graph is a straight line with a constant gradient.",
-        say: "Watch the speed of a falling ball. After one second it is doing ten metres per second, after two seconds twenty, after three seconds thirty. It gains the same ten metres per second every single second. Because the gain is steady, the velocity-time graph is a straight, sloping line.",
+        say: "Look at the diagram. The blue ball is drawn falling down a dashed line, and the gaps between its positions grow wider and wider, while the yellow labels count its speed: zero at the start, ten metres per second after one second, twenty after two, thirty after three, with the green arrow showing the velocity climbing all the way down. That widening spacing is the giveaway. The ball gains the same ten metres per second every single second, so it covers more ground each second than the last. Because the gain is steady, the velocity-time graph is a straight, sloping line.",
       },
       {
         kind: "concept",

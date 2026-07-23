@@ -18,7 +18,7 @@ export const BOXES: Subconcept[] = [
         heading: "Gradient is velocity",
         figure: "fig-02-13-dt-gradient",
         body: "The gradient, or slope, of the line is the velocity of the object. gradient = (d_2 - d_1) / (t_2 - t_1) = velocity. So a steady slope means a steady velocity.",
-        say: "Here is the key idea. The steepness of the line is the velocity. You work it out as the change in displacement divided by the change in time, which is just how fast the height is climbing. So reading velocity off this graph is the same as reading a slope.",
+        say: "Look at the diagram. The blue line climbs steadily across the graph, with displacement up the side and time along the bottom, and the grey dashed lines mark out a triangle on it: the rise is d two minus d one, and the run is t two minus t one. Here is the key idea. The steepness of that line is the velocity. You work it out as the change in displacement divided by the change in time, which is just the rise over the run of that triangle. So reading velocity off this graph is the same as reading a slope.",
       },
       {
         kind: "choice",
@@ -112,7 +112,7 @@ export const BOXES: Subconcept[] = [
         heading: "Steeper means faster",
         figure: "fig-02-15-dt-steeper",
         body: "The steeper the line, the greater the velocity. A gentle slope is a slow object and a steep slope is a fast one. Two lines can both go forward, but the steeper one is quicker.",
-        say: "Steepness is speed here. A line that shoots up quickly belongs to a fast object, while a lazy, gentle slope belongs to a slow one. So when you compare two forward lines, just look at which one is steeper to see which is faster.",
+        say: "Look at the diagram. Two straight lines start from the same corner of the graph: the blue line, labelled A, shoots up steeply, while the yellow line, labelled B, climbs at a much gentler angle. Steepness is speed here. The steep blue line belongs to a fast object, while the lazy yellow slope belongs to a slow one. So when you compare two forward lines, just look at which one is steeper to see which is faster. Here, A is faster than B.",
       },
       {
         kind: "choice",
@@ -206,7 +206,7 @@ export const BOXES: Subconcept[] = [
         heading: "Curves: changing velocity",
         figure: "fig-02-16-dt-forward-types",
         body: "A curve getting steeper means the velocity is increasing, because the displacement grows faster and faster. A curve getting less steep means the velocity is decreasing, because the displacement grows more and more slowly.",
-        say: "Curves mean the speed is changing. If the line bends upward and gets steeper, the object is speeding up. If it bends over and gets gentler, the object is slowing down, even though it is still moving forward the whole time.",
+        say: "Look at the diagram. Four little graphs sit side by side, each with a blue line: a flat line for staying still, a straight slope for steady velocity, a curve that bends upward and gets steeper, and a curve that rises quickly then levels off. The two curves are the interesting ones, because curves mean the speed is changing. If the line gets steeper, the object is speeding up. If it bends over and gets gentler, the object is slowing down, even though it is still moving forward the whole time.",
       },
       {
         kind: "choice",

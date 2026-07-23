@@ -18,7 +18,7 @@ export const BOXES: Subconcept[] = [
         heading: "Average velocity",
         figure: "fig-02-04-uturn-journey",
         body: "Average velocity is the total displacement divided by the total time taken. It uses displacement, not distance, so it is often smaller than the average speed.",
-        say: "For a whole journey, average velocity is the total displacement over the total time. Watch the trap here: it uses displacement, not distance. If you double back, your displacement shrinks, so your average velocity comes out smaller than your average speed.",
+        say: "Look at the diagram. The blue arrows trace the actual journey along the track, six hundred metres from A to B and then two hundred and forty metres back to C, but the yellow arrow shows the displacement, only three hundred and sixty metres from A to C. For a whole journey, average velocity is the total displacement over the total time. Watch the trap here: it uses displacement, not distance. If you double back, your displacement shrinks, so your average velocity comes out smaller than your average speed.",
       },
       {
         kind: "concept",

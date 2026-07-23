@@ -12,7 +12,7 @@ export const BOXES: Subconcept[] = [
         heading: "Why average speed",
         figure: "fig-02-04-uturn-journey",
         body: "Real journeys are rarely at one steady speed. A vehicle speeds up, slows down, and sometimes stops. Average speed sums up the whole trip in a single number.",
-        say: "Think about a real bus ride. It never holds one steady speed: it pulls away, it crawls in traffic, it waits at the lights, then it speeds off again. So a single speed reading tells you almost nothing about the trip as a whole. Average speed fixes that. It gives you one fair number for the entire journey, as if you had travelled the whole way at that steady pace.",
+        say: "Look at the diagram. The dots on the straight track mark three points, A, C and B, and the blue arrows show a journey that runs six hundred metres from A to B, then turns around and comes two hundred and forty metres back to C, while the yellow arrow underneath marks the straight line from A to C. Now think of that trip as a real bus ride. It never holds one steady speed: it pulls away, it crawls in traffic, it waits at the lights, then it speeds off again. So a single speed reading tells you almost nothing about the trip as a whole. Average speed fixes that. It gives you one fair number for the entire journey, as if you had travelled the whole way at that steady pace.",
       },
       {
         kind: "concept",

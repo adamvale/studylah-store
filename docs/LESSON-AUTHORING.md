@@ -257,6 +257,21 @@ the dark background (no box). Only reference diagrams that exist under
 values off a printed figure the student cannot zoom: use `graphpick` (it draws
 its own graphs) or state the numbers in words.
 
+Three figure rules learned the hard way:
+
+1. **A figure must show ONLY the idea its card teaches.** The Distance card gets
+   a distance-only diagram; the combined distance-plus-displacement diagram
+   belongs on the card that compares them. Prefer one focused diagram per
+   micro-concept over one busy diagram reused everywhere.
+2. **When a card has a figure, its `say` MUST describe the diagram as part of
+   the teaching** ("Look at the diagram. The blue wavy line is the walk from A
+   to B..."), naming the colours/shapes so the student's eyes follow Gugu's
+   voice. Never attach a figure the narration ignores.
+3. **Vet the figure against the physics before using it.** Labels must point at
+   the right element, and every number in the figure must agree with the notes
+   and the card text. A wrong diagram teaches the wrong physics; no figure is
+   better than a wrong one.
+
 ### Validate before handing back
 
 `npx tsx scripts/validate-kinematics.mjs` checks the counts per box, figure

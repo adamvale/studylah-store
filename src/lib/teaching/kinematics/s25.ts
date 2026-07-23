@@ -24,7 +24,7 @@ export const BOXES: Subconcept[] = [
         heading: "Three ways to accelerate",
         figure: "fig-02-07-accel-change-direction",
         body: "An object accelerates whenever any one of these happens: its speed changes, its direction changes, or both change together. Even at steady speed, changing direction is still acceleration.",
-        say: "This surprises a lot of students. You accelerate if your speed changes, if your direction changes, or if both change. So a car going round a bend at a steady speed is still accelerating, because its direction keeps changing.",
+        say: "Look at the diagram. The blue ball is drawn at three moments in time, and the yellow arrows show its velocity: at the start the arrow points straight ahead at four metres per second, and one second later it is still four metres per second but the arrow now points a different way. This surprises a lot of students. You accelerate if your speed changes, if your direction changes, or if both change. The ball in the picture kept the same speed, yet it accelerated, because its direction changed. So a car going round a bend at a steady speed is still accelerating too.",
       },
       {
         kind: "choice",
