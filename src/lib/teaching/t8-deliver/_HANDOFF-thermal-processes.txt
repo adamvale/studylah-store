@@ -1,0 +1,82 @@
+HANDOFF: T8 Thermal Processes (Tuition teach-then-test lesson content)
+App topic: T8 Thermal Processes  <-  KB Chapter 09 (Thermal Processes)
+Date: 2026-07-23. From: Coddy Cowork.
+
+SUBCONCEPT COUNT AND CODES
+8 boxes total: 5 teaching subconcepts + 2 revision checkpoints + 1 topical quiz.
+Files use the s8-*.ts / t8.* naming (app topic T8 = KB Chapter 09). One box per file, each
+exporting `export const BOXES: Subconcept[]`:
+  s8-1.ts     T8.1  Energy transfer by heating and thermal equilibrium   (KB 9.1)
+  s8-2.ts     T8.2  Conduction                                           (KB 9.2)
+  s8-3.ts     T8.3  Convection                                           (KB 9.3)
+  s8-4.ts     T8.4  Radiation                                            (KB 9.4)
+  s8-5.ts     T8.5  The three processes in everyday devices              (KB 9.2 to 9.4 apps)
+  s8-rev1.ts  R1    Revision 1 (covers T8.1 to T8.3)
+  s8-rev2.ts  R2    Revision 2 (covers T8.4 to T8.5)
+  s8-quiz.ts  Quiz  Thermal Processes topical quiz (whole topic)
+Totals: 97 steps, 74 questions.
+
+RECOMPUTED ANSWERS
+Chapter 09 is CONCEPTUAL: no numeric calculations are required, so there are NO `working` blocks and
+NO `formula` fields anywhere in T8. The only numbers that appear are (a) illustrative temperatures
+(a hot object at 60/80 degrees in a 30 degree room; a 140 degree sphere reaching thermal equilibrium
+with a 22 degree room, so no net transfer at 22 degrees) and (b) the given surface-area figures in
+fig-09-10 (Object A cube 4 cm side: volume 64 cm^3, surface area 96 cm^2; Object B bar 1 by 1 by
+64 cm: volume 64 cm^3, surface area 258 cm^2; same volume, B radiates faster). These are quoted to
+match the figure, not computed by the student. The quiz graphpick answer is the cooling curve that
+falls fast then levels off at the 22 degree room temperature. "Answers" here are the marked options,
+classify bins, order sequences, cloze/tiles words and spoterror error-lines, all checked (see below).
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit against the local mirror of the Subconcept + LessonStep contract, alias resolved:
+   0 type errors across all 8 files. figure appears only on concept/insight/choice/open.
+2. Structural validator: 5 lessons each with >= 3 questions, a `say` + 2 to 4 starred keywords on
+   every teach card; revisions EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5;
+   revisions/quiz question-only. All indices, cloze blank counts (= segments - 1, every answer word
+   in its bank), tiles membership, classify bins and graphpick correct in range. Result: ALL
+   STRUCTURAL CHECKS PASSED.
+3. Answer audit: an independent checker reasoned through the physics of every question and confirmed
+   every choice `correct` indexes the physically true option, every spoterror `errorLine` points at
+   the genuinely wrong line (s8-2 line 3, s8-5 line 3, s8-rev1 line 3, s8-rev2 line 3, s8-quiz
+   line 2), and every classify / match / order / cloze / tiles answer is physically correct. It
+   specifically checked the common traps: energy flows hot to cold (never cold to hot); convection
+   does not occur in solids; conduction is NOT particles travelling along the rod (that trap is used
+   as a spoterror wrong line); radiation needs no medium; dark/matt = good emitter and shiny/white =
+   poor emitter (not reversed); sea breeze blows sea to land by day and the land breeze land to sea
+   at night (directions correct); each vacuum-flask feature maps to the right process. All clean.
+   Correct-option positions are deliberately spread across indices 0 to 3 (never all option A);
+   quiz choice indices were 2,1,2,0,3,1,3,0,2,3 and the two revisions 2,0,3,1,2 and 1,3,0,2,3.
+4. Compliance scan: digits for numbers and counts in every spoken field; units and terms spelled for
+   the ear; no em/en dashes; no emojis; no grade or pass promises; on-screen fields use _/^ only
+   where needed. Clean.
+
+FOUR CARRY-OVER RULES, APPLIED
+- Colour key used in every figure `say`, matched to what each of the 13 fig-09 SVGs really draws
+  (I opened them all). Thermal scheme: a hotter region / hot end / warm air / hot liquid = red; a
+  cooler region / cool end / cold air-or-water and the particles = blue; the heat source itself
+  (Bunsen burner, candle, balloon burner, the Sun) = amber; free electrons in a metal and the "good
+  reflector" highlight = green; rods, beakers, the flask body, gauze, containers and guides =
+  grey/white.
+- The breeze and comparison figures are drawn LEFT/RIGHT (land left, sea right; cube left, bar
+  right), so the say uses left/right, not top/bottom.
+- Every figure referenced by its exact library name (fig-09-01 to fig-09-13).
+- Numbers on a step agree with the figure (the surface-area figures quote fig-09-10 exactly).
+
+COLOUR LOCK CONFIRMED FOR CODDY CODE (amber = heat source)
+Chapter 09 is where a flame / burner / the Sun is actually drawn, and in every case it is amber
+(#E8B65A). So the "amber = heat source / flame" lock proposed in the T6 handoff is CONFIRMED for any
+figure that draws a heat source. Note this is distinct from Chapter 08, where amber was only the
+callout-label text colour (no flame in that chapter). The two are not in conflict: amber means a heat
+source wherever a heat source is drawn.
+
+FIGURES NEEDED
+No new figures are required for T8. All 13 referenced figures already exist in the Chapter 09 library
+and were read from the current source: fig-09-01-energy-transfer-arrow (T8.1); fig-09-02-conduction-
+rod, fig-09-03-conduction-particles (T8.2); fig-09-04-convection-beaker, fig-09-05-hot-air-balloon,
+fig-09-06-sea-breeze, fig-09-07-land-breeze, fig-09-08-convection-gas-experiment (T8.3);
+fig-09-09-radiation-surfaces, fig-09-10-radiation-surface-area, fig-09-12-radiation-flasks (T8.4);
+fig-09-11-vacuum-flask, fig-09-13-ice-tube (T8.5). Please redraw any to the colour key when you
+render; no NEW art name is introduced by T8.
+
+NEXT: T9 thermal-properties (Ch10), then T10 waves (Ch11, figures redrawn today so I read the
+current SVGs). One DONE entry is appended to HANDOFF.md after all seven topics are delivered.

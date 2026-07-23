@@ -1,0 +1,215 @@
+import type { Subconcept } from "@/lib/teaching/subconcepts";
+
+// T8 Thermal Processes, Revision 1. Checkpoint over KB Chapter 09,
+// sections t8.1 to t8.3: energy transfer by heating and thermal equilibrium,
+// conduction, and convection. Question-only. Conceptual: no working, no formula.
+
+export const BOXES: Subconcept[] = [
+  {
+    id: "t8.rev1",
+    code: "R1",
+    title: "Revision 1",
+    blurb: "Checkpoint: heating and thermal equilibrium, conduction, convection",
+    kind: "revision",
+    steps: [
+      {
+        kind: "choice",
+        question: "Two objects touch. One is at 80 degrees and the other is at 30 degrees. In which direction does thermal energy flow?",
+        options: [
+          "From cold to hot, from the 30 degree object to the 80 degree object",
+          "In no direction, since the objects are touching",
+          "From hot to cold, from the 80 degree object to the 30 degree object",
+          "Equally in both directions, so nothing changes",
+        ],
+        correct: 2,
+        ask: "Thermal energy always moves from the hotter place to the cooler place. Which object is hotter, and which way does that send the energy?",
+        hints: [
+          "The 80 degree object is the hotter one, and the 30 degree object is the cooler one.",
+          "Energy flows from the hotter region to the cooler region, so it moves from the 80 degree object to the 30 degree object.",
+        ],
+        explain: "Thermal energy flows from the hotter object at 80 degrees to the cooler object at 30 degrees. Energy always travels from a higher temperature to a lower temperature.",
+      },
+      {
+        kind: "choice",
+        question: "A metal sphere at 140 degrees is left in a room at 22 degrees. When is there no net transfer of thermal energy between the sphere and the room?",
+        options: [
+          "When the sphere has also cooled to 22 degrees",
+          "As soon as the sphere is put in the room",
+          "When the sphere reaches 0 degrees",
+          "Never, because the sphere is made of metal",
+        ],
+        correct: 0,
+        ask: "Net transfer stops when both are at the same temperature. What temperature will the sphere settle at in a 22 degree room?",
+        hints: [
+          "The sphere keeps cooling while it is hotter than the room around it.",
+          "Once the sphere too is at 22 degrees, the sphere and the room are in thermal equilibrium, so there is no net transfer.",
+        ],
+        explain: "There is no net transfer once the sphere has cooled to 22 degrees, the same as the room. At that point they are in thermal equilibrium and energy still passes both ways, but the amounts balance.",
+      },
+      {
+        kind: "choice",
+        question: "Why are metals the best thermal conductors?",
+        options: [
+          "Because their particles are far apart",
+          "Because they contain trapped air",
+          "Because they are usually shiny",
+          "Because energy is carried both by vibrating particles and by free electrons",
+        ],
+        correct: 3,
+        ask: "A metal has 2 ways of passing energy along, not just 1. What extra carrier does a metal have that wood does not?",
+        hints: [
+          "In every solid, heated particles vibrate harder and pass energy to their neighbours.",
+          "Metals also have free electrons that gain energy at the hot end and carry it quickly to the cool end, so they conduct by both methods.",
+        ],
+        explain: "Metals conduct best because energy travels by 2 mechanisms at once: particle vibration and fast-moving free electrons. Having both carriers makes metals far better conductors than materials that only pass on vibrations.",
+      },
+      {
+        kind: "choice",
+        question: "A metal spoon and a wooden spoon have sat in the same drawer overnight. Why does the metal spoon feel colder to your hand?",
+        options: [
+          "The metal spoon is actually at a lower temperature",
+          "The metal conducts energy away from your hand faster",
+          "The wood is a better conductor than the metal",
+          "The metal spoon contains more coldness",
+        ],
+        correct: 1,
+        ask: "Both spoons are at the same temperature. The feeling comes from how fast each one draws energy out of your warm hand.",
+        hints: [
+          "Coldness is not a substance; the spoons are both at room temperature.",
+          "Metal is a good conductor, so it carries energy away from your skin quickly, which is why it feels colder than the wood.",
+        ],
+        explain: "Both spoons are at the same temperature, but the metal feels colder because it conducts energy away from your hand faster than the wood does. The quick loss of energy from your skin is what you feel as cold.",
+      },
+      {
+        kind: "choice",
+        question: "During the day the land warms faster than the sea. Which way does the sea breeze blow?",
+        figure: "fig-09-06-sea-breeze",
+        options: [
+          "From the land out to the sea",
+          "Straight up over the land only",
+          "From the sea in to the land",
+          "There is no breeze during the day",
+        ],
+        correct: 2,
+        ask: "Warm air rises over the warmer land, and cooler denser air moves in to replace it. Which way does that replacing air come from?",
+        hints: [
+          "Over the warmer land the air is heated, becomes less dense and rises.",
+          "Cooler, denser air flows in from over the sea to take its place, so the sea breeze blows from the sea in to the land.",
+        ],
+        explain: "The sea breeze blows from the sea in to the land. Air over the warmer land rises, and cooler denser air flows in from the sea to replace it, forming a convection current. In the figure the land on the left is red and warm, and the sea on the right is blue and cool.",
+      },
+      {
+        kind: "classify",
+        prompt: "Decide whether each object warms up or cools down in its surroundings.",
+        bins: ["The object warms up", "The object cools down"],
+        items: [
+          { text: "an ice cube dropped into a warm drink", bin: 0 },
+          { text: "a hot mug of tea left on a cold table", bin: 1 },
+          { text: "a cold spoon placed in hot soup", bin: 0 },
+          { text: "a warm pie carried out into cold air", bin: 1 },
+          { text: "a chilled can left on a sunny bench", bin: 0 },
+          { text: "a hot iron switched off in a cool room", bin: 1 },
+        ],
+        ask: "Compare each object with its surroundings. If the object is cooler than what is around it, it warms up; if it is hotter, it cools down. Tap each one into its bin.",
+        hints: [
+          "Energy flows from the hotter side to the cooler side until both reach the same temperature.",
+          "A cold object in warm surroundings takes in energy and warms; a hot object in cool surroundings loses energy and cools.",
+        ],
+        explain: "Objects that start cooler than their surroundings, like the ice cube, cold spoon and chilled can, take in energy and warm up. Objects that start hotter, like the tea, pie and iron, lose energy and cool down. Either way the transfer stops at thermal equilibrium.",
+      },
+      {
+        kind: "match",
+        prompt: "Match each term to its correct description.",
+        pairs: [
+          { left: "Conduction", right: "energy passed from particle to particle without the material moving" },
+          { left: "Convection", right: "energy carried by a fluid as warmer, less dense parts rise" },
+          { left: "Thermal equilibrium", right: "two objects at the same temperature with no net transfer" },
+          { left: "Insulator", right: "a material such as wool that transfers energy slowly" },
+        ],
+        ask: "Sort by whether the material itself moves. In 1 process the particles stay put; in the other they travel. Then match the 2 remaining terms.",
+        hints: [
+          "In conduction the material does not move, while in convection the fluid particles themselves carry the energy along.",
+          "Thermal equilibrium is about equal temperature and no net transfer, and an insulator is a poor conductor.",
+        ],
+        explain: "Conduction passes energy particle to particle without the material moving. Convection carries energy in a moving fluid. Thermal equilibrium is equal temperature with no net transfer, and an insulator transfers energy slowly.",
+      },
+      {
+        kind: "order",
+        prompt: "Put the stages of a convection current in order, starting at the heater.",
+        items: [
+          "The heater warms the fluid at the bottom",
+          "The warmed fluid expands and becomes less dense",
+          "The less dense fluid rises",
+          "Cooler, denser fluid sinks to take its place",
+          "The circulating flow forms a convection current",
+        ],
+        ask: "Start where the energy enters the fluid, then follow what heating does to its density before the fluid can move. Put the 5 stages in order.",
+        hints: [
+          "Heating a fluid makes it expand and become less dense before anything rises.",
+          "Less dense fluid rises, cooler denser fluid sinks to replace it, and this repeating loop is the convection current.",
+        ],
+        explain: "The heater warms the fluid, which expands and becomes less dense, so it rises. Cooler, denser fluid sinks to take its place, and this repeating flow is a convection current.",
+      },
+      {
+        kind: "cloze",
+        prompt: "Complete the description of how a convection current forms.",
+        segments: [
+          "When a fluid is heated it expands, so it becomes ",
+          " dense and ",
+          ". The cooler, ",
+          " fluid then ",
+          " to take its place, and this repeating flow is a convection ",
+          ".",
+        ],
+        bank: ["less", "rises", "denser", "sinks", "current", "more", "falls"],
+        answer: ["less", "rises", "denser", "sinks", "current"],
+        ask: "Recall what heating does to a fluid's density, and which way the lighter and heavier parts move.",
+        hints: [
+          "Heating spreads the particles out, so the warmed fluid is less dense and rises.",
+          "The cooler fluid is denser, so it sinks, and the whole circulating loop is the convection current.",
+        ],
+        explain: "Heating makes a fluid less dense, so it rises. The cooler, denser fluid sinks to take its place, and the repeating loop is a convection current.",
+      },
+      {
+        kind: "spoterror",
+        prompt: "One line in this explanation of conduction is wrong. Find it.",
+        lines: [
+          "Conduction passes thermal energy from particle to particle.",
+          "In a solid, heated particles vibrate more and jostle their neighbours.",
+          "In metals, free electrons also carry energy to the cooler parts.",
+          "Conduction works best in gases, because their particles are far apart.",
+        ],
+        errorLine: 3,
+        ask: "Read each line and check it against what you know. Ask which state of matter is actually the worst at conduction, and why.",
+        hints: [
+          "The first 3 lines correctly describe how conduction passes energy along.",
+          "Gases conduct badly, not best, because their widely spaced particles rarely collide to pass energy on.",
+        ],
+        explain: "The wrong line is the last one. Conduction is poorest in gases, not best, because their particles are far apart and collide rarely, so energy is passed on only slowly.",
+      },
+      {
+        kind: "open",
+        prompt: "A hot drink is left in a cooler room. Using the idea of thermal equilibrium, explain what happens to the temperature of the drink and when the net transfer of energy stops.",
+        figure: "fig-09-01-energy-transfer-arrow",
+        modelAnswer: "The drink is hotter than the room, so thermal energy flows from the hotter drink to the cooler surroundings. As it does, the drink cools and the room is warmed very slightly. The transfer keeps going while there is a temperature difference. The net transfer stops when the drink reaches the same temperature as the room. At that point they are in thermal equilibrium. Energy still passes both ways, but the amounts balance, so there is no net change.",
+        marks: [
+          "Energy flows from the hotter drink to the cooler room, so the drink cools.",
+          "Transfer continues while a temperature difference exists.",
+          "Net transfer stops at thermal equilibrium, when both are at the same temperature.",
+        ],
+        ask: "Think about which way energy flows while the drink is still hotter, and what has to become equal before the net transfer stops.",
+      },
+      {
+        kind: "open",
+        prompt: "A metal saucepan is fitted with a plastic or wooden handle. Explain, using conduction, why the handle is not made of the same metal as the pan.",
+        modelAnswer: "Metal is a good thermal conductor, so it transfers energy quickly from the hot base up through the pan. If the handle were metal it would conduct that energy rapidly to the hand and could burn it. Plastic and wood are thermal insulators, so they conduct energy only slowly. A handle made of an insulator stays cool enough to grip safely while the metal pan gets hot.",
+        marks: [
+          "Metal is a good conductor and would carry energy quickly to the hand.",
+          "Plastic and wood are insulators that transfer energy slowly.",
+          "The insulating handle stays cool enough to hold safely.",
+        ],
+        ask: "Compare how fast metal and plastic each pass energy along, and think about what that means for a hand holding the handle.",
+      },
+    ],
+  },
+];

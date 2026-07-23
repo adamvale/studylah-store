@@ -1,0 +1,222 @@
+import type { Subconcept } from "@/lib/teaching/subconcepts";
+
+// T6 Energy, Revision 2. Checkpoint over KB Chapter 07 (Energy, Work and Power),
+// sections t6.4 to t6.6: conservation of energy, work done by a force, power, efficiency
+// and energy resources. Question-only. Figures appear only on choice and open steps.
+
+export const BOXES: Subconcept[] = [
+  {
+    id: "t6.rev2",
+    code: "R2",
+    title: "Revision 2",
+    blurb: "Checkpoint: conservation of energy, work, power and efficiency",
+    kind: "revision",
+    steps: [
+      {
+        kind: "choice",
+        question: "A real pendulum swings with slightly smaller swings each time until it stops. When we say energy has been 'lost', what has actually happened to it?",
+        figure: "fig-07-07-ideal-pendulum",
+        options: [
+          "It has been transferred to internal stores by friction and air resistance",
+          "It has been destroyed and no longer exists",
+          "It has been created out of the bob's motion",
+          "The gravitational field has absorbed it forever",
+        ],
+        correct: 0,
+        ask: "By conservation of energy, energy is never destroyed, only moved. Think about where the energy goes when friction and air resistance act on the moving bob.",
+        hints: [
+          "Conservation of energy says the total energy is constant, so energy can only be transferred, never destroyed.",
+          "Friction and air resistance transfer energy to internal (thermal) stores of the surroundings, so the swing dies away.",
+        ],
+        explain: "The energy is transferred to internal stores by friction and air resistance, not destroyed. By conservation of energy the total is unchanged; the energy has simply left the useful kinetic and gravitational potential stores and warmed the surroundings.",
+      },
+      {
+        kind: "choice",
+        question: "A mango of mass 0.500 kg falls from rest through a height of 20 m. Taking g = 10 N/kg and ignoring air resistance, what is its speed just before it lands?",
+        options: ["20 m/s", "200 m/s", "14 m/s", "10 m/s"],
+        correct: 0,
+        ask: "All the gravitational potential energy becomes kinetic energy. Find E_p with m g h, set it equal to half m v squared, then solve for v.",
+        hints: [
+          "E_p is m g h, which is 0.500 times 10 times 20, giving 100 joules, and this equals the kinetic energy.",
+          "From half m v squared equal to 100, v squared is 400, so v is 20.",
+        ],
+        working: [
+          { label: "Formula", latex: "\\tfrac{1}{2}mv^2 = mgh" },
+          { label: "Substitute", latex: "\\tfrac{1}{2}(0.500)v^2 = 0.500 \\times 10 \\times 20" },
+          { label: "Answer", latex: "v = 20\\ \\text{m/s}" },
+        ],
+        explain: "The speed is 20 metres per second, because the 100 joules of gravitational potential energy all become kinetic energy; half of 0.500 times v squared equals 100 gives v squared of 400, so v is 20.",
+      },
+      {
+        kind: "choice",
+        question: "A box is pushed 6 m up a slope by a constant force of 5 N acting along the slope. How much work is done by this force?",
+        figure: "fig-07-09-box-slope",
+        options: ["30 J", "11 J", "1.2 J", "15 J"],
+        correct: 0,
+        ask: "Work done by a force is the force times the distance moved in the direction of the force, so work out 5 times 6.",
+        hints: [
+          "Use work equals force times distance.",
+          "5 times 6 is 30, and work is measured in joules.",
+        ],
+        working: [
+          { label: "Formula", latex: "W = F d" },
+          { label: "Substitute", latex: "W = 5 \\times 6" },
+          { label: "Answer", latex: "W = 30\\ \\text{J}" },
+        ],
+        explain: "The work done is 30 joules, because 5 newtons times 6 metres is 30 joules. 1 newton metre is the same as 1 joule.",
+      },
+      {
+        kind: "choice",
+        question: "A student of mass 50 kg runs up a flight of stairs of vertical height 3.0 m in 6.0 s. Taking g = 10 N/kg, what is the student's output power?",
+        options: ["250 W", "1500 W", "100 W", "25 W"],
+        correct: 0,
+        ask: "First find the work done raising the student, m g h, then divide that energy by the 6.0 seconds taken.",
+        hints: [
+          "The work done is m g h, which is 50 times 10 times 3.0, giving 1500 joules.",
+          "Power is energy divided by time, so 1500 divided by 6.0 is 250.",
+        ],
+        working: [
+          { label: "Formula", latex: "P = \\dfrac{W}{t},\\ \\ W = mgh" },
+          { label: "Substitute", latex: "P = \\dfrac{50 \\times 10 \\times 3.0}{6.0}" },
+          { label: "Answer", latex: "P = 250\\ \\text{W}" },
+        ],
+        explain: "The output power is 250 watts, because raising the student takes 1500 joules of work and 1500 joules divided by 6.0 seconds is 250 watts.",
+      },
+      {
+        kind: "choice",
+        question: "A small wind turbine takes in 800 J of energy from the wind and works at an efficiency of 25%. How much energy is dissipated (wasted)?",
+        figure: "fig-07-12-sankey-efficiency",
+        options: ["600 J", "200 J", "775 J", "1000 J"],
+        correct: 0,
+        ask: "The useful output is 25% of the input. Work out the useful energy, then subtract it from the 800 joules of input to find the dissipated energy.",
+        hints: [
+          "Useful output is 0.25 times 800, which is 200 joules.",
+          "Dissipated energy is the input minus the useful output, so 800 minus 200 is 600.",
+        ],
+        working: [
+          { label: "Formula", latex: "E_{diss} = E_{in} - E_{useful}" },
+          { label: "Substitute", latex: "E_{diss} = 800 - (0.25 \\times 800)" },
+          { label: "Answer", latex: "E_{diss} = 600\\ \\text{J}" },
+        ],
+        explain: "The dissipated energy is 600 joules, because only 200 joules (25% of 800) is useful output, and the input minus the useful output, 800 minus 200, is 600 joules.",
+      },
+      {
+        kind: "slider",
+        prompt: "A conveyor belt drives a load along at a steady 2.5 m/s against a resistive force of 240 N. Set the slider to the power delivered, in watts.",
+        min: 0,
+        max: 1000,
+        step: 10,
+        unit: "W",
+        start: 0,
+        targetMin: 590,
+        targetMax: 610,
+        ask: "At constant speed the power is the force times the speed, so work out 240 times 2.5.",
+        hints: [
+          "Use power equals force times velocity.",
+          "240 times 2.5 is 600, so slide to 600 watts.",
+        ],
+        working: [
+          { label: "Formula", latex: "P = F v" },
+          { label: "Substitute", latex: "P = 240 \\times 2.5" },
+          { label: "Answer", latex: "P = 600\\ \\text{W}" },
+        ],
+        explain: "The power is 600 watts, because 240 newtons times 2.5 metres per second is 600 watts.",
+      },
+      {
+        kind: "tiles",
+        prompt: "A box is pushed 6 m up a slope by a 5 N force, gaining 24 J of gravitational potential energy. Build the working line for the work done against friction.",
+        tiles: ["W_f =", "30", "-", "24", "=", "6", "J", "12"],
+        answer: ["W_f =", "30", "-", "24", "=", "6", "J"],
+        ask: "The push does 30 joules of work in total, which is 5 times 6. Subtract the 24 joules that became gravitational potential energy to find the work against friction.",
+        hints: [
+          "Total work is force times distance, 5 times 6, which is 30 joules.",
+          "Work against friction is 30 minus 24, which is 6 joules.",
+        ],
+        working: [
+          { label: "Formula", latex: "W_f = F d - E_p" },
+          { label: "Substitute", latex: "W_f = (5 \\times 6) - 24" },
+          { label: "Answer", latex: "W_f = 6\\ \\text{J}" },
+        ],
+        explain: "The work done against friction is 6 joules, because the push does 30 joules in total and 24 joules of that becomes gravitational potential energy, leaving 6 joules.",
+      },
+      {
+        kind: "order",
+        prompt: "An ideal pendulum swings from high point A, through the lowest point B, to high point C. Put the energy changes in the order they happen.",
+        items: [
+          "At A the bob is highest, so the gravitational potential store is maximum and the kinetic store is zero",
+          "Falling from A to B, the gravitational potential store empties into the kinetic store",
+          "At B, the lowest point, the kinetic store is maximum, so the bob moves fastest",
+          "Rising from B to C, the kinetic store refills the gravitational potential store",
+          "At C, the same height as A, the bob is momentarily at rest again",
+        ],
+        ask: "Start at the highest point A, follow the bob down to the lowest point B, then up to C. Track which store is filling and which is emptying at each stage.",
+        hints: [
+          "As the bob falls, the gravitational potential store empties and the kinetic store fills.",
+          "The bob is fastest at the lowest point B, then slows as it rises to C at the same height as A.",
+        ],
+        explain: "At A the gravitational potential store is greatest and the kinetic store is zero. Falling to B fills the kinetic store, so the bob is fastest at the lowest point. Rising to C refills the gravitational potential store until the bob is momentarily at rest at the same height as A.",
+      },
+      {
+        kind: "classify",
+        prompt: "Sort each energy resource into the correct group.",
+        bins: ["Renewable", "Non-renewable"],
+        items: [
+          { text: "wind", bin: 0 },
+          { text: "hydropower", bin: 0 },
+          { text: "solar", bin: 0 },
+          { text: "coal", bin: 1 },
+          { text: "natural gas", bin: 1 },
+          { text: "nuclear fuel", bin: 1 },
+        ],
+        ask: "For each resource, ask whether nature replaces it as fast as we use it. If it does, it is renewable; if it will run out, it is non-renewable. Tap each one and drop it in its bin.",
+        hints: [
+          "Wind, hydropower and solar are all replenished naturally, so they will not run out.",
+          "Coal and natural gas are fossil fuels, and nuclear fuel is mined, so all 3 will run out.",
+        ],
+        explain: "Wind, hydropower and solar are renewable, because they are replenished as fast as they are used. Coal, natural gas and nuclear fuel are non-renewable, because they are used up faster than they form and will eventually run out.",
+      },
+      {
+        kind: "cloze",
+        prompt: "Complete the summary of energy, power and efficiency.",
+        segments: [
+          "Energy cannot be created or destroyed, only ",
+          " from one store to another. Power is the rate of transferring energy, measured in the ",
+          ". A device is more ",
+          " when a larger fraction of its input energy becomes useful ",
+          ".",
+        ],
+        bank: ["transferred", "watt", "efficient", "output", "destroyed", "joule"],
+        answer: ["transferred", "watt", "efficient", "output"],
+        ask: "Recall the conservation word for energy moving between stores, the unit named after James Watt, and the quantity that compares useful output with total input.",
+        hints: [
+          "Energy is never made or lost, only moved, and power is measured in the watt.",
+          "Efficiency compares useful output with total input, so more of the input becoming useful output means the device is more efficient.",
+        ],
+        explain: "Energy cannot be created or destroyed, only transferred between stores. Power is measured in the watt, which is 1 joule per second. A device is more efficient when a larger fraction of its input energy becomes useful output.",
+      },
+      {
+        kind: "open",
+        prompt: "Describe the difference between renewable and non-renewable energy resources, and give one example of each.",
+        modelAnswer: "A non-renewable resource, such as a fossil fuel (coal, oil or natural gas) or a nuclear fuel, is used up faster than it is replaced, so its supply will eventually run out. A renewable resource is replenished at least as fast as it is used, so it will not run out. Examples: non-renewable, coal; renewable, wind or solar.",
+        marks: [
+          "Non-renewable resources are used faster than replaced, so they will run out.",
+          "Renewable resources are replenished and will not run out.",
+          "One correct example of each (e.g. coal; wind).",
+        ],
+        ask: "Think about whether the supply is replaced as fast as we use it, and name a fuel or source for each type.",
+      },
+      {
+        kind: "open",
+        prompt: "A block is pushed up a rough incline PR, of slope length 13 m and vertical height 5 m, at a steady speed. Explain, in terms of energy transfer, why the work done by the push is greater than the gain in gravitational potential energy.",
+        figure: "fig-07-19-incline-block",
+        modelAnswer: "The work done by the push is shared between 2 stores. Part of it raises the block, increasing the gravitational potential store, E_p = mgh, which depends only on the vertical height of 5 m. The rest does work against friction on the rough incline and is transferred to internal (thermal) stores of the block and the surface. So the work done equals the gain in gravitational potential energy plus the work done against friction, which makes it greater than the gain in potential energy alone.",
+        marks: [
+          "Work by the push is shared between raising the block and working against friction.",
+          "Gain in E_p = mgh depends only on the vertical height (5 m).",
+          "Work done = gain in E_p + work against friction, so it exceeds the E_p gain.",
+        ],
+        ask: "The push does work against 2 things as the block moves up. One raises the block; think about what the other does on a rough surface.",
+      },
+    ],
+  },
+];

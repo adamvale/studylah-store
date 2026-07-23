@@ -1,0 +1,83 @@
+HANDOFF: T7 Kinetic Particle Model of Matter (Tuition teach-then-test lesson content)
+App topic: T7 Kinetic Particle Model  <-  KB Chapter 08 (Kinetic Particle Model of Matter)
+Date: 2026-07-23. From: Coddy Cowork.
+
+SUBCONCEPT COUNT AND CODES
+8 boxes total: 5 teaching subconcepts + 2 revision checkpoints + 1 topical quiz.
+This topic maps to a SINGLE, conceptual chapter, so 5 teaching sections cover it fully.
+One box per file, each exporting `export const BOXES: Subconcept[]`:
+  s7-1.ts     T7.1  States of matter and the kinetic particle model      (KB 8.1, 8.2)
+  s7-2.ts     T7.2  Arrangement, motion and properties of the 3 states    (KB 8.3, 8.4)
+  s7-3.ts     T7.3  Explaining everyday properties with the model         (KB 8.5)
+  s7-4.ts     T7.4  Brownian motion                                       (KB 8.6)
+  s7-5.ts     T7.5  Temperature and the pressure of a gas                 (KB 8.7, 8.8)
+  s7-rev1.ts  R1    Revision 1 (covers T7.1 to T7.3)
+  s7-rev2.ts  R2    Revision 2 (covers T7.4 to T7.5)
+  s7-quiz.ts  Quiz  Kinetic particle model topical quiz (whole topic)
+Totals: 95 steps, 71 questions.
+
+RECOMPUTED ANSWERS
+Chapter 08 is CONCEPTUAL: it contains no numeric calculations at this level. There are therefore
+NO `working` blocks and NO `formula` fields anywhere in T7 (nothing to compute). The pressure of a
+gas is treated qualitatively only (no pV / Boyle's-law arithmetic in the teaching sections). The
+one quiz graphpick shows an inverse pressure-volume curve as a shape-recognition item (the marked
+option has points (1,12),(2,6),(3,4),(4,3), a constant product of 12), not a calculation.
+"Answers" here are the marked correct options, classify bins, order sequences, cloze/tiles words and
+spoterror error-lines; every one was checked independently (see self-check 3).
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit against the local mirror of the Subconcept + LessonStep contract, alias
+   @/lib/teaching/subconcepts resolved: 0 type errors across all 8 files. No `figure` on a
+   disallowed kind; figure appears only on concept/insight/choice/open.
+2. Structural validator: 5 lessons each with >= 3 questions and a `say` + 2 to 4 starred keywords on
+   every teach card; revisions EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5;
+   revisions/quiz question-only. All indices in range; cloze blank counts = segments - 1 with every
+   answer word in its bank; tiles answers all present; classify bins in range; graphpick correct in
+   range. Result: ALL STRUCTURAL CHECKS PASSED.
+3. Answer audit: an independent checker reasoned through the physics of every question and confirmed
+   every choice `correct` indexes the physically true option, every spoterror `errorLine` points at
+   the genuinely wrong line (with all other lines correct), and every classify/match/order/cloze/
+   tiles answer is physically correct. All 4 spoterror error-lines verified in range and on target
+   (s7-3 line 3, s7-5 line 2, s7-rev1 line 3, s7-rev2 line 2, s7-quiz line 2). Correct-option
+   positions were deliberately spread across indices 0-3 (not all option A), verified per file.
+4. Compliance scan: digits for numbers and counts in every spoken field (ask, hints, explain, say,
+   modelAnswer, marks); units and terms spelled for the ear; no em/en dashes; no emojis; no grade or
+   pass promises; on-screen fields use _/^ only where needed. Clean.
+
+FOUR CARRY-OVER RULES, APPLIED
+- Colour key used in every figure `say`, matched to what each SVG really draws (I opened all 8
+  fig-08 SVGs): particles (atoms/molecules and the large smoke/dust/pollen speck) = blue; the dashed
+  attractive-force lines between particles = grey dashed; the small vibration arcs and the arrow for
+  the force a particle exerts ON a wall = green; the rebound / reaction-force-on-particle arrow =
+  pink; container walls, the glass cell, cylinder, piston, microscope and lamp bodies and guide
+  lines = grey/white. The say describes only these drawn elements.
+- fig-08-02-states-particles is drawn as THREE PANELS LEFT-TO-RIGHT (left solid, middle liquid,
+  right gas), not stacked, so the say uses left/middle/right, not top/bottom.
+- Every figure referenced by its exact library name from Chapter 08 (fig-08-01 to fig-08-08).
+- No number appears on a step that disagrees with its figure (the chapter is qualitative).
+
+COLOUR NOTE FOR CODDY CODE (amber)
+In the Chapter 08 SVGs, the small callout LABEL text is drawn amber (#E8B65A), but here amber is
+only the annotation-text colour, NOT a heat source: there is no flame anywhere in Chapter 08. So the
+"amber = heat source / flame" lock proposed in the T6 handoff should be understood as topic-specific
+(it applies where a burner/flame is actually drawn, as in Chapter 07), not as a global rule that any
+amber pixel means heat. The T7 say descriptions therefore do not mention amber; they name the
+physical elements by the colours above.
+
+FIGURES NEEDED
+No new figures are required for T7. All referenced figures already exist in the Chapter 08 library
+and were read from the current source:
+  fig-08-01-internal-store        (internal store = kinetic + potential; 4 blue particles, grey
+                                   dashed bonds, green vibration arcs)  -> s7-1
+  fig-08-02-states-particles      (3 panels: solid / liquid / gas)      -> s7-2, s7-rev1, s7-quiz
+  fig-08-03-brownian-smoke        (microscope field, jerky zigzag path) -> s7-4, s7-rev2
+  fig-08-04-brownian-collisions   (enlarged: air molecules hit speck)   -> s7-4
+  fig-08-05-brownian-setup        (lamp, glass smoke cell, microscope)  -> s7-4
+  fig-08-06-gas-pressure-wall     (particle in green / rebound pink)    -> s7-5, s7-rev2
+  fig-08-07-piston                (gas trapped by a movable piston)     -> available, used on a quiz item if wired
+  fig-08-08-dust-suspended        (dust specks in still air, magnified) -> s7-rev2, s7-quiz
+Please redraw any of these to the colour key when you render, but no NEW art name is introduced by T7.
+
+NEXT: T8 thermal-processes (Ch09), then T9 thermal-properties (Ch10), then T10 waves (Ch11, whose
+figures were redrawn today, so I will read the current SVGs). One DONE entry is appended to
+HANDOFF.md after all seven are delivered.

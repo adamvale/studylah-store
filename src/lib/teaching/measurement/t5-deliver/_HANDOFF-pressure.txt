@@ -1,0 +1,60 @@
+HANDOFF: T5 Pressure (Tuition teach-then-test lesson content)
+App topic: T5 Pressure  <-  KB Chapter 06 (Pressure, including Density)
+Date: 2026-07-23. From: Coddy Cowork.
+
+SUBCONCEPT COUNT AND CODES
+9 boxes: 6 teaching subconcepts + 2 revisions + 1 quiz. This is a large single chapter
+(it carries density as well as pressure), so 6 teaching subconcepts is justified.
+  s5-1.ts  T5.1  Pressure
+  s5-2.ts  T5.2  Density
+  s5-3.ts  T5.3  Pressure in a liquid
+  s5-4.ts  T5.4  Transmission and the hydraulic press
+  s5-5.ts  T5.5  Atmospheric pressure and the barometer
+  s5-6.ts  T5.6  The manometer
+  s5-rev1.ts  T5.rev1  Revision 1 (T5.1 to T5.3)
+  s5-rev2.ts  T5.rev2  Revision 2 (T5.4 to T5.6)
+  s5-quiz.ts  T5.quiz  Pressure topical quiz
+Totals: 103 steps, 75 questions.
+
+RECOMPUTED ANSWERS (all checked in code)
+- P = F/A: crate 540 / 0.90 = 600 Pa; cabinet 21 / 0.00070 = 30000 Pa; drawing-pin/point in the quiz
+  spoterror 10 / 0.0002 = 50000 Pa.
+- Density: metal rho = 0.45 / (18 x 10^-6) = 2.5 x 10^4 kg/m^3; 1420 kg/m^3 = 1.42 g/cm^3;
+  0.680 g/cm^3 = 680 kg/m^3.
+- P = h rho g: plate 4.0 x 1000 x 10 = 40000 Pa; depth to match 45000 Pa in 900 kg/m^3 is 5.0 m.
+- Hydraulic: 30 N on 3.0 cm^2 gives 600 N out; 40 N on 5.0 cm^2 gives 8 N/cm^2 and 1600 N on 200 cm^2.
+- Barometer: point C = 76 + 4 = 80 cm Hg; P = 0.76 x (1.36 x 10^4) x 10 = 1.03 x 10^5 Pa.
+- Manometer: gas 76 + 9.0 = 85 cm Hg (1.16 x 10^5 Pa); two liquids h = 20 x 800 / 1000 = 16 cm.
+All marked correct indices, slider targets and tiles answers match; spoterror lines verified.
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit against the contract: 0 type errors, 9 files.
+2. Structural validator: lessons >= 3 questions with `say` + 2 to 4 stars per teach card;
+   revisions EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5; question-only.
+3. Calculation audit: all 31 working blocks recomputed and matched to their answer/target;
+   spoterror line verified.
+4. Compliance: digits for numbers and counts in spoken fields, powers voiced as digits
+   ("2.5 times 10 to the power 4"), units spelled for the ear; on-screen fields use _ and ^;
+   no em/en dashes; no emojis; no grade or pass promises.
+
+COLOUR KEY
+Applied in every figure `say`: yellow input/applied force F and atmospheric-pressure arrows;
+green the hydraulic OUTPUT force F2; pink a weight or the liquid column's weight; blue every
+liquid, water, mercury, oil and water jet, and the pressure/flow arrows at a point; grey tanks,
+tubes, pistons, reservoirs and dimension/depth guides; white the solid object. This fits the
+existing key with no extension needed. One small call for you to lock: the pressure-acts-in-all-
+directions arrows inside a liquid (fig-06-04) are drawn blue as flow indicators; say if you want
+a different colour for pressure arrows.
+
+FIGURES NEEDED (new names, optional but recommended)
+- fig-06-01a-area-applications  (T5.1 "Sharp or wide on purpose"): a knife edge, football boot
+  studs and a ski, showing small contact area gives high pressure and large area gives low
+  pressure. Yellow force arrows, white objects, grey ground.
+- fig-06-09a-trapped-air  (T5.4 "Trapped air spoils it"): a hydraulic line with a grey air bubble
+  being squashed, showing effort wasted compressing the air so the green output force falls.
+Other figure-less concept cards (definitions of pressure, density, atmospheric pressure, and the
+manometer intro) are covered by the adjacent labelled figures or are definitional, so no art is
+strictly needed there.
+
+Existing library figures referenced (please redraw to the colour key with T5): fig-06-01, 06-02,
+06-03, 06-04, 06-05, 06-06, 06-07, 06-08, 06-09, 06-10, 06-11, 06-12, 06-13, 06-14, 06-15, 06-16.

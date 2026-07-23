@@ -1,0 +1,60 @@
+HANDOFF: T6 Energy (Tuition teach-then-test lesson content)
+App topic: T6 Energy  <-  KB Chapter 07 (Energy, Work and Power)
+Date: 2026-07-23. From: Coddy Cowork.
+
+SUBCONCEPT COUNT AND CODES
+9 boxes: 6 teaching subconcepts + 2 revisions + 1 quiz (large chapter spanning stores through
+resources).
+  s6-1.ts  T6.1  Systems and energy stores
+  s6-2.ts  T6.2  Energy transfer and pathways
+  s6-3.ts  T6.3  Kinetic and gravitational potential stores
+  s6-4.ts  T6.4  Conservation of energy
+  s6-5.ts  T6.5  Work done by a force
+  s6-6.ts  T6.6  Power, efficiency and energy resources
+  s6-rev1.ts  T6.rev1  Revision 1 (T6.1 to T6.3)
+  s6-rev2.ts  T6.rev2  Revision 2 (T6.4 to T6.6)
+  s6-quiz.ts  T6.quiz  Energy topical quiz
+Totals: 100 steps, 74 questions.
+
+RECOMPUTED ANSWERS (all checked in code)
+- E_k = 1/2 m v^2: 0.80 kg at 2.0 m/s gives 1.6 J.
+- E_p = m g h (g = 10 N/kg): 0.40 kg to 12 m gives 48 J; weight 30 N to 3 m gives 90 J.
+- Conservation: mango 0.500 kg from 20 m gives v = 20 m/s; cyclist 800 N at 5 m gives v = 10 m/s.
+- Work: box F = 5 N over 6 m gives 30 J; E_p = 24 J; work against friction 30 - 24 = 6 J.
+- Power: student 1500 / 6.0 = 250 W; conveyor P = F v = 240 x 2.5 = 600 W.
+- Efficiency: heater 200000 J at 75% gives 150000 J useful; wind 800 J at 25% dissipates 600 J.
+All marked correct indices, slider targets and tiles answers match; the quiz spoterror line verified.
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit against the contract: 0 type errors, 9 files. (Fixed 2 wrong figure names a worker
+   used: fig-07-15-ball-bump -> fig-07-15-ball-hill-pqr, fig-07-19-incline-work ->
+   fig-07-19-incline-block, so every referenced name matches the library.)
+2. Structural validator: lessons >= 3 questions with `say` + 2 to 4 stars per teach card;
+   revisions EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5; question-only.
+3. Calculation audit: all 24 working blocks recomputed and matched; spoterror line verified.
+4. Compliance: digits for numbers and counts in spoken fields, powers voiced as digits, units
+   spelled for the ear; on-screen fields use _ and ^; no em/en dashes; no emojis; no grade or
+   pass promises (percentages such as 75% are used only as efficiency values).
+
+COLOUR KEY
+Applied in every figure `say`: yellow lifting/applied/driving force; pink weight and the
+gravitational potential store; blue motion, the kinetic store and the velocity-time graph line;
+on the Sankey diagram green useful output and red dissipated (wasted), with grey total input;
+white objects; grey slopes, stairs, ground, container/system boundary and dimension guides.
+NEW COLOUR TO LOCK: amber for a heat source / flame (the Bunsen burner in fig-07-01 and
+fig-07-03). Please confirm "amber = heat source / flame" so it stays steady across the thermal
+topics (T7 to T9) coming next.
+
+FIGURES NEEDED (new names, optional but recommended)
+- fig-07-03a-four-pathways  (T6.2 "The four pathways"): 4 small panels showing energy moved
+  mechanically (a yellow force moving a white object), by heating (amber hot object to a cooler
+  grey one), by waves (blue wavy arrows from a lamp), and electrically (a current round a grey
+  circuit). Stacked vertically for the phone.
+- fig-07-20a-energy-resources  (T6.6 "Renewable and non-renewable resources"): a split panel,
+  renewable (wind, solar, tidal, hydro) on one side and non-renewable (coal, oil, gas, nuclear)
+  on the other, colour-coded green for renewable and grey for non-renewable.
+Other figure-less cards are definitions (energy/joule, kinetic store, conservation, work,
+P = F v) covered by adjacent figures or text, so no art is strictly needed there.
+
+Existing library figures referenced (please redraw to the colour key with T6): fig-07-01, 07-02,
+07-03, 07-04, 07-05, 07-06, 07-07, 07-08, 07-09, 07-12, 07-15, 07-16, 07-19.
