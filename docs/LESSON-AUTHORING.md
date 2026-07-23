@@ -115,9 +115,13 @@ Gugu guides the student through a problem with **scripted** lines. They are the
 SAME for every student and read aloud on demand by the device (no AI, no audio
 files). Add to any problem step:
 
-- `ask`: Gugu's opening line, shown at the top and spoken. Warm, one or two
-  short sentences, ending with a nudge. Example:
+- `ask`: Gugu's opening line. It is **spoken only, never shown on screen**:
+  Gugu says it aloud as the question appears (a small repeat icon replays it),
+  so it must SUPPLEMENT the question, not read it back, in the same warm spoken
+  voice as `say`. One or two short sentences ending with a nudge. Example:
   `"This is a titration question. What do you do first? Put the steps in order."`
+  Note: on every question the student taps "I understand" (beside Help) to unlock
+  Continue, exactly like a teach card, so `ask` is the guidance for that moment.
 - `hints`: an array of 2 to 3 escalating nudges. The student taps Help to hear
   them one at a time. Hint 1 is gentle; the last is nearly the answer.
 - `explain`: the teaching summary, spoken when the student solves it or reveals

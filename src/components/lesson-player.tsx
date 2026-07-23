@@ -49,16 +49,15 @@ export function LessonPlayer({
   const isTeach = step.kind === "concept" || step.kind === "insight";
   const teachSay = isTeach ? (("say" in step && step.say) ? step.say : step.body) : undefined;
 
+  // Every teaching AND question screen now advances on the same gesture: the
+  // student taps "I understand". (Reveal is a tap-to-see prompt and unlocks on
+  // reveal.) So Gugu can teach/guide by voice and the student stays in control.
   const canContinue =
-    step.kind === "choice"
-      ? picked !== null
-      : step.kind === "reveal"
-        ? revealed
-        : isProblem(step.kind)
-          ? solved || gaveUp
-          : isTeach
-            ? understood
-            : true;
+    step.kind === "reveal"
+      ? revealed
+      : step.kind === "choice" || isProblem(step.kind) || isTeach
+        ? understood
+        : true;
 
   // Gugu greets each problem out loud (best-effort; the "Hear it"/"Please
   // repeat" buttons always replay). speak() cancels any prior line.
@@ -108,19 +107,18 @@ export function LessonPlayer({
         </button>
       }
     >
-      {/* Gugu's opening line, with a tap-to-hear replay. */}
+      {/* Gugu speaks the guidance aloud (auto, and replayed by the repeat icon)
+          to SUPPLEMENT the question, so the prompt text is never shown on screen
+          or read back. Just a small repeat control sits above the question. */}
       {ask && (
-        <div className="mb-4 flex items-start gap-3 rounded-2xl border border-hairline bg-white/5 p-3">
-          <span className="icon-orb shrink-0 !h-9 !w-9 text-accent" aria-hidden>
-            <NamedIcon name="ghost" size={18} />
-          </span>
-          <p className="flex-1 text-sm leading-relaxed text-ink"><Sci>{ask}</Sci></p>
+        <div className="mb-3 flex justify-end">
           <button
             type="button"
             onClick={() => speak(ask)}
-            className="shrink-0 rounded-full border border-hairline px-3 py-1 text-xs font-bold text-accent"
+            aria-label="Repeat Gugu"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-hairline text-accent"
           >
-            Hear it
+            <NamedIcon name="repeat" size={16} />
           </button>
         </div>
       )}
@@ -234,10 +232,12 @@ export function LessonPlayer({
       {step.kind === "classify" && <ClassifyStep key={i} step={step} onSolved={setSolved} reveal={gaveUp} />}
       {step.kind === "graphpick" && <GraphPickStep key={i} step={step} onSolved={setSolved} reveal={gaveUp} />}
 
-      {/* Help ladder: escalating scripted hints, then reveal the answer. */}
-      {(step.kind === "choice" || isProblem(step.kind)) && !showSummary && (
+      {/* Help ladder + the understand gate. Escalating scripted hints on demand,
+          then a reveal; the "I understand" button stays visible (it is what
+          unlocks Continue) and sits beside Help. */}
+      {(step.kind === "choice" || isProblem(step.kind)) && (
         <div className="mt-4">
-          {hintsShown > 0 && (
+          {hintsShown > 0 && !showSummary && (
             <div className="space-y-2">
               {hints.slice(0, hintsShown).map((h, hi) => (
                 <div key={hi} className="flex items-start gap-2 rounded-xl border border-accent/30 bg-accent/5 p-3">
@@ -247,8 +247,8 @@ export function LessonPlayer({
               ))}
             </div>
           )}
-          <div className="mt-2 flex gap-2">
-            {hintsShown < hints.length && (
+          <div className="mt-2 flex flex-wrap items-center gap-2">
+            {!showSummary && hintsShown < hints.length && (
               <button
                 type="button"
                 onClick={() => {
@@ -261,7 +261,7 @@ export function LessonPlayer({
                 {hintsShown === 0 ? "Help" : `Another hint (${hintsShown}/${hints.length})`}
               </button>
             )}
-            {isProblem(step.kind) && hintsShown >= hints.length && (
+            {!showSummary && isProblem(step.kind) && hintsShown >= hints.length && (
               <button
                 type="button"
                 onClick={() => {
@@ -273,6 +273,16 @@ export function LessonPlayer({
                 Reveal the answer
               </button>
             )}
+            <button
+              type="button"
+              onClick={() => setUnderstood(true)}
+              className={`flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold ${
+                understood ? "bg-guarantee/20 text-guarantee" : "bg-accent text-night"
+              }`}
+            >
+              {understood && <NamedIcon name="check" size={14} />}
+              {understood ? "Got it" : "I understand"}
+            </button>
           </div>
         </div>
       )}
