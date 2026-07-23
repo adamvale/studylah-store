@@ -31,6 +31,8 @@ const SUBCONCEPT_TOPICS = [
   "t6-energy-stores-and-transfers",
   "t7-kinetic-particle-model-of-matter",
   "t8-thermal-processes",
+  "t9-thermal-properties-of-matter",
+  "t10-general-wave-properties",
 ];
 
 // Optional: restrict generation to specific subconcept box codes, e.g. one
