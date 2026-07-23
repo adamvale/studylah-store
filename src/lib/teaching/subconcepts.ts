@@ -88,6 +88,26 @@ import { BOXES as H05 } from "./thermal-processes/s8-5";
 import { BOXES as HREV2 } from "./thermal-processes/s8-rev2";
 import { BOXES as HQUIZ } from "./thermal-processes/s8-quiz";
 
+import { BOXES as TP01 } from "./thermal-properties/s9-1";
+import { BOXES as TP02 } from "./thermal-properties/s9-2";
+import { BOXES as TP03 } from "./thermal-properties/s9-3";
+import { BOXES as TPREV1 } from "./thermal-properties/s9-rev1";
+import { BOXES as TP04 } from "./thermal-properties/s9-4";
+import { BOXES as TP05 } from "./thermal-properties/s9-5";
+import { BOXES as TP06 } from "./thermal-properties/s9-6";
+import { BOXES as TPREV2 } from "./thermal-properties/s9-rev2";
+import { BOXES as TPQUIZ } from "./thermal-properties/s9-quiz";
+
+import { BOXES as W01 } from "./waves/s10-1";
+import { BOXES as W02 } from "./waves/s10-2";
+import { BOXES as W03 } from "./waves/s10-3";
+import { BOXES as WREV1 } from "./waves/s10-rev1";
+import { BOXES as W04 } from "./waves/s10-4";
+import { BOXES as W05 } from "./waves/s10-5";
+import { BOXES as W06 } from "./waves/s10-6";
+import { BOXES as WREV2 } from "./waves/s10-rev2";
+import { BOXES as WQUIZ } from "./waves/s10-quiz";
+
 // The bite-sized lesson layer. A topic is broken into small subconcepts; each
 // one teaches a little, then tests it with a question, so a student learns the
 // idea before facing exam questions. Keyed by topicKey (the same keys the
@@ -176,6 +196,23 @@ const THERMAL_PROCESSES: Subconcept[] = [
   ...HQUIZ,
 ];
 
+// Thermal Properties of Matter (KB Ch10), a calculation chapter: internal
+// energy, heat capacity, latent heat and the change-of-state curves. In
+// ./thermal-properties/* (distinct from T8's ./thermal-processes/*).
+const THERMAL_PROPERTIES: Subconcept[] = [
+  ...TP01, ...TP02, ...TP03, ...TPREV1,
+  ...TP04, ...TP05, ...TP06, ...TPREV2,
+  ...TPQUIZ,
+];
+
+// General Wave Properties (KB Ch11), also a calculation chapter, closing on
+// reading wave graphs. Content lives in ./waves/*.
+const WAVES: Subconcept[] = [
+  ...W01, ...W02, ...W03, ...WREV1,
+  ...W04, ...W05, ...W06, ...WREV2,
+  ...WQUIZ,
+];
+
 // topicKey -> its subconcepts. Kinematics shares the pure/science key
 // "t2-kinematics"; the N-Level key is "kinematics". Dynamics uses "t3-dynamics"
 // (Pure), "t4-dynamics" (the other level) and the N-Level key "dynamics".
@@ -203,6 +240,11 @@ const SUBCONCEPTS: Record<string, Subconcept[]> = {
   "kinetic-particle-model-of-matter": KINETIC_MODEL,
   "t8-thermal-processes": THERMAL_PROCESSES,
   "thermal-processes": THERMAL_PROCESSES,
+  "t9-thermal-properties-of-matter": THERMAL_PROPERTIES,
+  // Waves: the pure key, the other level's combined waves-and-sound key, and N-Level.
+  "t10-general-wave-properties": WAVES,
+  "t9-general-wave-properties-and-sound": WAVES,
+  "general-properties-of-waves": WAVES,
 };
 
 export function subconceptsFor(topicKey: string): Subconcept[] | undefined {

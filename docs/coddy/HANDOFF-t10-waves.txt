@@ -1,0 +1,70 @@
+HANDOFF: T10 General Wave Properties (Tuition teach-then-test lesson content)
+App topic: T10 General Wave Properties  <-  KB Chapter 11 (General Wave Properties)
+Date: 2026-07-23. From: Coddy Cowork.
+
+SUBCONCEPT COUNT AND CODES
+9 boxes total: 6 teaching subconcepts + 2 revision checkpoints + 1 topical quiz.
+Files use s10-*.ts / t10.* (app topic T10 = KB Chapter 11). One box per file, each
+exporting `export const BOXES: Subconcept[]`:
+  s10-1.ts     T10.1  What a wave is: energy, not matter                 (KB 11.1, 11.2)
+  s10-2.ts     T10.2  Wavefronts; transverse and longitudinal           (KB 11.3, 11.4)
+  s10-3.ts     T10.3  Amplitude and points in phase                     (KB 11.5, 11.6)
+  s10-4.ts     T10.4  Period and frequency                              (KB 11.7, 11.8)
+  s10-5.ts     T10.5  Wavelength and wave speed                         (KB 11.9, 11.10)
+  s10-6.ts     T10.6  Reading wave graphs                               (KB 11.11)
+  s10-rev1.ts  R1     Revision 1 (covers T10.1 to T10.3)
+  s10-rev2.ts  R2     Revision 2 (covers T10.4 to T10.6)
+  s10-quiz.ts  Quiz   General Wave Properties topical quiz (whole topic)
+Totals: 103 steps, 76 questions.
+
+RECOMPUTED ANSWERS (CALCULATION chapter; every calc question carries `working`)
+Formulae (in `formula` fields, never inline): f = 1/T ; v = f lambda ; v = d/t. All values
+recomputed and matched to the marked option/target:
+- f = 1/T: 1 / 0.25 = 4 Hz; 1 / 25 = 0.04 s (T = 1/f); 1 / 0.4 = 2.5 Hz.
+- number of waves: 4 Hz for 60 s = 4 x 60 = 240 waves; cycles-to-period: 3 cycles in 1.2 s gives
+  T = 0.4 s.
+- v = f lambda: 8 x 0.15 = 1.2 m/s; 200 x 0.80 = 160 m/s; 50 x 0.06 = 3.0 m/s; and (period 0.5 s ->
+  f = 2 Hz) 2 x 3 = 6 m/s.
+- v = d/t: 18 / 12 = 1.5 m/s.
+- f = v / lambda: 1.5 / 3.0 = 0.5 Hz.
+- shifting a wave: d = v t = 2 x 6 = 12 m (= 3 wavelengths when lambda = 4 m).
+Spoterror wrong lines: s10-quiz line 1 and s10-rev2 line 2 both divide (v = f / lambda) where they
+should multiply (v = f lambda); s10-rev1 line 1 says the particles are carried along with the wave.
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit against the local contract mirror: 0 type errors across all 9 files. figure only on
+   concept/insight/choice/open.
+2. Structural validator: 6 lessons each >= 3 questions with a `say` + 2 to 4 starred keywords per
+   teach card; revisions EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5;
+   revisions/quiz question-only; all indices, cloze blank counts, tiles membership, classify bins,
+   graphpick correct in range. ALL STRUCTURAL CHECKS PASSED.
+3. Calculation audit + independent physics check: every `working` block recomputed and its Answer
+   matched to the marked option/target; an independent checker re-derived every calculation and
+   confirmed every choice `correct`, every spoterror error-line, and every classify/match/order/
+   cloze/tiles/graphpick answer. It specifically confirmed: a wave carries ENERGY not matter;
+   mechanical waves need a medium and EM waves do not (not swapped); transverse = perpendicular
+   vibration with crests/troughs, longitudinal = parallel vibration with compressions/rarefactions
+   (not swapped); amplitude is not wavelength; frequency is FIXED by the source and does not change
+   across a boundary (the wavelength changes with speed); wavelength is read only from a
+   displacement-distance graph and period only from a displacement-time graph. All clean.
+4. Compliance scan: digits for numbers and counts in spoken fields; units spelled for the ear
+   (hertz, metres per second, seconds); on-screen latex uses ^ ; no em/en dashes; no emojis; no
+   grade or pass promises. Clean.
+Correct-option positions spread across 0 to 3 (never all option A): quiz choice indices were
+1,2,0,3,1,2,0,3,1,2 and the revisions 2,0,3,1,2 and 1,3,0,2,3.
+
+FIGURES: NEW ART READ AND MATCHED (important)
+Every fig-11 SVG was REDRAWN on 2026-07-23. I opened all 15 CURRENT SVGs and wrote each `say` to
+match what is really drawn now (not the old wide art). Confirmed against the redraw:
+- Colour usage in the current figures: the wave curve / waveform / graph line = blue; the arrow for
+  the direction the wave travels (and the "shake one end" arrow) = yellow; the vibration-direction
+  arrow (up-down or left-right) = green; the rest line and the wavelength/period/amplitude dimension
+  markers = grey; axes = white; particle dots, the source dot, balls and the rope/wall = white.
+- fig-11-07-longitudinal-wave now labels the compression and the rarefaction correctly (the earlier
+  swap is fixed in today's art); the `say` matches.
+- Panels that stack vertically are narrated top/bottom: fig-11-01 (transverse top, longitudinal
+  bottom), fig-11-10 (small amplitude top, large amplitude bottom), fig-11-12 (2 waves per second
+  top, 5 waves per second bottom), fig-11-14 (displacement-distance top, displacement-time bottom).
+No NEW figure names are introduced by T10; all 15 fig-11 names already exist and were referenced.
+
+NEXT: T11 EM waves (KB Chapter 13). One DONE entry is appended to HANDOFF.md after the run.

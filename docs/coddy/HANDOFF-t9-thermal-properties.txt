@@ -1,0 +1,77 @@
+HANDOFF: T9 Thermal Properties of Matter (Tuition teach-then-test lesson content)
+App topic: T9 Thermal Properties of Matter  <-  KB Chapter 10 (Thermal Properties of Matter)
+Date: 2026-07-23. From: Coddy Cowork.
+
+SUBCONCEPT COUNT AND CODES
+9 boxes total: 6 teaching subconcepts + 2 revision checkpoints + 1 topical quiz.
+Files use s9-*.ts / t9.* (app topic T9 = KB Chapter 10). One box per file, each
+exporting `export const BOXES: Subconcept[]`:
+  s9-1.ts     T9.1  Internal energy                                     (KB 10.1)
+  s9-2.ts     T9.2  Heat capacity and specific heat capacity            (KB 10.2, 10.3)
+  s9-3.ts     T9.3  Energy conservation and heat capacity               (KB 10.4)
+  s9-4.ts     T9.4  Latent heat                                         (KB 10.5)
+  s9-5.ts     T9.5  Changes of state and heating/cooling curves         (KB 10.6)
+  s9-6.ts     T9.6  Boiling and evaporation                             (KB 10.7)
+  s9-rev1.ts  R1    Revision 1 (covers T9.1 to T9.3)
+  s9-rev2.ts  R2    Revision 2 (covers T9.4 to T9.6)
+  s9-quiz.ts  Quiz  Thermal Properties topical quiz (whole topic)
+Totals: 111 steps, 82 questions.
+
+RECOMPUTED ANSWERS (this is a CALCULATION chapter; every calc question carries `working`)
+Formulae used (in `formula` fields, never inline): C = Q / theta_change; Q = m c theta_change;
+E = P t; L_f = l_f m; L_v = l_v m. Standard constants stated as facts: c water 4200, c ice 2100,
+c aluminium 900 J/(kg C); l_f ice 3.36 times 10 to the power 5 J/kg; l_v water 2.26 times 10 to the
+power 6 J/kg; g 10 N/kg. All values below recomputed and matched to the marked option / target:
+- Q = m c theta_change: 2.0 x 4200 x 50 = 4.2 times 10 to the power 5 J; 0.50 x 900 x 60 =
+  2.7 times 10 to the power 4 J.
+- C = Q / theta_change: 3000 / 25 = 120 J/C. c = C / m: 120 / 0.40 = 300 J/(kg C).
+- find theta_change: 63000 / (1.5 x 4200) = 10 C.
+- source warms substance: heater E = 1400 x 60 = 84000 J, theta_change = 84000 / (1.0 x 4200) =
+  20 C; falling water theta_change = g h / c = (10 x 210) / 4200 = 0.5 C; moving object stops
+  theta_change = (0.5 x 20^2) / 500 = 0.4 C.
+- mixing (equal mass, same material): water at 80 C and 20 C give final = (80 + 20) / 2 = 50 C.
+- latent heat: melt 2.0 kg ice = 3.36e5 x 2.0 = 6.72 times 10 to the power 5 J; boil 0.50 kg water =
+  2.26e6 x 0.50 = 1.13 times 10 to the power 6 J; l_v = 452000 / 0.20 = 2.26 times 10 to the power
+  6 J/kg; combined melt 1.0 kg ice then warm to 20 C = 336000 + 84000 = 4.2 times 10 to the power 5 J.
+All slider/option/tiles targets and all four spoterror error-lines match these (spoterror wrong
+lines: s9-rev1 line 4 = a divide written as a multiply; s9-rev2 line 1 = "temperature rises during
+melting"; s9-quiz line 1 = l_v substituted where l_f was needed; plus the section spoterrors).
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit against the local contract mirror: 0 type errors across all 9 files. figure only on
+   concept/insight/choice/open.
+2. Structural validator: 6 lessons each >= 3 questions with a `say` + 2 to 4 starred keywords per
+   teach card; revisions EXACTLY 5 choice + 5 interactive + 2 open; quiz EXACTLY 10 + 10 + 5;
+   revisions/quiz question-only; all indices, cloze blank counts, tiles membership, classify bins,
+   graphpick correct in range. ALL STRUCTURAL CHECKS PASSED.
+3. Calculation audit + independent physics check: every `working` block recomputed and its Answer
+   matched to the marked option/target; an independent checker re-derived every calculation and
+   confirmed every choice `correct`, every spoterror error-line, and every classify/match/order/
+   cloze/tiles answer. It specifically confirmed: temperature = AVERAGE (not total) kinetic energy;
+   internal energy = KE + PE; temperature stays constant during a change of state (latent heat
+   changes potential energy, not kinetic); evaporation COOLS the liquid; a gentler cooling curve has
+   the HIGHER specific heat capacity. All clean.
+4. Compliance scan: digits for numbers and counts in spoken fields; spoken POWERS as digits
+   ("2.26 times 10 to the power 6"); on-screen latex uses ^ ; units spelled for the ear; no em/en
+   dashes; no emojis; no grade or pass promises. Clean.
+Correct-option positions are spread across 0 to 3 (never all option A): quiz choice indices were
+2,1,0,3,2,0,3,1,2,0 and the revisions 2,0,3,1,2 and 1,3,0,2,3.
+
+FOUR CARRY-OVER RULES, APPLIED
+- Colour key in every figure `say`, matched to what each fig-10 SVG really draws (I opened them):
+  graph curve lines, particles and cool regions = blue; the fast particles that ESCAPE during
+  evaporation and the kinetic-energy highlight = green; a hot region / hot liquid = red or amber;
+  axes, gridlines, guides and the pan/beaker/container outlines = grey/white.
+- The state and region figures are drawn LEFT to RIGHT (solid, liquid, gas) or as labelled regions
+  AB/BC and PQ/QR, so the say uses those labels, not top/bottom.
+- Every figure referenced by its exact library name (fig-10-01 to fig-10-09).
+- Numbers on a step agree with the figure.
+
+FIGURES NEEDED
+No NEW figures. Referenced from the current Chapter 10 library: fig-10-01-internal-energy-states,
+fig-10-02-heat-vs-latent (T9.1); fig-10-03-cooling-curves-AB (T9.2); fig-10-06-heating-curve,
+fig-10-07-cooling-curve, fig-10-08-heating-cooling-regions (T9.5); fig-10-09-evaporation (T9.6).
+Please redraw to the colour key when rendering; no new art name is introduced by T9.
+
+NEXT: T10 waves (KB Chapter 11; figures redrawn today, so I read the current SVGs). One DONE entry
+is appended to HANDOFF.md after the run.

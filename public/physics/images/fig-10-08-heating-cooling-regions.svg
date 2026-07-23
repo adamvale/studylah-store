@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 640" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; font-size:14px; }
-    .ax { stroke:#EAEAEA; stroke-width:1.6; fill:none; }
+    .ax { stroke:#9AA0A6; stroke-width:1.6; fill:none; }
     .hc { stroke:#6FB7E0; stroke-width:2.4; fill:none; }
     .cc { stroke:#E8B65A; stroke-width:2.4; fill:none; }
     .pt { fill:#EAEAEA; font-weight:bold; }
