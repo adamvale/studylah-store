@@ -1148,6 +1148,37 @@ to box 1) shared by three card kinds: question / definition / formula.
   pills, drills/notebook/mini-mock checklist, night-before ritual. Locked
   cards show the countdown + paper list.
 
+## Tuition layer: bite-sized teach-then-test (July 2026)
+
+A new **Tuition** tab under Learn (`/account/learn/tuition`) holds every subject.
+Tapping a topic opens **subconcept boxes**: small teach-then-test mini-lessons so
+a student learns the idea before facing questions cold. Data lives in
+`src/lib/teaching/subconcepts.ts` (`SUBCONCEPTS`, keyed by topicKey), played by
+the shared `LessonPlayer`.
+
+- **Gugu teaches by voice.** `concept`/`insight` steps carry a `say` line Gugu
+  speaks (device TTS) to teach the idea aloud, supplementing the on-screen text.
+  The student taps **I understand** to unlock Continue (and Please repeat to
+  replay). Questions work the same: the `ask` guidance is spoken only (a small
+  repeat icon replays it), never shown, and an "I understand" button beside Help
+  gates Continue. The prompt card was removed so questions just show the question.
+- **New step kinds** in `lesson-steps.ts`: `open` (open-ended: write, reveal a
+  model answer + marking points, self-check), plus `figure?` on concept/insight/
+  choice/open (a physics diagram rendered bare on the dark bg, full width). The
+  interaction kinds also include cloze/spoterror/classify/graphpick.
+- **Full topic model** (built reference: **T2 Kinematics**, 23 boxes): micro-
+  lessons per syllabus sub-section (split when large, e.g. 2.5a/b/c), one idea
+  per screen, min 3 questions each; a **Revision** checkpoint after each section
+  (`kind: "revision"`, 5 MCQ + 5 interactive + 2 open); a **Topical quiz**
+  (`kind: "quiz"`, 10 + 10 + 5). Content per section in
+  `src/lib/teaching/kinematics/*.ts`, composed in order. Validate with
+  `npx tsx scripts/validate-kinematics.mjs`. Authoring contract:
+  `docs/LESSON-AUTHORING.md`.
+- **Physics diagrams** are dark-background SVGs in `public/physics/images/`
+  (`fig-NN-xx.svg`). Coddy has a brief to regenerate them for vertical mobile
+  viewing (transparent/dark, no frame, large labels) and to author the remaining
+  physics topics from the chapter notes using the Kinematics model.
+
 ## Next
 
 - **Store deployment (the live blocker)**: iOS TestFlight upload was failing
