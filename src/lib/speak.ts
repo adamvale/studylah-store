@@ -35,9 +35,12 @@ export function hashLine(text: string): string {
 }
 
 // ── Manifest: which lines have a generated audio file ───────────────────────
-// Audio is namespaced by voice so several tutors can coexist. The active voice
-// is named in /audio/gugu/active.json = { voice }; its available lines are in
-// /audio/gugu/<voice>/manifest.json, and each file is /audio/gugu/<voice>/<hash>.mp3.
+// Audio is namespaced by voice so several tutors can coexist (Amy, Jay, ...).
+// The active voice is named in /audio/gugu/active.json = { voice }; its available
+// lines are in /audio/gugu/<voice>/manifest.json, each file /audio/gugu/<voice>/<hash>.mp3.
+// If active.json is missing, we fall back to the default tutor (Amy).
+import { DEFAULT_TUTOR_VOICE_ID } from "./tutor-voices";
+
 let activeVoice = "";
 let manifest: Set<string> | null = null;
 let manifestPromise: Promise<Set<string>> | null = null;
@@ -48,7 +51,7 @@ function loadManifest(): Promise<Set<string>> {
     manifestPromise = fetch("/audio/gugu/active.json")
       .then((r) => (r.ok ? (r.json() as Promise<{ voice?: string }>) : { voice: "" }))
       .then((cfg) => {
-        activeVoice = cfg.voice ?? "";
+        activeVoice = cfg.voice || DEFAULT_TUTOR_VOICE_ID;
         if (!activeVoice) return [] as string[];
         return fetch(`/audio/gugu/${activeVoice}/manifest.json`).then((r) =>
           r.ok ? (r.json() as Promise<string[]>) : ([] as string[]),
