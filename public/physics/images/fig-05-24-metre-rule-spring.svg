@@ -2,7 +2,7 @@
   <style>
     text { fill:#EAEAEA; }
     .rule { fill:#EAEAEA; opacity:0.22; stroke:#EAEAEA; stroke-width:1.6; }
-    .pivot { fill:#E8B65A; stroke:#E8B65A; }
+    .pivot { fill:#9AA0A6; stroke:#9AA0A6; }
     .load { fill:#6FB7E0; opacity:0.3; stroke:#6FB7E0; stroke-width:1.4; }
     .force { stroke:#E58F8F; stroke-width:2.4; fill:none; }
     .spring { stroke:#86C98B; stroke-width:1.6; fill:none; }

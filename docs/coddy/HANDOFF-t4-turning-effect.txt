@@ -1,0 +1,85 @@
+HANDOFF: T4 Turning Effect of Forces (Tuition teach-then-test lesson content)
+App topic: T4 Turning Effect of Forces  <-  KB Chapter 05 (Turning Effects of Forces)
+Date: 2026-07-23. From: Coddy Cowork.
+
+SUBCONCEPT COUNT AND CODES
+8 boxes total: 5 teaching subconcepts + 2 revision checkpoints + 1 topical quiz.
+This topic maps to a SINGLE chapter, so I kept the teaching count at the lower end (5),
+as the GO asked. One box per file, each exporting `export const BOXES: Subconcept[]`:
+  s4-01.ts  T4.1  The moment of a force
+  s4-02.ts  T4.2  The principle of moments
+  s4-03.ts  T4.3  The two conditions for equilibrium
+  s4-04.ts  T4.4  Centre of gravity
+  s4-05.ts  T4.5  Stability
+  s4-rev1.ts  T4.rev1  Revision 1 (covers T4.1 to T4.3)
+  s4-rev2.ts  T4.rev2  Revision 2 (covers T4.4 to T4.5)
+  s4-quiz.ts  T4.quiz  Turning effect topical quiz (whole topic)
+Totals: 94 steps, 70 questions.
+
+RECOMPUTED ANSWERS (every calculation, checked independently in code)
+- Moment M = F x d: door 36 / 30 = 1.2 m; spanner 60 x 0.25 = 15 N m; two same-way moments
+  (20 x 2) + (10 x 5) = 90 N m.
+- Principle of moments: see-saw 30 x 0.40 = W x 0.20, W = 60 N; barrier P x 0.40 = 400 x 1.50,
+  P = 1500 N (mass 150 kg at g = 10); hinged board T x 2.5 = 500 x 6.0, T = 1200 N; multi-force
+  (20 x 0.30) + (12 x 0.20) = W x 0.10, W = 84 N; beam 6 x 6 = W x 2, W = 18 N.
+- Equilibrium: plank about P, T_Q x 3.0 = (300 x 1.5) + (60 x 2.0) = 570, T_Q = 190 N; then
+  T_P = (300 + 60) - 190 = 170 N. Metre rule 80 x 0.75 = F x 1.0, reading F = 60 N.
+- Centre of gravity / stability: iron 5 x 0.15 = 0.75 N m.
+- Quiz spoterror: the wrong line multiplies (300 x 1.5) by 2.0; the correct work is
+  (300 x 1.5) / 2.0 = 225 N.
+All marked `correct` indices, slider targets and tiles answers match these values.
+
+FOUR SELF-CHECKS (all pass)
+1. tsc --noEmit against a local mirror of the Subconcept + LessonStep contract, alias
+   @/lib/teaching/subconcepts resolved: 0 type errors across all 8 files. (One fix made during
+   authoring: a `figure` had been placed on a slider; the contract only allows `figure` on
+   `choice` and `open`, so I removed it. Noted for future topics.)
+2. Structural validator: 5 lessons each with >= 3 questions and a `say` + 2 to 4 starred
+   keywords on every teach card; revisions EXACTLY 5 choice + 5 interactive + 2 open; quiz
+   EXACTLY 10 + 10 + 5; all question-only. Indices, cloze blank counts, tiles membership,
+   classify bins, slider ranges all in range.
+3. Calculation audit: all 24 working blocks recomputed and matched to their marked answer or
+   target. All 3 spoterror error-line indices point at the intended wrong line.
+4. Compliance scan: digits for numbers and counts in spoken fields, units and equations spelled
+   for the ear ("newton metres", "force times perpendicular distance"); on-screen fields use
+   _ and ^ and write the moment unit as "N m" (a space, no middot glyph); no em/en dashes; no
+   emojis; no grade or pass promises.
+
+FOUR CARRY-OVER RULES, APPLIED
+- Colour key used in every figure `say`. Turning-effect mapping I followed (by the figure's
+  label): applied force / effort / push / pull = yellow; a support reaction or a string
+  tension holding a beam = green; a weight or load weight (W) and the centre-of-gravity weight
+  and its line of action = pink; the curved clockwise / anticlockwise arrow and any motion
+  indicator = blue; the beam, lamina or block = white; the pivot triangle, ground, dimension
+  lines and the vertical line-of-action guide = grey.
+  ONE JUDGEMENT CALL TO CONFIRM: on the balance figures (fig-05-06, fig-05-07, fig-05-18) the
+  two balancing arrows are labelled "force F", so I described them as YELLOW applied forces.
+  If you would rather draw hanging loads there as PINK weights, say so and I will match the
+  narration. Everything else fits the existing key; no new colour was needed for T4.
+- Multi-panel figures described as top / bottom (fig-05-02, fig-05-03, fig-05-13, fig-05-14)
+  and top / middle / bottom (fig-05-15), never left / right.
+- Figure numbers agree with the art: every question that carries a `figure:` uses the exact
+  numbers from KB Chapter 05 listed above. Where I had no confirmed numbers for a figure
+  (fig-05-20 wheelbarrow, fig-05-25 two-loads beam), I left those questions figure-less rather
+  than guess.
+
+FIGURES NEEDED (new names, optional but recommended)
+Two teaching cards teach a separate micro-idea and currently have no figure. I would rather you
+draw to a name I chose:
+- fig-05-01a-everyday-turning  (T4.1 card "A force can turn things"): a door, a spanner on a
+  nut, and a child on a see-saw, each with a yellow effort arrow turning the white object about
+  a grey pivot. Purpose: show the everyday turning effect before the formula.
+- fig-05-08a-out-of-equilibrium  (T4.3 card "Two conditions, both needed"): 2 stacked panels.
+  Top half, a white block with a single unbalanced yellow force and a blue arrow sliding it
+  (fails the force condition). Bottom half, a white beam on a grey pivot with a net moment and
+  a blue curved arrow rotating it (fails the moment condition).
+All other figure-less cards are insight takeaways or the procedural "method" card, which are
+intentionally text-only.
+
+Existing library figures referenced (already drawn; please redraw to the colour key with T4):
+fig-05-01, 05-02, 05-03, 05-06, 05-07, 05-08, 05-09, 05-10, 05-11, 05-12, 05-13, 05-14,
+05-15, 05-18, 05-21, 05-23, 05-24.
+
+NEXT: energy (Ch07) is next in the value order, then current (Ch16), dc-circuits (Ch17),
+light (Ch14), waves (Ch11), pressure (Ch06), then the rest through T20. I will drop each as
+it finishes.

@@ -32,6 +32,15 @@ import { BOXES as D12 } from "./dynamics/s3-12";
 import { BOXES as DREV3 } from "./dynamics/s3-rev3";
 import { BOXES as DQUIZ } from "./dynamics/s3-quiz";
 
+import { BOXES as T401 } from "./turning-effect/s4-01";
+import { BOXES as T402 } from "./turning-effect/s4-02";
+import { BOXES as T403 } from "./turning-effect/s4-03";
+import { BOXES as TREV1 } from "./turning-effect/s4-rev1";
+import { BOXES as T404 } from "./turning-effect/s4-04";
+import { BOXES as T405 } from "./turning-effect/s4-05";
+import { BOXES as TREV2 } from "./turning-effect/s4-rev2";
+import { BOXES as TQUIZ } from "./turning-effect/s4-quiz";
+
 // The bite-sized lesson layer. A topic is broken into small subconcepts; each
 // one teaches a little, then tests it with a question, so a student learns the
 // idea before facing exam questions. Keyed by topicKey (the same keys the
@@ -71,6 +80,15 @@ const DYNAMICS: Subconcept[] = [
   ...DQUIZ,
 ];
 
+// The Turning Effect of Forces tree (KB Ch05), a single-chapter topic so it stays
+// at 5 micro-lessons: a revision checkpoint after T4.3 and after T4.5, then the
+// topical quiz. Content lives in ./turning-effect/*.
+const TURNING_EFFECT: Subconcept[] = [
+  ...T401, ...T402, ...T403, ...TREV1,
+  ...T404, ...T405, ...TREV2,
+  ...TQUIZ,
+];
+
 // topicKey -> its subconcepts. Kinematics shares the pure/science key
 // "t2-kinematics"; the N-Level key is "kinematics". Dynamics uses "t3-dynamics"
 // (Pure), "t4-dynamics" (the other level) and the N-Level key "dynamics".
@@ -80,6 +98,9 @@ const SUBCONCEPTS: Record<string, Subconcept[]> = {
   "t3-dynamics": DYNAMICS,
   "t4-dynamics": DYNAMICS,
   dynamics: DYNAMICS,
+  // Turning Effect of Forces: "t4-..." on one level, "t5-..." on the other.
+  "t4-turning-effect-of-forces": TURNING_EFFECT,
+  "t5-turning-effects-of-forces": TURNING_EFFECT,
 };
 
 export function subconceptsFor(topicKey: string): Subconcept[] | undefined {

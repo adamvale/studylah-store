@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 360" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
-    .shape { fill:#6FB7E0; opacity:0.16; stroke:#EAEAEA; stroke-width:1.6; }
+    .shape { fill:#EAEAEA; opacity:0.16; stroke:#EAEAEA; stroke-width:1.6; }
     .med { stroke:#9AA0A6; stroke-width:1; stroke-dasharray:4 3; fill:none; }
-    .cg { fill:#E8B65A; stroke:#E8B65A; }
+    .cg { fill:#E58F8F; stroke:#E58F8F; }
     .lbl { font-size:14px; }
   </style>
   <!-- triangle -->
@@ -30,6 +30,6 @@
   <circle class="cg" cx="220" cy="247.5" r="3.4"/>
   <text class="lbl" x="220" y="305" text-anchor="middle">rectangle</text>
   <circle class="cg" cx="76" cy="331" r="3.4"/>
-  <text class="lbl" x="86" y="336" fill="#E8B65A">= centre of gravity</text>
-  <text class="lbl" x="150" y="354" text-anchor="middle" fill="#E8B65A">(at the geometric centre)</text>
+  <text class="lbl" x="86" y="336" fill="#E58F8F">= centre of gravity</text>
+  <text class="lbl" x="150" y="354" text-anchor="middle" fill="#E58F8F">(at the geometric centre)</text>
 </svg>

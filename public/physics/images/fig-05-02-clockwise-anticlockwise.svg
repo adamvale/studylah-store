@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 340" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; }
-    .beam { fill:#6FB7E0; opacity:0.30; stroke:#6FB7E0; stroke-width:1.6; }
-    .pivot { fill:#E8B65A; opacity:0.35; stroke:#E8B65A; stroke-width:1.6; }
-    .force { stroke:#E58F8F; stroke-width:2.4; fill:none; }
-    .turn { stroke:#86C98B; stroke-width:2; fill:none; }
+    .beam { fill:#EAEAEA; opacity:0.30; stroke:#EAEAEA; stroke-width:1.6; }
+    .pivot { fill:#9AA0A6; opacity:0.35; stroke:#9AA0A6; stroke-width:1.6; }
+    .force { stroke:#E8B65A; stroke-width:2.4; fill:none; }
+    .turn { stroke:#6FB7E0; stroke-width:2; fill:none; }
     .lbl { font-size:14px; }
     .ttl { font-size:14px; fill:#EAEAEA; font-weight:bold; }
   </style>
@@ -16,11 +16,11 @@
   <!-- force down on right side -->
   <line class="force" x1="215" y1="55" x2="215" y2="93"/>
   <path class="force" d="M215,93 l-5,-10 M215,93 l5,-10"/>
-  <text class="lbl" x="225" y="72" fill="#E58F8F">force</text>
+  <text class="lbl" x="225" y="72" fill="#E8B65A">force</text>
   <!-- turning arrow clockwise -->
   <path class="turn" d="M170,70 A30,30 0 0 1 196,96"/>
   <path class="turn" d="M196,96 l-9,-1 M196,96 l1,-9"/>
-  <text class="lbl" x="163" y="64" text-anchor="end" fill="#86C98B">turns clockwise</text>
+  <text class="lbl" x="163" y="64" text-anchor="end" fill="#6FB7E0">turns clockwise</text>
 
   <!-- BOTTOM: anticlockwise -->
   <text class="ttl" x="140" y="200" text-anchor="middle">Anticlockwise moment</text>
@@ -30,9 +30,9 @@
   <!-- force down on left side -->
   <line class="force" x1="65" y1="225" x2="65" y2="263"/>
   <path class="force" d="M65,263 l-5,-10 M65,263 l5,-10"/>
-  <text class="lbl" x="58" y="242" text-anchor="end" fill="#E58F8F">force</text>
+  <text class="lbl" x="58" y="242" text-anchor="end" fill="#E8B65A">force</text>
   <!-- turning arrow anticlockwise -->
   <path class="turn" d="M110,240 A30,30 0 0 0 84,266"/>
   <path class="turn" d="M84,266 l9,-1 M84,266 l-1,-9"/>
-  <text class="lbl" x="120" y="236" fill="#86C98B">turns anticlockwise</text>
+  <text class="lbl" x="120" y="236" fill="#6FB7E0">turns anticlockwise</text>
 </svg>
