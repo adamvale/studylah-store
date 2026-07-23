@@ -29,7 +29,7 @@ export const BOXES: Subconcept[] = [
         heading: "Colour and texture matter",
         figure: "fig-09-09-radiation-surfaces",
         body: "*Dark, dull, rough* surfaces are the best *absorbers* and emitters of radiation and the worst reflectors. *Light, shiny, smooth* surfaces are poor absorbers and emitters but the best *reflectors*.",
-        say: "The picture compares 2 surfaces side by side. On the left a dark, dull, rough surface soaks up the amber radiation streaming in, because it is the best absorber and also the best emitter. On the right a light, shiny, smooth surface throws that radiation back, shown by the green reflection arrows, because it is a poor absorber and emitter but a great reflector. So colour and texture control how fast a surface trades radiation.",
+        say: "This figure sets the 2 kinds of surface side by side in a table. The left column shows a dark, dull, rough surface, with its 3 grey swatches getting darker and rougher down the column, and it is marked Good, because it is the best absorber and also the best emitter. The right column shows a light-coloured, shiny, smooth surface, with pale swatches, and it is marked Poor, because it absorbs and emits only weakly, though it reflects well. So colour and texture control how fast a surface trades radiation.",
       },
       {
         kind: "concept",

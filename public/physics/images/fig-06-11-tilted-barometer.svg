@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 260" font-family="Segoe UI, Arial, sans-serif">
   <style>
     text { fill:#EAEAEA; font-size:13px; }
-    .glass { fill:none; stroke:#EAEAEA; stroke-width:2; }
-    .merc { fill:#9AA0A6; opacity:0.55; }
+    .glass { fill:none; stroke:#9AA0A6; stroke-width:2; }
+    .merc { fill:#6FB7E0; opacity:0.55; }
     .level { stroke:#E8B65A; stroke-width:1.4; stroke-dasharray:5 3; }
     .height { stroke:#E8B65A; stroke-width:1.6; }
     .lbl { font-size:12px; }

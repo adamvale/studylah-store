@@ -36,7 +36,7 @@ export const BOXES: Subconcept[] = [
         heading: "Tilting and toppling",
         figure: "fig-05-15-stability-tilt",
         body: "When an object is tilted, its lowest edge becomes the *pivot*. If the vertical line through the *centre of gravity* falls *inside* the base, the weight turns it back upright; if that line falls *outside* the base, the weight topples it over.",
-        say: "This figure has 3 stacked panels, each showing a white object tilted on its grey pivot edge. In the top half it is stable: the grey vertical line through the centre of gravity falls inside the base, so the weight makes a moment that rights it, shown by a blue arrow turning it back. In the middle half it is unstable: the grey line falls outside the base, so a blue arrow shows the weight turning it further over until it topples. In the bottom half it just balances: the grey line passes straight through the grey pivot edge, so the weight has 0 perpendicular distance and there is no turning effect at all.",
+        say: "This figure has 3 stacked panels, each showing a white object tilted on its grey pivot edge. In the top half it is stable: the grey vertical line through the centre of gravity falls inside the base, so the weight makes a moment that rights it and it settles back down. In the middle half it is unstable: the grey line falls outside the base, so the weight keeps turning it further over until it topples. In the bottom half it just balances: the grey line passes straight through the grey pivot edge, so the weight has 0 perpendicular distance and there is no turning effect at all.",
       },
       {
         kind: "classify",

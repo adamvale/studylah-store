@@ -2,8 +2,8 @@
   <style>
     text { fill:#EAEAEA; }
     .view { fill:none; stroke:#EAEAEA; stroke-width:2; }
-    .path { stroke:#E8B65A; stroke-width:1.6; fill:none; }
-    .smoke { fill:#EAEAEA; }
+    .path { stroke:#6FB7E0; stroke-width:1.6; fill:none; }
+    .smoke { fill:#6FB7E0; }
     .lead { stroke:#9AA0A6; stroke-width:1.2; fill:none; }
     .lbl { font-size:15px; }
     .amber { fill:#E8B65A; }
