@@ -63,6 +63,94 @@ async function buildCompQuote(items: CartItem[]): Promise<CheckoutQuote> {
   };
 }
 
+// ── Bare accounts ───────────────────────────────────────────────────────────
+// An account with no entitlement. A StudyLah account IS an email (sign-in is a
+// magic link, there is no password), so making one is a Customer row and
+// nothing else. Useful for registering a student ahead of any purchase: they
+// can sign in, and Grant access can be pointed at them later without them
+// having to do anything.
+//
+// Be clear about what it does NOT do: every study tool is behind the paid
+// tier, so a bare account signs in to its orders page and the unlock page and
+// no further. It registers a student, it does not give them anything.
+
+export type AccountResult =
+  | { ok: true; created: boolean; email: string }
+  | { ok: false; error: string };
+
+async function sendAccountEmail(email: string): Promise<void> {
+  const loginUrl = `${serverConfig.siteUrl}/account/login`;
+  const html = emailLayout(`
+    <h1 style="font-size:20px;margin:0 0 12px;color:#101f33;">Your StudyLah account is ready</h1>
+    <p style="font-size:14px;color:#3d4e63;line-height:1.6;margin:0 0 16px;">
+      An account has been set up for you at StudyLah using this email address
+      (${email}). There is no password to remember: enter your email on the
+      sign-in page and we send you a link.
+    </p>
+    <p style="margin:0 0 20px;">
+      <a href="${loginUrl}" style="display:inline-block;background:#f4552b;color:#ffffff;text-decoration:none;font-size:14px;font-weight:bold;padding:12px 20px;border-radius:8px;">
+        Sign in to StudyLah
+      </a>
+    </p>
+    <p style="font-size:11px;color:#8894a3;line-height:1.6;margin:16px 0 0;">
+      You're getting this because a StudyLah admin set up an account for you.
+      Not expecting it? Reply and let us know (PDPA).
+    </p>
+  `);
+  const text = `Your StudyLah account is ready. An account has been set up using this email (${email}). There is no password: enter your email at ${loginUrl} and we send you a sign-in link.`;
+  await sendEmail({ to: email, subject: "Your StudyLah account is ready", html, text });
+}
+
+/**
+ * Register a student by email, with no entitlement attached.
+ *
+ * Idempotent on purpose: an admin typing an address that already exists
+ * should be told so, not handed an error, and must never overwrite or reset
+ * a real customer who has already bought something.
+ */
+export async function createStudentAccount(input: {
+  email: string;
+  notify?: boolean;
+}): Promise<AccountResult> {
+  const email = input.email.trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return { ok: false, error: "Enter a valid email." };
+  }
+
+  try {
+    const existing = await prisma.customer.findFirst({ where: { email } });
+    if (existing) return { ok: true, created: false, email };
+
+    await prisma.customer.create({ data: { email } });
+    if (input.notify) {
+      // Best-effort: a failed email must never lose the account.
+      await sendAccountEmail(email).catch((e) =>
+        console.error(`Account ${email}: welcome email failed`, e)
+      );
+    }
+    return { ok: true, created: true, email };
+  } catch (e) {
+    console.error("createStudentAccount failed", e);
+    return { ok: false, error: e instanceof Error ? e.message : "Could not create the account." };
+  }
+}
+
+export interface BareAccountRow {
+  email: string;
+  createdAt: Date;
+}
+
+/** Registered students who have nothing yet, newest first. */
+export async function listBareAccounts(limit = 25): Promise<BareAccountRow[]> {
+  const rows = await prisma.customer.findMany({
+    where: { orders: { none: {} } },
+    select: { email: true, createdAt: true },
+    orderBy: { createdAt: "desc" },
+    take: limit,
+  });
+  return rows;
+}
+
 async function sendGrantEmail(email: string, items: CartItem[]): Promise<void> {
   const master = items.some((i) => i.tier === "master");
   const listHtml = items

@@ -5,7 +5,7 @@ import {
   TIER_ORDER,
   subjectsForLevel,
 } from "@/lib/catalogue";
-import { listCustomers, listGrants } from "@/lib/server/access-grants";
+import { listBareAccounts, listCustomers, listGrants } from "@/lib/server/access-grants";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Access grants" };
@@ -16,10 +16,20 @@ const inputCls =
 export default async function AdminAccessPage({
   searchParams,
 }: {
-  searchParams: Promise<{ granted?: string; revoked?: string; error?: string }>;
+  searchParams: Promise<{
+    granted?: string;
+    revoked?: string;
+    error?: string;
+    account?: string;
+    exists?: string;
+  }>;
 }) {
   const sp = await searchParams;
-  const [grants, customers] = await Promise.all([listGrants(), listCustomers()]);
+  const [grants, customers, bare] = await Promise.all([
+    listGrants(),
+    listCustomers(),
+    listBareAccounts(),
+  ]);
   const money = (cents: number) =>
     `S$${(cents / 100).toLocaleString("en-SG", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
   const subjectOptions = PUBLISHED_LEVELS.flatMap((level) =>
@@ -51,6 +61,18 @@ export default async function AdminAccessPage({
       {sp.granted && (
         <div className="mt-4 rounded-xl border border-guarantee/40 bg-guarantee/10 px-4 py-3 text-sm text-guarantee">
           Access granted (order #{sp.granted}). The customer can sign in now.
+        </div>
+      )}
+      {sp.account && (
+        <div className="mt-4 rounded-xl border border-guarantee/40 bg-guarantee/10 px-4 py-3 text-sm text-guarantee">
+          Account created for {decodeURIComponent(sp.account)}. They can sign in
+          now, and have no subjects yet.
+        </div>
+      )}
+      {sp.exists && (
+        <div className="mt-4 rounded-xl border border-hairline bg-surface px-4 py-3 text-sm text-ink">
+          {decodeURIComponent(sp.exists)} was already on the system, so nothing
+          was changed.
         </div>
       )}
       {sp.revoked && (
@@ -130,6 +152,89 @@ export default async function AdminAccessPage({
           Grant access
         </button>
       </form>
+
+      <form
+        action="/api/admin/access/create-account"
+        method="post"
+        className="mt-5 rounded-2xl border border-hairline bg-surface p-5"
+      >
+        <h2 className="font-display text-lg font-bold text-ink">
+          Create a student account
+        </h2>
+        <p className="mt-1 max-w-2xl text-sm text-body">
+          Registers a student by email and gives them nothing. Useful for
+          putting someone on the system before they buy, or for a student you
+          will grant subjects to separately. There is no password: they sign in
+          with this email and we send a link. Safe to reuse an address, an
+          existing customer is reported back, never overwritten.
+        </p>
+        <p className="mt-2 max-w-2xl text-xs text-body">
+          Worth knowing: every study tool sits behind a paid tier, so an account
+          on its own signs in to its orders and the unlock page and no further.
+          To give them the packs, use{" "}
+          <span className="font-medium text-ink">Grant access</span> above.
+        </p>
+        <div className="mt-4 grid gap-4 sm:grid-cols-3">
+          <label className="block sm:col-span-1">
+            <span className="mb-1 block text-xs font-medium text-body">Student email</span>
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="student@example.com"
+              className={inputCls}
+            />
+          </label>
+        </div>
+        <label className="mt-4 flex items-center gap-2 text-sm text-body">
+          <input
+            type="checkbox"
+            name="notify"
+            defaultChecked
+            className="h-4 w-4 rounded border-hairline bg-night-2"
+          />
+          Email the student a sign-in link
+        </label>
+        <button
+          type="submit"
+          className="mt-3 rounded-lg border border-accent px-5 py-2.5 text-sm font-bold text-accent transition-opacity hover:opacity-90"
+        >
+          Create account
+        </button>
+      </form>
+
+      <div className="mt-8">
+        <h2 className="font-display text-lg font-bold text-ink">
+          Registered, nothing granted yet{" "}
+          <span className="text-sm font-normal text-body">({bare.length})</span>
+        </h2>
+        {bare.length === 0 ? (
+          <p className="mt-3 text-sm text-body">
+            No accounts are waiting. Every registered student has something.
+          </p>
+        ) : (
+          <div className="mt-3 overflow-x-auto rounded-2xl border border-hairline">
+            <table className="w-full min-w-[420px] text-left text-sm">
+              <thead className="bg-night-2 text-xs text-body">
+                <tr>
+                  <th className="px-4 py-2 font-medium">Email</th>
+                  <th className="px-4 py-2 font-medium">Registered</th>
+                </tr>
+              </thead>
+              <tbody>
+                {bare.map((a) => (
+                  <tr key={a.email} className="border-t border-hairline">
+                    <td className="px-4 py-2 text-ink">{a.email}</td>
+                    <td className="px-4 py-2 text-body">
+                      {a.createdAt.toLocaleDateString("en-SG")}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
 
       <div className="mt-8">
         <h2 className="font-display text-lg font-bold text-ink">
