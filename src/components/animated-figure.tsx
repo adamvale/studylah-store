@@ -66,20 +66,22 @@ const FALLBACK_STEP_MS = 900;
 export function AnimatedFigure({ src }: { src: string }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const [zoom, setZoom] = useState(false);
-  const [markup, setMarkup] = useState<string | null>(null);
-  const failed = useRef(false);
+  // Kept WITH the src it was fetched for. Deriving the current markup rather
+  // than clearing it on every src change avoids an extra render, and means a
+  // card can never show the previous card's diagram while the next one loads.
+  const [loaded, setLoaded] = useState<{ src: string; markup: string } | null>(null);
+  const markup = loaded?.src === src ? loaded.markup : null;
 
   // Load the figure's markup so it can be inlined.
   useEffect(() => {
     let live = true;
-    setMarkup(null);
     fetch(src)
       .then((r) => (r.ok ? r.text() : Promise.reject(new Error(String(r.status)))))
       .then((t) => {
-        if (live && t.includes("<svg")) setMarkup(t);
+        if (live && t.includes("<svg")) setLoaded({ src, markup: t });
       })
       .catch(() => {
-        failed.current = true;
+        /* the plain <img> below is the fallback */
       });
     return () => {
       live = false;
